@@ -1,0 +1,116 @@
+{
+  "type": "app",
+  "name": "Compliance Manager",
+  "id": "xformation-compliancemanager-ui-plugin",
+  "info": {
+    "description": "Compliance Manager",
+    "author": {
+      "name": "Synectiks",
+      "url": "https://xformation.com"
+    },
+    "keywords": ["cms", "panel"],
+    "version": "1.0",
+    "updated": "2018-10-12",
+    "logos": {
+      "small": "img/alert_logo.svg",
+      "large": "img/alert_logo.svg"
+    }
+  },
+  "includes": [
+    {
+      "type": "page",
+      "name": "Dashboard",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "Dashboard"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceExclusions",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceExclusions"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceRulesets",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceRulesets"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceRemediation",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceRemediation"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceAssessmentHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceAssessmentHistory"
+    },
+    {
+      "type": "page",
+      "name": "CompliancePolicy",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "CompliancePolicy"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceHistory"
+    },
+    {
+      "type": "page",
+      "name": "GslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "GslBuilder"
+    },
+    {
+      "type": "page",
+      "name": "ApiGateway",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ApiGateway"
+    },
+    {
+      "type": "page",
+      "name": "EditorGslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "EditorGslBuilder"
+    },
+    {
+      "type": "page",
+      "name": "Result",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "Result"
+    },
+    {
+      "type": "page",
+      "name": "ClearHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ClearHistory"
+    },
+    {
+      "type": "page",
+      "name": "Script",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "Script"
+    }
+  ],
+  "dependencies": {
+    "grafanaVersion": "3.x 4.x 5.x",
+    "plugins": []
+  }
+}
