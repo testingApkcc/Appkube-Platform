@@ -12,4 +12,4 @@ public/build/
 public/sass/*.generated.scss
 devenv/
 public/lib/monaco
-/xformation-plugins
+/xformation-plugins/*
