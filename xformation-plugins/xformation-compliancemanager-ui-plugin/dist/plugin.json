@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "app",
+  "name": "Compliance Manager",
+  "id": "xformation-compliancemanager-ui-plugin",
+  "info": {
+    "description": "Compliance Manager",
+    "author": {
+      "name": "Synectiks"
+    },
+    "logos": {
+      "small": "img/asset_logo.svg",
+      "large": "img/asset_logo.svg"
+    },
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2022-03-14"
+  },
+  "includes": [
+    {
+      "type": "page",
+      "name": "Dashboard",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceExclusions",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=complianceexclusions"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceRulesets",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=compliancerulesets"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceRemediation",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=complianceremediation"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceAssessmentHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=complianceassessmenthistory"
+    },
+    {
+      "type": "page",
+      "name": "CompliancePolicy",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=compliancepolicy"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=compliancehistory"
+    },
+    {
+      "type": "page",
+      "name": "GslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=gslbuilder"
+    },
+    {
+      "type": "page",
+      "name": "ApiGateway",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=apigateway"
+    },
+    {
+      "type": "page",
+      "name": "EditorGslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=editorgslbuilder"
+    },
+    {
+      "type": "page",
+      "name": "ClearHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=clearhistory"
+    },
+    {
+      "type": "page",
+      "name": "Script",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-compliancemanager-ui-plugin?path=script"
+    }
+  ],
+  "dependencies": {
+    "grafanaDependency": ">=8.0.0",
+    "plugins": []
+  }
+}
