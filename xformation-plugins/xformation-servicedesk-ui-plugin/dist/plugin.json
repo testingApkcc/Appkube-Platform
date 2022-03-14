@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "app",
+  "name": "Serviced Desk",
+  "id": "xformation-servicedesk-ui-plugin",
+  "info": {
+    "description": "Serviced Desk",
+    "author": {
+      "name": "Synectiks"
+    },
+    "logos": {
+      "small": "img/asset_logo.svg",
+      "large": "img/asset_logo.svg"
+    },
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2022-03-14"
+  },
+  "includes": [
+    {
+      "type": "page",
+      "name": "Dashboard",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin"
+    },
+    {
+      "type": "page",
+      "name": "Tickets",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=tickets"
+    },
+    {
+      "type": "page",
+      "name": "AllContacts",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=allContacts"
+    },
+    {
+      "type": "page",
+      "name": "OpenTickets",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=opentickets"
+    },
+    {
+      "type": "page",
+      "name": "AllCompanies",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=allcompanies"
+    },
+    {
+      "type": "page",
+      "name": "TicketsDetails",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=ticketsdetails"
+    },
+    {
+      "type": "page",
+      "name": "Reports",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=reports"
+    },
+    {
+      "type": "page",
+      "name": "ReportHelpdesh",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=reporthelpdesh"
+    },
+    {
+      "type": "page",
+      "name": "Charts",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-servicedesk-ui-plugin?path=charts"
+    }
+  ],
+  "dependencies": {
+    "grafanaDependency": ">=8.0.0",
+    "plugins": []
+  }
+}
