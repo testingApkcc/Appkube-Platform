@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "app",
+  "name": "Log Manager",
+  "id": "xformation-logmanager-ui-plugin",
+  "info": {
+    "description": "Log Manager",
+    "author": {
+      "name": "Synectiks"
+    },
+    "logos": {
+      "small": "img/asset_logo.svg",
+      "large": "img/asset_logo.svg"
+    },
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2022-03-14"
+  },
+  "includes": [
+    {
+      "type": "page",
+      "name": "Dashboard",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-logmanager-ui-plugin"
+    },
+    {
+      "type": "page",
+      "name": "ContentsPacks",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-logmanager-ui-plugin?path=contentspacks"
+    },
+    {
+      "type": "page",
+      "name": "Input",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-logmanager-ui-plugin?path=input"
+    }
+  ],
+  "dependencies": {
+    "grafanaDependency": ">=8.0.0",
+    "plugins": []
+  }
+}
