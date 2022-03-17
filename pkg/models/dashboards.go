@@ -178,6 +178,19 @@ type Dashboard struct {
 
 	Title string
 	Data  *simplejson.Json
+
+	// ------ custom changes for appcube plateform ------
+	Uuid          string
+	SourceJsonRef string
+	InputSourceId string
+	AccountId     string
+	TenantId      string
+	IsCloud       bool
+	CloudName     string
+	ElementType   string
+	FileName      string
+	InputType     string
+	// ------ custom changes for appcube plateform ------
 }
 
 func (d *Dashboard) SetId(id int64) {

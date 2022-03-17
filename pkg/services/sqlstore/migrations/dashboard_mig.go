@@ -155,6 +155,42 @@ func addDashboardMigration(mg *Migrator) {
 		Name: "uid", Type: DB_NVarchar, Length: 40, Nullable: true,
 	}))
 
+	// ------ custom changes for appcube plateform ------
+	// AssetManager changes - new columns in dashboard table
+	mg.AddMigration("Add column uuid in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "uuid", Type: DB_NVarchar, Length: 40, Nullable: true,
+	}))
+	mg.AddMigration("Add column source_json_ref in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "source_json_ref", Type: DB_NVarchar, Length: 1000, Nullable: true,
+	}))
+	mg.AddMigration("Add column input_source_id in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "input_source_id", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+	mg.AddMigration("Add column tenant_id in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "tenant_id", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+	mg.AddMigration("Add column account_id in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "account_id", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+	mg.AddMigration("Add column is_cloud in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "is_cloud", Type: DB_Bool, Nullable: false, Default: "0",
+	}))
+	mg.AddMigration("Add column cloud_name in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "cloud_name", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+	mg.AddMigration("Add column element_type in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "element_type", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+	mg.AddMigration("Add column file_name in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "file_name", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+	mg.AddMigration("Add column input_type in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "input_type", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+
+	// end AssetManager changes
+	// ------ custom changes for appcube plateform ------
+
 	mg.AddMigration("Update uid column values in dashboard", NewRawSQLMigration("").
 		SQLite("UPDATE dashboard SET uid=printf('%09d',id) WHERE uid IS NULL;").
 		Postgres("UPDATE dashboard SET uid=lpad('' || id::text,9,'0') WHERE uid IS NULL;").

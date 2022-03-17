@@ -36,10 +36,13 @@ func AddDefaultResponseHeaders(cfg *setting.Cfg) web.Handler {
 				addNoCacheHeaders(c.Resp)
 			}
 
-			if !cfg.AllowEmbedding {
-				addXFrameOptionsDenyHeader(w)
-			}
+			// ------Manoj.  custom changes for appcube plateform ------
+			// if !cfg.AllowEmbedding {
+			// 	addXFrameOptionsDenyHeader(w)
+			// }
 
+			addAllowCORSHeader(w)
+			// ------Manoj.  custom changes for appcube plateform ------
 			addSecurityHeaders(w, cfg)
 		})
 	}
@@ -76,3 +79,10 @@ func addNoCacheHeaders(w web.ResponseWriter) {
 func addXFrameOptionsDenyHeader(w web.ResponseWriter) {
 	w.Header().Set("X-Frame-Options", "deny")
 }
+
+// ------ custom changes for appcube plateform ------
+func addAllowCORSHeader(w web.ResponseWriter) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+}
+
+// ------ custom changes for appcube plateform ------

@@ -37,6 +37,10 @@ func (hs *HTTPServer) registerRoutes() {
 	r := hs.RouteRegister
 
 	// not logged in views
+	// ------Manoj.  custom changes for appcube plateform ------
+	r.Get("/external_security_enable", hs.CheckExternalSecurityFlag)
+	// ------Manoj.  custom changes for appcube plateform ------
+
 	r.Get("/logout", hs.Logout)
 	r.Post("/login", quota("session"), routing.Wrap(hs.LoginPost))
 	r.Get("/login/:name", quota("session"), hs.OAuthLogin)
@@ -329,6 +333,13 @@ func (hs *HTTPServer) registerRoutes() {
 			})
 		})
 
+		// ------Manoj.  custom changes for appcube plateform ------
+		//get file from aws s3
+		apiRoute.Group("/download-s3-file", func(downloadS3 routing.RouteRegister) {
+			downloadS3.Get("/file-name/:fname", routing.Wrap(DownloadS3File))
+		})
+		// ------Manoj.  custom changes for appcube plateform ------
+
 		// Dashboard
 		apiRoute.Group("/dashboards", func(dashboardRoute routing.RouteRegister) {
 			dashboardRoute.Get("/uid/:uid", routing.Wrap(hs.GetDashboard))
@@ -360,6 +371,9 @@ func (hs *HTTPServer) registerRoutes() {
 					dashboardPermissionRoute.Post("/", routing.Wrap(hs.UpdateDashboardPermissions))
 				})
 			})
+			// ------Manoj.  custom changes for appcube plateform ------
+			dashboardRoute.Post("/importAssets", routing.Wrap(hs.ImportApplicationAssets))
+			// ------Manoj.  custom changes for appcube plateform ------
 		})
 
 		// Dashboard snapshots

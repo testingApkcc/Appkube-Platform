@@ -65,6 +65,11 @@ type DataSource struct {
 
 	Created time.Time `json:"created"`
 	Updated time.Time `json:"updated"`
+
+	// ------Manoj.  custom changes for appcube plateform ------
+	AccountId string
+	TenantId  string
+	// ------Manoj.  custom changes for appcube plateform ------
 }
 
 // ----------------------
@@ -92,6 +97,11 @@ type AddDataSourceCommand struct {
 	ReadOnly                bool              `json:"-"`
 	EncryptedSecureJsonData map[string][]byte `json:"-"`
 
+	// ------Manoj.  custom changes for appcube plateform ------
+	AccountId string
+	TenantId  string
+	// ------Manoj.  custom changes for appcube plateform ------
+
 	Result *DataSource `json:"-"`
 }
 
@@ -118,6 +128,11 @@ type UpdateDataSourceCommand struct {
 	Id                      int64             `json:"-"`
 	ReadOnly                bool              `json:"-"`
 	EncryptedSecureJsonData map[string][]byte `json:"-"`
+
+	// ------Manoj.  custom changes for appcube plateform ------
+	AccountId string
+	TenantId  string
+	// ------Manoj.  custom changes for appcube plateform ------
 
 	Result *DataSource `json:"-"`
 }
@@ -197,3 +212,13 @@ type DatasourcesPermissionFilterQuery struct {
 	Datasources []*DataSource
 	Result      []*DataSource
 }
+
+// ------Manoj.  custom changes for appcube plateform ------
+type UpdateAccountTenantInfoDataSourceCommand struct {
+	Uid       string `json:"uid"`
+	AccountId string `json:"accountId"`
+	TenantId  string `json:"tenantId"`
+	Result    *DataSource
+}
+
+// ------Manoj.  custom changes for appcube plateform ------
