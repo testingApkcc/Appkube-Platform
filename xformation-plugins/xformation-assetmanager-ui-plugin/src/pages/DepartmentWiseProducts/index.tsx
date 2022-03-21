@@ -1743,6 +1743,44 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             },
           ]
         }
+      ],
+      departmentList: [
+        {
+          name: 'Human Resources',
+          noOfProduct: '150',
+          prodBilling: '$100',
+          otherBilling: '$275'
+        },
+        {
+          name: 'It Infra',
+          noOfProduct: '150',
+          prodBilling: '$100',
+          otherBilling: '$275'
+        },
+        {
+          name: 'IT Devlopment',
+          noOfProduct: '150',
+          prodBilling: '$100',
+          otherBilling: '$275'
+        },
+        {
+          name: 'Finance',
+          noOfProduct: '150',
+          prodBilling: '$100',
+          otherBilling: '$275'
+        },
+        {
+          name: 'Finance',
+          noOfProduct: '150',
+          prodBilling: '$100',
+          otherBilling: '$275'
+        },
+        {
+          name: 'It Infra',
+          noOfProduct: '150',
+          prodBilling: '$100',
+          otherBilling: '$275'
+        }
       ]
     };
     this.breadCrumbs = [
@@ -1809,12 +1847,12 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                 }
                               </ul>
                             </div>
-                            {val.services && val.services.map((serviceData: any, index: any) => {
-                              if (serviceData.isOpen == true) {
+                            {val.services && val.services.map((serviceres: any, index: any) => {
+                              if (serviceres.isOpen == true) {
                                 return (
                                   < div className='tabs-content'>
                                     <ul>
-                                      {serviceData.mainservices && serviceData.mainservices.map((mainservicedata: any, index: any) => {
+                                      {serviceres.mainservices && serviceres.mainservices.map((mainservicedata: any, index: any) => {
                                         return (
                                           <li>
                                             {mainservicedata.isOpen === false && <div className='icon'><img src={images.Icon} alt="" /></div>}
@@ -1901,6 +1939,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                   </div>
                                 )
                               }
+                              else {
+                                return null;
+                              }
                             })
                             }
                           </div>
@@ -1920,7 +1961,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   }
 
   render() {
-    const { showRecentFilter, showAddNewFilter } = this.state;
+    const { showRecentFilter, showAddNewFilter, departmentList } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -1944,120 +1985,29 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               </div>
             </div>
             <div className="department-wise-boxs">
-              <div className="department-box">
-                <div className="heading">Human Resource</div>
-                <div className="contents">
-                  <ul>
-                    <li>
-                      <label>No. of Products</label>
-                      <span>150</span>
-                    </li>
-                    <li>
-                      <label>Prod Billing</label>
-                      <span>$100</span>
-                    </li>
-                    <li>
-                      <label>Other Billing</label>
-                      <span>$275</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="department-box">
-                <div className="heading">IT infra</div>
-                <div className="contents">
-                  <ul>
-                    <li>
-                      <label>No. of Products</label>
-                      <span>150</span>
-                    </li>
-                    <li>
-                      <label>Prod Billing</label>
-                      <span>$100</span>
-                    </li>
-                    <li>
-                      <label>Other Billing</label>
-                      <span>$275</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="department-box">
-                <div className="heading">IT Development</div>
-                <div className="contents">
-                  <ul>
-                    <li>
-                      <label>No. of Products</label>
-                      <span>150</span>
-                    </li>
-                    <li>
-                      <label>Prod Billing</label>
-                      <span>$100</span>
-                    </li>
-                    <li>
-                      <label>Other Billing</label>
-                      <span>$275</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="department-box">
-                <div className="heading">Finance</div>
-                <div className="contents">
-                  <ul>
-                    <li>
-                      <label>No. of Products</label>
-                      <span>150</span>
-                    </li>
-                    <li>
-                      <label>Prod Billing</label>
-                      <span>$100</span>
-                    </li>
-                    <li>
-                      <label>Other Billing</label>
-                      <span>$275</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="department-box">
-                <div className="heading">Finance</div>
-                <div className="contents">
-                  <ul>
-                    <li>
-                      <label>No. of Products</label>
-                      <span>150</span>
-                    </li>
-                    <li>
-                      <label>Prod Billing</label>
-                      <span>$100</span>
-                    </li>
-                    <li>
-                      <label>Other Billing</label>
-                      <span>$275</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="department-box">
-                <div className="heading">Human Resource</div>
-                <div className="contents">
-                  <ul>
-                    <li>
-                      <label>No. of Products</label>
-                      <span>150</span>
-                    </li>
-                    <li>
-                      <label>Prod Billing</label>
-                      <span>$100</span>
-                    </li>
-                    <li>
-                      <label>Other Billing</label>
-                      <span>$275</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              {departmentList && departmentList.length > 0 && departmentList.map((val: any, index: any) => {
+                return (
+                  <div className="department-box">
+                    <div className="heading">{val.name}</div>
+                    <div className="contents">
+                      <ul>
+                        <li>
+                          <label>No. of Products</label>
+                          <span>{val.noOfProduct}</span>
+                        </li>
+                        <li>
+                          <label>Prod Billing</label>
+                          <span>{val.prodBilling}</span>
+                        </li>
+                        <li>
+                          <label>Other Billing</label>
+                          <span>{val.otherBilling}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
           <div className="common-container department-fliters-container">
