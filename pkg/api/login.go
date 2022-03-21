@@ -3,9 +3,12 @@ package api
 import (
 	"context"
 	"encoding/hex"
+	"encoding/json"
 	"errors"
+	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 
 	"github.com/grafana/grafana/pkg/api/dtos"
@@ -30,6 +33,10 @@ var setIndexViewData = (*HTTPServer).setIndexViewData
 
 var getViewIndex = func() string {
 	return viewIndex
+}
+
+var externalSecurityServiceClient = &http.Client{
+	Transport: &http.Transport{Proxy: http.ProxyFromEnvironment},
 }
 
 func (hs *HTTPServer) ValidateRedirectTo(redirectTo string) error {
@@ -178,73 +185,133 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext) response.Response {
 	if err := web.Bind(c.Req, &cmd); err != nil {
 		return response.Error(http.StatusBadRequest, "bad login data", err)
 	}
-	authModule := ""
-	var user *models.User
-	var resp *response.NormalResponse
-
-	defer func() {
-		err := resp.Err()
-		if err == nil && resp.ErrMessage() != "" {
-			err = errors.New(resp.ErrMessage())
-		}
-		hs.HooksService.RunLoginHook(&models.LoginInfo{
-			AuthModule:    authModule,
-			User:          user,
-			LoginUsername: cmd.User,
-			HTTPStatus:    resp.Status(),
-			Error:         err,
-		}, c)
-	}()
-
-	if setting.DisableLoginForm {
-		resp = response.Error(http.StatusUnauthorized, "Login is disabled", nil)
-		return resp
-	}
-
-	authQuery := &models.LoginUserQuery{
-		ReqContext: c,
-		Username:   cmd.User,
-		Password:   cmd.Password,
-		IpAddress:  c.Req.RemoteAddr,
-		Cfg:        hs.Cfg,
-	}
-
-	err := login.AuthenticateUserFunc(c.Req.Context(), authQuery)
-	authModule = authQuery.AuthModule
-	if err != nil {
-		resp = response.Error(401, "Invalid username or password", err)
-		if errors.Is(err, login.ErrInvalidCredentials) || errors.Is(err, login.ErrTooManyLoginAttempts) || errors.Is(err,
-			models.ErrUserNotFound) {
-			return resp
-		}
-
-		// Do not expose disabled status,
-		// just show incorrect user credentials error (see #17947)
-		if errors.Is(err, login.ErrUserDisabled) {
-			hs.log.Warn("User is disabled", "user", cmd.User)
-			return resp
-		}
-
-		resp = response.Error(500, "Error while trying to authenticate user", err)
-		return resp
-	}
-
-	user = authQuery.User
-
-	err = hs.loginUserWithUser(user, c)
-	if err != nil {
-		var createTokenErr *models.CreateTokenErr
-		if errors.As(err, &createTokenErr) {
-			resp = response.Error(createTokenErr.StatusCode, createTokenErr.ExternalErr, createTokenErr.InternalErr)
-		} else {
-			resp = response.Error(http.StatusInternalServerError, "Error while signing in user", err)
-		}
-		return resp
-	}
 
 	result := map[string]interface{}{
 		"message": "Logged in",
 	}
+	var resp *response.NormalResponse
+
+	// ------ Manoj. custom changes for appcube plateform ------
+	if setting.ExternalSecurityEnable {
+		hs.log.Info("External security enabled. All the users including admin will be authenticated with security service")
+		res, err := externalSecurityServiceClient.Get(setting.ExternalSecurityUrl + "/security/public/login?username=" + cmd.User + "&password=" + cmd.Password)
+		//log.Info("Login response : ", response)
+		if res.StatusCode == 417 {
+			// e401 := Error(401, "Username or Password Invalid", err)
+			// return e401
+			return response.Error(http.StatusBadRequest, "Username or Password Invalid", err)
+		}
+
+		defer res.Body.Close()
+		bodyBytes, err := ioutil.ReadAll(res.Body)
+		if err != nil {
+			//log.Error(1, "Invalid security service response", err)
+			return response.Error(401, "Invalid security service response", err)
+		}
+		bodyString := string(bodyBytes)
+		var userInfo = make(map[string]interface{})
+		errw := json.Unmarshal([]byte(bodyString), &userInfo)
+		if errw != nil {
+			//log.Error(1, "User authentication response unmarshalling to JSON failed", errw)
+			return response.Error(401, "User authentication response unmarshalling to JSON failed", errw)
+		}
+
+		var user = &models.User{
+			Password: cmd.Password,
+			Login:    cmd.User,
+			Name:     cmd.User,
+			OrgId:    1,
+			IsAdmin:  true,
+			Id:       1,
+		}
+
+		// errU := hs.loginUserWithUser(user, c)
+		// if errU != nil {
+		// 	return response.Error(500, "Error while signing in user", errU)
+		// }
+		err = hs.loginUserWithUser(user, c)
+		if err != nil {
+			var createTokenErr *models.CreateTokenErr
+			if errors.As(err, &createTokenErr) {
+				resp = response.Error(createTokenErr.StatusCode, createTokenErr.ExternalErr, createTokenErr.InternalErr)
+			} else {
+				resp = response.Error(http.StatusInternalServerError, "Error while signing in user", err)
+			}
+			return resp
+		}
+
+		result["userInfo"] = userInfo
+
+	} else { // ------Manoj.  custom changes for appcube plateform ------
+
+		authModule := ""
+		var user *models.User
+		// var resp *response.NormalResponse
+
+		defer func() {
+			err := resp.Err()
+			if err == nil && resp.ErrMessage() != "" {
+				err = errors.New(resp.ErrMessage())
+			}
+			hs.HooksService.RunLoginHook(&models.LoginInfo{
+				AuthModule:    authModule,
+				User:          user,
+				LoginUsername: cmd.User,
+				HTTPStatus:    resp.Status(),
+				Error:         err,
+			}, c)
+		}()
+
+		if setting.DisableLoginForm {
+			resp = response.Error(http.StatusUnauthorized, "Login is disabled", nil)
+			return resp
+		}
+
+		authQuery := &models.LoginUserQuery{
+			ReqContext: c,
+			Username:   cmd.User,
+			Password:   cmd.Password,
+			IpAddress:  c.Req.RemoteAddr,
+			Cfg:        hs.Cfg,
+		}
+
+		err := login.AuthenticateUserFunc(c.Req.Context(), authQuery)
+		authModule = authQuery.AuthModule
+		if err != nil {
+			resp = response.Error(401, "Invalid username or password", err)
+			if errors.Is(err, login.ErrInvalidCredentials) || errors.Is(err, login.ErrTooManyLoginAttempts) || errors.Is(err,
+				models.ErrUserNotFound) {
+				return resp
+			}
+
+			// Do not expose disabled status,
+			// just show incorrect user credentials error (see #17947)
+			if errors.Is(err, login.ErrUserDisabled) {
+				hs.log.Warn("User is disabled", "user", cmd.User)
+				return resp
+			}
+
+			resp = response.Error(500, "Error while trying to authenticate user", err)
+			return resp
+		}
+
+		user = authQuery.User
+
+		err = hs.loginUserWithUser(user, c)
+		if err != nil {
+			var createTokenErr *models.CreateTokenErr
+			if errors.As(err, &createTokenErr) {
+				resp = response.Error(createTokenErr.StatusCode, createTokenErr.ExternalErr, createTokenErr.InternalErr)
+			} else {
+				resp = response.Error(http.StatusInternalServerError, "Error while signing in user", err)
+			}
+			return resp
+		}
+	}
+
+	// result := map[string]interface{}{
+	// 	"message": "Logged in",
+	// }
 
 	if redirectTo := c.GetCookie("redirect_to"); len(redirectTo) > 0 {
 		if err := hs.ValidateRedirectTo(redirectTo); err == nil {
@@ -370,3 +437,10 @@ func getLoginExternalError(err error) string {
 
 	return err.Error()
 }
+
+// ------Manoj.  custom changes for appcube plateform ------
+func (hs *HTTPServer) CheckExternalSecurityFlag(c *models.ReqContext) string {
+	return strconv.FormatBool(setting.ExternalSecurityEnable)
+}
+
+// ------Manoj.  custom changes for appcube plateform ------

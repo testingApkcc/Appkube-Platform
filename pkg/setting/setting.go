@@ -82,6 +82,20 @@ var (
 	// HTTP server options
 	StaticRootPath string
 
+	// ------Manoj.  custom changes for appcube plateform ------
+	//externalsecurity
+	ExternalSecurityUrl    string
+	ExternalSecurityEnable bool
+
+	// gelf_tcp_alert_activity
+	AlertActivityGelfServer string
+	AlertActivityInputPort  string
+
+	//load_dashboard_from_s3
+	LoadDashboardFromS3Enable       bool
+	CloudAccountUrlFromAssetManager string
+	// ------Manoj.  custom changes for appcube plateform ------
+
 	// Security settings.
 	SecretKey              string
 	DisableGravatar        bool
@@ -892,6 +906,20 @@ func (cfg *Cfg) Load(args CommandLineArgs) error {
 		return err
 	}
 
+	// ------ Manoj. custom changes for appcube plateform ------
+	if err := readExternalSecuritySettings(iniFile, cfg); err != nil {
+		return err
+	}
+
+	if err := readGelfTcpAlertActivitySettings(iniFile, cfg); err != nil {
+		return err
+	}
+
+	if err := readLoadDashboardFromAwsS3Settings(iniFile, cfg); err != nil {
+		return err
+	}
+	// ------ Manoj. custom changes for appcube plateform ------
+
 	if err := readSnapshotsSettings(cfg, iniFile); err != nil {
 		return err
 	}
@@ -1210,6 +1238,28 @@ func readSecuritySettings(iniFile *ini.File, cfg *Cfg) error {
 
 	return nil
 }
+
+// ------Manoj.  custom changes for appcube plateform ------
+func readExternalSecuritySettings(iniFile *ini.File, cfg *Cfg) error {
+	externalsecurity := iniFile.Section("externalsecurity")
+	ExternalSecurityUrl = externalsecurity.Key("external_security_url").String()
+	ExternalSecurityEnable = externalsecurity.Key("external_security_enable").MustBool(false)
+	return nil
+}
+func readGelfTcpAlertActivitySettings(iniFile *ini.File, cfg *Cfg) error {
+	gelfTcpAlertActivitySection := iniFile.Section("gelf_tcp_alert_activity")
+	AlertActivityGelfServer = gelfTcpAlertActivitySection.Key("alert_activity_gelf_server").String()
+	AlertActivityInputPort = gelfTcpAlertActivitySection.Key("alert_activity_input_port").String()
+	return nil
+}
+func readLoadDashboardFromAwsS3Settings(iniFile *ini.File, cfg *Cfg) error {
+	loadDashboardFromS3Section := iniFile.Section("load_dashboard_from_s3")
+	LoadDashboardFromS3Enable = loadDashboardFromS3Section.Key("load_dashboard_from_s3_enable").MustBool(false)
+	CloudAccountUrlFromAssetManager = loadDashboardFromS3Section.Key("cloud_account_url_from_asset_manager").String()
+	return nil
+}
+
+// ------Manoj.  custom changes for appcube plateform ------
 
 func readAuthSettings(iniFile *ini.File, cfg *Cfg) (err error) {
 	auth := iniFile.Section("auth")

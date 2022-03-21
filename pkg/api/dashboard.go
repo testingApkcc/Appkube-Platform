@@ -5,10 +5,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
+	"time"
 
 	"github.com/grafana/grafana/pkg/api/apierrors"
 	"github.com/grafana/grafana/pkg/api/dtos"
@@ -20,13 +22,27 @@ import (
 	"github.com/grafana/grafana/pkg/services/alerting"
 	"github.com/grafana/grafana/pkg/services/dashboards"
 	"github.com/grafana/grafana/pkg/services/guardian"
+	"github.com/grafana/grafana/pkg/setting"
 	"github.com/grafana/grafana/pkg/util"
 	"github.com/grafana/grafana/pkg/web"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 )
 
 const (
 	anonString = "Anonymous"
 )
+
+// ------Manoj.  custom changes for appcube plateform ------
+var externalServiceClient = &http.Client{
+	Transport: &http.Transport{Proxy: http.ProxyFromEnvironment},
+}
+
+// ------Manoj.  custom changes for appcube plateform ------
 
 func (hs *HTTPServer) isDashboardStarredByUser(c *models.ReqContext, dashID int64) (bool, error) {
 	if !c.IsSignedIn {
@@ -169,6 +185,49 @@ func (hs *HTTPServer) GetDashboard(c *models.ReqContext) response.Response {
 			hs.log.Warn("Failed to create ProvisionedExternalId", "err", err)
 		}
 	}
+
+	// ------Manoj.  custom changes for appcube plateform ------
+	if setting.LoadDashboardFromS3Enable || dash.IsCloud {
+		if len(dash.TenantId) > 0 {
+			hs.log.Info("Getting AWS credentials from Asset Manager")
+			extResp, err := externalServiceClient.Get(setting.CloudAccountUrlFromAssetManager + "/api/getAccountByAccountAndTenantId?accountId=" + dash.AccountId + "&tenantId=" + dash.TenantId)
+			if extResp.StatusCode == 417 {
+				e401 := response.Error(401, "Cloud account not found ", err)
+				return e401
+			}
+
+			defer extResp.Body.Close()
+			bodyBytes, err := ioutil.ReadAll(extResp.Body)
+			if err != nil {
+				return response.Error(401, "Invalid asset manager response", err)
+			}
+			bodyString := string(bodyBytes)
+			var accountInfo = make(map[string]interface{})
+			errw := json.Unmarshal([]byte(bodyString), &accountInfo)
+			if errw != nil {
+				return response.Error(401, "Cloud account response unmarshalling to JSON failed", errw)
+			}
+
+			jsonContent, err := DownloadDashboardFromS3(accountInfo["accessKey"].(string), accountInfo["secretKey"].(string), accountInfo["region"].(string), accountInfo["bucket"].(string), dash.FileName)
+			if err != nil {
+				hs.log.Info("Error", err)
+				return response.Error(401, "Dashboard cannot be downloaded from cloud: ", err)
+			}
+			hs.log.Debug("Dashboard json from cloud: ", jsonContent)
+			json.Unmarshal([]byte(jsonContent), &dash.Data)
+
+			panels := dash.Data.Get("panels").MustArray()
+			for _, x := range panels {
+				md, _ := x.(map[string]interface{})
+				md["datasource"] = dash.InputSourceId
+				//fmt.Print("value of x ", md["datasource"])
+			}
+			dash.Data.Set("uid", dash.Uid)
+			dash.Data.Set("slug", dash.Slug)
+			dash.Data.Set("title", dash.Title)
+		}
+	}
+	// ------Manoj.  custom changes for appcube plateform ------
 
 	// make sure db version is in sync with json model version
 	dash.Data.Set("version", dash.Version)
@@ -679,3 +738,212 @@ func (hs *HTTPServer) GetDashboardTags(c *models.ReqContext) {
 
 	c.JSON(200, query.Result)
 }
+
+// ------Manoj.  custom changes for appcube plateform ------
+func DownloadDashboardFromS3(accessKey string, secretKey string, region string, bucket string, fileName string) (string, error) {
+	sess, err := session.NewSession()
+	if err != nil {
+		return "", err
+	}
+	creds := credentials.NewChainCredentials(
+		[]credentials.Provider{
+			&credentials.StaticProvider{Value: credentials.Value{
+				AccessKeyID:     accessKey,
+				SecretAccessKey: secretKey,
+			}},
+			//&credentials.EnvProvider{},
+			//webIdentityProvider(sess),
+			//remoteCredProvider(sess),
+		})
+	cfg := &aws.Config{
+		Region: aws.String(region),
+		//Endpoint:         aws.String(u.endpoint),
+		//S3ForcePathStyle: aws.Bool(u.pathStyleAccess),
+		Credentials: creds,
+	}
+
+	//rand, err := util.GetRandomString(20)
+	//if err != nil {
+	//	return "", err
+	//}
+	//key := u.path + rand + pngExt
+	//log.Debugf("Downloading file from s3. bucket = %s", bucket)
+	// fmt.Println("Downloading file from s3. bucket = %s", bucket)
+
+	file, err := os.Create(fileName)
+	if err != nil {
+		return "", err
+	}
+
+	defer file.Close()
+
+	//file, err := os.Open(imageDiskPath)
+	//if err != nil {
+	//	return "", err
+	//}
+	//defer file.Close()
+
+	sess, err = session.NewSession(cfg)
+	if err != nil {
+		return "", err
+	}
+	downloader := s3manager.NewDownloader(sess)
+	//result, err := uploader.UploadWithContext(ctx, &s3manager.UploadInput{
+	//	Bucket:      aws.String(u.bucket),
+	//	Key:         aws.String(key),
+	//	ACL:         aws.String(u.acl),
+	//	Body:        file,
+	//	ContentType: aws.String("image/png"),
+	//})
+	numBytes, err := downloader.Download(file,
+		&s3.GetObjectInput{
+			Bucket: aws.String(bucket),
+			Key:    aws.String(fileName),
+		})
+
+	if err != nil {
+		return "", err
+	}
+	fileData, err := ioutil.ReadFile(file.Name())
+	fmt.Println("Downloaded file : ", file.Name(), string(fileData), "bytes: ", numBytes)
+	return string(fileData), nil
+}
+
+func (hs *HTTPServer) ImportApplicationAssets(c *models.ReqContext) response.Response {
+	cmd := models.SaveDashboardCommand{}
+	if err := web.Bind(c.Req, &cmd); err != nil {
+		return response.Error(http.StatusBadRequest, "bad request data", err)
+	}
+
+	ctx := c.Req.Context()
+	//cmd.OrgId = c.OrgId
+	//cmd.UserId = c.UserId
+	cmd.OrgId = 1
+	dash := cmd.GetDashboardModel()
+
+	dash.Title = dash.Data.Get("Title").MustString()
+	//dash.Uid = dash.Data.Get("Uid").MustString()
+	dash.Slug = dash.Data.Get("Slug").MustString()
+	dash.OrgId = cmd.OrgId
+	dash.GnetId = dash.Data.Get("GnetId").MustInt64()
+	dash.Version = dash.Data.Get("Version").MustInt()
+	dash.PluginId = dash.Data.Get("PluginId").MustString()
+	dash.Created = time.Now()
+	dash.Updated = time.Now()
+	dash.UpdatedBy = dash.Data.Get("UpdatedBy").MustInt64()
+	dash.CreatedBy = dash.Data.Get("CreatedBy").MustInt64()
+	dash.FolderId = dash.Data.Get("FolderId").MustInt64()
+	dash.IsFolder = dash.Data.Get("IsFolder").MustBool()
+	dash.HasAcl = dash.Data.Get("HasAcl").MustBool()
+	//dash.Data = dash.Data.Get("Dashboard")
+	dash.Uuid = dash.Data.Get("Uuid").MustString()
+	dash.SourceJsonRef = dash.Data.Get("SourceJsonRef").MustString()
+	dash.InputSourceId = dash.Data.Get("InputSourceId").MustString()
+	dash.AccountId = dash.Data.Get("AccountId").MustString()
+	dash.TenantId = dash.Data.Get("TenantId").MustString()
+	dash.IsCloud = dash.Data.Get("IsCloud").MustBool()
+	dash.CloudName = dash.Data.Get("CloudName").MustString()
+	dash.ElementType = dash.Data.Get("ElementType").MustString()
+	dash.FileName = dash.Data.Get("FileName").MustString()
+	//	Password: cmd.Password,
+	//	Login:    cmd.User,
+	//	Name:     cmd.User,
+	//	OrgId:    1,
+	//	IsAdmin:  true,
+	//	Id:       1,
+	//}
+
+	extResp, _ := externalServiceClient.Get(setting.CloudAccountUrlFromAssetManager + "/api/getAccountByAccountAndTenantId?accountId=" + dash.AccountId + "&tenantId=" + dash.TenantId)
+	if extResp.StatusCode == 417 {
+		hs.log.Error("Cannot connect to asset manger to get account into")
+	} else {
+		defer extResp.Body.Close()
+		bodyBytes, err := ioutil.ReadAll(extResp.Body)
+		if err != nil {
+			hs.log.Error("Invalid asset manager response", err)
+		} else {
+			bodyString := string(bodyBytes)
+			var accountInfo = make(map[string]interface{})
+			errw := json.Unmarshal([]byte(bodyString), &accountInfo)
+			if errw != nil {
+				hs.log.Error("Cloud account response unmarshalling to JSON failed", errw)
+			} else {
+				jsonContent, err := DownloadDashboardFromS3(accountInfo["accessKey"].(string), accountInfo["secretKey"].(string), accountInfo["region"].(string), accountInfo["bucket"].(string), dash.FileName)
+				if err != nil {
+					hs.log.Info("Error", err)
+					return response.Error(401, "Dashboard cannot be downloaded from cloud: ", err)
+				}
+				hs.log.Debug("Dashboard json downloaded from cloud: ", jsonContent)
+
+				var tempData = make(map[string]interface{})
+				json.Unmarshal([]byte(jsonContent), &tempData)
+
+				dash.Title = dash.CloudName + "_" + dash.ElementType + "_" + tempData["title"].(string) + "_" + dash.InputSourceId + "_" + dash.Title
+				dash.Slug = dash.CloudName + "_" + dash.ElementType + "_" + tempData["title"].(string) + "_" + dash.InputSourceId + "_" + dash.Title
+				//dash.Uid = tempData["uid"].(string)+fmt.Sprint(time.Parse("20210120101010",time.Now().String()))
+
+				//dash.Uuid = tempData["uid"].(string)
+
+				//tempData["id"] = nil
+				//tempData["uuid"] = dash.Uid
+				//tempData["inputSourceId"] = dash.InputSourceId
+				//tempData["tenantId"]= dash.TenantId
+				//tempData["accountId"]= dash.AccountId
+				//tempData["isCloud"]= true
+				//tempData["cloudName"]= dash.CloudName
+				//tempData["elementType"]= dash.ElementType
+				//tempData["fileName"]= dash.FileName
+				//jsonStr, _ := json.Marshal(tempData)
+				//json.Unmarshal([]byte(jsonStr), &dash.Data)
+			}
+		}
+	}
+
+	dashItem := &dashboards.SaveDashboardDTO{
+		Dashboard: dash,
+		Message:   cmd.Message,
+		OrgId:     cmd.OrgId,
+		User:      c.SignedInUser,
+		Overwrite: cmd.Overwrite,
+	}
+	// dashboard, err := dashboards.NewService().SaveDashboard(dashItem, true)
+
+	dashboard, err := hs.dashboardService.SaveDashboard(alerting.WithUAEnabled(ctx, hs.Cfg.UnifiedAlerting.IsEnabled()), dashItem, true)
+
+	// if err != nil {
+	// 	return dashboardSaveErrorToApiResponse(err)
+	// }
+
+	if err != nil {
+		return apierrors.ToDashboardErrorResponse(ctx, hs.pluginStore, err)
+	}
+
+	//c.TimeRequest(metrics.MApiDashboardSave)
+	return response.JSON(200, util.DynMap{
+		"status":  "success",
+		"slug":    dashboard.Slug,
+		"version": dashboard.Version,
+		"id":      dashboard.Id,
+		"uid":     dashboard.Uid,
+		"url":     dashboard.GetUrl(),
+	})
+
+}
+
+func DownloadS3File(c *models.ReqContext) response.Response {
+	// fileName := c.Params(":fname")
+	fileName := web.Params(c.Req)[":fname"]
+	accessKey := web.Params(c.Req)[":accessKey"]
+	secretKey := web.Params(c.Req)[":secretKey"]
+	region := web.Params(c.Req)[":region"]
+	bucket := web.Params(c.Req)[":bucket"]
+	//log.Infof("Downloading file from s3. file name = %s", fileName)bucket
+	DownloadDashboardFromS3(accessKey, secretKey, region, bucket, fileName)
+	return response.JSON(200, util.DynMap{
+		"title":   fileName,
+		"message": fmt.Sprintf("File Name %s downloaded", fileName),
+		"id":      fileName,
+	})
+}
+
+// ------Manoj.  custom changes for appcube plateform ------

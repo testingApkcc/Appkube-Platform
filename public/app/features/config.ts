@@ -1,7 +1,7 @@
-const securitySrvUrl = `http://100.64.107.25:8094/`;
-const alertSrvUrl = `http://100.64.107.25:5055`;
-const catalogSrvUrl = `http://100.64.107.25:5050/api/`;
-const previewUrl = 'http://100.64.107.25:5057/api';
+const securitySrvUrl = `http://localhost:8094/`;
+const alertSrvUrl = `http://localhost:5055`;
+const catalogSrvUrl = `http://localhost:5050/api/`;
+const previewUrl = 'http://localhost:5057/api';
 
 export const config = {
   UPDATE_ORGANIZATION: securitySrvUrl + `security/users/updateOrganization`,
