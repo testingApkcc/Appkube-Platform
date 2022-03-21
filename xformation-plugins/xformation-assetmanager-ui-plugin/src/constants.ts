@@ -9,6 +9,7 @@ export enum ROUTES {
   Kubernetes = 'kubernetes',
   StorageDetails = 'storage-details',
   AccountSetup = 'account-setup',
+  DepartmentWiseProducts = 'department-wise-products',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';

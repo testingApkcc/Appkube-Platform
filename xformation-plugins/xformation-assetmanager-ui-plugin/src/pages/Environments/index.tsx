@@ -407,6 +407,11 @@ export class Environments extends React.Component<any, any> {
               </div>
               <div className="col-lg-3 col-md-3 col-sm-12">
                 <div className="float-right common-right-btn ">
+                  <div className="wise-icon">
+                    <Link to={`${PLUGIN_BASE_URL}/department-wise-products`}>
+                      <img src={images.Jobs} alt="" />
+                    </Link>
+                  </div>
                   <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
                     <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp; Back
                   </Link>

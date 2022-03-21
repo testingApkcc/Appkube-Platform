@@ -56,6 +56,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/%PLUGIN_ID%?path=account-setup"
+    },
+    {
+      "type": "page",
+      "name": "DepartmentWiseProducts",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=department-wise-products"
     }
   ],
   "dependencies": {

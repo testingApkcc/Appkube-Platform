@@ -1,0 +1,789 @@
+.department-wise-container {
+    background-color: #f9fafc;
+    padding: 15px;
+
+    .wise-icon {
+        display: inline-block;
+        width: 20px;
+        margin-right: 10px;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .common-container {
+        background-color: #ffffff;
+        box-shadow: 0px 2px 4px #EFF2F7;
+        border-radius: 10px;
+        padding: 20px;
+        border-bottom: none;
+        margin-bottom: 15px;
+
+        .asset-heading {
+            padding-left: 30px;
+        }
+    }
+
+    .department-wise-boxs {
+        display: flex;
+        padding: 20px 15px;
+        background-color: #F9FAFF;
+        border-radius: 10px;
+        margin-top: 10px;
+        white-space: nowrap;
+
+        .scrollbar-view {
+            flex-direction: row;
+            white-space: nowrap;
+        }
+
+        .department-box {
+            display: flex;
+            flex-wrap: wrap;
+            width: 250px;
+            min-height: 150px;
+            margin-right: 20px;
+            background: #FFFFFF;
+            box-shadow: 0px 1px 6px #3B7CFF29;
+            border: 0.5px solid #3B7CFF;
+            border-radius: 10px;
+
+            .heading {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                line-height: 18px;
+                font-weight: 600;
+                color: #000000;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                border-bottom: 0.5px solid #3B7CFF;
+                box-shadow: 0px 1px 6px #3B7CFF29;
+            }
+
+            .contents {
+                display: flex;
+                width: 100%;
+
+                ul {
+                    display: block;
+                    width: 100%;
+                    padding: 15px 15px 5px;
+                    margin: 0;
+                    list-style: none;
+
+                    li {
+                        display: block;
+                        width: 100%;
+                        padding-bottom: 10px;
+                        font-size: 13px;
+                        line-height: 18px;
+                        color: #140065;
+                        font-weight: 500;
+
+                        label {
+                            display: inline-block;
+                            width: 75%;
+                        }
+
+                        span {
+                            display: inline-block;
+                            width: 25%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .department-fliters-container {
+        display: block;
+
+        .selects-container {
+            position: relative;
+
+            .select-fliters {
+                background: #FFFFFF;
+                border: 1px solid #8392A7;
+                border-radius: 4px;
+                width: 100%;
+                display: block;
+                min-height: 42px;
+                padding: 5px 15px 0;
+                position: relative;
+
+                .fliter-toggel {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    cursor: pointer;
+                }
+
+                p {
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 30px;
+                    font-weight: 400;
+                    color: #8998AC;
+                    opacity: 0.72;
+                    margin-bottom: 0;
+                    margin-right: 10px;
+                    vertical-align: top;
+                }
+
+                .add-fliters {
+                    background-color: #F0F3F7;
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: #414D55;
+                    line-height: 30px;
+                    cursor: pointer;
+                    padding: 0px;
+                    display: inline-block;
+                    min-width: 30px;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                    vertical-align: top;
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 1;
+                    text-align: center;
+
+                    i {
+                        float: none;
+                    }
+
+                    &:hover {
+                        color: #464c54;
+                    }
+                }
+
+                .fliter-selected {
+                    background-color: #F0F3F7;
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: #414D55;
+                    line-height: 30px;
+                    padding: 0px;
+                    display: inline-block;
+                    min-width: 100px;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                    vertical-align: top;
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 1;
+
+                    span {
+                        display: block;
+                        padding: 0 30px 0 10px;
+                    }
+
+                    i {
+                        font-weight: 100;
+                        padding-left: 0;
+                        float: none;
+                        position: absolute;
+                        right: 10px;
+                        top: 0;
+                        z-index: 1;
+                    }
+                }
+
+                i {
+                    float: right;
+                    font-size: 14px;
+                    line-height: 30px;
+                    color: #8998AC;
+                    opacity: 0.72;
+                    cursor: pointer;
+                }
+
+            }
+
+            .fliters-collapse {
+                background: #FFFFFF;
+                border: 1px solid #8392A7;
+                border-radius: 4px;
+                position: absolute;
+                left: 0;
+                top: 100%;
+                width: 30%;
+                padding: 15px;
+                display: none;
+                z-index: 10;
+
+                &.active {
+                    display: block;
+                }
+
+                .search-control {
+                    position: relative;
+
+                    .btn {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 15px;
+                        height: 30px;
+                        background-color: transparent;
+                        z-index: 1;
+                        color: #8392A7;
+                        font-size: 12px;
+                        padding: 0;
+                        font-weight: 100;
+
+                        &.btn-clear {
+                            right: 0;
+                            left: auto;
+                            width: auto;
+
+                            i {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+
+                    .input-group-text {
+                        background-color: #FFFFFF;
+                        border: none;
+                        border-bottom: 1px solid #8392A7;
+                        width: 100%;
+                        padding: 0 60px 0 20px;
+                        height: 30px;
+                        text-align: left;
+                        border-radius: 0;
+                        font-size: 12px;
+                    }
+                }
+
+                .fliters-links {
+                    .form-check {
+                        margin-bottom: 5px;
+                        position: relative;
+
+                        input {
+                            display: inline-block;
+                            vertical-align: top;
+                            margin-top: 3px;
+                            cursor: pointer;
+                        }
+
+                        label {
+                            display: inline-block;
+                            vertical-align: top;
+                            padding-left: 5px;
+                            font-size: 12px;
+                            color: #414D55;
+                            line-height: 20px;
+                            margin-bottom: 0;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        .fliter-container {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #F0F3F7;
+
+            .fliter {
+                position: relative;
+
+                .fliter-toggel {
+                    background: #F0F3F7;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 300;
+                    color: #414D55;
+                    line-height: 32px;
+                    padding: 0 10px;
+                    cursor: pointer;
+
+                    i {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 5px;
+                        margin-top: -2px;
+                    }
+
+                    span {
+                        display: inline-block;
+                        vertical-align: top;
+                    }
+                }
+
+                .fliter-collapse {
+                    background-color: #FFFFFF;
+                    border: 1px solid #F0F3F7;
+                    border-radius: 0px 0px 4px 4px;
+                    padding: 10px 10px 0;
+                    display: none;
+                    position: absolute;
+                    top: 32px;
+                    width: 100%;
+                    left: 0;
+                    z-index: 10;
+
+                    &.active {
+                        display: block;
+                    }
+
+                    ul {
+                        display: block;
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+
+                        li {
+                            display: block;
+                            padding-bottom: 5px;
+
+                            a {
+                                color: #414D55;
+                                display: block;
+
+                                &:hover {
+                                    color: #3B7CFF;
+                                }
+
+                                p {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    margin-bottom: 0;
+                                    margin-top: 6px;
+                                    font-size: 14px;
+                                    line-height: 18px;
+                                    font-weight: 500;
+
+                                }
+
+                                span {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    text-align: center;
+                                    width: 32px;
+                                    height: 32px;
+                                    line-height: 32px;
+                                    margin-right: 10px;
+
+                                    img {
+                                        max-width: 100%;
+                                        height: auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .search-control {
+                position: relative;
+
+                .input-group-text {
+                    max-width: 100%;
+                    text-align: left;
+                    padding-right: 15px;
+                    padding-left: 30px;
+                    width: 100%;
+                    border: 1px solid #ced4da;
+                    background-color: #ffffff;
+                    border-radius: 4px;
+                    color: #8998AC;
+                }
+
+                button {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                    cursor: pointer;
+                    border: none;
+                    background-color: transparent;
+                    width: 32px;
+                    height: 32px;
+                    color: #8998AC;
+                }
+            }
+        }
+
+        .data-table {
+            display: block;
+            width: 100%;
+
+            .thead {
+                display: block;
+                width: 100%;
+                background-color: #D9E4F2;
+                border-radius: 10px 10px 0px 0px;
+
+                .name {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px 10px 30px;
+                    width: 200px;
+                }
+
+                .app-services {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    text-align: center;
+                    width: 150px;
+                }
+
+                .data-services {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    text-align: center;
+                    width: 150px;
+                }
+
+                .ou {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    width: 625px;
+                }
+
+                .edit {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    width: 80px;
+                    text-align: right;
+
+                    .edit-btn {
+                        border: none;
+                        background-color: transparent;
+                        padding: 0;
+
+                        span {
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 4px;
+                            height: 4px;
+                            background-color: #A9A9A9;
+                            margin-left: 2px;
+                            margin-right: 2px;
+                        }
+                    }
+                }
+            }
+
+            .tbody {
+                display: block;
+                width: 100%;
+
+                .name {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px 10px 30px;
+                    width: 200px;
+                    cursor: pointer;
+
+                    span {
+                        color: #3B7CFF;
+                    }
+
+                    i {
+                        float: right;
+                        cursor: pointer;
+                    }
+                }
+
+                .app-services {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    text-align: center;
+                    width: 150px;
+                }
+
+                .data-services {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    text-align: center;
+                    width: 150px;
+                }
+
+                .ou {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    width: 625px;
+                }
+
+                .edit {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    width: 80px;
+
+                    .edit-btn {
+                        border: none;
+                        background-color: transparent;
+                        padding: 0;
+
+                        span {
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 4px;
+                            height: 4px;
+                            background-color: #A9A9A9;
+                            margin-left: 2px;
+                            margin-right: 2px;
+                        }
+                    }
+                }
+            }
+
+            .inner-table {
+                display: block;
+                width: 100%;
+
+                .thead {
+                    background-color: transparent;
+                    border-radius: 0px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #414D55;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+
+                .tbody {
+                    display: block;
+                    width: 100%;
+                    border-bottom: 1px solid #F8F9FB;
+
+                    &:nth-child(0n+2) {
+                        background-color: #F8F9FB;
+                    }
+                }
+            }
+        }
+
+        .environments {
+            display: block;
+            width: 100%;
+            padding: 10px 30px;
+
+            .environments-inner {
+                border: 1px solid #0077B6;
+                background-color: #fcfdfd;
+
+                .heading {
+                    background-color: #0077B6;
+                    padding: 5px 15px;
+
+                    h3 {
+                        display: inline-block;
+                        color: #FFFFFF;
+                        font-size: 14px;
+                        font-weight: 400;
+                        margin-bottom: 0;
+                    }
+
+                    .buttons {
+                        float: right;
+                        width: auto;
+
+                        .btn {
+                            margin-left: 5px;
+                            padding: 5px;
+                            color: #0077B6;
+                            font-size: 14px;
+                            line-height: 16px;
+                            height: 22px;
+                        }
+                    }
+                }
+
+                .content {
+                    display: block;
+                    padding: 10px 40px 10px 20px;
+
+                    .tabs-container {
+                        display: flex;
+                        width: 100%;
+
+                        .tabs {
+                            width: 200px;
+                            display: flex;
+
+                            ul {
+                                display: block;
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+                                width: 100%;
+
+                                li {
+                                    display: block;
+                                    width: 100%;
+                                    background-color: #00B4D8;
+                                    margin-bottom: 1px;
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    padding: 10px 20px 10px 30px;
+                                    color: #FFFFFF;
+                                    position: relative;
+                                    cursor: pointer;
+
+                                    &::before {
+                                        background-color: #FFFFFF;
+                                        border: 1px solid #0077B6;
+                                        width: 12px;
+                                        height: 12px;
+                                        content: "";
+                                        position: absolute;
+                                        left: 10px;
+                                        top: 13px;
+                                    }
+
+                                    &:hover {
+                                        background-color: #CBDCEB;
+                                        color: #0077B6;
+                                    }
+
+                                    &.active {
+                                        background-color: #CBDCEB;
+                                        color: #0077B6;
+                                    }
+                                }
+                            }
+                        }
+
+                        .tabs-content {
+                            display: flex;
+                            width: calc(100% - 200px);
+                            padding-left: 30px;
+
+                            ul {
+                                display: block;
+                                width: 100%;
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+
+                                li {
+                                    display: flex;
+                                    width: 100%;
+                                    flex-wrap: wrap;
+                                    margin-bottom: 3px;
+
+                                    .icon {
+                                        display: flex;
+                                        width: 60px;
+                                        height: 40px;
+                                        padding: 2px;
+                                        background-color: #CBDCEB;
+                                        margin-right: 2px;
+
+                                        img {
+                                            max-width: 100%;
+                                            height: auto;
+                                        }
+                                    }
+
+                                    .heading {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        width: calc(100% - 62px);
+                                        background-color: #CBDCEB;
+                                        padding: 0;
+                                        cursor: pointer;
+
+                                        &.full {
+                                            width: 100%;
+
+                                            span {
+                                                padding: 0 15px;
+                                            }
+                                        }
+
+                                        span {
+                                            display: flex;
+                                            padding: 0 30px;
+                                            font-size: 16px;
+                                            line-height: 40px;
+                                            font-weight: 600;
+                                            color: #0077B6;
+                                        }
+
+                                        .icon {
+                                            display: flex;
+                                            align-items: center;
+                                            width: auto;
+
+                                            .fa-icon {
+                                                line-height: 40px;
+                                                margin-right: 5px;
+                                                color: #8392A7;
+                                            }
+
+                                            .edit {
+                                                display: flex;
+                                                width: 20px;
+                                                height: 40px;
+                                                padding: 0;
+                                                position: relative;
+                                                align-items: center;
+
+                                                .bars {
+                                                    display: flex;
+                                                    width: 100%;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    flex-wrap: wrap;
+                                                    height: 20px;
+
+                                                    span {
+                                                        display: block;
+                                                        width: 4px;
+                                                        height: 4px;
+                                                        padding: 0;
+                                                        margin: 0 5px;
+                                                        background-color: #0077B6;
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+                                    .content-table{
+                                        display: flex;
+                                        width: 100%;
+                                        background-color: #CBDCEB;
+                                        padding: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+
+
+
+}

@@ -1,4 +1,13 @@
 .environments-page-container {
+  .wise-icon{
+    display: inline-block;
+    width: 20px;
+    margin-right: 10px;
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+  }
   .environments-services-container {
     .services-box {
       background: #FFFFFF;
