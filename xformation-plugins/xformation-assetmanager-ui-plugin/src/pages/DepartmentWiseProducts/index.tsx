@@ -15,22 +15,26 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       product: [
         {
           title: 'Human Resources',
-          isOpen: true,
           productList: [
             {
               title: 'EMS',
+              isOpen: true,
               services: [
                 {
                   stage: 'Production',
+                  isOpen: true,
                   mainservices: [
                     {
                       title: 'Business Services',
+                      isOpen: true,
                       services: [
                         {
                           title: 'admission',
+                          isOpen: true,
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: true,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -52,6 +56,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: true,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -75,9 +80,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         },
                         {
                           title: 'Fee',
+                          isOpen: false,
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: true,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -99,6 +106,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -124,12 +132,15 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
+                      isOpen: false,
                       services: [
                         {
                           title: 'admission',
+                          isOpen: false,
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: true,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -151,6 +162,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -174,9 +186,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         },
                         {
                           title: 'Fee',
+                          isOpen: false,
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: true,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -198,6 +212,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -225,15 +240,18 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 },
                 {
                   stage: 'Testing',
+                  isOpen: false,
                   mainServices: [
                     {
                       title: 'Business Services',
                       services: [
                         {
                           title: 'admission',
+                          isOpen: false,
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: true,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -255,6 +273,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -278,9 +297,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         },
                         {
                           title: 'Fee',
+                          isOpen: false,
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -302,6 +323,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -327,12 +349,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
-                      servicesType: [
+                      services: [
                         {
                           title: 'admission',
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -354,6 +377,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -380,6 +404,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -401,6 +426,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -430,6 +456,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             },
             {
               title: 'Procurement',
+              isOpen: false,
               services: [
                 {
                   stage: 'Production',
@@ -442,6 +469,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -463,6 +491,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -489,6 +518,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -510,6 +540,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -541,6 +572,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -562,6 +594,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -588,6 +621,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -609,6 +643,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -645,6 +680,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -666,6 +702,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -692,6 +729,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -713,6 +751,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -738,12 +777,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
-                      servicesType: [
+                      services: [
                         {
                           title: 'admission',
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -765,6 +805,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -791,6 +832,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -812,6 +854,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -843,7 +886,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         },
         {
           title: 'IT infra',
-          isOpen: false,
           productList: [
             {
               title: 'EMS',
@@ -859,6 +901,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -880,6 +923,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -906,6 +950,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -927,6 +972,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -958,6 +1004,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -979,6 +1026,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1005,6 +1053,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1026,6 +1075,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1062,6 +1112,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1083,6 +1134,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1109,6 +1161,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1130,6 +1183,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1161,6 +1215,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1182,6 +1237,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1208,6 +1264,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1229,6 +1286,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1270,6 +1328,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1291,6 +1350,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1317,6 +1377,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1338,6 +1399,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1369,6 +1431,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1390,6 +1453,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1416,6 +1480,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1437,6 +1502,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1473,6 +1539,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1494,6 +1561,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1520,6 +1588,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1541,6 +1610,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1572,6 +1642,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1593,6 +1664,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1619,6 +1691,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           subServices: [
                             {
                               'title': 'App services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'List & Act',
@@ -1640,6 +1713,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             },
                             {
                               'title': 'Data Services',
+                              isOpen: false,
                               list: [
                                 {
                                   'title': 'Postgre SQL',
@@ -1689,223 +1763,156 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
         let row = product[i];
-        if (row.productList) {
-          let product = [];
-          for (let j = 0; j < row.productList.length; j++) {
-            product.push(
-
-            );
-          }
-        }
         retData.push(
           <div className="inner-table">
             <div className="thead">{row.title}</div>
-            <div className="tbody">
-              <div className="name"><span>EMS</span> <i className='fa fa-chevron-down'></i></div>
-              <div className="app-services">10</div>
-              <div className="data-services">5</div>
-              <div className="ou">Admin, Accounts Adminssion, Transport</div>
-              <div className="edit">
-                <button className="edit-btn">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
-              {row.isOpen == true &&
-                <div className='environments'>
-                  <div className='environments-inner'>
-                    <div className='heading'>
-                      <h3>EMS - Environments</h3>
-                      <div className='buttons'>
-                        <button className='btn'>
-                          <i className='fa fa-plus'></i>
-                        </button>
-                        <button className='btn'>
-                          <i className='fa fa-eye'></i>
-                        </button>
-                        <button className='btn'>
-                          <i className='fa fa-bars'></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div className='content'>
-                      <div className='tabs-container'>
-                        <div className='tabs'>
-                          <ul>
-                            <li className='active'>Production</li>
-                            <li>Testing</li>
-                            <li>Stage</li>
-                            <li>Development</li>
-                          </ul>
-                        </div>
-                        <div className='tabs-content'>
-                          <ul>
-                            <li>
-                              <div className='icon'><img src={images.Icon} alt="" /></div>
-                              <div className='heading'>
-                                <span>Development</span>
-                                <div className='icon'>
-                                  <div className='fa-icon'>
-                                    <i className='fa fa-chevron-down'></i>
-                                  </div>
-                                  <div className='edit'>
-                                    <div className='bars'>
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div className='icon'><img src={images.Icon} alt="" /></div>
-                              <div className='heading'>
-                                <span>Load Balancer</span>
-                                <div className='icon'>
-                                  <div className='fa-icon'>
-                                    <i className='fa fa-chevron-down'></i>
-                                  </div>
-                                  <div className='edit'>
-                                    <div className='bars'>
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div className='icon'><img src={images.Icon} alt="" /></div>
-                              <div className='heading'>
-                                <span>Gateway Services</span>
-                                <div className='icon'>
-                                  <div className='fa-icon'>
-                                    <i className='fa fa-chevron-down'></i>
-                                  </div>
-                                  <div className='edit'>
-                                    <div className='bars'>
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div className='heading full'>
-                                <span>Business Services</span>
-                                <div className='icon'>
-                                  <div className='fa-icon'>
-                                    <i className='fa fa-chevron-up'></i>
-                                  </div>
-                                  <div className='edit'>
-                                    <div className='bars'>
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='content-table'>
-                                <div className='table'>
-                                  <div className='thead'>
-                                    <div className='th'>Name</div>
-                                  </div>
-                                  <div className='tbody'>
-                                    <div className='td'>
-                                      <strong>Admission <i className='fa fa-chevron-up'></i></strong>
-                                    </div>
-                                    <div className='table performance-table'>
-                                      <div className='tbody'>
-                                        <div className='td'><strong>App Services</strong></div>
-                                        <div className='td'>Performance</div>
-                                        <div className='td'>Availability</div>
-                                        <div className='td'>Security</div>
-                                        <div className='td'>Data Protection</div>
-                                        <div className='td'>User exp</div>
-                                      </div>
-                                      <div className='tbody'>
-                                        <div className='td'><span>List &#38; Act</span></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                      </div>
-                                      <div className='tbody'>
-                                        <div className='td'><span>Admission</span></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle orange'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                      </div>
-                                      <div className='tbody'>
-                                        <div className='td'><strong>Data Services</strong></div>
-                                      </div>
-                                      <div className='tbody'>
-                                        <div className='td'><span>Postgre SQL</span></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle yellow'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle red'><i className='fa fa-check-circle'></i></div></div>
-                                      </div>
-                                      <div className='tbody'>
-                                        <div className='td'><span>Elastic Search</span></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                        <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className='tbody'>
-                                    <div className='td'>
-                                      <strong>Fee <i className='fa fa-chevron-down'></i></strong>
-                                    </div>
-                                  </div>
-                                  <div className='tbody'>
-                                    <div className='td'>
-                                      <strong>Attendance <i className='fa fa-chevron-down'></i></strong>
-                                    </div>
-                                  </div>
-                                  <div className='tbody'>
-                                    <div className='td'>
-                                      <strong>List and Act <i className='fa fa-chevron-down'></i></strong>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+            {row.productList && row.productList.map((val: any, index: any) => {
+              return (
+                <div className="tbody">
+                  <div className="name"><span>{val.title}</span> <i className='fa fa-chevron-down'></i></div>
+                  <div className="app-services">10</div>
+                  <div className="data-services">5</div>
+                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
+                  <div className="edit">
+                    <button className="edit-btn">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </button>
                   </div>
+                  {val.isOpen == true &&
+                    <div className='environments'>
+                      <div className='environments-inner'>
+                        <div className='heading'>
+                          <h3>EMS - Environments</h3>
+                          <div className='buttons'>
+                            <button className='btn'>
+                              <i className='fa fa-plus'></i>
+                            </button>
+                            <button className='btn'>
+                              <i className='fa fa-eye'></i>
+                            </button>
+                            <button className='btn'>
+                              <i className='fa fa-bars'></i>
+                            </button>
+                          </div>
+                        </div>
+                        <div className='content'>
+                          <div className='tabs-container'>
+                            <div className='tabs'>
+                              <ul>
+                                {val.services && val.services.map((serviceData: any, index: any) => {
+                                  return (
+                                    <li className={serviceData.isOpen == true ? 'active' : ''}>{serviceData.stage}</li>
+                                  )
+                                })
+                                }
+                              </ul>
+                            </div>
+                            {val.services && val.services.map((serviceData: any, index: any) => {
+                              if (serviceData.isOpen == true) {
+                                return (
+                                  < div className='tabs-content'>
+                                    <ul>
+                                      {serviceData.mainservices && serviceData.mainservices.map((mainservicedata: any, index: any) => {
+                                        return (
+                                          <li>
+                                            {mainservicedata.isOpen === false && <div className='icon'><img src={images.Icon} alt="" /></div>}
+                                            <div className={mainservicedata.isOpen === true ? 'heading full' : 'heading'}>
+                                              <span>{mainservicedata.title}</span>
+                                              <div className='icon'>
+                                                <div className='fa-icon'>
+                                                  <i className='fa fa-chevron-down'></i>
+                                                </div>
+                                                <div className='edit'>
+                                                  <div className='bars'>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            {
+                                              mainservicedata.isOpen === true &&
+                                              <div className='content-table'>
+                                                <div className='table'>
+                                                  <div className='thead'>
+                                                    <div className='th'>Name</div>
+                                                  </div>
+                                                  {mainservicedata.services && mainservicedata.services.map((service: any, index: any) => {
+                                                    return (
+                                                      <div className='tbody'>
+                                                        <div className='td'>
+                                                          <strong>{service.title}<i className='fa fa-chevron-up'></i></strong>
+                                                        </div>
+                                                        {service.isOpen == true &&
+                                                          <div className='table performance-table'>
+                                                            {service.subServices && service.subServices.map((subData: any, key: any) => {
+                                                              return (
+                                                                <>
+                                                                  <div className='tbody'>
+                                                                    <div className='td'><strong>{subData.title}</strong></div>
+                                                                    {key === 0 &&
+                                                                      <>
+                                                                        <div className='td'>Performance</div>
+                                                                        <div className='td'>Availability</div>
+                                                                        <div className='td'>Security</div>
+                                                                        <div className='td'>Data Protection</div>
+                                                                        <div className='td'>User exp</div>
+                                                                      </>
+                                                                    }
+                                                                  </div>
+                                                                  {subData.isOpen === true &&
+                                                                    <>
+                                                                      {subData.list && subData.list.map((name: any, i: any) => {
+                                                                        return (
+                                                                          <div className='tbody'>
+                                                                            <div className='td'><span>{name.title}</span></div>
+                                                                            <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
+                                                                            <div className='td'><div className='progress-circle orange'><i className='fa fa-check-circle'></i></div></div>
+                                                                            <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
+                                                                            <div className='td'><div className='progress-circle red'><i className='fa fa-check-circle'></i></div></div>
+                                                                            <div className='td'><div className='progress-circle yellow'><i className='fa fa-check-circle'></i></div></div>
+                                                                          </div>
+                                                                        )
+                                                                      })
+                                                                      }
+                                                                    </>
+                                                                  }
+                                                                </>
+                                                              )
+                                                            })
+                                                            }
+                                                          </div>
+                                                        }
+                                                      </div>
+                                                    )
+                                                  })
+                                                  }
+                                                </div>
+                                              </div>
+                                            }
+                                          </li>
+                                        );
+                                      })
+                                      }
+                                    </ul>
+                                  </div>
+                                )
+                              }
+                            })
+                            }
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  }
                 </div>
-              }
-            </div>
-            <div className="tbody">
-              <div className="name"><span>Procurement</span> <i className='fa fa-chevron-down'></i></div>
-              <div className="app-services">10</div>
-              <div className="data-services">5</div>
-              <div className="ou">Admin, Accounts Adminssion, Transport</div>
-              <div className="edit">
-                <button className="edit-btn">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
-            </div>
-          </div>
+              )
+            })
+            }
+          </div >
         );
       }
     }
@@ -2212,132 +2219,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               </div>
               <div className="tbody">
                 {this.displayProductServices()}
-
-                {/* <div className="inner-table">
-                  <div className="thead">IT Infra</div>
-                  <div className="tbody">
-                    <div className="name"><span>Product 1</span> <i className='fa fa-chevron-down'></i></div>
-                    <div className="app-services">10</div>
-                    <div className="data-services">5</div>
-                    <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                    <div className="edit">
-                      <button className="edit-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="tbody">
-                    <div className="name"><span>Product 2</span> <i className='fa fa-chevron-down'></i></div>
-                    <div className="app-services">10</div>
-                    <div className="data-services">5</div>
-                    <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                    <div className="edit">
-                      <button className="edit-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="inner-table">
-                  <div className="thead">IT Development</div>
-                  <div className="tbody">
-                    <div className="name"><span>Product 1</span> <i className='fa fa-chevron-down'></i></div>
-                    <div className="app-services">10</div>
-                    <div className="data-services">5</div>
-                    <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                    <div className="edit">
-                      <button className="edit-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="tbody">
-                    <div className="name"><span>Product 2</span> <i className='fa fa-chevron-down'></i></div>
-                    <div className="app-services">10</div>
-                    <div className="data-services">5</div>
-                    <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                    <div className="edit">
-                      <button className="edit-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="inner-table">
-                  <div className="thead">Finance</div>
-                  <div className="tbody">
-                    <div className="name"><span>Product 1</span> <i className='fa fa-chevron-down'></i></div>
-                    <div className="app-services">10</div>
-                    <div className="data-services">5</div>
-                    <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                    <div className="edit">
-                      <button className="edit-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="tbody">
-                    <div className="name"><span>Product 2</span> <i className='fa fa-chevron-down'></i></div>
-                    <div className="app-services">10</div>
-                    <div className="data-services">5</div>
-                    <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                    <div className="edit">
-                      <button className="edit-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-                    </div>
-                  </div> */}
-                <div className="tbody">
-                  <div className="name"><span>Product 3</span> <i className='fa fa-chevron-down'></i></div>
-                  <div className="app-services">10</div>
-                  <div className="data-services">5</div>
-                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                  <div className="edit">
-                    <button className="edit-btn">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </button>
-                  </div>
-                </div>
-                <div className="tbody">
-                  <div className="name"><span>Product 4</span> <i className='fa fa-chevron-down'></i></div>
-                  <div className="app-services">10</div>
-                  <div className="data-services">5</div>
-                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                  <div className="edit">
-                    <button className="edit-btn">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </button>
-                  </div>
-                </div>
-                <div className="tbody">
-                  <div className="name"><span>Product 5</span> <i className='fa fa-chevron-down'></i></div>
-                  <div className="app-services">10</div>
-                  <div className="data-services">5</div>
-                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
-                  <div className="edit">
-                    <button className="edit-btn">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
