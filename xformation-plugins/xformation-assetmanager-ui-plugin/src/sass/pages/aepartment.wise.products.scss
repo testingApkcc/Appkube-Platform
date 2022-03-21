@@ -806,11 +806,21 @@
 
                                                 .td {
                                                     padding: 10px 15px;
+                                                    width: 25%;
 
                                                     strong {
                                                         font-weight: 600;
                                                         color: #2662F0;
+                                                        width: 100%;
+                                                        display: block;
+                                                        i{
+                                                            float: right;
+                                                            color: #8392A7;
+                                                            font-size: 13px;
+                                                            line-height: 20px;
+                                                        }
                                                     }
+
                                                 }
                                             }
                                         }
