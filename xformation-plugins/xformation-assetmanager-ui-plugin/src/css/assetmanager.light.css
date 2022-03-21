@@ -2721,7 +2721,7 @@ a:hover {
   width: 100%;
   border-bottom: 1px solid #f8f9fb;
 }
-.department-wise-container .department-fliters-container .data-table .inner-table .tbody:nth-child(0n + 2) {
+.department-wise-container .department-fliters-container .data-table .inner-table .tbody:nth-child(2n-1) {
   background-color: #f8f9fb;
 }
 .department-wise-container .department-fliters-container .environments {
@@ -3085,6 +3085,401 @@ a:hover {
   width: 100%;
   background-color: #cbdceb;
   padding: 10px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead {
+  display: flex;
+  width: 100%;
+  background-color: #d9e4f2;
+  border-radius: 10px 10px 0px 0px;
+  margin: 0;
+  padding: 10px 15px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead
+  .th {
+  display: flex;
+  width: 100%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .tbody {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f8f9fb;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .tbody:nth-child(2n-1) {
+  background-color: #ffffff;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .tbody
+  .td {
+  padding: 10px 15px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .tbody
+  .td
+  strong {
+  font-weight: 600;
+  color: #2662f0;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table {
+  display: flex;
+  width: 100%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f8f9fb;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody:nth-child(2n-1) {
+  background-color: #ffffff;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td {
+  padding: 10px 15px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td:nth-child(1) {
+  width: 25%;
+  padding-left: 30px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td:nth-child(2) {
+  width: 15%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td:nth-child(3) {
+  width: 15%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td:nth-child(3) {
+  width: 15%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td:nth-child(4) {
+  width: 12%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td:nth-child(5) {
+  width: 21%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td:nth-child(6) {
+  width: 12%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td
+  span {
+  color: #2662f0;
+  padding-left: 15px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td
+  strong {
+  font-weight: 600;
+  color: #2662f0;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td
+  .progress-circle {
+  text-align: center;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td
+  .progress-circle.green {
+  color: #b8e986;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td
+  .progress-circle.orange {
+  color: #ff9429;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td
+  .progress-circle.yellow {
+  color: #fff700;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .performance-table
+  .tbody
+  .td
+  .progress-circle.red {
+  color: #e13a20;
 }
 
 /*************************** Wizard ********************/

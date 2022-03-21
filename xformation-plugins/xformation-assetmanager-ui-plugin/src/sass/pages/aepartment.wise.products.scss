@@ -571,7 +571,7 @@
                     width: 100%;
                     border-bottom: 1px solid #F8F9FB;
 
-                    &:nth-child(0n+2) {
+                    &:nth-child(2n-1) {
                         background-color: #F8F9FB;
                     }
                 }
@@ -767,11 +767,132 @@
                                         }
                                     }
 
-                                    .content-table{
+                                    .content-table {
                                         display: flex;
                                         width: 100%;
                                         background-color: #CBDCEB;
                                         padding: 10px;
+
+                                        .table {
+                                            width: 100%;
+                                            display: flex;
+                                            flex-wrap: wrap;
+                                            background-color: #FFFFFF;
+                                            border-radius: 10px 10px 0px 0px;
+
+                                            .thead {
+                                                display: flex;
+                                                width: 100%;
+                                                background-color: #D9E4F2;
+                                                border-radius: 10px 10px 0px 0px;
+                                                margin: 0;
+                                                padding: 10px 15px;
+
+                                                .th {
+                                                    display: flex;
+                                                    width: 100%;
+                                                }
+                                            }
+
+                                            .tbody {
+                                                width: 100%;
+                                                display: flex;
+                                                flex-wrap: wrap;
+                                                background-color: #F8F9FB;
+
+                                                &:nth-child(2n-1) {
+                                                    background-color: #FFFFFF;
+                                                }
+
+                                                .td {
+                                                    padding: 10px 15px;
+
+                                                    strong {
+                                                        font-weight: 600;
+                                                        color: #2662F0;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        .performance-table {
+                                            display: flex;
+                                            width: 100%;
+
+                                            .tbody {
+                                                width: 100%;
+                                                display: flex;
+                                                flex-wrap: wrap;
+                                                background-color: #F8F9FB;
+
+                                                &:nth-child(2n-1) {
+                                                    background-color: #FFFFFF;
+                                                }
+
+                                                .td {
+                                                    padding: 10px 15px;
+
+                                                    &:nth-child(1) {
+                                                        width: 25%;
+                                                        padding-left: 30px;
+                                                    }
+
+                                                    &:nth-child(2) {
+                                                        width: 15%;
+                                                    }
+
+                                                    &:nth-child(3) {
+                                                        width: 15%;
+                                                    }
+
+                                                    &:nth-child(3) {
+                                                        width: 15%;
+                                                    }
+
+                                                    &:nth-child(4) {
+                                                        width: 12%;
+                                                    }
+
+                                                    &:nth-child(5) {
+                                                        width: 21%;
+                                                    }
+
+                                                    &:nth-child(6) {
+                                                        width: 12%;
+                                                    }
+
+                                                    span {
+                                                        color: #2662F0;
+                                                        padding-left: 15px;
+                                                    }
+
+                                                    strong {
+                                                        font-weight: 600;
+                                                        color: #2662F0;
+                                                    }
+
+                                                    .progress-circle {
+                                                        text-align: center;
+
+                                                        &.green {
+                                                            color: #B8E986;
+                                                        }
+
+                                                        &.orange {
+                                                            color: #FF9429;
+                                                        }
+
+                                                        &.yellow {
+                                                            color: #FFF700;
+                                                        }
+
+                                                        &.red {
+                                                            color: #E13A20;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
