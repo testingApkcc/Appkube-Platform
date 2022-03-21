@@ -3183,6 +3183,7 @@ a:hover {
   .tbody
   .td {
   padding: 10px 15px;
+  width: 25%;
 }
 .department-wise-container
   .department-fliters-container
@@ -3200,6 +3201,28 @@ a:hover {
   strong {
   font-weight: 600;
   color: #2662f0;
+  width: 100%;
+  display: block;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .tbody
+  .td
+  strong
+  i {
+  float: right;
+  color: #8392a7;
+  font-size: 13px;
+  line-height: 20px;
 }
 .department-wise-container
   .department-fliters-container
