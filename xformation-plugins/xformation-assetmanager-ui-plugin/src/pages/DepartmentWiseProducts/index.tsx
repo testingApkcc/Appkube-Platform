@@ -1818,7 +1818,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                   </div>
                                   <div className='tbody'>
                                     <div className='td'>
-                                      Admission
+                                      <strong>Admission <i className='fa fa-chevron-up'></i></strong>
                                     </div>
                                     <div className='table performance-table'>
                                       <div className='tbody'>
@@ -1830,7 +1830,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                         <div className='td'>User exp</div>
                                       </div>
                                       <div className='tbody'>
-                                        <div className='td'>List &#38; Act</div>
+                                        <div className='td'><span>List &#38; Act</span></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
@@ -1838,7 +1838,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                       </div>
                                       <div className='tbody'>
-                                        <div className='td'>Admission</div>
+                                        <div className='td'><span>Admission</span></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle orange'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
@@ -1849,7 +1849,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                         <div className='td'><strong>Data Services</strong></div>
                                       </div>
                                       <div className='tbody'>
-                                        <div className='td'>Postgre SQL</div>
+                                        <div className='td'><span>Postgre SQL</span></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle yellow'><i className='fa fa-check-circle'></i></div></div>
@@ -1857,13 +1857,28 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                         <div className='td'><div className='progress-circle red'><i className='fa fa-check-circle'></i></div></div>
                                       </div>
                                       <div className='tbody'>
-                                        <div className='td'>Elastic Search</div>
+                                        <div className='td'><span>Elastic Search</span></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                         <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
                                       </div>
+                                    </div>
+                                  </div>
+                                  <div className='tbody'>
+                                    <div className='td'>
+                                      <strong>Fee <i className='fa fa-chevron-down'></i></strong>
+                                    </div>
+                                  </div>
+                                  <div className='tbody'>
+                                    <div className='td'>
+                                      <strong>Attendance <i className='fa fa-chevron-down'></i></strong>
+                                    </div>
+                                  </div>
+                                  <div className='tbody'>
+                                    <div className='td'>
+                                      <strong>List and Act <i className='fa fa-chevron-down'></i></strong>
                                     </div>
                                   </div>
                                 </div>
@@ -1881,7 +1896,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               <div className="name"><span>Procurement</span> <i className='fa fa-chevron-down'></i></div>
               <div className="app-services">10</div>
               <div className="data-services">5</div>
-              <div className="ou">Admin, Accounts Admission, Transport</div>
+              <div className="ou">Admin, Accounts Adminssion, Transport</div>
               <div className="edit">
                 <button className="edit-btn">
                   <span></span>
@@ -2283,8 +2298,46 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         <span></span>
                       </button>
                     </div>
+                  </div> */}
+                <div className="tbody">
+                  <div className="name"><span>Product 3</span> <i className='fa fa-chevron-down'></i></div>
+                  <div className="app-services">10</div>
+                  <div className="data-services">5</div>
+                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
+                  <div className="edit">
+                    <button className="edit-btn">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </button>
                   </div>
-                </div> */}
+                </div>
+                <div className="tbody">
+                  <div className="name"><span>Product 4</span> <i className='fa fa-chevron-down'></i></div>
+                  <div className="app-services">10</div>
+                  <div className="data-services">5</div>
+                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
+                  <div className="edit">
+                    <button className="edit-btn">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </button>
+                  </div>
+                </div>
+                <div className="tbody">
+                  <div className="name"><span>Product 5</span> <i className='fa fa-chevron-down'></i></div>
+                  <div className="app-services">10</div>
+                  <div className="data-services">5</div>
+                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
+                  <div className="edit">
+                    <button className="edit-btn">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
