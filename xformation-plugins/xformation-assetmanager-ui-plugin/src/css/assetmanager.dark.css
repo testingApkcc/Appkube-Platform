@@ -2223,12 +2223,15 @@ a:hover {
   margin-top: 10px;
   white-space: nowrap;
 }
-.department-wise-container .department-wise-boxs .scrollbar-view {
-  flex-direction: row;
-  white-space: nowrap;
+.department-wise-container .department-wise-boxs .department-wise-inner {
+  overflow: hidden;
+  overflow-x: scroll;
+  display: flex;
+  width: 100%;
 }
 .department-wise-container .department-wise-boxs .department-box {
   display: flex;
+  flex: 0 0 250px;
   flex-wrap: wrap;
   width: 250px;
   min-height: 150px;
@@ -2481,16 +2484,16 @@ a:hover {
 }
 .department-wise-container .department-fliters-container .fliter-container {
   padding-top: 5px;
-  padding-bottom: 5px;
   border-bottom: 1px solid #f0f3f7;
 }
 .department-wise-container .department-fliters-container .fliter-container .fliter {
   position: relative;
+  margin-bottom: 5px;
 }
 .department-wise-container .department-fliters-container .fliter-container .fliter .fliter-toggel {
   background: #f0f3f7;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 300;
   color: #414d55;
   line-height: 32px;
@@ -2563,6 +2566,7 @@ a:hover {
 }
 .department-wise-container .department-fliters-container .fliter-container .search-control {
   position: relative;
+  margin-bottom: 5px;
 }
 .department-wise-container .department-fliters-container .fliter-container .search-control .input-group-text {
   max-width: 100%;
@@ -2660,6 +2664,7 @@ a:hover {
 }
 .department-wise-container .department-fliters-container .data-table .tbody .name i {
   float: right;
+  line-height: 18px;
   cursor: pointer;
 }
 .department-wise-container .department-fliters-container .data-table .tbody .app-services {
@@ -2721,7 +2726,7 @@ a:hover {
   width: 100%;
   border-bottom: 1px solid #f8f9fb;
 }
-.department-wise-container .department-fliters-container .data-table .inner-table .tbody:nth-child(2n-1) {
+.department-wise-container .department-fliters-container .data-table .inner-table .tbody:nth-child(2n-4) {
   background-color: #f8f9fb;
 }
 .department-wise-container .department-fliters-container .environments {
@@ -3503,6 +3508,16 @@ a:hover {
   .td
   .progress-circle.red {
   color: #e13a20;
+}
+
+@media only screen and (max-width: 992px) {
+  .department-wise-container .department-fliters-container .data-table {
+    overflow-x: scroll;
+  }
+  .department-wise-container .department-fliters-container .data-table .thead,
+  .department-wise-container .department-fliters-container .data-table .tbody {
+    width: 1210px;
+  }
 }
 
 /*************************** Wizard ********************/

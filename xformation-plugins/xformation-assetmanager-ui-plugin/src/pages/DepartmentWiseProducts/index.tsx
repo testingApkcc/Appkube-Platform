@@ -1968,10 +1968,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         <div className="department-wise-container">
           <div className="common-container">
             <div className="row">
-              <div className="col-lg-9 col-md-9 col-sm-12">
+              <div className="col-lg-9 col-md-8 col-sm-6">
                 <div className="asset-heading">Department wise</div>
               </div>
-              <div className="col-lg-3 col-md-3 col-sm-12">
+              <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="float-right common-right-btn">
                   <div className="wise-icon">
                     <Link to={`${PLUGIN_BASE_URL}/department-wise-products`}>
@@ -1985,29 +1985,31 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               </div>
             </div>
             <div className="department-wise-boxs">
-              {departmentList && departmentList.length > 0 && departmentList.map((val: any, index: any) => {
-                return (
-                  <div className="department-box">
-                    <div className="heading">{val.name}</div>
-                    <div className="contents">
-                      <ul>
-                        <li>
-                          <label>No. of Products</label>
-                          <span>{val.noOfProduct}</span>
-                        </li>
-                        <li>
-                          <label>Prod Billing</label>
-                          <span>{val.prodBilling}</span>
-                        </li>
-                        <li>
-                          <label>Other Billing</label>
-                          <span>{val.otherBilling}</span>
-                        </li>
-                      </ul>
+              <div className='department-wise-inner'>
+                {departmentList && departmentList.length > 0 && departmentList.map((val: any, index: any) => {
+                  return (
+                    <div className="department-box">
+                      <div className="heading">{val.name}</div>
+                      <div className="contents">
+                        <ul>
+                          <li>
+                            <label>No. of Products</label>
+                            <span>{val.noOfProduct}</span>
+                          </li>
+                          <li>
+                            <label>Prod Billing</label>
+                            <span>{val.prodBilling}</span>
+                          </li>
+                          <li>
+                            <label>Other Billing</label>
+                            <span>{val.otherBilling}</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
           </div>
           <div className="common-container department-fliters-container">
@@ -2016,7 +2018,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             </div>
             <div className="fliter-container">
               <div className="row">
-                <div className="col-lg-8 col-md-8 col-sm-12">
+                <div className="col-lg-8 col-md-12 col-sm-12">
                   <div className="row">
                     <div className="col-lg-4 col-md-4 col-sm-12">
                       <div className="fliter">
@@ -2086,7 +2088,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                 </i>
                               </a>
                             </li>
-
                             <li>
                               <a
                                 style={{
@@ -2143,8 +2144,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-12">
-                  <div className="form-group search-control m-b-0">
+                <div className="col-lg-4 col-md-12 col-sm-12">
+                  <div className="form-group search-control">
                     <button className="btn btn-search">
                       <i className="fa fa-search"></i>
                     </button>

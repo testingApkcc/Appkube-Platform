@@ -80,18 +80,18 @@ export class Wizard extends React.Component<any, any> {
             {currentStep < steps.length - 1 && (
               <button
                 onClick={(e) => this.onClickStepButton(currentStep - 1)}
-                className="blue-button m-b-0"
+                className="asset-blue-button m-b-0"
               >
                 Previous
               </button>
             )}
             {currentStep >= steps.length + 1 && (
-              <button className="blue-button m-b-0">Previous</button>
+              <button className="asset-blue-button m-b-0">Previous</button>
             )}
             {currentStep < steps.length - 1 && (
               <button
                 onClick={(e) => this.onClickStepButton(currentStep + 1)}
-                className="blue-button m-r-0 m-b-0"
+                className="asset-blue-button m-r-0 m-b-0"
               >
                 Next
               </button>
@@ -99,7 +99,7 @@ export class Wizard extends React.Component<any, any> {
             {currentStep >= steps.length - 1 && (
               <button
                 onClick={this.props.submitPage}
-                className="blue-button m-r-0 m-b-0"
+                className="asset-blue-button m-r-0 m-b-0"
               >
                 Submit
               </button>
