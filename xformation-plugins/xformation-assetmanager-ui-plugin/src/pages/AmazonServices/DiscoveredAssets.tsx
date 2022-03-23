@@ -31,7 +31,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
             try {
                 RestService.getData(`${config.GET_DISCOVERED_ASSETS}/${assetId}`, null, null).then(
                     (response: any) => {
-                        console.log("Discovered assets: ",response);
+                        console.log("Discovered assets: ", response);
                         this.setState({
                             tableData: response,
                         });
@@ -42,14 +42,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 console.log("Error: ", err);
             }
         } else {
-            alert("Asset id is not present");
+            // alert("Asset id is not present");
+            console.log('Asset id is not present');
         }
     }
 
     displayTable = () => {
         // const { displaygetEnvironmentData } = this.state;
         const retData = [];
-
         const { tableData } = this.state;
         const length = tableData.length;
         for (let i = 0; i < length; i++) {

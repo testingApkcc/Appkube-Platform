@@ -28,7 +28,7 @@ export class Wizard extends React.Component<any, any> {
             className={`${currentStep === i ? "active" : ""}`}
             onClick={(e) => this.onClickStepButton(i)}
           >
-            <a href="#">{step.name}</a>
+            <a>{step.name}</a>
           </li>
         );
       }
