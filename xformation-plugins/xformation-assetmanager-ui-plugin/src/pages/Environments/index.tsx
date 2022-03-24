@@ -565,7 +565,7 @@ export class Environments extends React.Component<any, any> {
                         <div className={showRecentFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
                           <ul>
                             <li>
-                              <a href="#">
+                              <a>
                                 <span>
                                   <img src={images.awsLogo} alt="" />
                                 </span>
@@ -573,7 +573,7 @@ export class Environments extends React.Component<any, any> {
                               </a>
                             </li>
                             <li>
-                              <a href="#">
+                              <a>
                                 <span>
                                   <img src={images.awsLogo} alt="" />
                                 </span>

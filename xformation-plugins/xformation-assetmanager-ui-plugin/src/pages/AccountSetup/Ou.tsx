@@ -79,7 +79,7 @@ export class Ou extends React.Component<any, any>{
                     <div className="sub-heading">
                         <strong>Select Organizational Unit to Associate with Cloud Account Or Create new</strong>
                     </div>
-                    <p>Select the OU from below or <strong><a href="#" onClick={this.onClickCreateNewOU}>create new OU</a></strong></p>
+                    <p>Select the OU from below or <strong><a onClick={this.onClickCreateNewOU}>create new OU</a></strong></p>
                     <div className="collapse-contents">
                         <ul>
                             {organizationList !== null && this.renderOrganizations(organizationList)}

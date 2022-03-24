@@ -15,25 +15,25 @@ export class Entity extends React.Component<any, any>{
                         <div className="network-boxs">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <i className="fa fa-caret-right" aria-hidden="true"></i>
                                         Storage
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <i className="fa fa-caret-right" aria-hidden="true"></i>
                                         Network
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <i className="fa fa-caret-right" aria-hidden="true"></i>
                                         Configuration
                                     </a>
                                 </li>
                                 <li className="last">
-                                    <a href="#">
+                                    <a>
                                         <i className="fa fa-caret-right" aria-hidden="true"></i>
                                         External Storage
                                     </a>

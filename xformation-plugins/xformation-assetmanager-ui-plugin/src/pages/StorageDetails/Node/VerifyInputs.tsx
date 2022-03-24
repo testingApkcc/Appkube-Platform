@@ -146,10 +146,10 @@ export class VerifyInputs extends React.Component<any, any> {
               <table width="100%">
                 <tr>
                   <td>
-                    <a href="#">{tableData[i].name}</a>
+                    <a>{tableData[i].name}</a>
                   </td>
                   <td>
-                    <a href="#">{tableData[i].inputSource}</a>
+                    <a>{tableData[i].inputSource}</a>
                   </td>
                   <td>
                     <input
@@ -200,7 +200,7 @@ export class VerifyInputs extends React.Component<any, any> {
                 />
               </td>
               <td>{obj.dashboardUuid}</td>
-              {/* <td><a href="#"><i className="fa fa-eye"></i></a></td> */}
+              {/* <td><a><i className="fa fa-eye"></i></a></td> */}
             </tr>
           </tbody>
         </table>
@@ -213,10 +213,10 @@ export class VerifyInputs extends React.Component<any, any> {
             <table width="100%">
               <tr>
                 <td>
-                  <a href="#">{this.props.inputName}</a>
+                  <a>{this.props.inputName}</a>
                 </td>
                 <td>
-                  <a href="#">{inputType}</a>
+                  <a>{inputType}</a>
                 </td>
                 <td style={{ paddingLeft: "0", paddingRight: "0" }}>
                   {innerTable}

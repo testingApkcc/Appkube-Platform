@@ -52,10 +52,10 @@ export class VerifyAndSave extends React.Component<any, any>{
                             <table width="100%">
                                 <tr>
                                     <td>
-                                        <a href="#">{this.props.inputName}</a>
+                                        <a>{this.props.inputName}</a>
                                     </td>
                                     <td>
-                                        <a href="#">{obj.inputType}</a>
+                                        <a>{obj.inputType}</a>
                                     </td>
                                     <td style={{ paddingLeft: '0', paddingRight: '0' }}>
                                         <table className="table-inner" width="100%">
