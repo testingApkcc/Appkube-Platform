@@ -2486,6 +2486,34 @@ a:hover {
   padding-top: 5px;
   border-bottom: 1px solid #f0f3f7;
 }
+.department-wise-container .department-fliters-container .fliter-container .services-view {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.department-wise-container .department-fliters-container .fliter-container .services-view strong {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 32px;
+  margin-right: 10px;
+  font-weight: 600;
+  color: #414d55;
+}
+.department-wise-container .department-fliters-container .fliter-container .services-view img {
+  max-width: 20px;
+  height: auto;
+}
+.department-wise-container .department-fliters-container .fliter-container .showing-results {
+  display: block;
+  width: 100%;
+  text-align: right;
+  font-size: 13px;
+  line-height: 32px;
+  font-weight: 400;
+  font-style: italic;
+  color: #39475b;
+}
 .department-wise-container .department-fliters-container .fliter-container .fliter {
   position: relative;
   margin-bottom: 5px;
@@ -2625,14 +2653,14 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
-  width: 625px;
+  width: 530px;
 }
 .department-wise-container .department-fliters-container .data-table .thead .edit {
-  display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
   width: 80px;
   text-align: right;
+  float: right;
 }
 .department-wise-container .department-fliters-container .data-table .thead .edit .edit-btn {
   border: none;
@@ -2685,13 +2713,14 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
-  width: 625px;
+  width: 530px;
 }
 .department-wise-container .department-fliters-container .data-table .tbody .edit {
-  display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
   width: 80px;
+  float: right;
+  text-align: right;
 }
 .department-wise-container .department-fliters-container .data-table .tbody .edit .edit-btn {
   border: none;
@@ -3107,6 +3136,7 @@ a:hover {
   flex-wrap: wrap;
   background-color: #ffffff;
   border-radius: 10px 10px 0px 0px;
+  font-size: 13px;
 }
 .department-wise-container
   .department-fliters-container
@@ -3189,6 +3219,21 @@ a:hover {
   .td {
   padding: 10px 15px;
   width: 25%;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .tbody
+  .td.title {
+  cursor: pointer;
 }
 .department-wise-container
   .department-fliters-container

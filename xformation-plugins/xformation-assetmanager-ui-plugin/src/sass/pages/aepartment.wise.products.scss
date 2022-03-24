@@ -292,13 +292,44 @@
                 }
 
             }
-
         }
 
         .fliter-container {
             padding-top: 5px;
             //padding-bottom: 5px;
             border-bottom: 1px solid #F0F3F7;
+
+            .services-view {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: flex-start;
+
+                strong {
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 32px;
+                    margin-right: 10px;
+                    font-weight: 600;
+                    color: #414D55;
+                }
+
+                img {
+                    max-width: 20px;
+                    height: auto;
+                }
+            }
+
+            .showing-results {
+                display: block;
+                width: 100%;
+                text-align: right;
+                font-size: 13px;
+                line-height: 32px;
+                font-weight: 400;
+                font-style: italic;
+                color: #39475B;
+            }
 
             .fliter {
                 position: relative;
@@ -460,15 +491,15 @@
                     display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
-                    width: 625px;
+                    width: 530px;
                 }
 
                 .edit {
-                    display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
                     width: 80px;
                     text-align: right;
+                    float: right;
 
                     .edit-btn {
                         border: none;
@@ -530,14 +561,15 @@
                     display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
-                    width: 625px;
+                    width: 530px;
                 }
 
                 .edit {
-                    display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
                     width: 80px;
+                    float: right;
+                    text-align: right;
 
                     .edit-btn {
                         border: none;
@@ -785,6 +817,7 @@
                                             flex-wrap: wrap;
                                             background-color: #FFFFFF;
                                             border-radius: 10px 10px 0px 0px;
+                                            font-size: 13px;
 
                                             .thead {
                                                 display: flex;
@@ -813,6 +846,10 @@
                                                 .td {
                                                     padding: 10px 15px;
                                                     width: 25%;
+
+                                                    &.title {
+                                                        cursor: pointer;
+                                                    }
 
                                                     strong {
                                                         font-weight: 600;

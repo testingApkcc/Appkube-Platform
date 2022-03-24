@@ -190,7 +190,7 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
                                                   {mainservicedata.services && mainservicedata.services.map((service: any, subindex: any) => {
                                                     return (
                                                       <div className='tbody'>
-                                                        <div className='td' onClick={() => this.openServices(i, index, serviceindex, mainindex, subindex)}>
+                                                        <div className='td title' onClick={() => this.openServices(i, index, serviceindex, mainindex, subindex)}>
                                                           <strong>{service.title}<i className={service.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
                                                         </div>
                                                         {service.isOpen == true &&
@@ -272,168 +272,176 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
   render() {
     const { showRecentFilter, showAddNewFilter } = this.state;
     return (
-      <div className="asset-container">
-        <div className="department-wise-container">
-          <div className="common-container department-fliters-container">
-            <div className="selects-container">
-              <SelectCloudFilter />
-            </div>
-            <div className="fliter-container">
+      <div className="common-container department-fliters-container">
+        <div className="selects-container">
+          <SelectCloudFilter />
+        </div>
+        <div className="fliter-container">
+          <div className="row">
+            <div className="col-lg-8 col-md-12 col-sm-12">
               <div className="row">
-                <div className="col-lg-8 col-md-12 col-sm-12">
-                  <div className="row">
-                    <div className="col-lg-4 col-md-4 col-sm-12">
-                      <div className="fliter">
-                        <div
-                          className="fliter-toggel"
-                          onClick={() =>
-                            this.setState({
-                              showRecentFilter: !showRecentFilter,
-                            })
-                          }
-                        >
-                          <i className="fa fa-clock-o"></i>
-                          <span>Recent</span>
-                        </div>
-                        <div className={showRecentFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <span>
-                                  <img src={images.awsLogo} alt="" />
-                                </span>
-                                <p>AWS (657907747545)</p>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <span>
-                                  <img src={images.awsLogo} alt="" />
-                                </span>
-                                <p>AWS (655668745458)</p>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+                {this.props.type=='amazonService' && <div className="col-lg-4 col-md-4 col-sm-12">
+                  <div className="services-view">
+                    <strong>Services View</strong> <img src={images.Jobs} alt='' />
+                  </div>
+                </div>}
+                {this.props.type=='amazonService' && <div className="col-lg-4 col-md-4 col-sm-12">
+                  <div className="showing-results">Showing results 81 of 81</div>
+                </div>}
+                <div className="col-lg-4 col-md-4 col-sm-12">
+                  <div className="fliter">
+                    <div
+                      className="fliter-toggel"
+                      onClick={() =>
+                        this.setState({
+                          showRecentFilter: !showRecentFilter,
+                        })
+                      }
+                    >
+                      <i className="fa fa-clock-o"></i>
+                      <span>Recent</span>
                     </div>
-                    <div className="col-lg-4 col-md-4 col-sm-12">
-                      <div className="fliter">
-                        <div
-                          className="fliter-toggel"
-                          onClick={() =>
-                            this.setState({
-                              showAddNewFilter: !showAddNewFilter,
-                            })
-                          }
-                        >
-                          <i className="fa fa-plus"></i>
-                          <span>Add New Environment</span>
-                        </div>
-                        <div className={showAddNewFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
-                          <ul>
-                            <li>
-                              <a
-                                style={{
-                                  float: 'left',
-                                  marginRight: '-54px',
-                                  fontSize: '14px',
-                                }}
-                              >
-                                <i>
-                                  <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                                    <span>
-                                      <img src={images.awsLogo} alt="" />
-                                    </span>{' '}
-                                    AWS Environment
-                                  </Link>
-                                </i>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                style={{
-                                  float: 'left',
-                                  marginRight: '-54px',
-                                  fontSize: '14px',
-                                }}
-                              >
-                                <i>
-                                  <span>
-                                    <img src={images.microsoftAzureLogo} alt="" />
-                                  </span>{' '}
-                                  Azure Environment
-                                </i>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                style={{
-                                  float: 'left',
-                                  marginRight: '-54px',
-                                  fontSize: '14px',
-                                }}
-                              >
-                                <i>
-                                  <span>
-                                    <img src={images.gcpLogo} alt="" />
-                                  </span>{' '}
-                                  GCP Environment
-                                </i>
-                              </a>
-                            </li>
-                            <li>
-                              <a style={{ float: 'left', fontSize: '14px' }}>
-                                <i>
-                                  <span>
-                                    <img src={images.KubernetesLogo} alt="" />
-                                  </span>{' '}
-                                  Kubernetes{' '}
-                                </i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-4 col-md-4 col-sm-12">
-                      <div className="fliter">
-                        <div className="fliter-toggel">
-                          <i className="fa fa-sign-out"></i>
-                          <span>Export</span>
-                        </div>
-                      </div>
+                    <div className={showRecentFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
+                      <ul>
+                        <li>
+                          <a href="#">
+                            <span>
+                              <img src={images.awsLogo} alt="" />
+                            </span>
+                            <p>AWS (657907747545)</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <span>
+                              <img src={images.awsLogo} alt="" />
+                            </span>
+                            <p>AWS (655668745458)</p>
+                          </a>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-12 col-sm-12">
-                  <div className="form-group search-control">
-                    <button className="btn btn-search">
-                      <i className="fa fa-search"></i>
-                    </button>
-                    <input type="text" className="input-group-text" placeholder="Search" />
+                {this.props.type=='department' && 
+                <div className="col-lg-4 col-md-4 col-sm-12">
+                  <div className="fliter">
+                    <div
+                      className="fliter-toggel"
+                      onClick={() =>
+                        this.setState({
+                          showAddNewFilter: !showAddNewFilter,
+                        })
+                      }
+                    >
+                      <i className="fa fa-plus"></i>
+                      <span>Add New Environment</span>
+                    </div>
+                    <div className={showAddNewFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
+                      <ul>
+                        <li>
+                          <a
+                            style={{
+                              float: 'left',
+                              marginRight: '-54px',
+                              fontSize: '14px',
+                            }}
+                          >
+                            <i>
+                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                                <span>
+                                  <img src={images.awsLogo} alt="" />
+                                </span>{' '}
+                                AWS Environment
+                              </Link>
+                            </i>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            style={{
+                              float: 'left',
+                              marginRight: '-54px',
+                              fontSize: '14px',
+                            }}
+                          >
+                            <i>
+                              <span>
+                                <img src={images.microsoftAzureLogo} alt="" />
+                              </span>{' '}
+                              Azure Environment
+                            </i>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            style={{
+                              float: 'left',
+                              marginRight: '-54px',
+                              fontSize: '14px',
+                            }}
+                          >
+                            <i>
+                              <span>
+                                <img src={images.gcpLogo} alt="" />
+                              </span>{' '}
+                              GCP Environment
+                            </i>
+                          </a>
+                        </li>
+                        <li>
+                          <a style={{ float: 'left', fontSize: '14px' }}>
+                            <i>
+                              <span>
+                                <img src={images.KubernetesLogo} alt="" />
+                              </span>{' '}
+                              Kubernetes{' '}
+                            </i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="data-table">
-              <div className="thead">
-                <div className="name">Name</div>
-                <div className="app-services">App Services</div>
-                <div className="data-services">Data Services</div>
-                <div className="ou">OU</div>
-                <div className="edit">
-                  <button className="edit-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </button>
+                }
+                {this.props.type=='department' && 
+                <div className="col-lg-4 col-md-4 col-sm-12">
+                  <div className="fliter">
+                    <div className="fliter-toggel">
+                      <i className="fa fa-sign-out"></i>
+                      <span>Export</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="tbody">
-                {this.displayProductServices()}
+                }
               </div>
             </div>
+            <div className="col-lg-4 col-md-12 col-sm-12">
+              <div className="form-group search-control">
+                <button className="btn btn-search">
+                  <i className="fa fa-search"></i>
+                </button>
+                <input type="text" className="input-group-text" placeholder="Search" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="data-table">
+          <div className="thead">
+            <div className="name">Name</div>
+            <div className="app-services">App Services</div>
+            <div className="data-services">Data Services</div>
+            <div className="ou">OU</div>
+            <div className="edit">
+              <button className="edit-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+          <div className="tbody">
+            {this.displayProductServices()}
           </div>
         </div>
       </div>

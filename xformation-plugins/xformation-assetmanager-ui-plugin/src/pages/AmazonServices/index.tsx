@@ -1767,7 +1767,7 @@ export class AmazonServices extends React.Component<any, any> {
       },
       {
         name: "Applications",
-        component: <DepartmentWiseProduct product={this.state.product} />,
+        component: <div className="department-wise-container"><DepartmentWiseProduct product={this.state.product} type='amazonService' /></div>,
       },
       {
         name: "Billing",

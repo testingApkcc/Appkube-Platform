@@ -166,7 +166,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                         <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div className="export-files">
                                 <span><i className="fa fa-sign-out"></i></span>
-                                <p>Expport</p>
+                                <p>Export</p>
                             </div>
                         </div>
                         <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12">
