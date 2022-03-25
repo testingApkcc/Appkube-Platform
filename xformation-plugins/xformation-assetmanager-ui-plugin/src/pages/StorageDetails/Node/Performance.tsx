@@ -437,7 +437,7 @@ export class Performance extends React.Component<any, any>{
                             !showConfigWizard &&
                             <>
                                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                    <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.setState({ showConfigWizard: true })} className="blue-button m-b-0">Configure</button>
+                                    <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.setState({ showConfigWizard: true })} className="asset-blue-button m-b-0">Configure</button>
                                 </div>
                                 <div className="dashboard-view-container">
                                     <aside>{this.renderDashboardList()}</aside>

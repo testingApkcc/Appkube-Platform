@@ -104,7 +104,7 @@ export class Preview extends React.Component<any, any> {
           <button
             style={{ marginTop: "0px", float: "right", marginRight: "0px" }}
             onClick={() => this.setState({ showConfigWizard: true })}
-            className="blue-button m-b-0"
+            className="asset-blue-button m-b-0"
           >
             Configure
           </button>
