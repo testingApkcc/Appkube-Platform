@@ -35,6 +35,16 @@ class JustDashboardJSON extends React.Component<Props, State> {
     if (sideMenu && sideMenu.length > 0) {
       sideMenu[0].style.display = 'none';
     }
+    const topNavBar: any = document.getElementsByClassName('top-nav-bar');
+    if (topNavBar && topNavBar.length > 0) {
+      topNavBar[0].style.display = 'none';
+    }
+    const mainBody: any = document.getElementsByClassName('monitor-main-body');
+    if (mainBody && mainBody.length > 0) {
+      mainBody[0].style.marginLeft = '0px';
+      mainBody[0].style.marginTop = '0px';
+      mainBody[0].style.width = '100%';
+    }
     const cloudType: any = this.props.location.query.cloudType;
     const elementType: any = this.props.location.query.elementType;
     const accountId: any = this.props.location.query.accountId;

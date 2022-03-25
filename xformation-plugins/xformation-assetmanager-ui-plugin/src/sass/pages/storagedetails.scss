@@ -514,8 +514,9 @@
     .dashboard-view-container {
         display: flex;
         min-height: 450px;
-        padding-top: 10px;
+        margin-top: 10px;
         position: relative;
+        border-top: 1px solid #ddd;
 
         .dashboard-view-buttons {
             position: absolute;
@@ -539,10 +540,50 @@
                 vertical-align: top;
                 border-radius: 50%;
                 margin: 0 3px;
+
                 &.active {
                     background-color: #3697ef;
                     color: white;
                     border-color: #3697ef;
+                }
+            }
+        }
+
+        .aside-container {
+            width: 20%;
+            transition: width 0.5s;
+            padding: 0px !important;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+
+            .dashboard-side-tab {
+                opacity: 1;
+                transition: opacity 0.5s;
+                padding: 15px;
+                color: rgba(36, 41, 46, 0.75);
+                font-size: 14px;
+                line-height: 20px;
+                position: relative;
+                border-left: 2px solid transparent;
+                text-decoration: none;
+                cursor: pointer;
+
+                &.active {
+                    background-color: #3697ef;
+                    color: white;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        width: 4px;
+                        border-radius: 4px;
+                        background: linear-gradient(#f05a28 30%, #fbca0a 99%);
+                    }
                 }
             }
         }
@@ -553,13 +594,12 @@
             -ms-flex-positive: 1;
             flex-grow: 1;
             min-width: 0;
-            max-width: 100%;
+            max-width: 80%;
             display: flex;
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
             -webkit-flex-direction: column;
-            border: 1px solid #ababab;
-
+            
             iframe {
                 width: 100%;
                 height: 100%;

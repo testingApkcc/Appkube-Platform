@@ -32,18 +32,52 @@ class JustDashboard extends React.Component<Props, State> {
     if (sideMenu && sideMenu.length > 0) {
       sideMenu[0].style.display = 'none';
     }
+    const topNavBar: any = document.getElementsByClassName('top-nav-bar');
+    if (topNavBar && topNavBar.length > 0) {
+      topNavBar[0].style.display = 'none';
+    }
+    const mainBody: any = document.getElementsByClassName('monitor-main-body');
+    if (mainBody && mainBody.length > 0) {
+      mainBody[0].style.marginLeft = '0px';
+      mainBody[0].style.marginTop = '0px';
+      mainBody[0].style.width = '100%';
+    }
+
+    const uid = this.getParameterByName('uid', window.location.href);
+    const slug = this.getParameterByName('slug', window.location.href);
+    this.setState({
+      uid,
+      slug,
+    });
   }
 
+  getParameterByName = (name: string, url: string) => {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) {
+      return null;
+    }
+    if (!results[2]) {
+      return '';
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  };
+
   render() {
-    // const { uid, slug } = this.state;
+    const { uid, slug } = this.state;
     return (
       <div>
-        <CustomDashboardLoader
-          $scope={this.props.$scope}
-          $injector={this.props.$injector}
-          urlUid={this.props.location.query.uid}
-          urlSlug={this.props.location.query.slug}
-        />
+        {uid ? (
+          <CustomDashboardLoader
+            $scope={this.props.$scope}
+            $injector={this.props.$injector}
+            urlUid={this.state.uid}
+            urlSlug={this.state.slug}
+          />
+        ) : (
+          <div>Dashboard is loading...</div>
+        )}
       </div>
     );
   }

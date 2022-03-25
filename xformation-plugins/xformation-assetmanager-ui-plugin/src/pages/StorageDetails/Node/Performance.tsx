@@ -391,7 +391,7 @@ export class Performance extends React.Component<any, any>{
                 // const dashboard = viewJson.dashboards[i];
                 const dashboard = viewJson[i];
                 retData.push(<div title={dashboard.title} key={dashboard.uid} className={`dashboard-side-tab ${activeDashboard === i ? 'active' : ''}`} onClick={() => this.setState({ activeDashboard: i, iFrameLoaded: false })}>
-                    <div className="tab-name">{dashboard.title}</div>
+                    {dashboard.title}
                 </div>);
             }
             return retData;
@@ -440,12 +440,12 @@ export class Performance extends React.Component<any, any>{
                                     <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.setState({ showConfigWizard: true })} className="asset-blue-button m-b-0">Configure</button>
                                 </div>
                                 <div className="dashboard-view-container">
-                                    <aside>{this.renderDashboardList()}</aside>
+                                    <aside className="aside-container">{this.renderDashboardList()}</aside>
                                     <div className="dashboard-view">
                                         {
                                             activeDB &&
                                             <>
-                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slud=${activeDB.slug}`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
+                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=${activeDB.slug}`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
                                                 <div style={{ textAlign: "center", display: iFrameLoaded ? 'none' : '', marginTop: "20px" }}>
                                                     Dashboard is loading...
                                                 </div>
