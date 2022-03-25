@@ -38,7 +38,7 @@ func AddDefaultResponseHeaders(cfg *setting.Cfg) web.Handler {
 
 			// ------Manoj.  custom changes for appcube plateform ------
 			// if !cfg.AllowEmbedding {
-			// 	addXFrameOptionsDenyHeader(w)
+			// 	 addXFrameOptionsDenyHeader(w)
 			// }
 
 			addAllowCORSHeader(w)

@@ -82,7 +82,7 @@ var (
 	// HTTP server options
 	StaticRootPath string
 
-	// ------Manoj.  custom changes for appcube plateform ------
+	//  ------Manoj.  custom changes for appcube plateform ------
 	//externalsecurity
 	ExternalSecurityUrl    string
 	ExternalSecurityEnable bool

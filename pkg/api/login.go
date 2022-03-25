@@ -242,7 +242,7 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext) response.Response {
 
 		result["userInfo"] = userInfo
 
-	} else { // ------Manoj.  custom changes for appcube plateform ------
+	} else { //  ------Manoj.  custom changes for appcube plateform ------
 
 		authModule := ""
 		var user *models.User

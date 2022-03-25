@@ -37,7 +37,7 @@ func (hs *HTTPServer) registerRoutes() {
 	r := hs.RouteRegister
 
 	// not logged in views
-	// ------Manoj.  custom changes for appcube plateform ------
+	//  ------Manoj.  custom changes for appcube plateform ------
 	r.Get("/external_security_enable", hs.CheckExternalSecurityFlag)
 	// ------Manoj.  custom changes for appcube plateform ------
 
