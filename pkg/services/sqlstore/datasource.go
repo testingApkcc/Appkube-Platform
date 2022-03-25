@@ -170,7 +170,7 @@ func (ss *SQLStore) AddDataSource(ctx context.Context, cmd *models.AddDataSource
 			Version:           1,
 			ReadOnly:          cmd.ReadOnly,
 			Uid:               cmd.Uid,
-			// ------Manoj.  custom changes for appcube plateform ------
+			//  ------Manoj.  custom changes for appcube plateform ------
 			AccountId: cmd.AccountId,
 			TenantId:  cmd.TenantId,
 			// ------Manoj.  custom changes for appcube plateform ------

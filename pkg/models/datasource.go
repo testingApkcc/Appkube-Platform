@@ -66,7 +66,7 @@ type DataSource struct {
 	Created time.Time `json:"created"`
 	Updated time.Time `json:"updated"`
 
-	// ------Manoj.  custom changes for appcube plateform ------
+	//  ------Manoj.  custom changes for appcube plateform ------
 	AccountId string
 	TenantId  string
 	// ------Manoj.  custom changes for appcube plateform ------

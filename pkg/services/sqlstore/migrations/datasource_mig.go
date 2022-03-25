@@ -139,7 +139,7 @@ func addDataSourceMigration(mg *Migrator) {
 		Name: "uid", Type: DB_NVarchar, Length: 40, Nullable: false, Default: "0",
 	}))
 
-	// ------Manoj.  custom changes for appcube plateform ------
+	//  ------Manoj.  custom changes for appcube plateform ------
 	// AssetManager changes - new columns in datasource table
 	mg.AddMigration("Add tenant_id column", NewAddColumnMigration(tableV2, &Column{
 		Name: "tenant_id", Type: DB_NVarchar, Length: 255, Nullable: true,

@@ -37,7 +37,7 @@ const (
 	anonString = "Anonymous"
 )
 
-// ------Manoj.  custom changes for appcube plateform ------
+//  ------Manoj.  custom changes for appcube plateform ------
 var externalServiceClient = &http.Client{
 	Transport: &http.Transport{Proxy: http.ProxyFromEnvironment},
 }
