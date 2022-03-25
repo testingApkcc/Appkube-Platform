@@ -86,7 +86,7 @@ export class CustomDashboardLoader extends PureComponent<any, State> {
       urlUid: this.props.urlUid,
       urlType: this.props.urlType,
       urlFolderId: this.props.urlFolderId,
-      routeInfo: DashboardRoutes.Normal,
+      routeName: DashboardRoutes.Normal,
       fixUrl: false,
     });
   }
