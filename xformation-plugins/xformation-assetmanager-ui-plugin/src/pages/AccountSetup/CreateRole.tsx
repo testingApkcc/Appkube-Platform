@@ -93,7 +93,7 @@ export class CreateRole extends React.Component<any, any>{
                             <div className="contents">
                                 <strong style={{ paddingBottom: '20px' }}>Create IAM user for Synectiks Monitoring</strong>
                                 <p>
-                                    Login to AWS console (<a href="#">aws.amazon.com</a>)<br />
+                                    Login to AWS console (<a>aws.amazon.com</a>)<br />
                                 Click ‘<strong>Services</strong>‘ on the top and ‘<strong>IAM</strong>‘ in the dropdown.<br />
                                 Click ‘users‘ on the left pane<br />
                                 Create New User: '<strong>Synectiks Monitoring</strong>', make sure to provide programmatic access only<br />
@@ -111,7 +111,7 @@ export class CreateRole extends React.Component<any, any>{
                                 Verify you selected only programmatic access, then click on <strong>Create User</strong><br />
                                 Enter the values of "Access key ID" and the "Secret access key" in the right text boxes<br />
                                 (save the secret key, you may need it in the future)<br />
-                                Click on <a href="#">NEXT</a>
+                                Click on <a>NEXT</a>
                                 </p>
                             </div>
                         </div>

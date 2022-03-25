@@ -105,10 +105,10 @@ export class EnableDashboard extends React.Component<any, any> {
                 <table width="100%">
                   <tr>
                     <td>
-                      <a href="#">{this.props.inputName}</a>
+                      <a>{this.props.inputName}</a>
                     </td>
                     <td>
-                      <a href="#">{obj.inputType}</a>
+                      <a>{obj.inputType}</a>
                     </td>
                     <td style={{ paddingLeft: "0", paddingRight: "0" }}>
                       <table className="table-inner" width="100%">
@@ -123,7 +123,7 @@ export class EnableDashboard extends React.Component<any, any> {
                             </td>
                             <td>{obj.dashboardUuid}</td>
                             <td>
-                              <a href="#">
+                              <a>
                                 <i className="fa fa-eye"></i>
                               </a>
                             </td>
@@ -153,10 +153,10 @@ export class EnableDashboard extends React.Component<any, any> {
               <th>
                 Available Dashboards
                 <div className="float-right">
-                  <a href="#">
+                  <a>
                     <i className="fa fa-plus"></i>
                   </a>
-                  <a href="#">
+                  <a>
                     <i className="fa fa-times"></i>
                   </a>
                 </div>

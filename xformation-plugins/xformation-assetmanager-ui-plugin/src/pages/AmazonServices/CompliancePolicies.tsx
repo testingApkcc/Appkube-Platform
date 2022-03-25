@@ -36,7 +36,7 @@ export class CompliancePolicies extends React.Component<any, any>{
                     </div>
                 </div>
                 <div className="framework-table-container">
-                    <div className="heading"><a href="#">AWS CCPA Framework</a></div>
+                    <div className="heading"><a>AWS CCPA Framework</a></div>
                     <table width="100%" className="table">
                         <thead>
                             <tr>
@@ -47,7 +47,7 @@ export class CompliancePolicies extends React.Component<any, any>{
                         <tbody>
                             <tr>
                                 <td>
-                                    <a href="#">AWS (657907747545)</a>
+                                    <a>AWS (657907747545)</a>
                                 </td>
                                 <td>
                                     3
@@ -57,7 +57,7 @@ export class CompliancePolicies extends React.Component<any, any>{
                     </table>
                 </div>
                 <div className="framework-table-container">
-                    <div className="heading"><a href="#">AWS HIPPS Compliance</a></div>
+                    <div className="heading"><a>AWS HIPPS Compliance</a></div>
                     <table width="100%" className="table">
                         <thead>
                             <tr>
@@ -68,7 +68,7 @@ export class CompliancePolicies extends React.Component<any, any>{
                         <tbody>
                             <tr>
                                 <td>
-                                    <a href="#">AWS (657907747545)</a>
+                                    <a>AWS (657907747545)</a>
                                 </td>
                                 <td>
                                     3
