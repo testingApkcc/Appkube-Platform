@@ -121,7 +121,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       tsconfig: path.resolve(process.cwd(), 'tsconfig.json'),
       // Only report problems in detected in plugin's code
-      reportFiles: ['**/*.{ts,tsx}'],
+      // reportFiles: ['**/*.{ts,tsx}'],
     }),
   ],
 

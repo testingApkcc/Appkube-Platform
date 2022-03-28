@@ -72,8 +72,8 @@ class JustDashboard extends React.Component<Props, State> {
           <CustomDashboardLoader
             $scope={this.props.$scope}
             $injector={this.props.$injector}
-            urlUid={this.state.uid}
-            urlSlug={this.state.slug}
+            urlUid={uid}
+            urlSlug={slug}
           />
         ) : (
           <div>Dashboard is loading...</div>
