@@ -95,7 +95,7 @@ export function getAppRoutes(): RouteDescriptor[] {
       component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/just-dashboard')),
     },
     {
-      path: '/justdashboard',
+      path: '/jsondashboard',
       pageClass: 'page-overview',
       routeName: DashboardRouteInfo.Normal,
       component: SafeDynamicImport(
