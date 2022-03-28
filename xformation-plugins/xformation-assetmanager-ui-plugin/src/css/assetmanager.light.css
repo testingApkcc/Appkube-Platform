@@ -1485,7 +1485,7 @@ a:hover {
   height: 100%;
 }
 .asset-container .service-container {
-  height: 140vh;
+  height: auto;
 }
 
 .service-account-container .account-tabs ul {
