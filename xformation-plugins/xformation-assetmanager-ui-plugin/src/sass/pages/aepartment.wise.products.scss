@@ -1,5 +1,5 @@
 .department-wise-container {
-    background-color: #f9fafc;
+    background-color: $department-background-color;
     padding: 15px;
 
     .wise-icon {
@@ -14,8 +14,8 @@
     }
 
     .common-container {
-        background-color: #ffffff;
-        box-shadow: 0px 2px 4px #EFF2F7;
+        background-color: $asset-container-background-color;
+        box-shadow: 0px 2px 4px $asset-container-border-color;
         border-radius: 10px;
         padding: 20px;
         border-bottom: none;
@@ -469,6 +469,7 @@
                     vertical-align: top;
                     padding: 10px 15px 10px 30px;
                     width: 200px;
+                    color: #24292e;
                 }
 
                 .app-services {
@@ -477,6 +478,7 @@
                     padding: 10px 15px;
                     text-align: center;
                     width: 150px;
+                    color: #24292e;
                 }
 
                 .data-services {
@@ -485,6 +487,7 @@
                     padding: 10px 15px;
                     text-align: center;
                     width: 150px;
+                    color: #24292e;
                 }
 
                 .ou {
@@ -492,6 +495,7 @@
                     vertical-align: top;
                     padding: 10px 15px;
                     width: 530px;
+                    color: #24292e;
                 }
 
                 .edit {
@@ -522,6 +526,7 @@
             .tbody {
                 display: block;
                 width: 100%;
+                
 
                 .name {
                     display: inline-block;
@@ -529,6 +534,7 @@
                     padding: 10px 15px 10px 30px;
                     width: 200px;
                     cursor: pointer;
+                    color: $data-table-contents-color;
 
                     span {
                         color: #3B7CFF;
@@ -547,6 +553,7 @@
                     padding: 10px 15px;
                     text-align: center;
                     width: 150px;
+                    color: $data-table-contents-color;
                 }
 
                 .data-services {
@@ -555,6 +562,7 @@
                     padding: 10px 15px;
                     text-align: center;
                     width: 150px;
+                    color: $data-table-contents-color;
                 }
 
                 .ou {
@@ -562,6 +570,7 @@
                     vertical-align: top;
                     padding: 10px 15px;
                     width: 530px;
+                    color: $data-table-contents-color;
                 }
 
                 .edit {
@@ -599,7 +608,7 @@
                     font-weight: 600;
                     font-size: 14px;
                     line-height: 18px;
-                    color: #414D55;
+                    color: #3b4859;
                     margin-top: 15px;
                     margin-bottom: 15px;
                 }
@@ -607,10 +616,10 @@
                 .tbody {
                     display: block;
                     width: 100%;
-                    border-bottom: 1px solid #F8F9FB;
+                    border-bottom: 1px solid $department-background-color;
 
                     &:nth-child(2n-4) {
-                        background-color: #F8F9FB;
+                        background-color: $department-background-color;
                     }
                 }
             }

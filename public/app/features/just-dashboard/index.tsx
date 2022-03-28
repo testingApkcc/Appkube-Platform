@@ -74,7 +74,7 @@ class JustDashboard extends React.Component<Props, State> {
   render() {
     const { uid, slug } = this.state;
     return (
-      <div>
+      <div style={{ height: '100%' }}>
         {uid ? (
           <CustomDashboardLoader
             $scope={this.props.$scope}
@@ -83,7 +83,11 @@ class JustDashboard extends React.Component<Props, State> {
             urlSlug={slug}
           />
         ) : (
-          <div>Dashboard is loading...</div>
+          <div
+            style={{ display: 'flex', justifyContent: 'center', height: '100%', width: '100%', alignItems: 'center' }}
+          >
+            Dashboard is loading...
+          </div>
         )}
       </div>
     );

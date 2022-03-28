@@ -34,98 +34,98 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           isOpen: false,
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           isOpen: false,
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway Services',
@@ -136,100 +136,100 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           isOpen: false,
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           isOpen: false,
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
                 },
                 {
                   stage: 'Testing',
@@ -244,98 +244,98 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           isOpen: false,
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           isOpen: false,
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway 2 Services',
@@ -345,101 +345,101 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
             },
             {
               title: 'Procurement',
@@ -457,97 +457,97 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway Services',
@@ -557,99 +557,99 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
                 },
                 {
                   stage: 'Testing',
@@ -663,101 +663,101 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway Services',
@@ -767,107 +767,107 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
             },
-          ]
+          ],
         },
         {
           title: 'IT infra',
@@ -887,101 +887,101 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway Services',
@@ -991,103 +991,103 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
                 },
                 {
                   stage: 'Testing',
@@ -1100,101 +1100,101 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway Services',
@@ -1204,105 +1204,105 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
             },
             {
               title: 'Procurement',
@@ -1318,101 +1318,101 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway Services',
@@ -1421,103 +1421,103 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
                 },
                 {
                   stage: 'Testing',
@@ -1529,101 +1529,101 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
+                          ],
+                        },
+                      ],
                     },
                     {
                       title: 'Gateway Services',
@@ -1632,147 +1632,147 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           title: 'admission',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Fee',
                           subServices: [
                             {
-                              'title': 'App services',
+                              title: 'App services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'List & Act',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'List & Act',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Admission',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Admission',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
                             {
-                              'title': 'Data Services',
+                              title: 'Data Services',
                               isOpen: false,
                               list: [
                                 {
-                                  'title': 'Postgre SQL',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Postgre SQL',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
+                                  'user exp': 80,
                                 },
                                 {
-                                  'title': 'Elastic Search',
-                                  'performance': '70',
-                                  'availibility': '50',
-                                  'security': '30',
+                                  title: 'Elastic Search',
+                                  performance: '70',
+                                  availibility: '50',
+                                  security: '30',
                                   'data protection': 70,
-                                  'user exp': 80
-                                }
-                              ]
+                                  'user exp': 80,
+                                },
+                              ],
                             },
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
             },
-          ]
-        }
+          ],
+        },
       ],
       departmentList: [
         {
           name: 'Human Resources',
           noOfProduct: '150',
           prodBilling: '$100',
-          otherBilling: '$275'
+          otherBilling: '$275',
         },
         {
           name: 'It Infra',
           noOfProduct: '150',
           prodBilling: '$100',
-          otherBilling: '$275'
+          otherBilling: '$275',
         },
         {
           name: 'IT Devlopment',
           noOfProduct: '150',
           prodBilling: '$100',
-          otherBilling: '$275'
+          otherBilling: '$275',
         },
         {
           name: 'Finance',
           noOfProduct: '150',
           prodBilling: '$100',
-          otherBilling: '$275'
+          otherBilling: '$275',
         },
         {
           name: 'Finance',
           noOfProduct: '150',
           prodBilling: '$100',
-          otherBilling: '$275'
+          otherBilling: '$275',
         },
         {
           name: 'It Infra',
           noOfProduct: '150',
           prodBilling: '$100',
-          otherBilling: '$275'
-        }
-      ]
+          otherBilling: '$275',
+        },
+      ],
     };
     this.breadCrumbs = [
       {
@@ -1795,9 +1795,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     }
     product[i].productList[j].isOpen = !product[i].productList[j].isOpen;
     this.setState({
-      product
+      product,
     });
-  }
+  };
 
   openServiceOfProduct = (i: any, j: any, k: any) => {
     const { product } = this.state;
@@ -1808,9 +1808,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     }
     product[i].productList[j].services[k].isOpen = !product[i].productList[j].services[k].isOpen;
     this.setState({
-      product
+      product,
     });
-  }
+  };
 
   openProductMainServices = (i: any, j: any, k: any, l: any) => {
     const { product } = this.state;
@@ -1819,11 +1819,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         product[i].productList[j].services[k].mainservices[m].isOpen = false;
       }
     }
-    product[i].productList[j].services[k].mainservices[l].isOpen = !product[i].productList[j].services[k].mainservices[l].isOpen;
+    product[i].productList[j].services[k].mainservices[l].isOpen = !product[i].productList[j].services[k].mainservices[
+      l
+    ].isOpen;
     this.setState({
-      product
+      product,
     });
-  }
+  };
 
   openServices = (i: any, j: any, k: any, l: any, m: any) => {
     const { product } = this.state;
@@ -1832,13 +1834,12 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         product[i].productList[j].services[k].mainservices[m].services[n].isOpen = false;
       }
     }
-    product[i].productList[j].services[k].mainservices[l].services[m].isOpen = !product[i].productList[j].services[k].mainservices[l].services[m].isOpen;
+    product[i].productList[j].services[k].mainservices[l].services[m].isOpen = !product[i].productList[j].services[k]
+      .mainservices[l].services[m].isOpen;
     this.setState({
-      product
+      product,
     });
-  }
-
- 
+  };
 
   render() {
     const { departmentList } = this.state;
@@ -1854,45 +1855,47 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="float-right common-right-btn">
                   <div className="wise-icon">
-                    <Link to={`${PLUGIN_BASE_URL}/department-wise-products`}>
+                    <Link to={`${PLUGIN_BASE_URL}/environments`}>
                       <img src={images.Jobs} alt="" />
                     </Link>
                   </div>
-                  <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
+                  {/* <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
                     <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp; Back
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
             <div className="department-wise-boxs">
-              <div className='department-wise-inner'>
-                {departmentList && departmentList.length > 0 && departmentList.map((val: any, index: any) => {
-                  return (
-                    <div className="department-box">
-                      <div className="heading">{val.name}</div>
-                      <div className="contents">
-                        <ul>
-                          <li>
-                            <label>No. of Products</label>
-                            <span>{val.noOfProduct}</span>
-                          </li>
-                          <li>
-                            <label>Prod Billing</label>
-                            <span>{val.prodBilling}</span>
-                          </li>
-                          <li>
-                            <label>Other Billing</label>
-                            <span>{val.otherBilling}</span>
-                          </li>
-                        </ul>
+              <div className="department-wise-inner">
+                {departmentList &&
+                  departmentList.length > 0 &&
+                  departmentList.map((val: any, index: any) => {
+                    return (
+                      <div className="department-box">
+                        <div className="heading">{val.name}</div>
+                        <div className="contents">
+                          <ul>
+                            <li>
+                              <label>No. of Products</label>
+                              <span>{val.noOfProduct}</span>
+                            </li>
+                            <li>
+                              <label>Prod Billing</label>
+                              <span>{val.prodBilling}</span>
+                            </li>
+                            <li>
+                              <label>Other Billing</label>
+                              <span>{val.otherBilling}</span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
+                    );
+                  })}
               </div>
             </div>
           </div>
-          <DepartmentWiseProduct product={this.state.product} type='department' />
+          <DepartmentWiseProduct product={this.state.product} type="department" />
         </div>
       </div>
     );
