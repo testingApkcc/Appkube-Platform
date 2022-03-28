@@ -88,7 +88,7 @@ class DashboardJSONLoader extends PureComponent<any, State> {
       urlUid: this.props.uid,
       urlType: this.props.urlType,
       urlFolderId: this.props.urlFolderId,
-      routeInfo: DashboardRouteInfo.Normal,
+      routeName: DashboardRouteInfo.Normal,
       fixUrl: false,
       dashboardJSON: this.props.dashboardJSON,
     });

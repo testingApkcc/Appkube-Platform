@@ -45,13 +45,19 @@ class JustDashboardJSON extends React.Component<Props, State> {
       mainBody[0].style.marginTop = '0px';
       mainBody[0].style.width = '100%';
     }
-    const cloudType: any = this.props.location.query.cloudType;
-    const elementType: any = this.props.location.query.elementType;
-    const accountId: any = this.props.location.query.accountId;
-    const tenantId: any = this.props.location.query.tenantId;
-    const inputType: any = this.props.location.query.inputType;
-    const fileName: any = this.props.location.query.fileName;
-    const dataSource: any = this.props.location.query.dataSource;
+    setTimeout(() => {
+      const pageToolbar: any = document.getElementsByClassName('page-toolbar');
+      if (pageToolbar && pageToolbar.length > 0) {
+        pageToolbar[0].style.display = 'none';
+      }
+    }, 1000);
+    const cloudType = this.getParameterByName('cloudType', window.location.href);
+    const elementType = this.getParameterByName('elementType', window.location.href);
+    const accountId = this.getParameterByName('accountId', window.location.href);
+    const tenantId = this.getParameterByName('tenantId', window.location.href);
+    const inputType = this.getParameterByName('inputType', window.location.href);
+    const fileName = this.getParameterByName('fileName', window.location.href);
+    const dataSource = this.getParameterByName('dataSource', window.location.href);
     if (cloudType && elementType && accountId && tenantId && inputType && fileName && dataSource) {
       const url = `${config.PREVIEW_DASHBOARDS_URL}?cloudType=${cloudType}&elementType=${elementType}&accountId=${accountId}&tenantId=${tenantId}&inputType=${inputType}&fileName=${fileName}&dataSource=${dataSource}`;
       backendSrv.get(url).then(
@@ -66,6 +72,19 @@ class JustDashboardJSON extends React.Component<Props, State> {
       );
     }
   }
+
+  getParameterByName = (name: string, url: string) => {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) {
+      return null;
+    }
+    if (!results[2]) {
+      return '';
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  };
 
   render() {
     const { data } = this.state;

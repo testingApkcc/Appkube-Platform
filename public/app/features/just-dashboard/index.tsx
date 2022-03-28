@@ -43,6 +43,13 @@ class JustDashboard extends React.Component<Props, State> {
       mainBody[0].style.width = '100%';
     }
 
+    setTimeout(() => {
+      const pageToolbar: any = document.getElementsByClassName('page-toolbar');
+      if (pageToolbar && pageToolbar.length > 0) {
+        pageToolbar[0].style.display = 'none';
+      }
+    }, 1000);
+
     const uid = this.getParameterByName('uid', window.location.href);
     const slug = this.getParameterByName('slug', window.location.href);
     this.setState({

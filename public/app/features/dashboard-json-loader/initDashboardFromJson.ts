@@ -1,12 +1,10 @@
 // Services & Utils
 import { createErrorNotification } from 'app/core/copy/appNotification';
-import { DashboardSrv } from 'app/features/dashboard/services/DashboardSrv';
-import { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
-import { KeybindingSrv } from 'app/core/services/keybindingSrv';
+import { getTimeSrv, TimeSrv } from 'app/features/dashboard/services/TimeSrv';
+import { keybindingSrv } from 'app/core/services/keybindingSrv';
 // Actions
-import { notifyApp, updateLocation } from 'app/core/actions';
+import { notifyApp } from 'app/core/actions';
 import {
-  clearDashboardQueriesToUpdateOnLoad,
   dashboardInitCompleted,
   dashboardInitFailed,
   dashboardInitFetching,
@@ -14,20 +12,24 @@ import {
   dashboardInitSlow,
 } from 'app/features/dashboard/state/reducers';
 // Types
-import { DashboardRouteInfo, ThunkDispatch, ThunkResult, DashboardInitPhase } from 'app/types';
+import { ThunkResult, DashboardInitPhase, DashboardRoutes } from 'app/types';
 import { DashboardModel } from 'app/features/dashboard/state/DashboardModel';
-import { DataQuery } from '@grafana/data';
+import { setWeekStart } from '@grafana/data';
+import { config, locationService } from '@grafana/runtime';
 import { initVariablesTransaction } from 'app/features/variables/state/actions';
 import { emitDashboardViewEvent } from 'app/features/dashboard/state/analyticsProcessor';
+import { DashboardSrv, getDashboardSrv } from 'app/features/dashboard/services/DashboardSrv';
+import { toStateKey } from 'app/features/variables/utils';
+import { createDashboardQueryRunner } from '../query/state/DashboardQueryRunner/DashboardQueryRunner';
+import { getIfExistsLastKey } from '../variables/state/selectors';
+import { dashboardWatcher } from 'app/features/live/dashboard/dashboardWatcher';
 
 export interface InitDashboardArgs {
-  $injector: any;
-  $scope: any;
   urlUid?: string;
   urlSlug?: string;
   urlType?: string;
-  urlFolderId?: string;
-  routeInfo: DashboardRouteInfo;
+  urlFolderId?: string | null;
+  routeName?: string;
   fixUrl: boolean;
   dashboardJSON: any;
 }
@@ -57,7 +59,6 @@ export function initDashboardFromJson(args: InitDashboardArgs): ThunkResult<void
     // fetch dashboard data
     const dashDTO = args.dashboardJSON;
 
-    // returns null if there was a redirect or error
     if (!dashDTO) {
       return;
     }
@@ -77,27 +78,32 @@ export function initDashboardFromJson(args: InitDashboardArgs): ThunkResult<void
 
     // add missing orgId query param
     const storeState = getState();
-    if (!storeState.location.query.orgId) {
-      dispatch(updateLocation({ query: { orgId: storeState.user.orgId }, partial: true, replace: true }));
+    const queryParams = locationService.getSearchObject();
+
+    if (!queryParams.orgId) {
+      // TODO this is currently not possible with the LocationService API
+      locationService.partial({ orgId: storeState.user.orgId }, true);
     }
 
     // init services
-    const timeSrv: TimeSrv = args.$injector.get('timeSrv');
-    const keybindingSrv: KeybindingSrv = args.$injector.get('keybindingSrv');
-    const unsavedChangesSrv = args.$injector.get('unsavedChangesSrv');
-    const dashboardSrv: DashboardSrv = args.$injector.get('dashboardSrv');
+    const timeSrv: TimeSrv = getTimeSrv();
+    const dashboardSrv: DashboardSrv = getDashboardSrv();
+
+    // legacy srv state, we need this value updated for built-in annotations
+    dashboardSrv.setCurrent(dashboard);
 
     timeSrv.init(dashboard);
 
-    if (storeState.dashboard.modifiedQueries) {
-      const { panelId, queries } = storeState.dashboard.modifiedQueries;
-      dashboard.meta.fromExplore = !!(panelId && queries);
-    }
-
+    const dashboardUid = toStateKey(args.urlUid ?? dashboard.uid);
     // template values service needs to initialize completely before the rest of the dashboard can load
-    await dispatch(initVariablesTransaction(args.urlUid!, dashboard));
-    const temp: any = getState().templating;
-    if (temp.transaction.uid !== args.urlUid) {
+    await dispatch(initVariablesTransaction(dashboardUid, dashboard));
+
+    // DashboardQueryRunner needs to run after all variables have been resolved so that any annotation query including a variable
+    // will be correctly resolved
+    const runner = createDashboardQueryRunner({ dashboard, timeSrv });
+    runner.run({ dashboard, range: timeSrv.timeRange() });
+
+    if (getIfExistsLastKey(getState()) !== dashboardUid) {
       // if a previous dashboard has slow running variable queries the batch uid will be the new one
       // but the args.urlUid will be the same as before initVariablesTransaction was called so then we can't continue initializing
       // the previous dashboard.
@@ -111,52 +117,36 @@ export function initDashboardFromJson(args: InitDashboardArgs): ThunkResult<void
 
     try {
       dashboard.processRepeats();
-      //dashboard.updateSubmenuVisibility();
 
       // handle auto fix experimental feature
-      const queryParams = getState().location.query;
       if (queryParams.autofitpanels) {
         dashboard.autoFitPanels(window.innerHeight, queryParams.kiosk);
       }
 
-      // init unsaved changes tracking
-      unsavedChangesSrv.init(dashboard, args.$scope);
-      keybindingSrv.setupDashboardBindings(args.$scope);
+      keybindingSrv.setupDashboardBindings(dashboard);
     } catch (err) {
       dispatch(notifyApp(createErrorNotification('Dashboard init failed', err)));
       console.error(err);
     }
 
-    if (storeState.dashboard.modifiedQueries) {
-      const { panelId, queries } = storeState.dashboard.modifiedQueries;
-      updateQueriesWhenComingFromExplore(dispatch, dashboard, panelId, queries);
+    // send open dashboard event
+    if (args.routeName !== DashboardRoutes.New) {
+      emitDashboardViewEvent(dashboard);
+
+      // Listen for changes on the current dashboard
+      dashboardWatcher.watch(dashboard.uid);
+    } else {
+      dashboardWatcher.leave();
     }
 
-    // legacy srv state
-    dashboardSrv.setCurrent(dashboard);
-
-    // send open dashboard event
-    if (args.routeInfo !== DashboardRouteInfo.New) {
-      emitDashboardViewEvent(dashboard);
+    // set week start
+    if (dashboard.weekStart !== '') {
+      setWeekStart(dashboard.weekStart);
+    } else {
+      setWeekStart(config.bootData.user.weekStart);
     }
 
     // yay we are done
     dispatch(dashboardInitCompleted(dashboard));
   };
-}
-
-function updateQueriesWhenComingFromExplore(
-  dispatch: ThunkDispatch,
-  dashboard: DashboardModel,
-  originPanelId: number,
-  queries: DataQuery[]
-) {
-  const panelArrId = dashboard.panels.findIndex((panel) => panel.id === originPanelId);
-
-  if (panelArrId > -1) {
-    dashboard.panels[panelArrId].targets = queries;
-  }
-
-  // Clear update state now that we're done
-  dispatch(clearDashboardQueriesToUpdateOnLoad());
 }
