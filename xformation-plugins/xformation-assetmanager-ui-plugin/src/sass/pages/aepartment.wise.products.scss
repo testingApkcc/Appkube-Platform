@@ -292,6 +292,20 @@
                 }
 
             }
+
+            .fliters-collapse-bg {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                z-index: 1;
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+            }
         }
 
         .fliter-container {
@@ -396,8 +410,8 @@
                                     display: inline-block;
                                     vertical-align: top;
                                     margin-bottom: 0;
-                                    margin-top: 6px;
-                                    font-size: 14px;
+                                    margin-top: 3px;
+                                    font-size: 12px;
                                     line-height: 18px;
                                     font-weight: 500;
 
@@ -407,10 +421,10 @@
                                     display: inline-block;
                                     vertical-align: top;
                                     text-align: center;
-                                    width: 32px;
-                                    height: 32px;
-                                    line-height: 32px;
-                                    margin-right: 10px;
+                                    width: 24px;
+                                    height: 24px;
+                                    line-height: 24px;
+                                    margin-right: 5px;
 
                                     img {
                                         max-width: 100%;
@@ -526,7 +540,7 @@
             .tbody {
                 display: block;
                 width: 100%;
-                
+
 
                 .name {
                     display: inline-block;

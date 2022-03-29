@@ -133,7 +133,7 @@ export class CreateNewOU extends React.Component<any, any> {
         const { organizationList } = this.props;
         const errorData = this.validate(isSubmitted);
         return (
-            <Modal isOpen={modal} toggle={this.toggle} className="modal-container servicdesk-modal-container">
+            <Modal isOpen={modal} toggle={this.toggle} className="modal-container assetmanager-modal-container">
                 <ModalHeader toggle={this.toggle}>Create New Organizational Unit </ModalHeader>
                 <ModalBody style={{ height: 'calc(62vh - 50px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div className="row">
@@ -160,8 +160,8 @@ export class CreateNewOU extends React.Component<any, any> {
                     <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12">
                             <div className="d-block text-right p-t-20 contact-popup-buttons">
-                                <button className="blue-button m-b-0" onClick={this.handleClose}>Cancel</button>
-                                <button className="blue-button m-r-0 m-b-0" onClick={this.createOu}>Create</button>
+                                <button className="asset-blue-button m-b-0" onClick={this.handleClose}>Cancel</button>
+                                <button className="asset-blue-button m-r-0 m-b-0" onClick={this.createOu}>Create</button>
                             </div>
                         </div>
                     </div>

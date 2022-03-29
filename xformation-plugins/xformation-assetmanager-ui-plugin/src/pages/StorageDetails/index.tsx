@@ -67,7 +67,9 @@ export class StorageDetails extends React.Component<any, any> {
             let node = storageData[i];
             retData.push(
                 <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
-                    <a>{node.nodeTitle}<i className="fa fa-times" aria-hidden="true"></i></a>
+                    <Link to={`#`}>
+                        {node.nodeTitle}<i className="fa fa-times" aria-hidden="true"></i>
+                    </Link>
                 </li>
             );
         }

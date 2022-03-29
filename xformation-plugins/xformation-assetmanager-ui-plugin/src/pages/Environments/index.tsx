@@ -367,7 +367,6 @@ export class Environments extends React.Component<any, any> {
                   >
                     <i>Add Account</i>
                   </a>
-
                   <tr>
                     <td>Accounts</td>
                     <td>20</td>
@@ -407,11 +406,9 @@ export class Environments extends React.Component<any, any> {
               </div>
               <div className="col-lg-3 col-md-3 col-sm-12">
                 <div className="float-right common-right-btn ">
-                  <div className="wise-icon">
-                    <Link to={`${PLUGIN_BASE_URL}/department-wise-products`}>
-                      <img src={images.Jobs} alt="" />
-                    </Link>
-                  </div>
+                  <Link to={`${PLUGIN_BASE_URL}/department-wise-products`} className="asset-white-button min-width-inherit">
+                    <img src={images.Jobs} alt="" style={{ maxWidth: '20px' }} />
+                  </Link>
                   {/* <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
                     <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp; Back
                   </Link> */}
@@ -565,23 +562,20 @@ export class Environments extends React.Component<any, any> {
                         <div className={showRecentFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
                           <ul>
                             <li>
-                              <a>
-                                <span>
-                                  <img src={images.awsLogo} alt="" />
-                                </span>
+                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                                <span><img src={images.awsLogo} alt="" /></span>
                                 <p>AWS (657907747545)</p>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a>
-                                <span>
-                                  <img src={images.awsLogo} alt="" />
-                                </span>
+                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                                <span><img src={images.awsLogo} alt="" /></span>
                                 <p>AWS (655668745458)</p>
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </div>
+                        <div className={showRecentFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showRecentFilter: !showRecentFilter })}></div>
                       </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12">
@@ -600,68 +594,32 @@ export class Environments extends React.Component<any, any> {
                         <div className={showAddNewFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
                           <ul>
                             <li>
-                              <a
-                                style={{
-                                  float: 'left',
-                                  marginRight: '-54px',
-                                  fontSize: '14px',
-                                }}
-                              >
-                                <i>
-                                  <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                                    <span>
-                                      <img src={images.awsLogo} alt="" />
-                                    </span>{' '}
-                                    AWS Environment
-                                  </Link>
-                                </i>
-                              </a>
-                            </li>
-
-                            <li>
-                              <a
-                                style={{
-                                  float: 'left',
-                                  marginRight: '-54px',
-                                  fontSize: '14px',
-                                }}
-                              >
-                                <i>
-                                  <span>
-                                    <img src={images.microsoftAzureLogo} alt="" />
-                                  </span>{' '}
-                                  Azure Environment
-                                </i>
-                              </a>
+                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                                <span><img src={images.awsLogo} alt="" /></span>
+                                <p>AWS Environment</p>
+                              </Link>
                             </li>
                             <li>
-                              <a
-                                style={{
-                                  float: 'left',
-                                  marginRight: '-54px',
-                                  fontSize: '14px',
-                                }}
-                              >
-                                <i>
-                                  <span>
-                                    <img src={images.gcpLogo} alt="" />
-                                  </span>{' '}
-                                  GCP Environment
-                                </i>
-                              </a>
+                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                                <span><img src={images.microsoftAzureLogo} alt="" /></span>
+                                <p>Azure Environment</p>
+                              </Link>
                             </li>
                             <li>
-                              <a style={{ float: 'left', fontSize: '14px' }}>
-                                <i>
-                                  <span>
-                                    <img src={images.KubernetesLogo} alt="" />
-                                  </span>{' '}
-                                  Kubernetes{' '}
-                                </i>
-                              </a>
+                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                                <span><img src={images.gcpLogo} alt="" /></span>
+                                <p>GCP Environment</p>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                                <span><img src={images.KubernetesLogo} alt="" /></span>
+                                <p>Kubernetes</p>
+                              </Link>
                             </li>
                           </ul>
                         </div>
+                        <div className={showAddNewFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showAddNewFilter: !showAddNewFilter })}></div>
                       </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12">

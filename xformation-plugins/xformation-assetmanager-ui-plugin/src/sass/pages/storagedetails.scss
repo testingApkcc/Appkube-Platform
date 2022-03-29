@@ -123,7 +123,6 @@
                             line-height: 16px;
                             font-weight: 500;
                             color: #414D55;
-                            color: unset;
                             padding: 10px 20px;
 
                             &:hover {
@@ -173,7 +172,7 @@
                     list-style: none;
                     font-size: 14px;
                     font-weight: 500;
-                    color: #3B4859;
+                    color: $asset-contents-color;
 
                     span {
                         color: #2662F0;
@@ -224,7 +223,6 @@
 
     .storage-section {
         .network-boxs {
-            border-right: 1px solid #f5f6f5;
             min-height: 450px;
 
             ul {
@@ -242,6 +240,7 @@
                         line-height: 24px;
                         padding: 10px 0 10px 20px;
                         display: block;
+                        color: #3b4859;
 
                         i {
                             font-size: 20px;
@@ -361,7 +360,7 @@
 
             p {
                 display: block;
-                color: #3B4859;
+                color: $asset-contents-color;
                 text-align: center;
                 font-size: 14px;
                 font-weight: 500;
@@ -599,7 +598,7 @@
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
             -webkit-flex-direction: column;
-            
+
             iframe {
                 width: 100%;
                 height: 100%;

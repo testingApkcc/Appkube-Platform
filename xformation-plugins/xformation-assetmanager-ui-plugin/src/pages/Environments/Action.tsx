@@ -285,7 +285,7 @@ export class Action extends React.Component<any, any> {
         <Modal
           isOpen={modal}
           toggle={this.toggle}
-          className="modal-container servicdesk-modal-container"
+          className="modal-container assetmanager-modal-container"
         >
           <AlertMessage
             handleCloseAlert={this.handleCloseAlert}

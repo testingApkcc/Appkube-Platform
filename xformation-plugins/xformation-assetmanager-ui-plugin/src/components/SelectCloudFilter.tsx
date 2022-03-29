@@ -1,3 +1,4 @@
+//import { withWidth } from '@material-ui/core';
 import * as React from 'react';
 
 export class SelectCloudFilter extends React.Component<any, any> {
@@ -290,6 +291,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                         {this.displayTagList()}
                     </div>
                 </div>
+                <div className={showTagFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div>
             </div>
         );
     }
