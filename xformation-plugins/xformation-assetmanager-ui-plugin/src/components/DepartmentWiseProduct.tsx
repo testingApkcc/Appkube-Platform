@@ -278,16 +278,8 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
         </div>
         <div className="fliter-container">
           <div className="row">
-            <div className="col-lg-8 col-md-12 col-sm-12">
+            <div className="col-lg-8 col-md-8 col-sm-12">
               <div className="row">
-                {this.props.type=='amazonService' && <div className="col-lg-4 col-md-4 col-sm-12">
-                  <div className="services-view">
-                    <strong>Services View</strong> <img src={images.Jobs} alt='' />
-                  </div>
-                </div>}
-                {this.props.type=='amazonService' && <div className="col-lg-4 col-md-4 col-sm-12">
-                  <div className="showing-results">Showing results 81 of 81</div>
-                </div>}
                 <div className="col-lg-4 col-md-4 col-sm-12">
                   <div className="fliter">
                     <div
@@ -304,26 +296,22 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
                     <div className={showRecentFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
                       <ul>
                         <li>
-                          <a>
-                            <span>
-                              <img src={images.awsLogo} alt="" />
-                            </span>
+                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                            <span><img src={images.awsLogo} alt="" /></span>
                             <p>AWS (657907747545)</p>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a>
-                            <span>
-                              <img src={images.awsLogo} alt="" />
-                            </span>
+                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                            <span><img src={images.awsLogo} alt="" /></span>
                             <p>AWS (655668745458)</p>
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
+                    <div className={showRecentFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showRecentFilter: !showRecentFilter })}></div>
                   </div>
                 </div>
-                {this.props.type=='department' && 
                 <div className="col-lg-4 col-md-4 col-sm-12">
                   <div className="fliter">
                     <div
@@ -340,71 +328,34 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
                     <div className={showAddNewFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
                       <ul>
                         <li>
-                          <a
-                            style={{
-                              float: 'left',
-                              marginRight: '-54px',
-                              fontSize: '14px',
-                            }}
-                          >
-                            <i>
-                              <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                                <span>
-                                  <img src={images.awsLogo} alt="" />
-                                </span>{' '}
-                                AWS Environment
-                              </Link>
-                            </i>
-                          </a>
+                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                            <span><img src={images.awsLogo} alt="" /></span>
+                            <p>AWS Environment</p>
+                          </Link>
                         </li>
                         <li>
-                          <a
-                            style={{
-                              float: 'left',
-                              marginRight: '-54px',
-                              fontSize: '14px',
-                            }}
-                          >
-                            <i>
-                              <span>
-                                <img src={images.microsoftAzureLogo} alt="" />
-                              </span>{' '}
-                              Azure Environment
-                            </i>
-                          </a>
+                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                            <span><img src={images.microsoftAzureLogo} alt="" /></span>
+                            <p>Azure Environment</p>
+                          </Link>
                         </li>
                         <li>
-                          <a
-                            style={{
-                              float: 'left',
-                              marginRight: '-54px',
-                              fontSize: '14px',
-                            }}
-                          >
-                            <i>
-                              <span>
-                                <img src={images.gcpLogo} alt="" />
-                              </span>{' '}
-                              GCP Environment
-                            </i>
-                          </a>
+                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                            <span><img src={images.gcpLogo} alt="" /></span>
+                            <p>GCP Environment</p>
+                          </Link>
                         </li>
                         <li>
-                          <a style={{ float: 'left', fontSize: '14px' }}>
-                            <i>
-                              <span>
-                                <img src={images.KubernetesLogo} alt="" />
-                              </span>{' '}
-                              Kubernetes{' '}
-                            </i>
-                          </a>
+                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
+                            <span><img src={images.KubernetesLogo} alt="" /></span>
+                            <p>Kubernetes</p>
+                          </Link>
                         </li>
                       </ul>
                     </div>
+                    <div className={showAddNewFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showAddNewFilter: !showAddNewFilter })}></div>
                   </div>
                 </div>
-                }
-                {this.props.type=='department' && 
                 <div className="col-lg-4 col-md-4 col-sm-12">
                   <div className="fliter">
                     <div className="fliter-toggel">
@@ -413,11 +364,10 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
                     </div>
                   </div>
                 </div>
-                }
               </div>
             </div>
-            <div className="col-lg-4 col-md-12 col-sm-12">
-              <div className="form-group search-control">
+            <div className="col-lg-4 col-md-4 col-sm-12">
+              <div className="form-group search-control m-b-0">
                 <button className="btn btn-search">
                   <i className="fa fa-search"></i>
                 </button>

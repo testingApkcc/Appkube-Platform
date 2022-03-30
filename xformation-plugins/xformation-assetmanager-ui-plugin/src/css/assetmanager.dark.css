@@ -2845,6 +2845,18 @@ a:hover {
   max-width: 100%;
   height: auto;
 }
+.department-wise-container .department-fliters-container .fliter-container .fliter .fliters-collapse-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: none;
+}
+.department-wise-container .department-fliters-container .fliter-container .fliter .fliters-collapse-bg.active {
+  display: block;
+}
 .department-wise-container .department-fliters-container .fliter-container .search-control {
   position: relative;
   margin-bottom: 5px;
