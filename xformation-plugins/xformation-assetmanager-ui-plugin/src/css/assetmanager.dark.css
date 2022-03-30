@@ -3242,7 +3242,6 @@ a:hover {
   width: calc(100% - 62px);
   background-color: #cbdceb;
   padding: 0;
-  cursor: pointer;
 }
 .department-wise-container
   .department-fliters-container
@@ -3286,6 +3285,7 @@ a:hover {
   line-height: 40px;
   font-weight: 600;
   color: #0077b6;
+  cursor: pointer;
 }
 .department-wise-container
   .department-fliters-container
@@ -3301,6 +3301,7 @@ a:hover {
   display: flex;
   align-items: center;
   width: auto;
+  cursor: pointer;
 }
 .department-wise-container
   .department-fliters-container

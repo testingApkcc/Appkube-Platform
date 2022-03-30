@@ -103,6 +103,19 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
     });
   }
 
+  onClickOpenSubLink = (i: any, j: any, k: any, l: any) => {
+    const { product } = this.props;
+    for (let m = 0; m < product[i].productList[j].services[k].mainservices.length; m++) {
+      if (l !== m) {
+        product[i].productList[j].services[k].mainservices[m].menuOpen = false;
+      }
+    }
+    product[i].productList[j].services[k].mainservices[l].menuOpen = !product[i].productList[j].services[k].mainservices[l].menuOpen;
+    this.setState({
+      product
+    });
+  };
+
   displayProductServices = () => {
     const { product } = this.props;
     let retData = [];
@@ -164,19 +177,32 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
                                         return (
                                           <li>
                                             {mainservicedata.isOpen === false && <div className='icon'><img src={images.Icon} alt="" /></div>}
-                                            <div className={mainservicedata.isOpen === true ? 'heading full' : 'heading'} onClick={() => this.openProductMainServices(i, index, serviceindex, mainindex)}>
-                                              <span>{mainservicedata.title}</span>
+                                            <div className={mainservicedata.isOpen === true ? 'heading full' : 'heading'} >
+                                              <span onClick={() => this.openProductMainServices(i, index, serviceindex, mainindex)}>          
+                                                {mainservicedata.title}
+                                              </span>
                                               <div className='icon'>
                                                 <div
-                                                  className='fa-icon'>
+                                                  className='fa-icon'
+                                                  onClick={() => this.openProductMainServices(i, index, serviceindex, mainindex)}
+                                                >
                                                   <i className={mainservicedata.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
                                                 </div>
                                                 <div className='edit'>
-                                                  <div className='bars'>
+                                                  <div 
+                                                    className='bars'
+                                                    onClick={() => this.onClickOpenSubLink(i, index, serviceindex, mainindex)}
+                                                  >
                                                     <span></span>
                                                     <span></span>
                                                     <span></span>
                                                   </div>
+                                                  {mainservicedata.menuOpen == true && (
+                                                    <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                                                      <a href='#'> Add Firewall </a>
+                                                      <a href='#'> Remove Firewall </a>
+                                                    </div>
+                                                  )}
                                                 </div>
                                               </div>
                                             </div>

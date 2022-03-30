@@ -444,7 +444,7 @@
                     top: 0;
                     z-index: 1;
                     display: none;
-    
+
                     &.active {
                         display: block;
                     }
@@ -783,7 +783,7 @@
                                         width: calc(100% - 62px);
                                         background-color: #CBDCEB;
                                         padding: 0;
-                                        cursor: pointer;
+
 
                                         &.full {
                                             width: 100%;
@@ -800,12 +800,14 @@
                                             line-height: 40px;
                                             font-weight: 600;
                                             color: #0077B6;
+                                            cursor: pointer;
                                         }
 
                                         .icon {
                                             display: flex;
                                             align-items: center;
                                             width: auto;
+                                            cursor: pointer;
 
                                             .fa-icon {
                                                 line-height: 40px;

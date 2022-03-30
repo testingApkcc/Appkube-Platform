@@ -27,6 +27,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -129,6 +130,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -237,6 +239,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business 1 Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -339,6 +342,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway 2 Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -451,6 +455,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -551,6 +556,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -657,6 +663,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -761,6 +768,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -881,6 +889,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -985,6 +994,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -1094,6 +1104,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business Services',
+                      menuOpen: false,
                       isOpen: false,
                       services: [
                         {
@@ -1198,8 +1209,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
+                      menuOpen: false,
                       isOpen: false,
-                      servicesType: [
+                      services: [
                         {
                           title: 'admission',
                           subServices: [
@@ -1313,6 +1325,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business Services',
+                      menuOpen: false,
                       services: [
                         {
                           title: 'admission',
@@ -1416,6 +1429,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
+                      menuOpen: false,
                       services: [
                         {
                           title: 'admission',
@@ -1524,6 +1538,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   mainservices: [
                     {
                       title: 'Business Services',
+                      menuOpen: false,
                       services: [
                         {
                           title: 'admission',
@@ -1627,7 +1642,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     },
                     {
                       title: 'Gateway Services',
-                      servicesType: [
+                      menuOpen: false,
+                      services: [
                         {
                           title: 'admission',
                           subServices: [
