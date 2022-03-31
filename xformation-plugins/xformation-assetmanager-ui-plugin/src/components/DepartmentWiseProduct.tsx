@@ -71,7 +71,7 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
         product[i].productList[j].services[m].isOpen = false;
       }
     }
-    product[i].productList[j].services[k].isOpen = !product[i].productList[j].services[k].isOpen;
+    product[i].productList[j].services[k].isOpen = true;
     this.setState({
       product
     });
@@ -92,7 +92,7 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
 
   openServices = (i: any, j: any, k: any, l: any, m: any) => {
     const { product } = this.props;
-    for (let n = 0; n < product[i].productList[j].services[k].mainservices.length; n++) {
+    for (let n = 0; n < product[i].productList[j].services[k].mainservices[m].services.length; n++) {
       if (l !== n) {
         product[i].productList[j].services[k].mainservices[m].services[n].isOpen = false;
       }

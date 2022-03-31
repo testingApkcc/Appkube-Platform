@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 import { PLUGIN_BASE_URL } from '../../constants';
+import { remove } from 'lodash';
 
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
@@ -41,7 +42,7 @@ export class StorageDetails extends React.Component<any, any> {
                 storageData
             });
         } else {
-            
+
         }
     }
 
@@ -68,7 +69,8 @@ export class StorageDetails extends React.Component<any, any> {
             retData.push(
                 <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
                     <Link to={`#`}>
-                        {node.nodeTitle}<i className="fa fa-times" aria-hidden="true"></i>
+                        {node.nodeTitle}
+                        <i className="fa fa-times" aria-hidden="true" onClick={() => this.removeTab(i)}></i>
                     </Link>
                 </li>
             );
@@ -76,9 +78,19 @@ export class StorageDetails extends React.Component<any, any> {
         return retData;
     }
 
+    removeTab = (index: any) => {
+        const { activeTab } = this.state;
+        if (index !== 0) {
+            this.setState({
+                activeTab: activeTab - 1,
+            })
+        } else {
+            window.history.go(-1);
+        }
+    }
+
     render() {
         const { activeTab, storageData } = this.state;
-        console.log("storageData[activeTab] : ",storageData[activeTab]);
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
