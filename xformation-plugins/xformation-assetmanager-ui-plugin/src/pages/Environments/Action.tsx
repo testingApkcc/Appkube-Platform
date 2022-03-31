@@ -434,9 +434,9 @@ export class Action extends React.Component<any, any> {
             {/* </Rbac> */}
             {/* <Rbac parentName={config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
             <Link
-              to={`${PLUGIN_BASE_URL}/amazon-services?assetId=${
+              to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
                 detailObj.id
-              }&orgId=${
+              }&org_id=${
                 detailObj.organization ? detailObj.organization.id : null
               }`}
             >

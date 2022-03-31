@@ -1805,10 +1805,10 @@ export class AmazonServices extends React.Component<any, any> {
 
   async componentDidMount() {
     const queryPrm = new URLSearchParams(this.props.location.search);
-    const assetId = queryPrm.get("assetId");
-    const orgId = queryPrm.get("orgId");
-    console.log("asset id: " + assetId);
-    await this.getAccounts(assetId, orgId);
+    const asset_id = queryPrm.get("asset_id");
+    const orgId = queryPrm.get("org_id");
+    //console.log("asset id: " + asset_id);
+    await this.getAccounts(asset_id, orgId);
   }
 
   getAccounts = async (id: any, orgId: any) => {

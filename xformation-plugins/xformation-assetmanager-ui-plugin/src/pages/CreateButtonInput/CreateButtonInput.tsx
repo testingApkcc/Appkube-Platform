@@ -46,7 +46,7 @@ export class CreateButtonInput extends React.Component<any, any> {
             {/* </Rbac> */}
             {/* <Rbac parentName={config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
             <Link
-              to={`${config.basePath}/amazonservices?assetId=${detailObj.id}&orgId=${
+              to={`${config.basePath}/amazonservices?asset_id=${detailObj.id}&org_id=${
                 detailObj.organization ? detailObj.organization.id : null
               }`}
             >

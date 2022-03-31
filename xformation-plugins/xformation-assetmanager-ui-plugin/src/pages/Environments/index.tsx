@@ -241,7 +241,7 @@ export class Environments extends React.Component<any, any> {
           <tr>
             <td>
               <Link
-                to={`${PLUGIN_BASE_URL}/amazon-services?assetId=${row.id}&orgId=${
+                to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${row.id}&org_id=${
                   row.organizationalUnit ? row.organizationalUnit.organizationId : null
                 }`}
               >
@@ -281,7 +281,7 @@ export class Environments extends React.Component<any, any> {
           console.log('Loading azure data : ', row),
           <tr>
             <td>
-              {/* <Link to={`${config.basePath}/amazonservices?assetId=${row.id}&orgId=${row.organization ? row.organization.id : null}`}> */}
+              {/* <Link to={`${config.basePath}/amazonservices?asset_id=${row.id}&orgId=${row.organization ? row.organization.id : null}`}> */}
               AZURE ({row.tenantId}){/* </Link> */}
             </td>
             <td>{row.organization && row.organization.name}</td>

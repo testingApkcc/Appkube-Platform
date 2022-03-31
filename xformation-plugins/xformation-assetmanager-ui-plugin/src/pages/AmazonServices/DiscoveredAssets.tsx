@@ -26,10 +26,10 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
 
     componentDidMount() {
-        const assetId = this.getParameterByName("assetId", window.location.href);
-        if (assetId) {
+        const asset_id = this.getParameterByName("asset_id", window.location.href);
+        if (asset_id) {
             try {
-                RestService.getData(`${config.GET_DISCOVERED_ASSETS}/${assetId}`, null, null).then(
+                RestService.getData(`${config.GET_DISCOVERED_ASSETS}/${asset_id}`, null, null).then(
                     (response: any) => {
                         console.log("Discovered assets: ", response);
                         this.setState({
