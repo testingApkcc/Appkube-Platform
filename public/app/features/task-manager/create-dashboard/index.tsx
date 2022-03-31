@@ -423,7 +423,7 @@ class CreateDashboard extends React.Component<any, any> {
               </div>
             </div>
           </div>
-          <div className="common-container border-bottom-0">
+          <div className="common-container border-bottom-0 bg-white">
             <Workflow
               formData={data}
               onFormSubmitted={this.onFormSubmitted}

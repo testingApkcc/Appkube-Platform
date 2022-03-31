@@ -77,7 +77,11 @@
 }
 
 .task-dashboard-page-container {
-  background-color: #ffffff;
+  background-color: $overview-container-background-color;
+
+  .bg-white {
+    background-color: #ffffff;
+  }
 
   .common-container {
     padding-top: 15px;
@@ -169,7 +173,7 @@
   .heading {
     h3 {
       line-height: 18px;
-      color: #3b4859;
+      color: $overview-page-title-color;
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 0;
@@ -177,7 +181,7 @@
 
     span {
       line-height: 14px;
-      color: #3b4859;
+      color: $overview-page-title-color;
       font-size: 12px;
       font-weight: 400;
     }
@@ -203,6 +207,7 @@
       border-radius: 3px;
       padding-top: 15px;
       padding-bottom: 15px;
+      background-color: #ffffff;
 
       span {
         line-height: 18px;
@@ -320,13 +325,16 @@
   display: block;
   width: 100%;
   padding-top: 10px;
+
   .approve-dashboard-content {
     border-bottom: 1px solid #f7f7f7;
     padding-bottom: 0px;
     margin-bottom: 10px;
+
     .form-group {
       display: block;
       margin-bottom: 5px;
+
       label {
         width: 20%;
         display: inline-block;
@@ -334,43 +342,53 @@
         margin-bottom: 0;
         font-size: 12px;
       }
+
       span {
         width: 75%;
         display: inline-block;
         vertical-align: top;
         margin-bottom: 0;
         padding-left: 5px;
+
         span {
           color: brown;
         }
+
         a {
           color: #3b7cff;
         }
       }
     }
   }
+
   .approve-dashboard-table {
     display: block;
     width: 100%;
     padding-top: 20px;
     padding-bottom: 40px;
+
     .table {
       width: 100%;
+
       tr:nth-child(odd) {
         td {
           background-color: #f8f9fb;
         }
       }
+
       td {
         display: block;
         cursor: pointer;
         padding: 10px 15px;
         border: 1px solid transparent;
+
         &:hover {
           border-color: #3b7cff;
         }
+
         .content {
           display: block;
+
           label {
             display: inline-block;
             vertical-align: top;
@@ -379,6 +397,7 @@
             font-weight: 600;
             line-height: 16px;
           }
+
           span {
             display: inline-block;
             vertical-align: top;
@@ -389,6 +408,7 @@
             line-height: 16px;
           }
         }
+
         p {
           display: block;
           margin-bottom: 0;
@@ -416,12 +436,14 @@
       margin-bottom: 30px;
     }
   }
+
   .approve-tab-container {
     .approve-dashboard-content {
       .form-group {
         label {
           width: 30%;
         }
+
         span {
           width: 70%;
         }

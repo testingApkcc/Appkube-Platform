@@ -2272,7 +2272,7 @@ a:hover {
   display: block;
   border-bottom: 1px dashed #8392a7;
   line-height: 26px;
-  color: #3b4859;
+  color: #ffffff;
   font-size: 15px;
   font-weight: 600;
   padding-bottom: 5px;
@@ -2284,7 +2284,7 @@ a:hover {
 .accountsetup-page-container .account-setup-container .account-setup-tab-contents h4 {
   display: block;
   line-height: 26px;
-  color: #3b4859;
+  color: #ffffff;
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -2297,7 +2297,7 @@ a:hover {
 .accountsetup-page-container .account-setup-container .account-setup-tab-contents .contents strong {
   font-weight: 600;
   font-size: 15px;
-  color: #3b4859;
+  color: #ffffff;
   line-height: 22px;
   padding-bottom: 3px;
 }
@@ -2305,7 +2305,7 @@ a:hover {
   margin-bottom: 0;
   font-weight: 400;
   font-size: 15px;
-  color: #3b4859;
+  color: #ffffff;
   display: block;
   line-height: 22px;
 }
@@ -2318,7 +2318,7 @@ a:hover {
 .accountsetup-page-container .account-setup-container .account-setup-tab-contents .contents ul li {
   font-weight: 400;
   font-size: 15px;
-  color: #3b4859;
+  color: #ffffff;
   line-height: 22px;
   padding-bottom: 2px;
 }
