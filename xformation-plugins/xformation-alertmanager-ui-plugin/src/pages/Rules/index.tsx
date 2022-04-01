@@ -120,6 +120,14 @@ export class Rules extends React.Component<any, any> {
     this.unimplementedFeatureModalRef.current.toggle();
   };
 
+  isLightTheme() {
+    const w: any = window;
+    if (w.grafanaBootData && w.grafanaBootData.user) {
+        return w.grafanaBootData.user.lightTheme;
+    }
+    return false;
+  }
+
   render() {
     return (
       <div className="all-alerts-container">
@@ -184,6 +192,7 @@ export class Rules extends React.Component<any, any> {
               }}
               searchKey="name"
               showingLine="Showing %start% to %end% of %total%"
+              dark={!this.isLightTheme()}
             />
           </div>
         </div>

@@ -40,25 +40,25 @@ export class ApiGateway extends React.Component<any, any> {
                             <h3>GSL Editor</h3>
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <span><img src={awsLogo} alt="" /></span>
                                         <p>AWS</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <span><img src={microsoftAzureLogo} alt="" /></span>
                                         <p>Azure</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <span><img src={gcpLogo} alt="" /></span>
                                         <p>GCP</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <span><img src={KubernetesLogo} alt="" /></span>
                                         <p>Kubernetes</p>
                                     </a>
@@ -115,7 +115,7 @@ export class ApiGateway extends React.Component<any, any> {
                                     </div>
                                     <div className="col-md-3 col-sm-3">
                                         <div className="form-group filter-control-group">
-                                            <a href="#" className="blue-button m-r-0 m-b-0 runtest-button">
+                                            <a className="blue-button m-r-0 m-b-0 runtest-button">
                                                 <i className="fa fa-play-circle"></i> RUN TEST
                                             </a>
                                         </div>
@@ -156,7 +156,7 @@ export class ApiGateway extends React.Component<any, any> {
                                             <ul>
                                                 <li>apiKeySource:<span>string</span></li>
                                                 <li>
-                                                    <i className="fa fa-caret-down"></i> binaryMediaTypes:Array <a href="#">[1]</a>
+                                                    <i className="fa fa-caret-down"></i> binaryMediaTypes:Array <a>[1]</a>
                                                     <ul>
                                                         <li>
                                                             <i className="fa fa-caret-right"></i> O:Object

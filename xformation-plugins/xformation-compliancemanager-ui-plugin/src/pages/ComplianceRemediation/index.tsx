@@ -208,7 +208,7 @@ export class ComplianceRemediation extends React.Component<any, any> {
                 <div className="col-lg-12 col-md-12 col-sm-12 text-right">
                   <div className="d-inline-block p-r-10 search-box">
                     <div className="d-block text-right file-export">
-                      <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
+                      <a className="white-button m-r-0" onClick={this.fileExportHandleClick}>
                         <img src={fileExportIcon} alt="" />
                       </a>
 

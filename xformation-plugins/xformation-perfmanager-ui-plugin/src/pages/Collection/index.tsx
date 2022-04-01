@@ -346,7 +346,7 @@ export class Collection extends React.Component<any, any> {
             <div className="collection-logos">
               <ul>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={awsLogo} alt="" />
                     </span>
@@ -354,7 +354,7 @@ export class Collection extends React.Component<any, any> {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={microsoftAzureLogo} alt="" />
                     </span>
@@ -362,7 +362,7 @@ export class Collection extends React.Component<any, any> {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={gcpLogo} alt="" />
                     </span>
@@ -370,7 +370,7 @@ export class Collection extends React.Component<any, any> {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={KubernetesLogo} alt="" />
                     </span>
@@ -416,12 +416,12 @@ export class Collection extends React.Component<any, any> {
                   <div className="sort-view">
                     <ul>
                       <li className="active">
-                        <a href="#">
+                        <a>
                           <img src={folderIcon} alt="" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <img src={listIcon} alt="" />
                         </a>
                       </li>

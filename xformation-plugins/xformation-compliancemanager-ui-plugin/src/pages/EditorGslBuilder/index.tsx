@@ -479,7 +479,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                   </div>
                   <div className="col-md-3 col-sm-3">
                     <div className="p-t-20 form-group">
-                      <a href="#" className="blue-button m-r-0 m-b-0 runtest-button">
+                      <a className="blue-button m-r-0 m-b-0 runtest-button">
                         <i className="fa fa-play-circle"></i> RUN TEST
                       </a>
                     </div>

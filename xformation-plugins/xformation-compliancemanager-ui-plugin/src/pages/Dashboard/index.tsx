@@ -131,7 +131,7 @@ export class Dashboard extends React.Component<any, any> {
                 <span className={data.color != '' ? data.color : 'd-block'}>{data.percentage}</span>
               )}
               {data.percentage == '' && (
-                <a href="#" className="d-block">
+                <a className="d-block">
                   Click to run
                 </a>
               )}
@@ -203,7 +203,7 @@ export class Dashboard extends React.Component<any, any> {
                   </a>
 
                   <div className="d-inline-block settings">
-                    <a href="#" className="white-button" onClick={this.settingsHandleClick}>
+                    <a className="white-button" onClick={this.settingsHandleClick}>
                       <img src={settingsIcon} alt="" />
                     </a>
 
@@ -240,7 +240,7 @@ export class Dashboard extends React.Component<any, any> {
                   </div>
 
                   <div className="d-inline-block file-export">
-                    <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
+                    <a className="white-button m-r-0" onClick={this.fileExportHandleClick}>
                       <img src={fileExportIcon} alt="" />
                     </a>
 

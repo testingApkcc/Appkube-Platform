@@ -306,7 +306,7 @@ class Team extends React.Component<any, any> {
             <div className="team-dashboards-container">
               <div className="row">
                 <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <a href="#">
+                  <a>
                     <div
                       className="team-dashboard-box"
                       style={{ borderColor: '#00861b' }}
@@ -318,7 +318,7 @@ class Team extends React.Component<any, any> {
                   </a>
                 </div>
                 <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <a href="#">
+                  <a>
                     <div
                       className="team-dashboard-box"
                       style={{ borderColor: '#ffa000' }}

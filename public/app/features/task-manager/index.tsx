@@ -1,8 +1,8 @@
 // Libraries
 import React from 'react';
 import { updateLocation } from 'app/core/actions';
-// import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-// import 'react-circular-progressbar/dist/styles.css';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import Table from './table';
 
 // Services & Utils
@@ -215,7 +215,7 @@ class TaskManager extends React.Component<any, any> {
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'TASK MANAGER';
-    // const percentage = 66;
+    const percentage = 66;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -271,7 +271,7 @@ class TaskManager extends React.Component<any, any> {
                   </a>
                 </div>
                 <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <a href="#">
+                  <a>
                     <div className="task-dashboard-box" style={{ borderColor: '#00861b' }}>
                       <span>Completed</span>
                       <strong>25</strong>
@@ -279,7 +279,7 @@ class TaskManager extends React.Component<any, any> {
                   </a>
                 </div>
                 <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <a href="#">
+                  <a>
                     <div className="task-dashboard-box" style={{ borderColor: '#ffa000' }}>
                       <span>In progress</span>
                       <strong>25</strong>
@@ -287,7 +287,7 @@ class TaskManager extends React.Component<any, any> {
                   </a>
                 </div>
                 <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <a href="#">
+                  <a>
                     <div className="task-dashboard-box" style={{ borderColor: '#98adff' }}>
                       <span>Un assigned</span>
                       <strong>3</strong>
@@ -335,7 +335,7 @@ class TaskManager extends React.Component<any, any> {
                     <h3>Ganesh</h3>
                     <div className="d-block text-center">
                       <div className="d-inline-block progressbar">
-                        {/* <CircularProgressbar
+                        <CircularProgressbar
                           value={percentage}
                           text={`${percentage}%`}
                           styles={buildStyles({
@@ -343,7 +343,7 @@ class TaskManager extends React.Component<any, any> {
                             trailColor: '#a6cee3',
                             pathColor: `rgba(31, 120, 180, ${percentage / 100})`,
                           })}
-                        /> */}
+                        />
                       </div>
                       <div className="d-inline-block progressbar-text">8 of 10 Daskboard Completed</div>
                     </div>
@@ -354,7 +354,7 @@ class TaskManager extends React.Component<any, any> {
                     <h3>Akhila</h3>
                     <div className="d-block text-center">
                       <div className="d-inline-block progressbar">
-                        {/* <CircularProgressbar
+                        <CircularProgressbar
                           value={percentage}
                           text={`${percentage}%`}
                           styles={buildStyles({
@@ -362,7 +362,7 @@ class TaskManager extends React.Component<any, any> {
                             trailColor: '#a6cee3',
                             pathColor: `rgba(31, 120, 180, ${percentage / 100})`,
                           })}
-                        /> */}
+                        />
                       </div>
                       <div className="d-inline-block progressbar-text">8 of 10 Daskboard Completed</div>
                     </div>
@@ -373,7 +373,7 @@ class TaskManager extends React.Component<any, any> {
                     <h3>Zakir</h3>
                     <div className="d-block text-center">
                       <div className="d-inline-block progressbar">
-                        {/* <CircularProgressbar
+                        <CircularProgressbar
                           value={percentage}
                           text={`${percentage}%`}
                           styles={buildStyles({
@@ -381,7 +381,7 @@ class TaskManager extends React.Component<any, any> {
                             trailColor: '#a6cee3',
                             pathColor: `rgba(31, 120, 180, ${percentage / 100})`,
                           })}
-                        /> */}
+                        />
                       </div>
                       <div className="d-inline-block progressbar-text">8 of 10 Daskboard Completed</div>
                     </div>
