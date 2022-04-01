@@ -438,7 +438,6 @@ export class Library extends React.Component<any, any> {
                 <div className="float-right">
                   <Rbac parentName={config.PARENT_NAME} childName="library-index-addfolderbtn">
                     <a
-                      href="#"
                       className="blue-button m-r-5 add-folder"
                       onClick={() => this.onClickUnImplementedFeature('')}
                     >

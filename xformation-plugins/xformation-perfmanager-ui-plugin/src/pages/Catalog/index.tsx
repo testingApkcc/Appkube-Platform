@@ -265,7 +265,6 @@ export class Catalog extends React.Component<any, any> {
             <div className="text-left">
               <Rbac parentName={config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-createbtn">
                 <a
-                  href="#"
                   style={{ float: 'left' }}
                   onClick={this.onClickCreateCatalog}
                   className="blue-button m-r-0 min-width-inherit width-auto create-btn"

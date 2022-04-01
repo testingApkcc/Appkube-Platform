@@ -1,18 +1,8 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Field,
-  Input,
-  Button,
-  Legend,
-  Container,
-  useStyles,
-  HorizontalGroup,
-  LinkButton,
-} from "@grafana/ui";
-import { getBackendSrv } from "@grafana/runtime";
-import { css } from "@emotion/css";
-import { GrafanaTheme } from "@grafana/data";
+import React, { useState } from 'react';
+import { Form, Field, Input, Button, Legend, Container, useStyles, HorizontalGroup, LinkButton } from '@grafana/ui';
+import { getBackendSrv } from '@grafana/runtime';
+import { css } from '@emotion/css';
+import { GrafanaTheme } from '@grafana/data';
 
 interface EmailDTO {
   userOrEmail: string;
@@ -36,10 +26,7 @@ export const ForgottenPassword: any = (props: Props) => {
   const styles = useStyles(paragraphStyles);
 
   const sendEmail = async (formModel: EmailDTO) => {
-    const res = await getBackendSrv().post(
-      "/api/user/password/send-reset-email",
-      formModel
-    );
+    const res = await getBackendSrv().post('/api/user/password/send-reset-email', formModel);
     if (res) {
       setEmailSent(true);
     }
@@ -50,10 +37,7 @@ export const ForgottenPassword: any = (props: Props) => {
   if (emailSent) {
     return (
       <div>
-        <p>
-          An email with a reset link has been sent to the email address. You
-          should receive it shortly.
-        </p>
+        <p>An email with a reset link has been sent to the email address. You should receive it shortly.</p>
         <Container margin="md" />
         <LinkButton variant="primary" href="/login">
           Back to login
@@ -72,11 +56,7 @@ export const ForgottenPassword: any = (props: Props) => {
             invalid={!!errors.userOrEmail}
             error={errors?.userOrEmail?.message}
           >
-            <Input
-              placeholder="Email or username"
-              name="userOrEmail"
-              ref={register({ required: true })}
-            />
+            <Input placeholder="Email or username" name="userOrEmail" ref={register({ required: true })} />
           </Field>
           <HorizontalGroup>
             <Button>Send reset email</Button>
@@ -84,10 +64,7 @@ export const ForgottenPassword: any = (props: Props) => {
               Back to login
             </LinkButton>
           </HorizontalGroup>
-          <p className={styles}>
-            Did you forget your username or email? Contact your Grafana
-            administrator.
-          </p>
+          <p className={styles}>Did you forget your username or email? Contact your Grafana administrator.</p>
         </>
       )}
     </Form>

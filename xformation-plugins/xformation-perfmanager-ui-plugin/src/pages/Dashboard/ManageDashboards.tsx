@@ -197,10 +197,10 @@ export class ManageDashboards extends React.Component<any, any> {
                             <div className="sort-view">
                                 <ul>
                                     <li className="active">
-                                        <a href="#"><img src={folderIcon} alt="" /></a>
+                                        <a><img src={folderIcon} alt="" /></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img src={listIcon} alt="" /></a>
+                                        <a><img src={listIcon} alt="" /></a>
                                     </li>
                                 </ul>
                             </div>

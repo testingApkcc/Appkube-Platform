@@ -344,6 +344,10 @@ a:hover {
   vertical-align: top;
   margin-bottom: 0;
 }
+.perfmanager-modal-container .modal-footer {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
 
 /*********************************** Script Editor Buttons *********************************/
 .script-editor {

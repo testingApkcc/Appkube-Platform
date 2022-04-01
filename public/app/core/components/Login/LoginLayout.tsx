@@ -9,16 +9,7 @@ interface InnerBoxProps {
 }
 export const InnerBox: FC<InnerBoxProps> = ({ children, enterAnimation = true }) => {
   const loginStyles = useStyles(getLoginStyles);
-  return (
-    <div
-      className={cx(
-        loginStyles.loginInnerBox,
-        enterAnimation && loginStyles.enterAnimation
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={cx(loginStyles.loginInnerBox, enterAnimation && loginStyles.enterAnimation)}>{children}</div>;
 };
 
 export const LoginLayout: FC = ({ children }) => {
@@ -33,9 +24,7 @@ export const LoginLayout: FC = ({ children }) => {
           <div className="login-dialog-box">
             <div className={loginStyles.titleWrapper}>
               <h1 className={loginStyles.mainTitle}>{Branding.LoginTitle}</h1>
-              <h3 className={loginStyles.subTitle}>
-                {Branding.GetLoginSubTitle()}
-              </h3>
+              <h3 className={loginStyles.subTitle}>{Branding.GetLoginSubTitle()}</h3>
             </div>
             <div className={loginStyles.loginOuterBox}>{children}</div>
           </div>
