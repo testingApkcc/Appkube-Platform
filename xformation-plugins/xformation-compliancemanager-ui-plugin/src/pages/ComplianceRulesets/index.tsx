@@ -142,7 +142,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
             <strong className="d-inline-block">{data.name}</strong>
             <div className="d-inline-block float-right width-auto assessment-toggle-main">
               <a
-                href="#"
+              
                 className="gray-button min-width-inherit m-r-0"
                 onClick={() => this.assessmentHandleClick(indx)}
               >
@@ -209,7 +209,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
         <li className="" key={i}>
           <a
             className={currentPage === i ? 'active' : 'deactive'}
-            href="#"
+          
             onClick={(e) => this.navigatePage('btn-click', e, i)}
           >
             {i + 1}
@@ -222,7 +222,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
         <li className="previous">
           <a
             className={currentPage === 0 ? 'desable' : 'enable'}
-            href="#"
+          
             onClick={(e) => this.navigatePage('pre', e, '')}
           >
             Previous
@@ -232,7 +232,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
         <li className="next">
           <a
             className={currentPage === this.state.totalPages - 1 ? 'desable' : 'enable'}
-            href="#"
+          
             onClick={(e) => this.navigatePage('next', e, '')}
           >
             Next
@@ -372,10 +372,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-6">
                     <div className="d-block text-right width-100 view">
-                      <a href="#" className="d-inline-block">
+                      <a className="d-inline-block">
                         <i className="fa fa-bars"></i>
                       </a>
-                      <a href="#" className="d-inline-block m-r-0">
+                      <a className="d-inline-block m-r-0">
                         <i className="fa fa-th-large"></i>
                       </a>
                     </div>

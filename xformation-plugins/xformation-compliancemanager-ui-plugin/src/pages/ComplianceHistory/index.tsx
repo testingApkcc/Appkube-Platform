@@ -325,7 +325,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                   <p>July 16 2020 05 : 20 PM</p>
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-12 text-right">
-                  <a href="#" className="white-button m-r-0 min-width-inherit width-auto back-button">
+                  <a className="white-button m-r-0 min-width-inherit width-auto back-button">
                     <i className="fa fa-arrow-circle-o-left"></i> Back
                   </a>
                 </div>

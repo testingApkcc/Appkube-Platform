@@ -55,6 +55,12 @@
         text-align: right;
         display: block;
       }
+      .collapse{
+        display: none;
+        &.show{
+          display: block;
+        }
+      }
       .thead{
         display: block;
         width: 100%;

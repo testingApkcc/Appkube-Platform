@@ -77,7 +77,7 @@
 }
 
 .team-dashboard-page-container {
-  background-color: #ffffff;
+  background-color: $overview-container-background-color;
 
   .common-container {
     padding-top: 15px;
@@ -169,7 +169,7 @@
   .heading {
     h3 {
       line-height: 36px;
-      color: #3b4859;
+      color: $manage-dashboard-text-color;
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 0;
@@ -177,7 +177,7 @@
 
     span {
       line-height: 14px;
-      color: #3b4859;
+      color: $manage-dashboard-text-color;
       font-size: 12px;
       font-weight: 400;
     }
@@ -203,6 +203,7 @@
       border-radius: 3px;
       padding-top: 15px;
       padding-bottom: 15px;
+      background-color: #ffffff;
 
       span {
         line-height: 18px;
@@ -230,11 +231,10 @@
 
     .heading {
       line-height: 38px;
-      color: #3b4859;
+      color: $manage-dashboard-text-color;
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 0;
-      background-color: #ffffff;
       border-bottom: 1px solid #f5f6f5;
       padding: 0 0 10px 0;
 

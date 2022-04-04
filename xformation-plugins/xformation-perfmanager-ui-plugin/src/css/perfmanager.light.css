@@ -1111,6 +1111,12 @@ a:hover {
 .collection-dashboard-general .general-heading .fa {
   padding-top: 6px;
 }
+.collection-dashboard-general .collapse {
+  display: none;
+}
+.collection-dashboard-general .collapse.show {
+  display: block;
+}
 .collection-dashboard-general .general-logs {
   padding-left: 30px;
   padding-top: 20px;
@@ -1280,6 +1286,12 @@ a:hover {
 }
 .collection-details .container-inner .collection-data-table .d-flex {
   text-align: right;
+  display: block;
+}
+.collection-details .container-inner .collection-data-table .collapse {
+  display: none;
+}
+.collection-details .container-inner .collection-data-table .collapse.show {
   display: block;
 }
 .collection-details .container-inner .collection-data-table .thead {
@@ -2197,6 +2209,12 @@ a:hover {
 .perfmanager-dashboard-container .manage-dashboard-general .general-heading .fa {
   padding-top: 6px;
   cursor: pointer;
+}
+.perfmanager-dashboard-container .manage-dashboard-general .collapse {
+  display: none;
+}
+.perfmanager-dashboard-container .manage-dashboard-general .collapse.show {
+  display: block;
 }
 .perfmanager-dashboard-container .manage-dashboard-general .general-logs {
   padding-left: 30px;

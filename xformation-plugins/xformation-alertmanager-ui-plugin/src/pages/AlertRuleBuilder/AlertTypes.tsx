@@ -18,9 +18,9 @@ export class AlertTypes extends React.Component<any, any>{
         let retantionData = (
             <div className="database">
                 <ul>
-                    <li className="active"><a href="#">Database_1</a></li>
-                    <li><a href="#">Database_2</a></li>
-                    <li><a href="#">Database_3</a></li>
+                    <li className="active"><a>Database_1</a></li>
+                    <li><a>Database_2</a></li>
+                    <li><a>Database_3</a></li>
                 </ul>
             </div>);
         return retantionData;
@@ -31,12 +31,12 @@ export class AlertTypes extends React.Component<any, any>{
             <div className="database-selected">
                 <ul>
                     <li className="selected">
-                        <a href="#">Cq</a>
+                        <a>Cq</a>
                         <div className="toggle">=</div>
                         <div className="toggle-box">
                             <ul>
                                 <li className="selected">
-                                    <a href="#">hostname-1</a>
+                                    <a>hostname-1</a>
                                     <div className="hostname">Group By hostname</div>
                                     <div className="hostname-search">
                                         <button><i className="fa fa-search"></i></button>
@@ -48,16 +48,16 @@ export class AlertTypes extends React.Component<any, any>{
                         </div>
                     </li>
                     <li>
-                        <a href="#">database</a>
+                        <a>database</a>
                     </li>
                     <li>
-                        <a href="#">httpd</a>
+                        <a>httpd</a>
                     </li>
                     <li>
-                        <a href="#">queryExecutor</a>
+                        <a>queryExecutor</a>
                     </li>
                     <li>
-                        <a href="#">runtime</a>
+                        <a>runtime</a>
                     </li>
                 </ul>
             </div>
@@ -70,25 +70,25 @@ export class AlertTypes extends React.Component<any, any>{
             <div className="measurement-selected">
                 <ul>
                     <li className="selected">
-                        <a href="#">queryFail</a>
+                        <a>queryFail</a>
                         <div className="functions">0 Functions</div>
                         <div className="functions-box">
                             <ul>
-                                <li><a href="#">mean</a></li>
-                                <li><a href="#">median</a></li>
-                                <li><a href="#">count</a></li>
-                                <li><a href="#">min</a></li>
-                                <li><a href="#">max</a></li>
-                                <li><a href="#">sum</a></li>
-                                <li><a href="#">first</a></li>
-                                <li><a href="#">last</a></li>
-                                <li><a href="#">spread</a></li>
-                                <li><a href="#">stddev</a></li>
+                                <li><a>mean</a></li>
+                                <li><a>median</a></li>
+                                <li><a>count</a></li>
+                                <li><a>min</a></li>
+                                <li><a>max</a></li>
+                                <li><a>sum</a></li>
+                                <li><a>first</a></li>
+                                <li><a>last</a></li>
+                                <li><a>spread</a></li>
+                                <li><a>stddev</a></li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="#">queryOk</a>
+                        <a>queryOk</a>
                     </li>
                 </ul>
             </div>
@@ -122,9 +122,9 @@ export class AlertTypes extends React.Component<any, any>{
                     <div className="choose-one-box">
                         <span>Choose One:</span>
                         <ul>
-                            <li onClick={() => { this.changeAlertTypeData('Threshold') }} className="active"><a href="#">Threshold</a></li>
-                            <li onClick={() => { this.changeAlertTypeData('Relative') }}><a href="#">Relative</a></li>
-                            <li onClick={() => { this.changeAlertTypeData('Availability') }}><a href="#">Availability</a></li>
+                            <li onClick={() => { this.changeAlertTypeData('Threshold') }} className="active"><a>Threshold</a></li>
+                            <li onClick={() => { this.changeAlertTypeData('Relative') }}><a>Relative</a></li>
+                            <li onClick={() => { this.changeAlertTypeData('Availability') }}><a>Availability</a></li>
                         </ul>
                     </div>
                 </div>

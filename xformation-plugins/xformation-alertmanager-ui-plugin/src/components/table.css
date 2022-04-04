@@ -17,6 +17,10 @@
   color: #333333;
 }
 
+.theme-dark .custom-table .toolbar .showing {
+  color: #fafafa;
+}
+
 .custom-table .toolbar .showby {
   display: inline-block;
   border-left: 1px solid #a9b9c6;
@@ -32,6 +36,10 @@
   padding-right: 15px;
   line-height: 34px;
   margin-bottom: 0;
+}
+
+.theme-dark .custom-table .toolbar .showby label {
+  color: #fafafa;
 }
 
 .custom-table .toolbar .showby .form-control {
@@ -57,6 +65,10 @@
   color: #333333;
   font-weight: 500;
   padding-left: 15px;
+}
+
+.theme-dark .custom-table .toolbar .showby span {
+  color: #fafafa;
 }
 
 .theme-light .custom-table .toolbar .showing {
@@ -377,8 +389,17 @@
   text-align: left;
 }
 
+.theme-dark .custom-table .data-table-parent .data-table th,
+.theme-dark .custom-table .data-table-parent .data-table td {
+  color: #fafafa;
+}
+
 .custom-table .data-table-parent .data-table tbody tr:nth-child(odd) {
   background-color: #e9edf2;
+}
+
+.theme-dark .custom-table .data-table-parent .data-table tbody tr:nth-child(odd) {
+  background-color: #202226;
 }
 
 .custom-table .data-table-parent .data-table tbody tr.checked-row {

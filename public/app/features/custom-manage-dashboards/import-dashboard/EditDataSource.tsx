@@ -81,7 +81,7 @@ export class EditDataSource extends React.Component<any, any> {
               <div className="row">
                 <div className="col-lg-3 col-md-12 col-sm-12 order">
                   <div className="d-block width-100 text-right">
-                    <a href="#" className="import-white-button min-width-inherit m-r-0">
+                    <a className="import-white-button min-width-inherit m-r-0">
                       <i className="fa fa-arrow-circle-left"></i>
                       &nbsp;&nbsp;Back
                     </a>
