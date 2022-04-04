@@ -1,15 +1,15 @@
 // Libraries
-import React from "react";
-import { css } from "@emotion/css";
+import React from 'react';
+import { css } from '@emotion/css';
 // Components
-import { UserSignup } from "./UserSignup";
-import { LoginServiceButtons } from "./LoginServiceButtons";
-import LoginCtrl from "./LoginCtrl";
-import { LoginForm } from "./LoginForm";
-import { ChangePassword } from "../ForgottenPassword/ChangePassword";
-import { Branding } from "app/core/components/Branding/Branding";
-import { HorizontalGroup, LinkButton } from "@grafana/ui";
-import { LoginLayout, InnerBox } from "./LoginLayout";
+import { UserSignup } from './UserSignup';
+import { LoginServiceButtons } from './LoginServiceButtons';
+import LoginCtrl from './LoginCtrl';
+import { LoginForm } from './LoginForm';
+import { ChangePassword } from '../ForgottenPassword/ChangePassword';
+import { Branding } from 'app/core/components/Branding/Branding';
+import { HorizontalGroup, LinkButton } from '@grafana/ui';
+import { LoginLayout, InnerBox } from './LoginLayout';
 
 const forgottenPasswordStyles = css`
   padding: 0;
@@ -66,6 +66,7 @@ export const LoginPage: any = (props: Props) => {
                       isMfaEnable={props.isMfaEnable}
                       isMfaAuthenticated={props.isMfaAuthenticated}
                       isExternalSecurityEnable={props.isExternalSecurityEnable}
+                      handleBack={props.handleBack}
                     >
                       {!(props.ldapEnabled || props.authProxyEnabled) ? (
                         <HorizontalGroup justify="flex-end">
@@ -89,10 +90,7 @@ export const LoginPage: any = (props: Props) => {
             )}
             {props.isChangingPassword && (
               <InnerBox>
-                <ChangePassword
-                  onSubmit={props.changePassword}
-                  onSkip={() => props.skipPasswordChange()}
-                />
+                <ChangePassword onSubmit={props.changePassword} onSkip={() => props.skipPasswordChange()} />
               </InnerBox>
             )}
           </>
