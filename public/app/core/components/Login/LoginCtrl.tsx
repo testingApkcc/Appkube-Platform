@@ -52,6 +52,7 @@ interface Props {
     isMfaEnable: boolean;
     isMfaAuthenticated: boolean;
     isExternalSecurityEnable: boolean;
+    handleBack: () => void;
   }) => JSX.Element;
 }
 
@@ -89,7 +90,7 @@ export class LoginCtrl extends PureComponent<Props, State> {
       user: null,
       isExternalSecurityEnable: false,
     };
-
+    console.log(this.state.currentLoginStep);
     if (config.loginError) {
       appEvents.emit(AppEvents.alertWarning, ['Login Failed', config.loginError]);
     }
@@ -122,20 +123,25 @@ export class LoginCtrl extends PureComponent<Props, State> {
         this.toGrafana();
       });
   };
-
+  handleBack = () => {
+    this.setState({ currentLoginStep: LoginSteps.LOGIN });
+  };
   login = (formModel: FormModel) => {
     this.setState({
       isLoggingIn: true,
     });
     let isExSec = false;
     console.log(`calling login API from UI..................`);
-    getBackendSrv()
-      .get('/external_security_enable')
-      .then((res: any) => {
-        console.log(`external_security_enable flag: `, res);
-        isExSec = res;
-        localStorage.setItem(`external_security_enable`, isExSec === true ? `true` : `false`);
-      });
+    // getBackendSrv()
+    //   .get("/external_security_enable")
+    //   .then((res: any) => {
+    //     console.log(`external_security_enable flag: `, res);
+    //     isExSec = res;
+    //     localStorage.setItem(
+    //       `external_security_enable`,
+    //       isExSec === true ? `true` : `false`
+    //     );
+    //   });
     getBackendSrv()
       .post('/login', formModel)
       .then((result: any) => {
@@ -170,6 +176,10 @@ export class LoginCtrl extends PureComponent<Props, State> {
       });
       const data = new FormData();
       data.append('userName', email);
+      this.setState({
+        currentLoginStep: LoginSteps.PASSWORD,
+      });
+      return;
       fetch(urls.AUTHENTICATE_USER, {
         method: 'POST',
         body: data,
@@ -328,7 +338,7 @@ export class LoginCtrl extends PureComponent<Props, State> {
       isMfaAuthenticated,
       isExternalSecurityEnable,
     } = this.state;
-    const { login, toGrafana, changePassword, verifyEmail, verifyMfaCode, verifyPassword } = this;
+    const { login, toGrafana, changePassword, verifyEmail, verifyMfaCode, handleBack, verifyPassword } = this;
     const { loginHint, passwordHint, disableLoginForm, ldapEnabled, authProxyEnabled, disableUserSignUp } = config;
 
     return (
@@ -356,6 +366,7 @@ export class LoginCtrl extends PureComponent<Props, State> {
           isMfaEnable,
           isMfaAuthenticated,
           isExternalSecurityEnable,
+          handleBack,
         })}
       </>
     );
