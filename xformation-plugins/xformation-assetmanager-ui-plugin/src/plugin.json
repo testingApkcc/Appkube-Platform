@@ -64,6 +64,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/%PLUGIN_ID%?path=department-wise-products"
+    },
+    {
+      "type": "page",
+      "name": "DepartmentWiseCharts",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=department-wise-charts"
     }
   ],
   "dependencies": {

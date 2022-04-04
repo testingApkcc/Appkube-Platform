@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
-import { PLUGIN_BASE_URL } from '../../constants';
-import { remove } from 'lodash';
+// import { PLUGIN_BASE_URL } from '../../constants';
+// import { remove } from 'lodash';
 
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
@@ -32,17 +32,17 @@ export class StorageDetails extends React.Component<any, any> {
         const tenantId = this.getParameterByName("tenantId", window.location.href);
         if (type) {
             const { storageData } = this.state;
-            storageData.push({
-                nodeTitle: type,
-                accountId: accountId,
-                tenantId: tenantId,
-                cloudName: cloudName
-            });
+            for (let i = 0; i < 3; i++) { 
+                storageData.push({
+                    nodeTitle: type,
+                    accountId: accountId,
+                    tenantId: tenantId,
+                    cloudName: cloudName
+                });
+            }
             this.setState({
                 storageData
             });
-        } else {
-
         }
     }
 
@@ -79,10 +79,12 @@ export class StorageDetails extends React.Component<any, any> {
     }
 
     removeTab = (index: any) => {
-        const { activeTab } = this.state;
+        const { storageData } = this.state;
         if (index !== 0) {
+            storageData.splice(index, 1);
             this.setState({
-                activeTab: activeTab - 1,
+                storageData,
+                activeTab: index - 1,
             })
         } else {
             window.history.go(-1);
@@ -104,10 +106,10 @@ export class StorageDetails extends React.Component<any, any> {
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-12">
                                 <div className="float-right common-right-btn">
-                                    <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit m-r-0">
+                                    <a onClick={() => window.history.go(-1)} className="asset-white-button min-width-inherit m-r-0">
                                         <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;
                                         Back
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
