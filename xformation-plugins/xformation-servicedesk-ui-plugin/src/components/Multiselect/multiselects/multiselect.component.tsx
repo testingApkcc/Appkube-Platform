@@ -10,6 +10,29 @@ const closeIconTypes: any = {
 };
 
 export class Multiselect extends React.Component<any, any> {
+  public static defaultProps = {
+    options: [],
+    disablePreSelectedValues: false,
+    selectedValues: [],
+    isObject: true,
+    displayValue: 'model',
+    showCheckbox: false,
+    selectionLimit: -1,
+    placeholder: 'Select',
+    groupBy: '',
+    style: {},
+    emptyRecordMsg: 'No Options Available',
+    onSelect: () => {},
+    onRemove: () => {},
+    closeIcon: 'circle2',
+    singleSelect: false,
+    caseSensitiveSearch: false,
+    id: '',
+    closeOnSelect: true,
+    avoidHighlightFirstOption: false,
+    hidePlaceholder: false,
+  };
+
   searchWrapper: any;
   searchBox: any;
   constructor(props: any) {
@@ -459,26 +482,3 @@ export class Multiselect extends React.Component<any, any> {
     return this.renderMultiselectContainer();
   }
 }
-
-// Multiselect.defaultProps = {
-//   options: [],
-//   disablePreSelectedValues: false,
-//   selectedValues: [],
-//   isObject: true,
-//   displayValue: 'model',
-//   showCheckbox: false,
-//   selectionLimit: -1,
-//   placeholder: 'Select',
-//   groupBy: '',
-//   style: {},
-//   emptyRecordMsg: 'No Options Available',
-//   onSelect: () => {},
-//   onRemove: () => {},
-//   closeIcon: 'circle2',
-//   singleSelect: false,
-//   caseSensitiveSearch: false,
-//   id: '',
-//   closeOnSelect: true,
-//   avoidHighlightFirstOption: false,
-//   hidePlaceholder: false,
-// };

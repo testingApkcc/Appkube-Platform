@@ -283,7 +283,7 @@ export class OpenNewEmailPopup extends React.Component<any, any> {
       status,
       tags,
       isSubmitted,
-      toEmails,
+      //toEmails,
       ticketId,
       ticketListObj,
     } = this.state;
@@ -331,7 +331,7 @@ export class OpenNewEmailPopup extends React.Component<any, any> {
               <div className="col-lg-12 col-md-12 col-sm-12">
                 <div className="form-group">
                   <label htmlFor="description">To*</label>
-                  <Multiselect
+                  {/* <Multiselect
                     options={this.state.toOptions}
                     preselectedValues={toEmails}
                     onSelect={(selectedValues: any, item: any) => this.onChangeEmail(selectedValues, 'to')}
@@ -339,7 +339,7 @@ export class OpenNewEmailPopup extends React.Component<any, any> {
                     closeIcon="close"
                     displayValue="name"
                     getAdHocItem={this.getAdHocItem}
-                  />
+                  /> */}
                   <span style={{ color: 'red' }}>{errorData.toEmails.message}</span>
                 </div>
               </div>

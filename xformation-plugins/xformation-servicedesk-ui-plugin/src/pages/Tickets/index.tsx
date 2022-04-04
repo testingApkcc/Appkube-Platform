@@ -537,7 +537,7 @@ export class Tickets extends React.Component<any, any> {
                 </div>
               </div>
             </div>
-            <div className="d-block width-100 p-t-10 chart-inner">
+            <div className="d-block width-100 chart-inner">
               <Bar data={barChartData} options={this.barChartOptions} />
             </div>
           </div>

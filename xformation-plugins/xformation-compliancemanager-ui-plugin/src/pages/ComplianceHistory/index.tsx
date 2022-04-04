@@ -2,44 +2,35 @@ import * as React from 'react';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Progress } from 'reactstrap';
-import { Pie, Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LineElement,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
+
+
+// const piedata: any = {
+//   labels: ['S3 Buge', 'Cloud', 'lamUser'],
+//   datasets: [
+//     {
+//       data: [15, 17, 90],
+//       backgroundColor: ['#E31335', '#15C64C', '#3C495A'],
+//       hoverBackgroundColor: ['#E31335', '#15C64C', '#3C495A'],
+//     },
+//   ],
+// };
 
 export class ComplianceHistory extends React.Component<any, any> {
   breadCrumbs: any;
-  pieOptions: any = {
-    responsive: true,
-    maintainAspectRatio: false,
-    legend: {
-      display: true,
-      position: 'right',
-    },
-  };
-  barOptions: any = {
-    responsive: true,
-    maintainAspectRatio: false,
-    legend: {
-      display: false,
-      position: 'right',
-    },
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            fontColor: '#3C495A',
-            fontSize: 12,
-          },
-        },
-      ],
-      xAxes: [
-        {
-          ticks: {
-            fontColor: '#ffff',
-            fontSize: 12,
-          },
-        },
-      ],
-    },
-  };
   constructor(props: any) {
     super(props);
     this.state = {
@@ -99,6 +90,26 @@ export class ComplianceHistory extends React.Component<any, any> {
           detail: 'Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12',
         },
       ],
+      barData: [
+        {
+          label: 'Line Dataset',
+          lineTension: 0.2,
+          fill: false,
+          borderColor: 'rgba(255,255,255,0.5)',
+          data: ['50', '30', '70', '90'],
+          borderWidth: 2,
+          type: 'line',
+        },
+      ],
+      barLabels: ['Lam', 'Cloud', 'Security', 'KMS'],        
+      singleChartdata: [
+        {
+          data: [100],
+          backgroundColor: ['#E31335'],
+          hoverBackgroundColor: ['#E31335'],
+        },
+      ],
+      singleLabels: ['High'],
     };
     this.breadCrumbs = [
       {
@@ -115,6 +126,31 @@ export class ComplianceHistory extends React.Component<any, any> {
       },
     ];
   }
+
+  barOptions = {
+    scales: {
+      x: {
+        ticks: {
+          fontColor: 'white',
+          stepSize: 12,
+        },
+      },
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    legend: {
+      display: false,
+    },
+  };
+
+  pieOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    legend: {
+      display: true,
+      position: 'right',
+    },
+  };
 
   onSearchChange = (e: any) => {
     const { value } = e.target;
@@ -148,6 +184,7 @@ export class ComplianceHistory extends React.Component<any, any> {
       totalPages: indexOfLastData,
     });
   };
+
   displayNo_of_data = 0;
 
   displayHistoryData = () => {
@@ -271,45 +308,8 @@ export class ComplianceHistory extends React.Component<any, any> {
     }
   }
 
-  data = {
-    labels: ['Lam', 'Cloud', 'Security', 'KMS'],
-    datasets: [
-      {
-        label: '',
-        backgroundColor: 'rgba(60, 73, 90, 1)',
-        borderColor: 'rgba(60, 73, 90, 1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(60, 73, 90, 1)',
-        hoverBorderColor: 'rgba(60, 73, 90, 1)',
-        data: [9, 20, -8, -15],
-      },
-    ],
-  };
-
-  singleChartdata = {
-    labels: ['High'],
-    datasets: [
-      {
-        data: [100],
-        backgroundColor: ['#E31335'],
-        hoverBackgroundColor: ['#E31335'],
-      },
-    ],
-  };
-
-  piedata = {
-    labels: ['S3 Buge', 'Cloud', 'lamUser'],
-    datasets: [
-      {
-        data: [15, 17, 90],
-        backgroundColor: ['#E31335', '#15C64C', '#3C495A'],
-        hoverBackgroundColor: ['#E31335', '#15C64C', '#3C495A'],
-      },
-    ],
-  };
-
   render() {
-    const { historyData } = this.state;
+    const { historyData, barData, barLabels } = this.state;
     const now = 60;
     return (
       <div className="compliance-history-container">
@@ -347,7 +347,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                     <strong>Failed Tests by Rule Serverity</strong>
                   </div>
                   <div className="d-block chart-inner">
-                    <Pie data={this.singleChartdata} options={this.pieOptions} />
+                    {/* <Pie data={{datasets: singleChartdata, labels: singleLabels}} options={this.pieOptions} /> */}
                   </div>
                 </div>
                 <div className="d-inline-block chart-box green-chart">
@@ -355,7 +355,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                     <strong>Entitles by Type, Pass Vs Fail</strong>
                   </div>
                   <div className="d-block chart-inner">
-                    <Bar data={this.data} width={100} height={100} options={this.barOptions} />
+                    <Bar data={{datasets: barData, labels: barLabels}} options={this.barOptions} />
                   </div>
                 </div>
                 <div className="d-inline-block chart-box">
@@ -363,7 +363,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                     <strong>Tested Entities</strong>
                   </div>
                   <div className="d-block chart-inner">
-                    <Pie data={this.piedata} options={this.pieOptions} />
+                    {/* <Pie data={piedata} options={pieOptions} /> */}
                   </div>
                 </div>
               </div>

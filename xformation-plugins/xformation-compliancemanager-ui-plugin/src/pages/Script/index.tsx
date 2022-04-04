@@ -49,7 +49,7 @@ export class Script extends React.Component<any, any> {
               <h3>GSL Editor</h3>
               <ul>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={awsLogo} alt="" />
                     </span>
@@ -57,7 +57,7 @@ export class Script extends React.Component<any, any> {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={microsoftAzureLogo} alt="" />
                     </span>
@@ -65,7 +65,7 @@ export class Script extends React.Component<any, any> {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={gcpLogo} alt="" />
                     </span>
@@ -73,7 +73,7 @@ export class Script extends React.Component<any, any> {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <span>
                       <img src={KubernetesLogo} alt="" />
                     </span>
@@ -132,7 +132,7 @@ export class Script extends React.Component<any, any> {
                   </div>
                   <div className="col-md-3 col-sm-6">
                     <div className="form-group filter-control-group">
-                      <a href="#" className="blue-button m-r-0 m-b-0 runtest-button">
+                      <a className="blue-button m-r-0 m-b-0 runtest-button">
                         <i className="fa fa-play-circle"></i> RUN TEST
                       </a>
                     </div>
@@ -145,7 +145,7 @@ export class Script extends React.Component<any, any> {
                   <div className="choosh-popup">
                     <ul>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={ApiGateway} alt="" />
                           </span>
@@ -153,7 +153,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={ApplicationLoadBalancer} alt="" />
                           </span>
@@ -161,7 +161,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={CustomerGateway} alt="" />
                           </span>
@@ -169,7 +169,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={ELB} alt="" />
                           </span>
@@ -177,7 +177,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={CloudFront} alt="" />
                           </span>
@@ -185,7 +185,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={AutoScalingGroup} alt="" />
                           </span>
@@ -193,7 +193,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={ECSCluster} alt="" />
                           </span>
@@ -201,7 +201,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={lamServeCertificate} alt="" />
                           </span>
@@ -209,7 +209,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={CloudWatchEventsRule} alt="" />
                           </span>
@@ -217,7 +217,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={Organization} alt="" />
                           </span>
@@ -225,7 +225,7 @@ export class Script extends React.Component<any, any> {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <span>
                             <img src={Route53Domain} alt="" />
                           </span>
@@ -254,7 +254,7 @@ export class Script extends React.Component<any, any> {
                           apiKeySource:<span>string</span>
                         </li>
                         <li>
-                          <i className="fa fa-caret-down"></i> binaryMediaTypes:Array <a href="#">[1]</a>
+                          <i className="fa fa-caret-down"></i> binaryMediaTypes:Array <a>[1]</a>
                           <ul>
                             <li>
                               <i className="fa fa-caret-right"></i> O:Object
