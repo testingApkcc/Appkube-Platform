@@ -16,6 +16,7 @@ interface Props {
   verifyMfaCode: (e: any, mfaCode: any) => void;
   isMfaValidating: boolean;
   verifyPassword: (e: any, password: any) => void;
+  handleBack: () => void;
   isAuthWithUserName: boolean;
   isMfaEnable: boolean;
   isMfaAuthenticated: boolean;
@@ -72,15 +73,16 @@ export const LoginForm: FC<Props> = ({
   passwordHint,
   loginHint,
   currentLoginStep,
-  isEmailValidating,
+  // isEmailValidating,
   verifyEmail,
   verifyMfaCode,
   isMfaValidating,
   verifyPassword,
-  isAuthWithUserName,
-  isMfaEnable,
-  isMfaAuthenticated,
-  isExternalSecurityEnable,
+  // isAuthWithUserName,
+  // isMfaEnable,
+  // isMfaAuthenticated,
+  // isExternalSecurityEnable,
+  handleBack,
 }) => {
   const [email, setEmail] = useState('');
   const [mfaCode, setMFACode] = useState('');
@@ -92,7 +94,7 @@ export const LoginForm: FC<Props> = ({
   });
 
   const onClickNextButton = (e: any) => {
-    if (currentLoginStep === LoginSteps.LOGIN) {
+    if (currentLoginStep === LoginSteps.LOGIN && LoginSteps.MFA_VALIDATION) {
       if (email && email.trim()) {
         verifyEmail(e, email);
       } else {
@@ -107,10 +109,10 @@ export const LoginForm: FC<Props> = ({
         setErrorObj(JSON.parse(JSON.stringify(errorObj)));
       }
     } else if (currentLoginStep === LoginSteps.PASSWORD) {
-      if (password && password.trim()) {
+      if (password !== '' && password.trim()) {
         verifyPassword(e, password);
       } else {
-        errorObj.mfa = 'Please enter password';
+        errorObj.password = 'Please enter password';
         setErrorObj(JSON.parse(JSON.stringify(errorObj)));
       }
     }
@@ -158,7 +160,7 @@ export const LoginForm: FC<Props> = ({
           type="button"
           aria-label={selectors.pages.Login.submit}
           className={submitButton}
-          disabled={isEmailValidating}
+          // disabled={isEmailValidating}
           onClick={(e) => onClickNextButton(e)}
         >
           {isLoggingIn ? 'Validating email...' : 'Next'}
@@ -183,7 +185,7 @@ export const LoginForm: FC<Props> = ({
           type="button"
           aria-label={selectors.pages.Login.submit}
           className={submitButton}
-          disabled={isEmailValidating}
+          // disabled={isEmailValidating}
           onClick={(e) => onClickNextButton(e)}
         >
           {isMfaValidating ? 'Validating code...' : 'Next'}
@@ -198,6 +200,7 @@ export const LoginForm: FC<Props> = ({
             height: '40px',
             lineHeight: '40px',
           }}
+          onClick={handleBack}
         >
           Back
         </LinkButton>
@@ -217,18 +220,18 @@ export const LoginForm: FC<Props> = ({
           <Input
             name="password"
             type="password"
+            id="pasword"
             placeholder={passwordHint}
             value={password}
             onChange={onChangePassword}
           />
         </Field>
-        {errorObj['password'] && <div className="error">{errorObj['password']}</div>}
-        <Button className={submitButton} disabled={isLoggingIn} onClick={(e) => onClickNextButton(e)}>
+        {errorObj && errorObj['password'] && <div className="error">{errorObj['password']}</div>}
+        <Button type={!password ? 'button' : 'submit'} className={submitButton} onClick={(e) => onClickNextButton(e)}>
           {isLoggingIn ? 'Logging in...' : 'Login'}
         </Button>
         <LinkButton
           variant="link"
-          href="/login"
           style={{
             padding: '0 15px',
             marginTop: '0px',
@@ -236,6 +239,7 @@ export const LoginForm: FC<Props> = ({
             height: '40px',
             lineHeight: '40px',
           }}
+          onClick={handleBack}
         >
           Back
         </LinkButton>

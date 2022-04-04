@@ -1,15 +1,14 @@
-import React from "react";
-import config from "app/core/config";
-import { updateLocation, notifyApp } from "app/core/actions";
-import { connect } from "react-redux";
-import { StoreState } from "app/types";
-import { PureComponent } from "react";
-import { getBackendSrv } from "@grafana/runtime";
-import { hot } from "react-hot-loader";
-import appEvents from "app/core/app_events";
-import { AppEvents } from "@grafana/data";
-import { config as urls } from "app/features/config";
-import { createErrorNotification } from "app/core/copy/appNotification";
+import React, { PureComponent } from 'react';
+import config from 'app/core/config';
+import { updateLocation, notifyApp } from 'app/core/actions';
+import { connect } from 'react-redux';
+import { StoreState } from 'app/types';
+import { getBackendSrv } from '@grafana/runtime';
+import { hot } from 'react-hot-loader';
+import appEvents from 'app/core/app_events';
+import { AppEvents } from '@grafana/data';
+import { config as urls } from 'app/features/config';
+import { createErrorNotification } from 'app/core/copy/appNotification';
 
 const isOauthEnabled = () => {
   return !!config.oauth && Object.keys(config.oauth).length > 0;
@@ -53,6 +52,7 @@ interface Props {
     isMfaEnable: boolean;
     isMfaAuthenticated: boolean;
     isExternalSecurityEnable: boolean;
+    handleBack: () => void;
   }) => JSX.Element;
 }
 
@@ -82,20 +82,17 @@ export class LoginCtrl extends PureComponent<Props, State> {
       isEmailValidating: false,
       currentLoginStep: LoginSteps.LOGIN,
       isMfaValidating: false,
-      organizationName: "",
-      userName: "",
+      organizationName: '',
+      userName: '',
       isAuthWithUserName: false,
       isMfaEnable: false,
       isMfaAuthenticated: false,
       user: null,
       isExternalSecurityEnable: false,
     };
-
+    console.log(this.state.currentLoginStep);
     if (config.loginError) {
-      appEvents.emit(AppEvents.alertWarning, [
-        "Login Failed",
-        config.loginError,
-      ]);
+      appEvents.emit(AppEvents.alertWarning, ['Login Failed', config.loginError]);
     }
   }
 
@@ -103,11 +100,11 @@ export class LoginCtrl extends PureComponent<Props, State> {
     const pw = {
       newPassword: password,
       confirmNew: password,
-      oldPassword: "admin",
+      oldPassword: 'admin',
     };
     if (!this.props.routeParams.code) {
       getBackendSrv()
-        .put("/api/user/password", pw)
+        .put('/api/user/password', pw)
         .then(() => {
           this.toGrafana();
         })
@@ -121,43 +118,41 @@ export class LoginCtrl extends PureComponent<Props, State> {
     };
 
     getBackendSrv()
-      .post("/api/user/password/reset", resetModel)
+      .post('/api/user/password/reset', resetModel)
       .then(() => {
         this.toGrafana();
       });
   };
-
+  handleBack = () => {
+    this.setState({ currentLoginStep: LoginSteps.LOGIN });
+  };
   login = (formModel: FormModel) => {
     this.setState({
       isLoggingIn: true,
     });
     let isExSec = false;
     console.log(`calling login API from UI..................`);
+    // getBackendSrv()
+    //   .get("/external_security_enable")
+    //   .then((res: any) => {
+    //     console.log(`external_security_enable flag: `, res);
+    //     isExSec = res;
+    //     localStorage.setItem(
+    //       `external_security_enable`,
+    //       isExSec === true ? `true` : `false`
+    //     );
+    //   });
     getBackendSrv()
-      .get("/external_security_enable")
-      .then((res: any) => {
-        console.log(`external_security_enable flag: `, res);
-        isExSec = res;
-        localStorage.setItem(
-          `external_security_enable`,
-          isExSec === true ? `true` : `false`
-        );
-      });
-    getBackendSrv()
-      .post("/login", formModel)
+      .post('/login', formModel)
       .then((result: any) => {
         this.result = result;
         if (isExSec === true) {
           localStorage.setItem(`userInfo`, JSON.stringify(result.userInfo));
         } else {
-          localStorage.setItem(`userInfo`, "");
+          localStorage.setItem(`userInfo`, '');
         }
 
-        if (
-          formModel.password !== "admin" ||
-          config.ldapEnabled ||
-          config.authProxyEnabled
-        ) {
+        if (formModel.password !== 'admin' || config.ldapEnabled || config.authProxyEnabled) {
           this.toGrafana();
           return;
         } else {
@@ -180,9 +175,13 @@ export class LoginCtrl extends PureComponent<Props, State> {
         userName: email,
       });
       const data = new FormData();
-      data.append("userName", email);
+      data.append('userName', email);
+      this.setState({
+        currentLoginStep: LoginSteps.PASSWORD,
+      });
+      return;
       fetch(urls.AUTHENTICATE_USER, {
-        method: "POST",
+        method: 'POST',
         body: data,
       })
         .then((response) => response.json())
@@ -191,23 +190,16 @@ export class LoginCtrl extends PureComponent<Props, State> {
             if (response) {
               this.setState({
                 isEmailValidating: false,
-                currentLoginStep:
-                  response.isMfaEnable === "YES"
-                    ? LoginSteps.MFA_VALIDATION
-                    : LoginSteps.PASSWORD,
+                currentLoginStep: response.isMfaEnable === 'YES' ? LoginSteps.MFA_VALIDATION : LoginSteps.PASSWORD,
                 organizationName: response.organization.name,
                 user: response,
               });
             } else {
-              notifyApp(
-                createErrorNotification("There is some error. Please try again")
-              );
+              notifyApp(createErrorNotification('There is some error. Please try again'));
             }
           },
           (error) => {
-            notifyApp(
-              createErrorNotification("There is some error. Please try again")
-            );
+            notifyApp(createErrorNotification('There is some error. Please try again'));
             this.setState({
               isEmailValidating: false,
             });
@@ -225,11 +217,11 @@ export class LoginCtrl extends PureComponent<Props, State> {
         isMfaValidating: true,
       });
       const data = new FormData();
-      data.append("userName", userName);
-      data.append("organizationName", organizationName);
-      data.append("mfaCode", mfaCode);
+      data.append('userName', userName);
+      data.append('organizationName', organizationName);
+      data.append('mfaCode', mfaCode);
       fetch(urls.AUTHENTICATE_GOOGLE_MFA, {
-        method: "POST",
+        method: 'POST',
         body: data,
       })
         .then((response) => response.json())
@@ -241,15 +233,11 @@ export class LoginCtrl extends PureComponent<Props, State> {
                 currentLoginStep: LoginSteps.PASSWORD,
               });
             } else {
-              notifyApp(
-                createErrorNotification("There is some error. Please try again")
-              );
+              notifyApp(createErrorNotification('There is some error. Please try again'));
             }
           },
           (error) => {
-            notifyApp(
-              createErrorNotification("There is some error. Please try again")
-            );
+            notifyApp(createErrorNotification('There is some error. Please try again'));
             this.setState({
               isMfaValidating: false,
             });
@@ -268,19 +256,16 @@ export class LoginCtrl extends PureComponent<Props, State> {
       });
       let isExSec = false;
       getBackendSrv()
-        .get("/external_security_enable")
+        .get('/external_security_enable')
         .then((res: any) => {
           isExSec = res;
-          localStorage.setItem(
-            `external_security_enable`,
-            isExSec === true ? `true` : `false`
-          );
+          localStorage.setItem(`external_security_enable`, isExSec === true ? `true` : `false`);
         });
       if (isExSec) {
         this.setState({
           isExternalSecurityEnable: true,
         });
-        notifyApp(createErrorNotification("External security enabled"));
+        notifyApp(createErrorNotification('External security enabled'));
       }
       let data = {};
       if (isExSec) {
@@ -295,20 +280,16 @@ export class LoginCtrl extends PureComponent<Props, State> {
         };
       }
       getBackendSrv()
-        .post("/login", data)
+        .post('/login', data)
         .then((result: any) => {
           this.result = result;
           if (isExSec === true) {
             localStorage.setItem(`userInfo`, JSON.stringify(result.userInfo));
           } else {
-            localStorage.setItem(`userInfo`, "");
+            localStorage.setItem(`userInfo`, '');
           }
 
-          if (
-            password !== "admin" ||
-            config.ldapEnabled ||
-            config.authProxyEnabled
-          ) {
+          if (password !== 'admin' || config.ldapEnabled || config.authProxyEnabled) {
             this.toGrafana();
             return;
           } else {
@@ -316,9 +297,7 @@ export class LoginCtrl extends PureComponent<Props, State> {
           }
         })
         .catch(() => {
-          notifyApp(
-            createErrorNotification("There is some error. Please try again")
-          );
+          notifyApp(createErrorNotification('There is some error. Please try again'));
           this.setState({
             isLoggingIn: false,
           });
@@ -334,7 +313,7 @@ export class LoginCtrl extends PureComponent<Props, State> {
 
   toGrafana = () => {
     // Use window.location.href to force page reload
-    window.location.href = "/";
+    window.location.href = '/';
     // if (this.result.redirectUrl) {
     //   if (config.appSubUrl !== '' && !this.result.redirectUrl.startsWith(config.appSubUrl)) {
     //     window.location.href = config.appSubUrl + this.result.redirectUrl;
@@ -359,22 +338,8 @@ export class LoginCtrl extends PureComponent<Props, State> {
       isMfaAuthenticated,
       isExternalSecurityEnable,
     } = this.state;
-    const {
-      login,
-      toGrafana,
-      changePassword,
-      verifyEmail,
-      verifyMfaCode,
-      verifyPassword,
-    } = this;
-    const {
-      loginHint,
-      passwordHint,
-      disableLoginForm,
-      ldapEnabled,
-      authProxyEnabled,
-      disableUserSignUp,
-    } = config;
+    const { login, toGrafana, changePassword, verifyEmail, verifyMfaCode, handleBack, verifyPassword } = this;
+    const { loginHint, passwordHint, disableLoginForm, ldapEnabled, authProxyEnabled, disableUserSignUp } = config;
 
     return (
       <>
@@ -401,6 +366,7 @@ export class LoginCtrl extends PureComponent<Props, State> {
           isMfaEnable,
           isMfaAuthenticated,
           isExternalSecurityEnable,
+          handleBack,
         })}
       </>
     );
@@ -413,6 +379,4 @@ export const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = { updateLocation };
 
-export default hot(module)(
-  connect(mapStateToProps, mapDispatchToProps)(LoginCtrl)
-);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(LoginCtrl));

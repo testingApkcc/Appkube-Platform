@@ -2753,6 +2753,9 @@ a:hover {
   padding-left: 5px;
   margin-bottom: 0;
 }
+.script-page-container .editor-add-code .choosh-popup ul li a {
+  color: #3b4859;
+}
 
 .script-page-container .context-preview-box h4 {
   color: #ffffff;

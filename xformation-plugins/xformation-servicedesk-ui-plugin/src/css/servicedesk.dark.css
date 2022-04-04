@@ -1014,7 +1014,7 @@ a:hover {
   font-weight: 600;
 }
 .tickets-number-box span {
-  color: #a9b9c6;
+  color: #ffffff;
   font-size: 14px;
   line-height: 18px;
   font-weight: 500;
@@ -1028,6 +1028,10 @@ a:hover {
   height: 35px;
 }
 
+.chart-inner {
+  background-color: #ffffff;
+  margin-top: 20px;
+}
 .chart-inner canvas {
   width: 100% !important;
 }
