@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
-import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { DepartmentWiseProduct } from './../../components/DepartmentWiseProduct';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';

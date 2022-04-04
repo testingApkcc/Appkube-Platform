@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 import { PLUGIN_BASE_URL } from '../../constants';
-import { remove } from 'lodash';
 
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
