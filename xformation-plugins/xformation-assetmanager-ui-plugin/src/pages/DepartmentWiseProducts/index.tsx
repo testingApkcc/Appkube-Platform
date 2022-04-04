@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
-// import { SelectCloudFilter } from '../../components/SelectCloudFilter';
+import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { DepartmentWiseProduct } from './../../components/DepartmentWiseProduct';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export class DepartmentWiseProducts extends React.Component<any, any> {
   breadCrumbs: any;
@@ -4238,39 +4240,45 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       departmentList: [
         {
           name: 'Human Resources',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275',
+          noOfProduct: 150,
+          prodBilling: 10,
+          otherBilling: 25,
+          productionRatio:45
         },
         {
           name: 'It Infra',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275',
+          noOfProduct: 150,
+          prodBilling: 10,
+          otherBilling: 50,
+          productionRatio:20
         },
         {
           name: 'IT Devlopment',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275',
+          noOfProduct: 150,
+          prodBilling: 70,
+          otherBilling: 30,
+          productionRatio:45
         },
         {
           name: 'Finance',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275',
+          noOfProduct: 150,
+          prodBilling: 20,
+          otherBilling: 80,
+          productionRatio:15
         },
         {
           name: 'Finance',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275',
+          noOfProduct: 150,
+          prodBilling: 35,
+          otherBilling: 50,
+          productionRatio:85
         },
         {
           name: 'It Infra',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275',
+          noOfProduct: 150,
+          prodBilling: 20,
+          otherBilling:40,
+          productionRatio:50
         },
       ],
     };
@@ -4387,6 +4395,14 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                             </li>
                           </ul>
                         </div>
+                        <div>
+                          <label>Production Usage Ratio :</label><span>{val.prodBilling}%</span>
+                        </div>
+                        <div>
+                            <CircularProgressbar value={val.productionRatio} text={val.prodBilling + val.otherBilling } />;
+                          <div><label>Production Billing :</label>${val.prodBilling}<span></span></div>
+                         <div> <label>Other Billing :</label><span>${val.otherBilling}</span></div>
+                          </div>
                       </div>
                     );
                   })}
