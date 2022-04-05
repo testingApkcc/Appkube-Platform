@@ -9,9 +9,10 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { hide } from '@popperjs/core';
 import { Pie } from 'react-chartjs-2';
+
 ChartJS.register(ArcElement, Tooltip, Legend);
+
 export class DepartmentWiseProducts extends React.Component<any, any> {
   breadCrumbs: any;
   constructor(props: any) {
@@ -4247,7 +4248,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           noOfProduct: 150,
           prodBilling: 10,
           otherBilling: 25,
-          productionRatio: 45
+          productionRatio: 66
         },
         {
           name: 'It Infra',
@@ -4465,7 +4466,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           <label>Production Usage Ratio :</label><span>{val.prodBilling}%</span>
                         </div>
                         <div>
-                          <CircularProgressbar value={val.productionRatio} text={val.prodBilling + val.otherBilling} />
+                          <CircularProgressbar value={val.productionRatio} text={val.prodBilling + val.otherBilling + '%'} />
+                          {/* <CircularProgressbar value={val.productionRatio} text={val.productionRatio} /> */}
                           <div><label>Production Billing :</label>${val.prodBilling}<span></span></div>
                           <div> <label>Other Billing :</label><span>${val.otherBilling}</span></div>
                         </div>

@@ -191,7 +191,6 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
 
     render() {
         const { displayBarChart } = this.state
-        console.log(displayBarChart)
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
