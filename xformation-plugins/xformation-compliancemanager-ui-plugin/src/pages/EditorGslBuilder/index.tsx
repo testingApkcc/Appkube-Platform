@@ -251,16 +251,6 @@ export class EditorGslBuilder extends React.Component<any, any> {
     });
   };
 
-  addOperatorToEditor = (item: any) => {
-    const { query } = this.state;
-    const data = {
-      type: item.type,
-      value: item.key,
-      item,
-    };
-    this.addValuePopupRef.current.toggle(query[query.length - 1], data);
-  };
-
   addKeywordToEditor = (item: any) => {
     const { query } = this.state;
     const data = {
@@ -316,6 +306,17 @@ export class EditorGslBuilder extends React.Component<any, any> {
       text = text + query[i].value + ' ';
     }
     this.discardPopupRef.current.toggle(index, text);
+  };
+
+  addOperatorToEditor = (item: any) => {
+    const { query } = this.state;
+    //console.log(query);
+    const data = {
+      type: item.type,
+      value: item.key,
+      item,
+    };
+    this.addValuePopupRef.current.toggle(query[query.length - 1], data);
   };
 
   displayOperators = () => {
