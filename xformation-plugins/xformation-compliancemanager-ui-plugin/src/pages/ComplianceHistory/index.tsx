@@ -12,22 +12,11 @@ import {
   Legend,
   PointElement,
   LineElement,
+  ArcElement
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
-
-
-// const piedata: any = {
-//   labels: ['S3 Buge', 'Cloud', 'lamUser'],
-//   datasets: [
-//     {
-//       data: [15, 17, 90],
-//       backgroundColor: ['#E31335', '#15C64C', '#3C495A'],
-//       hoverBackgroundColor: ['#E31335', '#15C64C', '#3C495A'],
-//     },
-//   ],
-// };
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement, ArcElement);
 
 export class ComplianceHistory extends React.Component<any, any> {
   breadCrumbs: any;
@@ -106,10 +95,16 @@ export class ComplianceHistory extends React.Component<any, any> {
         {
           data: [100],
           backgroundColor: ['#E31335'],
-          hoverBackgroundColor: ['#E31335'],
         },
       ],
       singleLabels: ['High'],
+      pieLabels: ['S3 Buge', 'Cloud', 'lamUser'],
+      pieData: [
+        {
+          data: [15, 17, 90],
+          backgroundColor: ['#E31335', '#15C64C', '#3C495A'],
+        },
+      ],
     };
     this.breadCrumbs = [
       {
@@ -148,7 +143,6 @@ export class ComplianceHistory extends React.Component<any, any> {
     maintainAspectRatio: false,
     legend: {
       display: true,
-      position: 'right',
     },
   };
 
@@ -309,7 +303,7 @@ export class ComplianceHistory extends React.Component<any, any> {
   }
 
   render() {
-    const { historyData, barData, barLabels } = this.state;
+    const { historyData, barData, barLabels, singleChartdata, singleLabels, pieLabels, pieData } = this.state;
     const now = 60;
     return (
       <div className="compliance-history-container">
@@ -347,7 +341,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                     <strong>Failed Tests by Rule Serverity</strong>
                   </div>
                   <div className="d-block chart-inner">
-                    {/* <Pie data={{datasets: singleChartdata, labels: singleLabels}} options={this.pieOptions} /> */}
+                    <Pie data={{datasets: singleChartdata, labels: singleLabels}} options={this.pieOptions} />
                   </div>
                 </div>
                 <div className="d-inline-block chart-box green-chart">
@@ -363,7 +357,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                     <strong>Tested Entities</strong>
                   </div>
                   <div className="d-block chart-inner">
-                    {/* <Pie data={piedata} options={pieOptions} /> */}
+                    <Pie data={{datasets: pieData, labels: pieLabels}} options={this.pieOptions} />
                   </div>
                 </div>
               </div>
