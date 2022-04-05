@@ -3,9 +3,8 @@ import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 // import { images } from '../../img';
 // import { PLUGIN_BASE_URL } from '../../constants';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
-
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
 export class DepartmentWiseCharts extends React.Component<any, any> {
@@ -89,7 +88,63 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                         type: 'bar',
                     },
                 ],
-            }
+            },
+            humanResourcespieData: {
+                labels: ['Procurement', 'Human Resource', 'Supply chain', 'EMS'],
+                datasets: [
+                    {
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                    }
+                ],
+            },
+            procurmentpieData: {
+                labels: ['Procurement', 'Human Resource', 'Supply chain', 'EMS'],
+                datasets: [
+                    {
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                    }
+                ],
+            },
+            supplyChainpieData: {
+                labels: ['Procurement', 'Human Resource', 'Supply chain', 'EMS'],
+                datasets: [
+                    {
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                    }
+                ],
+            },
+            EMSpieData: {
+                labels: ['Procurement', 'Human Resource', 'Supply chain', 'EMS'],
+                datasets: [
+                    {
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                    }
+                ],
+            },
         };
         this.breadCrumbs = [
             {
@@ -135,10 +190,12 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
     };
 
     render() {
+        const { displayBarChart } = this.state
+        console.log(displayBarChart)
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
-                <div className="department-wise-container">
+                {<div className="department-wise-container">
                     <div className="common-container">
                         <div className="row">
                             <div className="col-lg-9 col-md-8 col-sm-6">
@@ -146,50 +203,96 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                             </div>
                             <div className="col-lg-3 col-md-4 col-sm-6">
                                 <div className="float-right common-right-btn">
-                                    <input type="checkbox" />Bar Graph
+                                    <input type="checkbox" checked={false}
+                                        onClick={() => { this.setState({ displayBarChart: !displayBarChart }) }} />{!displayBarChart ? "pieChart" : "Bar Graph"}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='row'>
-                        <div className="col-lg-6 col-md-6 col-sm-6">
-                            <h4>Human Resources</h4>
-                            <span>Total cost: $415624 - 40% off the total cost</span>
-                            <div style={{ width: '70%', height: '300px', marginBottom: '30px' }}>
-                                <Bar data={{ datasets: this.state.humanResources.datasets, labels: this.state.humanResources.labels }} options={this.options} />
+                    {displayBarChart ? <div>
+                        <div className='row'>
+                            <div className="col-lg-6 col-md-6 col-sm-6">
+                                <h4>Human Resources</h4>
+                                <span>Total cost: $415624 - 40% off the total cost</span>
+                                <div style={{ width: '70%', height: '300px', marginBottom: '30px' }}>
+                                    <Bar data={{ datasets: this.state.humanResources.datasets, labels: this.state.humanResources.labels }} options={this.options} />
+                                </div>
+                            </div>
+                            <div className="col-lg-6 col-md-6 col-sm-6">
+                                <h4>Procurement</h4>
+                                <span>Total Cost: $73837 - 40% of the total cost</span>
+                                <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                    <div style={{ width: '70%', height: '300px' }}>
+                                        <Bar data={{ datasets: this.state.procurment.datasets, labels: this.state.procurment.labels }} options={this.options} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="col-lg-6 col-md-6 col-sm-6">
-                            <h4>Procurement</h4>
-                            <span>Total Cost: $73837 - 40% of the total cost</span>
-                            <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                <div style={{ width: '70%', height: '300px' }}>
-                                    <Bar data={{ datasets: this.state.procurment.datasets, labels: this.state.procurment.labels }} options={this.options} />
+                        <div className='row'>
+                            <div className="col-lg-6 col-md-6 col-sm-6">
+                                <h4>Supply Chain Management</h4>
+                                <span>Total Cost: $73837 - 40% off the total cost</span>
+                                <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                    <div style={{ width: '70%', height: '300px' }}>
+                                        <Bar data={{ datasets: this.state.supplyChain.datasets, labels: this.state.supplyChain.labels }} options={this.options} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-6 col-md-6 col-sm-6">
+                                <h4>EMS</h4>
+                                <span>Total Cost: $73837 - 40% off the total cost</span>
+                                <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                    <div style={{ width: '70%', height: '300px' }}>
+                                        <Bar data={{ datasets: this.state.EMS.datasets, labels: this.state.EMS.labels }} options={this.options} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='row'>
-                        <div className="col-lg-6 col-md-6 col-sm-6">
-                            <h4>Supply Chain Management</h4>
-                            <span>Total Cost: $73837 - 40% off the total cost</span>
-                            <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                <div style={{ width: '70%', height: '300px' }}>
-                                    <Bar data={{ datasets: this.state.supplyChain.datasets, labels: this.state.supplyChain.labels }} options={this.options} />
+                        :
+                        <div>
+                            <div className='row'>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <h4>Human Resources</h4>
+                                    <span>Total cost: $415624 - 40% off the total cost</span>
+                                    <div style={{ width: '70%', height: '300px', marginBottom: '30px' }}>
+                                        <Pie data={this.state.humanResourcespieData} />
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <h4>Procurement</h4>
+                                    <span>Total Cost: $73837 - 40% of the total cost</span>
+                                    <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                        <div style={{ width: '70%', height: '300px' }}>
+                                            <Pie data={this.state.procurmentpieData} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <h4>Supply Chain Management</h4>
+                                    <span>Total Cost: $73837 - 40% off the total cost</span>
+                                    <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                        <div style={{ width: '70%', height: '300px' }}>
+                                            <Pie data={this.state.supplyChainpieData} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <h4>EMS</h4>
+                                    <span>Total Cost: $73837 - 40% off the total cost</span>
+                                    <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                        <div style={{ width: '70%', height: '300px' }}>
+                                            <Pie data={this.state.EMSpieData} />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-6 col-md-6 col-sm-6">
-                            <h4>EMS</h4>
-                            <span>Total Cost: $73837 - 40% off the total cost</span>
-                            <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                <div style={{ width: '70%', height: '300px' }}>
-                                    <Bar data={{ datasets: this.state.EMS.datasets, labels: this.state.EMS.labels }} options={this.options} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
+                }
             </div>
         );
     }

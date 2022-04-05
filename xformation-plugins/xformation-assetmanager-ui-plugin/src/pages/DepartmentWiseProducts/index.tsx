@@ -4311,9 +4311,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 '',
               ]
             }
-
           ],
-
         }
       }
 
