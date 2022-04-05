@@ -7,7 +7,11 @@ import { PLUGIN_BASE_URL } from '../../constants';
 import { DepartmentWiseProduct } from './../../components/DepartmentWiseProduct';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { hide } from '@popperjs/core';
+import { Pie } from 'react-chartjs-2';
+ChartJS.register(ArcElement, Tooltip, Legend);
 export class DepartmentWiseProducts extends React.Component<any, any> {
   breadCrumbs: any;
   constructor(props: any) {
@@ -4281,6 +4285,38 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           productionRatio: 50
         },
       ],
+      graphData: {
+        pieData: {
+          labels: ['Procurement', 'Human Resource', 'Supply chain', 'EMS'],
+          datasets: [
+            {
+              data: [40, 60],
+              backgroundColor: [
+                'rgb(255, 153, 0)',
+                'rgba(112, 222, 174, 1)',
+              ]
+            }
+          ],
+        },
+        doughnutData: {
+          labels: ['Procurement', 'Human Resource', 'Supply chain', 'EMS'],
+          datasets: [
+            {
+              data: [29, 11, 20, 40],
+              backgroundColor: [
+                'rgba(255, 74, 85, 1)',
+                'rgba(113, 167, 254, 1)',
+                'rgba(253, 191, 98, 1)',
+                'rgba(112, 222, 174, 1)',
+                '',
+              ]
+            }
+
+          ],
+
+        }
+      }
+
     };
     this.breadCrumbs = [
       {
@@ -4350,12 +4386,44 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   };
 
   render() {
-    const { departmentList } = this.state;
+    const { departmentList, graphData } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
         <div className="department-wise-container">
           <div className="common-container">
+            {graphData && <div className="common-container">
+              <div className="row">
+                <div className="col-lg-9 col-md-8 col-sm-6">
+                  <div className="asset-heading">Cost Analysis</div>
+                </div>
+                <div className="col-lg-4 col-md-2 col-sm-1">
+                  <div className="asset-heading">Product wise Cost</div>
+                  <div style={{ width: "300px", height: "300px" }}>
+                    {graphData.doughnutData && <Doughnut data={graphData.doughnutData} />}
+                  </div>
+                  <div> <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >View details</Link></div>
+                </div>
+                <div className="col-lg-4 col-md-2 col-sm-1">
+                  <div className="asset-heading">Production Vs Others</div>
+                  <div style={{ width: "300px", height: "300px" }}>
+                    {graphData.pieData && <Pie data={graphData.pieData} />}
+                  </div>
+                  <div> <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >View details</Link></div>
+                </div>
+                <div className="col-lg-4 col-md-2 col-sm-1">
+                  <div className="asset-heading">Product wise Cost</div>
+                  {graphData.doughnutData && <div >
+                    <div style={{ width: "300px", height: "300px" }}> <Doughnut data={graphData.doughnutData} /></div>
+                    <div>
+                    </div>
+                    <div> <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >View details</Link></div>
+                  </div>
+                  }
+                </div>
+
+              </div>
+            </div>}
             <div className="row">
               <div className="col-lg-9 col-md-8 col-sm-6">
                 <div className="asset-heading">Department wise</div>
@@ -4399,7 +4467,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                           <label>Production Usage Ratio :</label><span>{val.prodBilling}%</span>
                         </div>
                         <div>
-                          <CircularProgressbar value={val.productionRatio} text={val.prodBilling + val.otherBilling} />;
+                          <CircularProgressbar value={val.productionRatio} text={val.prodBilling + val.otherBilling} />
                           <div><label>Production Billing :</label>${val.prodBilling}<span></span></div>
                           <div> <label>Other Billing :</label><span>${val.otherBilling}</span></div>
                         </div>
