@@ -14,7 +14,7 @@
     },
     "screenshots": [],
     "version": "1.0.0",
-    "updated": "2022-03-31"
+    "updated": "2022-04-05"
   },
   "includes": [
     {
@@ -64,6 +64,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/xformation-assetmanager-ui-plugin?path=department-wise-products"
+    },
+    {
+      "type": "page",
+      "name": "DepartmentWiseCharts",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-assetmanager-ui-plugin?path=department-wise-charts"
     }
   ],
   "dependencies": {
