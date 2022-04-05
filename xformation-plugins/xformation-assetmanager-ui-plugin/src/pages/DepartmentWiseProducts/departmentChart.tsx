@@ -4,17 +4,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 // import { images } from '../../img';
 // import { PLUGIN_BASE_URL } from '../../constants';
 import { Bar } from 'react-chartjs-2';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-    PointElement,
-    LineElement,
-} from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
@@ -23,18 +13,83 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            labels: ['01', '02', '03', '04', '05', '06'],
-            datasets: [
-                {
-                    label: 'Line Dataset',
-                    lineTension: 0.2,
-                    fill: false,
-                    borderColor: 'rgba(255,255,255,0.5)',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 2,
-                    type: 'line',
-                },
-            ],
+            displayBarChart: true,
+            humanResources: {
+                labels: ['', '', '', ''],
+                datasets: [
+                    {
+                        label: ['Production', 'Development', 'Stage', 'Test'],
+                        lineTension: 0.2,
+                        fill: false,
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                        borderWidth: 1,
+                        type: 'bar',
+                    },
+                ],
+            },
+            procurment: {
+                labels: ['', '', '', ''],
+                datasets: [
+                    {
+                        label: ['Production', 'Development', 'Stage', 'Test'],
+                        lineTension: 0.2,
+                        fill: false,
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                        borderWidth: 1,
+                        type: 'bar',
+                    },
+                ],
+            },
+            supplyChain: {
+                labels: ['', '', '', ''],
+                datasets: [
+                    {
+                        label: ['Production', 'Development', 'Stage', 'Test'],
+                        lineTension: 0.2,
+                        fill: false,
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                        borderWidth: 1,
+                        type: 'bar',
+                    },
+                ],
+            },
+            EMS: {
+                labels: ['', '', '', ''],
+                datasets: [
+                    {
+                        label: ['Production', 'Development', 'Stage', 'Test'],
+                        lineTension: 0.2,
+                        fill: false,
+                        data: [80, 16, 4, 10],
+                        backgroundColor: [
+                            'rgba(82, 177, 65, 1)',
+                            'rgba(255, 153, 0, 1)',
+                            'rgba(0, 137, 214, 1)',
+                            'rgba(216, 69, 57, 1)',
+                        ],
+                        borderWidth: 1,
+                        type: 'bar',
+                    },
+                ],
+            }
         };
         this.breadCrumbs = [
             {
@@ -52,20 +107,28 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
         scales: {
             y: {
                 ticks: {
-                    fontColor: 'white',
+                    fontColor: 'black',
                     stepSize: 10,
                     beginAtZero: true,
                 },
+                gridLines: {
+                    display: false
+                }
             },
             x: {
                 ticks: {
-                    fontColor: 'white',
+                    fontColor: 'black',
+                    display: false,
                     stepSize: 10,
                 },
+                gridLines: {
+                    display: false
+                }
             },
         },
         legend: {
-            display: false,
+            display: true,
+            align: "right"
         },
         responsive: true,
         maintainAspectRatio: false,
@@ -92,40 +155,40 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                         <div className="col-lg-6 col-md-6 col-sm-6">
                             <h4>Human Resources</h4>
                             <span>Total cost: $415624 - 40% off the total cost</span>
-                            <div style={{ width: '100%', height: '400px' }}>
-                                <Bar data={{ datasets: this.state.datasets, labels: this.state.labels }} options={this.options} />
+                            <div style={{ width: '70%', height: '300px', marginBottom: '30px' }}>
+                                <Bar data={{ datasets: this.state.humanResources.datasets, labels: this.state.humanResources.labels }} options={this.options} />
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-6">
-                            <h4>Human Resources</h4>
-                            <span>Total cost: $415624 - 40% off the total cost</span>
-                            <div className="" style={{ width: '100%', height: '100%' }}>
-                                <div style={{ width: '100%', height: '300px' }}>
-                                    <Bar data={{ datasets: this.state.datasets, labels: this.state.labels }} options={this.options} />
+                            <h4>Procurement</h4>
+                            <span>Total Cost: $73837 - 40% of the total cost</span>
+                            <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                <div style={{ width: '70%', height: '300px' }}>
+                                    <Bar data={{ datasets: this.state.procurment.datasets, labels: this.state.procurment.labels }} options={this.options} />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* <div className='row'>
+                    <div className='row'>
                         <div className="col-lg-6 col-md-6 col-sm-6">
-                            <h4>Human Resources</h4>
-                            <span>Total cost: $415624 - 40% off the total cost</span>
-                            <div className="" style={{ width: '100%', height: '100%' }}>
-                                <div style={{ width: '100%', height: '100%' }}>
-                                    <Bar data={barchart} options={options} />
+                            <h4>Supply Chain Management</h4>
+                            <span>Total Cost: $73837 - 40% off the total cost</span>
+                            <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                <div style={{ width: '70%', height: '300px' }}>
+                                    <Bar data={{ datasets: this.state.supplyChain.datasets, labels: this.state.supplyChain.labels }} options={this.options} />
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-6">
-                            <h4>Human Resources</h4>
-                            <span>Total cost: $415624 - 40% off the total cost</span>
-                            <div className="" style={{ width: '100%', height: '100%' }}>
-                                <div style={{ width: '100%', height: '100%' }}>
-                                    <Bar data={barchart} options={options} />
+                            <h4>EMS</h4>
+                            <span>Total Cost: $73837 - 40% off the total cost</span>
+                            <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
+                                <div style={{ width: '70%', height: '300px' }}>
+                                    <Bar data={{ datasets: this.state.EMS.datasets, labels: this.state.EMS.labels }} options={this.options} />
                                 </div>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         );
