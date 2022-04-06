@@ -80,6 +80,46 @@ class Overview extends React.Component<any, any> {
       isSubmitted: false,
       userId: '',
       isLoading: false,
+      dashboardData: {
+        totalSpent: {
+          value: '$6,71,456',
+          diff: '+4 from last week',
+          data: [20, 40, 30, 60]
+        },
+        lastWeekSpent: {
+          value: '412,531',
+          diff: '+5%',
+          data: [40, 20, 60]
+        },
+        currentSpentRate: {
+          perHR: '$21',
+          perDay: '$504'
+        },
+        spentToday: {
+          value: '$5245',
+          diff: '+5%'
+        },
+        spentYesterDay: {
+          value: '$4567',
+          diff: '2%'
+        },
+        totalBudget: {
+          total: '10,00,000',
+          remaining: '3,28,457',
+          percentage: '55%'
+        },
+        productList: [
+          { name: "Product 1", performance: 89, availabilty: "99", reliability: "67", security: "99", endUsage: "92" },
+          { name: "Product 2", performance: "99", availabilty: "91", reliability: "75", security: "92", endUsage: "96" },
+          { name: "Product 3", performance: "85", availabilty: "91", reliability: "75", security: "92", endUsage: "91" },
+          { name: "Product 4", performance: "78", availabilty: "92", reliability: "68", security: "79", endUsage: "90" },
+          { name: "Product 5", performance: "81", availabilty: "98", reliability: "91", security: "88", endUsage: "87" }],
+        cloudWiseProduct: [
+          { name: 'AWS', value: '$2,47,518', diff: '5%', status: 'down' },
+          { name: 'AZURE', value: '$90756', diff: '2%', status: 'up' },
+          { name: 'GCP', value: '$11,508', diff: '1%', status: 'up' }
+        ]
+      }
     };
   }
 
@@ -243,6 +283,9 @@ class Overview extends React.Component<any, any> {
               </div>
             </div>
             <div className="applications-inner-container">
+
+            </div>
+            {/* <div className="applications-inner-container">
               <Carousel
                 responsive={responsive}
                 showDots={false}
@@ -325,7 +368,7 @@ class Overview extends React.Component<any, any> {
                   </a>
                 </div>
               </Carousel>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="overview-container">
