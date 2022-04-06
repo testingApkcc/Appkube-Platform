@@ -427,10 +427,9 @@ export class Action extends React.Component<any, any> {
             style={{ right: "-62px", top: "15px" }}
           >
             {/* <Rbac  childName="commancomponent-createbuttoncomponent-companytbtn"> */}
-            <a onClick={(e) => this.onClickAddInput(e, detailObj)}>
-              {" "}
-              Add Input{" "}
-            </a>
+            <Link to ='' onClick={(e) => this.onClickAddInput(e, detailObj)}>
+              Add New DataSource
+            </Link>
             {/* </Rbac> */}
             {/* <Rbac parentName={config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
             <Link
@@ -440,9 +439,41 @@ export class Action extends React.Component<any, any> {
                 detailObj.organization ? detailObj.organization.id : null
               }`}
             >
-              Details
+              Add Compliancies
             </Link>
             {/* </Rbac> */}
+            <Link
+            to=""
+              // to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
+              //   detailObj.id
+              // }&org_id=${
+              //   detailObj.organization ? detailObj.organization.id : null
+              // }`}
+            >
+              Associate to OU
+            </Link>
+            {/* </Rbac> */}
+            <Link
+            to=""
+              // to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
+              //   detailObj.id
+              // }&org_id=${
+              //   detailObj.organization ? detailObj.organization.id : null
+              // }`}
+            >
+            Add New VPC
+            </Link>
+                  {/* </Rbac> */}
+            <Link
+            to=""
+              // to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
+              //   detailObj.id
+              // }&org_id=${
+              //   detailObj.organization ? detailObj.organization.id : null
+              // }`}
+            >
+            Add New Product
+            </Link>
           </div>
         )}
         {/* <InputAccount ref={this.InputAccountRef} />         */}
