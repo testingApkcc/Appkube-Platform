@@ -4322,18 +4322,22 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         }
       },
       graphOptions: {
-        title:{
-          display:true,
-          text:'Total Cost: $6,71,246',
-          fontSize:20
-        },
-        legend:{
-          labels: {
-            padding: 40 //default is 10
+        plugins: {
+          legend:{
+            labels: {
+              padding: 12,
+              outerWidth: '100%',
+            },
+            display:true,
+            position:'right'
           },
-          display:true,
-          position:'top'
-        }
+          datalabels: {
+            anchor: "start",
+            align:"start",
+          },
+          height: "auto",
+          responsive: true,
+        },
       }
     };
     this.breadCrumbs = [
@@ -4439,12 +4443,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   </div>
                   <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
-                    {graphData.doughnutData && 
-                      <Doughnut
-                        data={graphData.doughnutData}
-                        options={graphOptions}
-                      />
-                    }
+                    {graphData.doughnutData && <Doughnut data={graphData.doughnutData} options={graphOptions} />}
                   </div>
                   <div className="view-details-link">
                     <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
@@ -4465,8 +4464,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
+                  <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
-                    {graphData.pieData && <Pie data={graphData.pieData} />}
+                    {graphData.pieData && <Pie data={graphData.pieData} options={graphOptions} />}
                   </div>
                   <div className="view-details-link">
                     <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
@@ -4487,8 +4487,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
+                  <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
-                    {graphData.pieData && <Doughnut data={graphData.doughnutData} />}
+                    {graphData.pieData && <Doughnut data={graphData.doughnutData} options={graphOptions} />}
                   </div>
                   <div className="view-details-link">
                     <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
