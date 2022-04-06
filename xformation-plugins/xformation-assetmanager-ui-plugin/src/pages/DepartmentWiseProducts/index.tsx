@@ -4511,6 +4511,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading">{val.name}</Link>
                         <div className="contents">
                           <ul>
+                            _cloneDeep
                             <li>
                               <label>No. of Products</label>
                               <span>{val.noOfProduct}</span>
