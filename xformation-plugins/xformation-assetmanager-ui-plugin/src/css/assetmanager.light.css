@@ -2486,16 +2486,24 @@ a:hover {
   display: block;
   width: 100%;
   color: #202020;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 18px;
   font-weight: 600;
   padding-top: 20px;
   text-align: right;
 }
+.department-wise-container .cost-analysis-chart .total-cost-text.cost {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+.department-wise-container .cost-analysis-chart .total-cost-text.cost strong {
+  font-weight: 600;
+}
 .department-wise-container .cost-analysis-chart .chart {
   display: block;
   width: 100%;
-  padding-top: 10px;
+  padding-top: 0px;
   padding-bottom: 10px;
 }
 .department-wise-container .cost-analysis-chart .view-details-link {

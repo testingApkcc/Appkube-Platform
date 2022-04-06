@@ -10,11 +10,17 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import _departmentData from './_dummyData/departments.json';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export class DepartmentWiseProducts extends React.Component<any, any> {
   breadCrumbs: any;
+  colorMapping:any = {
+    75: '#5dbc73',
+    50: '#ef8f00',
+    25: '#e34120'
+  };
   constructor(props: any) {
     
     super(props);
@@ -4243,56 +4249,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           ],
         },
       ],
-      departmentList: [
-        {
-          name: 'Human Resources',
-          noOfProduct: 150,
-          prodBilling: 10,
-          otherBilling: 25,
-          productionRatio: 66,
-          prodPathColor: '5DBC73'
-        },
-        {
-          name: 'It Infra',
-          noOfProduct: 150,
-          prodBilling: 10,
-          otherBilling: 50,
-          productionRatio: 20,
-          prodPathColor: 'E34120'
-        },
-        {
-          name: 'IT Devlopment',
-          noOfProduct: 150,
-          prodBilling: 70,
-          otherBilling: 30,
-          productionRatio: 45,
-          prodPathColor: 'EF8F00'
-        },
-        {
-          name: 'Finance',
-          noOfProduct: 150,
-          prodBilling: 20,
-          otherBilling: 80,
-          productionRatio: 15,
-          prodPathColor: '5DBC73'
-        },
-        {
-          name: 'Finance',
-          noOfProduct: 150,
-          prodBilling: 35,
-          otherBilling: 50,
-          productionRatio: 85,
-          prodPathColor: 'EF8F00'
-        },
-        {
-          name: 'It Infra',
-          noOfProduct: 150,
-          prodBilling: 20,
-          otherBilling: 40,
-          productionRatio: 50,
-          prodPathColor: '5DBC73'
-        },
-      ],
+      departmentWiseData: [],
       graphData: {
         pieData: {
           labels: ['Procurement', 'Human Resource', 'Supply chain', 'EMS'],
@@ -4322,18 +4279,22 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         }
       },
       graphOptions: {
-        title:{
-          display:true,
-          text:'Total Cost: $6,71,246',
-          fontSize:20
-        },
-        legend:{
-          labels: {
-            padding: 40 //default is 10
+        plugins: {
+          legend:{
+            labels: {
+              padding: 12,
+              outerWidth: '100%',
+            },
+            display:true,
+            position:'right'
           },
-          display:true,
-          position:'top'
-        }
+          datalabels: {
+            anchor: "start",
+            align:"start",
+          },
+          height: "auto",
+          responsive: true,
+        },
       }
     };
     this.breadCrumbs = [
@@ -4346,6 +4307,12 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         isCurrentPage: true,
       },
     ];
+  }
+
+  componentDidMount(){
+    this.setState({
+      departmentWiseData: _departmentData
+    });
   }
 
   openProduct = (i: any, j: any) => {
@@ -4403,8 +4370,75 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     });
   };
 
+  calculatePercentage = (value:any, total: any) => {
+    return Math.ceil(value*100/total);
+  };
+
+  renderDepartmentWiseData = (departments: any) => {
+    if(departments){
+      return departments.map((department: any) => {
+        const percentage = this.calculatePercentage(department.prodBilling, department.prodBilling + department.otherBilling);
+        let color = "";
+        if(percentage >= 75){
+          color = this.colorMapping[75];
+        } else if(percentage >= 50){
+          color = this.colorMapping[50];
+        } else {
+          color = this.colorMapping[25];
+        }
+        return (
+          <div className="department-box">
+            <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading">{department.name}</Link>
+            <div className="contents">
+              <ul>
+                <li>
+                  <label>No. of Products</label>
+                  <span>{department.noOfProduct}</span>
+                </li>
+                <li>
+                  <label>No. of App Services</label>
+                  <span>{department.appServices}</span>
+                </li>
+                <li>
+                  <label>No. of Data Services</label>
+                  <span>{department.dataServices}</span>
+                </li>
+              </ul>
+              <div className="production-heading">
+                <label>Production Usage Ratio :</label>
+                <span>{percentage}%</span>
+              </div>
+              <div className="production-chart">
+                <CircularProgressbar 
+                  value={percentage} 
+                  text={`$${department.prodBilling + department.otherBilling}`} 
+                  strokeWidth={20} 
+                  styles={buildStyles({
+                    trailColor: "#F6EEFF",
+                    pathColor: color,
+                    textColor: "#000000",
+                    strokeLinecap: 'butt'
+                  })}
+                />
+              </div>
+              <div className="production-billing-text">
+                <label style={{ color }}>Production Billing:</label>
+                <span style={{ color }}>${department.prodBilling}</span>
+              </div>
+              <div className="production-billing-text">
+                <label>Other Billing:</label>
+                <span>${department.otherBilling}</span>
+              </div>
+            </div>
+          </div>
+        );
+      });
+    }
+    return [];
+  };
+
   render() {
-    const { departmentList, graphData, graphOptions } = this.state;
+    const { departmentWiseData, graphData, graphOptions } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -4439,12 +4473,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   </div>
                   <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
-                    {graphData.doughnutData && 
-                      <Doughnut
-                        data={graphData.doughnutData}
-                        options={graphOptions}
-                      />
-                    }
+                    {graphData.doughnutData && <Doughnut data={graphData.doughnutData} options={graphOptions} />}
                   </div>
                   <div className="view-details-link">
                     <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
@@ -4465,8 +4494,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
+                  <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
-                    {graphData.pieData && <Pie data={graphData.pieData} />}
+                    {graphData.pieData && <Pie data={graphData.pieData} options={graphOptions} />}
                   </div>
                   <div className="view-details-link">
                     <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
@@ -4487,8 +4517,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
+                  <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
-                    {graphData.pieData && <Doughnut data={graphData.doughnutData} />}
+                    {graphData.pieData && <Doughnut data={graphData.doughnutData} options={graphOptions} />}
                   </div>
                   <div className="view-details-link">
                     <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
@@ -4503,56 +4534,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             </div>
             <div className="department-wise-boxs">
               <div className="department-wise-inner">
-                {departmentList &&
-                  departmentList.length > 0 &&
-                  departmentList.map((val: any, index: any) => {
-                    return (
-                      <div className="department-box">
-                        <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading">{val.name}</Link>
-                        <div className="contents">
-                          <ul>
-                            _cloneDeep
-                            <li>
-                              <label>No. of Products</label>
-                              <span>{val.noOfProduct}</span>
-                            </li>
-                            <li>
-                              <label>Prod Billing</label>
-                              <span>{val.prodBilling}</span>
-                            </li>
-                            <li>
-                              <label>Other Billing</label>
-                              <span>{val.otherBilling}</span>
-                            </li>
-                          </ul>
-                          <div className="production-heading">
-                            <label>Production Usage Ratio :</label>
-                            <span>{val.prodBilling}%</span>
-                          </div>
-                          <div className="production-chart">
-                            <CircularProgressbar 
-                              value={val.prodBilling} 
-                              text={val.prodBilling + '%'} 
-                              strokeWidth={20} 
-                              styles={buildStyles({
-                                trailColor: "#F6EEFF",
-                                pathColor: `#${val.prodPathColor}`,
-                                textColor: "#000000",
-                              })}
-                            />
-                          </div>
-                          <div className="production-billing-text">
-                            <label style={{ color: `#${val.prodPathColor}` }}>Production Billing :</label>
-                            <span style={{ color: `#${val.prodPathColor}` }}>${val.prodBilling}</span>
-                          </div>
-                          <div className="production-billing-text">
-                            <label>Other Billing :</label>
-                            <span>${val.otherBilling}</span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+                { this.renderDepartmentWiseData(departmentWiseData)}
               </div>
             </div>
           </div>

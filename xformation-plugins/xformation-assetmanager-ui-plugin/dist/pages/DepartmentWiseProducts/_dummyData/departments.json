@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Human Resources",
+    "noOfProduct": 15,
+    "appServices": 5,
+    "dataServices": 3,
+    "prodBilling": 110,
+    "otherBilling": 25
+  },
+  {
+    "name": "It Infra",
+    "noOfProduct": 13,
+    "appServices": 4,
+    "dataServices": 3,
+    "prodBilling": 10,
+    "otherBilling": 50
+  },
+  {
+    "name": "IT Devlopment",
+    "noOfProduct": 12,
+    "appServices": 4,
+    "dataServices": 3,
+    "prodBilling": 70,
+    "otherBilling": 50
+  },
+  {
+    "name": "Finance",
+    "noOfProduct": 3,
+    "appServices": 4,
+    "dataServices": 3,
+    "prodBilling": 20,
+    "otherBilling": 30
+  },
+  {
+    "name": "Finance",
+    "noOfProduct": 9,
+    "appServices": 4,
+    "dataServices": 3,
+    "prodBilling": 60,
+    "otherBilling": 90
+  },
+  {
+    "name": "It Infra",
+    "noOfProduct": 1,
+    "appServices": 4,
+    "dataServices": 3,
+    "prodBilling": 36,
+    "otherBilling": 22
+  }
+]

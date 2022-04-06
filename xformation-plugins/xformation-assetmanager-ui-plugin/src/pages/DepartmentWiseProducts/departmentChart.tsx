@@ -183,7 +183,8 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
         },
         legend: {
             display: true,
-            align: "right"
+            align: "right",
+            position:'right'
         },
         responsive: true,
         maintainAspectRatio: false,
@@ -207,62 +208,65 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {displayBarChart ? <div>
-                        <div className='row'>
-                            <div className="col-lg-6 col-md-6 col-sm-6">
-                                <h4>Human Resources</h4>
-                                <span>Total cost: $415624 - 40% off the total cost</span>
-                                <div style={{ width: '70%', height: '300px', marginBottom: '30px' }}>
-                                    <Bar data={{ datasets: this.state.humanResources.datasets, labels: this.state.humanResources.labels }} options={this.options} />
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-md-6 col-sm-6">
-                                <h4>Procurement</h4>
-                                <span>Total Cost: $73837 - 40% of the total cost</span>
-                                <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                    <div style={{ width: '70%', height: '300px' }}>
-                                        <Bar data={{ datasets: this.state.procurment.datasets, labels: this.state.procurment.labels }} options={this.options} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className="col-lg-6 col-md-6 col-sm-6">
-                                <h4>Supply Chain Management</h4>
-                                <span>Total Cost: $73837 - 40% off the total cost</span>
-                                <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                    <div style={{ width: '70%', height: '300px' }}>
-                                        <Bar data={{ datasets: this.state.supplyChain.datasets, labels: this.state.supplyChain.labels }} options={this.options} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-md-6 col-sm-6">
-                                <h4>EMS</h4>
-                                <span>Total Cost: $73837 - 40% off the total cost</span>
-                                <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                    <div style={{ width: '70%', height: '300px' }}>
-                                        <Bar data={{ datasets: this.state.EMS.datasets, labels: this.state.EMS.labels }} options={this.options} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        :
-                        <div>
+                        {displayBarChart ? <>
                             <div className='row'>
                                 <div className="col-lg-6 col-md-6 col-sm-6">
-                                    <h4>Human Resources</h4>
-                                    <span>Total cost: $415624 - 40% off the total cost</span>
-                                    <div style={{ width: '70%', height: '300px', marginBottom: '30px' }}>
-                                        <Pie data={this.state.humanResourcespieData} />
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">Human Resources</div>
+                                        <div className="total-cost-text cost"><strong>Total cost: $415624</strong> - 40% off the total cost</div>
+                                        <div className="chart">
+                                            <Bar data={{ datasets: this.state.humanResources.datasets, labels: this.state.humanResources.labels }} options={this.options} />
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6">
-                                    <h4>Procurement</h4>
-                                    <span>Total Cost: $73837 - 40% of the total cost</span>
-                                    <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                        <div style={{ width: '70%', height: '300px' }}>
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">Procurement</div>
+                                        <div className="total-cost-text cost"><strong>Total Cost: $73837</strong> - 40% of the total cost</div>
+                                        <div className="chart">
+                                            <Bar data={{ datasets: this.state.procurment.datasets, labels: this.state.procurment.labels }} options={this.options} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">Supply Chain Management</div>
+                                        <div className="total-cost-text cost"><strong>Total Cost: $73837</strong> - 40% off the total cost</div>
+                                        <div className="chart">
+                                            <Bar data={{ datasets: this.state.supplyChain.datasets, labels: this.state.supplyChain.labels }} options={this.options} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">EMS</div>
+                                        <div className="total-cost-text cost"><strong>Total Cost: $73837</strong> - 40% off the total cost</div>
+                                        <div className="chart">
+                                            <Bar data={{ datasets: this.state.EMS.datasets, labels: this.state.EMS.labels }} options={this.options} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className='row'>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">Human Resources</div>
+                                        <div className="total-cost-text cost"><strong>Total cost: $415624</strong> - 40% off the total cost</div>
+                                        <div className="chart">
+                                            <Pie data={this.state.humanResourcespieData} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6">
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">Procurement</div>
+                                        <div className="total-cost-text cost"><strong>Total Cost: $73837</strong> - 40% of the total cost</div>
+                                        <div className="chart">
                                             <Pie data={this.state.procurmentpieData} />
                                         </div>
                                     </div>
@@ -270,26 +274,27 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                             </div>
                             <div className='row'>
                                 <div className="col-lg-6 col-md-6 col-sm-6">
-                                    <h4>Supply Chain Management</h4>
-                                    <span>Total Cost: $73837 - 40% off the total cost</span>
-                                    <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                        <div style={{ width: '70%', height: '300px' }}>
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">Supply Chain Management</div>
+                                        <div className="total-cost-text cost"><strong>Total Cost: $73837</strong> - 40% off the total cost</div>
+                                        <div className="chart">
                                             <Pie data={this.state.supplyChainpieData} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6">
-                                    <h4>EMS</h4>
-                                    <span>Total Cost: $73837 - 40% off the total cost</span>
-                                    <div className="" style={{ width: '100%', height: '100%', marginBottom: '30px' }}>
-                                        <div style={{ width: '70%', height: '300px' }}>
+                                    <div className="cost-analysis-chart">
+                                        <div className="heading">EMS</div>
+                                        <div className="total-cost-text cost"><strong>Total Cost: $73837</strong> - 40% off the total cost</div>
+                                        <div className="chart">
                                             <Pie data={this.state.EMSpieData} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </>
                     }
+                    </div>
                 </div>
                 }
             </div>
