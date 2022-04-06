@@ -26,6 +26,7 @@
   font-weight: 500;
   padding: 0;
   line-height: 28px;
+  width: 100%;
 }
 
 .unimplemented-modal-container .modal-content .modal-header button {

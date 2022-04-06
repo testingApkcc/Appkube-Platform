@@ -65,8 +65,8 @@ export class InviteUsersPopup extends React.Component<any, any> {
         body: formdata,
         redirect: 'follow',
       })
-        .then(response => response.json())
-        .then(result => {
+        .then((response) => response.json())
+        .then((result) => {
           console.log(result);
           if (result.code !== 417) {
             appEvents.emit(AppEvents.alertSuccess, ['User invited', result.message]);
@@ -74,7 +74,7 @@ export class InviteUsersPopup extends React.Component<any, any> {
             appEvents.emit(AppEvents.alertError, ['User invite failed', result.message]);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log('User invite failed. Error', error);
           appEvents.emit(AppEvents.alertError, ['User invite failed', '']);
         });
@@ -129,7 +129,8 @@ export class InviteUsersPopup extends React.Component<any, any> {
     return retData;
   };
   validateEmail(email: any) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
 
@@ -138,7 +139,12 @@ export class InviteUsersPopup extends React.Component<any, any> {
     const errorData = this.validate(isSubmitted);
     return (
       <Modal isOpen={modal} toggle={this.toggle} className="modal-container invite-users-modal-container">
-        <ModalHeader toggle={this.toggle}>Invite Users</ModalHeader>
+        <ModalHeader>
+          Invite Users
+          <button type="button" className="close" aria-label="Close" onClick={this.toggle}>
+            <span aria-hidden="true">×</span>
+          </button>
+        </ModalHeader>
         <ModalBody style={{ overflowY: 'auto', overflowX: 'hidden' }}>
           <p>Invite link will be sent to new member on below email</p>
           <div className="form-group">
