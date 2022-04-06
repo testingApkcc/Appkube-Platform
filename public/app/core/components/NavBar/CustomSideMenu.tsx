@@ -167,6 +167,30 @@ export class CustomSideMenu extends PureComponent<any, any> {
           isImplemented: true,
         },
         {
+          link: '/a/xformation-assetmanager-ui-plugin/department-wise-products',
+          text: 'Department Wise Products',
+          childName: 'assets',
+          isImplemented: true,
+        },
+        {
+          link: '/a/xformation-assetmanager-ui-plugin/amazon-services',
+          text: 'Amazon Services',
+          childName: 'assets',
+          isImplemented: true,
+        },
+        {
+          link: '/a/xformation-assetmanager-ui-plugin/department-wise-charts',
+          text: 'Department Wise Charts',
+          childName: 'assets',
+          isImplemented: true,
+        },
+        {
+          link: '/a/xformation-assetmanager-ui-plugin/storage-details',
+          text: 'Storage Details',
+          childName: 'assets',
+          isImplemented: true,
+        },
+        {
           link: '/assets/discovered-assets',
           text: 'Discovered Assets',
           childName: 'assets',
@@ -689,6 +713,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
       let isActive = false;
       if (activeMenuItem) {
         isActive = activeMenuItem.link === menuItem.link;
+        console.log(activeMenuItem.link, menuItem.link)
       }
       retItem.push(
         <Rbac parentName={menuItem.text || ''} childName={menuItem.text || ''} key={menuItem.text}>

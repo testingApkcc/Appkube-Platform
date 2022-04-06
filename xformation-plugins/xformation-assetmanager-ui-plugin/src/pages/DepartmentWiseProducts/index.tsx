@@ -4448,6 +4448,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >{val.name}</Link>
                         <div className="contents">
                           <ul>
+                            _cloneDeep
                             <li>
                               <label>No. of Products</label>
                               <span>{val.noOfProduct}</span>
@@ -4467,7 +4468,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         </div>
                         <div>
                           <CircularProgressbar value={val.productionRatio} text={val.prodBilling + val.otherBilling + '%'} />
-                          {/* <CircularProgressbar value={val.productionRatio} text={val.productionRatio} /> */}
                           <div><label>Production Billing :</label>${val.prodBilling}<span></span></div>
                           <div> <label>Other Billing :</label><span>${val.otherBilling}</span></div>
                         </div>
