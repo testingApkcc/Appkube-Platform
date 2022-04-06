@@ -5,7 +5,7 @@ import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { DepartmentWiseProduct } from './../../components/DepartmentWiseProduct';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -16,6 +16,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export class DepartmentWiseProducts extends React.Component<any, any> {
   breadCrumbs: any;
   constructor(props: any) {
+    
     super(props);
     this.state = {
       showRecentFilter: false,
@@ -4248,42 +4249,48 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           noOfProduct: 150,
           prodBilling: 10,
           otherBilling: 25,
-          productionRatio: 66
+          productionRatio: 66,
+          prodPathColor: '5DBC73'
         },
         {
           name: 'It Infra',
           noOfProduct: 150,
           prodBilling: 10,
           otherBilling: 50,
-          productionRatio: 20
+          productionRatio: 20,
+          prodPathColor: 'E34120'
         },
         {
           name: 'IT Devlopment',
           noOfProduct: 150,
           prodBilling: 70,
           otherBilling: 30,
-          productionRatio: 45
+          productionRatio: 45,
+          prodPathColor: 'EF8F00'
         },
         {
           name: 'Finance',
           noOfProduct: 150,
           prodBilling: 20,
           otherBilling: 80,
-          productionRatio: 15
+          productionRatio: 15,
+          prodPathColor: '5DBC73'
         },
         {
           name: 'Finance',
           noOfProduct: 150,
           prodBilling: 35,
           otherBilling: 50,
-          productionRatio: 85
+          productionRatio: 85,
+          prodPathColor: 'EF8F00'
         },
         {
           name: 'It Infra',
           noOfProduct: 150,
           prodBilling: 20,
           otherBilling: 40,
-          productionRatio: 50
+          productionRatio: 50,
+          prodPathColor: '5DBC73'
         },
       ],
       graphData: {
@@ -4309,13 +4316,25 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 'rgba(113, 167, 254, 1)',
                 'rgba(253, 191, 98, 1)',
                 'rgba(112, 222, 174, 1)',
-                '',
               ]
             }
           ],
         }
+      },
+      graphOptions: {
+        title:{
+          display:true,
+          text:'Total Cost: $6,71,246',
+          fontSize:20
+        },
+        legend:{
+          labels: {
+            padding: 40 //default is 10
+          },
+          display:true,
+          position:'top'
+        }
       }
-
     };
     this.breadCrumbs = [
       {
@@ -4385,57 +4404,101 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   };
 
   render() {
-    const { departmentList, graphData } = this.state;
+    const { departmentList, graphData, graphOptions } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
         <div className="department-wise-container">
           <div className="common-container">
-            {graphData && <div className="common-container">
-              <div className="row">
-                <div className="col-lg-9 col-md-8 col-sm-6">
-                  <div className="asset-heading">Cost Analysis</div>
-                </div>
-                <div className="col-lg-4 col-md-2 col-sm-1">
-                  <div className="asset-heading">Product wise Cost</div>
-                  <div style={{ width: "300px", height: "300px" }}>
-                    {graphData.doughnutData && <Doughnut data={graphData.doughnutData} />}
-                  </div>
-                  <div> <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >View details</Link></div>
-                </div>
-                <div className="col-lg-4 col-md-2 col-sm-1">
-                  <div className="asset-heading">Production Vs Others</div>
-                  <div style={{ width: "300px", height: "300px" }}>
-                    {graphData.pieData && <Pie data={graphData.pieData} />}
-                  </div>
-                  <div> <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >View details</Link></div>
-                </div>
-                <div className="col-lg-4 col-md-2 col-sm-1">
-                  <div className="asset-heading">Product wise Cost</div>
-                  {graphData.doughnutData && <div >
-                    <div style={{ width: "300px", height: "300px" }}> <Doughnut data={graphData.doughnutData} /></div>
-                    <div>
-                    </div>
-                    <div> <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >View details</Link></div>
-                  </div>
-                  }
-                </div>
-
-              </div>
-            </div>}
             <div className="row">
               <div className="col-lg-9 col-md-8 col-sm-6">
-                <div className="asset-heading">Department wise</div>
+                <div className="asset-heading">Cost Analysis</div>
               </div>
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="float-right common-right-btn">
                   <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
                     <img src={images.Jobs} alt="" style={{ maxWidth: '20px' }} />
                   </Link>
-                  {/* <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
-                    <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp; Back
-                  </Link> */}
                 </div>
+              </div>
+            </div>
+            {graphData && <div className="row">
+              <div className="col-lg-4 col-md-12 col-sm-12">
+                <div className="cost-analysis-chart">
+                  <div className="row">
+                    <div className="col-lg-10 col-md-10 col-sm-10">
+                      <div className="heading">Product wise Cost</div>
+                    </div>
+                    <div className="col-lg-2 col-md-2 col-sm-2">
+                      <div className="edit">
+                        <a>
+                          <i className="fa fa-edit"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="total-cost-text">Total Cost: $6,71,246</div>
+                  <div className="chart">
+                    {graphData.doughnutData && 
+                      <Doughnut
+                        data={graphData.doughnutData}
+                        options={graphOptions}
+                      />
+                    }
+                  </div>
+                  <div className="view-details-link">
+                    <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-12 col-sm-12">
+                <div className="cost-analysis-chart">
+                  <div className="row">
+                    <div className="col-lg-10 col-md-10 col-sm-10">
+                      <div className="heading">Production Vs Others</div>
+                    </div>
+                    <div className="col-lg-2 col-md-2 col-sm-2">
+                      <div className="edit">
+                        <a>
+                          <i className="fa fa-edit"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="chart">
+                    {graphData.pieData && <Pie data={graphData.pieData} />}
+                  </div>
+                  <div className="view-details-link">
+                    <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-12 col-sm-12">
+                <div className="cost-analysis-chart">
+                  <div className="row">
+                    <div className="col-lg-10 col-md-10 col-sm-10">
+                      <div className="heading">Product wise Cost</div>
+                    </div>
+                    <div className="col-lg-2 col-md-2 col-sm-2">
+                      <div className="edit">
+                        <a>
+                          <i className="fa fa-edit"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="chart">
+                    {graphData.pieData && <Doughnut data={graphData.doughnutData} />}
+                  </div>
+                  <div className="view-details-link">
+                    <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
+                  </div>
+                </div>
+              </div>
+            </div>}
+            <div className="row">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="asset-heading">Department wise</div>
               </div>
             </div>
             <div className="department-wise-boxs">
@@ -4445,7 +4508,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   departmentList.map((val: any, index: any) => {
                     return (
                       <div className="department-box">
-                        <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading" >{val.name}</Link>
+                        <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading">{val.name}</Link>
                         <div className="contents">
                           <ul>
                             <li>
@@ -4461,15 +4524,30 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                               <span>{val.otherBilling}</span>
                             </li>
                           </ul>
-                        </div>
-                        <div>
-                          <label>Production Usage Ratio :</label><span>{val.prodBilling}%</span>
-                        </div>
-                        <div>
-                          <CircularProgressbar value={val.productionRatio} text={val.prodBilling + val.otherBilling + '%'} />
-                          {/* <CircularProgressbar value={val.productionRatio} text={val.productionRatio} /> */}
-                          <div><label>Production Billing :</label>${val.prodBilling}<span></span></div>
-                          <div> <label>Other Billing :</label><span>${val.otherBilling}</span></div>
+                          <div className="production-heading">
+                            <label>Production Usage Ratio :</label>
+                            <span>{val.prodBilling}%</span>
+                          </div>
+                          <div className="production-chart">
+                            <CircularProgressbar 
+                              value={val.prodBilling} 
+                              text={val.prodBilling + '%'} 
+                              strokeWidth={20} 
+                              styles={buildStyles({
+                                trailColor: "#F6EEFF",
+                                pathColor: `#${val.prodPathColor}`,
+                                textColor: "#000000",
+                              })}
+                            />
+                          </div>
+                          <div className="production-billing-text">
+                            <label style={{ color: `#${val.prodPathColor}` }}>Production Billing :</label>
+                            <span style={{ color: `#${val.prodPathColor}` }}>${val.prodBilling}</span>
+                          </div>
+                          <div className="production-billing-text">
+                            <label>Other Billing :</label>
+                            <span>${val.otherBilling}</span>
+                          </div>
                         </div>
                       </div>
                     );

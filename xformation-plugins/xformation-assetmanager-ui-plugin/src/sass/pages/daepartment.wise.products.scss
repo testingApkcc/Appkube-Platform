@@ -26,6 +26,69 @@
         }
     }
 
+    .cost-analysis-chart {
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background: #FFFFFF;
+        box-shadow: 4px 4px 4px #0000000A;
+
+        .heading {
+            display: block;
+            color: #202020;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 600;
+        }
+
+        .edit {
+            float: right;
+
+            a {
+                color: #202020;
+                font-size: 12px;
+                line-height: 20px;
+                font-weight: 500;
+            }
+
+        }
+
+        .total-cost-text{
+            display: block;
+            width: 100%;
+            color: #202020;
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 600;
+            padding-top: 20px;
+            text-align: right;
+        }
+
+        .chart{
+            display: block;
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .view-details-link{
+            display: block;
+            width: 100%;
+            text-align: right;
+
+            a {
+                display: inline-block;
+                color: #202020;
+                font-size: 11px;
+                line-height: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+
     .department-wise-boxs {
         display: flex;
         padding: 20px 15px;
@@ -69,8 +132,9 @@
             }
 
             .contents {
-                display: flex;
+                display: block;
                 width: 100%;
+                padding-bottom: 15px;
 
                 ul {
                     display: block;
@@ -97,6 +161,59 @@
                             display: inline-block;
                             width: 25%;
                         }
+                    }
+                }
+
+                .production-heading {
+                    display: block;
+                    width: 100%;
+                    padding-left: 15px;
+                    padding-right: 15px;
+
+                    label {
+                        font-size: 14px;
+                        line-height: 18px;
+                        color: #202020;
+                        font-weight: 600;
+                    }
+
+                    span {
+                        font-size: 14px;
+                        line-height: 18px;
+                        color: #202020;
+                        font-weight: 600;
+                        float: right;
+                    }
+                }
+
+                .production-chart {
+                    display: table;
+                    width: 50%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 15px;
+                }
+
+                .production-billing-text {
+                    display: block;
+                    width: 100%;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    padding-bottom: 5px;
+
+                    label {
+                        font-size: 13px;
+                        line-height: 18px;
+                        color: #202020;
+                        font-weight: 400;
+                    }
+
+                    span {
+                        font-size: 13px;
+                        line-height: 18px;
+                        color: #202020;
+                        font-weight: 400;
+                        float: right;
                     }
                 }
             }

@@ -2456,6 +2456,60 @@ a:hover {
 .department-wise-container .common-container .asset-heading {
   padding-left: 30px;
 }
+.department-wise-container .cost-analysis-chart {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  box-shadow: 4px 4px 4px #0000000a;
+}
+.department-wise-container .cost-analysis-chart .heading {
+  display: block;
+  color: #202020;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.department-wise-container .cost-analysis-chart .edit {
+  float: right;
+}
+.department-wise-container .cost-analysis-chart .edit a {
+  color: #202020;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.department-wise-container .cost-analysis-chart .total-cost-text {
+  display: block;
+  width: 100%;
+  color: #202020;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  padding-top: 20px;
+  text-align: right;
+}
+.department-wise-container .cost-analysis-chart .chart {
+  display: block;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.department-wise-container .cost-analysis-chart .view-details-link {
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+.department-wise-container .cost-analysis-chart .view-details-link a {
+  display: inline-block;
+  color: #202020;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+}
 .department-wise-container .department-wise-boxs {
   display: flex;
   padding: 20px 15px;
@@ -2497,8 +2551,9 @@ a:hover {
   box-shadow: 0px 1px 6px #3b7cff29;
 }
 .department-wise-container .department-wise-boxs .department-box .contents {
-  display: flex;
+  display: block;
   width: 100%;
+  padding-bottom: 15px;
 }
 .department-wise-container .department-wise-boxs .department-box .contents ul {
   display: block;
@@ -2523,6 +2578,52 @@ a:hover {
 .department-wise-container .department-wise-boxs .department-box .contents ul li span {
   display: inline-block;
   width: 25%;
+}
+.department-wise-container .department-wise-boxs .department-box .contents .production-heading {
+  display: block;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.department-wise-container .department-wise-boxs .department-box .contents .production-heading label {
+  font-size: 14px;
+  line-height: 18px;
+  color: #202020;
+  font-weight: 600;
+}
+.department-wise-container .department-wise-boxs .department-box .contents .production-heading span {
+  font-size: 14px;
+  line-height: 18px;
+  color: #202020;
+  font-weight: 600;
+  float: right;
+}
+.department-wise-container .department-wise-boxs .department-box .contents .production-chart {
+  display: table;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+}
+.department-wise-container .department-wise-boxs .department-box .contents .production-billing-text {
+  display: block;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+}
+.department-wise-container .department-wise-boxs .department-box .contents .production-billing-text label {
+  font-size: 13px;
+  line-height: 18px;
+  color: #202020;
+  font-weight: 400;
+}
+.department-wise-container .department-wise-boxs .department-box .contents .production-billing-text span {
+  font-size: 13px;
+  line-height: 18px;
+  color: #202020;
+  font-weight: 400;
+  float: right;
 }
 .department-wise-container .department-fliters-container {
   display: block;
