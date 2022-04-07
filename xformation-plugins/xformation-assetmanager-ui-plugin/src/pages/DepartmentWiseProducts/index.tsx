@@ -7,9 +7,8 @@ import { PLUGIN_BASE_URL } from '../../constants';
 import { DepartmentWiseProduct } from './../../components/DepartmentWiseProduct';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
 import _departmentData from './_dummyData/departments.json';
 import {products} from './_dummyData/products';
 
@@ -62,17 +61,22 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           legend:{
             labels: {
               usePointStyle: true,
-              pointStyle: 'circle'
+              pointStyle: 'circle',
             },
             display:true,
             position:'right',
+            responsive: true,
+            align: 'middle',
           },
-          datalabels: {
-            anchor: "start",
-            align:"start",
+          title: {
+            display: true,
+            text: 'Total Cost: $6,71,246',
+            position: 'bottom',
+            color:'#202020',
+            font: {
+              size:18
+            },
           },
-          height: "auto",
-          responsive: true,
         },
       }
     };
@@ -223,16 +227,18 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
         <div className="department-wise-container">
-          <div className="common-container">
-            <div className="row">
-              <div className="col-lg-9 col-md-8 col-sm-6">
-                <div className="asset-heading">Cost Analysis</div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="float-right common-right-btn">
-                  <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
-                    <img src={images.Jobs} alt="" style={{ maxWidth: '20px' }} />
-                  </Link>
+          <div className="common-container border-bottom-0">
+            <div className="department-heading">
+              <div className="row">
+                <div className="col-lg-9 col-md-8 col-sm-6">
+                  <div className="asset-heading">Cost Analysis</div>
+                </div>
+                <div className="col-lg-3 col-md-4 col-sm-6">
+                  <div className="float-right common-right-btn">
+                    <Link to={`${PLUGIN_BASE_URL}/environments`} className="asset-white-button min-width-inherit">
+                      <img src={images.Jobs} alt="" style={{ maxWidth: '20px' }} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -251,7 +257,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
-                  <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
                     {graphData.doughnutData && <Doughnut data={graphData.doughnutData} options={graphOptions} />}
                   </div>
@@ -274,7 +279,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
-                  <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
                     {graphData.pieData && <Pie data={graphData.pieData} options={graphOptions} />}
                   </div>
@@ -297,7 +301,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
-                  <div className="total-cost-text">Total Cost: $6,71,246</div>
                   <div className="chart">
                     {graphData.pieData && <Doughnut data={graphData.doughnutData} options={graphOptions} />}
                   </div>
