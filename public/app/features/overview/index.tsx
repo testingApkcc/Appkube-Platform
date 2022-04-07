@@ -8,6 +8,9 @@ import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import 'react-multi-carousel/lib/styles.css';
 // import Carousel from 'react-multi-carousel';
 import { config } from '../config';
+// import { Line } from 'react-chartjs-2';
+// import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
+// ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
 // const responsive = {
 //   superLargeDesktop: {
@@ -85,43 +88,98 @@ class Overview extends React.Component<any, any> {
           value: '$6,71,456',
           diff: '+4 from last week',
           status: 'down',
-          data: [20, 40, 30, 60]
+          data: [20, 40, 30, 60],
         },
         lastWeekSpent: {
           value: '412,531',
           diff: '+5%',
           status: 'up',
-          data: [40, 20, 60]
+          data: [40, 20, 60],
         },
         currentSpentRate: {
           perHR: '$21',
-          perDay: '$504'
+          perDay: '$504',
         },
         spentToday: {
           value: '$5245',
-          diff: '+5%'
+          diff: '+5%',
         },
         spentYesterDay: {
           value: '$4567',
-          diff: '2%'
+          diff: '2%',
         },
         totalBudget: {
           total: '10,00,000',
           remaining: '3,28,457',
-          percentage: '55%'
+          percentage: '55%',
         },
         productList: [
-          { name: "Product 1", performance: 89, availabilty: "99", reliability: "67", security: "99", endUsage: "92" },
-          { name: "Product 2", performance: "99", availabilty: "91", reliability: "75", security: "92", endUsage: "96" },
-          { name: "Product 3", performance: "85", availabilty: "91", reliability: "75", security: "92", endUsage: "91" },
-          { name: "Product 4", performance: "78", availabilty: "92", reliability: "68", security: "79", endUsage: "90" },
-          { name: "Product 5", performance: "81", availabilty: "98", reliability: "91", security: "88", endUsage: "87" }],
+          { name: 'Product 1', performance: 89, availabilty: '99', reliability: '67', security: '99', endUsage: '92' },
+          {
+            name: 'Product 2',
+            performance: '99',
+            availabilty: '91',
+            reliability: '75',
+            security: '92',
+            endUsage: '96',
+          },
+          {
+            name: 'Product 3',
+            performance: '85',
+            availabilty: '91',
+            reliability: '75',
+            security: '92',
+            endUsage: '91',
+          },
+          {
+            name: 'Product 4',
+            performance: '78',
+            availabilty: '92',
+            reliability: '68',
+            security: '79',
+            endUsage: '90',
+          },
+          {
+            name: 'Product 5',
+            performance: '81',
+            availabilty: '98',
+            reliability: '91',
+            security: '88',
+            endUsage: '87',
+          },
+        ],
         cloudWiseProduct: [
           { name: 'AWS', value: '$2,47,518', diff: '5%', status: 'down' },
           { name: 'AZURE', value: '$90756', diff: '2%', status: 'up' },
-          { name: 'GCP', value: '$11,508', diff: '1%', status: 'up' }
-        ]
-      }
+          { name: 'GCP', value: '$11,508', diff: '1%', status: 'up' },
+        ],
+      },
+      totalSpend: {
+        type: 'line',
+        data: {
+          labels: '',
+          datasets: [
+            {
+              label: '',
+              data: [20, 40, 30, 60],
+              borderColor: '#E10505',
+              // backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Line Chart',
+            },
+          },
+        },
+      },
     };
   }
 
@@ -236,7 +294,6 @@ class Overview extends React.Component<any, any> {
   };
 
   render() {
-    debugger
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'MONITOR | OVERVIEW';
     const { dailyAvgWaitTime, organizationName, organizationModal, isSubmitted, isLoading, dashboardData } = this.state;
@@ -285,22 +342,29 @@ class Overview extends React.Component<any, any> {
                 </div>
               </div>
             </div>
-            {dashboardData &&
+            {dashboardData && (
               <>
                 <div className="applications-inner-container">
                   <div className="row">
                     <div className="col-xl-9 col-lg-9 col-md-6 col-sm-6">
                       <div className="dashboard-spent">
                         <label>Total Spend</label>
-                        <p>{dashboardData.totalSpent.value} <span>{dashboardData.totalSpent.diff}</span></p>
+                        {/* <Line data={{ datasets: this.state.totalSpend.data.datasets, labels: this.state.totalSpend.data.labels }} options={this.state.totalSpend.options} /> */}
+                        <p>
+                          {dashboardData.totalSpent.value} <span>{dashboardData.totalSpent.diff}</span>
+                        </p>
                       </div>
                       <div className="dashboard-spent">
                         <label>Last 7 days Spend</label>
-                        <p>{dashboardData.lastWeekSpent.value} <span>{dashboardData.lastWeekSpent.diff}</span></p>
+                        <p>
+                          {dashboardData.lastWeekSpent.value} <span>{dashboardData.lastWeekSpent.diff}</span>
+                        </p>
                       </div>
                       <div className="dashboard-spent">
                         <label>Current spend Rate</label>
-                        <p>{dashboardData.currentSpentRate.perHR} | {dashboardData.currentSpentRate.perDay}</p>
+                        <p>
+                          {dashboardData.currentSpentRate.perHR} | {dashboardData.currentSpentRate.perDay}
+                        </p>
                       </div>
                       <div className="dashboard-spent">
                         <label>Total Budget(Q1)</label>
@@ -310,32 +374,39 @@ class Overview extends React.Component<any, any> {
                       </div>
                       <div className="dashboard-spent">
                         <label>Spends today</label>
-                        <p>{dashboardData.spentToday.value}  <span>{dashboardData.spentToday.diff}</span></p>
+                        <p>
+                          {dashboardData.spentToday.value} <span>{dashboardData.spentToday.diff}</span>
+                        </p>
                       </div>
                       <div className="dashboard-spent">
                         <label>Spends yesterday</label>
-                        <p>{dashboardData.spentYesterDay.value} <span>{dashboardData.spentYesterDay.diff}</span></p>
+                        <p>
+                          {dashboardData.spentYesterDay.value} <span>{dashboardData.spentYesterDay.diff}</span>
+                        </p>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                       <label>Cloud wise spend</label>
-                        <span>...</span>
+                      <span>...</span>
                       {dashboardData.cloudWiseProduct &&
-                       dashboardData.cloudWiseProduct.length>0 
-                       &&dashboardData.cloudWiseProduct.map((val:any, index:any) => {
-return(<div key={index}>
-<div>
-  <span><img alt={val.name} src=''></img></span>
-  <div>
-  <span>{val.name}</span> 
-  <span>{val.value}</span>
-  <span>{val.diff}</span>
-  </div>
-  <div>progress bar</div>
-</div>
-</div>)
-                      })
-                      }
+                        dashboardData.cloudWiseProduct.length > 0 &&
+                        dashboardData.cloudWiseProduct.map((val: any, index: any) => {
+                          return (
+                            <div key={index}>
+                              <div>
+                                <span>
+                                  <img alt={val.name} src=""></img>
+                                </span>
+                                <div>
+                                  <span>{val.name}</span>
+                                  <span>{val.value}</span>
+                                  <span>{val.diff}</span>
+                                </div>
+                                <div>progress bar</div>
+                              </div>
+                            </div>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
@@ -352,7 +423,8 @@ return(<div key={index}>
                       </tr>
                     </thead>
                     <tbody>
-                      {dashboardData.productList && dashboardData.productList.length > 0 &&
+                      {dashboardData.productList &&
+                        dashboardData.productList.length > 0 &&
                         dashboardData.productList.map((val: any, index: any) => {
                           return (
                             <tr key={index}>
@@ -363,14 +435,13 @@ return(<div key={index}>
                               <td> {val.security} </td>
                               <td> {val.endUsage} </td>
                             </tr>
-                          )
-                        })
-                      }
+                          );
+                        })}
                     </tbody>
                   </table>
                 </div>
               </>
-            }
+            )}
             {/* <div className="applications-inner-container">
               <Carousel
                 responsive={responsive}
