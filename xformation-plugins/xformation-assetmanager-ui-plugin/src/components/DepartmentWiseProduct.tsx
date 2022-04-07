@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { images } from '../img';
 import { PLUGIN_BASE_URL } from '../constants';
 import { SelectCloudFilter } from '../components/SelectCloudFilter';
+import {ServicesPerformance} from './ServicesPerformance';
 
 export class DepartmentWiseProduct extends React.Component<any, any> {
   constructor(props: any) {
@@ -64,58 +65,6 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
     });
   }
 
-  openServiceOfProduct = (i: any, j: any, k: any) => {
-    const { product } = this.props;
-    for (let m = 0; m < product[i].productList[j].services.length; m++) {
-      if (k !== m) {
-        product[i].productList[j].services[m].isOpen = false;
-      }
-    }
-    product[i].productList[j].services[k].isOpen = true;
-    this.setState({
-      product
-    });
-  }
-
-  openProductMainServices = (i: any, j: any, k: any, l: any) => {
-    const { product } = this.props;
-    for (let m = 0; m < product[i].productList[j].services[k].mainservices.length; m++) {
-      if (l !== m) {
-        product[i].productList[j].services[k].mainservices[m].isOpen = false;
-      }
-    }
-    product[i].productList[j].services[k].mainservices[l].isOpen = !product[i].productList[j].services[k].mainservices[l].isOpen;
-    this.setState({
-      product
-    });
-  }
-
-  openServices = (i: any, j: any, k: any, l: any, m: any) => {
-    const { product } = this.props;
-    for (let n = 0; n < product[i].productList[j].services[k].mainservices[m].services.length; n++) {
-      if (l !== n) {
-        product[i].productList[j].services[k].mainservices[m].services[n].isOpen = false;
-      }
-    }
-    product[i].productList[j].services[k].mainservices[l].services[m].isOpen = !product[i].productList[j].services[k].mainservices[l].services[m].isOpen;
-    this.setState({
-      product
-    });
-  }
-
-  onClickOpenSubLink = (i: any, j: any, k: any, l: any) => {
-    const { product } = this.props;
-    for (let m = 0; m < product[i].productList[j].services[k].mainservices.length; m++) {
-      if (l !== m) {
-        product[i].productList[j].services[k].mainservices[m].menuOpen = false;
-      }
-    }
-    product[i].productList[j].services[k].mainservices[l].menuOpen = !product[i].productList[j].services[k].mainservices[l].menuOpen;
-    this.setState({
-      product
-    });
-  };
-
   displayProductServices = () => {
     const { product } = this.props;
     let retData = [];
@@ -140,149 +89,7 @@ export class DepartmentWiseProduct extends React.Component<any, any> {
                     </button>
                   </div>
                   {val.isOpen == true &&
-                    <div className='environments'>
-                      <div className='environments-inner'>
-                        <div className='heading'>
-                          <h3>EMS - Environments</h3>
-                          <div className='buttons'>
-                            <button className='btn'>
-                              <i className='fa fa-plus'></i>
-                            </button>
-                            <button className='btn'>
-                              <i className='fa fa-eye'></i>
-                            </button>
-                            <button className='btn'>
-                              <i className='fa fa-bars'></i>
-                            </button>
-                          </div>
-                        </div>
-                        <div className='content'>
-                          <div className='tabs-container'>
-                            <div className='tabs'>
-                              <ul>
-                                {val.services && val.services.map((serviceData: any, serviceindex: any) => {
-                                  return (
-                                    <li onClick={() => this.openServiceOfProduct(i, index, serviceindex)} className={serviceData.isOpen == true ? 'active' : ''}>{serviceData.stage}</li>
-                                  )
-                                })
-                                }
-                              </ul>
-                            </div>
-                            {val.services && val.services.map((serviceres: any, serviceindex: any) => {
-                              if (serviceres.isOpen == true) {
-                                return (
-                                  <div className='tabs-content'>
-                                    <ul>
-                                      {serviceres.mainservices && serviceres.mainservices.map((mainservicedata: any, mainindex: any) => {
-                                        return (
-                                          <li>
-                                            {mainservicedata.isOpen === false && <div className='icon'><img src={images.Icon} alt="" /></div>}
-                                            <div className={mainservicedata.isOpen === true ? 'heading full' : 'heading'} >
-                                              <span onClick={() => this.openProductMainServices(i, index, serviceindex, mainindex)}>          
-                                                {mainservicedata.title}
-                                              </span>
-                                              <div className='icon'>
-                                                <div
-                                                  className='fa-icon'
-                                                  onClick={() => this.openProductMainServices(i, index, serviceindex, mainindex)}
-                                                >
-                                                  <i className={mainservicedata.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
-                                                </div>
-                                                <div className='edit'>
-                                                  <div 
-                                                    className='bars'
-                                                    onClick={() => this.onClickOpenSubLink(i, index, serviceindex, mainindex)}
-                                                  >
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                  </div>
-                                                  {mainservicedata.menuOpen == true && (
-                                                    <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
-                                                      <a href='#'> Add Firewall </a>
-                                                      <a href='#'> Remove Firewall </a>
-                                                    </div>
-                                                  )}
-                                                </div>
-                                              </div>
-                                            </div>
-                                            {
-                                              mainservicedata.isOpen === true &&
-                                              <div className='content-table'>
-                                                <div className='table'>
-                                                  <div className='thead'>
-                                                    <div className='th'>Name</div>
-                                                  </div>
-                                                  {mainservicedata.services && mainservicedata.services.map((service: any, subindex: any) => {
-                                                    return (
-                                                      <div className='tbody'>
-                                                        <div className='td title' onClick={() => this.openServices(i, index, serviceindex, mainindex, subindex)}>
-                                                          <strong>{service.title}<i className={service.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
-                                                        </div>
-                                                        {service.isOpen == true &&
-                                                          <div className='table performance-table'>
-                                                            {service.subServices && service.subServices.map((subData: any, key: any) => {
-                                                              return (
-                                                                <>
-                                                                  <div className='tbody'>
-                                                                    <div className='td'><strong>{subData.title}</strong></div>
-                                                                    {key === 0 &&
-                                                                      <>
-                                                                        <div className='td'>Performance</div>
-                                                                        <div className='td'>Availability</div>
-                                                                        <div className='td'>Security</div>
-                                                                        <div className='td'>Data Protection</div>
-                                                                        <div className='td'>User exp</div>
-                                                                      </>
-                                                                    }
-                                                                  </div>
-                                                                  {/* {subData.isOpen === true && */}
-                                                                  <>
-                                                                    {subData.list && subData.list.map((name: any, i: any) => {
-                                                                      return (
-                                                                        <div className='tbody'>
-                                                                          <div className='td'><span>{name.title}</span></div>
-                                                                          <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                                                          <div className='td'><div className='progress-circle orange'><i className='fa fa-check-circle'></i></div></div>
-                                                                          <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                                                                          <div className='td'><div className='progress-circle red'><i className='fa fa-check-circle'></i></div></div>
-                                                                          <div className='td'><div className='progress-circle yellow'><i className='fa fa-check-circle'></i></div></div>
-                                                                        </div>
-                                                                      )
-                                                                    })
-                                                                    }
-                                                                  </>
-                                                                  {/* } */}
-                                                                </>
-                                                              )
-                                                            })
-                                                            }
-                                                          </div>
-                                                        }
-                                                      </div>
-                                                    )
-                                                  })
-                                                  }
-                                                </div>
-                                              </div>
-                                            }
-                                          </li>
-                                        );
-                                      })
-                                      }
-                                    </ul>
-                                  </div>
-                                )
-                              }
-                              else {
-                                return null;
-                              }
-                            })
-                            }
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <ServicesPerformance product={val} />
                   }
                 </div>
               )
