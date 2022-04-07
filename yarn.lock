@@ -7786,6 +7786,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/chart.js@npm:^2.9.36":
+  version: 2.9.36
+  resolution: "@types/chart.js@npm:2.9.36"
+  dependencies:
+    moment: ^2.10.2
+  checksum: aab3827045a989e037c3ad334608b5a024e4de0aaf405e47a8e9a340a9415811b15b9119182707eff96b8c64ff35f32eb045bea87b6563873a5c8e79f80ea3df
+  languageName: node
+  linkType: hard
+
 "@types/cheerio@npm:*, @types/cheerio@npm:^0.22.22":
   version: 0.22.31
   resolution: "@types/cheerio@npm:0.22.31"
@@ -18628,6 +18637,7 @@ __metadata:
     "@testing-library/user-event": 13.5.0
     "@types/angular": 1.8.4
     "@types/angular-route": 1.7.2
+    "@types/chart.js": ^2.9.36
     "@types/classnames": 2.3.0
     "@types/common-tags": ^1.8.0
     "@types/d3": 7.1.0
@@ -24280,6 +24290,13 @@ __metadata:
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.10.2":
+  version: 2.29.2
+  resolution: "moment@npm:2.29.2"
+  checksum: ee850b5776485e2af0775ceb3cfebaa7d7638f0a750fe0678fcae24c310749f96c1938808384bd422a55e5703834a71fcb09c8a1d36d9cf847f6ed0205d7a3e5
   languageName: node
   linkType: hard
 
