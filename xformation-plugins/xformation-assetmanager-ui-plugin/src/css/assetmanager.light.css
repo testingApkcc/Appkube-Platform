@@ -2456,6 +2456,14 @@ a:hover {
 .department-wise-container .common-container .asset-heading {
   padding-left: 30px;
 }
+.department-wise-container .department-heading {
+  border-bottom: 1px solid #f5f6f5;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
 .department-wise-container .cost-analysis-chart {
   display: block;
   width: 100%;
@@ -3007,7 +3015,7 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px 10px 30px;
-  width: 200px;
+  width: 20%;
   color: #24292e;
 }
 .department-wise-container .department-fliters-container .data-table .thead .app-services {
@@ -3015,7 +3023,7 @@ a:hover {
   vertical-align: top;
   padding: 10px 15px;
   text-align: center;
-  width: 150px;
+  width: 15%;
   color: #24292e;
 }
 .department-wise-container .department-fliters-container .data-table .thead .data-services {
@@ -3023,20 +3031,20 @@ a:hover {
   vertical-align: top;
   padding: 10px 15px;
   text-align: center;
-  width: 150px;
+  width: 15%;
   color: #24292e;
 }
 .department-wise-container .department-fliters-container .data-table .thead .ou {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
-  width: 530px;
+  width: 42%;
   color: #24292e;
 }
 .department-wise-container .department-fliters-container .data-table .thead .edit {
   vertical-align: top;
   padding: 10px 15px;
-  width: 80px;
+  width: 8%;
   text-align: right;
   float: right;
 }
@@ -3062,7 +3070,7 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px 10px 30px;
-  width: 200px;
+  width: 20%;
   cursor: pointer;
   color: #24292e;
 }
@@ -3079,7 +3087,7 @@ a:hover {
   vertical-align: top;
   padding: 10px 15px;
   text-align: center;
-  width: 150px;
+  width: 15%;
   color: #24292e;
 }
 .department-wise-container .department-fliters-container .data-table .tbody .data-services {
@@ -3087,20 +3095,20 @@ a:hover {
   vertical-align: top;
   padding: 10px 15px;
   text-align: center;
-  width: 150px;
+  width: 15%;
   color: #24292e;
 }
 .department-wise-container .department-fliters-container .data-table .tbody .ou {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
-  width: 530px;
+  width: 42%;
   color: #24292e;
 }
 .department-wise-container .department-fliters-container .data-table .tbody .edit {
   vertical-align: top;
   padding: 10px 15px;
-  width: 80px;
+  width: 8%;
   float: right;
   text-align: right;
 }

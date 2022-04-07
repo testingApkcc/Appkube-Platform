@@ -405,7 +405,7 @@ export class Environments extends React.Component<any, any> {
                 <div className="asset-heading">Environments</div>
               </div>
               <div className="col-lg-3 col-md-3 col-sm-12">
-                <div className="float-right common-right-btn ">
+                <div className="float-right common-right-btn">
                   <Link to={`${PLUGIN_BASE_URL}/department-wise-products`} className="asset-white-button min-width-inherit">
                     <img src={images.Jobs} alt="" style={{ maxWidth: '20px' }} />
                   </Link>
