@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { images } from '../img';
-import { PLUGIN_BASE_URL } from '../constants';
-import { SelectCloudFilter } from '../components/SelectCloudFilter';
+import { images } from '../../img';
+import { PLUGIN_BASE_URL } from '../../constants';
+import { SelectCloudFilter } from '../SelectCloudFilter';
 import {ServicesPerformance} from './ServicesPerformance';
 
-export class DepartmentWiseProduct extends React.Component<any, any> {
+export class ProductWiseServices extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
