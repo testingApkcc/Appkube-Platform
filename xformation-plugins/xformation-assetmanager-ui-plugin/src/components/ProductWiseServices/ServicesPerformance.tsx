@@ -102,16 +102,16 @@ export class ServicesPerformance extends React.Component<any, any> {
                 return (
                   <div className='tbody'>
                     <div className='td'><span>{name.title}</span></div>
-                    <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className='progress-circle orange'><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className='progress-circle green'><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className='progress-circle red'><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className='progress-circle yellow'><i className='fa fa-check-circle'></i></div></div>
-                  </div>
+                    <div className='td'><div className={(name.performance > 75) ? 'progress-circle green' : (name.performance <= 75 && name.performance > 50) ? 'progress-circle orange' : (name.performance <= 50 && name.performance > 25) ? 'progress-circle yellow' : 'progress-circle red'} ><i className='fa fa-check-circle'></i></div></div>
+                    <div className='td'><div className={(name.availibility > 75) ? 'progress-circle green' : (name.availibility <= 75 && name.availibility > 50) ? 'progress-circle orange' : (name.availibility <= 50 && name.availibility > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+                    <div className='td'><div className={(name.security > 75) ? 'progress-circle green' : (name.security <= 75 && name.security > 50) ? 'progress-circle orange' : (name.security <= 50 && name.security > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+                    <div className='td'><div className={(name.data_protection > 75) ? 'progress-circle green' : (name.data_protection <= 75 && name.data_protection > 50) ? 'progress-circle orange' : (name.data_protection <= 50 && name.data_protection > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+                    <div className='td'><div className={(name.user_exp > 75) ? 'progress-circle green' : (name.user_exp <= 75 && name.user_exp > 50) ? 'progress-circle orange' : (name.user_exp <= 50 && name.user_exp > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+                  </div >
                 )
               })
               }
-            </div>
+            </div >
           );
         }
       });
