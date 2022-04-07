@@ -8,7 +8,7 @@ import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import 'react-multi-carousel/lib/styles.css';
 // import Carousel from 'react-multi-carousel';
 import { config } from '../config';
-// import { Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 // import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 // ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
@@ -155,27 +155,50 @@ class Overview extends React.Component<any, any> {
         ],
       },
       totalSpend: {
-        type: 'line',
+        // type: 'line',
         data: {
-          labels: '',
+          labels: ['', '', '', '', ''],
           datasets: [
             {
-              label: '',
+              fill: false,
+              borderColor: 'rgba(225, 5, 5, 1)',
+              cubicInterpolationMode: 'monotone',
+              // tension: 0.4,
+              pointRadius: 0,
               data: [20, 40, 30, 60],
-              borderColor: '#E10505',
-              // backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
             },
           ],
         },
-        options: {
-          responsive: true,
+        lineOptions: {
           plugins: {
             legend: {
-              position: 'top',
+              display: false,
+              labels: {
+                usePointStyle: true,
+              },
             },
-            title: {
-              display: true,
-              text: 'Chart.js Line Chart',
+            tooltips: {
+              enabled: false,
+            },
+          },
+          scales: {
+            x: {
+              display: false,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                display: false,
+              },
+            },
+            y: {
+              display: false,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                display: false,
+              },
             },
           },
         },
@@ -187,7 +210,7 @@ class Overview extends React.Component<any, any> {
     let userInfo: any = localStorage.getItem('userInfo');
     if (userInfo) {
       userInfo = JSON.parse(userInfo);
-      console.log(`Setup Org, user :`, userInfo);
+      // console.log(`Setup Org, user :`, userInfo);
       if (!userInfo.info.organization) {
         this.setState({
           organizationModal: true,
@@ -350,9 +373,13 @@ class Overview extends React.Component<any, any> {
                       <div className="dashboard-spent">
                         <label>Total Spend</label>
                         {/* <Line data={{ datasets: this.state.totalSpend.data.datasets, labels: this.state.totalSpend.data.labels }} options={this.state.totalSpend.options} /> */}
-                        <p>
-                          {dashboardData.totalSpent.value} <span>{dashboardData.totalSpent.diff}</span>
-                        </p>
+                        <p>{dashboardData.totalSpent.value}</p>
+                        <div>
+                          {this.state.totalSpend && (
+                            <Line data={this.state.totalSpend.data} options={this.state.totalSpend.lineOptions} />
+                          )}
+                        </div>
+                        <span>{dashboardData.totalSpent.diff}</span>
                       </div>
                       <div className="dashboard-spent">
                         <label>Last 7 days Spend</label>
