@@ -4,7 +4,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
-import { DepartmentWiseProduct } from './../../components/DepartmentWiseProduct';
+import { ProductWiseServices } from '../../components/ProductWiseServices';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut, Pie } from 'react-chartjs-2';
@@ -321,7 +321,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               </div>
             </div>
           </div>
-          <DepartmentWiseProduct product={this.state.product} type="department" />
+          <ProductWiseServices product={this.state.product} type="department" />
         </div>
       </div>
     );

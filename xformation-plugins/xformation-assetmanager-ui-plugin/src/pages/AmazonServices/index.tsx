@@ -13,7 +13,7 @@ import { CompliancePolicies } from "./CompliancePolicies";
 import { Alerts } from "./Alerts";
 import { Inputs } from "./Inputs";
 import { PLUGIN_BASE_URL } from '../../constants';
-import { DepartmentWiseProduct } from "./../../components/DepartmentWiseProduct";
+import { ProductWiseServices } from "../../components/ProductWiseServices";
 
 export class AmazonServices extends React.Component<any, any> {
   breadCrumbs: any;
@@ -2393,7 +2393,7 @@ export class AmazonServices extends React.Component<any, any> {
       },
       {
         name: "Applications",
-        component: <div className="department-wise-container"><DepartmentWiseProduct product={this.state.product} type='amazonService' /></div>,
+        component: <div className="department-wise-container"><ProductWiseServices product={this.state.product} type='amazonService' /></div>,
       },
       {
         name: "Billing",

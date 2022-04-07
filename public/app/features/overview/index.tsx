@@ -6,31 +6,34 @@ import { AlertVolumeByStatusChart } from './AlertVolumeByStatusChart';
 import { AlertVolumeAnalysis } from './AlertVolumeAnalysis';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import 'react-multi-carousel/lib/styles.css';
-import Carousel from 'react-multi-carousel';
+// import Carousel from 'react-multi-carousel';
 import { config } from '../config';
+import { Line } from 'react-chartjs-2';
+// import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
+// ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-    slidesToSlide: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1,
-  },
-};
+// const responsive = {
+//   superLargeDesktop: {
+//     breakpoint: { max: 4000, min: 3000 },
+//     items: 5,
+//     slidesToSlide: 1,
+//   },
+//   desktop: {
+//     breakpoint: { max: 3000, min: 1024 },
+//     items: 3,
+//     slidesToSlide: 1,
+//   },
+//   tablet: {
+//     breakpoint: { max: 1024, min: 464 },
+//     items: 2,
+//     slidesToSlide: 1,
+//   },
+//   mobile: {
+//     breakpoint: { max: 464, min: 0 },
+//     items: 1,
+//     slidesToSlide: 1,
+//   },
+// };
 
 class Overview extends React.Component<any, any> {
   breadCrumbs: any = [
@@ -84,42 +87,122 @@ class Overview extends React.Component<any, any> {
         totalSpent: {
           value: '$6,71,456',
           diff: '+4 from last week',
-          data: [20, 40, 30, 60]
+          status: 'down',
+          data: [20, 40, 30, 60],
         },
         lastWeekSpent: {
           value: '412,531',
           diff: '+5%',
-          data: [40, 20, 60]
+          status: 'up',
+          data: [40, 20, 60],
         },
         currentSpentRate: {
           perHR: '$21',
-          perDay: '$504'
+          perDay: '$504',
         },
         spentToday: {
           value: '$5245',
-          diff: '+5%'
+          diff: '+5%',
         },
         spentYesterDay: {
           value: '$4567',
-          diff: '2%'
+          diff: '2%',
         },
         totalBudget: {
           total: '10,00,000',
           remaining: '3,28,457',
-          percentage: '55%'
+          percentage: '55%',
         },
         productList: [
-          { name: "Product 1", performance: 89, availabilty: "99", reliability: "67", security: "99", endUsage: "92" },
-          { name: "Product 2", performance: "99", availabilty: "91", reliability: "75", security: "92", endUsage: "96" },
-          { name: "Product 3", performance: "85", availabilty: "91", reliability: "75", security: "92", endUsage: "91" },
-          { name: "Product 4", performance: "78", availabilty: "92", reliability: "68", security: "79", endUsage: "90" },
-          { name: "Product 5", performance: "81", availabilty: "98", reliability: "91", security: "88", endUsage: "87" }],
+          { name: 'Product 1', performance: 89, availabilty: '99', reliability: '67', security: '99', endUsage: '92' },
+          {
+            name: 'Product 2',
+            performance: '99',
+            availabilty: '91',
+            reliability: '75',
+            security: '92',
+            endUsage: '96',
+          },
+          {
+            name: 'Product 3',
+            performance: '85',
+            availabilty: '91',
+            reliability: '75',
+            security: '92',
+            endUsage: '91',
+          },
+          {
+            name: 'Product 4',
+            performance: '78',
+            availabilty: '92',
+            reliability: '68',
+            security: '79',
+            endUsage: '90',
+          },
+          {
+            name: 'Product 5',
+            performance: '81',
+            availabilty: '98',
+            reliability: '91',
+            security: '88',
+            endUsage: '87',
+          },
+        ],
         cloudWiseProduct: [
           { name: 'AWS', value: '$2,47,518', diff: '5%', status: 'down' },
           { name: 'AZURE', value: '$90756', diff: '2%', status: 'up' },
-          { name: 'GCP', value: '$11,508', diff: '1%', status: 'up' }
-        ]
-      }
+          { name: 'GCP', value: '$11,508', diff: '1%', status: 'up' },
+        ],
+      },
+      totalSpend: {
+        // type: 'line',
+        data: {
+          labels: ['', '', '', '', ''],
+          datasets: [
+            {
+              fill: false,
+              borderColor: 'rgba(225, 5, 5, 1)',
+              cubicInterpolationMode: 'monotone',
+              // tension: 0.4,
+              pointRadius: 0,
+              data: [20, 40, 30, 60],
+            },
+          ],
+        },
+        lineOptions: {
+          plugins: {
+            legend: {
+              display: false,
+              labels: {
+                usePointStyle: true,
+              },
+            },
+            tooltips: {
+              enabled: false,
+            },
+          },
+          scales: {
+            x: {
+              display: false,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                display: false,
+              },
+            },
+            y: {
+              display: false,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                display: false,
+              },
+            },
+          },
+        },
+      },
     };
   }
 
@@ -127,7 +210,7 @@ class Overview extends React.Component<any, any> {
     let userInfo: any = localStorage.getItem('userInfo');
     if (userInfo) {
       userInfo = JSON.parse(userInfo);
-      console.log(`Setup Org, user :`, userInfo);
+      // console.log(`Setup Org, user :`, userInfo);
       if (!userInfo.info.organization) {
         this.setState({
           organizationModal: true,
@@ -236,7 +319,7 @@ class Overview extends React.Component<any, any> {
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'MONITOR | OVERVIEW';
-    const { dailyAvgWaitTime, organizationName, organizationModal, isSubmitted, isLoading } = this.state;
+    const { dailyAvgWaitTime, organizationName, organizationModal, isSubmitted, isLoading, dashboardData } = this.state;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -282,9 +365,110 @@ class Overview extends React.Component<any, any> {
                 </div>
               </div>
             </div>
-            <div className="applications-inner-container">
-
-            </div>
+            {dashboardData && (
+              <>
+                <div className="applications-inner-container">
+                  <div className="row">
+                    <div className="col-xl-9 col-lg-9 col-md-6 col-sm-6">
+                      <div className="dashboard-spent">
+                        <label>Total Spend</label>
+                        {/* <Line data={{ datasets: this.state.totalSpend.data.datasets, labels: this.state.totalSpend.data.labels }} options={this.state.totalSpend.options} /> */}
+                        <p>{dashboardData.totalSpent.value}</p>
+                        <div>
+                          {this.state.totalSpend && (
+                            <Line data={this.state.totalSpend.data} options={this.state.totalSpend.lineOptions} />
+                          )}
+                        </div>
+                        <span>{dashboardData.totalSpent.diff}</span>
+                      </div>
+                      <div className="dashboard-spent">
+                        <label>Last 7 days Spend</label>
+                        <p>
+                          {dashboardData.lastWeekSpent.value} <span>{dashboardData.lastWeekSpent.diff}</span>
+                        </p>
+                      </div>
+                      <div className="dashboard-spent">
+                        <label>Current spend Rate</label>
+                        <p>
+                          {dashboardData.currentSpentRate.perHR} | {dashboardData.currentSpentRate.perDay}
+                        </p>
+                      </div>
+                      <div className="dashboard-spent">
+                        <label>Total Budget(Q1)</label>
+                        <p>{dashboardData.totalBudget.total}</p>
+                        <span>{dashboardData.totalBudget.remaining}</span>
+                        <p>{dashboardData.totalBudget.percentage}</p>
+                      </div>
+                      <div className="dashboard-spent">
+                        <label>Spends today</label>
+                        <p>
+                          {dashboardData.spentToday.value} <span>{dashboardData.spentToday.diff}</span>
+                        </p>
+                      </div>
+                      <div className="dashboard-spent">
+                        <label>Spends yesterday</label>
+                        <p>
+                          {dashboardData.spentYesterDay.value} <span>{dashboardData.spentYesterDay.diff}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                      <label>Cloud wise spend</label>
+                      <span>...</span>
+                      {dashboardData.cloudWiseProduct &&
+                        dashboardData.cloudWiseProduct.length > 0 &&
+                        dashboardData.cloudWiseProduct.map((val: any, index: any) => {
+                          return (
+                            <div key={index}>
+                              <div>
+                                <span>
+                                  <img alt={val.name} src=""></img>
+                                </span>
+                                <div>
+                                  <span>{val.name}</span>
+                                  <span>{val.value}</span>
+                                  <span>{val.diff}</span>
+                                </div>
+                                <div>progress bar</div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th> Products </th>
+                        <th> Performance </th>
+                        <th> Availibility </th>
+                        <th> Reliability </th>
+                        <th> Security </th>
+                        <th> End Usage </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dashboardData.productList &&
+                        dashboardData.productList.length > 0 &&
+                        dashboardData.productList.map((val: any, index: any) => {
+                          return (
+                            <tr key={index}>
+                              <td> {val.name} </td>
+                              <td> {val.performance} </td>
+                              <td> {val.availabilty} </td>
+                              <td> {val.reliability} </td>
+                              <td> {val.security} </td>
+                              <td> {val.endUsage} </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
             {/* <div className="applications-inner-container">
               <Carousel
                 responsive={responsive}
