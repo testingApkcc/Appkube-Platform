@@ -1,4 +1,4 @@
-const IP = '100.64.107.25';
+const IP = '3.208.22.155';
 //const securitySrvUrl = `http://${IP}:8094`;
 const assetSrvUrl = `http://${IP}:5057/api`;
 const grafanaUrl = `http://${IP}:3000/api`;
@@ -8,7 +8,7 @@ export const config = {
   octantURL: 'http://localhost:7777/#/',
   SEVERITY_ERROR: 'error',
 
-  GET_ALL_ACCOUNT: `${assetSrvUrl}/searchAccounts`,
+  GET_ALL_ACCOUNT: `${assetSrvUrl}/cloud-environment/search?status=active`,
   GET_ACCOUNT_BY_ID: `${assetSrvUrl}/getAccount`,
 
   SEVERITY_SUCCESS: 'success',
