@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { SelectCloudFilter } from '../SelectCloudFilter';
-import {ServicesPerformance} from './ServicesPerformance';
+import { ServicesPerformance } from './ServicesPerformance';
+import { v4 } from 'uuid';
+
+const ViewMapping: any = {
+  BUSINESS_VIEW: "0",
+  CLOUD_VIEW: "1"
+};
 
 export class ProductWiseServices extends React.Component<any, any> {
   constructor(props: any) {
@@ -11,6 +17,7 @@ export class ProductWiseServices extends React.Component<any, any> {
     this.state = {
       showRecentFilter: false,
       showAddNewFilter: false,
+      productComponent: [],
       departmentList: [
         {
           name: 'Human Resources',
@@ -49,35 +56,72 @@ export class ProductWiseServices extends React.Component<any, any> {
           otherBilling: '$275'
         }
       ],
+      viewMapping: {},
+      product: [],
+      isDataLoaded: false,
     };
   }
 
+  componentDidUpdate(prevProps: any, prevState: any) {
+    if (!this.state.isDataLoaded) {
+      this.setState({
+        product: this.props.product,
+        isDataLoaded: true
+      });
+    }
+  }
+
   openProduct = (i: any, j: any) => {
-    const { product } = this.props;
+    const { viewMapping, product } = this.state;
+    let productView = viewMapping[i] ? viewMapping[i] : [];
     for (let m = 0; m < product[i].productList.length; m++) {
       if (j !== m) {
-        product[i].productList[m].isOpen = false;
+        const defaultView = productView[m] ? productView[m] : ViewMapping.BUSINESS_VIEW;
+        const viewData = product[i].productList[m];
+        viewData[defaultView].isOpen = false;
       }
     }
-    product[i].productList[j].isOpen = !product[i].productList[j].isOpen;
+    const defaultView = productView[j] ? productView[j] : ViewMapping.BUSINESS_VIEW;
+    const viewData = product[i].productList[j];
+    viewData[defaultView].isOpen = !viewData[defaultView].isOpen;
     this.setState({
       product
     });
   }
 
+  handleChangeViewOfProduct = (departmentIndex: any, productIndex: any) => {
+    const { product, viewMapping } = this.state
+    if (product[departmentIndex]) {
+      const appliedView = viewMapping[departmentIndex] ? viewMapping[departmentIndex][productIndex] : ViewMapping.BUSINESS_VIEW;
+      const newView = appliedView === ViewMapping.BUSINESS_VIEW ? ViewMapping.CLOUD_VIEW : ViewMapping.BUSINESS_VIEW;
+      const newViewMap = viewMapping[departmentIndex] ? viewMapping[departmentIndex] : [];
+      newViewMap[productIndex] = newView;
+      viewMapping[departmentIndex] = newViewMap;
+      this.setState({
+        viewMapping: JSON.parse(JSON.stringify(viewMapping))
+      });
+    }
+  }
+
   displayProductServices = () => {
-    const { product } = this.props;
+    const { viewMapping, product } = this.state;
     let retData = [];
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
         let row = product[i];
+        let productViewMapping = viewMapping[i] ? viewMapping[i] : [];
         retData.push(
-          <div className="inner-table">
+          <div key={v4()} className="inner-table">
             <div className="thead">{row.title}</div>
-            {row.productList && row.productList.map((val: any, index: any) => {
+            {row.productList && row.productList.map((viewData: any, index: any) => {
+              const defaultView = productViewMapping[index] ? productViewMapping[index] : ViewMapping.BUSINESS_VIEW;
+              const val = viewData[defaultView];
               return (
                 <div className="tbody">
-                  <div className="name" onClick={() => this.openProduct(i, index)}><span>{val.title}</span> <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></div>
+                  <div className="name" onClick={() => this.openProduct(i, index)}>
+                    <span>{val.title}</span>
+                    <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
+                  </div>
                   <div className="app-services">10</div>
                   <div className="data-services">5</div>
                   <div className="ou">Admin, Accounts Adminssion, Transport</div>
@@ -89,8 +133,10 @@ export class ProductWiseServices extends React.Component<any, any> {
                     </button>
                   </div>
                   {val.isOpen == true &&
-                    <ServicesPerformance product={val} />
-                  }
+                    <ServicesPerformance
+                      handleChangeViewOfProduct={() => this.handleChangeViewOfProduct(i, index)}
+                      product={val}
+                    />}
                 </div>
               )
             })
@@ -214,7 +260,7 @@ export class ProductWiseServices extends React.Component<any, any> {
             <div className="name">Name</div>
             <div className="app-services">App Services</div>
             <div className="data-services">Data Services</div>
-            <div className="ou">OU</div>
+            {/* <div className="ou">OU</div> */}
             <div className="edit">
               <button className="edit-btn">
                 <span></span>

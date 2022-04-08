@@ -5,7 +5,8 @@ export class ServicesPerformance extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      product: props.product
+      product: props.product,
+      productToggle: { index: 0, isOpened: false }
     };
   }
 
@@ -27,7 +28,9 @@ export class ServicesPerformance extends React.Component<any, any> {
       product
     });
   }
-
+  handleView = () => {
+    this.props.handleChangeViewOfProduct();
+  }
   openServices = (indexArr: any) => {
     const { product } = this.state;
     const stage = product.stages[indexArr[0]];
@@ -107,7 +110,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                     <div className='td'><div className={(name.security > 75) ? 'progress-circle green' : (name.security <= 75 && name.security > 50) ? 'progress-circle orange' : (name.security <= 50 && name.security > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
                     <div className='td'><div className={(name.data_protection > 75) ? 'progress-circle green' : (name.data_protection <= 75 && name.data_protection > 50) ? 'progress-circle orange' : (name.data_protection <= 50 && name.data_protection > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
                     <div className='td'><div className={(name.user_exp > 75) ? 'progress-circle green' : (name.user_exp <= 75 && name.user_exp > 50) ? 'progress-circle orange' : (name.user_exp <= 50 && name.user_exp > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
-                  </div >
+                  </div>
                 )
               })
               }
@@ -130,7 +133,7 @@ export class ServicesPerformance extends React.Component<any, any> {
               <button className='btn'>
                 <i className='fa fa-plus'></i>
               </button>
-              <button className='btn'>
+              <button className='btn' onClick={() => this.handleView()}>
                 <i className='fa fa-eye'></i>
               </button>
               <button className='btn'>
@@ -147,6 +150,7 @@ export class ServicesPerformance extends React.Component<any, any> {
               </div>
               {product.stages && product.stages.map((stage: any, stageIndex: any) => {
                 if (stage.isOpen == true) {
+                  debugger
                   return (
                     <div className='tabs-content'>
                       <ul>
