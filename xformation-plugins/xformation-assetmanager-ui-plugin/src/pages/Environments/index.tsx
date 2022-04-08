@@ -235,7 +235,7 @@ export class Environments extends React.Component<any, any> {
     let retData = [];
     for (let i = 0; i < displaygetEnvironmentData.length; i++) {
       let row = displaygetEnvironmentData[i];
-      if (row.cloudType.toLowerCase() === 'AWS'.toLowerCase()) {
+      if (row.cloud.name.toLowerCase() === 'AWS'.toLowerCase()) {
         // console.log("AWS data : ", row);
         retData.push(
           <tr>
@@ -276,7 +276,7 @@ export class Environments extends React.Component<any, any> {
     let retData = [];
     for (let i = 0; i < displaygetEnvironmentData.length; i++) {
       let row = displaygetEnvironmentData[i];
-      if (row.cloudType.toLowerCase() === 'AZURE'.toLowerCase()) {
+      if (row.cloud.name.toLowerCase() === 'AZURE'.toLowerCase()) {
         retData.push(
           console.log('Loading azure data : ', row),
           <tr>
