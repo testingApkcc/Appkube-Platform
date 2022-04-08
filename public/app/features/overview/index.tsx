@@ -110,7 +110,7 @@ class Overview extends React.Component<any, any> {
         totalBudget: {
           total: '10,00,000',
           remaining: '3,28,457',
-          percentage: '55%',
+          percentage: '0%',
         },
         productList: [
           { name: 'Product 1', performance: 89, availabilty: '99', reliability: '67', security: '99', endUsage: '92' },
@@ -434,17 +434,33 @@ class Overview extends React.Component<any, any> {
                               </div>
                               <div className="content">
                                 <div className="remaining-graph">
-                                  <div className="graph">
-                                    <div className="graph-gredient"></div>
-                                    <div className="graph-inner">
-                                      <div className="graph-inner">
-                                        <div className="graph-inner">
-                                          <span></span>
-                                        </div>
-                                      </div>
+                                  <div className="gauge gauge--liveupdate" id="gauge">
+                                    <div className="gauge__container">
+                                      <div className="gauge__background"></div>
+                                      <div className="gauge__center"></div>
+                                      <div
+                                        className="gauge__data"
+                                        style={{
+                                          transform: `rotate(${
+                                            parseInt(dashboardData.totalBudget.percentage.split('%')[0].trim(), 10) /
+                                              200 +
+                                            0.5
+                                          }turn)`,
+                                        }}
+                                      ></div>
+                                      <div
+                                        className="gauge__needle"
+                                        style={{
+                                          transform: `rotate(${
+                                            parseInt(dashboardData.totalBudget.percentage.split('%')[0].trim(), 10) /
+                                              200 +
+                                            0.5
+                                          }turn)`,
+                                        }}
+                                      ></div>
                                     </div>
                                   </div>
-                                  <div className="used-text">55% Used</div>
+                                  <div className="used-text">{dashboardData.totalBudget.percentage} Used</div>
                                 </div>
                                 <div className="remaining-text">
                                   <span>Remaining</span>

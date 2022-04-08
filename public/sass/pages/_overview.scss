@@ -689,57 +689,87 @@ body,
             width: 50%;
             flex-wrap: wrap;
 
-            .graph {
-              background-color: #f1eaff;
-              border-radius: 50%;
-              width: 70px;
-              height: 70px;
-              padding: 10px;
-              display: inline-block;
+            .gauge {
               position: relative;
+              width: 70px;
+              height: 35px;
 
-              .graph-gredient {
-                height: 100%;
-                width: 100%;
+              .gauge__container {
+                width: 70px;
+                height: 35px;
+                margin: 0;
+                padding: 0;
                 position: absolute;
-                left: 0;
-                top: 0;
-              }
+                left: 50%;
+                overflow: hidden;
+                text-align: center;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
 
-              > .graph-inner {
-                display: block;
-                border-radius: 50%;
-                width: 100%;
-                height: 100%;
-                background-color: #ffffff;
-                padding: 10px;
-
-                > .graph-inner {
-                  display: block;
-                  border-radius: 50%;
-                  width: 100%;
-                  height: 100%;
+                .gauge__background {
+                  width: 70px;
+                  height: 35px;
+                  z-index: 0;
+                  position: absolute;
                   background-color: #f1eaff;
-                  padding: 8px;
+                  top: 0;
+                  border-radius: 70px 70px 0 0;
+                }
 
-                  > .graph-inner {
-                    display: block;
-                    border-radius: 50%;
-                    width: 100%;
-                    height: 100%;
-                    background-color: #d0412e;
-                    padding: 0px;
-                    position: relative;
+                .gauge__center {
+                  z-index: 2;
+                  position: absolute;
+                  background-color: #fff;
+                  margin-right: auto;
+                  border-radius: 70px 70px 0 0;
+                  width: 50px;
+                  height: 35px;
+                  top: 10px;
+                  margin-left: 10px;
+                }
 
-                    span {
-                      position: absolute;
-                      left: 4px;
-                      top: -28px;
-                      width: 5px;
-                      height: 30px;
-                      background-color: #d0412e;
-                    }
-                  }
+                .gauge__needle {
+                  z-index: 4;
+                  background-color: #e91e63;
+                  height: 3px;
+                  width: 35px;
+                  left: 35px;
+                  top: 32px;
+                  position: absolute;
+                  -webkit-transform-origin: left center;
+                  -moz-transform-origin: left center;
+                  -ms-transform-origin: left center;
+                  -o-transform-origin: left center;
+                  transform-origin: left center;
+                  -webkit-transition: all 1s ease-in-out;
+                  -moz-transition: all 1s ease-in-out;
+                  -ms-transition: all 1s ease-in-out;
+                  -o-transition: all 1s ease-in-out;
+                  transition: all 1s ease-in-out;
+                }
+
+                .gauge__data {
+                  width: 70px;
+                  height: 35px;
+                  z-index: 1;
+                  position: absolute;
+                  background-color: #3f51b5;
+                  margin-left: auto;
+                  margin-right: auto;
+                  border-radius: 70px 70px 0 0;
+                  -webkit-transform-origin: center bottom;
+                  -moz-transform-origin: center bottom;
+                  -ms-transform-origin: center bottom;
+                  -o-transform-origin: center bottom;
+                  transform-origin: center bottom;
+                  -webkit-transition: all 1s ease-in-out;
+                  -moz-transition: all 1s ease-in-out;
+                  -ms-transition: all 1s ease-in-out;
+                  -o-transition: all 1s ease-in-out;
+                  transition: all 1s ease-in-out;
                 }
               }
             }
@@ -747,17 +777,13 @@ body,
             .used-text {
               display: block;
               width: 70px;
-              padding-top: 5px;
+              padding-top: 6px;
               font-size: 12px;
               line-height: 16px;
               font-weight: 600;
               color: #717579;
               background-color: #ffffff;
-              padding-bottom: 0px;
-              margin-top: -20px;
               text-align: center;
-              position: relative;
-              z-index: 10;
             }
           }
 
