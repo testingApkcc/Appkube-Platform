@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { images } from '../../img';
 import { Collapse } from 'reactstrap';
+import _dummyData from './_discovered_assets';
 // import { RestService } from '../_service/RestService';
 // import { config } from '../../config';
 // import { PLUGIN_BASE_URL } from '../../constants';
@@ -11,253 +12,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
     super(props);
     this.state = {
       sideTable: [],
-      tableData: [
-        {
-          title: 'VPC 1', unit: '', instance: 'N/A',
-          status: true,
-          isOpened: false,
-          subData: [
-            {
-              title: 'Cluster 1', unit: '', instance: 'N/A', status: true, isOpened: false,
-              subData: [
-                {
-                  title: 'App Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                  serviceSubData: [
-                    {
-                      title: 'Common Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                      list: [
-                        { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                      ]
-                    },
-                    {
-                      title: 'Business Services', unit: '', instance: 'N/A', status: true,
-                      serviceSubData: [
-                        {
-                          title: 'EMS', unit: '', instance: 'N/A', status: true,
-                          list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        },
-                        {
-                          title: 'Supply chain', unit: '', instance: 'N/A', status: true, list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        },
-                        {
-                          title: 'Procurment', unit: '', instance: 'N/A', status: true, list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  title: 'Data Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                  list: [
-                    { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                  ]
-                },
-              ]
-            },
-            {
-              title: 'Cluster 2', unit: '', instance: 'N/A', status: true, isOpened: false,
-              subData: [
-                {
-                  title: 'App Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                  serviceSubData: [
-                    {
-                      title: 'Common Services', unit: '', instance: 'N/A', status: true,
-                      list: [
-                        { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                      ]
-                    },
-                    {
-                      title: 'Business Services', unit: '', instance: 'N/A', status: true,
-                      subData: [
-                        {
-                          title: 'EMS', unit: '', instance: 'N/A', status: true,
-                          list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        },
-                        {
-                          title: 'Supply chain', unit: '', instance: 'N/A', status: true,
-                          list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        },
-                        {
-                          title: 'Procurment', unit: '', instance: 'N/A', status: true,
-                          list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  title: 'Data Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                  list: [
-                    { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                  ]
-                },
-              ]
-            },
-            {
-              title: 'Cloud Manager Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-              subData: [
-                {
-                  title: 'App Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                  list: [
-                    { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                    { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                  ]
-                },
-                {
-                  title: 'Data Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                  serviceSubData: [
-                    {
-                      title: 'Common Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                      list: [
-                        { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                        { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                      ]
-                    },
-                    {
-                      title: 'Business Services', unit: '', instance: 'N/A', status: true, isOpened: false,
-                      serviceSubData: [
-                        {
-                          title: 'EMS', unit: '', instance: 'N/A', status: true,
-                          list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        },
-                        {
-                          title: 'Supply chain', unit: '', instance: 'N/A', status: true,
-                          list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        },
-                        {
-                          title: 'Procurment', unit: '', instance: 'N/A', status: true,
-                          list: [
-                            { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Preference/Config', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'DataFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Catalogue', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'WorkFlow', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Alert', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
-                            { title: 'Atate Machine', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-              ]
-            },
-          ]
-        }
-      ],
+      tableData: _dummyData,
+      servicesTable: {
+        data: [],
+        isDirectServices: false
+      },
     };
   }
 
@@ -271,8 +30,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   getSideTable = (values: any) => {
-
-
     // this.setState({sideTable: values})
   }
   componentDidMount() {
@@ -314,84 +71,10 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const retData = [];
     const subFolders = folder.subData;
     const subFolderJSX = [];
-    const subRightFolderJSX = [];
-    if (subFolders != undefined && folder.isOpened !== false) {
+    // const subRightFolderJSX = [];
+    if (subFolders && folder.isOpened) {
       for (let j = 0; j < subFolders.length; j++) {
         const subFolder = subFolders[j];
-        if (subFolder.subData && subFolder.subData.length > 0) {
-          for (let k = 0; k < subFolder.subData.length; k++) {
-            if (subFolder.subData[k].isOpened == true) {
-              subRightFolderJSX.push(
-                <div className="data-table">
-                  <div className="thead">
-                    <div className="name">
-                      Name
-                    </div>
-                    <div className="performance">
-                      Performance
-                    </div>
-                    <div className="availability">
-                      Availability
-                    </div>
-                    <div className="security">
-                      Security
-                    </div>
-                    <div className="data-protection">
-                      Data Protection
-                    </div>
-                    <div className="user-exp">
-                      User exp
-                    </div>
-                  </div>
-                  <div className="tbody">
-                    <div className="name">
-                      Common Services <span> <i className="fa fa-angle-down"></i></span>
-                    </div>
-                  </div>
-                  <div className="inner-table">
-                    <div className="tbody">
-                      <div className="name">Search</div>
-                      <div className="performance"><div className="status green"><i className="fa fa-check"></i></div></div>
-                      <div className="availability"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-                      <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-                      <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
-                      <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-                    </div>
-                    <div className="tbody">
-                      <div className="name">Security / RBAC</div>
-                      <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-                      <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
-                      <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-                      <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
-                      <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-                    </div>
-                    <div className="tbody">
-                      <div className="name">Preference/Config</div>
-                      <div className="performance"><div className="status red"><i className="fa fa-check"></i></div></div>
-                      <div className="availability"><div className="status green"><i className="fa fa-check"></i></div></div>
-                      <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-                      <div className="data-protection"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-                      <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-                    </div>
-                    <div className="tbody">
-                      <div className="name">DataFlow / Nifi</div>
-                      <div className="performance"><div className="status orange"><i className="fa fa-check"></i></div></div>
-                      <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
-                      <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-                      <div className="data-protection"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-                      <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-                    </div>
-                  </div>
-                  <div className="tbody">
-                    <div className="name">
-                      Common Services <span> <i className="fa fa-angle-down"></i></span>
-                    </div>
-                  </div>
-                </div>
-              )
-            }
-          }
-        }
         let subIndexArr: any = [];
         subIndexArr = [...indexArr, j];
         subFolderJSX.push(
@@ -405,9 +88,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
                       {subFolder.title}
                     </div>
                   </div>
-                </div>
-                <div className="organisational-data-right">
-                  {subRightFolderJSX}
                 </div>
               </div>
             }
@@ -426,29 +106,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
               {!folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
               {folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
               {folder.title}
-
-              {/* <div className="tbody-td first">{folder.title}</div> */}
-              {/* <Link to={`${PLUGIN_BASE_URL}/storage-details?cloud=${folder.type}&type=${folder.title}&accountId=${folder.accountId}&tenantId=${folder.tenantId}`}>{folder.title}</Link> */}
             </div>
-            {/* <div className="tbody-td">{folder.organizationalUnit}</div>
-          <div className="tbody-td">{folder.instance}</div>
-          <div className="tbody-td">
-            <div className={folder.status ? "status-icon enable" : "status-icon disable"}></div>
-          </div>
-          <div className="tbody-td">
-            <div className="d-flex">
-              <button className="btn btn-link" id="PopoverFocus">
-                <i className="fa fa-ellipsis-h"></i>
-              </button>
-            </div>
-          </div> */}
           </div>
           <Collapse className="collapse-content" isOpen={folder.isOpened}>
             {subFolderJSX}
           </Collapse>
-        </div>
-        <div className="organisational-data-right">
-          {subRightFolderJSX}
         </div>
       </div>
     );
@@ -459,11 +121,15 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { tableData } = this.state;
     const folder = this.findChild(tableData, [...indexArr]);
     if (folder.subData) {
+      const services = folder.subData[index];
+      this.setState({
+        servicesTable: {
+          data: services.list && services.list.length > 0 ? services.list : services.serviceSubData,
+          isDirectServices: !!services.list
+        }
+      });
       folder.subData[index].isOpened = true
     }
-    this.setState({
-      tableData
-    });
   }
 
   onClickOpenSubTreeArr = (indexArr: any) => {
@@ -483,6 +149,89 @@ export class DiscoveredAssets extends React.Component<any, any>{
       return this.findChild(folderList[index].subData, indexArr);
     }
 
+  };
+
+  renderRightPart = () => {
+    const { servicesTable } = this.state;
+    let retData: any = [];
+    if (servicesTable.data && servicesTable.data.length > 0) {
+      const tableHead = <div className="thead">
+        <div className="name">
+          Name
+        </div>
+        <div className="performance">
+          Performance
+        </div>
+        <div className="availability">
+          Availability
+        </div>
+        <div className="security">
+          Security
+        </div>
+        <div className="data-protection">
+          Data Protection
+        </div>
+        <div className="user-exp">
+          User exp
+        </div>
+      </div>;
+      if (servicesTable.isDirectServices) {
+        const servicesListJSX =
+          <div className="inner-table">{this.renderDirectServices(servicesTable.data)}</div>
+        retData = <div className="data-table">
+          {tableHead}
+          {servicesListJSX}
+        </div>
+      } else {
+        let serviceSubDataJSX = [];
+        if (servicesTable.data) {
+          serviceSubDataJSX = servicesTable.data.map((subService: any) => this.renderSubServices(subService));
+        }
+        retData = <div className="data-table">
+          {tableHead}
+          {serviceSubDataJSX}
+        </div>
+      }
+      return retData;
+    }
+  };
+
+  renderDirectServices = (list: any) => {
+    let retData = [];
+    if (list) {
+      retData = list.map((service: any) => {
+        return (<div className="tbody">
+          <div className="name">{service.title}</div>
+          <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
+          <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
+          <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
+          <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
+          <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
+        </div>);
+      });
+    }
+    return retData;
+  };
+
+  renderSubServices = (service: any): any => {
+    const retData = [];
+    if (service) {
+      retData.push(
+        <div className="tbody">
+          <div className="name">
+            {service.title} <span> <i className="fa fa-angle-down"></i></span>
+          </div>
+        </div>
+      );
+      if (service.serviceSubData) {
+        for (let i = 0; i < service.serviceSubData.length; i++) {
+          retData.push(this.renderSubServices(service.serviceSubData[i]));
+        }
+      } else if (service.list) {
+        retData.push(this.renderDirectServices(service.list));
+      }
+    }
+    return retData;
   };
 
   render() {
@@ -523,6 +272,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 <div className="thead-th">Action</div> */}
               </div>
               {this.displayTable()}
+              {this.renderRightPart()}
             </div>
           </div>
 
