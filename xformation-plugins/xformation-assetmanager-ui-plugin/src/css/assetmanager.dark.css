@@ -2460,6 +2460,7 @@ a:hover {
   border-bottom: 1px solid #f5f6f5;
   margin-left: -20px;
   margin-right: -20px;
+  margin-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
@@ -3397,6 +3398,7 @@ a:hover {
   .heading
   span {
   display: flex;
+  width: 100%;
   padding: 0 30px;
   font-size: 16px;
   line-height: 40px;
@@ -3523,11 +3525,13 @@ a:hover {
   .content-table
   .table {
   width: 100%;
-  display: flex;
+  display: block;
   flex-wrap: wrap;
   background-color: #ffffff;
   border-radius: 10px 10px 0px 0px;
   font-size: 13px;
+  overflow: hidden;
+  overflow-x: auto;
 }
 .department-wise-container
   .department-fliters-container
@@ -3541,7 +3545,7 @@ a:hover {
   .content-table
   .table
   .thead {
-  display: flex;
+  display: block;
   width: 100%;
   background-color: #d9e4f2;
   border-radius: 10px 10px 0px 0px;
@@ -3577,8 +3581,10 @@ a:hover {
   .table
   .tbody {
   width: 100%;
-  display: flex;
+  display: block;
   flex-wrap: wrap;
+  overflow: hidden;
+  overflow-x: auto;
   background-color: #f8f9fb;
 }
 .department-wise-container
@@ -3676,8 +3682,8 @@ a:hover {
   li
   .content-table
   .performance-table {
-  display: flex;
-  width: 100%;
+  display: block;
+  width: 1000px;
 }
 .department-wise-container
   .department-fliters-container
@@ -3755,6 +3761,7 @@ a:hover {
   .tbody
   .td:nth-child(2) {
   width: 15%;
+  text-align: center;
 }
 .department-wise-container
   .department-fliters-container
@@ -3770,6 +3777,7 @@ a:hover {
   .tbody
   .td:nth-child(3) {
   width: 15%;
+  text-align: center;
 }
 .department-wise-container
   .department-fliters-container
@@ -3785,6 +3793,7 @@ a:hover {
   .tbody
   .td:nth-child(3) {
   width: 15%;
+  text-align: center;
 }
 .department-wise-container
   .department-fliters-container
@@ -3800,6 +3809,7 @@ a:hover {
   .tbody
   .td:nth-child(4) {
   width: 12%;
+  text-align: center;
 }
 .department-wise-container
   .department-fliters-container
@@ -3815,6 +3825,7 @@ a:hover {
   .tbody
   .td:nth-child(5) {
   width: 21%;
+  text-align: center;
 }
 .department-wise-container
   .department-fliters-container
@@ -3830,6 +3841,7 @@ a:hover {
   .tbody
   .td:nth-child(6) {
   width: 12%;
+  text-align: center;
 }
 .department-wise-container
   .department-fliters-container

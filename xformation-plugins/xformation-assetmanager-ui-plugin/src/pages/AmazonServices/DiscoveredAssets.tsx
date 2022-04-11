@@ -5,12 +5,12 @@ import { Collapse } from 'reactstrap';
 // import { config } from '../../config';
 // import { PLUGIN_BASE_URL } from '../../constants';
 // import { Link } from 'react-router-dom';
-
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
   constructor(props: any) {
     super(props);
     this.state = {
+      sideTable: [],
       tableData: [
         {
           title: 'VPC 1', unit: '', instance: 'N/A',
@@ -81,7 +81,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                   ]
                 },
                 {
-                  title: 'Data Services', unit: '', instance: 'N/A', status: true,
+                  title: 'Data Services', unit: '', instance: 'N/A', status: true, isOpened: false,
                   list: [
                     { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
                     { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
@@ -99,7 +99,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
               title: 'Cluster 2', unit: '', instance: 'N/A', status: true, isOpened: false,
               subData: [
                 {
-                  title: 'App Services', unit: '', instance: 'N/A', status: true,
+                  title: 'App Services', unit: '', instance: 'N/A', status: true, isOpened: false,
                   serviceSubData: [
                     {
                       title: 'Common Services', unit: '', instance: 'N/A', status: true,
@@ -161,7 +161,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                   ]
                 },
                 {
-                  title: 'Data Services', unit: '', instance: 'N/A', status: true,
+                  title: 'Data Services', unit: '', instance: 'N/A', status: true, isOpened: false,
                   list: [
                     { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
                     { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
@@ -179,7 +179,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
               title: 'Cloud Manager Services', unit: '', instance: 'N/A', status: true, isOpened: false,
               subData: [
                 {
-                  title: 'App Services', unit: '', instance: 'N/A', status: true,
+                  title: 'App Services', unit: '', instance: 'N/A', status: true, isOpened: false,
                   list: [
                     { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
                     { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
@@ -192,10 +192,10 @@ export class DiscoveredAssets extends React.Component<any, any>{
                   ]
                 },
                 {
-                  title: 'Data Services', unit: '', instance: 'N/A', status: true,
+                  title: 'Data Services', unit: '', instance: 'N/A', status: true, isOpened: false,
                   serviceSubData: [
                     {
-                      title: 'Common Services', unit: '', instance: 'N/A', status: true,
+                      title: 'Common Services', unit: '', instance: 'N/A', status: true, isOpened: false,
                       list: [
                         { title: 'Search', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
                         { title: 'Security/RBAC', performance: 80, availibility: 80, security: 80, data_protection: 90, user_exp: 85 },
@@ -208,7 +208,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                       ]
                     },
                     {
-                      title: 'Business Services', unit: '', instance: 'N/A', status: true,
+                      title: 'Business Services', unit: '', instance: 'N/A', status: true, isOpened: false,
                       serviceSubData: [
                         {
                           title: 'EMS', unit: '', instance: 'N/A', status: true,
@@ -270,7 +270,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
+  getSideTable = (values: any) => {
 
+
+    // this.setState({sideTable: values})
+  }
   componentDidMount() {
     // const asset_id = this.getParameterByName("asset_id", window.location.href);
     // if (asset_id) {
@@ -306,31 +310,44 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   renderTree = (folder: any, indexArr: any): any => {
+    // console.log(indexArr);
     const retData = [];
     const subFolders = folder.subData;
     const subFolderJSX = [];
+    const subRightFolderJSX = [];
     if (subFolders != undefined && folder.isOpened !== false) {
       for (let j = 0; j < subFolders.length; j++) {
         const subFolder = subFolders[j];
+        if (subFolder.subData && subFolder.subData.length > 0) {
+          for (let k = 0; k < subFolder.subData.length; k++) {
+            if (subFolder.subData[k].isOpened == true) {
+              subRightFolderJSX.push(
+                <div className="thead-th">Organisational Unit</div>
+              )
+            }
+          }
+        }
         let subIndexArr: any = [];
         subIndexArr = [...indexArr, j];
         subFolderJSX.push(
           <>
             {(subFolder.subData == undefined) &&
               <div className="tbody">
-                <div className="tbody-inner">
-                  <div className="tbody-td first">
-                    <div className="caret-right" onClick={() => this.onClickRightTreeArr(indexArr)}></div>
-                    {subFolder.title}
+                <div className="" style={{ float: 'left', width: '25%' }}>
+                  <div className="tbody-inner">
+                    <div className="tbody-td first">
+                      <div className="caret-right" onClick={() => this.onClickRightTreeArr(j, indexArr)}></div>
+                      {subFolder.title}
+                    </div>
                   </div>
+                </div>
+                <div className="" style={{ float: 'left', width: '75%' }}>
+                  {subRightFolderJSX}
                 </div>
               </div>
             }
             {subFolder.subData &&
               this.renderTree(subFolder, subIndexArr)
-            }
-            {!subFolder.subData && folder.serviceSubData && folder.serviceSubData.length > 0 &&
-              this.renderRightPart(folder.serviceSubData, j)
             }
           </>
         )
@@ -338,57 +355,50 @@ export class DiscoveredAssets extends React.Component<any, any>{
     }
     retData.push(
       <div className="tbody">
-        <div className="tbody-inner">
-          <div className="tbody-td first">
-            {!folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
-            {folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
-            {folder.title}
+        <div className="" style={{ float: 'left', width: '25%' }}>
+          <div className="tbody-inner">
+            <div className="tbody-td first">
+              {!folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
+              {folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
+              {folder.title}
 
-            {/* <div className="tbody-td first">{folder.title}</div> */}
-            {/* <Link to={`${PLUGIN_BASE_URL}/storage-details?cloud=${folder.type}&type=${folder.title}&accountId=${folder.accountId}&tenantId=${folder.tenantId}`}>{folder.title}</Link> */}
-          </div>
-          {/* <div className="tbody-td">{folder.organizationalUnit}</div>
-          <div className="tbody-td">{folder.instance}</div> */}
-          {/* <div className="tbody-td">
+              {/* <div className="tbody-td first">{folder.title}</div> */}
+              {/* <Link to={`${PLUGIN_BASE_URL}/storage-details?cloud=${folder.type}&type=${folder.title}&accountId=${folder.accountId}&tenantId=${folder.tenantId}`}>{folder.title}</Link> */}
+            </div>
+            {/* <div className="tbody-td">{folder.organizationalUnit}</div>
+          <div className="tbody-td">{folder.instance}</div>
+          <div className="tbody-td">
             <div className={folder.status ? "status-icon enable" : "status-icon disable"}></div>
-          </div> */}
-          {/* <div className="tbody-td">
+          </div>
+          <div className="tbody-td">
             <div className="d-flex">
               <button className="btn btn-link" id="PopoverFocus">
                 <i className="fa fa-ellipsis-h"></i>
               </button>
             </div>
           </div> */}
+          </div>
+          <Collapse className="collapse-content" isOpen={folder.isOpened}>
+            {subFolderJSX}
+          </Collapse>
         </div>
-        <Collapse className="collapse-content" isOpen={folder.isOpened}>
-          {subFolderJSX}
-        </Collapse>
+        <div className="" style={{ float: 'left', width: '75%' }}>
+          {subRightFolderJSX}
+        </div>
       </div>
     );
     return retData;
   }
 
-  onClickRightTreeArr = (indexArr: any) => {
+  onClickRightTreeArr = (index: any, indexArr: any) => {
     const { tableData } = this.state;
     const folder = this.findChild(tableData, [...indexArr]);
-    console.log(folder)
-    folder.isOpened = true;
+    if (folder.subData) {
+      folder.subData[index].isOpened = true
+    }
     this.setState({
       tableData
     });
-  }
-
-  renderRightPart = (data: any, index: any) => {
-    let retData = [];
-    console.log(data, index)
-    retData.push(
-      <>
-        <div className="thead-th">Organisational Unit</div>
-        <div className="thead-th">Online Instance</div>
-        <div className="thead-th">Status</div>
-        <div className="thead-th">Action</div>
-      </>
-    )
   }
 
   onClickOpenSubTreeArr = (indexArr: any) => {
