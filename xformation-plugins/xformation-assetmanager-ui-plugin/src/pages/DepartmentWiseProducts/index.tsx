@@ -99,61 +99,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     });
   }
 
-  openProduct = (i: any, j: any) => {
-    const { product } = this.state;
-    for (let m = 0; m < product[i].productList.length; m++) {
-      if (j !== m) {
-        product[i].productList[m].isOpen = false;
-      }
-    }
-    product[i].productList[j].isOpen = !product[i].productList[j].isOpen;
-    this.setState({
-      product,
-    });
-  };
-
-  openServiceOfProduct = (i: any, j: any, k: any) => {
-    const { product } = this.state;
-    for (let m = 0; m < product[i].productList[j].services.length; m++) {
-      if (k !== m) {
-        product[i].productList[j].services[m].isOpen = false;
-      }
-    }
-    product[i].productList[j].services[k].isOpen = !product[i].productList[j].services[k].isOpen;
-    this.setState({
-      product,
-    });
-  };
-
-  openProductMainServices = (i: any, j: any, k: any, l: any) => {
-    const { product } = this.state;
-    for (let m = 0; m < product[i].productList[j].services[k].mainservices.length; m++) {
-      if (l !== m) {
-        product[i].productList[j].services[k].mainservices[m].isOpen = false;
-      }
-    }
-    product[i].productList[j].services[k].mainservices[l].isOpen = !product[i].productList[j].services[k].mainservices[
-      l
-    ].isOpen;
-    this.setState({
-      product,
-    });
-  };
-
-  openServices = (i: any, j: any, k: any, l: any, m: any) => {
-    const { product } = this.state;
-    for (let n = 0; n < product[i].productList[j].services[k].mainservices.length; n++) {
-      if (l !== n) {
-        product[i].productList[j].services[k].mainservices[m].services[n].isOpen = false;
-      }
-    }
-    product[i].productList[j].services[k].mainservices[l].services[m].isOpen = !product[i].productList[j].services[k]
-      .mainservices[l].services[m].isOpen;
-    this.setState({
-      product,
-    });
-  };
-
   calculatePercentage = (value:any, total: any) => {
     return Math.ceil(value*100/total);
   };
@@ -321,7 +266,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               </div>
             </div>
           </div>
-          <ProductWiseServices product={this.state.product} type="department" />
+          <ProductWiseServices product={this.state.product} type="department" />  
         </div>
       </div>
     );

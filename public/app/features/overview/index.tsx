@@ -11,7 +11,6 @@ import { config } from '../config';
 import { Line } from 'react-chartjs-2';
 // import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 // ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
-
 // const responsive = {
 //   superLargeDesktop: {
 //     breakpoint: { max: 4000, min: 3000 },
@@ -111,7 +110,7 @@ class Overview extends React.Component<any, any> {
         totalBudget: {
           total: '10,00,000',
           remaining: '3,28,457',
-          percentage: '55%',
+          percentage: '0%',
         },
         productList: [
           { name: 'Product 1', performance: 89, availabilty: '99', reliability: '67', security: '99', endUsage: '92' },
@@ -149,9 +148,9 @@ class Overview extends React.Component<any, any> {
           },
         ],
         cloudWiseProduct: [
-          { name: 'AWS', value: '$2,47,518', diff: '5%', status: 'down' },
-          { name: 'AZURE', value: '$90756', diff: '2%', status: 'up' },
-          { name: 'GCP', value: '$11,508', diff: '1%', status: 'up' },
+          { icon: '/public/img/fav32.png', name: 'AWS', value: '$2,47,518', diff: '5%', status: 'down' },
+          { icon: '/public/img/fav32.png', name: 'AZURE', value: '$90756', diff: '2%', status: 'up' },
+          { icon: '/public/img/fav32.png', name: 'GCP', value: '$11,508', diff: '1%', status: 'up' },
         ],
       },
       totalSpend: {
@@ -366,108 +365,183 @@ class Overview extends React.Component<any, any> {
               </div>
             </div>
             {dashboardData && (
-              <>
-                <div className="applications-inner-container">
+              <div className="applications-inner-container">
+                <div className="dashboard-spent-main">
                   <div className="row">
-                    <div className="col-xl-9 col-lg-9 col-md-6 col-sm-6">
-                      <div className="dashboard-spent">
-                        <label>Total Spend</label>
-                        {/* <Line data={{ datasets: this.state.totalSpend.data.datasets, labels: this.state.totalSpend.data.labels }} options={this.state.totalSpend.options} /> */}
-                        <p>{dashboardData.totalSpent.value}</p>
-                        <div>
-                          {this.state.totalSpend && (
-                            <Line data={this.state.totalSpend.data} options={this.state.totalSpend.lineOptions} />
-                          )}
+                    <div className="col-xl-9 col-lg-8 col-md-12 col-sm-12">
+                      <div className="row">
+                        <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                          <div className="dashboard-spent">
+                            <div className="dashboard-spent-left">
+                              <label>Total Spend</label>
+                              <strong>{dashboardData.totalSpent.value}</strong>
+                            </div>
+                            <div className="dashboard-spent-right">
+                              {this.state.totalSpend && (
+                                <Line data={this.state.totalSpend.data} options={this.state.totalSpend.lineOptions} />
+                              )}
+                              <span>{dashboardData.totalSpent.diff}</span>
+                            </div>
+                          </div>
                         </div>
-                        <span>{dashboardData.totalSpent.diff}</span>
-                      </div>
-                      <div className="dashboard-spent">
-                        <label>Last 7 days Spend</label>
-                        <p>
-                          {dashboardData.lastWeekSpent.value} <span>{dashboardData.lastWeekSpent.diff}</span>
-                        </p>
-                      </div>
-                      <div className="dashboard-spent">
-                        <label>Current spend Rate</label>
-                        <p>
-                          {dashboardData.currentSpentRate.perHR} | {dashboardData.currentSpentRate.perDay}
-                        </p>
-                      </div>
-                      <div className="dashboard-spent">
-                        <label>Total Budget(Q1)</label>
-                        <p>{dashboardData.totalBudget.total}</p>
-                        <span>{dashboardData.totalBudget.remaining}</span>
-                        <p>{dashboardData.totalBudget.percentage}</p>
-                      </div>
-                      <div className="dashboard-spent">
-                        <label>Spends today</label>
-                        <p>
-                          {dashboardData.spentToday.value} <span>{dashboardData.spentToday.diff}</span>
-                        </p>
-                      </div>
-                      <div className="dashboard-spent">
-                        <label>Spends yesterday</label>
-                        <p>
-                          {dashboardData.spentYesterDay.value} <span>{dashboardData.spentYesterDay.diff}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                      <label>Cloud wise spend</label>
-                      <span>...</span>
-                      {dashboardData.cloudWiseProduct &&
-                        dashboardData.cloudWiseProduct.length > 0 &&
-                        dashboardData.cloudWiseProduct.map((val: any, index: any) => {
-                          return (
-                            <div key={index}>
-                              <div>
+                        <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                          <div className="dashboard-spent">
+                            <div className="dashboard-days-spent-left">
+                              <label>Last 7 days Spend</label>
+                              <strong>
+                                {dashboardData.lastWeekSpent.value}
                                 <span>
-                                  <img alt={val.name} src=""></img>
+                                  <i className="fa fa-caret-up"></i>
+                                  {dashboardData.lastWeekSpent.diff}
                                 </span>
-                                <div>
-                                  <span>{val.name}</span>
-                                  <span>{val.value}</span>
-                                  <span>{val.diff}</span>
-                                </div>
-                                <div>progress bar</div>
+                              </strong>
+                            </div>
+                            <div className="dashboard-days-spent-right">
+                              <span>
+                                <span className="orange" style={{ height: '50%' }}></span>
+                              </span>
+                              <span>
+                                <span className="blue" style={{ height: '20%' }}></span>
+                              </span>
+                              <span>
+                                <span className="red" style={{ height: '70%' }}></span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                          <div className="dashboard-spent">
+                            <div className="current-spend-rate">
+                              <label>Current spend Rate</label>
+                              <div className="rate-text">
+                                <strong>{dashboardData.currentSpentRate.perHR}</strong>
+                                <span>Per Hour</span>
+                              </div>
+                              <div className="rate-line"></div>
+                              <div className="rate-text">
+                                <strong>{dashboardData.currentSpentRate.perDay}</strong>
+                                <span>Per Day</span>
                               </div>
                             </div>
-                          );
-                        })}
+                          </div>
+                        </div>
+                        <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                          <div className="dashboard-spent">
+                            <div className="total-budget">
+                              <div className="heading">
+                                <label>Total Budget(Q1)</label>
+                                <span>${dashboardData.totalBudget.total}</span>
+                              </div>
+                              <div className="content">
+                                <div className="remaining-graph">
+                                  <div className="gauge gauge--liveupdate" id="gauge">
+                                    <div className="gauge__container">
+                                      <div className="gauge__background"></div>
+                                      <div className="gauge__center"></div>
+                                      <div
+                                        className="gauge__data"
+                                        style={{
+                                          transform: `rotate(${
+                                            parseInt(dashboardData.totalBudget.percentage.split('%')[0].trim(), 10) /
+                                              200 +
+                                            0.5
+                                          }turn)`,
+                                        }}
+                                      ></div>
+                                      <div
+                                        className="gauge__needle"
+                                        style={{
+                                          transform: `rotate(${
+                                            parseInt(dashboardData.totalBudget.percentage.split('%')[0].trim(), 10) /
+                                              200 +
+                                            0.5
+                                          }turn)`,
+                                        }}
+                                      ></div>
+                                    </div>
+                                  </div>
+                                  <div className="used-text">{dashboardData.totalBudget.percentage} Used</div>
+                                </div>
+                                <div className="remaining-text">
+                                  <span>Remaining</span>
+                                  <strong>${dashboardData.totalBudget.remaining}</strong>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                          <div className="dashboard-spent">
+                            <div className="spends-today">
+                              <div className="spends-today-left">
+                                <i className="fa fa-caret-up"></i>
+                                <span>{dashboardData.spentToday.diff}</span>
+                              </div>
+                              <div className="spends-today-right">
+                                <label>Spends today</label>
+                                <strong>{dashboardData.spentToday.value}</strong>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                          <div className="dashboard-spent">
+                            <div className="spends-yesterday">
+                              <div className="spends-yesterday-left">
+                                <label>Spends yesterday</label>
+                                <strong>{dashboardData.spentToday.value}</strong>
+                              </div>
+                              <div className="spends-yesterday-right">
+                                <i className="fa fa-caret-down"></i>
+                                <span>{dashboardData.spentToday.diff}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-4 col-md-12 col-sm-12">
+                      <div className="cloud-wise-spend">
+                        <div className="heading">
+                          <label>Cloud wise spend</label>
+                          <i className="fa fa-ellipsis-v"></i>
+                        </div>
+                        <div className="contents">
+                          {dashboardData.cloudWiseProduct &&
+                            dashboardData.cloudWiseProduct.length > 0 &&
+                            dashboardData.cloudWiseProduct.map((val: any, index: any) => {
+                              return (
+                                <div className="content" key={index}>
+                                  <div className="icon">
+                                    <img alt={val.name} src={val.icon} />
+                                  </div>
+                                  <div className="progress-content">
+                                    <div className="text">
+                                      <span className="name">{val.name}</span>
+                                      <span className="value">{val.value}</span>
+                                      <span className="diff up">
+                                        <i className="fa fa-caret-up"></i>
+                                        {val.diff}
+                                      </span>
+                                    </div>
+                                    <div className="progress">
+                                      <span className="orange" style={{ width: '50%' }}></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                        </div>
+                        <div className="show-mare-link">
+                          <a>
+                            Show mare <i className="fa fa-caret-down"></i>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th> Products </th>
-                        <th> Performance </th>
-                        <th> Availibility </th>
-                        <th> Reliability </th>
-                        <th> Security </th>
-                        <th> End Usage </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {dashboardData.productList &&
-                        dashboardData.productList.length > 0 &&
-                        dashboardData.productList.map((val: any, index: any) => {
-                          return (
-                            <tr key={index}>
-                              <td> {val.name} </td>
-                              <td> {val.performance} </td>
-                              <td> {val.availabilty} </td>
-                              <td> {val.reliability} </td>
-                              <td> {val.security} </td>
-                              <td> {val.endUsage} </td>
-                            </tr>
-                          );
-                        })}
-                    </tbody>
-                  </table>
-                </div>
-              </>
+              </div>
             )}
             {/* <div className="applications-inner-container">
               <Carousel
@@ -555,6 +629,60 @@ class Overview extends React.Component<any, any> {
             </div> */}
           </div>
         </div>
+        {dashboardData && (
+          <div className="overview-container">
+            <div className="applications-container">
+              <div className="header">
+                <div className="heading">SLA Metrics</div>
+              </div>
+              <div className="applications-inner-container">
+                <div className="metrics-table">
+                  <div className="metrics-table-inner">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th className="products"> Products </th>
+                          <th> Performance </th>
+                          <th> Availibility </th>
+                          <th> Reliability </th>
+                          <th> Security </th>
+                          <th> End Usage </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dashboardData.productList &&
+                          dashboardData.productList.length > 0 &&
+                          dashboardData.productList.map((val: any, index: any) => {
+                            return (
+                              <tr key={index}>
+                                <td className="products"> {val.name} </td>
+                                <td className="orange"> {val.performance} </td>
+                                <td className="green"> {val.availabilty} </td>
+                                <td className="red"> {val.reliability} </td>
+                                <td className="green"> {val.security} </td>
+                                <td className="orange"> {val.endUsage} </td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="metrics-performance">
+                    <div className="performance-box green">
+                      <span>&#10095;</span>98%
+                    </div>
+                    <div className="performance-box orange">
+                      <span>&#10095;</span>90%
+                    </div>
+                    <div className="performance-box red">
+                      <span>&#10094;</span>75%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="overview-container">
           <div className="applications-container">
             <div className="header">
