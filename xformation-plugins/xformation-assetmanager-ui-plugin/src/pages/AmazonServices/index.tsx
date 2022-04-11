@@ -291,7 +291,7 @@ export class AmazonServices extends React.Component<any, any> {
           <div className="common-container border-bottom-0 p-b-0">
             {this.state.displaygetEnvironmentData && (
               <div className="service-full-container">
-                {this.displayAwsData()}
+                {/* {this.displayAwsData()} */}
               </div>
             )}
           </div>
