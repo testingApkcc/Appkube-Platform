@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
+import { RestService } from '../_service/RestService';
+import { config } from '../../config';
+
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { ProductWiseServices } from '../../components/ProductWiseServices';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
@@ -10,7 +13,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import _departmentData from './_dummyData/departments.json';
-import {products} from './_dummyData/products';
+// import {products} from './_dummyData/products';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -92,20 +95,35 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     ];
   }
 
+
   componentDidMount(){
-    this.setState({
-      departmentWiseData: _departmentData,
-      product: products
-    });
+  this.getDepartmentData()
   }
 
   calculatePercentage = (value:any, total: any) => {
     return Math.ceil(value*100/total);
   };
 
+  getDepartmentData=async( )=>{
+    try {
+      await RestService.getData(
+        `${config.GET_DEPARTMENTWISE_PRODUCT}`,
+        null,
+        null
+      ).then((response: any) => {
+        console.dir(response, "here")
+        this.setState({
+      departmentWiseData: response,
+    });
+      });
+    } catch (err) {
+      console.log("Loading accounts failed. Error: ", err);
+    }
+  }
+
   renderDepartmentWiseData = (departments: any) => {
     if(departments){
-      return departments.map((department: any) => {
+      return departments.map((department: any,index:any) => {
         const percentage = this.calculatePercentage(department.prodBilling, department.prodBilling + department.otherBilling);
         let color = "";
         if(percentage >= 75){
@@ -122,11 +140,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               <ul>
                 <li>
                   <label>No. of Products</label>
-                  <span>{department.noOfProduct}</span>
+                  <span>{}</span>
                 </li>
                 <li>
                   <label>No. of App Services</label>
-                  <span>{department.appServices}</span>
+                  <span>{}</span>
                 </li>
                 <li>
                   <label>No. of Data Services</label>
