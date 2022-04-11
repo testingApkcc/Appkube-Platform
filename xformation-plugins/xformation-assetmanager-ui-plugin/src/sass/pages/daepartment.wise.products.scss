@@ -26,7 +26,7 @@
         }
     }
 
-    .department-heading{
+    .department-heading {
         border-bottom: 1px solid #f5f6f5;
         margin-left: -20px;
         margin-right: -20px;
@@ -66,7 +66,7 @@
 
         }
 
-        .total-cost-text{
+        .total-cost-text {
             display: block;
             width: 100%;
             color: #202020;
@@ -75,24 +75,26 @@
             font-weight: 600;
             padding-top: 20px;
             text-align: right;
-            &.cost{
+
+            &.cost {
                 text-align: center;
                 font-size: 12px;
                 font-weight: 500;
-                strong{
+
+                strong {
                     font-weight: 600;
                 }
             }
         }
 
-        .chart{
+        .chart {
             display: block;
             width: 100%;
             padding-top: 0px;
             padding-bottom: 10px;
         }
 
-        .view-details-link{
+        .view-details-link {
             display: block;
             width: 100%;
             text-align: right;
@@ -930,6 +932,7 @@
 
                                         span {
                                             display: flex;
+                                            width: 100%;
                                             padding: 0 30px;
                                             font-size: 16px;
                                             line-height: 40px;
@@ -988,14 +991,16 @@
 
                                         .table {
                                             width: 100%;
-                                            display: flex;
+                                            display: block;
                                             flex-wrap: wrap;
                                             background-color: #FFFFFF;
                                             border-radius: 10px 10px 0px 0px;
                                             font-size: 13px;
+                                            overflow: hidden;
+                                            overflow-x: auto;
 
                                             .thead {
-                                                display: flex;
+                                                display: block;
                                                 width: 100%;
                                                 background-color: #D9E4F2;
                                                 border-radius: 10px 10px 0px 0px;
@@ -1010,8 +1015,10 @@
 
                                             .tbody {
                                                 width: 100%;
-                                                display: flex;
+                                                display: block;
                                                 flex-wrap: wrap;
+                                                overflow: hidden;
+                                                overflow-x: auto;
                                                 background-color: #F8F9FB;
 
                                                 &:nth-child(2n-1) {
@@ -1045,8 +1052,8 @@
                                         }
 
                                         .performance-table {
-                                            display: flex;
-                                            width: 100%;
+                                            display: block;
+                                            width: 1000px;
 
                                             .tbody {
                                                 width: 100%;
@@ -1068,26 +1075,32 @@
 
                                                     &:nth-child(2) {
                                                         width: 15%;
+                                                        text-align: center;
                                                     }
 
                                                     &:nth-child(3) {
                                                         width: 15%;
+                                                        text-align: center;
                                                     }
 
                                                     &:nth-child(3) {
                                                         width: 15%;
+                                                        text-align: center;
                                                     }
 
                                                     &:nth-child(4) {
                                                         width: 12%;
+                                                        text-align: center;
                                                     }
 
                                                     &:nth-child(5) {
                                                         width: 21%;
+                                                        text-align: center;
                                                     }
 
                                                     &:nth-child(6) {
                                                         width: 12%;
+                                                        text-align: center;
                                                     }
 
                                                     span {

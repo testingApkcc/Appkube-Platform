@@ -150,7 +150,6 @@ export class ServicesPerformance extends React.Component<any, any> {
               </div>
               {product.stages && product.stages.map((stage: any, stageIndex: any) => {
                 if (stage.isOpen == true) {
-                  debugger
                   return (
                     <div className='tabs-content'>
                       <ul>
