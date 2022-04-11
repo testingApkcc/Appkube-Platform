@@ -110,7 +110,7 @@ class Overview extends React.Component<any, any> {
         totalBudget: {
           total: '10,00,000',
           remaining: '3,28,457',
-          percentage: '0%',
+          percentage: '55%',
         },
         productList: [
           { name: 'Product 1', performance: 89, availabilty: '99', reliability: '67', security: '99', endUsage: '92' },
@@ -437,6 +437,7 @@ class Overview extends React.Component<any, any> {
                                   <div className="gauge gauge--liveupdate" id="gauge">
                                     <div className="gauge__container">
                                       <div className="gauge__background"></div>
+                                      <div className="gauge__center__center"></div>
                                       <div className="gauge__center"></div>
                                       <div
                                         className="gauge__data"
