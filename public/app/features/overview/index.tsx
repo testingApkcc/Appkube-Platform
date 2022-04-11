@@ -148,9 +148,42 @@ class Overview extends React.Component<any, any> {
           },
         ],
         cloudWiseProduct: [
-          { icon: '/public/img/fav32.png', name: 'AWS', value: '$2,47,518', diff: '5%', status: 'down' },
-          { icon: '/public/img/fav32.png', name: 'AZURE', value: '$90756', diff: '2%', status: 'up' },
-          { icon: '/public/img/fav32.png', name: 'GCP', value: '$11,508', diff: '1%', status: 'up' },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'AWS',
+            value: '$2,47,518',
+            diff: '5%',
+            status: 'down',
+            percentage: '50%',
+            percentageColor: 'orange',
+          },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'AZURE',
+            value: '$90756',
+            diff: '2%',
+            status: 'up',
+            percentage: '60%',
+            percentageColor: 'blue',
+          },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'GCP',
+            value: '$11,508',
+            diff: '1%',
+            status: 'up',
+            percentage: '30%',
+            percentageColor: 'red',
+          },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'GCP',
+            value: '$11,508',
+            diff: '1%',
+            status: 'down',
+            percentage: '80%',
+            percentageColor: 'orange',
+          },
         ],
       },
       totalSpend: {
@@ -520,24 +553,27 @@ class Overview extends React.Component<any, any> {
                                     <div className="text">
                                       <span className="name">{val.name}</span>
                                       <span className="value">{val.value}</span>
-                                      <span className="diff up">
-                                        <i className="fa fa-caret-up"></i>
+                                      <span className={val.status === 'up' ? 'diff up' : 'diff down'}>
+                                        <i className={val.status === 'up' ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i>
                                         {val.diff}
                                       </span>
                                     </div>
                                     <div className="progress">
-                                      <span className="orange" style={{ width: '50%' }}></span>
+                                      <span
+                                        className={val.percentageColor}
+                                        style={{ width: `${val.percentage}` }}
+                                      ></span>
                                     </div>
                                   </div>
                                 </div>
                               );
                             })}
                         </div>
-                        <div className="show-mare-link">
+                        {/* <div className="show-mare-link">
                           <a>
                             Show mare <i className="fa fa-caret-down"></i>
                           </a>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
