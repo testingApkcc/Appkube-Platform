@@ -9,6 +9,7 @@ import 'react-multi-carousel/lib/styles.css';
 // import Carousel from 'react-multi-carousel';
 import { config } from '../config';
 import { Line } from 'react-chartjs-2';
+// import { ValueContainer } from '../../../../packages/grafana-ui/src/components/Select/ValueContainer';
 // import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 // ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 // const responsive = {
@@ -110,10 +111,17 @@ class Overview extends React.Component<any, any> {
         totalBudget: {
           total: '10,00,000',
           remaining: '3,28,457',
-          percentage: '0%',
+          percentage: '55%',
         },
         productList: [
-          { name: 'Product 1', performance: 89, availabilty: '99', reliability: '67', security: '99', endUsage: '92' },
+          {
+            name: 'Product 1',
+            performance: '89',
+            availabilty: '99',
+            reliability: '67',
+            security: '99',
+            endUsage: '92',
+          },
           {
             name: 'Product 2',
             performance: '99',
@@ -129,6 +137,7 @@ class Overview extends React.Component<any, any> {
             reliability: '75',
             security: '92',
             endUsage: '91',
+            color: 'red',
           },
           {
             name: 'Product 4',
@@ -137,6 +146,7 @@ class Overview extends React.Component<any, any> {
             reliability: '68',
             security: '79',
             endUsage: '90',
+            color: 'green',
           },
           {
             name: 'Product 5',
@@ -145,12 +155,46 @@ class Overview extends React.Component<any, any> {
             reliability: '91',
             security: '88',
             endUsage: '87',
+            color: 'red',
           },
         ],
         cloudWiseProduct: [
-          { icon: '/public/img/fav32.png', name: 'AWS', value: '$2,47,518', diff: '5%', status: 'down' },
-          { icon: '/public/img/fav32.png', name: 'AZURE', value: '$90756', diff: '2%', status: 'up' },
-          { icon: '/public/img/fav32.png', name: 'GCP', value: '$11,508', diff: '1%', status: 'up' },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'AWS',
+            value: '$2,47,518',
+            diff: '5%',
+            status: 'down',
+            percentage: '50%',
+            percentageColor: 'orange',
+          },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'AZURE',
+            value: '$90756',
+            diff: '2%',
+            status: 'up',
+            percentage: '60%',
+            percentageColor: 'blue',
+          },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'GCP',
+            value: '$11,508',
+            diff: '1%',
+            status: 'up',
+            percentage: '30%',
+            percentageColor: 'red',
+          },
+          {
+            icon: '/public/img/fav32.png',
+            name: 'GCP',
+            value: '$11,508',
+            diff: '1%',
+            status: 'down',
+            percentage: '80%',
+            percentageColor: 'orange',
+          },
         ],
       },
       totalSpend: {
@@ -314,7 +358,17 @@ class Overview extends React.Component<any, any> {
       );
     }
   };
-
+  handletableColor = (val: any) => {
+    let color = '';
+    if (val >= 98) {
+      color = 'green';
+    } else if (val <= 90) {
+      color = 'red';
+    } else if (val > 90 || val <= 97) {
+      color = 'orange';
+    }
+    return color;
+  };
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'MONITOR | OVERVIEW';
@@ -437,6 +491,7 @@ class Overview extends React.Component<any, any> {
                                   <div className="gauge gauge--liveupdate" id="gauge">
                                     <div className="gauge__container">
                                       <div className="gauge__background"></div>
+                                      <div className="gauge__center__center"></div>
                                       <div className="gauge__center"></div>
                                       <div
                                         className="gauge__data"
@@ -519,24 +574,27 @@ class Overview extends React.Component<any, any> {
                                     <div className="text">
                                       <span className="name">{val.name}</span>
                                       <span className="value">{val.value}</span>
-                                      <span className="diff up">
-                                        <i className="fa fa-caret-up"></i>
+                                      <span className={val.status === 'up' ? 'diff up' : 'diff down'}>
+                                        <i className={val.status === 'up' ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i>
                                         {val.diff}
                                       </span>
                                     </div>
                                     <div className="progress">
-                                      <span className="orange" style={{ width: '50%' }}></span>
+                                      <span
+                                        className={val.percentageColor}
+                                        style={{ width: `${val.percentage}` }}
+                                      ></span>
                                     </div>
                                   </div>
                                 </div>
                               );
                             })}
                         </div>
-                        <div className="show-mare-link">
+                        {/* <div className="show-mare-link">
                           <a>
                             Show mare <i className="fa fa-caret-down"></i>
                           </a>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -656,11 +714,11 @@ class Overview extends React.Component<any, any> {
                             return (
                               <tr key={index}>
                                 <td className="products"> {val.name} </td>
-                                <td className="orange"> {val.performance} </td>
-                                <td className="green"> {val.availabilty} </td>
-                                <td className="red"> {val.reliability} </td>
-                                <td className="green"> {val.security} </td>
-                                <td className="orange"> {val.endUsage} </td>
+                                <td className={this.handletableColor(val.performance)}> {val.performance}% </td>
+                                <td className={this.handletableColor(val.availabilty)}> {val.availabilty}% </td>
+                                <td className={this.handletableColor(val.reliability)}> {val.reliability}% </td>
+                                <td className={this.handletableColor(val.security)}> {val.security}% </td>
+                                <td className={this.handletableColor(val.endUsage)}> {val.endUsage}% </td>
                               </tr>
                             );
                           })}

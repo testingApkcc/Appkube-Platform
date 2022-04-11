@@ -692,7 +692,8 @@ body,
             .gauge {
               position: relative;
               width: 70px;
-              height: 35px;
+              height: 41px;
+              padding-bottom: 6px;
 
               .gauge__container {
                 width: 70px;
@@ -729,6 +730,29 @@ body,
                   height: 35px;
                   top: 10px;
                   margin-left: 10px;
+                }
+
+                .gauge__center__center {
+                  z-index: 3;
+                  position: absolute;
+                  background-color: #f1eaff;
+                  margin-right: auto;
+                  border-radius: 50%;
+                  width: 16px;
+                  height: 16px;
+                  top: 25px;
+                  left: 28px;
+
+                  &::before {
+                    left: 4px;
+                    top: 4px;
+                    width: 8px;
+                    height: 8px;
+                    content: '';
+                    position: absolute;
+                    border-radius: 50%;
+                    background-color: #e91e63;
+                  }
                 }
 
                 .gauge__needle {
@@ -777,7 +801,7 @@ body,
             .used-text {
               display: block;
               width: 70px;
-              padding-top: 6px;
+              padding-top: 3px;
               font-size: 12px;
               line-height: 16px;
               font-weight: 600;
