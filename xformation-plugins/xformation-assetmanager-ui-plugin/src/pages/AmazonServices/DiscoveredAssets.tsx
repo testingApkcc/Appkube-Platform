@@ -6,6 +6,8 @@ import _dummyData from './_discovered_assets';
 // import { config } from '../../config';
 // import { PLUGIN_BASE_URL } from '../../constants';
 // import { Link } from 'react-router-dom';
+
+const TREE_PADDING = 30;
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
   constructor(props: any) {
@@ -188,7 +190,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       </div>;
       if (servicesTable.isDirectServices) {
         const servicesListJSX =
-          <>{this.renderDirectServices(servicesTable.data)}</>
+          <>{this.renderDirectServices(servicesTable.data, 1)}</>
         retData = <div className="data-table">
           {tableHead}
           {servicesListJSX}
@@ -196,23 +198,25 @@ export class DiscoveredAssets extends React.Component<any, any>{
       } else {
         let serviceSubDataJSX = [];
         if (servicesTable.data) {
-          serviceSubDataJSX = servicesTable.data.map((subService: any) => this.renderSubServices(subService));
+          serviceSubDataJSX = servicesTable.data.map((subService: any, index: any) => this.renderSubServices(subService, [index]));
         }
         retData = <div className="data-table">
           {tableHead}
+          {/* {servicesTable.isOpened == true ? */}
           {serviceSubDataJSX}
+          {/* : null} */}
         </div>
       }
       return retData;
     }
   };
 
-  renderDirectServices = (list: any) => {
+  renderDirectServices = (list: any, level: any) => {
     let retData = [];
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name">{service.title}</div>
+          <div className="service-name" style={{ paddingLeft: `${(20 * level) + TREE_PADDING}px` }}>{service.title}</div>
           <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
           <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
           <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
@@ -224,29 +228,50 @@ export class DiscoveredAssets extends React.Component<any, any>{
     return retData;
   };
 
-  renderSubServices = (service: any): any => {
+  renderSubServices = (service: any, indexArr: any): any => {
     const retData = [];
     if (service) {
       retData.push(
         <div className="tbody">
-          <div className="name">
-            {service.title} <span> <i className="fa fa-angle-down"></i></span>
+          <div className="name" style={{ paddingLeft: `${((indexArr.length - 1) * 20 + TREE_PADDING)}px` }}>
+            {service.title} <span onClick={() => this.toggleChildren(service)}> <i className="fa fa-angle-down"></i></span>
           </div>
         </div>
       );
-      if (service.serviceSubData) {
+      if (service.serviceSubData && service.isOpened == true) {
         for (let i = 0; i < service.serviceSubData.length; i++) {
-          retData.push(this.renderSubServices(service.serviceSubData[i]));
+          retData.push(this.renderSubServices(service.serviceSubData[i], [...indexArr, i]))
         }
-      } else if (service.list) {
-        retData.push(this.renderDirectServices(service.list));
+      } else if (service.list && service.isOpened == true) {
+        retData.push(this.renderDirectServices(service.list, indexArr.length));
       }
     }
     return retData;
   };
 
-  render() {
+  toggleChildren = (data: any) => {
+    const { servicesTable } = this.state;
+    for (let i = 0; i < servicesTable.data.length; i++) {
+      if (servicesTable.data[i].serviceSubData
+        &&
+        servicesTable.data[i].serviceSubData.length > 0) {
+        for (let j = 0; j < servicesTable.data[i].serviceSubData.length; j++) {
+          if (servicesTable.data[i].serviceSubData[j].title === data.title) {
+            servicesTable.data[i].serviceSubData[j].isOpened = !servicesTable.data[i].serviceSubData[j].isOpened;
+          }
+          else {
+            servicesTable.data[i].serviceSubData[j].isOpened = false;
+          }
+        }
+      }
+      if (servicesTable.data[i].title === data.title) {
+        servicesTable.data[i].isOpened = !servicesTable.data[i].isOpened
+      }
+    }
+    this.setState({ servicesTable: servicesTable })
+  }
 
+  render() {
     return (
       <>
         <div className="Filters-box">

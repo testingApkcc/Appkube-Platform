@@ -98,12 +98,14 @@ export default [
                 unit: '',
                 instance: 'N/A',
                 status: true,
+                isOpened: false,
                 serviceSubData: [
                   {
                     title: 'EMS',
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -176,6 +178,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -248,6 +251,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -385,6 +389,7 @@ export default [
                 unit: '',
                 instance: 'N/A',
                 status: true,
+                isOpened: false,
                 list: [
                   {
                     title: 'Search',
@@ -457,12 +462,14 @@ export default [
                 unit: '',
                 instance: 'N/A',
                 status: true,
+                isOpened: false,
                 subData: [
                   {
                     title: 'EMS',
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -535,6 +542,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -607,6 +615,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -869,6 +878,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -941,6 +951,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1013,6 +1024,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1188,12 +1200,14 @@ export default [
                 unit: '',
                 instance: 'N/A',
                 status: true,
+                isOpened: false,
                 serviceSubData: [
                   {
                     title: 'EMS',
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1266,6 +1280,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1338,6 +1353,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1475,6 +1491,7 @@ export default [
                 unit: '',
                 instance: 'N/A',
                 status: true,
+                isOpened: false,
                 list: [
                   {
                     title: 'Search',
@@ -1547,12 +1564,14 @@ export default [
                 unit: '',
                 instance: 'N/A',
                 status: true,
+                isOpened: false,
                 subData: [
                   {
                     title: 'EMS',
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1625,6 +1644,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1697,6 +1717,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -1959,6 +1980,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -2031,6 +2053,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
@@ -2103,6 +2126,7 @@ export default [
                     unit: '',
                     instance: 'N/A',
                     status: true,
+                    isOpened: false,
                     list: [
                       {
                         title: 'Search',
