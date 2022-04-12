@@ -1087,6 +1087,7 @@ export default [
         ],
       },
     ],
+    isMain: true,
   },
   {
     title: 'VPC 2',
@@ -2176,80 +2177,6 @@ export default [
         ],
       },
     ],
+    isMain: true,
   },
 ];
-
-// if (subFolder.subData && subFolder.subData.length > 0) {
-//   for (let k = 0; k < subFolder.subData.length; k++) {
-//     if (subFolder.subData[k].isOpened == true) {
-//       subRightFolderJSX.push(
-//         <div className="data-table">
-//           <div className="thead">
-//             <div className="name">
-//               Name
-//             </div>
-//             <div className="performance">
-//               Performance
-//             </div>
-//             <div className="availability">
-//               Availability
-//             </div>
-//             <div className="security">
-//               Security
-//             </div>
-//             <div className="data-protection">
-//               Data Protection
-//             </div>
-//             <div className="user-exp">
-//               User exp
-//             </div>
-//           </div>
-//           <div className="tbody">
-//             <div className="name">
-//               Common Services <span> <i className="fa fa-angle-down"></i></span>
-//             </div>
-//           </div>
-//           <div className="inner-table">
-//             <div className="tbody">
-//               <div className="name">Search</div>
-//               <div className="performance"><div className="status green"><i className="fa fa-check"></i></div></div>
-//               <div className="availability"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-//               <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-//               <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
-//               <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-//             </div>
-//             <div className="tbody">
-//               <div className="name">Security / RBAC</div>
-//               <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-//               <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
-//               <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-//               <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
-//               <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-//             </div>
-//             <div className="tbody">
-//               <div className="name">Preference/Config</div>
-//               <div className="performance"><div className="status red"><i className="fa fa-check"></i></div></div>
-//               <div className="availability"><div className="status green"><i className="fa fa-check"></i></div></div>
-//               <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-//               <div className="data-protection"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-//               <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-//             </div>
-//             <div className="tbody">
-//               <div className="name">DataFlow / Nifi</div>
-//               <div className="performance"><div className="status orange"><i className="fa fa-check"></i></div></div>
-//               <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
-//               <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-//               <div className="data-protection"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-//               <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
-//             </div>
-//           </div>
-//           <div className="tbody">
-//             <div className="name">
-//               Common Services <span> <i className="fa fa-angle-down"></i></span>
-//             </div>
-//           </div>
-//         </div>
-//       )
-//     }
-//   }
-// }

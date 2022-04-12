@@ -1276,39 +1276,27 @@ a:hover {
   font-size: 13px;
   line-height: 24px;
 }
-.service-container .organisational-details .container-inner .organisational-data-table .organisational-data-left {
-  width: 25%;
+.service-container .organisational-details .container-inner .organisational-data-table .organisational-data-table-left {
   display: inline-block;
   vertical-align: top;
+  width: 25%;
 }
 .service-container
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-left
-  .organisational-data-left {
-  width: 100%;
-}
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-left
-  .organisational-data-right {
-  height: 0;
+  .organisational-data-table-left
+  .thead
+  .thead-th {
   display: none;
 }
-.service-container .organisational-details .container-inner .organisational-data-table .organisational-data-right {
-  width: 75%;
-  display: inline-block;
-  vertical-align: top;
-}
 .service-container
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
-  .data-table {
+  .organisational-data-table-left
+  .thead
+  .thead-th.organisational-heading {
   display: block;
   width: 100%;
 }
@@ -1316,36 +1304,172 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .thead {
+  .organisational-data-table-left
+  .tbody
+  .tbody-td {
+  display: none;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-left
+  .tbody
+  .tbody-td.first {
+  display: block;
+  width: 100%;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right {
+  display: inline-block;
+  vertical-align: top;
+  width: 75%;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters {
+  display: block;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-breadcrumbs {
+  display: block;
+  width: 100%;
+  padding-left: 3px;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-breadcrumbs
+  li {
+  display: inline-block;
+  padding-left: 2px;
+  padding-right: 2px;
+  line-height: 36px;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-buttons {
+  float: right;
+  width: auto;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-search {
+  display: block;
+  width: 100%;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-search
+  label {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  color: #414d55;
+  font-weight: 500;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-search
+  .form-group {
+  position: relative;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-search
+  .form-group
+  .control-form {
+  font-size: 12px;
+  line-height: 34px;
+  text-align: left;
+  padding-left: 30px;
+  width: 100%;
+  color: #8998ac;
+  border: 1px solid #8392a7;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .organisational-data-table-right
+  .right-part-filters
+  .filters-search
+  .form-group
+  button {
+  position: absolute;
+  color: #8998ac;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 34px;
+  height: 35px;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .right-part-filters {
+  display: none;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table {
+  display: block;
+  width: 100%;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .thead {
   display: block;
   width: 100%;
   background-color: #d9e4f2;
   border-radius: 10px 10px 0px 0px;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .thead
-  .name {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .thead .name {
   display: inline-block;
   vertical-align: top;
-  padding: 10px 15px 10px 30px;
+  padding: 10px 15px 10px 15px;
   width: 23%;
   color: #24292e;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .thead
-  .performance {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .thead .performance {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
@@ -1357,7 +1481,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .thead
   .availability {
@@ -1368,14 +1491,7 @@ a:hover {
   width: 15%;
   color: #24292e;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .thead
-  .security {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .thead .security {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
@@ -1386,7 +1502,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .thead
   .data-protection {
@@ -1396,27 +1511,14 @@ a:hover {
   width: 20%;
   color: #24292e;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .thead
-  .user-exp {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .thead .user-exp {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px;
   width: 13%;
   color: #24292e;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .tbody {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody {
   display: block;
   width: 100%;
 }
@@ -1424,57 +1526,134 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .tbody:nth-child(2n-4) {
   background-color: #000000;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .tbody
-  .name {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .name {
   display: inline-block;
   vertical-align: top;
-  padding: 10px 15px 10px 30px;
+  padding: 10px 15px 10px 15px;
   width: 23%;
   cursor: pointer;
   color: #ffffff;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .tbody
-  .name
-  span {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .name span {
   color: #3b7cff;
 }
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .tbody
-  .name
-  i {
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .name i {
   float: right;
   line-height: 18px;
   cursor: pointer;
+  margin-top: 5px;
 }
 .service-container
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
-  .inner-table {
+  .tbody
+  .service-name {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 15px 10px 15px;
+  width: 23%;
+  color: #2662f0;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .performance {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 15px;
+  text-align: center;
+  width: 17%;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .data-table
+  .tbody
+  .availability {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 15px;
+  text-align: center;
+  width: 15%;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .security {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 15px;
+  text-align: center;
+  width: 12%;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .data-table
+  .tbody
+  .data-protection {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 15px;
+  text-align: center;
+  width: 20%;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .user-exp {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 15px;
+  text-align: center;
+  width: 13%;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .status {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #b8e986;
+  border-radius: 50%;
+  line-height: 14px;
+  font-size: 8px;
+  color: #ffffff;
+  text-align: center;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .data-table
+  .tbody
+  .status.green {
+  background-color: #b8e986;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .data-table
+  .tbody
+  .status.orange {
+  background-color: #ff9429;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .data-table
+  .tbody
+  .status.yellow {
+  background-color: #fff700;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .status.red {
+  background-color: #e13a20;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .inner-table {
+  display: block;
+  width: 100%;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .inner-table .tbody {
   display: block;
   width: 100%;
 }
@@ -1482,18 +1661,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
-  .data-table
-  .inner-table
-  .tbody {
-  display: block;
-  width: 100%;
-}
-.service-container
-  .organisational-details
-  .container-inner
-  .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody:nth-child(2n-4) {
@@ -1503,11 +1670,10 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
-  .name {
+  .service-name {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px 10px 30px;
@@ -1518,7 +1684,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1533,7 +1698,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1548,7 +1712,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1563,7 +1726,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1578,7 +1740,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1593,7 +1754,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1613,7 +1773,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1624,7 +1783,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1635,7 +1793,6 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
@@ -1646,24 +1803,24 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
   .data-table
   .inner-table
   .tbody
   .status.red {
   background-color: #e13a20;
 }
+.service-container .organisational-details .container-inner .organisational-data-table .d-flex {
+  display: block;
+  text-align: center;
+}
 .service-container
   .organisational-details
   .container-inner
   .organisational-data-table
-  .organisational-data-right
-  .organisational-data-right {
-  width: 100%;
-}
-.service-container .organisational-details .container-inner .organisational-data-table .d-flex {
-  display: block;
-  text-align: center;
+  .action-edit
+  .asset-white-button {
+  padding: 0;
+  background-color: transparent;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .thead {
   display: block;
@@ -1676,20 +1833,25 @@ a:hover {
 .service-container .organisational-details .container-inner .organisational-data-table .thead .thead-th {
   display: inline-block;
   padding: 10px 10px;
+  font-size: 14px;
   color: #3b4859;
-  font-weight: 600;
+  font-weight: 500;
   vertical-align: top;
-  text-align: left;
-  width: 100%;
+  text-align: center;
+  width: 20%;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .thead .thead-th span {
-  width: 40px;
+  width: 30px;
   display: inline-block;
-  margin-right: 15px;
+  vertical-align: top;
+  margin-right: 5px;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .thead .thead-th span img {
   width: 100%;
   height: auto;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .thead .thead-th:nth-child(1) {
+  text-align: left;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .tbody {
   display: block;
@@ -1710,11 +1872,14 @@ a:hover {
 }
 .service-container .organisational-details .container-inner .organisational-data-table .tbody .tbody-td {
   display: inline-block;
-  width: 100%;
+  width: 20%;
   padding: 10px 10px;
   color: #3b4859;
   font-weight: 500;
   vertical-align: top;
+  text-align: center;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .tbody .tbody-td:nth-child(1) {
   text-align: left;
 }
 .service-container
@@ -3856,10 +4021,12 @@ a:hover {
   ul
   li
   .content-table {
-  display: flex;
+  display: block;
   width: 100%;
   background-color: #cbdceb;
   padding: 10px;
+  overflow: hidden;
+  overflow-x: auto;
 }
 .department-wise-container
   .department-fliters-container
@@ -3872,14 +4039,12 @@ a:hover {
   li
   .content-table
   .table {
-  width: 100%;
+  width: 1000px;
   display: block;
   flex-wrap: wrap;
   background-color: #ffffff;
   border-radius: 10px 10px 0px 0px;
   font-size: 13px;
-  overflow: hidden;
-  overflow-x: auto;
 }
 .department-wise-container
   .department-fliters-container

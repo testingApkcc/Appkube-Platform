@@ -222,88 +222,286 @@
         font-size: 13px;
         line-height: 24px;
 
-        .organisational-data-left {
-          width: 25%;
+        .organisational-data-table-left {
           display: inline-block;
           vertical-align: top;
+          width: 25%;
 
+          .thead {
+            .thead-th {
+              display: none;
 
-          .organisational-data-left {
-            width: 100%;
+              &.organisational-heading {
+                display: block;
+                width: 100%;
+              }
+            }
           }
 
-          .organisational-data-right {
-            height: 0;
-            display: none;
+          .tbody {
+            .tbody-td {
+              display: none;
+
+              &.first {
+                display: block;
+                width: 100%;
+              }
+            }
           }
         }
 
-        .organisational-data-right {
-          width: 75%;
+        .organisational-data-table-right {
           display: inline-block;
           vertical-align: top;
+          width: 75%;
+          padding-left: 3px;
+          padding-right: 3px;
 
-          .data-table {
+          .right-part-filters {
+            display: block;
+            width: 100%;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+
+            .filters-breadcrumbs {
+              display: block;
+              width: 100%;
+              padding-left: 3px;
+
+              li {
+                display: inline-block;
+                padding-left: 2px;
+                padding-right: 2px;
+                line-height: 36px;
+              }
+            }
+
+            .filters-buttons {
+              float: right;
+              width: auto;
+            }
+
+            .filters-search {
+              display: block;
+              width: 100%;
+
+              label {
+                display: block;
+                width: 100%;
+                margin-bottom: 5px;
+                color: #414D55;
+                font-weight: 500;
+              }
+
+              .form-group {
+                position: relative;
+
+                .control-form {
+                  font-size: 12px;
+                  line-height: 34px;
+                  text-align: left;
+                  padding-left: 30px;
+                  width: 100%;
+                  color: #8998AC;
+                  border: 1px solid #8392A7;
+                  border-radius: 5px;
+                  background-color: #ffffff;
+                }
+
+                button {
+                  position: absolute;
+                  color: #8998AC;
+                  left: 0;
+                  top: 0;
+                  z-index: 1;
+                  cursor: pointer;
+                  border: none;
+                  background-color: transparent;
+                  width: 34px;
+                  height: 35px;
+                }
+              }
+            }
+          }
+        }
+
+        .right-part-filters {
+          display: none;
+        }
+
+        .data-table {
+          display: block;
+          width: 100%;
+
+          .thead {
+            display: block;
+            width: 100%;
+            background-color: #D9E4F2;
+            border-radius: 10px 10px 0px 0px;
+
+            .name {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px 10px 15px;
+              width: 23%;
+              color: #24292e;
+            }
+
+            .performance {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              text-align: center;
+              width: 17%;
+              color: #24292e;
+            }
+
+            .availability {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              text-align: center;
+              width: 15%;
+              color: #24292e;
+            }
+
+            .security {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              width: 12%;
+              color: #24292e;
+            }
+
+            .data-protection {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              width: 20%;
+              color: #24292e;
+            }
+
+            .user-exp {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              width: 13%;
+              color: #24292e;
+            }
+
+          }
+
+          .tbody {
             display: block;
             width: 100%;
 
-            .thead {
-              display: block;
-              width: 100%;
-              background-color: #D9E4F2;
-              border-radius: 10px 10px 0px 0px;
-
-              .name {
-                display: inline-block;
-                vertical-align: top;
-                padding: 10px 15px 10px 30px;
-                width: 23%;
-                color: #24292e;
-              }
-
-              .performance {
-                display: inline-block;
-                vertical-align: top;
-                padding: 10px 15px;
-                text-align: center;
-                width: 17%;
-                color: #24292e;
-              }
-
-              .availability {
-                display: inline-block;
-                vertical-align: top;
-                padding: 10px 15px;
-                text-align: center;
-                width: 15%;
-                color: #24292e;
-              }
-
-              .security {
-                display: inline-block;
-                vertical-align: top;
-                padding: 10px 15px;
-                width: 12%;
-                color: #24292e;
-              }
-
-              .data-protection {
-                display: inline-block;
-                vertical-align: top;
-                padding: 10px 15px;
-                width: 20%;
-                color: #24292e;
-              }
-
-              .user-exp {
-                display: inline-block;
-                vertical-align: top;
-                padding: 10px 15px;
-                width: 13%;
-                color: #24292e;
-              }
-
+            &:nth-child(2n-4) {
+              background-color: $department-background-color;
             }
+
+            .name {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px 10px 15px;
+              width: 23%;
+              cursor: pointer;
+              color: $data-table-contents-color;
+
+              span {
+                color: #3B7CFF;
+              }
+
+              i {
+                float: right;
+                line-height: 18px;
+                cursor: pointer;
+                margin-top: 5px;
+              }
+            }
+
+            .service-name {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px 10px 15px;
+              width: 23%;
+              color: #2662F0;
+            }
+
+            .performance {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              text-align: center;
+              width: 17%;
+            }
+
+            .availability {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              text-align: center;
+              width: 15%;
+            }
+
+            .security {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              text-align: center;
+              width: 12%;
+            }
+
+            .data-protection {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              text-align: center;
+              width: 20%;
+            }
+
+            .user-exp {
+              display: inline-block;
+              vertical-align: top;
+              padding: 10px 15px;
+              text-align: center;
+              width: 13%;
+            }
+
+            .status {
+              width: 14px;
+              height: 14px;
+              display: inline-block;
+              vertical-align: top;
+              background-color: #B8E986;
+              border-radius: 50%;
+              line-height: 14px;
+              font-size: 8px;
+              color: #ffffff;
+              text-align: center;
+
+              &.green {
+                background-color: #B8E986;
+              }
+
+              &.orange {
+                background-color: #FF9429;
+              }
+
+              &.yellow {
+                background-color: #FFF700;
+              }
+
+              &.red {
+                background-color: #E13A20;
+              }
+            }
+
+          }
+
+          .inner-table {
+            display: block;
+            width: 100%;
 
             .tbody {
               display: block;
@@ -313,127 +511,96 @@
                 background-color: $department-background-color;
               }
 
-              .name {
+              .service-name {
                 display: inline-block;
                 vertical-align: top;
                 padding: 10px 15px 10px 30px;
                 width: 23%;
-                cursor: pointer;
-                color: $data-table-contents-color;
-
-                span {
-                  color: #3B7CFF;
-                }
-
-                i {
-                  float: right;
-                  line-height: 18px;
-                  cursor: pointer;
-                }
+                color: #2662F0;
               }
 
-            }
+              .performance {
+                display: inline-block;
+                vertical-align: top;
+                padding: 10px 15px;
+                text-align: center;
+                width: 17%;
+              }
 
-            .inner-table {
-              display: block;
-              width: 100%;
+              .availability {
+                display: inline-block;
+                vertical-align: top;
+                padding: 10px 15px;
+                text-align: center;
+                width: 15%;
+              }
 
-              .tbody {
-                display: block;
-                width: 100%;
+              .security {
+                display: inline-block;
+                vertical-align: top;
+                padding: 10px 15px;
+                text-align: center;
+                width: 12%;
+              }
 
-                &:nth-child(2n-4) {
-                  background-color: $department-background-color;
-                }
+              .data-protection {
+                display: inline-block;
+                vertical-align: top;
+                padding: 10px 15px;
+                text-align: center;
+                width: 20%;
+              }
 
-                .name {
-                  display: inline-block;
-                  vertical-align: top;
-                  padding: 10px 15px 10px 30px;
-                  width: 23%;
-                  color: #2662F0;
-                }
+              .user-exp {
+                display: inline-block;
+                vertical-align: top;
+                padding: 10px 15px;
+                text-align: center;
+                width: 13%;
+              }
 
-                .performance {
-                  display: inline-block;
-                  vertical-align: top;
-                  padding: 10px 15px;
-                  text-align: center;
-                  width: 17%;
-                }
+              .status {
+                width: 14px;
+                height: 14px;
+                display: inline-block;
+                vertical-align: top;
+                background-color: #B8E986;
+                border-radius: 50%;
+                line-height: 14px;
+                font-size: 8px;
+                color: #ffffff;
+                text-align: center;
 
-                .availability {
-                  display: inline-block;
-                  vertical-align: top;
-                  padding: 10px 15px;
-                  text-align: center;
-                  width: 15%;
-                }
-
-                .security {
-                  display: inline-block;
-                  vertical-align: top;
-                  padding: 10px 15px;
-                  text-align: center;
-                  width: 12%;
-                }
-
-                .data-protection {
-                  display: inline-block;
-                  vertical-align: top;
-                  padding: 10px 15px;
-                  text-align: center;
-                  width: 20%;
-                }
-
-                .user-exp {
-                  display: inline-block;
-                  vertical-align: top;
-                  padding: 10px 15px;
-                  text-align: center;
-                  width: 13%;
-                }
-
-                .status {
-                  width: 14px;
-                  height: 14px;
-                  display: inline-block;
-                  vertical-align: top;
+                &.green {
                   background-color: #B8E986;
-                  border-radius: 50%;
-                  line-height: 14px;
-                  font-size: 8px;
-                  color: #ffffff;
-                  text-align: center;
+                }
 
-                  &.green {
-                    background-color: #B8E986;
-                  }
+                &.orange {
+                  background-color: #FF9429;
+                }
 
-                  &.orange {
-                    background-color: #FF9429;
-                  }
+                &.yellow {
+                  background-color: #FFF700;
+                }
 
-                  &.yellow {
-                    background-color: #FFF700;
-                  }
-
-                  &.red {
-                    background-color: #E13A20;
-                  }
+                &.red {
+                  background-color: #E13A20;
                 }
               }
             }
-          }
-
-          .organisational-data-right {
-            width: 100%;
           }
         }
 
         .d-flex {
           display: block;
           text-align: center;
+        }
+
+        .action-edit{
+          .asset-white-button{
+            padding: 0;
+            background-color: transparent;
+          }
         }
 
         .thead {
@@ -448,16 +615,18 @@
           .thead-th {
             display: inline-block;
             padding: 10px 10px;
+            font-size: 14px;
             color: #3b4859;
-            font-weight: 600;
+            font-weight: 500;
             vertical-align: top;
-            text-align: left;
-            width: 100%;
+            text-align: center;
+            width: 20%;
 
             span {
-              width: 40px;
+              width: 30px;
               display: inline-block;
-              margin-right: 15px;
+              vertical-align: top;
+              margin-right: 5px;
 
               img {
                 width: 100%;
@@ -465,31 +634,10 @@
               }
             }
 
-            // &:nth-child(1) {
-            //   width: 30%;
-            //   text-align: left;
-            // }
+            &:nth-child(1) {
+              text-align: left;
+            }
 
-            // &:nth-child(2) {
-            //   width: 20%;
-            //   text-align: left;
-            // }
-
-            // &:nth-child(3) {
-            //   width: 20%;
-            // }
-
-            // &:nth-child(4) {
-            //   width: 20%;
-            // }
-
-            // &:nth-child(5) {
-            //   width: 10%;
-            // }
-
-            // &:nth-child(6) {
-            //   width: 16%;
-            // }
           }
         }
 
@@ -511,38 +659,16 @@
 
           .tbody-td {
             display: inline-block;
-            width: 100%;
+            width: 20%;
             padding: 10px 10px;
             color: #3b4859;
             font-weight: 500;
             vertical-align: top;
-            text-align: left;
+            text-align: center;
 
-            // &:nth-child(1) {
-            //   width: 30%;
-            //   text-align: left;
-            // }
-
-            // &:nth-child(2) {
-            //   width: 20%;
-            //   text-align: left;
-            // }
-
-            // &:nth-child(3) {
-            //   width: 20%;
-            // }
-
-            // &:nth-child(4) {
-            //   width: 20%;
-            // }
-
-            // &:nth-child(5) {
-            //   width: 10%;
-            // }
-
-            // &:nth-child(6) {
-            //   width: 16%;
-            // }
+            &:nth-child(1) {
+              text-align: left;
+            }
 
           }
 

@@ -81,12 +81,10 @@ export class DiscoveredAssets extends React.Component<any, any>{
           <>
             {(subFolder.subData == undefined) &&
               <div className="tbody">
-                <div className="organisational-data-left">
-                  <div className="tbody-inner">
-                    <div className="tbody-td first">
-                      <div className="caret-right" onClick={() => this.onClickRightTreeArr(j, indexArr)}></div>
-                      {subFolder.title}
-                    </div>
+                <div className="tbody-inner">
+                  <div className="tbody-td first">
+                    <div className="caret-right" onClick={() => this.onClickRightTreeArr(j, indexArr)}></div>
+                    {subFolder.title}
                   </div>
                 </div>
               </div>
@@ -100,18 +98,31 @@ export class DiscoveredAssets extends React.Component<any, any>{
     }
     retData.push(
       <div className="tbody">
-        <div className="organisational-data-left">
-          <div className="tbody-inner">
-            <div className="tbody-td first">
-              {!folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
-              {folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
-              {folder.title}
-            </div>
+        <div className="tbody-inner">
+          <div className="tbody-td first">
+            {!folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
+            {folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
+            {folder.title}
           </div>
-          <Collapse className="collapse-content" isOpen={folder.isOpened}>
-            {subFolderJSX}
-          </Collapse>
+          {
+            folder.isMain &&
+            <>
+              <div className="tbody-td">2</div>
+              <div className="tbody-td">3</div>
+              <div className="tbody-td">5</div>
+              <div className="tbody-td">
+                <div className="d-block text-center action-edit">
+                  <button className="asset-white-button min-width-inherit m-r-0">
+                    <a className="fa fa-ellipsis-h"></a>
+                  </button>
+                </div>
+              </div>
+            </>
+          }
         </div>
+        <Collapse className="collapse-content" isOpen={folder.isOpened}>
+          {subFolderJSX}
+        </Collapse>
       </div>
     );
     return retData;
@@ -177,7 +188,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       </div>;
       if (servicesTable.isDirectServices) {
         const servicesListJSX =
-          <div className="inner-table">{this.renderDirectServices(servicesTable.data)}</div>
+          <>{this.renderDirectServices(servicesTable.data)}</>
         retData = <div className="data-table">
           {tableHead}
           {servicesListJSX}
@@ -201,7 +212,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="name">{service.title}</div>
+          <div className="service-name">{service.title}</div>
           <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
           <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
           <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
@@ -235,6 +246,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   render() {
+
     return (
       <>
         <div className="Filters-box">
@@ -264,15 +276,76 @@ export class DiscoveredAssets extends React.Component<any, any>{
         <div className="organisational-details">
           <div className="container-inner">
             <div className="organisational-data-table">
-              <div className="thead">
-                <div className="thead-th organisational-heading"><span><img src={images.awsLogo} alt="" /></span></div>
-                {/* <div className="thead-th">Organisational Unit</div>
-                <div className="thead-th">Online Instance</div>
-                <div className="thead-th">Status</div>
-                <div className="thead-th">Action</div> */}
+              <div className={this.state.servicesTable.data && this.state.servicesTable.data.length > 0 ? "organisational-data-table-left" : ""}>
+                <div className="thead">
+                  <div className="thead-th organisational-heading"><span><img src={images.awsLogo} alt="" /></span> AWS</div>
+                  <div className="thead-th">Products</div>
+                  <div className="thead-th">App Services</div>
+                  <div className="thead-th">Data Services</div>
+                  <div className="thead-th">Action</div>
+                </div>
+                {this.displayTable()}
               </div>
-              {this.displayTable()}
-              {this.renderRightPart()}
+              <div className={this.state.servicesTable.data && this.state.servicesTable.data.length > 0 ? "organisational-data-table-right" : ""}>
+                <div className="right-part-filters">
+                  <div className="row">
+                    <div className="col-lg-6 col-md-12 col-sm-12">
+                      <div className="filters-breadcrumbs">
+                        <ul>
+                          <li><a>VPC 1</a></li>
+                          <li>&gt;</li>
+                          <li><a>Cluster 1</a></li>
+                          <li>&gt;</li>
+                          <li>App Services</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="col-lg-6 col-md-12 col-sm-12">
+                      <div className="filters-buttons">
+                        <button className="asset-white-button min-width-inherit">
+                          <i className="fa fa-plus"></i> Add
+                        </button>
+                        <button className="asset-white-button min-width-inherit">
+                          <i className="fa fa-refresh"></i> Refresh
+                        </button>
+                        <button className="asset-white-button min-width-inherit m-r-0">
+                          <i className="fa fa-trash"></i> Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-4 col-md-12 col-sm-12">
+                      <div className="filters-search">
+                        <label>Filter by deployment name</label>
+                        <div className="form-group">
+                          <input type="text" className="control-form" placeholder="Enter the full deployment name" value="" />
+                          <button><i className="fa fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-4 col-md-12 col-sm-12">
+                      <div className="filters-search">
+                        <label>Filter by App</label>
+                        <div className="form-group">
+                          <input type="text" className="control-form" placeholder="foo-bar,key!=value" value="" />
+                          <button><i className="fa fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-4 col-md-12 col-sm-12">
+                      <div className="filters-search">
+                        <label>Filter by SLA</label>
+                        <div className="form-group">
+                          <input type="text" className="control-form" placeholder="All SLA" value="" />
+                          <button><i className="fa fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {this.renderRightPart()}
+              </div>
             </div>
           </div>
 
