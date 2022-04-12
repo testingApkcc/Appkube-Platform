@@ -1272,9 +1272,6 @@ a:hover {
   display: grid;
   border-bottom: 1px solid #f5f6f5;
 }
-.service-container .organisational-details .container-inner {
-  overflow-x: scroll;
-}
 .service-container .organisational-details .container-inner .organisational-data-table {
   width: 100%;
   background-color: #ffffff;
@@ -1623,6 +1620,7 @@ a:hover {
   font-size: 8px;
   color: #ffffff;
   text-align: center;
+  margin-top: 5px;
 }
 .service-container
   .organisational-details
