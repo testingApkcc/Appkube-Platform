@@ -984,20 +984,20 @@
                                     }
 
                                     .content-table {
-                                        display: flex;
+                                        display: block;
                                         width: 100%;
                                         background-color: #CBDCEB;
                                         padding: 10px;
+                                        overflow: hidden;
+                                        overflow-x: auto;
 
                                         .table {
-                                            width: 100%;
+                                            width: 1000px;
                                             display: block;
                                             flex-wrap: wrap;
                                             background-color: #FFFFFF;
                                             border-radius: 10px 10px 0px 0px;
                                             font-size: 13px;
-                                            overflow: hidden;
-                                            overflow-x: auto;
 
                                             .thead {
                                                 display: block;
