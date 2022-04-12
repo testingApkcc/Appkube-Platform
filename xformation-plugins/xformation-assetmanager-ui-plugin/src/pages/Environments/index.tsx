@@ -590,7 +590,7 @@ export class Environments extends React.Component<any, any> {
                           }
                         >
                           <i className="fa fa-plus"></i>
-                          <span>Add New Product</span>
+                          <span>Add New Environment</span>
                         </div>
                         <div className={showAddNewFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
                           <ul>

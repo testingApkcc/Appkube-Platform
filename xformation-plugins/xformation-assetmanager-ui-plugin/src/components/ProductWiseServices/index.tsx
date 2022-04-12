@@ -202,7 +202,7 @@ export class ProductWiseServices extends React.Component<any, any> {
                       }
                     >
                       <i className="fa fa-plus"></i>
-                      <span>Add New Environment</span>
+                      <span>Add New Product</span>
                     </div>
                     <div className={showAddNewFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
                       <ul>
