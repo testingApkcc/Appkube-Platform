@@ -416,8 +416,10 @@
     }
 
     .environments-table {
+      overflow: hidden;
+      overflow-x: auto;
       .table {
-        width: 100%;
+        width: 1200px;
         text-align: center;
         border-bottom: 1px solid #F0F3F7;
 
@@ -437,23 +439,26 @@
 
           &:nth-child(1) {
             text-align: left;
-            width: 30%;
+            width: 20%;
           }
 
           &:nth-child(2) {
             text-align: left;
-            width: 30%;
+            width: 15%;
           }
 
           &:nth-child(3) {
-            width: 20%;
+            width: 15%;
           }
 
           &:nth-child(4) {
-            width: 10%;
+            width: 20%;
           }
 
           &:nth-child(5) {
+            width: 10%;
+          }
+          &:nth-child(6) {
             width: 10%;
           }
 
@@ -483,23 +488,27 @@
 
           &:nth-child(1) {
             text-align: left;
-            width: 30%;
+            width: 20%;
           }
 
           &:nth-child(2) {
             text-align: left;
-            width: 30%;
+            width: 15%;
           }
 
           &:nth-child(3) {
-            width: 20%;
+            width: 15%;
           }
 
           &:nth-child(4) {
-            width: 10%;
+            width: 20%;
           }
 
           &:nth-child(5) {
+            width: 10%;
+          }
+
+          &:nth-child(6) {
             width: 10%;
           }
 
@@ -566,13 +575,7 @@
         }
       }
 
-      .environments-table {
-        overflow-x: auto;
-
-        .table {
-          width: 1000px;
-        }
-      }
+      
     }
   }
 }
