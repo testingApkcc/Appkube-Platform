@@ -21,8 +21,8 @@ export const products = [
                       list: [
                         {
                           title: 'Firewall',
-                          performance: '70',
-                          availibility: '50',
+                          performance: 20,
+                          availibility: 10,
                           security: '30',
                           data_protection: 70,
                           user_exp: 80,

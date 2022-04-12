@@ -126,9 +126,9 @@
 
         .department-box {
             display: flex;
-            flex: 0 0 250px;
+            flex: 0 0 300px;
             flex-wrap: wrap;
-            width: 250px;
+            width: 300px;
             min-height: 150px;
             margin-right: 20px;
             background: #FFFFFF;
@@ -159,7 +159,7 @@
                 ul {
                     display: block;
                     width: 100%;
-                    padding: 15px 15px 5px;
+                    padding: 15px 30px 5px;
                     margin: 0;
                     list-style: none;
 
@@ -169,17 +169,18 @@
                         padding-bottom: 10px;
                         font-size: 13px;
                         line-height: 18px;
-                        color: #140065;
+                        color: #000;
                         font-weight: 500;
 
                         label {
                             display: inline-block;
-                            width: 75%;
+                            width: 80%;
                         }
 
                         span {
                             display: inline-block;
-                            width: 25%;
+                            width: 20%;
+                            text-align: right;
                         }
                     }
                 }
@@ -189,26 +190,26 @@
                     width: 100%;
                     padding-left: 15px;
                     padding-right: 15px;
+                    text-align: center;
+                    font-size: 18px;
+                    margin-top: 16px;
 
                     label {
-                        font-size: 14px;
                         line-height: 18px;
                         color: #202020;
                         font-weight: 600;
                     }
 
                     span {
-                        font-size: 14px;
                         line-height: 18px;
                         color: #202020;
                         font-weight: 600;
-                        float: right;
                     }
                 }
 
                 .production-chart {
                     display: table;
-                    width: 50%;
+                    width: 80%;
                     margin-left: auto;
                     margin-right: auto;
                     padding: 15px;
