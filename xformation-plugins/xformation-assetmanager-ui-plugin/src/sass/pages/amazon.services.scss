@@ -214,7 +214,7 @@
     border-bottom: 1px solid #f5f6f5;
 
     .container-inner {
-      overflow-x: scroll;
+      //overflow-x: scroll;
 
       .organisational-data-table {
         width: 100%;
@@ -479,6 +479,7 @@
               font-size: 8px;
               color: #ffffff;
               text-align: center;
+              margin-top: 5px;
 
               &.green {
                 background-color: #B8E986;

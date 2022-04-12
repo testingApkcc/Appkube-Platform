@@ -248,11 +248,12 @@ export class Environments extends React.Component<any, any> {
                 AWS ({row.accountId})
               </Link>
             </td>
-            <td>{row.organizationName}</td>
-            <td>{row.organizationalUnit && row.organizationalUnit.name}</td>
-            <td>N/A</td>
+            <td>{row.organizationProductEnclave}</td>
+            <td>{row.organizationalProducts}</td>
+            <td>{row.organizationalAppServices}</td>
             <td>
-              <div className={row.status === 'ACTIVE' ? 'status enable' : 'status disable'}></div>
+              {row.organizationalDataServices}
+              {/* <div className={row.status === 'ACTIVE' ? 'status enable' : 'status disable'}></div> */}
             </td>
             <td>
               <div className="d-block text-center">
@@ -652,10 +653,10 @@ export class Environments extends React.Component<any, any> {
                       </span>{' '}
                       AWS
                     </th>
-                    <th>Organisation</th>
-                    <th>Organisational Unit</th>
-                    <th>Online Instance</th>
-                    <th>Status</th>
+                    <th>Product Enclave</th>
+                    <th>Products</th>
+                    <th>App Services</th>
+                    <th>Data Services</th>
                     <th>Action</th>
                   </tr>
                 </thead>

@@ -713,7 +713,6 @@ export class CustomSideMenu extends PureComponent<any, any> {
       let isActive = false;
       if (activeMenuItem) {
         isActive = activeMenuItem.link === menuItem.link;
-        console.log(activeMenuItem.link, menuItem.link);
       }
       retItem.push(
         <Rbac parentName={menuItem.text || ''} childName={menuItem.text || ''} key={menuItem.text}>

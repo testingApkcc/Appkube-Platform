@@ -424,7 +424,7 @@ export class Action extends React.Component<any, any> {
         {openCreateMenu == true && (
           <div
             className="text-center open-create-menu"
-            style={{ right: "-62px", top: "15px" }}
+            style={{ right: "-30px", top: "15px" }}
           >
             {/* <Rbac  childName="commancomponent-createbuttoncomponent-companytbtn"> */}
             <Link to ='' onClick={(e) => this.onClickAddInput(e, detailObj)}>
