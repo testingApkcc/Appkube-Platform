@@ -92,37 +92,29 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                 this.setState({
                     departmentWiseData: response,
                 });
+                this.handleGraphValue(response);
             });
         } catch (err) {
             console.log("Loading accounts failed. Error: ", err);
         }
     }
-    componentDidUpdate() {
-        const { departmentWiseData, graph } = this.state;
-        if (departmentWiseData)
-            if (departmentWiseData) {
-                if (graph && !Object.keys(graph).length) {
-                    this.handleGraphValue(departmentWiseData)
-                    for (let i = 0; i < Object.keys(graph).length; i++) {
-                        this.state.humanResources.datasets[0].data.push(graph[Object.keys(graph)[i]])
-                        this.state.humanResources.total += graph[Object.keys(graph)[i]]
-                        this.state.humanResources.labels.push(Object.keys(graph)[i]);
-                    }
-                    this.setState({ humanResources: this.state.humanResources })
-                }
-            }
-    }
+
+
     handleGraphValue = (val: any) => {
         let { graph } = this.state;
         for (let i = 0; i < val.length; i++) {
             for (let l = 0; l < val[i].productList.length; l++) {
                 for (let j = 0; j < val[i].productList[l].serviceList.length; j++) {
-                    graph[val[i].productList[l].name] = graph[val[i].productList[l].name]
-                        + val[i].productList[l].serviceList[j].totalBillingAmount || 0;
+                    graph[val[i].productList[l].name] = graph[val[i].productList[l].name] + val[i].productList[l].serviceList[j].totalBillingAmount || 0;
                 }
             }
         }
-        this.setState({ graph: graph })
+        for (let i = 0; i < Object.keys(graph).length; i++) {
+            this.state.humanResources.datasets[0].data.push(graph[Object.keys(graph)[i]])
+            this.state.humanResources.total += graph[Object.keys(graph)[i]]
+            this.state.humanResources.labels.push(Object.keys(graph)[i]);
+        }
+        this.setState({ graph: graph, humanResources: this.state.humanResources })
     }
     render() {
         const { barOptions, humanResources } = this.state
