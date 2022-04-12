@@ -4,7 +4,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { RestService } from '../_service/RestService';
 import { config } from '../../config';
-import { Bar, Pie } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
@@ -14,15 +14,15 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
         super(props);
         this.state = {
             displayBarChart: true,
-            graph:{},
-            departmentWiseData:[],
+            graph: {},
+            departmentWiseData: [],
             humanResources: {
-                total:0,
+                total: null,
                 labels: [],
                 datasets: [
                     {
                         data: [],
-                        fill: false,
+
                         lineTension: 0.2,
                         backgroundColor: [
                             'rgba(82, 177, 65, 1)',
@@ -64,7 +64,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                     responsive: true,
                 }
             },
-            
+
         };
         this.breadCrumbs = [
             {
@@ -79,53 +79,53 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
     }
     componentDidMount() {
         this.getDepartmentData()
-      }
-    
+    }
+
     getDepartmentData = async () => {
         try {
-          await RestService.getData(
-            `${config.GET_DEPARTMENTWISE_PRODUCT}`,
-            null,
-            null
-          ).then((response: any) => {
-              console.log(response)
-            this.setState({
-              departmentWiseData: response,
+            await RestService.getData(
+                `${config.GET_DEPARTMENTWISE_PRODUCT}`,
+                null,
+                null
+            ).then((response: any) => {
+                console.log(response)
+                this.setState({
+                    departmentWiseData: response,
+                });
             });
-          });
         } catch (err) {
-          console.log("Loading accounts failed. Error: ", err);
+            console.log("Loading accounts failed. Error: ", err);
         }
-      }
+    }
     componentDidUpdate() {
         const { departmentWiseData, graph } = this.state;
         if (departmentWiseData)
-          if (departmentWiseData) {
-            if (graph && !Object.keys(graph).length) {
-              this.handleGraphValue(departmentWiseData)
-              for (let i = 0; i < Object.keys(graph).length; i++) {
-      this.state.humanResources.datasets[0].data.push(graph[Object.keys(graph)[i]])
-      this.state.humanResources.total+=graph[Object.keys(graph)[i]]
-                this.state.humanResources.labels.push(Object.keys(graph)[i]);
-              }
-              this.setState({humanResources:this.state.humanResources})
+            if (departmentWiseData) {
+                if (graph && !Object.keys(graph).length) {
+                    this.handleGraphValue(departmentWiseData)
+                    for (let i = 0; i < Object.keys(graph).length; i++) {
+                        this.state.humanResources.datasets[0].data.push(graph[Object.keys(graph)[i]])
+                        this.state.humanResources.total += graph[Object.keys(graph)[i]]
+                        this.state.humanResources.labels.push(Object.keys(graph)[i]);
+                    }
+                    this.setState({ humanResources: this.state.humanResources })
+                }
             }
-          }
-      }
+    }
     handleGraphValue = (val: any) => {
         let { graph } = this.state;
         for (let i = 0; i < val.length; i++) {
-          for (let l = 0; l < val[i].productList.length; l++) {
-            for (let j = 0; j < val[i].productList[l].serviceList.length; j++) {
-              graph[val[i].productList[l].name] = graph[val[i].productList[l].name] 
-              + val[i].productList[l].serviceList[j].totalBillingAmount || 0;
+            for (let l = 0; l < val[i].productList.length; l++) {
+                for (let j = 0; j < val[i].productList[l].serviceList.length; j++) {
+                    graph[val[i].productList[l].name] = graph[val[i].productList[l].name]
+                        + val[i].productList[l].serviceList[j].totalBillingAmount || 0;
+                }
             }
-          }
         }
         this.setState({ graph: graph })
-      }
+    }
     render() {
-        const {  barOptions , humanResources} = this.state
+        const { barOptions, humanResources } = this.state
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -145,18 +145,19 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                                 </div>
                             </div>
                         </div>
-                            <div className='row'>
-                                <div className="col-lg-12 col-md-12 col-sm-12">
-                                    {humanResources && <div className="cost-analysis-chart">
-                                        <div className="heading">Human Resources</div>
-                                        { humanResources.total &&<div className="total-cost-text cost"><strong>${humanResources.total}</strong> - 40% off the total cost</div>}
-                                        <div className="chart">
-                                      {humanResources.datasets&& humanResources.datasets[0].data.length>0 
-                                      && humanResources.labels.length>0 &&  <Bar data={humanResources} options={barOptions} />}
-                                        </div>
-                                    </div>}
-                                </div>
+                        <div className='row'>
+                            <div className="col-lg-12 col-md-12 col-sm-12">
+                                {humanResources && <div className="cost-analysis-chart">
+                                    <div className="heading">Human Resources</div>
+                                    {humanResources.total && <div className="total-cost-text cost"><strong>${humanResources.total}</strong> - 40% off the total cost</div>}
+                                    <div className="chart">
+                                        {humanResources.datasets &&
+                                            humanResources.datasets[0].data.length > 0 && humanResources.labels.length > 0 ?
+                                            <Bar data={humanResources} options={barOptions} height={70} /> : <>...loading</>}
+                                    </div>
+                                </div>}
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
