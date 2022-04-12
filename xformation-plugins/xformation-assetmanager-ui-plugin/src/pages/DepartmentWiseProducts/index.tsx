@@ -7,7 +7,7 @@ import { RestService } from '../_service/RestService';
 import { config } from '../../config';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { ProductWiseServices } from '../../components/ProductWiseServices';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -356,7 +356,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 </li>
               </ul>
               <div className="production-heading">
-                <label>Production Usage Ratio :</label>
+                <label>Production Usage Ratio:&nbsp;</label>
                 <span>{percentage}%</span>
               </div>
               <div className="production-chart">
@@ -364,12 +364,20 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                   value={percentage}
                   text={`$${productionTotal + othersTotal}`}
                   strokeWidth={20}
-                  styles={buildStyles({
-                    trailColor: "#F6EEFF",
-                    pathColor: color,
-                    textColor: "#000000",
-                    strokeLinecap: 'butt'
-                  })}
+                  styles={{
+                    trail: {
+                      stroke: "#F6EEFF",
+                    },
+                    path: {
+                      stroke: color,
+                      strokeLinecap: 'butt',
+                    },
+                    text: {
+                      fontSize: "10px",
+                      fontWeight: "bold",
+                      fill: "#000",
+                    }
+                  }}
                 />
               </div>
               <div className="production-billing-text">
