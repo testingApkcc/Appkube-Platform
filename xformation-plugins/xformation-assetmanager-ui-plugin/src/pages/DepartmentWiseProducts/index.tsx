@@ -202,11 +202,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         if (department.productList) {
           for (let i = 0; i < department.productList.length; i++) {
             let product = department.productList[i];
-            const totalScores = product.serviceList.reduce(
-              (total: any, num: any, index: any) => {
-                serviceByType[num.type] = serviceByType[num.type] || 0;
-                serviceByType[num.type] += num.totalBillingAmount;
-                return total = total + num.totalBillingAmount;
+            product.serviceList.map(
+              (service: any) => {
+                serviceByType[service.type] = serviceByType[service.type] || 0;
+                serviceByType[service.type] += 1;
               }, 0);
             if (product.deploymentEnvironmentList) {
               for (let j = 0; j < product.deploymentEnvironmentList.length; j++) {
