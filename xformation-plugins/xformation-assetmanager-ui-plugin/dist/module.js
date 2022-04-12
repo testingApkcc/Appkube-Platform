@@ -630,10 +630,11 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */ config: () => /* binding */ config,
           /* harmony export */
         });
-        var IP = '3.208.22.155'; //const securitySrvUrl = `http://${IP}:8094`;
+        var configIp = localStorage.getItem('xformation-api-url');
+        var IP = configIp ? configIp : 'http://3.208.22.155'; //const securitySrvUrl = `http://${IP}:8094`;
 
-        var assetSrvUrl = 'http://'.concat(IP, ':5057/api');
-        var grafanaUrl = 'http://'.concat(IP, ':3000/api');
+        var assetSrvUrl = ''.concat(IP, ':5057/api');
+        var grafanaUrl = ''.concat(IP, ':3000/api');
         var config = {
           basePath: '/a/xformation-assetmanager-ui-plugin',
           octantURL: 'http://localhost:7777/#/',
@@ -21435,6 +21436,10 @@ object-assign
             return (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
               switch (_a.label) {
                 case 0:
+                  if (data.jsonData && data.jsonData.apiUrl) {
+                    localStorage.setItem('xformation-api-url', data.jsonData.apiUrl);
+                  }
+
                   return [
                     4,
                     /*yield*/

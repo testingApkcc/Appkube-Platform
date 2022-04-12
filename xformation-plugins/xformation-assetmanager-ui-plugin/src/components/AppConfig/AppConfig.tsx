@@ -180,7 +180,10 @@ const updatePluginAndReload = async (pluginId: string, data: Partial<PluginMeta<
   }
 };
 
-export const updatePlugin = async (pluginId: string, data: Partial<PluginMeta>) => {
+export const updatePlugin = async (pluginId: string, data: Partial<PluginMeta<JsonData>>) => {
+  if (data.jsonData && data.jsonData.apiUrl) {
+    localStorage.setItem("xformation-api-url", data.jsonData.apiUrl);
+  }
   const response = await getBackendSrv().datasourceRequest({
     url: `/api/plugins/${pluginId}/settings`,
     method: 'POST',

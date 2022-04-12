@@ -1,7 +1,8 @@
-const IP = '3.208.22.155';
+const configIp = localStorage.getItem('xformation-api-url');
+const IP = configIp ? configIp : 'http://3.208.22.155';
 //const securitySrvUrl = `http://${IP}:8094`;
-const assetSrvUrl = `http://${IP}:5057/api`;
-const grafanaUrl = `http://${IP}:3000/api`;
+const assetSrvUrl = `${IP}:5057/api`;
+const grafanaUrl = `${IP}:3000/api`;
 
 export const config = {
   basePath: '/a/xformation-assetmanager-ui-plugin',
