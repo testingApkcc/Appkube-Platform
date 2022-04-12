@@ -31,7 +31,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       product: [],
       departmentWiseData: [],
       graphData: {
-        pieData: {
+        productionvsOthersData: {
           labels: [],
           datasets: [
             {
@@ -43,7 +43,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             }
           ],
         },
-        doughnutData: {
+        productWiseCostData: {
           labels: [],
           datasets: [
             {
@@ -56,9 +56,67 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               ]
             }
           ],
+        },
+        serviceWiseCoastData: {
+          labels: [],
+          datasets: [
+            {
+              data: [],
+              backgroundColor: [
+                'rgb(255, 153, 0)',
+                'rgba(112, 222, 174, 1)',
+              ]
+            }
+          ],
         }
       },
-      graphOptions: {
+      productWiseCostOptions: {
+        plugins: {
+          legend: {
+            labels: {
+              usePointStyle: true,
+              pointStyle: 'circle',
+            },
+            display: true,
+            position: 'right',
+            responsive: true,
+            align: 'middle',
+          },
+          title: {
+            display: true,
+            text: '',
+            position: 'bottom',
+            color: '#202020',
+            font: {
+              size: 18
+            },
+          },
+        },
+      },
+      productionvsOthersOptions: {
+        plugins: {
+          legend: {
+            labels: {
+              usePointStyle: true,
+              pointStyle: 'circle',
+            },
+            display: true,
+            position: 'right',
+            responsive: true,
+            align: 'middle',
+          },
+          title: {
+            display: true,
+            text: 'Total Cost: $6,71,246',
+            position: 'bottom',
+            color: '#202020',
+            font: {
+              size: 18
+            },
+          },
+        },
+      },
+      serviceWiseCoastOptions: {
         plugins: {
           legend: {
             labels: {
@@ -94,7 +152,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     ];
   }
 
-
   componentDidMount() {
     this.getDepartmentData();
   }
@@ -115,6 +172,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         });
         this.setProductGraphData();
         this.setProductionOthers();
+        this.setServiceCostData();
       });
     } catch (err) {
       console.log("Loading accounts failed. Error: ", err);
@@ -122,9 +180,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   }
 
   setProductGraphData = () => {
-    let { departmentWiseData, graphData } = this.state;
+    let { departmentWiseData, graphData, productWiseCostOptions } = this.state;
     let data = [];
     let labels: any = [];
+    let totalCount = 0;
     if (departmentWiseData && departmentWiseData.length > 0) {
       for (let i = 0; i < departmentWiseData.length; i++) {
         let count = 0;
@@ -142,19 +201,22 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               }
             }
           }
+          totalCount += count;
           data.push(count);
         }
       }
     }
-    graphData.doughnutData.labels = labels;
-    graphData.doughnutData.datasets[0].data = data;
+    graphData.productWiseCostData.labels = labels;
+    graphData.productWiseCostData.datasets[0].data = data;
+    productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCount}`
     this.setState({
-      graphData: graphData
+      graphData: graphData,
+      productWiseCostOptions
     })
   }
 
   setProductionOthers = () => {
-    const { departmentWiseData, graphData } = this.state;
+    const { departmentWiseData, graphData, productionvsOthersOptions } = this.state;
     let data: any = [];
     let productioncount = 0;
     let otherCount = 0;
@@ -185,12 +247,50 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       }
       data.push(productioncount);
       data.push(otherCount);
-      graphData.pieData.labels = labels;
-      graphData.pieData.datasets[0].data = data;
+      graphData.productionvsOthersData.labels = labels;
+      graphData.productionvsOthersData.datasets[0].data = data;
+      productionvsOthersOptions.plugins.title.text = `Total Cost: $${productioncount + otherCount}`
       this.setState({
-        graphData: graphData
+        graphData: graphData,
+        productionvsOthersOptions,
       })
     }
+  }
+
+  setServiceCostData = () => {
+    let { departmentWiseData, graphData, serviceWiseCoastOptions } = this.state;
+    let data = [];
+    let totalCount = 0;
+    let labels: any = [];
+    let serviceByType: any = {};
+    if (departmentWiseData && departmentWiseData.length > 0) {
+      for (let i = 0; i < departmentWiseData.length; i++) {
+        let department = departmentWiseData[i];
+        if (department.productList) {
+          for (let j = 0; j < department.productList.length; j++) {
+            let product = department.productList[j];
+            if (product.serviceList) {
+              for (let k = 0; k < product.serviceList.length; k++) {
+                let service = product.serviceList[k];
+                serviceByType[service.type] = serviceByType[service.type] || 0;
+                serviceByType[service.type] += service.totalBillingAmount;
+              }
+            }
+          }
+        }
+      }
+      for (var key in serviceByType) {
+        totalCount += serviceByType[key];
+        data.push(serviceByType[key]);
+        labels.push(key);
+      }
+    }
+    graphData.serviceWiseCoastData.labels = labels;
+    graphData.serviceWiseCoastData.datasets[0].data = data;
+    serviceWiseCoastOptions.plugins.title.text = `Total Cost: $${totalCount}`
+    this.setState({
+      graphData: graphData
+    })
   }
 
   renderDepartmentWiseData = (departments: any) => {
@@ -289,7 +389,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   };
 
   render() {
-    const { departmentWiseData, graphData, graphOptions } = this.state;
+    const { departmentWiseData, graphData, productWiseCostOptions, productionvsOthersOptions, serviceWiseCoastOptions } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -325,8 +425,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     </div>
                   </div>
                   <div className="chart">
-                    {graphData.doughnutData && graphData.doughnutData.datasets[0].data.length > 0 && graphData.doughnutData.labels.length > 0 &&
-                      <Doughnut data={graphData.doughnutData} options={graphOptions} />
+                    {graphData.productWiseCostData && graphData.productWiseCostData.datasets[0].data.length > 0 && graphData.productWiseCostData.labels.length > 0 &&
+                      <Doughnut data={graphData.productWiseCostData} options={productWiseCostOptions} />
                     }
                   </div>
                   <div className="view-details-link">
@@ -349,12 +449,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     </div>
                   </div>
                   <div className="chart">
-                    {graphData.pieData && graphData.pieData.datasets[0].data.length > 0 && graphData.doughnutData.labels.length > 0 &&
-                      <Pie data={graphData.pieData} options={graphOptions} />
+                    {graphData.productionvsOthersData && graphData.productionvsOthersData.datasets[0].data.length > 0 && graphData.productionvsOthersData.labels.length > 0 &&
+                      <Pie data={graphData.productionvsOthersData} options={productionvsOthersOptions} />
                     }
-                  </div>
-                  <div className="view-details-link">
-                    <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
                   </div>
                 </div>
               </div>
@@ -362,7 +459,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 <div className="cost-analysis-chart">
                   <div className="row">
                     <div className="col-lg-10 col-md-10 col-sm-10">
-                      <div className="heading">Product wise Cost</div>
+                      <div className="heading">Service Type wise Cost</div>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm-2">
                       <div className="edit">
@@ -373,12 +470,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     </div>
                   </div>
                   <div className="chart">
-                    {graphData.doughnutData && graphData.doughnutData.datasets[0].data.length > 0 && graphData.doughnutData.labels.length > 0 &&
-                      <Doughnut data={graphData.doughnutData} options={graphOptions} />
+                    {graphData.serviceWiseCoastData && graphData.serviceWiseCoastData.datasets[0].data.length > 0 && graphData.serviceWiseCoastData.labels.length > 0 &&
+                      <Pie data={graphData.serviceWiseCoastData} options={serviceWiseCoastOptions} />
                     }
-                  </div>
-                  <div className="view-details-link">
-                    <Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>View details <i className="fa fa-chevron-down"></i></Link>
                   </div>
                 </div>
               </div>
