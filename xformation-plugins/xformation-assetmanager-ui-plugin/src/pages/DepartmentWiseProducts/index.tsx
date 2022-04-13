@@ -4,7 +4,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { RestService } from '../_service/RestService';
-import { config } from '../../config';
+import { configFun } from '../../config';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { ProductWiseServices } from '../../components/ProductWiseServices';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -23,6 +23,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     50: '#ef8f00',
     25: '#e34120'
   };
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -150,6 +151,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         isCurrentPage: true,
       },
     ];
+    this.config = configFun(props.meta.jsonData.apiUrl);
   }
 
   componentDidMount() {
@@ -163,7 +165,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   getDepartmentData = async () => {
     try {
       await RestService.getData(
-        `${config.GET_DEPARTMENTWISE_PRODUCT}`,
+        `${this.config.GET_DEPARTMENTWISE_PRODUCT}`,
         null,
         null
       ).then((response: any) => {

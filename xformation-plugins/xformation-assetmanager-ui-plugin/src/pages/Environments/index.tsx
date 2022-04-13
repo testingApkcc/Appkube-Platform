@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { config } from '../../config';
+import { configFun } from '../../config';
 import { images } from '../../img';
 import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { RestService } from '../_service/RestService';
@@ -13,6 +13,7 @@ export class Environments extends React.Component<any, any> {
   AddAccountRef: any;
   AddfolderRef: any;
   EditEnviornmentRef: any;
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -47,6 +48,7 @@ export class Environments extends React.Component<any, any> {
     this.AddAccountRef = React.createRef();
     this.AddfolderRef = React.createRef();
     this.EditEnviornmentRef = React.createRef();
+    this.config = configFun(props.meta.jsonData.apiUrl);
   }
 
   displaySelectedTags = () => {
@@ -188,7 +190,7 @@ export class Environments extends React.Component<any, any> {
 
   getAwsRegionsList = async () => {
     try {
-      await RestService.getData(config.GET_AWS_REGIONS, null, null).then((response: any) => {
+      await RestService.getData(this.config.GET_AWS_REGIONS, null, null).then((response: any) => {
         this.setState({
           awsRegionList: response,
         });
@@ -204,7 +206,7 @@ export class Environments extends React.Component<any, any> {
       isApiCalled: true,
     });
     try {
-      await RestService.getData(config.GET_ALL_ACCOUNT, null, null).then((response: any) => {
+      await RestService.getData(this.config.GET_ALL_ACCOUNT, null, null).then((response: any) => {
         this.setState({
           displaygetEnvironmentData: response,
         });
@@ -241,9 +243,8 @@ export class Environments extends React.Component<any, any> {
           <tr>
             <td>
               <Link
-                to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${row.id}&org_id=${
-                  row.organizationalUnit ? row.organizationalUnit.organizationId : null
-                }`}
+                to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${row.id}&org_id=${row.organizationalUnit ? row.organizationalUnit.organizationId : null
+                  }`}
               >
                 AWS ({row.accountId})
               </Link>
@@ -259,7 +260,7 @@ export class Environments extends React.Component<any, any> {
               <div className="d-block text-center">
                 <button className="asset-white-button min-width-inherit m-r-0">
                   {/* <Rbac parentName={config.PARENT_NAME} childName="library-index-addfolderbtn"> */}
-                  {awsRegionList.length > 0 && <Action detail={row} regionList={awsRegionList} />}
+                  {awsRegionList.length > 0 && <Action detail={row} regionList={awsRegionList} {...this.props} />}
                   {/* </Rbac>                                   */}
                 </button>
               </div>
@@ -295,7 +296,7 @@ export class Environments extends React.Component<any, any> {
               <div className="d-block text-center">
                 <button className="asset-white-button min-width-inherit m-r-0">
                   {/* <Rbac parentName={config.PARENT_NAME} childName="library-index-addfolderbtn"> */}
-                  <Action detail={row} />
+                  <Action detail={row} {...this.props} />
                   {/* </Rbac> */}
                 </button>
               </div>

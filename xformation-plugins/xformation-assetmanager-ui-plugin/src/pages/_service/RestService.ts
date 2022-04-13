@@ -1,6 +1,6 @@
 import { CommonService } from '../_common/common';
-import { config } from '../../config';
-
+import { configFun } from '../../config';
+const config = configFun('');
 export const RestService = {
   getData,
   add,

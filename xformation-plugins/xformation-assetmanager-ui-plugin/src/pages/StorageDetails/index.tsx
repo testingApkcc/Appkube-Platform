@@ -31,7 +31,7 @@ export class StorageDetails extends React.Component<any, any> {
         const tenantId = this.getParameterByName("tenantId", window.location.href);
         if (type) {
             const { storageData } = this.state;
-            for (let i = 0; i < 3; i++) { 
+            for (let i = 0; i < 3; i++) {
                 storageData.push({
                     nodeTitle: type,
                     accountId: accountId,
@@ -121,7 +121,7 @@ export class StorageDetails extends React.Component<any, any> {
                                 </ul>
                             </div>
                             <div className="webservice-container">
-                                <Node data={storageData[activeTab]} />
+                                <Node data={storageData[activeTab]} {...this.props} />
                             </div>
                         </div>
                     </div>

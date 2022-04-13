@@ -8,20 +8,25 @@ import { StorageDetails } from "../../pages/StorageDetails";
 import { DepartmentWiseProducts } from "../../pages/DepartmentWiseProducts";
 import { DepartmentWiseCharts } from "pages/DepartmentWiseProducts/departmentChart";
 import { useNavigation, prefixRoute } from "../../utils/utils.routing";
+import { usePluginMeta } from 'utils/utils.plugin';
 import { ROUTES } from "../../constants";
 
 export const Routes = () => {
   useNavigation();
-
+  const meta = usePluginMeta();
+  if(!(meta && meta.jsonData && meta.jsonData.apiUrl)){
+    alert("Please set api url in plugin config");
+    return <div>Set API Url</div>;
+  }
   return (
     <Switch>
-      <Route exact path={prefixRoute(ROUTES.Environments)} component={Environments} />
-      <Route exact path={prefixRoute(ROUTES.AccountSetup)} component={AccountSetup} />
-      <Route exact path={prefixRoute(ROUTES.AmazonServices)} component={AmazonServices} />
-      <Route exact path={prefixRoute(ROUTES.Kubernetes)} component={Kubernetes} />
-      <Route exact path={prefixRoute(ROUTES.StorageDetails)} component={StorageDetails} />
-      <Route exact path={prefixRoute(ROUTES.DepartmentWiseProducts)} component={DepartmentWiseProducts} />
-      <Route exact path={prefixRoute(ROUTES.DepartmentWiseCharts)} component={DepartmentWiseCharts} />
+      <Route exact path={prefixRoute(ROUTES.Environments)} component={(props: any) => <Environments {...props} meta={meta} />} />
+      <Route exact path={prefixRoute(ROUTES.AccountSetup)} component={(props: any) => <AccountSetup {...props} meta={meta} />} />
+      <Route exact path={prefixRoute(ROUTES.AmazonServices)} component={(props: any) => <AmazonServices {...props} meta={meta} />} />
+      <Route exact path={prefixRoute(ROUTES.Kubernetes)} component={(props: any) => <Kubernetes {...props} meta={meta} />} />
+      <Route exact path={prefixRoute(ROUTES.StorageDetails)} component={(props: any) => <StorageDetails {...props} meta={meta} />} />
+      <Route exact path={prefixRoute(ROUTES.DepartmentWiseProducts)} component={(props: any) => <DepartmentWiseProducts {...props} meta={meta} />} />
+      <Route exact path={prefixRoute(ROUTES.DepartmentWiseCharts)} component={(props: any) => <DepartmentWiseCharts {...props} meta={meta} />} />
     </Switch>
   );
 };

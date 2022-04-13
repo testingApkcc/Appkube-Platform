@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { RestService } from '../../_service/RestService';
-import { config } from '../../../config';
+import { configFun } from '../../../config';
 
 export class VerifyInputs extends React.Component<any, any> {
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -11,6 +12,7 @@ export class VerifyInputs extends React.Component<any, any> {
       tableData: [],
       selectedData: [],
     };
+    this.config = configFun(props.meta.jsonData.apiUrl);
   }
 
   configureInputs = async () => {
@@ -24,7 +26,7 @@ export class VerifyInputs extends React.Component<any, any> {
     );
     try {
       await RestService.getData(
-        `${config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
+        `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
         null,
         null
       ).then(
@@ -64,7 +66,7 @@ export class VerifyInputs extends React.Component<any, any> {
     if (tenantId) {
       try {
         await RestService.getData(
-          `${config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`,
+          `${this.config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`,
           null,
           null
         ).then(
@@ -87,7 +89,7 @@ export class VerifyInputs extends React.Component<any, any> {
       }
       try {
         await RestService.getData(
-          `${config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
+          `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
           null,
           null
         ).then(

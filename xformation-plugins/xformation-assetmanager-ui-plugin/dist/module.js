@@ -1,5 +1,5 @@
 define(['@grafana/data', 'react', 'react-router-dom', 'react-dom', '@grafana/ui', '@grafana/runtime', '@emotion/css'], (
-  __WEBPACK_EXTERNAL_MODULE__68__,
+  __WEBPACK_EXTERNAL_MODULE__69__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__6__,
   __WEBPACK_EXTERNAL_MODULE__12__,
@@ -627,81 +627,82 @@ PERFORMANCE OF THIS SOFTWARE.
         'use strict';
         __webpack_require__.r(__webpack_exports__);
         /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ config: () => /* binding */ config,
+          /* harmony export */ configFun: () => /* binding */ configFun,
           /* harmony export */
         });
-        var configIp = localStorage.getItem('xformation-api-url');
-        var IP = configIp ? configIp : 'http://3.208.22.155'; //const securitySrvUrl = `http://${IP}:8094`;
+        var configFun = function (configIp) {
+          var IP = configIp ? configIp : 'http://3.208.22.155'; //const securitySrvUrl = `http://${IP}:8094`;
 
-        var assetSrvUrl = ''.concat(IP, ':5057/api');
-        var grafanaUrl = ''.concat(IP, ':3000/api');
-        var config = {
-          basePath: '/a/xformation-assetmanager-ui-plugin',
-          octantURL: 'http://localhost:7777/#/',
-          SEVERITY_ERROR: 'error',
-          GET_ALL_ACCOUNT: ''.concat(assetSrvUrl, '/cloud-environment/search?status=active'),
-          GET_ACCOUNT_BY_ID: ''.concat(assetSrvUrl, '/getAccount'),
-          GET_DEPARTMENTWISE_PRODUCT: ''.concat(assetSrvUrl, '/department-wise-analytics/search?orgId=78'),
-          SEVERITY_SUCCESS: 'success',
-          ADD_Organization: ''.concat(assetSrvUrl, '/addEnvironment'),
-          SERVER_ERROR_MESSAGE: 'SERVER_ERROR_MESSAGE',
-          DASHBOARD_JSON: {
-            Uid: '',
-            Uuid: '',
-            Slug: '',
-            Title: '',
-            OrgId: 1,
-            'GnetId ': 0,
-            Version: '1',
-            PluginId: '',
-            UpdatedBy: '1',
-            CreatedBy: '1',
-            FolderId: 0,
-            IsFolder: false,
-            HasAcl: false,
-            Data: '',
-            SourceJsonRef: '',
-            InputSourceId: '',
-            AccountId: '',
-            TenantId: '',
-            IsCloud: true,
-            CloudName: '',
-            ElementType: '',
-            FileName: '',
-            InputType: '',
-          },
-          RAW: {
-            Dashboard: {},
-            UserId: 1,
-            Overwrite: true,
-            Message: '',
-            OrgId: 1,
-            PluginId: '',
-            FolderId: 0,
-            IsFolder: false,
-          },
-          USERID: 'admin',
-          PASSWORD: 'password',
-          // GET_ALL_ORGANIZATIONS: `${assetSrvUrl}/getAllOrganizations`,
-          ADD_ORGANIZATION_UNIT: ''.concat(assetSrvUrl, '/addOrganizationUnit'),
-          ADD_ACCOUNT: ''.concat(assetSrvUrl, '/addAccount'),
-          GET_USER_ORGANIZATION: ''.concat(assetSrvUrl, '/getAllOrgUnits'),
-          GET_DISCOVERED_ASSETS: ''.concat(assetSrvUrl, '/getDiscoveredAsset'),
-          SEARCH_APPLICATION_ASSETS: ''.concat(assetSrvUrl, '/searchApplicationAsset'),
-          GET_APPLICATION_ASSETS_BY_INPUT_TYPE: ''.concat(assetSrvUrl, '/getApplicationAssetsGropuByInputType'),
-          BULK_ADD_APPLICATION_ASSETS: ''.concat(assetSrvUrl, '/bulkAddApplicationAssets'),
-          BULK_UPDATE_APPLICATION_ASSETS: ''.concat(assetSrvUrl, '/bulkUpdateApplicationAssets'),
-          ADD_INPUT_CONFIG: ''.concat(assetSrvUrl, '/addInputConfig'),
-          SEARCH_INPUT_CONFIG: ''.concat(assetSrvUrl, '/searchInputConfig'),
-          ADD_DASHBOARDS_TO_GRAFANA: ''.concat(grafanaUrl, '/dashboards/importAssets'),
-          ADD_DATASOURCE_IN_GRAFANA: ''.concat(grafanaUrl, '/datasources'),
-          // UPDATE_DATASOURCE_IN_GRAFANA: `${grafanaUrl}/datasources/updateDataSource`,
-          GET_VIEW_JSON: ''.concat(grafanaUrl, '/dashboards/filterdashboards'),
-          ADD_INPUT: ''.concat(assetSrvUrl, '/addInput'),
-          UPDATE_INPUT: ''.concat(assetSrvUrl, '/updateInput'),
-          SEARCH_INPUT: ''.concat(assetSrvUrl, '/searchInput'),
-          GET_AWS_REGIONS: ''.concat(assetSrvUrl, '/getAwsRegions'),
-          PREVIEW_DASHBOARDS_URL: ''.concat(grafanaUrl, '/dashboards/previewDashboard'),
+          var assetSrvUrl = ''.concat(IP, ':5057/api');
+          var grafanaUrl = ''.concat(IP, ':3000/api');
+          return {
+            basePath: '/a/xformation-assetmanager-ui-plugin',
+            octantURL: 'http://localhost:7777/#/',
+            SEVERITY_ERROR: 'error',
+            GET_ALL_ACCOUNT: ''.concat(assetSrvUrl, '/cloud-environment/search?status=active'),
+            GET_ACCOUNT_BY_ID: ''.concat(assetSrvUrl, '/getAccount'),
+            GET_DEPARTMENTWISE_PRODUCT: ''.concat(assetSrvUrl, '/department-wise-analytics/search?orgId=78'),
+            SEVERITY_SUCCESS: 'success',
+            ADD_Organization: ''.concat(assetSrvUrl, '/addEnvironment'),
+            SERVER_ERROR_MESSAGE: 'SERVER_ERROR_MESSAGE',
+            DASHBOARD_JSON: {
+              Uid: '',
+              Uuid: '',
+              Slug: '',
+              Title: '',
+              OrgId: 1,
+              'GnetId ': 0,
+              Version: '1',
+              PluginId: '',
+              UpdatedBy: '1',
+              CreatedBy: '1',
+              FolderId: 0,
+              IsFolder: false,
+              HasAcl: false,
+              Data: '',
+              SourceJsonRef: '',
+              InputSourceId: '',
+              AccountId: '',
+              TenantId: '',
+              IsCloud: true,
+              CloudName: '',
+              ElementType: '',
+              FileName: '',
+              InputType: '',
+            },
+            RAW: {
+              Dashboard: {},
+              UserId: 1,
+              Overwrite: true,
+              Message: '',
+              OrgId: 1,
+              PluginId: '',
+              FolderId: 0,
+              IsFolder: false,
+            },
+            USERID: 'admin',
+            PASSWORD: 'password',
+            // GET_ALL_ORGANIZATIONS: `${assetSrvUrl}/getAllOrganizations`,
+            ADD_ORGANIZATION_UNIT: ''.concat(assetSrvUrl, '/addOrganizationUnit'),
+            ADD_ACCOUNT: ''.concat(assetSrvUrl, '/addAccount'),
+            GET_USER_ORGANIZATION: ''.concat(assetSrvUrl, '/getAllOrgUnits'),
+            GET_DISCOVERED_ASSETS: ''.concat(assetSrvUrl, '/getDiscoveredAsset'),
+            SEARCH_APPLICATION_ASSETS: ''.concat(assetSrvUrl, '/searchApplicationAsset'),
+            GET_APPLICATION_ASSETS_BY_INPUT_TYPE: ''.concat(assetSrvUrl, '/getApplicationAssetsGropuByInputType'),
+            BULK_ADD_APPLICATION_ASSETS: ''.concat(assetSrvUrl, '/bulkAddApplicationAssets'),
+            BULK_UPDATE_APPLICATION_ASSETS: ''.concat(assetSrvUrl, '/bulkUpdateApplicationAssets'),
+            ADD_INPUT_CONFIG: ''.concat(assetSrvUrl, '/addInputConfig'),
+            SEARCH_INPUT_CONFIG: ''.concat(assetSrvUrl, '/searchInputConfig'),
+            ADD_DASHBOARDS_TO_GRAFANA: ''.concat(grafanaUrl, '/dashboards/importAssets'),
+            ADD_DATASOURCE_IN_GRAFANA: ''.concat(grafanaUrl, '/datasources'),
+            // UPDATE_DATASOURCE_IN_GRAFANA: `${grafanaUrl}/datasources/updateDataSource`,
+            GET_VIEW_JSON: ''.concat(grafanaUrl, '/dashboards/filterdashboards'),
+            ADD_INPUT: ''.concat(assetSrvUrl, '/addInput'),
+            UPDATE_INPUT: ''.concat(assetSrvUrl, '/updateInput'),
+            SEARCH_INPUT: ''.concat(assetSrvUrl, '/searchInput'),
+            GET_AWS_REGIONS: ''.concat(assetSrvUrl, '/getAwsRegions'),
+            PREVIEW_DASHBOARDS_URL: ''.concat(grafanaUrl, '/dashboards/previewDashboard'),
+          };
         };
 
         /***/
@@ -729,10 +730,11 @@ PERFORMANCE OF THIS SOFTWARE.
         });
         /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ../_common/common */ 78
+          /*! ../_common/common */ 79
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ 5);
 
+        var config = (0, _config__WEBPACK_IMPORTED_MODULE_1__.configFun)('');
         var RestService = {
           getData: getData,
           add: add,
@@ -813,8 +815,8 @@ PERFORMANCE OF THIS SOFTWARE.
           myHeaders.append(
             'Authorization',
             _common_common__WEBPACK_IMPORTED_MODULE_0__.CommonService.getBasicAuthEncodedString(
-              _config__WEBPACK_IMPORTED_MODULE_1__.config.USERID,
-              _config__WEBPACK_IMPORTED_MODULE_1__.config.PASSWORD
+              config.USERID,
+              config.PASSWORD
             )
           );
           myHeaders.append('Content-Type', 'application/json');
@@ -832,8 +834,8 @@ PERFORMANCE OF THIS SOFTWARE.
           myHeaders.append(
             'Authorization',
             _common_common__WEBPACK_IMPORTED_MODULE_0__.CommonService.getBasicAuthEncodedString(
-              _config__WEBPACK_IMPORTED_MODULE_1__.config.USERID,
-              _config__WEBPACK_IMPORTED_MODULE_1__.config.PASSWORD
+              config.USERID,
+              config.PASSWORD
             )
           );
           myHeaders.append('Content-Type', 'application/json');
@@ -1168,7 +1170,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 79
+          /*! ./setPrototypeOf.js */ 80
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -2108,7 +2110,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 62
+          /*! ./chunks/helpers.segment.js */ 63
         );
         /*!
          * Chart.js v3.7.1
@@ -14521,7 +14523,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 80);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 81);
         }
 
         /***/
@@ -17654,7 +17656,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 56);
+        var reactIs = __webpack_require__(/*! react-is */ 57);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -18078,6 +18080,34 @@ object-assign
         /***/
       },
       /* 56 */
+      /*!*******************************************************************************!*\
+  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
+  \*******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 29));
+
+        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 33));
+
+        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
+
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
+
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+
+        module.exports = {
+          Transition: _Transition.default,
+          TransitionGroup: _TransitionGroup.default,
+          ReplaceTransition: _ReplaceTransition.default,
+          CSSTransition: _CSSTransition.default,
+        };
+
+        /***/
+      },
+      /* 57 */
       /*!******************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
   \******************************************************************************/
@@ -18086,12 +18116,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 57);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 58);
         }
 
         /***/
       },
-      /* 57 */
+      /* 58 */
       /*!*************************************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
   \*************************************************************************************************/
@@ -18299,7 +18329,7 @@ object-assign
 
         /***/
       },
-      /* 58 */
+      /* 59 */
       /*!*****************************************!*\
   !*** ../node_modules/react-is/index.js ***!
   \*****************************************/
@@ -18313,7 +18343,7 @@ object-assign
 
         /***/
       },
-      /* 59 */
+      /* 60 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -18345,7 +18375,7 @@ object-assign
 
         /***/
       },
-      /* 60 */
+      /* 61 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -18362,7 +18392,7 @@ object-assign
 
         /***/
       },
-      /* 61 */
+      /* 62 */
       /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -18594,7 +18624,7 @@ object-assign
 
         /***/
       },
-      /* 62 */
+      /* 63 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -21244,7 +21274,7 @@ object-assign
 
         /***/
       },
-      /* 63 */
+      /* 64 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -21263,7 +21293,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 35
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 70);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 71);
 
         var App =
           /** @class */
@@ -21289,7 +21319,7 @@ object-assign
 
         /***/
       },
-      /* 64 */
+      /* 65 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -21300,6 +21330,7 @@ object-assign
           /* harmony export */ Routes: () => /* binding */ Routes,
           /* harmony export */
         });
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
@@ -21310,7 +21341,7 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 71
+          /*! ../../pages/AccountSetup */ 72
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../../pages/AmazonServices */ 85
@@ -21332,70 +21363,129 @@ object-assign
         /* harmony import */ var _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
           /*! ../../utils/utils.routing */ 129
         );
-        /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+        /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+          /*! utils/utils.plugin */ 35
+        );
+        /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
           /*! ../../constants */ 8
         );
 
         var Routes = function () {
           (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.useNavigation)();
+          var meta = (0, utils_utils_plugin__WEBPACK_IMPORTED_MODULE_10__.usePluginMeta)();
+
+          if (!(meta && meta.jsonData && meta.jsonData.apiUrl)) {
+            alert('Please set api url in plugin config');
+            return react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Set API Url');
+          }
+
           return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
             react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Switch,
             null,
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
               exact: true,
               path: (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.prefixRoute)(
-                _constants__WEBPACK_IMPORTED_MODULE_10__.ROUTES.Environments
+                _constants__WEBPACK_IMPORTED_MODULE_11__.ROUTES.Environments
               ),
-              component: _pages_Environments__WEBPACK_IMPORTED_MODULE_4__.Environments,
+              component: function (props) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  _pages_Environments__WEBPACK_IMPORTED_MODULE_4__.Environments,
+                  (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__assign)({}, props, {
+                    meta: meta,
+                  })
+                );
+              },
             }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
               exact: true,
               path: (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.prefixRoute)(
-                _constants__WEBPACK_IMPORTED_MODULE_10__.ROUTES.AccountSetup
+                _constants__WEBPACK_IMPORTED_MODULE_11__.ROUTES.AccountSetup
               ),
-              component: _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__.AccountSetup,
+              component: function (props) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__.AccountSetup,
+                  (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__assign)({}, props, {
+                    meta: meta,
+                  })
+                );
+              },
             }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
               exact: true,
               path: (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.prefixRoute)(
-                _constants__WEBPACK_IMPORTED_MODULE_10__.ROUTES.AmazonServices
+                _constants__WEBPACK_IMPORTED_MODULE_11__.ROUTES.AmazonServices
               ),
-              component: _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__.AmazonServices,
+              component: function (props) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__.AmazonServices,
+                  (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__assign)({}, props, {
+                    meta: meta,
+                  })
+                );
+              },
             }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
               exact: true,
               path: (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.prefixRoute)(
-                _constants__WEBPACK_IMPORTED_MODULE_10__.ROUTES.Kubernetes
+                _constants__WEBPACK_IMPORTED_MODULE_11__.ROUTES.Kubernetes
               ),
-              component: _pages_Kubernetes__WEBPACK_IMPORTED_MODULE_5__.Kubernetes,
+              component: function (props) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  _pages_Kubernetes__WEBPACK_IMPORTED_MODULE_5__.Kubernetes,
+                  (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__assign)({}, props, {
+                    meta: meta,
+                  })
+                );
+              },
             }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
               exact: true,
               path: (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.prefixRoute)(
-                _constants__WEBPACK_IMPORTED_MODULE_10__.ROUTES.StorageDetails
+                _constants__WEBPACK_IMPORTED_MODULE_11__.ROUTES.StorageDetails
               ),
-              component: _pages_StorageDetails__WEBPACK_IMPORTED_MODULE_6__.StorageDetails,
+              component: function (props) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  _pages_StorageDetails__WEBPACK_IMPORTED_MODULE_6__.StorageDetails,
+                  (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__assign)({}, props, {
+                    meta: meta,
+                  })
+                );
+              },
             }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
               exact: true,
               path: (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.prefixRoute)(
-                _constants__WEBPACK_IMPORTED_MODULE_10__.ROUTES.DepartmentWiseProducts
+                _constants__WEBPACK_IMPORTED_MODULE_11__.ROUTES.DepartmentWiseProducts
               ),
-              component: _pages_DepartmentWiseProducts__WEBPACK_IMPORTED_MODULE_7__.DepartmentWiseProducts,
+              component: function (props) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  _pages_DepartmentWiseProducts__WEBPACK_IMPORTED_MODULE_7__.DepartmentWiseProducts,
+                  (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__assign)({}, props, {
+                    meta: meta,
+                  })
+                );
+              },
             }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
               exact: true,
               path: (0, _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__.prefixRoute)(
-                _constants__WEBPACK_IMPORTED_MODULE_10__.ROUTES.DepartmentWiseCharts
+                _constants__WEBPACK_IMPORTED_MODULE_11__.ROUTES.DepartmentWiseCharts
               ),
-              component: pages_DepartmentWiseProducts_departmentChart__WEBPACK_IMPORTED_MODULE_8__.DepartmentWiseCharts,
+              component: function (props) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  pages_DepartmentWiseProducts_departmentChart__WEBPACK_IMPORTED_MODULE_8__.DepartmentWiseCharts,
+                  (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__assign)({}, props, {
+                    meta: meta,
+                  })
+                );
+              },
             })
           );
         };
 
         /***/
       },
-      /* 65 */
+      /* 66 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -21733,7 +21823,7 @@ object-assign
 
         /***/
       },
-      /* 66 */
+      /* 67 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -21795,17 +21885,17 @@ object-assign
         /***/
       },
       ,
-      /* 67 */ /* 68 */
+      /* 68 */ /* 69 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__68__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__69__;
 
         /***/
       },
-      /* 69 */
+      /* 70 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -21816,11 +21906,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 63);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 64);
 
         /***/
       },
-      /* 70 */
+      /* 71 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -21831,11 +21921,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 64);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 65);
 
         /***/
       },
-      /* 71 */
+      /* 72 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -21860,15 +21950,15 @@ object-assign
           /*! ../Breadcrumbs */ 14
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 72);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 73);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 73
+          /*! ./OperationMode */ 74
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 74
+          /*! ./PreparePolicy */ 75
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 75);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 76);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 76);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 77);
         /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 83);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../_service/RestService */ 7
@@ -21926,7 +22016,7 @@ object-assign
                     ouId: selectionData[1],
                   };
                   _service_RestService__WEBPACK_IMPORTED_MODULE_10__.RestService.add(
-                    _config__WEBPACK_IMPORTED_MODULE_3__.config.ADD_ACCOUNT,
+                    _this.config.ADD_ACCOUNT,
                     sendData
                   ).then(function (response) {
                     alert('Account created');
@@ -21940,9 +22030,7 @@ object-assign
                 if (usr !== null) {
                   var user = JSON.parse(usr);
                   _service_RestService__WEBPACK_IMPORTED_MODULE_10__.RestService.getData(
-                    _config__WEBPACK_IMPORTED_MODULE_3__.config.GET_USER_ORGANIZATION +
-                      '/' +
-                      user.info.credentials.name,
+                    _this.config.GET_USER_ORGANIZATION + '/' + user.info.credentials.name,
                     null,
                     null
                   ).then(function (response) {
@@ -22036,6 +22124,7 @@ object-assign
                   isCurrentPage: true,
                 },
               ];
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_3__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -22061,9 +22150,7 @@ object-assign
                         4,
                         /*yield*/
                         _service_RestService__WEBPACK_IMPORTED_MODULE_10__.RestService.getData(
-                          _config__WEBPACK_IMPORTED_MODULE_3__.config.GET_USER_ORGANIZATION +
-                            '/' +
-                            user.info.credentials.name,
+                          this.config.GET_USER_ORGANIZATION + '/' + user.info.credentials.name,
                           null,
                           null
                         ).then(function (response) {
@@ -22188,7 +22275,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 73 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -22372,7 +22459,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 74 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -22509,7 +22596,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 75 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -22601,7 +22688,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 76 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -22920,7 +23007,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 77 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -22937,7 +23024,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 77
+          /*! ./CreateNewOU */ 78
         );
 
         var Ou =
@@ -23124,7 +23211,7 @@ object-assign
 
         /***/
       },
-      /* 77 */
+      /* 78 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -23239,10 +23326,7 @@ object-assign
 
                   var id = organizationList.id;
                   _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.add(
-                    ''
-                      .concat(_config__WEBPACK_IMPORTED_MODULE_2__.config.ADD_ORGANIZATION_UNIT, '/')
-                      .concat(id, '/')
-                      .concat(ouname),
+                    ''.concat(_this.config.ADD_ORGANIZATION_UNIT, '/').concat(id, '/').concat(ouname),
                     {}
                   ).then(function (resp) {
                     _this.props.refresh();
@@ -23319,6 +23403,7 @@ object-assign
                 ouname: '',
                 isSubmitted: false,
               };
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -23466,7 +23551,7 @@ object-assign
 
         /***/
       },
-      /* 78 */
+      /* 79 */
       /*!*********************************!*\
   !*** ./pages/_common/common.ts ***!
   \*********************************/
@@ -23522,7 +23607,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 80 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -23546,7 +23631,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 81 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -23751,34 +23836,6 @@ object-assign
             exports.typeOf = typeOf;
           })();
         }
-
-        /***/
-      },
-      /* 81 */
-      /*!*******************************************************************************!*\
-  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
-  \*******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 29));
-
-        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 33));
-
-        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
-
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
-
-        function _interopRequireDefault(obj) {
-          return obj && obj.__esModule ? obj : { default: obj };
-        }
-
-        module.exports = {
-          Transition: _Transition.default,
-          TransitionGroup: _TransitionGroup.default,
-          ReplaceTransition: _ReplaceTransition.default,
-          CSSTransition: _CSSTransition.default,
-        };
 
         /***/
       },
@@ -24333,7 +24390,7 @@ object-assign
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_5__.RestService.getData(
-                            ''.concat(_config__WEBPACK_IMPORTED_MODULE_3__.config.GET_ACCOUNT_BY_ID, '/').concat(id),
+                            ''.concat(this.config.GET_ACCOUNT_BY_ID, '/').concat(id),
                             null,
                             null
                           ).then(function (response) {
@@ -24453,6 +24510,7 @@ object-assign
                   ),
                 },
               ];
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_3__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -39741,7 +39799,7 @@ object-assign
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.getData(
-                            _config__WEBPACK_IMPORTED_MODULE_3__.config.GET_AWS_REGIONS,
+                            this.config.GET_AWS_REGIONS,
                             null,
                             null
                           ).then(function (response) {
@@ -39798,7 +39856,7 @@ object-assign
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.getData(
-                            _config__WEBPACK_IMPORTED_MODULE_3__.config.GET_ALL_ACCOUNT,
+                            this.config.GET_ALL_ACCOUNT,
                             null,
                             null
                           ).then(function (response) {
@@ -39896,6 +39954,7 @@ object-assign
               _this.AddAccountRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
               _this.AddfolderRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
               _this.EditEnviornmentRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_3__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -39985,10 +40044,13 @@ object-assign
                             awsRegionList.length > 0 &&
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 _Action__WEBPACK_IMPORTED_MODULE_7__.Action,
-                                {
-                                  detail: row,
-                                  regionList: awsRegionList,
-                                }
+                                (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
+                                  {
+                                    detail: row,
+                                    regionList: awsRegionList,
+                                  },
+                                  this.props
+                                )
                               )
                           )
                         )
@@ -40048,9 +40110,12 @@ object-assign
                             },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               _Action__WEBPACK_IMPORTED_MODULE_7__.Action,
-                              {
-                                detail: row,
-                              }
+                              (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
+                                {
+                                  detail: row,
+                                },
+                                this.props
+                              )
                             )
                           )
                         )
@@ -41117,7 +41182,7 @@ object-assign
                         this.setState({
                           isAlertOpen: true,
                           message: grafanaResponse.message,
-                          severity: _config__WEBPACK_IMPORTED_MODULE_2__.config.SEVERITY_ERROR,
+                          severity: this.config.SEVERITY_ERROR,
                         });
                         return [
                           3, /*break*/
@@ -41138,7 +41203,7 @@ object-assign
                         this.setState({
                           isAlertOpen: true,
                           message: grafanaResponse.message,
-                          severity: _config__WEBPACK_IMPORTED_MODULE_2__.config.SEVERITY_SUCCESS,
+                          severity: this.config.SEVERITY_SUCCESS,
                         });
                         _a.label = 4;
 
@@ -41181,7 +41246,7 @@ object-assign
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_3__.RestService.add(
-                            ''.concat(_config__WEBPACK_IMPORTED_MODULE_2__.config.ADD_INPUT),
+                            ''.concat(this.config.ADD_INPUT),
                             inp
                           ).then(function (response) {
                             console.log('Enable input response : ', response);
@@ -41247,7 +41312,7 @@ object-assign
                         return [
                           4,
                           /*yield*/
-                          fetch(_config__WEBPACK_IMPORTED_MODULE_2__.config.ADD_DATASOURCE_IN_GRAFANA, reqOpt)
+                          fetch(this.config.ADD_DATASOURCE_IN_GRAFANA, reqOpt)
                             .then(function (response) {
                               return response.json();
                             })
@@ -41259,13 +41324,13 @@ object-assign
                               //     this.setState({
                               //         isAlertOpen: true,
                               //         message: result.message,
-                              //         severity: config.SEVERITY_SUCCESS,
+                              //         severity: this.config.SEVERITY_SUCCESS,
                               //     })
                               // }else{
                               //     this.setState({
                               //         isAlertOpen: true,
                               //         message: result.message,
-                              //         severity: config.SEVERITY_ERROR,
+                              //         severity: this.config.SEVERITY_ERROR,
                               //     })
                               // }
                             })
@@ -41326,6 +41391,7 @@ object-assign
                 grafanaResponse: '',
               };
               _this.InputAccountRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -42833,6 +42899,7 @@ object-assign
               var _this = _super.call(this, props) || this;
 
               _this.state = {};
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_1__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -42848,7 +42915,7 @@ object-assign
                     className: 'service-container',
                   },
                   react__WEBPACK_IMPORTED_MODULE_0__.createElement('iframe', {
-                    src: _config__WEBPACK_IMPORTED_MODULE_1__.config.octantURL,
+                    src: this.config.octantURL,
                     frameBorder: '0',
                     width: '100%',
                     height: '100%',
@@ -43104,9 +43171,15 @@ object-assign
                         {
                           className: 'webservice-container',
                         },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Node__WEBPACK_IMPORTED_MODULE_3__.Node, {
-                          data: storageData[activeTab],
-                        })
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          _Node__WEBPACK_IMPORTED_MODULE_3__.Node,
+                          (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)(
+                            {
+                              data: storageData[activeTab],
+                            },
+                            this.props
+                          )
+                        )
                       )
                     )
                   )
@@ -43230,7 +43303,7 @@ object-assign
                       name: 'Performance',
                       component: react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         _Performance__WEBPACK_IMPORTED_MODULE_4__.Performance,
-                        null
+                        (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, _this.props)
                       ),
                     },
                     {
@@ -43735,7 +43808,7 @@ object-assign
               //         const tenantId = this.getParameterByName("tenantId", window.location.href);
               //         const accountId = this.getParameterByName("accountId", window.location.href);
               //         const reqOptions = RestService.optionWithAuthentication(null, "GET");
-              //         await fetch(`${config.GET_VIEW_JSON}?cloudType=${cloud}&elementType=${type}&inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, reqOptions).then(
+              //         await fetch(`${this.config.GET_VIEW_JSON}?cloudType=${cloud}&elementType=${type}&inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, reqOptions).then(
               //             (response: any) => {
               //                 if(response){
               //                     this.setState({
@@ -43768,7 +43841,7 @@ object-assign
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.getData(
                             ''
-                              .concat(_config__WEBPACK_IMPORTED_MODULE_7__.config.SEARCH_INPUT_CONFIG, '?inputType=')
+                              .concat(this.config.SEARCH_INPUT_CONFIG, '?inputType=')
                               .concat(this.state.inputName, '&accountId=')
                               .concat(accountId, '&tenantId=')
                               .concat(tenantId),
@@ -43808,7 +43881,7 @@ object-assign
 
                       case 2:
                         err_1 = _a.sent();
-                        console.log('Performance. Excepiton in search input config. Error: ', err_1);
+                        console.log('Performance. Excepiton in search input this.config. Error: ', err_1);
                         return [
                           3, /*break*/
                           3,
@@ -43893,7 +43966,7 @@ object-assign
                           this.setState({
                             isAlertOpen: true,
                             message: 'Enabling performance dashboards failed',
-                            severity: _config__WEBPACK_IMPORTED_MODULE_7__.config.SEVERITY_ERROR,
+                            severity: this.config.SEVERITY_ERROR,
                             isSuccess: true,
                           });
                           return [
@@ -43916,7 +43989,7 @@ object-assign
                           this.setState({
                             isAlertOpen: true,
                             message: 'Enabling performance dashboards failed',
-                            severity: _config__WEBPACK_IMPORTED_MODULE_7__.config.SEVERITY_ERROR,
+                            severity: this.config.SEVERITY_ERROR,
                             isSuccess: true,
                           });
                           return [
@@ -43931,7 +44004,7 @@ object-assign
                         //         this.setState({
                         //             isAlertOpen: true,
                         //             message: 'Enabling performance dashboards failed',
-                        //             severity: config.SEVERITY_ERROR,
+                        //             severity: this.config.SEVERITY_ERROR,
                         //             isSuccess: true
                         //         })
                         //         return;
@@ -43946,7 +44019,7 @@ object-assign
                         //     this.setState({
                         //         isAlertOpen: true,
                         //         message: 'Enabling performance dashboards failed',
-                        //         severity: config.SEVERITY_ERROR,
+                        //         severity: this.config.SEVERITY_ERROR,
                         //         isSuccess: true
                         //     })
                         //     return;
@@ -43955,7 +44028,7 @@ object-assign
                         this.setState({
                           isAlertOpen: true,
                           message: 'Performance dashboards enabled',
-                          severity: _config__WEBPACK_IMPORTED_MODULE_7__.config.SEVERITY_SUCCESS,
+                          severity: this.config.SEVERITY_SUCCESS,
                           isSuccess: true,
                         });
                         return [
@@ -43972,7 +44045,7 @@ object-assign
               //         id: dsObj.id,
               //         status: 'ACTIVE',
               //     }
-              //     RestService.add(`${config.UPDATE_INPUT}`, inp)
+              //     RestService.add(`${this.config.UPDATE_INPUT}`, inp)
               //         .then((response: any) => {
               //             console.log("Update input response : ", response);
               //             if (response.code === 417) {
@@ -43997,7 +44070,7 @@ object-assign
               //         inputType: this.state.inputName,
               //         status: 'ACTIVE',
               //     }
-              //     RestService.add(`${config.ADD_INPUT_CONFIG}`, inp)
+              //     RestService.add(`${this.config.ADD_INPUT_CONFIG}`, inp)
               //         .then((response: any) => {
               //             console.log("Add input_config response : ", response);
               //             if (response.code === 417) {
@@ -44098,10 +44171,13 @@ object-assign
                   component: function () {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _VerifyInputs__WEBPACK_IMPORTED_MODULE_2__.VerifyInputs,
-                      {
-                        ref: _this.verifyInputsRef,
-                        inputName: _this.state.inputName,
-                      }
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
+                        {
+                          ref: _this.verifyInputsRef,
+                          inputName: _this.state.inputName,
+                        },
+                        _this.props
+                      )
                     );
                   },
                 },
@@ -44110,12 +44186,17 @@ object-assign
                   component: function () {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _EnableDashboard__WEBPACK_IMPORTED_MODULE_3__.EnableDashboard,
-                      {
-                        ref: _this.enableDashboardRef,
-                        inputName: _this.state.inputName,
-                        selectedData:
-                          _this.verifyInputsRef.current !== null ? _this.verifyInputsRef.current.getSelection() : null,
-                      }
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
+                        {
+                          ref: _this.enableDashboardRef,
+                          inputName: _this.state.inputName,
+                          selectedData:
+                            _this.verifyInputsRef.current !== null
+                              ? _this.verifyInputsRef.current.getSelection()
+                              : null,
+                        },
+                        _this.props
+                      )
                     );
                   },
                 },
@@ -44154,6 +44235,7 @@ object-assign
                   },
                 },
               ];
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_7__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -44200,7 +44282,7 @@ object-assign
                             case 0:
                               selectionData = obj[i]; // console.log("Selected dashboard: ",selectionData);
 
-                              dashboard = _config__WEBPACK_IMPORTED_MODULE_7__.config.DASHBOARD_JSON; // dashboard.Uid =`${selectionData.dashboardUuid}`;
+                              dashboard = this_1.config.DASHBOARD_JSON; // dashboard.Uid =`${selectionData.dashboardUuid}`;
 
                               dashboard.Uuid = ''.concat(selectionData.dashboardUuid);
                               dashboard.Slug = ''.concat(selectionData.fileName); // dashboard.Title =`${selectionData.fileName}`;
@@ -44214,7 +44296,7 @@ object-assign
                               dashboard.InputSourceId = dsObj.name;
                               dashboard.FileName = selectionData.fileName;
                               dashboard.InputType = this_1.state.inputName;
-                              raw = _config__WEBPACK_IMPORTED_MODULE_7__.config.RAW;
+                              raw = this_1.config.RAW;
                               raw.Dashboard = dashboard;
                               raw.Message = ''.concat(selectionData.dashboardNature); // console.log("Final dashboard to be exported: ",raw);
 
@@ -44229,7 +44311,7 @@ object-assign
                               return [
                                 4,
                                 /*yield*/
-                                fetch(_config__WEBPACK_IMPORTED_MODULE_7__.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
+                                fetch(this_1.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
                                   .then(function (response) {
                                     return response.json();
                                   })
@@ -44342,7 +44424,7 @@ object-assign
                 enableInput: true,
               };
               _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.add(
-                ''.concat(_config__WEBPACK_IMPORTED_MODULE_7__.config.BULK_UPDATE_APPLICATION_ASSETS),
+                ''.concat(this.config.BULK_UPDATE_APPLICATION_ASSETS),
                 inputObj
               )
                 .then(function (response) {
@@ -44777,7 +44859,7 @@ object-assign
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(
                             ''
-                              .concat(_config__WEBPACK_IMPORTED_MODULE_2__.config.SEARCH_INPUT, '?tenantId=')
+                              .concat(this.config.SEARCH_INPUT, '?tenantId=')
                               .concat(tenantId, '&accountId=')
                               .concat(accountId),
                             null,
@@ -45017,6 +45099,7 @@ object-assign
                 tableData: [],
                 selectedData: [],
               };
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -45046,7 +45129,7 @@ object-assign
                         /*yield*/
                         _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(
                           ''
-                            .concat(_config__WEBPACK_IMPORTED_MODULE_2__.config.SEARCH_INPUT_CONFIG, '?inputType=')
+                            .concat(this.config.SEARCH_INPUT_CONFIG, '?inputType=')
                             .concat(this.state.inputName, '&accountId=')
                             .concat(accountId, '&tenantId=')
                             .concat(tenantId),
@@ -45090,7 +45173,7 @@ object-assign
                         /*yield*/
                         _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(
                           ''
-                            .concat(_config__WEBPACK_IMPORTED_MODULE_2__.config.SEARCH_INPUT, '?tenantId=')
+                            .concat(this.config.SEARCH_INPUT, '?tenantId=')
                             .concat(tenantId, '&accountId=')
                             .concat(accountId),
                           null,
@@ -45389,6 +45472,7 @@ object-assign
                 selectedData: [],
                 enabledDashboards: [],
               };
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -45415,10 +45499,7 @@ object-assign
                         /*yield*/
                         _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(
                           ''
-                            .concat(
-                              _config__WEBPACK_IMPORTED_MODULE_2__.config.GET_APPLICATION_ASSETS_BY_INPUT_TYPE,
-                              '?inputType='
-                            )
+                            .concat(this.config.GET_APPLICATION_ASSETS_BY_INPUT_TYPE, '?inputType=')
                             .concat(this.props.inputName, '&tenantId=')
                             .concat(tenantId, '&accountId=')
                             .concat(accountId, '&cloud=')
@@ -45432,7 +45513,7 @@ object-assign
 
                             if (response.code !== 417) {
                               _this.setState({
-                                selectedData: response.object,
+                                selectedData: response.object || [],
                               });
                             } // this.setState({
                             //     selectedData: response,
@@ -46107,7 +46188,7 @@ object-assign
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-          /*! react-chartjs-2 */ 61
+          /*! react-chartjs-2 */ 62
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 25);
 
@@ -46154,7 +46235,7 @@ object-assign
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_5__.RestService.getData(
-                            ''.concat(_config__WEBPACK_IMPORTED_MODULE_6__.config.GET_DEPARTMENTWISE_PRODUCT),
+                            ''.concat(this.config.GET_DEPARTMENTWISE_PRODUCT),
                             null,
                             null
                           ).then(function (response) {
@@ -46635,6 +46716,7 @@ object-assign
                   isCurrentPage: true,
                 },
               ];
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_6__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -47404,7 +47486,7 @@ and limitations under the License.
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-chartjs-2 */ 61
+          /*! react-chartjs-2 */ 62
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 25);
 
@@ -47442,7 +47524,7 @@ and limitations under the License.
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_4__.RestService.getData(
-                            ''.concat(_config__WEBPACK_IMPORTED_MODULE_5__.config.GET_DEPARTMENTWISE_PRODUCT),
+                            ''.concat(this.config.GET_DEPARTMENTWISE_PRODUCT),
                             null,
                             null
                           ).then(function (response) {
@@ -47571,6 +47653,7 @@ and limitations under the License.
                   isCurrentPage: true,
                 },
               ];
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_5__.configFun)(props.meta.jsonData.apiUrl);
               return _this;
             }
 
@@ -47839,7 +47922,7 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 65);
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 66);
 
         /***/
       },
@@ -47876,7 +47959,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 66
+          /*! ./SecretInput */ 67
         );
 
         /***/
@@ -48574,7 +48657,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 81
+          /*! react-transition-group */ 56
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -49448,7 +49531,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 81
+          /*! react-transition-group */ 56
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
@@ -51289,7 +51372,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 18
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 58);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 59);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -51396,7 +51479,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 161
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 60
+          /*! ../getStylesCreator/noopTheme */ 61
         );
 
         function getClasses(_ref, classes, Component) {
@@ -51867,7 +51950,7 @@ and limitations under the License.
           /*! tiny-warning */ 160
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 59);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 60);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 15);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -54262,7 +54345,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 162
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 60);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 61);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -62924,13 +63007,13 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 68
+        /*! @grafana/data */ 69
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 69
+        /*! ./components/App */ 70
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
         /*! ./components/AppConfig */ 130

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { config } from '../../config';
+import { configFun } from '../../config';
 import { Wizard } from './Wizard';
 import { OperationMode } from './OperationMode';
 import { PreparePolicy } from './PreparePolicy';
@@ -18,6 +18,7 @@ export class AccountSetup extends React.Component<any, any> {
     ouRef: any;
     reviewRef: any;
     wizardRef: any;
+    config: any;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -64,6 +65,7 @@ export class AccountSetup extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
+        this.config = configFun(props.meta.jsonData.apiUrl);
     }
     onChangeSelection = (selection: any) => {
         this.setState({
@@ -102,7 +104,7 @@ export class AccountSetup extends React.Component<any, any> {
                 "orgId": selectionData[0],
                 "ouId": selectionData[1]
             };
-            RestService.add(config.ADD_ACCOUNT, sendData).then(
+            RestService.add(this.config.ADD_ACCOUNT, sendData).then(
                 (response: any) => {
                     alert("Account created")
                 });
@@ -113,7 +115,7 @@ export class AccountSetup extends React.Component<any, any> {
             var usr = localStorage.getItem(`userInfo`); 
             if(usr !== null){
                 const user = JSON.parse(usr);
-                await RestService.getData(config.GET_USER_ORGANIZATION+'/'+user.info.credentials.name, null, null).then(
+                await RestService.getData(this.config.GET_USER_ORGANIZATION+'/'+user.info.credentials.name, null, null).then(
                 (response: any) => {
                     this.setState({
                         organizationList: response,
@@ -130,7 +132,7 @@ export class AccountSetup extends React.Component<any, any> {
         
         if(usr !== null){
             const user = JSON.parse(usr);
-            RestService.getData(config.GET_USER_ORGANIZATION+'/'+user.info.credentials.name, null, null).then(
+            RestService.getData(this.config.GET_USER_ORGANIZATION+'/'+user.info.credentials.name, null, null).then(
             (response: any) => {
                 this.setState({
                     organizationList: response,

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumbs } from "../Breadcrumbs";
-import { config } from "../../config";
+import { configFun } from "../../config";
 import { images } from "../../img";
 import { RestService } from "../_service/RestService";
 // import *as dateFormat from "dateformat";
@@ -22,6 +22,7 @@ export class AmazonServices extends React.Component<any, any> {
   dateFormat: any;
   steps: any;
   OrganisationunitRef: any;
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -71,6 +72,7 @@ export class AmazonServices extends React.Component<any, any> {
         component: <Inputs />,
       },
     ];
+    this.config = configFun(props.meta.jsonData.apiUrl);
   }
 
   submitPage = () => {
@@ -99,7 +101,7 @@ export class AmazonServices extends React.Component<any, any> {
   getAccounts = async (id: any, orgId: any) => {
     try {
       await RestService.getData(
-        `${config.GET_ACCOUNT_BY_ID}/${id}`,
+        `${this.config.GET_ACCOUNT_BY_ID}/${id}`,
         null,
         null
       ).then((response: any) => {

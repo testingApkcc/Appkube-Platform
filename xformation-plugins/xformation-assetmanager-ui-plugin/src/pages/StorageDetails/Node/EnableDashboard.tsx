@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { RestService } from '../../_service/RestService';
-import { config } from '../../../config';
+import { configFun } from '../../../config';
 
 export class EnableDashboard extends React.Component<any, any> {
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
       selectedData: [],
       enabledDashboards: [],
     };
+    this.config = configFun(props.meta.jsonData.apiUrl);
   }
 
   getParameterByName = (name: any, url: any) => {
@@ -30,7 +32,7 @@ export class EnableDashboard extends React.Component<any, any> {
     );
     try {
       await RestService.getData(
-        `${config.GET_APPLICATION_ASSETS_BY_INPUT_TYPE}?inputType=${this.props.inputName}&tenantId=${tenantId}&accountId=${accountId}&cloud=${cloud}&type=${type}`,
+        `${this.config.GET_APPLICATION_ASSETS_BY_INPUT_TYPE}?inputType=${this.props.inputName}&tenantId=${tenantId}&accountId=${accountId}&cloud=${cloud}&type=${type}`,
         null,
         null
       ).then(
@@ -38,7 +40,7 @@ export class EnableDashboard extends React.Component<any, any> {
           console.log("EnableDashboard. Application assets: ", response);
           if (response.code !== 417) {
             this.setState({
-              selectedData: response.object,
+              selectedData: response.object || [],
             });
           }
           // this.setState({

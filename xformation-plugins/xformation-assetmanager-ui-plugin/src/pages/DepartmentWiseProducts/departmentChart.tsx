@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { RestService } from '../_service/RestService';
-import { config } from '../../config';
+import { configFun } from '../../config';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
 export class DepartmentWiseCharts extends React.Component<any, any> {
     breadCrumbs: any;
+    config: any;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -76,6 +77,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                 isCurrentPage: true,
             },
         ];
+        this.config = configFun(props.meta.jsonData.apiUrl);
     }
     componentDidMount() {
         this.getDepartmentData()
@@ -84,7 +86,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
     getDepartmentData = async () => {
         try {
             await RestService.getData(
-                `${config.GET_DEPARTMENTWISE_PRODUCT}`,
+                `${this.config.GET_DEPARTMENTWISE_PRODUCT}`,
                 null,
                 null
             ).then((response: any) => {
