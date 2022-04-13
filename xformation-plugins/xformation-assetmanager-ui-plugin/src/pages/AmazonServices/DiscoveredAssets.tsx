@@ -234,7 +234,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       retData.push(
         <div className="tbody">
           <div className="name" style={{ paddingLeft: `${((indexArr.length - 1) * 20 + TREE_PADDING)}px` }}>
-            {service.title} <span onClick={() => this.toggleChildren(service)}> <i className="fa fa-angle-down"></i></span>
+            {service.title} <span onClick={() => this.toggleChildren(service, indexArr)}> <i className="fa fa-angle-down"></i></span>
           </div>
         </div>
       );
@@ -249,29 +249,67 @@ export class DiscoveredAssets extends React.Component<any, any>{
     return retData;
   };
 
-  toggleChildren = (data: any) => {
+  toggleChildren = (data: any, indexArr: any) => {
     const { servicesTable } = this.state;
-    for (let i = 0; i < servicesTable.data.length; i++) {
-      if (servicesTable.data[i].serviceSubData
-        &&
-        servicesTable.data[i].serviceSubData.length > 0) {
-        for (let j = 0; j < servicesTable.data[i].serviceSubData.length; j++) {
-          if (servicesTable.data[i].serviceSubData[j].title === data.title) {
-            servicesTable.data[i].serviceSubData[j].isOpened = !servicesTable.data[i].serviceSubData[j].isOpened;
-          }
-          else {
-            servicesTable.data[i].serviceSubData[j].isOpened = false;
-          }
-        }
-      }
-      if (servicesTable.data[i].title === data.title) {
-        servicesTable.data[i].isOpened = !servicesTable.data[i].isOpened
-      }
+    debugger
+
+    let folderData = data;
+    const index = indexArr.splice(0, 1)[0];
+    this.closeParents(servicesTable, servicesTable.data.length-1)
+    if (index && index.length > 0) {
+      data.isOpened = false
+      this.toggleChildren(folderData, index)
+    }
+    else {
+      data.isOpened = !data.isOpened
     }
     this.setState({ servicesTable: servicesTable })
   }
+  closeParents = (data: any, index: any) => {
+
+    console.log(data , index)
+    // debugger;
+    // let value;
+    // if (data.list && index < 0) {
+    //   data.isOpened = false
+    //   value = data;
+    //   this.closeParents(value, index - 1)
+    //   return null
+    // }
+    // else {
+    //   value = data.serviceSubData
+    //   this.closeParents(value, index - 1)
+    //   return null
+    // }
+  }
+
+  setBreadCrumbText = () => {
+    const { tableData } = this.state;
+    let label = '';
+    for (let i = 0; i < tableData.length; i++) {
+      if (tableData[i].isOpened == true) {
+        label = tableData[i].title;
+        if (tableData[i].subData && tableData[i].subData.length > 0) {
+          for (let j = 0; j < tableData[i].subData.length; j++) {
+            if (tableData[i].subData[j].isOpened === true) {
+              label = label + '' + '>' + '' + tableData[i].subData[j].title;
+              if (tableData[i].subData[j].subData && tableData[i].subData[j].subData.length > 0) {
+                for (let k = 0; k < tableData[i].subData[j].subData.length; k++) {
+                  if (tableData[i].subData[j].subData[k].isOpened === true) {
+                    label = label + '' + '>' + '' + tableData[i].subData[j].subData[k].title;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return label;
+  }
 
   render() {
+    const labelText = this.setBreadCrumbText();
     return (
       <>
         <div className="Filters-box">
@@ -317,11 +355,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
                     <div className="col-lg-6 col-md-12 col-sm-12">
                       <div className="filters-breadcrumbs">
                         <ul>
-                          <li><a>VPC 1</a></li>
-                          <li>&gt;</li>
+                          <li><a>{labelText}</a></li>
+                          {/* <li>&gt;</li>
                           <li><a>Cluster 1</a></li>
                           <li>&gt;</li>
-                          <li>App Services</li>
+                          <li>App Services</li> */} 
                         </ul>
                       </div>
                     </div>
