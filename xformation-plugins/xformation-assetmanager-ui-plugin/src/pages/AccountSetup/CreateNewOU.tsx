@@ -14,7 +14,7 @@ export class CreateNewOU extends React.Component<any, any> {
             ouname: '',
             isSubmitted: false,
         };
-        this.config = configFun(props.meta.jsonData.apiUrl);
+        this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
 
     toggle = async (selectedOrganizational: any) => {

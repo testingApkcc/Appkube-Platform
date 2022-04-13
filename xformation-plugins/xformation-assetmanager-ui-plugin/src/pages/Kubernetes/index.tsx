@@ -7,7 +7,7 @@ export class Kubernetes extends React.Component<any, any> {
         super(props);
         this.state = {
         };
-        this.config = configFun(props.meta.jsonData.apiUrl);
+        this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
 
     render() {

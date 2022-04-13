@@ -54,7 +54,7 @@ export class Performance extends React.Component<any, any>{
                 component: () => <VerifyAndSave ref={this.verifyAndSaveRef} inputName={this.state.inputName} selectedData={this.enableDashboardRef.current !== null ? this.enableDashboardRef.current.getSelection() : null} />
             }
         ];
-        this.config = configFun(props.meta.jsonData.apiUrl);
+        this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
 
     async componentDidMount() {

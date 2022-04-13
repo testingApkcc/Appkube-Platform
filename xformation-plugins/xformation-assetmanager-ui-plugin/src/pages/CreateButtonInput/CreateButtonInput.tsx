@@ -15,7 +15,7 @@ export class CreateButtonInput extends React.Component<any, any> {
       detailObj: this.props.detail,
     };
     this.InputAccountRef = React.createRef();
-    this.config = configFun(props.meta.jsonData.apiUrl);
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   onClickOpenSubLink = () => {

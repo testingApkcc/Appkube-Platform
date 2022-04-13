@@ -151,7 +151,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         isCurrentPage: true,
       },
     ];
-    this.config = configFun(props.meta.jsonData.apiUrl);
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   componentDidMount() {

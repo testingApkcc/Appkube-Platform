@@ -8,6 +8,7 @@ import { SecretInput } from '../SecretInput';
 export type JsonData = {
   apiUrl?: string;
   isApiKeySet?: boolean;
+  mainProductUrl?: string;
 };
 
 type State = {
@@ -19,9 +20,10 @@ type State = {
   isApiKeySet: boolean;
   // An secret key for our custom API.
   apiKey: string;
+  mainProductUrl: string;
 };
 
-interface Props extends PluginConfigPageProps<AppPluginMeta<JsonData>> {}
+interface Props extends PluginConfigPageProps<AppPluginMeta<JsonData>> { }
 
 export const AppConfig = ({ plugin }: Props) => {
   const s = useStyles2(getStyles);
@@ -30,6 +32,7 @@ export const AppConfig = ({ plugin }: Props) => {
     apiUrl: jsonData?.apiUrl || '',
     apiKey: '',
     isApiKeySet: Boolean(jsonData?.isApiKeySet),
+    mainProductUrl: jsonData?.mainProductUrl || '',
   });
 
   const onResetApiKey = () =>
@@ -50,6 +53,13 @@ export const AppConfig = ({ plugin }: Props) => {
     setState({
       ...state,
       apiUrl: event.target.value.trim(),
+    });
+  };
+
+  const onChangeMainProductURL = (event: ChangeEvent<HTMLInputElement>) => {
+    setState({
+      ...state,
+      mainProductUrl: event.target.value.trim(),
     });
   };
 
@@ -126,6 +136,18 @@ export const AppConfig = ({ plugin }: Props) => {
           />
         </Field>
 
+        <Field label="Main Product Url" description="" className={s.marginTop}>
+          <Input
+            width={60}
+            id="main-product-url"
+            data-testid="main-product-url"
+            label={`Main Product Url`}
+            value={state?.mainProductUrl}
+            placeholder={`E.g.: http://mywebsite.com/api/v1`}
+            onChange={onChangeMainProductURL}
+          />
+        </Field>
+
         <div className={s.marginTop}>
           <Button
             type="submit"
@@ -136,14 +158,15 @@ export const AppConfig = ({ plugin }: Props) => {
                 jsonData: {
                   apiUrl: state.apiUrl,
                   isApiKeySet: true,
+                  mainProductUrl: state.mainProductUrl
                 },
                 // This cannot be queried later by the frontend.
                 // We don't want to override it in case it was set previously and left untouched now.
                 secureJsonData: state.isApiKeySet
                   ? undefined
                   : {
-                      apiKey: state.apiKey,
-                    },
+                    apiKey: state.apiKey,
+                  },
               })
             }
             disabled={Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey))}

@@ -14,9 +14,9 @@ import { ROUTES } from "../../constants";
 export const Routes = () => {
   useNavigation();
   const meta = usePluginMeta();
-  if(!(meta && meta.jsonData && meta.jsonData.apiUrl)){
+  if(!(meta && meta.jsonData && meta.jsonData.apiUrl && meta.jsonData.mainProductUrl)){
     alert("Please set api url in plugin config");
-    return <div>Set API Url</div>;
+    return <div>Set API Url and Main product url</div>;
   }
   return (
     <Switch>

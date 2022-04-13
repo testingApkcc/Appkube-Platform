@@ -1,8 +1,6 @@
-export const configFun = (configIp: any) => {
-  const IP = configIp ? configIp : 'http://3.208.22.155';
-  //const securitySrvUrl = `http://${IP}:8094`;
-  const assetSrvUrl = `${IP}:5057/api`;
-  const grafanaUrl = `${IP}:3000/api`;
+export const configFun = (configIp: any, mainProductUrl: any) => {
+  const assetSrvUrl = `${configIp}/api`;
+  const mainApplicationBaseUrl = `${mainProductUrl}/api`;
   return {
     basePath: '/a/xformation-assetmanager-ui-plugin',
     octantURL: 'http://localhost:7777/#/',
@@ -67,16 +65,16 @@ export const configFun = (configIp: any) => {
     ADD_INPUT_CONFIG: `${assetSrvUrl}/addInputConfig`,
     SEARCH_INPUT_CONFIG: `${assetSrvUrl}/searchInputConfig`,
 
-    ADD_DASHBOARDS_TO_GRAFANA: `${grafanaUrl}/dashboards/importAssets`,
-    ADD_DATASOURCE_IN_GRAFANA: `${grafanaUrl}/datasources`,
-    // UPDATE_DATASOURCE_IN_GRAFANA: `${grafanaUrl}/datasources/updateDataSource`,
-    GET_VIEW_JSON: `${grafanaUrl}/dashboards/filterdashboards`,
+    ADD_DASHBOARDS_TO_GRAFANA: `${mainApplicationBaseUrl}/dashboards/importAssets`,
+    ADD_DATASOURCE_IN_GRAFANA: `${mainApplicationBaseUrl}/datasources`,
+    // UPDATE_DATASOURCE_IN_GRAFANA: `${mainApplicationBaseUrl}/datasources/updateDataSource`,
+    GET_VIEW_JSON: `${mainApplicationBaseUrl}/dashboards/filterdashboards`,
 
     ADD_INPUT: `${assetSrvUrl}/addInput`,
     UPDATE_INPUT: `${assetSrvUrl}/updateInput`,
     SEARCH_INPUT: `${assetSrvUrl}/searchInput`,
 
     GET_AWS_REGIONS: `${assetSrvUrl}/getAwsRegions`,
-    PREVIEW_DASHBOARDS_URL: `${grafanaUrl}/dashboards/previewDashboard`,
+    PREVIEW_DASHBOARDS_URL: `${mainApplicationBaseUrl}/dashboards/previewDashboard`,
   };
 };

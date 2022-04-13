@@ -65,7 +65,7 @@ export class AccountSetup extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
-        this.config = configFun(props.meta.jsonData.apiUrl);
+        this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
     onChangeSelection = (selection: any) => {
         this.setState({

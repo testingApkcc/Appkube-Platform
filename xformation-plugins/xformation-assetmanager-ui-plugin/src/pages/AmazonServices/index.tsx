@@ -72,7 +72,7 @@ export class AmazonServices extends React.Component<any, any> {
         component: <Inputs />,
       },
     ];
-    this.config = configFun(props.meta.jsonData.apiUrl);
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   submitPage = () => {

@@ -10,7 +10,7 @@ export class EnableDashboard extends React.Component<any, any> {
       selectedData: [],
       enabledDashboards: [],
     };
-    this.config = configFun(props.meta.jsonData.apiUrl);
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   getParameterByName = (name: any, url: any) => {

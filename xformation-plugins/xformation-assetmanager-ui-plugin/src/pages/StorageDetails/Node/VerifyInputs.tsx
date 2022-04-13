@@ -12,7 +12,7 @@ export class VerifyInputs extends React.Component<any, any> {
       tableData: [],
       selectedData: [],
     };
-    this.config = configFun(props.meta.jsonData.apiUrl);
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   configureInputs = async () => {

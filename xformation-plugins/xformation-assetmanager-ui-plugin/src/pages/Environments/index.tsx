@@ -48,7 +48,7 @@ export class Environments extends React.Component<any, any> {
     this.AddAccountRef = React.createRef();
     this.AddfolderRef = React.createRef();
     this.EditEnviornmentRef = React.createRef();
-    this.config = configFun(props.meta.jsonData.apiUrl);
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   displaySelectedTags = () => {
