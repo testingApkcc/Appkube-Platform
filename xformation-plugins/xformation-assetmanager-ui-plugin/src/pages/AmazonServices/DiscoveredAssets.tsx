@@ -57,7 +57,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   displayTable = () => {
-    // const { displaygetEnvironmentData } = this.state;
     const retData = [];
     const { tableData } = this.state;
     const length = tableData.length;
@@ -69,11 +68,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   renderTree = (folder: any, indexArr: any): any => {
-    // console.log(indexArr);
     const retData = [];
     const subFolders = folder.subData;
     const subFolderJSX = [];
-    // const subRightFolderJSX = [];
     if (subFolders && folder.isOpened) {
       for (let j = 0; j < subFolders.length; j++) {
         const subFolder = subFolders[j];
@@ -149,6 +146,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { tableData } = this.state;
     const folder = this.findChild(tableData, [...indexArr]);
     folder.isOpened = !folder.isOpened;
+    if (folder.isOpened === false) {
+      this.setState({
+        servicesTable: {},
+      })
+    }
     this.setState({
       tableData
     });
@@ -202,9 +204,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         }
         retData = <div className="data-table">
           {tableHead}
-          {/* {servicesTable.isOpened == true ? */}
           {serviceSubDataJSX}
-          {/* : null} */}
         </div>
       }
       return retData;
@@ -232,9 +232,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const retData = [];
     if (service) {
       retData.push(
-        <div className="tbody">
+        <div className="tbody" onClick={() => this.toggleChildren(indexArr)}>
           <div className="name" style={{ paddingLeft: `${((indexArr.length - 1) * 15 + TREE_PADDING)}px` }}>
-            {service.title} <span onClick={() => this.toggleChildren(service, indexArr)}> <i className="fa fa-angle-down"></i></span>
+            {service.title} <span><i className="fa fa-angle-down"></i></span>
           </div>
         </div>
       );
@@ -249,38 +249,25 @@ export class DiscoveredAssets extends React.Component<any, any>{
     return retData;
   };
 
-  toggleChildren = (data: any, indexArr: any) => {
+  toggleChildren = (indexArr: any) => {
     const { servicesTable } = this.state;
-    debugger
-
-    let folderData = data;
-    const index = indexArr.splice(0, 1)[0];
-    this.closeParents(servicesTable, servicesTable.data.length-1)
-    if (index && index.length > 0) {
-      data.isOpened = false
-      this.toggleChildren(folderData, index)
-    }
-    else {
-      data.isOpened = !data.isOpened
+    const length = indexArr.length;
+    let treeData = servicesTable.data;
+    for (let i = 0; i < length; i++) {
+      const index = indexArr.splice(0, 1)[0];
+      for (let j = 0; j < treeData.length; j++) {
+        if (j === index) {
+          if (indexArr.length === 0) {
+            treeData[index].isOpened = !treeData[index].isOpened;
+          } else {
+            treeData = treeData[index].serviceSubData;
+          }
+        } else {
+          treeData[j].isOpened = false;
+        }
+      }
     }
     this.setState({ servicesTable: servicesTable })
-  }
-  closeParents = (data: any, index: any) => {
-
-    console.log(data , index)
-    // debugger;
-    // let value;
-    // if (data.list && index < 0) {
-    //   data.isOpened = false
-    //   value = data;
-    //   this.closeParents(value, index - 1)
-    //   return null
-    // }
-    // else {
-    //   value = data.serviceSubData
-    //   this.closeParents(value, index - 1)
-    //   return null
-    // }
   }
 
   setBreadCrumbText = () => {
@@ -309,7 +296,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   render() {
-    const labelText = this.setBreadCrumbText();
+    // const labelText = this.setBreadCrumbText();
     return (
       <>
         <div className="Filters-box">
@@ -355,11 +342,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                     <div className="col-lg-6 col-md-12 col-sm-12">
                       <div className="filters-breadcrumbs">
                         <ul>
-                          <li><a>{labelText}</a></li>
-                          {/* <li>&gt;</li>
-                          <li><a>Cluster 1</a></li>
-                          <li>&gt;</li>
-                          <li>App Services</li> */} 
+                          {/* <li><a>{labelText}</a></li> */}
                         </ul>
                       </div>
                     </div>
