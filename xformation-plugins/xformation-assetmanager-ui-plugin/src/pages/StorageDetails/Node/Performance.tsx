@@ -5,7 +5,7 @@ import { EnableDashboard } from './EnableDashboard';
 import { Preview } from './Preview';
 import { VerifyAndSave } from './VerifyAndSave';
 import { RestService } from '../../_service/RestService';
-import { config } from '../../../config';
+import { configFun } from '../../../config';
 import AlertMessage from '../../Components/AlertMessage';
 export class Performance extends React.Component<any, any>{
     steps: any;
@@ -14,6 +14,7 @@ export class Performance extends React.Component<any, any>{
     verifyAndSaveRef: any;
     previewRef: any;
     wizardRef: any;
+    config: any;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -38,21 +39,22 @@ export class Performance extends React.Component<any, any>{
         this.steps = [
             {
                 name: "Verify Inputs",
-                component: () => <VerifyInputs ref={this.verifyInputsRef} inputName={this.state.inputName} />
+                component: () => <VerifyInputs ref={this.verifyInputsRef} inputName={this.state.inputName} {...this.props}/>
             },
             {
                 name: "Enable Dashboard",
-                component: () => <EnableDashboard ref={this.enableDashboardRef} inputName={this.state.inputName} selectedData={this.verifyInputsRef.current !== null ? this.verifyInputsRef.current.getSelection() : null} />
+                component: () => <EnableDashboard ref={this.enableDashboardRef} inputName={this.state.inputName} selectedData={this.verifyInputsRef.current !== null ? this.verifyInputsRef.current.getSelection() : null} {...this.props} />
             },
             {
                 name: "Preview",
-                component: () => <Preview ref={this.previewRef} inputName={this.state.inputName} selectedInput={this.verifyInputsRef.current !== null ? this.verifyInputsRef.current.getSelection() : null} selectedDashboards={this.enableDashboardRef.current !== null ? this.enableDashboardRef.current.getSelection() : null}/>
+                component: () => <Preview ref={this.previewRef} inputName={this.state.inputName} selectedInput={this.verifyInputsRef.current !== null ? this.verifyInputsRef.current.getSelection() : null} selectedDashboards={this.enableDashboardRef.current !== null ? this.enableDashboardRef.current.getSelection() : null} />
             },
             {
                 name: "Verify and save",
                 component: () => <VerifyAndSave ref={this.verifyAndSaveRef} inputName={this.state.inputName} selectedData={this.enableDashboardRef.current !== null ? this.enableDashboardRef.current.getSelection() : null} />
             }
-        ]
+        ];
+        this.config = configFun(props.meta.jsonData.apiUrl);
     }
 
     async componentDidMount() {
@@ -73,7 +75,7 @@ export class Performance extends React.Component<any, any>{
         //     });
         // }
     }
-    
+
     // getViewJson = async () => {
     //     try {
     //         const cloud = this.getParameterByName("cloud", window.location.href);
@@ -81,7 +83,7 @@ export class Performance extends React.Component<any, any>{
     //         const tenantId = this.getParameterByName("tenantId", window.location.href);
     //         const accountId = this.getParameterByName("accountId", window.location.href);
     //         const reqOptions = RestService.optionWithAuthentication(null, "GET");
-    //         await fetch(`${config.GET_VIEW_JSON}?cloudType=${cloud}&elementType=${type}&inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, reqOptions).then(
+    //         await fetch(`${this.config.GET_VIEW_JSON}?cloudType=${cloud}&elementType=${type}&inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, reqOptions).then(
     //             (response: any) => {
     //                 if(response){
     //                     this.setState({
@@ -102,10 +104,10 @@ export class Performance extends React.Component<any, any>{
             // const type = this.getParameterByName("type", window.location.href);
             const tenantId = this.getParameterByName("tenantId", window.location.href);
             const accountId = this.getParameterByName("accountId", window.location.href);
-            await RestService.getData(`${config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, null, null).then(
+            await RestService.getData(`${this.config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, null, null).then(
                 (response: any) => {
-                    if(response.code !== 417 && response.object.length > 0){
-                        console.log("Enabled dashboards : ",response.object[0].enabledDashboardList);
+                    if (response.code !== 417 && response.object.length > 0) {
+                        console.log("Enabled dashboards : ", response.object[0].enabledDashboardList);
                         this.setState({
                             enablePerformanceMonitoring: true,
                             inputConfig: response.object[0],
@@ -113,7 +115,7 @@ export class Performance extends React.Component<any, any>{
                             activeDashboard: 0,
                             viewJson: response.object[0].enabledDashboardList,
                         });
-                    }else{
+                    } else {
                         this.setState({
                             showConfigWizard: true,
                         });
@@ -122,7 +124,7 @@ export class Performance extends React.Component<any, any>{
                     console.log("Performance. Search input config failed. Error: ", error);
                 });
         } catch (err) {
-            console.log("Performance. Excepiton in search input config. Error: ", err);
+            console.log("Performance. Excepiton in search input this.config. Error: ", err);
         }
     }
 
@@ -163,7 +165,7 @@ export class Performance extends React.Component<any, any>{
             this.setState({
                 isAlertOpen: true,
                 message: 'Enabling performance dashboards failed',
-                severity: config.SEVERITY_ERROR,
+                severity: this.config.SEVERITY_ERROR,
                 isSuccess: true
             })
             return;
@@ -175,7 +177,7 @@ export class Performance extends React.Component<any, any>{
             this.setState({
                 isAlertOpen: true,
                 message: 'Enabling performance dashboards failed',
-                severity: config.SEVERITY_ERROR,
+                severity: this.config.SEVERITY_ERROR,
                 isSuccess: true
             })
             return;
@@ -189,13 +191,13 @@ export class Performance extends React.Component<any, any>{
         //         this.setState({
         //             isAlertOpen: true,
         //             message: 'Enabling performance dashboards failed',
-        //             severity: config.SEVERITY_ERROR,
+        //             severity: this.config.SEVERITY_ERROR,
         //             isSuccess: true
         //         })
         //         return;
         //     }
         // }
-        
+
         // console.log('4. Input config : ', inputConfig);
         // if (inputConfig === null) {
         //     console.log("5. Adding input config in asset service");
@@ -205,7 +207,7 @@ export class Performance extends React.Component<any, any>{
         //     this.setState({
         //         isAlertOpen: true,
         //         message: 'Enabling performance dashboards failed',
-        //         severity: config.SEVERITY_ERROR,
+        //         severity: this.config.SEVERITY_ERROR,
         //         isSuccess: true
         //     })
         //     return;
@@ -213,7 +215,7 @@ export class Performance extends React.Component<any, any>{
         this.setState({
             isAlertOpen: true,
             message: 'Performance dashboards enabled',
-            severity: config.SEVERITY_SUCCESS,
+            severity: this.config.SEVERITY_SUCCESS,
             isSuccess: true
         })
 
@@ -227,7 +229,7 @@ export class Performance extends React.Component<any, any>{
         for (let i = 0; i < obj.length; i++) {
             const selectionData = obj[i];
             // console.log("Selected dashboard: ",selectionData);
-            var dashboard = config.DASHBOARD_JSON;
+            var dashboard = this.config.DASHBOARD_JSON;
             // dashboard.Uid =`${selectionData.dashboardUuid}`;
             dashboard.Uuid = `${selectionData.dashboardUuid}`;
             dashboard.Slug = `${selectionData.fileName}`;
@@ -241,7 +243,7 @@ export class Performance extends React.Component<any, any>{
             dashboard.InputSourceId = dsObj.name;
             dashboard.FileName = selectionData.fileName;
             dashboard.InputType = this.state.inputName;
-            var raw = config.RAW;
+            var raw = this.config.RAW;
             raw.Dashboard = dashboard;
             raw.Message = `${selectionData.dashboardNature}`;
             // console.log("Final dashboard to be exported: ",raw);
@@ -249,7 +251,7 @@ export class Performance extends React.Component<any, any>{
             // console.log("Object to post : ", json);
             // var reqOpt = RestService.postOptionWithAuthentication(json);
             var reqOpt = RestService.optionWithAuthentication(json, 'POST');
-            await fetch(config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
+            await fetch(this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
                 .then(response => response.json())
                 .then(result => {
                     // console.log("1. Dashboard import in grafana. Response: ",result);
@@ -285,7 +287,7 @@ export class Performance extends React.Component<any, any>{
         const { updatedDashboards } = this.state;
         const tenantId = this.getParameterByName("tenantId", window.location.href);
         const accountId = this.getParameterByName("accountId", window.location.href);
-    
+
         let inputObj = {
             accountId: accountId,
             tenantId: tenantId,
@@ -295,7 +297,7 @@ export class Performance extends React.Component<any, any>{
             enableInput: true
         }
 
-        RestService.add(`${config.BULK_UPDATE_APPLICATION_ASSETS}`, inputObj)
+        RestService.add(`${this.config.BULK_UPDATE_APPLICATION_ASSETS}`, inputObj)
             .then((response: any) => {
                 console.log("Update assets response : ", response);
                 if (response.code === 417) {
@@ -319,7 +321,7 @@ export class Performance extends React.Component<any, any>{
     //         id: dsObj.id,
     //         status: 'ACTIVE',
     //     }
-    //     RestService.add(`${config.UPDATE_INPUT}`, inp)
+    //     RestService.add(`${this.config.UPDATE_INPUT}`, inp)
     //         .then((response: any) => {
     //             console.log("Update input response : ", response);
     //             if (response.code === 417) {
@@ -345,7 +347,7 @@ export class Performance extends React.Component<any, any>{
     //         inputType: this.state.inputName,
     //         status: 'ACTIVE',
     //     }
-    //     RestService.add(`${config.ADD_INPUT_CONFIG}`, inp)
+    //     RestService.add(`${this.config.ADD_INPUT_CONFIG}`, inp)
     //         .then((response: any) => {
     //             console.log("Add input_config response : ", response);
     //             if (response.code === 417) {
@@ -384,7 +386,7 @@ export class Performance extends React.Component<any, any>{
         // }
         const { viewJson, activeDashboard } = this.state;
         // if (viewJson && viewJson.dashboards) {
-        if (viewJson ) {
+        if (viewJson) {
             const retData = [];
             // for (let i = 0; i < viewJson.dashboards.length; i++) {
             for (let i = 0; i < viewJson.length; i++) {
@@ -405,7 +407,7 @@ export class Performance extends React.Component<any, any>{
         // if (inputConfig && inputConfig.dashboards && inputConfig.dashboards[activeDashboard]) {
         //     activeDB = inputConfig.dashboards[activeDashboard];
         // }
-        
+
         // if (viewJson && viewJson.dashboards && viewJson.dashboards[activeDashboard]) {
         //     activeDB = viewJson.dashboards[activeDashboard];
         // }

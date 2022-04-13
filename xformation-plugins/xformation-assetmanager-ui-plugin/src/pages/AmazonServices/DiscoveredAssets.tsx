@@ -233,7 +233,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (service) {
       retData.push(
         <div className="tbody">
-          <div className="name" style={{ paddingLeft: `${((indexArr.length - 1) * 20 + TREE_PADDING)}px` }}>
+          <div className="name" style={{ paddingLeft: `${((indexArr.length - 1) * 15 + TREE_PADDING)}px` }}>
             {service.title} <span onClick={() => this.toggleChildren(service, indexArr)}> <i className="fa fa-angle-down"></i></span>
           </div>
         </div>

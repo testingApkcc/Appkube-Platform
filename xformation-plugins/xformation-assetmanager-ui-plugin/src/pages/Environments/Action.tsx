@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
-import { config } from '../../config';
+import { configFun } from '../../config';
 import { RestService } from '../_service/RestService';
 import AlertMessage from '../../components/AlertMessage';
 import { PLUGIN_BASE_URL } from '../../constants';
 
 export class Action extends React.Component<any, any> {
   InputAccountRef: any;
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -27,6 +28,7 @@ export class Action extends React.Component<any, any> {
       grafanaResponse: "",
     };
     this.InputAccountRef = React.createRef();
+    this.config = configFun(props.meta.jsonData.apiUrl);
   }
 
   onClickOpenSubLink = () => {
@@ -139,7 +141,7 @@ export class Action extends React.Component<any, any> {
       this.setState({
         isAlertOpen: true,
         message: grafanaResponse.message,
-        severity: config.SEVERITY_ERROR,
+        severity: this.config.SEVERITY_ERROR,
       });
     } else {
       console.log("No ERROR in grafana");
@@ -147,7 +149,7 @@ export class Action extends React.Component<any, any> {
       this.setState({
         isAlertOpen: true,
         message: grafanaResponse.message,
-        severity: config.SEVERITY_SUCCESS,
+        severity: this.config.SEVERITY_SUCCESS,
       });
     }
 
@@ -169,7 +171,7 @@ export class Action extends React.Component<any, any> {
       description: "GRAFANA DATASOURCE - " + dsName,
       status: "DEACTIVE",
     };
-    await RestService.add(`${config.ADD_INPUT}`, inp).then((response: any) => {
+    await RestService.add(`${this.config.ADD_INPUT}`, inp).then((response: any) => {
       console.log("Enable input response : ", response);
     });
   };
@@ -217,7 +219,7 @@ export class Action extends React.Component<any, any> {
     var json = JSON.stringify(ds);
     var reqOpt = RestService.postOptionWithAuthentication(json);
     // console.log('Add datasource options : ', reqOpt);
-    await fetch(config.ADD_DATASOURCE_IN_GRAFANA, reqOpt)
+    await fetch(this.config.ADD_DATASOURCE_IN_GRAFANA, reqOpt)
       .then((response) => response.json())
       .then((result) => {
         // console.log("Add datasource in grafana. Response status : ",result)
@@ -228,14 +230,14 @@ export class Action extends React.Component<any, any> {
         //     this.setState({
         //         isAlertOpen: true,
         //         message: result.message,
-        //         severity: config.SEVERITY_SUCCESS,
+        //         severity: this.config.SEVERITY_SUCCESS,
 
         //     })
         // }else{
         //     this.setState({
         //         isAlertOpen: true,
         //         message: result.message,
-        //         severity: config.SEVERITY_ERROR,
+        //         severity: this.config.SEVERITY_ERROR,
 
         //     })
         // }
@@ -417,7 +419,7 @@ export class Action extends React.Component<any, any> {
           </ModalBody>
         </Modal>
 
-        {/* <Rbac parentName={config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-createbtn"> */}
+        {/* <Rbac parentName={this.config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-createbtn"> */}
         <a className="fa fa-ellipsis-h" onClick={this.onClickOpenSubLink}></a>
         {/* </Rbac> */}
 
@@ -431,7 +433,7 @@ export class Action extends React.Component<any, any> {
               Add New DataSource
             </Link>
             {/* </Rbac> */}
-            {/* <Rbac parentName={config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
+            {/* <Rbac parentName={this.config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
             <Link
               to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
                 detailObj.id

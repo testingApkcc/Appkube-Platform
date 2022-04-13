@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { RestService } from '../_service/RestService';
-import { config } from '../../config';
+import { configFun } from '../../config';
 
 export class CreateNewOU extends React.Component<any, any> {
     steps: any;
+    config: any;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -13,6 +14,7 @@ export class CreateNewOU extends React.Component<any, any> {
             ouname: '',
             isSubmitted: false,
         };
+        this.config = configFun(props.meta.jsonData.apiUrl);
     }
 
     toggle = async (selectedOrganizational: any) => {
@@ -79,7 +81,7 @@ export class CreateNewOU extends React.Component<any, any> {
             const { organizationList } = this.props;
             // if (organizationList.length > 0) {
                 const id = organizationList.id;
-                RestService.add(`${config.ADD_ORGANIZATION_UNIT}/${id}/${ouname}`, {}).then((resp: any) => {
+                RestService.add(`${this.config.ADD_ORGANIZATION_UNIT}/${id}/${ouname}`, {}).then((resp: any) => {
                     this.props.refresh();
                     this.setState({
                         modal: false,

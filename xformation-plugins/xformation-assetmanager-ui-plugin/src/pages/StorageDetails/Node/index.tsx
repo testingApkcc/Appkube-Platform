@@ -35,7 +35,7 @@ export class Node extends React.Component<any, any> {
           },
           {
             name: "Performance",
-            component: <Performance />,
+            component: <Performance {...this.props}/>,
           },
           {
             name: "Availability",

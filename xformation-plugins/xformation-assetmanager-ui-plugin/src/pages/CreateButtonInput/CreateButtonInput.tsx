@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { config } from '../../config';
+import { configFun } from '../../config';
 // import { RestService } from '../_service/RestService';
 // import Rbac from '../../components/Rbac';
 // import { InputAccount } from '../Input/InputAccout';
 
 export class CreateButtonInput extends React.Component<any, any> {
   InputAccountRef: any;
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -14,6 +15,7 @@ export class CreateButtonInput extends React.Component<any, any> {
       detailObj: this.props.detail,
     };
     this.InputAccountRef = React.createRef();
+    this.config = configFun(props.meta.jsonData.apiUrl);
   }
 
   onClickOpenSubLink = () => {
@@ -46,7 +48,7 @@ export class CreateButtonInput extends React.Component<any, any> {
             {/* </Rbac> */}
             {/* <Rbac parentName={config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
             <Link
-              to={`${config.basePath}/amazonservices?asset_id=${detailObj.id}&org_id=${
+              to={`${this.config.basePath}/amazonservices?asset_id=${detailObj.id}&org_id=${
                 detailObj.organization ? detailObj.organization.id : null
               }`}
             >
