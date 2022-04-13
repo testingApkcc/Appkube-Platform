@@ -1471,7 +1471,7 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px 10px 15px;
-  width: 23%;
+  width: 24%;
   color: #24292e;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .data-table .thead .performance {
@@ -1479,7 +1479,7 @@ a:hover {
   vertical-align: top;
   padding: 10px 15px;
   text-align: center;
-  width: 17%;
+  width: 16%;
   color: #24292e;
 }
 .service-container
@@ -1539,7 +1539,7 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px 10px 15px;
-  width: 23%;
+  width: 24%;
   cursor: pointer;
   color: #24292e;
 }
@@ -1562,7 +1562,7 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   padding: 10px 15px 10px 15px;
-  width: 23%;
+  width: 24%;
   color: #2662f0;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .performance {
@@ -1570,7 +1570,7 @@ a:hover {
   vertical-align: top;
   padding: 10px 15px;
   text-align: center;
-  width: 17%;
+  width: 16%;
 }
 .service-container
   .organisational-details
@@ -3033,6 +3033,14 @@ a:hover {
   width: 100%;
   padding-top: 0px;
   padding-bottom: 10px;
+}
+.department-wise-container .cost-analysis-chart .chart .chart-spinner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
 }
 .department-wise-container .cost-analysis-chart .view-details-link {
   display: block;

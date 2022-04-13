@@ -145,7 +145,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                                     <div className="chart">
                                         {humanResources.datasets &&
                                             humanResources.datasets[0].data.length > 0 && humanResources.labels.length > 0 ?
-                                            <Bar data={humanResources} options={barOptions} height={70} /> : <>...loading</>}
+                                            <Bar data={humanResources} options={barOptions} height={70} /> : <div className="chart-spinner"><i className="fa fa-spinner fa-spin"></i> Loading...</div>}
                                     </div>
                                 </div>}
                             </div>
