@@ -25053,7 +25053,7 @@ object-assign
         // import { PLUGIN_BASE_URL } from '../../constants';
         // import { Link } from 'react-router-dom';
 
-        var TREE_PADDING = 15;
+        var TREE_PADDING = 30;
 
         var DiscoveredAssets =
           /** @class */
@@ -25415,7 +25415,7 @@ object-assign
                         {
                           className: 'service-name',
                           style: {
-                            paddingLeft: ''.concat(15 * level + TREE_PADDING, 'px'),
+                            paddingLeft: ''.concat(20 * level + TREE_PADDING, 'px'),
                           },
                         },
                         service.title
@@ -25526,7 +25526,7 @@ object-assign
                           'span',
                           {
                             onClick: function () {
-                              return _this.toggleChildren(service);
+                              return _this.toggleChildren(service, indexArr);
                             },
                           },
                           ' ',
@@ -25563,29 +25563,70 @@ object-assign
                 return retData;
               };
 
-              _this.toggleChildren = function (data) {
+              _this.toggleChildren = function (data, indexArr) {
                 var servicesTable = _this.state.servicesTable;
+                debugger;
+                var folderData = data;
+                var index = indexArr.splice(0, 1)[0];
 
-                for (var i = 0; i < servicesTable.data.length; i++) {
-                  if (servicesTable.data[i].serviceSubData && servicesTable.data[i].serviceSubData.length > 0) {
-                    for (var j = 0; j < servicesTable.data[i].serviceSubData.length; j++) {
-                      if (servicesTable.data[i].serviceSubData[j].title === data.title) {
-                        servicesTable.data[i].serviceSubData[j].isOpened =
-                          !servicesTable.data[i].serviceSubData[j].isOpened;
-                      } else {
-                        servicesTable.data[i].serviceSubData[j].isOpened = false;
-                      }
-                    }
-                  }
+                _this.closeParents(servicesTable, servicesTable.data.length - 1);
 
-                  if (servicesTable.data[i].title === data.title) {
-                    servicesTable.data[i].isOpened = !servicesTable.data[i].isOpened;
-                  }
+                if (index && index.length > 0) {
+                  data.isOpened = false;
+
+                  _this.toggleChildren(folderData, index);
+                } else {
+                  data.isOpened = !data.isOpened;
                 }
 
                 _this.setState({
                   servicesTable: servicesTable,
                 });
+              };
+
+              _this.closeParents = function (data, index) {
+                console.log(data, index); // debugger;
+                // let value;
+                // if (data.list && index < 0) {
+                //   data.isOpened = false
+                //   value = data;
+                //   this.closeParents(value, index - 1)
+                //   return null
+                // }
+                // else {
+                //   value = data.serviceSubData
+                //   this.closeParents(value, index - 1)
+                //   return null
+                // }
+              };
+
+              _this.setBreadCrumbText = function () {
+                var tableData = _this.state.tableData;
+                var label = '';
+
+                for (var i = 0; i < tableData.length; i++) {
+                  if (tableData[i].isOpened == true) {
+                    label = tableData[i].title;
+
+                    if (tableData[i].subData && tableData[i].subData.length > 0) {
+                      for (var j = 0; j < tableData[i].subData.length; j++) {
+                        if (tableData[i].subData[j].isOpened === true) {
+                          label = label + '' + '>' + '' + tableData[i].subData[j].title;
+
+                          if (tableData[i].subData[j].subData && tableData[i].subData[j].subData.length > 0) {
+                            for (var k = 0; k < tableData[i].subData[j].subData.length; k++) {
+                              if (tableData[i].subData[j].subData[k].isOpened === true) {
+                                label = label + '' + '>' + '' + tableData[i].subData[j].subData[k].title;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                return label;
               };
 
               _this.state = {
@@ -25622,6 +25663,7 @@ object-assign
             };
 
             DiscoveredAssets.prototype.render = function () {
+              var labelText = this.setBreadCrumbText();
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                 react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
                 null,
@@ -25814,16 +25856,8 @@ object-assign
                                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                     'li',
                                     null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, 'VPC 1')
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('li', null, '>'),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'li',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, 'Cluster 1')
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('li', null, '>'),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('li', null, 'App Services')
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, labelText)
+                                  )
                                 )
                               )
                             ),
