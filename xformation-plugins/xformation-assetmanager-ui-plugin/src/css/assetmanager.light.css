@@ -1844,7 +1844,7 @@ a:hover {
   font-weight: 500;
   vertical-align: top;
   text-align: center;
-  width: 20%;
+  width: 18%;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .thead .thead-th span {
   width: 30px;
@@ -1858,6 +1858,7 @@ a:hover {
 }
 .service-container .organisational-details .container-inner .organisational-data-table .thead .thead-th:nth-child(1) {
   text-align: left;
+  width: 28%;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .tbody {
   display: block;
@@ -1878,7 +1879,7 @@ a:hover {
 }
 .service-container .organisational-details .container-inner .organisational-data-table .tbody .tbody-td {
   display: inline-block;
-  width: 20%;
+  width: 18%;
   padding: 10px 10px;
   color: #3b4859;
   font-weight: 500;
@@ -1887,6 +1888,7 @@ a:hover {
 }
 .service-container .organisational-details .container-inner .organisational-data-table .tbody .tbody-td:nth-child(1) {
   text-align: left;
+  width: 28%;
 }
 .service-container
   .organisational-details

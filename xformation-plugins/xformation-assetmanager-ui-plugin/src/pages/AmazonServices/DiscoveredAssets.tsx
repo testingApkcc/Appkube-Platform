@@ -7,7 +7,7 @@ import _dummyData from './_discovered_assets';
 // import { PLUGIN_BASE_URL } from '../../constants';
 // import { Link } from 'react-router-dom';
 
-const TREE_PADDING = 30;
+const TREE_PADDING = 15;
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
   constructor(props: any) {
@@ -216,7 +216,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: `${(20 * level) + TREE_PADDING}px` }}>{service.title}</div>
+          <div className="service-name" style={{ paddingLeft: `${(15 * level) + TREE_PADDING}px` }}>{service.title}</div>
           <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
           <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
           <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
@@ -233,7 +233,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (service) {
       retData.push(
         <div className="tbody">
-          <div className="name" style={{ paddingLeft: `${((indexArr.length - 1) * 20 + TREE_PADDING)}px` }}>
+          <div className="name" style={{ paddingLeft: `${((indexArr.length - 1) * 15 + TREE_PADDING)}px` }}>
             {service.title} <span onClick={() => this.toggleChildren(service)}> <i className="fa fa-angle-down"></i></span>
           </div>
         </div>
