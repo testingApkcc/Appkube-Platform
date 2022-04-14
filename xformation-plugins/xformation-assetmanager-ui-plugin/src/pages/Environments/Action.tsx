@@ -424,59 +424,60 @@ export class Action extends React.Component<any, any> {
         {/* </Rbac> */}
 
         {openCreateMenu == true && (
-          <div
-            className="text-center open-create-menu"
-            style={{ right: "-30px", top: "15px" }}
-          >
-            {/* <Rbac  childName="commancomponent-createbuttoncomponent-companytbtn"> */}
-            <Link to ='' onClick={(e) => this.onClickAddInput(e, detailObj)}>
-              Add New DataSource
-            </Link>
-            {/* </Rbac> */}
-            {/* <Rbac parentName={this.config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
-            <Link
-              to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
-                detailObj.id
-              }&org_id=${
-                detailObj.organization ? detailObj.organization.id : null
-              }`}
+          <>
+            <div
+              className="open-create-menu"
+              style={{ right: "-30px", top: "20px" }}
             >
-              Add Compliancies
-            </Link>
-            {/* </Rbac> */}
-            <Link
-            to=""
+              {/* <Rbac  childName="commancomponent-createbuttoncomponent-companytbtn"> */}
+              <Link to='' onClick={(e) => this.onClickAddInput(e, detailObj)}>
+                Add New DataSource
+              </Link>
+              {/* </Rbac> */}
+              {/* <Rbac parentName={this.config.PARENT_NAME} childName="commancomponent-createbuttoncomponent-agentbtn"> */}
+              <Link
+                to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${detailObj.id
+                  }&org_id=${detailObj.organization ? detailObj.organization.id : null
+                  }`}
+              >
+                Add Compliancies
+              </Link>
+              {/* </Rbac> */}
+              <Link
+                to=""
               // to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
               //   detailObj.id
               // }&org_id=${
               //   detailObj.organization ? detailObj.organization.id : null
               // }`}
-            >
-              Associate to OU
-            </Link>
-            {/* </Rbac> */}
-            <Link
-            to=""
+              >
+                Associate to OU
+              </Link>
+              {/* </Rbac> */}
+              <Link
+                to=""
               // to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
               //   detailObj.id
               // }&org_id=${
               //   detailObj.organization ? detailObj.organization.id : null
               // }`}
-            >
-            Add New VPC
-            </Link>
-                  {/* </Rbac> */}
-            <Link
-            to=""
+              >
+                Add New VPC
+              </Link>
+              {/* </Rbac> */}
+              <Link
+                to=""
               // to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${
               //   detailObj.id
               // }&org_id=${
               //   detailObj.organization ? detailObj.organization.id : null
               // }`}
-            >
-            Add New Product
-            </Link>
-          </div>
+              >
+                Add New Product
+              </Link>
+            </div>
+            <div className="open-create-menu-close" onClick={this.onClickOpenSubLink}></div>
+          </>
         )}
         {/* <InputAccount ref={this.InputAccountRef} />         */}
       </div>

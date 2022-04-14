@@ -245,6 +245,7 @@
               &.first {
                 display: block;
                 width: 100%;
+                cursor: pointer;
               }
             }
           }
@@ -597,8 +598,8 @@
           text-align: center;
         }
 
-        .action-edit{
-          .asset-white-button{
+        .action-edit {
+          .asset-white-button {
             padding: 0;
             background-color: transparent;
           }
@@ -638,6 +639,7 @@
             &:nth-child(1) {
               text-align: left;
               width: 28%;
+              cursor: pointer;
             }
 
           }
@@ -671,6 +673,7 @@
             &:nth-child(1) {
               text-align: left;
               width: 28%;
+              cursor: pointer;
             }
 
           }
@@ -966,6 +969,22 @@
     }
   }
 
+}
+
+@media only screen and (max-width: 1280px) {
+  .service-container {
+    .organisational-details {
+      .container-inner {
+        overflow: hidden;
+        overflow-x: auto;
+
+        .organisational-data-table {
+          width: 1000px;
+
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 992px) {
