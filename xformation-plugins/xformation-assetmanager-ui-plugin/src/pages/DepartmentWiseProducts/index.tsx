@@ -156,6 +156,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
   componentDidMount() {
     this.getDepartmentData();
+    this.getProductData();
   }
 
   calculatePercentage = (value: any, total: any) => {
@@ -180,7 +181,24 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       console.log("Loading accounts failed. Error: ", err);
     }
   }
-
+  getProductData = async () => {
+    try {
+      await RestService.getData(
+        `${this.config.GET_PRODUCT_DATA}`,
+        null,
+        null
+      ).then((response: any) => {
+        this.setState({
+          product: response.organization.departmentList,
+        });
+        // this.setProductGraphData();
+        // this.setProductionOthers();
+        // this.setServiceCostData();
+      });
+    } catch (err) {
+      console.log("Loading accounts failed. Error: ", err);
+    }
+  }
   setProductGraphData = () => {
     let { departmentWiseData, graphData, productWiseCostOptions } = this.state;
     let data = [];
@@ -399,7 +417,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   };
 
   render() {
-    const { departmentWiseData, graphData, productWiseCostOptions, productionvsOthersOptions, serviceWiseCoastOptions } = this.state;
+    const { departmentWiseData, graphData, productWiseCostOptions,
+      productionvsOthersOptions, serviceWiseCoastOptions } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
