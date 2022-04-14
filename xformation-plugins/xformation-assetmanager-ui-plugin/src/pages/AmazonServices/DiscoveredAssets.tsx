@@ -7,7 +7,7 @@ import _dummyData from './_discovered_assets';
 // import { PLUGIN_BASE_URL } from '../../constants';
 // import { Link } from 'react-router-dom';
 
-const TREE_PADDING = 30;
+const TREE_PADDING = 15;
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
   constructor(props: any) {
@@ -81,8 +81,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
             {(subFolder.subData == undefined) &&
               <div className="tbody">
                 <div className="tbody-inner">
-                  <div className="tbody-td first">
-                    <div className="caret-right" onClick={() => this.onClickRightTreeArr(j, indexArr)}></div>
+                  <div className="tbody-td first" onClick={() => this.onClickRightTreeArr(j, indexArr)}>
+                    <div className="caret-right"></div>
                     {subFolder.title}
                   </div>
                 </div>
@@ -98,9 +98,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
     retData.push(
       <div className="tbody">
         <div className="tbody-inner">
-          <div className="tbody-td first">
-            {!folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
-            {folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></div>}
+          <div className="tbody-td first" onClick={() => this.onClickOpenSubTreeArr([...indexArr])}>
+            {!folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"}></div>}
+            {folder.subData && <div className={folder.isOpened ? "caret-down" : "caret-right"}></div>}
             {folder.title}
           </div>
           {

@@ -1323,6 +1323,7 @@ a:hover {
   .tbody-td.first {
   display: block;
   width: 100%;
+  cursor: pointer;
 }
 .service-container
   .organisational-details
@@ -1859,6 +1860,7 @@ a:hover {
 .service-container .organisational-details .container-inner .organisational-data-table .thead .thead-th:nth-child(1) {
   text-align: left;
   width: 28%;
+  cursor: pointer;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .tbody {
   display: block;
@@ -1889,6 +1891,7 @@ a:hover {
 .service-container .organisational-details .container-inner .organisational-data-table .tbody .tbody-td:nth-child(1) {
   text-align: left;
   width: 28%;
+  cursor: pointer;
 }
 .service-container
   .organisational-details
@@ -2162,6 +2165,16 @@ a:hover {
 }
 .service-container .framework-table-container .table tbody tr td:first-child {
   text-align: left;
+}
+
+@media only screen and (max-width: 1280px) {
+  .service-container .organisational-details .container-inner {
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  .service-container .organisational-details .container-inner .organisational-data-table {
+    width: 1000px;
+  }
 }
 
 @media only screen and (max-width: 992px) {
