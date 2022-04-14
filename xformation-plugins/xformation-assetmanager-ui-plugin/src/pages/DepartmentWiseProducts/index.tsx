@@ -12,6 +12,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import _departmentData from './_dummyData/departments.json';
+// import { values } from 'lodash';
 // import {products} from './_dummyData/products';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -159,10 +160,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     this.getProductData();
   }
 
-  calculatePercentage = (value: any, total: any) => {
-    return Math.ceil(value * 100 / total);
-  };
-
   getDepartmentData = async () => {
     try {
       await RestService.getData(
@@ -181,6 +178,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       console.log("Loading accounts failed. Error: ", err);
     }
   }
+
   getProductData = async () => {
     try {
       await RestService.getData(
@@ -188,6 +186,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         null,
         null
       ).then((response: any) => {
+        this.manipulateDepartmentWiseProductData(response.organization.departmentList)
         this.setState({
           product: response.organization.departmentList,
         });
@@ -199,6 +198,26 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       console.log("Loading accounts failed. Error: ", err);
     }
   }
+
+  calculatePercentage = (value: any, total: any) => {
+    return Math.ceil(value * 100 / total);
+  };
+
+  manipulateDepartmentWiseProductData = (departmentList: any) => {
+    for (let i = 0; i < departmentList.length; i++) {
+      const department = departmentList[i];
+      const productList = department.productList;
+      const newProductList: any = [];
+      productList.forEach((product: any) => {
+        newProductList.push([product, product]);
+      });
+      department.productList = newProductList;
+    }
+    this.setState({
+      product: departmentList
+    });
+  }
+
   setProductGraphData = () => {
     let { departmentWiseData, graphData, productWiseCostOptions } = this.state;
     let data = [];
@@ -418,7 +437,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
   render() {
     const { departmentWiseData, graphData, productWiseCostOptions,
-      productionvsOthersOptions, serviceWiseCoastOptions } = this.state;
+      productionvsOthersOptions, serviceWiseCoastOptions, product } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -517,7 +536,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               </div>
             </div>
           </div>
-          <ProductWiseServices product={this.state.product} type="department" />
+          {product &&
+            <ProductWiseServices product={product} type="department" />}
         </div>
       </div>
     );

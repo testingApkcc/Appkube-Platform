@@ -12,10 +12,10 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   toggleStageView = (index: number) => {
     const { product } = this.state;
-    product.stages.forEach((service: any) => {
+    product.deploymentEnvironmentList.forEach((service: any) => {
       service.isOpen = false;
     });
-    product.stages[index].isOpen = true;
+    product.deploymentEnvironmentList[index].isOpen = true;
     this.setState({
       product
     });
@@ -23,20 +23,33 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   toggleServices = (k: any, l: any) => {
     const { product } = this.state;
-    product.stages[k].services[l].isOpen = !product.stages[k].services[l].isOpen;
-    this.setState({
-      product
-    });
+    if (product.deploymentEnvironmentList[k].serviceCategoryList[l].serviceList) {
+      product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen = !product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen;
+      this.setState({
+        product
+      });
+    }
   }
+
+  toggleServicesStage = (i: any, j: any) => {
+    const { product } = this.state;
+    console.log('call');
+    // product.deploymentEnvironmentList[i].serviceCategoryList[j].isOpen = !product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen;
+    // this.setState({
+    //   product
+    // });
+  }
+
+
   handleView = () => {
     this.props.handleChangeViewOfProduct();
   }
   openServices = (indexArr: any) => {
     const { product } = this.state;
-    const stage = product.stages[indexArr[0]];
+    const stage = product.deploymentEnvironmentList[indexArr[0]];
     if (stage) {
       indexArr.splice(0, 1);
-      let services = stage.services;
+      let services = stage.serviceCategoryList;
       for (let i = 0; i < indexArr.length; i++) {
         const index = indexArr[i];
         if (i === indexArr.length - 1) {
@@ -55,17 +68,17 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   onClickMenu = (k: any, l: any) => {
     const { product } = this.state;
-    product.stages[k].services[l].menuOpen = !product.stages[k].services[l].menuOpen;
+    product.deploymentEnvironmentList[k].services[l].menuOpen = !product.deploymentEnvironmentList[k].services[l].menuOpen;
     this.setState({
       product
     });
   };
 
-  renderStages = (stages: any) => {
-    if (stages) {
-      return stages.map((stageData: any, stageNumber: number) => {
+  renderStages = (deploymentEnvironmentList: any) => {
+    if (deploymentEnvironmentList) {
+      return deploymentEnvironmentList.map((stageData: any, stageNumber: number) => {
         return (
-          <li onClick={() => this.toggleStageView(stageNumber)} className={stageData.isOpen == true ? 'active' : ''}>{stageData.stage}</li>
+          <li onClick={() => this.toggleStageView(stageNumber)} className={stageData.isOpen == true ? 'active' : ''}>{stageData.name}</li>
         )
       })
     }
@@ -76,47 +89,48 @@ export class ServicesPerformance extends React.Component<any, any> {
     const retData: any = [];
     if (services) {
       services.forEach((service: any, index: any) => {
-        if (service.services) {
-          retData.push(
-            <div className='tbody'>
-              <div className='td title' onClick={() => this.openServices([...indexArr, index])}>
-                <strong>{service.title}<i className={service.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
-              </div>
-              {
-                service.isOpen ?
-                  this.renderServices(service.services, [...indexArr, index]) : <></>
-              }
+        // if (service.serviceList) {
+        //   retData.push(
+        //     <div className='tbody'>
+        //       <div className='td title' onClick={() => this.openServices([...indexArr, index])}>
+        //         <strong>{service.name}<i className={service.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
+        //       </div>
+        //       {
+        //         service.isOpen ?
+        //           this.renderServices(service.serviceList, [...indexArr, index]) : <></>
+        //       }
+        //     </div>
+        //   );
+        // } else if (service.serviceList) {
+        retData.push(
+          <div className='table performance-table'>
+            {index === 0 && <div className='tbody'>
+              <div className='td'><strong>Name</strong></div>
+              <>
+                <div className='td'>Performance</div>
+                <div className='td'>Availability</div>
+                <div className='td'>Security</div>
+                <div className='td'>Data Protection</div>
+                <div className='td'>User exp</div>
+              </>
             </div>
-          );
-        } else if (service.list) {
-          retData.push(
-            <div className='table performance-table'>
-              <div className='tbody'>
-                <div className='td'><strong>{service.title}</strong></div>
-                <>
-                  <div className='td'>Performance</div>
-                  <div className='td'>Availability</div>
-                  <div className='td'>Security</div>
-                  <div className='td'>Data Protection</div>
-                  <div className='td'>User exp</div>
-                </>
-              </div>
-              {service.list && service.list.map((name: any, i: any) => {
-                return (
-                  <div className='tbody'>
-                    <div className='td'><span>{name.title}</span></div>
-                    <div className='td'><div className={(name.performance > 75) ? 'progress-circle green' : (name.performance <= 75 && name.performance > 50) ? 'progress-circle orange' : (name.performance <= 50 && name.performance > 25) ? 'progress-circle yellow' : 'progress-circle red'} ><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className={(name.availibility > 75) ? 'progress-circle green' : (name.availibility <= 75 && name.availibility > 50) ? 'progress-circle orange' : (name.availibility <= 50 && name.availibility > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className={(name.security > 75) ? 'progress-circle green' : (name.security <= 75 && name.security > 50) ? 'progress-circle orange' : (name.security <= 50 && name.security > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className={(name.data_protection > 75) ? 'progress-circle green' : (name.data_protection <= 75 && name.data_protection > 50) ? 'progress-circle orange' : (name.data_protection <= 50 && name.data_protection > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
-                    <div className='td'><div className={(name.user_exp > 75) ? 'progress-circle green' : (name.user_exp <= 75 && name.user_exp > 50) ? 'progress-circle orange' : (name.user_exp <= 50 && name.user_exp > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
-                  </div>
-                )
-              })
-              }
-            </div >
-          );
-        }
+            }
+            {/* {service.serviceList && service.serviceList.map((name: any, i: any) => { */}
+            {/* return ( */}
+            <div className='tbody'>
+              <div className='td'><span>{service.name}</span></div>
+              <div className='td'><div className={(service.performance.score > 75) ? 'progress-circle green' : (service.performance.score <= 75 && service.performance.score > 50) ? 'progress-circle orange' : (service.performance.score <= 50 && service.performance.score > 25) ? 'progress-circle yellow' : 'progress-circle red'} ><i className='fa fa-check-circle'></i></div></div>
+              <div className='td'><div className={(service.availability.score > 75) ? 'progress-circle green' : (service.availability.score <= 75 && service.availability.score > 50) ? 'progress-circle orange' : (service.availability.score <= 50 && service.availability.score > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+              <div className='td'><div className={(service.security.score > 75) ? 'progress-circle green' : (service.security.score <= 75 && service.security.score > 50) ? 'progress-circle orange' : (service.security.score <= 50 && service.security.score > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+              <div className='td'><div className={(service.dataProtection.score > 75) ? 'progress-circle green' : (service.dataProtection.score <= 75 && service.dataProtection.score > 50) ? 'progress-circle orange' : (service.dataProtection.score <= 50 && service.dataProtection.score > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+              <div className='td'><div className={(service.userExperiance.score > 75) ? 'progress-circle green' : (service.userExperiance.score <= 75 && service.userExperiance.score > 50) ? 'progress-circle orange' : (service.userExperiance.score <= 50 && service.userExperiance.score > 25) ? 'progress-circle yellow' : 'progress-circle red'}><i className='fa fa-check-circle'></i></div></div>
+            </div>
+            {/* ) */}
+            {/* }) */}
+            {/* } */}
+          </div >
+        );
+        // }
       });
     }
     return retData;
@@ -145,21 +159,21 @@ export class ServicesPerformance extends React.Component<any, any> {
             <div className='tabs-container'>
               <div className='tabs'>
                 <ul>
-                  {this.renderStages(product.stages)}
+                  {this.renderStages(product.deploymentEnvironmentList)}
                 </ul>
               </div>
-              {product.stages && product.stages.map((stage: any, stageIndex: any) => {
+              {product.deploymentEnvironmentList && product.deploymentEnvironmentList.map((stage: any, stageIndex: any) => {
                 if (stage.isOpen == true) {
                   return (
                     <div className='tabs-content'>
                       <ul>
-                        {stage.services && stage.services.map((mainservicedata: any, mainindex: any) => {
+                        {stage.serviceCategoryList && stage.serviceCategoryList.map((mainservicedata: any, mainindex: any) => {
                           return (
                             <li>
-                              {mainservicedata.isOpen === false && <div className='icon'><img src={images.Icon} alt="" /></div>}
-                              <div className={mainservicedata.isOpen === true ? 'heading full' : 'heading'} >
+                              {(!mainservicedata.isOpen) && <div className='icon'><img src={images.Icon} alt="" /></div>}
+                              <div className={(mainservicedata.isOpen === true && mainservicedata.serviceList) ? 'heading full' : 'heading'} >
                                 <span onClick={() => this.toggleServices(stageIndex, mainindex)}>
-                                  {mainservicedata.title}
+                                  {mainservicedata.name}
                                 </span>
                                 <div className='icon'>
                                   <div
@@ -187,13 +201,13 @@ export class ServicesPerformance extends React.Component<any, any> {
                                 </div>
                               </div>
                               {
-                                mainservicedata.isOpen === true &&
+                                mainservicedata.isOpen === true && mainservicedata.serviceList &&
                                 <div className='content-table'>
                                   <div className='table'>
                                     <div className='thead'>
-                                      <div className='th'>Name</div>
+                                      {/* <div className='th'></div> */}
                                     </div>
-                                    {this.renderServices(mainservicedata.services, [stageIndex, mainindex])}
+                                    {this.renderServices(mainservicedata.serviceList, [stageIndex, mainindex])}
                                   </div>
                                 </div>
                               }

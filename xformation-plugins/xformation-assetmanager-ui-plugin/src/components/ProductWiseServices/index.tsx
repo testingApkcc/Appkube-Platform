@@ -18,46 +18,8 @@ export class ProductWiseServices extends React.Component<any, any> {
       showRecentFilter: false,
       showAddNewFilter: false,
       productComponent: [],
-      departmentList: [
-        {
-          name: 'Human Resources',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275'
-        },
-        {
-          name: 'It Infra',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275'
-        },
-        {
-          name: 'IT Devlopment',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275'
-        },
-        {
-          name: 'Finance',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275'
-        },
-        {
-          name: 'Finance',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275'
-        },
-        {
-          name: 'It Infra',
-          noOfProduct: '150',
-          prodBilling: '$100',
-          otherBilling: '$275'
-        }
-      ],
-      viewMapping: {},
-      product: [],
+      viewMapping: [],
+      product: this.props.product,
       isDataLoaded: false,
     };
   }
@@ -108,18 +70,18 @@ export class ProductWiseServices extends React.Component<any, any> {
     let retData = [];
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
-        let row = product[i];
+        let department = product[i];
         let productViewMapping = viewMapping[i] ? viewMapping[i] : [];
         retData.push(
           <div key={v4()} className="inner-table">
-            <div className="thead">{row.title}</div>
-            {row.productList && row.productList.map((viewData: any, index: any) => {
+            <div className="thead">{department.name}</div>
+            {department.productList && department.productList.map((productData: any, index: any) => {
               const defaultView = productViewMapping[index] ? productViewMapping[index] : ViewMapping.BUSINESS_VIEW;
-              const val = viewData[defaultView];
+              const val = productData[defaultView];
               return (
                 <div className="tbody">
                   <div className="name" onClick={() => this.openProduct(i, index)}>
-                    <span>{val.title}</span>
+                    <span>{val.name}</span>
                     <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                   </div>
                   <div className="app-services">10</div>
