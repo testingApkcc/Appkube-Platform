@@ -31,14 +31,14 @@ export class ServicesPerformance extends React.Component<any, any> {
     }
   }
 
-  toggleServicesStage = (i: any, j: any) => {
-    const { product } = this.state;
-    console.log('call');
-    // product.deploymentEnvironmentList[i].serviceCategoryList[j].isOpen = !product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen;
-    // this.setState({
-    //   product
-    // });
-  }
+  // toggleServicesStage = (i: any, j: any) => {
+  //   const { product } = this.state;
+  //   console.log('call');
+  //   // product.deploymentEnvironmentList[i].serviceCategoryList[j].isOpen = !product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen;
+  //   // this.setState({
+  //   //   product
+  //   // });
+  // }
 
 
   handleView = () => {
