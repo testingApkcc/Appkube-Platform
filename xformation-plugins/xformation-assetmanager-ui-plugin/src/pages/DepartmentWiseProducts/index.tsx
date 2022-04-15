@@ -11,7 +11,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import _departmentData from './_dummyData/departments.json';
+import _ from 'lodash';
 // import { values } from 'lodash';
 // import {products} from './_dummyData/products';
 
@@ -157,7 +157,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
   componentDidMount() {
     this.getDepartmentData();
-    this.getProductData();
+    // this.getProductData();
   }
 
   getDepartmentData = async () => {
@@ -167,6 +167,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         null,
         null
       ).then((response: any) => {
+        this.manipulateDepartmentWiseProductData(_.cloneDeep(response.organization.departmentList));
         this.setState({
           departmentWiseData: response.organization.departmentList,
         });
@@ -186,10 +187,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         null,
         null
       ).then((response: any) => {
-        this.manipulateDepartmentWiseProductData(response.organization.departmentList)
-        this.setState({
-          product: response.organization.departmentList,
-        });
+        
+        // this.setState({
+        //   product: response.organization.departmentList,
+        // });
       });
     } catch (err) {
       console.log("Loading accounts failed. Error: ", err);
@@ -359,7 +360,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
             if (product.deploymentEnvironmentList) {
               for (let j = 0; j < product.deploymentEnvironmentList.length; j++) {
-                debugger;
                 let row = product.deploymentEnvironmentList[j];
                 if (row.name == 'Production') {
                   productionTotal += row.productBilling.amount;

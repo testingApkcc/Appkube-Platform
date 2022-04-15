@@ -18,14 +18,14 @@ export class ProductWiseServices extends React.Component<any, any> {
       showRecentFilter: false,
       showAddNewFilter: false,
       productComponent: [],
-      viewMapping: [],
-      product: this.props.product,
+      viewMapping: {},
+      product: [],
       isDataLoaded: false,
     };
   }
 
   componentDidUpdate(prevProps: any, prevState: any) {
-    if (!this.state.isDataLoaded) {
+    if (!this.state.isDataLoaded && this.props.product) {
       this.setState({
         product: this.props.product,
         isDataLoaded: true
@@ -70,14 +70,14 @@ export class ProductWiseServices extends React.Component<any, any> {
     let retData = [];
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
-        let department = product[i];
+        let row = product[i];
         let productViewMapping = viewMapping[i] ? viewMapping[i] : [];
         retData.push(
           <div key={v4()} className="inner-table">
-            <div className="thead">{department.name}</div>
-            {department.productList && department.productList.map((productData: any, index: any) => {
+            <div className="thead">{row.name}</div>
+            {row.productList && row.productList.map((viewData: any, index: any) => {
               const defaultView = productViewMapping[index] ? productViewMapping[index] : ViewMapping.BUSINESS_VIEW;
-              const val = productData[defaultView];
+              const val = viewData[defaultView];
               return (
                 <div className="tbody">
                   <div className="name" onClick={() => this.openProduct(i, index)}>

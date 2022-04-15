@@ -15,7 +15,7 @@ import { Inputs } from "./Inputs";
 import { PLUGIN_BASE_URL } from '../../constants';
 import { ProductWiseServices } from "../../components/ProductWiseServices";
 import _departmentData from './../DepartmentWiseProducts/_dummyData/departments.json';
-import { products } from './../DepartmentWiseProducts/_dummyData/products';
+// import { products } from './../DepartmentWiseProducts/_dummyData/products';
 
 export class AmazonServices extends React.Component<any, any> {
   breadCrumbs: any;

@@ -1,8 +1,18 @@
-define(['@grafana/data', 'react', 'react-router-dom', 'react-dom', '@grafana/ui', '@grafana/runtime', '@emotion/css'], (
-  __WEBPACK_EXTERNAL_MODULE__64__,
+define([
+  '@grafana/data',
+  'react',
+  'react-router-dom',
+  'react-dom',
+  'lodash',
+  '@grafana/ui',
+  '@grafana/runtime',
+  '@emotion/css',
+], (
+  __WEBPACK_EXTERNAL_MODULE__70__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__6__,
   __WEBPACK_EXTERNAL_MODULE__12__,
+  __WEBPACK_EXTERNAL_MODULE__127__,
   __WEBPACK_EXTERNAL_MODULE__53__,
   __WEBPACK_EXTERNAL_MODULE__131__,
   __WEBPACK_EXTERNAL_MODULE__132__
@@ -729,7 +739,7 @@ PERFORMANCE OF THIS SOFTWARE.
         });
         /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ../_common/common */ 74
+          /*! ../_common/common */ 80
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ 5);
 
@@ -865,7 +875,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./plugin.json */ 80
+          /*! ./plugin.json */ 85
         );
 
         var PLUGIN_BASE_URL = '/a/'.concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
@@ -1032,18 +1042,18 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */ images: () => /* binding */ images,
           /* harmony export */
         });
-        /* harmony import */ var _aws_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./aws.png */ 82);
+        /* harmony import */ var _aws_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./aws.png */ 87);
         /* harmony import */ var _microsoftazure_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./microsoftazure.png */ 83
+          /*! ./microsoftazure.png */ 88
         );
         /* harmony import */ var _google_cloud_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./google-cloud.png */ 84
+          /*! ./google-cloud.png */ 89
         );
         /* harmony import */ var _kubernetes_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./kubernetes.png */ 85
+          /*! ./kubernetes.png */ 90
         );
-        /* harmony import */ var _jobs_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./jobs.png */ 86);
-        /* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon.png */ 87);
+        /* harmony import */ var _jobs_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./jobs.png */ 91);
+        /* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon.png */ 92);
 
         var images = {
           awsLogo: _aws_png__WEBPACK_IMPORTED_MODULE_0__['default'],
@@ -1169,7 +1179,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 75
+          /*! ./setPrototypeOf.js */ 81
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -1773,7 +1783,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 21));
 
-        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 78);
+        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 83);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -2140,7 +2150,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 58
+          /*! ./chunks/helpers.segment.js */ 64
         );
         /*!
          * Chart.js v3.7.1
@@ -14490,16 +14500,16 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithoutHoles.js */ 108
+          /*! ./arrayWithoutHoles.js */ 107
         );
         /* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArray.js */ 109
+          /*! ./iterableToArray.js */ 108
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 49
         );
         /* harmony import */ var _nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableSpread.js */ 110
+          /*! ./nonIterableSpread.js */ 109
         );
 
         function _toConsumableArray(arr) {
@@ -14522,7 +14532,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 76);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 82);
         }
 
         /***/
@@ -16502,7 +16512,7 @@ object-assign
           /*! ../SelectCloudFilter */ 45
         );
         /* harmony import */ var _ServicesPerformance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./ServicesPerformance */ 96
+          /*! ./ServicesPerformance */ 101
         );
         /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! uuid */ 141);
 
@@ -16571,7 +16581,7 @@ object-assign
 
                 if (product && product.length > 0) {
                   var _loop_1 = function (i) {
-                    var department = product[i];
+                    var row = product[i];
                     var productViewMapping = viewMapping[i] ? viewMapping[i] : [];
                     retData.push(
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -16585,14 +16595,14 @@ object-assign
                           {
                             className: 'thead',
                           },
-                          department.name
+                          row.name
                         ),
-                        department.productList &&
-                          department.productList.map(function (productData, index) {
+                        row.productList &&
+                          row.productList.map(function (viewData, index) {
                             var defaultView = productViewMapping[index]
                               ? productViewMapping[index]
                               : ViewMapping.BUSINESS_VIEW;
-                            var val = productData[defaultView];
+                            var val = viewData[defaultView];
                             return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
                               {
@@ -16675,15 +16685,15 @@ object-assign
                 showRecentFilter: false,
                 showAddNewFilter: false,
                 productComponent: [],
-                viewMapping: [],
-                product: _this.props.product,
+                viewMapping: {},
+                product: [],
                 isDataLoaded: false,
               };
               return _this;
             }
 
             ProductWiseServices.prototype.componentDidUpdate = function (prevProps, prevState) {
-              if (!this.state.isDataLoaded) {
+              if (!this.state.isDataLoaded && this.props.product) {
                 this.setState({
                   product: this.props.product,
                   isDataLoaded: true,
@@ -17617,7 +17627,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 102);
+        var reactIs = __webpack_require__(/*! react-is */ 57);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -17820,16 +17830,16 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithHoles.js */ 111
+          /*! ./arrayWithHoles.js */ 110
         );
         /* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArrayLimit.js */ 112
+          /*! ./iterableToArrayLimit.js */ 111
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 49
         );
         /* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableRest.js */ 113
+          /*! ./nonIterableRest.js */ 112
         );
 
         function _slicedToArray(arr, i) {
@@ -18041,6 +18051,555 @@ object-assign
         /***/
       },
       /* 56 */
+      /*!*******************************************************************************!*\
+  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
+  \*******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
+
+        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
+
+        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
+
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
+
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+
+        module.exports = {
+          Transition: _Transition.default,
+          TransitionGroup: _TransitionGroup.default,
+          ReplaceTransition: _ReplaceTransition.default,
+          CSSTransition: _CSSTransition.default,
+        };
+
+        /***/
+      },
+      /* 57 */
+      /*!******************************************************************************!*\
+  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
+  \******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        if (false) {
+        } else {
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 58);
+        }
+
+        /***/
+      },
+      /* 58 */
+      /*!*************************************************************************************************!*\
+  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
+  \*************************************************************************************************/
+      /***/ (__unused_webpack_module, exports) => {
+        'use strict';
+        /** @license React v16.13.1
+         * react-is.development.js
+         *
+         * Copyright (c) Facebook, Inc. and its affiliates.
+         *
+         * This source code is licensed under the MIT license found in the
+         * LICENSE file in the root directory of this source tree.
+         */
+
+        if (true) {
+          (function () {
+            'use strict';
+
+            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+            // nor polyfill, then a plain number is used for performance.
+            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+            // (unstable) APIs that have been removed. Can we remove the symbols?
+
+            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+            function isValidElementType(type) {
+              return (
+                typeof type === 'string' ||
+                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+                type === REACT_FRAGMENT_TYPE ||
+                type === REACT_CONCURRENT_MODE_TYPE ||
+                type === REACT_PROFILER_TYPE ||
+                type === REACT_STRICT_MODE_TYPE ||
+                type === REACT_SUSPENSE_TYPE ||
+                type === REACT_SUSPENSE_LIST_TYPE ||
+                (typeof type === 'object' &&
+                  type !== null &&
+                  (type.$$typeof === REACT_LAZY_TYPE ||
+                    type.$$typeof === REACT_MEMO_TYPE ||
+                    type.$$typeof === REACT_PROVIDER_TYPE ||
+                    type.$$typeof === REACT_CONTEXT_TYPE ||
+                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
+                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
+                    type.$$typeof === REACT_RESPONDER_TYPE ||
+                    type.$$typeof === REACT_SCOPE_TYPE ||
+                    type.$$typeof === REACT_BLOCK_TYPE))
+              );
+            }
+
+            function typeOf(object) {
+              if (typeof object === 'object' && object !== null) {
+                var $$typeof = object.$$typeof;
+
+                switch ($$typeof) {
+                  case REACT_ELEMENT_TYPE:
+                    var type = object.type;
+
+                    switch (type) {
+                      case REACT_ASYNC_MODE_TYPE:
+                      case REACT_CONCURRENT_MODE_TYPE:
+                      case REACT_FRAGMENT_TYPE:
+                      case REACT_PROFILER_TYPE:
+                      case REACT_STRICT_MODE_TYPE:
+                      case REACT_SUSPENSE_TYPE:
+                        return type;
+
+                      default:
+                        var $$typeofType = type && type.$$typeof;
+
+                        switch ($$typeofType) {
+                          case REACT_CONTEXT_TYPE:
+                          case REACT_FORWARD_REF_TYPE:
+                          case REACT_LAZY_TYPE:
+                          case REACT_MEMO_TYPE:
+                          case REACT_PROVIDER_TYPE:
+                            return $$typeofType;
+
+                          default:
+                            return $$typeof;
+                        }
+                    }
+
+                  case REACT_PORTAL_TYPE:
+                    return $$typeof;
+                }
+              }
+
+              return undefined;
+            } // AsyncMode is deprecated along with isAsyncMode
+
+            var AsyncMode = REACT_ASYNC_MODE_TYPE;
+            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+            var ContextConsumer = REACT_CONTEXT_TYPE;
+            var ContextProvider = REACT_PROVIDER_TYPE;
+            var Element = REACT_ELEMENT_TYPE;
+            var ForwardRef = REACT_FORWARD_REF_TYPE;
+            var Fragment = REACT_FRAGMENT_TYPE;
+            var Lazy = REACT_LAZY_TYPE;
+            var Memo = REACT_MEMO_TYPE;
+            var Portal = REACT_PORTAL_TYPE;
+            var Profiler = REACT_PROFILER_TYPE;
+            var StrictMode = REACT_STRICT_MODE_TYPE;
+            var Suspense = REACT_SUSPENSE_TYPE;
+            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+            function isAsyncMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
+                      'and will be removed in React 17+. Update your code to use ' +
+                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
+                  );
+                }
+              }
+
+              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+            }
+            function isConcurrentMode(object) {
+              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+            }
+            function isContextConsumer(object) {
+              return typeOf(object) === REACT_CONTEXT_TYPE;
+            }
+            function isContextProvider(object) {
+              return typeOf(object) === REACT_PROVIDER_TYPE;
+            }
+            function isElement(object) {
+              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+            }
+            function isForwardRef(object) {
+              return typeOf(object) === REACT_FORWARD_REF_TYPE;
+            }
+            function isFragment(object) {
+              return typeOf(object) === REACT_FRAGMENT_TYPE;
+            }
+            function isLazy(object) {
+              return typeOf(object) === REACT_LAZY_TYPE;
+            }
+            function isMemo(object) {
+              return typeOf(object) === REACT_MEMO_TYPE;
+            }
+            function isPortal(object) {
+              return typeOf(object) === REACT_PORTAL_TYPE;
+            }
+            function isProfiler(object) {
+              return typeOf(object) === REACT_PROFILER_TYPE;
+            }
+            function isStrictMode(object) {
+              return typeOf(object) === REACT_STRICT_MODE_TYPE;
+            }
+            function isSuspense(object) {
+              return typeOf(object) === REACT_SUSPENSE_TYPE;
+            }
+
+            exports.AsyncMode = AsyncMode;
+            exports.ConcurrentMode = ConcurrentMode;
+            exports.ContextConsumer = ContextConsumer;
+            exports.ContextProvider = ContextProvider;
+            exports.Element = Element;
+            exports.ForwardRef = ForwardRef;
+            exports.Fragment = Fragment;
+            exports.Lazy = Lazy;
+            exports.Memo = Memo;
+            exports.Portal = Portal;
+            exports.Profiler = Profiler;
+            exports.StrictMode = StrictMode;
+            exports.Suspense = Suspense;
+            exports.isAsyncMode = isAsyncMode;
+            exports.isConcurrentMode = isConcurrentMode;
+            exports.isContextConsumer = isContextConsumer;
+            exports.isContextProvider = isContextProvider;
+            exports.isElement = isElement;
+            exports.isForwardRef = isForwardRef;
+            exports.isFragment = isFragment;
+            exports.isLazy = isLazy;
+            exports.isMemo = isMemo;
+            exports.isPortal = isPortal;
+            exports.isProfiler = isProfiler;
+            exports.isStrictMode = isStrictMode;
+            exports.isSuspense = isSuspense;
+            exports.isValidElementType = isValidElementType;
+            exports.typeOf = typeOf;
+          })();
+        }
+
+        /***/
+      },
+      /* 59 */
+      /*!*****************************************!*\
+  !*** ../node_modules/react-is/index.js ***!
+  \*****************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        if (false) {
+        } else {
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 60);
+        }
+
+        /***/
+      },
+      /* 60 */
+      /*!************************************************************!*\
+  !*** ../node_modules/react-is/cjs/react-is.development.js ***!
+  \************************************************************/
+      /***/ (__unused_webpack_module, exports) => {
+        'use strict';
+        /** @license React v17.0.2
+         * react-is.development.js
+         *
+         * Copyright (c) Facebook, Inc. and its affiliates.
+         *
+         * This source code is licensed under the MIT license found in the
+         * LICENSE file in the root directory of this source tree.
+         */
+
+        if (true) {
+          (function () {
+            'use strict';
+
+            // ATTENTION
+            // When adding new symbols to this file,
+            // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+            // nor polyfill, then a plain number is used for performance.
+            var REACT_ELEMENT_TYPE = 0xeac7;
+            var REACT_PORTAL_TYPE = 0xeaca;
+            var REACT_FRAGMENT_TYPE = 0xeacb;
+            var REACT_STRICT_MODE_TYPE = 0xeacc;
+            var REACT_PROFILER_TYPE = 0xead2;
+            var REACT_PROVIDER_TYPE = 0xeacd;
+            var REACT_CONTEXT_TYPE = 0xeace;
+            var REACT_FORWARD_REF_TYPE = 0xead0;
+            var REACT_SUSPENSE_TYPE = 0xead1;
+            var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+            var REACT_MEMO_TYPE = 0xead3;
+            var REACT_LAZY_TYPE = 0xead4;
+            var REACT_BLOCK_TYPE = 0xead9;
+            var REACT_SERVER_BLOCK_TYPE = 0xeada;
+            var REACT_FUNDAMENTAL_TYPE = 0xead5;
+            var REACT_SCOPE_TYPE = 0xead7;
+            var REACT_OPAQUE_ID_TYPE = 0xeae0;
+            var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+            var REACT_OFFSCREEN_TYPE = 0xeae2;
+            var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+            if (typeof Symbol === 'function' && Symbol.for) {
+              var symbolFor = Symbol.for;
+              REACT_ELEMENT_TYPE = symbolFor('react.element');
+              REACT_PORTAL_TYPE = symbolFor('react.portal');
+              REACT_FRAGMENT_TYPE = symbolFor('react.fragment');
+              REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
+              REACT_PROFILER_TYPE = symbolFor('react.profiler');
+              REACT_PROVIDER_TYPE = symbolFor('react.provider');
+              REACT_CONTEXT_TYPE = symbolFor('react.context');
+              REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+              REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
+              REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+              REACT_MEMO_TYPE = symbolFor('react.memo');
+              REACT_LAZY_TYPE = symbolFor('react.lazy');
+              REACT_BLOCK_TYPE = symbolFor('react.block');
+              REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+              REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+              REACT_SCOPE_TYPE = symbolFor('react.scope');
+              REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
+              REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+              REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
+              REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+            }
+
+            // Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
+
+            var enableScopeAPI = false; // Experimental Create Event Handle API.
+
+            function isValidElementType(type) {
+              if (typeof type === 'string' || typeof type === 'function') {
+                return true;
+              } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+              if (
+                type === REACT_FRAGMENT_TYPE ||
+                type === REACT_PROFILER_TYPE ||
+                type === REACT_DEBUG_TRACING_MODE_TYPE ||
+                type === REACT_STRICT_MODE_TYPE ||
+                type === REACT_SUSPENSE_TYPE ||
+                type === REACT_SUSPENSE_LIST_TYPE ||
+                type === REACT_LEGACY_HIDDEN_TYPE ||
+                enableScopeAPI
+              ) {
+                return true;
+              }
+
+              if (typeof type === 'object' && type !== null) {
+                if (
+                  type.$$typeof === REACT_LAZY_TYPE ||
+                  type.$$typeof === REACT_MEMO_TYPE ||
+                  type.$$typeof === REACT_PROVIDER_TYPE ||
+                  type.$$typeof === REACT_CONTEXT_TYPE ||
+                  type.$$typeof === REACT_FORWARD_REF_TYPE ||
+                  type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
+                  type.$$typeof === REACT_BLOCK_TYPE ||
+                  type[0] === REACT_SERVER_BLOCK_TYPE
+                ) {
+                  return true;
+                }
+              }
+
+              return false;
+            }
+
+            function typeOf(object) {
+              if (typeof object === 'object' && object !== null) {
+                var $$typeof = object.$$typeof;
+
+                switch ($$typeof) {
+                  case REACT_ELEMENT_TYPE:
+                    var type = object.type;
+
+                    switch (type) {
+                      case REACT_FRAGMENT_TYPE:
+                      case REACT_PROFILER_TYPE:
+                      case REACT_STRICT_MODE_TYPE:
+                      case REACT_SUSPENSE_TYPE:
+                      case REACT_SUSPENSE_LIST_TYPE:
+                        return type;
+
+                      default:
+                        var $$typeofType = type && type.$$typeof;
+
+                        switch ($$typeofType) {
+                          case REACT_CONTEXT_TYPE:
+                          case REACT_FORWARD_REF_TYPE:
+                          case REACT_LAZY_TYPE:
+                          case REACT_MEMO_TYPE:
+                          case REACT_PROVIDER_TYPE:
+                            return $$typeofType;
+
+                          default:
+                            return $$typeof;
+                        }
+                    }
+
+                  case REACT_PORTAL_TYPE:
+                    return $$typeof;
+                }
+              }
+
+              return undefined;
+            }
+            var ContextConsumer = REACT_CONTEXT_TYPE;
+            var ContextProvider = REACT_PROVIDER_TYPE;
+            var Element = REACT_ELEMENT_TYPE;
+            var ForwardRef = REACT_FORWARD_REF_TYPE;
+            var Fragment = REACT_FRAGMENT_TYPE;
+            var Lazy = REACT_LAZY_TYPE;
+            var Memo = REACT_MEMO_TYPE;
+            var Portal = REACT_PORTAL_TYPE;
+            var Profiler = REACT_PROFILER_TYPE;
+            var StrictMode = REACT_STRICT_MODE_TYPE;
+            var Suspense = REACT_SUSPENSE_TYPE;
+            var hasWarnedAboutDeprecatedIsAsyncMode = false;
+            var hasWarnedAboutDeprecatedIsConcurrentMode = false; // AsyncMode should be deprecated
+
+            function isAsyncMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
+                  );
+                }
+              }
+
+              return false;
+            }
+            function isConcurrentMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsConcurrentMode) {
+                  hasWarnedAboutDeprecatedIsConcurrentMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isConcurrentMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
+                  );
+                }
+              }
+
+              return false;
+            }
+            function isContextConsumer(object) {
+              return typeOf(object) === REACT_CONTEXT_TYPE;
+            }
+            function isContextProvider(object) {
+              return typeOf(object) === REACT_PROVIDER_TYPE;
+            }
+            function isElement(object) {
+              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+            }
+            function isForwardRef(object) {
+              return typeOf(object) === REACT_FORWARD_REF_TYPE;
+            }
+            function isFragment(object) {
+              return typeOf(object) === REACT_FRAGMENT_TYPE;
+            }
+            function isLazy(object) {
+              return typeOf(object) === REACT_LAZY_TYPE;
+            }
+            function isMemo(object) {
+              return typeOf(object) === REACT_MEMO_TYPE;
+            }
+            function isPortal(object) {
+              return typeOf(object) === REACT_PORTAL_TYPE;
+            }
+            function isProfiler(object) {
+              return typeOf(object) === REACT_PROFILER_TYPE;
+            }
+            function isStrictMode(object) {
+              return typeOf(object) === REACT_STRICT_MODE_TYPE;
+            }
+            function isSuspense(object) {
+              return typeOf(object) === REACT_SUSPENSE_TYPE;
+            }
+
+            exports.ContextConsumer = ContextConsumer;
+            exports.ContextProvider = ContextProvider;
+            exports.Element = Element;
+            exports.ForwardRef = ForwardRef;
+            exports.Fragment = Fragment;
+            exports.Lazy = Lazy;
+            exports.Memo = Memo;
+            exports.Portal = Portal;
+            exports.Profiler = Profiler;
+            exports.StrictMode = StrictMode;
+            exports.Suspense = Suspense;
+            exports.isAsyncMode = isAsyncMode;
+            exports.isConcurrentMode = isConcurrentMode;
+            exports.isContextConsumer = isContextConsumer;
+            exports.isContextProvider = isContextProvider;
+            exports.isElement = isElement;
+            exports.isForwardRef = isForwardRef;
+            exports.isFragment = isFragment;
+            exports.isLazy = isLazy;
+            exports.isMemo = isMemo;
+            exports.isPortal = isPortal;
+            exports.isProfiler = isProfiler;
+            exports.isStrictMode = isStrictMode;
+            exports.isSuspense = isSuspense;
+            exports.isValidElementType = isValidElementType;
+            exports.typeOf = typeOf;
+          })();
+        }
+
+        /***/
+      },
+      /* 61 */
+      /*!*****************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
+  \*****************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _createClass,
+          /* harmony export */
+        });
+        function _defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ('value' in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }
+
+        function _createClass(Constructor, protoProps, staticProps) {
+          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+          if (staticProps) _defineProperties(Constructor, staticProps);
+          Object.defineProperty(Constructor, 'prototype', {
+            writable: false,
+          });
+          return Constructor;
+        }
+
+        /***/
+      },
+      /* 62 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -18057,7 +18616,7 @@ object-assign
 
         /***/
       },
-      /* 57 */
+      /* 63 */
       /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -18289,7 +18848,7 @@ object-assign
 
         /***/
       },
-      /* 58 */
+      /* 64 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -20939,7 +21498,7 @@ object-assign
 
         /***/
       },
-      /* 59 */
+      /* 65 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -20958,7 +21517,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 23
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 66);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 72);
 
         var App =
           /** @class */
@@ -20984,7 +21543,7 @@ object-assign
 
         /***/
       },
-      /* 60 */
+      /* 66 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -21006,22 +21565,22 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 67
+          /*! ../../pages/AccountSetup */ 73
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../../pages/AmazonServices */ 81
+          /*! ../../pages/AmazonServices */ 86
         );
         /* harmony import */ var _pages_Environments__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../pages/Environments */ 99
+          /*! ../../pages/Environments */ 103
         );
         /* harmony import */ var _pages_Kubernetes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../pages/Kubernetes */ 114
+          /*! ../../pages/Kubernetes */ 113
         );
         /* harmony import */ var _pages_StorageDetails__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../../pages/StorageDetails */ 115
+          /*! ../../pages/StorageDetails */ 114
         );
         /* harmony import */ var _pages_DepartmentWiseProducts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../../pages/DepartmentWiseProducts */ 126
+          /*! ../../pages/DepartmentWiseProducts */ 125
         );
         /* harmony import */ var pages_DepartmentWiseProducts_departmentChart__WEBPACK_IMPORTED_MODULE_8__ =
           __webpack_require__(/*! pages/DepartmentWiseProducts/departmentChart */ 128);
@@ -21150,7 +21709,7 @@ object-assign
 
         /***/
       },
-      /* 61 */
+      /* 67 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -21521,7 +22080,7 @@ object-assign
 
         /***/
       },
-      /* 62 */
+      /* 68 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -21583,17 +22142,17 @@ object-assign
         /***/
       },
       ,
-      /* 63 */ /* 64 */
+      /* 69 */ /* 70 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__64__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__70__;
 
         /***/
       },
-      /* 65 */
+      /* 71 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -21604,11 +22163,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 59);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 65);
 
         /***/
       },
-      /* 66 */
+      /* 72 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -21619,11 +22178,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 60);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 66);
 
         /***/
       },
-      /* 67 */
+      /* 73 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -21648,16 +22207,16 @@ object-assign
           /*! ../Breadcrumbs */ 14
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 68);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 74);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 69
+          /*! ./OperationMode */ 75
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 70
+          /*! ./PreparePolicy */ 76
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 71);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 72);
-        /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 79);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 77);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 78);
+        /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 84);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
@@ -21976,7 +22535,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 74 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -22160,7 +22719,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 75 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -22297,7 +22856,7 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 76 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -22389,7 +22948,7 @@ object-assign
 
         /***/
       },
-      /* 71 */
+      /* 77 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -22708,7 +23267,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 78 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -22725,7 +23284,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 73
+          /*! ./CreateNewOU */ 79
         );
 
         var Ou =
@@ -22912,7 +23471,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 79 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -23255,7 +23814,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 80 */
       /*!*********************************!*\
   !*** ./pages/_common/common.ts ***!
   \*********************************/
@@ -23311,7 +23870,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 81 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -23335,7 +23894,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 82 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -23543,35 +24102,7 @@ object-assign
 
         /***/
       },
-      /* 77 */
-      /*!*******************************************************************************!*\
-  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
-  \*******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
-
-        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
-
-        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
-
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
-
-        function _interopRequireDefault(obj) {
-          return obj && obj.__esModule ? obj : { default: obj };
-        }
-
-        module.exports = {
-          Transition: _Transition.default,
-          TransitionGroup: _TransitionGroup.default,
-          ReplaceTransition: _ReplaceTransition.default,
-          CSSTransition: _CSSTransition.default,
-        };
-
-        /***/
-      },
-      /* 78 */
+      /* 83 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/ChildMapping.js ***!
   \********************************************************************************************/
@@ -23727,7 +24258,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 84 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Review.tsx ***!
   \***************************************/
@@ -24022,7 +24553,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 85 */
       /*!*********************!*\
   !*** ./plugin.json ***!
   \*********************/
@@ -24034,7 +24565,7 @@ object-assign
 
         /***/
       },
-      /* 81 */
+      /* 86 */
       /*!****************************************!*\
   !*** ./pages/AmazonServices/index.tsx ***!
   \****************************************/
@@ -24045,7 +24576,7 @@ object-assign
           /* harmony export */ AmazonServices: () => /* binding */ AmazonServices,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
@@ -24063,19 +24594,19 @@ object-assign
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Wizard */ 88);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Wizard */ 93);
         /* harmony import */ var _DiscoveredAssets__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ./DiscoveredAssets */ 89
+          /*! ./DiscoveredAssets */ 94
         );
-        /* harmony import */ var _Billing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Billing */ 91);
+        /* harmony import */ var _Billing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Billing */ 96);
         /* harmony import */ var _ThreatAndSecurityEvents__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ./ThreatAndSecurityEvents */ 92
+          /*! ./ThreatAndSecurityEvents */ 97
         );
         /* harmony import */ var _CompliancePolicies__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ./CompliancePolicies */ 93
+          /*! ./CompliancePolicies */ 98
         );
-        /* harmony import */ var _Alerts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Alerts */ 94);
-        /* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Inputs */ 95);
+        /* harmony import */ var _Alerts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Alerts */ 99);
+        /* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Inputs */ 100);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
           /*! ../../constants */ 8
         );
@@ -24083,16 +24614,16 @@ object-assign
           /*! ../../components/ProductWiseServices */ 44
         );
         /* harmony import */ var _DepartmentWiseProducts_dummyData_departments_json__WEBPACK_IMPORTED_MODULE_15__ =
-          __webpack_require__(/*! ./../DepartmentWiseProducts/_dummyData/departments.json */ 97);
-        /* harmony import */ var _DepartmentWiseProducts_dummyData_products__WEBPACK_IMPORTED_MODULE_16__ =
-          __webpack_require__(/*! ./../DepartmentWiseProducts/_dummyData/products */ 98);
+          __webpack_require__(/*! ./../DepartmentWiseProducts/_dummyData/departments.json */ 102);
 
         // import *as dateFormat from "dateformat";
+
+        // import { products } from './../DepartmentWiseProducts/_dummyData/products';
 
         var AmazonServices =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_17__.__extends)(AmazonServices, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_16__.__extends)(AmazonServices, _super);
 
             function AmazonServices(props) {
               var _this = _super.call(this, props) || this;
@@ -24107,13 +24638,13 @@ object-assign
                 });
               };
 
-              _this.getAccounts = function (id, orgId) {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_17__.__awaiter)(_this, void 0, void 0, function () {
+              _this.getProductData = function () {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_16__.__awaiter)(_this, void 0, void 0, function () {
                   var err_1;
 
                   var _this = this;
 
-                  return (0, tslib__WEBPACK_IMPORTED_MODULE_17__.__generator)(this, function (_a) {
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_16__.__generator)(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         _a.trys.push([0, 2, , 3]);
@@ -24122,14 +24653,17 @@ object-assign
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_5__.RestService.getData(
-                            ''.concat(this.config.GET_ACCOUNT_BY_ID, '/').concat(id),
+                            ''.concat(this.config.GET_PRODUCT_DATA),
                             null,
                             null
                           ).then(function (response) {
+                            _this.manipulateDepartmentWiseProductData(response.organization.departmentList);
+
                             _this.setState({
-                              displaygetEnvironmentData: response,
-                              tableData: response.assetList,
-                            });
+                              product: response.organization.departmentList,
+                            }); // this.setProductGraphData();
+                            // this.setProductionOthers();
+                            // this.setServiceCostData();
                           }),
                         ];
 
@@ -24159,9 +24693,80 @@ object-assign
                 });
               };
 
-              _this.onClickOrganisationUnit = function (e, selectedorganization) {
-                console.log('selectedEnviornment', selectedorganization);
+              _this.manipulateDepartmentWiseProductData = function (departmentList) {
+                var _loop_1 = function (i) {
+                  var department = departmentList[i];
+                  var productList = department.productList;
+                  var newProductList = [];
+                  productList.forEach(function (product) {
+                    newProductList.push([product, product]);
+                  });
+                  department.productList = newProductList;
+                };
 
+                for (var i = 0; i < departmentList.length; i++) {
+                  _loop_1(i);
+                }
+
+                _this.setState({
+                  product: departmentList,
+                });
+              };
+
+              _this.getAccounts = function (id, orgId) {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_16__.__awaiter)(_this, void 0, void 0, function () {
+                  var err_2;
+
+                  var _this = this;
+
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_16__.__generator)(this, function (_a) {
+                    switch (_a.label) {
+                      case 0:
+                        _a.trys.push([0, 2, , 3]);
+
+                        return [
+                          4,
+                          /*yield*/
+                          _service_RestService__WEBPACK_IMPORTED_MODULE_5__.RestService.getData(
+                            ''.concat(this.config.GET_ACCOUNT_BY_ID, '/').concat(id),
+                            null,
+                            null
+                          ).then(function (response) {
+                            _this.setState({
+                              displaygetEnvironmentData: response,
+                              tableData: response.assetList,
+                            });
+                          }),
+                        ];
+
+                      case 1:
+                        _a.sent();
+
+                        return [
+                          3, /*break*/
+                          3,
+                        ];
+
+                      case 2:
+                        err_2 = _a.sent();
+                        console.log('Loading accounts failed. Error: ', err_2);
+                        return [
+                          3, /*break*/
+                          3,
+                        ];
+
+                      case 3:
+                        return [
+                          2,
+                          /*return*/
+                        ];
+                    }
+                  });
+                });
+              };
+
+              _this.onClickOrganisationUnit = function (e, selectedorganization) {
+                // console.log("selectedEnviornment", selectedorganization);
                 _this.OrganisationunitRef.current.toggle(selectedorganization);
               };
 
@@ -24200,7 +24805,7 @@ object-assign
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _components_ProductWiseServices__WEBPACK_IMPORTED_MODULE_14__.ProductWiseServices,
                       {
-                        product: _DepartmentWiseProducts_dummyData_products__WEBPACK_IMPORTED_MODULE_16__.products,
+                        product: _this.state.product,
                         type: 'amazonService',
                       }
                     )
@@ -24250,12 +24855,13 @@ object-assign
             }
 
             AmazonServices.prototype.componentDidMount = function () {
-              return (0, tslib__WEBPACK_IMPORTED_MODULE_17__.__awaiter)(this, void 0, void 0, function () {
+              return (0, tslib__WEBPACK_IMPORTED_MODULE_16__.__awaiter)(this, void 0, void 0, function () {
                 var queryPrm, asset_id, orgId;
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_17__.__generator)(this, function (_a) {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_16__.__generator)(this, function (_a) {
                   switch (_a.label) {
                     case 0:
                       queryPrm = new URLSearchParams(this.props.location.search);
+                      this.getProductData();
                       asset_id = queryPrm.get('asset_id');
                       orgId = queryPrm.get('org_id'); //console.log("asset id: " + asset_id);
 
@@ -24271,8 +24877,7 @@ object-assign
 
                       this.setState({
                         departmentWiseData:
-                          _DepartmentWiseProducts_dummyData_departments_json__WEBPACK_IMPORTED_MODULE_15__,
-                        product: _DepartmentWiseProducts_dummyData_products__WEBPACK_IMPORTED_MODULE_16__.products,
+                          _DepartmentWiseProducts_dummyData_departments_json__WEBPACK_IMPORTED_MODULE_15__, // product: products
                       });
                       return [
                         2,
@@ -24786,7 +25391,7 @@ object-assign
 
         /***/
       },
-      /* 82 */
+      /* 87 */
       /*!*********************!*\
   !*** ./img/aws.png ***!
   \*********************/
@@ -24802,7 +25407,7 @@ object-assign
 
         /***/
       },
-      /* 83 */
+      /* 88 */
       /*!********************************!*\
   !*** ./img/microsoftazure.png ***!
   \********************************/
@@ -24818,7 +25423,7 @@ object-assign
 
         /***/
       },
-      /* 84 */
+      /* 89 */
       /*!******************************!*\
   !*** ./img/google-cloud.png ***!
   \******************************/
@@ -24834,7 +25439,7 @@ object-assign
 
         /***/
       },
-      /* 85 */
+      /* 90 */
       /*!****************************!*\
   !*** ./img/kubernetes.png ***!
   \****************************/
@@ -24850,7 +25455,7 @@ object-assign
 
         /***/
       },
-      /* 86 */
+      /* 91 */
       /*!**********************!*\
   !*** ./img/jobs.png ***!
   \**********************/
@@ -24866,7 +25471,7 @@ object-assign
 
         /***/
       },
-      /* 87 */
+      /* 92 */
       /*!**********************!*\
   !*** ./img/icon.png ***!
   \**********************/
@@ -24882,7 +25487,7 @@ object-assign
 
         /***/
       },
-      /* 88 */
+      /* 93 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Wizard.tsx ***!
   \*****************************************/
@@ -25006,7 +25611,7 @@ object-assign
 
         /***/
       },
-      /* 89 */
+      /* 94 */
       /*!***************************************************!*\
   !*** ./pages/AmazonServices/DiscoveredAssets.tsx ***!
   \***************************************************/
@@ -25025,7 +25630,7 @@ object-assign
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../img */ 13);
         /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ 140);
         /* harmony import */ var _discovered_assets__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./_discovered_assets */ 90
+          /*! ./_discovered_assets */ 95
         );
 
         // import { RestService } from '../_service/RestService';
@@ -25978,7 +26583,7 @@ object-assign
 
         /***/
       },
-      /* 90 */
+      /* 95 */
       /*!****************************************************!*\
   !*** ./pages/AmazonServices/_discovered_assets.ts ***!
   \****************************************************/
@@ -28366,7 +28971,7 @@ object-assign
 
         /***/
       },
-      /* 91 */
+      /* 96 */
       /*!******************************************!*\
   !*** ./pages/AmazonServices/Billing.tsx ***!
   \******************************************/
@@ -28410,7 +29015,7 @@ object-assign
 
         /***/
       },
-      /* 92 */
+      /* 97 */
       /*!**********************************************************!*\
   !*** ./pages/AmazonServices/ThreatAndSecurityEvents.tsx ***!
   \**********************************************************/
@@ -28581,7 +29186,7 @@ object-assign
 
         /***/
       },
-      /* 93 */
+      /* 98 */
       /*!*****************************************************!*\
   !*** ./pages/AmazonServices/CompliancePolicies.tsx ***!
   \*****************************************************/
@@ -28795,7 +29400,7 @@ object-assign
 
         /***/
       },
-      /* 94 */
+      /* 99 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Alerts.tsx ***!
   \*****************************************/
@@ -28932,7 +29537,7 @@ object-assign
 
         /***/
       },
-      /* 95 */
+      /* 100 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Inputs.tsx ***!
   \*****************************************/
@@ -29106,7 +29711,7 @@ object-assign
 
         /***/
       },
-      /* 96 */
+      /* 101 */
       /*!****************************************************************!*\
   !*** ./components/ProductWiseServices/ServicesPerformance.tsx ***!
   \****************************************************************/
@@ -29132,10 +29737,10 @@ object-assign
             function ServicesPerformance(props) {
               var _this = _super.call(this, props) || this;
 
-              _this.toggleStageView = function (index) {
+              _this.toggleEnvironmentView = function (index) {
                 var product = _this.state.product;
-                product.deploymentEnvironmentList.forEach(function (service) {
-                  service.isOpen = false;
+                product.deploymentEnvironmentList.forEach(function (environment) {
+                  environment.isOpen = false;
                 });
                 product.deploymentEnvironmentList[index].isOpen = true;
 
@@ -29144,55 +29749,18 @@ object-assign
                 });
               };
 
-              _this.toggleServices = function (k, l) {
+              _this.toggleCategories = function (environmentIndex, categoryIndex) {
                 var product = _this.state.product;
-
-                if (product.deploymentEnvironmentList[k].serviceCategoryList[l].serviceList) {
-                  product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen =
-                    !product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen;
-
-                  _this.setState({
-                    product: product,
-                  });
-                }
-              }; // toggleServicesStage = (i: any, j: any) => {
-              //   const { product } = this.state;
-              //   console.log('call');
-              //   // product.deploymentEnvironmentList[i].serviceCategoryList[j].isOpen = !product.deploymentEnvironmentList[k].serviceCategoryList[l].isOpen;
-              //   // this.setState({
-              //   //   product
-              //   // });
-              // }
-
-              _this.handleView = function () {
-                _this.props.handleChangeViewOfProduct();
-              };
-
-              _this.openServices = function (indexArr) {
-                var product = _this.state.product;
-                var stage = product.deploymentEnvironmentList[indexArr[0]];
-
-                if (stage) {
-                  indexArr.splice(0, 1);
-                  var services = stage.serviceCategoryList;
-
-                  for (var i = 0; i < indexArr.length; i++) {
-                    var index = indexArr[i];
-
-                    if (i === indexArr.length - 1) {
-                      services[index].isOpen = !services[index].isOpen;
-                      break;
-                    }
-
-                    if (services[index] && services[index].services) {
-                      services = services[index].services;
-                    }
-                  }
-                }
+                product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen =
+                  !product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen;
 
                 _this.setState({
                   product: product,
                 });
+              };
+
+              _this.handleView = function () {
+                _this.props.handleChangeViewOfProduct();
               };
 
               _this.onClickMenu = function (k, l) {
@@ -29207,16 +29775,16 @@ object-assign
 
               _this.renderStages = function (deploymentEnvironmentList) {
                 if (deploymentEnvironmentList) {
-                  return deploymentEnvironmentList.map(function (stageData, stageNumber) {
+                  return deploymentEnvironmentList.map(function (environment, environmentIndex) {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       'li',
                       {
                         onClick: function () {
-                          return _this.toggleStageView(stageNumber);
+                          return _this.toggleEnvironmentView(environmentIndex);
                         },
-                        className: stageData.isOpen == true ? 'active' : '',
+                        className: environment.isOpen == true ? 'active' : '',
                       },
-                      stageData.name
+                      environment.name
                     );
                   });
                 }
@@ -29224,31 +29792,146 @@ object-assign
                 return [];
               };
 
-              _this.renderServices = function (services, indexArr) {
-                var retData = [];
-
-                if (services) {
-                  services.forEach(function (service, index) {
-                    // if (service.serviceList) {
-                    //   retData.push(
-                    //     <div className='tbody'>
-                    //       <div className='td title' onClick={() => this.openServices([...indexArr, index])}>
-                    //         <strong>{service.name}<i className={service.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
-                    //       </div>
-                    //       {
-                    //         service.isOpen ?
-                    //           this.renderServices(service.serviceList, [...indexArr, index]) : <></>
-                    //       }
-                    //     </div>
-                    //   );
-                    // } else if (service.serviceList) {
-                    retData.push(
+              _this.renderCategories = function (categories, environmentIndex) {
+                if (categories) {
+                  return categories.map(function (category, categoryIndex) {
+                    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'li',
+                      null,
+                      category.isOpen === false &&
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'icon',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('img', {
+                            src: _img__WEBPACK_IMPORTED_MODULE_1__.images.Icon,
+                            alt: '',
+                          })
+                        ),
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'div',
                         {
-                          className: 'table performance-table',
+                          className: category.isOpen === true ? 'heading full' : 'heading',
                         },
-                        index === 0 &&
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'span',
+                          {
+                            onClick: function () {
+                              return _this.toggleCategories(environmentIndex, categoryIndex);
+                            },
+                          },
+                          category.name
+                        ),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'icon',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'fa-icon',
+                              onClick: function () {
+                                return _this.toggleCategories(environmentIndex, categoryIndex);
+                              },
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                              className: category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down',
+                            })
+                          ),
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'edit',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                className: 'bars',
+                                onClick: function () {
+                                  return _this.onClickMenu(environmentIndex, categoryIndex);
+                                },
+                              },
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null)
+                            ),
+                            category.menuOpen == true &&
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'div',
+                                {
+                                  className: 'text-center open-create-menu',
+                                  style: {
+                                    right: '5px',
+                                    top: '30px',
+                                    backgroundColor: '#ffffff',
+                                  },
+                                },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'a',
+                                  {
+                                    href: '#',
+                                  },
+                                  ' Add Firewall '
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'a',
+                                  {
+                                    href: '#',
+                                  },
+                                  ' Remove Firewall '
+                                )
+                              )
+                          )
+                        )
+                      ),
+                      category.isOpen === true &&
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'content-table',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'table',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                className: 'thead',
+                              },
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'div',
+                                {
+                                  className: 'th',
+                                },
+                                'Name'
+                              )
+                            ),
+                            _this.renderTags(category.tagList, [environmentIndex, categoryIndex])
+                          )
+                        )
+                    );
+                  });
+                }
+
+                return [];
+              };
+
+              _this.renderTags = function (tags, indexArr) {
+                var retData = [];
+
+                if (tags) {
+                  tags.forEach(function (tag, index) {
+                    if (tag.serviceList && tag.serviceList.length > 0) {
+                      retData.push(
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'table performance-table',
+                          },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'div',
                             {
@@ -29259,7 +29942,7 @@ object-assign
                               {
                                 className: 'td',
                               },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Name')
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, tag.tagName)
                             ),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
@@ -29301,6 +29984,111 @@ object-assign
                               )
                             )
                           ),
+                          tag.serviceList &&
+                            tag.serviceList.map(function (service, i) {
+                              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'div',
+                                {
+                                  className: 'tbody',
+                                },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'div',
+                                  {
+                                    className: 'td',
+                                  },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, service.description)
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'div',
+                                  {
+                                    className: 'td',
+                                  },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'div',
+                                    {
+                                      className: 'progress-circle '.concat(
+                                        _this.getPerformanceClass(service.performance.score)
+                                      ),
+                                    },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                      className: 'fa fa-check-circle',
+                                    })
+                                  )
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'div',
+                                  {
+                                    className: 'td',
+                                  },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'div',
+                                    {
+                                      className: 'progress-circle '.concat(
+                                        _this.getPerformanceClass(service.availability.score)
+                                      ),
+                                    },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                      className: 'fa fa-check-circle',
+                                    })
+                                  )
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'div',
+                                  {
+                                    className: 'td',
+                                  },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'div',
+                                    {
+                                      className: 'progress-circle '.concat(
+                                        _this.getPerformanceClass(service.security.score)
+                                      ),
+                                    },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                      className: 'fa fa-check-circle',
+                                    })
+                                  )
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'div',
+                                  {
+                                    className: 'td',
+                                  },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'div',
+                                    {
+                                      className: 'progress-circle '.concat(
+                                        _this.getPerformanceClass(service.dataProtection.score)
+                                      ),
+                                    },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                      className: 'fa fa-check-circle',
+                                    })
+                                  )
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'div',
+                                  {
+                                    className: 'td',
+                                  },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'div',
+                                    {
+                                      className: 'progress-circle '.concat(
+                                        _this.getPerformanceClass(service.userExperiance.score)
+                                      ),
+                                    },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                      className: 'fa fa-check-circle',
+                                    })
+                                  )
+                                )
+                              );
+                            })
+                        )
+                      );
+                    } else {
+                      retData.push(
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
@@ -29309,127 +30097,36 @@ object-assign
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'div',
                             {
-                              className: 'td',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, service.name)
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'td',
+                              className: 'td title',
                             },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className:
-                                  service.performance.score > 75
-                                    ? 'progress-circle green'
-                                    : service.performance.score <= 75 && service.performance.score > 50
-                                    ? 'progress-circle orange'
-                                    : service.performance.score <= 50 && service.performance.score > 25
-                                    ? 'progress-circle yellow'
-                                    : 'progress-circle red',
-                              },
+                              'strong',
+                              null,
+                              tag.tagName,
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                className: 'fa fa-check-circle',
-                              })
-                            )
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'td',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className:
-                                  service.availability.score > 75
-                                    ? 'progress-circle green'
-                                    : service.availability.score <= 75 && service.availability.score > 50
-                                    ? 'progress-circle orange'
-                                    : service.availability.score <= 50 && service.availability.score > 25
-                                    ? 'progress-circle yellow'
-                                    : 'progress-circle red',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                className: 'fa fa-check-circle',
-                              })
-                            )
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'td',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className:
-                                  service.security.score > 75
-                                    ? 'progress-circle green'
-                                    : service.security.score <= 75 && service.security.score > 50
-                                    ? 'progress-circle orange'
-                                    : service.security.score <= 50 && service.security.score > 25
-                                    ? 'progress-circle yellow'
-                                    : 'progress-circle red',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                className: 'fa fa-check-circle',
-                              })
-                            )
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'td',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className:
-                                  service.dataProtection.score > 75
-                                    ? 'progress-circle green'
-                                    : service.dataProtection.score <= 75 && service.dataProtection.score > 50
-                                    ? 'progress-circle orange'
-                                    : service.dataProtection.score <= 50 && service.dataProtection.score > 25
-                                    ? 'progress-circle yellow'
-                                    : 'progress-circle red',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                className: 'fa fa-check-circle',
-                              })
-                            )
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'td',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className:
-                                  service.userExperiance.score > 75
-                                    ? 'progress-circle green'
-                                    : service.userExperiance.score <= 75 && service.userExperiance.score > 50
-                                    ? 'progress-circle orange'
-                                    : service.userExperiance.score <= 50 && service.userExperiance.score > 25
-                                    ? 'progress-circle yellow'
-                                    : 'progress-circle red',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                className: 'fa fa-check-circle',
+                                className: tag.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down',
                               })
                             )
                           )
                         )
-                      )
-                    ); // }
+                      );
+                    }
                   });
                 }
 
                 return retData;
+              };
+
+              _this.getPerformanceClass = function (score) {
+                if (score >= 75) {
+                  return 'green';
+                } else if (score >= 50) {
+                  return 'orange';
+                } else if (score >= 25) {
+                  return 'yellow';
+                } else {
+                  return 'red';
+                }
               };
 
               _this.state = {
@@ -29521,8 +30218,8 @@ object-assign
                         )
                       ),
                       product.deploymentEnvironmentList &&
-                        product.deploymentEnvironmentList.map(function (stage, stageIndex) {
-                          if (stage.isOpen == true) {
+                        product.deploymentEnvironmentList.map(function (environment, environmentIndex) {
+                          if (environment.isOpen == true) {
                             return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
                               {
@@ -29531,125 +30228,7 @@ object-assign
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'ul',
                                 null,
-                                stage.serviceCategoryList &&
-                                  stage.serviceCategoryList.map(function (mainservicedata, mainindex) {
-                                    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'li',
-                                      null,
-                                      !mainservicedata.isOpen &&
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                          'div',
-                                          {
-                                            className: 'icon',
-                                          },
-                                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('img', {
-                                            src: _img__WEBPACK_IMPORTED_MODULE_1__.images.Icon,
-                                            alt: '',
-                                          })
-                                        ),
-                                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                        'div',
-                                        {
-                                          className:
-                                            mainservicedata.isOpen === true && mainservicedata.serviceList
-                                              ? 'heading full'
-                                              : 'heading',
-                                        },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                          'span',
-                                          {
-                                            onClick: function () {
-                                              return _this.toggleServices(stageIndex, mainindex);
-                                            },
-                                          },
-                                          mainservicedata.name
-                                        ),
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                          'div',
-                                          {
-                                            className: 'icon',
-                                          },
-                                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                            'div',
-                                            {
-                                              className: 'fa-icon',
-                                              onClick: function () {
-                                                return _this.toggleServices(stageIndex, mainindex);
-                                              },
-                                            },
-                                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                              className:
-                                                mainservicedata.isOpen === true
-                                                  ? 'fa fa-chevron-up'
-                                                  : 'fa fa-chevron-down',
-                                            })
-                                          ),
-                                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                            'div',
-                                            {
-                                              className: 'edit',
-                                            },
-                                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                              'div',
-                                              {
-                                                className: 'bars',
-                                                onClick: function () {
-                                                  return _this.onClickMenu(stageIndex, mainindex);
-                                                },
-                                              },
-                                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null),
-                                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null),
-                                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null)
-                                            ),
-                                            mainservicedata.menuOpen == true &&
-                                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                                'div',
-                                                {
-                                                  className: 'text-center open-create-menu',
-                                                  style: {
-                                                    right: '5px',
-                                                    top: '30px',
-                                                    backgroundColor: '#ffffff',
-                                                  },
-                                                },
-                                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                                  'a',
-                                                  {
-                                                    href: '#',
-                                                  },
-                                                  ' Add Firewall '
-                                                ),
-                                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                                  'a',
-                                                  {
-                                                    href: '#',
-                                                  },
-                                                  ' Remove Firewall '
-                                                )
-                                              )
-                                          )
-                                        )
-                                      ),
-                                      mainservicedata.isOpen === true &&
-                                        mainservicedata.serviceList &&
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                          'div',
-                                          {
-                                            className: 'content-table',
-                                          },
-                                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                            'div',
-                                            {
-                                              className: 'table',
-                                            },
-                                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-                                              className: 'thead',
-                                            }),
-                                            _this.renderServices(mainservicedata.serviceList, [stageIndex, mainindex])
-                                          )
-                                        )
-                                    );
-                                  })
+                                _this.renderCategories(environment.serviceCategoryList, environmentIndex)
                               )
                             );
                           } else {
@@ -29667,7 +30246,7 @@ object-assign
 
         /***/
       },
-      /* 97 */
+      /* 102 */
       /*!******************************************************************!*\
   !*** ./pages/DepartmentWiseProducts/_dummyData/departments.json ***!
   \******************************************************************/
@@ -29679,9571 +30258,7 @@ object-assign
 
         /***/
       },
-      /* 98 */
-      /*!*************************************************************!*\
-  !*** ./pages/DepartmentWiseProducts/_dummyData/products.ts ***!
-  \*************************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ products: () => /* binding */ products,
-          /* harmony export */
-        });
-        var products = [
-          {
-            title: 'Human Resources',
-            productList: [
-              [
-                {
-                  title: 'EMS',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'Name',
-                              list: [
-                                {
-                                  title: 'Firewall',
-                                  performance: 20,
-                                  availibility: 10,
-                                  security: '30',
-                                  data_protection: 70,
-                                  user_exp: 80,
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business 1 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway 2 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Stage',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Devlopment',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  title: 'EMS',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'Name',
-                              list: [
-                                {
-                                  title: 'Firewall',
-                                  performance: '70',
-                                  availibility: '50',
-                                  security: '30',
-                                  data_protection: 70,
-                                  user_exp: 80,
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business 1 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway 2 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Stage',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Devlopment',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-              [
-                {
-                  title: 'Procurement',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  title: 'Procurement',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-          {
-            title: 'IT infra',
-            productList: [
-              [
-                {
-                  title: 'EMS',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'Name',
-                              list: [
-                                {
-                                  title: 'Firewall',
-                                  performance: '70',
-                                  availibility: '50',
-                                  security: '30',
-                                  data_protection: 70,
-                                  user_exp: 80,
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business 1 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway 2 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Stage',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Devlopment',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  title: 'EMS',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'Name',
-                              list: [
-                                {
-                                  title: 'Firewall',
-                                  performance: '70',
-                                  availibility: '50',
-                                  security: '30',
-                                  data_protection: 70,
-                                  user_exp: 80,
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business 1 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway 2 Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Stage',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Devlopment',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-              [
-                {
-                  title: 'Procurement',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  title: 'Procurement',
-                  isOpen: false,
-                  stages: [
-                    {
-                      stage: 'Production',
-                      isOpen: true,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      stage: 'Testing',
-                      isOpen: false,
-                      services: [
-                        {
-                          title: 'Fire Wall',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Load Balancer',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              isOpen: false,
-                              services: [
-                                {
-                                  title: 'App services',
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Business Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          title: 'Gateway Services',
-                          menuOpen: false,
-                          isOpen: false,
-                          services: [
-                            {
-                              title: 'admission',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                            {
-                              title: 'Fee',
-                              services: [
-                                {
-                                  title: 'App services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'List & Act',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Admission',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                                {
-                                  title: 'Data Services',
-                                  isOpen: false,
-                                  list: [
-                                    {
-                                      title: 'Postgre SQL',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                    {
-                                      title: 'Elastic Search',
-                                      performance: '70',
-                                      availibility: '50',
-                                      security: '30',
-                                      data_protection: 70,
-                                      user_exp: 80,
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        ];
-
-        /***/
-      },
-      /* 99 */
+      /* 103 */
       /*!**************************************!*\
   !*** ./pages/Environments/index.tsx ***!
   \**************************************/
@@ -39275,7 +30290,7 @@ object-assign
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
-        /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Action */ 100);
+        /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Action */ 104);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
           /*! ../../constants */ 8
         );
@@ -40710,7 +31725,7 @@ object-assign
 
         /***/
       },
-      /* 100 */
+      /* 104 */
       /*!***************************************!*\
   !*** ./pages/Environments/Action.tsx ***!
   \***************************************/
@@ -40739,7 +31754,7 @@ object-assign
           /*! ../_service/RestService */ 7
         );
         /* harmony import */ var _components_AlertMessage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../components/AlertMessage */ 101
+          /*! ../../components/AlertMessage */ 105
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../../constants */ 8
@@ -41505,7 +32520,7 @@ object-assign
 
         /***/
       },
-      /* 101 */
+      /* 105 */
       /*!*************************************!*\
   !*** ./components/AlertMessage.tsx ***!
   \*************************************/
@@ -41607,528 +32622,7 @@ object-assign
 
         /***/
       },
-      /* 102 */
-      /*!******************************************************************************!*\
-  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
-  \******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        if (false) {
-        } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 103);
-        }
-
-        /***/
-      },
-      /* 103 */
-      /*!*************************************************************************************************!*\
-  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
-  \*************************************************************************************************/
-      /***/ (__unused_webpack_module, exports) => {
-        'use strict';
-        /** @license React v16.13.1
-         * react-is.development.js
-         *
-         * Copyright (c) Facebook, Inc. and its affiliates.
-         *
-         * This source code is licensed under the MIT license found in the
-         * LICENSE file in the root directory of this source tree.
-         */
-
-        if (true) {
-          (function () {
-            'use strict';
-
-            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-            // nor polyfill, then a plain number is used for performance.
-            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-            // (unstable) APIs that have been removed. Can we remove the symbols?
-
-            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-            function isValidElementType(type) {
-              return (
-                typeof type === 'string' ||
-                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-                type === REACT_FRAGMENT_TYPE ||
-                type === REACT_CONCURRENT_MODE_TYPE ||
-                type === REACT_PROFILER_TYPE ||
-                type === REACT_STRICT_MODE_TYPE ||
-                type === REACT_SUSPENSE_TYPE ||
-                type === REACT_SUSPENSE_LIST_TYPE ||
-                (typeof type === 'object' &&
-                  type !== null &&
-                  (type.$$typeof === REACT_LAZY_TYPE ||
-                    type.$$typeof === REACT_MEMO_TYPE ||
-                    type.$$typeof === REACT_PROVIDER_TYPE ||
-                    type.$$typeof === REACT_CONTEXT_TYPE ||
-                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
-                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
-                    type.$$typeof === REACT_RESPONDER_TYPE ||
-                    type.$$typeof === REACT_SCOPE_TYPE ||
-                    type.$$typeof === REACT_BLOCK_TYPE))
-              );
-            }
-
-            function typeOf(object) {
-              if (typeof object === 'object' && object !== null) {
-                var $$typeof = object.$$typeof;
-
-                switch ($$typeof) {
-                  case REACT_ELEMENT_TYPE:
-                    var type = object.type;
-
-                    switch (type) {
-                      case REACT_ASYNC_MODE_TYPE:
-                      case REACT_CONCURRENT_MODE_TYPE:
-                      case REACT_FRAGMENT_TYPE:
-                      case REACT_PROFILER_TYPE:
-                      case REACT_STRICT_MODE_TYPE:
-                      case REACT_SUSPENSE_TYPE:
-                        return type;
-
-                      default:
-                        var $$typeofType = type && type.$$typeof;
-
-                        switch ($$typeofType) {
-                          case REACT_CONTEXT_TYPE:
-                          case REACT_FORWARD_REF_TYPE:
-                          case REACT_LAZY_TYPE:
-                          case REACT_MEMO_TYPE:
-                          case REACT_PROVIDER_TYPE:
-                            return $$typeofType;
-
-                          default:
-                            return $$typeof;
-                        }
-                    }
-
-                  case REACT_PORTAL_TYPE:
-                    return $$typeof;
-                }
-              }
-
-              return undefined;
-            } // AsyncMode is deprecated along with isAsyncMode
-
-            var AsyncMode = REACT_ASYNC_MODE_TYPE;
-            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-            var ContextConsumer = REACT_CONTEXT_TYPE;
-            var ContextProvider = REACT_PROVIDER_TYPE;
-            var Element = REACT_ELEMENT_TYPE;
-            var ForwardRef = REACT_FORWARD_REF_TYPE;
-            var Fragment = REACT_FRAGMENT_TYPE;
-            var Lazy = REACT_LAZY_TYPE;
-            var Memo = REACT_MEMO_TYPE;
-            var Portal = REACT_PORTAL_TYPE;
-            var Profiler = REACT_PROFILER_TYPE;
-            var StrictMode = REACT_STRICT_MODE_TYPE;
-            var Suspense = REACT_SUSPENSE_TYPE;
-            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-            function isAsyncMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
-                      'and will be removed in React 17+. Update your code to use ' +
-                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
-                  );
-                }
-              }
-
-              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-            }
-            function isConcurrentMode(object) {
-              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-            }
-            function isContextConsumer(object) {
-              return typeOf(object) === REACT_CONTEXT_TYPE;
-            }
-            function isContextProvider(object) {
-              return typeOf(object) === REACT_PROVIDER_TYPE;
-            }
-            function isElement(object) {
-              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-            }
-            function isForwardRef(object) {
-              return typeOf(object) === REACT_FORWARD_REF_TYPE;
-            }
-            function isFragment(object) {
-              return typeOf(object) === REACT_FRAGMENT_TYPE;
-            }
-            function isLazy(object) {
-              return typeOf(object) === REACT_LAZY_TYPE;
-            }
-            function isMemo(object) {
-              return typeOf(object) === REACT_MEMO_TYPE;
-            }
-            function isPortal(object) {
-              return typeOf(object) === REACT_PORTAL_TYPE;
-            }
-            function isProfiler(object) {
-              return typeOf(object) === REACT_PROFILER_TYPE;
-            }
-            function isStrictMode(object) {
-              return typeOf(object) === REACT_STRICT_MODE_TYPE;
-            }
-            function isSuspense(object) {
-              return typeOf(object) === REACT_SUSPENSE_TYPE;
-            }
-
-            exports.AsyncMode = AsyncMode;
-            exports.ConcurrentMode = ConcurrentMode;
-            exports.ContextConsumer = ContextConsumer;
-            exports.ContextProvider = ContextProvider;
-            exports.Element = Element;
-            exports.ForwardRef = ForwardRef;
-            exports.Fragment = Fragment;
-            exports.Lazy = Lazy;
-            exports.Memo = Memo;
-            exports.Portal = Portal;
-            exports.Profiler = Profiler;
-            exports.StrictMode = StrictMode;
-            exports.Suspense = Suspense;
-            exports.isAsyncMode = isAsyncMode;
-            exports.isConcurrentMode = isConcurrentMode;
-            exports.isContextConsumer = isContextConsumer;
-            exports.isContextProvider = isContextProvider;
-            exports.isElement = isElement;
-            exports.isForwardRef = isForwardRef;
-            exports.isFragment = isFragment;
-            exports.isLazy = isLazy;
-            exports.isMemo = isMemo;
-            exports.isPortal = isPortal;
-            exports.isProfiler = isProfiler;
-            exports.isStrictMode = isStrictMode;
-            exports.isSuspense = isSuspense;
-            exports.isValidElementType = isValidElementType;
-            exports.typeOf = typeOf;
-          })();
-        }
-
-        /***/
-      },
-      /* 104 */
-      /*!*****************************************!*\
-  !*** ../node_modules/react-is/index.js ***!
-  \*****************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        if (false) {
-        } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 105);
-        }
-
-        /***/
-      },
-      /* 105 */
-      /*!************************************************************!*\
-  !*** ../node_modules/react-is/cjs/react-is.development.js ***!
-  \************************************************************/
-      /***/ (__unused_webpack_module, exports) => {
-        'use strict';
-        /** @license React v17.0.2
-         * react-is.development.js
-         *
-         * Copyright (c) Facebook, Inc. and its affiliates.
-         *
-         * This source code is licensed under the MIT license found in the
-         * LICENSE file in the root directory of this source tree.
-         */
-
-        if (true) {
-          (function () {
-            'use strict';
-
-            // ATTENTION
-            // When adding new symbols to this file,
-            // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-            // nor polyfill, then a plain number is used for performance.
-            var REACT_ELEMENT_TYPE = 0xeac7;
-            var REACT_PORTAL_TYPE = 0xeaca;
-            var REACT_FRAGMENT_TYPE = 0xeacb;
-            var REACT_STRICT_MODE_TYPE = 0xeacc;
-            var REACT_PROFILER_TYPE = 0xead2;
-            var REACT_PROVIDER_TYPE = 0xeacd;
-            var REACT_CONTEXT_TYPE = 0xeace;
-            var REACT_FORWARD_REF_TYPE = 0xead0;
-            var REACT_SUSPENSE_TYPE = 0xead1;
-            var REACT_SUSPENSE_LIST_TYPE = 0xead8;
-            var REACT_MEMO_TYPE = 0xead3;
-            var REACT_LAZY_TYPE = 0xead4;
-            var REACT_BLOCK_TYPE = 0xead9;
-            var REACT_SERVER_BLOCK_TYPE = 0xeada;
-            var REACT_FUNDAMENTAL_TYPE = 0xead5;
-            var REACT_SCOPE_TYPE = 0xead7;
-            var REACT_OPAQUE_ID_TYPE = 0xeae0;
-            var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
-            var REACT_OFFSCREEN_TYPE = 0xeae2;
-            var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
-
-            if (typeof Symbol === 'function' && Symbol.for) {
-              var symbolFor = Symbol.for;
-              REACT_ELEMENT_TYPE = symbolFor('react.element');
-              REACT_PORTAL_TYPE = symbolFor('react.portal');
-              REACT_FRAGMENT_TYPE = symbolFor('react.fragment');
-              REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
-              REACT_PROFILER_TYPE = symbolFor('react.profiler');
-              REACT_PROVIDER_TYPE = symbolFor('react.provider');
-              REACT_CONTEXT_TYPE = symbolFor('react.context');
-              REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
-              REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
-              REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
-              REACT_MEMO_TYPE = symbolFor('react.memo');
-              REACT_LAZY_TYPE = symbolFor('react.lazy');
-              REACT_BLOCK_TYPE = symbolFor('react.block');
-              REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
-              REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
-              REACT_SCOPE_TYPE = symbolFor('react.scope');
-              REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
-              REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
-              REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
-              REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
-            }
-
-            // Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
-
-            var enableScopeAPI = false; // Experimental Create Event Handle API.
-
-            function isValidElementType(type) {
-              if (typeof type === 'string' || typeof type === 'function') {
-                return true;
-              } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
-
-              if (
-                type === REACT_FRAGMENT_TYPE ||
-                type === REACT_PROFILER_TYPE ||
-                type === REACT_DEBUG_TRACING_MODE_TYPE ||
-                type === REACT_STRICT_MODE_TYPE ||
-                type === REACT_SUSPENSE_TYPE ||
-                type === REACT_SUSPENSE_LIST_TYPE ||
-                type === REACT_LEGACY_HIDDEN_TYPE ||
-                enableScopeAPI
-              ) {
-                return true;
-              }
-
-              if (typeof type === 'object' && type !== null) {
-                if (
-                  type.$$typeof === REACT_LAZY_TYPE ||
-                  type.$$typeof === REACT_MEMO_TYPE ||
-                  type.$$typeof === REACT_PROVIDER_TYPE ||
-                  type.$$typeof === REACT_CONTEXT_TYPE ||
-                  type.$$typeof === REACT_FORWARD_REF_TYPE ||
-                  type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
-                  type.$$typeof === REACT_BLOCK_TYPE ||
-                  type[0] === REACT_SERVER_BLOCK_TYPE
-                ) {
-                  return true;
-                }
-              }
-
-              return false;
-            }
-
-            function typeOf(object) {
-              if (typeof object === 'object' && object !== null) {
-                var $$typeof = object.$$typeof;
-
-                switch ($$typeof) {
-                  case REACT_ELEMENT_TYPE:
-                    var type = object.type;
-
-                    switch (type) {
-                      case REACT_FRAGMENT_TYPE:
-                      case REACT_PROFILER_TYPE:
-                      case REACT_STRICT_MODE_TYPE:
-                      case REACT_SUSPENSE_TYPE:
-                      case REACT_SUSPENSE_LIST_TYPE:
-                        return type;
-
-                      default:
-                        var $$typeofType = type && type.$$typeof;
-
-                        switch ($$typeofType) {
-                          case REACT_CONTEXT_TYPE:
-                          case REACT_FORWARD_REF_TYPE:
-                          case REACT_LAZY_TYPE:
-                          case REACT_MEMO_TYPE:
-                          case REACT_PROVIDER_TYPE:
-                            return $$typeofType;
-
-                          default:
-                            return $$typeof;
-                        }
-                    }
-
-                  case REACT_PORTAL_TYPE:
-                    return $$typeof;
-                }
-              }
-
-              return undefined;
-            }
-            var ContextConsumer = REACT_CONTEXT_TYPE;
-            var ContextProvider = REACT_PROVIDER_TYPE;
-            var Element = REACT_ELEMENT_TYPE;
-            var ForwardRef = REACT_FORWARD_REF_TYPE;
-            var Fragment = REACT_FRAGMENT_TYPE;
-            var Lazy = REACT_LAZY_TYPE;
-            var Memo = REACT_MEMO_TYPE;
-            var Portal = REACT_PORTAL_TYPE;
-            var Profiler = REACT_PROFILER_TYPE;
-            var StrictMode = REACT_STRICT_MODE_TYPE;
-            var Suspense = REACT_SUSPENSE_TYPE;
-            var hasWarnedAboutDeprecatedIsAsyncMode = false;
-            var hasWarnedAboutDeprecatedIsConcurrentMode = false; // AsyncMode should be deprecated
-
-            function isAsyncMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
-                  );
-                }
-              }
-
-              return false;
-            }
-            function isConcurrentMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsConcurrentMode) {
-                  hasWarnedAboutDeprecatedIsConcurrentMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isConcurrentMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
-                  );
-                }
-              }
-
-              return false;
-            }
-            function isContextConsumer(object) {
-              return typeOf(object) === REACT_CONTEXT_TYPE;
-            }
-            function isContextProvider(object) {
-              return typeOf(object) === REACT_PROVIDER_TYPE;
-            }
-            function isElement(object) {
-              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-            }
-            function isForwardRef(object) {
-              return typeOf(object) === REACT_FORWARD_REF_TYPE;
-            }
-            function isFragment(object) {
-              return typeOf(object) === REACT_FRAGMENT_TYPE;
-            }
-            function isLazy(object) {
-              return typeOf(object) === REACT_LAZY_TYPE;
-            }
-            function isMemo(object) {
-              return typeOf(object) === REACT_MEMO_TYPE;
-            }
-            function isPortal(object) {
-              return typeOf(object) === REACT_PORTAL_TYPE;
-            }
-            function isProfiler(object) {
-              return typeOf(object) === REACT_PROFILER_TYPE;
-            }
-            function isStrictMode(object) {
-              return typeOf(object) === REACT_STRICT_MODE_TYPE;
-            }
-            function isSuspense(object) {
-              return typeOf(object) === REACT_SUSPENSE_TYPE;
-            }
-
-            exports.ContextConsumer = ContextConsumer;
-            exports.ContextProvider = ContextProvider;
-            exports.Element = Element;
-            exports.ForwardRef = ForwardRef;
-            exports.Fragment = Fragment;
-            exports.Lazy = Lazy;
-            exports.Memo = Memo;
-            exports.Portal = Portal;
-            exports.Profiler = Profiler;
-            exports.StrictMode = StrictMode;
-            exports.Suspense = Suspense;
-            exports.isAsyncMode = isAsyncMode;
-            exports.isConcurrentMode = isConcurrentMode;
-            exports.isContextConsumer = isContextConsumer;
-            exports.isContextProvider = isContextProvider;
-            exports.isElement = isElement;
-            exports.isForwardRef = isForwardRef;
-            exports.isFragment = isFragment;
-            exports.isLazy = isLazy;
-            exports.isMemo = isMemo;
-            exports.isPortal = isPortal;
-            exports.isProfiler = isProfiler;
-            exports.isStrictMode = isStrictMode;
-            exports.isSuspense = isSuspense;
-            exports.isValidElementType = isValidElementType;
-            exports.typeOf = typeOf;
-          })();
-        }
-
-        /***/
-      },
       /* 106 */
-      /*!*****************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
-  \*****************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _createClass,
-          /* harmony export */
-        });
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ('value' in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          Object.defineProperty(Constructor, 'prototype', {
-            writable: false,
-          });
-          return Constructor;
-        }
-
-        /***/
-      },
-      /* 107 */
       /*!*********************************************************!*\
   !*** ../node_modules/css-vendor/dist/css-vendor.esm.js ***!
   \*********************************************************/
@@ -42729,7 +33223,7 @@ object-assign
 
         /***/
       },
-      /* 108 */
+      /* 107 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
   \***********************************************************************/
@@ -42750,7 +33244,7 @@ object-assign
 
         /***/
       },
-      /* 109 */
+      /* 108 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
   \*********************************************************************/
@@ -42768,7 +33262,7 @@ object-assign
 
         /***/
       },
-      /* 110 */
+      /* 109 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js ***!
   \***********************************************************************/
@@ -42787,7 +33281,7 @@ object-assign
 
         /***/
       },
-      /* 111 */
+      /* 110 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
   \********************************************************************/
@@ -42804,7 +33298,7 @@ object-assign
 
         /***/
       },
-      /* 112 */
+      /* 111 */
       /*!**************************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
   \**************************************************************************/
@@ -42847,7 +33341,7 @@ object-assign
 
         /***/
       },
-      /* 113 */
+      /* 112 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
   \*********************************************************************/
@@ -42866,7 +33360,7 @@ object-assign
 
         /***/
       },
-      /* 114 */
+      /* 113 */
       /*!************************************!*\
   !*** ./pages/Kubernetes/index.tsx ***!
   \************************************/
@@ -42926,7 +33420,7 @@ object-assign
 
         /***/
       },
-      /* 115 */
+      /* 114 */
       /*!****************************************!*\
   !*** ./pages/StorageDetails/index.tsx ***!
   \****************************************/
@@ -42950,7 +33444,7 @@ object-assign
         /* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ../Breadcrumbs */ 14
         );
-        /* harmony import */ var _Node__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Node */ 116);
+        /* harmony import */ var _Node__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Node */ 115);
 
         // import { PLUGIN_BASE_URL } from '../../constants';
 
@@ -43189,7 +33683,7 @@ object-assign
 
         /***/
       },
-      /* 116 */
+      /* 115 */
       /*!*********************************************!*\
   !*** ./pages/StorageDetails/Node/index.tsx ***!
   \*********************************************/
@@ -43207,11 +33701,11 @@ object-assign
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../img */ 13);
         /* harmony import */ var _WebServiceWizard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./WebServiceWizard */ 117
+          /*! ./WebServiceWizard */ 116
         );
-        /* harmony import */ var _Entity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Entity */ 118);
+        /* harmony import */ var _Entity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Entity */ 117);
         /* harmony import */ var _Performance__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./Performance */ 119
+          /*! ./Performance */ 118
         );
 
         var Node =
@@ -43480,7 +33974,7 @@ object-assign
 
         /***/
       },
-      /* 117 */
+      /* 116 */
       /*!********************************************************!*\
   !*** ./pages/StorageDetails/Node/WebServiceWizard.tsx ***!
   \********************************************************/
@@ -43621,7 +34115,7 @@ object-assign
 
         /***/
       },
-      /* 118 */
+      /* 117 */
       /*!**********************************************!*\
   !*** ./pages/StorageDetails/Node/Entity.tsx ***!
   \**********************************************/
@@ -43757,7 +34251,7 @@ object-assign
 
         /***/
       },
-      /* 119 */
+      /* 118 */
       /*!***************************************************!*\
   !*** ./pages/StorageDetails/Node/Performance.tsx ***!
   \***************************************************/
@@ -43773,23 +34267,23 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Wizard */ 120);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Wizard */ 119);
         /* harmony import */ var _VerifyInputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./VerifyInputs */ 121
+          /*! ./VerifyInputs */ 120
         );
         /* harmony import */ var _EnableDashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./EnableDashboard */ 122
+          /*! ./EnableDashboard */ 121
         );
-        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Preview */ 123);
+        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Preview */ 122);
         /* harmony import */ var _VerifyAndSave__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./VerifyAndSave */ 124
+          /*! ./VerifyAndSave */ 123
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../../_service/RestService */ 7
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../config */ 5);
         /* harmony import */ var _Components_AlertMessage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../../Components/AlertMessage */ 125
+          /*! ../../Components/AlertMessage */ 124
         );
 
         var Performance =
@@ -44629,7 +35123,7 @@ object-assign
 
         /***/
       },
-      /* 120 */
+      /* 119 */
       /*!**********************************************!*\
   !*** ./pages/StorageDetails/Node/Wizard.tsx ***!
   \**********************************************/
@@ -44806,7 +35300,7 @@ object-assign
 
         /***/
       },
-      /* 121 */
+      /* 120 */
       /*!****************************************************!*\
   !*** ./pages/StorageDetails/Node/VerifyInputs.tsx ***!
   \****************************************************/
@@ -45311,7 +35805,7 @@ object-assign
 
         /***/
       },
-      /* 122 */
+      /* 121 */
       /*!*******************************************************!*\
   !*** ./pages/StorageDetails/Node/EnableDashboard.tsx ***!
   \*******************************************************/
@@ -45638,7 +36132,7 @@ object-assign
 
         /***/
       },
-      /* 123 */
+      /* 122 */
       /*!***********************************************!*\
   !*** ./pages/StorageDetails/Node/Preview.tsx ***!
   \***********************************************/
@@ -45860,7 +36354,7 @@ object-assign
 
         /***/
       },
-      /* 124 */
+      /* 123 */
       /*!*****************************************************!*\
   !*** ./pages/StorageDetails/Node/VerifyAndSave.tsx ***!
   \*****************************************************/
@@ -46047,7 +36541,7 @@ object-assign
 
         /***/
       },
-      /* 125 */
+      /* 124 */
       /*!*******************************************!*\
   !*** ./pages/Components/AlertMessage.tsx ***!
   \*******************************************/
@@ -46151,7 +36645,7 @@ object-assign
 
         /***/
       },
-      /* 126 */
+      /* 125 */
       /*!************************************************!*\
   !*** ./pages/DepartmentWiseProducts/index.tsx ***!
   \************************************************/
@@ -46162,7 +36656,7 @@ object-assign
           /* harmony export */ DepartmentWiseProducts: () => /* binding */ DepartmentWiseProducts,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
@@ -46187,16 +36681,20 @@ object-assign
           /*! ../../components/ProductWiseServices */ 44
         );
         /* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-circular-progressbar */ 127
+          /*! react-circular-progressbar */ 126
         );
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__ =
           __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 51);
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
-        /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-          /*! react-chartjs-2 */ 57
+        /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+          /*! react-chartjs-2 */ 63
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 26);
+        /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ 127);
+        /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/ __webpack_require__.n(
+          lodash__WEBPACK_IMPORTED_MODULE_11__
+        );
 
         // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 
@@ -46212,7 +36710,7 @@ object-assign
         var DepartmentWiseProducts =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_11__.__extends)(DepartmentWiseProducts, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__extends)(DepartmentWiseProducts, _super);
 
             function DepartmentWiseProducts(props) {
               var _this = _super.call(this, props) || this;
@@ -46224,12 +36722,12 @@ object-assign
               };
 
               _this.getDepartmentData = function () {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(_this, void 0, void 0, function () {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__awaiter)(_this, void 0, void 0, function () {
                   var err_1;
 
                   var _this = this;
 
-                  return (0, tslib__WEBPACK_IMPORTED_MODULE_11__.__generator)(this, function (_a) {
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__generator)(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         _a.trys.push([0, 2, , 3]);
@@ -46238,12 +36736,18 @@ object-assign
                           4,
                           /*yield*/
                           _service_RestService__WEBPACK_IMPORTED_MODULE_5__.RestService.getData(
-                            ''.concat(this.config.GET_DEPARTMENTWISE_PRODUCT),
+                            ''.concat(this.config.GET_PRODUCT_DATA),
                             null,
                             null
                           ).then(function (response) {
+                            _this.manipulateDepartmentWiseProductData(
+                              lodash__WEBPACK_IMPORTED_MODULE_11___default().cloneDeep(
+                                response.organization.departmentList
+                              )
+                            );
+
                             _this.setState({
-                              departmentWiseData: response,
+                              departmentWiseData: response.organization.departmentList,
                             });
 
                             _this.setProductGraphData();
@@ -46281,12 +36785,9 @@ object-assign
               };
 
               _this.getProductData = function () {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(_this, void 0, void 0, function () {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__awaiter)(_this, void 0, void 0, function () {
                   var err_2;
-
-                  var _this = this;
-
-                  return (0, tslib__WEBPACK_IMPORTED_MODULE_11__.__generator)(this, function (_a) {
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_12__.__generator)(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         _a.trys.push([0, 2, , 3]);
@@ -46299,13 +36800,9 @@ object-assign
                             null,
                             null
                           ).then(function (response) {
-                            _this.manipulateDepartmentWiseProductData(response.organization.departmentList);
-
-                            _this.setState({
-                              product: response.organization.departmentList,
-                            }); // this.setProductGraphData();
-                            // this.setProductionOthers();
-                            // this.setServiceCostData();
+                            // this.setState({
+                            //   product: response.organization.departmentList,
+                            // });
                           }),
                         ];
 
@@ -46381,10 +36878,10 @@ object-assign
                           labels.push(product.name);
                         }
 
-                        if (product.serviceList) {
-                          for (var k = 0; k < product.serviceList.length; k++) {
-                            var service = product.serviceList[k];
-                            count += service.totalBillingAmount;
+                        if (product.deploymentEnvironmentList) {
+                          for (var k = 0; k < product.deploymentEnvironmentList.length; k++) {
+                            var service = product.deploymentEnvironmentList[k];
+                            count += service.productBilling.amount;
                           }
                         }
                       }
@@ -46427,16 +36924,10 @@ object-assign
                           for (var k = 0; k < product.deploymentEnvironmentList.length; k++) {
                             var service = product.deploymentEnvironmentList[k];
 
-                            if (service.serviceList) {
-                              for (var m = 0; m < service.serviceList.length; m++) {
-                                var list = service.serviceList[m];
-
-                                if (service.name === 'Production') {
-                                  productioncount += list.totalBillingAmount;
-                                } else {
-                                  otherCount += list.totalBillingAmount;
-                                }
-                              }
+                            if (service.name === 'Production') {
+                              productioncount += service.productBilling.amount;
+                            } else {
+                              otherCount += service.productBilling.amount;
                             }
                           }
                         }
@@ -46475,11 +36966,24 @@ object-assign
                       for (var j = 0; j < department.productList.length; j++) {
                         var product = department.productList[j];
 
-                        if (product.serviceList) {
-                          for (var k = 0; k < product.serviceList.length; k++) {
-                            var service = product.serviceList[k];
-                            serviceByType[service.type] = serviceByType[service.type] || 0;
-                            serviceByType[service.type] += service.totalBillingAmount;
+                        if (product.deploymentEnvironmentList) {
+                          for (var k = 0; k < product.deploymentEnvironmentList.length; k++) {
+                            var service = product.deploymentEnvironmentList[k];
+
+                            if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
+                              for (var l = 0; l < service.serviceCategoryList.length; l++) {
+                                if (
+                                  service.serviceCategoryList[l].serviceList &&
+                                  service.serviceCategoryList[l].serviceList.length > 0
+                                ) {
+                                  for (var m = 0; m < service.serviceCategoryList[l].serviceList.length; m++) {
+                                    var subServices = service.serviceCategoryList[l].serviceList[m];
+                                    serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
+                                    serviceByType[subServices.type] += subServices.serviceBilling.amount;
+                                  }
+                                }
+                              }
+                            }
                           }
                         }
                       }
@@ -46512,27 +37016,30 @@ object-assign
                     if (department.productList) {
                       for (var i = 0; i < department.productList.length; i++) {
                         var product = department.productList[i];
-                        product.serviceList.map(function (service) {
-                          serviceByType[service.type] = serviceByType[service.type] || 0;
-                          serviceByType[service.type] += 1;
-                        }, 0);
+
+                        for (var b = 0; b < product.deploymentEnvironmentList.length; b++) {
+                          var service = product.deploymentEnvironmentList[b];
+
+                          if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
+                            for (var a = 0; a < service.serviceCategoryList.length; a++) {
+                              if (service.serviceCategoryList[a].serviceList) {
+                                service.serviceCategoryList[a].serviceList.map(function (subServices) {
+                                  serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
+                                  serviceByType[subServices.type] += 1;
+                                }, 0);
+                              }
+                            }
+                          }
+                        }
 
                         if (product.deploymentEnvironmentList) {
                           for (var j = 0; j < product.deploymentEnvironmentList.length; j++) {
                             var row = product.deploymentEnvironmentList[j];
 
                             if (row.name == 'Production') {
-                              if (row.serviceList && row.serviceList.length > 0) {
-                                for (var k = 0; k < row.serviceList.length; k++) {
-                                  productionTotal += row.serviceList[k].totalBillingAmount;
-                                }
-                              }
+                              productionTotal += row.productBilling.amount;
                             } else {
-                              if (row.serviceList && row.serviceList.length > 0) {
-                                for (var k = 0; k < row.serviceList.length; k++) {
-                                  othersTotal += row.serviceList[k].totalBillingAmount;
-                                }
-                              }
+                              othersTotal += row.productBilling.amount;
                             }
                           }
                         }
@@ -46589,13 +37096,13 @@ object-assign
                             'li',
                             null,
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'No. of App Services'),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceByType.App)
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceByType.APP)
                           ),
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'li',
                             null,
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'No. of Data Services'),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceByType.Data)
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceByType.DATA)
                           )
                         ),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -46806,8 +37313,7 @@ object-assign
             }
 
             DepartmentWiseProducts.prototype.componentDidMount = function () {
-              this.getDepartmentData();
-              this.getProductData();
+              this.getDepartmentData(); // this.getProductData();
             };
 
             DepartmentWiseProducts.prototype.render = function () {
@@ -46960,7 +37466,7 @@ object-assign
                                 graphData.productWiseCostData.datasets[0].data.length > 0 &&
                                 graphData.productWiseCostData.labels.length > 0
                                 ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__.Doughnut,
+                                    react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__.Doughnut,
                                     {
                                       data: graphData.productWiseCostData,
                                       options: productWiseCostOptions,
@@ -47057,7 +37563,7 @@ object-assign
                                 graphData.productionvsOthersData.datasets[0].data.length > 0 &&
                                 graphData.productionvsOthersData.labels.length > 0
                                 ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__.Pie,
+                                    react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__.Pie,
                                     {
                                       data: graphData.productionvsOthersData,
                                       options: productionvsOthersOptions,
@@ -47135,7 +37641,7 @@ object-assign
                                 graphData.serviceWiseCoastData.datasets[0].data.length > 0 &&
                                 graphData.serviceWiseCoastData.labels.length > 0
                                 ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__.Pie,
+                                    react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__.Pie,
                                     {
                                       data: graphData.serviceWiseCoastData,
                                       options: serviceWiseCoastOptions,
@@ -47205,7 +37711,7 @@ object-assign
 
         /***/
       },
-      /* 127 */
+      /* 126 */
       /*!********************************************************************!*\
   !*** ../node_modules/react-circular-progressbar/dist/index.esm.js ***!
   \********************************************************************/
@@ -47542,6 +38048,16 @@ and limitations under the License.
 
         /***/
       },
+      /* 127 */
+      /*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+      /***/ (module) => {
+        'use strict';
+        module.exports = __WEBPACK_EXTERNAL_MODULE__127__;
+
+        /***/
+      },
       /* 128 */
       /*!**********************************************************!*\
   !*** ./pages/DepartmentWiseProducts/departmentChart.tsx ***!
@@ -47574,7 +38090,7 @@ and limitations under the License.
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-chartjs-2 */ 57
+          /*! react-chartjs-2 */ 63
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 26);
 
@@ -48013,7 +38529,7 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 61);
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 67);
 
         /***/
       },
@@ -48050,7 +38566,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 62
+          /*! ./SecretInput */ 68
         );
 
         /***/
@@ -48748,7 +39264,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 77
+          /*! react-transition-group */ 56
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -49622,7 +40138,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 77
+          /*! react-transition-group */ 56
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
@@ -51463,7 +41979,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 18
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 104);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 59);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -51570,7 +42086,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 161
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 56
+          /*! ../getStylesCreator/noopTheme */ 62
         );
 
         function getClasses(_ref, classes, Component) {
@@ -52041,7 +42557,7 @@ and limitations under the License.
           /*! tiny-warning */ 160
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 106);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 61);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 15);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -54436,7 +44952,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 162
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 56);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 62);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -55828,7 +46344,7 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 107);
+        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 106);
         /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 159);
 
         /**
@@ -63098,13 +53614,13 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 64
+        /*! @grafana/data */ 70
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 65
+        /*! ./components/App */ 71
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
         /*! ./components/AppConfig */ 130
