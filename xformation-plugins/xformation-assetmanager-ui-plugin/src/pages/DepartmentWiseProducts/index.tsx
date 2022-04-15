@@ -157,7 +157,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
   componentDidMount() {
     this.getDepartmentData();
-    this.getProductData();
   }
 
   getDepartmentData = async () => {
@@ -167,29 +166,14 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         null,
         null
       ).then((response: any) => {
+        this.manipulateDepartmentWiseProductData(response.organization.departmentList)
         this.setState({
           departmentWiseData: response.organization.departmentList,
+          // product: response.organization.departmentList,
         });
         this.setProductGraphData();
         this.setProductionOthers();
         this.setServiceCostData();
-      });
-    } catch (err) {
-      console.log("Loading accounts failed. Error: ", err);
-    }
-  }
-
-  getProductData = async () => {
-    try {
-      await RestService.getData(
-        `${this.config.GET_PRODUCT_DATA}`,
-        null,
-        null
-      ).then((response: any) => {
-        this.manipulateDepartmentWiseProductData(response.organization.departmentList)
-        this.setState({
-          product: response.organization.departmentList,
-        });
       });
     } catch (err) {
       console.log("Loading accounts failed. Error: ", err);
@@ -206,6 +190,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       const productList = department.productList;
       const newProductList: any = [];
       productList.forEach((product: any) => {
+        if (product.deploymentEnvironmentList) {
+          product.deploymentEnvironmentList[0].isOpen = true;
+        }
         newProductList.push([product, product]);
       });
       department.productList = newProductList;
@@ -342,24 +329,24 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         if (department.productList) {
           for (let i = 0; i < department.productList.length; i++) {
             let product = department.productList[i];
-            for (let b = 0; b < product.deploymentEnvironmentList.length; b++) {
-              let service = product.deploymentEnvironmentList[b];
-              if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
-                for (let a = 0; a < service.serviceCategoryList.length; a++) {
-                  if (service.serviceCategoryList[a].serviceList) {
-                    service.serviceCategoryList[a].serviceList.map(
-                      (subServices: any) => {
-                        serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
-                        serviceByType[subServices.type] += 1;
-                      }, 0);
+            if (product.deploymentEnvironmentList && product.deploymentEnvironmentList.length > 0) {
+              for (let b = 0; b < product.deploymentEnvironmentList.length; b++) {
+                let service = product.deploymentEnvironmentList[b];
+                if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
+                  for (let a = 0; a < service.serviceCategoryList.length; a++) {
+                    if (service.serviceCategoryList[a].serviceList) {
+                      service.serviceCategoryList[a].serviceList.map(
+                        (subServices: any) => {
+                          serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
+                          serviceByType[subServices.type] += 1;
+                        }, 0);
+                    }
                   }
                 }
               }
             }
-
-            if (product.deploymentEnvironmentList) {
+            if (product.deploymentEnvironmentList && product.deploymentEnvironmentList.length > 0) {
               for (let j = 0; j < product.deploymentEnvironmentList.length; j++) {
-                debugger;
                 let row = product.deploymentEnvironmentList[j];
                 if (row.name == 'Production') {
                   productionTotal += row.productBilling.amount;

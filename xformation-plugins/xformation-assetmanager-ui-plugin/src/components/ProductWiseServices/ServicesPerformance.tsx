@@ -67,12 +67,12 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   onClickMenu = (k: any, l: any) => {
     const { product } = this.state;
-    for (let i = 0; i < product.deploymentEnvironmentList[k].serviceCategoryList.length; i++) {
-      if (i == l) {
-        product.deploymentEnvironmentList[k].serviceCategoryList[i].menuOpen = !product.deploymentEnvironmentList[k].serviceCategoryList[i].menuOpen
+    for (let i =0 ; i < product.deploymentEnvironmentList[k].serviceCategoryList.length; i ++){
+      if (i== l){
+         product.deploymentEnvironmentList[k].serviceCategoryList[i].menuOpen=!product.deploymentEnvironmentList[k].serviceCategoryList[i].menuOpen
       }
-      else {
-        product.deploymentEnvironmentList[k].serviceCategoryList[i].menuOpen = false
+      else{
+      product.deploymentEnvironmentList[k].serviceCategoryList[i].menuOpen=false
       }
     }
     this.setState({
@@ -174,7 +174,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                     <div className='tabs-content'>
                       <ul>
                         {stage.serviceCategoryList && stage.serviceCategoryList.map((mainservicedata: any, mainindex: any) => {
-                          mainservicedata["menuOpen"] = mainservicedata["menuOpen"]
+                          mainservicedata["menuOpen"]=mainservicedata["menuOpen"]
                           return (
                             <li>
                               {(!mainservicedata.isOpen) && <div className='icon'><img src={images.Icon} alt="" /></div>}
@@ -192,7 +192,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                                   <div className='edit'>
                                     <div
                                       className='bars'
-                                      onClick={() => this.onClickMenu(stageIndex, mainindex)}
+                                      onClick={() =>this.onClickMenu(stageIndex, mainindex)}
                                     >
                                       <span></span>
                                       <span></span>
@@ -200,13 +200,13 @@ export class ServicesPerformance extends React.Component<any, any> {
                                     </div>
                                     {mainservicedata.menuOpen == true && (
                                       <>
-                                        <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
-                                          <a href='#'> Add Firewall </a>
-                                          <a href='#'> Remove Firewall </a>
-                                        </div>
-                                        <div className='open-create-menu-close' onClick={() => this.onClickMenu(stageIndex, mainindex)}></div>
+                                      <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                                        <a href='#'> Add Firewall </a>
+                                        <a href='#'> Remove Firewall </a>
+                                      </div>
+                                      <div className='open-create-menu-close' onClick={() =>this.onClickMenu(stageIndex, mainindex)}></div>
                                       </>
-                                    )}
+                                  )}
                                   </div>
                                 </div>
                               </div>
