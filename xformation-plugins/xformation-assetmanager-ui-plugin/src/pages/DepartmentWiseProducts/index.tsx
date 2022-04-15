@@ -163,12 +163,12 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   getDepartmentData = async () => {
     try {
       await RestService.getData(
-        `${this.config.GET_DEPARTMENTWISE_PRODUCT}`,
+        `${this.config.GET_PRODUCT_DATA}`,
         null,
         null
       ).then((response: any) => {
         this.setState({
-          departmentWiseData: response,
+          departmentWiseData: response.organization.departmentList,
         });
         this.setProductGraphData();
         this.setProductionOthers();
@@ -190,9 +190,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         this.setState({
           product: response.organization.departmentList,
         });
-        // this.setProductGraphData();
-        // this.setProductionOthers();
-        // this.setServiceCostData();
       });
     } catch (err) {
       console.log("Loading accounts failed. Error: ", err);
@@ -233,10 +230,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             if (labels.indexOf(product.name) === -1) {
               labels.push(product.name);
             }
-            if (product.serviceList) {
-              for (let k = 0; k < product.serviceList.length; k++) {
-                let service = product.serviceList[k];
-                count += service.totalBillingAmount;
+            if (product.deploymentEnvironmentList) {
+              for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
+                let service = product.deploymentEnvironmentList[k];
+                count += service.productBilling.amount;
               }
             }
           }
@@ -269,15 +266,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             if (product.deploymentEnvironmentList) {
               for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
                 let service = product.deploymentEnvironmentList[k];
-                if (service.serviceList) {
-                  for (let m = 0; m < service.serviceList.length; m++) {
-                    let list = service.serviceList[m];
-                    if (service.name === 'Production') {
-                      productioncount += list.totalBillingAmount;
-                    } else {
-                      otherCount += list.totalBillingAmount;
-                    }
-                  }
+                if (service.name === 'Production') {
+                  productioncount += service.productBilling.amount;
+                } else {
+                  otherCount += service.productBilling.amount;
                 }
               }
             }
@@ -308,11 +300,20 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         if (department.productList) {
           for (let j = 0; j < department.productList.length; j++) {
             let product = department.productList[j];
-            if (product.serviceList) {
-              for (let k = 0; k < product.serviceList.length; k++) {
-                let service = product.serviceList[k];
-                serviceByType[service.type] = serviceByType[service.type] || 0;
-                serviceByType[service.type] += service.totalBillingAmount;
+            if (product.deploymentEnvironmentList) {
+              for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
+                let service = product.deploymentEnvironmentList[k];
+                if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
+                  for (let l = 0; l < service.serviceCategoryList.length; l++) {
+                    if (service.serviceCategoryList[l].serviceList && service.serviceCategoryList[l].serviceList.length > 0) {
+                      for (let m = 0; m < service.serviceCategoryList[l].serviceList.length; m++) {
+                        let subServices = service.serviceCategoryList[l].serviceList[m];
+                        serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
+                        serviceByType[subServices.type] += subServices.serviceBilling.amount;
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -341,32 +342,34 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         if (department.productList) {
           for (let i = 0; i < department.productList.length; i++) {
             let product = department.productList[i];
-            product.serviceList.map(
-              (service: any) => {
-                serviceByType[service.type] = serviceByType[service.type] || 0;
-                serviceByType[service.type] += 1;
-              }, 0);
+            for (let b = 0; b < product.deploymentEnvironmentList.length; b++) {
+              let service = product.deploymentEnvironmentList[b];
+              if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
+                for (let a = 0; a < service.serviceCategoryList.length; a++) {
+                  if (service.serviceCategoryList[a].serviceList) {
+                    service.serviceCategoryList[a].serviceList.map(
+                      (subServices: any) => {
+                        serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
+                        serviceByType[subServices.type] += 1;
+                      }, 0);
+                  }
+                }
+              }
+            }
+
             if (product.deploymentEnvironmentList) {
               for (let j = 0; j < product.deploymentEnvironmentList.length; j++) {
+                debugger;
                 let row = product.deploymentEnvironmentList[j];
                 if (row.name == 'Production') {
-                  if (row.serviceList && row.serviceList.length > 0) {
-                    for (let k = 0; k < row.serviceList.length; k++) {
-                      productionTotal += row.serviceList[k].totalBillingAmount;
-                    }
-                  }
+                  productionTotal += row.productBilling.amount;
                 } else {
-                  if (row.serviceList && row.serviceList.length > 0) {
-                    for (let k = 0; k < row.serviceList.length; k++) {
-                      othersTotal += row.serviceList[k].totalBillingAmount;
-                    }
-                  }
+                  othersTotal += row.productBilling.amount;
                 }
               }
             }
           }
         }
-
         const percentage = this.calculatePercentage(productionTotal, productionTotal + othersTotal);
         let color = "";
         if (percentage >= 75) {
@@ -387,11 +390,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 </li>
                 <li>
                   <label>No. of App Services</label>
-                  <span>{serviceByType.App}</span>
+                  <span>{serviceByType.APP}</span>
                 </li>
                 <li>
                   <label>No. of Data Services</label>
-                  <span>{serviceByType.Data}</span>
+                  <span>{serviceByType.DATA}</span>
                 </li>
               </ul>
               <div className="production-heading">
