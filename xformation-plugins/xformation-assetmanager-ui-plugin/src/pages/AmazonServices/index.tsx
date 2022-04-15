@@ -49,7 +49,7 @@ export class AmazonServices extends React.Component<any, any> {
       },
       {
         name: "Applications",
-        component: <div className="department-wise-container"><ProductWiseServices product={products} type='amazonService' /></div>,
+        component:  <div className="department-wise-container"><ProductWiseServices product={this.state.product} type='amazonService' /></div>,
       },
       {
         name: "Billing",
@@ -88,16 +88,50 @@ export class AmazonServices extends React.Component<any, any> {
 
   async componentDidMount() {
     const queryPrm = new URLSearchParams(this.props.location.search);
+    this.getProductData()
     const asset_id = queryPrm.get("asset_id");
     const orgId = queryPrm.get("org_id");
     //console.log("asset id: " + asset_id);
     await this.getAccounts(asset_id, orgId);
     this.setState({
       departmentWiseData: _departmentData,
-      product: products
+      // product: products
     });
   }
 
+  getProductData = async () => {
+    try {
+      await RestService.getData(
+        `${this.config.GET_PRODUCT_DATA}`,
+        null,
+        null
+      ).then((response: any) => {
+        this.manipulateDepartmentWiseProductData(response.organization.departmentList)
+        this.setState({
+          product: response.organization.departmentList,
+        });
+        // this.setProductGraphData();
+        // this.setProductionOthers();
+        // this.setServiceCostData();
+      });
+    } catch (err) {
+      console.log("Loading accounts failed. Error: ", err);
+    }
+  }
+  manipulateDepartmentWiseProductData = (departmentList: any) => {
+    for (let i = 0; i < departmentList.length; i++) {
+      const department = departmentList[i];
+      const productList = department.productList;
+      const newProductList: any = [];
+      productList.forEach((product: any) => {
+        newProductList.push([product, product]);
+      });
+      department.productList = newProductList;
+    }
+    this.setState({
+      product: departmentList
+    });
+  }
   getAccounts = async (id: any, orgId: any) => {
     try {
       await RestService.getData(
@@ -262,7 +296,7 @@ export class AmazonServices extends React.Component<any, any> {
   }
 
   onClickOrganisationUnit = (e: any, selectedorganization: any) => {
-    console.log("selectedEnviornment", selectedorganization);
+    // console.log("selectedEnviornment", selectedorganization);
     this.OrganisationunitRef.current.toggle(selectedorganization);
   };
   render() {
