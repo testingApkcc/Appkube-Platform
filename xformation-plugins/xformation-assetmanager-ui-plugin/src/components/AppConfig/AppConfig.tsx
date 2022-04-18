@@ -26,8 +26,20 @@ type State = {
 interface Props extends PluginConfigPageProps<AppPluginMeta<JsonData>> { }
 
 export const AppConfig = ({ plugin }: Props) => {
+  const defaultApiURL = 'http://3.208.22.155:5057';
+  const defaultMainProductURL = 'http://3.208.22.155:3000';
   const s = useStyles2(getStyles);
-  const { enabled, pinned, jsonData } = plugin.meta;
+  const { enabled, pinned } = plugin.meta;
+  let { jsonData } = plugin.meta;
+  if (jsonData) {
+    jsonData.apiUrl = jsonData.apiUrl ? jsonData.apiUrl : defaultApiURL;
+    jsonData.mainProductUrl = jsonData.mainProductUrl ? jsonData.mainProductUrl : defaultMainProductURL;
+  } else {
+    jsonData = {
+      apiUrl: defaultApiURL,
+      mainProductUrl: defaultMainProductURL
+    };
+  }
   const [state, setState] = useState<State>({
     apiUrl: jsonData?.apiUrl || '',
     apiKey: '',
