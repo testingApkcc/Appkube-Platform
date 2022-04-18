@@ -171,9 +171,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         this.setState({
           departmentWiseData: response.organization.departmentList,
         });
-        this.setProductGraphData();
-        this.setProductionOthers();
-        this.setServiceCostData();
+        let { graphData } = this.state;
+        graphData = this.setProductGraphData(response.organization.departmentList, graphData);
+        graphData = this.setProductionOthers(response.organization.departmentList, graphData);
+        graphData = this.setServiceCostData(response.organization.departmentList, graphData);
+        this.setState({
+          graphData
+        });
       });
     } catch (err) {
       console.log("Loading accounts failed. Error: ", err);
@@ -187,7 +191,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         null,
         null
       ).then((response: any) => {
-        
+
         // this.setState({
         //   product: response.organization.departmentList,
         // });
@@ -216,8 +220,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     });
   }
 
-  setProductGraphData = () => {
-    let { departmentWiseData, graphData, productWiseCostOptions } = this.state;
+  setProductGraphData = (departmentWiseData: any, graphData: any) => {
+    let { productWiseCostOptions } = this.state;
     let data = [];
     let labels: any = [];
     let totalCount = 0;
@@ -247,13 +251,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     graphData.productWiseCostData.datasets[0].data = data;
     productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCount}`
     this.setState({
-      graphData: graphData,
       productWiseCostOptions
-    })
+    });
+    return graphData;
   }
 
-  setProductionOthers = () => {
-    const { departmentWiseData, graphData, productionvsOthersOptions } = this.state;
+  setProductionOthers = (departmentWiseData: any, graphData: any) => {
+    const { productionvsOthersOptions } = this.state;
     let data: any = [];
     let productioncount = 0;
     let otherCount = 0;
@@ -283,14 +287,14 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       graphData.productionvsOthersData.datasets[0].data = data;
       productionvsOthersOptions.plugins.title.text = `Total Cost: $${productioncount + otherCount}`
       this.setState({
-        graphData: graphData,
         productionvsOthersOptions,
-      })
+      });
     }
+    return graphData;
   }
 
-  setServiceCostData = () => {
-    let { departmentWiseData, graphData, serviceWiseCoastOptions } = this.state;
+  setServiceCostData = (departmentWiseData: any, graphData: any) => {
+    let { serviceWiseCoastOptions } = this.state;
     let data = [];
     let totalCount = 0;
     let labels: any = [];
@@ -303,14 +307,18 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             let product = department.productList[j];
             if (product.deploymentEnvironmentList) {
               for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
-                let service = product.deploymentEnvironmentList[k];
-                if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
-                  for (let l = 0; l < service.serviceCategoryList.length; l++) {
-                    if (service.serviceCategoryList[l].serviceList && service.serviceCategoryList[l].serviceList.length > 0) {
-                      for (let m = 0; m < service.serviceCategoryList[l].serviceList.length; m++) {
-                        let subServices = service.serviceCategoryList[l].serviceList[m];
-                        serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
-                        serviceByType[subServices.type] += subServices.serviceBilling.amount;
+                let environment = product.deploymentEnvironmentList[k];
+                if (environment.serviceCategoryList && environment.serviceCategoryList.length > 0) {
+                  for (let l = 0; l < environment.serviceCategoryList.length; l++) {
+                    if (environment.serviceCategoryList[l].tagList && environment.serviceCategoryList[l].tagList.length > 0) {
+                      for (let m = 0; m < environment.serviceCategoryList[l].tagList.length; m++) {
+                        let tag = environment.serviceCategoryList[l].tagList[m];
+                        if (tag && tag.serviceList) {
+                          tag.serviceList.map((service: any) => {
+                            serviceByType[tag.tagName] = serviceByType[tag.tagName] || 0;
+                            serviceByType[tag.tagName] += service.serviceBilling.amount;
+                          });
+                        }
                       }
                     }
                   }
@@ -330,8 +338,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     graphData.serviceWiseCoastData.datasets[0].data = data;
     serviceWiseCoastOptions.plugins.title.text = `Total Cost: $${totalCount}`
     this.setState({
-      graphData: graphData
-    })
+      serviceWiseCoastOptions
+    });
+    return graphData;
   }
 
   renderDepartmentWiseData = (departments: any) => {
