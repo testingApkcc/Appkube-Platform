@@ -157,7 +157,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
   componentDidMount() {
     this.getDepartmentData();
-    // this.getProductData();
   }
 
   getDepartmentData = async () => {
@@ -183,24 +182,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       console.log("Loading accounts failed. Error: ", err);
     }
   }
-
-  getProductData = async () => {
-    try {
-      await RestService.getData(
-        `${this.config.GET_PRODUCT_DATA}`,
-        null,
-        null
-      ).then((response: any) => {
-
-        // this.setState({
-        //   product: response.organization.departmentList,
-        // });
-      });
-    } catch (err) {
-      console.log("Loading accounts failed. Error: ", err);
-    }
-  }
-
+  
   calculatePercentage = (value: any, total: any) => {
     return Math.ceil(value * 100 / total);
   };
