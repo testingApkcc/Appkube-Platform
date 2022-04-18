@@ -23,10 +23,12 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   toggleCategories = (environmentIndex: any, categoryIndex: any) => {
     const { product } = this.state;
-    product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen = !product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen;
-    this.setState({
-      product
-    });
+    if (product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].tagList && product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].tagList.length > 0) {
+      product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen = !product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen;
+      this.setState({
+        product
+      });
+    }
   }
 
   handleView = () => {
@@ -42,6 +44,7 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   renderStages = (deploymentEnvironmentList: any) => {
+    console.log(deploymentEnvironmentList);
     if (deploymentEnvironmentList) {
       return deploymentEnvironmentList.map((environment: any, environmentIndex: number) => {
         return (
@@ -57,7 +60,7 @@ export class ServicesPerformance extends React.Component<any, any> {
       return categories.map((category: any, categoryIndex: number) => {
         return (
           <li>
-            {category.isOpen === false && <div className='icon'><img src={images.Icon} alt="" /></div>}
+            {!category.isOpen && <div className='icon'><img src={images.Icon} alt="" /></div>}
             <div className={category.isOpen === true ? 'heading full' : 'heading'} >
               <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
                 {category.name}
@@ -88,7 +91,7 @@ export class ServicesPerformance extends React.Component<any, any> {
               </div>
             </div>
             {
-              category.isOpen === true &&
+              category.isOpen === true && category.tagList && category.tagList.length > 0 &&
               <div className='content-table'>
                 <div className='table'>
                   <div className='thead'>
@@ -113,7 +116,7 @@ export class ServicesPerformance extends React.Component<any, any> {
           retData.push(
             <div className='table performance-table'>
               <div className='tbody'>
-                <div className='td'><strong>{tag.tagName}</strong></div>
+                <div className='td' onClick={() => this.openTagServices()}><strong>{tag.tagName}</strong></div>
                 <>
                   <div className='td'>Performance</div>
                   <div className='td'>Availability</div>
@@ -123,6 +126,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                 </>
               </div>
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
+                console.log(service);
                 return (
                   <div className='tbody'>
                     <div className='td'><span>{service.description}</span></div>
@@ -171,6 +175,10 @@ export class ServicesPerformance extends React.Component<any, any> {
     return retData;
   };
 
+  openTagServices = () => {
+
+  }
+
   getPerformanceClass = (score: any) => {
     if (score >= 75) {
       return 'green';
@@ -218,8 +226,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                       </ul>
                     </div>
                   )
-                }
-                else {
+                } else {
                   return null;
                 }
               })
