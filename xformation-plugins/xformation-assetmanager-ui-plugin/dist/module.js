@@ -25840,7 +25840,22 @@ object-assign
               };
 
               _this.onClickRightTreeArr = function (index, indexArr) {
+                var text = '';
                 var tableData = _this.state.tableData;
+
+                for (var i = 0; i < tableData.length; i++) {
+                  if (i == indexArr[0]) {
+                    text = tableData[i].title;
+
+                    if (tableData[i].subData) {
+                      for (var j = 0; j < tableData[i].subData.length; j++) {
+                        if (j === indexArr[1]) {
+                          text = text + '>' + tableData[i].subData[j].title;
+                        }
+                      }
+                    }
+                  }
+                }
 
                 var folder = _this.findChild(
                   tableData,
@@ -25861,7 +25876,15 @@ object-assign
                     },
                   });
 
+                  if (folder.subData) {
+                    text = text + '>' + folder.subData[index].title;
+                  }
+
                   folder.subData[index].isOpened = true;
+
+                  _this.setState({
+                    labelText: text,
+                  });
                 }
               };
 
@@ -26178,38 +26201,10 @@ object-assign
                 });
               };
 
-              _this.setBreadCrumbText = function () {
-                var tableData = _this.state.tableData;
-                var label = '';
-
-                for (var i = 0; i < tableData.length; i++) {
-                  if (tableData[i].isOpened == true) {
-                    label = tableData[i].title;
-
-                    if (tableData[i].subData && tableData[i].subData.length > 0) {
-                      for (var j = 0; j < tableData[i].subData.length; j++) {
-                        if (tableData[i].subData[j].isOpened === true) {
-                          label = label + '' + '>' + '' + tableData[i].subData[j].title;
-
-                          if (tableData[i].subData[j].subData && tableData[i].subData[j].subData.length > 0) {
-                            for (var k = 0; k < tableData[i].subData[j].subData.length; k++) {
-                              if (tableData[i].subData[j].subData[k].isOpened === true) {
-                                label = label + '' + '>' + '' + tableData[i].subData[j].subData[k].title;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-
-                return label;
-              };
-
               _this.state = {
                 sideTable: [],
                 tableData: _discovered_assets__WEBPACK_IMPORTED_MODULE_2__['default'],
+                labelText: '',
                 servicesTable: {
                   data: [],
                   isDirectServices: false,
@@ -26241,7 +26236,7 @@ object-assign
             };
 
             DiscoveredAssets.prototype.render = function () {
-              // const labelText = this.setBreadCrumbText();
+              var labelText = this.state.labelText;
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                 react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
                 null,
@@ -26428,7 +26423,15 @@ object-assign
                                 {
                                   className: 'filters-breadcrumbs',
                                 },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('ul', null)
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'ul',
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'li',
+                                    null,
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, labelText)
+                                  )
+                                )
                               )
                             ),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
