@@ -181,7 +181,7 @@ export const AppConfig = ({ plugin }: Props) => {
                   },
               })
             }
-            disabled={Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey))}
+            // disabled={Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey))}
           >
             Save API settings
           </Button>

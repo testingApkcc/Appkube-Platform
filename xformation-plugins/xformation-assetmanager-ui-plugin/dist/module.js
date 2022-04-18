@@ -21696,7 +21696,6 @@ object-assign
                             },
                       });
                     },
-                    disabled: Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey)),
                   },
                   'Save API settings'
                 )
