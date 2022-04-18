@@ -24,6 +24,11 @@ export class ServicesPerformance extends React.Component<any, any> {
   toggleCategories = (environmentIndex: any, categoryIndex: any) => {
     const { product } = this.state;
     if (product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].tagList && product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].tagList.length > 0) {
+      for (let j = 0; j < product.deploymentEnvironmentList[environmentIndex].serviceCategoryList.length; j++) {
+        if (j !== categoryIndex) {
+          product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[j].isOpen = false;
+        }
+      }
       product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen = !product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].isOpen;
       this.setState({
         product
@@ -126,7 +131,6 @@ export class ServicesPerformance extends React.Component<any, any> {
                 </>
               </div>
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
-                console.log(service);
                 return (
                   <div className='tbody'>
                     <div className='td'><span>{service.description}</span></div>
@@ -159,7 +163,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                 )
               })
               }
-            </div >
+            </div>
           );
         } else {
           retData.push(
