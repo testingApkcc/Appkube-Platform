@@ -350,11 +350,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               let service = product.deploymentEnvironmentList[b];
               if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
                 for (let a = 0; a < service.serviceCategoryList.length; a++) {
-                  if (service.serviceCategoryList[a].serviceList) {
-                    service.serviceCategoryList[a].serviceList.map(
+                  if (service.serviceCategoryList[a].tagList) {
+                    service.serviceCategoryList[a].tagList.map(
                       (subServices: any) => {
-                        serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
-                        serviceByType[subServices.type] += 1;
+                        serviceByType[subServices.tagName] = serviceByType[subServices.tagName] || 0;
+                        serviceByType[subServices.tagName] += 1;
                       }, 0);
                   }
                 }
