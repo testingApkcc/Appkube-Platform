@@ -15,6 +15,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     this.state = {
       sideTable: [],
       tableData: _dummyData,
+      labelText: '',
       servicesTable: {
         data: [],
         isDirectServices: false
@@ -128,7 +129,20 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   onClickRightTreeArr = (index: any, indexArr: any) => {
+    let text = '';
     const { tableData } = this.state;
+    for (let i = 0; i < tableData.length; i++) {
+      if (i == indexArr[0]) {
+        text = tableData[i].title;
+        if (tableData[i].subData) {
+          for (let j = 0; j < tableData[i].subData.length; j++) {
+            if (j === indexArr[1]) {
+              text = text + '>' + tableData[i].subData[j].title;
+            }
+          }
+        }
+      }
+    }
     const folder = this.findChild(tableData, [...indexArr]);
     if (folder.subData) {
       const services = folder.subData[index];
@@ -138,7 +152,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
           isDirectServices: !!services.list
         }
       });
-      folder.subData[index].isOpened = true
+      if (folder.subData) {
+        text = text + '>' + folder.subData[index].title;
+      }
+      folder.subData[index].isOpened = true;
+      this.setState({ labelText: text });
     }
   }
 
@@ -163,7 +181,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
     } else {
       return this.findChild(folderList[index].subData, indexArr);
     }
-
   };
 
   renderRightPart = () => {
@@ -270,33 +287,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
     this.setState({ servicesTable: servicesTable })
   }
 
-  setBreadCrumbText = () => {
-    const { tableData } = this.state;
-    let label = '';
-    for (let i = 0; i < tableData.length; i++) {
-      if (tableData[i].isOpened == true) {
-        label = tableData[i].title;
-        if (tableData[i].subData && tableData[i].subData.length > 0) {
-          for (let j = 0; j < tableData[i].subData.length; j++) {
-            if (tableData[i].subData[j].isOpened === true) {
-              label = label + '' + '>' + '' + tableData[i].subData[j].title;
-              if (tableData[i].subData[j].subData && tableData[i].subData[j].subData.length > 0) {
-                for (let k = 0; k < tableData[i].subData[j].subData.length; k++) {
-                  if (tableData[i].subData[j].subData[k].isOpened === true) {
-                    label = label + '' + '>' + '' + tableData[i].subData[j].subData[k].title;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return label;
-  }
-
   render() {
-    // const labelText = this.setBreadCrumbText();
+    const { labelText } = this.state;
     return (
       <>
         <div className="Filters-box">
@@ -342,7 +334,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                     <div className="col-lg-6 col-md-12 col-sm-12">
                       <div className="filters-breadcrumbs">
                         <ul>
-                          {/* <li><a>{labelText}</a></li> */}
+                          <li><a>{labelText}</a></li>
                         </ul>
                       </div>
                     </div>
