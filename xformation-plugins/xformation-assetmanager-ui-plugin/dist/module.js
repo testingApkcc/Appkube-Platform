@@ -8,7 +8,7 @@ define([
   '@grafana/runtime',
   '@emotion/css',
 ], (
-  __WEBPACK_EXTERNAL_MODULE__70__,
+  __WEBPACK_EXTERNAL_MODULE__69__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__6__,
   __WEBPACK_EXTERNAL_MODULE__12__,
@@ -739,7 +739,7 @@ PERFORMANCE OF THIS SOFTWARE.
         });
         /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ../_common/common */ 80
+          /*! ../_common/common */ 79
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ 5);
 
@@ -1179,7 +1179,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 81
+          /*! ./setPrototypeOf.js */ 80
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -2150,7 +2150,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 64
+          /*! ./chunks/helpers.segment.js */ 63
         );
         /*!
          * Chart.js v3.7.1
@@ -14532,7 +14532,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 82);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 81);
         }
 
         /***/
@@ -17627,7 +17627,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 57);
+        var reactIs = __webpack_require__(/*! react-is */ 56);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -18051,34 +18051,6 @@ object-assign
         /***/
       },
       /* 56 */
-      /*!*******************************************************************************!*\
-  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
-  \*******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
-
-        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
-
-        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
-
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
-
-        function _interopRequireDefault(obj) {
-          return obj && obj.__esModule ? obj : { default: obj };
-        }
-
-        module.exports = {
-          Transition: _Transition.default,
-          TransitionGroup: _TransitionGroup.default,
-          ReplaceTransition: _ReplaceTransition.default,
-          CSSTransition: _CSSTransition.default,
-        };
-
-        /***/
-      },
-      /* 57 */
       /*!******************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
   \******************************************************************************/
@@ -18087,12 +18059,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 58);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 57);
         }
 
         /***/
       },
-      /* 58 */
+      /* 57 */
       /*!*************************************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
   \*************************************************************************************************/
@@ -18300,7 +18272,7 @@ object-assign
 
         /***/
       },
-      /* 59 */
+      /* 58 */
       /*!*****************************************!*\
   !*** ../node_modules/react-is/index.js ***!
   \*****************************************/
@@ -18309,12 +18281,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 60);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 59);
         }
 
         /***/
       },
-      /* 60 */
+      /* 59 */
       /*!************************************************************!*\
   !*** ../node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************/
@@ -18567,7 +18539,7 @@ object-assign
 
         /***/
       },
-      /* 61 */
+      /* 60 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -18599,7 +18571,7 @@ object-assign
 
         /***/
       },
-      /* 62 */
+      /* 61 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -18616,7 +18588,7 @@ object-assign
 
         /***/
       },
-      /* 63 */
+      /* 62 */
       /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -18848,7 +18820,7 @@ object-assign
 
         /***/
       },
-      /* 64 */
+      /* 63 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -21498,7 +21470,7 @@ object-assign
 
         /***/
       },
-      /* 65 */
+      /* 64 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -21517,7 +21489,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 23
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 72);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 71);
 
         var App =
           /** @class */
@@ -21543,7 +21515,7 @@ object-assign
 
         /***/
       },
-      /* 66 */
+      /* 65 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -21565,7 +21537,7 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 73
+          /*! ../../pages/AccountSetup */ 72
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../../pages/AmazonServices */ 86
@@ -21709,7 +21681,7 @@ object-assign
 
         /***/
       },
-      /* 67 */
+      /* 66 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -22080,7 +22052,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 67 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -22142,17 +22114,17 @@ object-assign
         /***/
       },
       ,
-      /* 69 */ /* 70 */
+      /* 68 */ /* 69 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__70__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__69__;
 
         /***/
       },
-      /* 71 */
+      /* 70 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -22163,11 +22135,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 65);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 64);
 
         /***/
       },
-      /* 72 */
+      /* 71 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -22178,11 +22150,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 66);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 65);
 
         /***/
       },
-      /* 73 */
+      /* 72 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -22207,15 +22179,15 @@ object-assign
           /*! ../Breadcrumbs */ 14
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 74);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 73);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 75
+          /*! ./OperationMode */ 74
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 76
+          /*! ./PreparePolicy */ 75
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 77);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 78);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 76);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 77);
         /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 84);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../_service/RestService */ 7
@@ -22535,7 +22507,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 73 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -22719,7 +22691,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 74 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -22856,7 +22828,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 75 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -22948,7 +22920,7 @@ object-assign
 
         /***/
       },
-      /* 77 */
+      /* 76 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -23267,7 +23239,7 @@ object-assign
 
         /***/
       },
-      /* 78 */
+      /* 77 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -23284,7 +23256,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 79
+          /*! ./CreateNewOU */ 78
         );
 
         var Ou =
@@ -23471,7 +23443,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 78 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -23814,7 +23786,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 79 */
       /*!*********************************!*\
   !*** ./pages/_common/common.ts ***!
   \*********************************/
@@ -23870,7 +23842,7 @@ object-assign
 
         /***/
       },
-      /* 81 */
+      /* 80 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -23894,7 +23866,7 @@ object-assign
 
         /***/
       },
-      /* 82 */
+      /* 81 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -24099,6 +24071,34 @@ object-assign
             exports.typeOf = typeOf;
           })();
         }
+
+        /***/
+      },
+      /* 82 */
+      /*!*******************************************************************************!*\
+  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
+  \*******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
+
+        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
+
+        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
+
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
+
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+
+        module.exports = {
+          Transition: _Transition.default,
+          TransitionGroup: _TransitionGroup.default,
+          ReplaceTransition: _ReplaceTransition.default,
+          CSSTransition: _CSSTransition.default,
+        };
 
         /***/
       },
@@ -36688,7 +36688,7 @@ object-assign
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! react-chartjs-2 */ 63
+          /*! react-chartjs-2 */ 62
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 26);
         /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ 127);
@@ -36750,11 +36750,14 @@ object-assign
                               departmentWiseData: response.organization.departmentList,
                             });
 
-                            _this.setProductGraphData();
+                            var graphData = _this.state.graphData;
+                            graphData = _this.setProductGraphData(response.organization.departmentList, graphData);
+                            graphData = _this.setProductionOthers(response.organization.departmentList, graphData);
+                            graphData = _this.setServiceCostData(response.organization.departmentList, graphData);
 
-                            _this.setProductionOthers();
-
-                            _this.setServiceCostData();
+                            _this.setState({
+                              graphData: graphData,
+                            });
                           }),
                         ];
 
@@ -36856,11 +36859,8 @@ object-assign
                 });
               };
 
-              _this.setProductGraphData = function () {
-                var _a = _this.state,
-                  departmentWiseData = _a.departmentWiseData,
-                  graphData = _a.graphData,
-                  productWiseCostOptions = _a.productWiseCostOptions;
+              _this.setProductGraphData = function (departmentWiseData, graphData) {
+                var productWiseCostOptions = _this.state.productWiseCostOptions;
                 var data = [];
                 var labels = [];
                 var totalCount = 0;
@@ -36897,16 +36897,14 @@ object-assign
                 productWiseCostOptions.plugins.title.text = 'Total Cost: $'.concat(totalCount);
 
                 _this.setState({
-                  graphData: graphData,
                   productWiseCostOptions: productWiseCostOptions,
                 });
+
+                return graphData;
               };
 
-              _this.setProductionOthers = function () {
-                var _a = _this.state,
-                  departmentWiseData = _a.departmentWiseData,
-                  graphData = _a.graphData,
-                  productionvsOthersOptions = _a.productionvsOthersOptions;
+              _this.setProductionOthers = function (departmentWiseData, graphData) {
+                var productionvsOthersOptions = _this.state.productionvsOthersOptions;
                 var data = [];
                 var productioncount = 0;
                 var otherCount = 0;
@@ -36942,17 +36940,15 @@ object-assign
                   productionvsOthersOptions.plugins.title.text = 'Total Cost: $'.concat(productioncount + otherCount);
 
                   _this.setState({
-                    graphData: graphData,
                     productionvsOthersOptions: productionvsOthersOptions,
                   });
                 }
+
+                return graphData;
               };
 
-              _this.setServiceCostData = function () {
-                var _a = _this.state,
-                  departmentWiseData = _a.departmentWiseData,
-                  graphData = _a.graphData,
-                  serviceWiseCoastOptions = _a.serviceWiseCoastOptions;
+              _this.setServiceCostData = function (departmentWiseData, graphData) {
+                var serviceWiseCoastOptions = _this.state.serviceWiseCoastOptions;
                 var data = [];
                 var totalCount = 0;
                 var labels = [];
@@ -36968,18 +36964,27 @@ object-assign
 
                         if (product.deploymentEnvironmentList) {
                           for (var k = 0; k < product.deploymentEnvironmentList.length; k++) {
-                            var service = product.deploymentEnvironmentList[k];
+                            var environment = product.deploymentEnvironmentList[k];
 
-                            if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
-                              for (var l = 0; l < service.serviceCategoryList.length; l++) {
+                            if (environment.serviceCategoryList && environment.serviceCategoryList.length > 0) {
+                              for (var l = 0; l < environment.serviceCategoryList.length; l++) {
                                 if (
-                                  service.serviceCategoryList[l].serviceList &&
-                                  service.serviceCategoryList[l].serviceList.length > 0
+                                  environment.serviceCategoryList[l].tagList &&
+                                  environment.serviceCategoryList[l].tagList.length > 0
                                 ) {
-                                  for (var m = 0; m < service.serviceCategoryList[l].serviceList.length; m++) {
-                                    var subServices = service.serviceCategoryList[l].serviceList[m];
-                                    serviceByType[subServices.type] = serviceByType[subServices.type] || 0;
-                                    serviceByType[subServices.type] += subServices.serviceBilling.amount;
+                                  var _loop_2 = function (m) {
+                                    var tag = environment.serviceCategoryList[l].tagList[m];
+
+                                    if (tag && tag.serviceList) {
+                                      tag.serviceList.map(function (service) {
+                                        serviceByType[tag.tagName] = serviceByType[tag.tagName] || 0;
+                                        serviceByType[tag.tagName] += service.serviceBilling.amount;
+                                      });
+                                    }
+                                  };
+
+                                  for (var m = 0; m < environment.serviceCategoryList[l].tagList.length; m++) {
+                                    _loop_2(m);
                                   }
                                 }
                               }
@@ -37002,8 +37007,10 @@ object-assign
                 serviceWiseCoastOptions.plugins.title.text = 'Total Cost: $'.concat(totalCount);
 
                 _this.setState({
-                  graphData: graphData,
+                  serviceWiseCoastOptions: serviceWiseCoastOptions,
                 });
+
+                return graphData;
               };
 
               _this.renderDepartmentWiseData = function (departments) {
@@ -38090,7 +38097,7 @@ and limitations under the License.
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-chartjs-2 */ 63
+          /*! react-chartjs-2 */ 62
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 26);
 
@@ -38529,7 +38536,7 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 67);
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 66);
 
         /***/
       },
@@ -38566,7 +38573,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 68
+          /*! ./SecretInput */ 67
         );
 
         /***/
@@ -39264,7 +39271,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 56
+          /*! react-transition-group */ 82
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -40138,7 +40145,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 56
+          /*! react-transition-group */ 82
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
@@ -41979,7 +41986,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 18
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 59);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 58);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -42086,7 +42093,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 161
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 62
+          /*! ../getStylesCreator/noopTheme */ 61
         );
 
         function getClasses(_ref, classes, Component) {
@@ -42557,7 +42564,7 @@ and limitations under the License.
           /*! tiny-warning */ 160
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 61);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 60);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 15);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -44952,7 +44959,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 162
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 62);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 61);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -53614,13 +53621,13 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 70
+        /*! @grafana/data */ 69
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 71
+        /*! ./components/App */ 70
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
         /*! ./components/AppConfig */ 130
