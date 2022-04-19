@@ -23,7 +23,7 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   toggleCategories = (environmentIndex: any, categoryIndex: any) => {
     const { product } = this.state;
-    if (product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].tagList && product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].tagList.length > 0) {
+    if (product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].serviceNameList && product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[categoryIndex].serviceNameList.length > 0) {
       for (let j = 0; j < product.deploymentEnvironmentList[environmentIndex].serviceCategoryList.length; j++) {
         if (j !== categoryIndex) {
           product.deploymentEnvironmentList[environmentIndex].serviceCategoryList[j].isOpen = false;
@@ -49,11 +49,12 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   renderStages = (deploymentEnvironmentList: any) => {
-    console.log(deploymentEnvironmentList);
     if (deploymentEnvironmentList) {
       return deploymentEnvironmentList.map((environment: any, environmentIndex: number) => {
         return (
-          <li onClick={() => this.toggleEnvironmentView(environmentIndex)} className={environment.isOpen == true ? 'active' : ''}>{environment.name}</li>
+          <li onClick={() => this.toggleEnvironmentView(environmentIndex)} className={environment.isOpen == true ? 'active' : ''}>
+            {environment.name}
+          </li>
         )
       })
     }
@@ -96,13 +97,13 @@ export class ServicesPerformance extends React.Component<any, any> {
               </div>
             </div>
             {
-              category.isOpen === true && category.tagList && category.tagList.length > 0 &&
+              category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
               <div className='content-table'>
                 <div className='table'>
                   <div className='thead'>
                     <div className='th'>Name</div>
                   </div>
-                  {this.renderTags(category.tagList, [environmentIndex, categoryIndex])}
+                  {this.renderTags(category.serviceNameList, [environmentIndex, categoryIndex])}
                 </div>
               </div>
             }
@@ -117,59 +118,70 @@ export class ServicesPerformance extends React.Component<any, any> {
     const retData: any = [];
     if (tags) {
       tags.forEach((tag: any, index: any) => {
-        if (tag.serviceList && tag.serviceList.length > 0) {
+        if (tag.tagList && tag.tagList.length > 0) {
           retData.push(
             <div className='table performance-table'>
               <div className='tbody'>
-                <div className='td' onClick={() => this.openTagServices()}><strong>{tag.tagName}</strong></div>
-                <>
-                  <div className='td'>Performance</div>
-                  <div className='td'>Availability</div>
-                  <div className='td'>Security</div>
-                  <div className='td'>Data Protection</div>
-                  <div className='td'>User exp</div>
-                </>
+                <div className='td' onClick={() => this.openTagServices()}><strong>{tag.name}</strong></div>
+                {tag.tagList && tag.tagList.map((service: any, i: any) => {
+                  return (
+                    <div className='tbody'>
+                      <div className='td'><span>{service.tagName}</span></div>
+                      {i == 0 &&
+                        <>
+                          <div className='td'>Performance</div>
+                          <div className='td'>Availability</div>
+                          <div className='td'>Security</div>
+                          <div className='td'>Data Protection</div>
+                          <div className='td'>User exp</div>
+                        </>
+                      }
+                      {service.serviceList && service.serviceList.map((tags: any, i: any) => {
+                        return (
+                          <div className='tbody'>
+                            <div className='td'><span>{tags.description}</span></div>
+                            <div className='td'>
+                              <div className={`progress-circle ${this.getPerformanceClass(tags.performance.score)}`} >
+                                <i className='fa fa-check-circle'></i>
+                              </div>
+                            </div>
+                            <div className='td'>
+                              <div className={`progress-circle ${this.getPerformanceClass(tags.availability.score)}`} >
+                                <i className='fa fa-check-circle'></i>
+                              </div>
+                            </div>
+                            <div className='td'>
+                              <div className={`progress-circle ${this.getPerformanceClass(tags.security.score)}`} >
+                                <i className='fa fa-check-circle'></i>
+                              </div>
+                            </div>
+                            <div className='td'>
+                              <div className={`progress-circle ${this.getPerformanceClass(tags.dataProtection.score)}`} >
+                                <i className='fa fa-check-circle'></i>
+                              </div>
+                            </div>
+                            <div className='td'>
+                              <div className={`progress-circle ${this.getPerformanceClass(tags.userExperiance.score)}`} >
+                                <i className='fa fa-check-circle'></i>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })
+                      }
+                    </div>
+                  )
+                })
+                }
               </div>
-              {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
-                return (
-                  <div className='tbody'>
-                    <div className='td'><span>{service.description}</span></div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })
-              }
+
             </div>
           );
         } else {
           retData.push(
             <div className='tbody'>
               <div className='td title'>
-                <strong>{tag.tagName}<i className={tag.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
+                <strong>{tag.name}<i className={tag.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
               </div>
             </div>
           );

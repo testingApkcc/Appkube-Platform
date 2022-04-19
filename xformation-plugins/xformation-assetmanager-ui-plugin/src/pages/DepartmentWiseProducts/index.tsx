@@ -182,7 +182,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       console.log("Loading accounts failed. Error: ", err);
     }
   }
-  
+
   calculatePercentage = (value: any, total: any) => {
     return Math.ceil(value * 100 / total);
   };
@@ -295,14 +295,19 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 let environment = product.deploymentEnvironmentList[k];
                 if (environment.serviceCategoryList && environment.serviceCategoryList.length > 0) {
                   for (let l = 0; l < environment.serviceCategoryList.length; l++) {
-                    if (environment.serviceCategoryList[l].tagList && environment.serviceCategoryList[l].tagList.length > 0) {
-                      for (let m = 0; m < environment.serviceCategoryList[l].tagList.length; m++) {
-                        let tag = environment.serviceCategoryList[l].tagList[m];
-                        if (tag && tag.serviceList) {
-                          tag.serviceList.map((service: any) => {
-                            serviceByType[tag.tagName] = serviceByType[tag.tagName] || 0;
-                            serviceByType[tag.tagName] += service.serviceBilling.amount;
-                          });
+                    if (environment.serviceCategoryList[l].serviceNameList && environment.serviceCategoryList[l].serviceNameList.length > 0) {
+                      for (let n = 0; n < environment.serviceCategoryList[l].serviceNameList.length; n++) {
+                        let serviceNameList = environment.serviceCategoryList[l].serviceNameList[n];
+                        if (serviceNameList.tagList && serviceNameList.tagList.length > 0) {
+                          for (let m = 0; m < serviceNameList.tagList.length; m++) {
+                            let tag = serviceNameList.tagList[m];
+                            if (tag && tag.serviceList) {
+                              tag.serviceList.map((service: any) => {
+                                serviceByType[tag.tagName] = serviceByType[tag.tagName] || 0;
+                                serviceByType[tag.tagName] += service.serviceBilling.amount;
+                              });
+                            }
+                          }
                         }
                       }
                     }
@@ -341,12 +346,17 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               let service = product.deploymentEnvironmentList[b];
               if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
                 for (let a = 0; a < service.serviceCategoryList.length; a++) {
-                  if (service.serviceCategoryList[a].tagList) {
-                    service.serviceCategoryList[a].tagList.map(
-                      (subServices: any) => {
-                        serviceByType[subServices.tagName] = serviceByType[subServices.tagName] || 0;
-                        serviceByType[subServices.tagName] += 1;
-                      }, 0);
+                  if (service.serviceCategoryList[a].serviceNameList && service.serviceCategoryList[a].serviceNameList.length > 0) {
+                    for (let n = 0; n < service.serviceCategoryList[a].serviceNameList.length; n++) {
+                      let serviceNameList = service.serviceCategoryList[a].serviceNameList[n];
+                      if (serviceNameList.tagList) {
+                        serviceNameList.tagList.map(
+                          (subServices: any) => {
+                            serviceByType[subServices.tagName] = serviceByType[subServices.tagName] || 0;
+                            serviceByType[subServices.tagName] += 1;
+                          }, 0);
+                      }
+                    }
                   }
                 }
               }
