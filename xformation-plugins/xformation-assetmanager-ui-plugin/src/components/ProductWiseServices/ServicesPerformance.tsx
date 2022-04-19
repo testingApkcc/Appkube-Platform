@@ -96,8 +96,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                 </div>
               </div>
             </div>
-            {
-              category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
+            {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
               <div className='content-table'>
                 <div className='table'>
                   <div className='thead'>
@@ -122,8 +121,11 @@ export class ServicesPerformance extends React.Component<any, any> {
           retData.push(
             <div className='table performance-table'>
               <div className='tbody'>
-                <div className='td' onClick={() => this.openTagServices()}><strong>{tag.name}</strong></div>
-                {tag.tagList && tag.tagList.map((service: any, i: any) => {
+                <div className='td' onClick={() => this.openTagServices(indexArr, index)}>
+                  <strong>{tag.name}</strong>
+                  <i className={tag.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+                </div>
+                {tag.isOpen && tag.tagList && tag.tagList.map((service: any, i: any) => {
                   return (
                     <div className='tbody'>
                       <div className='td'><span>{service.tagName}</span></div>
@@ -191,8 +193,19 @@ export class ServicesPerformance extends React.Component<any, any> {
     return retData;
   };
 
-  openTagServices = () => {
-
+  openTagServices = (parentIndex: any, currentIndex: any) => {
+    const { product } = this.state;
+    if (product.deploymentEnvironmentList[parentIndex[0]].serviceCategoryList[parentIndex[1]].serviceNameList && product.deploymentEnvironmentList[parentIndex[0]].serviceCategoryList[parentIndex[1]].serviceNameList.length > 0) {
+      if (product.deploymentEnvironmentList[parentIndex[0]].serviceCategoryList[parentIndex[1]].serviceNameList[currentIndex].isOpen) {
+        product.deploymentEnvironmentList[parentIndex[0]].serviceCategoryList[parentIndex[1]].serviceNameList[currentIndex].isOpen = !product.deploymentEnvironmentList[parentIndex[0]].serviceCategoryList[parentIndex[1]].serviceNameList[currentIndex].isOpen;
+      } else {
+        product.deploymentEnvironmentList[parentIndex[0]].serviceCategoryList[parentIndex[1]].serviceNameList[currentIndex].isOpen = true;
+      }
+    }
+    this.setState({
+      product,
+    })
+    console.log(product);
   }
 
   getPerformanceClass = (score: any) => {
