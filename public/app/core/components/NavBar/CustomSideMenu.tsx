@@ -79,6 +79,19 @@ export class CustomSideMenu extends PureComponent<any, any> {
             activeMenuItem = item;
             isFound = true;
             break;
+          } else if (sMenu.subMenu && sMenu.subMenu.length > 0) {
+            for (let k = 0; k < sMenu.subMenu.length; k++) {
+              const childmenu = sMenu.subMenu[k];
+              if (pathName === childmenu.link) {
+                subMenuState = menuStates.SUBMENU_OPEN;
+                showSubMenu = true;
+                isSubMenuPinned = true;
+                activeSubMenuItem = childmenu;
+                activeMenuItem = item;
+                isFound = true;
+                break;
+              }
+            }
           }
         }
       } else {
@@ -165,24 +178,28 @@ export class CustomSideMenu extends PureComponent<any, any> {
           text: 'Environments',
           childName: 'assets',
           isImplemented: true,
+          subMenu: [
+            {
+              link: '/a/xformation-assetmanager-ui-plugin/amazon-services',
+              text: 'Amazon Services',
+              childName: 'assets',
+              isImplemented: true,
+            },
+          ],
         },
         {
           link: '/a/xformation-assetmanager-ui-plugin/department-wise-products',
           text: 'Department Wise Products',
           childName: 'assets',
           isImplemented: true,
-        },
-        {
-          link: '/a/xformation-assetmanager-ui-plugin/amazon-services',
-          text: 'Amazon Services',
-          childName: 'assets',
-          isImplemented: true,
-        },
-        {
-          link: '/a/xformation-assetmanager-ui-plugin/department-wise-charts',
-          text: 'Department Wise Charts',
-          childName: 'assets',
-          isImplemented: true,
+          subMenu: [
+            {
+              link: '/a/xformation-assetmanager-ui-plugin/department-wise-charts',
+              text: 'Department Wise Charts',
+              childName: 'assets',
+              isImplemented: true,
+            },
+          ],
         },
         {
           link: '/a/xformation-assetmanager-ui-plugin/storage-details',
@@ -734,8 +751,15 @@ export class CustomSideMenu extends PureComponent<any, any> {
     if (activeMenuItem && activeMenuItem.subMenu && activeMenuItem.subMenu.length > 0) {
       for (let j = 0; j < activeMenuItem.subMenu.length; j++) {
         let isActive = false;
-        if (activeSubMenuItem) {
+        if (activeMenuItem) {
           isActive = activeSubMenuItem.link === activeMenuItem.subMenu[j].link;
+          if (activeMenuItem.subMenu[j].subMenu && activeMenuItem.subMenu[j].subMenu.length > 0) {
+            for (let k = 0; k < activeMenuItem.subMenu[j].subMenu.length; k++) {
+              if (activeMenuItem.subMenu[j].subMenu[k].link.indexOf(activeSubMenuItem.link) !== -1) {
+                isActive = true;
+              }
+            }
+          }
         }
         retData.push(
           <Rbac
