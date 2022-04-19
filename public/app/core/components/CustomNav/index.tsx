@@ -116,7 +116,7 @@ export class CustomNavigationBar extends PureComponent<any, any> {
               </div>
               <ul>
                 <li>
-                  <a href="#">View my profile</a>
+                  <a href="/profile">View my profile</a>
                 </li>
                 <li className="logout">
                   <a href="#" onClick={this.onClickLogout}>
