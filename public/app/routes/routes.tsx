@@ -31,6 +31,12 @@ export function getAppRoutes(): RouteDescriptor[] {
       component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/team')),
     },
     {
+      path: '/ops-central',
+      pageClass: 'ops-central',
+      routeName: 'ops-central',
+      component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/Ops/opsCenteral')),
+    },
+    {
       path: '/analytics',
       pageClass: 'page-overview',
       routeName: DashboardRoutes.Normal,
