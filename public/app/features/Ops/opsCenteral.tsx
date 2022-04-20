@@ -4,13 +4,22 @@ class OpsCenteral extends React.Component<any, any> {
     super(props);
     this.state = {
       tableData: [
-        { id: 14, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 13, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 12, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 11, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 10, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 19, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 224, category: 'Cahnge Manager', info: 'sampleText' },
+        { id: 14, category: 'Performance & Availability', info: 'sampleText' },
+        { id: 13, category: 'Logs', info: 'sampleText' },
+        { id: 12, category: 'Compliance', info: 'sampleText' },
+        { id: 11, category: 'Service Desk', info: 'sampleText' },
+        { id: 10, category: 'Automation', info: 'sampleText' },
+        { id: 19, category: 'Infra As Code', info: 'sampleText' },
+        { id: 224, category: 'Kubernetes Management', info: 'sampleText' },
+        { id: 224, category: 'Performance Monitoring', info: 'sampleText' },
+        { id: 224, category: 'Log Monitoring', info: 'sampleText' },
+        { id: 224, category: 'tracing', info: 'sampleText' },
+        { id: 224, category: 'Toolcahain/Workflows', info: 'sampleText' },
+        { id: 224, category: 'ChatOps', info: 'sampleText' },
+        { id: 224, category: 'AI-ops', info: 'sampleText' },
+        { id: 224, category: 'Cloud Analytics', info: 'sampleText' },
+        { id: 224, category: 'cloud optimizer', info: 'sampleText' },
+        { id: 224, category: 'Self service Provisioning', info: 'sampleText' },
       ],
     };
   }

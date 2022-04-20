@@ -4,13 +4,12 @@ class ToolsAndDiagnostics extends React.Component<any, any> {
     super(props);
     this.state = {
       tableData: [
-        { id: 14, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 13, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 12, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 11, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 10, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 19, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 224, category: 'Cahnge Manager', info: 'sampleText' },
+        { id: 14, category: 'Change Manager', info: 'sampleText' },
+        { id: 13, category: 'Explorer', info: 'sampleText' },
+        { id: 12, category: 'RCA', info: 'sampleText' },
+        { id: 11, category: 'Script Manager', info: 'sampleText' },
+        { id: 10, category: 'Optimiser', info: 'sampleText' },
+        { id: 19, category: 'Migration Management', info: 'sampleText' },
       ],
     };
   }

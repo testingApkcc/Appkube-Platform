@@ -4,13 +4,25 @@ class DevCenteral extends React.Component<any, any> {
     super(props);
     this.state = {
       tableData: [
-        { id: 14, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 13, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 12, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 11, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 10, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 19, category: 'Cahnge Manager', info: 'sampleText' },
-        { id: 224, category: 'Cahnge Manager', info: 'sampleText' },
+        { id: 14, category: 'Generator', info: 'sampleText' },
+        { id: 13, category: 'Delivery Central', info: 'sampleText' },
+        { id: 12, category: 'Quality Central', info: 'sampleText' },
+        { id: 11, category: 'Test Central', info: 'sampleText' },
+        { id: 10, category: 'Raid Tools for Micrservices', info: 'sampleText' },
+        { id: 19, category: 'workflow Editor', info: 'sampleText' },
+        { id: 24, category: 'wf Engie', info: 'sampleText' },
+        { id: 24, category: 'Static Site Editor', info: 'sampleText' },
+        { id: 24, category: 'SDK/Libraries', info: 'sampleText' },
+        { id: 24, category: 'App/Catalouge', info: 'sampleText' },
+        { id: 24, category: 'GitOps', info: 'sampleText' },
+        { id: 24, category: 'CI/CD', info: 'sampleText' },
+        { id: 24, category: 'Continues Test', info: 'sampleText' },
+        { id: 24, category: 'Container Management', info: 'sampleText' },
+        { id: 24, category: 'Kubernetes Operators', info: 'sampleText' },
+        { id: 24, category: 'Code Quality', info: 'sampleText' },
+        { id: 24, category: 'Vulerability', info: 'sampleText' },
+        { id: 24, category: 'Enviornments Management', info: 'sampleText' },
+        { id: 24, category: 'Serverless', info: 'sampleText' },
       ],
     };
   }
