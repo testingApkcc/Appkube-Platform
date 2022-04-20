@@ -29450,12 +29450,25 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
+                            style: {
+                              display: 'flex',
+                              alignItems: 'center',
+                              cursor: 'pointer',
+                            },
                             className: 'td',
                             onClick: function () {
                               return _this.openTagServices(indexArr, index);
                             },
                           },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, serviceName.name),
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'strong',
+                            {
+                              style: {
+                                marginRight: '15px',
+                              },
+                            },
+                            serviceName.name
+                          ),
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down',
                           })

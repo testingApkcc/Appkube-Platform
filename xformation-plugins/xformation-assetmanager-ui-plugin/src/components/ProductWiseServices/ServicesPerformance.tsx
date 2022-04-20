@@ -118,8 +118,8 @@ export class ServicesPerformance extends React.Component<any, any> {
     serviceNames.map((serviceName: any, index: any) => {
       retData.push(<div className='table performance-table'>
         <div className='tbody'>
-          <div className='td' onClick={() => this.openTagServices(indexArr, index)}>
-            <strong>{serviceName.name}</strong>
+          <div style={{ display: 'flex', alignItems: 'center', cursor:'pointer' }} className='td' onClick={() => this.openTagServices(indexArr, index)}>
+            <strong style={{marginRight: "15px"}}>{serviceName.name}</strong>
             <i className={serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
           </div>
           {
