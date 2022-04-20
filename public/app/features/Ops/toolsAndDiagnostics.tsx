@@ -19,7 +19,7 @@ class ToolsAndDiagnostics extends React.Component<any, any> {
     return (
       <div>
         <div>
-          <h1>OPS CENTERAL</h1>
+          <h1>TOOLS & DIAGNOSTICS</h1>
           <div>
             <div>Recent</div>
             <div>Sort</div>
@@ -40,7 +40,7 @@ class ToolsAndDiagnostics extends React.Component<any, any> {
                   <div> {value.category} </div>
                   <div> {value.info} </div>
                   <div>
-                    <a href="#">Explore &#x25BA;</a>
+                    <a href="">Explore &#x25BA;</a>
                   </div>
                 </div>
               );

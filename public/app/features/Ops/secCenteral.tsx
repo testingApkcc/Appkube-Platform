@@ -19,7 +19,7 @@ class SecCenteral extends React.Component<any, any> {
     return (
       <div>
         <div>
-          <h1>OPS CENTERAL</h1>
+          <h1>SEC CENTERAL</h1>
           <div>
             <div>Recent</div>
             <div>Sort</div>

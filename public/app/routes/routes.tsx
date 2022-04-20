@@ -31,11 +31,32 @@ export function getAppRoutes(): RouteDescriptor[] {
       component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/team')),
     },
     {
+      path: '/dev-central',
+      pageClass: 'dev-central',
+      routeName: 'dev-central',
+      component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/Ops/devCenteral')),
+    },
+    {
+      path: '/sec-central',
+      pageClass: 'sec-central',
+      routeName: 'sec-central',
+      component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/Ops/secCenteral')),
+    },
+    {
+      path: '/tools-and-diagnostics',
+      pageClass: 'tools-and-diagnostics',
+      routeName: 'tools-and-diagnostics',
+      component: SafeDynamicImport(
+        () => import(/* webpackChunkName: "DashboardPage" */ '../features/Ops/toolsAndDiagnostics')
+      ),
+    },
+    {
       path: '/ops-central',
       pageClass: 'ops-central',
       routeName: 'ops-central',
       component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/Ops/opsCenteral')),
     },
+
     {
       path: '/analytics',
       pageClass: 'page-overview',
