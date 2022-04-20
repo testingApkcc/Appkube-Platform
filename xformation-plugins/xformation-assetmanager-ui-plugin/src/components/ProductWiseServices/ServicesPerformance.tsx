@@ -156,7 +156,7 @@ export class ServicesPerformance extends React.Component<any, any> {
           {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
             return (
               <div className='tbody'>
-                <div className='td'><span>{service.description}</span></div>
+                <div className='td'><span>{service.name}</span></div>
                 <div className='td'>
                   <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
                     <i className='fa fa-check-circle'></i>
