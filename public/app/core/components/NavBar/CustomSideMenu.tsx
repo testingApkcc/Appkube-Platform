@@ -201,11 +201,16 @@ export class CustomSideMenu extends PureComponent<any, any> {
           ],
         },
         {
-          link: '/a/xformation-assetmanager-ui-plugin/storage-details',
-          text: 'Storage Details',
+          link: '/a/xformation-assetmanager-ui-plugin/all-services',
+          text: 'All Services',
           childName: 'assets',
-          isImplemented: true,
         },
+        // {
+        //   link: '/a/xformation-assetmanager-ui-plugin/storage-details',
+        //   text: 'Storage Details',
+        //   childName: 'assets',
+        //   isImplemented: true,
+        // },
         {
           link: '/assets/discovered-assets',
           text: 'Discovered Assets',
@@ -261,10 +266,10 @@ export class CustomSideMenu extends PureComponent<any, any> {
     },
     {
       link: '/a/xformation-alertmanager-ui-plugin/monitor-alerts',
-      text: 'Events',
+      text: 'Alerts',
       cssClass: 'events',
       isImplemented: true,
-      childName: 'events',
+      childName: 'alerts',
       subMenu: [
         {
           link: '/a/xformation-alertmanager-ui-plugin/monitor-alerts',
@@ -322,14 +327,13 @@ export class CustomSideMenu extends PureComponent<any, any> {
           childName: 'taskmanager',
           isImplemented: true,
         },
+        {
+          link: '/drilldownanalytics',
+          text: 'Drilldown Analytics',
+          childName: 'analytics',
+          // isImplemented: true,
+        },
       ],
-    },
-    {
-      link: '/team',
-      text: 'Team',
-      cssClass: 'metrics',
-      isImplemented: true,
-      childName: 'team',
     },
     {
       link: '/ops-central',
@@ -358,6 +362,21 @@ export class CustomSideMenu extends PureComponent<any, any> {
       cssClass: 'availability',
       isImplemented: true,
       childName: 'availability',
+    },
+    {
+      link: '/team',
+      text: 'Preference',
+      cssClass: 'preference',
+      childName: 'preference',
+      isImplemented: true,
+      subMenu: [
+        {
+          link: '/team',
+          text: 'Team',
+          cssClass: 'metrics',
+          childName: 'team',
+        },
+      ],
     },
   ];
 
@@ -634,12 +653,6 @@ export class CustomSideMenu extends PureComponent<any, any> {
 
   extra: any = [
     {
-      link: '/preference',
-      text: 'Preference',
-      cssClass: 'preference',
-      childName: 'preference',
-    },
-    {
       link: '/plugins/xformation-rbac-ui-plugin/page/home',
       text: 'RBAC Settings',
       cssClass: 'diagnostic-settings',
@@ -866,7 +879,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
   };
 
   render() {
-    const { showSubMenu } = this.state;
+    const { showSubMenu, isSubMenuPinned } = this.state;
     return (
       <div className="menu-item-container">
         <CustomScrollbar>
@@ -928,9 +941,16 @@ export class CustomSideMenu extends PureComponent<any, any> {
         </CustomScrollbar>
         <div className={`sub-menu ${showSubMenu ? 'active-sub-menu' : ''}`}>
           <div className="open-menu" onMouseLeave={this.onMouseLeaveOpenedSubMenu}>
-            {/* <div className="side-menu-toggle text-right" onClick={this.onClickToggleSubMenu}> */}
-            <div className="side-menu-toggle text-right">
-              <i className="fa fa-thumb-tack"></i>
+            <div className="side-menu-toggle text-right" onClick={this.onClickToggleSubMenu}>
+              <i
+                className="fa fa-thumb-tack"
+                style={{
+                  transform: isSubMenuPinned ? 'rotate(0deg)' : 'rotate(-90deg)',
+                }}
+              ></i>
+              {/* <div className="side-menu-toggle text-right" onClick={this.onClickToggleSubMenu}> */}
+              {/* <div className="side-menu-toggle text-right"> */}
+              {/* <i className="fa fa-thumb-tack"></i> */}
             </div>
             <ul>{this.createOpenSubMenu()}</ul>
           </div>
