@@ -31,35 +31,43 @@ class DevCenteral extends React.Component<any, any> {
     return (
       <div className="ops-central-container">
         <div className="ops-central-header">
-          <h1>DEV CENTERAL</h1>
-          <div className="">
-            <div>Recent</div>
-            <div>Sort</div>
-            <div>
+          <h2 className="heading">DEV CENTERAL</h2>
+          <div className="central-header-content">
+            <div className="recent-text">Recent</div>
+            <div className="recent-text">Sort</div>
+            <div className="search-bar">
               <span>icon</span>
-              <input type="text" placeholder="search" />
+              <input type="text" className="control-form" placeholder="search" />
             </div>
           </div>
         </div>
-        <div>
-          {tableData && tableData.length > 0 ? (
-            tableData.map((value: any) => {
-              return (
-                <div key={value.id}>
-                  <div>
-                    <img src="" alt="image" />
+        <div className="ops-container">
+          <div className="row">
+            {tableData && tableData.length > 0 ? (
+              tableData.map((value: any) => {
+                return (
+                  <div className="col-lg-3 col-md-3 col-sm-6" key={value.id}>
+                    <div className="ops-box">
+                      <div className="ops-box-inner">
+                        <div className="ops-image">
+                          <img src="/public/img/central.png" alt="image" />
+                        </div>
+                        <div className="ops-content">
+                          <div style={{ color: '#0699fb' }}> {value.category} </div>
+                          <div style={{ color: '#999999F' }}> {value.info} </div>
+                        </div>
+                      </div>
+                      <div className="explore-content" style={{ color: '#999999F' }}>
+                        <a href="#">Explore &#x25BA;</a>
+                      </div>
+                    </div>
                   </div>
-                  <div> {value.category} </div>
-                  <div> {value.info} </div>
-                  <div>
-                    <a href="#">Explore &#x25BA;</a>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <>...loading</>
-          )}
+                );
+              })
+            ) : (
+              <>...loading</>
+            )}
+          </div>
         </div>
       </div>
     );
