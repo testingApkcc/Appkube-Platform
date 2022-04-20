@@ -1,0 +1,62 @@
+.ops-central-container {
+  width: 100%;
+  .ops-container {
+    margin: 10px;
+    .ops-box {
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      .ops-box-inner {
+        display: flex;
+        .ops-content {
+          margin-left: 10px;
+        }
+      }
+      .explore-content {
+        text-align: right;
+      }
+    }
+  }
+  .ops-central-header {
+    margin-bottom: 20px;
+    .heading {
+      margin: 50px 0 30px 0;
+      color: #394455;
+    }
+    .central-header-content {
+      display: flex;
+      .recent-text {
+        background-color: #f0f3f8;
+        border-radius: 5px;
+        color: #6f787f;
+        font-size: 16px;
+        line-height: 40px;
+        font-weight: 500;
+        width: 250px;
+        height: 40px;
+        margin-right: 20px;
+        padding: 0 10px;
+      }
+      .search-bar {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #000;
+        display: flex;
+        padding: 0 10px 0 10px;
+        span {
+          margin-right: 10px;
+          font-size: 16px;
+          line-height: 40px;
+        }
+        .control-form {
+          font-size: 16px;
+          line-height: 40px;
+          width: 100%;
+          color: #000;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

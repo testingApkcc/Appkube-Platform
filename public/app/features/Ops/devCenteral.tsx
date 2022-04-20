@@ -17,10 +17,10 @@ class DevCenteral extends React.Component<any, any> {
   render() {
     const { tableData } = this.state;
     return (
-      <div>
-        <div>
+      <div className="ops-central-container">
+        <div className="ops-central-header">
           <h1>DEV CENTERAL</h1>
-          <div>
+          <div className="">
             <div>Recent</div>
             <div>Sort</div>
             <div>
