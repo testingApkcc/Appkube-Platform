@@ -29575,7 +29575,15 @@ object-assign
                               {
                                 className: 'td',
                               },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, service.description)
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'span',
+                                {
+                                  style: {
+                                    paddingLeft: '45px',
+                                  },
+                                },
+                                service.name
+                              )
                             ),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
@@ -36903,7 +36911,7 @@ object-assign
                   var productList = department.productList;
                   var newProductList = [];
                   productList.forEach(function (product) {
-                    if (product.deploymentEnvironmentList) {
+                    if (product.deploymentEnvironmentList && product.deploymentEnvironmentList.length > 0) {
                       product.deploymentEnvironmentList[0].isOpen = true;
                     }
 
