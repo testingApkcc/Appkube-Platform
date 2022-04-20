@@ -102,7 +102,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                   <div className='thead'>
                     <div className='th'>Name</div>
                   </div>
-                  {this.renderTags(category.serviceNameList, [environmentIndex, categoryIndex])}
+                  {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
                 </div>
               </div>
             }
@@ -113,83 +113,82 @@ export class ServicesPerformance extends React.Component<any, any> {
     return [];
   };
 
-  renderTags = (tags: any, indexArr: any) => {
+  renderServiceName = (serviceNames: any, indexArr: any) => {
     const retData: any = [];
-    if (tags) {
-      tags.forEach((tag: any, index: any) => {
-        if (tag.tagList && tag.tagList.length > 0) {
-          retData.push(
-            <div className='table performance-table'>
+    serviceNames.map((serviceName: any, index: any) => {
+      retData.push(<div className='table performance-table'>
+        <div className='tbody'>
+          <div className='td' onClick={() => this.openTagServices(indexArr, index)}>
+            <strong>{serviceName.name}</strong>
+            <i className={serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+          </div>
+          {
+            serviceName.tagList && serviceName.tagList.length > 0 ?
+              (serviceName.isOpen ? this.renderTags(serviceName.tagList) : <></>)
+              :
               <div className='tbody'>
-                <div className='td' onClick={() => this.openTagServices(indexArr, index)}>
-                  <strong>{tag.name}</strong>
-                  <i className={tag.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+                <div className='td title'>
+                  <strong>{serviceName.name}<i className={serviceName.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
                 </div>
-                {tag.isOpen && tag.tagList && tag.tagList.map((service: any, i: any) => {
-                  return (
-                    <div className='tbody'>
-                      <div className='td'><span>{service.tagName}</span></div>
-                      {i == 0 &&
-                        <>
-                          <div className='td'>Performance</div>
-                          <div className='td'>Availability</div>
-                          <div className='td'>Security</div>
-                          <div className='td'>Data Protection</div>
-                          <div className='td'>User exp</div>
-                        </>
-                      }
-                      {service.serviceList && service.serviceList.map((tags: any, i: any) => {
-                        return (
-                          <div className='tbody'>
-                            <div className='td'><span>{tags.description}</span></div>
-                            <div className='td'>
-                              <div className={`progress-circle ${this.getPerformanceClass(tags.performance.score)}`} >
-                                <i className='fa fa-check-circle'></i>
-                              </div>
-                            </div>
-                            <div className='td'>
-                              <div className={`progress-circle ${this.getPerformanceClass(tags.availability.score)}`} >
-                                <i className='fa fa-check-circle'></i>
-                              </div>
-                            </div>
-                            <div className='td'>
-                              <div className={`progress-circle ${this.getPerformanceClass(tags.security.score)}`} >
-                                <i className='fa fa-check-circle'></i>
-                              </div>
-                            </div>
-                            <div className='td'>
-                              <div className={`progress-circle ${this.getPerformanceClass(tags.dataProtection.score)}`} >
-                                <i className='fa fa-check-circle'></i>
-                              </div>
-                            </div>
-                            <div className='td'>
-                              <div className={`progress-circle ${this.getPerformanceClass(tags.userExperiance.score)}`} >
-                                <i className='fa fa-check-circle'></i>
-                              </div>
-                            </div>
-                          </div>
-                        )
-                      })
-                      }
-                    </div>
-                  )
-                })
-                }
               </div>
+          }
+        </div>
+      </div>);
+    });
+    return retData;
+  };
 
-            </div>
-          );
-        } else {
-          retData.push(
-            <div className='tbody'>
-              <div className='td title'>
-                <strong>{tag.name}<i className={tag.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
+  renderTags = (tagList: any) => {
+    const retData: any = [];
+    tagList.forEach((tag: any, i: any) => {
+      retData.push(
+        <div className='tbody'>
+          <div className='td'><span>{tag.tagName}</span></div>
+          {i == 0 &&
+            <>
+              <div className='td'>Performance</div>
+              <div className='td'>Availability</div>
+              <div className='td'>Security</div>
+              <div className='td'>Data Protection</div>
+              <div className='td'>User exp</div>
+            </>
+          }
+          {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
+            return (
+              <div className='tbody'>
+                <div className='td'><span>{service.description}</span></div>
+                <div className='td'>
+                  <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
+                    <i className='fa fa-check-circle'></i>
+                  </div>
+                </div>
+                <div className='td'>
+                  <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
+                    <i className='fa fa-check-circle'></i>
+                  </div>
+                </div>
+                <div className='td'>
+                  <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
+                    <i className='fa fa-check-circle'></i>
+                  </div>
+                </div>
+                <div className='td'>
+                  <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
+                    <i className='fa fa-check-circle'></i>
+                  </div>
+                </div>
+                <div className='td'>
+                  <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
+                    <i className='fa fa-check-circle'></i>
+                  </div>
+                </div>
               </div>
-            </div>
-          );
-        }
-      });
-    }
+            )
+          })
+          }
+        </div>
+      );
+    });
     return retData;
   };
 
