@@ -334,7 +334,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                     <div className="col-lg-6 col-md-12 col-sm-12">
                       <div className="filters-breadcrumbs">
                         <ul>
-                          <li><a>{labelText}</a></li>
+                          <li>{labelText}</li>
                         </ul>
                       </div>
                     </div>
