@@ -42,18 +42,18 @@ export class CustomSideMenu extends PureComponent<any, any> {
     if (retData.isFound) {
       return retData;
     }
-    retData = this.findActiveItem(pathName, this.opsCentral);
-    if (retData.isFound) {
-      return retData;
-    }
-    retData = this.findActiveItem(pathName, this.devCentral);
-    if (retData.isFound) {
-      return retData;
-    }
-    retData = this.findActiveItem(pathName, this.diagnostics);
-    if (retData.isFound) {
-      return retData;
-    }
+    // retData = this.findActiveItem(pathName, this.opsCentral);
+    // if (retData.isFound) {
+    //   return retData;
+    // }
+    // retData = this.findActiveItem(pathName, this.devCentral);
+    // if (retData.isFound) {
+    //   return retData;
+    // }
+    // retData = this.findActiveItem(pathName, this.diagnostics);
+    // if (retData.isFound) {
+    //   return retData;
+    // }
     retData = this.findActiveItem(pathName, this.extra);
     return retData;
   };
@@ -146,7 +146,6 @@ export class CustomSideMenu extends PureComponent<any, any> {
     window.addEventListener('popstate', () => {
       window.dispatchEvent(new Event('locationchange'));
     });
-
     const menuData: any = this.handleLocationChange();
     this.updateState(menuData.subMenuState, -1);
     this.setState({
@@ -332,264 +331,303 @@ export class CustomSideMenu extends PureComponent<any, any> {
       isImplemented: true,
       childName: 'team',
     },
-  ];
-
-  opsCentral: any = [
     {
-      link: '/a/xformation-perfmanager-ui-plugin/managedashboard',
-      text: 'Performance & Availability',
+      link: '/ops-central',
+      text: 'OPS central',
       cssClass: 'availability',
       isImplemented: true,
       childName: 'availability',
-      subMenu: [
-        {
-          link: '/a/xformation-perfmanager-ui-plugin/managedashboard',
-          text: 'Dashboard',
-          isImplemented: true,
-          childName: 'metrics-catalog',
-        },
-        {
-          link: '/a/xformation-perfmanager-ui-plugin/collectionview',
-          text: 'Collection',
-          isImplemented: true,
-          childName: 'metrics-collection',
-        },
-        {
-          link: '/a/xformation-alertmanager-ui-plugin/manage-alert-rule',
-          text: 'Rule',
-          isImplemented: true,
-          childName: 'metrics-rule',
-        },
-        {
-          link: '/a/xformation-perfmanager-ui-plugin/preferences',
-          text: 'Preferences',
-          isImplemented: true,
-          childName: 'metrics-preferences',
-        },
-        {
-          link: '/a/xformation-perfmanager-ui-plugin/discovery',
-          text: 'Discovery',
-          isImplemented: true,
-          childName: 'metrics-preferences',
-        },
-        {
-          link: '/a/xformation-perfmanager-ui-plugin/view',
-          text: 'View',
-          isImplemented: true,
-          childName: 'metrics-preferences',
-        },
-      ],
     },
     {
-      link: '/a/xformation-logmanager-ui-plugin/dashboard',
-      text: 'Logs',
-      cssClass: 'logs',
-      isImplemented: true,
-      childName: 'grafana-logs',
-      subMenu: [
-        {
-          link: '/a/xformation-logmanager-ui-plugin/overview',
-          text: 'Overview',
-          childName: 'grafana-logs',
-        },
-        {
-          link: '/a/xformation-logmanager-ui-plugin/dashboard',
-          text: 'Dashboard',
-          isImplemented: true,
-          childName: 'grafana-logs',
-        },
-        {
-          link: '/a/xformation-logmanager-ui-plugin/alerts',
-          text: 'Alerts',
-          childName: 'grafana-logs',
-        },
-        {
-          link: '/a/xformation-logmanager-ui-plugin/preference',
-          text: 'Preference',
-          isImplemented: true,
-          childName: 'grafana-logs',
-        },
-      ],
-    },
-    {
-      link: '/a/xformation-compliancemanager-ui-plugin/dashboard',
-      text: 'Compliance',
-      cssClass: 'compliance',
-      isImplemented: true,
-      childName: 'compliance',
-      subMenu: [
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/dashboard',
-          text: 'Overview',
-          isImplemented: true,
-          childName: 'compliance-dashboard',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/compliancerulesets',
-          text: 'Rulesets',
-          isImplemented: true,
-          childName: 'compliance-rulesets',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/gslbuilder',
-          text: 'Rule Builder',
-          isImplemented: true,
-          childName: 'compliance-builder',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/audits',
-          text: 'Audits',
-          childName: 'compliance-builder',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/compliancepolicy',
-          text: 'Policies',
-          isImplemented: true,
-          childName: 'compliance-policies',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/complianceremediation',
-          text: 'Remediation',
-          isImplemented: true,
-          childName: 'compliance-remediation',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/complianceassessmenthistory',
-          text: 'Assessment History',
-          isImplemented: true,
-          childName: 'compliance-assessment-history',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/complianceexclusions',
-          text: 'Exclusions',
-          isImplemented: true,
-          childName: 'compliance-exclusions',
-        },
-        {
-          link: '/a/xformation-compliancemanager-ui-plugin/preference',
-          text: 'Preference',
-          childName: 'compliance-preference',
-        },
-      ],
-    },
-    {
-      link: '/a/xformation-servicedesk-ui-plugin/dashboard',
-      text: 'Service desk',
-      cssClass: 'tickets',
-      isImplemented: true,
-      childName: 'tickets',
-      subMenu: [
-        {
-          link: '/a/xformation-servicedesk-ui-plugin/dashboard',
-          text: 'Dashboard',
-          isImplemented: true,
-          childName: 'tickets-dashboard',
-        },
-        {
-          link: '/a/xformation-servicedesk-ui-plugin/allcontacts',
-          text: 'Contacts',
-          isImplemented: true,
-          childName: 'tickets-contacts',
-        },
-        {
-          link: '/a/xformation-servicedesk-ui-plugin/allcompanies',
-          text: 'Companies',
-          isImplemented: true,
-          childName: 'tickets-companies',
-        },
-        {
-          link: '/a/xformation-servicedesk-ui-plugin/tickets',
-          text: 'Reports',
-          isImplemented: true,
-          childName: 'tickets-reports',
-        },
-        {
-          link: '/a/xformation-servicedesk-ui-plugin/opentickets',
-          text: 'Preferences',
-          isImplemented: true,
-          childName: 'tickets-preferences',
-        },
-      ],
-    },
-    {
-      link: '/automation',
-      text: 'Automation',
-      cssClass: 'automation',
-      childName: 'automation',
-    },
-  ];
-
-  devCentral: any = [
-    {
-      link: '/generators',
-      text: 'Generators',
+      link: '/a/xformation-perfmanager-ui-plugin/dev-central',
+      text: 'DEV CENTERAL',
       cssClass: 'generator',
       childName: 'generators',
     },
     {
-      link: '/delivery',
-      text: 'Delivery',
-      cssClass: 'delivery',
-      childName: 'delivery',
+      link: '/a/xformation-perfmanager-ui-plugin/sec-central',
+      text: '',
+      cssClass: 'generator',
+      childName: 'generators',
     },
     {
-      link: '/quality',
-      text: 'Quality',
-      cssClass: 'quality',
-      childName: 'quality',
-    },
-    {
-      link: '/test',
-      text: 'Test',
-      cssClass: 'test',
-      childName: 'test',
+      link: '/a/xformation-perfmanager-ui-plugin/sec-central',
+      text: '',
+      cssClass: 'generator',
+      childName: 'generators',
     },
   ];
 
-  diagnostics: any = [
-    {
-      link: '/change-manager',
-      text: 'Change Manager',
-      cssClass: 'generator',
-      childName: 'change-manager',
-    },
-    {
-      link: '/explorer',
-      text: 'Explorer',
-      cssClass: 'quality',
-      childName: 'explorer',
-    },
-    {
-      link: '/rca',
-      text: 'RCA',
-      cssClass: 'delivery',
-      childName: 'rca',
-    },
-    {
-      link: '/search-act',
-      text: 'Search & Act',
-      cssClass: 'generator',
-      childName: 'search-act',
-    },
-    {
-      link: '/script-manager',
-      text: 'Script Manager',
-      cssClass: 'test',
-      childName: 'script-manager',
-    },
-    {
-      link: '/optimizer',
-      text: 'Optimizer',
-      cssClass: 'delivery',
-      childName: 'optimizer',
-    },
-    {
-      link: '/migration-manager',
-      text: 'Migration Manager',
-      cssClass: 'generator',
-      childName: 'migration-manager',
-    },
-  ];
+  // opsCentral: any = [
+  //   {
+  //     link: '/ops-central',
+  //     text: 'OPS central',
+  //     cssClass: 'availability',
+  //     isImplemented: true,
+  //     childName: 'availability',
+  //       subMenu: [
+  //         {
+  //           link: '/a/xformation-perfmanager-ui-plugin/managedashboard',
+  //           text: 'Dashboard',
+  //           isImplemented: true,
+  //           childName: 'metrics-catalog',
+  //         },
+  //         {
+  //           link: '/a/xformation-perfmanager-ui-plugin/collectionview',
+  //           text: 'Collection',
+  //           isImplemented: true,
+  //           childName: 'metrics-collection',
+  //         },
+  //         {
+  //           link: '/a/xformation-alertmanager-ui-plugin/manage-alert-rule',
+  //           text: 'Rule',
+  //           isImplemented: true,
+  //           childName: 'metrics-rule',
+  //         },
+  //         {
+  //           link: '/a/xformation-perfmanager-ui-plugin/preferences',
+  //           text: 'Preferences',
+  //           isImplemented: true,
+  //           childName: 'metrics-preferences',
+  //         },
+  //         {
+  //           link: '/a/xformation-perfmanager-ui-plugin/discovery',
+  //           text: 'Discovery',
+  //           isImplemented: true,
+  //           childName: 'metrics-preferences',
+  //         },
+  //         {
+  //           link: '/a/xformation-perfmanager-ui-plugin/view',
+  //           text: 'View',
+  //           isImplemented: true,
+  //           childName: 'metrics-preferences',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       link: '/a/xformation-logmanager-ui-plugin/dashboard',
+  //       text: 'Logs',
+  //       cssClass: 'logs',
+  //       isImplemented: true,
+  //       childName: 'grafana-logs',
+  //       subMenu: [
+  //         {
+  //           link: '/a/xformation-logmanager-ui-plugin/overview',
+  //           text: 'Overview',
+  //           childName: 'grafana-logs',
+  //         },
+  //         {
+  //           link: '/a/xformation-logmanager-ui-plugin/dashboard',
+  //           text: 'Dashboard',
+  //           isImplemented: true,
+  //           childName: 'grafana-logs',
+  //         },
+  //         {
+  //           link: '/a/xformation-logmanager-ui-plugin/alerts',
+  //           text: 'Alerts',
+  //           childName: 'grafana-logs',
+  //         },
+  //         {
+  //           link: '/a/xformation-logmanager-ui-plugin/preference',
+  //           text: 'Preference',
+  //           isImplemented: true,
+  //           childName: 'grafana-logs',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       link: '/a/xformation-compliancemanager-ui-plugin/dashboard',
+  //       text: 'Compliance',
+  //       cssClass: 'compliance',
+  //       isImplemented: true,
+  //       childName: 'compliance',
+  //       subMenu: [
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/dashboard',
+  //           text: 'Overview',
+  //           isImplemented: true,
+  //           childName: 'compliance-dashboard',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/compliancerulesets',
+  //           text: 'Rulesets',
+  //           isImplemented: true,
+  //           childName: 'compliance-rulesets',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/gslbuilder',
+  //           text: 'Rule Builder',
+  //           isImplemented: true,
+  //           childName: 'compliance-builder',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/audits',
+  //           text: 'Audits',
+  //           childName: 'compliance-builder',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/compliancepolicy',
+  //           text: 'Policies',
+  //           isImplemented: true,
+  //           childName: 'compliance-policies',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/complianceremediation',
+  //           text: 'Remediation',
+  //           isImplemented: true,
+  //           childName: 'compliance-remediation',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/complianceassessmenthistory',
+  //           text: 'Assessment History',
+  //           isImplemented: true,
+  //           childName: 'compliance-assessment-history',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/complianceexclusions',
+  //           text: 'Exclusions',
+  //           isImplemented: true,
+  //           childName: 'compliance-exclusions',
+  //         },
+  //         {
+  //           link: '/a/xformation-compliancemanager-ui-plugin/preference',
+  //           text: 'Preference',
+  //           childName: 'compliance-preference',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       link: '/a/xformation-servicedesk-ui-plugin/dashboard',
+  //       text: 'Service desk',
+  //       cssClass: 'tickets',
+  //       isImplemented: true,
+  //       childName: 'tickets',
+  //       subMenu: [
+  //         {
+  //           link: '/a/xformation-servicedesk-ui-plugin/dashboard',
+  //           text: 'Dashboard',
+  //           isImplemented: true,
+  //           childName: 'tickets-dashboard',
+  //         },
+  //         {
+  //           link: '/a/xformation-servicedesk-ui-plugin/allcontacts',
+  //           text: 'Contacts',
+  //           isImplemented: true,
+  //           childName: 'tickets-contacts',
+  //         },
+  //         {
+  //           link: '/a/xformation-servicedesk-ui-plugin/allcompanies',
+  //           text: 'Companies',
+  //           isImplemented: true,
+  //           childName: 'tickets-companies',
+  //         },
+  //         {
+  //           link: '/a/xformation-servicedesk-ui-plugin/tickets',
+  //           text: 'Reports',
+  //           isImplemented: true,
+  //           childName: 'tickets-reports',
+  //         },
+  //         {
+  //           link: '/a/xformation-servicedesk-ui-plugin/opentickets',
+  //           text: 'Preferences',
+  //           isImplemented: true,
+  //           childName: 'tickets-preferences',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       link: '/automation',
+  //       text: 'Automation',
+  //       cssClass: 'automation',
+  //       childName: 'automation',
+  //   },
+  // ];
+
+  // devCentral: any = [
+  //   {
+  //     link: '/a/xformation-perfmanager-ui-plugin/dev-central',
+  //     text: 'DEV CENTERAL',
+  //     cssClass: 'generator',
+  //     childName: 'generators',
+  //   },
+  //   {
+  //     link: '/delivery',
+  //     text: 'Delivery',
+  //     cssClass: 'delivery',
+  //     childName: 'delivery',
+  //   },
+  //   {
+  //     link: '/quality',
+  //     text: 'Quality',
+  //     cssClass: 'quality',
+  //     childName: 'quality',
+  //   },
+  //   {
+  //     link: '/test',
+  //     text: 'Test',
+  //     cssClass: 'test',
+  //     childName: 'test',
+  //   },
+  // ];
+
+  // secCentral: any = [
+  //   {
+  //     link: '/a/xformation-perfmanager-ui-plugin/sec-central',
+  //     text: '',
+  //     cssClass: 'generator',
+  //     childName: 'generators',
+  //   },
+  // ];
+  // diagnostics: any = [
+  //   {
+  //     link: '/tools-and-diagnostics',
+  //     text: 'tools-and-diagnostics',
+  //     cssClass: 'generator',
+  //     childName: 'change-manager',
+  //   },
+  //   {
+  //     link: '/change-manager',
+  //     text: 'Change Manager',
+  //     cssClass: 'generator',
+  //     childName: 'change-manager',
+  //   },
+  //   {
+  //     link: '/explorer',
+  //     text: 'Explorer',
+  //     cssClass: 'quality',
+  //     childName: 'explorer',
+  //   },
+  //   {
+  //     link: '/rca',
+  //     text: 'RCA',
+  //     cssClass: 'delivery',
+  //     childName: 'rca',
+  //   },
+  //   {
+  //     link: '/search-act',
+  //     text: 'Search & Act',
+  //     cssClass: 'generator',
+  //     childName: 'search-act',
+  //   },
+  //   {
+  //     link: '/script-manager',
+  //     text: 'Script Manager',
+  //     cssClass: 'test',
+  //     childName: 'script-manager',
+  //   },
+  //   {
+  //     link: '/optimizer',
+  //     text: 'Optimizer',
+  //     cssClass: 'delivery',
+  //     childName: 'optimizer',
+  //   },
+  //   {
+  //     link: '/migration-manager',
+  //     text: 'Migration Manager',
+  //     cssClass: 'generator',
+  //     childName: 'migration-manager',
+  //   },
+  // ];
 
   extra: any = [
     {
@@ -825,7 +863,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
   };
 
   render() {
-    const { showSubMenu, isSubMenuPinned, collapsedMenus } = this.state;
+    const { showSubMenu } = this.state;
     return (
       <div className="menu-item-container">
         <CustomScrollbar>
@@ -833,55 +871,63 @@ export class CustomSideMenu extends PureComponent<any, any> {
             <div className="sidemenu-search-container"></div>
             <ul className="m-0">{this.createCloseMenu(this.mainMenu)}</ul>
 
-            <Rbac parentName={'OPS CENTRAL'} childName={'OPS CENTRAL'}>
-              <div className="menu-item-header" onClick={() => this.collapseMainMenu(0)}>
+            {/* <Rbac parentName={'OPS CENTRAL'} childName={'OPS CENTRAL'}>
+              <div className="menu-item-header" onClick={(e) => this.onClickLink(e, this.opsCentral[0])}>
                 OPS
                 <br />
                 CENTRAL
-                <br />
-                <i className={`fa ${!collapsedMenus[0] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'}`}></i>
-              </div>
-            </Rbac>
-            <ul className={`m-0 main-menu-items ${!collapsedMenus[0] ? 'main-menu-collapsed' : ''}`}>
+                <br /> */}
+            {/* <i className={`fa ${!collapsedMenus[0] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'}`}></i> */}
+            {/* </div>
+            </Rbac> */}
+            {/* <ul className={`m-0 main-menu-items ${!collapsedMenus[0] ? 'main-menu-collapsed' : ''}`}>
               {this.createCloseMenu(this.opsCentral)}
-            </ul>
+            </ul> */}
 
-            <Rbac parentName={'DEV CENTRAL'} childName={'DEV CENTRAL'}>
-              <div className="menu-item-header" onClick={() => this.collapseMainMenu(1)}>
+            {/* <Rbac parentName={'DEV CENTRAL'} childName={'DEV CENTRAL'}> */}
+            {/* <div className="menu-item-header" onClick={() => this.collapseMainMenu(1)}> */}
+            {/* <div className="menu-item-header" onClick={(e) => this.onClickLink(e, this.devCentral[0])}>
                 DEV
                 <br />
                 CENTRAL
-                <br />
-                <i className={`fa ${!collapsedMenus[1] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'}`}></i>
-              </div>
-            </Rbac>
-            <ul className={`m-0 main-menu-items ${!collapsedMenus[1] ? 'main-menu-collapsed' : ''}`}>
+                <br /> */}
+            {/* <i className={`fa ${!collapsedMenus[1] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'}`}></i> */}
+            {/* </div>
+            </Rbac> */}
+            {/* <ul className={`m-0 main-menu-items ${!collapsedMenus[1] ? 'main-menu-collapsed' : ''}`}>
               {this.createCloseMenu(this.devCentral)}
-            </ul>
-            <Rbac parentName={'TOOLS DIAGNOSTICS'} childName={'TOOLS DIAGNOSTICS'}>
-              <div className="menu-item-header" onClick={() => this.collapseMainMenu(2)}>
+            </ul> */}
+            {/* <Rbac parentName={'TOOLS DIAGNOSTICS'} childName={'TOOLS DIAGNOSTICS'}> */}
+            {/* <div className="menu-item-header" onClick={() => this.collapseMainMenu(2)}> */}
+            {/* <div className="menu-item-header" onClick={(e) => this.onClickLink(e, this.diagnostics[0])}>
                 TOOLS &amp;
                 <br />
                 DIAGNOSTICS
-                <br />
-                <i className={`fa ${!collapsedMenus[2] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'}`}></i>
-              </div>
+                <br /> */}
+            {/* <i className={`fa ${!collapsedMenus[2] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'}`}></i> */}
+            {/* </div>
             </Rbac>
-            <ul className={`m-0 main-menu-items ${!collapsedMenus[2] ? 'main-menu-collapsed' : ''}`}>
-              {this.createCloseMenu(this.diagnostics)}
-            </ul>
+            <Rbac parentName={'TOOLS DIAGNOSTICS'} childName={'TOOLS DIAGNOSTICS'}> */}
+            {/* <div className="menu-item-header" onClick={() => this.collapseMainMenu(2)}> */}
+            {/* <div className="menu-item-header" onClick={(e) => this.onClickLink(e, this.secCentral[0])}>
+                SEC &amp;
+                <br />
+                CENTERAL
+                <br /> */}
+            {/* <i className={`fa ${!collapsedMenus[2] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'}`}></i> */}
+            {/* </div> */}
+            {/* </Rbac> */}
+            {/* <ul className={`m-0 main-menu-items ${!collapsedMenus[2] ? 'main-menu-collapsed' : ''}`}>
+              {this.createCloseMenu(this.diagnostics)}*/}
+            {/* </ul> */}
             <ul className="m-0">{this.createCloseMenu(this.extra)}</ul>
           </div>
         </CustomScrollbar>
         <div className={`sub-menu ${showSubMenu ? 'active-sub-menu' : ''}`}>
           <div className="open-menu" onMouseLeave={this.onMouseLeaveOpenedSubMenu}>
-            <div className="side-menu-toggle text-right" onClick={this.onClickToggleSubMenu}>
-              <i
-                className="fa fa-thumb-tack"
-                style={{
-                  transform: isSubMenuPinned ? 'rotate(0deg)' : 'rotate(-90deg)',
-                }}
-              ></i>
+            {/* <div className="side-menu-toggle text-right" onClick={this.onClickToggleSubMenu}> */}
+            <div className="side-menu-toggle text-right">
+              <i className="fa fa-thumb-tack"></i>
             </div>
             <ul>{this.createOpenSubMenu()}</ul>
           </div>
