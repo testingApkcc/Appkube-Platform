@@ -236,9 +236,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     graphData.productWiseCostData.labels = labels;
     graphData.productWiseCostData.datasets[0].data = data;
     // for (let j = 0; j < graphData.productWiseCostData.datasets.length; j++) {
-      for (let i = 0; i < data.length; i++) {
-        graphData.productWiseCostData.datasets[0].backgroundColor.push(this.getRandomColor());
-      }
+    for (let i = 0; i < data.length; i++) {
+      graphData.productWiseCostData.datasets[0].backgroundColor.push(this.getRandomColor());
+    }
     // }
     productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCount}`
     this.setState({
@@ -355,17 +355,18 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           for (let i = 0; i < department.productList.length; i++) {
             let product = department.productList[i];
             for (let b = 0; b < product.deploymentEnvironmentList.length; b++) {
-              let service = product.deploymentEnvironmentList[b];
-              if (service.serviceCategoryList && service.serviceCategoryList.length > 0) {
-                for (let a = 0; a < service.serviceCategoryList.length; a++) {
-                  if (service.serviceCategoryList[a].serviceNameList && service.serviceCategoryList[a].serviceNameList.length > 0) {
-                    for (let n = 0; n < service.serviceCategoryList[a].serviceNameList.length; n++) {
-                      let serviceNameList = service.serviceCategoryList[a].serviceNameList[n];
-                      if (serviceNameList.tagList) {
-                        serviceNameList.tagList.map(
+              let environment = product.deploymentEnvironmentList[b];
+              if (environment.serviceCategoryList && environment.serviceCategoryList.length > 0) {
+                for (let a = 0; a < environment.serviceCategoryList.length; a++) {
+                  const serviceCategory = environment.serviceCategoryList[a];
+                  if (serviceCategory.serviceNameList && serviceCategory.serviceNameList.length > 0) {
+                    for (let n = 0; n < serviceCategory.serviceNameList.length; n++) {
+                      let serviceName = serviceCategory.serviceNameList[n];
+                      if (serviceName.tagList) {
+                        serviceName.tagList.map(
                           (subServices: any) => {
                             serviceByType[subServices.tagName] = serviceByType[subServices.tagName] || 0;
-                            serviceByType[subServices.tagName] += 1;
+                            serviceByType[subServices.tagName] += subServices.serviceList ? subServices.serviceList.length : 0;
                           }, 0);
                       }
                     }
@@ -406,11 +407,19 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                 </li>
                 <li>
                   <label>No. of App Services</label>
-                  <span>{serviceByType.APP}</span>
+                  <span>{serviceByType.APP || 0}</span>
                 </li>
                 <li>
                   <label>No. of Data Services</label>
-                  <span>{serviceByType.DATA}</span>
+                  <span>{serviceByType.DATA || 0}</span>
+                </li>
+                <li>
+                  <label>No. of Network Services</label>
+                  <span>{serviceByType.NETWORK || 0}</span>
+                </li>
+                <li>
+                  <label>No. of Other Services</label>
+                  <span>{serviceByType.OTHER || 0}</span>
                 </li>
               </ul>
               <div className="production-heading">
