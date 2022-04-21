@@ -70,11 +70,10 @@ export class ProductWiseServices extends React.Component<any, any> {
     let retData = [];
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
+        let serviceByType: any = {};
         let row = product[i];
         let productViewMapping = viewMapping[i] ? viewMapping[i] : [];
-        let appcount = 0;
-        let dataCount = 0;
-        retData.push(
+        retData.push( 
           <div key={v4()} className="inner-table">
             <div className="thead">{row.name}</div>
             {row.productList && row.productList.map((viewData: any, index: any) => {
@@ -82,22 +81,21 @@ export class ProductWiseServices extends React.Component<any, any> {
               const val = viewData[defaultView];
               let productServiceList = [];
               if (val && val.deploymentEnvironmentList) {
-                for (let i = 0; i < val.deploymentEnvironmentList.length; i++) {
-                  productServiceList.push(val.deploymentEnvironmentList[i].name);
-                  if (val.deploymentEnvironmentList[i].serviceCategoryList && val.deploymentEnvironmentList[i].serviceCategoryList.length > 0) {
-                    for (let j = 0; j < val.deploymentEnvironmentList[i].serviceCategoryList.length; j++) {
-                      if (val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList && val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList.length > 0) {
-                        for (let k = 0; k < val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList.length; k++) {
-                          if (val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList && val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList.length > 0) {
-                            for (let l = 0; l < val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList.length; l++) {
-                              let data = val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList[l];
-                              if (data.tagName === "DATA") {
-                                dataCount++;
-                              } else if (data.tagName === "APP") {
-                                appcount++;
-
-                              }
-                            }
+                for (let b = 0; b < val.deploymentEnvironmentList.length; b++) {
+                  productServiceList.push(val.deploymentEnvironmentList[b].name);
+                  let environment = val.deploymentEnvironmentList[b];
+                  if (environment.serviceCategoryList && environment.serviceCategoryList.length > 0) {
+                    for (let a = 0; a < environment.serviceCategoryList.length; a++) {
+                      const serviceCategory = environment.serviceCategoryList[a];
+                      if (serviceCategory.serviceNameList && serviceCategory.serviceNameList.length > 0) {
+                        for (let n = 0; n < serviceCategory.serviceNameList.length; n++) {
+                          let serviceName = serviceCategory.serviceNameList[n];
+                          if (serviceName.tagList) {
+                            serviceName.tagList.map(
+                              (subServices: any) => {
+                                serviceByType[subServices.tagName] = serviceByType[subServices.tagName] || 0;
+                                serviceByType[subServices.tagName] += subServices.serviceList ? subServices.serviceList.length : 0;
+                              }, 0);
                           }
                         }
                       }
@@ -112,8 +110,8 @@ export class ProductWiseServices extends React.Component<any, any> {
                     <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                   </div>
                   <div className="app-services"></div>
-                  <div className="app-services">{appcount}</div>
-                  <div className="data-services">{dataCount}</div>
+                  <div className="app-services">{serviceByType.APP || 0}</div>
+                  <div className="data-services">{serviceByType.DATA || 0}</div>
                   <div className="data-services">{productServiceList.join()}</div>
                   <div className="edit">
                     <button className="edit-btn">
