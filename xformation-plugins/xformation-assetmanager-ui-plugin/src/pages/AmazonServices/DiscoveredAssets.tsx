@@ -115,6 +115,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
                   <button className="asset-white-button min-width-inherit m-r-0">
                     <a className="fa fa-ellipsis-h"></a>
                   </button>
+                  <div className="edit-product-inner">
+                    <ul>
+                      <li><a href="#">Add New Product</a></li>
+                      <li><a href="#">Add New Product</a></li>
+                      <li><a href="#">Add New Product</a></li>
+                      <li><a href="#">Add New Product</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </>
