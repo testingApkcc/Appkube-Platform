@@ -851,6 +851,24 @@ export class CustomSideMenu extends PureComponent<any, any> {
             </Rbac>
           );
           break;
+        } else {
+          if (activeMenuItem.subMenu[j].subMenu && activeMenuItem.subMenu[j].subMenu.length > 0) {
+            for (let k = 0; k < activeMenuItem.subMenu[j].subMenu.length; k++) {
+              if (activeMenuItem.subMenu[j].subMenu[k].link.indexOf(activeSubMenuItem.link) !== -1) {
+                retData.push(
+                  <Rbac
+                    parentName={activeMenuItem.subMenu[j].text || ''}
+                    childName={activeMenuItem.subMenu[j].text || ''}
+                  >
+                    <li>
+                      <div className="menu-item-text">{activeMenuItem.subMenu[j].text}</div>
+                    </li>
+                  </Rbac>
+                );
+                break;
+              }
+            }
+          }
         }
       }
     }
