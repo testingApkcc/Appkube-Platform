@@ -118,9 +118,20 @@ export class ServicesPerformance extends React.Component<any, any> {
     serviceNames.map((serviceName: any, index: any) => {
       retData.push(<div className='table performance-table'>
         <div className='tbody'>
-          <div style={{ display: 'flex', alignItems: 'center', cursor:'pointer' }} className='td' onClick={() => this.openTagServices(indexArr, index)}>
-            <strong style={{marginRight: "15px"}}>{serviceName.name}</strong>
-            <i className={serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+          <div className='tbody' onClick={() => this.openTagServices(indexArr, index)}>
+            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+              <strong style={{ marginRight: "15px" }}>{serviceName.name}</strong>
+              <i className={serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+            </div>
+            {index == 0 &&
+              <>
+                <div className='td'>Performance</div>
+                <div className='td'>Availability</div>
+                <div className='td'>Security</div>
+                <div className='td'>Data Protection</div>
+                <div className='td'>User exp</div>
+              </>
+            }
           </div>
           {
             serviceName.tagList && serviceName.tagList.length > 0 ?
@@ -140,54 +151,50 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   renderTags = (tagList: any) => {
     const retData: any = [];
-    tagList.forEach((tag: any, i: any) => {
-      retData.push(
-        <div className='tbody'>
-          <div className='td'><span>{tag.tagName}</span></div>
-          {i == 0 &&
-            <>
-              <div className='td'>Performance</div>
-              <div className='td'>Availability</div>
-              <div className='td'>Security</div>
-              <div className='td'>Data Protection</div>
-              <div className='td'>User exp</div>
-            </>
-          }
-          {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
-            return (
-              <div className='tbody'>
-                <div className='td'><span style={{paddingLeft: '45px'}}>{service.name}</span></div>
-                <div className='td'>
-                  <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
-                    <i className='fa fa-check-circle'></i>
+    const renderIndex = ['APP', 'DATA', 'NETWORK', 'OTHER'];
+    renderIndex.forEach((renderTag: any) => {
+      tagList.forEach((tag: any, i: any) => {
+        if (tag.tagName === renderTag) {
+          retData.push(
+            <div className='tbody'>
+              <div className='td'><span>{tag.tagName}</span></div>
+              {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
+                return (
+                  <div className='tbody'>
+                    <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>{service.name}</span></div>
+                    <div className='td'>
+                      <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
+                        <i className='fa fa-check-circle'></i>
+                      </div>
+                    </div>
+                    <div className='td'>
+                      <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
+                        <i className='fa fa-check-circle'></i>
+                      </div>
+                    </div>
+                    <div className='td'>
+                      <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
+                        <i className='fa fa-check-circle'></i>
+                      </div>
+                    </div>
+                    <div className='td'>
+                      <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
+                        <i className='fa fa-check-circle'></i>
+                      </div>
+                    </div>
+                    <div className='td'>
+                      <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
+                        <i className='fa fa-check-circle'></i>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className='td'>
-                  <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
-                    <i className='fa fa-check-circle'></i>
-                  </div>
-                </div>
-                <div className='td'>
-                  <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
-                    <i className='fa fa-check-circle'></i>
-                  </div>
-                </div>
-                <div className='td'>
-                  <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
-                    <i className='fa fa-check-circle'></i>
-                  </div>
-                </div>
-                <div className='td'>
-                  <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
-                    <i className='fa fa-check-circle'></i>
-                  </div>
-                </div>
-              </div>
-            )
-          })
-          }
-        </div>
-      );
+                )
+              })
+              }
+            </div>
+          );
+        }
+      });
     });
     return retData;
   };
