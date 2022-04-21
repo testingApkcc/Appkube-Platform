@@ -16,6 +16,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       sideTable: [],
       tableData: _dummyData,
       labelText: '',
+      openCreateMenu:'',
       servicesTable: {
         data: [],
         isDirectServices: false
@@ -67,7 +68,25 @@ export class DiscoveredAssets extends React.Component<any, any>{
     }
     return retData;
   }
-
+  onClickOpenSubLink = () => {
+    let menu = !this.state.openCreateMenu;
+    this.setState({
+      openCreateMenu: menu,
+    });
+  };
+  handleToggle = ( indexArr: any) => {
+    let { tableData } = this.state;
+    let index = indexArr[0]
+    for (let i = 0; i < tableData.length; i++) {
+      if (index !== i) {
+        tableData[i].Options = false
+      }
+      else {
+        tableData[i].Options = !tableData[i].Options
+      }
+    }
+    this.setState({ tableData: tableData })
+  }
   renderTree = (folder: any, indexArr: any): any => {
     const retData = [];
     const subFolders = folder.subData;
@@ -112,17 +131,20 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className="tbody-td">5</div>
               <div className="tbody-td">
                 <div className="d-block text-center action-edit">
-                  <button className="asset-white-button min-width-inherit m-r-0">
+                  <button className="asset-white-button min-width-inherit m-r-0" onClick={(e) => { this.handleToggle(indexArr) }}>
                     <a className="fa fa-ellipsis-h"></a>
                   </button>
-                  <div className="edit-product-inner">
-                    <ul>
-                      <li><a href="#">Add New Product</a></li>
-                      <li><a href="#">Add New Product</a></li>
-                      <li><a href="#">Add New Product</a></li>
-                      <li><a href="#">Add New Product</a></li>
-                    </ul>
-                  </div>
+                  {folder.Options &&
+                    <>
+                      <div className="open-create-menu-close" onClick={(e) => { this.handleToggle(indexArr) }}>    </div>
+                      <div className="text-center open-create-menu">
+                        <a href="#">Add New Product</a>
+                        <a href="#">Add New Product</a>
+                        <a href="#">Add New Product</a>
+                        <a href="#">Add New Product</a>
+                      </div>
+                    </>
+                  }
                 </div>
               </div>
             </>

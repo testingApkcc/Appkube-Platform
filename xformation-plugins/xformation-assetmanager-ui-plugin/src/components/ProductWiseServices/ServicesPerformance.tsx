@@ -95,10 +95,13 @@ export class ServicesPerformance extends React.Component<any, any> {
                     <span></span>
                   </div>
                   {category.menuOpen == true && (
+                    <>
+                    <div className="open-create-menu-close"  onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
                     <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
                       <a href='#'> Add Firewall </a>
                       <a href='#'> Remove Firewall </a>
                     </div>
+                    </>
                   )}
                 </div>
               </div>
