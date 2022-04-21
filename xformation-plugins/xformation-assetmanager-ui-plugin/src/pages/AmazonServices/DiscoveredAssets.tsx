@@ -131,20 +131,20 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className="tbody-td">5</div>
               <div className="tbody-td">
                 <div className="d-block text-center action-edit">
-                  <button className="asset-white-button min-width-inherit m-r-0" onClick={(e) => { this.handleToggle(indexArr) }}>
-                    <a className="fa fa-ellipsis-h"></a>
-                  </button>
-                  {folder.Options &&
+                {folder.Options &&
                     <>
                       <div className="open-create-menu-close" onClick={(e) => { this.handleToggle(indexArr) }}>    </div>
                       <div className="text-center open-create-menu">
                         <a href="#">Add New Product</a>
-                        <a href="#">Add New Product</a>
-                        <a href="#">Add New Product</a>
-                        <a href="#">Add New Product</a>
+                        <a href="#">Add Cluster</a>
+                        <a href="#">Add Cloud Managed Services</a>
+                        <a href="#">Add Gateway Services</a>
                       </div>
                     </>
                   }
+                  <button className="asset-white-button min-width-inherit m-r-0" onClick={(e) => { this.handleToggle(indexArr) }}>
+                    <a className="fa fa-ellipsis-h"></a>
+                  </button>
                 </div>
               </div>
             </>
