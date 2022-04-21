@@ -78,15 +78,25 @@ export class ProductWiseServices extends React.Component<any, any> {
             {row.productList && row.productList.map((viewData: any, index: any) => {
               const defaultView = productViewMapping[index] ? productViewMapping[index] : ViewMapping.BUSINESS_VIEW;
               const val = viewData[defaultView];
+              let appcount = 0;
+              let dataCount = 0;
+              let productServiceList = [];
+              console.log(val);
+              if (val && val.deploymentEnvironmentList) {
+                for (let i = 0; i < val.deploymentEnvironmentList.length; i++) {
+                  productServiceList.push(val.deploymentEnvironmentList[i].name);
+                }
+              }
               return (
                 <div className="tbody">
                   <div className="name" onClick={() => this.openProduct(i, index)}>
                     <span>{val.name}</span>
                     <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                   </div>
+                  <div className="app-services"></div>
                   <div className="app-services">10</div>
                   <div className="data-services">5</div>
-                  <div className="ou">Admin, Accounts Adminssion, Transport</div>
+                  <div className="data-services">{productServiceList.join()}</div>
                   <div className="edit">
                     <button className="edit-btn">
                       <span></span>
@@ -220,8 +230,10 @@ export class ProductWiseServices extends React.Component<any, any> {
         <div className="data-table">
           <div className="thead">
             <div className="name">Name</div>
+            <div className="app-services">Cloud Environment</div>
             <div className="app-services">App Services</div>
             <div className="data-services">Data Services</div>
+            <div className="data-services">Product Environment</div>
             {/* <div className="ou">OU</div> */}
             <div className="edit">
               <button className="edit-btn">

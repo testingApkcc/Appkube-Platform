@@ -42,7 +42,14 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   onClickMenu = (k: any, l: any) => {
     const { product } = this.state;
-    product.deploymentEnvironmentList[k].services[l].menuOpen = !product.deploymentEnvironmentList[k].services[l].menuOpen;
+    if (product.deploymentEnvironmentList[k].serviceCategoryList && product.deploymentEnvironmentList[k].serviceCategoryList.length > 0) {
+      for (let i = 0; i < product.deploymentEnvironmentList[k].serviceCategoryList.length; i++) {
+        if (i !== l) {
+          product.deploymentEnvironmentList[k].serviceCategoryList[i].menuOpen = false;
+        }
+      }
+    }
+    product.deploymentEnvironmentList[k].serviceCategoryList[l].menuOpen = !product.deploymentEnvironmentList[k].serviceCategoryList[l].menuOpen;
     this.setState({
       product
     });
