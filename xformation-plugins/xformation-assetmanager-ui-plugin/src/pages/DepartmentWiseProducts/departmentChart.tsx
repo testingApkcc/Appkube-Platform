@@ -62,6 +62,15 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                     legend: {
                         display: false,
                     },
+                    title: {
+                        display: false,
+                        text: 'Total Cost: $6,71,246',
+                        position: 'bottom',
+                        color: '#202020',
+                        font: {
+                          size: 18
+                        },
+                      },
                     responsive: true,
                 }
             },
@@ -86,7 +95,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
     getDepartmentData = async () => {
         try {
             await RestService.getData(
-                `${this.config.GET_DEPARTMENTWISE_PRODUCT}`,
+                `${this.config.GET_PRODUCT_DATA}`,
                 null,
                 null
             ).then((response: any) => {
@@ -94,7 +103,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                 this.setState({
                     departmentWiseData: response,
                 });
-                this.handleGraphValue(response);
+                this.handleGraphValue(response.organization.departmentList);
             });
         } catch (err) {
             console.log("Loading accounts failed. Error: ", err);
@@ -102,22 +111,53 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
     }
 
 
-    handleGraphValue = (val: any) => {
-        let { graph } = this.state;
-        for (let i = 0; i < val.length; i++) {
-            for (let l = 0; l < val[i].productList.length; l++) {
-                for (let j = 0; j < val[i].productList[l].serviceList.length; j++) {
-                    graph[val[i].productList[l].name] = graph[val[i].productList[l].name] + val[i].productList[l].serviceList[j].totalBillingAmount || 0;
+    handleGraphValue = (departmentWiseData: any) => {
+        let { humanResources } = this.state;
+        let data = [];
+        let labels: any = [];
+        // let totalCount = 0;
+        if (departmentWiseData && departmentWiseData.length > 0) {
+            for (let i = 0; i < departmentWiseData.length; i++) {
+                let count = 0;
+                let department = departmentWiseData[i];
+                if (department.productList) {
+                    for (let j = 0; j < department.productList.length; j++) {
+                        let product = department.productList[j];
+                        if (labels.indexOf(product.name) === -1) {
+                            labels.push(product.name);
+                        }
+                        if (product.deploymentEnvironmentList) {
+                            for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
+                                let service = product.deploymentEnvironmentList[k];
+                                count += service.productBilling.amount;
+                            }
+                        }
+                    }
+                    // totalCount += count;
+                    data.push(count);
                 }
             }
         }
-        for (let i = 0; i < Object.keys(graph).length; i++) {
-            this.state.humanResources.datasets[0].data.push(graph[Object.keys(graph)[i]])
-            this.state.humanResources.total += graph[Object.keys(graph)[i]]
-            this.state.humanResources.labels.push(Object.keys(graph)[i]);
+        humanResources.labels = labels;
+        humanResources.datasets[0].data = data;
+        for (let i = 0; i < data.length; i++) {
+            humanResources.datasets[0].backgroundColor.push(this.getRandomColor());
         }
-        this.setState({ graph: graph, humanResources: this.state.humanResources })
+        // barOptions.plugins.title.text = `Total Cost: $${totalCount}`
+        this.setState({
+            humanResources
+        });
     }
+
+    getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
     render() {
         const { barOptions, humanResources } = this.state
         return (
