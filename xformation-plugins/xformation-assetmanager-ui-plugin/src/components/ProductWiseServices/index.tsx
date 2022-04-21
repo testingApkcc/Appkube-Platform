@@ -72,19 +72,37 @@ export class ProductWiseServices extends React.Component<any, any> {
       for (let i = 0; i < product.length; i++) {
         let row = product[i];
         let productViewMapping = viewMapping[i] ? viewMapping[i] : [];
+        let appcount = 0;
+        let dataCount = 0;
         retData.push(
           <div key={v4()} className="inner-table">
             <div className="thead">{row.name}</div>
             {row.productList && row.productList.map((viewData: any, index: any) => {
               const defaultView = productViewMapping[index] ? productViewMapping[index] : ViewMapping.BUSINESS_VIEW;
               const val = viewData[defaultView];
-              let appcount = 0;
-              let dataCount = 0;
               let productServiceList = [];
-              console.log(val);
               if (val && val.deploymentEnvironmentList) {
                 for (let i = 0; i < val.deploymentEnvironmentList.length; i++) {
                   productServiceList.push(val.deploymentEnvironmentList[i].name);
+                  if (val.deploymentEnvironmentList[i].serviceCategoryList && val.deploymentEnvironmentList[i].serviceCategoryList.length > 0) {
+                    for (let j = 0; j < val.deploymentEnvironmentList[i].serviceCategoryList.length; j++) {
+                      if (val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList && val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList.length > 0) {
+                        for (let k = 0; k < val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList.length; k++) {
+                          if (val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList && val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList.length > 0) {
+                            for (let l = 0; l < val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList.length; l++) {
+                              let data = val.deploymentEnvironmentList[i].serviceCategoryList[j].serviceNameList[k].tagList[l];
+                              if (data.tagName === "DATA") {
+                                dataCount++;
+                              } else if (data.tagName === "APP") {
+                                appcount++;
+
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
               return (
@@ -94,8 +112,8 @@ export class ProductWiseServices extends React.Component<any, any> {
                     <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                   </div>
                   <div className="app-services"></div>
-                  <div className="app-services">10</div>
-                  <div className="data-services">5</div>
+                  <div className="app-services">{appcount}</div>
+                  <div className="data-services">{dataCount}</div>
                   <div className="data-services">{productServiceList.join()}</div>
                   <div className="edit">
                     <button className="edit-btn">
