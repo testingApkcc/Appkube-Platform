@@ -247,6 +247,7 @@
                 width: 100%;
                 cursor: pointer;
               }
+              
             }
           }
         }
@@ -603,6 +604,26 @@
             padding: 0;
             background-color: transparent;
           }
+          .edit-product-inner{
+            border: 1px solid #8392A7;
+            padding: 10px;
+            ul{
+              padding: 0;
+              margin: 0;
+              li{
+                list-style: none;
+                margin-bottom: 10;
+                a{
+                  font-size: 16px;
+                  line-height: 20px;
+                  font-weight: 400;
+                  text-decoration: none;
+                  color: #414D55;
+                }
+              }
+            }
+          }
+          
         }
 
         .thead {
@@ -659,6 +680,7 @@
           .tbody-inner {
             display: block;
             width: 100%;
+            
           }
 
           .tbody-td {
@@ -675,6 +697,7 @@
               width: 28%;
               cursor: pointer;
             }
+            
 
           }
 
@@ -970,6 +993,7 @@
   }
 
 }
+
 
 @media only screen and (max-width: 1280px) {
   .service-container {
