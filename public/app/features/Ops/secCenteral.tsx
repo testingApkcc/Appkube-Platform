@@ -24,10 +24,16 @@ class SecCenteral extends React.Component<any, any> {
         <div className="ops-central-header">
           <h2 className="heading">SEC CENTERAL</h2>
           <div className="central-header-content">
-            <div className="recent-text">Recent</div>
-            <div className="recent-text">Sort</div>
+            <div className="recent-text">
+              <i className="fas fa-clock"></i>
+              <p>Recent</p>
+            </div>
+            <div className="recent-text">
+              <i className="fas fa-arrow-up"></i>
+              <p>Sort</p>
+            </div>
             <div className="search-bar">
-              <span>icon</span>
+              <i className="fas fa-search"></i>
               <input type="text" className="control-form" placeholder="search" />
             </div>
           </div>

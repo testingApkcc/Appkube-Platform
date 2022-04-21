@@ -2,6 +2,12 @@ import * as React from 'react';
 import { images } from '../../img';
 
 export class ServicesPerformance extends React.Component<any, any> {
+  tagNameServiceMapping: any = {
+    'APP': 'App Services',
+    'NETWORK': 'Network Services',
+    'DATA': 'Data Services',
+    'OTHER': 'Other Services',
+  };
   constructor(props: any) {
     super(props);
     this.state = {
@@ -164,7 +170,7 @@ export class ServicesPerformance extends React.Component<any, any> {
         if (tag.tagName === renderTag) {
           retData.push(
             <div className='tbody'>
-              <div className='td'><span>{tag.tagName}</span></div>
+              <div className='td'><span>{this.tagNameServiceMapping[tag.tagName]}</span></div>
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
                 return (
                   <div className='tbody'>
