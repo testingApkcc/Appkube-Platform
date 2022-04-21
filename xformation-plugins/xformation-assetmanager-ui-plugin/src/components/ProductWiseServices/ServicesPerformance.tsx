@@ -239,7 +239,7 @@ export class ServicesPerformance extends React.Component<any, any> {
       <div className='environments'>
         <div className='environments-inner'>
           <div className='heading'>
-            <h3>EMS - Environments</h3>
+            <h3>Deployment environments</h3>
             <div className='buttons'>
               <button className='btn'>
                 <i className='fa fa-plus'></i>
