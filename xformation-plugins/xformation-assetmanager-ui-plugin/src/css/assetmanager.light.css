@@ -4297,7 +4297,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(1) {
-  width: 25%;
+  width: 35%;
   padding-left: 30px;
 }
 .department-wise-container
@@ -4313,7 +4313,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(2) {
-  width: 15%;
+  width: 10%;
   text-align: center;
 }
 .department-wise-container
@@ -4329,7 +4329,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(3) {
-  width: 15%;
+  width: 10%;
   text-align: center;
 }
 .department-wise-container
@@ -4345,7 +4345,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(3) {
-  width: 15%;
+  width: 10%;
   text-align: center;
 }
 .department-wise-container
@@ -4361,7 +4361,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(4) {
-  width: 12%;
+  width: 10%;
   text-align: center;
 }
 .department-wise-container
@@ -4377,7 +4377,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(5) {
-  width: 21%;
+  width: 15%;
   text-align: center;
 }
 .department-wise-container
@@ -4393,7 +4393,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(6) {
-  width: 12%;
+  width: 10%;
   text-align: center;
 }
 .department-wise-container
