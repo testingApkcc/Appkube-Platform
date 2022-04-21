@@ -39,8 +39,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             {
               data: [],
               backgroundColor: [
-                'rgb(255, 153, 0)',
-                'rgba(112, 222, 174, 1)',
+                // 'rgb(255, 153, 0)',
+                // 'rgba(112, 222, 174, 1)',
               ]
             }
           ],
@@ -51,10 +51,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             {
               data: [],
               backgroundColor: [
-                'rgba(255, 74, 85, 1)',
-                'rgba(113, 167, 254, 1)',
-                'rgba(253, 191, 98, 1)',
-                'rgba(112, 222, 174, 1)',
+                // 'rgba(255, 74, 85, 1)',
+                // 'rgba(113, 167, 254, 1)',
+                // 'rgba(253, 191, 98, 1)',
+                // 'rgba(112, 222, 174, 1)',
               ]
             }
           ],
@@ -65,8 +65,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
             {
               data: [],
               backgroundColor: [
-                'rgb(255, 153, 0)',
-                'rgba(112, 222, 174, 1)',
+                // 'rgb(255, 153, 0)',
+                // 'rgba(112, 222, 174, 1)',
               ]
             }
           ],
@@ -79,7 +79,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               usePointStyle: true,
               pointStyle: 'circle',
             },
-            display: true,
+            display: false,
             position: 'bottom',
             responsive: true,
             align: 'middle',
@@ -102,7 +102,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               usePointStyle: true,
               pointStyle: 'circle',
             },
-            display: true,
+            display: false,
             position: 'bottom',
             responsive: true,
             align: 'middle',
@@ -125,7 +125,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
               usePointStyle: true,
               pointStyle: 'circle',
             },
-            display: true,
+            display: false,
             position: 'bottom',
             responsive: true,
             align: 'middle',
@@ -157,6 +157,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
   componentDidMount() {
     this.getDepartmentData();
+    this.getRandomColor();
   }
 
   getDepartmentData = async () => {
@@ -234,6 +235,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     }
     graphData.productWiseCostData.labels = labels;
     graphData.productWiseCostData.datasets[0].data = data;
+    // for (let j = 0; j < graphData.productWiseCostData.datasets.length; j++) {
+      for (let i = 0; i < data.length; i++) {
+        graphData.productWiseCostData.datasets[0].backgroundColor.push(this.getRandomColor());
+      }
+    // }
     productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCount}`
     this.setState({
       productWiseCostOptions
@@ -270,6 +276,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       data.push(otherCount);
       graphData.productionvsOthersData.labels = labels;
       graphData.productionvsOthersData.datasets[0].data = data;
+      for (let i = 0; i < data.length; i++) {
+        graphData.productionvsOthersData.datasets[0].backgroundColor.push(this.getRandomColor());
+      }
       productionvsOthersOptions.plugins.title.text = `Total Cost: $${productioncount + otherCount}`
       this.setState({
         productionvsOthersOptions,
@@ -326,6 +335,9 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     }
     graphData.serviceWiseCoastData.labels = labels;
     graphData.serviceWiseCoastData.datasets[0].data = data;
+    for (let i = 0; i < data.length; i++) {
+      graphData.serviceWiseCoastData.datasets[0].backgroundColor.push(this.getRandomColor());
+    }
     serviceWiseCoastOptions.plugins.title.text = `Total Cost: $${totalCount}`
     this.setState({
       serviceWiseCoastOptions
@@ -441,6 +453,15 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     }
     return [];
   };
+
+  getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
   render() {
     const { departmentWiseData, graphData, productWiseCostOptions,
