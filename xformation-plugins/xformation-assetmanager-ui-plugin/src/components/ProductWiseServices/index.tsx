@@ -73,7 +73,7 @@ export class ProductWiseServices extends React.Component<any, any> {
         let serviceByType: any = {};
         let row = product[i];
         let productViewMapping = viewMapping[i] ? viewMapping[i] : [];
-        retData.push( 
+        retData.push(
           <div key={v4()} className="inner-table">
             <div className="thead">{row.name}</div>
             {row.productList && row.productList.map((viewData: any, index: any) => {
@@ -113,13 +113,20 @@ export class ProductWiseServices extends React.Component<any, any> {
                   <div className="app-services">{serviceByType.APP || 0}</div>
                   <div className="data-services">{serviceByType.DATA || 0}</div>
                   <div className="data-services">{productServiceList.join()}</div>
-                  <div className="edit">
+                  <div className="edit" onClick={() => this.onClickMenu(defaultView, i)}>
                     <button className="edit-btn">
                       <span></span>
                       <span></span>
                       <span></span>
                     </button>
                   </div>
+                  {val.menuOpen == true && (
+                    <div className="text-center open-create-menu" style={{ zIndex: 1, right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                      <a>Add Services</a>
+                      <a>Associate to Department</a>
+                      <a>Migrate</a>
+                    </div>
+                  )}
                   {val.isOpen == true &&
                     <ServicesPerformance
                       handleChangeViewOfProduct={() => this.handleChangeViewOfProduct(i, index)}
@@ -134,6 +141,26 @@ export class ProductWiseServices extends React.Component<any, any> {
       }
     }
     return retData;
+  }
+
+  onClickMenu = (view: any, i: any) => {
+    const { product } = this.state;
+    if (product)
+      for (let i = 0; i < product.length; i++) {
+        if (product[i].productList) {
+          for (let j = 0; j < product[i].productList.length; j++) {
+            let row = product[i].productList[j][view];
+            if (row.menuOpen) {
+              row.menuOpen = !row.menuOpen;
+            } else {
+              row.menuOpen = true;
+            }
+          }
+        }
+      }
+    this.setState({
+      product
+    })
   }
 
   render() {
