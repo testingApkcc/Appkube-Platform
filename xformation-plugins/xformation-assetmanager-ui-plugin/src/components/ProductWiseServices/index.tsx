@@ -6,10 +6,10 @@ import { SelectCloudFilter } from '../SelectCloudFilter';
 import { ServicesPerformance } from './ServicesPerformance';
 import { v4 } from 'uuid';
 
-const ViewMapping: any = {
-  BUSINESS_VIEW: "0",
-  CLOUD_VIEW: "1"
-};
+// const ViewMapping: any = {
+//   BUSINESS_VIEW: "0",
+//   CLOUD_VIEW: "1"
+// };
 
 export class ProductWiseServices extends React.Component<any, any> {
   constructor(props: any) {
@@ -18,7 +18,6 @@ export class ProductWiseServices extends React.Component<any, any> {
       showRecentFilter: false,
       showAddNewFilter: false,
       productComponent: [],
-      viewMapping: {},
       product: [],
       isDataLoaded: false,
     };
@@ -34,51 +33,46 @@ export class ProductWiseServices extends React.Component<any, any> {
   }
 
   openProduct = (i: any, j: any) => {
-    const { viewMapping, product } = this.state;
-    let productView = viewMapping[i] ? viewMapping[i] : [];
+    const { product } = this.state;
     for (let m = 0; m < product[i].productList.length; m++) {
       if (j !== m) {
-        const defaultView = productView[m] ? productView[m] : ViewMapping.BUSINESS_VIEW;
         const viewData = product[i].productList[m];
-        viewData[defaultView].isOpen = false;
+        viewData.isOpen = false;
       }
     }
-    const defaultView = productView[j] ? productView[j] : ViewMapping.BUSINESS_VIEW;
     const viewData = product[i].productList[j];
-    viewData[defaultView].isOpen = !viewData[defaultView].isOpen;
+    viewData.isOpen = !viewData.isOpen;
     this.setState({
       product
     });
   }
 
-  handleChangeViewOfProduct = (departmentIndex: any, productIndex: any) => {
-    const { product, viewMapping } = this.state
-    if (product[departmentIndex]) {
-      const appliedView = viewMapping[departmentIndex] ? viewMapping[departmentIndex][productIndex] : ViewMapping.BUSINESS_VIEW;
-      const newView = appliedView === ViewMapping.BUSINESS_VIEW ? ViewMapping.CLOUD_VIEW : ViewMapping.BUSINESS_VIEW;
-      const newViewMap = viewMapping[departmentIndex] ? viewMapping[departmentIndex] : [];
-      newViewMap[productIndex] = newView;
-      viewMapping[departmentIndex] = newViewMap;
-      this.setState({
-        viewMapping: JSON.parse(JSON.stringify(viewMapping))
-      });
-    }
-  }
+  // handleChangeViewOfProduct = (departmentIndex: any, productIndex: any) => {
+  //   const { product, viewMapping } = this.state
+  //   if (product[departmentIndex]) {
+  //     const appliedView = viewMapping[departmentIndex] ? viewMapping[departmentIndex][productIndex] : ViewMapping.BUSINESS_VIEW;
+  //     const newView = appliedView === ViewMapping.BUSINESS_VIEW ? ViewMapping.CLOUD_VIEW : ViewMapping.BUSINESS_VIEW;
+  //     const newViewMap = viewMapping[departmentIndex] ? viewMapping[departmentIndex] : [];
+  //     newViewMap[productIndex] = newView;
+  //     viewMapping[departmentIndex] = newViewMap;
+  //     this.setState({
+  //       viewMapping: JSON.parse(JSON.stringify(viewMapping))
+  //     });
+  //   }
+  // }
 
   displayProductServices = () => {
-    const { viewMapping, product } = this.state;
+    const { product } = this.state;
     let retData = [];
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
         let serviceByType: any = {};
         let row = product[i];
-        let productViewMapping = viewMapping[i] ? viewMapping[i] : [];
         retData.push(
           <div key={v4()} className="inner-table">
             <div className="thead">{row.name}</div>
             {row.productList && row.productList.map((viewData: any, index: any) => {
-              const defaultView = productViewMapping[index] ? productViewMapping[index] : ViewMapping.BUSINESS_VIEW;
-              const val = viewData[defaultView];
+              const val = viewData;
               let productServiceList = [];
               if (val && val.deploymentEnvironmentList) {
                 for (let b = 0; b < val.deploymentEnvironmentList.length; b++) {
@@ -113,23 +107,27 @@ export class ProductWiseServices extends React.Component<any, any> {
                   <div className="app-services">{serviceByType.APP || 0}</div>
                   <div className="data-services">{serviceByType.DATA || 0}</div>
                   <div className="data-services">{productServiceList.join()}</div>
-                  <div className="edit" onClick={() => this.onClickMenu(defaultView, i)}>
-                    <button className="edit-btn">
+                  <div className="edit">
+                    {/* onClick={() => this.onClickMenu(defaultView, i)} */}
+                    <button className="edit-btn" onClick={() => this.onClickMenu(i, index)} >
                       <span></span>
                       <span></span>
                       <span></span>
                     </button>
+                    {val.menuOpen === true && (
+                      <>
+                        <div className="text-center open-create-menu-close" onClick={() => this.onClickMenu(i, index)} ></div>
+                        <div className="text-center open-create-menu" >
+                          <a>Add Services</a>
+                          <a>Associate to Department</a>
+                          <a>Migrate</a>
+                        </div>
+                      </>
+                    )}
                   </div>
-                  {val.menuOpen == true && (
-                    <div className="text-center open-create-menu" style={{ zIndex: 1, right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
-                      <a>Add Services</a>
-                      <a>Associate to Department</a>
-                      <a>Migrate</a>
-                    </div>
-                  )}
                   {val.isOpen == true &&
                     <ServicesPerformance
-                      handleChangeViewOfProduct={() => this.handleChangeViewOfProduct(i, index)}
+                      // handleChangeViewOfProduct={() => this.handleChangeViewOfProduct(i, index)}
                       product={val}
                     />}
                 </div>
@@ -143,24 +141,28 @@ export class ProductWiseServices extends React.Component<any, any> {
     return retData;
   }
 
-  onClickMenu = (view: any, i: any) => {
+  onClickMenu = (i: any, j: any) => {
     const { product } = this.state;
-    if (product)
-      for (let i = 0; i < product.length; i++) {
-        if (product[i].productList) {
-          for (let j = 0; j < product[i].productList.length; j++) {
-            let row = product[i].productList[j][view];
-            if (row.menuOpen) {
-              row.menuOpen = !row.menuOpen;
-            } else {
-              row.menuOpen = true;
-            }
+    for (let m = 0; m < product.length; m++) {
+      for (let k = 0; k < product[m].productList.length; k++) {
+        if (m === i) {
+          let viewData = product[m].productList[k]
+          if (j == k) {
+            viewData.menuOpen = !viewData.menuOpen;
+          }
+          else {
+            viewData.menuOpen = false
           }
         }
+        else {
+          let viewData = product[m].productList[k];
+          viewData.menuOpen = false;
+        }
       }
+    }
     this.setState({
       product
-    })
+    });
   }
 
   render() {

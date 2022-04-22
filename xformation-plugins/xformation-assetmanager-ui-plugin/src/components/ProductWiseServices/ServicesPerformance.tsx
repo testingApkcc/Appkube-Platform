@@ -43,7 +43,7 @@ export class ServicesPerformance extends React.Component<any, any> {
   }
 
   handleView = () => {
-    this.props.handleChangeViewOfProduct();
+    // this.props.handleChangeViewOfProduct();
   }
 
   onClickMenu = (k: any, l: any) => {
