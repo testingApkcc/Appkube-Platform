@@ -25526,6 +25526,31 @@ object-assign
                 return retData;
               };
 
+              _this.onClickOpenSubLink = function () {
+                var menu = !_this.state.openCreateMenu;
+
+                _this.setState({
+                  openCreateMenu: menu,
+                });
+              };
+
+              _this.handleToggle = function (indexArr) {
+                var tableData = _this.state.tableData;
+                var index = indexArr[0];
+
+                for (var i = 0; i < tableData.length; i++) {
+                  if (index !== i) {
+                    tableData[i].Options = false;
+                  } else {
+                    tableData[i].Options = !tableData[i].Options;
+                  }
+                }
+
+                _this.setState({
+                  tableData: tableData,
+                });
+              };
+
               _this.renderTree = function (folder, indexArr) {
                 var retData = [];
                 var subFolders = folder.subData;
@@ -25654,68 +25679,66 @@ object-assign
                               {
                                 className: 'd-block text-center action-edit',
                               },
+                              folder.Options &&
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'div',
+                                    {
+                                      className: 'open-create-menu-close',
+                                      onClick: function (e) {
+                                        _this.handleToggle(indexArr);
+                                      },
+                                    },
+                                    '    '
+                                  ),
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'div',
+                                    {
+                                      className: 'text-center open-create-menu',
+                                    },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                      'a',
+                                      {
+                                        href: '#',
+                                      },
+                                      'Add New Product'
+                                    ),
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                      'a',
+                                      {
+                                        href: '#',
+                                      },
+                                      'Add Cluster'
+                                    ),
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                      'a',
+                                      {
+                                        href: '#',
+                                      },
+                                      'Add Cloud Managed Services'
+                                    ),
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                      'a',
+                                      {
+                                        href: '#',
+                                      },
+                                      'Add Gateway Services'
+                                    )
+                                  )
+                                ),
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'button',
                                 {
                                   className: 'asset-white-button min-width-inherit m-r-0',
+                                  onClick: function (e) {
+                                    _this.handleToggle(indexArr);
+                                  },
                                 },
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', {
                                   className: 'fa fa-ellipsis-h',
                                 })
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'div',
-                                {
-                                  className: 'edit-product-inner',
-                                },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'ul',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'li',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'a',
-                                      {
-                                        href: '#',
-                                      },
-                                      'Add New Product'
-                                    )
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'li',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'a',
-                                      {
-                                        href: '#',
-                                      },
-                                      'Add New Product'
-                                    )
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'li',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'a',
-                                      {
-                                        href: '#',
-                                      },
-                                      'Add New Product'
-                                    )
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'li',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'a',
-                                      {
-                                        href: '#',
-                                      },
-                                      'Add New Product'
-                                    )
-                                  )
-                                )
                               )
                             )
                           )
@@ -26100,6 +26123,7 @@ object-assign
                 sideTable: [],
                 tableData: _discovered_assets__WEBPACK_IMPORTED_MODULE_2__['default'],
                 labelText: '',
+                openCreateMenu: '',
                 servicesTable: {
                   data: [],
                   isDirectServices: false,
@@ -29801,28 +29825,42 @@ object-assign
                             ),
                             category.menuOpen == true &&
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'div',
-                                {
-                                  className: 'text-center open-create-menu',
-                                  style: {
-                                    right: '5px',
-                                    top: '30px',
-                                    backgroundColor: '#ffffff',
-                                  },
-                                },
+                                react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                                null,
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'a',
+                                  'div',
                                   {
-                                    href: '#',
+                                    className: 'open-create-menu-close',
+                                    onClick: function () {
+                                      return _this.onClickMenu(environmentIndex, categoryIndex);
+                                    },
                                   },
-                                  ' Add Firewall '
+                                  '    '
                                 ),
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'a',
+                                  'div',
                                   {
-                                    href: '#',
+                                    className: 'text-center open-create-menu',
+                                    style: {
+                                      right: '5px',
+                                      top: '30px',
+                                      backgroundColor: '#ffffff',
+                                    },
                                   },
-                                  ' Remove Firewall '
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'a',
+                                    {
+                                      href: '#',
+                                    },
+                                    ' Add Firewall '
+                                  ),
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'a',
+                                    {
+                                      href: '#',
+                                    },
+                                    ' Remove Firewall '
+                                  )
                                 )
                               )
                           )
