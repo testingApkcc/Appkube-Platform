@@ -102,11 +102,11 @@ export class ServicesPerformance extends React.Component<any, any> {
                   </div>
                   {category.menuOpen == true && (
                     <>
-                    <div className="open-create-menu-close"  onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
-                    <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
-                      <a href='#'> Add Firewall </a>
-                      <a href='#'> Remove Firewall </a>
-                    </div>
+                      <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
+                      <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                        <a href='#'> Add Firewall </a>
+                        <a href='#'> Remove Firewall </a>
+                      </div>
                     </>
                   )}
                 </div>
@@ -117,6 +117,11 @@ export class ServicesPerformance extends React.Component<any, any> {
                 <div className='table'>
                   <div className='thead'>
                     <div className='th'>Name</div>
+                    <div className='th'>Performance</div>
+                    <div className='th'>Availability</div>
+                    <div className='th'>Security</div>
+                    <div className='th'>Data Protection</div>
+                    <div className='th'>User exp</div>
                   </div>
                   {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
                 </div>
@@ -131,36 +136,51 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   renderServiceName = (serviceNames: any, indexArr: any) => {
     const retData: any = [];
+    let displayType: any = [];
     serviceNames.map((serviceName: any, index: any) => {
-      retData.push(<div className='table performance-table'>
-        <div className='tbody'>
-          <div className='tbody' onClick={() => this.openTagServices(indexArr, index)}>
-            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-              <strong style={{ marginRight: "15px" }}>{serviceName.name}</strong>
-              <i className={serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+      displayType = [];
+      if (serviceName.tagList && serviceName.tagList.length > 0) {
+        for (let j = 0; j < serviceName.tagList.length; j++) {
+          let tag = serviceName.tagList[j];
+          displayType.push(tag.tagName);
+        }
+      }
+      console.log(displayType, serviceName.name);
+      if (displayType.indexOf('UNLINKED') === -1) {
+        retData.push(<div className='table performance-table'>
+          <div className='tbody'>
+            <div className='tbody' onClick={() => this.openTagServices(indexArr, index)}>
+              <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                <strong style={{ marginRight: "15px" }}>{serviceName.name}</strong>
+                <i className={serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+              </div>
+              {/* {index == 0 &&
+                <>
+                  <div className='td'>Performance</div>
+                  <div className='td'>Availability</div>
+                  <div className='td'>Security</div>
+                  <div className='td'>Data Protection</div>
+                  <div className='td'>User exp</div>
+                </>
+              } */}
             </div>
-            {index == 0 &&
-              <>
-                <div className='td'>Performance</div>
-                <div className='td'>Availability</div>
-                <div className='td'>Security</div>
-                <div className='td'>Data Protection</div>
-                <div className='td'>User exp</div>
-              </>
+            {
+              serviceName.tagList && serviceName.tagList.length > 0 ?
+                (serviceName.isOpen ? this.renderTags(serviceName.tagList) : <></>)
+                :
+                <div className='tbody'>
+                  <div className='td title'>
+                    <strong>{serviceName.name}<i className={serviceName.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
+                  </div>
+                </div>
             }
           </div>
-          {
-            serviceName.tagList && serviceName.tagList.length > 0 ?
-              (serviceName.isOpen ? this.renderTags(serviceName.tagList) : <></>)
-              :
-              <div className='tbody'>
-                <div className='td title'>
-                  <strong>{serviceName.name}<i className={serviceName.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i></strong>
-                </div>
-              </div>
-          }
-        </div>
-      </div>);
+        </div>);
+      } else {
+        retData.push(
+          this.renderDirectSerices(serviceName.tagList)
+        )
+      }
     });
     return retData;
   };
@@ -211,6 +231,47 @@ export class ServicesPerformance extends React.Component<any, any> {
           );
         }
       });
+    });
+    return retData;
+  };
+
+  renderDirectSerices = (tagList: any) => {
+    const retData: any = [];
+    tagList.forEach((tag: any, i: any) => {
+      const servicesJSX: any = [];
+      tag.serviceList && tag.serviceList.forEach((service: any, i: any) => {
+        servicesJSX.push(
+          <div className='tbody'>
+            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span>{service.name}</span></div>
+            <div className='td'>
+              <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
+                <i className='fa fa-check-circle'></i>
+              </div>
+            </div>
+            <div className='td'>
+              <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
+                <i className='fa fa-check-circle'></i>
+              </div>
+            </div>
+            <div className='td'>
+              <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
+                <i className='fa fa-check-circle'></i>
+              </div>
+            </div>
+            <div className='td'>
+              <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
+                <i className='fa fa-check-circle'></i>
+              </div>
+            </div>
+            <div className='td'>
+              <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
+                <i className='fa fa-check-circle'></i>
+              </div>
+            </div>
+          </div>
+        )
+      });
+      retData.push(<div className='performance-table'>{servicesJSX}</div>)
     });
     return retData;
   };
