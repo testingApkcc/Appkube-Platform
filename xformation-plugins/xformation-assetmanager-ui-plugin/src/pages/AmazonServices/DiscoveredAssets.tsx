@@ -16,7 +16,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       sideTable: [],
       tableData: _dummyData,
       labelText: '',
-      openCreateMenu:'',
+      openCreateMenu: '',
       servicesTable: {
         data: [],
         isDirectServices: false
@@ -74,7 +74,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       openCreateMenu: menu,
     });
   };
-  handleToggle = ( indexArr: any) => {
+  handleToggle = (indexArr: any) => {
     let { tableData } = this.state;
     let index = indexArr[0]
     for (let i = 0; i < tableData.length; i++) {
@@ -131,14 +131,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className="tbody-td">5</div>
               <div className="tbody-td">
                 <div className="d-block text-center action-edit">
-                {folder.Options &&
+                  {folder.Options &&
                     <>
                       <div className="open-create-menu-close" onClick={(e) => { this.handleToggle(indexArr) }}>    </div>
                       <div className="text-center open-create-menu">
-                        <a href="#">Add New Product</a>
-                        <a href="#">Add Cluster</a>
-                        <a href="#">Add Cloud Managed Services</a>
-                        <a href="#">Add Gateway Services</a>
+                        <a>Add New Product</a>
+                        <a>Add Cluster</a>
+                        <a>Add Cloud Managed Services</a>
+                        <a>Add Gateway Services</a>
                       </div>
                     </>
                   }

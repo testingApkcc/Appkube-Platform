@@ -68,9 +68,9 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                         position: 'bottom',
                         color: '#202020',
                         font: {
-                          size: 18
+                            size: 18
                         },
-                      },
+                    },
                     responsive: true,
                 }
             },
@@ -88,8 +88,19 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
         ];
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
-    componentDidMount() {
-        this.getDepartmentData()
+
+    async componentDidMount() {
+        let departmentList = await localStorage.getItem('departmentData');
+        let department: any;
+        if (departmentList) {
+            department = JSON.parse(departmentList);
+            this.setState({
+                departmentWiseData: department,
+            });
+            this.handleGraphValue(department.organization.departmentList);
+        } else {
+            this.getDepartmentData()
+        }
     }
 
     getDepartmentData = async () => {

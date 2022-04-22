@@ -155,7 +155,23 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    let departmentList = await localStorage.getItem('departmentData');
+    let department: any;
+    if (departmentList) {
+      department = JSON.parse(departmentList);
+      this.manipulateDepartmentWiseProductData(_.cloneDeep(department.organization.departmentList));
+        this.setState({
+          departmentWiseData: department.organization.departmentList,
+        });
+      let { graphData } = this.state;
+        graphData = this.setProductGraphData(department.organization.departmentList, graphData);
+        graphData = this.setProductionOthers(department.organization.departmentList, graphData);
+        graphData = this.setServiceCostData(department.organization.departmentList, graphData);
+        this.setState({
+          graphData
+        });
+    }
     this.getDepartmentData();
     this.getRandomColor();
   }
@@ -171,6 +187,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         this.setState({
           departmentWiseData: response.organization.departmentList,
         });
+        localStorage.setItem('departmentData', JSON.stringify(response));
         let { graphData } = this.state;
         graphData = this.setProductGraphData(response.organization.departmentList, graphData);
         graphData = this.setProductionOthers(response.organization.departmentList, graphData);
@@ -501,13 +518,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     <div className="col-lg-10 col-md-10 col-sm-10">
                       <div className="heading">Product wise Cost</div>
                     </div>
-                    <div className="col-lg-2 col-md-2 col-sm-2">
+                    {/* <div className="col-lg-2 col-md-2 col-sm-2">
                       <div className="edit">
                         <a href={`${PLUGIN_BASE_URL}/department-wise-charts`} target="_blank">
                           <i className="fa fa-external-link"></i>
                         </a>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="chart">
                     {graphData.productWiseCostData && graphData.productWiseCostData.datasets[0].data.length > 0 && graphData.productWiseCostData.labels.length > 0 ?
@@ -525,13 +542,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     <div className="col-lg-10 col-md-10 col-sm-10">
                       <div className="heading">Production Vs Others</div>
                     </div>
-                    <div className="col-lg-2 col-md-2 col-sm-2">
+                    {/* <div className="col-lg-2 col-md-2 col-sm-2">
                       <div className="edit">
                         <a target="_blank">
                           <i className="fa fa-external-link"></i>
                         </a>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="chart">
                     {graphData.productionvsOthersData && graphData.productionvsOthersData.datasets[0].data.length > 0 && graphData.productionvsOthersData.labels.length > 0 ?
@@ -546,13 +563,13 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                     <div className="col-lg-10 col-md-10 col-sm-10">
                       <div className="heading">Service Type wise Cost</div>
                     </div>
-                    <div className="col-lg-2 col-md-2 col-sm-2">
+                    {/* <div className="col-lg-2 col-md-2 col-sm-2">
                       <div className="edit">
                         <a target="_blank">
                           <i className="fa fa-external-link"></i>
                         </a>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="chart">
                     {graphData.serviceWiseCoastData && graphData.serviceWiseCoastData.datasets[0].data.length > 0 && graphData.serviceWiseCoastData.labels.length > 0 ?
