@@ -197,7 +197,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         if (product.deploymentEnvironmentList && product.deploymentEnvironmentList.length > 0) {
           product.deploymentEnvironmentList[0].isOpen = true;
         }
-        newProductList.push([product, product]);
+        newProductList.push(product);
       });
       department.productList = newProductList;
     }
