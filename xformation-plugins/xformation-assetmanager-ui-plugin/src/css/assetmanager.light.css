@@ -1841,6 +1841,51 @@ a:hover {
   padding: 0;
   background-color: transparent;
 }
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .action-edit
+  .edit-product-inner {
+  border: 1px solid #8392a7;
+  padding: 10px;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .action-edit
+  .edit-product-inner
+  ul {
+  padding: 0;
+  margin: 0;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .action-edit
+  .edit-product-inner
+  ul
+  li {
+  list-style: none;
+  margin-bottom: 10;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .action-edit
+  .edit-product-inner
+  ul
+  li
+  a {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #414d55;
+}
 .service-container .organisational-details .container-inner .organisational-data-table .thead {
   display: block;
   width: 100%;
@@ -4098,7 +4143,7 @@ a:hover {
   .content-table
   .table
   .thead {
-  display: block;
+  display: flex;
   width: 100%;
   background-color: #d9e4f2;
   border-radius: 10px 10px 0px 0px;
@@ -4117,9 +4162,105 @@ a:hover {
   .content-table
   .table
   .thead
-  .th {
-  display: flex;
-  width: 100%;
+  .th:nth-child(1) {
+  width: 30%;
+  padding-left: 15px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead
+  .th:nth-child(2) {
+  width: 11%;
+  text-align: center;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead
+  .th:nth-child(3) {
+  width: 11%;
+  text-align: center;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead
+  .th:nth-child(3) {
+  width: 11%;
+  text-align: center;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead
+  .th:nth-child(4) {
+  width: 11%;
+  text-align: center;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead
+  .th:nth-child(5) {
+  width: 15%;
+  text-align: center;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .content-table
+  .table
+  .thead
+  .th:nth-child(6) {
+  width: 11%;
+  text-align: center;
 }
 .department-wise-container
   .department-fliters-container
@@ -4297,7 +4438,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(1) {
-  width: 35%;
+  width: 30%;
   padding-left: 30px;
 }
 .department-wise-container
@@ -4313,7 +4454,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(2) {
-  width: 10%;
+  width: 11%;
   text-align: center;
 }
 .department-wise-container
@@ -4329,7 +4470,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(3) {
-  width: 10%;
+  width: 11%;
   text-align: center;
 }
 .department-wise-container
@@ -4345,7 +4486,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(3) {
-  width: 10%;
+  width: 11%;
   text-align: center;
 }
 .department-wise-container
@@ -4361,7 +4502,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(4) {
-  width: 10%;
+  width: 11%;
   text-align: center;
 }
 .department-wise-container
@@ -4393,7 +4534,7 @@ a:hover {
   .performance-table
   .tbody
   .td:nth-child(6) {
-  width: 10%;
+  width: 11%;
   text-align: center;
 }
 .department-wise-container

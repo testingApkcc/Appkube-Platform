@@ -1008,7 +1008,7 @@
                                             font-size: 13px;
 
                                             .thead {
-                                                display: block;
+                                                display: flex;
                                                 width: 100%;
                                                 background-color: #D9E4F2;
                                                 border-radius: 10px 10px 0px 0px;
@@ -1016,8 +1016,40 @@
                                                 padding: 10px 15px;
 
                                                 .th {
-                                                    display: flex;
-                                                    width: 100%;
+                                                    &:nth-child(1) {
+                                                        width: 30%;
+                                                        padding-left: 15px;
+                                                    }
+
+                                                    &:nth-child(2) {
+                                                        width: 11%;
+                                                        text-align: center;
+                                                    }
+
+                                                    &:nth-child(3) {
+                                                        width: 11%;
+                                                        text-align: center;
+                                                    }
+
+                                                    &:nth-child(3) {
+                                                        width: 11%;
+                                                        text-align: center;
+                                                    }
+
+                                                    &:nth-child(4) {
+                                                        width: 11%;
+                                                        text-align: center;
+                                                    }
+
+                                                    &:nth-child(5) {
+                                                        width: 15%;
+                                                        text-align: center;
+                                                    }
+
+                                                    &:nth-child(6) {
+                                                        width: 11%;
+                                                        text-align: center;
+                                                    }
                                                 }
                                             }
 

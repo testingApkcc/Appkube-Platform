@@ -242,7 +242,7 @@ export class ServicesPerformance extends React.Component<any, any> {
       tag.serviceList && tag.serviceList.forEach((service: any, i: any) => {
         servicesJSX.push(
           <div className='tbody'>
-            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span>{service.name}</span></div>
+            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{paddingLeft: '0px'}}>{service.name}</span></div>
             <div className='td'>
               <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
                 <i className='fa fa-check-circle'></i>
