@@ -14,8 +14,6 @@ import { Alerts } from "./Alerts";
 import { Inputs } from "./Inputs";
 import { PLUGIN_BASE_URL } from '../../constants';
 import { ProductWiseServices } from "../../components/ProductWiseServices";
-import _departmentData from './../DepartmentWiseProducts/_dummyData/departments.json';
-// import { products } from './../DepartmentWiseProducts/_dummyData/products';
 
 export class AmazonServices extends React.Component<any, any> {
   breadCrumbs: any;
@@ -93,10 +91,6 @@ export class AmazonServices extends React.Component<any, any> {
     const orgId = queryPrm.get("org_id");
     //console.log("asset id: " + asset_id);
     await this.getAccounts(asset_id, orgId);
-    this.setState({
-      departmentWiseData: _departmentData,
-      // product: products
-    });
   }
 
   getProductData = async () => {
