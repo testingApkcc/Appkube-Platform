@@ -20,71 +20,104 @@ textarea {
   height: calc(100% - 51px) !important;
   transition: width 0.3s !important;
   z-index: 1000;
-  
+
   .menu-item-container {
     height: 100%;
   }
+
   .menu-item {
+    &.active {
+      .overview {
+        background-image: url('../img/monitor-icons/sidemenu/overview_color.svg');
+      }
+
+      .assets {
+        background-image: url('../img/monitor-icons/sidemenu/assets_color.svg');
+      }
+
+      .app-catalogue {
+        background-image: url('../img/monitor-icons/sidemenu/app_catalogue_color.svg');
+      }
+
+      .alerts {
+        background-image: url('../img/monitor-icons/sidemenu/alerts_color.svg');
+      }
+
+      .analytics {
+        background-image: url('../img/monitor-icons/sidemenu/analytics_color.svg');
+      }
+
+      .ops-central {
+        background-image: url('../img/monitor-icons/sidemenu/ops_central_color.svg');
+      }
+
+      .dev-central {
+        background-image: url('../img/monitor-icons/sidemenu/dev_central_color.svg');
+      }
+
+      .sec-central {
+        background-image: url('../img/monitor-icons/sidemenu/sec_central_color.svg');
+      }
+
+      .tools-and-diagnostics {
+        background-image: url('../img/monitor-icons/sidemenu/sec_central_color.svg');
+      }
+
+      .preferences {
+        background-image: url('../img/monitor-icons/sidemenu/preferences_color.svg');
+      }
+
+      .rbac-settings {
+        background-image: url('../img/monitor-icons/sidemenu/rbac_color.svg');
+      }
+
+      .resources {
+        background-image: url('../img/monitor-icons/sidemenu/resources_color.svg');
+      }
+    }
+
     .overview {
       background-image: url('../img/monitor-icons/sidemenu/overview.svg');
-    }
-
-    .logs {
-      background-image: url('../img/monitor-icons/sidemenu/logs.svg');
-    }
-
-    .tickets {
-      background-image: url('../img/monitor-icons/sidemenu/ticket.svg');
-      height: 15px;
-      margin-top: 2px;
-    }
-
-    .events {
-      background-image: url('../img/monitor-icons/sidemenu/events.svg');
-    }
-
-    .automation {
-      background-image: url('../img/monitor-icons/sidemenu/automation.svg');
-    }
-
-    .availability {
-      background-image: url('../img/monitor-icons/sidemenu/availability.svg');
     }
 
     .assets {
       background-image: url('../img/monitor-icons/sidemenu/assets.svg');
     }
 
-    .catalogue {
-      background-image: url('../img/monitor-icons/sidemenu/catalogue.svg');
+    .app-catalogue {
+      background-image: url('../img/monitor-icons/sidemenu/app_catalogue.svg');
     }
 
-    .metrics {
-      background-image: url('../img/monitor-icons/sidemenu/metrics.svg');
+    .alerts {
+      background-image: url('../img/monitor-icons/sidemenu/alerts.svg');
     }
 
-    .delivery {
-      background-image: url('../img/monitor-icons/sidemenu/delivery.svg');
+    .analytics {
+      background-image: url('../img/monitor-icons/sidemenu/analytics.svg');
     }
 
-    .generator {
-      background-image: url('../img/monitor-icons/sidemenu/generator.svg');
+    .ops-central {
+      background-image: url('../img/monitor-icons/sidemenu/ops_central.svg');
     }
 
-    .quality {
-      background-image: url('../img/monitor-icons/sidemenu/quality.svg');
+    .dev-central {
+      background-image: url('../img/monitor-icons/sidemenu/dev_central.svg');
     }
 
-    .test {
-      background-image: url('../img/monitor-icons/sidemenu/test.svg');
+    .sec-central {
+      background-image: url('../img/monitor-icons/sidemenu/sec_central.svg');
     }
 
-    .compliance {
-      background-image: url('../img/monitor-icons/sidemenu/dashboard.svg');
+    .tools-and-diagnostics {
+      background-image: url('../img/monitor-icons/sidemenu/sec_central.svg');
     }
 
-    .preference {
-      background-image: url('../img/monitor-icons/sidemenu/preference.svg');
+    .preferences {
+      background-image: url('../img/monitor-icons/sidemenu/preferences.svg');
+    }
+
+    .rbac-settings {
+      background-image: url('../img/monitor-icons/sidemenu/rbac.svg');
     }
 
     .resources {
@@ -158,7 +191,8 @@ textarea {
           font-size: 10px;
           color: $sidemenu-link-text-color;
           margin-top: 5px;
-          font-size: 600;
+          margin-left: 5px;
+          margin-right: 5px;
         }
       }
     }
