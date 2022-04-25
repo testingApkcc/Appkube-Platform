@@ -337,28 +337,28 @@ export class CustomSideMenu extends PureComponent<any, any> {
     },
     {
       link: '/ops-central',
-      text: 'OPS central',
+      text: 'Ops central',
       cssClass: 'ops-central',
       isImplemented: true,
       childName: 'ops-central',
     },
     {
       link: '/dev-central',
-      text: 'DEV CENTERAL',
+      text: 'Dev Central',
       cssClass: 'dev-central',
       isImplemented: true,
       childName: 'dev-central',
     },
     {
       link: '/sec-central',
-      text: 'SEC CENTERAL',
+      text: 'Sec Central',
       cssClass: 'sec-central',
       isImplemented: true,
       childName: 'sec-central',
     },
     {
       link: '/tools-and-diagnostics',
-      text: 'TOOLS & DIAGNOSTICS',
+      text: 'Tools & Diagnostics',
       cssClass: 'tools-and-diagnostics',
       isImplemented: true,
       childName: 'tools-and-diagnostics',
@@ -654,7 +654,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
   extra: any = [
     {
       link: '/plugins/xformation-rbac-ui-plugin/page/home',
-      text: 'RBAC Settings',
+      text: 'Rbac Settings',
       cssClass: 'rbac-settings',
       childName: 'rbac-settings',
       isImplemented: true,
