@@ -198,17 +198,17 @@
                     padding-left: 15px;
                     padding-right: 15px;
                     text-align: left;
-                    font-size: 18px;
+                    font-size: 17px;
                     margin-top: 10px;
 
                     label {
-                        line-height: 18px;
+                        line-height: 17px;
                         color: #202020;
                         font-weight: 600;
                     }
 
                     span {
-                        line-height: 18px;
+                        line-height: 17px;
                         color: #202020;
                         font-weight: 600;
                     }
@@ -646,6 +646,15 @@
                     color: #24292e;
                 }
 
+                .cloud-environment{
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    text-align: center;
+                    width: 20%;
+                    color: #24292e;
+                }
+
                 .app-services {
                     display: inline-block;
                     vertical-align: top;
@@ -664,18 +673,18 @@
                     color: #24292e;
                 }
 
-                .ou {
+                .product-environment {
                     display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
-                    width: 42%;
+                    width: 24%;
                     color: #24292e;
                 }
 
                 .edit {
                     vertical-align: top;
                     padding: 10px 15px;
-                    width: 8%;
+                    width: 6%;
                     text-align: right;
                     float: right;
 
@@ -721,6 +730,15 @@
                     }
                 }
 
+                .cloud-environment{
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px;
+                    text-align: center;
+                    width: 20%;
+                    color: $data-table-contents-color;
+                }
+
                 .app-services {
                     display: inline-block;
                     vertical-align: top;
@@ -739,18 +757,21 @@
                     color: $data-table-contents-color;
                 }
 
-                .ou {
+                .product-environment {
                     display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
-                    width: 42%;
+                    width: 24%;
                     color: $data-table-contents-color;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
                 .edit {
                     vertical-align: top;
                     padding: 10px 15px;
-                    width: 8%;
+                    width: 6%;
                     float: right;
                     text-align: right;
 

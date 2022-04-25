@@ -13,7 +13,6 @@ import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import _ from 'lodash';
 // import { values } from 'lodash';
-// import {products} from './_dummyData/products';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

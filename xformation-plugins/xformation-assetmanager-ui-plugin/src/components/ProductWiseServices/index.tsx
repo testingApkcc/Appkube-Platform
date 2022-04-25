@@ -20,6 +20,7 @@ export class ProductWiseServices extends React.Component<any, any> {
       productComponent: [],
       product: [],
       isDataLoaded: false,
+      hostingType: 'CloudManaged',
     };
   }
 
@@ -47,22 +48,80 @@ export class ProductWiseServices extends React.Component<any, any> {
     });
   }
 
-  // handleChangeViewOfProduct = (departmentIndex: any, productIndex: any) => {
-  //   const { product, viewMapping } = this.state
-  //   if (product[departmentIndex]) {
-  //     const appliedView = viewMapping[departmentIndex] ? viewMapping[departmentIndex][productIndex] : ViewMapping.BUSINESS_VIEW;
-  //     const newView = appliedView === ViewMapping.BUSINESS_VIEW ? ViewMapping.CLOUD_VIEW : ViewMapping.BUSINESS_VIEW;
-  //     const newViewMap = viewMapping[departmentIndex] ? viewMapping[departmentIndex] : [];
-  //     newViewMap[productIndex] = newView;
-  //     viewMapping[departmentIndex] = newViewMap;
-  //     this.setState({
-  //       viewMapping: JSON.parse(JSON.stringify(viewMapping))
-  //     });
-  //   }
-  // }
+  handleChangeViewOfProduct = () => {
+    const { hostingType } = this.state;
+    if (hostingType === 'CloudManaged') {
+      this.setState({
+        hostingType: 'InCluster'
+      })
+    } else {
+      this.setState({
+        hostingType: 'CloudManaged'
+      })
+    }
+    // if (product && product.length > 0) {
+    //   console.log(product.length);
+    //   let data = product;
+    //   for (let i = 0; i < product.length; i++) {
+    //     let CloudManaged: any = [];
+    //     let InCluster: any = [];
+    //     let row = product[i];
+    //     {
+    //       row.productList && row.productList.map((viewData: any, index: any) => {
+    //         const val = viewData;
+    //         let productServiceList = [];
+    //         if (val && val.deploymentEnvironmentList) {
+    //           for (let b = 0; b < val.deploymentEnvironmentList.length; b++) {
+    //             productServiceList.push(val.deploymentEnvironmentList[b].name);
+    //             let environment = val.deploymentEnvironmentList[b];
+    //             if (environment.serviceCategoryList && environment.serviceCategoryList.length > 0) {
+    //               for (let a = 0; a < environment.serviceCategoryList.length; a++) {
+    //                 const serviceCategory = environment.serviceCategoryList[a];
+    //                 if (serviceCategory.serviceNameList && serviceCategory.serviceNameList.length > 0) {
+    //                   for (let n = 0; n < serviceCategory.serviceNameList.length; n++) {
+    //                     if (serviceCategory.serviceNameList[n]) {
+    //                       for (let o = 0; o < serviceCategory.serviceNameList[n].tagList.length; o++) {
+    //                         const tagList = serviceCategory.serviceNameList[n].tagList[o]
+    //                         if (tagList) {
+    //                           let serviceList = tagList.serviceList
+    //                           if (serviceList) {
+    //                             for (let q = 0; q < serviceList.length; q++) {
+    //                               if (serviceList[q].hostingType === hostingType) {
+    //                                 CloudManaged.push(val.deploymentEnvironmentList);
+    //                                 // data.push(row);
+    //                                 // break;
+    //                               }
+    //                               else {
+    //                                 // data.push(row);
+    //                                 InCluster.push(val.deploymentEnvironmentList);
+    //                                 // break;
+    //                               }
+    //                             }
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       })
+    //       console.log(InCluster);
+    //       console.log(CloudManaged);
+    //       data.push([InCluster, CloudManaged]);
+    //       console.log(data)
+    //     }
+    //   }
+    //   // this.setState({
+    //   //   product: CloudManaged,
+    //   // })
+    // }
+  }
 
   displayProductServices = () => {
-    const { product } = this.state;
+    const { product, hostingType } = this.state;
     let retData = [];
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
@@ -89,6 +148,15 @@ export class ProductWiseServices extends React.Component<any, any> {
                               (subServices: any) => {
                                 serviceByType[subServices.tagName] = serviceByType[subServices.tagName] || 0;
                                 serviceByType[subServices.tagName] += subServices.serviceList ? subServices.serviceList.length : 0;
+                                // if (subServices.serviceList) {
+                                //   for (let d = 0; d < subServices.serviceList.length; d++) {
+                                //     if (subServices.serviceList[d].hostingType == hostingType) {
+                                //       val.deploymentEnvironmentList[b].hostingShow = true;
+                                //     } else {
+                                //       val.deploymentEnvironmentList[b].hostingShow = false;
+                                //     }
+                                //   }
+                                // }
                               }, 0);
                           }
                         }
@@ -103,10 +171,10 @@ export class ProductWiseServices extends React.Component<any, any> {
                     <span>{val.name}</span>
                     <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                   </div>
-                  <div className="app-services"></div>
+                  <div className="cloud-environment"></div>
                   <div className="app-services">{serviceByType.APP || 0}</div>
                   <div className="data-services">{serviceByType.DATA || 0}</div>
-                  <div className="data-services">{productServiceList.join()}</div>
+                  <div className="product-environment">{productServiceList.join()}</div>
                   <div className="edit">
                     {/* onClick={() => this.onClickMenu(defaultView, i)} */}
                     <button className="edit-btn" onClick={() => this.onClickMenu(i, index)} >
@@ -127,9 +195,11 @@ export class ProductWiseServices extends React.Component<any, any> {
                   </div>
                   {val.isOpen == true &&
                     <ServicesPerformance
-                      // handleChangeViewOfProduct={() => this.handleChangeViewOfProduct(i, index)}
+                      handleChangeViewOfProduct={() => this.handleChangeViewOfProduct()}
                       product={val}
-                    />}
+                      hostingType={hostingType}
+                    />
+                  }
                 </div>
               )
             })
@@ -275,11 +345,10 @@ export class ProductWiseServices extends React.Component<any, any> {
         <div className="data-table">
           <div className="thead">
             <div className="name">Name</div>
-            <div className="app-services">Cloud Environment</div>
+            <div className="cloud-environment">Cloud Environment</div>
             <div className="app-services">App Services</div>
             <div className="data-services">Data Services</div>
-            <div className="data-services">Product Environment</div>
-            {/* <div className="ou">OU</div> */}
+            <div className="product-environment">Product Environment</div>
             <div className="edit">
               <button className="edit-btn">
                 <span></span>
