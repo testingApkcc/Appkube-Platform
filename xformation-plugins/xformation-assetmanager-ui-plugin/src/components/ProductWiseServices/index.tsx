@@ -49,7 +49,7 @@ export class ProductWiseServices extends React.Component<any, any> {
   }
 
   handleChangeViewOfProduct = () => {
-    const { hostingType, product } = this.state;
+    const { hostingType } = this.state;
     if (hostingType === 'CloudManaged') {
       this.setState({
         hostingType: 'InCluster'
@@ -171,10 +171,10 @@ export class ProductWiseServices extends React.Component<any, any> {
                     <span>{val.name}</span>
                     <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                   </div>
-                  <div className="app-services"></div>
+                  <div className="cloud-environment"></div>
                   <div className="app-services">{serviceByType.APP || 0}</div>
                   <div className="data-services">{serviceByType.DATA || 0}</div>
-                  <div className="data-services">{productServiceList.join()}</div>
+                  <div className="product-environment">{productServiceList.join()}</div>
                   <div className="edit">
                     {/* onClick={() => this.onClickMenu(defaultView, i)} */}
                     <button className="edit-btn" onClick={() => this.onClickMenu(i, index)} >
@@ -345,10 +345,10 @@ export class ProductWiseServices extends React.Component<any, any> {
         <div className="data-table">
           <div className="thead">
             <div className="name">Name</div>
-            <div className="app-services">Cloud Environment</div>
+            <div className="cloud-environment">Cloud Environment</div>
             <div className="app-services">App Services</div>
             <div className="data-services">Data Services</div>
-            <div className="data-services">Product Environment</div>
+            <div className="product-environment">Product Environment</div>
             <div className="edit">
               <button className="edit-btn">
                 <span></span>

@@ -91,9 +91,9 @@ export class ServicesPerformance extends React.Component<any, any> {
           }
         }
         return (
-          <li>
+          <>
             {category.hostingType === this.props.hostingType &&
-              <>
+              <li>
                 {!category.isOpen && <div className='icon'><img src={images.Icon} alt="" /></div>}
                 <div className={category.isOpen === true ? 'heading full' : 'heading'} >
                   <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
@@ -142,9 +142,9 @@ export class ServicesPerformance extends React.Component<any, any> {
                     </div>
                   </div>
                 }
-              </>
+              </li>
             }
-          </li>
+          </>
         );
       });
     }
@@ -320,12 +320,14 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   render() {
     const { product } = this.state;
+    const { hostingType } = this.props;
     return (
       <div className='environments'>
         <div className='environments-inner'>
           <div className='heading'>
             <h3>Deployment environments</h3>
             <div className='buttons'>
+              <h3 style={{ paddingRight: '10px' }}>{hostingType}</h3>
               <button className='btn'>
                 <i className='fa fa-plus'></i>
               </button>
