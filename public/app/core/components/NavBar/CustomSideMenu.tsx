@@ -236,8 +236,8 @@ export class CustomSideMenu extends PureComponent<any, any> {
     {
       link: '/import-module-pack',
       text: 'App Catalogue',
-      cssClass: 'catalogue',
-      childName: 'catalogue',
+      cssClass: 'app-catalogue',
+      childName: 'app-catalogue',
       isImplemented: true,
       subMenu: [
         {
@@ -267,7 +267,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
     {
       link: '/a/xformation-alertmanager-ui-plugin/monitor-alerts',
       text: 'Alerts',
-      cssClass: 'events',
+      cssClass: 'alerts',
       isImplemented: true,
       childName: 'alerts',
       subMenu: [
@@ -305,7 +305,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
     {
       link: '/managedashboards',
       text: 'Analytics',
-      cssClass: 'metrics',
+      cssClass: 'analytics',
       childName: 'analytics',
       isImplemented: true,
       subMenu: [
@@ -338,36 +338,36 @@ export class CustomSideMenu extends PureComponent<any, any> {
     {
       link: '/ops-central',
       text: 'OPS central',
-      cssClass: 'availability',
+      cssClass: 'ops-central',
       isImplemented: true,
-      childName: 'availability',
+      childName: 'ops-central',
     },
     {
       link: '/dev-central',
       text: 'DEV CENTERAL',
-      cssClass: 'availability',
+      cssClass: 'dev-central',
       isImplemented: true,
-      childName: 'availability',
+      childName: 'dev-central',
     },
     {
       link: '/sec-central',
       text: 'SEC CENTERAL',
-      cssClass: 'availability',
+      cssClass: 'sec-central',
       isImplemented: true,
-      childName: 'availability',
+      childName: 'sec-central',
     },
     {
       link: '/tools-and-diagnostics',
       text: 'TOOLS & DIAGNOSTICS',
-      cssClass: 'availability',
+      cssClass: 'tools-and-diagnostics',
       isImplemented: true,
-      childName: 'availability',
+      childName: 'tools-and-diagnostics',
     },
     {
       link: '/team',
       text: 'Preference',
-      cssClass: 'preference',
-      childName: 'preference',
+      cssClass: 'preferences',
+      childName: 'preferences',
       isImplemented: true,
       subMenu: [
         {
@@ -655,7 +655,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
     {
       link: '/plugins/xformation-rbac-ui-plugin/page/home',
       text: 'RBAC Settings',
-      cssClass: 'diagnostic-settings',
+      cssClass: 'rbac-settings',
       childName: 'rbac-settings',
       isImplemented: true,
     },
@@ -663,7 +663,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
       link: '/resource',
       text: 'Resource',
       cssClass: 'resources',
-      childName: 'rbac-settings',
+      childName: 'resources',
     },
   ];
 
