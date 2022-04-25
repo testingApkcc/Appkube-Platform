@@ -5,6 +5,7 @@ import { Catalog } from "../../pages/Catalog";
 import { Collection } from "../../pages/Collection";
 import { Library } from "../../pages/Library";
 import { CollectionView } from "../../pages/CollectionView";
+import { CatalogueManagement } from "pages/CatalogueManagement";
 import { useNavigation, prefixRoute } from "../../utils/utils.routing";
 import { ROUTES } from "../../constants";
 
@@ -18,6 +19,7 @@ export const Routes = () => {
       <Route exact path={prefixRoute(ROUTES.Collection)} component={Collection} />
       <Route exact path={prefixRoute(ROUTES.Library)} component={Library} />
       <Route exact path={prefixRoute(ROUTES.CollectionView)} component={CollectionView} />
+      <Route exact path={prefixRoute(ROUTES.CatalougeManagement)} component={CatalogueManagement} />
     </Switch>
   );
 };

@@ -9,6 +9,7 @@ export enum ROUTES {
   Collection = 'collection',
   Library = 'library',
   CollectionView = 'collectionview',
+  CatalougeManagement = 'cataloguemanagement',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';

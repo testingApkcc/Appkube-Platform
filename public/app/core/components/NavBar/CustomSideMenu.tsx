@@ -247,6 +247,12 @@ export class CustomSideMenu extends PureComponent<any, any> {
           isImplemented: true,
         },
         {
+          link: '/a/xformation-perfmanager-ui-plugin/cataloguemanagement',
+          text: 'Catalogue Management ',
+          childName: 'app-catalogue',
+          isImplemented: true,
+        },
+        {
           link: '/a/xformation-perfmanager-ui-plugin/library',
           text: 'Library',
           isImplemented: true,

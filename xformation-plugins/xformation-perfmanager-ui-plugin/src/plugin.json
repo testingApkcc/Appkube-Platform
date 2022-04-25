@@ -56,6 +56,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/%PLUGIN_ID%?path=collectionview"
+    },
+    {
+      "type": "page",
+      "name": "Cataloguemanagement",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=cataloguemanagement"
     }
   ],
   "dependencies": {
