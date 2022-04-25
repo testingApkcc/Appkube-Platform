@@ -14,7 +14,7 @@
     },
     "screenshots": [],
     "version": "1.0.0",
-    "updated": "2022-04-01"
+    "updated": "2022-04-25"
   },
   "includes": [
     {
@@ -56,6 +56,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/xformation-perfmanager-ui-plugin?path=collectionview"
+    },
+    {
+      "type": "page",
+      "name": "Cataloguemanagement",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-perfmanager-ui-plugin?path=cataloguemanagement"
     }
   ],
   "dependencies": {
