@@ -75,8 +75,12 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   renderCategories = (categories: any, environmentIndex: number) => {
+    let retData: any = []
     if (categories) {
-      return categories.map((category: any, categoryIndex: number) => {
+      // return categories.map((category: any, categoryIndex: number) => {
+      for (let h = 0; h < categories.length; h++) {
+        let category = categories[h];
+        let categoryIndex = h;
         if (category.serviceNameList && category.serviceNameList.length > 0) {
           for (let i = 0; i < category.serviceNameList.length; i++) {
             if (category.serviceNameList[i].tagList && category.serviceNameList[i].tagList.length > 0) {
@@ -90,9 +94,9 @@ export class ServicesPerformance extends React.Component<any, any> {
             }
           }
         }
-        return (
-          <>
-            {category.hostingType === this.props.hostingType &&
+        if (category.hostingType === this.props.hostingType) {
+          retData.push(
+            <>
               <li>
                 {!category.isOpen && <div className='icon'><img src={images.Icon} alt="" /></div>}
                 <div className={category.isOpen === true ? 'heading full' : 'heading'} >
@@ -143,12 +147,22 @@ export class ServicesPerformance extends React.Component<any, any> {
                   </div>
                 }
               </li>
-            }
-          </>
-        );
-      });
+
+            </>
+          );
+        }
+      }
     }
-    return [];
+    if (retData.length > 0) {
+      return retData;
+    } else {
+      retData.push(
+        <div className='tabs-container'>
+          <span>No Services found in this view please select other view</span>
+        </div>
+      );
+      return retData;
+    }
   };
 
   renderServiceName = (serviceNames: any, indexArr: any) => {
