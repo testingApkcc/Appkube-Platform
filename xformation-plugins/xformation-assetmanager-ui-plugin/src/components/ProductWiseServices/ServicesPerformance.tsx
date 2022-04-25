@@ -43,7 +43,7 @@ export class ServicesPerformance extends React.Component<any, any> {
   }
 
   handleView = () => {
-    // this.props.handleChangeViewOfProduct();
+    this.props.handleChangeViewOfProduct();
   }
 
   onClickMenu = (k: any, l: any) => {
@@ -71,61 +71,78 @@ export class ServicesPerformance extends React.Component<any, any> {
         )
       })
     }
-    return [];
+    return null;
   };
 
   renderCategories = (categories: any, environmentIndex: number) => {
     if (categories) {
       return categories.map((category: any, categoryIndex: number) => {
+        if (category.serviceNameList && category.serviceNameList.length > 0) {
+          for (let i = 0; i < category.serviceNameList.length; i++) {
+            if (category.serviceNameList[i].tagList && category.serviceNameList[i].tagList.length > 0) {
+              for (let j = 0; j < category.serviceNameList[i].tagList.length; j++) {
+                if (category.serviceNameList[i].tagList[j].serviceList && category.serviceNameList[i].tagList[j].serviceList.length > 0) {
+                  for (let k = 0; k < category.serviceNameList[i].tagList[j].serviceList.length; k++) {
+                    category['hostingType'] = category.serviceNameList[i].tagList[j].serviceList[k].hostingType;
+                  }
+                }
+              }
+            }
+          }
+        }
         return (
           <li>
-            {!category.isOpen && <div className='icon'><img src={images.Icon} alt="" /></div>}
-            <div className={category.isOpen === true ? 'heading full' : 'heading'} >
-              <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
-                {category.name}
-              </span>
-              <div className='icon'>
-                <div
-                  className='fa-icon'
-                  onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}
-                >
-                  <i className={category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
-                </div>
-                <div className='edit'>
-                  <div
-                    className='bars'
-                    onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}
-                  >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  {category.menuOpen == true && (
-                    <>
-                      <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
-                      <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
-                        <a href='#'> Add Firewall </a>
-                        <a href='#'> Remove Firewall </a>
+            {category.hostingType === this.props.hostingType &&
+              <>
+                {!category.isOpen && <div className='icon'><img src={images.Icon} alt="" /></div>}
+                <div className={category.isOpen === true ? 'heading full' : 'heading'} >
+                  <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
+                    {category.name}
+                  </span>
+                  <div className='icon'>
+                    <div
+                      className='fa-icon'
+                      onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}
+                    >
+                      <i className={category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+                    </div>
+                    <div className='edit'>
+                      <div
+                        className='bars'
+                        onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}
+                      >
+                        <span></span>
+                        <span></span>
+                        <span></span>
                       </div>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-            {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
-              <div className='content-table'>
-                <div className='table'>
-                  <div className='thead'>
-                    <div className='th'>Name</div>
-                    <div className='th'>Performance</div>
-                    <div className='th'>Availability</div>
-                    <div className='th'>Security</div>
-                    <div className='th'>Data Protection</div>
-                    <div className='th'>User exp</div>
+                      {category.menuOpen == true && (
+                        <>
+                          <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
+                          <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                            <a href='#'> Add Firewall </a>
+                            <a href='#'> Remove Firewall </a>
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
-                  {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
                 </div>
-              </div>
+                {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
+                  <div className='content-table'>
+                    <div className='table'>
+                      <div className='thead'>
+                        <div className='th'>Name</div>
+                        <div className='th'>Performance</div>
+                        <div className='th'>Availability</div>
+                        <div className='th'>Security</div>
+                        <div className='th'>Data Protection</div>
+                        <div className='th'>User exp</div>
+                      </div>
+                      {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
+                    </div>
+                  </div>
+                }
+              </>
             }
           </li>
         );
@@ -145,7 +162,6 @@ export class ServicesPerformance extends React.Component<any, any> {
           displayType.push(tag.tagName);
         }
       }
-      console.log(displayType, serviceName.name);
       if (displayType.indexOf('UNLINKED') === -1) {
         retData.push(<div className='table performance-table'>
           <div className='tbody'>
@@ -242,7 +258,7 @@ export class ServicesPerformance extends React.Component<any, any> {
       tag.serviceList && tag.serviceList.forEach((service: any, i: any) => {
         servicesJSX.push(
           <div className='tbody'>
-            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{paddingLeft: '0px'}}>{service.name}</span></div>
+            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}>{service.name}</span></div>
             <div className='td'>
               <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
                 <i className='fa fa-check-circle'></i>
@@ -288,7 +304,6 @@ export class ServicesPerformance extends React.Component<any, any> {
     this.setState({
       product,
     })
-    console.log(product);
   }
 
   getPerformanceClass = (score: any) => {
@@ -330,6 +345,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                 </ul>
               </div>
               {product.deploymentEnvironmentList && product.deploymentEnvironmentList.map((environment: any, environmentIndex: any) => {
+                // && environment.hostingShow == true
                 if (environment.isOpen == true) {
                   return (
                     <div className='tabs-content'>
@@ -344,6 +360,19 @@ export class ServicesPerformance extends React.Component<any, any> {
               })
               }
             </div>
+            {/* {product.deploymentEnvironmentList && product.deploymentEnvironmentList.map((environment: any, index: any) => {
+              if (environment.isOpen == true && environment.hostingShow == false) {
+                return (
+                  <div className='tabs-container'>
+                    {index == 0 &&
+                      <span>No Services found in this view please select other view</span>
+                    }
+                  </div>
+                );
+              }else{
+                return null;
+              }
+            })} */}
           </div>
         </div>
       </div>
