@@ -11,32 +11,36 @@ export class SelectCloudFilter extends React.Component<any, any> {
                     name: 'OU',
                     value: 'ou',
                     isChecked: false,
+                    id :1,
                     subdata: [
-                        { name: 'IT Department', value: 'itdepartment', isChecked: false },
-                        { name: 'Network Department', value: 'networkdepartment', isChecked: false },
-                        { name: 'Development', value: 'development', isChecked: false },
-                        { name: 'Testing', value: 'testing', isChecked: false },
+                        { name: 'IT Department', value: 'itdepartment', isChecked: false ,id :1},
+                        { name: 'Network Department', value: 'networkdepartment', isChecked: false, id :2},
+                        { name: 'Development', value: 'development', isChecked: false, id :3},
+                        { name: 'Testing', value: 'testing', isChecked: false, id :4},
                     ],
                 },
                 {
                     name: 'Status',
                     value: 'status',
                     isChecked: false,
+                    id :2,
                     subdata: [
-                        { name: 'Enable', value: 'enable', isChecked: false },
-                        { name: 'Disable', value: 'disable', isChecked: false },
+                        { name: 'Enable', value: 'enable', isChecked: false , id :1},
+                        { name: 'Disable', value: 'disable', isChecked: false, id :2 },
                     ],
                 },
                 {
                     name: 'No of Assets',
                     value: 'noOFssets',
                     isChecked: false,
+                    id :3,
                     subdata: [],
                 },
                 {
                     name: 'Platform',
                     value: 'platform',
                     isChecked: false,
+                    id :4,
                     subdata: [],
                 }, {
                     name: 'Logs',
@@ -47,6 +51,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                     name: 'Performance & Availability',
                     value: 'availabiity',
                     isChecked: false,
+                    id :5,
                     subdata: []
                 }
             ],
@@ -55,42 +60,48 @@ export class SelectCloudFilter extends React.Component<any, any> {
                     name: 'OU',
                     value: 'ou',
                     isChecked: false,
+                    id :1,
                     subdata: [
-                        { name: 'IT Department', value: 'itdepartment', isChecked: false },
-                        { name: 'Network Department', value: 'networkdepartment', isChecked: false },
-                        { name: 'Development', value: 'development', isChecked: false },
-                        { name: 'Testing', value: 'testing', isChecked: false },
+                        { name: 'IT Department', value: 'itdepartment', isChecked: false, id :1},
+                        { name: 'Network Department', value: 'networkdepartment', isChecked: false, id :2},
+                        { name: 'Development', value: 'development', isChecked: false, id :3},
+                        { name: 'Testing', value: 'testing', isChecked: false, id :4},
                     ],
                 },
                 {
                     name: 'Status',
                     value: 'status',
                     isChecked: false,
+                    id :2,
                     subdata: [
-                        { name: 'Enable', value: 'enable', isChecked: false },
-                        { name: 'Disable', value: 'disable', isChecked: false },
+                        { name: 'Enable', value: 'enable', isChecked: false, id :1},
+                        { name: 'Disable', value: 'disable', isChecked: false, id :2},
                     ],
                 },
                 {
                     name: 'No of Assets',
                     value: 'noOFssets',
                     isChecked: false,
+                    id :3,
                     subdata: [],
                 },
                 {
                     name: 'Platform',
                     value: 'platform',
                     isChecked: false,
+                    id :4,
                     subdata: [],
                 }, {
                     name: 'Logs',
                     value: 'logs',
                     isChecked: false,
+                    id :5,
                     subdata: [],
                 }, {
                     name: 'Performance & Availability',
                     value: 'availabiity',
                     isChecked: false,
+                    id :6,
                     subdata: []
                 }
             ],
@@ -106,7 +117,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
             for (let i = 0; i < optionJsonData.length; i++) {
                 if (optionJsonData[i].isChecked) {
                     retData.push(
-                        <div className="fliter-selected">
+                        <div className="fliter-selected" key={optionJsonData[i].id}>
                             <span onClick={() => this.setChildData(optionJsonData[i])}>{optionJsonData[i].name}</span>
                             <i className="fa fa-times" onClick={() => this.removeSelectedTag(optionJsonData[i].value)}></i>
                         </div>
@@ -115,7 +126,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                         for (let j = 0; j < optionJsonData[i].subdata.length; j++) {
                             if (optionJsonData[i].subdata[j].isChecked) {
                                 retData.push(
-                                    <div className="fliter-selected">
+                                    <div className="fliter-selected" key={ optionJsonData[i].subdata[j].id}>
                                         <span onClick={() => this.setState({ showTagFilter: false })}>{optionJsonData[i].subdata[j].name}</span>
                                         <i className="fa fa-times" onClick={() => this.removeSelectedTag(optionJsonData[i].subdata[j].value)}></i>
                                     </div>
@@ -174,7 +185,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
         let retData = [];
         for (let i = 0; i < displayJsonData.length; i++) {
             retData.push(
-                <div className="form-check" onClick={() => this.changeHandleState(i, displayJsonData[i].value)}>
+                <div className="form-check" onClick={() => this.changeHandleState(i, displayJsonData[i].value)} >
                     <input type="checkbox" checked={displayJsonData[i].isChecked} className="checkbox" />
                     <label htmlFor={displayJsonData[i].value}>{displayJsonData[i].name}</label>
                 </div>

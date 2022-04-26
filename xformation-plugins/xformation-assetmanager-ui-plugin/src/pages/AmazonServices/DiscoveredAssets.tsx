@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { images } from '../../img';
 import { Collapse } from 'reactstrap';
-import _dummyData from './_discovered_assets.json';
-// import { RestService } from '../_service/RestService';
-// import { config } from '../../config';
+import { RestService } from '../_service/RestService';
+import { configFun } from '../../config';
 // import { PLUGIN_BASE_URL } from '../../constants';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SERVICE_MAPPING: any = {
   'App': 'App Services',
@@ -15,35 +14,54 @@ const SERVICE_MAPPING: any = {
   'Common': 'Common Services',
   'Business': 'Business Services'
 };
+
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
       tableData: {},
       labelText: '',
       openCreateMenu: '',
-      servicesData: null
+      servicesData: null,
+      servicesLength: {},
+      totalProducts: 0,
+      activeNode: '',
     };
+    this.config = configFun('http://3.208.22.155:5057', '');
   }
 
   componentDidMount() {
-    this.manipulateServiceData(_dummyData.services);
+    this.getServicesData();
+  }
+
+  getServicesData = async () => {
+    try {
+      await RestService.getData(
+        `${this.config.GET_SERVICES_DATA}`,
+        null,
+        null
+      ).then((response: any) => {
+        this.manipulateServiceData(response.services);
+      });
+    } catch (err) {
+      console.log("Loading accounts failed. Error: ", err);
+    }
   }
 
   manipulateServiceData = (services: any) => {
     const treeData: any = [];
     services.forEach((service: any) => {
-      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct } = service;
+      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct } =
+        service.details;
       if (associatedProductEnclave) {
         const node = treeData[associatedProductEnclave] || {};
         const clusterData = node[associatedCluster] || {};
-
         const serviceTypeData = clusterData[serviceType] || {};
         const assiciatedServiceData = serviceTypeData[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push(service);
-
+        productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         serviceTypeData[serviceNature] = assiciatedServiceData;
         clusterData[serviceType] = serviceTypeData;
@@ -54,15 +72,49 @@ export class DiscoveredAssets extends React.Component<any, any>{
         node.isGlobalService = true;
         const assiciatedServiceData = node[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push(service);
+        productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         node[serviceNature] = assiciatedServiceData;
         treeData['Global Services'] = node;
       }
     });
-    console.log(treeData);
     this.setState({
       tableData: treeData
+    });
+    this.getAppDataServices(treeData);
+  }
+
+  getAppDataServices = (treeData: any) => {
+    const nodeKeys = Object.keys(treeData);
+    const uniqueProducts: any = [];
+    const servicesLength: any = {};
+    nodeKeys.forEach((nodeKey: any) => {
+      const clusterData = treeData[nodeKey];
+      const clusterKeys = Object.keys(clusterData);
+      clusterKeys.forEach((clusterKey: any) => {
+        const appDataServices = clusterData[clusterKey];
+        const appDataKeys = Object.keys(appDataServices);
+        appDataKeys.forEach((appDataKey: any) => {
+          const commonBusinessServices = appDataServices[appDataKey];
+          const commonBusinessKeys = Object.keys(commonBusinessServices);
+          commonBusinessKeys.forEach((commonBusinessKey: any) => {
+            const productData = commonBusinessServices[commonBusinessKey];
+            const productKeys = Object.keys(productData);
+            productKeys.forEach((productKey: any) => {
+              if (uniqueProducts.indexOf(productKey) === -1) {
+                uniqueProducts.push(productKey);
+              }
+              servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+              servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+              servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
+            });
+          });
+        });
+      });
+    });
+    this.setState({
+      totalProducts: uniqueProducts.length,
+      servicesLength
     });
   };
 
@@ -72,13 +124,15 @@ export class DiscoveredAssets extends React.Component<any, any>{
       const data = JSON.parse(JSON.stringify(tableData[key]));
       delete data.isGlobalService;
       this.setState({
-        servicesData: data
+        servicesData: data,
+        activeNode: key
       });
     } else {
       tableData[key].isOpened = !tableData[key].isOpened;
       this.setState({
         tableData,
-        servicesData: null
+        servicesData: null,
+        activeNode: key,
       });
     }
   }
@@ -88,14 +142,19 @@ export class DiscoveredAssets extends React.Component<any, any>{
     tableData[nodeKey][clusterKey].isOpened = !tableData[nodeKey][clusterKey].isOpened;
     this.setState({
       tableData,
-      servicesData: null
+      servicesData: null,
+      activeNode: clusterKey
     });
   }
 
   onClickAppDataService = (nodeKey: any, clusterKey: any, serviceKey: any) => {
-    const { tableData } = this.state;
+    const { tableData, labelText } = this.state;
+    let text = labelText;
+    text = nodeKey + '>' + clusterKey + '>' + serviceKey + ' Services';
     this.setState({
-      servicesData: tableData[nodeKey][clusterKey][serviceKey]
+      servicesData: tableData[nodeKey][clusterKey][serviceKey],
+      labelText: text,
+      activeNode: serviceKey
     });
   };
 
@@ -108,6 +167,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderNodes = (nodes: any) => {
+    const { totalProducts, servicesLength, activeNode } = this.state;
     const retData: any = [];
     if (nodes) {
       const keys = Object.keys(nodes);
@@ -117,18 +177,18 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.toggleNode(key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleNode(key)}>
                 <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
-              <div className="tbody-td">2</div>
-              <div className="tbody-td">3</div>
-              <div className="tbody-td">5</div>
+              <div className="tbody-td">{totalProducts}</div>
+              {servicesLength[key] && <div className="tbody-td">{servicesLength[key]['App']}</div>}
+              {servicesLength[key] && <div className="tbody-td">{servicesLength[key]['Data']}</div>}
               <div className="tbody-td">
                 <div className="d-block text-center action-edit">
                   {node.showMenu &&
                     <>
-                      <div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(key) }}>    </div>
+                      <div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(key) }}></div>
                       <div className="text-center open-create-menu">
                         <a>Add New Product</a>
                         <a>Add Cluster</a>
@@ -157,26 +217,28 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderClusters = (nodeKey: any, clusters: any) => {
+    const { activeNode } = this.state;
     const keys = Object.keys(clusters);
     const retData: any = [];
     keys.forEach(((key: any) => {
-      if (key !== 'isOpened') {
+      if (key !== 'isOpened' && key !== 'showMenu') {
         const cluster = clusters[key];
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.toggleCluster(nodeKey, key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleCluster(nodeKey, key)}>
                 <div className={cluster.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
-              </div>
-            </div>
+              </div >
+              {/* </Link> */}
+            </div >
             {
               cluster.isOpened ?
                 <Collapse className="collapse-content" isOpen={cluster.isOpened}>
                   {this.renerAppDataServices(nodeKey, key, cluster)}
                 </Collapse> : <></>
             }
-          </div>
+          </div >
         );
       }
     }));
@@ -184,6 +246,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renerAppDataServices = (nodeKey: any, clusterKey: any, services: any) => {
+    const { activeNode } = this.state;
     const retData: any = [];
     const keys = Object.keys(services);
     keys.forEach(((key: any) => {
@@ -191,7 +254,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.onClickAppDataService(nodeKey, clusterKey, key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, key)}>
                 {SERVICE_MAPPING[key]}
               </div>
             </div>
@@ -296,16 +359,48 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }}>{service.name}</div>
-          <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-          <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
-          <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-          <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
-          <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
+          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link to='/a/xformation-assetmanager-ui-plugin/storage-details'>  {service.name}</Link></div>
+          <div className="performance">
+            <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="availability">
+            <div className={`status ${this.getPerformanceClass(service.availability.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="security">
+            <div className={`status ${this.getPerformanceClass(service.security.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="data-protection">
+            <div className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="user-exp">
+            <div className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
         </div>);
       });
     }
     return retData;
+  };
+
+  getPerformanceClass = (score: any) => {
+    if (score >= 75) {
+      return 'green';
+    } else if (score >= 50) {
+      return 'orange';
+    } else if (score >= 25) {
+      return 'yellow';
+    } else {
+      return 'red';
+    }
   };
 
   render() {
