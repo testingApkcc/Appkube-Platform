@@ -8,7 +8,7 @@ define([
   '@grafana/runtime',
   '@emotion/css',
 ], (
-  __WEBPACK_EXTERNAL_MODULE__64__,
+  __WEBPACK_EXTERNAL_MODULE__63__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__6__,
   __WEBPACK_EXTERNAL_MODULE__12__,
@@ -651,6 +651,7 @@ PERFORMANCE OF THIS SOFTWARE.
             GET_ACCOUNT_BY_ID: ''.concat(assetSrvUrl, '/getAccount'),
             GET_DEPARTMENTWISE_PRODUCT: ''.concat(assetSrvUrl, '/department-wise-analytics/search?orgId=78'),
             GET_PRODUCT_DATA: ''.concat(assetSrvUrl, '/department-wise-analytics/get?orgId=78'),
+            GET_SERVICES_DATA: ''.concat(assetSrvUrl, '/service-detail/search'),
             SEVERITY_SUCCESS: 'success',
             ADD_Organization: ''.concat(assetSrvUrl, '/addEnvironment'),
             SERVER_ERROR_MESSAGE: 'SERVER_ERROR_MESSAGE',
@@ -739,7 +740,7 @@ PERFORMANCE OF THIS SOFTWARE.
         });
         /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ../_common/common */ 74
+          /*! ../_common/common */ 73
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ 5);
 
@@ -1179,7 +1180,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 75
+          /*! ./setPrototypeOf.js */ 74
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -2150,7 +2151,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 58
+          /*! ./chunks/helpers.segment.js */ 57
         );
         /*!
          * Chart.js v3.7.1
@@ -14532,7 +14533,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 76);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 75);
         }
 
         /***/
@@ -18203,34 +18204,6 @@ object-assign
         /***/
       },
       /* 56 */
-      /*!*******************************************************************************!*\
-  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
-  \*******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
-
-        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
-
-        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
-
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
-
-        function _interopRequireDefault(obj) {
-          return obj && obj.__esModule ? obj : { default: obj };
-        }
-
-        module.exports = {
-          Transition: _Transition.default,
-          TransitionGroup: _TransitionGroup.default,
-          ReplaceTransition: _ReplaceTransition.default,
-          CSSTransition: _CSSTransition.default,
-        };
-
-        /***/
-      },
-      /* 57 */
       /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -18462,7 +18435,7 @@ object-assign
 
         /***/
       },
-      /* 58 */
+      /* 57 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -21112,7 +21085,7 @@ object-assign
 
         /***/
       },
-      /* 59 */
+      /* 58 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -21131,7 +21104,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 23
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 66);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 65);
 
         var App =
           /** @class */
@@ -21157,7 +21130,7 @@ object-assign
 
         /***/
       },
-      /* 60 */
+      /* 59 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -21179,7 +21152,7 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 67
+          /*! ../../pages/AccountSetup */ 66
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../../pages/AmazonServices */ 80
@@ -21323,7 +21296,7 @@ object-assign
 
         /***/
       },
-      /* 61 */
+      /* 60 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -21705,7 +21678,7 @@ object-assign
 
         /***/
       },
-      /* 62 */
+      /* 61 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -21767,17 +21740,17 @@ object-assign
         /***/
       },
       ,
-      /* 63 */ /* 64 */
+      /* 62 */ /* 63 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__64__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__63__;
 
         /***/
       },
-      /* 65 */
+      /* 64 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -21788,11 +21761,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 59);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 58);
 
         /***/
       },
-      /* 66 */
+      /* 65 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -21803,11 +21776,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 60);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 59);
 
         /***/
       },
-      /* 67 */
+      /* 66 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -21832,15 +21805,15 @@ object-assign
           /*! ../Breadcrumbs */ 14
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 68);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 67);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 69
+          /*! ./OperationMode */ 68
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 70
+          /*! ./PreparePolicy */ 69
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 71);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 72);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 70);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 71);
         /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 78);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../_service/RestService */ 7
@@ -22160,7 +22133,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 67 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -22344,7 +22317,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 68 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -22481,7 +22454,7 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 69 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -22573,7 +22546,7 @@ object-assign
 
         /***/
       },
-      /* 71 */
+      /* 70 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -22892,7 +22865,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 71 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -22909,7 +22882,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 73
+          /*! ./CreateNewOU */ 72
         );
 
         var Ou =
@@ -23096,7 +23069,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 72 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -23439,7 +23412,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 73 */
       /*!*********************************!*\
   !*** ./pages/_common/common.ts ***!
   \*********************************/
@@ -23495,7 +23468,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 74 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -23519,7 +23492,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 75 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -23724,6 +23697,34 @@ object-assign
             exports.typeOf = typeOf;
           })();
         }
+
+        /***/
+      },
+      /* 76 */
+      /*!*******************************************************************************!*\
+  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
+  \*******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
+
+        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
+
+        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
+
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
+
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+
+        module.exports = {
+          Transition: _Transition.default,
+          TransitionGroup: _TransitionGroup.default,
+          ReplaceTransition: _ReplaceTransition.default,
+          CSSTransition: _CSSTransition.default,
+        };
 
         /***/
       },
@@ -25239,19 +25240,18 @@ object-assign
           /* harmony export */ DiscoveredAssets: () => /* binding */ DiscoveredAssets,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../img */ 13);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ 138);
-        /* harmony import */ var _discovered_assets_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./_discovered_assets.json */ 89
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ 138);
+        /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+          /*! ../_service/RestService */ 7
         );
+        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
 
-        // import { RestService } from '../_service/RestService';
-        // import { config } from '../../config';
         // import { PLUGIN_BASE_URL } from '../../constants';
         // import { Link } from 'react-router-dom';
 
@@ -25267,19 +25267,69 @@ object-assign
         var DiscoveredAssets =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(DiscoveredAssets, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__extends)(DiscoveredAssets, _super);
 
             function DiscoveredAssets(props) {
               var _this = _super.call(this, props) || this;
 
+              _this.getServicesData = function () {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
+                  var err_1;
+
+                  var _this = this;
+
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+                    switch (_a.label) {
+                      case 0:
+                        _a.trys.push([0, 2, , 3]);
+
+                        return [
+                          4,
+                          /*yield*/
+                          _service_RestService__WEBPACK_IMPORTED_MODULE_2__.RestService.getData(
+                            ''.concat(this.config.GET_SERVICES_DATA),
+                            null,
+                            null
+                          ).then(function (response) {
+                            _this.manipulateServiceData(response.services);
+                          }),
+                        ];
+
+                      case 1:
+                        _a.sent();
+
+                        return [
+                          3, /*break*/
+                          3,
+                        ];
+
+                      case 2:
+                        err_1 = _a.sent();
+                        console.log('Loading accounts failed. Error: ', err_1);
+                        return [
+                          3, /*break*/
+                          3,
+                        ];
+
+                      case 3:
+                        return [
+                          2,
+                          /*return*/
+                        ];
+                    }
+                  });
+                });
+              };
+
               _this.manipulateServiceData = function (services) {
                 var treeData = [];
                 services.forEach(function (service) {
-                  var associatedProductEnclave = service.associatedProductEnclave,
-                    associatedCluster = service.associatedCluster,
-                    serviceType = service.serviceType,
-                    serviceNature = service.serviceNature,
-                    associatedProduct = service.associatedProduct;
+                  var _a = service.details,
+                    associatedProductEnclave = _a.associatedProductEnclave,
+                    associatedCluster = _a.associatedCluster,
+                    serviceType = _a.serviceType,
+                    serviceNature = _a.serviceNature,
+                    associatedProduct = _a.associatedProduct;
 
                   if (associatedProductEnclave) {
                     var node = treeData[associatedProductEnclave] || {};
@@ -25289,8 +25339,9 @@ object-assign
                     var productData = assiciatedServiceData[associatedProduct] || {
                       title: associatedProduct,
                       services: [],
-                    };
-                    productData.services.push(service);
+                    }; // productData.services.push(service);
+
+                    productData.services.push(service.details);
                     assiciatedServiceData[associatedProduct] = productData;
                     serviceTypeData[serviceNature] = assiciatedServiceData;
                     clusterData[serviceType] = serviceTypeData;
@@ -25303,17 +25354,57 @@ object-assign
                     var productData = assiciatedServiceData[associatedProduct] || {
                       title: associatedProduct,
                       services: [],
-                    };
-                    productData.services.push(service);
+                    }; // productData.services.push(service);
+
+                    productData.services.push(service.details);
                     assiciatedServiceData[associatedProduct] = productData;
                     node[serviceNature] = assiciatedServiceData;
                     treeData['Global Services'] = node;
                   }
                 });
-                console.log(treeData);
 
                 _this.setState({
                   tableData: treeData,
+                });
+
+                _this.getAppDataServices(treeData);
+              };
+
+              _this.getAppDataServices = function (treeData) {
+                var nodeKeys = Object.keys(treeData);
+                var uniqueProducts = [];
+                var servicesLength = {};
+                nodeKeys.forEach(function (nodeKey) {
+                  var clusterData = treeData[nodeKey];
+                  var clusterKeys = Object.keys(clusterData);
+                  clusterKeys.forEach(function (clusterKey) {
+                    var appDataServices = clusterData[clusterKey];
+                    var appDataKeys = Object.keys(appDataServices);
+                    appDataKeys.forEach(function (appDataKey) {
+                      var commonBusinessServices = appDataServices[appDataKey];
+                      var commonBusinessKeys = Object.keys(commonBusinessServices);
+                      commonBusinessKeys.forEach(function (commonBusinessKey) {
+                        var productData = commonBusinessServices[commonBusinessKey];
+                        var productKeys = Object.keys(productData);
+                        productKeys.forEach(function (productKey) {
+                          if (uniqueProducts.indexOf(productKey) === -1) {
+                            uniqueProducts.push(productKey);
+                          }
+
+                          servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+                          servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+                          servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
+                        });
+                      });
+                    });
+                  });
+                });
+                console.log(servicesLength);
+                console.log(uniqueProducts);
+
+                _this.setState({
+                  totalProducts: uniqueProducts.length,
+                  servicesLength: servicesLength,
                 });
               };
 
@@ -25402,27 +25493,6 @@ object-assign
                             {
                               className: 'tbody-td',
                             },
-                            '2'
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'tbody-td',
-                            },
-                            '3'
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'tbody-td',
-                            },
-                            '5'
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'tbody-td',
-                            },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
                               {
@@ -25432,16 +25502,12 @@ object-assign
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                   react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
                                   null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'div',
-                                    {
-                                      className: 'open-create-menu-close',
-                                      onClick: function (e) {
-                                        _this.handleMenuToggle(key);
-                                      },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+                                    className: 'open-create-menu-close',
+                                    onClick: function (e) {
+                                      _this.handleMenuToggle(key);
                                     },
-                                    '    '
-                                  ),
+                                  }),
                                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                     'div',
                                     {
@@ -25474,7 +25540,7 @@ object-assign
                         ),
                         !node.isGlobalService && node.isOpened
                           ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              reactstrap__WEBPACK_IMPORTED_MODULE_4__['default'],
+                              reactstrap__WEBPACK_IMPORTED_MODULE_5__['default'],
                               {
                                 className: 'collapse-content',
                                 isOpen: node.isOpened,
@@ -25501,7 +25567,7 @@ object-assign
                 var keys = Object.keys(clusters);
                 var retData = [];
                 keys.forEach(function (key) {
-                  if (key !== 'isOpened') {
+                  if (key !== 'isOpened' && key !== 'showMenu') {
                     var cluster = clusters[key];
                     retData.push(
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -25530,7 +25596,7 @@ object-assign
                         ),
                         cluster.isOpened
                           ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              reactstrap__WEBPACK_IMPORTED_MODULE_4__['default'],
+                              reactstrap__WEBPACK_IMPORTED_MODULE_5__['default'],
                               {
                                 className: 'collapse-content',
                                 isOpen: cluster.isOpened,
@@ -25869,12 +25935,15 @@ object-assign
                 labelText: '',
                 openCreateMenu: '',
                 servicesData: null,
+                servicesLength: {},
+                totalProducts: 0,
               };
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_3__.configFun)('http://3.208.22.155:5057', '');
               return _this;
             }
 
             DiscoveredAssets.prototype.componentDidMount = function () {
-              this.manipulateServiceData(_discovered_assets_json__WEBPACK_IMPORTED_MODULE_2__.services);
+              this.getServicesData(); // this.manipulateServiceData(_dummyData.services);
             };
 
             DiscoveredAssets.prototype.render = function () {
@@ -26232,19 +26301,8 @@ object-assign
 
         /***/
       },
-      /* 89 */
-      /*!******************************************************!*\
-  !*** ./pages/AmazonServices/_discovered_assets.json ***!
-  \******************************************************/
-      /***/ (module) => {
-        'use strict';
-        module.exports = JSON.parse(
-          '{"services":[{"id":1,"name":"Search-app1","description":"Common Search Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"Search","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":2,"name":"Search-data1","description":"Common Search Service Postgresql Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"Search","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":3,"name":"Search-data2","description":"Common Search Service ES Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"Search","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":4,"name":"SecurityRbac-app1","description":"Common Security/RBAC Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"SecurityRbac","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":5,"name":"SecurityRbac-data1","description":"Common Security/RBAC Postgresql Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"SecurityRbac","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":6,"name":"PreferenceConfig-app1","description":"Common PreferenceConfig Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PreferenceConfig","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":7,"name":"PreferenceConfig-data1","description":"Common PreferenceConfig Postgresql Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PreferenceConfig","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":8,"name":"DataFlowNifi-app1","description":"Common DataFlowNifi Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"DataFlowNifi","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":9,"name":"DataFlowNifi-data1","description":"Common DataFlowNifi Service Postgresql Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"DataFlowNifi","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":10,"name":"DataFlowNifi-data2","description":"Common DataFlowNifi Service S3 ObjectStore","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"","associatedCluster":"","serviceNature":"Common","associatedCommonService":"DataFlowNifi","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"GLOBAL","associatedClusterNamespace":"","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-S3-112","associatedGlobalServiceLocation":"S3","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":11,"name":"CMSCatalogue-app1","description":"Common CMSCatalogue Service Node API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"CMSCatalogue","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":12,"name":"CMSCatalogue-data1","description":"Common CMSCatalogue Service Git Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"CMSCatalogue","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"GLABAL","associatedClusterNamespace":"","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"GIT-1","associatedGlobalServiceLocation":"GIT","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":13,"name":"WorkflowEngine-app1","description":"Common WorkflowEngine Service JAVA API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"WorkflowEngine","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":14,"name":"WorkflowEngine-data1","description":"Common WorkflowEngine Service S3 ObjectStore","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"","associatedCluster":"","serviceNature":"Common","associatedCommonService":"WorkflowEngine","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"GLABAL","associatedClusterNamespace":"","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"S3-1234","associatedGlobalServiceLocation":"S3","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":15,"name":"PolicyEngine-app1","description":"Common PolicyEngine Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PolicyEngine","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":16,"name":"PolicyEngine-data1","description":"Common PolicyEngine Service Postgresql Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PolicyEngine","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":17,"name":"PolicyEngine-data2","description":"Common PolicyEngine Service ES Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PolicyEngine","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":18,"name":"AlertCentral-app1","description":"Common AlertCentral Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"AlertCentral","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":19,"name":"AlertCentral-data1","description":"Common AlertCentral Service Mongodb Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"AlertCentral","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":20,"name":"AlertCentral-data2","description":"Common AlertCentral Service ES Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"AlertCentral","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":21,"name":"PerfManager-app1","description":"Common PerfManager Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PerfManager","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":22,"name":"PerfManager-data1","description":"Common PerfManager Service Mongodb Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PerfManager","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":23,"name":"PerfManager-data2","description":"Common PerfManager Service ES Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"PerfManager","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":24,"name":"Logmanager-app1","description":"Common Logmanager Service Java API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"Logmanager","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":25,"name":"Logmanager-data1","description":"Common Logmanager Service Mongodb Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"Logmanager","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":26,"name":"Logmanager-data2","description":"Common Logmanager Service ES Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"Logmanager","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":27,"name":"TraceManager-App1","description":"Common TraceManager Zipkin Service API","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"TraceManager","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":28,"name":"TraceManager-data1","description":"Common TraceManager Zipkin Service S3 ObjectStore","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"","associatedCluster":"","serviceNature":"Common","associatedCommonService":"TraceManager","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"GLOBAL","associatedClusterNamespace":"","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-S3-115","associatedGlobalServiceLocation":"S3","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":29,"name":"RealTimeAalytics-app1","description":"Common Realtime Grafana Based Analytic Service","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"RealTimeAalytics","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":30,"name":"RealTimeAalytics-data1","description":"Common RealTimeAalytics Grafana Service Postgresql Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"RealTimeAalytics","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":31,"name":"DrillDownAalytics-app1","description":"Common DrillDownAalytics NodeJs Based Service","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"DrillDownAalytics","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":32,"name":"DrillDownAalytics-app2","description":"Common DrillDownAalytics Druid Java Service","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"DrillDownAalytics","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":33,"name":"DrillDownAalytics-data1","description":"Common DrillDownAalytics Druid Service Postgresql Database","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"DrillDownAalytics","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":34,"name":"DrillDownAalytics-data2","description":"Common DrillDownAalytics Service S3 ObjectStore","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"","associatedCluster":"","serviceNature":"Common","associatedCommonService":"DrillDownAalytics","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"GLOBAL","associatedClusterNamespace":"","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-S3-114","associatedGlobalServiceLocation":"S3","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":35,"name":"StaicReporting-app1","description":"Common StaicReporting NodeJs Based Service","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"567373484-VPC1","associatedCluster":"567373484-VPC1-Cluster1","serviceNature":"Common","associatedCommonService":"StaicReporting","associatedBusinessService":"","serviceType":"App","serviceHostingType":"Cluster","associatedClusterNamespace":"HRMS","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-VPC1-Cluster1","associatedGlobalServiceLocation":"","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}},{"id":36,"name":"StaicReporting-data1","description":"Common StaicReporting Service S3 ObjectStore","associatedOU":"Synectiks","associatedDept":"HR","associatedProduct":"HRMS","associatedEnv":"PROD","associatedLandingZone":"567373484","associatedProductEnclave":"","associatedCluster":"","serviceNature":"Common","associatedCommonService":"StaicReporting","associatedBusinessService":"","serviceType":"Data","serviceHostingType":"GLOBAL","associatedClusterNamespace":"","associatedManagedCloudServiceLocation":"","associatedCloudElementId":"567373484-S3-115","associatedGlobalServiceLocation":"S3","stats":{"totalCostSoFar":"76","lastDayCost":"6","lastWeekCost":"15","lastMonthCost":"15"}}]}'
-        );
-
-        /***/
-      },
-      /* 90 */
+      ,
+      /* 89 */ /* 90 */
       /*!******************************************!*\
   !*** ./pages/AmazonServices/Billing.tsx ***!
   \******************************************/
@@ -34824,7 +34882,7 @@ object-assign
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! react-chartjs-2 */ 57
+          /*! react-chartjs-2 */ 56
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 26);
         /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ 125);
@@ -36223,7 +36281,7 @@ and limitations under the License.
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-chartjs-2 */ 57
+          /*! react-chartjs-2 */ 56
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 26);
 
@@ -36728,7 +36786,7 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 61);
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 60);
 
         /***/
       },
@@ -36765,7 +36823,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 62
+          /*! ./SecretInput */ 61
         );
 
         /***/
@@ -37463,7 +37521,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 56
+          /*! react-transition-group */ 76
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -38337,7 +38395,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 56
+          /*! react-transition-group */ 76
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
@@ -40267,12 +40325,12 @@ and limitations under the License.
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_2__
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jss */ 158);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jss */ 156);
         /* harmony import */ var _mergeClasses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../mergeClasses */ 155
         );
         /* harmony import */ var _multiKeyStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./multiKeyStore */ 157
+          /*! ./multiKeyStore */ 158
         );
         /* harmony import */ var _useTheme__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../useTheme */ 163);
         /* harmony import */ var _StylesProvider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
@@ -40285,7 +40343,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 160
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 156
+          /*! ../getStylesCreator/noopTheme */ 157
         );
 
         function getClasses(_ref, classes, Component) {
@@ -40690,59 +40748,6 @@ and limitations under the License.
         /***/
       },
       /* 156 */
-      /*!*****************************************************************************!*\
-  !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
-  \*****************************************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
-          /* harmony export */
-        });
-        // We use the same empty object to ref count the styles that don't need a theme object.
-        var noopTheme = {};
-        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = noopTheme;
-
-        /***/
-      },
-      /* 157 */
-      /*!***************************************************************************!*\
-  !*** ../node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js ***!
-  \***************************************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
-          /* harmony export */
-        });
-        // Used https://github.com/thinkloop/multi-key-cache as inspiration
-        var multiKeyStore = {
-          set: function set(cache, key1, key2, value) {
-            var subCache = cache.get(key1);
-
-            if (!subCache) {
-              subCache = new Map();
-              cache.set(key1, subCache);
-            }
-
-            subCache.set(key2, value);
-          },
-          get: function get(cache, key1, key2) {
-            var subCache = cache.get(key1);
-            return subCache ? subCache.get(key2) : undefined;
-          },
-          delete: function _delete(cache, key1, key2) {
-            var subCache = cache.get(key1);
-            subCache.delete(key2);
-          },
-        };
-        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = multiKeyStore;
-
-        /***/
-      },
-      /* 158 */
       /*!*******************************************!*\
   !*** ../node_modules/jss/dist/jss.esm.js ***!
   \*******************************************/
@@ -43114,6 +43119,59 @@ and limitations under the License.
 
         /***/
       },
+      /* 157 */
+      /*!*****************************************************************************!*\
+  !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
+  \*****************************************************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
+          /* harmony export */
+        });
+        // We use the same empty object to ref count the styles that don't need a theme object.
+        var noopTheme = {};
+        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = noopTheme;
+
+        /***/
+      },
+      /* 158 */
+      /*!***************************************************************************!*\
+  !*** ../node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js ***!
+  \***************************************************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
+          /* harmony export */
+        });
+        // Used https://github.com/thinkloop/multi-key-cache as inspiration
+        var multiKeyStore = {
+          set: function set(cache, key1, key2, value) {
+            var subCache = cache.get(key1);
+
+            if (!subCache) {
+              subCache = new Map();
+              cache.set(key1, subCache);
+            }
+
+            subCache.set(key2, value);
+          },
+          get: function get(cache, key1, key2) {
+            var subCache = cache.get(key1);
+            return subCache ? subCache.get(key2) : undefined;
+          },
+          delete: function _delete(cache, key1, key2) {
+            var subCache = cache.get(key1);
+            subCache.delete(key2);
+          },
+        };
+        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = multiKeyStore;
+
+        /***/
+      },
       /* 159 */
       /*!******************************************************************************!*\
   !*** ../node_modules/jss/node_modules/tiny-warning/dist/tiny-warning.esm.js ***!
@@ -43168,7 +43226,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 161
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 156);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 157);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -43436,7 +43494,7 @@ and limitations under the License.
         /* harmony import */ var _createGenerateClassName__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../createGenerateClassName */ 177
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jss */ 158);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jss */ 156);
         /* harmony import */ var _jssPreset__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jssPreset */ 166);
 
         // Default JSS instance.
@@ -43675,7 +43733,7 @@ and limitations under the License.
         /* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! tiny-warning */ 168
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 158);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 156);
 
         var now = Date.now();
         var fnValuesNs = 'fnValues' + now;
@@ -43795,7 +43853,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 158);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 156);
 
         var at = '@global';
         var atPrefix = '@global ';
@@ -44297,7 +44355,7 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 158);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 156);
 
         var px = jss__WEBPACK_IMPORTED_MODULE_0__.hasCSSTOMSupport && CSS ? CSS.px : 'px';
         var ms = jss__WEBPACK_IMPORTED_MODULE_0__.hasCSSTOMSupport && CSS ? CSS.ms : 'ms';
@@ -44561,7 +44619,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 104);
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 158);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 156);
 
         /**
          * Add vendor prefix to a property name when needed.
@@ -51830,13 +51888,13 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 64
+        /*! @grafana/data */ 63
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 65
+        /*! ./components/App */ 64
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
         /*! ./components/AppConfig */ 128

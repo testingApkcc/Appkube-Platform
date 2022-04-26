@@ -25,7 +25,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
       tableData: {},
       labelText: '',
       openCreateMenu: '',
-      servicesData: null
+      servicesData: null,
+      servicesLength: {},
+      totalProducts: 0
     };
     this.config = configFun('http://3.208.22.155:5057', '');
   }
@@ -60,7 +62,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         const serviceTypeData = clusterData[serviceType] || {};
         const assiciatedServiceData = serviceTypeData[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push(service);
+        // productData.services.push(service);
         productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         serviceTypeData[serviceNature] = assiciatedServiceData;
@@ -72,7 +74,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         node.isGlobalService = true;
         const assiciatedServiceData = node[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push(service);
+        // productData.services.push(service);
         productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         node[serviceNature] = assiciatedServiceData;
@@ -82,7 +84,44 @@ export class DiscoveredAssets extends React.Component<any, any>{
     this.setState({
       tableData: treeData
     });
+    this.getAppDataServices(treeData);
   }
+
+  getAppDataServices = (treeData: any) => {
+    const nodeKeys = Object.keys(treeData);
+    const uniqueProducts: any = [];
+    const servicesLength: any = {};
+    nodeKeys.forEach((nodeKey: any) => {
+      const clusterData = treeData[nodeKey];
+      const clusterKeys = Object.keys(clusterData);
+      clusterKeys.forEach((clusterKey: any) => {
+        const appDataServices = clusterData[clusterKey];
+        const appDataKeys = Object.keys(appDataServices);
+        appDataKeys.forEach((appDataKey: any) => {
+          const commonBusinessServices = appDataServices[appDataKey];
+          const commonBusinessKeys = Object.keys(commonBusinessServices);
+          commonBusinessKeys.forEach((commonBusinessKey: any) => {
+            const productData = commonBusinessServices[commonBusinessKey];
+            const productKeys = Object.keys(productData);
+            productKeys.forEach((productKey: any) => {
+              if (uniqueProducts.indexOf(productKey) === -1) {
+                uniqueProducts.push(productKey);
+              }
+              servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+              servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+              servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
+            });
+          });
+        });
+      });
+    });
+    console.log(servicesLength);
+    console.log(uniqueProducts);
+    this.setState({
+      totalProducts: uniqueProducts.length,
+      servicesLength
+    });
+  };
 
   toggleNode = (key: any) => {
     const { tableData } = this.state;
@@ -132,12 +171,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
       for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const node = nodes[key];
-        console.log(node);
-        // let keysarr = Object.keys(node)
-        // keysarr.forEach(((key: any) => {
-        //   console.log(keysarr);
-        //   console.log(key);
-        // }))
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
@@ -184,7 +217,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const keys = Object.keys(clusters);
     const retData: any = [];
     keys.forEach(((key: any) => {
-      if (key !== 'isOpened') {
+      if (key !== 'isOpened' && key !== 'showMenu') {
         const cluster = clusters[key];
         retData.push(
           <div className="tbody">
