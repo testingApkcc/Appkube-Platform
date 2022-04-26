@@ -1341,6 +1341,15 @@ a:hover {
   .organisational-details
   .container-inner
   .organisational-data-table
+  .organisational-data-table-left
+  .tbody
+  .tbody-td.active {
+  color: #2662f0;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
   .organisational-data-table-right {
   display: inline-block;
   vertical-align: top;
@@ -1576,6 +1585,16 @@ a:hover {
   vertical-align: top;
   padding: 10px 15px 10px 15px;
   width: 24%;
+  color: #2662f0;
+}
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .data-table
+  .tbody
+  .service-name
+  a {
   color: #2662f0;
 }
 .service-container .organisational-details .container-inner .organisational-data-table .data-table .tbody .performance {

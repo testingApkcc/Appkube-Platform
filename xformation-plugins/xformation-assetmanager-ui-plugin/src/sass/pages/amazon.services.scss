@@ -247,7 +247,11 @@
                 width: 100%;
                 cursor: pointer;
               }
-              
+
+              &.active {
+                color: #2662f0;
+              }
+
             }
           }
         }
@@ -428,6 +432,10 @@
               padding: 10px 15px 10px 15px;
               width: 24%;
               color: #2662F0;
+
+              a {
+                color: #2662F0;
+              }
             }
 
             .performance {
@@ -604,16 +612,20 @@
             padding: 0;
             background-color: transparent;
           }
-          .edit-product-inner{
+
+          .edit-product-inner {
             border: 1px solid #8392A7;
             padding: 10px;
-            ul{
+
+            ul {
               padding: 0;
               margin: 0;
-              li{
+
+              li {
                 list-style: none;
                 margin-bottom: 10;
-                a{
+
+                a {
                   font-size: 16px;
                   line-height: 20px;
                   font-weight: 400;
@@ -623,7 +635,7 @@
               }
             }
           }
-          
+
         }
 
         .thead {
@@ -680,7 +692,7 @@
           .tbody-inner {
             display: block;
             width: 100%;
-            
+
           }
 
           .tbody-td {
@@ -697,7 +709,7 @@
               width: 28%;
               cursor: pointer;
             }
-            
+
 
           }
 
