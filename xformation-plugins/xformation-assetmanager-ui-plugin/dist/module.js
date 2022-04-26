@@ -26152,6 +26152,7 @@ object-assign
                           style: {
                             paddingLeft: '45px',
                           },
+                          title: service.description,
                         },
                         service.name
                       ),
