@@ -125,7 +125,7 @@ class OpsCenteral extends React.Component<any, any> {
     return (
       <div className="ops-central-container">
         <div className="ops-central-header">
-          <h2 className="heading">OPS CENTERAL</h2>
+          <h2 className="heading">Ops Centeral</h2>
           <div className="central-header-content">
             <div className="recent-text">
               <i className="fa fa-clock-o" aria-hidden="true"></i>
