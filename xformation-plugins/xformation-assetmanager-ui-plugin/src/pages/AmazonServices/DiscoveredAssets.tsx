@@ -2,8 +2,8 @@ import * as React from 'react';
 import { images } from '../../img';
 import { Collapse } from 'reactstrap';
 import _dummyData from './_discovered_assets.json';
-// import { RestService } from '../_service/RestService';
-// import { config } from '../../config';
+import { RestService } from '../_service/RestService';
+import { configFun } from '../../config';
 // import { PLUGIN_BASE_URL } from '../../constants';
 // import { Link } from 'react-router-dom';
 
@@ -15,8 +15,10 @@ const SERVICE_MAPPING: any = {
   'Common': 'Common Services',
   'Business': 'Business Services'
 };
+
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -25,25 +27,41 @@ export class DiscoveredAssets extends React.Component<any, any>{
       openCreateMenu: '',
       servicesData: null
     };
+    this.config = configFun('http://3.208.22.155:5057', '');
   }
 
   componentDidMount() {
-    this.manipulateServiceData(_dummyData.services);
+    this.getServicesData();
+    // this.manipulateServiceData(_dummyData.services);
+  }
+
+  getServicesData = async () => {
+    try {
+      await RestService.getData(
+        `${this.config.GET_SERVICES_DATA}`,
+        null,
+        null
+      ).then((response: any) => {
+        this.manipulateServiceData(response.services);
+      });
+    } catch (err) {
+      console.log("Loading accounts failed. Error: ", err);
+    }
   }
 
   manipulateServiceData = (services: any) => {
     const treeData: any = [];
     services.forEach((service: any) => {
-      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct } = service;
+      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct } =
+        service.details;
       if (associatedProductEnclave) {
         const node = treeData[associatedProductEnclave] || {};
         const clusterData = node[associatedCluster] || {};
-
         const serviceTypeData = clusterData[serviceType] || {};
         const assiciatedServiceData = serviceTypeData[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
         productData.services.push(service);
-
+        productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         serviceTypeData[serviceNature] = assiciatedServiceData;
         clusterData[serviceType] = serviceTypeData;
@@ -55,16 +73,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
         const assiciatedServiceData = node[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
         productData.services.push(service);
+        productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         node[serviceNature] = assiciatedServiceData;
         treeData['Global Services'] = node;
       }
     });
-    console.log(treeData);
     this.setState({
       tableData: treeData
     });
-  };
+  }
 
   toggleNode = (key: any) => {
     const { tableData } = this.state;
@@ -114,6 +132,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
       for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const node = nodes[key];
+        console.log(node);
+        // let keysarr = Object.keys(node)
+        // keysarr.forEach(((key: any) => {
+        //   console.log(keysarr);
+        //   console.log(key);
+        // }))
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
@@ -121,14 +145,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
-              <div className="tbody-td">2</div>
+              {/* <div className="tbody-td">2</div>
               <div className="tbody-td">3</div>
-              <div className="tbody-td">5</div>
+              <div className="tbody-td">5</div> */}
               <div className="tbody-td">
                 <div className="d-block text-center action-edit">
                   {node.showMenu &&
                     <>
-                      <div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(key) }}>    </div>
+                      <div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(key) }}></div>
                       <div className="text-center open-create-menu">
                         <a>Add New Product</a>
                         <a>Add Cluster</a>
