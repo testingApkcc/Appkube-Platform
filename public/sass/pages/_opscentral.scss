@@ -26,12 +26,16 @@
         }
         .ops-content {
           margin-left: 15px;
+          width: 75%;
           .ops-tittle {
             font-size: 14px;
             line-height: 20px;
             font-weight: 500;
             color: #0495f4;
             margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           .ops-text {
             font-size: 12px;
@@ -89,6 +93,7 @@
         padding: 0 10px;
         i {
           margin-right: 5px;
+          color: #8e9091;
         }
         p {
           color: #6f787f;
