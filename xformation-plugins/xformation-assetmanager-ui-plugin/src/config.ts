@@ -10,6 +10,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GET_ACCOUNT_BY_ID: `${assetSrvUrl}/getAccount`,
     GET_DEPARTMENTWISE_PRODUCT: `${assetSrvUrl}/department-wise-analytics/search?orgId=78`,
     GET_PRODUCT_DATA: `${assetSrvUrl}/department-wise-analytics/get?orgId=78`,
+    GET_SERVICES_DATA: `${assetSrvUrl}/service-detail/search`,
 
     SEVERITY_SUCCESS: 'success',
     ADD_Organization: `${assetSrvUrl}/addEnvironment`,
