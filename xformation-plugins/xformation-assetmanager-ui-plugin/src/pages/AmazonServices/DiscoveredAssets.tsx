@@ -28,7 +28,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
       openCreateMenu: '',
       servicesData: null,
       servicesLength: {},
-      totalProducts: 0
+      totalProducts: 0,
+      activeNode: '',
     };
     this.config = configFun('http://3.208.22.155:5057', '');
   }
@@ -126,13 +127,15 @@ export class DiscoveredAssets extends React.Component<any, any>{
       const data = JSON.parse(JSON.stringify(tableData[key]));
       delete data.isGlobalService;
       this.setState({
-        servicesData: data
+        servicesData: data,
+        activeNode: key
       });
     } else {
       tableData[key].isOpened = !tableData[key].isOpened;
       this.setState({
         tableData,
-        servicesData: null
+        servicesData: null,
+        activeNode: key,
       });
     }
   }
@@ -142,7 +145,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
     tableData[nodeKey][clusterKey].isOpened = !tableData[nodeKey][clusterKey].isOpened;
     this.setState({
       tableData,
-      servicesData: null
+      servicesData: null,
+      activeNode: clusterKey
     });
   }
 
@@ -152,7 +156,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
     text = nodeKey + '>' + clusterKey + '>' + serviceKey + ' Services';
     this.setState({
       servicesData: tableData[nodeKey][clusterKey][serviceKey],
-      labelText: text
+      labelText: text,
+      activeNode: serviceKey
     });
   };
 
@@ -165,7 +170,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderNodes = (nodes: any) => {
-    const { totalProducts, servicesLength } = this.state;
+    const { totalProducts, servicesLength, activeNode } = this.state;
     const retData: any = [];
     if (nodes) {
       const keys = Object.keys(nodes);
@@ -175,7 +180,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.toggleNode(key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleNode(key)}>
                 <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
@@ -215,6 +220,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderClusters = (nodeKey: any, clusters: any) => {
+    const { activeNode } = this.state;
     const keys = Object.keys(clusters);
     const retData: any = [];
     keys.forEach(((key: any) => {
@@ -223,20 +229,19 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              {/* <Link to='/a/xformation-assetmanager-ui-plugin?path=storage-details'> */}
-              <div className="tbody-td first" onClick={() => this.toggleCluster(nodeKey, key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleCluster(nodeKey, key)}>
                 <div className={cluster.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
-              </div>
+              </div >
               {/* </Link> */}
-            </div>
+            </div >
             {
               cluster.isOpened ?
                 <Collapse className="collapse-content" isOpen={cluster.isOpened}>
                   {this.renerAppDataServices(nodeKey, key, cluster)}
                 </Collapse> : <></>
             }
-          </div>
+          </div >
         );
       }
     }));
@@ -244,6 +249,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renerAppDataServices = (nodeKey: any, clusterKey: any, services: any) => {
+    const { activeNode } = this.state;
     const retData: any = [];
     const keys = Object.keys(services);
     keys.forEach(((key: any) => {
@@ -251,7 +257,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.onClickAppDataService(nodeKey, clusterKey, key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, key)}>
                 {SERVICE_MAPPING[key]}
               </div>
             </div>
@@ -356,16 +362,48 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }}>{service.name}</div>
-          <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-          <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
-          <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-          <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
-          <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
+          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}>{service.name}</div>
+          <div className="performance">
+            <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="availability">
+            <div className={`status ${this.getPerformanceClass(service.availability.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="security">
+            <div className={`status ${this.getPerformanceClass(service.security.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="data-protection">
+            <div className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="user-exp">
+            <div className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
         </div>);
       });
     }
     return retData;
+  };
+
+  getPerformanceClass = (score: any) => {
+    if (score >= 75) {
+      return 'green';
+    } else if (score >= 50) {
+      return 'orange';
+    } else if (score >= 25) {
+      return 'yellow';
+    } else {
+      return 'red';
+    }
   };
 
   render() {

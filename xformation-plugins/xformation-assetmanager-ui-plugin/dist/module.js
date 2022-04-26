@@ -25430,6 +25430,7 @@ object-assign
 
                   _this.setState({
                     servicesData: data,
+                    activeNode: key,
                   });
                 } else {
                   tableData[key].isOpened = !tableData[key].isOpened;
@@ -25437,6 +25438,7 @@ object-assign
                   _this.setState({
                     tableData: tableData,
                     servicesData: null,
+                    activeNode: key,
                   });
                 }
               };
@@ -25448,6 +25450,7 @@ object-assign
                 _this.setState({
                   tableData: tableData,
                   servicesData: null,
+                  activeNode: clusterKey,
                 });
               };
 
@@ -25461,6 +25464,7 @@ object-assign
                 _this.setState({
                   servicesData: tableData[nodeKey][clusterKey][serviceKey],
                   labelText: text,
+                  activeNode: serviceKey,
                 });
               };
 
@@ -25476,7 +25480,8 @@ object-assign
               _this.renderNodes = function (nodes) {
                 var _a = _this.state,
                   totalProducts = _a.totalProducts,
-                  servicesLength = _a.servicesLength;
+                  servicesLength = _a.servicesLength,
+                  activeNode = _a.activeNode;
                 var retData = [];
 
                 if (nodes) {
@@ -25499,7 +25504,7 @@ object-assign
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'div',
                             {
-                              className: 'tbody-td first',
+                              className: 'tbody-td first '.concat(activeNode === key ? 'active' : ''),
                               onClick: function () {
                                 return _this.toggleNode(key);
                               },
@@ -25608,6 +25613,7 @@ object-assign
               };
 
               _this.renderClusters = function (nodeKey, clusters) {
+                var activeNode = _this.state.activeNode;
                 var keys = Object.keys(clusters);
                 var retData = [];
                 keys.forEach(function (key) {
@@ -25627,7 +25633,7 @@ object-assign
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'div',
                             {
-                              className: 'tbody-td first',
+                              className: 'tbody-td first '.concat(activeNode === key ? 'active' : ''),
                               onClick: function () {
                                 return _this.toggleCluster(nodeKey, key);
                               },
@@ -25659,6 +25665,7 @@ object-assign
               };
 
               _this.renerAppDataServices = function (nodeKey, clusterKey, services) {
+                var activeNode = _this.state.activeNode;
                 var retData = [];
                 var keys = Object.keys(services);
                 keys.forEach(function (key) {
@@ -25677,7 +25684,7 @@ object-assign
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'div',
                             {
-                              className: 'tbody-td first',
+                              className: 'tbody-td first '.concat(activeNode === key ? 'active' : ''),
                               onClick: function () {
                                 return _this.onClickAppDataService(nodeKey, clusterKey, key);
                               },
@@ -25889,6 +25896,7 @@ object-assign
                           style: {
                             paddingLeft: '45px',
                           },
+                          title: service.description,
                         },
                         service.name
                       ),
@@ -25900,7 +25908,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status yellow',
+                            className: 'status '.concat(_this.getPerformanceClass(service.performance.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -25915,7 +25923,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status red',
+                            className: 'status '.concat(_this.getPerformanceClass(service.availability.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -25930,7 +25938,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status orange',
+                            className: 'status '.concat(_this.getPerformanceClass(service.security.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -25945,7 +25953,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status red',
+                            className: 'status '.concat(_this.getPerformanceClass(service.dataProtection.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -25960,7 +25968,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status green',
+                            className: 'status '.concat(_this.getPerformanceClass(service.userExperiance.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -25974,6 +25982,18 @@ object-assign
                 return retData;
               };
 
+              _this.getPerformanceClass = function (score) {
+                if (score >= 75) {
+                  return 'green';
+                } else if (score >= 50) {
+                  return 'orange';
+                } else if (score >= 25) {
+                  return 'yellow';
+                } else {
+                  return 'red';
+                }
+              };
+
               _this.state = {
                 tableData: {},
                 labelText: '',
@@ -25981,6 +26001,7 @@ object-assign
                 servicesData: null,
                 servicesLength: {},
                 totalProducts: 0,
+                activeNode: '',
               };
               _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_3__.configFun)('http://3.208.22.155:5057', '');
               return _this;
@@ -27117,6 +27138,10 @@ object-assign
                 DATA: 'Data Services',
                 OTHER: 'Other Services',
               };
+              _this.viewMapping = {
+                CloudManaged: 'Cloud Managed',
+                InCluster: 'In Cluster',
+              };
 
               _this.toggleEnvironmentView = function (index) {
                 var product = _this.state.product;
@@ -27889,7 +27914,7 @@ object-assign
                             paddingRight: '10px',
                           },
                         },
-                        hostingType
+                        this.viewMapping[hostingType]
                       ),
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'button',
@@ -35025,7 +35050,11 @@ object-assign
               };
 
               _this.calculatePercentage = function (value, total) {
-                return Math.ceil((value * 100) / total);
+                if (value === 0 && total === 0) {
+                  return 0;
+                } else {
+                  return Math.ceil((value * 100) / total);
+                }
               };
 
               _this.manipulateDepartmentWiseProductData = function (departmentList) {
