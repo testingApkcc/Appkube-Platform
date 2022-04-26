@@ -4,6 +4,7 @@ import { Collapse } from 'reactstrap';
 import _dummyData from './_discovered_assets.json';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
+import { Link } from 'react-router-dom';
 // import { PLUGIN_BASE_URL } from '../../constants';
 // import { Link } from 'react-router-dom';
 
@@ -146,9 +147,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   onClickAppDataService = (nodeKey: any, clusterKey: any, serviceKey: any) => {
-    const { tableData } = this.state;
+    const { tableData, labelText } = this.state;
+    let text = labelText;
+    text = nodeKey + '>' + clusterKey + '>' + serviceKey + ' Services';
     this.setState({
-      servicesData: tableData[nodeKey][clusterKey][serviceKey]
+      servicesData: tableData[nodeKey][clusterKey][serviceKey],
+      labelText: text
     });
   };
 
@@ -219,10 +223,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
+              {/* <Link to='/a/xformation-assetmanager-ui-plugin?path=storage-details'> */}
               <div className="tbody-td first" onClick={() => this.toggleCluster(nodeKey, key)}>
                 <div className={cluster.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
+              {/* </Link> */}
             </div>
             {
               cluster.isOpened ?

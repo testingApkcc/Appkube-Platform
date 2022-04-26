@@ -25452,10 +25452,15 @@ object-assign
               };
 
               _this.onClickAppDataService = function (nodeKey, clusterKey, serviceKey) {
-                var tableData = _this.state.tableData;
+                var _a = _this.state,
+                  tableData = _a.tableData,
+                  labelText = _a.labelText;
+                var text = labelText;
+                text = nodeKey + '>' + clusterKey + '>' + serviceKey + ' Services';
 
                 _this.setState({
                   servicesData: tableData[nodeKey][clusterKey][serviceKey],
+                  labelText: text,
                 });
               };
 
