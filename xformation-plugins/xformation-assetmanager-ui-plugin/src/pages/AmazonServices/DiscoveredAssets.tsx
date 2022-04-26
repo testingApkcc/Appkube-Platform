@@ -62,7 +62,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
         const serviceTypeData = clusterData[serviceType] || {};
         const assiciatedServiceData = serviceTypeData[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        // productData.services.push(service);
         productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         serviceTypeData[serviceNature] = assiciatedServiceData;
@@ -74,7 +73,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
         node.isGlobalService = true;
         const assiciatedServiceData = node[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        // productData.services.push(service);
         productData.services.push(service.details);
         assiciatedServiceData[associatedProduct] = productData;
         node[serviceNature] = assiciatedServiceData;
@@ -115,8 +113,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
         });
       });
     });
-    console.log(servicesLength);
-    console.log(uniqueProducts);
     this.setState({
       totalProducts: uniqueProducts.length,
       servicesLength
@@ -165,6 +161,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderNodes = (nodes: any) => {
+    const { totalProducts, servicesLength } = this.state;
     const retData: any = [];
     if (nodes) {
       const keys = Object.keys(nodes);
@@ -178,9 +175,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
-              {/* <div className="tbody-td">2</div>
-              <div className="tbody-td">3</div>
-              <div className="tbody-td">5</div> */}
+              <div className="tbody-td">{totalProducts}</div>
+              {servicesLength[key] && <div className="tbody-td">{servicesLength[key]['App']}</div>}
+              {servicesLength[key] && <div className="tbody-td">{servicesLength[key]['Data']}</div>}
               <div className="tbody-td">
                 <div className="d-block text-center action-edit">
                   {node.showMenu &&
