@@ -4,7 +4,7 @@ import { Collapse } from 'reactstrap';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
 // import { PLUGIN_BASE_URL } from '../../constants';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SERVICE_MAPPING: any = {
   'App': 'App Services',
@@ -359,7 +359,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}>{service.name}</div>
+          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link to='/a/xformation-assetmanager-ui-plugin/storage-details'>  {service.name}</Link></div>
           <div className="performance">
             <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
               <i className="fa fa-check"></i>
