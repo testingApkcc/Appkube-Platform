@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { images } from '../../img';
 import { Collapse } from 'reactstrap';
-import _dummyData from './_discovered_assets.json';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
 // import { PLUGIN_BASE_URL } from '../../constants';
@@ -35,7 +34,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
   componentDidMount() {
     this.getServicesData();
-    // this.manipulateServiceData(_dummyData.services);
   }
 
   getServicesData = async () => {
@@ -150,9 +148,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   onClickAppDataService = (nodeKey: any, clusterKey: any, serviceKey: any) => {
-    const { tableData } = this.state;
+    const { tableData, labelText } = this.state;
+    let text = labelText;
+    text = nodeKey + '>' + clusterKey + '>' + serviceKey + ' Services';
     this.setState({
       servicesData: tableData[nodeKey][clusterKey][serviceKey],
+      labelText: text,
       activeNode: serviceKey
     });
   };
@@ -228,15 +229,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleCluster(nodeKey, key)}>
                 <div className={cluster.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
-              </div>
-            </div>
+              </div >
+              {/* </Link> */}
+            </div >
             {
               cluster.isOpened ?
                 <Collapse className="collapse-content" isOpen={cluster.isOpened}>
                   {this.renerAppDataServices(nodeKey, key, cluster)}
                 </Collapse> : <></>
             }
-          </div>
+          </div >
         );
       }
     }));

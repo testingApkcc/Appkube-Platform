@@ -8,6 +8,10 @@ export class ServicesPerformance extends React.Component<any, any> {
     'DATA': 'Data Services',
     'OTHER': 'Other Services',
   };
+  viewMapping: any = {
+    'CloudManaged': 'Cloud Managed',
+    'InCluster': 'In Cluster'
+  };
   constructor(props: any) {
     super(props);
     this.state = {
@@ -341,7 +345,7 @@ export class ServicesPerformance extends React.Component<any, any> {
           <div className='heading'>
             <h3>Deployment environments</h3>
             <div className='buttons'>
-              <h3 style={{ paddingRight: '10px' }}>{hostingType}</h3>
+              <h3 style={{ paddingRight: '10px' }}>{this.viewMapping[hostingType]}</h3>
               <button className='btn'>
                 <i className='fa fa-plus'></i>
               </button>
