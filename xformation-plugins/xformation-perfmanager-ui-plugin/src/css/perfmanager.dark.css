@@ -3712,6 +3712,9 @@ a:hover {
   -moz-border-radius-topleft: 0;
   border-radius: 5px;
   border-top-left-radius: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: -1px;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container

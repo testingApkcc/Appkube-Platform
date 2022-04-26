@@ -1,25 +1,122 @@
 import React from 'react';
+
 class OpsCenteral extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       tableData: [
-        { id: 14, category: 'Performance & Availability', info: 'sampleText' },
-        { id: 13, category: 'Logs', info: 'sampleText' },
-        { id: 12, category: 'Compliance', info: 'sampleText' },
-        { id: 11, category: 'Service Desk', info: 'sampleText' },
-        { id: 10, category: 'Automation', info: 'sampleText' },
-        { id: 19, category: 'Infra As Code', info: 'sampleText' },
-        { id: 224, category: 'Kubernetes Management', info: 'sampleText' },
-        { id: 224, category: 'Performance Monitoring', info: 'sampleText' },
-        { id: 224, category: 'Log Monitoring', info: 'sampleText' },
-        { id: 224, category: 'tracing', info: 'sampleText' },
-        { id: 224, category: 'Toolcahain/Workflows', info: 'sampleText' },
-        { id: 224, category: 'ChatOps', info: 'sampleText' },
-        { id: 224, category: 'AI-ops', info: 'sampleText' },
-        { id: 224, category: 'Cloud Analytics', info: 'sampleText' },
-        { id: 224, category: 'cloud optimizer', info: 'sampleText' },
-        { id: 224, category: 'Self service Provisioning', info: 'sampleText' },
+        {
+          id: 14,
+          category: 'Performance & Availability',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 13,
+          category: 'Logs',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/logs.svg',
+          colorIcon: '/public/img/ops-central/logs_color.svg',
+        },
+        {
+          id: 12,
+          category: 'Compliance',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/compliance.svg',
+          colorIcon: '/public/img/ops-central/compliance_color.svg',
+        },
+        {
+          id: 11,
+          category: 'Service Desk',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/service_desk.svg',
+          colorIcon: '/public/img/ops-central/service_desk_color.svg',
+        },
+        {
+          id: 10,
+          category: 'Automation',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/automation.svg',
+          colorIcon: '/public/img/ops-central/automation_color.svg',
+        },
+        {
+          id: 19,
+          category: 'Infra As Code',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'Kubernetes Management',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/kubernetes_management.svg',
+          colorIcon: '/public/img/ops-central/kubernetes_management_color.svg',
+        },
+        {
+          id: 224,
+          category: 'Performance Monitoring',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance_monitoring.svg',
+          colorIcon: '/public/img/ops-central/performance_monitoring_color.svg',
+        },
+        {
+          id: 224,
+          category: 'Log Monitoring',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'tracing',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'Toolcahain/Workflows',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'ChatOps',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'AI-ops',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'Cloud Analytics',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'cloud optimizer',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 224,
+          category: 'Self service Provisioning',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
       ],
     };
   }
@@ -28,19 +125,19 @@ class OpsCenteral extends React.Component<any, any> {
     return (
       <div className="ops-central-container">
         <div className="ops-central-header">
-          <h2 className="heading">OPS CENTERAL</h2>
+          <h2 className="heading">Ops Centeral</h2>
           <div className="central-header-content">
             <div className="recent-text">
-              <i className="fas fa-clock"></i>
+              <i className="fa fa-clock-o" aria-hidden="true"></i>
               <p>Recent</p>
             </div>
             <div className="recent-text">
-              <i className="fas fa-arrow-up"></i>
+              <i className="fa fa-retweet" aria-hidden="true"></i>
               <p>Sort</p>
             </div>
             <div className="search-bar">
-              <i className="fas fa-search"></i>
               <input type="text" className="control-form" placeholder="search" />
+              <i className="fa fa-search" aria-hidden="true"></i>
             </div>
           </div>
         </div>
@@ -53,15 +150,21 @@ class OpsCenteral extends React.Component<any, any> {
                     <div className="ops-box">
                       <div className="ops-box-inner">
                         <div className="ops-image">
-                          <img src="/public/img/central.png" alt="image" />
+                          <img src={value.icon} alt="image" className="icon" />
+                          <img src={value.colorIcon} alt="image" className="color-icon" />
                         </div>
                         <div className="ops-content">
-                          <div style={{ color: '#0699fb' }}> {value.category} </div>
-                          <div style={{ color: '#999999F' }}> {value.info} </div>
+                          <div className="ops-tittle"> {value.category} </div>
+                          <div className="ops-text"> {value.info} </div>
                         </div>
                       </div>
-                      <div className="explore-content" style={{ color: '#999999F' }}>
-                        <a href="#">Explore &#x25BA;</a>
+                      <div className="explore-content">
+                        <span>
+                          <img src="/public/img/Explore-icon.png" alt="image" />
+                        </span>
+                        <a href="#">
+                          Explore <i className="fa fa-caret-right" aria-hidden="true"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
