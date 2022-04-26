@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { images } from '../../img';
 import { Collapse } from 'reactstrap';
-import _dummyData from './_discovered_assets.json';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
-import { Link } from 'react-router-dom';
 // import { PLUGIN_BASE_URL } from '../../constants';
 // import { Link } from 'react-router-dom';
 
@@ -36,7 +34,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
   componentDidMount() {
     this.getServicesData();
-    // this.manipulateServiceData(_dummyData.services);
   }
 
   getServicesData = async () => {
