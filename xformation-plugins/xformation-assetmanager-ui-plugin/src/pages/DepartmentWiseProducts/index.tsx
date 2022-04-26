@@ -201,7 +201,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
   }
 
   calculatePercentage = (value: any, total: any) => {
+ if (value ===0 && total===0){return 0}
+ else{
     return Math.ceil(value * 100 / total);
+ }
   };
 
   manipulateDepartmentWiseProductData = (departmentList: any) => {
