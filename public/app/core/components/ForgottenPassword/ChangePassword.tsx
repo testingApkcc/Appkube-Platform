@@ -1,15 +1,7 @@
-import React, { SyntheticEvent } from "react";
-import {
-  Tooltip,
-  Form,
-  Field,
-  Input,
-  VerticalGroup,
-  Button,
-  LinkButton,
-} from "@grafana/ui";
-import { selectors } from "@grafana/e2e-selectors";
-import { submitButton } from "../Login/LoginForm";
+import React, { SyntheticEvent } from 'react';
+import { Tooltip, Form, Field, Input, VerticalGroup, Button, LinkButton } from '@grafana/ui';
+import { selectors } from '@grafana/e2e-selectors';
+import { submitButton } from '../Login/LoginForm';
 
 interface Props {
   onSubmit: (pw: string) => void;
@@ -32,32 +24,23 @@ export const ChangePassword: any = (props: Props) => {
     <Form onSubmit={submit}>
       {({ getValues }) => (
         <>
-          <Field
-            label="New password"
-            invalid={!!errors.newPassword}
-            error={errors?.newPassword?.message}
-          >
+          <Field label="New password" invalid={!!errors.newPassword} error={errors?.newPassword?.message}>
             <Input
               autoFocus
               type="password"
               name="newPassword"
               ref={register({
-                required: "New password required",
+                required: 'New password required',
               })}
             />
           </Field>
-          <Field
-            label="Confirm new password"
-            invalid={!!errors.confirmNew}
-            error={errors?.confirmNew?.message}
-          >
+          <Field label="Confirm new password" invalid={!!errors.confirmNew} error={errors?.confirmNew?.message}>
             <Input
               type="password"
               name="confirmNew"
               ref={register({
-                required: "Confirmed password is required",
-                validate: (v: any) =>
-                  v === getValues().newPassword || "Passwords must match!",
+                required: 'Confirmed password is required',
+                validate: (v: any) => v === getValues().newPassword || 'Passwords must match!',
               })}
             />
           </Field>
@@ -71,11 +54,7 @@ export const ChangePassword: any = (props: Props) => {
                 content="If you skip you will be prompted to change password next time you login."
                 placement="bottom"
               >
-                <LinkButton
-                  variant="link"
-                  onClick={onSkip}
-                  aria-label={selectors.pages.Login.skip}
-                >
+                <LinkButton variant="link" onClick={onSkip} aria-label={selectors.pages.Login.skip}>
                   Skip
                 </LinkButton>
               </Tooltip>

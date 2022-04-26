@@ -1,0 +1,322 @@
+.perfmanager-dashboard-container {
+    .catalogue-management-container {
+        background-color: $breadcrumbs-background-color;
+        border-radius: 0px;
+        margin: 0;
+        padding: 10px;
+
+        .common-container {
+            display: block;
+            padding: 10px 0;
+            border-radius: 10px;
+            background-color: $perfmanager-container-background-color;
+
+            .catalogue-tabs {
+                display: block;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                border-bottom: 1px solid $breadcrumbs-background-color;
+
+                ul {
+                    display: block;
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+
+                    li {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin-right: 5px;
+                        padding: 8px 30px;
+                        max-width: 250px;
+                        text-align: center;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 20px;
+                        border-radius: 3px;
+                        cursor: pointer;
+                        color: $perfmanager-text-color;
+                        border: 1px solid $breadcrumbs-background-color;
+                        box-shadow: 0px 0px 5px #eff2f7;
+
+                        &.active {
+                            background-color: #a2d2ff;
+                        }
+                    }
+                }
+            }
+
+            .catalogue-tabs-container {
+                display: block;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 5px;
+
+                .catalogue-inner-tabs {
+                    display: block;
+
+                    ul {
+                        display: block;
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+
+                        li {
+                            display: inline-block;
+                            vertical-align: top;
+                            margin-right: 5px;
+                            padding: 8px 15px;
+                            text-align: center;
+                            font-weight: 600;
+                            font-size: 12px;
+                            line-height: 20px;
+                            border-radius: 3px;
+                            cursor: pointer;
+                            color: $perfmanager-text-color;
+                            border: 1px solid $breadcrumbs-background-color;
+                            box-shadow: 0px 0px 5px #eff2f7;
+
+                            &.active {
+                                background-color: #a2d2ff;
+                            }
+                        }
+                    }
+                }
+
+                .catalogue-inner-tabs-container {
+                    display: block;
+                    background-color: #a2d2ff;
+                    padding: 10px;
+                    -webkit-border-radius: 5px;
+                    -webkit-border-top-left-radius: 0;
+                    -moz-border-radius: 5px;
+                    -moz-border-radius-topleft: 0;
+                    border-radius: 5px;
+                    border-top-left-radius: 0;
+
+                    .catalogue-filters {
+                        display: block;
+                        width: 100%;
+                        border-right: 1px solid #eaeaea;
+                        background-color: #ffffff;
+                        padding: 10px;
+                        height: 100%;
+
+                        .filter-search {
+                            display: block;
+                            margin-top: 10px;
+                            margin-bottom: 20px;
+
+                            strong {
+                                display: block;
+                                margin-bottom: 10px;
+                                font-size: 13px;
+                                font-weight: 600;
+                                color: #202020;
+                                line-height: 18px;
+                            }
+
+                            .filter-input {
+                                display: block;
+
+                                input {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    width: 63%;
+                                    border: none;
+                                    border-bottom: 2px solid #202020;
+                                    font-size: 12px;
+                                    line-height: 16px;
+                                    color: #202020;
+                                    background-color: #ffffff;
+
+                                    &:focus-visible {
+                                        outline: none;
+                                    }
+                                }
+
+                                button {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    width: 33%;
+                                    margin-left: 4%;
+                                    padding: 0;
+                                    border: none;
+                                    border-bottom: 2px solid #202020;
+                                    font-size: 10px;
+                                    line-height: 18px;
+                                    color: #202020;
+                                    background-color: transparent;
+                                }
+                            }
+                        }
+
+                        .catalogue-category {
+                            display: block;
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+
+                            strong {
+                                display: block;
+                                margin-bottom: 10px;
+                                font-size: 13px;
+                                font-weight: 600;
+                                color: #202020;
+                                line-height: 18px;
+                            }
+
+                            ul {
+                                display: block;
+                                padding: 0;
+                                margin: 0;
+                                list-style: none;
+
+                                li {
+                                    display: block;
+                                    margin-bottom: 3px;
+
+                                    input {
+                                        display: inline-block;
+                                        vertical-align: top;
+                                    }
+
+                                    label {
+                                        display: inline-block;
+                                        vertical-align: top;
+                                        margin-left: 5px;
+                                        font-size: 12px;
+                                        line-height: 16px;
+                                        color: #202020;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .catalogue-right-container {
+                        display: block;
+                        width: 100%;
+                        background-color: #f9f9f9;
+                        min-height: 500px;
+                        padding: 15px;
+
+                        .heading {
+                            display: block;
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+
+                            h3 {
+                                font-size: 18px;
+                                font-weight: 500;
+                                text-transform: uppercase;
+                                line-height: 22px;
+                                color: #3b4859;
+                                margin-top: 0;
+                                margin-bottom: 0.15em;
+                            }
+
+                            p {
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 18px;
+                                color: #3b4859;
+                                margin-bottom: 0;
+                            }
+
+                            .create-btn {
+                                background: #3b7cff;
+                                color: #fff;
+                                border: none;
+                                padding: 7px 10px;
+                                border-radius: 0;
+                                float: right;
+                                min-width: 100px;
+                                text-align: center;
+                                cursor: pointer;
+                                margin-top: 4px;
+                                margin-bottom: 0;
+                            }
+                        }
+
+                        .catalogue-boxes {
+                            display: block;
+
+                            .box {
+                                border-radius: 2px;
+                                box-shadow: 0 0 0 0 transparent;
+                                border: 1px solid #dce0e6;
+                                margin-bottom: 15px;
+                                cursor: pointer;
+                                padding: 0;
+
+                                &:hover {
+                                    border-color: #a2d2ff;
+                                }
+
+                                .module-card-content {
+                                    padding: 15px 15px 25px;
+                                    background-color: #ffffff;
+
+                                    img {
+                                        height: auto;
+                                        max-width: 100%;
+                                    }
+
+                                    .title {
+                                        font-size: 16px;
+                                        line-height: 20px;
+                                        font-weight: 500;
+                                        margin-bottom: 5px;
+                                        color: #202020;
+                                    }
+
+                                    .subtitle {
+                                        font-size: 13px;
+                                        line-height: 20px;
+                                        margin-bottom: 0rem;
+                                        margin-top: 0;
+                                        color: #202020;
+                                    }
+                                }
+
+                                .module-card-footer {
+                                    height: 40px;
+                                    padding: 0 10px;
+                                    border-top: 1px solid #dce0e6;
+                                    background: #f7f8fa;
+                                    color: #6f7682;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    line-height: 40px;
+                                    font-size: .8rem;
+                                    font-weight: 500;
+
+                                    a {
+                                        color: #3273dc;
+                                        cursor: pointer;
+                                        text-decoration: none;
+
+                                        img {
+                                            margin-right: 5px;
+                                            margin-top: -4px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .col-r-p {
+        padding-right: 0;
+    }
+
+    .col-l-p {
+        padding-left: 0;
+    }
+}
