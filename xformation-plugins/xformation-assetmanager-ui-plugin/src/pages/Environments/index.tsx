@@ -58,7 +58,7 @@ export class Environments extends React.Component<any, any> {
       for (let i = 0; i < optionJsonData.length; i++) {
         if (optionJsonData[i].isChecked) {
           retData.push(
-            <div className="fliter-selected" onClick={() => this.setChildData(optionJsonData[i])}>
+            <div className="fliter-selected" onClick={() => this.setChildData(optionJsonData[i])} key={i}>
               {optionJsonData[i].name}{' '}
               <i className="fa fa-times" onClick={() => this.removeSelectedTag(optionJsonData[i].value)}></i>
             </div>
@@ -67,7 +67,7 @@ export class Environments extends React.Component<any, any> {
             for (let j = 0; j < optionJsonData[i].subdata.length; j++) {
               if (optionJsonData[i].subdata[j].isChecked) {
                 retData.push(
-                  <div className="fliter-selected" onClick={() => this.setState({ showTagFilter: false })}>
+                  <div className="fliter-selected" onClick={() => this.setState({ showTagFilter: false })} key ={j}>
                     {optionJsonData[i].subdata[j].name}{' '}
                     <i
                       className="fa fa-times"
@@ -124,7 +124,7 @@ export class Environments extends React.Component<any, any> {
     let retData = [];
     for (let i = 0; i < displayJsonData.length; i++) {
       retData.push(
-        <div className="form-check" onClick={() => this.changeHandleState(i, displayJsonData[i].value)}>
+        <div className="form-check" onClick={() => this.changeHandleState(i, displayJsonData[i].value)} key={i}>
           <input type="checkbox" checked={displayJsonData[i].isChecked} className="checkbox" />
           <label htmlFor={displayJsonData[i].value}>{displayJsonData[i].name}</label>
         </div>
@@ -240,7 +240,7 @@ export class Environments extends React.Component<any, any> {
       if (row.cloud.name.toLowerCase() === 'AWS'.toLowerCase()) {
         // console.log("AWS data : ", row);
         retData.push(
-          <tr>
+          <tr key ={i}>
             <td>
               <Link
                 to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${row.id}&org_id=${row.organizationalUnit ? row.organizationalUnit.organizationId : null
@@ -281,10 +281,11 @@ export class Environments extends React.Component<any, any> {
       if (row.cloud.name.toLowerCase() === 'AZURE'.toLowerCase()) {
         retData.push(
           console.log('Loading azure data : ', row),
-          <tr>
+          <tr key={i}>
             <td>
               {/* <Link to={`${config.basePath}/amazonservices?asset_id=${row.id}&orgId=${row.organization ? row.organization.id : null}`}> */}
-              AZURE ({row.tenantId}){/* </Link> */}
+              AZURE ({row.tenantId})
+              {/* </Link> */}
             </td>
             <td>{row.organization && row.organization.name}</td>
             <td>{row.organizationalUnit && row.organizationalUnit.name}</td>
@@ -317,7 +318,7 @@ export class Environments extends React.Component<any, any> {
   _displayEnvironmentBox() {
     const EnvironmentBox = this.state.displaygetEnvironmentData.map((val: any, key: any) => {
       return (
-        <>
+        < div key={key}>
           <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div className="services-box">
               <div className="heading">
@@ -389,7 +390,7 @@ export class Environments extends React.Component<any, any> {
               </div>
             </div>
           </div>
-        </>
+        </div>
       );
     });
     return EnvironmentBox;
