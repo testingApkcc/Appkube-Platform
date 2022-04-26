@@ -26163,7 +26163,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status yellow',
+                            className: 'status '.concat(_this.getPerformanceClass(service.performance.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -26178,7 +26178,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status red',
+                            className: 'status '.concat(_this.getPerformanceClass(service.availability.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -26193,7 +26193,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status orange',
+                            className: 'status '.concat(_this.getPerformanceClass(service.security.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -26208,7 +26208,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status red',
+                            className: 'status '.concat(_this.getPerformanceClass(service.dataProtection.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -26223,7 +26223,7 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
                           {
-                            className: 'status green',
+                            className: 'status '.concat(_this.getPerformanceClass(service.userExperiance.score)),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-check',
@@ -26235,6 +26235,18 @@ object-assign
                 }
 
                 return retData;
+              };
+
+              _this.getPerformanceClass = function (score) {
+                if (score >= 75) {
+                  return 'green';
+                } else if (score >= 50) {
+                  return 'orange';
+                } else if (score >= 25) {
+                  return 'yellow';
+                } else {
+                  return 'red';
+                }
               };
 
               _this.state = {

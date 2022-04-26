@@ -351,15 +351,47 @@ export class DiscoveredAssets extends React.Component<any, any>{
       retData = list.map((service: any) => {
         return (<div className="tbody">
           <div className="service-name" style={{ paddingLeft: '45px' }}>{service.name}</div>
-          <div className="performance"><div className="status yellow"><i className="fa fa-check"></i></div></div>
-          <div className="availability"><div className="status red"><i className="fa fa-check"></i></div></div>
-          <div className="security"><div className="status orange"><i className="fa fa-check"></i></div></div>
-          <div className="data-protection"><div className="status red"><i className="fa fa-check"></i></div></div>
-          <div className="user-exp"><div className="status green"><i className="fa fa-check"></i></div></div>
+          <div className="performance">
+            <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="availability">
+            <div className={`status ${this.getPerformanceClass(service.availability.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="security">
+            <div className={`status ${this.getPerformanceClass(service.security.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="data-protection">
+            <div className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
+          <div className="user-exp">
+            <div className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
+              <i className="fa fa-check"></i>
+            </div>
+          </div>
         </div>);
       });
     }
     return retData;
+  };
+
+  getPerformanceClass = (score: any) => {
+    if (score >= 75) {
+      return 'green';
+    } else if (score >= 50) {
+      return 'orange';
+    } else if (score >= 25) {
+      return 'yellow';
+    } else {
+      return 'red';
+    }
   };
 
   render() {
