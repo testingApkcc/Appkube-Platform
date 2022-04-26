@@ -27,7 +27,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
       openCreateMenu: '',
       servicesData: null,
       servicesLength: {},
-      totalProducts: 0
+      totalProducts: 0,
+      activeNode: '',
     };
     this.config = configFun('http://3.208.22.155:5057', '');
   }
@@ -125,13 +126,15 @@ export class DiscoveredAssets extends React.Component<any, any>{
       const data = JSON.parse(JSON.stringify(tableData[key]));
       delete data.isGlobalService;
       this.setState({
-        servicesData: data
+        servicesData: data,
+        activeNode: key
       });
     } else {
       tableData[key].isOpened = !tableData[key].isOpened;
       this.setState({
         tableData,
-        servicesData: null
+        servicesData: null,
+        activeNode: key,
       });
     }
   }
@@ -141,14 +144,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
     tableData[nodeKey][clusterKey].isOpened = !tableData[nodeKey][clusterKey].isOpened;
     this.setState({
       tableData,
-      servicesData: null
+      servicesData: null,
+      activeNode: clusterKey
     });
   }
 
   onClickAppDataService = (nodeKey: any, clusterKey: any, serviceKey: any) => {
     const { tableData } = this.state;
     this.setState({
-      servicesData: tableData[nodeKey][clusterKey][serviceKey]
+      servicesData: tableData[nodeKey][clusterKey][serviceKey],
+      activeNode: serviceKey
     });
   };
 
@@ -161,7 +166,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderNodes = (nodes: any) => {
-    const { totalProducts, servicesLength } = this.state;
+    const { totalProducts, servicesLength, activeNode } = this.state;
     const retData: any = [];
     if (nodes) {
       const keys = Object.keys(nodes);
@@ -171,7 +176,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.toggleNode(key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleNode(key)}>
                 <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
@@ -211,6 +216,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderClusters = (nodeKey: any, clusters: any) => {
+    const { activeNode } = this.state;
     const keys = Object.keys(clusters);
     const retData: any = [];
     keys.forEach(((key: any) => {
@@ -219,7 +225,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.toggleCluster(nodeKey, key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleCluster(nodeKey, key)}>
                 <div className={cluster.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
@@ -238,6 +244,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renerAppDataServices = (nodeKey: any, clusterKey: any, services: any) => {
+    const { activeNode } = this.state;
     const retData: any = [];
     const keys = Object.keys(services);
     keys.forEach(((key: any) => {
@@ -245,7 +252,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         retData.push(
           <div className="tbody">
             <div className="tbody-inner">
-              <div className="tbody-td first" onClick={() => this.onClickAppDataService(nodeKey, clusterKey, key)}>
+              <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, key)}>
                 {SERVICE_MAPPING[key]}
               </div>
             </div>
