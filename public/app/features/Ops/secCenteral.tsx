@@ -8,71 +8,61 @@ class SecCenteral extends React.Component<any, any> {
           id: 14,
           category: 'RBAC/Multitenancy',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 13,
           category: 'Cloud Env Security',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 12,
           category: 'Infra Security',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 11,
           category: 'Container Security',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 10,
           category: 'Kubernetes Security',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 19,
           category: 'Code Security - SAST/DAST',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 224,
           category: 'Secrets Vaults',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 224,
           category: 'App Security',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 224,
           category: 'Data Security',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 224,
           category: 'cloud Compiance',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
       ],
     };
@@ -108,7 +98,6 @@ class SecCenteral extends React.Component<any, any> {
                       <div className="ops-box-inner">
                         <div className="ops-image">
                           <img src={value.icon} alt="image" className="icon" />
-                          <img src={value.colorIcon} alt="image" className="color-icon" />
                         </div>
                         <div className="ops-content">
                           <div className="ops-tittle"> {value.category} </div>

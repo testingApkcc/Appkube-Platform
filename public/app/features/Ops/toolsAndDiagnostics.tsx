@@ -8,43 +8,37 @@ class ToolsAndDiagnostics extends React.Component<any, any> {
           id: 14,
           category: 'Change Manager',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 13,
           category: 'Explorer',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 12,
           category: 'RCA',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 11,
           category: 'Script Manager',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 10,
           category: 'Optimiser',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
           id: 19,
           category: 'Migration Management',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance _availability.svg',
-          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+          icon: '/public/img/ops-central/performance_availability.svg',
         },
       ],
     };
@@ -80,7 +74,6 @@ class ToolsAndDiagnostics extends React.Component<any, any> {
                       <div className="ops-box-inner">
                         <div className="ops-image">
                           <img src={value.icon} alt="image" className="icon" />
-                          <img src={value.colorIcon} alt="image" className="color-icon" />
                         </div>
                         <div className="ops-content">
                           <div className="ops-tittle"> {value.category} </div>
