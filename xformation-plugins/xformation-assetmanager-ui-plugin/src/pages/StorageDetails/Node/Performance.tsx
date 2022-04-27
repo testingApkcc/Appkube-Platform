@@ -26,11 +26,14 @@ export class Performance extends React.Component<any, any>{
             severity: null,
             message: null,
             isSuccess: true,
-            activeDashboard: -1,
+            activeDashboard: 0,
             showConfigWizard: false,
             iFrameLoaded: false,
-            viewJson: [],
-            uidList: ['HmQhPYQ7z'],
+            viewJson: [
+                { title: 'dashboard demo', uid: 'HmQhPYQ7z' },
+                { title: 'dashboard 2', uid: 'zRQhasw7k' },
+                { title: 'dashboard 3', uid: 'wBJ0ayw7k' },
+            ],
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -114,7 +117,7 @@ export class Performance extends React.Component<any, any>{
                             inputConfig: response.object[0],
                             showConfigWizard: false,
                             activeDashboard: 0,
-                            viewJson: response.object[0].enabledDashboardList,
+                            // viewJson: response.object[0].enabledDashboardList,
                         });
                     } else {
                         this.setState({
@@ -403,8 +406,8 @@ export class Performance extends React.Component<any, any>{
     };
 
     render() {
-        const { enablePerformanceMonitoring, isAlertOpen, severity, message, showConfigWizard, iFrameLoaded, uidList } = this.state;
-        // let activeDB = null;
+        const { enablePerformanceMonitoring, isAlertOpen, severity, message, showConfigWizard, iFrameLoaded, viewJson, activeDashboard } = this.state;
+        let activeDB = null;
         // if (inputConfig && inputConfig.dashboards && inputConfig.dashboards[activeDashboard]) {
         //     activeDB = inputConfig.dashboards[activeDashboard];
         // }
@@ -412,9 +415,9 @@ export class Performance extends React.Component<any, any>{
         // if (viewJson && viewJson.dashboards && viewJson.dashboards[activeDashboard]) {
         //     activeDB = viewJson.dashboards[activeDashboard];
         // }
-        // if (viewJson && viewJson[activeDashboard]) {
-        //     activeDB = viewJson[activeDashboard];
-        // }
+        if (viewJson && viewJson[activeDashboard]) {
+            activeDB = viewJson[activeDashboard];
+        }
         return (
             <>
                 {!enablePerformanceMonitoring && (
@@ -444,14 +447,14 @@ export class Performance extends React.Component<any, any>{
                                 <div className="dashboard-view-container">
                                     <aside className="aside-container">{this.renderDashboardList()}</aside>
                                     <div className="dashboard-view">
-                                        {/* {activeDB && */}
+                                        {activeDB &&
                                             <>
-                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${uidList[0]}&slug=1`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
+                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=1`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
                                                 <div style={{ textAlign: "center", display: iFrameLoaded ? 'none' : '', marginTop: "20px" }}>
                                                     Dashboard is loading...
                                                 </div>
                                             </>
-                                        {/* } */}
+                                        }
                                     </div>
                                 </div>
                             </>

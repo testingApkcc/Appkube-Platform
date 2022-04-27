@@ -17,14 +17,16 @@ export class TopMenu extends React.Component<any, any> {
 
   render() {
     return (
-      <>
-        <div className="float-right common-right-btn">
-          <Link to={`${PLUGIN_BASE_URL}/managedashboard`} className="white-button m-r-0">
-            <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp; Back
-          </Link>
+      <div className="row">
+        <div className="col-lg-12 col-md-12 col-sm-12">
+          <div className="float-right common-right-btn">
+            <Link to={`${PLUGIN_BASE_URL}/managedashboard`} className="white-button m-r-0">
+              <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp; Back
+            </Link>
+          </div>
         </div>
         <UnimplementedFeaturePopup ref={this.unimplementedFeatureModalRef} />
-      </>
+      </div>
     );
   }
 }

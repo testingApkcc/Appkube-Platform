@@ -42,49 +42,49 @@ class OpsCenteral extends React.Component<any, any> {
           icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
-          id: 224,
+          id: 20,
           category: 'Kubernetes Management',
           info: 'sampleText',
           icon: '/public/img/ops-central/kubernetes_management.svg',
         },
         {
-          id: 224,
+          id: 21,
           category: 'Performance Monitoring',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_monitoring.svg',
         },
         {
-          id: 224,
+          id: 22,
           category: 'Log Monitoring',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
-          id: 224,
+          id: 23,
           category: 'tracing',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
-          id: 224,
+          id: 24,
           category: 'Toolcahain/Workflows',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
-          id: 224,
+          id: 25,
           category: 'ChatOps',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
-          id: 224,
+          id: 26,
           category: 'AI-ops',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
-          id: 224,
+          id: 28,
           category: 'Cloud Analytics',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_availability.svg',
@@ -96,14 +96,36 @@ class OpsCenteral extends React.Component<any, any> {
           icon: '/public/img/ops-central/performance_availability.svg',
         },
         {
-          id: 224,
+          id: 29,
           category: 'Self service Provisioning',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance_availability.svg',
         },
       ],
+      duplicateTableData: [],
     };
   }
+
+  componentDidMount() {
+    const { tableData } = this.state;
+    this.setState({ duplicateTableData: tableData });
+  }
+
+  handelFilter = (e: any) => {
+    const { value } = e.target;
+    const { tableData, duplicateTableData } = this.state;
+    if (value.length >= 0) {
+      let data = [];
+      for (let i = 0; i < duplicateTableData.length; i++) {
+        if (duplicateTableData[i].category.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+          data.push(duplicateTableData[i]);
+        }
+      }
+      this.setState({ tableData: data });
+    } else {
+      this.setState({ tableData: tableData });
+    }
+  };
   render() {
     const { tableData } = this.state;
     return (
@@ -120,7 +142,7 @@ class OpsCenteral extends React.Component<any, any> {
               <p>Sort</p>
             </div>
             <div className="search-bar">
-              <input type="text" className="control-form" placeholder="search" />
+              <input type="text" className="control-form" placeholder="search" onChange={(e) => this.handelFilter(e)} />
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
           </div>

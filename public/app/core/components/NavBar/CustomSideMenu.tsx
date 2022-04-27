@@ -90,6 +90,19 @@ export class CustomSideMenu extends PureComponent<any, any> {
                 activeMenuItem = item;
                 isFound = true;
                 break;
+              } else if (childmenu.subMenu && childmenu.subMenu.length > 0) {
+                for (let m = 0; m < childmenu.subMenu.length; m++) {
+                  const childs = childmenu.subMenu[m];
+                  if (pathName === childs.link) {
+                    subMenuState = menuStates.SUBMENU_OPEN;
+                    showSubMenu = true;
+                    isSubMenuPinned = true;
+                    activeSubMenuItem = childs;
+                    activeMenuItem = item;
+                    isFound = true;
+                    break;
+                  }
+                }
               }
             }
           }
@@ -183,6 +196,14 @@ export class CustomSideMenu extends PureComponent<any, any> {
               text: 'Amazon Services',
               childName: 'assets',
               isImplemented: true,
+              subMenu: [
+                {
+                  link: '/a/xformation-assetmanager-ui-plugin/storage-details',
+                  text: 'Storage Details',
+                  childName: 'assets',
+                  isImplemented: true,
+                },
+              ],
             },
           ],
         },
@@ -242,16 +263,16 @@ export class CustomSideMenu extends PureComponent<any, any> {
       subMenu: [
         {
           link: '/a/xformation-perfmanager-ui-plugin/catalog',
-          text: 'View And Search Catalogue ',
+          text: 'View And Search Catalogue',
           childName: 'app-catalogue',
           isImplemented: true,
         },
-        {
-          link: '/a/xformation-perfmanager-ui-plugin/cataloguemanagement',
-          text: 'Catalogue Management ',
-          childName: 'app-catalogue',
-          isImplemented: true,
-        },
+        // {
+        //   link: '/a/xformation-perfmanager-ui-plugin/catalog',
+        //   text: 'Catalogue Management',
+        //   childName: 'app-catalogue',
+        //   isImplemented: true,
+        // },
         {
           link: '/a/xformation-perfmanager-ui-plugin/library',
           text: 'Library',
@@ -817,6 +838,17 @@ export class CustomSideMenu extends PureComponent<any, any> {
             for (let k = 0; k < activeMenuItem.subMenu[j].subMenu.length; k++) {
               if (activeMenuItem.subMenu[j].subMenu[k].link.indexOf(activeSubMenuItem.link) !== -1) {
                 isActive = true;
+              } else {
+                if (
+                  activeMenuItem.subMenu[j].subMenu[k].subMenu &&
+                  activeMenuItem.subMenu[j].subMenu[k].subMenu.length > 0
+                ) {
+                  for (let m = 0; m < activeMenuItem.subMenu[j].subMenu.length; m++) {
+                    if (activeMenuItem.subMenu[j].subMenu[k].subMenu[m].link.indexOf(activeSubMenuItem.link) !== -1) {
+                      isActive = true;
+                    }
+                  }
+                }
               }
             }
           }
@@ -872,6 +904,27 @@ export class CustomSideMenu extends PureComponent<any, any> {
                   </Rbac>
                 );
                 break;
+              } else {
+                if (
+                  activeMenuItem.subMenu[j].subMenu[k].subMenu &&
+                  activeMenuItem.subMenu[j].subMenu[k].subMenu.length > 0
+                ) {
+                  for (let m = 0; m < activeMenuItem.subMenu[j].subMenu[k].subMenu.length; m++) {
+                    if (activeMenuItem.subMenu[j].subMenu[k].subMenu[m].link.indexOf(activeSubMenuItem.link) !== -1) {
+                      retData.push(
+                        <Rbac
+                          parentName={activeMenuItem.subMenu[j].text || ''}
+                          childName={activeMenuItem.subMenu[j].text || ''}
+                        >
+                          <li>
+                            <div className="menu-item-text">{activeMenuItem.subMenu[j].text}</div>
+                          </li>
+                        </Rbac>
+                      );
+                      break;
+                    }
+                  }
+                }
               }
             }
           }

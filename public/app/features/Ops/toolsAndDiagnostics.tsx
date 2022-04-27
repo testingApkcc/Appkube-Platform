@@ -41,8 +41,30 @@ class ToolsAndDiagnostics extends React.Component<any, any> {
           icon: '/public/img/ops-central/performance_availability.svg',
         },
       ],
+      duplicateTableData: [],
     };
   }
+
+  componentDidMount() {
+    const { tableData } = this.state;
+    this.setState({ duplicateTableData: tableData });
+  }
+
+  handelFilter = (e: any) => {
+    const { value } = e.target;
+    const { tableData, duplicateTableData } = this.state;
+    if (value.length >= 0) {
+      let data = [];
+      for (let i = 0; i < duplicateTableData.length; i++) {
+        if (duplicateTableData[i].category.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+          data.push(duplicateTableData[i]);
+        }
+      }
+      this.setState({ tableData: data });
+    } else {
+      this.setState({ tableData: tableData });
+    }
+  };
   render() {
     const { tableData } = this.state;
     return (
@@ -59,7 +81,7 @@ class ToolsAndDiagnostics extends React.Component<any, any> {
               <p>Sort</p>
             </div>
             <div className="search-bar">
-              <input type="text" className="control-form" placeholder="search" />
+              <input type="text" className="control-form" placeholder="search" onChange={(e) => this.handelFilter(e)} />
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
           </div>
