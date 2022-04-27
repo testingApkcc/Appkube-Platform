@@ -47,28 +47,28 @@ class DevCenteral extends React.Component<any, any> {
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 20,
           category: 'wf Engie',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 21,
           category: 'Static Site Editor',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 22,
           category: 'SDK/Libraries',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 23,
           category: 'App/Catalouge',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
@@ -82,64 +82,86 @@ class DevCenteral extends React.Component<any, any> {
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 25,
           category: 'CI/CD',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 26,
           category: 'Continues Test',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 27,
           category: 'Container Management',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 28,
           category: 'Kubernetes Operators',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 29,
           category: 'Code Quality',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 30,
           category: 'Vulerability',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 31,
           category: 'Enviornments Management',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
         {
-          id: 24,
+          id: 32,
           category: 'Serverless',
           info: 'sampleText',
           icon: '/public/img/ops-central/performance _availability.svg',
           colorIcon: '/public/img/ops-central/performance_availability_color.svg',
         },
       ],
+      duplicateTabledata: [],
     };
   }
+
+  componentDidMount() {
+    const { tableData } = this.state;
+    this.setState({ duplicateTableData: tableData });
+  }
+
+  handelFilter = (e: any) => {
+    const { value } = e.target;
+    const { tableData, duplicateTableData } = this.state;
+    if (value.length >= 0) {
+      let data = [];
+      for (let i = 0; i < duplicateTableData.length; i++) {
+        if (duplicateTableData[i].category.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+          data.push(duplicateTableData[i]);
+        }
+      }
+      this.setState({ tableData: data });
+    } else {
+      this.setState({ tableData: tableData });
+    }
+  };
   render() {
     const { tableData } = this.state;
     return (
@@ -156,7 +178,7 @@ class DevCenteral extends React.Component<any, any> {
               <p>Sort</p>
             </div>
             <div className="search-bar">
-              <input type="text" className="control-form" placeholder="search" />
+              <input type="text" className="control-form" placeholder="search" onChange={(e) => this.handelFilter(e)} />
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
           </div>
