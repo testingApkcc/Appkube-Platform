@@ -365,11 +365,11 @@ export class ServicesPerformance extends React.Component<any, any> {
             <h3>Deployment environments</h3>
             <div className='buttons'>
               <h3 style={{ paddingRight: '10px' }}>{this.viewMapping[hostingType]}</h3>
-              <button className='btn'>
-                <i className='fa fa-plus'></i>
-              </button>
               <button className='btn' onClick={() => this.handleView()}>
                 <i className='fa fa-eye'></i>
+              </button>
+              <button className='btn'>
+                <i className='fa fa-plus'></i>
               </button>
               <button className='btn'>
                 <i className='fa fa-bars'></i>
