@@ -4,25 +4,139 @@ class DevCenteral extends React.Component<any, any> {
     super(props);
     this.state = {
       tableData: [
-        { id: 14, category: 'Generator', info: 'sampleText' },
-        { id: 13, category: 'Delivery Central', info: 'sampleText' },
-        { id: 12, category: 'Quality Central', info: 'sampleText' },
-        { id: 11, category: 'Test Central', info: 'sampleText' },
-        { id: 10, category: 'Raid Tools for Micrservices', info: 'sampleText' },
-        { id: 19, category: 'workflow Editor', info: 'sampleText' },
-        { id: 24, category: 'wf Engie', info: 'sampleText' },
-        { id: 24, category: 'Static Site Editor', info: 'sampleText' },
-        { id: 24, category: 'SDK/Libraries', info: 'sampleText' },
-        { id: 24, category: 'App/Catalouge', info: 'sampleText' },
-        { id: 24, category: 'GitOps', info: 'sampleText' },
-        { id: 24, category: 'CI/CD', info: 'sampleText' },
-        { id: 24, category: 'Continues Test', info: 'sampleText' },
-        { id: 24, category: 'Container Management', info: 'sampleText' },
-        { id: 24, category: 'Kubernetes Operators', info: 'sampleText' },
-        { id: 24, category: 'Code Quality', info: 'sampleText' },
-        { id: 24, category: 'Vulerability', info: 'sampleText' },
-        { id: 24, category: 'Enviornments Management', info: 'sampleText' },
-        { id: 24, category: 'Serverless', info: 'sampleText' },
+        {
+          id: 14,
+          category: 'Generator',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 13,
+          category: 'Delivery Central',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 12,
+          category: 'Quality Central',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 11,
+          category: 'Test Central',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 10,
+          category: 'Raid Tools for Micrservices',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 19,
+          category: 'workflow Editor',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'wf Engie',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Static Site Editor',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'SDK/Libraries',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'App/Catalouge',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'GitOps',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'CI/CD',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Continues Test',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Container Management',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Kubernetes Operators',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Code Quality',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Vulerability',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Enviornments Management',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
+        {
+          id: 24,
+          category: 'Serverless',
+          info: 'sampleText',
+          icon: '/public/img/ops-central/performance _availability.svg',
+          colorIcon: '/public/img/ops-central/performance_availability_color.svg',
+        },
       ],
     };
   }
@@ -31,19 +145,19 @@ class DevCenteral extends React.Component<any, any> {
     return (
       <div className="ops-central-container">
         <div className="ops-central-header">
-          <h2 className="heading">DEV CENTERAL</h2>
+          <h2 className="heading">Dev Centeral</h2>
           <div className="central-header-content">
             <div className="recent-text">
-              <i className="fas fa-clock"></i>
+              <i className="fa fa-clock-o" aria-hidden="true"></i>
               <p>Recent</p>
             </div>
             <div className="recent-text">
-              <i className="fas fa-arrow-up"></i>
+              <i className="fa fa-retweet" aria-hidden="true"></i>
               <p>Sort</p>
             </div>
             <div className="search-bar">
-              <i className="fas fa-search"></i>
               <input type="text" className="control-form" placeholder="search" />
+              <i className="fa fa-search" aria-hidden="true"></i>
             </div>
           </div>
         </div>
@@ -56,15 +170,21 @@ class DevCenteral extends React.Component<any, any> {
                     <div className="ops-box">
                       <div className="ops-box-inner">
                         <div className="ops-image">
-                          <img src="/public/img/central.png" alt="image" />
+                          <img src={value.icon} alt="image" className="icon" />
+                          <img src={value.colorIcon} alt="image" className="color-icon" />
                         </div>
                         <div className="ops-content">
-                          <div style={{ color: '#0699fb' }}> {value.category} </div>
-                          <div style={{ color: '#999999F' }}> {value.info} </div>
+                          <div className="ops-tittle"> {value.category} </div>
+                          <div className="ops-text"> {value.info} </div>
                         </div>
                       </div>
-                      <div className="explore-content" style={{ color: '#999999F' }}>
-                        <a href="#">Explore &#x25BA;</a>
+                      <div className="explore-content">
+                        <span>
+                          <img src="/public/img/Explore-icon.png" alt="image" />
+                        </span>
+                        <a href="#">
+                          Explore <i className="fa fa-caret-right" aria-hidden="true"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
