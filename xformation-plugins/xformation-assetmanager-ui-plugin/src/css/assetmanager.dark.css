@@ -1969,6 +1969,9 @@ a:hover {
   width: 28%;
   cursor: pointer;
 }
+.service-container .organisational-details .container-inner .organisational-data-table .tbody .tbody-td.active {
+  color: #2662f0;
+}
 .service-container
   .organisational-details
   .container-inner

@@ -1,110 +1,171 @@
 import React from "react";
 import { Breadcrumbs } from '../Breadcrumbs';
 import { TopMenu } from './TopMenu';
-import previewDashboardIcon from '../../img/preview-dashboard-icon.png';
-import libraryIcon from '../../img/library-icon.png';
-import previewDashboard from '../../img/preview-dashboard.png';
+// import previewDashboardIcon from '../../img/preview-dashboard-icon.png';
+// import libraryIcon from '../../img/library-icon.png';
+// import previewDashboard from '../../img/preview-dashboard.png';
 
 export class CatalogueManagement extends React.Component<any, any>{
     breadCrumbs: any;
     constructor(props: any) {
         super(props)
         this.state = {
-            catalogueManagement: [
-                {
-                    catalogue: "Dev Catalouge",
-                    id: 1,
-                    isSelect: true,
-                    category: [
-                        { name: "App Blocks", id: 1, isSelect: true },
-                        { name: "Library/SDKs", id: 2, isSelect: false },
-                        { name: "Build/ Deployment Templets", id: 3, isSelect: false },
-                        { name: "ISV Solutions", id: 4, isSelect: false },
-                        { name: "Data Flow", id: 5, isSelect: false },
-                    ],
+            catalogueManagement: {
+                Dev: {
+                    AppBlocks: {
+                        commonMicroservices: [],
+                        generators: [],
+                        workflows: []
+                    },
+                    LibraryAndSDKs: {},
+                    BuildDeployTemplates: {},
+                    ISVSolutions: {},
+                    DataFlows: {}
                 },
-                {
-                    catalogue: "Sec Catalouge", id: 2, isSelect: false,
-                    category: [
-                        { name: "Compliance Rules", id: 1, isSelect: true },
-                        { name: "Compliance Policies", id: 2, isSelect: false },
-                        { name: "Compliance Auditors", id: 3, isSelect: false },
-                        { name: "Code Security Templates", id: 4, isSelect: false },
-                        { name: "Container Security Templates", id: 5, isSelect: false },
-                        { name: "Data Security Templates", id: 6, isSelect: false },
-                    ],
+                Sec: {
+                    ComplianceRules: {},
+                    CompliancePolicies: {},
+                    ComplianceAuditors: {},
+                    CodeSecurityTemplates: {},
+                    ConainerSecurityTemplates: {},
+                    DataSecurityTemplates: {}
                 },
-                {
-                    catalogue: "Ops Catalogue", id: 3, isSelect: false,
-                    category: [
-                        { name: "Cloud Dashboards", id: 1, isSelect: true },
-                        { name: "Provisioning Templates", id: 2, isSelect: false },
-                        { name: "Alert rules", id: 3, isSelect: false },
-                        { name: "Work Flows", id: 4, isSelect: false },
-                        { name: "Collectos Bots", id: 5, isSelect: false },
-                        { name: "Diagnostics", id: 6, isSelect: false },
+                Ops: {
+                    CloudDashBoards: [
+                        {
+                            id: 1,
+                            name: "AWS-RDS-PERF-READLATENCY",
+                            description: "AWS RDS Read Latency Performance Monitoring",
+                            associatedDataSourceType: "AWS-PullMetric-Api",
+                            associatedDataType: "METRIC",
+                            associatedSLAType: "PERFORMANCE",
+                            associatedCloud: "AWS",
+                            associatedCloudElementType: "RDS",
+                            jsonLocation: "s3://..."
+                        },
+                        {
+                            id: 2,
+                            name: "AWS-RDS-PERF-WRITELATENCY",
+                            description: "AWS RDS Read Latency Performance Monitoring",
+                            associatedDataSourceType: "AWS-PullMetric-Api",
+                            associatedDataType: "METRIC",
+                            associatedSLAType: "PERFORMANCE",
+                            associatedCloud: "AWS",
+                            associatedCloudElementType: "RDS",
+                            jsonLocation: "s3://..."
+                        }
                     ],
+                    DataSources: [
+                        {
+                            id: 1,
+                            name: "AWS-PullMetric-Api",
+                            description: "Pull AWS metrics with Cloud API",
+                            Type: "PullApi",
+                            DataType: "METRIC",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "AWS",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "AppKubeMain",
+                            associatedTargetDs: "NA"
+                        },
+                        {
+                            id: 2,
+                            name: "AWS-PullLogs-Api",
+                            description: "Pull AWS Logs with Cloud API",
+                            Type: "PullApi",
+                            DataType: "LOG",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "AWS",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "AppKubeMain",
+                            associatedTargetDs: "NA"
+                        },
+                        {
+                            id: 3,
+                            name: "AWS-PullLogs-Local",
+                            description: "Receive AWS Logs and Store in Local ES",
+                            Type: "ReceiveAndStoreLogs",
+                            DataType: "LOG",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "AWS",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "LogManager",
+                            associatedTargetDsType: "ES"
+                        },
+                        {
+                            id: 4,
+                            name: "AWS-StoreTrace-Local",
+                            description: "Receive Traces and Store in Local Zipkin DB",
+                            Type: "ReceiveAndStoreTrace",
+                            DataType: "Trace",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "AWS",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "TraceManager",
+                            associatedTargetDsType: "Zipkin"
+                        },
+                        {
+                            id: 4,
+                            name: "Azure-PullMetric-Api",
+                            description: "Pull Azure metrics with Cloud API",
+                            Type: "PullApi",
+                            DataType: "METRIC",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "Azure",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "AppKubeMain",
+                            associatedTargetDs: "NA"
+                        },
+                        {
+                            id: 5,
+                            name: "Azure-PullLogs-Api",
+                            description: "Pull Azure Logs with Cloud API",
+                            Type: "PullApi",
+                            DataType: "LOG",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "Azure",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "AppKubeMain",
+                            associatedTargetDs: "NA"
+                        },
+                        {
+                            id: 6,
+                            name: "Azure-PullLogs-Local",
+                            description: "Receive Azure Logs and Store in Local ES",
+                            Type: "ReceiveAndStoreLogs",
+                            DataType: "LOG",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "Azure",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "LogManager",
+                            associatedTargetDsType: "ES"
+                        },
+                        {
+                            id: 7,
+                            name: "Azure-StoreTrace-Local",
+                            description: "Receive Traces and Store in Local Zipkin DB",
+                            Type: "ReceiveAndStoreTrace",
+                            DataType: "Trace",
+                            associatedWorkflowTemplate: "s3://...",
+                            associatedCloud: "AWS",
+                            associatedCreds: "Vault",
+                            associatedApplicationLocation: "TraceManager",
+                            associatedTargetDsType: "Zipkin"
+                        }
+                    ],
+                    ProvisioningTemplates: {},
+                    AlertRules: {},
+                    Workflows: {},
+                    Collectors: {},
+                    Diagonostics: {},
+                    kubeOperators: {}
                 }
-            ],
-            cardData: [
-                {
-                    name: "Dashboard 1 AWS RDS", 
-                    category: "green and roasted", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                },
-                {
-                    name: "Dashboard 2 AWS RDS", 
-                    category: "AWS VPN", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                },
-                {
-                    name: "AWS VPC D1",
-                    category: "AWS VPN", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                },
-                {
-                    name: "NGINX Log D1", 
-                    category: "NGINX Log", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                },
-                {
-                    name: "Test C D1", 
-                    category: "Test C", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                },
-                {
-                    name: "Test two D2", 
-                    category: "Test two", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                },
-                {
-                    name: "Test two D1", 
-                    category: "Test two", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                },
-                {
-                    name: "Dashboard 3 AWS RDS", 
-                    category: "AWS VPN", 
-                    id: 1,
-                    extraData: {},
-                    image: previewDashboard
-                }
-            ],
-            index: 0
+            },
+navHandle:{
+            index: 0,
+            topKey:"Dev",
+            lowerkey:"commonMicroservices"
+}
         }
         this.breadCrumbs = [
             {
@@ -117,32 +178,19 @@ export class CatalogueManagement extends React.Component<any, any>{
             },
         ];
     }
-    handleUpperMenu = (index: any) => {
-        let { catalogueManagement } = this.state
-        for (let i = 0; i < catalogueManagement.length; i++) {
-            if (i === index) {
-                catalogueManagement[i].isSelect = !catalogueManagement[i].isSelect;
-            } else {
-                catalogueManagement[i].isSelect = false
-            }
-        }
-        this.setState({ index: index, catalogueManagement: catalogueManagement })
+    handleUpperMenu = (inx: any , name:any) => {
+        let { catalogueManagement , navHandle} = this.state
+        this.state.navHandle.index=inx
+        this.setState({ navHandle, catalogueManagement: catalogueManagement , objKey:name})
     }
-    handleLowerMenu = (e: any, inx: any) => {
-
-        let { catalogueManagement, index } = this.state
-        for (let i = 0; i < catalogueManagement[index].category.length; i++) {
-            if (i === inx) {
-                catalogueManagement[index].category[i].isSelect = !catalogueManagement[index].category[i].isSelect;
-            } else {
-                catalogueManagement[index].category[i].isSelect = false
-            }
-        }
-        this.setState({ catalogueManagement: catalogueManagement })
+    handleLowerMenu = (val:any) => {
+        let {navHandle }=this.state
+        navHandle.lowerkey=val;
+        this.setState({navHandle})
     }
     render() {
-        const { catalogueManagement, index, cardData } = this.state;
-
+        const { catalogueManagement, navHandle} = this.state;
+        const {topKey, index, lowerkey}=navHandle
         return (
             <div className="perfmanager-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="CATALOGUE MANAGEMENT" />
@@ -152,7 +200,9 @@ export class CatalogueManagement extends React.Component<any, any>{
                             <div className="row">
                                 <div className="col-lg-9 col-md-9 col-sm-12">
                                     {catalogueManagement && <ul>
-                                        {catalogueManagement.map((cat: any, inx: any) => <li key={cat.id} onClick={() => this.handleUpperMenu(inx)} className={`${cat.isSelect === true ? 'active' : ''}`}>{cat.catalogue}</li>)}
+                                        {Object.keys(catalogueManagement).map((cat: any, inx: any) =>
+                                            <li key={inx} className={`${index === inx ? 'active' : ''}`}
+                                                onClick={(e) => this.handleUpperMenu(inx , cat)}>{`${cat} Catalogue`}</li>)}
                                     </ul>}
                                 </div>
                                 <div className="col-lg-3 col-md-3 col-sm-12">
@@ -163,7 +213,9 @@ export class CatalogueManagement extends React.Component<any, any>{
                         <div className="catalogue-tabs-container">
                             <div className="catalogue-inner-tabs">
                                 {catalogueManagement && <ul>
-                                    {catalogueManagement[index].category.map((cat: any, inx: any) => <li key={cat.id} className={`${cat.isSelect === true ? 'active' : ''}`} onClick={(e) => this.handleLowerMenu(e, inx)}>{cat.name}</li>)}
+                                    {Object.keys(catalogueManagement[topKey]).map((cat: any, inx: any) => <li key={inx} 
+                                    className={[lowerkey] == cat ? 'active' : ''}
+                                     onClick={(e) => this.handleLowerMenu(cat)}>{cat}</li>)}
                                 </ul>}
                             </div>
                             <div className="catalogue-inner-tabs-container">
@@ -243,7 +295,7 @@ export class CatalogueManagement extends React.Component<any, any>{
                                                 </div>
                                             </div>
                                             <div className="catalogue-boxes">
-                                                {cardData && cardData.length > 0 ? cardData.map((card: any, index: any) => {
+                                                {/* {cardData && cardData.length > 0 ? cardData.map((card: any, index: any) => {
                                                     return (
                                                         <div key={card.id} className="blog-list-item box">
                                                             <div className="module-card-content">
@@ -275,7 +327,7 @@ export class CatalogueManagement extends React.Component<any, any>{
                                                     )
                                                 })
                                                     : <div className="loading-text">Loading....</div>
-                                                }
+                                                } */}
                                             </div>
                                         </div>
                                     </div>
