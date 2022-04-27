@@ -18,7 +18,7 @@ export class Performance extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            enablePerformanceMonitoring: false,
+            enablePerformanceMonitoring: true,
             inputConfig: null,
             inputName: "Performance",
             updatedDashboards: [],
@@ -30,6 +30,7 @@ export class Performance extends React.Component<any, any>{
             showConfigWizard: false,
             iFrameLoaded: false,
             viewJson: [],
+            uidList: ['HmQhPYQ7z'],
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -39,7 +40,7 @@ export class Performance extends React.Component<any, any>{
         this.steps = [
             {
                 name: "Verify Inputs",
-                component: () => <VerifyInputs ref={this.verifyInputsRef} inputName={this.state.inputName} {...this.props}/>
+                component: () => <VerifyInputs ref={this.verifyInputsRef} inputName={this.state.inputName} {...this.props} />
             },
             {
                 name: "Enable Dashboard",
@@ -402,8 +403,8 @@ export class Performance extends React.Component<any, any>{
     };
 
     render() {
-        const { enablePerformanceMonitoring, isAlertOpen, severity, message, activeDashboard, showConfigWizard, iFrameLoaded, viewJson } = this.state;
-        let activeDB = null;
+        const { enablePerformanceMonitoring, isAlertOpen, severity, message, showConfigWizard, iFrameLoaded, uidList } = this.state;
+        // let activeDB = null;
         // if (inputConfig && inputConfig.dashboards && inputConfig.dashboards[activeDashboard]) {
         //     activeDB = inputConfig.dashboards[activeDashboard];
         // }
@@ -411,9 +412,9 @@ export class Performance extends React.Component<any, any>{
         // if (viewJson && viewJson.dashboards && viewJson.dashboards[activeDashboard]) {
         //     activeDB = viewJson.dashboards[activeDashboard];
         // }
-        if (viewJson && viewJson[activeDashboard]) {
-            activeDB = viewJson[activeDashboard];
-        }
+        // if (viewJson && viewJson[activeDashboard]) {
+        //     activeDB = viewJson[activeDashboard];
+        // }
         return (
             <>
                 {!enablePerformanceMonitoring && (
@@ -435,8 +436,7 @@ export class Performance extends React.Component<any, any>{
                 {enablePerformanceMonitoring && (
                     <>
                         <AlertMessage handleCloseAlert={this.handleCloseAlert} open={isAlertOpen} severity={severity} msg={message}></AlertMessage>
-                        {
-                            !showConfigWizard &&
+                        {!showConfigWizard &&
                             <>
                                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
                                     <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.setState({ showConfigWizard: true })} className="asset-blue-button m-b-0">Configure</button>
@@ -444,15 +444,14 @@ export class Performance extends React.Component<any, any>{
                                 <div className="dashboard-view-container">
                                     <aside className="aside-container">{this.renderDashboardList()}</aside>
                                     <div className="dashboard-view">
-                                        {
-                                            activeDB &&
+                                        {/* {activeDB && */}
                                             <>
-                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=${activeDB.slug}`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
+                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${uidList[0]}&slug=1`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
                                                 <div style={{ textAlign: "center", display: iFrameLoaded ? 'none' : '', marginTop: "20px" }}>
                                                     Dashboard is loading...
                                                 </div>
                                             </>
-                                        }
+                                        {/* } */}
                                     </div>
                                 </div>
                             </>
