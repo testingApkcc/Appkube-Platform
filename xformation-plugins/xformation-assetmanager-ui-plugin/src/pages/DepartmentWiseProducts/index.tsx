@@ -211,7 +211,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     for (let i = 0; i < departmentList.length; i++) {
       const department = departmentList[i];
       const productList = department.productList;
-      const newProductList: any = [];
       productList.forEach((product: any) => {
         if (product.deploymentEnvironmentList && product.deploymentEnvironmentList.length > 0) {
           product.deploymentEnvironmentList[0].isOpen = true;
