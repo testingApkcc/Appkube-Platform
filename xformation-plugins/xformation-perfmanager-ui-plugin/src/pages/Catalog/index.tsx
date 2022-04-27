@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { TopMenu } from './TopMenu';
-// import previewDashboardIcon from '../../img/preview-dashboard-icon.png';
-// import libraryIcon from '../../img/library-icon.png';
+import previewDashboardIcon from '../../img/preview-dashboard-icon.png';
+import libraryIcon from '../../img/library-icon.png';
 // import previewDashboard from '../../img/preview-dashboard.png';
 
 export class Catalog extends React.Component<any, any>{
@@ -105,7 +105,7 @@ export class Catalog extends React.Component<any, any>{
               associatedTargetDsType: "Zipkin"
             },
             {
-              id: 4,
+              id: 5,
               name: "Azure-PullMetric-Api",
               description: "Pull Azure metrics with Cloud API",
               Type: "PullApi",
@@ -117,7 +117,7 @@ export class Catalog extends React.Component<any, any>{
               associatedTargetDs: "NA"
             },
             {
-              id: 5,
+              id: 6,
               name: "Azure-PullLogs-Api",
               description: "Pull Azure Logs with Cloud API",
               Type: "PullApi",
@@ -129,7 +129,7 @@ export class Catalog extends React.Component<any, any>{
               associatedTargetDs: "NA"
             },
             {
-              id: 6,
+              id: 7,
               name: "Azure-PullLogs-Local",
               description: "Receive Azure Logs and Store in Local ES",
               Type: "ReceiveAndStoreLogs",
@@ -141,7 +141,7 @@ export class Catalog extends React.Component<any, any>{
               associatedTargetDsType: "ES"
             },
             {
-              id: 7,
+              id: 8,
               name: "Azure-StoreTrace-Local",
               description: "Receive Traces and Store in Local Zipkin DB",
               Type: "ReceiveAndStoreTrace",
@@ -163,8 +163,8 @@ export class Catalog extends React.Component<any, any>{
       },
       navHandle: {
         index: 0,
-        topKey: "Dev",
-        lowerkey: "commonMicroservices"
+        topKey: 0,
+        lowerKey: 0
       }
     }
     this.breadCrumbs = [
@@ -178,19 +178,65 @@ export class Catalog extends React.Component<any, any>{
       },
     ];
   }
-  handleUpperMenu = (inx: any, name: any) => {
-    let { catalogueManagement, navHandle } = this.state
-    this.state.navHandle.index = inx
-    this.setState({ navHandle, catalogueManagement: catalogueManagement, objKey: name })
-  }
-  handleLowerMenu = (val: any) => {
+  handleUpperMenu = (inx: any) => {
     let { navHandle } = this.state
-    navHandle.lowerkey = val;
+    navHandle.topKey = inx
+    navHandle.lowerKey = 0;
     this.setState({ navHandle })
+  }
+  handleLowerMenu = (inx: any) => {
+    let { navHandle } = this.state
+    navHandle.lowerKey = inx;
+    this.setState({ navHandle })
+  }
+  handleCard = (cardData: any) => {
+    let retData = []
+    if (cardData.length > 0) {
+      retData = [];
+      for (let i = 0; i < cardData.length; i++) {
+        const { id, name, description } = cardData[i]
+        retData.push(
+          <div className="blog-list-item box" key={id}>
+            <div className="module-card-content">
+              <div className="row">
+                <div className="col-md-1 col-sm-12 p-r-0">
+                  <img src={''} alt={name} />
+                </div>
+                <div className="col-md-11 col-sm-12">
+                  <h3 className="title is-block">{name}</h3>
+                  <p className="subtitle is-block">{description}</p>
+                </div>
+              </div>
+            </div>
+            <div className="module-card-footer">
+              <div className="module-card-footer-details">
+                <a>
+                  <img src={libraryIcon} alt="" />
+                  {`Add Catalog To library`}
+                </a>
+              </div>
+              <div className="module-card-footer-provider">
+                <a>
+                  <img src={previewDashboardIcon} alt="" />
+                  {`Preview Dashboard`}
+                </a>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    }
+    else {
+      retData = [];
+      retData.push(<div>No Data Found</div>)
+    }
+    return retData
   }
   render() {
     const { catalogueManagement, navHandle } = this.state;
-    const { topKey, index, lowerkey } = navHandle
+    const { topKey, lowerKey } = navHandle
+    let cardData = catalogueManagement[Object.keys(catalogueManagement)[topKey]];
+    cardData = cardData[Object.keys(cardData)[lowerKey]];
     return (
       <div className="perfmanager-dashboard-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="CATALOGUE MANAGEMENT" />
@@ -201,8 +247,8 @@ export class Catalog extends React.Component<any, any>{
                 <div className="col-lg-9 col-md-9 col-sm-12">
                   {catalogueManagement && <ul>
                     {Object.keys(catalogueManagement).map((cat: any, inx: any) =>
-                      <li key={inx} className={`${index === inx ? 'active' : ''}`}
-                        onClick={(e) => this.handleUpperMenu(inx, cat)}>{`${cat} Catalogue`}</li>)}
+                      <li key={inx} className={`${topKey === inx ? 'active' : ''}`}
+                        onClick={(e) => this.handleUpperMenu(inx)}>{`${cat} Catalogue`}</li>)}
                   </ul>}
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12">
@@ -213,9 +259,9 @@ export class Catalog extends React.Component<any, any>{
             <div className="catalogue-tabs-container">
               <div className="catalogue-inner-tabs">
                 {catalogueManagement && <ul>
-                  {Object.keys(catalogueManagement[topKey]).map((cat: any, inx: any) => <li key={inx}
-                    className={[lowerkey] == cat ? 'active' : ''}
-                    onClick={(e) => this.handleLowerMenu(cat)}>{cat}</li>)}
+                  {Object.keys(catalogueManagement[Object.keys(catalogueManagement)[topKey]]).map((cat: any, inx: any) => <li key={inx}
+                    className={lowerKey === inx ? 'active' : ''}
+                    onClick={(e) => this.handleLowerMenu(inx)}>{cat}</li>)}
                 </ul>}
               </div>
               <div className="catalogue-inner-tabs-container">
@@ -294,41 +340,10 @@ export class Catalog extends React.Component<any, any>{
                           </div>
                         </div>
                       </div>
-                      <div className="catalogue-boxes">
-                        {/* {cardData && cardData.length > 0 ? cardData.map((card: any, index: any) => {
-                                                    return (
-                                                        <div key={card.id} className="blog-list-item box">
-                                                            <div className="module-card-content">
-                                                                <div className="row">
-                                                                    <div className="col-md-1 col-sm-12 p-r-0">
-                                                                        <img src={card.image} alt={card.name} />
-                                                                    </div>
-                                                                    <div className="col-md-11 col-sm-12">
-                                                                        <h3 className="title is-block">{card.name}</h3>
-                                                                        <p className="subtitle is-block">{card.category}</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="module-card-footer">
-                                                                <div className="module-card-footer-details">
-                                                                    <a>
-                                                                        <img src={libraryIcon} alt="" />
-                                                                        {`Add Catalog To library`}
-                                                                    </a>
-                                                                </div>
-                                                                <div className="module-card-footer-provider">
-                                                                    <a>
-                                                                        <img src={previewDashboardIcon} alt="" />
-                                                                        {`Preview Dashboard`}
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                })
-                                                    : <div className="loading-text">Loading....</div>
-                                                } */}
-                      </div>
+                      {cardData ? <div className="catalogue-boxes">
+                        {this.handleCard(cardData)}
+                      </div> : cardData.length > 0 && <div className="loading-text">...loading</div>
+                      }
                     </div>
                   </div>
                 </div>
