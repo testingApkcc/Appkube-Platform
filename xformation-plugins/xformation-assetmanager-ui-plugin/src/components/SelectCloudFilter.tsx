@@ -444,30 +444,26 @@ export class SelectCloudFilter extends React.Component<any, any> {
                     <div className={showTagFilter === true ? "fliters-collapse active" : "fliters-collapse"}>
                         {optionJsonData.map((filterData: any, index: any) => {
                             return (
-                                <>
-                                    <div className="form-group search-control">
-                                        <button className="btn btn-search">
-                                            <i className="fa fa-search"></i>
-                                        </button>
-                                        {/* <input type="text" className="input-group-text" value={searchKey} onChange={this.searchTag} placeholder="Search" />
-                        <button className="btn btn-clear" onClick={this.clearAllTagFilter}>
-                            <i className="fa fa-times"></i>
-                            Clear
-                        </button> */}
-                                    </div>
-                                    <div className="fliters-links">
-
-
-                                        <div key={filterData.id}>
-                                            <div>{filterData.name}</div>
-                                            {this.displayTagList(filterData.filter)}
+                                <div className="fliters" key={filterData.id}>
+                                    <div className="fliter-box">
+                                        <div className='heading'>{filterData.name}</div>
+                                        <div className="form-group search-control">
+                                            <button className="btn btn-search">
+                                                <i className="fa fa-search"></i>
+                                            </button>
+                                            <input type="text" className="input-group-text" value={""} onChange={this.searchTag} placeholder="Search" />
+                                            <button className="btn btn-clear" onClick={this.clearAllTagFilter}>
+                                                <i className="fa fa-times"></i>
+                                            </button>
                                         </div>
-
-                                    </div> </>)
+                                        <div className="fliters-links">
+                                            {this.displayTagList(filterData.filter)}
+                                        </div> 
+                                    </div>
+                                </div>
+                            )
                         })}
-
                     </div>
-
                 ) : <>.... LOADING</>}
                 {/* <div className={showTagFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div> */}
             </div>
