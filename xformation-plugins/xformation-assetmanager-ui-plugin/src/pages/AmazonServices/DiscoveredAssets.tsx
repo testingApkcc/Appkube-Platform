@@ -29,7 +29,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       totalProducts: 0,
       activeNode: '',
     };
-    this.config = configFun('http://3.208.22.155:5057', '');
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   componentDidMount() {
