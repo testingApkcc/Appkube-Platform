@@ -205,7 +205,6 @@ export class Performance extends React.Component<any, any>{
     }
 
     updateDashboard = (data: any) => {
-        console.log(data);
         this.setState({
             dashboardData: data,
         })
@@ -536,6 +535,16 @@ export class Performance extends React.Component<any, any>{
         return [];
     };
 
+    nextClick = (step: any) => {
+        if (step === 1) {
+            this.enableDashboardRef.current.setDashboardData(this.state.dashboardData);
+        } else if (step === 2) {
+            this.previewRef.current.setDashboardData(this.state.dashboardData);
+        }else if(step === 3){
+            this.verifyAndSaveRef.current.setDashboardData(this.state.dashboardData);
+        }
+    }
+
     render() {
         const { enablePerformanceMonitoring, isAlertOpen, severity, message, showConfigWizard, iFrameLoaded, viewJson, activeDashboard } = this.state;
         let activeDB = null;
@@ -592,7 +601,7 @@ export class Performance extends React.Component<any, any>{
                         }
                         {
                             showConfigWizard &&
-                            <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} />
+                            <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} nextClick={this.nextClick} />
                         }
                     </>
                 )}

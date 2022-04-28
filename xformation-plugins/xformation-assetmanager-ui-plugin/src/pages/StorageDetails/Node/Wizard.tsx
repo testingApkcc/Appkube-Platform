@@ -12,6 +12,7 @@ export class Wizard extends React.Component<any, any> {
     this.setState({
       currentStep: activeStep,
     });
+    this.props.nextClick(activeStep);
   };
 
   setActiveStep = (step: any) => {
