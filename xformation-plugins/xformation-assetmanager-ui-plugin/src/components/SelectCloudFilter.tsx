@@ -554,10 +554,8 @@ export class SelectCloudFilter extends React.Component<any, any> {
     }
 
     clearAllTagFilter = (index:any) => {
-        debugger;
         const { searchKey, displayJsonData } = this.state;
         searchKey[index]="";
-        
         for (let k = 0; k < displayJsonData[index].filter.length; k++) {
             displayJsonData[index].filter[k].isHide=true;
     }
@@ -575,17 +573,14 @@ export class SelectCloudFilter extends React.Component<any, any> {
         if (value==="") {
             for (let k = 0; k < displayJsonData[index].filter.length; k++) {
                     displayJsonData[index].filter[k].isHide=true;
-                    displayJsonData[index].filter[k].isChecked=false;
             }
         }
         else {
             for (let k = 0; k < displayJsonData[index].filter.length; k++) {
                 if (displayJsonData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
                     displayJsonData[index].filter[k].isHide=true
-                    displayJsonData[index].filter[k].isChecked=true
                 }
                 else{displayJsonData[index].filter[k].isHide=false;
-                    displayJsonData[index].filter[k].isChecked=false;
                 }
             }
         }
@@ -632,7 +627,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                         })}
                     </div>
                 ) : <>.... LOADING</>}
-                {/* <div className={showTagFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div> */}
+                <div className={showTagFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div>
             </div>
         );
     }
