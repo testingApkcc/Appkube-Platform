@@ -121,3 +121,12 @@
     }
   }
 }
+
+.no-data-avalable {
+  display: flex;
+  width: 100%;
+  max-height: 400px;
+  min-height: 400px;
+  align-items: center;
+  justify-content: center;
+}
