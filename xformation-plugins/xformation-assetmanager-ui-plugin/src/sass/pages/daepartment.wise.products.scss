@@ -971,11 +971,10 @@
                                                 .gauge__needle {
                                                     z-index: 4;
                                                     background-color: #1d1c1d;
-                                                    height: 3px;
+                                                    height: 2px;
                                                     width: 15px;
                                                     left: 22px;
                                                     top: 20px;
-                                                    clip-path: polygon(50% 0%, 45% 100%, 55% 100%);
                                                     position: absolute;
                                                     -webkit-transform-origin: left center;
                                                     -moz-transform-origin: left center;
