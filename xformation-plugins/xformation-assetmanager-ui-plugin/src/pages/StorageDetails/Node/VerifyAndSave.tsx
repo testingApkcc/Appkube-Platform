@@ -4,76 +4,97 @@ export class VerifyAndSave extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            selectedData: [],
-            selectedDashboards:[],
+            selectedData: {},
+            selectedDashboards: [],
         };
     }
 
-    componentDidUpdate(previousProps: any, previousState: any){
-        if(this.props.selectedData !== previousProps.selectedData){
-            const selectedData = this.props.selectedData;
-            this.setState({
-                selectedData
-            })
-        }
+    componentDidUpdate(previousProps: any, previousState: any) {
+        // if (this.props.selectedData !== previousProps.selectedData) {
+        //     const selectedData = this.props.selectedData;
+        //     this.setState({
+        //         selectedData
+        //     })
+        // }
     }
 
-    handleChange(e: any, obj: any, index: any) {
-        let isChecked = e.target.checked;
-        const {selectedDashboards} = this.state;
-        if(isChecked){
-            selectedDashboards.push(obj);
-            this.setState({selectedDashboards: selectedDashboards});
-        }else{
-            this.removeObject(obj, selectedDashboards);
-        }
+    setDashboardData = (data: any) => {
+        this.setState({
+            selectedData: data,
+        })
     }
-    
-    removeObject(obj: any, selData: any){
+
+    handleChange(e: any, i: any, j: any) {
+        // let isChecked = e.target.checked;
+        // const { selectedDashboards } = this.state;
+        // if (isChecked) {
+        //     selectedDashboards.push(obj);
+        //     this.setState({ selectedDashboards: selectedDashboards });
+        // } else {
+        //     this.removeObject(obj, selectedDashboards);
+        // }
+    }
+
+    removeObject(obj: any, selData: any) {
         let index = selData.indexOf(obj);
         selData.splice(index, 1);
-        this.setState({selectedDashboards: selData});
+        this.setState({ selectedDashboards: selData });
     }
 
     getSelection = () => {
         return this.state.selectedDashboards;
     };
-    
+
 
     displayTable = () => {
         const retData = [];
         const { selectedData } = this.state;
-        for (let i = 0; i<selectedData.length; i++) {
-            const obj = selectedData[i];
-            retData.push(
-                <table className="table-tbody first-table" width="100%">
-                    <tr>
-                        <td style={{ paddingLeft: '0', paddingRight: '0' }}>
-                            <table width="100%">
-                                <tr>
-                                    <td>
-                                        <a>{this.props.inputName}</a>
-                                    </td>
-                                    <td>
-                                        <a>{obj.inputType}</a>
-                                    </td>
-                                    <td style={{ paddingLeft: '0', paddingRight: '0' }}>
-                                        <table className="table-inner" width="100%">
-                                            <tbody>
-                                                <tr>
-                                                    {/* <td><input type="checkbox" id={`${i}`} onChange={e =>this.handleChange(e, obj, i)}/></td> */}
-                                                    <td>{obj.dashboardUuid}</td>
-                                                </tr>
-                                                
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            );
+        if (selectedData && selectedData.DataSources) {
+            for (let i = 0; i < selectedData.DataSources.length; i++) {
+                const obj = selectedData.DataSources[i];
+                let dashboardJSX = [];
+                if (selectedData.CloudDashBoards && selectedData.CloudDashBoards.length > 0) {
+                    for (let j = 0; j < selectedData.CloudDashBoards.length; j++) {
+                        if (selectedData.CloudDashBoards[j].associatedDataSourceType === obj.name) {
+                            if (selectedData.CloudDashBoards[j].isChecked) {
+                                dashboardJSX.push(
+                                    <tr>
+                                        <td><input type="checkbox" id={`${i}`} checked={selectedData.CloudDashBoards[j].isChecked} onChange={e => this.handleChange(e, j, i)} /></td>
+                                        <td>{selectedData.CloudDashBoards[j].associatedDataSourceType}</td>
+                                    </tr>
+                                )
+                            }
+                        }
+                    }
+                }
+                if (obj.isChecked) {
+                    retData.push(
+                        <table className="table-tbody first-table" width="100%">
+                            <tr>
+                                <td style={{ paddingLeft: '0', paddingRight: '0' }}>
+                                    <table width="100%">
+                                        <tr>
+                                            <td>
+                                                <a>{obj.name}</a>
+                                            </td>
+                                            <td>
+                                                <a>{obj.Type}</a>
+                                            </td>
+                                            <td style={{ paddingLeft: '0', paddingRight: '0' }}>
+                                                <table className="table-inner" width="100%">
+                                                    <tbody>
+                                                        {dashboardJSX}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    );
+                }
+            }
         }
         return retData;
     }
