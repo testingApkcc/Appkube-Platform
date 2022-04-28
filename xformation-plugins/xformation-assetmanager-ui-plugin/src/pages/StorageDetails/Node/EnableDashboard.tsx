@@ -13,6 +13,25 @@ export class EnableDashboard extends React.Component<any, any> {
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
+  componentDidMount() {
+    if (this.props.dashboard) {
+      console.log(this.props.dashboard)
+      // this.setState({
+      //   tableData: this.props.dashboard,
+      // })
+    }
+  }
+
+  componentDidUpdate(previousProps: any, previousState: any) {
+    if (this.props.dashboard !== previousProps.dashboard) {
+      console.log(this.props.dashboard)
+      // const selectedData = this.props.selectedData;
+      // this.setState({
+      //     selectedData
+      // })
+    }
+  }
+
   getParameterByName = (name: any, url: any) => {
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -58,14 +77,7 @@ export class EnableDashboard extends React.Component<any, any> {
       console.log("Exception in EnableDashboard. Error: ", err);
     }
   }
-  // componentDidUpdate(previousProps: any, previousState: any){
-  //     if(this.props.selectedData !== previousProps.selectedData){
-  //         const selectedData = this.props.selectedData;
-  //         this.setState({
-  //             selectedData
-  //         })
-  //     }
-  // }
+
 
   getSelection = () => {
     return this.state.enabledDashboards;
