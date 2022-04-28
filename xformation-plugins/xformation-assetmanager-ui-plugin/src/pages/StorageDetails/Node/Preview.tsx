@@ -7,7 +7,7 @@ export class Preview extends React.Component<any, any> {
       inputName: this.props.inputName,
       selectedInput: [],
       selectedDashboards: [],
-      activeDashboard: [0, 0],
+      activeDashboard: 0,
       isLoading: false,
     };
   }
@@ -17,16 +17,22 @@ export class Preview extends React.Component<any, any> {
       const selectedInput = this.props.selectedInput;
       this.setState({
         selectedInput,
-        activeDashboard: [0, this.state.activeDashboard[1]],
+        // activeDashboard: [0, this.state.activeDashboard[1]],
       });
     }
     if (this.props.selectedDashboards !== previousProps.selectedDashboards) {
       const selectedDashboards = this.props.selectedDashboards;
       this.setState({
         selectedDashboards,
-        activeDashboard: [this.state.activeDashboard[0], 0],
+        // activeDashboard: [this.state.activeDashboard[0], 0],
       });
     }
+  }
+
+  setDashboardData = (data: any) => {
+    this.setState({
+      selectedDashboards: data
+    })
   }
 
   getParameterByName = (name: any, url: any) => {
@@ -39,60 +45,62 @@ export class Preview extends React.Component<any, any> {
   };
 
   renderDashboardList = () => {
-    const { selectedInput, selectedDashboards, activeDashboard } = this.state;
-    const cloud = this.getParameterByName("cloud", window.location.href);
-    const type = this.getParameterByName("type", window.location.href);
-    if (selectedInput && selectedDashboards) {
+    const { selectedDashboards, activeDashboard } = this.state;
+    // const cloud = this.getParameterByName("cloud", window.location.href);
+    // const type = this.getParameterByName("type", window.location.href);
+    if (selectedDashboards && selectedDashboards.DataSources) {
       const retData = [];
-      for (let i = 0; i < selectedInput.length; i++) {
-        let obj = selectedInput[i];
-        for (let j = 0; j < selectedDashboards.length; j++) {
-          const selectionData = selectedDashboards[j];
-          const title =
-            cloud +
-            "_" +
-            type +
-            "_" +
-            obj.name +
-            "_" +
-            selectionData.dashboardUuid;
-          retData.push(
-            <li
-              title={title}
-              key={selectionData.dashboardUuid}
-              className={`button ${
-                activeDashboard[0] === i && activeDashboard[1] === j
-                  ? "active"
-                  : ""
-              }`}
-              onClick={() =>
-                this.setState({ activeDashboard: [i, j], iFrameLoaded: false })
+      for (let i = 0; i < selectedDashboards.DataSources.length; i++) {
+        const selectionData = selectedDashboards.DataSources[i];
+        // const title = cloud + "_" + type + "_" + selectionData.id;
+        if (selectionData.isChecked) {
+          if (selectedDashboards.CloudDashBoards && selectedDashboards.CloudDashBoards.length > 0) {
+            for (let j = 0; j < selectedDashboards.CloudDashBoards.length; j++) {
+              if (selectedDashboards.CloudDashBoards[j].associatedDataSourceType === selectionData.name) {
+                if (selectedDashboards.CloudDashBoards[j].isChecked) {
+                  retData.push(
+                    <li
+                      title={selectedDashboards.CloudDashBoards[j].associatedDataSourceType}
+                      key={selectionData.id}
+                      className={`button ${activeDashboard === j
+                        ? "active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        this.setState({ activeDashboard: j, iFrameLoaded: false })
+                      }
+                    >
+                      {selectedDashboards.CloudDashBoards[j].associatedDataSourceType}
+                    </li>
+                  );
+                }
               }
-            >
-              {title}
-            </li>
-          );
+            }
+          }
         }
       }
+      // }
       return retData;
     }
     return [];
   };
 
   renderIframe = () => {
-    const { activeDashboard, selectedDashboards, selectedInput } = this.state;
-    const input = selectedInput[activeDashboard[0]];
-    const dashboard = selectedDashboards[activeDashboard[1]];
-    if (input && dashboard) {
-      return (
-        <iframe
-          key={`${activeDashboard[0]}-${activeDashboard[1]}`}
-          src={`/jsondashboard?cloudType=${dashboard.type}&elementType=${dashboard.elementType}&accountId=${dashboard.accountId}&tenantId=${dashboard.tenantId}&inputType=${dashboard.inputType}&fileName=${dashboard.fileName}&dataSource=${input.name}`}
-          onLoad={() => {
-            this.setState({ iFrameLoaded: true });
-          }}
-        ></iframe>
-      );
+    const { activeDashboard, selectedDashboards } = this.state;
+    if (selectedDashboards && selectedDashboards.CloudDashBoards) {
+      // const input = selectedInput[activeDashboard[0]];
+      const dashboard = selectedDashboards.CloudDashBoards[activeDashboard];
+      if (dashboard) {
+        return (
+          <iframe
+            key={`${activeDashboard}`}
+            src={`/jsondashboard`}
+            onLoad={() => {
+              this.setState({ iFrameLoaded: true });
+            }}
+          ></iframe>
+        );
+      }
     }
     return <div>No Dashboard Selected</div>;
   };

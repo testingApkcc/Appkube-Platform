@@ -127,17 +127,17 @@ export class VerifyInputs extends React.Component<any, any> {
 
   handleChange(e: any, i: any, j: any) {
     const { checked } = e.target;
-    const { tableData } = this.state;
+    const { tableData,selectedData } = this.state;
     tableData.DataSources[i].isChecked = checked;
     tableData.CloudDashBoards[j].isChecked = checked;
     this.props.updateDashboard(tableData);
-    // if (isChecked) {
-    //   selectedData.push(obj);
-    //   this.setState({ selectedData: selectedData });
-    // } else {
-    //   //const keys = Object.keys(selectedData);
-    //   this.removeObject(obj, selectedData);
-    // }
+    if (checked) {
+      selectedData.push(tableData.DataSources[i]);
+      this.setState({ selectedData: selectedData });
+    } else {
+      //const keys = Object.keys(selectedData);
+      this.removeObject(tableData.DataSources[i], selectedData);
+    }
   }
 
   removeObject(obj: any, selData: any) {

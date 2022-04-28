@@ -176,7 +176,9 @@ class OpsCenteral extends React.Component<any, any> {
                 );
               })
             ) : (
-              <>No Data Avalable</>
+              <div className="col-sm-12">
+                <div className="d-block text-center no-data-avalable">No Data Avalable</div>
+              </div>
             )}
           </div>
         </div>

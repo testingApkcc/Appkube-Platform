@@ -2,9 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DashboardJSONLoader from '../dashboard-json-loader';
-import { config } from '../config';
-// import { data } from './dummyData';
-import { backendSrv } from 'app/core/services/backend_srv';
+// import { config } from '../config';
+import { data } from './dummyData';
+// import { backendSrv } from 'app/core/services/backend_srv';
 
 // Services & Utils
 export interface Props {
@@ -22,7 +22,7 @@ class JustDashboardJSON extends React.Component<Props, State> {
     super(props);
     this.state = {
       isLoading: false,
-      data: null,
+      data: data,
     };
   }
 
@@ -51,26 +51,26 @@ class JustDashboardJSON extends React.Component<Props, State> {
         pageToolbar[0].style.display = 'none';
       }
     }, 1000);
-    const cloudType = this.getParameterByName('cloudType', window.location.href);
-    const elementType = this.getParameterByName('elementType', window.location.href);
-    const accountId = this.getParameterByName('accountId', window.location.href);
-    const tenantId = this.getParameterByName('tenantId', window.location.href);
-    const inputType = this.getParameterByName('inputType', window.location.href);
-    const fileName = this.getParameterByName('fileName', window.location.href);
-    const dataSource = this.getParameterByName('dataSource', window.location.href);
-    if (cloudType && elementType && accountId && tenantId && inputType && fileName && dataSource) {
-      const url = `${config.PREVIEW_DASHBOARDS_URL}?cloudType=${cloudType}&elementType=${elementType}&accountId=${accountId}&tenantId=${tenantId}&inputType=${inputType}&fileName=${fileName}&dataSource=${dataSource}`;
-      backendSrv.get(url).then(
-        (res: any) => {
-          this.setState({
-            data: JSON.parse(res.object.data),
-          });
-        },
-        (err: any) => {
-          console.log(err);
-        }
-      );
-    }
+    //   const cloudType = this.getParameterByName('cloudType', window.location.href);
+    //   const elementType = this.getParameterByName('elementType', window.location.href);
+    //   const accountId = this.getParameterByName('accountId', window.location.href);
+    //   const tenantId = this.getParameterByName('tenantId', window.location.href);
+    //   const inputType = this.getParameterByName('inputType', window.location.href);
+    //   const fileName = this.getParameterByName('fileName', window.location.href);
+    //   const dataSource = this.getParameterByName('dataSource', window.location.href);
+    //   if (cloudType && elementType && accountId && tenantId && inputType && fileName && dataSource) {
+    //     const url = `${config.PREVIEW_DASHBOARDS_URL}?cloudType=${cloudType}&elementType=${elementType}&accountId=${accountId}&tenantId=${tenantId}&inputType=${inputType}&fileName=${fileName}&dataSource=${dataSource}`;
+    //     backendSrv.get(url).then(
+    //       (res: any) => {
+    //         this.setState({
+    //           data: JSON.parse(res.object.data),
+    //         });
+    //       },
+    //       (err: any) => {
+    //         console.log(err);
+    //       }
+    //     );
+    //   }
   }
 
   getParameterByName = (name: string, url: string) => {

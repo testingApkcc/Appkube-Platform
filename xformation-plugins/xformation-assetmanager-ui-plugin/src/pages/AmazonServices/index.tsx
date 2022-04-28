@@ -43,7 +43,7 @@ export class AmazonServices extends React.Component<any, any> {
     this.steps = [
       {
         name: "Discovered Assets",
-        component: <DiscoveredAssets />,
+        component: <DiscoveredAssets {...props}/>,
       },
       {
         name: "Applications",
