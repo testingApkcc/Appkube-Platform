@@ -3980,9 +3980,99 @@ a:hover {
   ul
   li
   .icon
+  .gauge {
+  position: relative;
+  width: 56px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .icon
+  .gauge
+  .gauge__container {
+  width: 44px;
+  height: 28px;
+  position: relative;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .icon
+  .gauge
+  .gauge__container
   img {
   max-width: 100%;
   height: auto;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .icon
+  .gauge
+  .gauge__container
+  .gauge__center {
+  z-index: 3;
+  position: absolute;
+  background-color: #1d1c1d;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  top: 18px;
+  left: 19px;
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .content
+  .tabs-container
+  .tabs-content
+  ul
+  li
+  .icon
+  .gauge
+  .gauge__container
+  .gauge__needle {
+  z-index: 4;
+  background-color: #1d1c1d;
+  height: 2px;
+  width: 19px;
+  left: 22px;
+  top: 20px;
+  position: absolute;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .department-wise-container
   .department-fliters-container

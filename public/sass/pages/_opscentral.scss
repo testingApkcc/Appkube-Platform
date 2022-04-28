@@ -10,7 +10,7 @@
       border-radius: 5px;
       border: 1px solid #f8f8f8;
       cursor: pointer;
-      box-shadow: rgba(0, 0, 0, 0.2) 3.4px 3.4px 4.2px;
+      box-shadow: rgba(0, 0, 0, 0.2) 2.4px 2.4px 3.2px;
       .ops-box-inner {
         display: flex;
         margin-bottom: 20px;
@@ -19,9 +19,6 @@
           height: 40px;
           .icon {
             display: block;
-          }
-          .color-icon {
-            display: none;
           }
         }
         .ops-content {
@@ -63,14 +60,7 @@
         }
       }
       &:hover {
-        .ops-image {
-          .icon {
-            display: none;
-          }
-          .color-icon {
-            display: block;
-          }
-        }
+        box-shadow: rgba(0, 0, 0, 0.2) 4.4px 4.4px 5.2px;
       }
     }
   }
