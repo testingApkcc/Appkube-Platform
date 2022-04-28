@@ -91,7 +91,8 @@
             padding-top: 10px;
             padding-bottom: 10px;
             min-height: calc(100% - 42px);
-            .chart-spinner{
+
+            .chart-spinner {
                 position: relative;
                 display: flex;
                 justify-content: center;
@@ -646,7 +647,7 @@
                     color: #24292e;
                 }
 
-                .cloud-environment{
+                .cloud-environment {
                     display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
@@ -730,7 +731,7 @@
                     }
                 }
 
-                .cloud-environment{
+                .cloud-environment {
                     display: inline-block;
                     vertical-align: top;
                     padding: 10px 15px;
@@ -937,10 +938,59 @@
                                         background-color: #CBDCEB;
                                         margin-right: 2px;
 
-                                        img {
-                                            max-width: 100%;
-                                            height: auto;
+                                        .gauge {
+                                            position: relative;
+                                            width: 56px;
+                                            height: 36px;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            background-color: #f7f7f7;
+
+                                            .gauge__container {
+                                                width: 44px;
+                                                height: 28px;
+                                                position: relative;
+
+                                                img {
+                                                    max-width: 100%;
+                                                    height: auto;
+                                                }
+
+                                                .gauge__center {
+                                                    z-index: 3;
+                                                    position: absolute;
+                                                    background-color: #1d1c1d;
+                                                    border-radius: 50%;
+                                                    width: 6px;
+                                                    height: 6px;
+                                                    top: 18px;
+                                                    left: 19px;
+                                                }
+
+                                                .gauge__needle {
+                                                    z-index: 4;
+                                                    background-color: #1d1c1d;
+                                                    height: 2px;
+                                                    width: 19px;
+                                                    left: 22px;
+                                                    top: 20px;
+                                                    position: absolute;
+                                                    -webkit-transform-origin: left center;
+                                                    -moz-transform-origin: left center;
+                                                    -ms-transform-origin: left center;
+                                                    -o-transform-origin: left center;
+                                                    transform-origin: left center;
+                                                    -webkit-transition: all 1s ease-in-out;
+                                                    -moz-transition: all 1s ease-in-out;
+                                                    -ms-transition: all 1s ease-in-out;
+                                                    -o-transition: all 1s ease-in-out;
+                                                    transition: all 1s ease-in-out;
+                                                }
+                                            }
                                         }
+
+
                                     }
 
                                     .heading {

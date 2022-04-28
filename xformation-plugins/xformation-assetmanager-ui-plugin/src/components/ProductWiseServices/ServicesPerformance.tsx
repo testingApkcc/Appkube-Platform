@@ -102,7 +102,26 @@ export class ServicesPerformance extends React.Component<any, any> {
           retData.push(
             <>
               <li>
-                {!category.isOpen && <div className='icon'><img src={images.Icon} alt="" /></div>}
+                {!category.isOpen && 
+                  <div className='icon'>
+                    <div className="gauge">
+                      <div className="gauge__container">
+                        <img src={images.Icon} alt="" />
+                        <div className="gauge__center"></div>
+                        <div
+                          className="gauge__needle"
+                          style={{
+                            transform: `rotate(${
+                              parseInt(category.overallScore, 10) /
+                                200 +
+                              0.5
+                            }turn)`,
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                }
                 <div className={category.isOpen === true ? 'heading full' : 'heading'} >
                   <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
                     {category.name}
@@ -346,11 +365,11 @@ export class ServicesPerformance extends React.Component<any, any> {
             <h3>Deployment environments</h3>
             <div className='buttons'>
               <h3 style={{ paddingRight: '10px' }}>{this.viewMapping[hostingType]}</h3>
-              <button className='btn'>
-                <i className='fa fa-plus'></i>
-              </button>
               <button className='btn' onClick={() => this.handleView()}>
                 <i className='fa fa-eye'></i>
+              </button>
+              <button className='btn'>
+                <i className='fa fa-plus'></i>
               </button>
               <button className='btn'>
                 <i className='fa fa-bars'></i>
