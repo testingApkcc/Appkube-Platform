@@ -139,7 +139,7 @@ class SecCenteral extends React.Component<any, any> {
                 );
               })
             ) : (
-              <>...loading</>
+              <>No Data Avalable</>
             )}
           </div>
         </div>

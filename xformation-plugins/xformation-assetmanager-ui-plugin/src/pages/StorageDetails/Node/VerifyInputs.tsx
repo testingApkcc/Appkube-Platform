@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RestService } from '../../_service/RestService';
+// import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 
 export class VerifyInputs extends React.Component<any, any> {
@@ -9,119 +9,135 @@ export class VerifyInputs extends React.Component<any, any> {
     this.state = {
       inputName: this.props.inputName,
       configureInputs: false,
-      tableData: [],
       selectedData: [],
+      tableData: this.props.dashboard
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
+  }
+
+  componentDidUpdate(prevProps: any, prevState: any) {
+    if (prevProps.dashboard !== this.props.dashboard) {
+      this.setState({
+        tableData: this.props.dashboard,
+      })
+    }
   }
 
   configureInputs = async () => {
     this.setState({
       configureInputs: !this.state.configureInputs,
-    });
-    const tenantId = this.getParameterByName("tenantId", window.location.href);
-    const accountId = this.getParameterByName(
-      "accountId",
-      window.location.href
-    );
-    try {
-      await RestService.getData(
-        `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
-        null,
-        null
-      ).then(
-        (response: any) => {
-          if (response.code !== 417) {
-            this.setState({
-              tableData: response.object,
-            });
-          }
-        },
-        (error: any) => {
-          console.log("VerifyInput. Search input failed. Error: ", error);
-        }
-      );
-    } catch (err) {
-      console.log("VerifyInput. Excepiton in search input: ", err);
-    }
+    })
+    // const tenantId = this.getParameterByName("tenantId", window.location.href);
+    // const accountId = this.getParameterByName(
+    //   "accountId",
+    //   window.location.href
+    // );
+    // try {
+    //   await RestService.getData(
+    //     `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
+    //     null,
+    //     null
+    //   ).then(
+    //     (response: any) => {
+    //       if (response.code !== 417) {
+    //         this.setState({
+    //           tableData: response.object,
+    //         });
+    //       }
+    //     },
+    //     (error: any) => {
+    //       console.log("VerifyInput. Search input failed. Error: ", error);
+    //     }
+    //   );
+    // } catch (err) {
+    //   console.log("VerifyInput. Excepiton in search input: ", err);
+    // }
   };
 
-  getParameterByName = (name: any, url: any) => {
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return "";
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  };
+  // getParameterByName = (name: any, url: any) => {
+  //   name = name.replace(/[\[\]]/g, "\\$&");
+  //   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+  //     results = regex.exec(url);
+  //   if (!results) return null;
+  //   if (!results[2]) return "";
+  //   return decodeURIComponent(results[2].replace(/\+/g, " "));
+  // };
 
   async componentDidMount() {
+    if (this.props.dashboard) {
+      this.setState({
+        tableData: this.props.dashboard,
+      })
+    }
     //const cloud = this.getParameterByName("cloud", window.location.href);
     //const type = this.getParameterByName("type", window.location.href);
-    const tenantId = this.getParameterByName("tenantId", window.location.href);
-    const accountId = this.getParameterByName(
-      "accountId",
-      window.location.href
-    );
-    if (tenantId) {
-      try {
-        await RestService.getData(
-          `${this.config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`,
-          null,
-          null
-        ).then(
-          (response: any) => {
-            if (response.code !== 417 && response.object.length > 0) {
-              this.setState({
-                configureInputs: true,
-              });
-            }
-          },
-          (error: any) => {
-            console.log(
-              "VerifyInput. Search input config failed. Error: ",
-              error
-            );
-          }
-        );
-      } catch (err) {
-        console.log("VerifyInput. Excepiton in search input config: ", err);
-      }
-      try {
-        await RestService.getData(
-          `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
-          null,
-          null
-        ).then(
-          (response: any) => {
-            if (response.code !== 417) {
-              this.setState({
-                tableData: response.object,
-              });
-            }
-          },
-          (error: any) => {
-            console.log("Exception in finding inputs. Error: ", error);
-          }
-        );
-      } catch (err) {
-        console.log("Error in finding inputs. Error: ", err);
-      }
-    } else {
-      console.log("Tenant id is not present");
-    }
+    // const tenantId = this.getParameterByName("tenantId", window.location.href);
+    // const accountId = this.getParameterByName(
+    //   "accountId",
+    //   window.location.href
+    // );
+    // if (tenantId) {
+    //   try {
+    //     await RestService.getData(
+    //       `${this.config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`,
+    //       null,
+    //       null
+    //     ).then(
+    //       (response: any) => {
+    //         if (response.code !== 417 && response.object.length > 0) {
+    //           this.setState({
+    //             configureInputs: true,
+    //           });
+    //         }
+    //       },
+    //       (error: any) => {
+    //         console.log(
+    //           "VerifyInput. Search input config failed. Error: ",
+    //           error
+    //         );
+    //       }
+    //     );
+    //   } catch (err) {
+    //     console.log("VerifyInput. Excepiton in search input config: ", err);
+    //   }
+    //   try {
+    //     await RestService.getData(
+    //       `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
+    //       null,
+    //       null
+    //     ).then(
+    //       (response: any) => {
+    //         if (response.code !== 417) {
+    //           this.setState({
+    //             tableData: response.object,
+    //           });
+    //         }
+    //       },
+    //       (error: any) => {
+    //         console.log("Exception in finding inputs. Error: ", error);
+    //       }
+    //     );
+    //   } catch (err) {
+    //     console.log("Error in finding inputs. Error: ", err);
+    //   }
+    // } else {
+    //   console.log("Tenant id is not present");
+    // }
   }
 
-  handleChange(e: any, obj: any, index: any) {
-    let isChecked = e.target.checked;
-    const { selectedData } = this.state;
-    if (isChecked) {
-      selectedData.push(obj);
-      this.setState({ selectedData: selectedData });
-    } else {
-      //const keys = Object.keys(selectedData);
-      this.removeObject(obj, selectedData);
-    }
+  handleChange(e: any, i: any, j: any) {
+    const { checked } = e.target;
+    const { tableData } = this.state;
+    tableData.DataSources[i].isChecked = checked;
+    tableData.CloudDashBoards[j].isChecked = checked;
+    this.props.updateDashboard(tableData);
+    // if (isChecked) {
+    //   selectedData.push(obj);
+    //   this.setState({ selectedData: selectedData });
+    // } else {
+    //   //const keys = Object.keys(selectedData);
+    //   this.removeObject(obj, selectedData);
+    // }
   }
 
   removeObject(obj: any, selData: any) {
@@ -137,38 +153,48 @@ export class VerifyInputs extends React.Component<any, any> {
   displayTable = () => {
     const retData = [];
     const { tableData } = this.state;
-    // console.log("Total available Inputs: ", tableData);
-    // const keys = Object.keys(tableData);
-    for (let i = 0; i < tableData.length; i++) {
-      // retData.push(this.renderTable(tableData[i], i, tableData[i]));
-      retData.push(
-        <table className="table-tbody first-table" width="100%">
-          <tr>
-            <td style={{ paddingLeft: "0", paddingRight: "0" }}>
-              <table width="100%">
-                <tr>
-                  <td>
-                    <a>{tableData[i].name}</a>
-                  </td>
-                  <td>
-                    <a>{tableData[i].inputSource}</a>
-                  </td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      id={`${i}`}
-                      onChange={(e) => this.handleChange(e, tableData[i], i)}
-                    />
-                  </td>
-                  {/* <td style={{ paddingLeft: '0', paddingRight: '0' }}>
-                                        {innerTable}
-                                    </td> */}
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      );
+    if (tableData && tableData.DataSources) {
+      for (let i = 0; i < tableData.DataSources.length; i++) {
+        let tableValue = tableData.DataSources[i];
+        let dashboardJSX = [];
+        if (tableData.CloudDashBoards && tableData.CloudDashBoards.length > 0) {
+          for (let j = 0; j < tableData.CloudDashBoards.length; j++) {
+            if (tableData.CloudDashBoards[j].associatedDataSourceType === tableValue.name) {
+              dashboardJSX.push(
+                <>
+                  <input
+                    type="checkbox"
+                    id={`${i}`}
+                    onChange={(e) => this.handleChange(e, i, j)}
+                  />
+                  <span>{tableData.CloudDashBoards[j].associatedDataSourceType}</span>
+                </>
+              )
+            }
+          }
+        }
+        retData.push(
+          <table className="table-tbody first-table" width="100%">
+            <tr>
+              <td style={{ paddingLeft: "0", paddingRight: "0" }}>
+                <table width="100%">
+                  <tr>
+                    <td>
+                      <a>{tableValue.name}</a>
+                    </td>
+                    <td>
+                      <a>{tableValue.Type}</a>
+                    </td>
+                    <td>
+                      {dashboardJSX}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        );
+      }
     }
     // if(keys.length === 0){
     //     retData.push(
@@ -195,11 +221,11 @@ export class VerifyInputs extends React.Component<any, any> {
           <tbody>
             <tr>
               <td>
-                <input
+                {/* <input
                   type="checkbox"
                   id={`${index}_${i}`}
                   onChange={(e) => this.handleChange(e, obj, i)}
-                />
+                /> */}
               </td>
               <td>{obj.dashboardUuid}</td>
               {/* <td><a><i className="fa fa-eye"></i></a></td> */}

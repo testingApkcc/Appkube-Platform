@@ -211,14 +211,49 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     for (let i = 0; i < departmentList.length; i++) {
       const department = departmentList[i];
       const productList = department.productList;
-      const newProductList: any = [];
       productList.forEach((product: any) => {
         if (product.deploymentEnvironmentList && product.deploymentEnvironmentList.length > 0) {
           product.deploymentEnvironmentList[0].isOpen = true;
         }
-        newProductList.push(product);
+        const environments = product.deploymentEnvironmentList;
+        if(environments){
+          environments.forEach((environent: any) => {
+            const serviceCategoryList = environent.serviceCategoryList;
+            if(serviceCategoryList){
+              serviceCategoryList.forEach((category: any) => {
+                const serviceNameList = category.serviceNameList;
+                let serviceCategoryScore = 0;
+                if(serviceNameList){
+                  serviceNameList.forEach((serviceName: any) => {
+                    const tagList = serviceName.tagList;
+                    if(tagList){
+                      let overAllServiceNameScore = 0;
+                      tagList.forEach((tag: any) => {
+                        const serviceList = tag.serviceList;
+                        if(serviceList){
+                          let overAllTagScore = 0;
+                          serviceList.forEach((service: any) => {
+                            const {availability, dataProtection, performance, security, userExperiance} = service;
+                            const avg = (availability.score + dataProtection.score + performance.score + security.score + userExperiance.score) / 5;
+                            overAllTagScore += avg;
+                          });
+                          overAllTagScore = overAllTagScore / serviceList.length;
+                          overAllServiceNameScore += overAllTagScore;
+                        }
+                      });
+                      overAllServiceNameScore = overAllServiceNameScore / tagList.length;
+                      serviceCategoryScore = serviceCategoryScore + overAllServiceNameScore;
+                    }
+                  });
+                  serviceCategoryScore = serviceCategoryScore / serviceNameList.length;
+                }
+                category.overallScore = serviceCategoryScore;
+              });
+            }
+          });
+        }
       });
-      department.productList = newProductList;
+      // department.productList = newProductList;
     }
     this.setState({
       product: departmentList

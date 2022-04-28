@@ -8,100 +8,247 @@ export class SelectCloudFilter extends React.Component<any, any> {
             codeEditorValue: "",
             optionJsonData: [
                 {
-                    name: 'OU',
-                    value: 'ou',
-                    isChecked: false,
-                    id :1,
-                    subdata: [
-                        { name: 'IT Department', value: 'itdepartment', isChecked: false ,id :1},
-                        { name: 'Network Department', value: 'networkdepartment', isChecked: false, id :2},
-                        { name: 'Development', value: 'development', isChecked: false, id :3},
-                        { name: 'Testing', value: 'testing', isChecked: false, id :4},
-                    ],
+                    name: 'Products',
+                    key: 'products',
+                    id: 1,
+                    filter: [
+                        {
+                            label: 'Ems',
+                            value: 'ems',
+                            id: 1
+                        },
+                        {
+                            label: 'Procurement',
+                            value: 'procurement',
+                            id: 2
+                        },
+                        {
+                            label: 'HRMS',
+                            value: 'hrms',
+                            id: 3
+                        },
+                        {
+                            label: 'Supply Chain',
+                            value: 'supply-chain',
+                            id: 4
+                        }
+                    ]
                 },
                 {
-                    name: 'Status',
-                    value: 'status',
-                    isChecked: false,
-                    id :2,
-                    subdata: [
-                        { name: 'Enable', value: 'enable', isChecked: false , id :1},
-                        { name: 'Disable', value: 'disable', isChecked: false, id :2 },
-                    ],
+                    name: 'Environments',
+                    key: 'environments',
+                    id: 2,
+                    filter: [
+                        {
+                            label: 'AWS',
+                            value: 'aws',
+                            id: 1
+                        },
+                        {
+                            label: 'GCP',
+                            value: 'gcp',
+                            id: 2
+                        },
+                        {
+                            label: 'Kubernets',
+                            value: 'kubernets',
+                            id: 3
+                        },
+                        {
+                            label: 'Acronic',
+                            value: 'acronic',
+                            id: 4
+                        }
+                    ]
                 },
                 {
-                    name: 'No of Assets',
-                    value: 'noOFssets',
-                    isChecked: false,
-                    id :3,
-                    subdata: [],
+                    name: 'APP Services',
+                    key: 'app-services',
+                    id: 3,
+                    filter: [
+                        {
+                            label: 'Search',
+                            value: 'search',
+                            id: 1
+                        },
+                        {
+                            label: 'Security/RBMS',
+                            value: 'security-rbms',
+                            id: 2
+                        },
+                        {
+                            label: 'Preferance',
+                            value: 'preferance',
+                            id: 3
+                        },
+                        {
+                            label: 'Dataflow',
+                            value: 'dataflow',
+                            id: 4
+                        },
+                        {
+                            label: 'CMS/catlogue',
+                            value: 'cms-catalogue',
+                            id: 5
+                        }
+                    ]
                 },
                 {
-                    name: 'Platform',
-                    value: 'platform',
-                    isChecked: false,
-                    id :4,
-                    subdata: [],
-                }, {
-                    name: 'Logs',
-                    value: 'logs',
-                    isChecked: false,
-                    subdata: [],
-                }, {
-                    name: 'Performance & Availability',
-                    value: 'availabiity',
-                    isChecked: false,
-                    id :5,
-                    subdata: []
-                }
+                    name: 'Data Services',
+                    key: 'data-services',
+                    id: 4,
+                    filter: [
+                        {
+                            label: 'PostGreSQL',
+                            value: 'post-ger-sql',
+                            id: 1
+                        },
+                        {
+                            label: 'ElasticSearch',
+                            value: 'eastic-search',
+                            id: 2
+                        },
+                        {
+                            label: 'MongoDB',
+                            value: 'mongo-db',
+                            id: 3
+                        },
+                        {
+                            label: 'S3',
+                            value: 's3',
+                            id: 4
+                        }
+                    ]
+                },
+                {
+                    name: 'Common Services',
+                    key: 'common-services',
+                    id: 5,
+                    filter: [
+                        {
+                            label: 'State Machine',
+                            value: 'state-machine',
+                            id: 1
+                        },
+                        {
+                            label: 'Pref manager',
+                            value: 'pref-manager',
+                            id: 2
+                        },
+                        {
+                            label: 'Log manager',
+                            value: 'log-manager',
+                            id: 3
+                        },
+                        {
+                            label: 'Trace Manager',
+                            value: 'trace-manager',
+                            id: 4
+                        }
+                    ]
+                },
+                {
+                    name: 'Business Services',
+                    key: 'business-services',
+                    id: 5,
+                    filter: [
+                        {
+                            label: 'EMS',
+                            value: 'ems',
+                            id: 1
+                        },
+                        {
+                            label: 'Procurement',
+                            value: 'procurement',
+                            id: 2
+                        },
+                        {
+                            label: 'HRMS',
+                            value: 'hrms',
+                            id: 3
+                        },
+                        {
+                            label: 'Supply Chain',
+                            value: 'supply-chain',
+                            id: 4
+                        }
+                    ]
+                },
+                {
+                    name: 'SAL Violation',
+                    key: 'sal-violation',
+                    id: 5,
+                    filter: [
+                        {
+                            label: 'SLA V1',
+                            value: 'sla-v1',
+                            id: 1
+                        },
+                        {
+                            label: 'SLA V2',
+                            value: 'sla-v2',
+                            id: 2
+                        },
+                        {
+                            label: 'SLA V3',
+                            value: 'sla-v3',
+                            id: 3
+                        },
+                        {
+                            label: 'SLA V4',
+                            value: 'sla-v4',
+                            id: 4
+                        }
+                    ]
+                },
             ],
             displayJsonData: [
                 {
                     name: 'OU',
                     value: 'ou',
                     isChecked: false,
-                    id :1,
+                    id: 1,
                     subdata: [
-                        { name: 'IT Department', value: 'itdepartment', isChecked: false, id :1},
-                        { name: 'Network Department', value: 'networkdepartment', isChecked: false, id :2},
-                        { name: 'Development', value: 'development', isChecked: false, id :3},
-                        { name: 'Testing', value: 'testing', isChecked: false, id :4},
+                        { name: 'IT Department', value: 'itdepartment', isChecked: false, id: 1 },
+                        { name: 'Network Department', value: 'networkdepartment', isChecked: false, id: 2 },
+                        { name: 'Development', value: 'development', isChecked: false, id: 3 },
+                        { name: 'Testing', value: 'testing', isChecked: false, id: 4 },
                     ],
                 },
                 {
                     name: 'Status',
                     value: 'status',
                     isChecked: false,
-                    id :2,
-                    subdata: [
-                        { name: 'Enable', value: 'enable', isChecked: false, id :1},
-                        { name: 'Disable', value: 'disable', isChecked: false, id :2},
-                    ],
+                    id: 2,
+                    // subdata: [
+                    //     { name: 'Enable', value: 'enable', isChecked: false, id :1},
+                    //     { name: 'Disable', value: 'disable', isChecked: false, id :2},
+                    // ],
                 },
                 {
                     name: 'No of Assets',
                     value: 'noOFssets',
                     isChecked: false,
-                    id :3,
+                    id: 3,
                     subdata: [],
                 },
                 {
                     name: 'Platform',
                     value: 'platform',
                     isChecked: false,
-                    id :4,
+                    id: 4,
                     subdata: [],
                 }, {
                     name: 'Logs',
                     value: 'logs',
                     isChecked: false,
-                    id :5,
+                    id: 5,
                     subdata: [],
                 }, {
                     name: 'Performance & Availability',
                     value: 'availabiity',
                     isChecked: false,
-                    id :6,
+                    id: 6,
                     subdata: []
                 }
             ],
@@ -118,15 +265,19 @@ export class SelectCloudFilter extends React.Component<any, any> {
                 if (optionJsonData[i].isChecked) {
                     retData.push(
                         <div className="fliter-selected" key={optionJsonData[i].id}>
-                            <span onClick={() => this.setChildData(optionJsonData[i])}>{optionJsonData[i].name}</span>
-                            <i className="fa fa-times" onClick={() => this.removeSelectedTag(optionJsonData[i].value)}></i>
+                            <span
+                                onClick={() => this.setChildData(optionJsonData[i])}
+                            >{optionJsonData[i].name}</span>
+                            <i className="fa fa-times"
+                                onClick={() => this.removeSelectedTag(optionJsonData[i].value)}
+                            ></i>
                         </div>
                     );
                     if (optionJsonData[i].subdata) {
                         for (let j = 0; j < optionJsonData[i].subdata.length; j++) {
                             if (optionJsonData[i].subdata[j].isChecked) {
                                 retData.push(
-                                    <div className="fliter-selected" key={ optionJsonData[i].subdata[j].id}>
+                                    <div className="fliter-selected" key={optionJsonData[i].subdata[j].id}>
                                         <span onClick={() => this.setState({ showTagFilter: false })}>{optionJsonData[i].subdata[j].name}</span>
                                         <i className="fa fa-times" onClick={() => this.removeSelectedTag(optionJsonData[i].subdata[j].value)}></i>
                                     </div>
@@ -180,14 +331,16 @@ export class SelectCloudFilter extends React.Component<any, any> {
         })
     }
 
-    displayTagList = () => {
-        const { displayJsonData } = this.state;
+    displayTagList = (filterData: any) => {
+        console.log(filterData)
         let retData = [];
-        for (let i = 0; i < displayJsonData.length; i++) {
+        for (let i = 0; i < filterData.length; i++) {
             retData.push(
-                <div className="form-check" onClick={() => this.changeHandleState(i, displayJsonData[i].value)} >
-                    <input type="checkbox" checked={displayJsonData[i].isChecked} className="checkbox" />
-                    <label htmlFor={displayJsonData[i].value}>{displayJsonData[i].name}</label>
+                <div className="form-check"
+                // onClick={() => this.changeHandleState(i, displayJsonData[i].value)}
+                >
+                    <input type="checkbox" checked={filterData[i].isChecked} className="checkbox" />
+                    <label htmlFor={filterData[i].value}>{filterData[i].label}</label>
                 </div>
             );
         }
@@ -276,33 +429,47 @@ export class SelectCloudFilter extends React.Component<any, any> {
     }
 
     render() {
-        const { showTagFilter, searchKey } = this.state;
+        const { showTagFilter, optionJsonData } = this.state;
         return (
             <div className="fliters-container">
                 <div className="select-fliters">
-                    {this.displaySelectedTags()}
-                    <div className="add-fliters" onClick={() => this.displaymainTagData()}>
+                    {/* {this.displaySelectedTags()} */}
+                    {/* <div className="add-fliters" onClick={() => this.displaymainTagData()}>
                         <i className="fa fa-plus"></i>
-                    </div>
+                    </div> */}
                     <div className="fliter-toggel" onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div>
                     <i className="fa fa-angle-down" onClick={() => this.setState({ showTagFilter: !showTagFilter })}></i>
                 </div>
-                <div className={showTagFilter === true ? "fliters-collapse active" : "fliters-collapse"}>
-                    <div className="form-group search-control">
-                        <button className="btn btn-search">
-                            <i className="fa fa-search"></i>
-                        </button>
-                        <input type="text" className="input-group-text" value={searchKey} onChange={this.searchTag} placeholder="Search" />
+                {optionJsonData && optionJsonData.length > 0 ? (
+                    <div className={showTagFilter === true ? "fliters-collapse active" : "fliters-collapse"}>
+                        {optionJsonData.map((filterData: any, index: any) => {
+                            return (
+                                <>
+                                    <div className="form-group search-control">
+                                        <button className="btn btn-search">
+                                            <i className="fa fa-search"></i>
+                                        </button>
+                                        {/* <input type="text" className="input-group-text" value={searchKey} onChange={this.searchTag} placeholder="Search" />
                         <button className="btn btn-clear" onClick={this.clearAllTagFilter}>
                             <i className="fa fa-times"></i>
                             Clear
-                        </button>
+                        </button> */}
+                                    </div>
+                                    <div className="fliters-links">
+
+
+                                        <div key={filterData.id}>
+                                            <div>{filterData.name}</div>
+                                            {this.displayTagList(filterData.filter)}
+                                        </div>
+
+                                    </div> </>)
+                        })}
+
                     </div>
-                    <div className="fliters-links">
-                        {this.displayTagList()}
-                    </div>
-                </div>
-                <div className={showTagFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div>
+
+                ) : <>.... LOADING</>}
+                {/* <div className={showTagFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div> */}
             </div>
         );
     }
