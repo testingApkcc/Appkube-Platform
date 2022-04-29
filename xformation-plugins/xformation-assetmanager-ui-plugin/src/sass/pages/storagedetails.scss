@@ -434,6 +434,7 @@
                     }
                 }
             }
+           
 
             .table-tbody {
                 border: 1px solid #f5f6f5;
@@ -452,9 +453,11 @@
                 }
 
                 tr {
+                    padding-top: 0;
+                    padding-bottom: 0;
                     td {
                         padding-left: 15px;
-                        padding-right: 15px;
+                        // padding-right: 15px;
                         padding-top: 3px;
                         padding-bottom: 3px;
                         color: #414D55;
@@ -472,6 +475,8 @@
 
                         &:nth-child(3) {
                             width: 60%;
+                            padding-bottom: 0;
+                            padding-top: 0;
                         }
 
                         a {
@@ -479,6 +484,35 @@
                             font-size: 13px;
                             font-weight: 500;
                             line-height: 18px;
+                        }
+                        .performance-pullmetric-api{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: 10px 30px;
+                            background: #FFFFFF;
+                          &:nth-child(odd){
+                              background-color: #F8F9FB;
+                          }
+                          .pullmetric-content{
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                            span{
+                                font-size: 12px;
+                                line-height: 16px;
+                                font-weight: 400;
+                                color: #414D55;
+                                margin-left: 10px;
+                            }
+                          }
+                          span{
+                              margin: 0;
+                              float: right;
+                              color: #2662F0;
+                              font-size: 14px;
+                          }
+                         
                         }
 
                         .table-inner {
@@ -607,6 +641,7 @@
         }
     }
 }
+
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
     .service-account-container {
