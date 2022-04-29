@@ -240,7 +240,7 @@ export class ProductWiseServices extends React.Component<any, any> {
     return (
       <div className="common-container department-fliters-container">
         <div className="selects-container">
-          <SelectCloudFilter displayJsonData={this.props.displayJsonData} />
+          <SelectCloudFilter filterJsonData={this.props.displayJsonData} />
         </div>
         <div className="fliter-container">
           <div className="row">

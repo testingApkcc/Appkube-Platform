@@ -7,202 +7,8 @@ export class SelectCloudFilter extends React.Component<any, any> {
         super(props);
         this.state = {
             codeEditorValue: "",
-            // displayJsonData: [
-            //     {
-            //         name: 'Products',
-            //         key: 'products',
-            //         id: 1,
-            //         filter: [
-            //             {
-            //                 label: 'Ems',
-            //                 value: 'ems',
-            //                 id: 1
-            //             },
-            //             {
-            //                 label: 'Procurement',
-            //                 value: 'procurement',
-            //                 id: 2
-            //             },
-            //             {
-            //                 label: 'HRMS',
-            //                 value: 'hrms',
-            //                 id: 3
-            //             },
-            //             {
-            //                 label: 'Supply Chain',
-            //                 value: 'supply-chain',
-            //                 id: 4
-            //             }
-            //         ]
-            //     },
-            //     {
-            //         name: 'Environments',
-            //         key: 'environments',
-            //         id: 2,
-            //         filter: [
-            //             {
-            //                 label: 'AWS',
-            //                 value: 'aws',
-            //                 id: 1
-            //             },
-            //             {
-            //                 label: 'GCP',
-            //                 value: 'gcp',
-            //                 id: 2
-            //             },
-            //             {
-            //                 label: 'Kubernets',
-            //                 value: 'kubernets',
-            //                 id: 3
-            //             },
-            //             {
-            //                 label: 'Acronic',
-            //                 value: 'acronic',
-            //                 id: 4
-            //             }
-            //         ]
-            //     },
-            //     {
-            //         name: 'APP Services',
-            //         key: 'app-services',
-            //         id: 3,
-            //         filter: [
-            //             {
-            //                 label: 'Search',
-            //                 value: 'search',
-            //                 id: 1
-            //             },
-            //             {
-            //                 label: 'Security/RBMS',
-            //                 value: 'security-rbms',
-            //                 id: 2
-            //             },
-            //             {
-            //                 label: 'Preferance',
-            //                 value: 'preferance',
-            //                 id: 3
-            //             },
-            //             {
-            //                 label: 'Dataflow',
-            //                 value: 'dataflow',
-            //                 id: 4
-            //             },
-            //             {
-            //                 label: 'CMS/catlogue',
-            //                 value: 'cms-catalogue',
-            //                 id: 5
-            //             }
-            //         ]
-            //     },
-            //     {
-            //         name: 'Data Services',
-            //         key: 'data-services',
-            //         id: 4,
-            //         filter: [
-            //             {
-            //                 label: 'PostGreSQL',
-            //                 value: 'post-ger-sql',
-            //                 id: 1
-            //             },
-            //             {
-            //                 label: 'ElasticSearch',
-            //                 value: 'eastic-search',
-            //                 id: 2
-            //             },
-            //             {
-            //                 label: 'MongoDB',
-            //                 value: 'mongo-db',
-            //                 id: 3
-            //             },
-            //             {
-            //                 label: 'S3',
-            //                 value: 's3',
-            //                 id: 4
-            //             }
-            //         ]
-            //     },
-            //     {
-            //         name: 'Common Services',
-            //         key: 'common-services',
-            //         id: 5,
-            //         filter: [
-            //             {
-            //                 label: 'State Machine',
-            //                 value: 'state-machine',
-            //                 id: 1
-            //             },
-            //             {
-            //                 label: 'Pref manager',
-            //                 value: 'pref-manager',
-            //                 id: 2
-            //             },
-            //             {
-            //                 label: 'Log manager',
-            //                 value: 'log-manager',
-            //                 id: 3
-            //             },
-            //             {
-            //                 label: 'Trace Manager',
-            //                 value: 'trace-manager',
-            //                 id: 4
-            //             }
-            //         ]
-            //     },
-            //     {
-            //         name: 'Business Services',
-            //         key: 'business-services',
-            //         id: 5,
-            //         filter: [
-            //             {
-            //                 label: 'EMS',
-            //                 value: 'ems',
-            //                 id: 1
-            //             },
-            //             {
-            //                 label: 'Procurement',
-            //                 value: 'procurement',
-            //                 id: 2
-            //             },
-            //             {
-            //                 label: 'HRMS',
-            //                 value: 'hrms',
-            //                 id: 3
-            //             },
-            //             {
-            //                 label: 'Supply Chain',
-            //                 value: 'supply-chain',
-            //                 id: 4
-            //             }
-            //         ]
-            //     },
-            //     {
-            //         name: 'SAL Violation',
-            //         key: 'sal-violation',
-            //         id: 5,
-            //         filter: [
-            //             {
-            //                 label: 'SLA V1',
-            //                 value: 'sla-v1',
-            //                 id: 1
-            //             },
-            //             {
-            //                 label: 'SLA V2',
-            //                 value: 'sla-v2',
-            //                 id: 2
-            //             },
-            //             {
-            //                 label: 'SLA V3',
-            //                 value: 'sla-v3',
-            //                 id: 3
-            //             },
-            //             {
-            //                 label: 'SLA V4',
-            //                 value: 'sla-v4',
-            //                 id: 4
-            //             }
-            //         ]
-            //     },
-            // ],
+            displayJsonData: [
+            ],
             optionJsonData: [
                 {
                     name: 'OU',
@@ -253,230 +59,30 @@ export class SelectCloudFilter extends React.Component<any, any> {
                     subdata: []
                 }
             ],
-            duplicateOptions: [
-                {
-                    name: 'Products',
-                    key: 'products',
-                    id: 1,
-                    filter: [
-                        {
-                            label: 'Ems',
-                            value: 'ems',
-                            id: 1
-                        },
-                        {
-                            label: 'Procurement',
-                            value: 'procurement',
-                            id: 2
-                        },
-                        {
-                            label: 'HRMS',
-                            value: 'hrms',
-                            id: 3
-                        },
-                        {
-                            label: 'Supply Chain',
-                            value: 'supply-chain',
-                            id: 4
-                        }
-                    ]
-                },
-                {
-                    name: 'Environments',
-                    key: 'environments',
-                    id: 2,
-                    filter: [
-                        {
-                            label: 'AWS',
-                            value: 'aws',
-                            id: 1
-                        },
-                        {
-                            label: 'GCP',
-                            value: 'gcp',
-                            id: 2
-                        },
-                        {
-                            label: 'Kubernets',
-                            value: 'kubernets',
-                            id: 3
-                        },
-                        {
-                            label: 'Acronic',
-                            value: 'acronic',
-                            id: 4
-                        }
-                    ]
-                },
-                {
-                    name: 'APP Services',
-                    key: 'app-services',
-                    id: 3,
-                    filter: [
-                        {
-                            label: 'Search',
-                            value: 'search',
-                            id: 1
-                        },
-                        {
-                            label: 'Security/RBMS',
-                            value: 'security-rbms',
-                            id: 2
-                        },
-                        {
-                            label: 'Preferance',
-                            value: 'preferance',
-                            id: 3
-                        },
-                        {
-                            label: 'Dataflow',
-                            value: 'dataflow',
-                            id: 4
-                        },
-                        {
-                            label: 'CMS/catlogue',
-                            value: 'cms-catalogue',
-                            id: 5
-                        }
-                    ]
-                },
-                {
-                    name: 'Data Services',
-                    key: 'data-services',
-                    id: 4,
-                    filter: [
-                        {
-                            label: 'PostGreSQL',
-                            value: 'post-ger-sql',
-                            id: 1
-                        },
-                        {
-                            label: 'ElasticSearch',
-                            value: 'eastic-search',
-                            id: 2
-                        },
-                        {
-                            label: 'MongoDB',
-                            value: 'mongo-db',
-                            id: 3
-                        },
-                        {
-                            label: 'S3',
-                            value: 's3',
-                            id: 4
-                        }
-                    ]
-                },
-                {
-                    name: 'Common Services',
-                    key: 'common-services',
-                    id: 5,
-                    filter: [
-                        {
-                            label: 'State Machine',
-                            value: 'state-machine',
-                            id: 1
-                        },
-                        {
-                            label: 'Pref manager',
-                            value: 'pref-manager',
-                            id: 2
-                        },
-                        {
-                            label: 'Log manager',
-                            value: 'log-manager',
-                            id: 3
-                        },
-                        {
-                            label: 'Trace Manager',
-                            value: 'trace-manager',
-                            id: 4
-                        }
-                    ]
-                },
-                {
-                    name: 'Business Services',
-                    key: 'business-services',
-                    id: 5,
-                    filter: [
-                        {
-                            label: 'EMS',
-                            value: 'ems',
-                            id: 1
-                        },
-                        {
-                            label: 'Procurement',
-                            value: 'procurement',
-                            id: 2
-                        },
-                        {
-                            label: 'HRMS',
-                            value: 'hrms',
-                            id: 3
-                        },
-                        {
-                            label: 'Supply Chain',
-                            value: 'supply-chain',
-                            id: 4
-                        }
-                    ]
-                },
-                {
-                    name: 'SAL Violation',
-                    key: 'sal-violation',
-                    id: 5,
-                    filter: [
-                        {
-                            label: 'SLA V1',
-                            value: 'sla-v1',
-                            id: 1
-                        },
-                        {
-                            label: 'SLA V2',
-                            value: 'sla-v2',
-                            id: 2
-                        },
-                        {
-                            label: 'SLA V3',
-                            value: 'sla-v3',
-                            id: 3
-                        },
-                        {
-                            label: 'SLA V4',
-                            value: 'sla-v4',
-                            id: 4
-                        }
-                    ]
-                },
-            ],
-            displayJsonData: this.props.displayJsonData,
             showTagFilter: false,
             searchKey: [],
         };
     }
 
     componentDidMount() {
-        const { displayJsonData, searchKey } = this.state;
-        if (displayJsonData && displayJsonData.length > 0) {
-            for (let i = 0; i < displayJsonData.length; i++) {
-                searchKey.push("")
-                let list = displayJsonData[i].filter;
-                for (let j = 0; j < list.length; j++) {
-                    list[j].isHide = true;
-                }
-            }
-        }
-        this.setState({ displayJsonData })
+    if (this.props.filterJsonData && this.props.filterJsonData.length>0 ){
+        // for(let i=0; i<this.props.filterJsonData.length; i++){
+        //     console.log(this.props.filterJsonData[i]);
+        //     for(let j=0;j <this.props.filterJsonData[i].filter.length; j++){
+        //         console.log(this.props.filterJsonData[i].filter);
+        //         this.props.filterJsonData[i].filter[j].isHide=true;
+        //     }
+        // }
+        this.setState({ displayJsonData:this.props.filterJsonData })
+    }
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
-        console.log(prevProps.displayJsonData);
-        console.log(this.props.displayJsonData);
-        if (JSON.stringify(prevProps.displayJsonData) !== JSON.stringify(this.props.displayJsonData)) {
-            this.setState({
-                displayJsonData: this.props.displayJsonData,
-            })
-        }
+    //     if (JSON.stringify(prevProps.displayJsonData) !== JSON.stringify(this.props.displayJsonData)) {
+    //         this.setState({
+    //             displayJsonData: this.props.displayJsonData,
+    //         })
+    //     }
     }
 
     displaySelectedTags = () => {
@@ -539,7 +145,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
     displayTagList = (filterData: any) => {
         let retData = [];
         for (let i = 0; i < filterData.length; i++) {
-            if (filterData[i].isHide) {
+            if (!filterData[i].isHide) {
                 retData.push(
                     <div className="form-check"
                         onClick={() => this.changeHandleState(i, filterData[i])}
@@ -569,7 +175,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
         const { searchKey, displayJsonData } = this.state;
         searchKey[index] = "";
         for (let k = 0; k < displayJsonData[index].filter.length; k++) {
-            displayJsonData[index].filter[k].isHide = true;
+            displayJsonData[index].filter[k].isHide = false;
         }
         this.setState({
             displayJsonData,
@@ -584,16 +190,16 @@ export class SelectCloudFilter extends React.Component<any, any> {
         this.setState({ searchKey })
         if (value === "") {
             for (let k = 0; k < displayJsonData[index].filter.length; k++) {
-                displayJsonData[index].filter[k].isHide = true;
+                displayJsonData[index].filter[k].isHide = false;
             }
         }
         else {
             for (let k = 0; k < displayJsonData[index].filter.length; k++) {
                 if (displayJsonData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-                    displayJsonData[index].filter[k].isHide = true
+                    displayJsonData[index].filter[k].isHide = false
                 }
                 else {
-                    displayJsonData[index].filter[k].isHide = false;
+                    displayJsonData[index].filter[k].isHide = true;
                 }
             }
         }
@@ -632,7 +238,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                                             </button>
                                         </div>
                                         <div className="fliters-links">
-                                            {this.displayTagList(filterData.filter)}
+                                            { filterData.filter && filterData.filter.length> 0 &&this.displayTagList(filterData.filter)}
                                         </div>
                                     </div>
                                 </div>

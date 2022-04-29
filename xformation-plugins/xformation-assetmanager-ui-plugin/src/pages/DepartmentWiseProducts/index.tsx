@@ -211,6 +211,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
       graphData = this.setProductGraphData(department.organization.departmentList, graphData);
       graphData = this.setProductionOthers(department.organization.departmentList, graphData);
       graphData = this.setServiceCostData(department.organization.departmentList, graphData);
+      this.getFilterData(_.cloneDeep(department.organization.departmentList));
       this.setState({
         graphData
       });
@@ -393,7 +394,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         }
       }
     }
-    console.log(displayJsonData);
     this.setState({
       displayJsonData
     })
