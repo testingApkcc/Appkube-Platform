@@ -540,7 +540,7 @@ export class Performance extends React.Component<any, any>{
             this.enableDashboardRef.current.setDashboardData(this.state.dashboardData);
         } else if (step === 2) {
             this.previewRef.current.setDashboardData(this.state.dashboardData);
-        }else if(step === 3){
+        } else if (step === 3) {
             this.verifyAndSaveRef.current.setDashboardData(this.state.dashboardData);
         }
     }

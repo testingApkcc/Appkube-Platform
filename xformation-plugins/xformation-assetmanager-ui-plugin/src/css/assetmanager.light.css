@@ -2773,9 +2773,12 @@ a:hover {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
+.service-account-container .verify-inputs-section .configure-inputs-table .table-tbody tr {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .service-account-container .verify-inputs-section .configure-inputs-table .table-tbody tr td {
   padding-left: 15px;
-  padding-right: 15px;
   padding-top: 3px;
   padding-bottom: 3px;
   color: #414d55;
@@ -2791,12 +2794,76 @@ a:hover {
 }
 .service-account-container .verify-inputs-section .configure-inputs-table .table-tbody tr td:nth-child(3) {
   width: 60%;
+  padding-bottom: 0;
+  padding-top: 0;
 }
 .service-account-container .verify-inputs-section .configure-inputs-table .table-tbody tr td a {
   color: #2662f0;
   font-size: 13px;
   font-weight: 500;
   line-height: 18px;
+}
+.service-account-container
+  .verify-inputs-section
+  .configure-inputs-table
+  .table-tbody
+  tr
+  td
+  .performance-pullmetric-api {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background: #ffffff;
+}
+.service-account-container
+  .verify-inputs-section
+  .configure-inputs-table
+  .table-tbody
+  tr
+  td
+  .performance-pullmetric-api:nth-child(odd) {
+  background-color: #f8f9fb;
+}
+.service-account-container
+  .verify-inputs-section
+  .configure-inputs-table
+  .table-tbody
+  tr
+  td
+  .performance-pullmetric-api
+  .pullmetric-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-account-container
+  .verify-inputs-section
+  .configure-inputs-table
+  .table-tbody
+  tr
+  td
+  .performance-pullmetric-api
+  .pullmetric-content
+  span {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #414d55;
+  margin-left: 10px;
+}
+.service-account-container
+  .verify-inputs-section
+  .configure-inputs-table
+  .table-tbody
+  tr
+  td
+  .performance-pullmetric-api
+  span {
+  margin: 0;
+  float: right;
+  color: #2662f0;
+  font-size: 14px;
 }
 .service-account-container .verify-inputs-section .configure-inputs-table .table-tbody tr td .table-inner tr {
   background-color: #ffffff;
