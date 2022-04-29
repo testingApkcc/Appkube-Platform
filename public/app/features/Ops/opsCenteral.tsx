@@ -39,7 +39,7 @@ class OpsCenteral extends React.Component<any, any> {
           id: 19,
           category: 'Infra As Code',
           info: 'sampleText',
-          icon: '/public/img/ops-central/performance_availability.svg',
+          icon: '/public/img/ops-central/laas.svg',
         },
         {
           id: 20,
