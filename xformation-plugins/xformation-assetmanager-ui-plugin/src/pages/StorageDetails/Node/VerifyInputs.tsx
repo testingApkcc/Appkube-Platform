@@ -127,7 +127,7 @@ export class VerifyInputs extends React.Component<any, any> {
 
   handleChange(e: any, i: any, j: any) {
     const { checked } = e.target;
-    const { tableData,selectedData } = this.state;
+    const { tableData, selectedData } = this.state;
     tableData.DataSources[i].isChecked = checked;
     tableData.CloudDashBoards[j].isChecked = checked;
     this.props.updateDashboard(tableData);
@@ -161,14 +161,17 @@ export class VerifyInputs extends React.Component<any, any> {
           for (let j = 0; j < tableData.CloudDashBoards.length; j++) {
             if (tableData.CloudDashBoards[j].associatedDataSourceType === tableValue.name) {
               dashboardJSX.push(
-                <>
-                  <input
-                    type="checkbox"
-                    id={`${i}`}
-                    onChange={(e) => this.handleChange(e, i, j)}
-                  />
-                  <span>{tableData.CloudDashBoards[j].associatedDataSourceType}</span>
-                </>
+                <div className="performance-pullmetric-api">
+                  <div className="pullmetric-content">
+                    <input
+                      type="checkbox"
+                      id={`${i}`}
+                      onChange={(e) => this.handleChange(e, i, j)}
+                    />
+                    <span>{tableData.CloudDashBoards[j].associatedDataSourceType}</span>
+                  </div>
+                  <span><i className="fa fa-eye" aria-hidden="true"></i></span>
+                </div>
               )
             }
           }
@@ -176,7 +179,7 @@ export class VerifyInputs extends React.Component<any, any> {
         retData.push(
           <table className="table-tbody first-table" width="100%">
             <tr>
-              <td style={{ paddingLeft: "0", paddingRight: "0" }}>
+              <td style={{ paddingLeft: "0", paddingRight: "0", paddingBottom: "0", paddingTop: "0" }}>
                 <table width="100%">
                   <tr>
                     <td>
