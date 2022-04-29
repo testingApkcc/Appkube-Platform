@@ -86,19 +86,26 @@ export class Preview extends React.Component<any, any> {
 
   renderIframe = () => {
     const { activeDashboard, selectedDashboards } = this.state;
-    if (selectedDashboards && selectedDashboards.CloudDashBoards) {
-      // const input = selectedInput[activeDashboard[0]];
-      const dashboard = selectedDashboards.CloudDashBoards[activeDashboard];
-      if (dashboard) {
-        return (
-          <iframe
-            key={`${activeDashboard}`}
-            src={`/jsondashboard`}
-            onLoad={() => {
-              this.setState({ iFrameLoaded: true });
-            }}
-          ></iframe>
-        );
+    const accountId = this.getParameterByName("accountId", window.location.href);
+    if (selectedDashboards && selectedDashboards.DataSources) {
+      for (let i = 0; i < selectedDashboards.DataSources.length; i++) {
+        let dashboardSource = selectedDashboards.DataSources[i];
+        console.log(dashboardSource)
+        if (selectedDashboards && selectedDashboards.CloudDashBoards) {
+          const dashboard = selectedDashboards.CloudDashBoards[activeDashboard];
+          console.log(dashboard);
+          if (dashboard) {
+            return (
+              <iframe
+                key={`${activeDashboard}`}
+                src={`/jsondashboard?dataSourceName=${dashboard.name}&associatedCloudElementType=${dashboard.associatedDataSourceType}&associatedSLAType=${dashboard.associatedSLAType}&jsonLocation='xformation.synectiks.com/test_ds.json'&associatedCloud=${dashboardSource.associatedCloud}&accountId=${accountId}`}
+                onLoad={() => {
+                  this.setState({ iFrameLoaded: true });
+                }}
+              ></iframe>
+            );
+          }
+        }
       }
     }
     return <div>No Dashboard Selected</div>;
