@@ -46,8 +46,7 @@ export class Preview extends React.Component<any, any> {
 
   renderDashboardList = () => {
     const { selectedDashboards, activeDashboard } = this.state;
-    // const cloud = this.getParameterByName("cloud", window.location.href);
-    // const type = this.getParameterByName("type", window.location.href);
+    // const accountId = this.getParameterByName("accountId", window.location.href);
     if (selectedDashboards && selectedDashboards.DataSources) {
       const retData = [];
       for (let i = 0; i < selectedDashboards.DataSources.length; i++) {

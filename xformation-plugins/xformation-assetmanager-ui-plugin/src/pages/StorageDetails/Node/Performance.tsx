@@ -4,6 +4,7 @@ import { VerifyInputs } from './VerifyInputs';
 import { EnableDashboard } from './EnableDashboard';
 import { Preview } from './Preview';
 import { VerifyAndSave } from './VerifyAndSave';
+import dummyData from './dummyData.json';
 import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 import AlertMessage from '../../Components/AlertMessage';
@@ -34,130 +35,7 @@ export class Performance extends React.Component<any, any>{
                 { title: 'dashboard 2', uid: 'zRQhasw7k' },
                 { title: 'dashboard 3', uid: 'wBJ0ayw7k' },
             ],
-            dashboardData: {
-                CloudDashBoards: [
-                    {
-                        id: 1,
-                        name: "AWS-RDS-PERF-READLATENCY",
-                        description: "AWS RDS Read Latency Performance Monitoring",
-                        associatedDataSourceType: "AWS-PullMetric-Api",
-                        associatedDataType: "METRIC",
-                        associatedSLAType: "PERFORMANCE",
-                        associatedCloud: "AWS",
-                        associatedCloudElementType: "RDS",
-                        jsonLocation: "s3://..."
-                    },
-                    {
-                        id: 2,
-                        name: "AWS-RDS-PERF-WRITELATENCY",
-                        description: "AWS RDS Read Latency Performance Monitoring",
-                        associatedDataSourceType: "AWS-PullMetric-Api",
-                        associatedDataType: "METRIC",
-                        associatedSLAType: "PERFORMANCE",
-                        associatedCloud: "AWS",
-                        associatedCloudElementType: "RDS",
-                        jsonLocation: "s3://..."
-                    }
-                ],
-                DataSources: [
-                    {
-                        id: 1,
-                        name: "AWS-PullMetric-Api",
-                        description: "Pull AWS metrics with Cloud API",
-                        Type: "PullApi",
-                        DataType: "METRIC",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "AWS",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "AppKubeMain",
-                        associatedTargetDs: "NA"
-                    },
-                    {
-                        id: 2,
-                        name: "AWS-PullLogs-Api",
-                        description: "Pull AWS Logs with Cloud API",
-                        Type: "PullApi",
-                        DataType: "LOG",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "AWS",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "AppKubeMain",
-                        associatedTargetDs: "NA"
-                    },
-                    {
-                        id: 3,
-                        name: "AWS-PullLogs-Local",
-                        description: "Receive AWS Logs and Store in Local ES",
-                        Type: "ReceiveAndStoreLogs",
-                        DataType: "LOG",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "AWS",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "LogManager",
-                        associatedTargetDsType: "ES"
-                    },
-                    {
-                        id: 4,
-                        name: "AWS-StoreTrace-Local",
-                        description: "Receive Traces and Store in Local Zipkin DB",
-                        Type: "ReceiveAndStoreTrace",
-                        DataType: "Trace",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "AWS",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "TraceManager",
-                        associatedTargetDsType: "Zipkin"
-                    },
-                    {
-                        id: 5,
-                        name: "Azure-PullMetric-Api",
-                        description: "Pull Azure metrics with Cloud API",
-                        Type: "PullApi",
-                        DataType: "METRIC",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "Azure",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "AppKubeMain",
-                        associatedTargetDs: "NA"
-                    },
-                    {
-                        id: 6,
-                        name: "Azure-PullLogs-Api",
-                        description: "Pull Azure Logs with Cloud API",
-                        Type: "PullApi",
-                        DataType: "LOG",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "Azure",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "AppKubeMain",
-                        associatedTargetDs: "NA"
-                    },
-                    {
-                        id: 7,
-                        name: "Azure-PullLogs-Local",
-                        description: "Receive Azure Logs and Store in Local ES",
-                        Type: "ReceiveAndStoreLogs",
-                        DataType: "LOG",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "Azure",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "LogManager",
-                        associatedTargetDsType: "ES"
-                    },
-                    {
-                        id: 8,
-                        name: "Azure-StoreTrace-Local",
-                        description: "Receive Traces and Store in Local Zipkin DB",
-                        Type: "ReceiveAndStoreTrace",
-                        DataType: "Trace",
-                        associatedWorkflowTemplate: "s3://...",
-                        associatedCloud: "AWS",
-                        associatedCreds: "Vault",
-                        associatedApplicationLocation: "TraceManager",
-                        associatedTargetDsType: "Zipkin"
-                    }
-                ],
-            }
+            dashboardData: dummyData
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -167,11 +45,11 @@ export class Performance extends React.Component<any, any>{
         this.steps = [
             {
                 name: "Verify Inputs",
-                component: () => <VerifyInputs ref={this.verifyInputsRef} dashboard={this.state.dashboardData} inputName={this.state.inputName} {...this.props} updateDashboard={this.updateDashboard} />
+                component: () => <VerifyInputs ref={this.verifyInputsRef} dashboard={this.state.dashboardData} {...this.props} updateDashboard={this.updateDashboard} />
             },
             {
                 name: "Enable Dashboard",
-                component: () => <EnableDashboard ref={this.enableDashboardRef} dashboard={this.state.dashboardData} inputName={this.state.inputName} selectedData={this.verifyInputsRef.current !== null ? this.verifyInputsRef.current.getSelection() : null} {...this.props} />
+                component: () => <EnableDashboard ref={this.enableDashboardRef} {...this.props} />
             },
             {
                 name: "Preview",

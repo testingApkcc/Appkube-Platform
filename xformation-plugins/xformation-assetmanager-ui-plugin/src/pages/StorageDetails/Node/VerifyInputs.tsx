@@ -127,7 +127,7 @@ export class VerifyInputs extends React.Component<any, any> {
 
   handleChange(e: any, i: any, j: any) {
     const { checked } = e.target;
-    const { tableData,selectedData } = this.state;
+    const { tableData, selectedData } = this.state;
     tableData.DataSources[i].isChecked = checked;
     tableData.CloudDashBoards[j].isChecked = checked;
     this.props.updateDashboard(tableData);
@@ -161,14 +161,24 @@ export class VerifyInputs extends React.Component<any, any> {
           for (let j = 0; j < tableData.CloudDashBoards.length; j++) {
             if (tableData.CloudDashBoards[j].associatedDataSourceType === tableValue.name) {
               dashboardJSX.push(
-                <>
-                  <input
-                    type="checkbox"
-                    id={`${i}`}
-                    onChange={(e) => this.handleChange(e, i, j)}
-                  />
-                  <span>{tableData.CloudDashBoards[j].associatedDataSourceType}</span>
-                </>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={tableData.CloudDashBoards[j].isChecked}
+                        id={`${i}`}
+                        onChange={(e) => this.handleChange(e, i, j)}
+                      />
+                    </td>
+                    <td>{tableData.CloudDashBoards[j].name}</td>
+                    <td>
+                      <a>
+                        <i className="fa fa-eye"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
               )
             }
           }
@@ -186,7 +196,9 @@ export class VerifyInputs extends React.Component<any, any> {
                       <a>{tableValue.Type}</a>
                     </td>
                     <td>
-                      {dashboardJSX}
+                      <table className="table-inner" width="100%">
+                        {dashboardJSX}
+                      </table>
                     </td>
                   </tr>
                 </table>
@@ -196,65 +208,6 @@ export class VerifyInputs extends React.Component<any, any> {
         );
       }
     }
-    // if(keys.length === 0){
-    //     retData.push(
-    //         <table className="table-inner" width="100%">
-    //             <tbody>
-    //                 <tr>
-    //                     <td align={'center'} colSpan={3}>No more asset available to enable!</td>
-    //                 </tr>
-    //             </tbody>
-    //         </table>
-    //     );
-    // }
-    return retData;
-  };
-
-  renderTable = (res: any, index: any, inputType: any): any => {
-    const retData = [];
-    const innerTable = [];
-    for (let i = 0; i < res.length; i++) {
-      const obj = res[i];
-      // console.log('Dashboard list: ',obj);
-      innerTable.push(
-        <table className="table-inner" width="100%">
-          <tbody>
-            <tr>
-              <td>
-                {/* <input
-                  type="checkbox"
-                  id={`${index}_${i}`}
-                  onChange={(e) => this.handleChange(e, obj, i)}
-                /> */}
-              </td>
-              <td>{obj.dashboardUuid}</td>
-              {/* <td><a><i className="fa fa-eye"></i></a></td> */}
-            </tr>
-          </tbody>
-        </table>
-      );
-    }
-    retData.push(
-      <table className="table-tbody first-table" width="100%">
-        <tr>
-          <td style={{ paddingLeft: "0", paddingRight: "0" }}>
-            <table width="100%">
-              <tr>
-                <td>
-                  <a>{this.props.inputName}</a>
-                </td>
-                <td>
-                  <a>{inputType}</a>
-                </td>
-                <td style={{ paddingLeft: "0", paddingRight: "0" }}>
-                  {innerTable}
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    );
     return retData;
   };
 
@@ -281,8 +234,7 @@ export class VerifyInputs extends React.Component<any, any> {
               <tr>
                 <th>Input</th>
                 <th>Input Type</th>
-                <th> </th>
-                {/* <th>Available Dashboards</th> */}
+                <th>Available Dashboards</th>
               </tr>
             </table>
             {this.displayTable()}

@@ -51,26 +51,27 @@ class JustDashboardJSON extends React.Component<Props, State> {
         pageToolbar[0].style.display = 'none';
       }
     }, 1000);
-    //   const cloudType = this.getParameterByName('cloudType', window.location.href);
-    //   const elementType = this.getParameterByName('elementType', window.location.href);
-    //   const accountId = this.getParameterByName('accountId', window.location.href);
-    //   const tenantId = this.getParameterByName('tenantId', window.location.href);
-    //   const inputType = this.getParameterByName('inputType', window.location.href);
-    //   const fileName = this.getParameterByName('fileName', window.location.href);
-    //   const dataSource = this.getParameterByName('dataSource', window.location.href);
-    //   if (cloudType && elementType && accountId && tenantId && inputType && fileName && dataSource) {
-    //     const url = `${config.PREVIEW_DASHBOARDS_URL}?cloudType=${cloudType}&elementType=${elementType}&accountId=${accountId}&tenantId=${tenantId}&inputType=${inputType}&fileName=${fileName}&dataSource=${dataSource}`;
-    //     backendSrv.get(url).then(
-    //       (res: any) => {
-    //         this.setState({
-    //           data: JSON.parse(res.object.data),
-    //         });
-    //       },
-    //       (err: any) => {
-    //         console.log(err);
-    //       }
-    //     );
-    //   }
+    // const dashboardId = this.getParameterByName('dashboardId', window.location.href);
+    // const dashboardName = this.getParameterByName('dashboardName', window.location.href);
+    // const dataSourceId = this.getParameterByName('dataSourceId', window.location.href);
+    // const dataSourceName = this.getParameterByName('dataSourceName', window.location.href);
+    // const jsonLocation = this.getParameterByName('jsonLocation', window.location.href);
+    // const associatedCloud = this.getParameterByName('associatedCloud', window.location.href);
+    // const associatedCreds = this.getParameterByName('associatedCreds', window.location.href);
+    // const accountId = this.getParameterByName('accountId', window.location.href);
+    // if (dashboardId && dashboardName && dataSourceId && dataSourceName && jsonLocation && associatedCloud && associatedCreds && accountId) {
+    //   const url = `${config.PREVIEW_DASHBOARDS_URL}?dashboardId=${dashboardId}&dashboardName=${dashboardName}&dataSourceId=${dataSourceId}&dataSourceName=${dataSourceName}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&associatedCreds=${associatedCreds}&accountId=${accountId}`;
+    //   backendSrv.get(url).then(
+    //     (res: any) => {
+    //       this.setState({
+    //         data: JSON.parse(res.object.data),
+    //       });
+    //     },
+    //     (err: any) => {
+    //       console.log(err);
+    //     }
+    //   );
+    // }
   }
 
   getParameterByName = (name: string, url: string) => {

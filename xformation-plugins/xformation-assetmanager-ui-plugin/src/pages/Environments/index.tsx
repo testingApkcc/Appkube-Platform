@@ -23,8 +23,7 @@ export class Environments extends React.Component<any, any> {
       synectiksAccounts: 0,
       kubernatesAccounts: 0,
       Environment: [],
-      displaygetEnvironmentData: [],
-      isApiCalled: false,
+      accountList: [],
       codeEditorValue: '',
       awsRegionList: [],
       optionJsonData: [],
@@ -183,6 +182,7 @@ export class Environments extends React.Component<any, any> {
       selectedTeg,
     });
   };
+
   async componentDidMount() {
     await this.getAccountList();
     await this.getAwsRegionsList();
@@ -202,22 +202,16 @@ export class Environments extends React.Component<any, any> {
   };
 
   getAccountList = async () => {
-    this.setState({
-      isApiCalled: true,
-    });
     try {
       await RestService.getData(this.config.GET_ALL_ACCOUNT, null, null).then((response: any) => {
         this.setState({
-          displaygetEnvironmentData: response,
+          accountList: response,
         });
         console.log('Loading Asstes : ', response);
       });
     } catch (err) {
       console.log('Loading Asstes failed. Error: ', err);
     }
-    this.setState({
-      isApiCalled: false,
-    });
   };
 
   refreshEnvironment = async () => {
@@ -233,18 +227,17 @@ export class Environments extends React.Component<any, any> {
   };
 
   displayAWSAccountList() {
-    const { displaygetEnvironmentData, awsRegionList } = this.state;
+    const { accountList, awsRegionList } = this.state;
     let retData = [];
-    for (let i = 0; i < displaygetEnvironmentData.length; i++) {
-      let row = displaygetEnvironmentData[i];
+    for (let i = 0; i < accountList.length; i++) {
+      let row = accountList[i];
       if (row.cloud.name.toLowerCase() === 'AWS'.toLowerCase()) {
         // console.log("AWS data : ", row);
         retData.push(
           <tr key ={i}>
             <td>
               <Link
-                to={`${PLUGIN_BASE_URL}/amazon-services?asset_id=${row.id}&org_id=${row.organizationalUnit ? row.organizationalUnit.organizationId : null
-                  }`}
+                to={`${PLUGIN_BASE_URL}/amazon-services?accountId=${row.accountId}`}
               >
                 AWS ({row.accountId})
               </Link>
@@ -274,10 +267,10 @@ export class Environments extends React.Component<any, any> {
   }
 
   displayAzureTableData() {
-    const { displaygetEnvironmentData } = this.state;
+    const { accountList } = this.state;
     let retData = [];
-    for (let i = 0; i < displaygetEnvironmentData.length; i++) {
-      let row = displaygetEnvironmentData[i];
+    for (let i = 0; i < accountList.length; i++) {
+      let row = accountList[i];
       if (row.cloud.name.toLowerCase() === 'AZURE'.toLowerCase()) {
         retData.push(
           console.log('Loading azure data : ', row),
@@ -316,7 +309,7 @@ export class Environments extends React.Component<any, any> {
   };
 
   _displayEnvironmentBox() {
-    const EnvironmentBox = this.state.displaygetEnvironmentData.map((val: any, key: any) => {
+    const EnvironmentBox = this.state.accountList.map((val: any, key: any) => {
       return (
         < div key={key}>
           <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">

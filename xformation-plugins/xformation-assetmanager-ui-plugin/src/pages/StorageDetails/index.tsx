@@ -10,7 +10,7 @@ export class StorageDetails extends React.Component<any, any> {
         super(props);
         this.state = {
             activeTab: 0,
-            storageData: []
+            storageData: [],
         };
         this.breadCrumbs = [
             {
@@ -22,27 +22,6 @@ export class StorageDetails extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
-    }
-
-    componentDidMount() {
-        const cloudName = this.getParameterByName("cloud", window.location.href);
-        const type = this.getParameterByName("type", window.location.href);
-        const accountId = this.getParameterByName("accountId", window.location.href);
-        const tenantId = this.getParameterByName("tenantId", window.location.href);
-        if (type) {
-            const { storageData } = this.state;
-            for (let i = 0; i < 3; i++) {
-                storageData.push({
-                    nodeTitle: type,
-                    accountId: accountId,
-                    tenantId: tenantId,
-                    cloudName: cloudName
-                });
-            }
-            this.setState({
-                storageData
-            });
-        }
     }
 
     getParameterByName = (name: any, url: any) => {

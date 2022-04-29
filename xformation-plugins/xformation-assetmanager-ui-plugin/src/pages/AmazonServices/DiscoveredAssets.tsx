@@ -28,12 +28,18 @@ export class DiscoveredAssets extends React.Component<any, any>{
       servicesLength: {},
       totalProducts: 0,
       activeNode: '',
+      accountId: ''
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   componentDidMount() {
     this.getServicesData();
+    const queryPrm = new URLSearchParams(this.props.location.search);
+    const accountId = queryPrm.get("accountId");
+    this.setState({
+      accountId
+    });
   }
 
   getServicesData = async () => {
@@ -356,10 +362,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
   renderDirectServices = (list: any) => {
     let retData = [];
+    const { accountId } = this.state;
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link to='/a/xformation-assetmanager-ui-plugin/storage-details'>  {service.name}</Link></div>
+          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link to={`/a/xformation-assetmanager-ui-plugin/storage-details?accountId=${accountId}`}>{service.name}</Link></div>
           <div className="performance">
             <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
               <i className="fa fa-check"></i>

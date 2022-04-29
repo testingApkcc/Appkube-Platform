@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 
 export class EnableDashboard extends React.Component<any, any> {
@@ -21,43 +20,6 @@ export class EnableDashboard extends React.Component<any, any> {
     if (!results[2]) return "";
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   };
-
-  async componentWillMount() {
-    const cloud = this.getParameterByName("cloud", window.location.href);
-    const type = this.getParameterByName("type", window.location.href);
-    const tenantId = this.getParameterByName("tenantId", window.location.href);
-    const accountId = this.getParameterByName(
-      "accountId",
-      window.location.href
-    );
-    try {
-      await RestService.getData(
-        `${this.config.GET_APPLICATION_ASSETS_BY_INPUT_TYPE}?inputType=${this.props.inputName}&tenantId=${tenantId}&accountId=${accountId}&cloud=${cloud}&type=${type}`,
-        null,
-        null
-      ).then(
-        (response: any) => {
-          console.log("EnableDashboard. Application assets: ", response);
-          if (response.code !== 417) {
-            this.setState({
-              selectedData: response.object || [],
-            });
-          }
-          // this.setState({
-          //     selectedData: response,
-          // });
-        },
-        (error: any) => {
-          console.log(
-            "EnableDashboard. Search application assets failed. Error: ",
-            error
-          );
-        }
-      );
-    } catch (err) {
-      console.log("Exception in EnableDashboard. Error: ", err);
-    }
-  }
 
   setDashboardData = (data: any) => {
     this.setState({
@@ -92,11 +54,11 @@ export class EnableDashboard extends React.Component<any, any> {
 
     if (selectedData.DataSources) {
       for (let i = 0; i < selectedData.DataSources.length; i++) {
-        const ouerObj = selectedData.DataSources[i];
+        const dataSource = selectedData.DataSources[i];
         let dashboardJSX = [];
         if (selectedData.CloudDashBoards && selectedData.CloudDashBoards.length > 0) {
           for (let j = 0; j < selectedData.CloudDashBoards.length; j++) {
-            if (selectedData.CloudDashBoards[j].associatedDataSourceType === ouerObj.name) {
+            if (selectedData.CloudDashBoards[j].associatedDataSourceType === dataSource.name) {
               if (selectedData.CloudDashBoards[j].isChecked) {
                 dashboardJSX.push(
                   <tbody>
@@ -109,7 +71,7 @@ export class EnableDashboard extends React.Component<any, any> {
                           onChange={(e) => this.handleChange(e, i, j)}
                         />
                       </td>
-                      <td>{selectedData.CloudDashBoards[j].associatedDataSourceType}</td>
+                      <td>{selectedData.CloudDashBoards[j].name}</td>
                       <td>
                         <a>
                           <i className="fa fa-eye"></i>
@@ -122,7 +84,7 @@ export class EnableDashboard extends React.Component<any, any> {
             }
           }
         }
-        if (ouerObj.isChecked) {
+        if (dataSource.isChecked) {
           retData.push(
             <table className="table-tbody first-table" width="100%">
               <tr>
@@ -130,10 +92,10 @@ export class EnableDashboard extends React.Component<any, any> {
                   <table width="100%">
                     <tr>
                       <td>
-                        <a>{ouerObj.name}</a>
+                        <a>{dataSource.name}</a>
                       </td>
                       <td>
-                        <a>{ouerObj.Type}</a>
+                        <a>{dataSource.Type}</a>
                       </td>
                       <td style={{ paddingLeft: "0", paddingRight: "0" }}>
                         <table className="table-inner" width="100%">
