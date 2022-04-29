@@ -51,16 +51,14 @@ class JustDashboardJSON extends React.Component<Props, State> {
         pageToolbar[0].style.display = 'none';
       }
     }, 1000);
-    // const dashboardId = this.getParameterByName('dashboardId', window.location.href);
-    // const dashboardName = this.getParameterByName('dashboardName', window.location.href);
-    // const dataSourceId = this.getParameterByName('dataSourceId', window.location.href);
     // const dataSourceName = this.getParameterByName('dataSourceName', window.location.href);
+    // const associatedCloudElementType = this.getParameterByName('associatedCloudElementType', window.location.href);
+    // const associatedSLAType = this.getParameterByName('associatedSLAType', window.location.href);
     // const jsonLocation = this.getParameterByName('jsonLocation', window.location.href);
     // const associatedCloud = this.getParameterByName('associatedCloud', window.location.href);
-    // const associatedCreds = this.getParameterByName('associatedCreds', window.location.href);
     // const accountId = this.getParameterByName('accountId', window.location.href);
-    // if (dashboardId && dashboardName && dataSourceId && dataSourceName && jsonLocation && associatedCloud && associatedCreds && accountId) {
-    //   const url = `${config.PREVIEW_DASHBOARDS_URL}?dashboardId=${dashboardId}&dashboardName=${dashboardName}&dataSourceId=${dataSourceId}&dataSourceName=${dataSourceName}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&associatedCreds=${associatedCreds}&accountId=${accountId}`;
+    // if (dataSourceName && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud  && accountId) {
+    //   const url = `${config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
     //   backendSrv.get(url).then(
     //     (res: any) => {
     //       this.setState({
