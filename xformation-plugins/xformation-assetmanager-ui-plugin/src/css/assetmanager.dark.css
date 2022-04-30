@@ -3521,27 +3521,81 @@ a:hover {
   position: absolute;
   left: 0;
   top: 100%;
-  width: 30%;
+  width: 100%;
   padding: 15px;
+  overflow: hidden;
+  overflow-x: auto;
   display: none;
   z-index: 10;
 }
 .department-wise-container .department-fliters-container .selects-container .fliters-collapse.active {
+  display: flex;
+}
+.department-wise-container .department-fliters-container .selects-container .fliters-collapse .fliters {
+  display: flex;
+  vertical-align: top;
+  padding-left: 7px;
+  padding-right: 7px;
+  width: 200px;
+  flex: 0 0 200px;
+}
+.department-wise-container .department-fliters-container .selects-container .fliters-collapse .fliters:first-child {
+  padding-left: 0px;
+}
+.department-wise-container .department-fliters-container .selects-container .fliters-collapse .fliters:last-child {
+  padding-right: 0px;
+}
+.department-wise-container .department-fliters-container .selects-container .fliters-collapse .fliters .fliter-box {
+  border: 1px solid #8392a7;
+  border-radius: 3px;
+}
+.department-wise-container
+  .department-fliters-container
+  .selects-container
+  .fliters-collapse
+  .fliters
+  .fliter-box
+  .heading {
   display: block;
+  text-align: center;
+  background-color: #eff2f7;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
 }
-.department-wise-container .department-fliters-container .selects-container .fliters-collapse .search-control {
+.department-wise-container
+  .department-fliters-container
+  .selects-container
+  .fliters-collapse
+  .fliters
+  .fliter-box
+  .search-control {
   position: relative;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.department-wise-container .department-fliters-container .selects-container .fliters-collapse .search-control .btn {
+.department-wise-container
+  .department-fliters-container
+  .selects-container
+  .fliters-collapse
+  .fliters
+  .fliter-box
+  .search-control
+  .btn {
   position: absolute;
   top: 0;
   left: 0;
   width: 15px;
-  height: 30px;
+  height: 24px;
   background-color: transparent;
   z-index: 1;
   color: #8392a7;
-  font-size: 12px;
+  font-size: 11px;
   padding: 0;
   font-weight: 100;
 }
@@ -3549,6 +3603,8 @@ a:hover {
   .department-fliters-container
   .selects-container
   .fliters-collapse
+  .fliters
+  .fliter-box
   .search-control
   .btn.btn-clear {
   right: 0;
@@ -3559,31 +3615,60 @@ a:hover {
   .department-fliters-container
   .selects-container
   .fliters-collapse
-  .search-control
-  .btn.btn-clear
-  i {
-  margin-right: 5px;
-}
-.department-wise-container
-  .department-fliters-container
-  .selects-container
-  .fliters-collapse
+  .fliters
+  .fliter-box
   .search-control
   .input-group-text {
   background-color: #ffffff;
   border: none;
   border-bottom: 1px solid #8392a7;
   width: 100%;
-  padding: 0 60px 0 20px;
-  height: 30px;
+  padding: 0 20px 0 20px;
+  height: 24px;
   text-align: left;
   border-radius: 0;
-  font-size: 12px;
+  font-size: 11px;
 }
 .department-wise-container
   .department-fliters-container
   .selects-container
   .fliters-collapse
+  .fliters
+  .fliter-box
+  .search-control
+  .input-group-text:focus-visible {
+  outline: none;
+}
+.department-wise-container
+  .department-fliters-container
+  .selects-container
+  .fliters-collapse
+  .fliters
+  .fliter-box
+  .search-control
+  .input-group-text:focus {
+  outline: none;
+}
+.department-wise-container
+  .department-fliters-container
+  .selects-container
+  .fliters-collapse
+  .fliters
+  .fliter-box
+  .fliters-links {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  max-height: 105px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.department-wise-container
+  .department-fliters-container
+  .selects-container
+  .fliters-collapse
+  .fliters
+  .fliter-box
   .fliters-links
   .form-check {
   margin-bottom: 5px;
@@ -3593,6 +3678,8 @@ a:hover {
   .department-fliters-container
   .selects-container
   .fliters-collapse
+  .fliters
+  .fliter-box
   .fliters-links
   .form-check
   input {
@@ -3605,6 +3692,8 @@ a:hover {
   .department-fliters-container
   .selects-container
   .fliters-collapse
+  .fliters
+  .fliter-box
   .fliters-links
   .form-check
   label {

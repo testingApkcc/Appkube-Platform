@@ -97,7 +97,7 @@ export class EnableDashboard extends React.Component<any, any> {
                       <td>
                         <a>{dataSource.Type}</a>
                       </td>
-                      <td style={{ paddingLeft: "0", paddingRight: "0" }}>
+                      <td>
                         <table className="table-inner" width="100%">
                           {dashboardJSX}
                         </table>

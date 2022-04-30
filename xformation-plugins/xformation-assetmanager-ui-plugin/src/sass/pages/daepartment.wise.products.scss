@@ -363,80 +363,130 @@
                 position: absolute;
                 left: 0;
                 top: 100%;
-                width: 30%;
+                width: 100%;
                 padding: 15px;
+                overflow: hidden;
+                overflow-x: auto;
                 display: none;
                 z-index: 10;
 
                 &.active {
-                    display: block;
+                    display: flex;
                 }
 
-                .search-control {
-                    position: relative;
+                .fliters {
+                    display: flex;
+                    vertical-align: top;
+                    padding-left: 7px;
+                    padding-right: 7px;
+                    width: 200px;
+                    flex: 0 0 200px;
 
-                    .btn {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 15px;
-                        height: 30px;
-                        background-color: transparent;
-                        z-index: 1;
-                        color: #8392A7;
-                        font-size: 12px;
-                        padding: 0;
-                        font-weight: 100;
+                    &:first-child {
+                        padding-left: 0px;
+                    }
 
-                        &.btn-clear {
-                            right: 0;
-                            left: auto;
-                            width: auto;
+                    &:last-child {
+                        padding-right: 0px;
+                    }
 
-                            i {
-                                margin-right: 5px;
+                    .fliter-box {
+                        border: 1px solid #8392A7;
+                        border-radius: 3px;
+
+                        .heading {
+                            display: block;
+                            text-align: center;
+                            background-color: #eff2f7;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                            font-size: 13px;
+                            line-height: 18px;
+                            font-weight: 500;
+                        }
+
+                        .search-control {
+                            position: relative;
+                            margin-top: 5px;
+                            margin-left: 10px;
+                            margin-right: 10px;
+
+                            .btn {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 15px;
+                                height: 24px;
+                                background-color: transparent;
+                                z-index: 1;
+                                color: #8392A7;
+                                font-size: 11px;
+                                padding: 0;
+                                font-weight: 100;
+
+                                &.btn-clear {
+                                    right: 0;
+                                    left: auto;
+                                    width: auto;
+                                }
+                            }
+
+                            .input-group-text {
+                                background-color: #FFFFFF;
+                                border: none;
+                                border-bottom: 1px solid #8392A7;
+                                width: 100%;
+                                padding: 0 20px 0 20px;
+                                height: 24px;
+                                text-align: left;
+                                border-radius: 0;
+                                font-size: 11px;
+
+                                &:focus-visible {
+                                    outline: none;
+                                }
+
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
+                        }
+
+                        .fliters-links {
+                            margin-left: 10px;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            max-height: 105px;
+                            overflow: hidden;
+                            overflow-y: auto;
+
+                            .form-check {
+                                margin-bottom: 5px;
+                                position: relative;
+
+                                input {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    margin-top: 3px;
+                                    cursor: pointer;
+                                }
+
+                                label {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    padding-left: 5px;
+                                    font-size: 12px;
+                                    color: #414D55;
+                                    line-height: 20px;
+                                    margin-bottom: 0;
+                                    cursor: pointer;
+                                }
                             }
                         }
                     }
-
-                    .input-group-text {
-                        background-color: #FFFFFF;
-                        border: none;
-                        border-bottom: 1px solid #8392A7;
-                        width: 100%;
-                        padding: 0 60px 0 20px;
-                        height: 30px;
-                        text-align: left;
-                        border-radius: 0;
-                        font-size: 12px;
-                    }
                 }
-
-                .fliters-links {
-                    .form-check {
-                        margin-bottom: 5px;
-                        position: relative;
-
-                        input {
-                            display: inline-block;
-                            vertical-align: top;
-                            margin-top: 3px;
-                            cursor: pointer;
-                        }
-
-                        label {
-                            display: inline-block;
-                            vertical-align: top;
-                            padding-left: 5px;
-                            font-size: 12px;
-                            color: #414D55;
-                            line-height: 20px;
-                            margin-bottom: 0;
-                            cursor: pointer;
-                        }
-                    }
-                }
-
             }
 
             .fliters-collapse-bg {
