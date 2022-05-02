@@ -11,6 +11,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GET_DEPARTMENTWISE_PRODUCT: `${assetSrvUrl}/department-wise-analytics/search?orgId=78`,
     GET_PRODUCT_DATA: `${assetSrvUrl}/department-wise-analytics/get?orgId=78`,
     GET_SERVICES_DATA: `${assetSrvUrl}/service-detail/search`,
+    PREVIEW_DASHBOARDS_URL: `http://18.234.236.211:5057/api/dashboard/preview`,
 
     SEVERITY_SUCCESS: 'success',
     ADD_Organization: `${assetSrvUrl}/addEnvironment`,
@@ -77,6 +78,6 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     SEARCH_INPUT: `${assetSrvUrl}/searchInput`,
 
     GET_AWS_REGIONS: `${assetSrvUrl}/getAwsRegions`,
-    PREVIEW_DASHBOARDS_URL: `${mainApplicationBaseUrl}/dashboards/previewDashboard`,
+    // PREVIEW_DASHBOARDS_URL: `${mainApplicationBaseUrl}/dashboards/previewDashboard`,
   };
 };

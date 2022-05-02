@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { configFun } from '../../../config';
+import { RestService } from '../../_service/RestService';
 
 export class Preview extends React.Component<any, any> {
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -10,6 +13,41 @@ export class Preview extends React.Component<any, any> {
       activeDashboard: 0,
       isLoading: false,
     };
+    this.config = configFun('', '');
+  }
+
+  async componentDidMount() {
+    const dataSourceName = "awsCloudWatch";
+    const jsonLocation = "xformation.synectiks.com/test_ds.json";
+    const associatedCloudElementType = "RDS";
+    const associatedSLAType = "PERFORMANCE";
+    const associatedCloud = "AWS";
+    const accountId = "657907747545";
+    if (dataSourceName && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud  && accountId) {
+      const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
+      try {
+        await RestService.getData(url, null, null).then((res: any) => {
+          this.setState({
+            data: JSON.parse(res.object.data),
+          });
+          // console.log("Loading aws regions : ", res);
+        });
+      } catch (err) {
+        console.log('Loading aws regions failed. Error: ', err);
+      }
+
+      // backendSrv.get(url).then(
+      //   (res: any) => {
+      //     this.setState({
+      //       data: JSON.parse(res.object.data),
+      //     });
+      //   },
+      //   (err: any) => {
+      //     console.log(err);
+      //   }
+      // );
+      
+    }
   }
 
   componentDidUpdate(previousProps: any, previousState: any) {
@@ -86,17 +124,17 @@ export class Preview extends React.Component<any, any> {
 
   renderIframe = () => {
     const { activeDashboard, selectedDashboards } = this.state;
-    const accountId = this.getParameterByName("accountId", window.location.href);
+    // const accountId = this.getParameterByName("accountId", window.location.href);
     if (selectedDashboards && selectedDashboards.DataSources) {
       for (let i = 0; i < selectedDashboards.DataSources.length; i++) {
-        let dashboardSource = selectedDashboards.DataSources[i];
+        // let dashboardSource = selectedDashboards.DataSources[i];
         if (selectedDashboards && selectedDashboards.CloudDashBoards) {
           const dashboard = selectedDashboards.CloudDashBoards[activeDashboard];
           if (dashboard) {
             return (
               <iframe
                 key={`${activeDashboard}`}
-                src={`/jsondashboard?dataSourceName=${dashboard.name}&associatedCloudElementType=${dashboard.associatedDataSourceType}&associatedSLAType=${dashboard.associatedSLAType}&jsonLocation='xformation.synectiks.com/test_ds.json'&associatedCloud=${dashboardSource.associatedCloud}&accountId=${accountId}`}
+                src={`/jsondashboard?dataSourceName=awsCloudWatch&associatedCloudElementType=RDS&associatedSLAType=PERFORMANCE&jsonLocation=xformation.synectiks.com/test_ds.json&associatedCloud=AWS&accountId=657907747545}`}
                 onLoad={() => {
                   this.setState({ iFrameLoaded: true });
                 }}
