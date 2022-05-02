@@ -32,6 +32,121 @@ export class Environments extends React.Component<any, any> {
       showTagFilter: false,
       showRecentFilter: false,
       showAddNewFilter: false,
+      filterJsonData: [
+        {
+            name: 'Products',
+            key: 'products',
+            id: 1,
+            filter: [
+                {
+                    label: 'Ems',
+                    value: 'ems',
+                    id: 1
+                },
+                {
+                    label: 'Procurement',
+                    value: 'procurement',
+                    id: 2
+                },
+                {
+                    label: 'HRMS',
+                    value: 'hrms',
+                    id: 3
+                },
+                {
+                    label: 'Supply Chain',
+                    value: 'supply-chain',
+                    id: 4
+                }
+            ]
+        },
+        {
+            name: 'Environments',
+            key: 'environments',
+            id: 2,
+            filter: [
+                {
+                    label: 'AWS',
+                    value: 'aws',
+                    id: 1
+                },
+                {
+                    label: 'GCP',
+                    value: 'gcp',
+                    id: 2
+                },
+                {
+                    label: 'Kubernets',
+                    value: 'kubernets',
+                    id: 3
+                },
+                {
+                    label: 'Acronic',
+                    value: 'acronic',
+                    id: 4
+                }
+            ]
+        },
+        {
+            name: 'APP Services',
+            key: 'app-services',
+            id: 3,
+            filter: [
+                {
+                    label: 'Search',
+                    value: 'search',
+                    id: 1
+                },
+                {
+                    label: 'Security/RBMS',
+                    value: 'security-rbms',
+                    id: 2
+                },
+                {
+                    label: 'Preferance',
+                    value: 'preferance',
+                    id: 3
+                },
+                {
+                    label: 'Dataflow',
+                    value: 'dataflow',
+                    id: 4
+                },
+                {
+                    label: 'CMS/catlogue',
+                    value: 'cms-catalogue',
+                    id: 5
+                }
+            ]
+        },
+        {
+            name: 'Data Services',
+            key: 'data-services',
+            id: 4,
+            filter: [
+                {
+                    label: 'PostGreSQL',
+                    value: 'post-ger-sql',
+                    id: 1
+                },
+                {
+                    label: 'ElasticSearch',
+                    value: 'eastic-search',
+                    id: 2
+                },
+                {
+                    label: 'MongoDB',
+                    value: 'mongo-db',
+                    id: 3
+                },
+                {
+                    label: 'S3',
+                    value: 's3',
+                    id: 4
+                }
+            ]
+        },
+    ]
     };
     this.breadCrumbs = [
       {
@@ -390,7 +505,7 @@ export class Environments extends React.Component<any, any> {
   }
 
   render() {
-    const { showRecentFilter, showAddNewFilter } = this.state;
+    const { showRecentFilter, showAddNewFilter, filterJsonData } = this.state;
     return (
       <div className="asset-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
@@ -537,7 +652,7 @@ export class Environments extends React.Component<any, any> {
             </div>
           </div>
           <div className="common-container border-bottom-0 environments-table-container">
-            <SelectCloudFilter />
+            <SelectCloudFilter filterJsonData={filterJsonData}/>
             <div className="recent-fliters-container">
               <div className="row">
                 <div className="col-lg-8 col-md-8 col-sm-12">
