@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 
 export class VerifyInputs extends React.Component<any, any> {
@@ -10,7 +9,8 @@ export class VerifyInputs extends React.Component<any, any> {
       inputName: this.props.inputName,
       configureInputs: false,
       selectedData: [],
-      tableData: this.props.dashboard
+      tableData: this.props.dashboard,
+      dashboardJSON: []
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
@@ -53,15 +53,6 @@ export class VerifyInputs extends React.Component<any, any> {
     //   console.log("VerifyInput. Excepiton in search input: ", err);
     // }
   };
-
-  // getParameterByName = (name: any, url: any) => {
-  //   name = name.replace(/[\[\]]/g, "\\$&");
-  //   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-  //     results = regex.exec(url);
-  //   if (!results) return null;
-  //   if (!results[2]) return "";
-  //   return decodeURIComponent(results[2].replace(/\+/g, " "));
-  // };
 
   async componentDidMount() {
     if (this.props.dashboard) {
@@ -126,11 +117,10 @@ export class VerifyInputs extends React.Component<any, any> {
   }
 
   setDashboardData = (data: any) => {
-    debugger;
     console.log(data)
     this.setState({
       tableData: data,
-    })
+    });
   }
 
   handleChange(e: any, i: any, j: any) {

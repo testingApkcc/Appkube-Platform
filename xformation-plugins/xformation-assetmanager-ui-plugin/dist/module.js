@@ -32424,27 +32424,7 @@ object-assign
                 _this.setState({
                   dashboardData: data,
                 });
-              }; // getViewJson = async () => {
-              //     try {
-              //         const cloud = this.getParameterByName("cloud", window.location.href);
-              //         const type = this.getParameterByName("type", window.location.href);
-              //         const tenantId = this.getParameterByName("tenantId", window.location.href);
-              //         const accountId = this.getParameterByName("accountId", window.location.href);
-              //         const reqOptions = RestService.optionWithAuthentication(null, "GET");
-              //         await fetch(`${this.config.GET_VIEW_JSON}?cloudType=${cloud}&elementType=${type}&inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, reqOptions).then(
-              //             (response: any) => {
-              //                 if(response){
-              //                     this.setState({
-              //                         viewJson: response
-              //                     });
-              //                 }
-              //             }, (error: any) => {
-              //                 console.log("Performance. getViewJson failed. Error: ", error);
-              //             });
-              //     } catch (err) {
-              //         console.log("Performance. Excepiton in getViewJson. Error: ", err);
-              //     }
-              // }
+              };
 
               _this.getInputConfig = function () {
                 return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(_this, void 0, void 0, function () {
@@ -32472,7 +32452,6 @@ object-assign
                               if (response.code !== 417) {
                                 dashboard_1['CloudDashBoards'] = response.details.ops.cloudDashBoards;
                                 dashboard_1['DataSources'] = response.details.ops.dataSources;
-                                console.log(dashboard_1);
 
                                 _this.setState({
                                   enablePerformanceMonitoring: true,
@@ -32538,178 +32517,66 @@ object-assign
 
               _this.onSubmit = function () {
                 return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(_this, void 0, void 0, function () {
-                  var selectedInput, selectedDashboards, i, dsObj;
+                  var dashbaordJSONArray, result, json, reqOpt;
+
+                  var _this = this;
+
                   return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__generator)(this, function (_a) {
-                    switch (_a.label) {
-                      case 0:
-                        this.setState({
-                          isSuccess: true,
-                        });
-                        selectedInput = this.verifyInputsRef.current.getSelection();
-                        selectedDashboards = this.enableDashboardRef.current.getSelection();
+                    this.setState({
+                      isSuccess: true,
+                    });
+                    dashbaordJSONArray = this.verifyAndSaveRef.current.getDashboardJSONData();
 
-                        if (selectedInput.length === 0) {
-                          this.wizardRef.current.setActiveStep(0);
-                        }
-
-                        if (selectedDashboards.length === 0) {
-                          this.wizardRef.current.setActiveStep(1);
-                        }
-
-                        console.log('1. Adding dashboards in grafana');
-                        i = 0;
-                        _a.label = 1;
-
-                      case 1:
-                        if (!(i < selectedInput.length))
-                          return [
-                            3, /*break*/
-                            4,
-                          ];
-                        dsObj = selectedInput[i];
-                        return [
-                          4,
-                          /*yield*/
-                          this.exportDashboardsInGrafana(dsObj, ''.concat(i)),
-                        ];
-
-                      case 2:
-                        _a.sent();
-
-                        _a.label = 3;
-
-                      case 3:
-                        i++;
-                        return [
-                          3, /*break*/
-                          1,
-                        ];
-
-                      case 4:
-                        if (!this.state.isSuccess) {
-                          this.setState({
-                            isAlertOpen: true,
-                            message: 'Enabling performance dashboards failed',
-                            severity: this.config.SEVERITY_ERROR,
-                            isSuccess: true,
-                          });
-                          return [
-                            2,
-                            /*return*/
-                          ];
-                        }
-
-                        console.log('2. Updating dashboards status in asset service');
-                        return [
-                          4,
-                          /*yield*/
-                          this.updateDashboardsStatusInAssetService(),
-                        ];
-
-                      case 5:
-                        _a.sent();
-
-                        if (!this.state.isSuccess) {
-                          this.setState({
-                            isAlertOpen: true,
-                            message: 'Enabling performance dashboards failed',
-                            severity: this.config.SEVERITY_ERROR,
-                            isSuccess: true,
-                          });
-                          return [
-                            2,
-                            /*return*/
-                          ];
-                        } // console.log("3. Updating inputs status in asset service");
-                        // for (let i = 0; i < selectedInput.length; i++) {
-                        //     let dsObj = selectedInput[i];
-                        //     await this.updateInput(dsObj);
-                        //     if (!this.state.isSuccess) {
-                        //         this.setState({
-                        //             isAlertOpen: true,
-                        //             message: 'Enabling performance dashboards failed',
-                        //             severity: this.config.SEVERITY_ERROR,
-                        //             isSuccess: true
-                        //         })
-                        //         return;
-                        //     }
-                        // }
-                        // console.log('4. Input config : ', inputConfig);
-                        // if (inputConfig === null) {
-                        //     console.log("5. Adding input config in asset service");
-                        //     await this.addInputConfig();
-                        // }
-                        // if (!this.state.isSuccess) {
-                        //     this.setState({
-                        //         isAlertOpen: true,
-                        //         message: 'Enabling performance dashboards failed',
-                        //         severity: this.config.SEVERITY_ERROR,
-                        //         isSuccess: true
-                        //     })
-                        //     return;
-                        // }
-
-                        this.setState({
-                          isAlertOpen: true,
-                          message: 'Performance dashboards enabled',
-                          severity: this.config.SEVERITY_SUCCESS,
-                          isSuccess: true,
-                        });
-                        return [
-                          2,
-                          /*return*/
-                        ];
+                    if (dashbaordJSONArray.length === 0) {
+                      this.wizardRef.current.setActiveStep(0);
+                      this.setState({
+                        isAlertOpen: true,
+                        message: 'Please select dashboard',
+                        severity: this.config.SEVERITY_ERROR,
+                        isSuccess: false,
+                      });
+                      return [
+                        2,
+                        /*return*/
+                      ];
                     }
+
+                    result = [];
+                    dashbaordJSONArray.forEach(function (dashboard) {
+                      result.push({
+                        title: dashboard.title,
+                        slug: dashboard.slug,
+                        uid: dashboard.uid,
+                        data: dashboard,
+                      });
+                    });
+                    json = JSON.stringify(result);
+                    reqOpt = _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.optionWithAuthentication(
+                      json,
+                      'POST'
+                    );
+                    fetch(this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
+                      .then(function (response) {
+                        return response.json();
+                      })
+                      .then(function (result) {})
+                      .catch(function (error) {
+                        console.log('Dashboard import in grafana failed. Error', error);
+
+                        _this.setState({
+                          isAlertOpen: true,
+                          message: 'Enabling performance dashboards failed',
+                          severity: _this.config.SEVERITY_ERROR,
+                          isSuccess: true,
+                        });
+                      });
+                    return [
+                      2,
+                      /*return*/
+                    ];
                   });
                 });
-              }; // updateInput(dsObj: any) {
-              //     const tenantId = this.getParameterByName("tenantId", window.location.href);
-              //     const accountId = this.getParameterByName("accountId", window.location.href);
-              //     let inp = {
-              //         id: dsObj.id,
-              //         status: 'ACTIVE',
-              //     }
-              //     RestService.add(`${this.config.UPDATE_INPUT}`, inp)
-              //         .then((response: any) => {
-              //             console.log("Update input response : ", response);
-              //             if (response.code === 417) {
-              //                 this.setState({
-              //                     isSuccess: false
-              //                 })
-              //             }
-              //         })
-              //         .catch(error => {
-              //             console.log('Updating input status failed. Error', error)
-              //             this.setState({
-              //                 isSuccess: false
-              //             })
-              //         });
-              // }
-              // addInputConfig() {
-              //     const tenantId = this.getParameterByName("tenantId", window.location.href);
-              //     const accountId = this.getParameterByName("accountId", window.location.href);
-              //     let inp = {
-              //         accountId: accountId,
-              //         tenantId: tenantId,
-              //         inputType: this.state.inputName,
-              //         status: 'ACTIVE',
-              //     }
-              //     RestService.add(`${this.config.ADD_INPUT_CONFIG}`, inp)
-              //         .then((response: any) => {
-              //             console.log("Add input_config response : ", response);
-              //             if (response.code === 417) {
-              //                 this.setState({
-              //                     isSuccess: false
-              //                 })
-              //             }
-              //         })
-              //         .catch(error => {
-              //             console.log('Add input_config failed. Error', error)
-              //             this.setState({
-              //                 isSuccess: false
-              //             })
-              //         });
-              // }
+              };
 
               _this.handleCloseAlert = function (e) {
                 _this.setState({
@@ -32720,26 +32587,14 @@ object-assign
               };
 
               _this.renderDashboardList = function () {
-                // const { inputConfig, activeDashboard } = this.state;
-                // if (inputConfig && inputConfig.dashboards) {
-                //     const retData = [];
-                //     for (let i = 0; i < inputConfig.dashboards.length; i++) {
-                //         const dashboard = inputConfig.dashboards[i];
-                //         retData.push(<div title={dashboard.Title} key={dashboard.Uuid} className={`dashboard-side-tab ${activeDashboard === i ? 'active' : ''}`} onClick={() => this.setState({ activeDashboard: i, iFrameLoaded: false })}>
-                //             <div className="tab-name">{dashboard.Title}</div>
-                //         </div>);
-                //     }
-                //     return retData;
-                // }
                 var _a = _this.state,
                   viewJson = _a.viewJson,
-                  activeDashboard = _a.activeDashboard; // if (viewJson && viewJson.dashboards) {
+                  activeDashboard = _a.activeDashboard;
 
                 if (viewJson) {
                   var retData = [];
 
                   var _loop_1 = function (i) {
-                    // const dashboard = viewJson.dashboards[i];
                     var dashboard = viewJson[i];
                     retData.push(
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -32758,7 +32613,7 @@ object-assign
                         dashboard.title
                       )
                     );
-                  }; // for (let i = 0; i < viewJson.dashboards.length; i++) {
+                  };
 
                   for (var i = 0; i < viewJson.length; i++) {
                     _loop_1(i);
@@ -32880,14 +32735,12 @@ object-assign
                   component: function () {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _VerifyAndSave__WEBPACK_IMPORTED_MODULE_5__.VerifyAndSave,
-                      {
-                        ref: _this.verifyAndSaveRef,
-                        inputName: _this.state.inputName,
-                        selectedData:
-                          _this.enableDashboardRef.current !== null
-                            ? _this.enableDashboardRef.current.getSelection()
-                            : null,
-                      }
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
+                        {
+                          ref: _this.verifyAndSaveRef,
+                        },
+                        _this.props
+                      )
                     );
                   },
                 },
@@ -32922,189 +32775,6 @@ object-assign
               });
             };
 
-            Performance.prototype.exportDashboardsInGrafana = function (dsObj, index) {
-              return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(this, void 0, void 0, function () {
-                var obj, dsbAry, usr, _loop_2, this_1, dashboard, raw, json, reqOpt, i;
-
-                var _this = this;
-
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__generator)(this, function (_a) {
-                  switch (_a.label) {
-                    case 0:
-                      obj = this.enableDashboardRef.current.getSelection();
-                      dsbAry = [];
-                      usr = localStorage.getItem('userInfo');
-
-                      _loop_2 = function (i) {
-                        var selectionData;
-                        return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__generator)(this, function (_b) {
-                          switch (_b.label) {
-                            case 0:
-                              selectionData = obj[i]; // console.log("Selected dashboard: ",selectionData);
-
-                              dashboard = this_1.config.DASHBOARD_JSON; // dashboard.Uid =`${selectionData.dashboardUuid}`;
-
-                              dashboard.Uuid = ''.concat(selectionData.dashboardUuid);
-                              dashboard.Slug = ''.concat(selectionData.fileName); // dashboard.Title =`${selectionData.fileName}`;
-
-                              dashboard.Title = ''.concat(index).concat(i);
-                              dashboard.SourceJsonRef = '';
-                              dashboard.AccountId = ''.concat(selectionData.accountId);
-                              dashboard.TenantId = ''.concat(selectionData.tenantId);
-                              dashboard.CloudName = selectionData.type;
-                              dashboard.ElementType = selectionData.elementType;
-                              dashboard.InputSourceId = dsObj.name;
-                              dashboard.FileName = selectionData.fileName;
-                              dashboard.InputType = this_1.state.inputName;
-                              raw = this_1.config.RAW;
-                              raw.Dashboard = dashboard;
-                              raw.Message = ''.concat(selectionData.dashboardNature); // console.log("Final dashboard to be exported: ",raw);
-
-                              json = JSON.stringify(raw); // console.log("Object to post : ", json);
-                              // var reqOpt = RestService.postOptionWithAuthentication(json);
-
-                              reqOpt =
-                                _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.optionWithAuthentication(
-                                  json,
-                                  'POST'
-                                );
-                              return [
-                                4,
-                                /*yield*/
-                                fetch(this_1.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
-                                  .then(function (response) {
-                                    return response.json();
-                                  })
-                                  .then(function (result) {
-                                    // console.log("1. Dashboard import in grafana. Response: ",result);
-                                    var userName = '';
-
-                                    if (usr) {
-                                      var user = JSON.parse(usr);
-                                      userName = user.username;
-                                    }
-
-                                    if (result.status === 'success') {
-                                      var assetStatus = {
-                                        user: userName,
-                                        id: selectionData.id,
-                                        status: 'ENABLED',
-                                        appAsset: raw,
-                                        grafanaAsset: result,
-                                      };
-                                      dsbAry[i] = assetStatus;
-                                    } else {
-                                      var assetStatus = {
-                                        user: userName,
-                                        id: selectionData.id,
-                                        status: 'FAILED',
-                                        appAsset: raw,
-                                        grafanaAsset: result,
-                                      };
-                                      dsbAry[i] = assetStatus;
-
-                                      _this.setState({
-                                        isSuccess: false,
-                                      });
-                                    }
-                                  })
-                                  .catch(function (error) {
-                                    console.log('Dashboard import in grafana failed. Error', error);
-
-                                    _this.setState({
-                                      isSuccess: false,
-                                    });
-                                  }),
-                              ];
-
-                            case 1:
-                              _b.sent();
-
-                              return [
-                                2,
-                                /*return*/
-                              ];
-                          }
-                        });
-                      };
-
-                      this_1 = this;
-                      i = 0;
-                      _a.label = 1;
-
-                    case 1:
-                      if (!(i < obj.length))
-                        return [
-                          3, /*break*/
-                          4,
-                        ];
-                      return [
-                        5,
-                        /*yield**/
-                        _loop_2(i),
-                      ];
-
-                    case 2:
-                      _a.sent();
-
-                      _a.label = 3;
-
-                    case 3:
-                      i++;
-                      return [
-                        3, /*break*/
-                        1,
-                      ];
-
-                    case 4:
-                      this.setState({
-                        updatedDashboards: dsbAry,
-                      });
-                      return [
-                        2,
-                        /*return*/
-                      ];
-                  }
-                });
-              });
-            };
-
-            Performance.prototype.updateDashboardsStatusInAssetService = function () {
-              var _this = this;
-
-              var updatedDashboards = this.state.updatedDashboards;
-              var tenantId = this.getParameterByName('tenantId', window.location.href);
-              var accountId = this.getParameterByName('accountId', window.location.href);
-              var inputObj = {
-                accountId: accountId,
-                tenantId: tenantId,
-                inputType: this.state.inputName,
-                status: 'ACTIVE',
-                dashboardList: updatedDashboards,
-                enableInput: true,
-              };
-              _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.add(
-                ''.concat(this.config.BULK_UPDATE_APPLICATION_ASSETS),
-                inputObj
-              )
-                .then(function (response) {
-                  console.log('Update assets response : ', response);
-
-                  if (response.code === 417) {
-                    _this.setState({
-                      isSuccess: false,
-                    });
-                  }
-                })
-                .catch(function (error) {
-                  console.log('Updating dashboard status failed. Error', error);
-
-                  _this.setState({
-                    isSuccess: false,
-                  });
-                });
-            };
-
             Performance.prototype.render = function () {
               var _this = this;
 
@@ -33117,12 +32787,7 @@ object-assign
                 iFrameLoaded = _a.iFrameLoaded,
                 viewJson = _a.viewJson,
                 activeDashboard = _a.activeDashboard;
-              var activeDB = null; // if (inputConfig && inputConfig.dashboards && inputConfig.dashboards[activeDashboard]) {
-              //     activeDB = inputConfig.dashboards[activeDashboard];
-              // }
-              // if (viewJson && viewJson.dashboards && viewJson.dashboards[activeDashboard]) {
-              //     activeDB = viewJson.dashboards[activeDashboard];
-              // }
+              var activeDB = null;
 
               if (viewJson && viewJson[activeDashboard]) {
                 activeDB = viewJson[activeDashboard];
@@ -33475,8 +33140,6 @@ object-assign
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../config */ 5);
 
-        // import { RestService } from '../../_service/RestService';
-
         var VerifyInputs =
           /** @class */
           (function (_super) {
@@ -33500,7 +33163,6 @@ object-assign
               };
 
               _this.setDashboardData = function (data) {
-                debugger;
                 console.log(data);
 
                 _this.setState({
@@ -33639,6 +33301,7 @@ object-assign
                 configureInputs: false,
                 selectedData: [],
                 tableData: _this.props.dashboard,
+                dashboardJSON: [],
               };
               _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_1__.configFun)(
                 props.meta.jsonData.apiUrl,
@@ -33653,14 +33316,7 @@ object-assign
                   tableData: this.props.dashboard,
                 });
               }
-            }; // getParameterByName = (name: any, url: any) => {
-            //   name = name.replace(/[\[\]]/g, "\\$&");
-            //   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            //     results = regex.exec(url);
-            //   if (!results) return null;
-            //   if (!results[2]) return "";
-            //   return decodeURIComponent(results[2].replace(/\+/g, " "));
-            // };
+            };
 
             VerifyInputs.prototype.componentDidMount = function () {
               return (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
@@ -34035,20 +33691,17 @@ object-assign
           /* harmony export */ Preview: () => /* binding */ Preview,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../config */ 5);
-        /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../_service/RestService */ 7
-        );
 
         var Preview =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(Preview, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__extends)(Preview, _super);
 
             function Preview(props) {
               var _this = _super.call(this, props) || this;
@@ -34057,15 +33710,6 @@ object-assign
                 _this.setState({
                   selectedDashboards: data,
                 });
-              };
-
-              _this.getParameterByName = function (name, url) {
-                name = name.replace(/[\[\]]/g, '\\$&');
-                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                  results = regex.exec(url);
-                if (!results) return null;
-                if (!results[2]) return '';
-                return decodeURIComponent(results[2].replace(/\+/g, ' '));
               };
 
               _this.renderDashboardList = function () {
@@ -34158,94 +33802,6 @@ object-assign
               return _this;
             }
 
-            Preview.prototype.componentDidMount = function () {
-              return (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function () {
-                var dataSourceName,
-                  jsonLocation,
-                  associatedCloudElementType,
-                  associatedSLAType,
-                  associatedCloud,
-                  accountId,
-                  url,
-                  err_1;
-
-                var _this = this;
-
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
-                  switch (_a.label) {
-                    case 0:
-                      dataSourceName = 'awsCloudWatch';
-                      jsonLocation = 'xformation.synectiks.com/test_ds.json';
-                      associatedCloudElementType = 'RDS';
-                      associatedSLAType = 'PERFORMANCE';
-                      associatedCloud = 'AWS';
-                      accountId = '657907747545';
-                      if (
-                        !(
-                          dataSourceName &&
-                          jsonLocation &&
-                          associatedCloudElementType &&
-                          associatedSLAType &&
-                          associatedCloud &&
-                          accountId
-                        )
-                      )
-                        return [
-                          3, /*break*/
-                          4,
-                        ];
-                      url = ''
-                        .concat(this.config.PREVIEW_DASHBOARDS_URL, '?dataSourceName=')
-                        .concat(dataSourceName, '&associatedCloudElementType=')
-                        .concat(associatedCloudElementType, '&associatedSLAType=')
-                        .concat(associatedSLAType, '&jsonLocation=')
-                        .concat(jsonLocation, '&jsonLocation=')
-                        .concat(jsonLocation, '&associatedCloud=')
-                        .concat(associatedCloud, '&accountId=')
-                        .concat(accountId);
-                      _a.label = 1;
-
-                    case 1:
-                      _a.trys.push([1, 3, , 4]);
-
-                      return [
-                        4,
-                        /*yield*/
-                        _service_RestService__WEBPACK_IMPORTED_MODULE_2__.RestService.getData(url, null, null).then(
-                          function (res) {
-                            _this.setState({
-                              data: JSON.parse(res.object.data),
-                            }); // console.log("Loading aws regions : ", res);
-                          }
-                        ),
-                      ];
-
-                    case 2:
-                      _a.sent();
-
-                      return [
-                        3, /*break*/
-                        4,
-                      ];
-
-                    case 3:
-                      err_1 = _a.sent();
-                      console.log('Loading aws regions failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        4,
-                      ];
-
-                    case 4:
-                      return [
-                        2,
-                        /*return*/
-                      ];
-                  }
-                });
-              });
-            };
-
             Preview.prototype.componentDidUpdate = function (previousProps, previousState) {
               if (this.props.selectedInput !== previousProps.selectedInput) {
                 var selectedInput = this.props.selectedInput;
@@ -34326,16 +33882,20 @@ object-assign
           /* harmony export */ VerifyAndSave: () => /* binding */ VerifyAndSave,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
+        /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+          /*! ../../_service/RestService */ 7
+        );
+        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../config */ 5);
 
         var VerifyAndSave =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(VerifyAndSave, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(VerifyAndSave, _super);
 
             function VerifyAndSave(props) {
               var _this = _super.call(this, props) || this;
@@ -34344,6 +33904,8 @@ object-assign
                 _this.setState({
                   selectedData: data,
                 });
+
+                _this.retriveDashboardJSONData();
               };
 
               _this.getSelection = function () {
@@ -34466,10 +34028,62 @@ object-assign
                 return retData;
               };
 
+              _this.retriveDashboardJSONData = function () {
+                var dashboardJSON = _this.state.dashboardJSON;
+                var dataSourceName = 'awsCloudWatch';
+                var jsonLocation = 'xformation.synectiks.com/test_ds.json';
+                var associatedCloudElementType = 'RDS';
+                var associatedSLAType = 'PERFORMANCE';
+                var associatedCloud = 'AWS';
+                var accountId = '657907747545';
+
+                if (
+                  dataSourceName &&
+                  jsonLocation &&
+                  associatedCloudElementType &&
+                  associatedSLAType &&
+                  associatedCloud &&
+                  accountId
+                ) {
+                  var url = ''
+                    .concat(_this.config.PREVIEW_DASHBOARDS_URL, '?dataSourceName=')
+                    .concat(dataSourceName, '&associatedCloudElementType=')
+                    .concat(associatedCloudElementType, '&associatedSLAType=')
+                    .concat(associatedSLAType, '&jsonLocation=')
+                    .concat(jsonLocation, '&jsonLocation=')
+                    .concat(jsonLocation, '&associatedCloud=')
+                    .concat(associatedCloud, '&accountId=')
+                    .concat(accountId);
+
+                  try {
+                    _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(url, null, null).then(
+                      function (res) {
+                        dashboardJSON.push(res);
+
+                        _this.setState({
+                          dashboardJSON: dashboardJSON,
+                        });
+                      }
+                    );
+                  } catch (err) {
+                    console.log('Loading aws regions failed. Error: ', err);
+                  }
+                }
+              };
+
+              _this.getDashboardJSONData = function () {
+                return _this.state.dashboardJSON;
+              };
+
               _this.state = {
                 selectedData: {},
                 selectedDashboards: [],
+                dashboardJSON: [],
               };
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(
+                props.meta.jsonData.apiUrl,
+                props.meta.jsonData.mainProductUrl
+              );
               return _this;
             }
 

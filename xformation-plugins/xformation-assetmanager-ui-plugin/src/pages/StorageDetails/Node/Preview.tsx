@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { configFun } from '../../../config';
-import { RestService } from '../../_service/RestService';
 
 export class Preview extends React.Component<any, any> {
   config: any;
@@ -11,43 +10,9 @@ export class Preview extends React.Component<any, any> {
       selectedInput: [],
       selectedDashboards: [],
       activeDashboard: 0,
-      isLoading: false,
+      isLoading: false
     };
     this.config = configFun('', '');
-  }
-
-  async componentDidMount() {
-    const dataSourceName = "awsCloudWatch";
-    const jsonLocation = "xformation.synectiks.com/test_ds.json";
-    const associatedCloudElementType = "RDS";
-    const associatedSLAType = "PERFORMANCE";
-    const associatedCloud = "AWS";
-    const accountId = "657907747545";
-    if (dataSourceName && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud  && accountId) {
-      const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
-      try {
-        await RestService.getData(url, null, null).then((res: any) => {
-          this.setState({
-            data: JSON.parse(res.object.data),
-          });
-          // console.log("Loading aws regions : ", res);
-        });
-      } catch (err) {
-        console.log('Loading aws regions failed. Error: ', err);
-      }
-
-      // backendSrv.get(url).then(
-      //   (res: any) => {
-      //     this.setState({
-      //       data: JSON.parse(res.object.data),
-      //     });
-      //   },
-      //   (err: any) => {
-      //     console.log(err);
-      //   }
-      // );
-      
-    }
   }
 
   componentDidUpdate(previousProps: any, previousState: any) {
@@ -70,17 +35,8 @@ export class Preview extends React.Component<any, any> {
   setDashboardData = (data: any) => {
     this.setState({
       selectedDashboards: data
-    })
+    });
   }
-
-  getParameterByName = (name: any, url: any) => {
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return "";
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  };
 
   renderDashboardList = () => {
     const { selectedDashboards, activeDashboard } = this.state;
