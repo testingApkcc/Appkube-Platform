@@ -32717,13 +32717,6 @@ object-assign
                       _Preview__WEBPACK_IMPORTED_MODULE_4__.Preview,
                       {
                         ref: _this.previewRef,
-                        inputName: _this.state.inputName,
-                        selectedInput:
-                          _this.verifyInputsRef.current !== null ? _this.verifyInputsRef.current.getSelection() : null,
-                        selectedDashboards:
-                          _this.enableDashboardRef.current !== null
-                            ? _this.enableDashboardRef.current.getSelection()
-                            : null,
                       }
                     );
                   },
@@ -33813,8 +33806,6 @@ object-assign
               };
 
               _this.state = {
-                inputName: _this.props.inputName,
-                selectedInput: [],
                 selectedDashboards: [],
                 activeDashboard: 0,
                 isLoading: false,
@@ -33824,13 +33815,6 @@ object-assign
             }
 
             Preview.prototype.componentDidUpdate = function (previousProps, previousState) {
-              if (this.props.selectedInput !== previousProps.selectedInput) {
-                var selectedInput = this.props.selectedInput;
-                this.setState({
-                  selectedInput: selectedInput, // activeDashboard: [0, this.state.activeDashboard[1]],
-                });
-              }
-
               if (this.props.selectedDashboards !== previousProps.selectedDashboards) {
                 var selectedDashboards = this.props.selectedDashboards;
                 this.setState({

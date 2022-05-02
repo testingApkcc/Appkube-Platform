@@ -6,8 +6,6 @@ export class Preview extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      inputName: this.props.inputName,
-      selectedInput: [],
       selectedDashboards: [],
       activeDashboard: 0,
       isLoading: false
@@ -16,13 +14,6 @@ export class Preview extends React.Component<any, any> {
   }
 
   componentDidUpdate(previousProps: any, previousState: any) {
-    if (this.props.selectedInput !== previousProps.selectedInput) {
-      const selectedInput = this.props.selectedInput;
-      this.setState({
-        selectedInput,
-        // activeDashboard: [0, this.state.activeDashboard[1]],
-      });
-    }
     if (this.props.selectedDashboards !== previousProps.selectedDashboards) {
       const selectedDashboards = this.props.selectedDashboards;
       this.setState({

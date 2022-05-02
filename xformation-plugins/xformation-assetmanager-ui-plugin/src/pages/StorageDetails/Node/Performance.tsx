@@ -52,7 +52,7 @@ export class Performance extends React.Component<any, any>{
             },
             {
                 name: "Preview",
-                component: () => <Preview ref={this.previewRef} inputName={this.state.inputName} selectedInput={this.verifyInputsRef.current !== null ? this.verifyInputsRef.current.getSelection() : null} selectedDashboards={this.enableDashboardRef.current !== null ? this.enableDashboardRef.current.getSelection() : null} />
+                component: () => <Preview ref={this.previewRef} />
             },
             {
                 name: "Verify and save",
