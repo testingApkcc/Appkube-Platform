@@ -66,23 +66,8 @@ export class SelectCloudFilter extends React.Component<any, any> {
 
     componentDidMount() {
     if (this.props.filterJsonData && this.props.filterJsonData.length>0 ){
-        // for(let i=0; i<this.props.filterJsonData.length; i++){
-        //     console.log(this.props.filterJsonData[i]);
-        //     for(let j=0;j <this.props.filterJsonData[i].filter.length; j++){
-        //         console.log(this.props.filterJsonData[i].filter);
-        //         this.props.filterJsonData[i].filter[j].isHide=true;
-        //     }
-        // }
         this.setState({ displayJsonData:this.props.filterJsonData })
     }
-    }
-
-    componentDidUpdate(prevProps: any, prevState: any) {
-    //     if (JSON.stringify(prevProps.displayJsonData) !== JSON.stringify(this.props.displayJsonData)) {
-    //         this.setState({
-    //             displayJsonData: this.props.displayJsonData,
-    //         })
-    //     }
     }
 
     displaySelectedTags = () => {
@@ -97,25 +82,13 @@ export class SelectCloudFilter extends React.Component<any, any> {
                         retData.push(
                             <div className="fliter-selected" key={label.id}>
                                 <span
-                                // onClick={() => this.setChildData(optionJsonData[i])}
                                 >{label.label}</span>
                                 <i className="fa fa-times"
                                     onClick={() => this.removeSelectedTag(label)}
                                 ></i>
                             </div>
                         );
-                        // if (optionJsonData[i].subdata) {
-                        //     for (let j = 0; j < optionJsonData[i].subdata.length; j++) {
-                        //         if (optionJsonData[i].subdata[j].isChecked) {
-                        //             retData.push(
-                        //                 <div className="fliter-selected" key={optionJsonData[i].subdata[j].id}>
-                        //                     <span onClick={() => this.setState({ showTagFilter: false })}>{optionJsonData[i].subdata[j].name}</span>
-                        //                     <i className="fa fa-times" onClick={() => this.removeSelectedTag(optionJsonData[i].subdata[j].value)}></i>
-                        //                 </div>
-                        //             );
-                        //         }
-                        //     }
-                        // }
+                        
                     }
                 }
             }
