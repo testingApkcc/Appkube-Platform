@@ -4,8 +4,8 @@ define(['@grafana/data', 'react', 'react-router-dom', 'react-dom', '@grafana/ui'
   __WEBPACK_EXTERNAL_MODULE__12__,
   __WEBPACK_EXTERNAL_MODULE__10__,
   __WEBPACK_EXTERNAL_MODULE__52__,
-  __WEBPACK_EXTERNAL_MODULE__83__,
-  __WEBPACK_EXTERNAL_MODULE__84__
+  __WEBPACK_EXTERNAL_MODULE__87__,
+  __WEBPACK_EXTERNAL_MODULE__88__
 ) => {
   return /******/ (() => {
     // webpackBootstrap
@@ -283,7 +283,7 @@ define(['@grafana/data', 'react', 'react-router-dom', 'react-dom', '@grafana/ui'
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 69
+          /*! ./setPrototypeOf.js */ 71
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -920,7 +920,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 14));
 
-        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 75);
+        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 79);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -1905,7 +1905,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /*! @material-ui/core/Snackbar */ 172
         );
         /* harmony import */ var _material_ui_lab_Alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/lab/Alert */ 86
+          /*! @material-ui/lab/Alert */ 90
         );
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/core/styles */ 171
@@ -2048,10 +2048,10 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithoutHoles.js */ 102
+          /*! ./arrayWithoutHoles.js */ 73
         );
         /* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArray.js */ 70
+          /*! ./iterableToArray.js */ 74
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 46
@@ -3158,10 +3158,10 @@ PERFORMANCE OF THIS SOFTWARE.
           /*! ../../constants */ 28
         );
         /* harmony import */ var _launchTcpInputPopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./launchTcpInputPopup */ 77
+          /*! ./launchTcpInputPopup */ 81
         );
         /* harmony import */ var _contentPacksPopup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./contentPacksPopup */ 78
+          /*! ./contentPacksPopup */ 82
         );
 
         var TopMenu =
@@ -3314,7 +3314,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./plugin.json */ 76
+          /*! ./plugin.json */ 80
         );
 
         var PLUGIN_BASE_URL = '/a/'.concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
@@ -3817,7 +3817,7 @@ PERFORMANCE OF THIS SOFTWARE.
         // module
         exports.push([
           module.id,
-          "@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%;\n  }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%;\n  }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%;\n  }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%;\n  }\n}\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.blue-button:hover,\n.blue-button:focus {\n  background: #0f5efd !important;\n  color: #ffffff !important;\n}\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.gray-button:hover,\n.gray-button:focus {\n  background: #dbe0e4 !important;\n  color: #8392a7 !important;\n}\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center;\n}\n.white-button:hover,\n.white-button:focus {\n  background: #e6e6e6 !important;\n  color: #3b4859 !important;\n}\n.white-button i {\n  color: #57a4ff !important;\n}\n\na:focus,\na:hover {\n  color: #000000;\n}\n\n.float-right {\n  float: right;\n}\n\n.float-left {\n  float: left;\n}\n\n.text-left {\n  text-align: left;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.text-right {\n  text-align: right;\n}\n\n.v-a-top {\n  vertical-align: top;\n}\n\n.v-a-middle {\n  vertical-align: middle;\n}\n\n.d-flex {\n  display: flex;\n}\n\n.d-block {\n  display: block;\n}\n\n.d-inline-block {\n  display: inline-block;\n}\n\n.p-t-0 {\n  padding-top: 0 !important;\n}\n\n.p-t-5 {\n  padding-top: 5px !important;\n}\n\n.p-t-10 {\n  padding-top: 10px !important;\n}\n\n.p-t-15 {\n  padding-top: 15px !important;\n}\n\n.p-t-20 {\n  padding-top: 20px !important;\n}\n\n.p-r-0 {\n  padding-right: 0 !important;\n}\n\n.p-r-5 {\n  padding-right: 5px !important;\n}\n\n.p-r-10 {\n  padding-right: 10px !important;\n}\n\n.p-r-15 {\n  padding-right: 15px !important;\n}\n\n.p-r-20 {\n  padding-right: 20px !important;\n}\n\n.p-b-0 {\n  padding-bottom: 0px !important;\n}\n\n.p-b-5 {\n  padding-bottom: 5px !important;\n}\n\n.p-b-10 {\n  padding-bottom: 10px !important;\n}\n\n.p-b-15 {\n  padding-bottom: 15px !important;\n}\n\n.p-b-20 {\n  padding-bottom: 20px !important;\n}\n\n.p-l-0 {\n  padding-left: 0 !important;\n}\n\n.p-l-5 {\n  padding-left: 5px !important;\n}\n\n.p-l-10 {\n  padding-left: 10px !important;\n}\n\n.p-l-15 {\n  padding-left: 15px !important;\n}\n\n.p-l-20 {\n  padding-left: 20px !important;\n}\n\n.m-l-0 {\n  margin-left: 0 !important;\n}\n\n.m-r-0 {\n  margin-right: 0 !important;\n}\n\n.m-t-0 {\n  margin-top: 0 !important;\n}\n\n.m-b-0 {\n  margin-bottom: 0 !important;\n}\n\n.width-25 {\n  width: 25%;\n}\n\n.width-50 {\n  width: 50%;\n}\n\n.width-75 {\n  width: 75%;\n}\n\n.width-100 {\n  width: 100%;\n}\n\n.width-auto {\n  width: auto;\n}\n\n.min-width-inherit {\n  min-width: inherit !important;\n}\n\n.border-bottom-0 {\n  border-bottom: none !important;\n}\n\n.orange {\n  color: #ff8f00;\n}\n\n.yellow-green {\n  color: #7ed321;\n}\n\n.red {\n  color: #f93d3d;\n}\n\n.yellow {\n  color: #ffff00;\n}\n\n.blue {\n  color: #438afb;\n}\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n}\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem;\n}\n.form-group label {\n  margin-bottom: 0.5rem;\n}\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px;\n}\n.filter-container .filter-control-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 12px;\n  cursor: pointer;\n  height: 35px;\n}\n.filter-container .filter-control-group label {\n  color: #3b4859;\n  font-size: 14px;\n}\n\n.logmanager-page-container {\n  background-color: #ffffff;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px;\n}\n.logmanager-page-container .common-container {\n  padding-top: 20px;\n  padding-left: 45px;\n  padding-right: 45px;\n  padding-bottom: 15px;\n  border-bottom: 1px solid #f5f6f5;\n}\n.logmanager-page-container .page-heading {\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading h1 {\n  color: #3b4859;\n  font-weight: 600;\n  font-size: 24px;\n  line-height: 32px;\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading span {\n  display: block;\n  color: #a9b9c6;\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 500;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .enabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .enabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .disabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .disabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0;\n}\n.open-create-menu a {\n  color: #2a9ce7;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n  display: block;\n  padding: 4px 0;\n}\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n\n.breadcrumbs-container {\n  background-color: #eff2f7;\n  padding: 14px 20px 15px;\n  font-size: 13px;\n}\n.breadcrumbs-container .page-title {\n  color: #3b4859;\n  display: inline-block;\n}\n.breadcrumbs-container .breadcrumbs {\n  float: right;\n}\n.breadcrumbs-container a.breadcrumbs-link {\n  color: #89898a;\n}\n.breadcrumbs-container .current-page {\n  color: #2a9ce7;\n}\n.breadcrumbs-container .separator {\n  color: #89898a;\n  display: inline-block;\n  padding: 0 10px;\n}\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n.logmanager-modal-container .modal-content {\n  padding: 30px;\n}\n.logmanager-modal-container .modal-content .modal-header {\n  background: white;\n  box-shadow: none;\n  border-bottom: 1px dashed #a2c0d4;\n  margin-bottom: 20px;\n  padding: 0 10px 10px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title {\n  color: #3b4859;\n  float: left;\n  margin: 0px;\n  font-size: 16px;\n  font-weight: 500;\n  padding: 0;\n  line-height: 28px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title span {\n  font-weight: 400;\n}\n.logmanager-modal-container .modal-content .modal-header button {\n  float: right;\n  font-size: 28px;\n  top: 0;\n  position: relative;\n  color: #ffffff;\n  opacity: 1;\n  width: 28px;\n  height: 28px;\n  background-color: red;\n  border-radius: 50%;\n  border: none;\n  line-height: 28px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .modal-body {\n  padding: 0px 10px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body p {\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group {\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group label {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 18px;\n  color: #3b4859;\n  padding-right: 0px;\n  padding-bottom: 0px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 13px;\n  height: 36px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n  background-color: #ffffff;\n  border: 1px solid #8392a7;\n  border-radius: 4px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 34px;\n  font-style: italic;\n  color: #3b4859;\n  padding: 0 15px;\n  width: 100%;\n  text-align: left;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group span {\n  padding-top: 5px;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: middle;\n  cursor: pointer;\n  margin-top: -4px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n  height: 120px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n  margin-top: 10px;\n  margin-left: 30px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n  width: auto;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .text {\n  padding: 0 3px;\n  line-height: 12px;\n  vertical-align: top;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n  margin-right: 7px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 18px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group {\n  display: block;\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group input {\n  display: inline-block;\n  vertical-align: middle;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group label {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 21px;\n  font-weight: 400;\n  vertical-align: top;\n  padding-left: 8px;\n}\n.logmanager-modal-container .modal-content .modal-footer {\n  padding: 20px 15px 0px;\n  background: none;\n  border: none;\n  border-top: 1px dashed #a2c0d4;\n}\n.logmanager-modal-container .modal-content .modal-footer .blue-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .gray-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .white-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button {\n  border: 1px solid #89898a;\n  background-color: #89898a;\n  color: #ffffff;\n  font-size: 15px;\n  line-height: 36px;\n  font-weight: 500;\n  padding: 0 30px;\n  margin: 0;\n  border-radius: 5px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n  border-color: #3b7cff;\n  background-color: #3b7cff;\n  color: #ffffff;\n  margin-left: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container span {\n  font-size: 14px;\n  display: block;\n  line-height: 18px;\n  color: #3b4859;\n  font-weight: 400;\n  padding-bottom: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n  font-size: 13px;\n}\n.logmanager-modal-container .modal-content .rules-defined {\n  border-top: 1px dashed #a2c0d4;\n  padding-top: 5px;\n  margin-bottom: 50px;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n  background-color: #f8faff;\n  padding: 5px 5px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n  display: inline-block;\n  padding-right: 7px;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b97d3;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b4859;\n  padding-bottom: 0px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules {\n  display: block;\n  padding-top: 10px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  margin-bottom: 0;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  padding-bottom: 0;\n  display: block;\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .message-tabs-container span {\n  display: block;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n  background-color: #fafbfd;\n  border: 2px solid #fafbfd;\n  padding: 10px 10px;\n  color: #2662f0;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n  background-color: #ffffff;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n  padding-top: 15px;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n  margin-right: 15px;\n  max-width: 300px;\n  width: 300px;\n  display: inline-block;\n}\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px;\n}\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400;\n}\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px;\n}\n.search-control .input-group-text {\n  max-width: 100%;\n  text-align: left;\n  padding-right: 15px;\n  padding-left: 30px;\n  width: 100%;\n  border: 1px solid #ced4da;\n  background-color: #ffffff;\n  border-radius: 3px;\n  padding-top: 0.399rem;\n}\n.search-control button {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 1;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  width: 34px;\n  height: 34px;\n}\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid;\n}\n.table-container .table-container-inner {\n  overflow-x: scroll;\n  width: 100%;\n  background-color: #ffffff;\n}\n.table-container .table-container-inner .table {\n  white-space: nowrap;\n  width: 1200px;\n}\n.table-container .table-container-inner .table tr:nth-child(odd) td {\n  background-color: #f8f9fb;\n}\n.table-container .table-container-inner .table tr td {\n  padding: 5px 10px;\n  color: #323c47;\n  font-size: 11px;\n  line-height: 20px;\n  font-weight: 400;\n}\n.table-container .table-container-inner .table tr td:first-child {\n  margin-right: 5px;\n}\n.table-container .table-container-inner .table tr td:last-child {\n  margin-left: 5px;\n}\n.table-container .table-container-inner .table tr td h4 {\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 18px;\n  color: #3b7cff;\n  margin-bottom: 5px;\n  cursor: pointer;\n}\n.table-container .table-container-inner .table tr td p {\n  margin-bottom: 3px;\n}\n.table-container .table-container-inner .table tr td a {\n  color: #3b7cff;\n}\n.table-container .table-container-inner .table tr td .blue-button {\n  font-size: 12px;\n}\n.table-container .table-container-inner .table tr td .table-btns {\n  position: relative;\n}\n.table-container .table-container-inner .table tr td .btn-link {\n  color: #3b7cff;\n  padding: 0 7px;\n  font-size: 18px;\n}\n.table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n  background-color: transparent;\n}\n.table-container .table-container-inner .table .inner-table tr td {\n  width: 50%;\n}\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none;\n  }\n  .search-control {\n    margin-bottom: 10px;\n  }\n  .new-stream-btn {\n    float: none;\n    display: inline-block;\n  }\n}\n\n/*# sourceMappingURL=logmanager.light.css.map */\n",
+          '@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%; }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%; }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%; }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%; } }\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .blue-button:hover, .blue-button:focus {\n    background: #0f5efd !important;\n    color: #ffffff !important; }\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .gray-button:hover, .gray-button:focus {\n    background: #dbe0e4 !important;\n    color: #8392a7 !important; }\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center; }\n  .white-button:hover, .white-button:focus {\n    background: #e6e6e6 !important;\n    color: #3b4859 !important; }\n  .white-button i {\n    color: #57a4ff !important; }\n\na:focus, a:hover {\n  color: #000000; }\n\n.float-right {\n  float: right; }\n\n.float-left {\n  float: left; }\n\n.text-left {\n  text-align: left; }\n\n.text-center {\n  text-align: center; }\n\n.text-right {\n  text-align: right; }\n\n.v-a-top {\n  vertical-align: top; }\n\n.v-a-middle {\n  vertical-align: middle; }\n\n.d-flex {\n  display: flex; }\n\n.d-block {\n  display: block; }\n\n.d-inline-block {\n  display: inline-block; }\n\n.p-t-0 {\n  padding-top: 0 !important; }\n\n.p-t-5 {\n  padding-top: 5px !important; }\n\n.p-t-10 {\n  padding-top: 10px !important; }\n\n.p-t-15 {\n  padding-top: 15px !important; }\n\n.p-t-20 {\n  padding-top: 20px !important; }\n\n.p-r-0 {\n  padding-right: 0 !important; }\n\n.p-r-5 {\n  padding-right: 5px !important; }\n\n.p-r-10 {\n  padding-right: 10px !important; }\n\n.p-r-15 {\n  padding-right: 15px !important; }\n\n.p-r-20 {\n  padding-right: 20px !important; }\n\n.p-b-0 {\n  padding-bottom: 0px !important; }\n\n.p-b-5 {\n  padding-bottom: 5px !important; }\n\n.p-b-10 {\n  padding-bottom: 10px !important; }\n\n.p-b-15 {\n  padding-bottom: 15px !important; }\n\n.p-b-20 {\n  padding-bottom: 20px !important; }\n\n.p-l-0 {\n  padding-left: 0 !important; }\n\n.p-l-5 {\n  padding-left: 5px !important; }\n\n.p-l-10 {\n  padding-left: 10px !important; }\n\n.p-l-15 {\n  padding-left: 15px !important; }\n\n.p-l-20 {\n  padding-left: 20px !important; }\n\n.m-l-0 {\n  margin-left: 0 !important; }\n\n.m-r-0 {\n  margin-right: 0 !important; }\n\n.m-t-0 {\n  margin-top: 0 !important; }\n\n.m-b-0 {\n  margin-bottom: 0 !important; }\n\n.width-25 {\n  width: 25%; }\n\n.width-50 {\n  width: 50%; }\n\n.width-75 {\n  width: 75%; }\n\n.width-100 {\n  width: 100%; }\n\n.width-auto {\n  width: auto; }\n\n.min-width-inherit {\n  min-width: inherit !important; }\n\n.border-bottom-0 {\n  border-bottom: none !important; }\n\n.orange {\n  color: #FF8F00; }\n\n.yellow-green {\n  color: #7ED321; }\n\n.red {\n  color: #F93D3D; }\n\n.yellow {\n  color: #FFFF00; }\n\n.blue {\n  color: #438AFB; }\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem; }\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem; }\n  .form-group label {\n    margin-bottom: 0.5rem; }\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px; }\n  .filter-container .filter-control-group .form-control {\n    background-color: #f0f3f7 !important;\n    border: none !important;\n    font-size: 12px;\n    cursor: pointer;\n    height: 35px; }\n  .filter-container .filter-control-group label {\n    color: #3b4859;\n    font-size: 14px; }\n\n.logmanager-page-container {\n  background-color: #ffffff;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px; }\n  .logmanager-page-container .common-container {\n    padding-top: 20px;\n    padding-left: 45px;\n    padding-right: 45px;\n    padding-bottom: 15px;\n    border-bottom: 1px solid #f5f6f5; }\n  .logmanager-page-container .page-heading {\n    display: block;\n    margin-bottom: 0; }\n    .logmanager-page-container .page-heading h1 {\n      color: #3B4859;\n      font-weight: 600;\n      font-size: 24px;\n      line-height: 32px;\n      display: block;\n      margin-bottom: 0; }\n    .logmanager-page-container .page-heading span {\n      display: block;\n      color: #A9B9C6;\n      font-size: 13px;\n      line-height: 18px;\n      font-weight: 500; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .enabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .enabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .disabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .disabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0; }\n  .open-create-menu a {\n    color: #2a9ce7;\n    font-size: 12px;\n    font-weight: 400;\n    line-height: 20px;\n    display: block;\n    padding: 4px 0; }\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white; }\n\n.breadcrumbs-container {\n  background-color: #eff2f7;\n  padding: 14px 20px 15px;\n  font-size: 13px; }\n  .breadcrumbs-container .page-title {\n    color: #3b4859;\n    display: inline-block; }\n  .breadcrumbs-container .breadcrumbs {\n    float: right; }\n  .breadcrumbs-container a.breadcrumbs-link {\n    color: #89898a; }\n  .breadcrumbs-container .current-page {\n    color: #2a9ce7; }\n  .breadcrumbs-container .separator {\n    color: #89898a;\n    display: inline-block;\n    padding: 0 10px; }\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3B48593D;\n  box-shadow: 0px 0px 16px #3B48593D;\n  border-radius: 10px;\n  background: white; }\n  .logmanager-modal-container .modal-content {\n    padding: 30px; }\n    .logmanager-modal-container .modal-content .modal-header {\n      background: white;\n      box-shadow: none;\n      border-bottom: 1px dashed #a2c0d4;\n      margin-bottom: 20px;\n      padding: 0 10px 10px; }\n      .logmanager-modal-container .modal-content .modal-header .modal-title {\n        color: #3b4859;\n        float: left;\n        margin: 0px;\n        font-size: 16px;\n        font-weight: 500;\n        padding: 0;\n        line-height: 28px; }\n        .logmanager-modal-container .modal-content .modal-header .modal-title span {\n          font-weight: 400; }\n      .logmanager-modal-container .modal-content .modal-header button {\n        float: right;\n        font-size: 28px;\n        top: 0;\n        position: relative;\n        color: #ffffff;\n        opacity: 1;\n        width: 28px;\n        height: 28px;\n        background-color: red;\n        border-radius: 50%;\n        border: none;\n        line-height: 28px;\n        text-align: center; }\n    .logmanager-modal-container .modal-content .modal-body {\n      padding: 0px 10px;\n      color: #3b4859; }\n      .logmanager-modal-container .modal-content .modal-body p {\n        font-style: italic; }\n      .logmanager-modal-container .modal-content .modal-body .form-group {\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group label {\n          font-size: 15px;\n          font-weight: 500;\n          line-height: 18px;\n          color: #3B4859;\n          padding-right: 0px;\n          padding-bottom: 0px;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n          background-color: #f0f3f7 !important;\n          border: none !important;\n          font-size: 13px;\n          height: 36px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n          background-color: #FFFFFF;\n          border: 1px solid #8392A7;\n          border-radius: 4px;\n          font-size: 14px;\n          font-weight: 400;\n          line-height: 34px;\n          font-style: italic;\n          color: #3B4859;\n          padding: 0 15px;\n          width: 100%;\n          text-align: left;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group span {\n          padding-top: 5px;\n          font-size: 13px;\n          line-height: 16px;\n          font-weight: 400;\n          font-style: italic;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n          display: inline-block;\n          margin-right: 5px;\n          vertical-align: middle;\n          cursor: pointer;\n          margin-top: -4px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n          height: 120px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n          margin-top: 10px;\n          margin-left: 30px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n          display: inline-block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n          width: auto; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .text {\n          padding: 0 3px;\n          line-height: 12px;\n          vertical-align: top; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n        margin-right: 7px; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n        font-size: 14px;\n        font-weight: 400;\n        line-height: 18px;\n        color: #3B4859; }\n      .logmanager-modal-container .modal-content .modal-body .check-group {\n        display: block;\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .check-group input {\n          display: inline-block;\n          vertical-align: middle; }\n        .logmanager-modal-container .modal-content .modal-body .check-group label {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 21px;\n          font-weight: 400;\n          vertical-align: top;\n          padding-left: 8px; }\n    .logmanager-modal-container .modal-content .modal-footer {\n      padding: 20px 15px 0px;\n      background: none;\n      border: none;\n      border-top: 1px dashed #a2c0d4; }\n      .logmanager-modal-container .modal-content .modal-footer .blue-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .gray-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .white-button {\n        border-radius: 7px !important; }\n    .logmanager-modal-container .modal-content .contact-popup-buttons button {\n      border: 1px solid #89898a;\n      background-color: #89898a;\n      color: #ffffff;\n      font-size: 15px;\n      line-height: 36px;\n      font-weight: 500;\n      padding: 0 30px;\n      margin: 0;\n      border-radius: 5px;\n      text-align: center; }\n      .logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n        border-color: #3B7CFF;\n        background-color: #3B7CFF;\n        color: #ffffff;\n        margin-left: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container span {\n      font-size: 14px;\n      display: block;\n      line-height: 18px;\n      color: #3b4859;\n      font-weight: 400;\n      padding-bottom: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n      font-size: 13px; }\n    .logmanager-modal-container .modal-content .rules-defined {\n      border-top: 1px dashed #a2c0d4;\n      padding-top: 5px;\n      margin-bottom: 50px; }\n      .logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n        background-color: #f8faff;\n        padding: 5px 5px;\n        display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n          display: inline-block;\n          padding-right: 7px;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b97d3; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b4859;\n          padding-bottom: 0px; }\n      .logmanager-modal-container .modal-content .rules-defined .manage-rules {\n        display: block;\n        padding-top: 10px; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          margin-bottom: 0;\n          display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n          font-size: 13px;\n          line-height: 18px;\n          font-weight: 400;\n          padding-bottom: 0;\n          display: block;\n          font-style: italic; }\n    .logmanager-modal-container .modal-content .message-tabs-container span {\n      display: block;\n      font-size: 14px;\n      line-height: 18px;\n      font-weight: 500;\n      padding-bottom: 10px; }\n    .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n      display: block; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n        display: inline-block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n          background-color: #fafbfd;\n          border: 2px solid #fafbfd;\n          padding: 10px 10px;\n          color: #2662f0;\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          display: block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n          background-color: #ffffff; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n        font-size: 13px;\n        line-height: 18px;\n        font-weight: 400;\n        font-style: italic;\n        display: block;\n        padding-top: 15px;\n        padding-bottom: 10px; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n        margin-right: 15px;\n        max-width: 300px;\n        width: 300px;\n        display: inline-block; }\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px; }\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400; }\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px; }\n  .search-control .input-group-text {\n    max-width: 100%;\n    text-align: left;\n    padding-right: 15px;\n    padding-left: 30px;\n    width: 100%;\n    border: 1px solid #ced4da;\n    background-color: #ffffff;\n    border-radius: 3px;\n    padding-top: 0.399rem; }\n  .search-control button {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: 1;\n    cursor: pointer;\n    border: none;\n    background-color: transparent;\n    width: 34px;\n    height: 34px; }\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid; }\n  .table-container .table-container-inner {\n    overflow-x: scroll;\n    width: 100%;\n    background-color: #ffffff; }\n    .table-container .table-container-inner .table {\n      white-space: nowrap;\n      width: 1200px; }\n      .table-container .table-container-inner .table tr:nth-child(odd) td {\n        background-color: #f8f9fb; }\n      .table-container .table-container-inner .table tr td {\n        padding: 5px 10px;\n        color: #323C47;\n        font-size: 11px;\n        line-height: 20px;\n        font-weight: 400; }\n        .table-container .table-container-inner .table tr td:first-child {\n          margin-right: 5px; }\n        .table-container .table-container-inner .table tr td:last-child {\n          margin-left: 5px; }\n        .table-container .table-container-inner .table tr td h4 {\n          font-size: 14px;\n          font-weight: 600;\n          line-height: 18px;\n          color: #3b7cff;\n          margin-bottom: 5px;\n          cursor: pointer; }\n        .table-container .table-container-inner .table tr td p {\n          margin-bottom: 3px; }\n        .table-container .table-container-inner .table tr td a {\n          color: #3b7cff; }\n        .table-container .table-container-inner .table tr td .blue-button {\n          font-size: 12px; }\n        .table-container .table-container-inner .table tr td .table-btns {\n          position: relative; }\n        .table-container .table-container-inner .table tr td .btn-link {\n          color: #3b7cff;\n          padding: 0 7px;\n          font-size: 18px; }\n      .table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n        background-color: transparent; }\n      .table-container .table-container-inner .table .inner-table tr td {\n        width: 50%; }\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none; }\n  .search-control {\n    margin-bottom: 10px; }\n  .new-stream-btn {\n    float: none;\n    display: inline-block; } }\n\n/*# sourceMappingURL=logmanager.light.css.map */',
           '',
           {
             version: 3,
@@ -3826,10 +3826,10 @@ PERFORMANCE OF THIS SOFTWARE.
             ],
             names: [],
             mappings:
-              'AAAA;EACE;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,4BAA4B;IAC5B,wBAAwB;IACxB,oBAAoB;IACpB,qBAAqB;GACtB;EACD;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,sBAAsB;IACtB,kBAAkB;IAClB,cAAc;IACd,eAAe;GAChB;EACD;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,4BAA4B;IAC5B,wBAAwB;IACxB,oBAAoB;IACpB,qBAAqB;GACtB;EACD;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,4BAA4B;IAC5B,wBAAwB;IACxB,oBAAoB;IACpB,qBAAqB;GACtB;CACF;;AAED,+EAA+E;AAC/E;EACE,+BAA+B;EAC/B,0BAA0B;EAC1B,wBAAwB;EACxB,6BAA6B;EAC7B,8BAA8B;EAC9B,mBAAmB;EACnB,oBAAoB;EACpB,iCAAiC;EACjC,iBAAiB;EACjB,mBAAmB;CACpB;AACD;;EAEE,+BAA+B;EAC/B,0BAA0B;CAC3B;;AAED;EACE,+BAA+B;EAC/B,0BAA0B;EAC1B,wBAAwB;EACxB,6BAA6B;EAC7B,8BAA8B;EAC9B,mBAAmB;EACnB,iCAAiC;EACjC,iBAAiB;EACjB,mBAAmB;CACpB;AACD;;EAEE,+BAA+B;EAC/B,0BAA0B;CAC3B;;AAED;EACE,6BAA6B;EAC7B,iBAAiB;EACjB,0BAA0B;EAC1B,wBAAwB;EACxB,6BAA6B;EAC7B,8BAA8B;EAC9B,mBAAmB;EACnB,iCAAiC;EACjC,mBAAmB;CACpB;AACD;;EAEE,+BAA+B;EAC/B,0BAA0B;CAC3B;AACD;EACE,0BAA0B;CAC3B;;AAED;;EAEE,eAAe;CAChB;;AAED;EACE,aAAa;CACd;;AAED;EACE,YAAY;CACb;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,mBAAmB;CACpB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,uBAAuB;CACxB;;AAED;EACE,cAAc;CACf;;AAED;EACE,eAAe;CAChB;;AAED;EACE,sBAAsB;CACvB;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,4BAA4B;CAC7B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,4BAA4B;CAC7B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,2BAA2B;CAC5B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,2BAA2B;CAC5B;;AAED;EACE,yBAAyB;CAC1B;;AAED;EACE,4BAA4B;CAC7B;;AAED;EACE,WAAW;CACZ;;AAED;EACE,WAAW;CACZ;;AAED;EACE,WAAW;CACZ;;AAED;EACE,YAAY;CACb;;AAED;EACE,YAAY;CACb;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;EACf,YAAY;EACZ,oCAAoC;EACpC,0BAA0B;EAC1B,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;EACf,uBAAuB;EACvB,6BAA6B;EAC7B,0BAA0B;EAC1B,uBAAuB;EACvB,yEAAyE;CAC1E;;AAED;EACE,qBAAqB;EACrB,cAAc;EACd,uBAAuB;EACvB,oBAAoB;EACpB,0BAA0B;EAC1B,iBAAiB;EACjB,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,0BAA0B;EAC1B,0BAA0B;EAC1B,uBAAuB;CACxB;;AAED;EACE;IACE,YAAY;IACZ,iBAAiB;GAClB;CACF;;AAED,yFAAyF;AACzF;EACE,oBAAoB;CACrB;AACD;EACE,sBAAsB;CACvB;;AAED;EACE,iBAAiB;EACjB,kBAAkB;CACnB;AACD;EACE,qCAAqC;EACrC,wBAAwB;EACxB,gBAAgB;EAChB,gBAAgB;EAChB,aAAa;CACd;AACD;EACE,eAAe;EACf,gBAAgB;CACjB;;AAED;EACE,0BAA0B;EAC1B,kBAAkB;EAClB,oBAAoB;EACpB,qBAAqB;CACtB;AACD;EACE,kBAAkB;EAClB,mBAAmB;EACnB,oBAAoB;EACpB,qBAAqB;EACrB,iCAAiC;CAClC;AACD;EACE,eAAe;EACf,iBAAiB;CAClB;AACD;EACE,eAAe;EACf,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;EACf,iBAAiB;CAClB;AACD;EACE,eAAe;EACf,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,YAAY;EACZ,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,sBAAsB;EACtB,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,mBAAmB;EACnB,WAAW;EACX,UAAU;EACV,YAAY;EACZ,aAAa;EACb,YAAY;EACZ,0BAA0B;EAC1B,mBAAmB;CACpB;;AAED;EACE,YAAY;EACZ,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,sBAAsB;EACtB,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,mBAAmB;EACnB,WAAW;EACX,UAAU;EACV,YAAY;EACZ,aAAa;EACb,YAAY;EACZ,0BAA0B;EAC1B,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,aAAa;EACb,UAAU;EACV,0BAA0B;EAC1B,kCAAkC;EAClC,aAAa;EACb,YAAY;EACZ,eAAe;CAChB;AACD;EACE,eAAe;EACf,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,eAAe;CAChB;;AAED;EACE,4BAA4B;EAC5B,2CAA2C;EAC3C,mCAAmC;EACnC,oBAAoB;EACpB,kBAAkB;CACnB;;AAED;EACE,0BAA0B;EAC1B,wBAAwB;EACxB,gBAAgB;CACjB;AACD;EACE,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,aAAa;CACd;AACD;EACE,eAAe;CAChB;AACD;EACE,eAAe;CAChB;AACD;EACE,eAAe;EACf,sBAAsB;EACtB,gBAAgB;CACjB;;AAED;EACE;IACE,YAAY;IACZ,iBAAiB;GAClB;CACF;;AAED;EACE,4BAA4B;EAC5B,2CAA2C;EAC3C,mCAAmC;EACnC,oBAAoB;EACpB,kBAAkB;CACnB;AACD;EACE,cAAc;CACf;AACD;EACE,kBAAkB;EAClB,iBAAiB;EACjB,kCAAkC;EAClC,oBAAoB;EACpB,qBAAqB;CACtB;AACD;EACE,eAAe;EACf,YAAY;EACZ,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,kBAAkB;CACnB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,aAAa;EACb,gBAAgB;EAChB,OAAO;EACP,mBAAmB;EACnB,eAAe;EACf,WAAW;EACX,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,aAAa;EACb,kBAAkB;EAClB,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,eAAe;CAChB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,oBAAoB;CACrB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,eAAe;CAChB;AACD;EACE,qCAAqC;EACrC,wBAAwB;EACxB,gBAAgB;EAChB,aAAa;CACd;AACD;EACE,0BAA0B;EAC1B,0BAA0B;EAC1B,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,YAAY;EACZ,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,eAAe;CAChB;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,uBAAuB;EACvB,gBAAgB;EAChB,iBAAiB;CAClB;AACD;EACE,cAAc;CACf;AACD;EACE,iBAAiB;EACjB,kBAAkB;CACnB;AACD;EACE,sBAAsB;CACvB;AACD;EACE,YAAY;CACb;AACD;EACE,eAAe;EACf,kBAAkB;EAClB,oBAAoB;CACrB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;CAChB;AACD;EACE,eAAe;EACf,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,uBAAuB;CACxB;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,oBAAoB;EACpB,kBAAkB;CACnB;AACD;EACE,uBAAuB;EACvB,iBAAiB;EACjB,aAAa;EACb,+BAA+B;CAChC;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,0BAA0B;EAC1B,0BAA0B;EAC1B,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,gBAAgB;EAChB,UAAU;EACV,mBAAmB;EACnB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,0BAA0B;EAC1B,eAAe;EACf,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,eAAe;EACf,iBAAiB;EACjB,qBAAqB;CACtB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,+BAA+B;EAC/B,iBAAiB;EACjB,oBAAoB;CACrB;AACD;EACE,0BAA0B;EAC1B,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;CAChB;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;EACf,oBAAoB;CACrB;AACD;EACE,eAAe;EACf,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,mBAAmB;CACpB;AACD;EACE,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,qBAAqB;CACtB;AACD;EACE,eAAe;CAChB;AACD;EACE,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,0BAA0B;CAC3B;AACD;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,eAAe;EACf,kBAAkB;EAClB,qBAAqB;CACtB;AACD;EACE,mBAAmB;EACnB,iBAAiB;EACjB,aAAa;EACb,sBAAsB;CACvB;;AAED;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;CACpB;;AAED;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,iBAAiB;CAClB;;AAED;EACE,mBAAmB;EACnB,iBAAiB;EACjB,mBAAmB;CACpB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,oBAAoB;EACpB,mBAAmB;EACnB,YAAY;EACZ,0BAA0B;EAC1B,0BAA0B;EAC1B,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,QAAQ;EACR,OAAO;EACP,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,8BAA8B;EAC9B,YAAY;EACZ,aAAa;CACd;;AAED;EACE,0BAA0B;EAC1B,sBAAsB;EACtB,cAAc;CACf;AACD;EACE,mBAAmB;EACnB,YAAY;EACZ,0BAA0B;CAC3B;AACD;EACE,oBAAoB;EACpB,cAAc;CACf;AACD;EACE,0BAA0B;CAC3B;AACD;EACE,kBAAkB;EAClB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;CAClB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,mBAAmB;EACnB,gBAAgB;CACjB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,eAAe;CAChB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,eAAe;EACf,eAAe;EACf,gBAAgB;CACjB;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,WAAW;CACZ;;AAED;EACE;IACE,YAAY;GACb;EACD;IACE,oBAAoB;GACrB;EACD;IACE,YAAY;IACZ,sBAAsB;GACvB;CACF;;AAED,gDAAgD',
+              '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',
             file: 'logmanager.light.css',
             sourcesContent: [
-              "@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%;\n  }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%;\n  }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%;\n  }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%;\n  }\n}\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.blue-button:hover,\n.blue-button:focus {\n  background: #0f5efd !important;\n  color: #ffffff !important;\n}\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.gray-button:hover,\n.gray-button:focus {\n  background: #dbe0e4 !important;\n  color: #8392a7 !important;\n}\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center;\n}\n.white-button:hover,\n.white-button:focus {\n  background: #e6e6e6 !important;\n  color: #3b4859 !important;\n}\n.white-button i {\n  color: #57a4ff !important;\n}\n\na:focus,\na:hover {\n  color: #000000;\n}\n\n.float-right {\n  float: right;\n}\n\n.float-left {\n  float: left;\n}\n\n.text-left {\n  text-align: left;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.text-right {\n  text-align: right;\n}\n\n.v-a-top {\n  vertical-align: top;\n}\n\n.v-a-middle {\n  vertical-align: middle;\n}\n\n.d-flex {\n  display: flex;\n}\n\n.d-block {\n  display: block;\n}\n\n.d-inline-block {\n  display: inline-block;\n}\n\n.p-t-0 {\n  padding-top: 0 !important;\n}\n\n.p-t-5 {\n  padding-top: 5px !important;\n}\n\n.p-t-10 {\n  padding-top: 10px !important;\n}\n\n.p-t-15 {\n  padding-top: 15px !important;\n}\n\n.p-t-20 {\n  padding-top: 20px !important;\n}\n\n.p-r-0 {\n  padding-right: 0 !important;\n}\n\n.p-r-5 {\n  padding-right: 5px !important;\n}\n\n.p-r-10 {\n  padding-right: 10px !important;\n}\n\n.p-r-15 {\n  padding-right: 15px !important;\n}\n\n.p-r-20 {\n  padding-right: 20px !important;\n}\n\n.p-b-0 {\n  padding-bottom: 0px !important;\n}\n\n.p-b-5 {\n  padding-bottom: 5px !important;\n}\n\n.p-b-10 {\n  padding-bottom: 10px !important;\n}\n\n.p-b-15 {\n  padding-bottom: 15px !important;\n}\n\n.p-b-20 {\n  padding-bottom: 20px !important;\n}\n\n.p-l-0 {\n  padding-left: 0 !important;\n}\n\n.p-l-5 {\n  padding-left: 5px !important;\n}\n\n.p-l-10 {\n  padding-left: 10px !important;\n}\n\n.p-l-15 {\n  padding-left: 15px !important;\n}\n\n.p-l-20 {\n  padding-left: 20px !important;\n}\n\n.m-l-0 {\n  margin-left: 0 !important;\n}\n\n.m-r-0 {\n  margin-right: 0 !important;\n}\n\n.m-t-0 {\n  margin-top: 0 !important;\n}\n\n.m-b-0 {\n  margin-bottom: 0 !important;\n}\n\n.width-25 {\n  width: 25%;\n}\n\n.width-50 {\n  width: 50%;\n}\n\n.width-75 {\n  width: 75%;\n}\n\n.width-100 {\n  width: 100%;\n}\n\n.width-auto {\n  width: auto;\n}\n\n.min-width-inherit {\n  min-width: inherit !important;\n}\n\n.border-bottom-0 {\n  border-bottom: none !important;\n}\n\n.orange {\n  color: #ff8f00;\n}\n\n.yellow-green {\n  color: #7ed321;\n}\n\n.red {\n  color: #f93d3d;\n}\n\n.yellow {\n  color: #ffff00;\n}\n\n.blue {\n  color: #438afb;\n}\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n}\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem;\n}\n.form-group label {\n  margin-bottom: 0.5rem;\n}\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px;\n}\n.filter-container .filter-control-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 12px;\n  cursor: pointer;\n  height: 35px;\n}\n.filter-container .filter-control-group label {\n  color: #3b4859;\n  font-size: 14px;\n}\n\n.logmanager-page-container {\n  background-color: #ffffff;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px;\n}\n.logmanager-page-container .common-container {\n  padding-top: 20px;\n  padding-left: 45px;\n  padding-right: 45px;\n  padding-bottom: 15px;\n  border-bottom: 1px solid #f5f6f5;\n}\n.logmanager-page-container .page-heading {\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading h1 {\n  color: #3b4859;\n  font-weight: 600;\n  font-size: 24px;\n  line-height: 32px;\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading span {\n  display: block;\n  color: #a9b9c6;\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 500;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .enabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .enabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .disabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .disabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0;\n}\n.open-create-menu a {\n  color: #2a9ce7;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n  display: block;\n  padding: 4px 0;\n}\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n\n.breadcrumbs-container {\n  background-color: #eff2f7;\n  padding: 14px 20px 15px;\n  font-size: 13px;\n}\n.breadcrumbs-container .page-title {\n  color: #3b4859;\n  display: inline-block;\n}\n.breadcrumbs-container .breadcrumbs {\n  float: right;\n}\n.breadcrumbs-container a.breadcrumbs-link {\n  color: #89898a;\n}\n.breadcrumbs-container .current-page {\n  color: #2a9ce7;\n}\n.breadcrumbs-container .separator {\n  color: #89898a;\n  display: inline-block;\n  padding: 0 10px;\n}\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n.logmanager-modal-container .modal-content {\n  padding: 30px;\n}\n.logmanager-modal-container .modal-content .modal-header {\n  background: white;\n  box-shadow: none;\n  border-bottom: 1px dashed #a2c0d4;\n  margin-bottom: 20px;\n  padding: 0 10px 10px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title {\n  color: #3b4859;\n  float: left;\n  margin: 0px;\n  font-size: 16px;\n  font-weight: 500;\n  padding: 0;\n  line-height: 28px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title span {\n  font-weight: 400;\n}\n.logmanager-modal-container .modal-content .modal-header button {\n  float: right;\n  font-size: 28px;\n  top: 0;\n  position: relative;\n  color: #ffffff;\n  opacity: 1;\n  width: 28px;\n  height: 28px;\n  background-color: red;\n  border-radius: 50%;\n  border: none;\n  line-height: 28px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .modal-body {\n  padding: 0px 10px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body p {\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group {\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group label {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 18px;\n  color: #3b4859;\n  padding-right: 0px;\n  padding-bottom: 0px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 13px;\n  height: 36px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n  background-color: #ffffff;\n  border: 1px solid #8392a7;\n  border-radius: 4px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 34px;\n  font-style: italic;\n  color: #3b4859;\n  padding: 0 15px;\n  width: 100%;\n  text-align: left;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group span {\n  padding-top: 5px;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: middle;\n  cursor: pointer;\n  margin-top: -4px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n  height: 120px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n  margin-top: 10px;\n  margin-left: 30px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n  width: auto;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .text {\n  padding: 0 3px;\n  line-height: 12px;\n  vertical-align: top;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n  margin-right: 7px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 18px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group {\n  display: block;\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group input {\n  display: inline-block;\n  vertical-align: middle;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group label {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 21px;\n  font-weight: 400;\n  vertical-align: top;\n  padding-left: 8px;\n}\n.logmanager-modal-container .modal-content .modal-footer {\n  padding: 20px 15px 0px;\n  background: none;\n  border: none;\n  border-top: 1px dashed #a2c0d4;\n}\n.logmanager-modal-container .modal-content .modal-footer .blue-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .gray-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .white-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button {\n  border: 1px solid #89898a;\n  background-color: #89898a;\n  color: #ffffff;\n  font-size: 15px;\n  line-height: 36px;\n  font-weight: 500;\n  padding: 0 30px;\n  margin: 0;\n  border-radius: 5px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n  border-color: #3b7cff;\n  background-color: #3b7cff;\n  color: #ffffff;\n  margin-left: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container span {\n  font-size: 14px;\n  display: block;\n  line-height: 18px;\n  color: #3b4859;\n  font-weight: 400;\n  padding-bottom: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n  font-size: 13px;\n}\n.logmanager-modal-container .modal-content .rules-defined {\n  border-top: 1px dashed #a2c0d4;\n  padding-top: 5px;\n  margin-bottom: 50px;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n  background-color: #f8faff;\n  padding: 5px 5px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n  display: inline-block;\n  padding-right: 7px;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b97d3;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b4859;\n  padding-bottom: 0px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules {\n  display: block;\n  padding-top: 10px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  margin-bottom: 0;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  padding-bottom: 0;\n  display: block;\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .message-tabs-container span {\n  display: block;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n  background-color: #fafbfd;\n  border: 2px solid #fafbfd;\n  padding: 10px 10px;\n  color: #2662f0;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n  background-color: #ffffff;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n  padding-top: 15px;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n  margin-right: 15px;\n  max-width: 300px;\n  width: 300px;\n  display: inline-block;\n}\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px;\n}\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400;\n}\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px;\n}\n.search-control .input-group-text {\n  max-width: 100%;\n  text-align: left;\n  padding-right: 15px;\n  padding-left: 30px;\n  width: 100%;\n  border: 1px solid #ced4da;\n  background-color: #ffffff;\n  border-radius: 3px;\n  padding-top: 0.399rem;\n}\n.search-control button {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 1;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  width: 34px;\n  height: 34px;\n}\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid;\n}\n.table-container .table-container-inner {\n  overflow-x: scroll;\n  width: 100%;\n  background-color: #ffffff;\n}\n.table-container .table-container-inner .table {\n  white-space: nowrap;\n  width: 1200px;\n}\n.table-container .table-container-inner .table tr:nth-child(odd) td {\n  background-color: #f8f9fb;\n}\n.table-container .table-container-inner .table tr td {\n  padding: 5px 10px;\n  color: #323c47;\n  font-size: 11px;\n  line-height: 20px;\n  font-weight: 400;\n}\n.table-container .table-container-inner .table tr td:first-child {\n  margin-right: 5px;\n}\n.table-container .table-container-inner .table tr td:last-child {\n  margin-left: 5px;\n}\n.table-container .table-container-inner .table tr td h4 {\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 18px;\n  color: #3b7cff;\n  margin-bottom: 5px;\n  cursor: pointer;\n}\n.table-container .table-container-inner .table tr td p {\n  margin-bottom: 3px;\n}\n.table-container .table-container-inner .table tr td a {\n  color: #3b7cff;\n}\n.table-container .table-container-inner .table tr td .blue-button {\n  font-size: 12px;\n}\n.table-container .table-container-inner .table tr td .table-btns {\n  position: relative;\n}\n.table-container .table-container-inner .table tr td .btn-link {\n  color: #3b7cff;\n  padding: 0 7px;\n  font-size: 18px;\n}\n.table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n  background-color: transparent;\n}\n.table-container .table-container-inner .table .inner-table tr td {\n  width: 50%;\n}\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none;\n  }\n  .search-control {\n    margin-bottom: 10px;\n  }\n  .new-stream-btn {\n    float: none;\n    display: inline-block;\n  }\n}\n\n/*# sourceMappingURL=logmanager.light.css.map */\n",
+              '@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%; }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%; }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%; }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%; } }\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .blue-button:hover, .blue-button:focus {\n    background: #0f5efd !important;\n    color: #ffffff !important; }\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .gray-button:hover, .gray-button:focus {\n    background: #dbe0e4 !important;\n    color: #8392a7 !important; }\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center; }\n  .white-button:hover, .white-button:focus {\n    background: #e6e6e6 !important;\n    color: #3b4859 !important; }\n  .white-button i {\n    color: #57a4ff !important; }\n\na:focus, a:hover {\n  color: #000000; }\n\n.float-right {\n  float: right; }\n\n.float-left {\n  float: left; }\n\n.text-left {\n  text-align: left; }\n\n.text-center {\n  text-align: center; }\n\n.text-right {\n  text-align: right; }\n\n.v-a-top {\n  vertical-align: top; }\n\n.v-a-middle {\n  vertical-align: middle; }\n\n.d-flex {\n  display: flex; }\n\n.d-block {\n  display: block; }\n\n.d-inline-block {\n  display: inline-block; }\n\n.p-t-0 {\n  padding-top: 0 !important; }\n\n.p-t-5 {\n  padding-top: 5px !important; }\n\n.p-t-10 {\n  padding-top: 10px !important; }\n\n.p-t-15 {\n  padding-top: 15px !important; }\n\n.p-t-20 {\n  padding-top: 20px !important; }\n\n.p-r-0 {\n  padding-right: 0 !important; }\n\n.p-r-5 {\n  padding-right: 5px !important; }\n\n.p-r-10 {\n  padding-right: 10px !important; }\n\n.p-r-15 {\n  padding-right: 15px !important; }\n\n.p-r-20 {\n  padding-right: 20px !important; }\n\n.p-b-0 {\n  padding-bottom: 0px !important; }\n\n.p-b-5 {\n  padding-bottom: 5px !important; }\n\n.p-b-10 {\n  padding-bottom: 10px !important; }\n\n.p-b-15 {\n  padding-bottom: 15px !important; }\n\n.p-b-20 {\n  padding-bottom: 20px !important; }\n\n.p-l-0 {\n  padding-left: 0 !important; }\n\n.p-l-5 {\n  padding-left: 5px !important; }\n\n.p-l-10 {\n  padding-left: 10px !important; }\n\n.p-l-15 {\n  padding-left: 15px !important; }\n\n.p-l-20 {\n  padding-left: 20px !important; }\n\n.m-l-0 {\n  margin-left: 0 !important; }\n\n.m-r-0 {\n  margin-right: 0 !important; }\n\n.m-t-0 {\n  margin-top: 0 !important; }\n\n.m-b-0 {\n  margin-bottom: 0 !important; }\n\n.width-25 {\n  width: 25%; }\n\n.width-50 {\n  width: 50%; }\n\n.width-75 {\n  width: 75%; }\n\n.width-100 {\n  width: 100%; }\n\n.width-auto {\n  width: auto; }\n\n.min-width-inherit {\n  min-width: inherit !important; }\n\n.border-bottom-0 {\n  border-bottom: none !important; }\n\n.orange {\n  color: #FF8F00; }\n\n.yellow-green {\n  color: #7ED321; }\n\n.red {\n  color: #F93D3D; }\n\n.yellow {\n  color: #FFFF00; }\n\n.blue {\n  color: #438AFB; }\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem; }\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem; }\n  .form-group label {\n    margin-bottom: 0.5rem; }\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px; }\n  .filter-container .filter-control-group .form-control {\n    background-color: #f0f3f7 !important;\n    border: none !important;\n    font-size: 12px;\n    cursor: pointer;\n    height: 35px; }\n  .filter-container .filter-control-group label {\n    color: #3b4859;\n    font-size: 14px; }\n\n.logmanager-page-container {\n  background-color: #ffffff;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px; }\n  .logmanager-page-container .common-container {\n    padding-top: 20px;\n    padding-left: 45px;\n    padding-right: 45px;\n    padding-bottom: 15px;\n    border-bottom: 1px solid #f5f6f5; }\n  .logmanager-page-container .page-heading {\n    display: block;\n    margin-bottom: 0; }\n    .logmanager-page-container .page-heading h1 {\n      color: #3B4859;\n      font-weight: 600;\n      font-size: 24px;\n      line-height: 32px;\n      display: block;\n      margin-bottom: 0; }\n    .logmanager-page-container .page-heading span {\n      display: block;\n      color: #A9B9C6;\n      font-size: 13px;\n      line-height: 18px;\n      font-weight: 500; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .enabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .enabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .disabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .disabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0; }\n  .open-create-menu a {\n    color: #2a9ce7;\n    font-size: 12px;\n    font-weight: 400;\n    line-height: 20px;\n    display: block;\n    padding: 4px 0; }\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white; }\n\n.breadcrumbs-container {\n  background-color: #eff2f7;\n  padding: 14px 20px 15px;\n  font-size: 13px; }\n  .breadcrumbs-container .page-title {\n    color: #3b4859;\n    display: inline-block; }\n  .breadcrumbs-container .breadcrumbs {\n    float: right; }\n  .breadcrumbs-container a.breadcrumbs-link {\n    color: #89898a; }\n  .breadcrumbs-container .current-page {\n    color: #2a9ce7; }\n  .breadcrumbs-container .separator {\n    color: #89898a;\n    display: inline-block;\n    padding: 0 10px; }\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3B48593D;\n  box-shadow: 0px 0px 16px #3B48593D;\n  border-radius: 10px;\n  background: white; }\n  .logmanager-modal-container .modal-content {\n    padding: 30px; }\n    .logmanager-modal-container .modal-content .modal-header {\n      background: white;\n      box-shadow: none;\n      border-bottom: 1px dashed #a2c0d4;\n      margin-bottom: 20px;\n      padding: 0 10px 10px; }\n      .logmanager-modal-container .modal-content .modal-header .modal-title {\n        color: #3b4859;\n        float: left;\n        margin: 0px;\n        font-size: 16px;\n        font-weight: 500;\n        padding: 0;\n        line-height: 28px; }\n        .logmanager-modal-container .modal-content .modal-header .modal-title span {\n          font-weight: 400; }\n      .logmanager-modal-container .modal-content .modal-header button {\n        float: right;\n        font-size: 28px;\n        top: 0;\n        position: relative;\n        color: #ffffff;\n        opacity: 1;\n        width: 28px;\n        height: 28px;\n        background-color: red;\n        border-radius: 50%;\n        border: none;\n        line-height: 28px;\n        text-align: center; }\n    .logmanager-modal-container .modal-content .modal-body {\n      padding: 0px 10px;\n      color: #3b4859; }\n      .logmanager-modal-container .modal-content .modal-body p {\n        font-style: italic; }\n      .logmanager-modal-container .modal-content .modal-body .form-group {\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group label {\n          font-size: 15px;\n          font-weight: 500;\n          line-height: 18px;\n          color: #3B4859;\n          padding-right: 0px;\n          padding-bottom: 0px;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n          background-color: #f0f3f7 !important;\n          border: none !important;\n          font-size: 13px;\n          height: 36px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n          background-color: #FFFFFF;\n          border: 1px solid #8392A7;\n          border-radius: 4px;\n          font-size: 14px;\n          font-weight: 400;\n          line-height: 34px;\n          font-style: italic;\n          color: #3B4859;\n          padding: 0 15px;\n          width: 100%;\n          text-align: left;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group span {\n          padding-top: 5px;\n          font-size: 13px;\n          line-height: 16px;\n          font-weight: 400;\n          font-style: italic;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n          display: inline-block;\n          margin-right: 5px;\n          vertical-align: middle;\n          cursor: pointer;\n          margin-top: -4px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n          height: 120px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n          margin-top: 10px;\n          margin-left: 30px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n          display: inline-block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n          width: auto; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .text {\n          padding: 0 3px;\n          line-height: 12px;\n          vertical-align: top; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n        margin-right: 7px; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n        font-size: 14px;\n        font-weight: 400;\n        line-height: 18px;\n        color: #3B4859; }\n      .logmanager-modal-container .modal-content .modal-body .check-group {\n        display: block;\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .check-group input {\n          display: inline-block;\n          vertical-align: middle; }\n        .logmanager-modal-container .modal-content .modal-body .check-group label {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 21px;\n          font-weight: 400;\n          vertical-align: top;\n          padding-left: 8px; }\n    .logmanager-modal-container .modal-content .modal-footer {\n      padding: 20px 15px 0px;\n      background: none;\n      border: none;\n      border-top: 1px dashed #a2c0d4; }\n      .logmanager-modal-container .modal-content .modal-footer .blue-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .gray-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .white-button {\n        border-radius: 7px !important; }\n    .logmanager-modal-container .modal-content .contact-popup-buttons button {\n      border: 1px solid #89898a;\n      background-color: #89898a;\n      color: #ffffff;\n      font-size: 15px;\n      line-height: 36px;\n      font-weight: 500;\n      padding: 0 30px;\n      margin: 0;\n      border-radius: 5px;\n      text-align: center; }\n      .logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n        border-color: #3B7CFF;\n        background-color: #3B7CFF;\n        color: #ffffff;\n        margin-left: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container span {\n      font-size: 14px;\n      display: block;\n      line-height: 18px;\n      color: #3b4859;\n      font-weight: 400;\n      padding-bottom: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n      font-size: 13px; }\n    .logmanager-modal-container .modal-content .rules-defined {\n      border-top: 1px dashed #a2c0d4;\n      padding-top: 5px;\n      margin-bottom: 50px; }\n      .logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n        background-color: #f8faff;\n        padding: 5px 5px;\n        display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n          display: inline-block;\n          padding-right: 7px;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b97d3; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b4859;\n          padding-bottom: 0px; }\n      .logmanager-modal-container .modal-content .rules-defined .manage-rules {\n        display: block;\n        padding-top: 10px; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          margin-bottom: 0;\n          display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n          font-size: 13px;\n          line-height: 18px;\n          font-weight: 400;\n          padding-bottom: 0;\n          display: block;\n          font-style: italic; }\n    .logmanager-modal-container .modal-content .message-tabs-container span {\n      display: block;\n      font-size: 14px;\n      line-height: 18px;\n      font-weight: 500;\n      padding-bottom: 10px; }\n    .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n      display: block; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n        display: inline-block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n          background-color: #fafbfd;\n          border: 2px solid #fafbfd;\n          padding: 10px 10px;\n          color: #2662f0;\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          display: block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n          background-color: #ffffff; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n        font-size: 13px;\n        line-height: 18px;\n        font-weight: 400;\n        font-style: italic;\n        display: block;\n        padding-top: 15px;\n        padding-bottom: 10px; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n        margin-right: 15px;\n        max-width: 300px;\n        width: 300px;\n        display: inline-block; }\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px; }\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400; }\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px; }\n  .search-control .input-group-text {\n    max-width: 100%;\n    text-align: left;\n    padding-right: 15px;\n    padding-left: 30px;\n    width: 100%;\n    border: 1px solid #ced4da;\n    background-color: #ffffff;\n    border-radius: 3px;\n    padding-top: 0.399rem; }\n  .search-control button {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: 1;\n    cursor: pointer;\n    border: none;\n    background-color: transparent;\n    width: 34px;\n    height: 34px; }\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid; }\n  .table-container .table-container-inner {\n    overflow-x: scroll;\n    width: 100%;\n    background-color: #ffffff; }\n    .table-container .table-container-inner .table {\n      white-space: nowrap;\n      width: 1200px; }\n      .table-container .table-container-inner .table tr:nth-child(odd) td {\n        background-color: #f8f9fb; }\n      .table-container .table-container-inner .table tr td {\n        padding: 5px 10px;\n        color: #323C47;\n        font-size: 11px;\n        line-height: 20px;\n        font-weight: 400; }\n        .table-container .table-container-inner .table tr td:first-child {\n          margin-right: 5px; }\n        .table-container .table-container-inner .table tr td:last-child {\n          margin-left: 5px; }\n        .table-container .table-container-inner .table tr td h4 {\n          font-size: 14px;\n          font-weight: 600;\n          line-height: 18px;\n          color: #3b7cff;\n          margin-bottom: 5px;\n          cursor: pointer; }\n        .table-container .table-container-inner .table tr td p {\n          margin-bottom: 3px; }\n        .table-container .table-container-inner .table tr td a {\n          color: #3b7cff; }\n        .table-container .table-container-inner .table tr td .blue-button {\n          font-size: 12px; }\n        .table-container .table-container-inner .table tr td .table-btns {\n          position: relative; }\n        .table-container .table-container-inner .table tr td .btn-link {\n          color: #3b7cff;\n          padding: 0 7px;\n          font-size: 18px; }\n      .table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n        background-color: transparent; }\n      .table-container .table-container-inner .table .inner-table tr td {\n        width: 50%; }\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none; }\n  .search-control {\n    margin-bottom: 10px; }\n  .new-stream-btn {\n    float: none;\n    display: inline-block; } }\n\n/*# sourceMappingURL=logmanager.light.css.map */',
             ],
             sourceRoot: '',
           },
@@ -3850,7 +3850,7 @@ PERFORMANCE OF THIS SOFTWARE.
         // module
         exports.push([
           module.id,
-          "@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%;\n  }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%;\n  }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%;\n  }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%;\n  }\n}\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.blue-button:hover,\n.blue-button:focus {\n  background: #0f5efd !important;\n  color: #ffffff !important;\n}\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.gray-button:hover,\n.gray-button:focus {\n  background: #dbe0e4 !important;\n  color: #8392a7 !important;\n}\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center;\n}\n.white-button:hover,\n.white-button:focus {\n  background: #e6e6e6 !important;\n  color: #3b4859 !important;\n}\n.white-button i {\n  color: #57a4ff !important;\n}\n\na:focus,\na:hover {\n  color: #000000;\n}\n\n.float-right {\n  float: right;\n}\n\n.float-left {\n  float: left;\n}\n\n.text-left {\n  text-align: left;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.text-right {\n  text-align: right;\n}\n\n.v-a-top {\n  vertical-align: top;\n}\n\n.v-a-middle {\n  vertical-align: middle;\n}\n\n.d-flex {\n  display: flex;\n}\n\n.d-block {\n  display: block;\n}\n\n.d-inline-block {\n  display: inline-block;\n}\n\n.p-t-0 {\n  padding-top: 0 !important;\n}\n\n.p-t-5 {\n  padding-top: 5px !important;\n}\n\n.p-t-10 {\n  padding-top: 10px !important;\n}\n\n.p-t-15 {\n  padding-top: 15px !important;\n}\n\n.p-t-20 {\n  padding-top: 20px !important;\n}\n\n.p-r-0 {\n  padding-right: 0 !important;\n}\n\n.p-r-5 {\n  padding-right: 5px !important;\n}\n\n.p-r-10 {\n  padding-right: 10px !important;\n}\n\n.p-r-15 {\n  padding-right: 15px !important;\n}\n\n.p-r-20 {\n  padding-right: 20px !important;\n}\n\n.p-b-0 {\n  padding-bottom: 0px !important;\n}\n\n.p-b-5 {\n  padding-bottom: 5px !important;\n}\n\n.p-b-10 {\n  padding-bottom: 10px !important;\n}\n\n.p-b-15 {\n  padding-bottom: 15px !important;\n}\n\n.p-b-20 {\n  padding-bottom: 20px !important;\n}\n\n.p-l-0 {\n  padding-left: 0 !important;\n}\n\n.p-l-5 {\n  padding-left: 5px !important;\n}\n\n.p-l-10 {\n  padding-left: 10px !important;\n}\n\n.p-l-15 {\n  padding-left: 15px !important;\n}\n\n.p-l-20 {\n  padding-left: 20px !important;\n}\n\n.m-l-0 {\n  margin-left: 0 !important;\n}\n\n.m-r-0 {\n  margin-right: 0 !important;\n}\n\n.m-t-0 {\n  margin-top: 0 !important;\n}\n\n.m-b-0 {\n  margin-bottom: 0 !important;\n}\n\n.width-25 {\n  width: 25%;\n}\n\n.width-50 {\n  width: 50%;\n}\n\n.width-75 {\n  width: 75%;\n}\n\n.width-100 {\n  width: 100%;\n}\n\n.width-auto {\n  width: auto;\n}\n\n.min-width-inherit {\n  min-width: inherit !important;\n}\n\n.border-bottom-0 {\n  border-bottom: none !important;\n}\n\n.orange {\n  color: #ff8f00;\n}\n\n.yellow-green {\n  color: #7ed321;\n}\n\n.red {\n  color: #f93d3d;\n}\n\n.yellow {\n  color: #ffff00;\n}\n\n.blue {\n  color: #438afb;\n}\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n}\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem;\n}\n.form-group label {\n  margin-bottom: 0.5rem;\n}\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px;\n}\n.filter-container .filter-control-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 12px;\n  cursor: pointer;\n  height: 35px;\n}\n.filter-container .filter-control-group label {\n  color: #ffffff;\n  font-size: 14px;\n}\n\n.logmanager-page-container {\n  background-color: #3b4859;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px;\n}\n.logmanager-page-container .common-container {\n  padding-top: 20px;\n  padding-left: 45px;\n  padding-right: 45px;\n  padding-bottom: 15px;\n  border-bottom: 1px solid #202226;\n}\n.logmanager-page-container .page-heading {\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading h1 {\n  color: #ffffff;\n  font-weight: 600;\n  font-size: 24px;\n  line-height: 32px;\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading span {\n  display: block;\n  color: #a9b9c6;\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 500;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .enabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .enabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .disabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .disabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0;\n}\n.open-create-menu a {\n  color: #2a9ce7;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n  display: block;\n  padding: 4px 0;\n}\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n\n.breadcrumbs-container {\n  background-color: #3b4859;\n  padding: 14px 20px 15px;\n  font-size: 13px;\n}\n.breadcrumbs-container .page-title {\n  color: #ffffff;\n  display: inline-block;\n}\n.breadcrumbs-container .breadcrumbs {\n  float: right;\n}\n.breadcrumbs-container a.breadcrumbs-link {\n  color: #fcfcfc;\n}\n.breadcrumbs-container .current-page {\n  color: #fcfcfc;\n}\n.breadcrumbs-container .separator {\n  color: #fcfcfc;\n  display: inline-block;\n  padding: 0 10px;\n}\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n.logmanager-modal-container .modal-content {\n  padding: 30px;\n}\n.logmanager-modal-container .modal-content .modal-header {\n  background: white;\n  box-shadow: none;\n  border-bottom: 1px dashed #a2c0d4;\n  margin-bottom: 20px;\n  padding: 0 10px 10px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title {\n  color: #3b4859;\n  float: left;\n  margin: 0px;\n  font-size: 16px;\n  font-weight: 500;\n  padding: 0;\n  line-height: 28px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title span {\n  font-weight: 400;\n}\n.logmanager-modal-container .modal-content .modal-header button {\n  float: right;\n  font-size: 28px;\n  top: 0;\n  position: relative;\n  color: #ffffff;\n  opacity: 1;\n  width: 28px;\n  height: 28px;\n  background-color: red;\n  border-radius: 50%;\n  border: none;\n  line-height: 28px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .modal-body {\n  padding: 0px 10px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body p {\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group {\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group label {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 18px;\n  color: #3b4859;\n  padding-right: 0px;\n  padding-bottom: 0px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 13px;\n  height: 36px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n  background-color: #ffffff;\n  border: 1px solid #8392a7;\n  border-radius: 4px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 34px;\n  font-style: italic;\n  color: #3b4859;\n  padding: 0 15px;\n  width: 100%;\n  text-align: left;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group span {\n  padding-top: 5px;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: middle;\n  cursor: pointer;\n  margin-top: -4px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n  height: 120px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n  margin-top: 10px;\n  margin-left: 30px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n  width: auto;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .text {\n  padding: 0 3px;\n  line-height: 12px;\n  vertical-align: top;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n  margin-right: 7px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 18px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group {\n  display: block;\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group input {\n  display: inline-block;\n  vertical-align: middle;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group label {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 21px;\n  font-weight: 400;\n  vertical-align: top;\n  padding-left: 8px;\n}\n.logmanager-modal-container .modal-content .modal-footer {\n  padding: 20px 15px 0px;\n  background: none;\n  border: none;\n  border-top: 1px dashed #a2c0d4;\n}\n.logmanager-modal-container .modal-content .modal-footer .blue-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .gray-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .white-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button {\n  border: 1px solid #89898a;\n  background-color: #89898a;\n  color: #ffffff;\n  font-size: 15px;\n  line-height: 36px;\n  font-weight: 500;\n  padding: 0 30px;\n  margin: 0;\n  border-radius: 5px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n  border-color: #3b7cff;\n  background-color: #3b7cff;\n  color: #ffffff;\n  margin-left: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container span {\n  font-size: 14px;\n  display: block;\n  line-height: 18px;\n  color: #3b4859;\n  font-weight: 400;\n  padding-bottom: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n  font-size: 13px;\n}\n.logmanager-modal-container .modal-content .rules-defined {\n  border-top: 1px dashed #a2c0d4;\n  padding-top: 5px;\n  margin-bottom: 50px;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n  background-color: #f8faff;\n  padding: 5px 5px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n  display: inline-block;\n  padding-right: 7px;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b97d3;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b4859;\n  padding-bottom: 0px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules {\n  display: block;\n  padding-top: 10px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  margin-bottom: 0;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  padding-bottom: 0;\n  display: block;\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .message-tabs-container span {\n  display: block;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n  background-color: #fafbfd;\n  border: 2px solid #fafbfd;\n  padding: 10px 10px;\n  color: #2662f0;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n  background-color: #ffffff;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n  padding-top: 15px;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n  margin-right: 15px;\n  max-width: 300px;\n  width: 300px;\n  display: inline-block;\n}\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px;\n}\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400;\n}\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px;\n}\n.search-control .input-group-text {\n  max-width: 100%;\n  text-align: left;\n  padding-right: 15px;\n  padding-left: 30px;\n  width: 100%;\n  border: 1px solid #ced4da;\n  background-color: #ffffff;\n  border-radius: 3px;\n  padding-top: 0.399rem;\n}\n.search-control button {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 1;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  width: 34px;\n  height: 34px;\n}\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid;\n}\n.table-container .table-container-inner {\n  overflow-x: scroll;\n  width: 100%;\n  background-color: #ffffff;\n}\n.table-container .table-container-inner .table {\n  white-space: nowrap;\n  width: 1200px;\n}\n.table-container .table-container-inner .table tr:nth-child(odd) td {\n  background-color: #f8f9fb;\n}\n.table-container .table-container-inner .table tr td {\n  padding: 5px 10px;\n  color: #323c47;\n  font-size: 11px;\n  line-height: 20px;\n  font-weight: 400;\n}\n.table-container .table-container-inner .table tr td:first-child {\n  margin-right: 5px;\n}\n.table-container .table-container-inner .table tr td:last-child {\n  margin-left: 5px;\n}\n.table-container .table-container-inner .table tr td h4 {\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 18px;\n  color: #3b7cff;\n  margin-bottom: 5px;\n  cursor: pointer;\n}\n.table-container .table-container-inner .table tr td p {\n  margin-bottom: 3px;\n}\n.table-container .table-container-inner .table tr td a {\n  color: #3b7cff;\n}\n.table-container .table-container-inner .table tr td .blue-button {\n  font-size: 12px;\n}\n.table-container .table-container-inner .table tr td .table-btns {\n  position: relative;\n}\n.table-container .table-container-inner .table tr td .btn-link {\n  color: #3b7cff;\n  padding: 0 7px;\n  font-size: 18px;\n}\n.table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n  background-color: transparent;\n}\n.table-container .table-container-inner .table .inner-table tr td {\n  width: 50%;\n}\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none;\n  }\n  .search-control {\n    margin-bottom: 10px;\n  }\n  .new-stream-btn {\n    float: none;\n    display: inline-block;\n  }\n}\n\n/*# sourceMappingURL=logmanager.dark.css.map */\n",
+          '@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%; }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%; }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%; }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%; } }\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .blue-button:hover, .blue-button:focus {\n    background: #0f5efd !important;\n    color: #ffffff !important; }\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .gray-button:hover, .gray-button:focus {\n    background: #dbe0e4 !important;\n    color: #8392a7 !important; }\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center; }\n  .white-button:hover, .white-button:focus {\n    background: #e6e6e6 !important;\n    color: #3b4859 !important; }\n  .white-button i {\n    color: #57a4ff !important; }\n\na:focus, a:hover {\n  color: #000000; }\n\n.float-right {\n  float: right; }\n\n.float-left {\n  float: left; }\n\n.text-left {\n  text-align: left; }\n\n.text-center {\n  text-align: center; }\n\n.text-right {\n  text-align: right; }\n\n.v-a-top {\n  vertical-align: top; }\n\n.v-a-middle {\n  vertical-align: middle; }\n\n.d-flex {\n  display: flex; }\n\n.d-block {\n  display: block; }\n\n.d-inline-block {\n  display: inline-block; }\n\n.p-t-0 {\n  padding-top: 0 !important; }\n\n.p-t-5 {\n  padding-top: 5px !important; }\n\n.p-t-10 {\n  padding-top: 10px !important; }\n\n.p-t-15 {\n  padding-top: 15px !important; }\n\n.p-t-20 {\n  padding-top: 20px !important; }\n\n.p-r-0 {\n  padding-right: 0 !important; }\n\n.p-r-5 {\n  padding-right: 5px !important; }\n\n.p-r-10 {\n  padding-right: 10px !important; }\n\n.p-r-15 {\n  padding-right: 15px !important; }\n\n.p-r-20 {\n  padding-right: 20px !important; }\n\n.p-b-0 {\n  padding-bottom: 0px !important; }\n\n.p-b-5 {\n  padding-bottom: 5px !important; }\n\n.p-b-10 {\n  padding-bottom: 10px !important; }\n\n.p-b-15 {\n  padding-bottom: 15px !important; }\n\n.p-b-20 {\n  padding-bottom: 20px !important; }\n\n.p-l-0 {\n  padding-left: 0 !important; }\n\n.p-l-5 {\n  padding-left: 5px !important; }\n\n.p-l-10 {\n  padding-left: 10px !important; }\n\n.p-l-15 {\n  padding-left: 15px !important; }\n\n.p-l-20 {\n  padding-left: 20px !important; }\n\n.m-l-0 {\n  margin-left: 0 !important; }\n\n.m-r-0 {\n  margin-right: 0 !important; }\n\n.m-t-0 {\n  margin-top: 0 !important; }\n\n.m-b-0 {\n  margin-bottom: 0 !important; }\n\n.width-25 {\n  width: 25%; }\n\n.width-50 {\n  width: 50%; }\n\n.width-75 {\n  width: 75%; }\n\n.width-100 {\n  width: 100%; }\n\n.width-auto {\n  width: auto; }\n\n.min-width-inherit {\n  min-width: inherit !important; }\n\n.border-bottom-0 {\n  border-bottom: none !important; }\n\n.orange {\n  color: #FF8F00; }\n\n.yellow-green {\n  color: #7ED321; }\n\n.red {\n  color: #F93D3D; }\n\n.yellow {\n  color: #FFFF00; }\n\n.blue {\n  color: #438AFB; }\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem; }\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem; }\n  .form-group label {\n    margin-bottom: 0.5rem; }\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px; }\n  .filter-container .filter-control-group .form-control {\n    background-color: #f0f3f7 !important;\n    border: none !important;\n    font-size: 12px;\n    cursor: pointer;\n    height: 35px; }\n  .filter-container .filter-control-group label {\n    color: #ffffff;\n    font-size: 14px; }\n\n.logmanager-page-container {\n  background-color: #3b4859;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px; }\n  .logmanager-page-container .common-container {\n    padding-top: 20px;\n    padding-left: 45px;\n    padding-right: 45px;\n    padding-bottom: 15px;\n    border-bottom: 1px solid #202226; }\n  .logmanager-page-container .page-heading {\n    display: block;\n    margin-bottom: 0; }\n    .logmanager-page-container .page-heading h1 {\n      color: #ffffff;\n      font-weight: 600;\n      font-size: 24px;\n      line-height: 32px;\n      display: block;\n      margin-bottom: 0; }\n    .logmanager-page-container .page-heading span {\n      display: block;\n      color: #A9B9C6;\n      font-size: 13px;\n      line-height: 18px;\n      font-weight: 500; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .enabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .enabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .disabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .disabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0; }\n  .open-create-menu a {\n    color: #2a9ce7;\n    font-size: 12px;\n    font-weight: 400;\n    line-height: 20px;\n    display: block;\n    padding: 4px 0; }\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white; }\n\n.breadcrumbs-container {\n  background-color: #3b4859;\n  padding: 14px 20px 15px;\n  font-size: 13px; }\n  .breadcrumbs-container .page-title {\n    color: #ffffff;\n    display: inline-block; }\n  .breadcrumbs-container .breadcrumbs {\n    float: right; }\n  .breadcrumbs-container a.breadcrumbs-link {\n    color: #fcfcfc; }\n  .breadcrumbs-container .current-page {\n    color: #fcfcfc; }\n  .breadcrumbs-container .separator {\n    color: #fcfcfc;\n    display: inline-block;\n    padding: 0 10px; }\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3B48593D;\n  box-shadow: 0px 0px 16px #3B48593D;\n  border-radius: 10px;\n  background: white; }\n  .logmanager-modal-container .modal-content {\n    padding: 30px; }\n    .logmanager-modal-container .modal-content .modal-header {\n      background: white;\n      box-shadow: none;\n      border-bottom: 1px dashed #a2c0d4;\n      margin-bottom: 20px;\n      padding: 0 10px 10px; }\n      .logmanager-modal-container .modal-content .modal-header .modal-title {\n        color: #3b4859;\n        float: left;\n        margin: 0px;\n        font-size: 16px;\n        font-weight: 500;\n        padding: 0;\n        line-height: 28px; }\n        .logmanager-modal-container .modal-content .modal-header .modal-title span {\n          font-weight: 400; }\n      .logmanager-modal-container .modal-content .modal-header button {\n        float: right;\n        font-size: 28px;\n        top: 0;\n        position: relative;\n        color: #ffffff;\n        opacity: 1;\n        width: 28px;\n        height: 28px;\n        background-color: red;\n        border-radius: 50%;\n        border: none;\n        line-height: 28px;\n        text-align: center; }\n    .logmanager-modal-container .modal-content .modal-body {\n      padding: 0px 10px;\n      color: #3b4859; }\n      .logmanager-modal-container .modal-content .modal-body p {\n        font-style: italic; }\n      .logmanager-modal-container .modal-content .modal-body .form-group {\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group label {\n          font-size: 15px;\n          font-weight: 500;\n          line-height: 18px;\n          color: #3B4859;\n          padding-right: 0px;\n          padding-bottom: 0px;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n          background-color: #f0f3f7 !important;\n          border: none !important;\n          font-size: 13px;\n          height: 36px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n          background-color: #FFFFFF;\n          border: 1px solid #8392A7;\n          border-radius: 4px;\n          font-size: 14px;\n          font-weight: 400;\n          line-height: 34px;\n          font-style: italic;\n          color: #3B4859;\n          padding: 0 15px;\n          width: 100%;\n          text-align: left;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group span {\n          padding-top: 5px;\n          font-size: 13px;\n          line-height: 16px;\n          font-weight: 400;\n          font-style: italic;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n          display: inline-block;\n          margin-right: 5px;\n          vertical-align: middle;\n          cursor: pointer;\n          margin-top: -4px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n          height: 120px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n          margin-top: 10px;\n          margin-left: 30px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n          display: inline-block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n          width: auto; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .text {\n          padding: 0 3px;\n          line-height: 12px;\n          vertical-align: top; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n        margin-right: 7px; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n        font-size: 14px;\n        font-weight: 400;\n        line-height: 18px;\n        color: #3B4859; }\n      .logmanager-modal-container .modal-content .modal-body .check-group {\n        display: block;\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .check-group input {\n          display: inline-block;\n          vertical-align: middle; }\n        .logmanager-modal-container .modal-content .modal-body .check-group label {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 21px;\n          font-weight: 400;\n          vertical-align: top;\n          padding-left: 8px; }\n    .logmanager-modal-container .modal-content .modal-footer {\n      padding: 20px 15px 0px;\n      background: none;\n      border: none;\n      border-top: 1px dashed #a2c0d4; }\n      .logmanager-modal-container .modal-content .modal-footer .blue-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .gray-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .white-button {\n        border-radius: 7px !important; }\n    .logmanager-modal-container .modal-content .contact-popup-buttons button {\n      border: 1px solid #89898a;\n      background-color: #89898a;\n      color: #ffffff;\n      font-size: 15px;\n      line-height: 36px;\n      font-weight: 500;\n      padding: 0 30px;\n      margin: 0;\n      border-radius: 5px;\n      text-align: center; }\n      .logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n        border-color: #3B7CFF;\n        background-color: #3B7CFF;\n        color: #ffffff;\n        margin-left: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container span {\n      font-size: 14px;\n      display: block;\n      line-height: 18px;\n      color: #3b4859;\n      font-weight: 400;\n      padding-bottom: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n      font-size: 13px; }\n    .logmanager-modal-container .modal-content .rules-defined {\n      border-top: 1px dashed #a2c0d4;\n      padding-top: 5px;\n      margin-bottom: 50px; }\n      .logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n        background-color: #f8faff;\n        padding: 5px 5px;\n        display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n          display: inline-block;\n          padding-right: 7px;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b97d3; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b4859;\n          padding-bottom: 0px; }\n      .logmanager-modal-container .modal-content .rules-defined .manage-rules {\n        display: block;\n        padding-top: 10px; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          margin-bottom: 0;\n          display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n          font-size: 13px;\n          line-height: 18px;\n          font-weight: 400;\n          padding-bottom: 0;\n          display: block;\n          font-style: italic; }\n    .logmanager-modal-container .modal-content .message-tabs-container span {\n      display: block;\n      font-size: 14px;\n      line-height: 18px;\n      font-weight: 500;\n      padding-bottom: 10px; }\n    .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n      display: block; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n        display: inline-block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n          background-color: #fafbfd;\n          border: 2px solid #fafbfd;\n          padding: 10px 10px;\n          color: #2662f0;\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          display: block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n          background-color: #ffffff; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n        font-size: 13px;\n        line-height: 18px;\n        font-weight: 400;\n        font-style: italic;\n        display: block;\n        padding-top: 15px;\n        padding-bottom: 10px; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n        margin-right: 15px;\n        max-width: 300px;\n        width: 300px;\n        display: inline-block; }\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px; }\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400; }\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px; }\n  .search-control .input-group-text {\n    max-width: 100%;\n    text-align: left;\n    padding-right: 15px;\n    padding-left: 30px;\n    width: 100%;\n    border: 1px solid #ced4da;\n    background-color: #ffffff;\n    border-radius: 3px;\n    padding-top: 0.399rem; }\n  .search-control button {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: 1;\n    cursor: pointer;\n    border: none;\n    background-color: transparent;\n    width: 34px;\n    height: 34px; }\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid; }\n  .table-container .table-container-inner {\n    overflow-x: scroll;\n    width: 100%;\n    background-color: #ffffff; }\n    .table-container .table-container-inner .table {\n      white-space: nowrap;\n      width: 1200px; }\n      .table-container .table-container-inner .table tr:nth-child(odd) td {\n        background-color: #f8f9fb; }\n      .table-container .table-container-inner .table tr td {\n        padding: 5px 10px;\n        color: #323C47;\n        font-size: 11px;\n        line-height: 20px;\n        font-weight: 400; }\n        .table-container .table-container-inner .table tr td:first-child {\n          margin-right: 5px; }\n        .table-container .table-container-inner .table tr td:last-child {\n          margin-left: 5px; }\n        .table-container .table-container-inner .table tr td h4 {\n          font-size: 14px;\n          font-weight: 600;\n          line-height: 18px;\n          color: #3b7cff;\n          margin-bottom: 5px;\n          cursor: pointer; }\n        .table-container .table-container-inner .table tr td p {\n          margin-bottom: 3px; }\n        .table-container .table-container-inner .table tr td a {\n          color: #3b7cff; }\n        .table-container .table-container-inner .table tr td .blue-button {\n          font-size: 12px; }\n        .table-container .table-container-inner .table tr td .table-btns {\n          position: relative; }\n        .table-container .table-container-inner .table tr td .btn-link {\n          color: #3b7cff;\n          padding: 0 7px;\n          font-size: 18px; }\n      .table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n        background-color: transparent; }\n      .table-container .table-container-inner .table .inner-table tr td {\n        width: 50%; }\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none; }\n  .search-control {\n    margin-bottom: 10px; }\n  .new-stream-btn {\n    float: none;\n    display: inline-block; } }\n\n/*# sourceMappingURL=logmanager.dark.css.map */',
           '',
           {
             version: 3,
@@ -3859,10 +3859,10 @@ PERFORMANCE OF THIS SOFTWARE.
             ],
             names: [],
             mappings:
-              'AAAA;EACE;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,4BAA4B;IAC5B,wBAAwB;IACxB,oBAAoB;IACpB,qBAAqB;GACtB;EACD;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,sBAAsB;IACtB,kBAAkB;IAClB,cAAc;IACd,eAAe;GAChB;EACD;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,4BAA4B;IAC5B,wBAAwB;IACxB,oBAAoB;IACpB,qBAAqB;GACtB;EACD;IACE,mBAAmB;IACnB,gBAAgB;IAChB,oBAAoB;IACpB,mBAAmB;IACnB,oBAAoB;IACpB,4BAA4B;IAC5B,wBAAwB;IACxB,oBAAoB;IACpB,qBAAqB;GACtB;CACF;;AAED,+EAA+E;AAC/E;EACE,+BAA+B;EAC/B,0BAA0B;EAC1B,wBAAwB;EACxB,6BAA6B;EAC7B,8BAA8B;EAC9B,mBAAmB;EACnB,oBAAoB;EACpB,iCAAiC;EACjC,iBAAiB;EACjB,mBAAmB;CACpB;AACD;;EAEE,+BAA+B;EAC/B,0BAA0B;CAC3B;;AAED;EACE,+BAA+B;EAC/B,0BAA0B;EAC1B,wBAAwB;EACxB,6BAA6B;EAC7B,8BAA8B;EAC9B,mBAAmB;EACnB,iCAAiC;EACjC,iBAAiB;EACjB,mBAAmB;CACpB;AACD;;EAEE,+BAA+B;EAC/B,0BAA0B;CAC3B;;AAED;EACE,6BAA6B;EAC7B,iBAAiB;EACjB,0BAA0B;EAC1B,wBAAwB;EACxB,6BAA6B;EAC7B,8BAA8B;EAC9B,mBAAmB;EACnB,iCAAiC;EACjC,mBAAmB;CACpB;AACD;;EAEE,+BAA+B;EAC/B,0BAA0B;CAC3B;AACD;EACE,0BAA0B;CAC3B;;AAED;;EAEE,eAAe;CAChB;;AAED;EACE,aAAa;CACd;;AAED;EACE,YAAY;CACb;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,mBAAmB;CACpB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,uBAAuB;CACxB;;AAED;EACE,cAAc;CACf;;AAED;EACE,eAAe;CAChB;;AAED;EACE,sBAAsB;CACvB;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,4BAA4B;CAC7B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,4BAA4B;CAC7B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,2BAA2B;CAC5B;;AAED;EACE,6BAA6B;CAC9B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,2BAA2B;CAC5B;;AAED;EACE,yBAAyB;CAC1B;;AAED;EACE,4BAA4B;CAC7B;;AAED;EACE,WAAW;CACZ;;AAED;EACE,WAAW;CACZ;;AAED;EACE,WAAW;CACZ;;AAED;EACE,YAAY;CACb;;AAED;EACE,YAAY;CACb;;AAED;EACE,8BAA8B;CAC/B;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;CAChB;;AAED;EACE,eAAe;EACf,YAAY;EACZ,oCAAoC;EACpC,0BAA0B;EAC1B,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;EACf,uBAAuB;EACvB,6BAA6B;EAC7B,0BAA0B;EAC1B,uBAAuB;EACvB,yEAAyE;CAC1E;;AAED;EACE,qBAAqB;EACrB,cAAc;EACd,uBAAuB;EACvB,oBAAoB;EACpB,0BAA0B;EAC1B,iBAAiB;EACjB,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,0BAA0B;EAC1B,0BAA0B;EAC1B,uBAAuB;CACxB;;AAED;EACE;IACE,YAAY;IACZ,iBAAiB;GAClB;CACF;;AAED,yFAAyF;AACzF;EACE,oBAAoB;CACrB;AACD;EACE,sBAAsB;CACvB;;AAED;EACE,iBAAiB;EACjB,kBAAkB;CACnB;AACD;EACE,qCAAqC;EACrC,wBAAwB;EACxB,gBAAgB;EAChB,gBAAgB;EAChB,aAAa;CACd;AACD;EACE,eAAe;EACf,gBAAgB;CACjB;;AAED;EACE,0BAA0B;EAC1B,kBAAkB;EAClB,oBAAoB;EACpB,qBAAqB;CACtB;AACD;EACE,kBAAkB;EAClB,mBAAmB;EACnB,oBAAoB;EACpB,qBAAqB;EACrB,iCAAiC;CAClC;AACD;EACE,eAAe;EACf,iBAAiB;CAClB;AACD;EACE,eAAe;EACf,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;EACf,iBAAiB;CAClB;AACD;EACE,eAAe;EACf,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,YAAY;EACZ,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,sBAAsB;EACtB,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,mBAAmB;EACnB,WAAW;EACX,UAAU;EACV,YAAY;EACZ,aAAa;EACb,YAAY;EACZ,0BAA0B;EAC1B,mBAAmB;CACpB;;AAED;EACE,YAAY;EACZ,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,sBAAsB;EACtB,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,mBAAmB;EACnB,WAAW;EACX,UAAU;EACV,YAAY;EACZ,aAAa;EACb,YAAY;EACZ,0BAA0B;EAC1B,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,aAAa;EACb,UAAU;EACV,0BAA0B;EAC1B,kCAAkC;EAClC,aAAa;EACb,YAAY;EACZ,eAAe;CAChB;AACD;EACE,eAAe;EACf,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,eAAe;CAChB;;AAED;EACE,4BAA4B;EAC5B,2CAA2C;EAC3C,mCAAmC;EACnC,oBAAoB;EACpB,kBAAkB;CACnB;;AAED;EACE,0BAA0B;EAC1B,wBAAwB;EACxB,gBAAgB;CACjB;AACD;EACE,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,aAAa;CACd;AACD;EACE,eAAe;CAChB;AACD;EACE,eAAe;CAChB;AACD;EACE,eAAe;EACf,sBAAsB;EACtB,gBAAgB;CACjB;;AAED;EACE;IACE,YAAY;IACZ,iBAAiB;GAClB;CACF;;AAED;EACE,4BAA4B;EAC5B,2CAA2C;EAC3C,mCAAmC;EACnC,oBAAoB;EACpB,kBAAkB;CACnB;AACD;EACE,cAAc;CACf;AACD;EACE,kBAAkB;EAClB,iBAAiB;EACjB,kCAAkC;EAClC,oBAAoB;EACpB,qBAAqB;CACtB;AACD;EACE,eAAe;EACf,YAAY;EACZ,YAAY;EACZ,gBAAgB;EAChB,iBAAiB;EACjB,WAAW;EACX,kBAAkB;CACnB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,aAAa;EACb,gBAAgB;EAChB,OAAO;EACP,mBAAmB;EACnB,eAAe;EACf,WAAW;EACX,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,aAAa;EACb,kBAAkB;EAClB,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,eAAe;CAChB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,oBAAoB;CACrB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,eAAe;CAChB;AACD;EACE,qCAAqC;EACrC,wBAAwB;EACxB,gBAAgB;EAChB,aAAa;CACd;AACD;EACE,0BAA0B;EAC1B,0BAA0B;EAC1B,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,YAAY;EACZ,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,eAAe;CAChB;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,uBAAuB;EACvB,gBAAgB;EAChB,iBAAiB;CAClB;AACD;EACE,cAAc;CACf;AACD;EACE,iBAAiB;EACjB,kBAAkB;CACnB;AACD;EACE,sBAAsB;CACvB;AACD;EACE,YAAY;CACb;AACD;EACE,eAAe;EACf,kBAAkB;EAClB,oBAAoB;CACrB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;CAChB;AACD;EACE,eAAe;EACf,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,uBAAuB;CACxB;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,oBAAoB;EACpB,kBAAkB;CACnB;AACD;EACE,uBAAuB;EACvB,iBAAiB;EACjB,aAAa;EACb,+BAA+B;CAChC;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,0BAA0B;EAC1B,0BAA0B;EAC1B,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,gBAAgB;EAChB,UAAU;EACV,mBAAmB;EACnB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,0BAA0B;EAC1B,eAAe;EACf,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,eAAe;EACf,iBAAiB;EACjB,qBAAqB;CACtB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,+BAA+B;EAC/B,iBAAiB;EACjB,oBAAoB;CACrB;AACD;EACE,0BAA0B;EAC1B,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;CAChB;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;EACf,oBAAoB;CACrB;AACD;EACE,eAAe;EACf,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,mBAAmB;CACpB;AACD;EACE,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,qBAAqB;CACtB;AACD;EACE,eAAe;CAChB;AACD;EACE,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;AACD;EACE,0BAA0B;CAC3B;AACD;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,eAAe;EACf,kBAAkB;EAClB,qBAAqB;CACtB;AACD;EACE,mBAAmB;EACnB,iBAAiB;EACjB,aAAa;EACb,sBAAsB;CACvB;;AAED;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;CACpB;;AAED;EACE,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,iBAAiB;CAClB;;AAED;EACE,mBAAmB;EACnB,iBAAiB;EACjB,mBAAmB;CACpB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,oBAAoB;EACpB,mBAAmB;EACnB,YAAY;EACZ,0BAA0B;EAC1B,0BAA0B;EAC1B,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,QAAQ;EACR,OAAO;EACP,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,8BAA8B;EAC9B,YAAY;EACZ,aAAa;CACd;;AAED;EACE,0BAA0B;EAC1B,sBAAsB;EACtB,cAAc;CACf;AACD;EACE,mBAAmB;EACnB,YAAY;EACZ,0BAA0B;CAC3B;AACD;EACE,oBAAoB;EACpB,cAAc;CACf;AACD;EACE,0BAA0B;CAC3B;AACD;EACE,kBAAkB;EAClB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;CAClB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,mBAAmB;EACnB,gBAAgB;CACjB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,eAAe;CAChB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,eAAe;EACf,eAAe;EACf,gBAAgB;CACjB;AACD;EACE,8BAA8B;CAC/B;AACD;EACE,WAAW;CACZ;;AAED;EACE;IACE,YAAY;GACb;EACD;IACE,oBAAoB;GACrB;EACD;IACE,YAAY;IACZ,sBAAsB;GACvB;CACF;;AAED,+CAA+C',
+              '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',
             file: 'logmanager.dark.css',
             sourcesContent: [
-              "@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%;\n  }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%;\n  }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%;\n  }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%;\n  }\n}\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.blue-button:hover,\n.blue-button:focus {\n  background: #0f5efd !important;\n  color: #ffffff !important;\n}\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center;\n}\n.gray-button:hover,\n.gray-button:focus {\n  background: #dbe0e4 !important;\n  color: #8392a7 !important;\n}\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center;\n}\n.white-button:hover,\n.white-button:focus {\n  background: #e6e6e6 !important;\n  color: #3b4859 !important;\n}\n.white-button i {\n  color: #57a4ff !important;\n}\n\na:focus,\na:hover {\n  color: #000000;\n}\n\n.float-right {\n  float: right;\n}\n\n.float-left {\n  float: left;\n}\n\n.text-left {\n  text-align: left;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.text-right {\n  text-align: right;\n}\n\n.v-a-top {\n  vertical-align: top;\n}\n\n.v-a-middle {\n  vertical-align: middle;\n}\n\n.d-flex {\n  display: flex;\n}\n\n.d-block {\n  display: block;\n}\n\n.d-inline-block {\n  display: inline-block;\n}\n\n.p-t-0 {\n  padding-top: 0 !important;\n}\n\n.p-t-5 {\n  padding-top: 5px !important;\n}\n\n.p-t-10 {\n  padding-top: 10px !important;\n}\n\n.p-t-15 {\n  padding-top: 15px !important;\n}\n\n.p-t-20 {\n  padding-top: 20px !important;\n}\n\n.p-r-0 {\n  padding-right: 0 !important;\n}\n\n.p-r-5 {\n  padding-right: 5px !important;\n}\n\n.p-r-10 {\n  padding-right: 10px !important;\n}\n\n.p-r-15 {\n  padding-right: 15px !important;\n}\n\n.p-r-20 {\n  padding-right: 20px !important;\n}\n\n.p-b-0 {\n  padding-bottom: 0px !important;\n}\n\n.p-b-5 {\n  padding-bottom: 5px !important;\n}\n\n.p-b-10 {\n  padding-bottom: 10px !important;\n}\n\n.p-b-15 {\n  padding-bottom: 15px !important;\n}\n\n.p-b-20 {\n  padding-bottom: 20px !important;\n}\n\n.p-l-0 {\n  padding-left: 0 !important;\n}\n\n.p-l-5 {\n  padding-left: 5px !important;\n}\n\n.p-l-10 {\n  padding-left: 10px !important;\n}\n\n.p-l-15 {\n  padding-left: 15px !important;\n}\n\n.p-l-20 {\n  padding-left: 20px !important;\n}\n\n.m-l-0 {\n  margin-left: 0 !important;\n}\n\n.m-r-0 {\n  margin-right: 0 !important;\n}\n\n.m-t-0 {\n  margin-top: 0 !important;\n}\n\n.m-b-0 {\n  margin-bottom: 0 !important;\n}\n\n.width-25 {\n  width: 25%;\n}\n\n.width-50 {\n  width: 50%;\n}\n\n.width-75 {\n  width: 75%;\n}\n\n.width-100 {\n  width: 100%;\n}\n\n.width-auto {\n  width: auto;\n}\n\n.min-width-inherit {\n  min-width: inherit !important;\n}\n\n.border-bottom-0 {\n  border-bottom: none !important;\n}\n\n.orange {\n  color: #ff8f00;\n}\n\n.yellow-green {\n  color: #7ed321;\n}\n\n.red {\n  color: #f93d3d;\n}\n\n.yellow {\n  color: #ffff00;\n}\n\n.blue {\n  color: #438afb;\n}\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n}\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem;\n}\n.form-group label {\n  margin-bottom: 0.5rem;\n}\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px;\n}\n.filter-container .filter-control-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 12px;\n  cursor: pointer;\n  height: 35px;\n}\n.filter-container .filter-control-group label {\n  color: #ffffff;\n  font-size: 14px;\n}\n\n.logmanager-page-container {\n  background-color: #3b4859;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px;\n}\n.logmanager-page-container .common-container {\n  padding-top: 20px;\n  padding-left: 45px;\n  padding-right: 45px;\n  padding-bottom: 15px;\n  border-bottom: 1px solid #202226;\n}\n.logmanager-page-container .page-heading {\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading h1 {\n  color: #ffffff;\n  font-weight: 600;\n  font-size: 24px;\n  line-height: 32px;\n  display: block;\n  margin-bottom: 0;\n}\n.logmanager-page-container .page-heading span {\n  display: block;\n  color: #a9b9c6;\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 500;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .enabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .enabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px;\n}\n.enabled-disabled-container .disabled {\n  width: 8px;\n  height: 8px;\n  background-color: #004fac;\n  display: inline-block;\n  position: relative;\n  margin: 5px 0 0 5px;\n}\n.enabled-disabled-container .disabled:after {\n  position: absolute;\n  left: -4px;\n  top: -4px;\n  width: 16px;\n  height: 16px;\n  content: '';\n  border: 1px solid #004fac;\n  border-radius: 50%;\n}\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0;\n}\n.open-create-menu a {\n  color: #2a9ce7;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n  display: block;\n  padding: 4px 0;\n}\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n\n.breadcrumbs-container {\n  background-color: #3b4859;\n  padding: 14px 20px 15px;\n  font-size: 13px;\n}\n.breadcrumbs-container .page-title {\n  color: #ffffff;\n  display: inline-block;\n}\n.breadcrumbs-container .breadcrumbs {\n  float: right;\n}\n.breadcrumbs-container a.breadcrumbs-link {\n  color: #fcfcfc;\n}\n.breadcrumbs-container .current-page {\n  color: #fcfcfc;\n}\n.breadcrumbs-container .separator {\n  color: #fcfcfc;\n  display: inline-block;\n  padding: 0 10px;\n}\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px;\n  }\n}\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white;\n}\n.logmanager-modal-container .modal-content {\n  padding: 30px;\n}\n.logmanager-modal-container .modal-content .modal-header {\n  background: white;\n  box-shadow: none;\n  border-bottom: 1px dashed #a2c0d4;\n  margin-bottom: 20px;\n  padding: 0 10px 10px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title {\n  color: #3b4859;\n  float: left;\n  margin: 0px;\n  font-size: 16px;\n  font-weight: 500;\n  padding: 0;\n  line-height: 28px;\n}\n.logmanager-modal-container .modal-content .modal-header .modal-title span {\n  font-weight: 400;\n}\n.logmanager-modal-container .modal-content .modal-header button {\n  float: right;\n  font-size: 28px;\n  top: 0;\n  position: relative;\n  color: #ffffff;\n  opacity: 1;\n  width: 28px;\n  height: 28px;\n  background-color: red;\n  border-radius: 50%;\n  border: none;\n  line-height: 28px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .modal-body {\n  padding: 0px 10px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body p {\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group {\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group label {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 18px;\n  color: #3b4859;\n  padding-right: 0px;\n  padding-bottom: 0px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n  background-color: #f0f3f7 !important;\n  border: none !important;\n  font-size: 13px;\n  height: 36px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n  background-color: #ffffff;\n  border: 1px solid #8392a7;\n  border-radius: 4px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 34px;\n  font-style: italic;\n  color: #3b4859;\n  padding: 0 15px;\n  width: 100%;\n  text-align: left;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group span {\n  padding-top: 5px;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: middle;\n  cursor: pointer;\n  margin-top: -4px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n  height: 120px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n  margin-top: 10px;\n  margin-left: 30px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n  width: auto;\n}\n.logmanager-modal-container .modal-content .modal-body .form-group .text {\n  padding: 0 3px;\n  line-height: 12px;\n  vertical-align: top;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n  margin-right: 7px;\n}\n.logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 18px;\n  color: #3b4859;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group {\n  display: block;\n  padding-bottom: 5px;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group input {\n  display: inline-block;\n  vertical-align: middle;\n}\n.logmanager-modal-container .modal-content .modal-body .check-group label {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 21px;\n  font-weight: 400;\n  vertical-align: top;\n  padding-left: 8px;\n}\n.logmanager-modal-container .modal-content .modal-footer {\n  padding: 20px 15px 0px;\n  background: none;\n  border: none;\n  border-top: 1px dashed #a2c0d4;\n}\n.logmanager-modal-container .modal-content .modal-footer .blue-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .gray-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .modal-footer .white-button {\n  border-radius: 7px !important;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button {\n  border: 1px solid #89898a;\n  background-color: #89898a;\n  color: #ffffff;\n  font-size: 15px;\n  line-height: 36px;\n  font-weight: 500;\n  padding: 0 30px;\n  margin: 0;\n  border-radius: 5px;\n  text-align: center;\n}\n.logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n  border-color: #3b7cff;\n  background-color: #3b7cff;\n  color: #ffffff;\n  margin-left: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container span {\n  font-size: 14px;\n  display: block;\n  line-height: 18px;\n  color: #3b4859;\n  font-weight: 400;\n  padding-bottom: 15px;\n}\n.logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n  font-size: 13px;\n}\n.logmanager-modal-container .modal-content .rules-defined {\n  border-top: 1px dashed #a2c0d4;\n  padding-top: 5px;\n  margin-bottom: 50px;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n  background-color: #f8faff;\n  padding: 5px 5px;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n  display: inline-block;\n  padding-right: 7px;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b97d3;\n}\n.logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n  display: inline-block;\n  font-size: 13px;\n  line-height: 18px;\n  color: #3b4859;\n  padding-bottom: 0px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules {\n  display: block;\n  padding-top: 10px;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  margin-bottom: 0;\n  display: block;\n}\n.logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  padding-bottom: 0;\n  display: block;\n  font-style: italic;\n}\n.logmanager-modal-container .modal-content .message-tabs-container span {\n  display: block;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n  display: inline-block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n  background-color: #fafbfd;\n  border: 2px solid #fafbfd;\n  padding: 10px 10px;\n  color: #2662f0;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: 500;\n  display: block;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n  background-color: #ffffff;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n  font-size: 13px;\n  line-height: 18px;\n  font-weight: 400;\n  font-style: italic;\n  display: block;\n  padding-top: 15px;\n  padding-bottom: 10px;\n}\n.logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n  margin-right: 15px;\n  max-width: 300px;\n  width: 300px;\n  display: inline-block;\n}\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px;\n}\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400;\n}\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px;\n}\n.search-control .input-group-text {\n  max-width: 100%;\n  text-align: left;\n  padding-right: 15px;\n  padding-left: 30px;\n  width: 100%;\n  border: 1px solid #ced4da;\n  background-color: #ffffff;\n  border-radius: 3px;\n  padding-top: 0.399rem;\n}\n.search-control button {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 1;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  width: 34px;\n  height: 34px;\n}\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid;\n}\n.table-container .table-container-inner {\n  overflow-x: scroll;\n  width: 100%;\n  background-color: #ffffff;\n}\n.table-container .table-container-inner .table {\n  white-space: nowrap;\n  width: 1200px;\n}\n.table-container .table-container-inner .table tr:nth-child(odd) td {\n  background-color: #f8f9fb;\n}\n.table-container .table-container-inner .table tr td {\n  padding: 5px 10px;\n  color: #323c47;\n  font-size: 11px;\n  line-height: 20px;\n  font-weight: 400;\n}\n.table-container .table-container-inner .table tr td:first-child {\n  margin-right: 5px;\n}\n.table-container .table-container-inner .table tr td:last-child {\n  margin-left: 5px;\n}\n.table-container .table-container-inner .table tr td h4 {\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 18px;\n  color: #3b7cff;\n  margin-bottom: 5px;\n  cursor: pointer;\n}\n.table-container .table-container-inner .table tr td p {\n  margin-bottom: 3px;\n}\n.table-container .table-container-inner .table tr td a {\n  color: #3b7cff;\n}\n.table-container .table-container-inner .table tr td .blue-button {\n  font-size: 12px;\n}\n.table-container .table-container-inner .table tr td .table-btns {\n  position: relative;\n}\n.table-container .table-container-inner .table tr td .btn-link {\n  color: #3b7cff;\n  padding: 0 7px;\n  font-size: 18px;\n}\n.table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n  background-color: transparent;\n}\n.table-container .table-container-inner .table .inner-table tr td {\n  width: 50%;\n}\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none;\n  }\n  .search-control {\n    margin-bottom: 10px;\n  }\n  .new-stream-btn {\n    float: none;\n    display: inline-block;\n  }\n}\n\n/*# sourceMappingURL=logmanager.dark.css.map */\n",
+              '@media (min-width: 1200px) {\n  .col-xl-4 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 33.33333%;\n    -ms-flex: 0 0 33.33333%;\n    flex: 0 0 33.33333%;\n    max-width: 33.33333%; }\n  .col-xl-5 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 20%;\n    -ms-flex: 0 0 20%;\n    flex: 0 0 20%;\n    max-width: 20%; }\n  .col-xl-7 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 58.33333%;\n    -ms-flex: 0 0 58.33333%;\n    flex: 0 0 58.33333%;\n    max-width: 58.33333%; }\n  .col-xl-8 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n    -webkit-box-flex: 0;\n    -webkit-flex: 0 0 66.66667%;\n    -ms-flex: 0 0 66.66667%;\n    flex: 0 0 66.66667%;\n    max-width: 66.66667%; } }\n\n/*********************************** Buttons *********************************/\n.blue-button {\n  background: #3b7cff !important;\n  color: #ffffff !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .blue-button:hover, .blue-button:focus {\n    background: #0f5efd !important;\n    color: #ffffff !important; }\n\n.gray-button {\n  background: #dde4e9 !important;\n  color: #8392a7 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  min-width: 100px;\n  text-align: center; }\n  .gray-button:hover, .gray-button:focus {\n    background: #dbe0e4 !important;\n    color: #8392a7 !important; }\n\n.white-button {\n  background: white !important;\n  min-width: 100px;\n  color: #3b4859 !important;\n  border: none !important;\n  padding: 7px 18px !important;\n  border-radius: 2px !important;\n  margin-right: 10px;\n  display: inline-block !important;\n  text-align: center; }\n  .white-button:hover, .white-button:focus {\n    background: #e6e6e6 !important;\n    color: #3b4859 !important; }\n  .white-button i {\n    color: #57a4ff !important; }\n\na:focus, a:hover {\n  color: #000000; }\n\n.float-right {\n  float: right; }\n\n.float-left {\n  float: left; }\n\n.text-left {\n  text-align: left; }\n\n.text-center {\n  text-align: center; }\n\n.text-right {\n  text-align: right; }\n\n.v-a-top {\n  vertical-align: top; }\n\n.v-a-middle {\n  vertical-align: middle; }\n\n.d-flex {\n  display: flex; }\n\n.d-block {\n  display: block; }\n\n.d-inline-block {\n  display: inline-block; }\n\n.p-t-0 {\n  padding-top: 0 !important; }\n\n.p-t-5 {\n  padding-top: 5px !important; }\n\n.p-t-10 {\n  padding-top: 10px !important; }\n\n.p-t-15 {\n  padding-top: 15px !important; }\n\n.p-t-20 {\n  padding-top: 20px !important; }\n\n.p-r-0 {\n  padding-right: 0 !important; }\n\n.p-r-5 {\n  padding-right: 5px !important; }\n\n.p-r-10 {\n  padding-right: 10px !important; }\n\n.p-r-15 {\n  padding-right: 15px !important; }\n\n.p-r-20 {\n  padding-right: 20px !important; }\n\n.p-b-0 {\n  padding-bottom: 0px !important; }\n\n.p-b-5 {\n  padding-bottom: 5px !important; }\n\n.p-b-10 {\n  padding-bottom: 10px !important; }\n\n.p-b-15 {\n  padding-bottom: 15px !important; }\n\n.p-b-20 {\n  padding-bottom: 20px !important; }\n\n.p-l-0 {\n  padding-left: 0 !important; }\n\n.p-l-5 {\n  padding-left: 5px !important; }\n\n.p-l-10 {\n  padding-left: 10px !important; }\n\n.p-l-15 {\n  padding-left: 15px !important; }\n\n.p-l-20 {\n  padding-left: 20px !important; }\n\n.m-l-0 {\n  margin-left: 0 !important; }\n\n.m-r-0 {\n  margin-right: 0 !important; }\n\n.m-t-0 {\n  margin-top: 0 !important; }\n\n.m-b-0 {\n  margin-bottom: 0 !important; }\n\n.width-25 {\n  width: 25%; }\n\n.width-50 {\n  width: 50%; }\n\n.width-75 {\n  width: 75%; }\n\n.width-100 {\n  width: 100%; }\n\n.width-auto {\n  width: auto; }\n\n.min-width-inherit {\n  min-width: inherit !important; }\n\n.border-bottom-0 {\n  border-bottom: none !important; }\n\n.orange {\n  color: #FF8F00; }\n\n.yellow-green {\n  color: #7ED321; }\n\n.red {\n  color: #F93D3D; }\n\n.yellow {\n  color: #FFFF00; }\n\n.blue {\n  color: #438AFB; }\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: calc(1.5em + 0.75rem + 2px);\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n\n.input-group-text {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0.375rem 0.75rem;\n  margin-bottom: 0;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: #495057;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem; }\n\n@media (max-width: 992px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n/*********************************** Filters Container *********************************/\n.form-group {\n  margin-bottom: 1rem; }\n  .form-group label {\n    margin-bottom: 0.5rem; }\n\n.filter-container .filter-control-group {\n  max-width: 250px;\n  padding-left: 0px; }\n  .filter-container .filter-control-group .form-control {\n    background-color: #f0f3f7 !important;\n    border: none !important;\n    font-size: 12px;\n    cursor: pointer;\n    height: 35px; }\n  .filter-container .filter-control-group label {\n    color: #ffffff;\n    font-size: 14px; }\n\n.logmanager-page-container {\n  background-color: #3b4859;\n  margin: 10px 20px;\n  border-radius: 10px;\n  padding-bottom: 10px; }\n  .logmanager-page-container .common-container {\n    padding-top: 20px;\n    padding-left: 45px;\n    padding-right: 45px;\n    padding-bottom: 15px;\n    border-bottom: 1px solid #202226; }\n  .logmanager-page-container .page-heading {\n    display: block;\n    margin-bottom: 0; }\n    .logmanager-page-container .page-heading h1 {\n      color: #ffffff;\n      font-weight: 600;\n      font-size: 24px;\n      line-height: 32px;\n      display: block;\n      margin-bottom: 0; }\n    .logmanager-page-container .page-heading span {\n      display: block;\n      color: #A9B9C6;\n      font-size: 13px;\n      line-height: 18px;\n      font-weight: 500; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .enabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .enabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.enabled-disabled-container {\n  width: 16px;\n  margin-right: 7px; }\n  .enabled-disabled-container .disabled {\n    width: 8px;\n    height: 8px;\n    background-color: #004fac;\n    display: inline-block;\n    position: relative;\n    margin: 5px 0 0 5px; }\n    .enabled-disabled-container .disabled:after {\n      position: absolute;\n      left: -4px;\n      top: -4px;\n      width: 16px;\n      height: 16px;\n      content: "";\n      border: 1px solid #004fac;\n      border-radius: 50%; }\n\n.open-create-menu {\n  position: absolute;\n  right: -15px;\n  top: 36px;\n  background-color: #f0f3f7;\n  box-shadow: 0px 2px 5px #00000029;\n  width: 120px;\n  z-index: 10;\n  padding: 5px 0; }\n  .open-create-menu a {\n    color: #2a9ce7;\n    font-size: 12px;\n    font-weight: 400;\n    line-height: 20px;\n    display: block;\n    padding: 4px 0; }\n\n.modal {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3b48593d;\n  box-shadow: 0px 0px 16px #3b48593d;\n  border-radius: 10px;\n  background: white; }\n\n.breadcrumbs-container {\n  background-color: #3b4859;\n  padding: 14px 20px 15px;\n  font-size: 13px; }\n  .breadcrumbs-container .page-title {\n    color: #ffffff;\n    display: inline-block; }\n  .breadcrumbs-container .breadcrumbs {\n    float: right; }\n  .breadcrumbs-container a.breadcrumbs-link {\n    color: #fcfcfc; }\n  .breadcrumbs-container .current-page {\n    color: #fcfcfc; }\n  .breadcrumbs-container .separator {\n    color: #fcfcfc;\n    display: inline-block;\n    padding: 0 10px; }\n\n@media (max-width: 768px) {\n  .breadcrumbs-container .breadcrumbs {\n    float: none;\n    padding-top: 5px; } }\n\n.logmanager-modal-container {\n  max-width: 992px !important;\n  -webkit-box-shadow: 0px 0px 16px #3B48593D;\n  box-shadow: 0px 0px 16px #3B48593D;\n  border-radius: 10px;\n  background: white; }\n  .logmanager-modal-container .modal-content {\n    padding: 30px; }\n    .logmanager-modal-container .modal-content .modal-header {\n      background: white;\n      box-shadow: none;\n      border-bottom: 1px dashed #a2c0d4;\n      margin-bottom: 20px;\n      padding: 0 10px 10px; }\n      .logmanager-modal-container .modal-content .modal-header .modal-title {\n        color: #3b4859;\n        float: left;\n        margin: 0px;\n        font-size: 16px;\n        font-weight: 500;\n        padding: 0;\n        line-height: 28px; }\n        .logmanager-modal-container .modal-content .modal-header .modal-title span {\n          font-weight: 400; }\n      .logmanager-modal-container .modal-content .modal-header button {\n        float: right;\n        font-size: 28px;\n        top: 0;\n        position: relative;\n        color: #ffffff;\n        opacity: 1;\n        width: 28px;\n        height: 28px;\n        background-color: red;\n        border-radius: 50%;\n        border: none;\n        line-height: 28px;\n        text-align: center; }\n    .logmanager-modal-container .modal-content .modal-body {\n      padding: 0px 10px;\n      color: #3b4859; }\n      .logmanager-modal-container .modal-content .modal-body p {\n        font-style: italic; }\n      .logmanager-modal-container .modal-content .modal-body .form-group {\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group label {\n          font-size: 15px;\n          font-weight: 500;\n          line-height: 18px;\n          color: #3B4859;\n          padding-right: 0px;\n          padding-bottom: 0px;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .form-control {\n          background-color: #f0f3f7 !important;\n          border: none !important;\n          font-size: 13px;\n          height: 36px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .input-group-text {\n          background-color: #FFFFFF;\n          border: 1px solid #8392A7;\n          border-radius: 4px;\n          font-size: 14px;\n          font-weight: 400;\n          line-height: 34px;\n          font-style: italic;\n          color: #3B4859;\n          padding: 0 15px;\n          width: 100%;\n          text-align: left;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group span {\n          padding-top: 5px;\n          font-size: 13px;\n          line-height: 16px;\n          font-weight: 400;\n          font-style: italic;\n          display: block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .checkbox {\n          display: inline-block;\n          margin-right: 5px;\n          vertical-align: middle;\n          cursor: pointer;\n          margin-top: -4px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group textarea.form-control {\n          height: 120px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .select-rule {\n          margin-top: 10px;\n          margin-left: 30px; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .d-inline-block {\n          display: inline-block; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .width-auto {\n          width: auto; }\n        .logmanager-modal-container .modal-content .modal-body .form-group .text {\n          padding: 0 3px;\n          line-height: 12px;\n          vertical-align: top; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-input {\n        margin-right: 7px; }\n      .logmanager-modal-container .modal-content .modal-body .form-check .form-check-label {\n        font-size: 14px;\n        font-weight: 400;\n        line-height: 18px;\n        color: #3B4859; }\n      .logmanager-modal-container .modal-content .modal-body .check-group {\n        display: block;\n        padding-bottom: 5px; }\n        .logmanager-modal-container .modal-content .modal-body .check-group input {\n          display: inline-block;\n          vertical-align: middle; }\n        .logmanager-modal-container .modal-content .modal-body .check-group label {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 21px;\n          font-weight: 400;\n          vertical-align: top;\n          padding-left: 8px; }\n    .logmanager-modal-container .modal-content .modal-footer {\n      padding: 20px 15px 0px;\n      background: none;\n      border: none;\n      border-top: 1px dashed #a2c0d4; }\n      .logmanager-modal-container .modal-content .modal-footer .blue-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .gray-button {\n        border-radius: 7px !important; }\n      .logmanager-modal-container .modal-content .modal-footer .white-button {\n        border-radius: 7px !important; }\n    .logmanager-modal-container .modal-content .contact-popup-buttons button {\n      border: 1px solid #89898a;\n      background-color: #89898a;\n      color: #ffffff;\n      font-size: 15px;\n      line-height: 36px;\n      font-weight: 500;\n      padding: 0 30px;\n      margin: 0;\n      border-radius: 5px;\n      text-align: center; }\n      .logmanager-modal-container .modal-content .contact-popup-buttons button.save {\n        border-color: #3B7CFF;\n        background-color: #3B7CFF;\n        color: #ffffff;\n        margin-left: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container span {\n      font-size: 14px;\n      display: block;\n      line-height: 18px;\n      color: #3b4859;\n      font-weight: 400;\n      padding-bottom: 15px; }\n    .logmanager-modal-container .modal-content .popup-parameters-container .blue-button {\n      font-size: 13px; }\n    .logmanager-modal-container .modal-content .rules-defined {\n      border-top: 1px dashed #a2c0d4;\n      padding-top: 5px;\n      margin-bottom: 50px; }\n      .logmanager-modal-container .modal-content .rules-defined .no-rules-defined {\n        background-color: #f8faff;\n        padding: 5px 5px;\n        display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined i {\n          display: inline-block;\n          padding-right: 7px;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b97d3; }\n        .logmanager-modal-container .modal-content .rules-defined .no-rules-defined span {\n          display: inline-block;\n          font-size: 13px;\n          line-height: 18px;\n          color: #3b4859;\n          padding-bottom: 0px; }\n      .logmanager-modal-container .modal-content .rules-defined .manage-rules {\n        display: block;\n        padding-top: 10px; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules h4 {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          margin-bottom: 0;\n          display: block; }\n        .logmanager-modal-container .modal-content .rules-defined .manage-rules span {\n          font-size: 13px;\n          line-height: 18px;\n          font-weight: 400;\n          padding-bottom: 0;\n          display: block;\n          font-style: italic; }\n    .logmanager-modal-container .modal-content .message-tabs-container span {\n      display: block;\n      font-size: 14px;\n      line-height: 18px;\n      font-weight: 500;\n      padding-bottom: 10px; }\n    .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs {\n      display: block; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li {\n        display: inline-block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li a {\n          background-color: #fafbfd;\n          border: 2px solid #fafbfd;\n          padding: 10px 10px;\n          color: #2662f0;\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 500;\n          display: block; }\n        .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs ul li.active-tab a {\n          background-color: #ffffff; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .lod-messages {\n        font-size: 13px;\n        line-height: 18px;\n        font-weight: 400;\n        font-style: italic;\n        display: block;\n        padding-top: 15px;\n        padding-bottom: 10px; }\n      .logmanager-modal-container .modal-content .message-tabs-container .messages-tabs .form-group .input-group-text {\n        margin-right: 15px;\n        max-width: 300px;\n        width: 300px;\n        display: inline-block; }\n\n.streams-text h3 {\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 20px;\n  margin-bottom: 3px; }\n\n.streams-text p {\n  font-size: 12px;\n  line-height: 18px;\n  margin-bottom: 0;\n  font-weight: 400; }\n\n.search-control {\n  position: relative;\n  margin-bottom: 0;\n  margin-right: 15px; }\n  .search-control .input-group-text {\n    max-width: 100%;\n    text-align: left;\n    padding-right: 15px;\n    padding-left: 30px;\n    width: 100%;\n    border: 1px solid #ced4da;\n    background-color: #ffffff;\n    border-radius: 3px;\n    padding-top: 0.399rem; }\n  .search-control button {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: 1;\n    cursor: pointer;\n    border: none;\n    background-color: transparent;\n    width: 34px;\n    height: 34px; }\n\n.table-container {\n  border: 1px solid #f5f6f5;\n  padding: 5px 5px 10px;\n  display: grid; }\n  .table-container .table-container-inner {\n    overflow-x: scroll;\n    width: 100%;\n    background-color: #ffffff; }\n    .table-container .table-container-inner .table {\n      white-space: nowrap;\n      width: 1200px; }\n      .table-container .table-container-inner .table tr:nth-child(odd) td {\n        background-color: #f8f9fb; }\n      .table-container .table-container-inner .table tr td {\n        padding: 5px 10px;\n        color: #323C47;\n        font-size: 11px;\n        line-height: 20px;\n        font-weight: 400; }\n        .table-container .table-container-inner .table tr td:first-child {\n          margin-right: 5px; }\n        .table-container .table-container-inner .table tr td:last-child {\n          margin-left: 5px; }\n        .table-container .table-container-inner .table tr td h4 {\n          font-size: 14px;\n          font-weight: 600;\n          line-height: 18px;\n          color: #3b7cff;\n          margin-bottom: 5px;\n          cursor: pointer; }\n        .table-container .table-container-inner .table tr td p {\n          margin-bottom: 3px; }\n        .table-container .table-container-inner .table tr td a {\n          color: #3b7cff; }\n        .table-container .table-container-inner .table tr td .blue-button {\n          font-size: 12px; }\n        .table-container .table-container-inner .table tr td .table-btns {\n          position: relative; }\n        .table-container .table-container-inner .table tr td .btn-link {\n          color: #3b7cff;\n          padding: 0 7px;\n          font-size: 18px; }\n      .table-container .table-container-inner .table .inner-table tr:nth-child(odd) td {\n        background-color: transparent; }\n      .table-container .table-container-inner .table .inner-table tr td {\n        width: 50%; }\n\n@media (max-width: 1200px) {\n  .back-btn {\n    float: none; }\n  .search-control {\n    margin-bottom: 10px; }\n  .new-stream-btn {\n    float: none;\n    display: inline-block; } }\n\n/*# sourceMappingURL=logmanager.dark.css.map */',
             ],
             sourceRoot: '',
           },
@@ -5624,7 +5624,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 99);
+        var reactIs = __webpack_require__(/*! react-is */ 66);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -5827,16 +5827,16 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithHoles.js */ 71
+          /*! ./arrayWithHoles.js */ 75
         );
         /* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArrayLimit.js */ 72
+          /*! ./iterableToArrayLimit.js */ 76
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 46
         );
         /* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableRest.js */ 73
+          /*! ./nonIterableRest.js */ 77
         );
 
         function _slicedToArray(arr, i) {
@@ -7011,13 +7011,13 @@ object-assign
           /*! ../../pages/Dashboard */ 64
         );
         /* harmony import */ var _pages_ContentsPacks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../../pages/ContentsPacks */ 79
+          /*! ../../pages/ContentsPacks */ 83
         );
         /* harmony import */ var _pages_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../pages/Input */ 80
+          /*! ../../pages/Input */ 84
         );
         /* harmony import */ var _utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../utils/utils.routing */ 81
+          /*! ../../utils/utils.routing */ 85
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../../constants */ 28
@@ -7076,17 +7076,17 @@ object-assign
           _grafana_ui__WEBPACK_IMPORTED_MODULE_1__
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! @grafana/runtime */ 83
+          /*! @grafana/runtime */ 87
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2___default =
           /*#__PURE__*/ __webpack_require__.n(_grafana_runtime__WEBPACK_IMPORTED_MODULE_2__);
         /* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! @emotion/css */ 84
+          /*! @emotion/css */ 88
         );
         /* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3___default =
           /*#__PURE__*/ __webpack_require__.n(_emotion_css__WEBPACK_IMPORTED_MODULE_3__);
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../SecretInput */ 85
+          /*! ../SecretInput */ 89
         );
 
         var AppConfig = function (_a) {
@@ -8564,9 +8564,9 @@ object-assign
         /***/
       },
       /* 66 */
-      /*!*****************************************!*\
-  !*** ../node_modules/react-is/index.js ***!
-  \*****************************************/
+      /*!******************************************************************************!*\
+  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
+  \******************************************************************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
@@ -8578,6 +8578,228 @@ object-assign
         /***/
       },
       /* 67 */
+      /*!*************************************************************************************************!*\
+  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
+  \*************************************************************************************************/
+      /***/ (__unused_webpack_module, exports) => {
+        'use strict';
+        /** @license React v16.13.1
+         * react-is.development.js
+         *
+         * Copyright (c) Facebook, Inc. and its affiliates.
+         *
+         * This source code is licensed under the MIT license found in the
+         * LICENSE file in the root directory of this source tree.
+         */
+
+        if (true) {
+          (function () {
+            'use strict';
+
+            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+            // nor polyfill, then a plain number is used for performance.
+            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+            // (unstable) APIs that have been removed. Can we remove the symbols?
+
+            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+            function isValidElementType(type) {
+              return (
+                typeof type === 'string' ||
+                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+                type === REACT_FRAGMENT_TYPE ||
+                type === REACT_CONCURRENT_MODE_TYPE ||
+                type === REACT_PROFILER_TYPE ||
+                type === REACT_STRICT_MODE_TYPE ||
+                type === REACT_SUSPENSE_TYPE ||
+                type === REACT_SUSPENSE_LIST_TYPE ||
+                (typeof type === 'object' &&
+                  type !== null &&
+                  (type.$$typeof === REACT_LAZY_TYPE ||
+                    type.$$typeof === REACT_MEMO_TYPE ||
+                    type.$$typeof === REACT_PROVIDER_TYPE ||
+                    type.$$typeof === REACT_CONTEXT_TYPE ||
+                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
+                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
+                    type.$$typeof === REACT_RESPONDER_TYPE ||
+                    type.$$typeof === REACT_SCOPE_TYPE ||
+                    type.$$typeof === REACT_BLOCK_TYPE))
+              );
+            }
+
+            function typeOf(object) {
+              if (typeof object === 'object' && object !== null) {
+                var $$typeof = object.$$typeof;
+
+                switch ($$typeof) {
+                  case REACT_ELEMENT_TYPE:
+                    var type = object.type;
+
+                    switch (type) {
+                      case REACT_ASYNC_MODE_TYPE:
+                      case REACT_CONCURRENT_MODE_TYPE:
+                      case REACT_FRAGMENT_TYPE:
+                      case REACT_PROFILER_TYPE:
+                      case REACT_STRICT_MODE_TYPE:
+                      case REACT_SUSPENSE_TYPE:
+                        return type;
+
+                      default:
+                        var $$typeofType = type && type.$$typeof;
+
+                        switch ($$typeofType) {
+                          case REACT_CONTEXT_TYPE:
+                          case REACT_FORWARD_REF_TYPE:
+                          case REACT_LAZY_TYPE:
+                          case REACT_MEMO_TYPE:
+                          case REACT_PROVIDER_TYPE:
+                            return $$typeofType;
+
+                          default:
+                            return $$typeof;
+                        }
+                    }
+
+                  case REACT_PORTAL_TYPE:
+                    return $$typeof;
+                }
+              }
+
+              return undefined;
+            } // AsyncMode is deprecated along with isAsyncMode
+
+            var AsyncMode = REACT_ASYNC_MODE_TYPE;
+            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+            var ContextConsumer = REACT_CONTEXT_TYPE;
+            var ContextProvider = REACT_PROVIDER_TYPE;
+            var Element = REACT_ELEMENT_TYPE;
+            var ForwardRef = REACT_FORWARD_REF_TYPE;
+            var Fragment = REACT_FRAGMENT_TYPE;
+            var Lazy = REACT_LAZY_TYPE;
+            var Memo = REACT_MEMO_TYPE;
+            var Portal = REACT_PORTAL_TYPE;
+            var Profiler = REACT_PROFILER_TYPE;
+            var StrictMode = REACT_STRICT_MODE_TYPE;
+            var Suspense = REACT_SUSPENSE_TYPE;
+            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+            function isAsyncMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
+                      'and will be removed in React 17+. Update your code to use ' +
+                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
+                  );
+                }
+              }
+
+              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+            }
+            function isConcurrentMode(object) {
+              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+            }
+            function isContextConsumer(object) {
+              return typeOf(object) === REACT_CONTEXT_TYPE;
+            }
+            function isContextProvider(object) {
+              return typeOf(object) === REACT_PROVIDER_TYPE;
+            }
+            function isElement(object) {
+              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+            }
+            function isForwardRef(object) {
+              return typeOf(object) === REACT_FORWARD_REF_TYPE;
+            }
+            function isFragment(object) {
+              return typeOf(object) === REACT_FRAGMENT_TYPE;
+            }
+            function isLazy(object) {
+              return typeOf(object) === REACT_LAZY_TYPE;
+            }
+            function isMemo(object) {
+              return typeOf(object) === REACT_MEMO_TYPE;
+            }
+            function isPortal(object) {
+              return typeOf(object) === REACT_PORTAL_TYPE;
+            }
+            function isProfiler(object) {
+              return typeOf(object) === REACT_PROFILER_TYPE;
+            }
+            function isStrictMode(object) {
+              return typeOf(object) === REACT_STRICT_MODE_TYPE;
+            }
+            function isSuspense(object) {
+              return typeOf(object) === REACT_SUSPENSE_TYPE;
+            }
+
+            exports.AsyncMode = AsyncMode;
+            exports.ConcurrentMode = ConcurrentMode;
+            exports.ContextConsumer = ContextConsumer;
+            exports.ContextProvider = ContextProvider;
+            exports.Element = Element;
+            exports.ForwardRef = ForwardRef;
+            exports.Fragment = Fragment;
+            exports.Lazy = Lazy;
+            exports.Memo = Memo;
+            exports.Portal = Portal;
+            exports.Profiler = Profiler;
+            exports.StrictMode = StrictMode;
+            exports.Suspense = Suspense;
+            exports.isAsyncMode = isAsyncMode;
+            exports.isConcurrentMode = isConcurrentMode;
+            exports.isContextConsumer = isContextConsumer;
+            exports.isContextProvider = isContextProvider;
+            exports.isElement = isElement;
+            exports.isForwardRef = isForwardRef;
+            exports.isFragment = isFragment;
+            exports.isLazy = isLazy;
+            exports.isMemo = isMemo;
+            exports.isPortal = isPortal;
+            exports.isProfiler = isProfiler;
+            exports.isStrictMode = isStrictMode;
+            exports.isSuspense = isSuspense;
+            exports.isValidElementType = isValidElementType;
+            exports.typeOf = typeOf;
+          })();
+        }
+
+        /***/
+      },
+      /* 68 */
+      /*!*****************************************!*\
+  !*** ../node_modules/react-is/index.js ***!
+  \*****************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        if (false) {
+        } else {
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 69);
+        }
+
+        /***/
+      },
+      /* 69 */
       /*!************************************************************!*\
   !*** ../node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************/
@@ -8830,7 +9052,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 70 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -8862,7 +9084,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 71 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -8886,7 +9108,629 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 72 */
+      /*!*********************************************************!*\
+  !*** ../node_modules/css-vendor/dist/css-vendor.esm.js ***!
+  \*********************************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ prefix: () => /* binding */ prefix,
+          /* harmony export */ supportedKeyframes: () => /* binding */ supportedKeyframes,
+          /* harmony export */ supportedProperty: () => /* binding */ supportedProperty,
+          /* harmony export */ supportedValue: () => /* binding */ supportedValue,
+          /* harmony export */
+        });
+        /* harmony import */ var is_in_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! is-in-browser */ 44
+        );
+        /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ =
+          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 23);
+
+        // Export javascript style and css style vendor prefixes.
+        var js = '';
+        var css = '';
+        var vendor = '';
+        var browser = '';
+        var isTouch =
+          is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default'] && 'ontouchstart' in document.documentElement; // We should not do anything if required serverside.
+
+        if (is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default']) {
+          // Order matters. We need to check Webkit the last one because
+          // other vendors use to add Webkit prefixes to some properties
+          var jsCssMap = {
+            Moz: '-moz-',
+            ms: '-ms-',
+            O: '-o-',
+            Webkit: '-webkit-',
+          };
+
+          var _document$createEleme = document.createElement('p'),
+            style = _document$createEleme.style;
+
+          var testProp = 'Transform';
+
+          for (var key in jsCssMap) {
+            if (key + testProp in style) {
+              js = key;
+              css = jsCssMap[key];
+              break;
+            }
+          } // Correctly detect the Edge browser.
+
+          if (js === 'Webkit' && 'msHyphens' in style) {
+            js = 'ms';
+            css = jsCssMap.ms;
+            browser = 'edge';
+          } // Correctly detect the Safari browser.
+
+          if (js === 'Webkit' && '-apple-trailing-word' in style) {
+            vendor = 'apple';
+          }
+        }
+        /**
+         * Vendor prefix string for the current browser.
+         *
+         * @type {{js: String, css: String, vendor: String, browser: String}}
+         * @api public
+         */
+
+        var prefix = {
+          js: js,
+          css: css,
+          vendor: vendor,
+          browser: browser,
+          isTouch: isTouch,
+        };
+
+        /**
+         * Test if a keyframe at-rule should be prefixed or not
+         *
+         * @param {String} vendor prefix string for the current browser.
+         * @return {String}
+         * @api public
+         */
+
+        function supportedKeyframes(key) {
+          // Keyframes is already prefixed. e.g. key = '@-webkit-keyframes a'
+          if (key[1] === '-') return key; // No need to prefix IE/Edge. Older browsers will ignore unsupported rules.
+          // https://caniuse.com/#search=keyframes
+
+          if (prefix.js === 'ms') return key;
+          return '@' + prefix.css + 'keyframes' + key.substr(10);
+        }
+
+        // https://caniuse.com/#search=appearance
+
+        var appearence = {
+          noPrefill: ['appearance'],
+          supportedProperty: function supportedProperty(prop) {
+            if (prop !== 'appearance') return false;
+            if (prefix.js === 'ms') return '-webkit-' + prop;
+            return prefix.css + prop;
+          },
+        };
+
+        // https://caniuse.com/#search=color-adjust
+
+        var colorAdjust = {
+          noPrefill: ['color-adjust'],
+          supportedProperty: function supportedProperty(prop) {
+            if (prop !== 'color-adjust') return false;
+            if (prefix.js === 'Webkit') return prefix.css + 'print-' + prop;
+            return prop;
+          },
+        };
+
+        var regExp = /[-\s]+(.)?/g;
+        /**
+         * Replaces the letter with the capital letter
+         *
+         * @param {String} match
+         * @param {String} c
+         * @return {String}
+         * @api private
+         */
+
+        function toUpper(match, c) {
+          return c ? c.toUpperCase() : '';
+        }
+        /**
+         * Convert dash separated strings to camel-cased.
+         *
+         * @param {String} str
+         * @return {String}
+         * @api private
+         */
+
+        function camelize(str) {
+          return str.replace(regExp, toUpper);
+        }
+
+        /**
+         * Convert dash separated strings to pascal cased.
+         *
+         * @param {String} str
+         * @return {String}
+         * @api private
+         */
+
+        function pascalize(str) {
+          return camelize('-' + str);
+        }
+
+        // but we can use a longhand property instead.
+        // https://caniuse.com/#search=mask
+
+        var mask = {
+          noPrefill: ['mask'],
+          supportedProperty: function supportedProperty(prop, style) {
+            if (!/^mask/.test(prop)) return false;
+
+            if (prefix.js === 'Webkit') {
+              var longhand = 'mask-image';
+
+              if (camelize(longhand) in style) {
+                return prop;
+              }
+
+              if (prefix.js + pascalize(longhand) in style) {
+                return prefix.css + prop;
+              }
+            }
+
+            return prop;
+          },
+        };
+
+        // https://caniuse.com/#search=text-orientation
+
+        var textOrientation = {
+          noPrefill: ['text-orientation'],
+          supportedProperty: function supportedProperty(prop) {
+            if (prop !== 'text-orientation') return false;
+
+            if (prefix.vendor === 'apple' && !prefix.isTouch) {
+              return prefix.css + prop;
+            }
+
+            return prop;
+          },
+        };
+
+        // https://caniuse.com/#search=transform
+
+        var transform = {
+          noPrefill: ['transform'],
+          supportedProperty: function supportedProperty(prop, style, options) {
+            if (prop !== 'transform') return false;
+
+            if (options.transform) {
+              return prop;
+            }
+
+            return prefix.css + prop;
+          },
+        };
+
+        // https://caniuse.com/#search=transition
+
+        var transition = {
+          noPrefill: ['transition'],
+          supportedProperty: function supportedProperty(prop, style, options) {
+            if (prop !== 'transition') return false;
+
+            if (options.transition) {
+              return prop;
+            }
+
+            return prefix.css + prop;
+          },
+        };
+
+        // https://caniuse.com/#search=writing-mode
+
+        var writingMode = {
+          noPrefill: ['writing-mode'],
+          supportedProperty: function supportedProperty(prop) {
+            if (prop !== 'writing-mode') return false;
+
+            if (prefix.js === 'Webkit' || (prefix.js === 'ms' && prefix.browser !== 'edge')) {
+              return prefix.css + prop;
+            }
+
+            return prop;
+          },
+        };
+
+        // https://caniuse.com/#search=user-select
+
+        var userSelect = {
+          noPrefill: ['user-select'],
+          supportedProperty: function supportedProperty(prop) {
+            if (prop !== 'user-select') return false;
+
+            if (prefix.js === 'Moz' || prefix.js === 'ms' || prefix.vendor === 'apple') {
+              return prefix.css + prop;
+            }
+
+            return prop;
+          },
+        };
+
+        // https://caniuse.com/#search=multicolumn
+        // https://github.com/postcss/autoprefixer/issues/491
+        // https://github.com/postcss/autoprefixer/issues/177
+
+        var breakPropsOld = {
+          supportedProperty: function supportedProperty(prop, style) {
+            if (!/^break-/.test(prop)) return false;
+
+            if (prefix.js === 'Webkit') {
+              var jsProp = 'WebkitColumn' + pascalize(prop);
+              return jsProp in style ? prefix.css + 'column-' + prop : false;
+            }
+
+            if (prefix.js === 'Moz') {
+              var _jsProp = 'page' + pascalize(prop);
+
+              return _jsProp in style ? 'page-' + prop : false;
+            }
+
+            return false;
+          },
+        };
+
+        // See https://github.com/postcss/autoprefixer/issues/324.
+
+        var inlineLogicalOld = {
+          supportedProperty: function supportedProperty(prop, style) {
+            if (!/^(border|margin|padding)-inline/.test(prop)) return false;
+            if (prefix.js === 'Moz') return prop;
+            var newProp = prop.replace('-inline', '');
+            return prefix.js + pascalize(newProp) in style ? prefix.css + newProp : false;
+          },
+        };
+
+        // Camelization is required because we can't test using.
+        // CSS syntax for e.g. in FF.
+
+        var unprefixed = {
+          supportedProperty: function supportedProperty(prop, style) {
+            return camelize(prop) in style ? prop : false;
+          },
+        };
+
+        var prefixed = {
+          supportedProperty: function supportedProperty(prop, style) {
+            var pascalized = pascalize(prop); // Return custom CSS variable without prefixing.
+
+            if (prop[0] === '-') return prop; // Return already prefixed value without prefixing.
+
+            if (prop[0] === '-' && prop[1] === '-') return prop;
+            if (prefix.js + pascalized in style) return prefix.css + prop; // Try webkit fallback.
+
+            if (prefix.js !== 'Webkit' && 'Webkit' + pascalized in style) return '-webkit-' + prop;
+            return false;
+          },
+        };
+
+        // https://caniuse.com/#search=scroll-snap
+
+        var scrollSnap = {
+          supportedProperty: function supportedProperty(prop) {
+            if (prop.substring(0, 11) !== 'scroll-snap') return false;
+
+            if (prefix.js === 'ms') {
+              return '' + prefix.css + prop;
+            }
+
+            return prop;
+          },
+        };
+
+        // https://caniuse.com/#search=overscroll-behavior
+
+        var overscrollBehavior = {
+          supportedProperty: function supportedProperty(prop) {
+            if (prop !== 'overscroll-behavior') return false;
+
+            if (prefix.js === 'ms') {
+              return prefix.css + 'scroll-chaining';
+            }
+
+            return prop;
+          },
+        };
+
+        var propMap = {
+          'flex-grow': 'flex-positive',
+          'flex-shrink': 'flex-negative',
+          'flex-basis': 'flex-preferred-size',
+          'justify-content': 'flex-pack',
+          order: 'flex-order',
+          'align-items': 'flex-align',
+          'align-content': 'flex-line-pack', // 'align-self' is handled by 'align-self' plugin.
+        }; // Support old flex spec from 2012.
+
+        var flex2012 = {
+          supportedProperty: function supportedProperty(prop, style) {
+            var newProp = propMap[prop];
+            if (!newProp) return false;
+            return prefix.js + pascalize(newProp) in style ? prefix.css + newProp : false;
+          },
+        };
+
+        var propMap$1 = {
+          flex: 'box-flex',
+          'flex-grow': 'box-flex',
+          'flex-direction': ['box-orient', 'box-direction'],
+          order: 'box-ordinal-group',
+          'align-items': 'box-align',
+          'flex-flow': ['box-orient', 'box-direction'],
+          'justify-content': 'box-pack',
+        };
+        var propKeys = Object.keys(propMap$1);
+
+        var prefixCss = function prefixCss(p) {
+          return prefix.css + p;
+        }; // Support old flex spec from 2009.
+
+        var flex2009 = {
+          supportedProperty: function supportedProperty(prop, style, _ref) {
+            var multiple = _ref.multiple;
+
+            if (propKeys.indexOf(prop) > -1) {
+              var newProp = propMap$1[prop];
+
+              if (!Array.isArray(newProp)) {
+                return prefix.js + pascalize(newProp) in style ? prefix.css + newProp : false;
+              }
+
+              if (!multiple) return false;
+
+              for (var i = 0; i < newProp.length; i++) {
+                if (!(prefix.js + pascalize(newProp[0]) in style)) {
+                  return false;
+                }
+              }
+
+              return newProp.map(prefixCss);
+            }
+
+            return false;
+          },
+        };
+
+        // plugins = [
+        //   ...plugins,
+        //    breakPropsOld,
+        //    inlineLogicalOld,
+        //    unprefixed,
+        //    prefixed,
+        //    scrollSnap,
+        //    flex2012,
+        //    flex2009
+        // ]
+        // Plugins without 'noPrefill' value, going last.
+        // 'flex-*' plugins should be at the bottom.
+        // 'flex2009' going after 'flex2012'.
+        // 'prefixed' going after 'unprefixed'
+
+        var plugins = [
+          appearence,
+          colorAdjust,
+          mask,
+          textOrientation,
+          transform,
+          transition,
+          writingMode,
+          userSelect,
+          breakPropsOld,
+          inlineLogicalOld,
+          unprefixed,
+          prefixed,
+          scrollSnap,
+          overscrollBehavior,
+          flex2012,
+          flex2009,
+        ];
+        var propertyDetectors = plugins
+          .filter(function (p) {
+            return p.supportedProperty;
+          })
+          .map(function (p) {
+            return p.supportedProperty;
+          });
+        var noPrefill = plugins
+          .filter(function (p) {
+            return p.noPrefill;
+          })
+          .reduce(function (a, p) {
+            a.push.apply(
+              a,
+              (0, _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__['default'])(p.noPrefill)
+            );
+            return a;
+          }, []);
+
+        var el;
+        var cache = {};
+
+        if (is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default']) {
+          el = document.createElement('p'); // We test every property on vendor prefix requirement.
+          // Once tested, result is cached. It gives us up to 70% perf boost.
+          // http://jsperf.com/element-style-object-access-vs-plain-object
+          //
+          // Prefill cache with known css properties to reduce amount of
+          // properties we need to feature test at runtime.
+          // http://davidwalsh.name/vendor-prefix
+
+          var computed = window.getComputedStyle(document.documentElement, '');
+
+          for (var key$1 in computed) {
+            // eslint-disable-next-line no-restricted-globals
+            if (!isNaN(key$1)) cache[computed[key$1]] = computed[key$1];
+          } // Properties that cannot be correctly detected using the
+          // cache prefill method.
+
+          noPrefill.forEach(function (x) {
+            return delete cache[x];
+          });
+        }
+        /**
+         * Test if a property is supported, returns supported property with vendor
+         * prefix if required. Returns `false` if not supported.
+         *
+         * @param {String} prop dash separated
+         * @param {Object} [options]
+         * @return {String|Boolean}
+         * @api public
+         */
+
+        function supportedProperty(prop, options) {
+          if (options === void 0) {
+            options = {};
+          }
+
+          // For server-side rendering.
+          if (!el) return prop; // Remove cache for benchmark tests or return property from the cache.
+
+          if (true && cache[prop] != null) {
+            return cache[prop];
+          } // Check if 'transition' or 'transform' natively supported in browser.
+
+          if (prop === 'transition' || prop === 'transform') {
+            options[prop] = prop in el.style;
+          } // Find a plugin for current prefix property.
+
+          for (var i = 0; i < propertyDetectors.length; i++) {
+            cache[prop] = propertyDetectors[i](prop, el.style, options); // Break loop, if value found.
+
+            if (cache[prop]) break;
+          } // Reset styles for current property.
+          // Firefox can even throw an error for invalid properties, e.g., "0".
+
+          try {
+            el.style[prop] = '';
+          } catch (err) {
+            return false;
+          }
+
+          return cache[prop];
+        }
+
+        var cache$1 = {};
+        var transitionProperties = {
+          transition: 1,
+          'transition-property': 1,
+          '-webkit-transition': 1,
+          '-webkit-transition-property': 1,
+        };
+        var transPropsRegExp = /(^\s*[\w-]+)|, (\s*[\w-]+)(?![^()]*\))/g;
+        var el$1;
+        /**
+         * Returns prefixed value transition/transform if needed.
+         *
+         * @param {String} match
+         * @param {String} p1
+         * @param {String} p2
+         * @return {String}
+         * @api private
+         */
+
+        function prefixTransitionCallback(match, p1, p2) {
+          if (p1 === 'var') return 'var';
+          if (p1 === 'all') return 'all';
+          if (p2 === 'all') return ', all';
+          var prefixedValue = p1 ? supportedProperty(p1) : ', ' + supportedProperty(p2);
+          if (!prefixedValue) return p1 || p2;
+          return prefixedValue;
+        }
+
+        if (is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default']) el$1 = document.createElement('p');
+        /**
+         * Returns prefixed value if needed. Returns `false` if value is not supported.
+         *
+         * @param {String} property
+         * @param {String} value
+         * @return {String|Boolean}
+         * @api public
+         */
+
+        function supportedValue(property, value) {
+          // For server-side rendering.
+          var prefixedValue = value;
+          if (!el$1 || property === 'content') return value; // It is a string or a number as a string like '1'.
+          // We want only prefixable values here.
+          // eslint-disable-next-line no-restricted-globals
+
+          if (typeof prefixedValue !== 'string' || !isNaN(parseInt(prefixedValue, 10))) {
+            return prefixedValue;
+          } // Create cache key for current value.
+
+          var cacheKey = property + prefixedValue; // Remove cache for benchmark tests or return value from cache.
+
+          if (true && cache$1[cacheKey] != null) {
+            return cache$1[cacheKey];
+          } // IE can even throw an error in some cases, for e.g. style.content = 'bar'.
+
+          try {
+            // Test value as it is.
+            el$1.style[property] = prefixedValue;
+          } catch (err) {
+            // Return false if value not supported.
+            cache$1[cacheKey] = false;
+            return false;
+          } // If 'transition' or 'transition-property' property.
+
+          if (transitionProperties[property]) {
+            prefixedValue = prefixedValue.replace(transPropsRegExp, prefixTransitionCallback);
+          } else if (el$1.style[property] === '') {
+            // Value with a vendor prefix.
+            prefixedValue = prefix.css + prefixedValue; // Hardcode test to convert "flex" to "-ms-flexbox" for IE10.
+
+            if (prefixedValue === '-ms-flex') el$1.style[property] = '-ms-flexbox'; // Test prefixed value.
+
+            el$1.style[property] = prefixedValue; // Return false if value not supported.
+
+            if (el$1.style[property] === '') {
+              cache$1[cacheKey] = false;
+              return false;
+            }
+          } // Reset styles for current property.
+
+          el$1.style[property] = ''; // Write current value to cache.
+
+          cache$1[cacheKey] = prefixedValue;
+          return cache$1[cacheKey];
+        }
+
+        /***/
+      },
+      /* 73 */
+      /*!***********************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
+  \***********************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _arrayWithoutHoles,
+          /* harmony export */
+        });
+        /* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./arrayLikeToArray.js */ 45
+        );
+
+        function _arrayWithoutHoles(arr) {
+          if (Array.isArray(arr)) return (0, _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__['default'])(arr);
+        }
+
+        /***/
+      },
+      /* 74 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
   \*********************************************************************/
@@ -8904,7 +9748,7 @@ object-assign
 
         /***/
       },
-      /* 71 */
+      /* 75 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
   \********************************************************************/
@@ -8921,7 +9765,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 76 */
       /*!**************************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
   \**************************************************************************/
@@ -8964,7 +9808,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 77 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
   \*********************************************************************/
@@ -8983,7 +9827,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 78 */
       /*!*******************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
   \*******************************************************************************/
@@ -9011,7 +9855,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 79 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/ChildMapping.js ***!
   \********************************************************************************************/
@@ -9167,7 +10011,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 80 */
       /*!*********************!*\
   !*** ./plugin.json ***!
   \*********************/
@@ -9179,7 +10023,7 @@ object-assign
 
         /***/
       },
-      /* 77 */
+      /* 81 */
       /*!*************************************************!*\
   !*** ./pages/Dashboard/launchTcpInputPopup.tsx ***!
   \*************************************************/
@@ -10407,7 +11251,7 @@ object-assign
 
         /***/
       },
-      /* 78 */
+      /* 82 */
       /*!***********************************************!*\
   !*** ./pages/Dashboard/contentPacksPopup.tsx ***!
   \***********************************************/
@@ -11484,7 +12328,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 83 */
       /*!***************************************!*\
   !*** ./pages/ContentsPacks/index.tsx ***!
   \***************************************/
@@ -11990,7 +12834,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 84 */
       /*!*******************************!*\
   !*** ./pages/Input/index.tsx ***!
   \*******************************/
@@ -12496,7 +13340,7 @@ object-assign
 
         /***/
       },
-      /* 81 */
+      /* 85 */
       /*!********************************!*\
   !*** ./utils/utils.routing.ts ***!
   \********************************/
@@ -12590,7 +13434,7 @@ object-assign
 
         /***/
       },
-      /* 82 */
+      /* 86 */
       /*!****************************************!*\
   !*** ./components/AppConfig/index.tsx ***!
   \****************************************/
@@ -12607,27 +13451,27 @@ object-assign
 
         /***/
       },
-      /* 83 */
+      /* 87 */
       /*!***********************************!*\
   !*** external "@grafana/runtime" ***!
   \***********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__83__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__87__;
 
         /***/
       },
-      /* 84 */
+      /* 88 */
       /*!*******************************!*\
   !*** external "@emotion/css" ***!
   \*******************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__84__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__88__;
 
         /***/
       },
-      /* 85 */
+      /* 89 */
       /*!******************************************!*\
   !*** ./components/SecretInput/index.tsx ***!
   \******************************************/
@@ -12645,7 +13489,7 @@ object-assign
 
         /***/
       },
-      /* 86 */
+      /* 90 */
       /*!***********************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/Alert/Alert.js ***!
   \***********************************************************/
@@ -12672,16 +13516,16 @@ object-assign
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! @material-ui/core/styles */ 87
+          /*! @material-ui/core/styles */ 91
         );
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
-          /*! @material-ui/core/styles */ 93
+          /*! @material-ui/core/styles */ 97
         );
         /* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! @material-ui/core/Paper */ 156
         );
         /* harmony import */ var _internal_svg_icons_SuccessOutlined__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../internal/svg-icons/SuccessOutlined */ 88
+          /*! ../internal/svg-icons/SuccessOutlined */ 92
         );
         /* harmony import */ var _internal_svg_icons_ReportProblemOutlined__WEBPACK_IMPORTED_MODULE_6__ =
           __webpack_require__(/*! ../internal/svg-icons/ReportProblemOutlined */ 152);
@@ -12698,7 +13542,7 @@ object-assign
           /*! @material-ui/core/IconButton */ 157
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 91
+          /*! @material-ui/core/utils */ 95
         );
 
         var styles = function styles(theme) {
@@ -13078,7 +13922,7 @@ object-assign
 
         /***/
       },
-      /* 87 */
+      /* 91 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/colorManipulator.js ***!
   \************************************************************************/
@@ -13432,7 +14276,7 @@ object-assign
 
         /***/
       },
-      /* 88 */
+      /* 92 */
       /*!**********************************************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/internal/svg-icons/SuccessOutlined.js ***!
   \**********************************************************************************/
@@ -13448,7 +14292,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 89
+          /*! @material-ui/core/utils */ 93
         );
 
         /**
@@ -13465,7 +14309,7 @@ object-assign
 
         /***/
       },
-      /* 89 */
+      /* 93 */
       /*!********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/createSvgIcon.js ***!
   \********************************************************************/
@@ -13483,7 +14327,7 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_1__
         );
-        /* harmony import */ var _SvgIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SvgIcon */ 90);
+        /* harmony import */ var _SvgIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SvgIcon */ 94);
 
         /**
          * Private module reserved for @material-ui/x packages.
@@ -13517,7 +14361,7 @@ object-assign
 
         /***/
       },
-      /* 90 */
+      /* 94 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js ***!
   \****************************************************************/
@@ -13544,13 +14388,13 @@ object-assign
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! @material-ui/utils */ 92
+          /*! @material-ui/utils */ 96
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../styles/withStyles */ 93
+          /*! ../styles/withStyles */ 97
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../utils/capitalize */ 91
+          /*! ../utils/capitalize */ 95
         );
 
         var styles = function styles(theme) {
@@ -13769,7 +14613,7 @@ object-assign
 
         /***/
       },
-      /* 91 */
+      /* 95 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/capitalize.js ***!
   \*****************************************************************/
@@ -13795,7 +14639,7 @@ object-assign
 
         /***/
       },
-      /* 92 */
+      /* 96 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/chainPropTypes.js ***!
   \****************************************************************/
@@ -13817,7 +14661,7 @@ object-assign
 
         /***/
       },
-      /* 93 */
+      /* 97 */
       /*!******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/withStyles.js ***!
   \******************************************************************/
@@ -13832,7 +14676,7 @@ object-assign
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/styles */ 94
+          /*! @material-ui/styles */ 98
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./defaultTheme */ 128
@@ -13854,7 +14698,7 @@ object-assign
 
         /***/
       },
-      /* 94 */
+      /* 98 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/withStyles/withStyles.js ***!
   \************************************************************************/
@@ -13884,13 +14728,13 @@ object-assign
         /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3___default =
           /*#__PURE__*/ __webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3__);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! @material-ui/utils */ 95
+          /*! @material-ui/utils */ 99
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! @material-ui/utils */ 92
+          /*! @material-ui/utils */ 96
         );
         /* harmony import */ var _makeStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../makeStyles */ 96
+          /*! ../makeStyles */ 100
         );
         /* harmony import */ var _getThemeProps__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
           /*! ../getThemeProps */ 127
@@ -14058,7 +14902,7 @@ object-assign
 
         /***/
       },
-      /* 95 */
+      /* 99 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/getDisplayName.js ***!
   \****************************************************************/
@@ -14073,7 +14917,7 @@ object-assign
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 13
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 66);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 68);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -14142,7 +14986,7 @@ object-assign
 
         /***/
       },
-      /* 96 */
+      /* 100 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js ***!
   \************************************************************************/
@@ -14164,7 +15008,7 @@ object-assign
         );
         /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jss */ 105);
         /* harmony import */ var _mergeClasses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../mergeClasses */ 97
+          /*! ../mergeClasses */ 101
         );
         /* harmony import */ var _multiKeyStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ./multiKeyStore */ 104
@@ -14180,7 +15024,7 @@ object-assign
           /*! ../getStylesCreator */ 107
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 98
+          /*! ../getStylesCreator/noopTheme */ 102
         );
 
         function getClasses(_ref, classes, Component) {
@@ -14497,7 +15341,7 @@ object-assign
 
         /***/
       },
-      /* 97 */
+      /* 101 */
       /*!****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/mergeClasses/mergeClasses.js ***!
   \****************************************************************************/
@@ -14512,7 +15356,7 @@ object-assign
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/utils */ 95
+          /*! @material-ui/utils */ 99
         );
 
         function mergeClasses() {
@@ -14584,7 +15428,7 @@ object-assign
 
         /***/
       },
-      /* 98 */
+      /* 102 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -14598,850 +15442,6 @@ object-assign
         // We use the same empty object to ref count the styles that don't need a theme object.
         var noopTheme = {};
         /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = noopTheme;
-
-        /***/
-      },
-      /* 99 */
-      /*!******************************************************************************!*\
-  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
-  \******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        if (false) {
-        } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 100);
-        }
-
-        /***/
-      },
-      /* 100 */
-      /*!*************************************************************************************************!*\
-  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
-  \*************************************************************************************************/
-      /***/ (__unused_webpack_module, exports) => {
-        'use strict';
-        /** @license React v16.13.1
-         * react-is.development.js
-         *
-         * Copyright (c) Facebook, Inc. and its affiliates.
-         *
-         * This source code is licensed under the MIT license found in the
-         * LICENSE file in the root directory of this source tree.
-         */
-
-        if (true) {
-          (function () {
-            'use strict';
-
-            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-            // nor polyfill, then a plain number is used for performance.
-            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-            // (unstable) APIs that have been removed. Can we remove the symbols?
-
-            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-            function isValidElementType(type) {
-              return (
-                typeof type === 'string' ||
-                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-                type === REACT_FRAGMENT_TYPE ||
-                type === REACT_CONCURRENT_MODE_TYPE ||
-                type === REACT_PROFILER_TYPE ||
-                type === REACT_STRICT_MODE_TYPE ||
-                type === REACT_SUSPENSE_TYPE ||
-                type === REACT_SUSPENSE_LIST_TYPE ||
-                (typeof type === 'object' &&
-                  type !== null &&
-                  (type.$$typeof === REACT_LAZY_TYPE ||
-                    type.$$typeof === REACT_MEMO_TYPE ||
-                    type.$$typeof === REACT_PROVIDER_TYPE ||
-                    type.$$typeof === REACT_CONTEXT_TYPE ||
-                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
-                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
-                    type.$$typeof === REACT_RESPONDER_TYPE ||
-                    type.$$typeof === REACT_SCOPE_TYPE ||
-                    type.$$typeof === REACT_BLOCK_TYPE))
-              );
-            }
-
-            function typeOf(object) {
-              if (typeof object === 'object' && object !== null) {
-                var $$typeof = object.$$typeof;
-
-                switch ($$typeof) {
-                  case REACT_ELEMENT_TYPE:
-                    var type = object.type;
-
-                    switch (type) {
-                      case REACT_ASYNC_MODE_TYPE:
-                      case REACT_CONCURRENT_MODE_TYPE:
-                      case REACT_FRAGMENT_TYPE:
-                      case REACT_PROFILER_TYPE:
-                      case REACT_STRICT_MODE_TYPE:
-                      case REACT_SUSPENSE_TYPE:
-                        return type;
-
-                      default:
-                        var $$typeofType = type && type.$$typeof;
-
-                        switch ($$typeofType) {
-                          case REACT_CONTEXT_TYPE:
-                          case REACT_FORWARD_REF_TYPE:
-                          case REACT_LAZY_TYPE:
-                          case REACT_MEMO_TYPE:
-                          case REACT_PROVIDER_TYPE:
-                            return $$typeofType;
-
-                          default:
-                            return $$typeof;
-                        }
-                    }
-
-                  case REACT_PORTAL_TYPE:
-                    return $$typeof;
-                }
-              }
-
-              return undefined;
-            } // AsyncMode is deprecated along with isAsyncMode
-
-            var AsyncMode = REACT_ASYNC_MODE_TYPE;
-            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-            var ContextConsumer = REACT_CONTEXT_TYPE;
-            var ContextProvider = REACT_PROVIDER_TYPE;
-            var Element = REACT_ELEMENT_TYPE;
-            var ForwardRef = REACT_FORWARD_REF_TYPE;
-            var Fragment = REACT_FRAGMENT_TYPE;
-            var Lazy = REACT_LAZY_TYPE;
-            var Memo = REACT_MEMO_TYPE;
-            var Portal = REACT_PORTAL_TYPE;
-            var Profiler = REACT_PROFILER_TYPE;
-            var StrictMode = REACT_STRICT_MODE_TYPE;
-            var Suspense = REACT_SUSPENSE_TYPE;
-            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-            function isAsyncMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
-                      'and will be removed in React 17+. Update your code to use ' +
-                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
-                  );
-                }
-              }
-
-              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-            }
-            function isConcurrentMode(object) {
-              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-            }
-            function isContextConsumer(object) {
-              return typeOf(object) === REACT_CONTEXT_TYPE;
-            }
-            function isContextProvider(object) {
-              return typeOf(object) === REACT_PROVIDER_TYPE;
-            }
-            function isElement(object) {
-              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-            }
-            function isForwardRef(object) {
-              return typeOf(object) === REACT_FORWARD_REF_TYPE;
-            }
-            function isFragment(object) {
-              return typeOf(object) === REACT_FRAGMENT_TYPE;
-            }
-            function isLazy(object) {
-              return typeOf(object) === REACT_LAZY_TYPE;
-            }
-            function isMemo(object) {
-              return typeOf(object) === REACT_MEMO_TYPE;
-            }
-            function isPortal(object) {
-              return typeOf(object) === REACT_PORTAL_TYPE;
-            }
-            function isProfiler(object) {
-              return typeOf(object) === REACT_PROFILER_TYPE;
-            }
-            function isStrictMode(object) {
-              return typeOf(object) === REACT_STRICT_MODE_TYPE;
-            }
-            function isSuspense(object) {
-              return typeOf(object) === REACT_SUSPENSE_TYPE;
-            }
-
-            exports.AsyncMode = AsyncMode;
-            exports.ConcurrentMode = ConcurrentMode;
-            exports.ContextConsumer = ContextConsumer;
-            exports.ContextProvider = ContextProvider;
-            exports.Element = Element;
-            exports.ForwardRef = ForwardRef;
-            exports.Fragment = Fragment;
-            exports.Lazy = Lazy;
-            exports.Memo = Memo;
-            exports.Portal = Portal;
-            exports.Profiler = Profiler;
-            exports.StrictMode = StrictMode;
-            exports.Suspense = Suspense;
-            exports.isAsyncMode = isAsyncMode;
-            exports.isConcurrentMode = isConcurrentMode;
-            exports.isContextConsumer = isContextConsumer;
-            exports.isContextProvider = isContextProvider;
-            exports.isElement = isElement;
-            exports.isForwardRef = isForwardRef;
-            exports.isFragment = isFragment;
-            exports.isLazy = isLazy;
-            exports.isMemo = isMemo;
-            exports.isPortal = isPortal;
-            exports.isProfiler = isProfiler;
-            exports.isStrictMode = isStrictMode;
-            exports.isSuspense = isSuspense;
-            exports.isValidElementType = isValidElementType;
-            exports.typeOf = typeOf;
-          })();
-        }
-
-        /***/
-      },
-      /* 101 */
-      /*!*********************************************************!*\
-  !*** ../node_modules/css-vendor/dist/css-vendor.esm.js ***!
-  \*********************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ prefix: () => /* binding */ prefix,
-          /* harmony export */ supportedKeyframes: () => /* binding */ supportedKeyframes,
-          /* harmony export */ supportedProperty: () => /* binding */ supportedProperty,
-          /* harmony export */ supportedValue: () => /* binding */ supportedValue,
-          /* harmony export */
-        });
-        /* harmony import */ var is_in_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! is-in-browser */ 44
-        );
-        /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 23);
-
-        // Export javascript style and css style vendor prefixes.
-        var js = '';
-        var css = '';
-        var vendor = '';
-        var browser = '';
-        var isTouch =
-          is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default'] && 'ontouchstart' in document.documentElement; // We should not do anything if required serverside.
-
-        if (is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default']) {
-          // Order matters. We need to check Webkit the last one because
-          // other vendors use to add Webkit prefixes to some properties
-          var jsCssMap = {
-            Moz: '-moz-',
-            ms: '-ms-',
-            O: '-o-',
-            Webkit: '-webkit-',
-          };
-
-          var _document$createEleme = document.createElement('p'),
-            style = _document$createEleme.style;
-
-          var testProp = 'Transform';
-
-          for (var key in jsCssMap) {
-            if (key + testProp in style) {
-              js = key;
-              css = jsCssMap[key];
-              break;
-            }
-          } // Correctly detect the Edge browser.
-
-          if (js === 'Webkit' && 'msHyphens' in style) {
-            js = 'ms';
-            css = jsCssMap.ms;
-            browser = 'edge';
-          } // Correctly detect the Safari browser.
-
-          if (js === 'Webkit' && '-apple-trailing-word' in style) {
-            vendor = 'apple';
-          }
-        }
-        /**
-         * Vendor prefix string for the current browser.
-         *
-         * @type {{js: String, css: String, vendor: String, browser: String}}
-         * @api public
-         */
-
-        var prefix = {
-          js: js,
-          css: css,
-          vendor: vendor,
-          browser: browser,
-          isTouch: isTouch,
-        };
-
-        /**
-         * Test if a keyframe at-rule should be prefixed or not
-         *
-         * @param {String} vendor prefix string for the current browser.
-         * @return {String}
-         * @api public
-         */
-
-        function supportedKeyframes(key) {
-          // Keyframes is already prefixed. e.g. key = '@-webkit-keyframes a'
-          if (key[1] === '-') return key; // No need to prefix IE/Edge. Older browsers will ignore unsupported rules.
-          // https://caniuse.com/#search=keyframes
-
-          if (prefix.js === 'ms') return key;
-          return '@' + prefix.css + 'keyframes' + key.substr(10);
-        }
-
-        // https://caniuse.com/#search=appearance
-
-        var appearence = {
-          noPrefill: ['appearance'],
-          supportedProperty: function supportedProperty(prop) {
-            if (prop !== 'appearance') return false;
-            if (prefix.js === 'ms') return '-webkit-' + prop;
-            return prefix.css + prop;
-          },
-        };
-
-        // https://caniuse.com/#search=color-adjust
-
-        var colorAdjust = {
-          noPrefill: ['color-adjust'],
-          supportedProperty: function supportedProperty(prop) {
-            if (prop !== 'color-adjust') return false;
-            if (prefix.js === 'Webkit') return prefix.css + 'print-' + prop;
-            return prop;
-          },
-        };
-
-        var regExp = /[-\s]+(.)?/g;
-        /**
-         * Replaces the letter with the capital letter
-         *
-         * @param {String} match
-         * @param {String} c
-         * @return {String}
-         * @api private
-         */
-
-        function toUpper(match, c) {
-          return c ? c.toUpperCase() : '';
-        }
-        /**
-         * Convert dash separated strings to camel-cased.
-         *
-         * @param {String} str
-         * @return {String}
-         * @api private
-         */
-
-        function camelize(str) {
-          return str.replace(regExp, toUpper);
-        }
-
-        /**
-         * Convert dash separated strings to pascal cased.
-         *
-         * @param {String} str
-         * @return {String}
-         * @api private
-         */
-
-        function pascalize(str) {
-          return camelize('-' + str);
-        }
-
-        // but we can use a longhand property instead.
-        // https://caniuse.com/#search=mask
-
-        var mask = {
-          noPrefill: ['mask'],
-          supportedProperty: function supportedProperty(prop, style) {
-            if (!/^mask/.test(prop)) return false;
-
-            if (prefix.js === 'Webkit') {
-              var longhand = 'mask-image';
-
-              if (camelize(longhand) in style) {
-                return prop;
-              }
-
-              if (prefix.js + pascalize(longhand) in style) {
-                return prefix.css + prop;
-              }
-            }
-
-            return prop;
-          },
-        };
-
-        // https://caniuse.com/#search=text-orientation
-
-        var textOrientation = {
-          noPrefill: ['text-orientation'],
-          supportedProperty: function supportedProperty(prop) {
-            if (prop !== 'text-orientation') return false;
-
-            if (prefix.vendor === 'apple' && !prefix.isTouch) {
-              return prefix.css + prop;
-            }
-
-            return prop;
-          },
-        };
-
-        // https://caniuse.com/#search=transform
-
-        var transform = {
-          noPrefill: ['transform'],
-          supportedProperty: function supportedProperty(prop, style, options) {
-            if (prop !== 'transform') return false;
-
-            if (options.transform) {
-              return prop;
-            }
-
-            return prefix.css + prop;
-          },
-        };
-
-        // https://caniuse.com/#search=transition
-
-        var transition = {
-          noPrefill: ['transition'],
-          supportedProperty: function supportedProperty(prop, style, options) {
-            if (prop !== 'transition') return false;
-
-            if (options.transition) {
-              return prop;
-            }
-
-            return prefix.css + prop;
-          },
-        };
-
-        // https://caniuse.com/#search=writing-mode
-
-        var writingMode = {
-          noPrefill: ['writing-mode'],
-          supportedProperty: function supportedProperty(prop) {
-            if (prop !== 'writing-mode') return false;
-
-            if (prefix.js === 'Webkit' || (prefix.js === 'ms' && prefix.browser !== 'edge')) {
-              return prefix.css + prop;
-            }
-
-            return prop;
-          },
-        };
-
-        // https://caniuse.com/#search=user-select
-
-        var userSelect = {
-          noPrefill: ['user-select'],
-          supportedProperty: function supportedProperty(prop) {
-            if (prop !== 'user-select') return false;
-
-            if (prefix.js === 'Moz' || prefix.js === 'ms' || prefix.vendor === 'apple') {
-              return prefix.css + prop;
-            }
-
-            return prop;
-          },
-        };
-
-        // https://caniuse.com/#search=multicolumn
-        // https://github.com/postcss/autoprefixer/issues/491
-        // https://github.com/postcss/autoprefixer/issues/177
-
-        var breakPropsOld = {
-          supportedProperty: function supportedProperty(prop, style) {
-            if (!/^break-/.test(prop)) return false;
-
-            if (prefix.js === 'Webkit') {
-              var jsProp = 'WebkitColumn' + pascalize(prop);
-              return jsProp in style ? prefix.css + 'column-' + prop : false;
-            }
-
-            if (prefix.js === 'Moz') {
-              var _jsProp = 'page' + pascalize(prop);
-
-              return _jsProp in style ? 'page-' + prop : false;
-            }
-
-            return false;
-          },
-        };
-
-        // See https://github.com/postcss/autoprefixer/issues/324.
-
-        var inlineLogicalOld = {
-          supportedProperty: function supportedProperty(prop, style) {
-            if (!/^(border|margin|padding)-inline/.test(prop)) return false;
-            if (prefix.js === 'Moz') return prop;
-            var newProp = prop.replace('-inline', '');
-            return prefix.js + pascalize(newProp) in style ? prefix.css + newProp : false;
-          },
-        };
-
-        // Camelization is required because we can't test using.
-        // CSS syntax for e.g. in FF.
-
-        var unprefixed = {
-          supportedProperty: function supportedProperty(prop, style) {
-            return camelize(prop) in style ? prop : false;
-          },
-        };
-
-        var prefixed = {
-          supportedProperty: function supportedProperty(prop, style) {
-            var pascalized = pascalize(prop); // Return custom CSS variable without prefixing.
-
-            if (prop[0] === '-') return prop; // Return already prefixed value without prefixing.
-
-            if (prop[0] === '-' && prop[1] === '-') return prop;
-            if (prefix.js + pascalized in style) return prefix.css + prop; // Try webkit fallback.
-
-            if (prefix.js !== 'Webkit' && 'Webkit' + pascalized in style) return '-webkit-' + prop;
-            return false;
-          },
-        };
-
-        // https://caniuse.com/#search=scroll-snap
-
-        var scrollSnap = {
-          supportedProperty: function supportedProperty(prop) {
-            if (prop.substring(0, 11) !== 'scroll-snap') return false;
-
-            if (prefix.js === 'ms') {
-              return '' + prefix.css + prop;
-            }
-
-            return prop;
-          },
-        };
-
-        // https://caniuse.com/#search=overscroll-behavior
-
-        var overscrollBehavior = {
-          supportedProperty: function supportedProperty(prop) {
-            if (prop !== 'overscroll-behavior') return false;
-
-            if (prefix.js === 'ms') {
-              return prefix.css + 'scroll-chaining';
-            }
-
-            return prop;
-          },
-        };
-
-        var propMap = {
-          'flex-grow': 'flex-positive',
-          'flex-shrink': 'flex-negative',
-          'flex-basis': 'flex-preferred-size',
-          'justify-content': 'flex-pack',
-          order: 'flex-order',
-          'align-items': 'flex-align',
-          'align-content': 'flex-line-pack', // 'align-self' is handled by 'align-self' plugin.
-        }; // Support old flex spec from 2012.
-
-        var flex2012 = {
-          supportedProperty: function supportedProperty(prop, style) {
-            var newProp = propMap[prop];
-            if (!newProp) return false;
-            return prefix.js + pascalize(newProp) in style ? prefix.css + newProp : false;
-          },
-        };
-
-        var propMap$1 = {
-          flex: 'box-flex',
-          'flex-grow': 'box-flex',
-          'flex-direction': ['box-orient', 'box-direction'],
-          order: 'box-ordinal-group',
-          'align-items': 'box-align',
-          'flex-flow': ['box-orient', 'box-direction'],
-          'justify-content': 'box-pack',
-        };
-        var propKeys = Object.keys(propMap$1);
-
-        var prefixCss = function prefixCss(p) {
-          return prefix.css + p;
-        }; // Support old flex spec from 2009.
-
-        var flex2009 = {
-          supportedProperty: function supportedProperty(prop, style, _ref) {
-            var multiple = _ref.multiple;
-
-            if (propKeys.indexOf(prop) > -1) {
-              var newProp = propMap$1[prop];
-
-              if (!Array.isArray(newProp)) {
-                return prefix.js + pascalize(newProp) in style ? prefix.css + newProp : false;
-              }
-
-              if (!multiple) return false;
-
-              for (var i = 0; i < newProp.length; i++) {
-                if (!(prefix.js + pascalize(newProp[0]) in style)) {
-                  return false;
-                }
-              }
-
-              return newProp.map(prefixCss);
-            }
-
-            return false;
-          },
-        };
-
-        // plugins = [
-        //   ...plugins,
-        //    breakPropsOld,
-        //    inlineLogicalOld,
-        //    unprefixed,
-        //    prefixed,
-        //    scrollSnap,
-        //    flex2012,
-        //    flex2009
-        // ]
-        // Plugins without 'noPrefill' value, going last.
-        // 'flex-*' plugins should be at the bottom.
-        // 'flex2009' going after 'flex2012'.
-        // 'prefixed' going after 'unprefixed'
-
-        var plugins = [
-          appearence,
-          colorAdjust,
-          mask,
-          textOrientation,
-          transform,
-          transition,
-          writingMode,
-          userSelect,
-          breakPropsOld,
-          inlineLogicalOld,
-          unprefixed,
-          prefixed,
-          scrollSnap,
-          overscrollBehavior,
-          flex2012,
-          flex2009,
-        ];
-        var propertyDetectors = plugins
-          .filter(function (p) {
-            return p.supportedProperty;
-          })
-          .map(function (p) {
-            return p.supportedProperty;
-          });
-        var noPrefill = plugins
-          .filter(function (p) {
-            return p.noPrefill;
-          })
-          .reduce(function (a, p) {
-            a.push.apply(
-              a,
-              (0, _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__['default'])(p.noPrefill)
-            );
-            return a;
-          }, []);
-
-        var el;
-        var cache = {};
-
-        if (is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default']) {
-          el = document.createElement('p'); // We test every property on vendor prefix requirement.
-          // Once tested, result is cached. It gives us up to 70% perf boost.
-          // http://jsperf.com/element-style-object-access-vs-plain-object
-          //
-          // Prefill cache with known css properties to reduce amount of
-          // properties we need to feature test at runtime.
-          // http://davidwalsh.name/vendor-prefix
-
-          var computed = window.getComputedStyle(document.documentElement, '');
-
-          for (var key$1 in computed) {
-            // eslint-disable-next-line no-restricted-globals
-            if (!isNaN(key$1)) cache[computed[key$1]] = computed[key$1];
-          } // Properties that cannot be correctly detected using the
-          // cache prefill method.
-
-          noPrefill.forEach(function (x) {
-            return delete cache[x];
-          });
-        }
-        /**
-         * Test if a property is supported, returns supported property with vendor
-         * prefix if required. Returns `false` if not supported.
-         *
-         * @param {String} prop dash separated
-         * @param {Object} [options]
-         * @return {String|Boolean}
-         * @api public
-         */
-
-        function supportedProperty(prop, options) {
-          if (options === void 0) {
-            options = {};
-          }
-
-          // For server-side rendering.
-          if (!el) return prop; // Remove cache for benchmark tests or return property from the cache.
-
-          if (true && cache[prop] != null) {
-            return cache[prop];
-          } // Check if 'transition' or 'transform' natively supported in browser.
-
-          if (prop === 'transition' || prop === 'transform') {
-            options[prop] = prop in el.style;
-          } // Find a plugin for current prefix property.
-
-          for (var i = 0; i < propertyDetectors.length; i++) {
-            cache[prop] = propertyDetectors[i](prop, el.style, options); // Break loop, if value found.
-
-            if (cache[prop]) break;
-          } // Reset styles for current property.
-          // Firefox can even throw an error for invalid properties, e.g., "0".
-
-          try {
-            el.style[prop] = '';
-          } catch (err) {
-            return false;
-          }
-
-          return cache[prop];
-        }
-
-        var cache$1 = {};
-        var transitionProperties = {
-          transition: 1,
-          'transition-property': 1,
-          '-webkit-transition': 1,
-          '-webkit-transition-property': 1,
-        };
-        var transPropsRegExp = /(^\s*[\w-]+)|, (\s*[\w-]+)(?![^()]*\))/g;
-        var el$1;
-        /**
-         * Returns prefixed value transition/transform if needed.
-         *
-         * @param {String} match
-         * @param {String} p1
-         * @param {String} p2
-         * @return {String}
-         * @api private
-         */
-
-        function prefixTransitionCallback(match, p1, p2) {
-          if (p1 === 'var') return 'var';
-          if (p1 === 'all') return 'all';
-          if (p2 === 'all') return ', all';
-          var prefixedValue = p1 ? supportedProperty(p1) : ', ' + supportedProperty(p2);
-          if (!prefixedValue) return p1 || p2;
-          return prefixedValue;
-        }
-
-        if (is_in_browser__WEBPACK_IMPORTED_MODULE_0__['default']) el$1 = document.createElement('p');
-        /**
-         * Returns prefixed value if needed. Returns `false` if value is not supported.
-         *
-         * @param {String} property
-         * @param {String} value
-         * @return {String|Boolean}
-         * @api public
-         */
-
-        function supportedValue(property, value) {
-          // For server-side rendering.
-          var prefixedValue = value;
-          if (!el$1 || property === 'content') return value; // It is a string or a number as a string like '1'.
-          // We want only prefixable values here.
-          // eslint-disable-next-line no-restricted-globals
-
-          if (typeof prefixedValue !== 'string' || !isNaN(parseInt(prefixedValue, 10))) {
-            return prefixedValue;
-          } // Create cache key for current value.
-
-          var cacheKey = property + prefixedValue; // Remove cache for benchmark tests or return value from cache.
-
-          if (true && cache$1[cacheKey] != null) {
-            return cache$1[cacheKey];
-          } // IE can even throw an error in some cases, for e.g. style.content = 'bar'.
-
-          try {
-            // Test value as it is.
-            el$1.style[property] = prefixedValue;
-          } catch (err) {
-            // Return false if value not supported.
-            cache$1[cacheKey] = false;
-            return false;
-          } // If 'transition' or 'transition-property' property.
-
-          if (transitionProperties[property]) {
-            prefixedValue = prefixedValue.replace(transPropsRegExp, prefixTransitionCallback);
-          } else if (el$1.style[property] === '') {
-            // Value with a vendor prefix.
-            prefixedValue = prefix.css + prefixedValue; // Hardcode test to convert "flex" to "-ms-flexbox" for IE10.
-
-            if (prefixedValue === '-ms-flex') el$1.style[property] = '-ms-flexbox'; // Test prefixed value.
-
-            el$1.style[property] = prefixedValue; // Return false if value not supported.
-
-            if (el$1.style[property] === '') {
-              cache$1[cacheKey] = false;
-              return false;
-            }
-          } // Reset styles for current property.
-
-          el$1.style[property] = ''; // Write current value to cache.
-
-          cache$1[cacheKey] = prefixedValue;
-          return cache$1[cacheKey];
-        }
-
-        /***/
-      },
-      /* 102 */
-      /*!***********************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
-  \***********************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _arrayWithoutHoles,
-          /* harmony export */
-        });
-        /* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayLikeToArray.js */ 45
-        );
-
-        function _arrayWithoutHoles(arr) {
-          if (Array.isArray(arr)) return (0, _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__['default'])(arr);
-        }
 
         /***/
       },
@@ -15531,7 +15531,7 @@ object-assign
           /*! tiny-warning */ 106
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 68);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 70);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 7);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -17926,7 +17926,7 @@ object-assign
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 108
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 98);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 102);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -19318,7 +19318,7 @@ object-assign
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 101);
+        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 72);
         /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 105);
 
         /**
@@ -19884,7 +19884,7 @@ object-assign
           /*! ../colors/green */ 138
         );
         /* harmony import */ var _colorManipulator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./colorManipulator */ 87
+          /*! ./colorManipulator */ 91
         );
 
         var light = {
@@ -21526,7 +21526,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 89
+          /*! @material-ui/core/utils */ 93
         );
 
         /**
@@ -21559,7 +21559,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 89
+          /*! @material-ui/core/utils */ 93
         );
 
         /**
@@ -21592,7 +21592,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 89
+          /*! @material-ui/core/utils */ 93
         );
 
         /**
@@ -21625,7 +21625,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 89
+          /*! @material-ui/core/utils */ 93
         );
 
         /**
@@ -21669,10 +21669,10 @@ object-assign
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! @material-ui/utils */ 92
+          /*! @material-ui/utils */ 96
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../styles/withStyles */ 93
+          /*! ../styles/withStyles */ 97
         );
 
         var styles = function styles(theme) {
@@ -21832,19 +21832,19 @@ object-assign
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! @material-ui/utils */ 92
+          /*! @material-ui/utils */ 96
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ../styles/withStyles */ 93
+          /*! ../styles/withStyles */ 97
         );
         /* harmony import */ var _styles_colorManipulator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../styles/colorManipulator */ 87
+          /*! ../styles/colorManipulator */ 91
         );
         /* harmony import */ var _ButtonBase__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../ButtonBase */ 158
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../utils/capitalize */ 91
+          /*! ../utils/capitalize */ 95
         );
 
         var styles = function styles(theme) {
@@ -22139,7 +22139,7 @@ object-assign
           /*! ../utils/deprecatedPropType */ 169
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! ../styles/withStyles */ 93
+          /*! ../styles/withStyles */ 97
         );
         /* harmony import */ var _utils_useIsFocusVisible__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../utils/useIsFocusVisible */ 159
@@ -23028,7 +23028,7 @@ object-assign
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../styles/withStyles */ 93
+          /*! ../styles/withStyles */ 97
         );
         /* harmony import */ var _Ripple__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Ripple */ 164);
 
@@ -24026,7 +24026,7 @@ object-assign
           prop_types__WEBPACK_IMPORTED_MODULE_1__
         );
         /* harmony import */ var _chainPropTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chainPropTypes */ 92
+          /*! ./chainPropTypes */ 96
         );
 
         function isClassComponent(elementType) {
@@ -24093,7 +24093,7 @@ object-assign
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/styles */ 96
+          /*! @material-ui/styles */ 100
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./defaultTheme */ 128
@@ -24145,7 +24145,7 @@ object-assign
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
-          /*! ../styles/withStyles */ 93
+          /*! ../styles/withStyles */ 97
         );
         /* harmony import */ var _styles_transitions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../styles/transitions */ 150
@@ -24157,7 +24157,7 @@ object-assign
           /*! ../utils/useEventCallback */ 160
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ../utils/capitalize */ 91
+          /*! ../utils/capitalize */ 95
         );
         /* harmony import */ var _utils_createChainedFunction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../utils/createChainedFunction */ 182
@@ -26218,7 +26218,7 @@ object-assign
           prop_types__WEBPACK_IMPORTED_MODULE_1__
         );
         /* harmony import */ var _chainPropTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chainPropTypes */ 92
+          /*! ./chainPropTypes */ 96
         );
 
         function isClassComponent(elementType) {
@@ -26356,11 +26356,11 @@ object-assign
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../styles/withStyles */ 93
+          /*! ../styles/withStyles */ 97
         );
         /* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Paper */ 156);
         /* harmony import */ var _styles_colorManipulator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../styles/colorManipulator */ 87
+          /*! ../styles/colorManipulator */ 91
         );
 
         var styles = function styles(theme) {
@@ -27187,7 +27187,7 @@ object-assign
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 74
+          /*! react-transition-group */ 78
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -28129,7 +28129,7 @@ object-assign
         /*! ./components/App */ 62
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-        /*! ./components/AppConfig */ 82
+        /*! ./components/AppConfig */ 86
       );
 
       function loadPluginCss() {
