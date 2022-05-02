@@ -78,13 +78,13 @@ export class SelectCloudFilter extends React.Component<any, any> {
                 let filter = displayJsonData[i].filter;
                 for (let j = 0; j < filter.length; j++) {
                     let label = displayJsonData[i].filter[j];
-                    if (label.isChecked == true) {
+                    if (label.isChecked) {
                         retData.push(
                             <div className="fliter-selected" key={label.id}>
                                 <span
                                 >{label.label}</span>
                                 <i className="fa fa-times"
-                                    onClick={() => this.removeSelectedTag(label)}
+                                    onClick={() => this.removeSelectedTag(i,j)}
                                 ></i>
                             </div>
                         );
@@ -109,9 +109,9 @@ export class SelectCloudFilter extends React.Component<any, any> {
         }
     }
 
-    removeSelectedTag = (value: any) => {
-        const { displayJsonData } = this.state
-        value.isChecked = false
+    removeSelectedTag = (index: any, key:any) => {
+        let { displayJsonData } = this.state
+        displayJsonData[index].filter[key].isChecked = false
         this.setState({ displayJsonData })
     }
 
@@ -184,6 +184,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
 
     render() {
         const { showTagFilter, displayJsonData, searchKey } = this.state;
+        console.log(displayJsonData)
         return (
             <div className="fliters-container">
                 <div className="select-fliters">

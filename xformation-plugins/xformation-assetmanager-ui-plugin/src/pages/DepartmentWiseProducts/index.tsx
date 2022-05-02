@@ -144,43 +144,43 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         {
           name: 'Products',
           key: 'products',
-          id: 1,
+          id: 22,
           filter: []
         },
         {
           name: 'Environments',
           key: 'environments',
-          id: 2,
+          id: 29,
           filter: []
         },
         {
           name: 'APP Services',
           key: 'app-services',
-          id: 3,
+          id: 31,
           filter: []
         },
         {
           name: 'Data Services',
           key: 'data-services',
-          id: 4,
+          id: 40,
           filter: []
         },
         {
           name: 'Common Services',
           key: 'common-services',
-          id: 5,
+          id: 51,
           filter: []
         },
         {
           name: 'Business Services',
           key: 'business-services',
-          id: 5,
+          id: 57,
           filter: []
         },
         {
           name: 'SAL Violation',
           key: 'sal-violation',
-          id: 5,
+          id: 68,
           filter: []
         },
       ],
@@ -376,19 +376,19 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
         } else if (displayJsonData[d].key === 'environments') {
           if (environent && environent.length > 0) {
             for (let m = 0; m < environent.length; m++) {
-              displayJsonData[d].filter.push({ 'label': environent[m], 'value': environent[m], 'id': m });
+              displayJsonData[d].filter.push({ 'label': environent[m], 'value': environent[m], 'id': m+9 });
             }
           }
         } else if (displayJsonData[d].key === 'app-services') {
           if (appList && appList.length > 0) {
             for (let g = 0; g < appList.length; g++) {
-              displayJsonData[d].filter.push({ 'label': appList[g], 'value': appList[g], 'id': g });
+              displayJsonData[d].filter.push({ 'label': appList[g], 'value': appList[g], 'id': g+80 });
             }
           }
         } else if (displayJsonData[d].key === 'data-services') {
           if (dataList && dataList.length > 0) {
             for (let s = 0; s < dataList.length; s++) {
-              displayJsonData[d].filter.push({ 'label': dataList[s], 'value': dataList[s], 'id': s });
+              displayJsonData[d].filter.push({ 'label': dataList[s], 'value': dataList[s], 'id': s+100 });
             }
           }
         }

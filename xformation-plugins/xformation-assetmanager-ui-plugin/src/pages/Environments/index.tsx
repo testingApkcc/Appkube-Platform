@@ -41,22 +41,22 @@ export class Environments extends React.Component<any, any> {
                 {
                     label: 'Ems',
                     value: 'ems',
-                    id: 1
+                    id: 2
                 },
                 {
                     label: 'Procurement',
                     value: 'procurement',
-                    id: 2
+                    id: 3
                 },
                 {
                     label: 'HRMS',
                     value: 'hrms',
-                    id: 3
+                    id: 4
                 },
                 {
                     label: 'Supply Chain',
                     value: 'supply-chain',
-                    id: 4
+                    id: 5
                 }
             ]
         },
@@ -68,22 +68,22 @@ export class Environments extends React.Component<any, any> {
                 {
                     label: 'AWS',
                     value: 'aws',
-                    id: 1
+                    id: 6
                 },
                 {
                     label: 'GCP',
                     value: 'gcp',
-                    id: 2
+                    id: 7
                 },
                 {
                     label: 'Kubernets',
                     value: 'kubernets',
-                    id: 3
+                    id: 8
                 },
                 {
                     label: 'Acronic',
                     value: 'acronic',
-                    id: 4
+                    id: 9
                 }
             ]
         },
@@ -95,27 +95,27 @@ export class Environments extends React.Component<any, any> {
                 {
                     label: 'Search',
                     value: 'search',
-                    id: 1
+                    id: 10
                 },
                 {
                     label: 'Security/RBMS',
                     value: 'security-rbms',
-                    id: 2
+                    id: 11
                 },
                 {
                     label: 'Preferance',
                     value: 'preferance',
-                    id: 3
+                    id: 12
                 },
                 {
                     label: 'Dataflow',
                     value: 'dataflow',
-                    id: 4
+                    id: 13
                 },
                 {
                     label: 'CMS/catlogue',
                     value: 'cms-catalogue',
-                    id: 5
+                    id: 14
                 }
             ]
         },
@@ -127,22 +127,22 @@ export class Environments extends React.Component<any, any> {
                 {
                     label: 'PostGreSQL',
                     value: 'post-ger-sql',
-                    id: 1
+                    id: 15
                 },
                 {
                     label: 'ElasticSearch',
                     value: 'eastic-search',
-                    id: 2
+                    id: 16
                 },
                 {
                     label: 'MongoDB',
                     value: 'mongo-db',
-                    id: 3
+                    id: 17
                 },
                 {
                     label: 'S3',
                     value: 's3',
-                    id: 4
+                    id: 18
                 }
             ]
         },
