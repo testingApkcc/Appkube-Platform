@@ -4,7 +4,7 @@ import { VerifyInputs } from './VerifyInputs';
 import { EnableDashboard } from './EnableDashboard';
 import { Preview } from './Preview';
 import { VerifyAndSave } from './VerifyAndSave';
-import dummyData from './dummyData.json';
+// import dummyData from './dummyData.json';
 import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 import AlertMessage from '../../Components/AlertMessage';
@@ -35,7 +35,7 @@ export class Performance extends React.Component<any, any>{
                 { title: 'dashboard 2', uid: 'zRQhasw7k' },
                 { title: 'dashboard 3', uid: 'wBJ0ayw7k' },
             ],
-            dashboardData: dummyData
+            dashboardData: {},
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -112,20 +112,20 @@ export class Performance extends React.Component<any, any>{
 
     getInputConfig = async () => {
         try {
-            // const cloud = this.getParameterByName("cloud", window.location.href);
-            // const type = this.getParameterByName("type", window.location.href);
-            const tenantId = this.getParameterByName("tenantId", window.location.href);
-            const accountId = this.getParameterByName("accountId", window.location.href);
-            await RestService.getData(`${this.config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`, null, null).then(
+            let dashboard: any = {};
+            await RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
                 (response: any) => {
-                    if (response.code !== 417 && response.object.length > 0) {
-                        console.log("Enabled dashboards : ", response.object[0].enabledDashboardList);
+                    console.log(response)
+                    if (response.code !== 417) {
+                        dashboard['CloudDashBoards'] = response.details.ops.cloudDashBoards;
+                        dashboard['DataSources'] = response.details.ops.dataSources;
+                        console.log(dashboard)
                         this.setState({
                             enablePerformanceMonitoring: true,
                             inputConfig: response.object[0],
                             showConfigWizard: false,
                             activeDashboard: 0,
-                            // viewJson: response.object[0].enabledDashboardList,
+                            dashboardData: dashboard,
                         });
                     } else {
                         this.setState({
@@ -423,6 +423,14 @@ export class Performance extends React.Component<any, any>{
         }
     }
 
+    setConfigWizard = () => {
+        this.setState({
+            showConfigWizard: true
+        });
+        debugger;
+        this.verifyInputsRef.current.setDashboardData(this.state.dashboardData);
+    }
+
     render() {
         const { enablePerformanceMonitoring, isAlertOpen, severity, message, showConfigWizard, iFrameLoaded, viewJson, activeDashboard } = this.state;
         let activeDB = null;
@@ -460,7 +468,7 @@ export class Performance extends React.Component<any, any>{
                         {!showConfigWizard &&
                             <>
                                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                    <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.setState({ showConfigWizard: true })} className="asset-blue-button m-b-0">Configure</button>
+                                    <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={this.setConfigWizard} className="asset-blue-button m-b-0">Configure</button>
                                 </div>
                                 <div className="dashboard-view-container">
                                     <aside className="aside-container">{this.renderDashboardList()}</aside>

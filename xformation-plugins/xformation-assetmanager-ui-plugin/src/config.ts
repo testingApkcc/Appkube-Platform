@@ -66,6 +66,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     BULK_UPDATE_APPLICATION_ASSETS: `${assetSrvUrl}/bulkUpdateApplicationAssets`,
     ADD_INPUT_CONFIG: `${assetSrvUrl}/addInputConfig`,
     SEARCH_INPUT_CONFIG: `${assetSrvUrl}/searchInputConfig`,
+    SEARCH_CONFIG_DASHBOARD: `${assetSrvUrl}/catalogue/search`,
 
     ADD_DASHBOARDS_TO_GRAFANA: `${mainApplicationBaseUrl}/dashboards/importAssets`,
     ADD_DATASOURCE_IN_GRAFANA: `${mainApplicationBaseUrl}/datasources`,

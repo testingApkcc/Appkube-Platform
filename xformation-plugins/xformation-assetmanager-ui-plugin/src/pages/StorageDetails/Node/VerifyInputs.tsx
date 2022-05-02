@@ -125,6 +125,14 @@ export class VerifyInputs extends React.Component<any, any> {
     // }
   }
 
+  setDashboardData = (data: any) => {
+    debugger;
+    console.log(data)
+    this.setState({
+      tableData: data,
+    })
+  }
+
   handleChange(e: any, i: any, j: any) {
     const { checked } = e.target;
     const { tableData, selectedData } = this.state;
