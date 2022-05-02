@@ -62,8 +62,8 @@ export class Performance extends React.Component<any, any>{
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
 
-    async componentDidMount() {
-        await this.getInputConfig();
+    componentDidMount() {
+        this.getInputConfig();
     }
 
     updateDashboard = (data: any) => {
@@ -75,7 +75,7 @@ export class Performance extends React.Component<any, any>{
     getInputConfig = async () => {
         try {
             let dashboard: any = {};
-            await RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
+            RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
                 (response: any) => {
                     if (response.code !== 417) {
                         dashboard['CloudDashBoards'] = response.details.ops.cloudDashBoards;

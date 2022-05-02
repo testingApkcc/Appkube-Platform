@@ -32428,72 +32428,50 @@ object-assign
 
               _this.getInputConfig = function () {
                 return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(_this, void 0, void 0, function () {
-                  var dashboard_1, err_1;
+                  var dashboard_1;
 
                   var _this = this;
 
                   return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__generator)(this, function (_a) {
-                    switch (_a.label) {
-                      case 0:
-                        _a.trys.push([0, 2, , 3]);
+                    try {
+                      dashboard_1 = {};
+                      _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.getData(
+                        ''.concat(this.config.SEARCH_CONFIG_DASHBOARD),
+                        null,
+                        null
+                      ).then(
+                        function (response) {
+                          if (response.code !== 417) {
+                            dashboard_1['CloudDashBoards'] = response.details.ops.cloudDashBoards;
+                            dashboard_1['DataSources'] = response.details.ops.dataSources;
 
-                        dashboard_1 = {};
-                        return [
-                          4,
-                          /*yield*/
-                          _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.getData(
-                            ''.concat(this.config.SEARCH_CONFIG_DASHBOARD),
-                            null,
-                            null
-                          ).then(
-                            function (response) {
-                              if (response.code !== 417) {
-                                dashboard_1['CloudDashBoards'] = response.details.ops.cloudDashBoards;
-                                dashboard_1['DataSources'] = response.details.ops.dataSources;
+                            _this.setState({
+                              enablePerformanceMonitoring: true,
+                              showConfigWizard: false,
+                              activeDashboard: 0,
+                              dashboardData: dashboard_1,
+                            });
 
-                                _this.setState({
-                                  enablePerformanceMonitoring: true,
-                                  showConfigWizard: false,
-                                  activeDashboard: 0,
-                                  dashboardData: dashboard_1,
-                                });
-
-                                _this.verifyInputsRef.current &&
-                                  _this.verifyInputsRef.current.setDashboardData(dashboard_1);
-                              } else {
-                                _this.setState({
-                                  showConfigWizard: true,
-                                });
-                              }
-                            },
-                            function (error) {
-                              console.log('Performance. Search input config failed. Error: ', error);
-                            }
-                          ),
-                        ];
-
-                      case 1:
-                        _a.sent();
-
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
-
-                      case 2:
-                        err_1 = _a.sent();
-                        console.log('Performance. Excepiton in search input this.config. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
-
-                      case 3:
-                        return [
-                          2,
-                          /*return*/
-                        ];
+                            _this.verifyInputsRef.current &&
+                              _this.verifyInputsRef.current.setDashboardData(dashboard_1);
+                          } else {
+                            _this.setState({
+                              showConfigWizard: true,
+                            });
+                          }
+                        },
+                        function (error) {
+                          console.log('Performance. Search input config failed. Error: ', error);
+                        }
+                      );
+                    } catch (err) {
+                      console.log('Performance. Excepiton in search input this.config. Error: ', err);
                     }
+
+                    return [
+                      2,
+                      /*return*/
+                    ];
                   });
                 });
               };
@@ -32744,26 +32722,7 @@ object-assign
             }
 
             Performance.prototype.componentDidMount = function () {
-              return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(this, void 0, void 0, function () {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__generator)(this, function (_a) {
-                  switch (_a.label) {
-                    case 0:
-                      return [
-                        4,
-                        /*yield*/
-                        this.getInputConfig(),
-                      ];
-
-                    case 1:
-                      _a.sent();
-
-                      return [
-                        2,
-                        /*return*/
-                      ];
-                  }
-                });
-              });
+              this.getInputConfig();
             };
 
             Performance.prototype.render = function () {
