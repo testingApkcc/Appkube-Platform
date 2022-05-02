@@ -104,4 +104,5 @@ export const config = {
 
   GET_AWS_REGIONS: `${assetSrvUrl}/getAwsRegions`,
   PREVIEW_DASHBOARDS_URL: `${grafanaUrl}/dashboards/previewDashboard`,
+  SEARCH_CONFIG_DASHBOARD: `http://18.234.236.211:5057/api/catalogue/search`,
 };

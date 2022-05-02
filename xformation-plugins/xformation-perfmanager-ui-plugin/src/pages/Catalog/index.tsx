@@ -6,9 +6,11 @@ import libraryIcon from '../../img/library-icon.png';
 // import awsIcon from '../../img/aws.png';
 import previewDashboard from '../../img/preview-dashboard.png';
 import { PreviewDashboardPopup } from './PreviewDashboardPopup';
-
+import { RestService } from './../_service/RestService';
+import { config } from './../../config';
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
+  config: any;
   previewDashboardPopupRef: any;
   constructor(props: any) {
     super(props)
@@ -194,6 +196,31 @@ export class Catalog extends React.Component<any, any>{
     ];
     this.previewDashboardPopupRef = React.createRef();
   }
+  async componentDidMount() {
+    await this.getInputConfig();
+}
+
+getInputConfig = async () => {
+  try {
+      let dashboard: any = {};
+      await RestService.getData(`${config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
+          (response: any) => {
+              console.log(response, 'response')
+              if (response.code !== 417) {
+                  dashboard['CloudDashBoards'] = response.details.ops.cloudDashBoards;
+                  dashboard['DataSources'] = response.details.ops.dataSources;
+                  console.log(dashboard)
+                  this.setState({
+                      catalogueManagement: dashboard,
+                  });
+              } 
+          }, (error: any) => {
+              console.log("Performance. Search input config failed. Error: ", error);
+          });
+  } catch (err) {
+      console.log("Performance. Excepiton in search input this.config. Error: ", err);
+  }
+}
   handleUpperMenu = (inx: any) => {
     let { navHandle } = this.state
     navHandle.topKey = inx
