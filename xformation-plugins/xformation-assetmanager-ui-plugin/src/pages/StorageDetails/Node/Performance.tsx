@@ -20,7 +20,6 @@ export class Performance extends React.Component<any, any>{
         super(props);
         this.state = {
             enablePerformanceMonitoring: true,
-            inputConfig: null,
             inputName: "Performance",
             updatedDashboards: [],
             isAlertOpen: false,
@@ -65,21 +64,6 @@ export class Performance extends React.Component<any, any>{
 
     async componentDidMount() {
         await this.getInputConfig();
-        // if(inputConfig){
-        //     this.getViewJson();
-        // }
-
-        // const { inputConfig } = this.state;
-        // if (inputConfig && inputConfig.dashboards) {
-        //     this.setState({
-        //         showConfigWizard: false,
-        //         activeDashboard: 0
-        //     });
-        // } else {
-        //     this.setState({
-        //         showConfigWizard: true,
-        //     });
-        // }
     }
 
     updateDashboard = (data: any) => {
@@ -122,11 +106,11 @@ export class Performance extends React.Component<any, any>{
                         console.log(dashboard)
                         this.setState({
                             enablePerformanceMonitoring: true,
-                            inputConfig: response.object[0],
                             showConfigWizard: false,
                             activeDashboard: 0,
                             dashboardData: dashboard,
                         });
+                        this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboard);
                     } else {
                         this.setState({
                             showConfigWizard: true,
@@ -426,9 +410,9 @@ export class Performance extends React.Component<any, any>{
     setConfigWizard = () => {
         this.setState({
             showConfigWizard: true
+        }, () => {
+            this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(this.state.dashboardData);
         });
-        debugger;
-        this.verifyInputsRef.current.setDashboardData(this.state.dashboardData);
     }
 
     render() {

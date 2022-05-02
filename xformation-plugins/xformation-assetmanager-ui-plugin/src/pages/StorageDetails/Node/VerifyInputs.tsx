@@ -16,7 +16,7 @@ export class VerifyInputs extends React.Component<any, any> {
   }
 
   componentDidUpdate(prevProps: any, prevState: any) {
-    if (prevProps.dashboard !== this.props.dashboard) {
+    if (JSON.stringify(prevProps.dashboard) !== JSON.stringify(this.props.dashboard)) {
       this.setState({
         tableData: this.props.dashboard,
       })
