@@ -184,7 +184,6 @@ export class SelectCloudFilter extends React.Component<any, any> {
 
     render() {
         const { showTagFilter, displayJsonData, searchKey } = this.state;
-        console.log(displayJsonData)
         return (
             <div className="fliters-container">
                 <div className="select-fliters">
