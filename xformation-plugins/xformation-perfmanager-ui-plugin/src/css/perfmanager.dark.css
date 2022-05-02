@@ -4304,72 +4304,19 @@ a:hover {
   line-height: 18px;
   font-weight: 500;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content {
-  display: none;
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  position: relative;
+
+.perfmanager-dashboard-container .col-r-p {
+  padding-right: 0;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content.active {
-  display: block;
+
+.perfmanager-dashboard-container .col-l-p {
+  padding-left: 0;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .item-image {
-  display: none;
-  width: 100%;
-}
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .item-image.active {
-  display: block;
-}
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .item-image
-  img {
-  max-width: 100%;
-  height: auto;
-}
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .nabtn-close {
+
+.preview-dashboard-popup .nabtn-close {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: -20px;
+  top: -20px;
   border: none;
   width: 48px;
   height: 48px;
@@ -4378,27 +4325,14 @@ a:hover {
   font-size: 18px;
   color: #6f7682;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .nabtn-close:hover {
-  background-color: #a2d2ff;
+.preview-dashboard-popup .nabtn-close:hover {
+  background-color: #3b7cff;
   color: #ffffff;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .nabtn-left {
+
+.preview-dashboard-popup .nabtn-left {
   position: absolute;
-  left: 0;
+  left: -20px;
   top: 45%;
   border: none;
   width: 48px;
@@ -4408,27 +4342,14 @@ a:hover {
   font-size: 32px;
   color: #6f7682;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .nabtn-left:hover {
-  background-color: #a2d2ff;
+.preview-dashboard-popup .nabtn-left:hover {
+  background-color: #3b7cff;
   color: #ffffff;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .nabtn-right {
+
+.preview-dashboard-popup .nabtn-right {
   position: absolute;
-  right: 0;
+  right: -20px;
   top: 45%;
   border: none;
   width: 48px;
@@ -4438,28 +4359,15 @@ a:hover {
   font-size: 32px;
   color: #6f7682;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .nabtn-right:hover {
-  background-color: #a2d2ff;
+.preview-dashboard-popup .nabtn-right:hover {
+  background-color: #3b7cff;
   color: #ffffff;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .slider-buttons {
+
+.preview-dashboard-popup .slider-buttons {
   position: absolute;
   left: 0;
-  bottom: 15px;
+  bottom: -5px;
   z-index: 10;
   width: 100%;
   text-align: center;
@@ -4467,15 +4375,7 @@ a:hover {
   margin: 0;
   list-style: none;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .slider-buttons
-  .button {
+.preview-dashboard-popup .slider-buttons .button {
   display: inline-block;
   width: 12px;
   height: 12px;
@@ -4485,37 +4385,35 @@ a:hover {
   margin: 0 4px;
   cursor: pointer;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .slider-buttons
-  .button:hover {
-  background-color: #a2d2ff;
-  border-color: #a2d2ff;
+.preview-dashboard-popup .slider-buttons .button:hover {
+  background-color: #3b7cff;
+  border-color: #3b7cff;
 }
-.perfmanager-dashboard-container
-  .catalogue-management-container
-  .common-container
-  .catalogue-tabs-container
-  .catalogue-inner-tabs-container
-  .catalogue-right-container
-  .slider-content
-  .slider-buttons
-  .button.active {
-  background-color: #a2d2ff;
-  border-color: #a2d2ff;
+.preview-dashboard-popup .slider-buttons .button.active {
+  background-color: #3b7cff;
+  border-color: #3b7cff;
 }
 
-.perfmanager-dashboard-container .col-r-p {
-  padding-right: 0;
+.preview-dashboard-popup .slider-content {
+  display: block;
+  width: calc(100% - 100px);
+  height: 480px;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin-left: 50px;
+  margin-right: 50px;
 }
-
-.perfmanager-dashboard-container .col-l-p {
-  padding-left: 0;
+.preview-dashboard-popup .slider-content .item-image {
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+.preview-dashboard-popup .slider-content .item-image.active {
+  display: block;
+}
+.preview-dashboard-popup .slider-content .item-image img {
+  max-width: 100%;
+  height: auto;
 }
 
 /*# sourceMappingURL=perfmanager.dark.css.map */

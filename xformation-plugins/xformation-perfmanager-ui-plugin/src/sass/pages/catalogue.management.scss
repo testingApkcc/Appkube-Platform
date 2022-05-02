@@ -409,118 +409,7 @@
                             }
                         }
 
-                        .slider-content {
-                            display: none;
-                            width: 100%;
-                            margin-top: 20px;
-                            margin-bottom: 20px;
-                            position: relative;
 
-                            &.active {
-                                display: block;
-                            }
-
-                            .item-image {
-                                display: none;
-                                width: 100%;
-
-                                &.active {
-                                    display: block;
-                                }
-
-                                img {
-                                    max-width: 100%;
-                                    height: auto;
-                                }
-                            }
-
-                            .nabtn-close {
-                                position: absolute;
-                                right: 0;
-                                top: 0;
-                                border: none;
-                                width: 48px;
-                                height: 48px;
-                                text-align: center;
-                                line-height: 48px;
-                                font-size: 18px;
-                                color: #6f7682;
-
-                                &:hover {
-                                    background-color: #a2d2ff;
-                                    color: #ffffff;
-                                }
-                            }
-
-                            .nabtn-left {
-                                position: absolute;
-                                left: 0;
-                                top: 45%;
-                                border: none;
-                                width: 48px;
-                                height: 48px;
-                                text-align: center;
-                                line-height: 48px;
-                                font-size: 32px;
-                                color: #6f7682;
-
-                                &:hover {
-                                    background-color: #a2d2ff;
-                                    color: #ffffff;
-                                }
-                            }
-
-                            .nabtn-right {
-                                position: absolute;
-                                right: 0;
-                                top: 45%;
-                                border: none;
-                                width: 48px;
-                                height: 48px;
-                                text-align: center;
-                                line-height: 48px;
-                                font-size: 32px;
-                                color: #6f7682;
-
-                                &:hover {
-                                    background-color: #a2d2ff;
-                                    color: #ffffff;
-                                }
-                            }
-
-                            .slider-buttons {
-                                position: absolute;
-                                left: 0;
-                                bottom: 15px;
-                                z-index: 10;
-                                width: 100%;
-                                text-align: center;
-                                padding: 0;
-                                margin: 0;
-                                list-style: none;
-
-                                .button {
-                                    display: inline-block;
-                                    width: 12px;
-                                    height: 12px;
-                                    border-radius: 50%;
-                                    background-color: #ffffff;
-                                    border: 1px solid #6f7682;
-                                    margin: 0 4px;
-                                    cursor: pointer;
-
-                                    &:hover {
-                                        background-color: #a2d2ff;
-                                        border-color: #a2d2ff;
-                                    }
-
-                                    &.active {
-                                        background-color: #a2d2ff;
-                                        border-color: #a2d2ff;
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -534,5 +423,121 @@
 
     .col-l-p {
         padding-left: 0;
+    }
+}
+
+.preview-dashboard-popup {
+    .nabtn-close {
+        position: absolute;
+        right: -20px;
+        top: -20px;
+        border: none;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+        font-size: 18px;
+        color: #6f7682;
+
+        &:hover {
+            background-color: #3b7cff;
+            color: #ffffff;
+        }
+    }
+
+    .nabtn-left {
+        position: absolute;
+        left: -20px;
+        top: 45%;
+        border: none;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+        font-size: 32px;
+        color: #6f7682;
+
+        &:hover {
+            background-color: #3b7cff;
+            color: #ffffff;
+        }
+    }
+
+    .nabtn-right {
+        position: absolute;
+        right: -20px;
+        top: 45%;
+        border: none;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+        font-size: 32px;
+        color: #6f7682;
+
+        &:hover {
+            background-color: #3b7cff;
+            color: #ffffff;
+        }
+    }
+
+    .slider-buttons {
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        z-index: 10;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        .button {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 1px solid #6f7682;
+            margin: 0 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #3b7cff;
+                border-color: #3b7cff;
+            }
+
+            &.active {
+                background-color: #3b7cff;
+                border-color: #3b7cff;
+            }
+        }
+    }
+
+    .slider-content {
+        display: block;
+        width: calc(100% - 100px);
+        height: 480px;
+        overflow: hidden;
+        overflow-y: scroll;
+        margin-left: 50px;
+        margin-right: 50px;
+
+        .item-image {
+            display: none;
+            width: 100%;
+            text-align: center;
+
+            &.active {
+                display: block;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+
     }
 }

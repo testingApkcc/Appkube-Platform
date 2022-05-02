@@ -4,11 +4,12 @@ import { TopMenu } from './TopMenu';
 import previewDashboardIcon from '../../img/preview-dashboard-icon.png';
 import libraryIcon from '../../img/library-icon.png';
 // import awsIcon from '../../img/aws.png';
-
 import previewDashboard from '../../img/preview-dashboard.png';
+import { PreviewDashboardPopup } from './PreviewDashboardPopup';
 
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
+  previewDashboardPopupRef: any;
   constructor(props: any) {
     super(props)
     this.state = {
@@ -180,6 +181,7 @@ export class Catalog extends React.Component<any, any>{
         isCurrentPage: true,
       },
     ];
+    this.previewDashboardPopupRef = React.createRef();
   }
   handleUpperMenu = (inx: any) => {
     let { navHandle } = this.state
@@ -193,10 +195,9 @@ export class Catalog extends React.Component<any, any>{
     this.setState({ navHandle })
   }
 
-  handlePreviewDashboard = () => {
-    this.setState({
-      showPreview: !this.state.showPreview,
-    });
+  handlePreviewDashboard = (link: any) => {
+    this.previewDashboardPopupRef.current.setLink(link);
+    this.previewDashboardPopupRef.current.toggle();
   }
 
   handleCard = (cardData: any) => {
@@ -228,35 +229,12 @@ export class Catalog extends React.Component<any, any>{
                   </a>
                 </div>
                 <div className="module-card-footer-provider">
-                  <a onClick={() => this.handlePreviewDashboard()}>
+                  <a onClick={() => this.handlePreviewDashboard('')}>
                     <img src={previewDashboardIcon} alt="" />
                     {`Preview Dashboard`}
                   </a>
                 </div>
               </div>
-            </div>
-            <div className={`slider-content ${showPreview === true ? "active" : ""}`}>
-              <button className="nabtn-close"><i className="fa fa-close"></i></button>
-              <button className="nabtn-left"><i className="fa fa-angle-left"></i></button>
-              <div className="item-image active">
-                <img src={previewDashboard} alt="" />
-              </div>
-              <div className="item-image">
-                <img src={previewDashboard} alt="" />
-              </div>
-              <div className="item-image">
-                <img src={previewDashboard} alt="" />
-              </div>
-              <div className="item-image">
-                <img src={previewDashboard} alt="" />
-              </div>
-              <button className="nabtn-right"><i className="fa fa-angle-right"></i></button>
-              <ul className="slider-buttons">
-                <li className="button active"></li>
-                <li className="button"></li>
-                <li className="button"></li>
-                <li className="button"></li>
-              </ul>
             </div>
           </>
         )
@@ -484,6 +462,7 @@ export class Catalog extends React.Component<any, any>{
             </div>
           </div>
         </div>
+        <PreviewDashboardPopup ref={this.previewDashboardPopupRef} />
       </div>
     )
   }
