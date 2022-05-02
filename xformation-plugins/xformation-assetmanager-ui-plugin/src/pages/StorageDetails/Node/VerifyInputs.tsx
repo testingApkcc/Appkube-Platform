@@ -1,4 +1,3 @@
-import { count } from 'console';
 import * as React from 'react';
 import { configFun } from '../../../config';
 
@@ -28,31 +27,6 @@ export class VerifyInputs extends React.Component<any, any> {
     this.setState({
       configureInputs: !this.state.configureInputs,
     })
-    // const tenantId = this.getParameterByName("tenantId", window.location.href);
-    // const accountId = this.getParameterByName(
-    //   "accountId",
-    //   window.location.href
-    // );
-    // try {
-    //   await RestService.getData(
-    //     `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
-    //     null,
-    //     null
-    //   ).then(
-    //     (response: any) => {
-    //       if (response.code !== 417) {
-    //         this.setState({
-    //           tableData: response.object,
-    //         });
-    //       }
-    //     },
-    //     (error: any) => {
-    //       console.log("VerifyInput. Search input failed. Error: ", error);
-    //     }
-    //   );
-    // } catch (err) {
-    //   console.log("VerifyInput. Excepiton in search input: ", err);
-    // }
   };
 
   async componentDidMount() {
@@ -61,60 +35,6 @@ export class VerifyInputs extends React.Component<any, any> {
         tableData: this.props.dashboard,
       })
     }
-    //const cloud = this.getParameterByName("cloud", window.location.href);
-    //const type = this.getParameterByName("type", window.location.href);
-    // const tenantId = this.getParameterByName("tenantId", window.location.href);
-    // const accountId = this.getParameterByName(
-    //   "accountId",
-    //   window.location.href
-    // );
-    // if (tenantId) {
-    //   try {
-    //     await RestService.getData(
-    //       `${this.config.SEARCH_INPUT_CONFIG}?inputType=${this.state.inputName}&accountId=${accountId}&tenantId=${tenantId}`,
-    //       null,
-    //       null
-    //     ).then(
-    //       (response: any) => {
-    //         if (response.code !== 417 && response.object.length > 0) {
-    //           this.setState({
-    //             configureInputs: true,
-    //           });
-    //         }
-    //       },
-    //       (error: any) => {
-    //         console.log(
-    //           "VerifyInput. Search input config failed. Error: ",
-    //           error
-    //         );
-    //       }
-    //     );
-    //   } catch (err) {
-    //     console.log("VerifyInput. Excepiton in search input config: ", err);
-    //   }
-    //   try {
-    //     await RestService.getData(
-    //       `${this.config.SEARCH_INPUT}?tenantId=${tenantId}&accountId=${accountId}`,
-    //       null,
-    //       null
-    //     ).then(
-    //       (response: any) => {
-    //         if (response.code !== 417) {
-    //           this.setState({
-    //             tableData: response.object,
-    //           });
-    //         }
-    //       },
-    //       (error: any) => {
-    //         console.log("Exception in finding inputs. Error: ", error);
-    //       }
-    //     );
-    //   } catch (err) {
-    //     console.log("Error in finding inputs. Error: ", err);
-    //   }
-    // } else {
-    //   console.log("Tenant id is not present");
-    // }
   }
 
   setDashboardData = (data: any) => {

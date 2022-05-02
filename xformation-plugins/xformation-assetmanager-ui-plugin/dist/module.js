@@ -32447,8 +32447,6 @@ object-assign
                             null
                           ).then(
                             function (response) {
-                              console.log(response);
-
                               if (response.code !== 417) {
                                 dashboard_1['CloudDashBoards'] = response.details.ops.cloudDashBoards;
                                 dashboard_1['DataSources'] = response.details.ops.dataSources;
@@ -33340,8 +33338,30 @@ object-assign
               var _a = this.state,
                 tableData = _a.tableData,
                 selectedData = _a.selectedData;
-              tableData.DataSources[i].isChecked = checked;
               tableData.CloudDashBoards[j].isChecked = checked;
+
+              if (checked) {
+                tableData.DataSources[i].isChecked = checked;
+              }
+
+              var count = 0;
+
+              if (tableData.CloudDashBoards) {
+                for (var k = 0; k < tableData.CloudDashBoards.length; k++) {
+                  if (tableData.CloudDashBoards[k].associatedDataSourceType == tableData.DataSources[i].name) {
+                    if (tableData.CloudDashBoards[k].isChecked == true) {
+                      count++;
+                    }
+                  }
+                }
+              }
+
+              console.log(count);
+
+              if (count == 0) {
+                tableData.DataSources[i].isChecked = false;
+              }
+
               this.props.updateDashboard(tableData);
 
               if (checked) {
@@ -33350,7 +33370,6 @@ object-assign
                   selectedData: selectedData,
                 });
               } else {
-                //const keys = Object.keys(selectedData);
                 this.removeObject(tableData.DataSources[i], selectedData);
               }
             };
@@ -33456,6 +33475,8 @@ object-assign
               };
 
               _this.setDashboardData = function (data) {
+                console.log(data);
+
                 _this.setState({
                   selectedData: data,
                 });
