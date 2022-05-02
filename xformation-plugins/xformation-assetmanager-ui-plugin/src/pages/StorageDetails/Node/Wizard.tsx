@@ -31,9 +31,8 @@ export class Wizard extends React.Component<any, any> {
         const step = steps[i];
         retData.push(
           <div
-            className={`wizard-step-button ${
-              currentStep === i ? "active" : ""
-            }`}
+            className={`wizard-step-button ${currentStep === i ? "active" : ""
+              }`}
             onClick={(e) => this.onClickStepButton(i)}
           >
             {step.name}
@@ -54,9 +53,8 @@ export class Wizard extends React.Component<any, any> {
         const step = steps[i];
         retData.push(
           <div
-            className={`wizard-step-component ${
-              currentStep === i ? "" : "d-none"
-            }`}
+            className={`wizard-step-component ${currentStep === i ? "" : "d-none"
+              }`}
           >
             {step.component()}
           </div>
@@ -77,17 +75,16 @@ export class Wizard extends React.Component<any, any> {
         <div className="wizard-step-component-container">
           {this.createStepContainer()}
           <div className="d-block text-right next">
-            {currentStep < steps.length - 1 && (
-              <button
-                onClick={(e) => this.onClickStepButton(currentStep - 1)}
-                className="asset-blue-button m-b-0"
-              >
-                Previous
-              </button>
-            )}
-            {currentStep >= steps.length + 1 && (
+            <button
+              onClick={(e) => this.onClickStepButton(currentStep - 1)}
+              className="asset-blue-button m-b-0"
+              disabled={currentStep == 0}
+            >
+              Previous
+            </button>
+            {/* {currentStep >= steps.length + 1 && (
               <button className="blue-button m-b-0">Previous</button>
-            )}
+            )} */}
             {currentStep < steps.length - 1 && (
               <button
                 onClick={(e) => this.onClickStepButton(currentStep + 1)}

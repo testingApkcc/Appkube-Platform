@@ -90,10 +90,8 @@ export class Preview extends React.Component<any, any> {
     if (selectedDashboards && selectedDashboards.DataSources) {
       for (let i = 0; i < selectedDashboards.DataSources.length; i++) {
         let dashboardSource = selectedDashboards.DataSources[i];
-        console.log(dashboardSource)
         if (selectedDashboards && selectedDashboards.CloudDashBoards) {
           const dashboard = selectedDashboards.CloudDashBoards[activeDashboard];
-          console.log(dashboard);
           if (dashboard) {
             return (
               <iframe
@@ -115,13 +113,13 @@ export class Preview extends React.Component<any, any> {
     return (
       <>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <button
+          {/* <button
             style={{ marginTop: "0px", float: "right", marginRight: "0px" }}
             onClick={() => this.setState({ showConfigWizard: true })}
             className="asset-blue-button m-b-0"
           >
             Configure
-          </button>
+          </button> */}
         </div>
         <div className="dashboard-view-container">
           <ul className="dashboard-view-buttons">
