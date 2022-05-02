@@ -22,6 +22,7 @@ export class EnableDashboard extends React.Component<any, any> {
   };
 
   setDashboardData = (data: any) => {
+    console.log(data);
     this.setState({
       selectedData: data,
     })
@@ -51,7 +52,6 @@ export class EnableDashboard extends React.Component<any, any> {
   displayTable = () => {
     const retData = [];
     const { selectedData } = this.state;
-
     if (selectedData.DataSources) {
       for (let i = 0; i < selectedData.DataSources.length; i++) {
         const dataSource = selectedData.DataSources[i];
