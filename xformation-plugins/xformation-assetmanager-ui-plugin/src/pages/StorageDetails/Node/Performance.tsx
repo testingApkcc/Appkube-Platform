@@ -99,11 +99,9 @@ export class Performance extends React.Component<any, any>{
             let dashboard: any = {};
             await RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
                 (response: any) => {
-                    console.log(response)
                     if (response.code !== 417) {
                         dashboard['CloudDashBoards'] = response.details.ops.cloudDashBoards;
                         dashboard['DataSources'] = response.details.ops.dataSources;
-                        console.log(dashboard)
                         this.setState({
                             enablePerformanceMonitoring: true,
                             showConfigWizard: false,

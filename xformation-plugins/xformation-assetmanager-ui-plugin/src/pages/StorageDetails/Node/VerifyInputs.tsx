@@ -1,3 +1,4 @@
+import { count } from 'console';
 import * as React from 'react';
 // import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
@@ -126,7 +127,6 @@ export class VerifyInputs extends React.Component<any, any> {
   }
 
   setDashboardData = (data: any) => {
-    debugger;
     console.log(data)
     this.setState({
       tableData: data,
@@ -136,14 +136,29 @@ export class VerifyInputs extends React.Component<any, any> {
   handleChange(e: any, i: any, j: any) {
     const { checked } = e.target;
     const { tableData, selectedData } = this.state;
-    tableData.DataSources[i].isChecked = checked;
     tableData.CloudDashBoards[j].isChecked = checked;
+    if (checked) {
+      tableData.DataSources[i].isChecked = checked;
+    }
+    let count = 0;
+    if (tableData.CloudDashBoards) {
+      for (let k = 0; k < tableData.CloudDashBoards.length; k++) {
+        if (tableData.CloudDashBoards[k].associatedDataSourceType == tableData.DataSources[i].name) {
+          if (tableData.CloudDashBoards[k].isChecked == true) {
+            count++;
+          }
+        }
+      }
+    }
+    console.log(count)
+    if (count == 0) {
+      tableData.DataSources[i].isChecked = false;
+    }
     this.props.updateDashboard(tableData);
     if (checked) {
       selectedData.push(tableData.DataSources[i]);
       this.setState({ selectedData: selectedData });
     } else {
-      //const keys = Object.keys(selectedData);
       this.removeObject(tableData.DataSources[i], selectedData);
     }
   }
