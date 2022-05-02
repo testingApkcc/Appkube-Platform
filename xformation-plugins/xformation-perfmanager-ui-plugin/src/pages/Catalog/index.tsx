@@ -170,15 +170,15 @@ export class Catalog extends React.Component<any, any>{
         lowerKey: 0
       },
       filterData: [
-        { 'name': 'Filter 1', 'id': 1 },
-        { 'name': 'Filter 2', 'id': 2 },
-        { 'name': 'Filter 3', 'id': 3 },
-        { 'name': 'Filter 4', 'id': 4 },
-        { 'name': 'Filter 5', 'id': 5 },
-        { 'name': 'Filter 6', 'id': 6 },
-        { 'name': 'Filter 7', 'id': 7 },
+        { 'name': 'Filter 1', 'id': 1, 'isHide': 'true' },
+        { 'name': 'Filter 2', 'id': 2, 'isHide': 'true' },
+        { 'name': 'Filter 3', 'id': 3, 'isHide': 'true' },
+        { 'name': 'Filter 4', 'id': 4, 'isHide': 'true' },
+        { 'name': 'Filter 5', 'id': 5, 'isHide': 'true' },
+        { 'name': 'Filter 6', 'id': 6, 'isHide': 'true' },
+        { 'name': 'Filter 7', 'id': 7, 'isHide': 'true' },
       ],
-      filterDuplicateData: [],
+      searchString: '',
       showPreview: false,
       searchKey: '',
     }
@@ -192,9 +192,6 @@ export class Catalog extends React.Component<any, any>{
         isCurrentPage: true,
       },
     ];
-    this.setState({
-      filterDuplicateData: this.state.filterData,
-    })
     this.previewDashboardPopupRef = React.createRef();
   }
   handleUpperMenu = (inx: any) => {
@@ -262,30 +259,63 @@ export class Catalog extends React.Component<any, any>{
   }
 
   searchFilter = (e: any) => {
-    const { filterDuplicateData } = this.state;
+    const { filterData } = this.state;
     const { value } = e.target;
-    let filterRes = [];
-    this.setState({
-      searchKey: value
-    });
     if (value !== '') {
-      debugger;
-      for (let i = 0; i < filterDuplicateData.length; i++) {
-        if (filterDuplicateData[i].name.index(value) !== -1 || filterDuplicateData[i].name.toLowerCase().index(value) !== -1) {
-          filterRes.push(filterDuplicateData[i]);
+      for (let i = 0; i < filterData.length; i++) {
+        if (filterData[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+          filterData[i].isHide = true;
+          filterData[i].isChecked = true;
+        }
+        else {
+          filterData[i].isHide = false;
+          filterData[i].isChecked = false;
         }
       }
     } else {
-      filterRes.push(filterDuplicateData);
+      for (let i = 0; i < filterData.length; i++) {
+        filterData[i].isHide = true;
+        filterData[i].isChecked = false
+      }
     }
-    console.log(filterRes);
+
     this.setState({
-      filterData: filterRes
+      filterData,
+      searchString: value
     })
   }
 
+  handleFilterList = (filterValues: any) => {
+    let retData: any = [];
+    for (let i = 0; i < filterValues.length; i++) {
+      let { id, name, isHide, isChecked } = filterValues[i]
+      if (isHide) {
+        retData.push(
+          <li key={i}>
+            <input type="checkbox" id={id} name={name} value={id} checked={isChecked} onClick={() => this.handleChecked(i)} />
+            <label>{name}</label>
+          </li>
+        )
+      }
+    }
+    return retData;
+  }
+
+  handleChecked = (index: any) => {
+    const { filterData } = this.state;
+    filterData[index].ischecked = !filterData[index].ischecked;
+    this.setState({ filterData });
+  }
+  handleClearFilter = () => {
+    let { filterData } = this.state;
+    for (let i = 0; i < filterData.length; i++) {
+      filterData[i].isHide = true;
+      filterData[i].isChecked = false;
+    }
+    this.setState({ filterData, searchString: '' })
+  }
   render() {
-    const { catalogueManagement, navHandle, filterData } = this.state;
+    const { catalogueManagement, navHandle, filterData, searchString } = this.state;
     const { topKey, lowerKey } = navHandle
     let cardData = catalogueManagement[Object.keys(catalogueManagement)[topKey]];
     cardData = cardData[Object.keys(cardData)[lowerKey]];
@@ -323,8 +353,8 @@ export class Catalog extends React.Component<any, any>{
                       <div className="filter-search">
                         <strong>Filters</strong>
                         <div className="filter-input">
-                          <input type="text" placeholder="Search" onChange={this.searchFilter} />
-                          <button className=""><i className="fa fa-close"></i> Clear filter</button>
+                          <input type="text" placeholder="Search" value={searchString} onChange={this.searchFilter} />
+                          <button className="" onClick={this.handleClearFilter}><i className="fa fa-close"></i> Clear filter</button>
                         </div>
                       </div>
                       <div className="catalogue-category">
@@ -352,14 +382,7 @@ export class Catalog extends React.Component<any, any>{
                         <strong>Category</strong>
                         <ul>
                           {filterData && filterData.length > 0 &&
-                            filterData.map((filter: any, index: any) => {
-                              return (
-                                <li>
-                                  <input type="checkbox" id={filter.id} name={filter.name} value={filter.id} />
-                                  <label>{filter.name}</label>
-                                </li>
-                              )
-                            })
+                            this.handleFilterList(filterData)
                           }
                           {/* <li>
                             <input type="checkbox" id="2" name="Filter2" value="filter2" />
