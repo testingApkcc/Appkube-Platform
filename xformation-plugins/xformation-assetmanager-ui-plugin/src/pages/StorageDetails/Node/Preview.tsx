@@ -14,7 +14,9 @@ export class Preview extends React.Component<any, any> {
 
   setDashboardData = (data: any) => {
     this.setState({
-      dashboardData: data
+      dashboardData: data,
+      activeDashboard: 0,
+      activeDataSource: 0,
     });
   }
 

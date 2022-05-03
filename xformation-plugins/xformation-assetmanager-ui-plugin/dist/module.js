@@ -33591,6 +33591,8 @@ object-assign
               _this.setDashboardData = function (data) {
                 _this.setState({
                   dashboardData: data,
+                  activeDashboard: 0,
+                  activeDataSource: 0,
                 });
               };
 
