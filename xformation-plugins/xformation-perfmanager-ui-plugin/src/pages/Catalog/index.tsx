@@ -8,7 +8,6 @@ import { config } from './../../config';
 import { DevCatalog } from './DevCatalog';
 import { SecCatalog } from './SecCatalog';
 import { OpsCatalog } from './OpsCatalog';
-import {ProvisioningTemplates} from './OpsCatalog/provisionTemplate';
 import {AppBlocks} from './DevCatalog/AppBlocks'
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
