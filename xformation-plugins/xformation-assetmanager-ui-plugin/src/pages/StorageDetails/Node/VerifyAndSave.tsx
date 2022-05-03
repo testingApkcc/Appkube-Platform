@@ -1,12 +1,17 @@
 import * as React from 'react';
+import { RestService } from '../../_service/RestService';
+import { configFun } from '../../../config';
 
 export class VerifyAndSave extends React.Component<any, any>{
+    config: any;
     constructor(props: any) {
         super(props);
         this.state = {
             selectedData: {},
             selectedDashboards: [],
+            dashboardJSON: [],
         };
+        this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
 
     componentDidUpdate(previousProps: any, previousState: any) {
@@ -21,7 +26,8 @@ export class VerifyAndSave extends React.Component<any, any>{
     setDashboardData = (data: any) => {
         this.setState({
             selectedData: data,
-        })
+        });
+        this.retriveDashboardJSONData();
     }
 
     handleChange(e: any, i: any, j: any) {
@@ -98,6 +104,33 @@ export class VerifyAndSave extends React.Component<any, any>{
         }
         return retData;
     }
+
+    retriveDashboardJSONData = () => {
+        const { dashboardJSON } = this.state;
+        const dataSourceName = "awsCloudWatch";
+        const jsonLocation = "xformation.synectiks.com/test_ds.json";
+        const associatedCloudElementType = "RDS";
+        const associatedSLAType = "PERFORMANCE";
+        const associatedCloud = "AWS";
+        const accountId = "657907747545";
+        if (dataSourceName && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud && accountId) {
+            const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
+            try {
+                RestService.getData(url, null, null).then((res: any) => {
+                    dashboardJSON.push(res);
+                    this.setState({
+                        dashboardJSON,
+                    });
+                });
+            } catch (err) {
+                console.log('Loading aws regions failed. Error: ', err);
+            }
+        }
+    };
+
+    getDashboardJSONData = () => {
+        return this.state.dashboardJSON;
+    };
 
     render() {
         return (
