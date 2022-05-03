@@ -33631,7 +33631,6 @@ object-assign
                                 return _this.setState({
                                   activeDashboard: dashboardIndex,
                                   activeDataSource: dataSourceIndex,
-                                  iFrameLoaded: false,
                                 });
                               },
                             },

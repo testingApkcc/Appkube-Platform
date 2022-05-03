@@ -46,7 +46,7 @@ export class Preview extends React.Component<any, any> {
                   : ""
                   }`}
                 onClick={() =>
-                  this.setState({ activeDashboard: dashboardIndex, activeDataSource: dataSourceIndex, iFrameLoaded: false })
+                  this.setState({ activeDashboard: dashboardIndex, activeDataSource: dataSourceIndex })
                 }
               >
                 {dashboard.associatedDataSourceType}
