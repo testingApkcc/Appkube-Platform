@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { v4 } from 'uuid';
 
 export class Preview extends React.Component<any, any> {
   constructor(props: any) {
@@ -58,7 +59,7 @@ export class Preview extends React.Component<any, any> {
       retData.push(
         <li
           title={data.dashboard.associatedDataSourceType}
-          key={data.dataSource.id}
+          key={v4()}
           className={`button ${activeDashboard === i
             ? "active"
             : ""
@@ -77,20 +78,22 @@ export class Preview extends React.Component<any, any> {
   renderIframe = () => {
     const { activeDashboard, selectedDashboards } = this.state;
     const accountId = this.getParameterByName("accountId", window.location.href);
-    const data = selectedDashboards[activeDashboard];
-    if (data) {
+    const retData: any = [];
+    selectedDashboards.forEach((data:any, index: any) => {
       const { dashboard, dataSource } = data;
-      return (
+      retData.push(
         <iframe
-          key={`${activeDashboard}`}
+          key={dashboard.id}
           src={`/jsondashboard?dataSourceName=${dataSource.name}&associatedCloudElementType=${dashboard.associatedCloudElementType}&associatedSLAType=${dashboard.associatedSLAType}&jsonLocation=${dashboard.jsonLocation}&associatedCloud=${dashboard.associatedCloud}&accountId=${accountId}`}
           onLoad={() => {
             this.setState({ iFrameLoaded: true });
           }}
+          style={{display: activeDashboard === index ? 'block' : 'none'}}
         ></iframe>
       );
-    }
-    return <div>No Dashboard Selected</div>;
+    });
+    return retData;
+    // return <div>No Dashboard Selected</div>;
   };
 
   render() {
