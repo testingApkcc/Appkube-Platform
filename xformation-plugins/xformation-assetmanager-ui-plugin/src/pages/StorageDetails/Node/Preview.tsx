@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { configFun } from '../../../config';
 
 export class Preview extends React.Component<any, any> {
-  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -10,86 +8,87 @@ export class Preview extends React.Component<any, any> {
       activeDashboard: 0,
       isLoading: false
     };
-    this.config = configFun('', '');
-  }
-
-  componentDidUpdate(previousProps: any, previousState: any) {
-    if (this.props.selectedDashboards !== previousProps.selectedDashboards) {
-      const selectedDashboards = this.props.selectedDashboards;
-      this.setState({
-        selectedDashboards,
-        // activeDashboard: [this.state.activeDashboard[0], 0],
-      });
-    }
   }
 
   setDashboardData = (data: any) => {
+    const selectedDashboards = this.manipulateDashboardData(data);
     this.setState({
-      selectedDashboards: data
+      selectedDashboards
     });
   }
 
-  renderDashboardList = () => {
-    const { selectedDashboards, activeDashboard } = this.state;
-    // const accountId = this.getParameterByName("accountId", window.location.href);
-    if (selectedDashboards && selectedDashboards.DataSources) {
-      const retData = [];
-      for (let i = 0; i < selectedDashboards.DataSources.length; i++) {
-        const selectionData = selectedDashboards.DataSources[i];
-        // const title = cloud + "_" + type + "_" + selectionData.id;
-        if (selectionData.isChecked) {
-          if (selectedDashboards.CloudDashBoards && selectedDashboards.CloudDashBoards.length > 0) {
-            for (let j = 0; j < selectedDashboards.CloudDashBoards.length; j++) {
-              if (selectedDashboards.CloudDashBoards[j].associatedDataSourceType === selectionData.name) {
-                if (selectedDashboards.CloudDashBoards[j].isChecked) {
-                  retData.push(
-                    <li
-                      title={selectedDashboards.CloudDashBoards[j].associatedDataSourceType}
-                      key={selectionData.id}
-                      className={`button ${activeDashboard === j
-                        ? "active"
-                        : ""
-                        }`}
-                      onClick={() =>
-                        this.setState({ activeDashboard: j, iFrameLoaded: false })
-                      }
-                    >
-                      {selectedDashboards.CloudDashBoards[j].associatedDataSourceType}
-                    </li>
-                  );
+  manipulateDashboardData = (data: any) => {
+    if (data && data.DataSources) {
+      const retData: any = [];
+      for (let i = 0; i < data.DataSources.length; i++) {
+        const dataSource = data.DataSources[i];
+        if (dataSource.isChecked) {
+          if (data.CloudDashBoards && data.CloudDashBoards.length > 0) {
+            for (let j = 0; j < data.CloudDashBoards.length; j++) {
+              if (data.CloudDashBoards[j].associatedDataSourceType === dataSource.name) {
+                if (data.CloudDashBoards[j].isChecked) {
+                  retData.push({
+                    dashboard: data.CloudDashBoards[j],
+                    dataSource
+                  });
                 }
               }
             }
           }
         }
       }
-      // }
       return retData;
     }
-    return [];
+  };
+
+  getParameterByName = (name: any, url: any) => {
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  };
+
+  renderDashboardList = () => {
+    const { selectedDashboards, activeDashboard } = this.state;
+    const retData: any = [];
+    for (let i = 0; i < selectedDashboards.length; i++) {
+      const data = selectedDashboards[i];
+      retData.push(
+        <li
+          title={data.dashboard.associatedDataSourceType}
+          key={data.dataSource.id}
+          className={`button ${activeDashboard === i
+            ? "active"
+            : ""
+            }`}
+          onClick={() =>
+            this.setState({ activeDashboard: i, iFrameLoaded: false })
+          }
+        >
+          {data.dashboard.associatedDataSourceType}
+        </li>
+      );
+    }
+    return retData;
   };
 
   renderIframe = () => {
     const { activeDashboard, selectedDashboards } = this.state;
-    // const accountId = this.getParameterByName("accountId", window.location.href);
-    if (selectedDashboards && selectedDashboards.DataSources) {
-      for (let i = 0; i < selectedDashboards.DataSources.length; i++) {
-        // let dashboardSource = selectedDashboards.DataSources[i];
-        if (selectedDashboards && selectedDashboards.CloudDashBoards) {
-          const dashboard = selectedDashboards.CloudDashBoards[activeDashboard];
-          if (dashboard) {
-            return (
-              <iframe
-                key={`${activeDashboard}`}
-                src={`/jsondashboard?dataSourceName=awsCloudWatch&associatedCloudElementType=RDS&associatedSLAType=PERFORMANCE&jsonLocation=xformation.synectiks.com/test_ds.json&associatedCloud=AWS&accountId=657907747545}`}
-                onLoad={() => {
-                  this.setState({ iFrameLoaded: true });
-                }}
-              ></iframe>
-            );
-          }
-        }
-      }
+    const accountId = this.getParameterByName("accountId", window.location.href);
+    const data = selectedDashboards[activeDashboard];
+    if (data) {
+      const { dashboard, dataSource } = data;
+      return (
+        <iframe
+          key={`${activeDashboard}`}
+          src={`/jsondashboard?dataSourceName=${dataSource.name}&associatedCloudElementType=${dashboard.associatedCloudElementType}&associatedSLAType=${dashboard.associatedSLAType}&jsonLocation=${dashboard.jsonLocation}&associatedCloud=${dashboard.associatedCloud}&accountId=${accountId}`}
+          onLoad={() => {
+            this.setState({ iFrameLoaded: true });
+          }}
+        ></iframe>
+      );
     }
     return <div>No Dashboard Selected</div>;
   };

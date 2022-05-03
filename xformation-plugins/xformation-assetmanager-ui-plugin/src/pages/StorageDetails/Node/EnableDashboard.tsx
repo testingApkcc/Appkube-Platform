@@ -12,15 +12,6 @@ export class EnableDashboard extends React.Component<any, any> {
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
-  getParameterByName = (name: any, url: any) => {
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return "";
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  };
-
   setDashboardData = (data: any) => {
     console.log(data);
     this.setState({
