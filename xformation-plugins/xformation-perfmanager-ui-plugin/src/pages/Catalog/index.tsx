@@ -1,16 +1,15 @@
 import React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { TopMenu } from './TopMenu';
-import previewDashboardIcon from '../../img/preview-dashboard-icon.png';
-import libraryIcon from '../../img/library-icon.png';
-// import awsIcon from '../../img/aws.png';
-import previewDashboard from '../../img/preview-dashboard.png';
+
 import { PreviewDashboardPopup } from './PreviewDashboardPopup';
 import { RestService } from './../_service/RestService';
 import { config } from './../../config';
 import { DevCatalog } from './DevCatalog';
 import { SecCatalog } from './SecCatalog';
 import { OpsCatalog } from './OpsCatalog';
+import {ProvisioningTemplates} from './OpsCatalog/provisionTemplate';
+import {AppBlocks} from './DevCatalog/AppBlocks'
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
   config: any;
@@ -80,7 +79,8 @@ export class Catalog extends React.Component<any, any>{
 
   handleUpperMenu = (key: any) => {
     let { navHandle } = this.state;
-    navHandle.topKey = key
+    navHandle.topKey = key;
+    navHandle.lowerKey=0 
     this.setState({ navHandle })
   }
 
@@ -95,52 +95,7 @@ export class Catalog extends React.Component<any, any>{
     this.previewDashboardPopupRef.current.toggle();
   }
 
-  handleCard = (cardData: any) => {
-    let retData = []
-    if (cardData && cardData.length > 0) {
-      retData = [];
-      for (let i = 0; i < cardData.length; i++) {
-        const { id, name, description } = cardData[i]
-        const { showPreview } = this.state
-        retData.push(
-          <>
-            <div className={`blog-list-item box ${showPreview === true ? "hide" : ""}`} key={id}>
-              <div className="module-card-content">
-                <div className="row">
-                  <div className="col-md-1 col-sm-12 p-r-0">
-                    <img src={previewDashboard} alt={name} />
-                  </div>
-                  <div className="col-md-11 col-sm-12">
-                    <h3 className="title is-block">{name}</h3>
-                    <p className="subtitle is-block">{description}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="module-card-footer">
-                <div className="module-card-footer-details">
-                  <a>
-                    <img src={libraryIcon} alt="" />
-                    {`Add Catalog To library`}
-                  </a>
-                </div>
-                <div className="module-card-footer-provider">
-                  <a onClick={() => this.handlePreviewDashboard('')}>
-                    <img src={previewDashboardIcon} alt="" />
-                    {`Preview Dashboard`}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </>
-        )
-      }
-    }
-    else {
-      retData = [];
-      retData.push(<div>No Data Found</div>)
-    }
-    return retData
-  }
+  
 
   searchFilter = (e: any) => {
     const { filterData } = this.state;
@@ -200,12 +155,16 @@ export class Catalog extends React.Component<any, any>{
   }
 
   render() {
-    const { catalogueManagement, navHandle } = this.state;
+    const { catalogueManagement, navHandle, showPreview } = this.state;
     const { topKey, lowerKey } = navHandle;
-    let cardData = catalogueManagement[Object.keys(catalogueManagement)[topKey]];
-    if (cardData) {
-      cardData = cardData[Object.keys(cardData)[lowerKey]];
-    }
+    let cardData = catalogueManagement[topKey];
+    console.log(cardData);
+    // if (cardData) {
+      cardData =cardData[Object.keys(cardData)[lowerKey]];
+    // }
+    console.log(cardData, "card Data")
+    console.log(lowerKey)
+    console.log(topKey)
     return (
       <div className="perfmanager-dashboard-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="CATALOGUE MANAGEMENT" />
@@ -228,16 +187,18 @@ export class Catalog extends React.Component<any, any>{
             <div className="catalogue-tabs-container">
               {catalogueManagement && <div className="catalogue-inner-tabs">
                 {navHandle.topKey === 'Dev' && Object.keys(catalogueManagement['Dev']).length > 0 &&
-                  <DevCatalog catalogData={catalogueManagement} navHandle={navHandle} />
+                  <DevCatalog catalogData={catalogueManagement} navHandle={navHandle}  handleLowerMenu={this.handleLowerMenu}/>
                 }
                 {navHandle.topKey === 'Sec' && Object.keys(catalogueManagement['Dev']).length > 0 &&
-                  <SecCatalog catalogData={catalogueManagement} navHandle={navHandle} />
+                  <SecCatalog catalogData={catalogueManagement} navHandle={navHandle}  handleLowerMenu={this.handleLowerMenu}/>
                 }
                 {navHandle.topKey === 'Ops' && Object.keys(catalogueManagement['Dev']).length > 0 &&
-                  <OpsCatalog catalogData={catalogueManagement} navHandle={navHandle} />
+                  <OpsCatalog catalogData={catalogueManagement} navHandle={navHandle}  handleLowerMenu={this.handleLowerMenu}/>
                 }
               </div>}
             </div>
+            {/* <ProvisioningTemplates /> */}
+            <AppBlocks cardData={cardData} handlePreviewDashboard={this.handlePreviewDashboard} showPreview={showPreview}/>
           </div>
         </div>
         <PreviewDashboardPopup ref={this.previewDashboardPopupRef} />

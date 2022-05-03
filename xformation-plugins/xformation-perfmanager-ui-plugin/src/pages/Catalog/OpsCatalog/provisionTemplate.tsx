@@ -1,5 +1,5 @@
 import React from 'react';
-import awsIcon from '../../img/aws.png';
+// import awsIcon from './../img/aws.png';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
     constructor(props: any) {
@@ -35,7 +35,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="col-md-6 col-sm-12">
                             <div className="template-box">
                                 <div className="heading">
-                                    <img src={awsIcon} alt='' />
+                                    {/* <img src={awsIcon} alt='' /> */}
                                     Landing Zone
                                 </div>
                                 <div className="sub-text">
@@ -49,7 +49,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="col-md-6 col-sm-12">
                             <div className="template-box">
                                 <div className="heading">
-                                    <img src={awsIcon} alt='' />
+                                    {/* <img src={awsIcon} alt='' /> */}
                                     Landing Zone
                                 </div>
                                 <div className="sub-text">
@@ -63,7 +63,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="col-md-6 col-sm-12">
                             <div className="template-box">
                                 <div className="heading">
-                                    <img src={awsIcon} alt='' />
+                                    {/* <img src={awsIcon} alt='' /> */}
                                     Landing Zone
                                 </div>
                                 <div className="sub-text">
@@ -77,7 +77,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="col-md-6 col-sm-12">
                             <div className="template-box">
                                 <div className="heading">
-                                    <img src={awsIcon} alt='' />
+                                    {/* <img src={awsIcon} alt='' /> */}
                                     Landing Zone
                                 </div>
                                 <div className="sub-text">
@@ -91,7 +91,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="col-md-6 col-sm-12">
                             <div className="template-box">
                                 <div className="heading">
-                                    <img src={awsIcon} alt='' />
+                                    {/* <img src={awsIcon} alt='' /> */}
                                     Landing Zone
                                 </div>
                                 <div className="sub-text">

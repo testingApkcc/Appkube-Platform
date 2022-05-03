@@ -107,14 +107,14 @@ export class SecCatalog extends React.Component<any, any>{
     // }
 
     render() {
-        const { catalogData, navHandle } = this.props;
+        const { catalogData, navHandle, handleLowerMenu} = this.props;
         return (
             <>
                 {catalogData && navHandle &&
                     <ul>
                         {Object.keys(catalogData[navHandle.topKey]).map((cat: any, inx: any) => <li key={inx}
                             className={navHandle.lowerKey === inx ? 'active' : ''}
-                            onClick={(e) => this.handleLowerMenu(inx)}>{cat}</li>)}
+                            onClick={(e) => handleLowerMenu(inx)}>{cat}</li>)}
                     </ul>
                 }
             </>
