@@ -33766,29 +33766,32 @@ object-assign
 
                 var accountId = _this.getParameterByName('accountId', window.location.href);
 
-                var data = selectedDashboards[activeDashboard];
-
-                if (data) {
+                var retData = [];
+                selectedDashboards.forEach(function (data, index) {
                   var dashboard = data.dashboard,
                     dataSource = data.dataSource;
-                  return react__WEBPACK_IMPORTED_MODULE_0__.createElement('iframe', {
-                    key: ''.concat(activeDashboard),
-                    src: '/jsondashboard?dataSourceName='
-                      .concat(dataSource.name, '&associatedCloudElementType=')
-                      .concat(dashboard.associatedCloudElementType, '&associatedSLAType=')
-                      .concat(dashboard.associatedSLAType, '&jsonLocation=')
-                      .concat(dashboard.jsonLocation, '&associatedCloud=')
-                      .concat(dashboard.associatedCloud, '&accountId=')
-                      .concat(accountId),
-                    onLoad: function () {
-                      _this.setState({
-                        iFrameLoaded: true,
-                      });
-                    },
-                  });
-                }
-
-                return react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'No Dashboard Selected');
+                  retData.push(
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('iframe', {
+                      key: dashboard.id,
+                      src: '/jsondashboard?dataSourceName='
+                        .concat(dataSource.name, '&associatedCloudElementType=')
+                        .concat(dashboard.associatedCloudElementType, '&associatedSLAType=')
+                        .concat(dashboard.associatedSLAType, '&jsonLocation=')
+                        .concat(dashboard.jsonLocation, '&associatedCloud=')
+                        .concat(dashboard.associatedCloud, '&accountId=')
+                        .concat(accountId),
+                      onLoad: function () {
+                        _this.setState({
+                          iFrameLoaded: true,
+                        });
+                      },
+                      style: {
+                        display: activeDashboard === index ? 'block' : 'none',
+                      },
+                    })
+                  );
+                });
+                return retData; // return <div>No Dashboard Selected</div>;
               };
 
               _this.state = {
