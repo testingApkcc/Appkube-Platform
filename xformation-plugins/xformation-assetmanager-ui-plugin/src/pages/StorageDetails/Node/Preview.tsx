@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { v4 } from 'uuid';
 
 export class Preview extends React.Component<any, any> {
   constructor(props: any) {
@@ -58,7 +59,7 @@ export class Preview extends React.Component<any, any> {
       retData.push(
         <li
           title={data.dashboard.associatedDataSourceType}
-          key={data.dataSource.id}
+          key={v4()}
           className={`button ${activeDashboard === i
             ? "active"
             : ""
