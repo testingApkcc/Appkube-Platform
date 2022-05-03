@@ -61,7 +61,6 @@ export class VerifyInputs extends React.Component<any, any> {
         }
       }
     }
-    console.log(count)
     if (count == 0) {
       tableData.DataSources[i].isChecked = false;
     }
