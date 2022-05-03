@@ -4153,7 +4153,7 @@ a:hover {
   .search-box
   .input {
   background-color: #ffffff;
-  border: 1px solid #6f7682;
+  border: 1px solid #eeeeee;
   padding: 7px 15px 7px 32px;
   width: 100%;
   font-size: 13px;
@@ -4261,6 +4261,7 @@ a:hover {
   font-size: 16px;
   line-height: 20px;
   font-weight: 600;
+  color: #000000;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
@@ -4289,6 +4290,7 @@ a:hover {
   font-size: 14px;
   line-height: 18px;
   font-weight: 600;
+  color: #010101;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
@@ -4302,7 +4304,421 @@ a:hover {
   padding: 0;
   font-size: 13px;
   line-height: 18px;
-  font-weight: 500;
+  font-weight: 400;
+  color: #939393;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents {
+  display: block;
+  background-color: #ffffff;
+  width: 100%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  strong {
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  color: #070707;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  h3 {
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  p {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  ul {
+  display: block;
+  margin: 0 0 20px 0;
+  padding: 0;
+  list-style: none;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  ul
+  li {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  font-weight: 400;
+  padding-bottom: 3px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  ul
+  li
+  a {
+  color: #3b7cff;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  ol {
+  display: block;
+  margin: 0 0 20px 15px;
+  padding: 0;
+  list-style: auto;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  ol
+  li {
+  display: list-item;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  font-weight: 400;
+  padding-bottom: 3px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  ol
+  li
+  a {
+  color: #3b7cff;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .next-btn {
+  background: #3b7cff;
+  color: #fff;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 0;
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  strong {
+  margin-bottom: 8px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  label {
+  display: inline-block;
+  vertical-align: top;
+  width: 35%;
+  line-height: 34px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  .form-control {
+  width: 30%;
+  display: inline-block;
+  border-color: #8a919c;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  .add-tags-btn {
+  border: 1px solid #8592a3;
+  background-color: #a2d2ff;
+  color: #707070;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters {
+  display: block;
+  width: 100%;
+  border-right: 1px solid #eaeaea;
+  background-color: #ffffff;
+  padding: 10px;
+  height: 100%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .filter-search {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .filter-search
+  strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #202020;
+  line-height: 18px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .filter-search
+  .filter-input {
+  display: block;
+  position: relative;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .filter-search
+  .filter-input
+  input {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #707070;
+  font-size: 12px;
+  line-height: 16px;
+  color: #b2b2b2;
+  background-color: #ffffff;
+  padding-left: 20px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .filter-search
+  .filter-input
+  input:focus-visible {
+  outline: none;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .filter-search
+  .filter-input
+  button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  padding: 0;
+  border: none;
+  font-size: 10px;
+  line-height: 18px;
+  color: #89919d;
+  background-color: transparent;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .templates-category {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .templates-category
+  ul {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .templates-category
+  ul
+  li {
+  display: block;
+  margin-bottom: 3px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .templates-category
+  ul
+  li
+  label {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 5px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #434c53;
+  cursor: pointer;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .templates-category
+  ul
+  li
+  label:hover {
+  color: #3273dc;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
+  .catalogue-right-container {
+  background-color: #ffffff;
 }
 
 .perfmanager-dashboard-container .col-r-p {
