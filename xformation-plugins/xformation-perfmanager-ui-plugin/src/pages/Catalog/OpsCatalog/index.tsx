@@ -130,6 +130,8 @@ export class OpsCatalog extends React.Component<any, any>{
     // }
 
     render() {
+      
+
         // const { catalogueManagement, navHandle } = this.state;
         // const { topKey, lowerKey } = navHandle
         // let cardData = catalogueManagement[Object.keys(catalogueManagement)[topKey]];
@@ -137,6 +139,18 @@ export class OpsCatalog extends React.Component<any, any>{
         //     cardData = cardData[Object.keys(cardData)[lowerKey]];
         // }
         return (
+            <> 
+            <div>  Ops Catalogue
+            </div>
+            <div className="row">
+            <div className="col-lg-9 col-md-9 col-sm-12">
+                                    <ul>
+                                 <li className={"active"}> App Blocks</li>
+                                 <li className={""}> App Blocks</li>
+                                 <li className={''}> App Blocks</li>
+                                 <li className={''}> App Blocks</li>
+                              </ul>
+                                   </div> </div></>
             // <div className="perfmanager-dashboard-container">
             //     {/* <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="CATALOGUE MANAGEMENT" /> */}
             //     <div className="catalogue-management-container">
@@ -233,7 +247,7 @@ export class OpsCatalog extends React.Component<any, any>{
             //     </div>
             //     <PreviewDashboardPopup ref={this.previewDashboardPopupRef} />
             // </div>
-            <> Ops Catalogue</>
+           
         )
     }
 }
