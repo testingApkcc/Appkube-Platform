@@ -83,22 +83,465 @@
                         }
                     }
                 }
+            }
 
-                .catalogue-inner-tabs-container {
+            .catalogue-inner-tabs-container {
+                display: block;
+                background-color: #a2d2ff;
+                padding: 10px;
+                -webkit-border-radius: 5px;
+                -webkit-border-top-left-radius: 0;
+                -moz-border-radius: 5px;
+                -moz-border-radius-topleft: 0;
+                border-radius: 5px;
+                border-top-left-radius: 0;
+                position: relative;
+                z-index: 1;
+                margin-top: -1px;
+
+                .catalogue-filters {
                     display: block;
-                    background-color: #a2d2ff;
+                    width: 100%;
+                    border-right: 1px solid #eaeaea;
+                    background-color: #ffffff;
                     padding: 10px;
-                    -webkit-border-radius: 5px;
-                    -webkit-border-top-left-radius: 0;
-                    -moz-border-radius: 5px;
-                    -moz-border-radius-topleft: 0;
-                    border-radius: 5px;
-                    border-top-left-radius: 0;
-                    position: relative;
-                    z-index: 1;
-                    margin-top: -1px;
+                    height: 100%;
 
-                    .catalogue-filters {
+                    .filter-search {
+                        display: block;
+                        margin-top: 10px;
+                        margin-bottom: 20px;
+
+                        strong {
+                            display: block;
+                            margin-bottom: 10px;
+                            font-size: 13px;
+                            font-weight: 600;
+                            color: #202020;
+                            line-height: 18px;
+                        }
+
+                        .filter-input {
+                            display: block;
+
+                            input {
+                                display: inline-block;
+                                vertical-align: top;
+                                width: 63%;
+                                border: none;
+                                border-bottom: 2px solid #707070;
+                                font-size: 12px;
+                                line-height: 16px;
+                                color: #b2b2b2;
+                                background-color: #ffffff;
+
+                                &:focus-visible {
+                                    outline: none;
+                                }
+                            }
+
+                            button {
+                                display: inline-block;
+                                vertical-align: top;
+                                width: 33%;
+                                margin-left: 4%;
+                                padding: 0;
+                                border: none;
+                                border-bottom: 2px solid #707070;
+                                font-size: 10px;
+                                line-height: 18px;
+                                color: #8592a5;
+                                background-color: transparent;
+                            }
+                        }
+                    }
+
+                    .catalogue-category {
+                        display: block;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+
+                        strong {
+                            display: block;
+                            margin-bottom: 10px;
+                            font-size: 13px;
+                            font-weight: 600;
+                            color: #202020;
+                            line-height: 18px;
+                        }
+
+                        ul {
+                            display: block;
+                            padding: 0;
+                            margin: 0;
+                            list-style: none;
+
+                            li {
+                                display: block;
+                                margin-bottom: 3px;
+
+                                input {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                }
+
+                                label {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    margin-left: 5px;
+                                    font-size: 12px;
+                                    line-height: 16px;
+                                    color: #434c53;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .catalogue-right-container {
+                    display: block;
+                    width: 100%;
+                    background-color: #f9f9f9;
+                    min-height: 500px;
+                    padding: 15px;
+
+                    .heading {
+                        display: block;
+                        padding-top: 20px;
+                        padding-bottom: 20px;
+
+                        h3 {
+                            font-size: 18px;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                            line-height: 22px;
+                            color: #3b4859;
+                            margin-top: 0;
+                            margin-bottom: 0.15em;
+                        }
+
+                        p {
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 18px;
+                            color: #3b4859;
+                            margin-bottom: 0;
+                        }
+
+                        .create-btn {
+                            background: #3b7cff;
+                            color: #fff;
+                            border: none;
+                            padding: 7px 10px;
+                            border-radius: 0;
+                            float: right;
+                            min-width: 100px;
+                            text-align: center;
+                            cursor: pointer;
+                            margin-top: 4px;
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    .catalogue-boxes {
+                        display: block;
+
+                        .box {
+                            border-radius: 2px;
+                            box-shadow: 0 0 0 0 transparent;
+                            border: 1px solid #dce0e6;
+                            margin-bottom: 15px;
+                            cursor: pointer;
+                            padding: 0;
+
+                            &:hover {
+                                border-color: #a2d2ff;
+                            }
+
+                            &.hide {
+                                display: none;
+                            }
+
+                            .module-card-content {
+                                padding: 15px 15px 25px;
+                                background-color: #ffffff;
+
+                                img {
+                                    height: auto;
+                                    max-width: 100%;
+                                }
+
+                                .title {
+                                    font-size: 16px;
+                                    line-height: 20px;
+                                    font-weight: 500;
+                                    margin-bottom: 5px;
+                                    color: #202020;
+                                }
+
+                                .subtitle {
+                                    font-size: 13px;
+                                    line-height: 20px;
+                                    margin-bottom: 0rem;
+                                    margin-top: 0;
+                                    color: #202020;
+                                }
+                            }
+
+                            .module-card-footer {
+                                height: 40px;
+                                padding: 0 10px;
+                                border-top: 1px solid #dce0e6;
+                                background: #f7f8fa;
+                                color: #6f7682;
+                                display: flex;
+                                justify-content: space-between;
+                                line-height: 40px;
+                                font-size: .8rem;
+                                font-weight: 500;
+
+                                a {
+                                    color: #3273dc;
+                                    cursor: pointer;
+                                    text-decoration: none;
+
+                                    img {
+                                        margin-right: 5px;
+                                        margin-top: -4px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .templated-search {
+                        display: block;
+                        width: 100%;
+                        padding-top: 15px;
+                        padding-bottom: 30px;
+
+                        .search-box {
+                            display: block;
+                            width: 100%;
+                            position: relative;
+
+                            .input {
+                                background-color: #ffffff;
+                                border: 1px solid #eeeeee;
+                                padding: 7px 15px 7px 32px;
+                                width: 100%;
+                                font-size: 13px;
+                                line-height: 16px;
+
+                                &:focus {
+                                    outline: none;
+                                }
+
+                                &:focus-visible {
+                                    outline: none;
+                                }
+                            }
+
+                            .search-button {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                border: none;
+                                background-color: transparent;
+                                width: 32px;
+                                height: 32px;
+                                line-height: 30px;
+                            }
+                        }
+
+                        .btnContainer {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+
+                            .btn {
+                                background-color: #ffffff;
+                                font-size: 16px;
+
+                                &.btn-active {
+                                    background-color: #a2d2ff;
+                                }
+                            }
+                        }
+                    }
+
+                    .template-box {
+                        background-color: #ffffff;
+                        box-shadow: 0px 1px 6px #00000029;
+                        border-radius: 3px;
+                        margin-bottom: 30px;
+                        padding: 15px;
+                        display: block;
+
+                        .heading {
+                            display: block;
+                            padding: 0;
+                            font-size: 16px;
+                            line-height: 20px;
+                            font-weight: 600;
+                            color: #000000;
+
+                            img {
+                                margin-right: 7px;
+                                max-width: 30px;
+                                height: auto;
+                                display: inline-block;
+                            }
+                        }
+
+                        .sub-text {
+                            display: block;
+                            padding: 15px 0;
+                            font-size: 14px;
+                            line-height: 18px;
+                            font-weight: 600;
+                            color: #010101;
+                        }
+
+                        .text {
+                            display: block;
+                            padding: 0;
+                            font-size: 13px;
+                            line-height: 18px;
+                            font-weight: 400;
+                            color: #939393;
+                        }
+                    }
+
+                    .contents {
+                        display: block;
+                        background-color: #ffffff;
+                        width: 100%;
+
+                        strong {
+                            display: block;
+                            font-size: 14px;
+                            line-height: 18px;
+                            color: #070707;
+                            font-weight: 600;
+                            margin-bottom: 20px;
+                        }
+
+                        h3 {
+                            display: block;
+                            font-size: 16px;
+                            line-height: 20px;
+                            color: #000000;
+                            font-weight: 600;
+                            margin-bottom: 3px;
+                        }
+
+                        p {
+                            display: block;
+                            font-size: 14px;
+                            line-height: 22px;
+                            color: #000000;
+                            font-weight: 400;
+                            margin-bottom: 20px;
+                        }
+
+                        ul {
+                            display: block;
+                            margin: 0 0 20px 0;
+                            padding: 0;
+                            list-style: none;
+
+                            li {
+                                display: block;
+                                font-size: 14px;
+                                line-height: 22px;
+                                color: #000000;
+                                font-weight: 400;
+                                padding-bottom: 3px;
+
+                                a {
+                                    color: #3b7cff;
+                                }
+                            }
+                        }
+
+                        ol {
+                            display: block;
+                            margin: 0 0 20px 15px;
+                            padding: 0;
+                            list-style: auto;
+
+                            li {
+                                display: list-item;
+                                font-size: 14px;
+                                line-height: 22px;
+                                color: #000000;
+                                font-weight: 400;
+                                padding-bottom: 3px;
+
+                                a {
+                                    color: #3b7cff;
+                                }
+                            }
+                        }
+
+                        .next-btn {
+                            background: #3b7cff;
+                            color: #fff;
+                            border: none;
+                            padding: 7px 10px;
+                            border-radius: 0;
+                            display: inline-block;
+                            min-width: 100px;
+                            text-align: center;
+                            cursor: pointer;
+                            margin-left: 10px;
+                        }
+
+                        .form-detail-group {
+                            display: block;
+                            width: 100%;
+                            margin-bottom: 20px;
+
+                            strong {
+                                margin-bottom: 8px;
+                            }
+
+                            .form-group {
+                                display: block;
+                                margin-bottom: 5px;
+                                width: 100%;
+
+                                label {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    width: 35%;
+                                    line-height: 34px;
+                                }
+
+                                .form-control {
+                                    width: 30%;
+                                    display: inline-block;
+                                    border-color: #8a919c;
+                                }
+
+                                .add-tags-btn {
+                                    border: 1px solid #8592a3;
+                                    background-color: #a2d2ff;
+                                    color: #707070;
+                                    padding: 5px 10px;
+                                    margin-right: 10px;
+                                    border-radius: 3px;
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+
+                &.templates-container {
+                    .templates-filters {
                         display: block;
                         width: 100%;
                         border-right: 1px solid #eaeaea;
@@ -122,17 +565,18 @@
 
                             .filter-input {
                                 display: block;
+                                position: relative;
 
                                 input {
-                                    display: inline-block;
-                                    vertical-align: top;
-                                    width: 63%;
+                                    display: block;
+                                    width: 100%;
                                     border: none;
-                                    border-bottom: 2px solid #707070;
+                                    border-bottom: 1px solid #707070;
                                     font-size: 12px;
                                     line-height: 16px;
                                     color: #b2b2b2;
                                     background-color: #ffffff;
+                                    padding-left: 20px;
 
                                     &:focus-visible {
                                         outline: none;
@@ -140,34 +584,24 @@
                                 }
 
                                 button {
-                                    display: inline-block;
-                                    vertical-align: top;
-                                    width: 33%;
-                                    margin-left: 4%;
+                                    position: absolute;
+                                    left: 0;
+                                    top: 0;
+                                    width: 16px;
                                     padding: 0;
                                     border: none;
-                                    border-bottom: 2px solid #707070;
                                     font-size: 10px;
                                     line-height: 18px;
-                                    color: #8592a5;
+                                    color: #89919d;
                                     background-color: transparent;
                                 }
                             }
                         }
 
-                        .catalogue-category {
+                        .templates-category {
                             display: block;
                             margin-top: 10px;
                             margin-bottom: 10px;
-
-                            strong {
-                                display: block;
-                                margin-bottom: 10px;
-                                font-size: 13px;
-                                font-weight: 600;
-                                color: #202020;
-                                line-height: 18px;
-                            }
 
                             ul {
                                 display: block;
@@ -179,11 +613,6 @@
                                     display: block;
                                     margin-bottom: 3px;
 
-                                    input {
-                                        display: inline-block;
-                                        vertical-align: top;
-                                    }
-
                                     label {
                                         display: inline-block;
                                         vertical-align: top;
@@ -191,6 +620,11 @@
                                         font-size: 12px;
                                         line-height: 16px;
                                         color: #434c53;
+                                        cursor: pointer;
+
+                                        &:hover {
+                                            color: #3273dc;
+                                        }
                                     }
                                 }
                             }
@@ -198,222 +632,10 @@
                     }
 
                     .catalogue-right-container {
-                        display: block;
-                        width: 100%;
-                        background-color: #f9f9f9;
-                        min-height: 500px;
-                        padding: 15px;
-
-                        .heading {
-                            display: block;
-                            padding-top: 20px;
-                            padding-bottom: 20px;
-
-                            h3 {
-                                font-size: 18px;
-                                font-weight: 500;
-                                text-transform: uppercase;
-                                line-height: 22px;
-                                color: #3b4859;
-                                margin-top: 0;
-                                margin-bottom: 0.15em;
-                            }
-
-                            p {
-                                font-size: 12px;
-                                font-weight: 400;
-                                line-height: 18px;
-                                color: #3b4859;
-                                margin-bottom: 0;
-                            }
-
-                            .create-btn {
-                                background: #3b7cff;
-                                color: #fff;
-                                border: none;
-                                padding: 7px 10px;
-                                border-radius: 0;
-                                float: right;
-                                min-width: 100px;
-                                text-align: center;
-                                cursor: pointer;
-                                margin-top: 4px;
-                                margin-bottom: 0;
-                            }
-                        }
-
-                        .catalogue-boxes {
-                            display: block;
-
-                            .box {
-                                border-radius: 2px;
-                                box-shadow: 0 0 0 0 transparent;
-                                border: 1px solid #dce0e6;
-                                margin-bottom: 15px;
-                                cursor: pointer;
-                                padding: 0;
-
-                                &:hover {
-                                    border-color: #a2d2ff;
-                                }
-
-                                &.hide {
-                                    display: none;
-                                }
-
-                                .module-card-content {
-                                    padding: 15px 15px 25px;
-                                    background-color: #ffffff;
-
-                                    img {
-                                        height: auto;
-                                        max-width: 100%;
-                                    }
-
-                                    .title {
-                                        font-size: 16px;
-                                        line-height: 20px;
-                                        font-weight: 500;
-                                        margin-bottom: 5px;
-                                        color: #202020;
-                                    }
-
-                                    .subtitle {
-                                        font-size: 13px;
-                                        line-height: 20px;
-                                        margin-bottom: 0rem;
-                                        margin-top: 0;
-                                        color: #202020;
-                                    }
-                                }
-
-                                .module-card-footer {
-                                    height: 40px;
-                                    padding: 0 10px;
-                                    border-top: 1px solid #dce0e6;
-                                    background: #f7f8fa;
-                                    color: #6f7682;
-                                    display: flex;
-                                    justify-content: space-between;
-                                    line-height: 40px;
-                                    font-size: .8rem;
-                                    font-weight: 500;
-
-                                    a {
-                                        color: #3273dc;
-                                        cursor: pointer;
-                                        text-decoration: none;
-
-                                        img {
-                                            margin-right: 5px;
-                                            margin-top: -4px;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        .templated-search {
-                            display: block;
-                            width: 100%;
-                            padding-top: 15px;
-                            padding-bottom: 30px;
-
-                            .search-box {
-                                display: block;
-                                width: 100%;
-                                position: relative;
-
-                                .input {
-                                    background-color: #ffffff;
-                                    border: 1px solid #6f7682;
-                                    padding: 7px 15px 7px 32px;
-                                    width: 100%;
-                                    font-size: 13px;
-                                    line-height: 16px;
-
-                                    &:focus {
-                                        outline: none;
-                                    }
-
-                                    &:focus-visible {
-                                        outline: none;
-                                    }
-                                }
-
-                                .search-button {
-                                    position: absolute;
-                                    left: 0;
-                                    top: 0;
-                                    border: none;
-                                    background-color: transparent;
-                                    width: 32px;
-                                    height: 32px;
-                                    line-height: 30px;
-                                }
-                            }
-
-                            .btnContainer {
-                                display: flex;
-                                justify-content: flex-end;
-                                align-items: center;
-
-                                .btn {
-                                    background-color: #ffffff;
-                                    font-size: 16px;
-
-                                    &.btn-active {
-                                        background-color: #a2d2ff;
-                                    }
-                                }
-                            }
-                        }
-
-                        .template-box {
-                            background-color: #ffffff;
-                            box-shadow: 0px 1px 6px #00000029;
-                            border-radius: 3px;
-                            margin-bottom: 30px;
-                            padding: 15px;
-                            display: block;
-
-                            .heading {
-                                display: block;
-                                padding: 0;
-                                font-size: 16px;
-                                line-height: 20px;
-                                font-weight: 600;
-
-                                img {
-                                    margin-right: 7px;
-                                    max-width: 30px;
-                                    height: auto;
-                                    display: inline-block;
-                                }
-                            }
-
-                            .sub-text {
-                                display: block;
-                                padding: 15px 0;
-                                font-size: 14px;
-                                line-height: 18px;
-                                font-weight: 600;
-                            }
-
-                            .text {
-                                display: block;
-                                padding: 0;
-                                font-size: 13px;
-                                line-height: 18px;
-                                font-weight: 500;
-                            }
-                        }
-
-
+                        background-color: #ffffff;
                     }
                 }
             }
-
         }
     }
 
