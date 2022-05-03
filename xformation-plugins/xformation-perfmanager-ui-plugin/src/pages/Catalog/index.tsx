@@ -8,6 +8,9 @@ import previewDashboard from '../../img/preview-dashboard.png';
 import { PreviewDashboardPopup } from './PreviewDashboardPopup';
 import { RestService } from './../_service/RestService';
 import { config } from './../../config';
+import { DevCatalog } from './DevCatalog';
+import { SecCatalog } from './SecCatalog';
+import { OpsCatalog } from './OpsCatalog';
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
   config: any;
@@ -21,9 +24,8 @@ export class Catalog extends React.Component<any, any>{
         Ops: {}
       },
       navHandle: {
-        index: 0,
-        topKey: 0,
-        lowerKey: 0
+        topKey: 'dev',
+        lowerKey: ""
       },
       filterData: [
         { 'name': 'Filter 1', 'id': 1, 'isHide': 'true' },
@@ -59,7 +61,6 @@ export class Catalog extends React.Component<any, any>{
       let { catalogueManagement } = this.state;
       await RestService.getData(`${config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
         (response: any) => {
-          console.log(response, 'response')
           if (response.code !== 417) {
             catalogueManagement['Dev'] = response.details.dev;
             catalogueManagement['Sec'] = response.details.sec;
@@ -75,11 +76,10 @@ export class Catalog extends React.Component<any, any>{
       console.log("Performance. Excepiton in search input this.config. Error: ", err);
     }
   }
-  handleUpperMenu = (inx: any) => {
-    let { navHandle } = this.state
-    navHandle.topKey = inx
-    navHandle.lowerKey = 0;
-    this.setState({ navHandle })
+  handleUpperMenu = (key:any) => {
+    let {navHandle}=this.state;
+    navHandle.topKey=key
+    this.setState({navHandle})
   }
   handleLowerMenu = (inx: any) => {
     let { navHandle } = this.state
@@ -184,7 +184,7 @@ export class Catalog extends React.Component<any, any>{
 
   handleChecked = (index: any) => {
     const { filterData } = this.state;
-    filterData[index].ischecked = !filterData[index].ischecked;
+    filterData[index].isChecked = !filterData[index].isChecked;
     this.setState({ filterData });
   }
   handleClearFilter = () => {
@@ -210,11 +210,22 @@ export class Catalog extends React.Component<any, any>{
             <div className="catalogue-tabs">
               <div className="row">
                 <div className="col-lg-9 col-md-9 col-sm-12">
-                  {catalogueManagement && <ul>
+                  {/* {catalogueManagement && <ul>
                     {Object.keys(catalogueManagement).map((cat: any, inx: any) =>
                       <li key={inx} className={`${topKey === inx ? 'active' : ''}`}
                         onClick={(e) => this.handleUpperMenu(inx)}>{`${cat} Catalogue`}</li>)}
-                  </ul>}
+                  </ul>} */}
+                  <ul>
+                  <li className={navHandle.topKey==='dev'?'active':'' } onClick={()=>{this.handleUpperMenu('dev')}}>
+                    <DevCatalog/>
+                  </li>
+                  <li  className={navHandle.topKey==='sec'?'active':'' } onClick={()=>{this.handleUpperMenu('sec')}}>
+                    <SecCatalog/>
+                  </li>
+                  <li  className={navHandle.topKey==='ops'?'active':'' } onClick={()=>{this.handleUpperMenu('ops')}}>
+                    <OpsCatalog/>
+                  </li>
+                  </ul>
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12">
                   <TopMenu />
@@ -223,11 +234,11 @@ export class Catalog extends React.Component<any, any>{
             </div>
             <div className="catalogue-tabs-container">
               <div className="catalogue-inner-tabs">
-                {catalogueManagement && <ul>
+                {/* {catalogueManagement && <ul>
                   {Object.keys(catalogueManagement[Object.keys(catalogueManagement)[topKey]]).map((cat: any, inx: any) => <li key={inx}
                     className={lowerKey === inx ? 'active' : ''}
                     onClick={(e) => this.handleLowerMenu(inx)}>{cat}</li>)}
-                </ul>}
+                </ul>} */}
               </div>
               <div className="catalogue-inner-tabs-container">
                 <div className="row">
@@ -413,6 +424,7 @@ export class Catalog extends React.Component<any, any>{
           </div>
         </div>
         <PreviewDashboardPopup ref={this.previewDashboardPopupRef} />
+        <DevCatalog/>
       </div>
     )
   }
