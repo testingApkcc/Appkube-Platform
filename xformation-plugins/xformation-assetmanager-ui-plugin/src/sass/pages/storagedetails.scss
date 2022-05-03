@@ -545,8 +545,8 @@
     }
 
     .dashboard-view-container {
-        display: flex;
-        min-height: 450px;
+        display: block;
+        height: 450px;
         margin-top: 10px;
         position: relative;
         border-top: 1px solid #ddd;
@@ -622,17 +622,9 @@
         }
 
         .dashboard-view {
-            -webkit-box-flex: 1;
-            -webkit-flex-grow: 1;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-            min-width: 0;
-            max-width: 100%;
+            width: 100%;
             height: 100%;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
+            display: block;
 
             iframe {
                 width: 100%;

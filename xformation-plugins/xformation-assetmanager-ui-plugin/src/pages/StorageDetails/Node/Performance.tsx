@@ -120,6 +120,15 @@ export class Performance extends React.Component<any, any>{
             isSuccess: true
         })
         const dashbaordJSONArray = this.verifyAndSaveRef.current.getDashboardJSONData();
+        if(!dashbaordJSONArray){
+            this.setState({
+                isAlertOpen: true,
+                message: 'Dashboard json is loading, wait for a while',
+                severity: this.config.SEVERITY_ERROR,
+                isSuccess: false
+            });
+            return;
+        }
         if (dashbaordJSONArray.length === 0) {
             this.wizardRef.current.setActiveStep(0);
             this.setState({

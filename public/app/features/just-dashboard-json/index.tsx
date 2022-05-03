@@ -2,9 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DashboardJSONLoader from '../dashboard-json-loader';
-// import { config } from '../config';
-import { data } from './dummyData';
-// import { backendSrv } from 'app/core/services/backend_srv';
+import { config } from '../config';
+// import { data } from './dummyData';
+import { backendSrv } from 'app/core/services/backend_srv';
 
 // Services & Utils
 export interface Props {
@@ -22,7 +22,7 @@ class JustDashboardJSON extends React.Component<Props, State> {
     super(props);
     this.state = {
       isLoading: false,
-      data: data,
+      data: null,
     };
   }
 
@@ -51,25 +51,32 @@ class JustDashboardJSON extends React.Component<Props, State> {
         pageToolbar[0].style.display = 'none';
       }
     }, 1000);
-    // const dataSourceName = this.getParameterByName('dataSourceName', window.location.href);
-    // const associatedCloudElementType = this.getParameterByName('associatedCloudElementType', window.location.href);
-    // const associatedSLAType = this.getParameterByName('associatedSLAType', window.location.href);
-    // const jsonLocation = this.getParameterByName('jsonLocation', window.location.href);
-    // const associatedCloud = this.getParameterByName('associatedCloud', window.location.href);
-    // const accountId = this.getParameterByName('accountId', window.location.href);
-    // if (dataSourceName && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud  && accountId) {
-    //   const url = `${config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
-    //   backendSrv.get(url).then(
-    //     (res: any) => {
-    //       this.setState({
-    //         data: JSON.parse(res.object.data),
-    //       });
-    //     },
-    //     (err: any) => {
-    //       console.log(err);
-    //     }
-    //   );
-    // }
+    const dataSourceName = this.getParameterByName('dataSourceName', window.location.href);
+    const associatedCloudElementType = this.getParameterByName('associatedCloudElementType', window.location.href);
+    const associatedSLAType = this.getParameterByName('associatedSLAType', window.location.href);
+    const jsonLocation = this.getParameterByName('jsonLocation', window.location.href);
+    const associatedCloud = this.getParameterByName('associatedCloud', window.location.href);
+    const accountId = this.getParameterByName('accountId', window.location.href);
+    if (
+      dataSourceName &&
+      jsonLocation &&
+      associatedCloudElementType &&
+      associatedSLAType &&
+      associatedCloud &&
+      accountId
+    ) {
+      const url = `${config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
+      backendSrv.get(url).then(
+        (res: any) => {
+          this.setState({
+            data: JSON.parse(res.data),
+          });
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      );
+    }
   }
 
   getParameterByName = (name: string, url: string) => {

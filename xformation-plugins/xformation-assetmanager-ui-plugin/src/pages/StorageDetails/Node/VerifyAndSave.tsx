@@ -10,47 +10,44 @@ export class VerifyAndSave extends React.Component<any, any>{
             selectedData: {},
             selectedDashboards: [],
             dashboardJSON: [],
+            isLoading: false,
+            manipulatedData: [],
         };
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
 
-    componentDidUpdate(previousProps: any, previousState: any) {
-        // if (this.props.selectedData !== previousProps.selectedData) {
-        //     const selectedData = this.props.selectedData;
-        //     this.setState({
-        //         selectedData
-        //     })
-        // }
-    }
-
     setDashboardData = (data: any) => {
+        const selectedDashboards = this.manipulateDashboardData(data);
         this.setState({
             selectedData: data,
+            manipulatedData: selectedDashboards
         });
-        this.retriveDashboardJSONData();
+        this.retriveDashboardJSONData(selectedDashboards);
     }
 
-    handleChange(e: any, i: any, j: any) {
-        // let isChecked = e.target.checked;
-        // const { selectedDashboards } = this.state;
-        // if (isChecked) {
-        //     selectedDashboards.push(obj);
-        //     this.setState({ selectedDashboards: selectedDashboards });
-        // } else {
-        //     this.removeObject(obj, selectedDashboards);
-        // }
-    }
-
-    removeObject(obj: any, selData: any) {
-        let index = selData.indexOf(obj);
-        selData.splice(index, 1);
-        this.setState({ selectedDashboards: selData });
-    }
-
-    getSelection = () => {
-        return this.state.selectedDashboards;
+    manipulateDashboardData = (data: any) => {
+        if (data && data.DataSources) {
+            const retData: any = [];
+            for (let i = 0; i < data.DataSources.length; i++) {
+                const dataSource = data.DataSources[i];
+                if (dataSource.isChecked) {
+                    if (data.CloudDashBoards && data.CloudDashBoards.length > 0) {
+                        for (let j = 0; j < data.CloudDashBoards.length; j++) {
+                            if (data.CloudDashBoards[j].associatedDataSourceType === dataSource.name) {
+                                if (data.CloudDashBoards[j].isChecked) {
+                                    retData.push({
+                                        dashboard: data.CloudDashBoards[j],
+                                        dataSource
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return retData;
+        }
     };
-
 
     displayTable = () => {
         const retData = [];
@@ -65,7 +62,7 @@ export class VerifyAndSave extends React.Component<any, any>{
                             if (selectedData.CloudDashBoards[j].isChecked) {
                                 dashboardJSX.push(
                                     <tr>
-                                        <td><input type="checkbox" id={`${i}`} checked={selectedData.CloudDashBoards[j].isChecked} onChange={e => this.handleChange(e, j, i)} /></td>
+                                        <td><input type="checkbox" id={`${i}`} checked={selectedData.CloudDashBoards[j].isChecked} /></td>
                                         <td>{selectedData.CloudDashBoards[j].associatedDataSourceType}</td>
                                     </tr>
                                 )
@@ -105,30 +102,58 @@ export class VerifyAndSave extends React.Component<any, any>{
         return retData;
     }
 
-    retriveDashboardJSONData = () => {
-        const { dashboardJSON } = this.state;
-        const dataSourceName = "awsCloudWatch";
-        const jsonLocation = "xformation.synectiks.com/test_ds.json";
-        const associatedCloudElementType = "RDS";
-        const associatedSLAType = "PERFORMANCE";
-        const associatedCloud = "AWS";
-        const accountId = "657907747545";
-        if (dataSourceName && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud && accountId) {
-            const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
-            try {
-                RestService.getData(url, null, null).then((res: any) => {
-                    dashboardJSON.push(res);
-                    this.setState({
-                        dashboardJSON,
+    retriveDashboardJSONData = (selectedDashboards: any) => {
+        const accountId = this.getParameterByName("accountId", window.location.href);
+        const dashboardJSON: any = [];
+        if (selectedDashboards.length > 0) {
+            this.setState({
+                isLoading: true,
+            });
+        }
+        for (let i = 0; i < selectedDashboards.length; i++) {
+            const { associatedDataSourceType, jsonLocation, associatedCloudElementType, associatedSLAType, associatedCloud } = selectedDashboards[i].dashboard;
+            if (associatedDataSourceType && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud) {
+                const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${associatedDataSourceType}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
+                try {
+                    RestService.getData(url, null, null).then((res: any) => {
+                        dashboardJSON.push(res);
+                        this.checkIfAllDashboardLoaded(dashboardJSON);
+                    }, (err: any) => {
+                        dashboardJSON.push(null);
+                        this.checkIfAllDashboardLoaded(dashboardJSON);
                     });
-                });
-            } catch (err) {
-                console.log('Loading aws regions failed. Error: ', err);
+                } catch (err) {
+                    console.log('Loading aws regions failed. Error: ', err);
+                    dashboardJSON.push(null);
+                    this.checkIfAllDashboardLoaded(dashboardJSON);
+                }
             }
         }
     };
 
+    checkIfAllDashboardLoaded = (dashboardJSON: any) => {
+        const { manipulatedData } = this.state;
+        if (manipulatedData.length === dashboardJSON.length) {
+            this.setState({
+                isLoading: false,
+                dashboardJSON
+            });
+        }
+    };
+
+    getParameterByName = (name: any, url: any) => {
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    };
+
     getDashboardJSONData = () => {
+        if (this.state.isLoading) {
+            return false;
+        }
         return this.state.dashboardJSON;
     };
 
