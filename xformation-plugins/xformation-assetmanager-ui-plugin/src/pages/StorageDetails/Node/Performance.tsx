@@ -20,8 +20,6 @@ export class Performance extends React.Component<any, any>{
         super(props);
         this.state = {
             enablePerformanceMonitoring: true,
-            inputName: "Performance",
-            updatedDashboards: [],
             isAlertOpen: false,
             severity: null,
             message: null,
@@ -44,11 +42,11 @@ export class Performance extends React.Component<any, any>{
         this.steps = [
             {
                 name: "Verify Inputs",
-                component: () => <VerifyInputs ref={this.verifyInputsRef} dashboard={this.state.dashboardData} {...this.props} updateDashboard={this.updateDashboard} />
+                component: () => <VerifyInputs ref={this.verifyInputsRef} />
             },
             {
                 name: "Enable Dashboard",
-                component: () => <EnableDashboard ref={this.enableDashboardRef} {...this.props} />
+                component: () => <EnableDashboard ref={this.enableDashboardRef} />
             },
             {
                 name: "Preview",
@@ -66,27 +64,20 @@ export class Performance extends React.Component<any, any>{
         this.getInputConfig();
     }
 
-    updateDashboard = (data: any) => {
-        this.setState({
-            dashboardData: data,
-        })
-    }
-
     getInputConfig = async () => {
         try {
-            let dashboard: any = {};
             RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
                 (response: any) => {
                     if (response.code !== 417) {
-                        dashboard['CloudDashBoards'] = response.details.ops.cloudDashBoards;
-                        dashboard['DataSources'] = response.details.ops.dataSources;
+                        const { cloudDashBoards, dataSources } = response.details.ops;
+                        const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
                         this.setState({
                             enablePerformanceMonitoring: true,
                             showConfigWizard: false,
                             activeDashboard: 0,
-                            dashboardData: dashboard,
+                            dashboardData,
                         });
-                        this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboard);
+                        this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboardData);
                     } else {
                         this.setState({
                             showConfigWizard: true,
@@ -99,6 +90,22 @@ export class Performance extends React.Component<any, any>{
             console.log("Performance. Excepiton in search input this.config. Error: ", err);
         }
     }
+
+    manipulateCatalogueData = (dataSources: any, dashboards: any) => {
+        dataSources.forEach((dataSource: any) => {
+            const name = dataSource.name;
+            dashboards.forEach((dashboard: any) => {
+                if (name === dashboard.associatedDataSourceType) {
+                    dataSource.isDashboardAdded = true;
+                    dataSource.dashboards = dataSource.dashboards || [];
+                    dataSource.dashboards.push(dashboard);
+                }
+            });
+        });
+        // const retData = dataSources.filter((source: any) => source.isDashboardAdded);
+        // return retData;
+        return dataSources
+    };
 
     enablePerformanceMonitoring = () => {
         this.setState({
@@ -120,11 +127,11 @@ export class Performance extends React.Component<any, any>{
             isSuccess: true
         })
         const dashbaordJSONArray = this.verifyAndSaveRef.current.getDashboardJSONData();
-        if(!dashbaordJSONArray){
+        if (!dashbaordJSONArray) {
             this.setState({
                 isAlertOpen: true,
                 message: 'Dashboard json is loading, wait for a while',
-                severity: this.config.SEVERITY_ERROR,
+                severity: 'warning',
                 isSuccess: false
             });
             return;
@@ -134,7 +141,7 @@ export class Performance extends React.Component<any, any>{
             this.setState({
                 isAlertOpen: true,
                 message: 'Please select dashboard',
-                severity: this.config.SEVERITY_ERROR,
+                severity: 'warning',
                 isSuccess: false
             });
             return;
@@ -161,7 +168,7 @@ export class Performance extends React.Component<any, any>{
                 this.setState({
                     isAlertOpen: true,
                     message: 'Enabling performance dashboards failed',
-                    severity: this.config.SEVERITY_ERROR,
+                    severity: 'error',
                     isSuccess: true
                 })
             });
@@ -191,12 +198,26 @@ export class Performance extends React.Component<any, any>{
     };
 
     nextClick = (step: any) => {
+        const dashboardData = this.verifyInputsRef.current.getSelectedDashboards();
+        if(!dashboardData){
+            this.wizardRef.current.setActiveStep(0);
+            this.setState({
+                isAlertOpen: true,
+                message: 'Please select the dashboard',
+                severity: 'warning',
+                isSuccess: false
+            });
+            return;
+        }
+        this.setState({
+            dashboardData
+        });
         if (step === 1) {
-            this.enableDashboardRef.current.setDashboardData(this.state.dashboardData);
+            this.enableDashboardRef.current.setDashboardData(dashboardData);
         } else if (step === 2) {
-            this.previewRef.current.setDashboardData(this.state.dashboardData);
+            this.previewRef.current.setDashboardData(dashboardData);
         } else if (step === 3) {
-            this.verifyAndSaveRef.current.setDashboardData(this.state.dashboardData);
+            this.verifyAndSaveRef.current.setDashboardData(dashboardData);
         }
     }
 

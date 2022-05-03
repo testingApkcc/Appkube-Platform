@@ -141,15 +141,14 @@ export class Action extends React.Component<any, any> {
       this.setState({
         isAlertOpen: true,
         message: grafanaResponse.message,
-        severity: this.config.SEVERITY_ERROR,
+        severity: 'error',
       });
     } else {
-      console.log("No ERROR in grafana");
       await this.addDataSourceInAssetService(e);
       this.setState({
         isAlertOpen: true,
         message: grafanaResponse.message,
-        severity: this.config.SEVERITY_SUCCESS,
+        severity: 'success',
       });
     }
 
