@@ -37,6 +37,7 @@ export class OpsCatalogue extends React.Component<any, any>{
     },
 ];
     previewDashboardPopupRef: any;
+
     constructor(props: any) {
         super(props)
         this.state = {

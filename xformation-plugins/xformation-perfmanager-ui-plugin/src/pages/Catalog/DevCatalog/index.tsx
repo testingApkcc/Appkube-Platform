@@ -1,8 +1,39 @@
 import React from 'react';
+import { AppBlocks } from './AppBlocks';
+import { LibrarySdk } from './LibraryAndSDKs';
+import { DeploymentTemplate } from './BuildDeployTemp';
+import { ISVSolutions } from './ISVsolutions';
+import { DataFlow } from './Dataflows';
 
 export class DevCatalogue extends React.Component<any, any>{
     config: any;
-    tabMapping: any = [];
+    tabMapping: any = [
+        {
+            name: "App Block",
+            dataKey: 'appblock',
+            component: AppBlocks
+        },
+        {
+            name: "Library/ SDKs",
+            dataKey: 'library',
+            component: LibrarySdk
+        },
+        {
+            name: "Build/Deployment Template",
+            dataKey: 'deploymentTemplate',
+            component: DeploymentTemplate
+        },
+        {
+            name: "ISV Solutions",
+            dataKey: 'isvSolutions',
+            component: ISVSolutions
+        },
+        {
+            name: "Data Flow",
+            dataKey: 'dataflow',
+            component: DataFlow
+        }
+    ];
     previewDashboardPopupRef: any;
     constructor(props: any) {
         super(props)
@@ -44,12 +75,12 @@ export class DevCatalogue extends React.Component<any, any>{
                     }
                     {
                         this.tabMapping.map((tabData: any, index: any) => {
-                            if(index === activeTab){
+                            if (index === activeTab) {
                                 return <tabData.component data={catalogData[tabData.dataKey]} />
                             } else {
                                 return <></>;
                             }
-                            
+
                         })
                     }
                 </ul>
