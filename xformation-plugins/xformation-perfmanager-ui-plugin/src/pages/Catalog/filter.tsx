@@ -26,17 +26,17 @@ export class Filter extends React.Component<any, any>{
             for (let i = 0; i < filterData.length; i++) {
                 if (filterData[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
                     filterData[i].isHide = true;
-                    filterData[i].isChecked = true;
+                    // filterData[i].isChecked = true;
                 }
                 else {
                     filterData[i].isHide = false;
-                    filterData[i].isChecked = false;
+                    // filterData[i].isChecked = false;
                 }
             }
         } else {
             for (let i = 0; i < filterData.length; i++) {
                 filterData[i].isHide = true;
-                filterData[i].isChecked = false
+                // filterData[i].isChecked = false
             }
         }
         this.setState({
@@ -48,11 +48,11 @@ export class Filter extends React.Component<any, any>{
     handleFilterList = (filterValues: any) => {
         let retData: any = [];
         for (let i = 0; i < filterValues.length; i++) {
-            let { id, name, isHide, isChecked } = filterValues[i]
+            let { id, name, isHide } = filterValues[i]
             if (isHide) {
                 retData.push(
                     <li key={i}>
-                        <input type="checkbox" id={id} name={name} value={id} checked={isChecked} onClick={() => this.handleChecked(i)} />
+                        <input type="checkbox" id={id} name={name} value={id} onClick={() => this.handleChecked(i)} />
                         <label>{name}</label>
                     </li>
                 )
@@ -63,7 +63,7 @@ export class Filter extends React.Component<any, any>{
 
     handleChecked = (index: any) => {
         const { filterData } = this.state;
-        filterData[index].isChecked = !filterData[index].isChecked;
+        // filterData[index].isChecked = !filterData[index].isChecked;
         this.setState({ filterData });
     }
 
@@ -71,7 +71,7 @@ export class Filter extends React.Component<any, any>{
         let { filterData } = this.state;
         for (let i = 0; i < filterData.length; i++) {
             filterData[i].isHide = true;
-            filterData[i].isChecked = false;
+            // filterData[i].isChecked = false;
         }
         this.setState({ filterData, searchString: '' })
     }
@@ -79,45 +79,45 @@ export class Filter extends React.Component<any, any>{
     render() {
         const { filterData, searchString } = this.state;
         return (
-                <div className="catalogue-filters">
-                    <div className="filter-search">
-                        <strong>Filters</strong>
-                        <div className="filter-input">
-                            <button className="search-icon" onClick={this.handleClearFilter}><i className="fa fa-search"></i></button>
-                            <input type="text" placeholder="Search" value={searchString} onChange={this.searchFilter} />
-                            <button className="close-icon" onClick={this.handleClearFilter}><i className="fa fa-close"></i></button>
-                        </div>
-                    </div>
-                    <div className="catalogue-category">
-                        <strong>Tier</strong>
-                        <ul>
-                            <li>
-                                <input type="checkbox" id="1" name="Filter1" value="filter1" />
-                                <label>Filter 1</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="2" name="Filter2" value="filter2" />
-                                <label>Filter 2</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="3" name="Filter3" value="filter3" />
-                                <label>Filter 3</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="4" name="Filter4" value="filter4" />
-                                <label>Filter 4</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="catalogue-category">
-                        <strong>Category</strong>
-                        <ul>
-                            {filterData && filterData.length > 0 &&
-                                this.handleFilterList(filterData)
-                            }
-                        </ul>
+            <div className="catalogue-filters">
+                <div className="filter-search">
+                    <strong>Filters</strong>
+                    <div className="filter-input">
+                        <button className="search-icon" onClick={this.handleClearFilter}><i className="fa fa-search"></i></button>
+                        <input type="text" placeholder="Search" value={searchString} onChange={this.searchFilter} />
+                        <button className="close-icon" onClick={this.handleClearFilter}><i className="fa fa-close"></i></button>
                     </div>
                 </div>
+                <div className="catalogue-category">
+                    <strong>Tier</strong>
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="1" name="Filter1" value="filter1" />
+                            <label>Filter 1</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="2" name="Filter2" value="filter2" />
+                            <label>Filter 2</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="3" name="Filter3" value="filter3" />
+                            <label>Filter 3</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="4" name="Filter4" value="filter4" />
+                            <label>Filter 4</label>
+                        </li>
+                    </ul>
+                </div>
+                <div className="catalogue-category">
+                    <strong>Category</strong>
+                    <ul>
+                        {filterData && filterData.length > 0 &&
+                            this.handleFilterList(filterData)
+                        }
+                    </ul>
+                </div>
+            </div>
         )
     }
 }
