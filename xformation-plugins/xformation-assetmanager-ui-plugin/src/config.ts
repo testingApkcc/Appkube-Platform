@@ -68,6 +68,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     SEARCH_CONFIG_DASHBOARD: `${assetSrvUrl}/catalogue/search`,
 
     ADD_DASHBOARDS_TO_GRAFANA: `${mainApplicationBaseUrl}/dashboards/importAssets`,
+    ADD_VIEW_JSON_TO_GRAFANA: `${mainApplicationBaseUrl}/dashboards/view-json`,
     ADD_DATASOURCE_IN_GRAFANA: `${mainApplicationBaseUrl}/datasources`,
     // UPDATE_DATASOURCE_IN_GRAFANA: `${mainApplicationBaseUrl}/datasources/updateDataSource`,
     GET_VIEW_JSON: `${mainApplicationBaseUrl}/dashboards/filterdashboards`,

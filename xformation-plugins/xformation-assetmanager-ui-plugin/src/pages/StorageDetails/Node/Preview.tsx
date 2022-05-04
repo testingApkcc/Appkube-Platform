@@ -13,12 +13,35 @@ export class Preview extends React.Component<any, any> {
   }
 
   setDashboardData = (data: any) => {
+    const { sourceIndex, dashboardIndex } = this.getActiveDashboard(data)
     this.setState({
       dashboardData: data,
-      activeDashboard: 0,
-      activeDataSource: 0,
+      activeDashboard: dashboardIndex,
+      activeDataSource: sourceIndex,
     });
   }
+
+  getActiveDashboard = (data: any) => {
+    let sourceIndex = 0;
+    let dashboardIndex = 0;
+    for (let i = 0; i < data.length; i++) {
+      const dataSource = data[i];
+      if (dataSource.isChecked) {
+        for (let j = 0; j < dataSource.dashboards.length; j++) {
+          if (dataSource.dashboards[j].isChecked) {
+            dashboardIndex = j;
+            break;
+          }
+        }
+        sourceIndex = i;
+        break;
+      }
+    }
+    return {
+      sourceIndex,
+      dashboardIndex
+    };
+  };
 
   getParameterByName = (name: any, url: any) => {
     name = name.replace(/[\[\]]/g, "\\$&");

@@ -33,6 +33,7 @@ export class Performance extends React.Component<any, any>{
                 { title: 'dashboard 3', uid: 'wBJ0ayw7k' },
             ],
             dashboardData: {},
+            isLoading: false,
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -123,9 +124,15 @@ export class Performance extends React.Component<any, any>{
     }
 
     onSubmit = async () => {
-        this.setState({
-            isSuccess: true
-        })
+        if (this.state.isLoading) {
+            this.setState({
+                isAlertOpen: true,
+                message: 'Dashboards are being imported. Please wait..',
+                severity: 'warning',
+                isSuccess: false
+            });
+            return;
+        }
         const dashbaordJSONArray = this.verifyAndSaveRef.current.getDashboardJSONData();
         if (!dashbaordJSONArray) {
             this.setState({
@@ -146,31 +153,94 @@ export class Performance extends React.Component<any, any>{
             });
             return;
         }
-        const result: any = [];
+        const responseArray: any = [];
+        this.setState({
+            isLoading: true
+        });
         dashbaordJSONArray.forEach((dashboard: any) => {
-            result.push({
+            const data = {
                 title: dashboard.title,
                 slug: dashboard.slug,
                 uid: dashboard.uid,
                 data: dashboard,
-            });
+            };
+            var json = JSON.stringify(data);
+            var reqOpt = RestService.optionWithAuthentication(json, 'POST');
+            fetch(this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
+                .then(response => response.json())
+                .then(result => {
+                    responseArray.push({
+                        ...result,
+                        dashboardCatalogueId: dashboard.dashboardCatalogueId
+                    });
+                    if (responseArray.length === dashbaordJSONArray.length) {
+                        this.sendViewJSON(responseArray);
+                    }
+                }, error => {
+                    responseArray.push(null);
+                    if (responseArray.length === dashbaordJSONArray.length) {
+                        this.setState({
+                            isAlertOpen: true,
+                            message: 'There was some error while importing dashboard',
+                            severity: 'error',
+                            isSuccess: true,
+                            isLoading: false
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log('Dashboard import in grafana failed. Error', error);
+                    this.setState({
+                        isAlertOpen: true,
+                        message: 'Enabling performance dashboards failed',
+                        severity: 'error',
+                        isSuccess: true
+                    });
+                    responseArray.push(null);
+                    if (responseArray.length === dashbaordJSONArray.length) {
+                        this.setState({
+                            isAlertOpen: true,
+                            message: 'There was some error while importing dashboard',
+                            severity: 'error',
+                            isSuccess: true,
+                            isLoading: false
+                        });
+                    }
+                });
         });
+    };
 
-        var json = JSON.stringify(result);
+    sendViewJSON = (responseArray: any) => {
+        var json = JSON.stringify(responseArray);
         var reqOpt = RestService.optionWithAuthentication(json, 'POST');
-        fetch(this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
+        fetch(this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
             .then(response => response.json())
             .then(result => {
-
-            })
-            .catch(error => {
-                console.log('Dashboard import in grafana failed. Error', error)
                 this.setState({
                     isAlertOpen: true,
-                    message: 'Enabling performance dashboards failed',
+                    message: 'Dashboards imported successfully',
+                    severity: 'success',
+                    isSuccess: false,
+                    isLoading: false,
+                });
+            }, error => {
+                this.setState({
+                    isAlertOpen: true,
+                    message: 'There was some issue while adding view',
                     severity: 'error',
-                    isSuccess: true
-                })
+                    isSuccess: false,
+                    isLoading: false,
+                });
+            })
+            .catch(error => {
+                console.log('There was some issue while adding ', error);
+                this.setState({
+                    isAlertOpen: true,
+                    message: 'There was some issue while adding ',
+                    severity: 'error',
+                    isSuccess: true,
+                    isLoading: false,
+                });
             });
     };
 
@@ -199,7 +269,7 @@ export class Performance extends React.Component<any, any>{
 
     nextClick = (step: any) => {
         const dashboardData = this.verifyInputsRef.current.getSelectedDashboards();
-        if(!dashboardData){
+        if (!dashboardData) {
             this.wizardRef.current.setActiveStep(0);
             this.setState({
                 isAlertOpen: true,
