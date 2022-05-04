@@ -3,6 +3,7 @@ import previewDashboardIcon from '../../../img/preview-dashboard-icon.png';
 import libraryIcon from '../../../img/library-icon.png';
 import previewDashboard from '../../../img/preview-dashboard.png';
 import { PreviewDashboardPopup } from './PreviewDashboardPopup';
+import { Filter } from './../filter';
 
 export class CloudDashboards extends React.Component<any, any>{
     previewDashboardPopupRef: any;
@@ -12,14 +13,6 @@ export class CloudDashboards extends React.Component<any, any>{
             dashboards: this.props.data || [],
         }
         this.previewDashboardPopupRef = React.createRef();
-    }
-
-    componentDidUpdate(prevProps: any, prevState: any) {
-        if (JSON.stringify(prevProps.data) !== JSON.stringify(this.props.data)) {
-            this.setState({
-                dashboards: this.props.data
-            });
-        }
     }
 
     onClickPreviewDashboard = () => {
@@ -72,11 +65,15 @@ export class CloudDashboards extends React.Component<any, any>{
         }
         return retData
     }
+
     render() {
         const { dashboards } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
+                    <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
+                        <Filter />
+                    </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">
                             <div className="heading">

@@ -3,6 +3,7 @@ import previewDashboardIcon from '../../../img/preview-dashboard-icon.png';
 import libraryIcon from '../../../img/library-icon.png';
 import previewDashboard from '../../../img/preview-dashboard.png';
 import { PreviewDashboardPopup } from './PreviewDashboardPopup';
+import { Filter } from './../filter';
 
 export class DataSources extends React.Component<any, any>{
     previewDashboardPopupRef: any;
@@ -77,6 +78,9 @@ export class DataSources extends React.Component<any, any>{
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
+                    <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
+                        <Filter />
+                    </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">
                             <div className="heading">
