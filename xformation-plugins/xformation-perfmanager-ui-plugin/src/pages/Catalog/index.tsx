@@ -1,30 +1,33 @@
 import React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { TopMenu } from './TopMenu';
-
-import { PreviewDashboardPopup } from './PreviewDashboardPopup';
 import { RestService } from './../_service/RestService';
 import { config } from './../../config';
-import { DevCatalog } from './DevCatalog';
-import { SecCatalog } from './SecCatalog';
-import { OpsCatalog } from './OpsCatalog';
-import {AppBlocks} from './DevCatalog/AppBlocks'
+import { DevCatalogue } from './DevCatalog';
+import { SecCatalogue } from './SecCatalog';
+import { OpsCatalogue } from './OpsCatalog';
+
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
   config: any;
-  previewDashboardPopupRef: any;
+  tabMapping: any = [{
+    name: "Dev Catalogue",
+    dataKey: 'dev',
+    component: DevCatalogue
+  }, {
+    name: "Sec Catalogue",
+    dataKey: 'sec',
+    component: SecCatalogue
+  }, {
+    name: "Ops Catalogue",
+    dataKey: 'ops',
+    component: OpsCatalogue
+  }];
   constructor(props: any) {
     super(props)
     this.state = {
-      catalogueManagement: {
-        Dev: {},
-        Sec: {},
-        Ops: {}
-      },
-      navHandle: {
-        topKey: 'Dev',
-        lowerKey: 0,
-      },
+      catalogueData: {},
+      activeTab: 0,
       filterData: [
         { 'name': 'Filter 1', 'id': 1, 'isHide': 'true' },
         { 'name': 'Filter 2', 'id': 2, 'isHide': 'true' },
@@ -48,24 +51,19 @@ export class Catalog extends React.Component<any, any>{
         isCurrentPage: true,
       },
     ];
-    this.previewDashboardPopupRef = React.createRef();
   }
 
-  async componentDidMount() {
-    await this.getInputConfig();
+  componentDidMount() {
+    this.getInputConfig();
   }
 
-  getInputConfig = async () => {
+  getInputConfig = () => {
     try {
-      let { catalogueManagement } = this.state;
-      await RestService.getData(`${config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
+      RestService.getData(`${config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
         (response: any) => {
           if (response.code !== 417) {
-            catalogueManagement['Dev'] = response.details.dev;
-            catalogueManagement['Sec'] = response.details.sec;
-            catalogueManagement['Ops'] = response.details.ops;
             this.setState({
-              catalogueManagement,
+              catalogueData: response.details,
             });
           }
         }, (error: any) => {
@@ -76,25 +74,9 @@ export class Catalog extends React.Component<any, any>{
     }
   }
 
-  handleUpperMenu = (key: any) => {
-    let { navHandle } = this.state;
-    navHandle.topKey = key;
-    navHandle.lowerKey=0 
-    this.setState({ navHandle })
+  setActiveTab = (activeTab: any) => {
+    this.setState({ activeTab })
   }
-
-  handleLowerMenu = (inx: any) => {
-    let { navHandle } = this.state
-    navHandle.lowerKey = inx;
-    this.setState({ navHandle })
-  }
-
-  handlePreviewDashboard = (link: any) => {
-    this.previewDashboardPopupRef.current.setLink(link);
-    this.previewDashboardPopupRef.current.toggle();
-  }
-
-  
 
   searchFilter = (e: any) => {
     const { filterData } = this.state;
@@ -154,16 +136,7 @@ export class Catalog extends React.Component<any, any>{
   }
 
   render() {
-    const { catalogueManagement, navHandle, showPreview } = this.state;
-    const { topKey, lowerKey } = navHandle;
-    let cardData = catalogueManagement[topKey];
-    console.log(cardData);
-    // if (cardData) {
-      cardData =cardData[Object.keys(cardData)[lowerKey]];
-    // }
-    console.log(cardData, "card Data")
-    console.log(lowerKey)
-    console.log(topKey)
+    const { catalogueData, activeTab } = this.state;
     return (
       <div className="perfmanager-dashboard-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="CATALOGUE MANAGEMENT" />
@@ -172,11 +145,19 @@ export class Catalog extends React.Component<any, any>{
             <div className="catalogue-tabs">
               <div className="row">
                 <div className="col-lg-9 col-md-9 col-sm-12">
-                  {catalogueManagement && <ul>
-                    {Object.keys(catalogueManagement).map((cat: any, inx: any) =>
-                      <li key={inx} className={`${topKey === cat ? 'active' : ''}`}
-                        onClick={(e) => this.handleUpperMenu(cat)}>{`${cat} Catalogue`}</li>)}
-                  </ul>}
+                  <ul>
+                    {
+                      this.tabMapping.map((tabData: any, index: any) => {
+                        return (
+                          <li key={`ops-tab-${index}`}
+                            className={index === activeTab ? 'active' : ''}
+                            onClick={(e) => this.setActiveTab(index)}>
+                            {tabData.name}
+                          </li>
+                        )
+                      })
+                    }
+                  </ul>
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12">
                   <TopMenu />
@@ -184,23 +165,20 @@ export class Catalog extends React.Component<any, any>{
               </div>
             </div>
             <div className="catalogue-tabs-container">
-              {catalogueManagement && <div className="catalogue-inner-tabs">
-                {navHandle.topKey === 'Dev' && Object.keys(catalogueManagement['Dev']).length > 0 &&
-                  <DevCatalog catalogData={catalogueManagement} navHandle={navHandle}  handleLowerMenu={this.handleLowerMenu}/>
+              <div className="catalogue-inner-tabs">
+                {
+                  this.tabMapping.map((tabData: any, index: any) => {
+                    if (activeTab === index) {
+                      return <tabData.component data={catalogueData[tabData.dataKey]} />;
+                    } else {
+                      return <></>;
+                    }
+                  })
                 }
-                {navHandle.topKey === 'Sec' && Object.keys(catalogueManagement['Dev']).length > 0 &&
-                  <SecCatalog catalogData={catalogueManagement} navHandle={navHandle}  handleLowerMenu={this.handleLowerMenu}/>
-                }
-                {navHandle.topKey === 'Ops' && Object.keys(catalogueManagement['Dev']).length > 0 &&
-                  <OpsCatalog catalogData={catalogueManagement} navHandle={navHandle}  handleLowerMenu={this.handleLowerMenu}/>
-                }
-              </div>}
+              </div>
             </div>
-            {/* <ProvisioningTemplates /> */}
-            <AppBlocks cardData={cardData} handlePreviewDashboard={this.handlePreviewDashboard} showPreview={showPreview}/>
           </div>
         </div>
-        <PreviewDashboardPopup ref={this.previewDashboardPopupRef} />
       </div>
     )
   }

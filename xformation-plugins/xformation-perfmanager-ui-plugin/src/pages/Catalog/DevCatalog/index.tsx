@@ -1,32 +1,89 @@
 import React from 'react';
-export class DevCatalog extends React.Component<any, any>{
+import { AppBlocks } from './AppBlocks';
+import { LibrarySdk } from './LibraryAndSDKs';
+import { DeploymentTemplate } from './BuildDeployTemp';
+import { ISVSolutions } from './ISVsolutions';
+import { DataFlow } from './Dataflows';
+
+export class DevCatalogue extends React.Component<any, any>{
     config: any;
+    tabMapping: any = [
+        {
+            name: "App Block",
+            dataKey: 'appblock',
+            component: AppBlocks
+        },
+        {
+            name: "Library/ SDKs",
+            dataKey: 'library',
+            component: LibrarySdk
+        },
+        {
+            name: "Build/Deployment Template",
+            dataKey: 'deploymentTemplate',
+            component: DeploymentTemplate
+        },
+        {
+            name: "ISV Solutions",
+            dataKey: 'isvSolutions',
+            component: ISVSolutions
+        },
+        {
+            name: "Data Flow",
+            dataKey: 'dataflow',
+            component: DataFlow
+        }
+    ];
     previewDashboardPopupRef: any;
     constructor(props: any) {
         super(props)
         this.state = {
-            catalogueManagement: {
-                Dev: {},
-                Sec: {},
-                Ops: {}
-            },
+            catalogData: this.props.data || {},
+            activeTab: 0
         }
     }
 
-    async componentDidMount() {
+    componentDidUpdate(prevProps: any, prevState: any) {
+        if (JSON.stringify(prevProps.data) !== JSON.stringify(this.props.data)) {
+            this.setState({
+                catalogData: this.props.data
+            });
+        }
     }
 
+    setActiveTab = (activeTab: any) => {
+        this.setState({
+            activeTab
+        });
+    };
+
     render() {
-        const { catalogData, navHandle, handleLowerMenu } = this.props;
+        const { catalogData, activeTab } = this.state;
         return (
             <>
-                {catalogData && navHandle &&
-                    <ul>
-                        {Object.keys(catalogData[navHandle.topKey]).map((cat: any, inx: any) => <li key={inx}
-                            className={navHandle.lowerKey === inx ? 'active' : ''}
-                            onClick={(e) => handleLowerMenu(inx)}>{cat}</li>)}
-                    </ul>
-                }
+                <ul>
+                    {
+                        this.tabMapping.map((tabData: any, index: any) => {
+                            return (
+                                <li key={`ops-tab-${index}`}
+                                    className={index === activeTab ? 'active' : ''}
+                                    onClick={(e) => this.setActiveTab(index)}>
+                                    {tabData.name}
+                                </li>
+                            )
+                        })
+                    }
+                    {
+                        this.tabMapping.map((tabData: any, index: any) => {
+                            if (index === activeTab) {
+                                return <tabData.component data={catalogData[tabData.dataKey]} />
+                            } else {
+                                return <></>;
+                            }
+
+                        })
+                    }
+                </ul>
             </>
         )
     }
