@@ -8,7 +8,7 @@ define([
   '@grafana/runtime',
   '@emotion/css',
 ], (
-  __WEBPACK_EXTERNAL_MODULE__72__,
+  __WEBPACK_EXTERNAL_MODULE__71__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__5__,
   __WEBPACK_EXTERNAL_MODULE__12__,
@@ -661,44 +661,44 @@ PERFORMANCE OF THIS SOFTWARE.
             GET_DEPARTMENTWISE_PRODUCT: ''.concat(assetSrvUrl, '/department-wise-analytics/search?orgId=78'),
             GET_PRODUCT_DATA: ''.concat(assetSrvUrl, '/department-wise-analytics/get?orgId=78'),
             GET_SERVICES_DATA: ''.concat(assetSrvUrl, '/service-detail/search'),
-            PREVIEW_DASHBOARDS_URL: 'http://18.234.236.211:5057/api/dashboard/preview',
+            PREVIEW_DASHBOARDS_URL: ''.concat(assetSrvUrl, '/dashboard/preview'),
             ADD_Organization: ''.concat(assetSrvUrl, '/addEnvironment'),
             SERVER_ERROR_MESSAGE: 'SERVER_ERROR_MESSAGE',
-            DASHBOARD_JSON: {
-              Uid: '',
-              Uuid: '',
-              Slug: '',
-              Title: '',
-              OrgId: 1,
-              'GnetId ': 0,
-              Version: '1',
-              PluginId: '',
-              UpdatedBy: '1',
-              CreatedBy: '1',
-              FolderId: 0,
-              IsFolder: false,
-              HasAcl: false,
-              Data: '',
-              SourceJsonRef: '',
-              InputSourceId: '',
-              AccountId: '',
-              TenantId: '',
-              IsCloud: true,
-              CloudName: '',
-              ElementType: '',
-              FileName: '',
-              InputType: '',
-            },
-            RAW: {
-              Dashboard: {},
-              UserId: 1,
-              Overwrite: true,
-              Message: '',
-              OrgId: 1,
-              PluginId: '',
-              FolderId: 0,
-              IsFolder: false,
-            },
+            // DASHBOARD_JSON: {
+            //   Uid: '',
+            //   Uuid: '',
+            //   Slug: '',
+            //   Title: '',
+            //   OrgId: 1,
+            //   'GnetId ': 0,
+            //   Version: '1',
+            //   PluginId: '',
+            //   UpdatedBy: '1',
+            //   CreatedBy: '1',
+            //   FolderId: 0,
+            //   IsFolder: false,
+            //   HasAcl: false,
+            //   Data: '',
+            //   SourceJsonRef: '',
+            //   InputSourceId: '',
+            //   AccountId: '',
+            //   TenantId: '',
+            //   IsCloud: true,
+            //   CloudName: '',
+            //   ElementType: '',
+            //   FileName: '',
+            //   InputType: '',
+            // },
+            // RAW: {
+            //   Dashboard: {},
+            //   UserId: 1,
+            //   Overwrite: true,
+            //   Message: '',
+            //   OrgId: 1,
+            //   PluginId: '',
+            //   FolderId: 0,
+            //   IsFolder: false,
+            // },
             USERID: 'admin',
             PASSWORD: 'password',
             // GET_ALL_ORGANIZATIONS: `${assetSrvUrl}/getAllOrganizations`,
@@ -714,7 +714,7 @@ PERFORMANCE OF THIS SOFTWARE.
             SEARCH_INPUT_CONFIG: ''.concat(assetSrvUrl, '/searchInputConfig'),
             SEARCH_CONFIG_DASHBOARD: ''.concat(assetSrvUrl, '/catalogue/search'),
             ADD_DASHBOARDS_TO_GRAFANA: ''.concat(mainApplicationBaseUrl, '/dashboards/importAssets'),
-            ADD_VIEW_JSON_TO_GRAFANA: ''.concat(mainApplicationBaseUrl, '/dashboards/view-json'),
+            ADD_VIEW_JSON_TO_GRAFANA: ''.concat(assetSrvUrl, '/dashboard/view-json'),
             ADD_DATASOURCE_IN_GRAFANA: ''.concat(mainApplicationBaseUrl, '/datasources'),
             // UPDATE_DATASOURCE_IN_GRAFANA: `${mainApplicationBaseUrl}/datasources/updateDataSource`,
             GET_VIEW_JSON: ''.concat(mainApplicationBaseUrl, '/dashboards/filterdashboards'),
@@ -728,6 +728,45 @@ PERFORMANCE OF THIS SOFTWARE.
         /***/
       },
       /* 7 */
+      /*!**********************!*\
+  !*** ./constants.ts ***!
+  \**********************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ PLUGIN_BASE_URL: () => /* binding */ PLUGIN_BASE_URL,
+          /* harmony export */ ROUTES: () => /* binding */ ROUTES,
+          /* harmony export */ NAVIGATION_TITLE: () => /* binding */ NAVIGATION_TITLE,
+          /* harmony export */ NAVIGATION_SUBTITLE: () => /* binding */ NAVIGATION_SUBTITLE,
+          /* harmony export */ NAVIGATION: () => /* binding */ NAVIGATION,
+          /* harmony export */
+        });
+        /* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./plugin.json */ 84
+        );
+
+        var PLUGIN_BASE_URL = '/a/'.concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
+        var ROUTES;
+
+        (function (ROUTES) {
+          ROUTES['Environments'] = 'environments';
+          ROUTES['AmazonServices'] = 'amazon-services';
+          ROUTES['Kubernetes'] = 'kubernetes';
+          ROUTES['StorageDetails'] = 'storage-details';
+          ROUTES['AccountSetup'] = 'account-setup';
+          ROUTES['DepartmentWiseProducts'] = 'department-wise-products';
+          ROUTES['DepartmentWiseCharts'] = 'department-wise-charts';
+        })(ROUTES || (ROUTES = {}));
+
+        var NAVIGATION_TITLE = 'Basic App Plugin';
+        var NAVIGATION_SUBTITLE = 'Some extra description...'; // Add a navigation item for each route you would like to display in the navigation bar
+
+        var NAVIGATION = {};
+
+        /***/
+      },
+      /* 8 */
       /*!***************************************!*\
   !*** ./pages/_service/RestService.ts ***!
   \***************************************/
@@ -740,7 +779,7 @@ PERFORMANCE OF THIS SOFTWARE.
         });
         /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ../_common/common */ 82
+          /*! ../_common/common */ 81
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ 6);
 
@@ -857,45 +896,6 @@ PERFORMANCE OF THIS SOFTWARE.
           };
           return requestOptions;
         }
-
-        /***/
-      },
-      /* 8 */
-      /*!**********************!*\
-  !*** ./constants.ts ***!
-  \**********************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ PLUGIN_BASE_URL: () => /* binding */ PLUGIN_BASE_URL,
-          /* harmony export */ ROUTES: () => /* binding */ ROUTES,
-          /* harmony export */ NAVIGATION_TITLE: () => /* binding */ NAVIGATION_TITLE,
-          /* harmony export */ NAVIGATION_SUBTITLE: () => /* binding */ NAVIGATION_SUBTITLE,
-          /* harmony export */ NAVIGATION: () => /* binding */ NAVIGATION,
-          /* harmony export */
-        });
-        /* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./plugin.json */ 84
-        );
-
-        var PLUGIN_BASE_URL = '/a/'.concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
-        var ROUTES;
-
-        (function (ROUTES) {
-          ROUTES['Environments'] = 'environments';
-          ROUTES['AmazonServices'] = 'amazon-services';
-          ROUTES['Kubernetes'] = 'kubernetes';
-          ROUTES['StorageDetails'] = 'storage-details';
-          ROUTES['AccountSetup'] = 'account-setup';
-          ROUTES['DepartmentWiseProducts'] = 'department-wise-products';
-          ROUTES['DepartmentWiseCharts'] = 'department-wise-charts';
-        })(ROUTES || (ROUTES = {}));
-
-        var NAVIGATION_TITLE = 'Basic App Plugin';
-        var NAVIGATION_SUBTITLE = 'Some extra description...'; // Add a navigation item for each route you would like to display in the navigation bar
-
-        var NAVIGATION = {};
 
         /***/
       },
@@ -1180,7 +1180,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 56
+          /*! ./setPrototypeOf.js */ 82
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -1784,7 +1784,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 21));
 
-        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 59);
+        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 58);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -2151,7 +2151,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 66
+          /*! ./chunks/helpers.segment.js */ 65
         );
         /*!
          * Chart.js v3.7.1
@@ -14533,7 +14533,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 57);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 56);
         }
 
         /***/
@@ -16507,7 +16507,7 @@ object-assign
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img */ 13);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
         /* harmony import */ var _SelectCloudFilter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ../SelectCloudFilter */ 45
@@ -17681,7 +17681,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 60);
+        var reactIs = __webpack_require__(/*! react-is */ 59);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -18105,30 +18105,6 @@ object-assign
         /***/
       },
       /* 56 */
-      /*!********************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
-  \********************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _setPrototypeOf,
-          /* harmony export */
-        });
-        function _setPrototypeOf(o, p) {
-          _setPrototypeOf =
-            Object.setPrototypeOf ||
-            function _setPrototypeOf(o, p) {
-              o.__proto__ = p;
-              return o;
-            };
-
-          return _setPrototypeOf(o, p);
-        }
-
-        /***/
-      },
-      /* 57 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -18336,7 +18312,7 @@ object-assign
 
         /***/
       },
-      /* 58 */
+      /* 57 */
       /*!*******************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
   \*******************************************************************************/
@@ -18364,7 +18340,7 @@ object-assign
 
         /***/
       },
-      /* 59 */
+      /* 58 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/ChildMapping.js ***!
   \********************************************************************************************/
@@ -18520,7 +18496,7 @@ object-assign
 
         /***/
       },
-      /* 60 */
+      /* 59 */
       /*!******************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
   \******************************************************************************/
@@ -18529,12 +18505,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 61);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 60);
         }
 
         /***/
       },
-      /* 61 */
+      /* 60 */
       /*!*************************************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
   \*************************************************************************************************/
@@ -18742,7 +18718,7 @@ object-assign
 
         /***/
       },
-      /* 62 */
+      /* 61 */
       /*!*****************************************!*\
   !*** ../node_modules/react-is/index.js ***!
   \*****************************************/
@@ -18756,7 +18732,7 @@ object-assign
 
         /***/
       },
-      /* 63 */
+      /* 62 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -18788,7 +18764,7 @@ object-assign
 
         /***/
       },
-      /* 64 */
+      /* 63 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -18805,7 +18781,7 @@ object-assign
 
         /***/
       },
-      /* 65 */
+      /* 64 */
       /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -19037,7 +19013,7 @@ object-assign
 
         /***/
       },
-      /* 66 */
+      /* 65 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -21687,7 +21663,7 @@ object-assign
 
         /***/
       },
-      /* 67 */
+      /* 66 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -21706,7 +21682,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 23
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 74);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 73);
 
         var App =
           /** @class */
@@ -21732,7 +21708,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 67 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -21754,7 +21730,7 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 75
+          /*! ../../pages/AccountSetup */ 74
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../../pages/AmazonServices */ 85
@@ -21780,7 +21756,7 @@ object-assign
           /*! utils/utils.plugin */ 23
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
 
         var Routes = function () {
@@ -21898,7 +21874,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 68 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -22280,7 +22256,7 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 69 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -22342,17 +22318,17 @@ object-assign
         /***/
       },
       ,
-      /* 71 */ /* 72 */
+      /* 70 */ /* 71 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__72__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__71__;
 
         /***/
       },
-      /* 73 */
+      /* 72 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -22363,11 +22339,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 67);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 66);
 
         /***/
       },
-      /* 74 */
+      /* 73 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -22378,11 +22354,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 68);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 67);
 
         /***/
       },
-      /* 75 */
+      /* 74 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -22407,21 +22383,21 @@ object-assign
           /*! ../Breadcrumbs */ 14
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 6);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 76);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 75);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 77
+          /*! ./OperationMode */ 76
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 78
+          /*! ./PreparePolicy */ 77
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 79);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 80);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 78);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 79);
         /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 83);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ../_service/RestService */ 7
+          /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
 
         var AccountSetup =
@@ -22735,7 +22711,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 75 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -22919,7 +22895,7 @@ object-assign
 
         /***/
       },
-      /* 77 */
+      /* 76 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -23056,7 +23032,7 @@ object-assign
 
         /***/
       },
-      /* 78 */
+      /* 77 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -23148,7 +23124,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 78 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -23467,7 +23443,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 79 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -23484,7 +23460,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 81
+          /*! ./CreateNewOU */ 80
         );
 
         var Ou =
@@ -23671,7 +23647,7 @@ object-assign
 
         /***/
       },
-      /* 81 */
+      /* 80 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -23691,7 +23667,7 @@ object-assign
         /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ 136);
         /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ 137);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ../_service/RestService */ 7
+          /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ 6);
 
@@ -24014,7 +23990,7 @@ object-assign
 
         /***/
       },
-      /* 82 */
+      /* 81 */
       /*!*********************************!*\
   !*** ./pages/_common/common.ts ***!
   \*********************************/
@@ -24067,6 +24043,30 @@ object-assign
         //   };
         //   return requestOptions;
         // }
+
+        /***/
+      },
+      /* 82 */
+      /*!********************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
+  \********************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _setPrototypeOf,
+          /* harmony export */
+        });
+        function _setPrototypeOf(o, p) {
+          _setPrototypeOf =
+            Object.setPrototypeOf ||
+            function _setPrototypeOf(o, p) {
+              o.__proto__ = p;
+              return o;
+            };
+
+          return _setPrototypeOf(o, p);
+        }
 
         /***/
       },
@@ -24417,7 +24417,7 @@ object-assign
         /* harmony import */ var _Alerts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Alerts */ 97);
         /* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Inputs */ 98);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
         /* harmony import */ var _components_ProductWiseServices__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
           /*! ../../components/ProductWiseServices */ 44
@@ -25286,24 +25286,25 @@ object-assign
           /* harmony export */ DiscoveredAssets: () => /* binding */ DiscoveredAssets,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../img */ 13);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ 138);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ 138);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../_service/RestService */ 7
+          /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 6);
-        /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+        /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+          /*! ../../constants */ 7
+        );
+        /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! react-router-dom */ 5
         );
-        /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4___default =
-          /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_4__);
-
-        // import { PLUGIN_BASE_URL } from '../../constants';
+        /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5___default =
+          /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_5__);
 
         var SERVICE_MAPPING = {
           App: 'App Services',
@@ -25317,18 +25318,18 @@ object-assign
         var DiscoveredAssets =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__extends)(DiscoveredAssets, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__extends)(DiscoveredAssets, _super);
 
             function DiscoveredAssets(props) {
               var _this = _super.call(this, props) || this;
 
               _this.getServicesData = function () {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
                   var err_1;
 
                   var _this = this;
 
-                  return (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         _a.trys.push([0, 2, , 3]);
@@ -25380,6 +25381,7 @@ object-assign
                     serviceType = _a.serviceType,
                     serviceNature = _a.serviceNature,
                     associatedProduct = _a.associatedProduct;
+                  var id = service.id;
 
                   if (associatedProductEnclave) {
                     var node = treeData[associatedProductEnclave] || {};
@@ -25390,7 +25392,14 @@ object-assign
                       title: associatedProduct,
                       services: [],
                     };
-                    productData.services.push(service.details);
+                    productData.services.push(
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)(
+                        {
+                          id: id,
+                        },
+                        service.details
+                      )
+                    );
                     assiciatedServiceData[associatedProduct] = productData;
                     serviceTypeData[serviceNature] = assiciatedServiceData;
                     clusterData[serviceType] = serviceTypeData;
@@ -25404,7 +25413,14 @@ object-assign
                       title: associatedProduct,
                       services: [],
                     };
-                    productData.services.push(service.details);
+                    productData.services.push(
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)(
+                        {
+                          id: id,
+                        },
+                        service.details
+                      )
+                    );
                     assiciatedServiceData[associatedProduct] = productData;
                     node[serviceNature] = assiciatedServiceData;
                     treeData['Global Services'] = node;
@@ -25622,7 +25638,7 @@ object-assign
                         ),
                         !node.isGlobalService && node.isOpened
                           ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              reactstrap__WEBPACK_IMPORTED_MODULE_6__['default'],
+                              reactstrap__WEBPACK_IMPORTED_MODULE_7__['default'],
                               {
                                 className: 'collapse-content',
                                 isOpen: node.isOpened,
@@ -25679,7 +25695,7 @@ object-assign
                         ),
                         cluster.isOpened
                           ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              reactstrap__WEBPACK_IMPORTED_MODULE_6__['default'],
+                              reactstrap__WEBPACK_IMPORTED_MODULE_7__['default'],
                               {
                                 className: 'collapse-content',
                                 isOpen: cluster.isOpened,
@@ -25934,9 +25950,15 @@ object-assign
                         },
                         ' ',
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link,
+                          react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link,
                           {
-                            to: '/a/xformation-assetmanager-ui-plugin/storage-details?accountId='.concat(accountId),
+                            to: ''
+                              .concat(
+                                _constants__WEBPACK_IMPORTED_MODULE_4__.PLUGIN_BASE_URL,
+                                '/storage-details?accountId='
+                              )
+                              .concat(accountId, '&serviceId=')
+                              .concat(service.id),
                           },
                           service.name
                         )
@@ -28103,11 +28125,11 @@ object-assign
           /*! ../../components/SelectCloudFilter */ 45
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../_service/RestService */ 7
+          /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Action */ 101);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
 
         var Environments =
@@ -29682,13 +29704,13 @@ object-assign
         /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ 137);
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ 6);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../_service/RestService */ 7
+          /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _components_AlertMessage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ../../components/AlertMessage */ 102
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
 
         var Action =
@@ -32418,7 +32440,7 @@ object-assign
           /*! ./VerifyAndSave */ 121
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../../_service/RestService */ 7
+          /*! ../../_service/RestService */ 8
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../config */ 6);
         /* harmony import */ var _Components_AlertMessage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
@@ -32518,7 +32540,7 @@ object-assign
 
               _this.onSubmit = function () {
                 return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(_this, void 0, void 0, function () {
-                  var dashbaordJSONArray, responseArray;
+                  var dashbaordJSONArray, responseArray, index;
 
                   var _this = this;
 
@@ -32569,14 +32591,27 @@ object-assign
                     this.setState({
                       isLoading: true,
                     });
+                    index = 0;
                     dashbaordJSONArray.forEach(function (dashboard) {
-                      var data = {
-                        title: dashboard.title,
-                        slug: dashboard.slug,
-                        uid: dashboard.uid,
-                        data: dashboard,
+                      var dataJs = {
+                        // title: dashboard.title,
+                        // slug: dashboard.slug,
+                        // uid: dashboard.uid,
+                        // data: dashboard,
+                        Dashboard: JSON.parse(dashboard.data),
+                        UserId: 0,
+                        Overwrite: false,
+                        Message: '',
+                        OrgId: 1,
+                        PluginId: '',
+                        FolderId: 0,
+                        IsFolder: false,
                       };
-                      var json = JSON.stringify(data);
+                      dataJs.Dashboard.id = 0;
+                      dataJs.Dashboard.uid = '';
+                      dataJs.Dashboard.slug = dashboard.accountId + '_' + dashboard.elementType + '_' + ++index;
+                      dataJs.Dashboard.title = dataJs.Dashboard.slug;
+                      var json = JSON.stringify(dataJs);
                       var reqOpt =
                         _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.optionWithAuthentication(
                           json,
@@ -32647,9 +32682,14 @@ object-assign
               };
 
               _this.sendViewJSON = function (responseArray) {
-                var json = JSON.stringify(responseArray);
+                var serviceId = _this.getParameterByName('serviceId', window.location.href);
+
+                var result = {
+                  serviceId: serviceId,
+                  viewJSON: responseArray,
+                };
                 var reqOpt = _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.optionWithAuthentication(
-                  json,
+                  JSON.stringify(result),
                   'POST'
                 );
                 fetch(_this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
@@ -33898,7 +33938,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ../../_service/RestService */ 7
+          /*! ../../_service/RestService */ 8
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../config */ 6);
         /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uuid */ 139);
@@ -34323,10 +34363,10 @@ object-assign
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img */ 13);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../_service/RestService */ 7
+          /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../config */ 6);
         /* harmony import */ var _components_ProductWiseServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
@@ -34340,7 +34380,7 @@ object-assign
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! react-chartjs-2 */ 65
+          /*! react-chartjs-2 */ 64
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 26);
         /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ 125);
@@ -35959,14 +35999,14 @@ and limitations under the License.
           /*! ../Breadcrumbs */ 14
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../../constants */ 8
+          /*! ../../constants */ 7
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../_service/RestService */ 7
+          /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ 6);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-chartjs-2 */ 65
+          /*! react-chartjs-2 */ 64
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 26);
 
@@ -36390,7 +36430,7 @@ and limitations under the License.
         /* harmony import */ var _utils_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./utils.plugin */ 23
         );
-        /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ 8);
+        /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ 7);
 
         // Displays a top navigation tab-bar if needed
 
@@ -36471,7 +36511,7 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 69);
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 68);
 
         /***/
       },
@@ -36508,7 +36548,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 70
+          /*! ./SecretInput */ 69
         );
 
         /***/
@@ -37206,7 +37246,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 58
+          /*! react-transition-group */ 57
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -38080,7 +38120,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 58
+          /*! react-transition-group */ 57
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
@@ -39921,7 +39961,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 18
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 62);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 61);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -40028,7 +40068,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 159
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 64
+          /*! ../getStylesCreator/noopTheme */ 63
         );
 
         function getClasses(_ref, classes, Component) {
@@ -40499,7 +40539,7 @@ and limitations under the License.
           /*! tiny-warning */ 158
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 63);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 62);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 15);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -42894,7 +42934,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 160
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 64);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 63);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -51556,13 +51596,13 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 72
+        /*! @grafana/data */ 71
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 73
+        /*! ./components/App */ 72
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
         /*! ./components/AppConfig */ 128

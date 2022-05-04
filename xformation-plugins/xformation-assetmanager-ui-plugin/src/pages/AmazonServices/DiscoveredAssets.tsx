@@ -3,7 +3,7 @@ import { images } from '../../img';
 import { Collapse } from 'reactstrap';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
-// import { PLUGIN_BASE_URL } from '../../constants';
+import { PLUGIN_BASE_URL } from '../../constants';
 import { Link } from 'react-router-dom';
 
 const SERVICE_MAPPING: any = {
@@ -61,13 +61,17 @@ export class DiscoveredAssets extends React.Component<any, any>{
     services.forEach((service: any) => {
       const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct } =
         service.details;
+      const id = service.id;
       if (associatedProductEnclave) {
         const node = treeData[associatedProductEnclave] || {};
         const clusterData = node[associatedCluster] || {};
         const serviceTypeData = clusterData[serviceType] || {};
         const assiciatedServiceData = serviceTypeData[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push(service.details);
+        productData.services.push({
+          id,
+          ...service.details
+        });
         assiciatedServiceData[associatedProduct] = productData;
         serviceTypeData[serviceNature] = assiciatedServiceData;
         clusterData[serviceType] = serviceTypeData;
@@ -78,7 +82,10 @@ export class DiscoveredAssets extends React.Component<any, any>{
         node.isGlobalService = true;
         const assiciatedServiceData = node[serviceNature] || {};
         const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push(service.details);
+        productData.services.push({
+          id,
+          ...service.details
+        });
         assiciatedServiceData[associatedProduct] = productData;
         node[serviceNature] = assiciatedServiceData;
         treeData['Global Services'] = node;
@@ -366,7 +373,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link to={`/a/xformation-assetmanager-ui-plugin/storage-details?accountId=${accountId}`}>{service.name}</Link></div>
+          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&serviceId=${service.id}`}>{service.name}</Link></div>
           <div className="performance">
             <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
               <i className="fa fa-check"></i>

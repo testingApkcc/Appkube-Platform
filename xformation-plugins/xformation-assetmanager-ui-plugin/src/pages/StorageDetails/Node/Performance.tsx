@@ -157,14 +157,27 @@ export class Performance extends React.Component<any, any>{
         this.setState({
             isLoading: true
         });
+        let index = 0;
         dashbaordJSONArray.forEach((dashboard: any) => {
-            const data = {
-                title: dashboard.title,
-                slug: dashboard.slug,
-                uid: dashboard.uid,
-                data: dashboard,
+            const dataJs = {
+                // title: dashboard.title,
+                // slug: dashboard.slug,
+                // uid: dashboard.uid,
+                // data: dashboard,
+                Dashboard: JSON.parse(dashboard.data),
+                UserId: 0,
+                Overwrite: false,
+                Message: "",
+                OrgId: 1,
+                PluginId: "",
+                FolderId: 0,
+                IsFolder: false,
             };
-            var json = JSON.stringify(data);
+            dataJs.Dashboard.id = 0;
+            dataJs.Dashboard.uid = "";
+            dataJs.Dashboard.slug = dashboard.accountId + "_" + dashboard.elementType + "_" + (++index);
+            dataJs.Dashboard.title = dataJs.Dashboard.slug;
+            var json = JSON.stringify(dataJs);
             var reqOpt = RestService.optionWithAuthentication(json, 'POST');
             fetch(this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
                 .then(response => response.json())
@@ -210,9 +223,14 @@ export class Performance extends React.Component<any, any>{
         });
     };
 
+
     sendViewJSON = (responseArray: any) => {
-        var json = JSON.stringify(responseArray);
-        var reqOpt = RestService.optionWithAuthentication(json, 'POST');
+        const serviceId = this.getParameterByName('serviceId', window.location.href);
+        const result = {
+            serviceId,
+            viewJSON: responseArray
+        };
+        var reqOpt = RestService.optionWithAuthentication(JSON.stringify(result), 'POST');
         fetch(this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
             .then(response => response.json())
             .then(result => {

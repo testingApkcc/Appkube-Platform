@@ -180,16 +180,16 @@ type Dashboard struct {
 	Data  *simplejson.Json
 
 	// ------ custom changes for appcube plateform ------
-	Uuid          string
-	SourceJsonRef string
-	InputSourceId string
-	AccountId     string
-	TenantId      string
-	IsCloud       bool
-	CloudName     string
-	ElementType   string
-	FileName      string
-	InputType     string
+	// Uuid          string
+	// SourceJsonRef string
+	// InputSourceId string
+	// AccountId     string
+	// TenantId      string
+	// IsCloud       bool
+	// CloudName     string
+	// ElementType   string
+	// FileName      string
+	// InputType     string
 	// ------ custom changes for appcube plateform ------
 }
 
@@ -281,17 +281,17 @@ func NewDashboardFromJson(data *simplejson.Json) *Dashboard {
 func (cmd *SaveDashboardCommand) GetDashboardModel() *Dashboard {
 	dash := NewDashboardFromJson(cmd.Dashboard)
 
-	// ------Manoj.  custom changes for appcube plateform ------
-	dash.Uuid = dash.Data.Get("Uuid").MustString()
-	dash.SourceJsonRef = dash.Data.Get("SourceJsonRef").MustString()
-	dash.InputSourceId = dash.Data.Get("InputSourceId").MustString()
-	dash.AccountId = dash.Data.Get("AccountId").MustString()
-	dash.TenantId = dash.Data.Get("TenantId").MustString()
-	dash.IsCloud = dash.Data.Get("IsCloud").MustBool()
-	dash.CloudName = dash.Data.Get("CloudName").MustString()
-	dash.ElementType = dash.Data.Get("ElementType").MustString()
-	dash.FileName = dash.Data.Get("FileName").MustString()
-	dash.InputType = dash.Data.Get("InputType").MustString()
+	// // ------Manoj.  custom changes for appcube plateform ------
+	// dash.Uuid = dash.Data.Get("Uuid").MustString()
+	// dash.SourceJsonRef = dash.Data.Get("SourceJsonRef").MustString()
+	// dash.InputSourceId = dash.Data.Get("InputSourceId").MustString()
+	// dash.AccountId = dash.Data.Get("AccountId").MustString()
+	// dash.TenantId = dash.Data.Get("TenantId").MustString()
+	// dash.IsCloud = dash.Data.Get("IsCloud").MustBool()
+	// dash.CloudName = dash.Data.Get("CloudName").MustString()
+	// dash.ElementType = dash.Data.Get("ElementType").MustString()
+	// dash.FileName = dash.Data.Get("FileName").MustString()
+	// dash.InputType = dash.Data.Get("InputType").MustString()
 	// ------Manoj.  custom changes for appcube plateform ------
 
 	userId := cmd.UserId

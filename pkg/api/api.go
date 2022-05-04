@@ -335,9 +335,9 @@ func (hs *HTTPServer) registerRoutes() {
 
 		// ------Manoj.  custom changes for appcube plateform ------
 		//get file from aws s3
-		apiRoute.Group("/download-s3-file", func(downloadS3 routing.RouteRegister) {
-			downloadS3.Get("/file-name/:fname", routing.Wrap(DownloadS3File))
-		})
+		// apiRoute.Group("/download-s3-file", func(downloadS3 routing.RouteRegister) {
+		// 	downloadS3.Get("/file-name/:fname", routing.Wrap(DownloadS3File))
+		// })
 		// ------Manoj.  custom changes for appcube plateform ------
 
 		// Dashboard
@@ -372,7 +372,7 @@ func (hs *HTTPServer) registerRoutes() {
 				})
 			})
 			// ------Manoj.  custom changes for appcube plateform ------
-			dashboardRoute.Post("/importAssets", routing.Wrap(hs.ImportApplicationAssets))
+			dashboardRoute.Post("/importAssets", routing.Wrap(hs.ImportApplicationAssetsNew))
 			// ------Manoj.  custom changes for appcube plateform ------
 		})
 
