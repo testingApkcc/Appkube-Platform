@@ -1,8 +1,11 @@
 import React from 'react';
 import { CloudDashboards } from './CloudDashboards';
 import { DataSources } from './DataSources';
-import { ProvisioningTemplates } from './provisionTemplate';
-
+import { ProvisioningTemplates } from './ProvisionTemplate';
+import {Collectors} from './Collectors';
+import {Diagonostics} from './Diagonostics'
+import {KubeOperators} from './KubeOperators'
+import {Workflows} from './Workflows'
 export class OpsCatalogue extends React.Component<any, any>{
     config: any;
     tabMapping: any = [{
@@ -17,7 +20,28 @@ export class OpsCatalogue extends React.Component<any, any>{
         name: "Provisioning Templates",
         dataKey: 'provisioningTemplates',
         component: ProvisioningTemplates
-    }];
+    }, 
+    {
+        name: "Collectors",
+        dataKey: 'collectors',
+        component: Collectors
+    },
+    {
+        name: "Diagonostics",
+        dataKey: 'diagonostics',
+        component: Diagonostics
+    },
+    {
+        name: "Kube Operators",
+        dataKey: 'kubeOperators',
+        component: KubeOperators
+    },
+    {
+        name: "Workflows",
+        dataKey: 'workflows',
+        component: Workflows
+    },
+];
     previewDashboardPopupRef: any;
 
     constructor(props: any) {
@@ -65,7 +89,6 @@ export class OpsCatalogue extends React.Component<any, any>{
                             } else {
                                 return <></>;
                             }
-                            
                         })
                     }
                 </ul>
