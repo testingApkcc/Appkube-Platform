@@ -11,6 +11,10 @@ export class DataSources extends React.Component<any, any>{
         super(props)
         this.state = {
             dashboards: this.props.data || [],
+            images:[{name :"graph", imgUrl:'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id :101},
+            {name :"flow Chart", imgUrl:"https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id :102},
+            {name :"linear", imgUrl:'https://media.istockphoto.com/vectors/collection-of-infographics-isolated-illustration-vector-id1168529930?s=170667a', id :103},
+            {name :"image", imgUrl:'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id :104}],
         }
         this.previewDashboardPopupRef = React.createRef();
     }
@@ -74,7 +78,7 @@ export class DataSources extends React.Component<any, any>{
         return retData
     }
     render() {
-        const { dashboards } = this.state;
+        const { dashboards, images } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
@@ -121,7 +125,7 @@ export class DataSources extends React.Component<any, any>{
                         </div>
                     </div>
                 </div>
-                <PreviewDashboardPopup ref={this.previewDashboardPopupRef} />
+                <PreviewDashboardPopup ref={this.previewDashboardPopupRef} images={images}/>
             </div>
         )
     }
