@@ -3698,7 +3698,11 @@ a:hover {
   li.active {
   background-color: #a2d2ff;
 }
-.perfmanager-dashboard-container .catalogue-management-container .common-container .catalogue-inner-tabs-container {
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container {
   display: block;
   background-color: #a2d2ff;
   padding: 10px;
@@ -3715,6 +3719,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters {
   display: block;
@@ -3727,6 +3732,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .filter-search {
@@ -3737,6 +3743,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .filter-search
@@ -3751,33 +3758,43 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .filter-search
   .filter-input {
   display: block;
+  position: relative;
+  border: 1px solid #707070;
+  background-color: #ffffff;
+  border-radius: 3px;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .filter-search
   .filter-input
   input {
-  display: inline-block;
-  vertical-align: top;
-  width: 63%;
+  display: block;
+  width: 100%;
   border: none;
-  border-bottom: 2px solid #707070;
   font-size: 12px;
   line-height: 16px;
   color: #b2b2b2;
   background-color: #ffffff;
+  padding-left: 26px;
+  padding-right: 26px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 3px;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .filter-search
@@ -3788,26 +3805,49 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .filter-search
   .filter-input
-  button {
-  display: inline-block;
-  vertical-align: top;
-  width: 33%;
-  margin-left: 4%;
+  .search-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
   padding: 0;
   border: none;
-  border-bottom: 2px solid #707070;
-  font-size: 10px;
-  line-height: 18px;
-  color: #8592a5;
+  font-size: 12px;
+  line-height: 26px;
+  color: #89919d;
+  text-align: center;
   background-color: transparent;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-filters
+  .filter-search
+  .filter-input
+  .close-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 26px;
+  padding: 0;
+  border: none;
+  font-size: 12px;
+  line-height: 26px;
+  color: #89919d;
+  text-align: center;
+  background-color: transparent;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .catalogue-category {
@@ -3818,6 +3858,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .catalogue-category
@@ -3832,6 +3873,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .catalogue-category
@@ -3844,6 +3886,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .catalogue-category
@@ -3855,6 +3898,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .catalogue-category
@@ -3867,6 +3911,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-filters
   .catalogue-category
@@ -3883,6 +3928,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container {
   display: block;
@@ -3894,6 +3940,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .heading {
@@ -3904,6 +3951,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .heading
@@ -3919,6 +3967,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .heading
@@ -3932,6 +3981,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .heading
@@ -3951,6 +4001,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes {
@@ -3959,6 +4010,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -3973,6 +4025,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -3982,6 +4035,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -3991,6 +4045,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -4002,6 +4057,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -4014,6 +4070,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -4029,6 +4086,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -4044,6 +4102,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -4063,6 +4122,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -4076,6 +4136,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .catalogue-boxes
@@ -4089,6 +4150,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search {
@@ -4100,6 +4162,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4111,6 +4174,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4126,6 +4190,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4136,6 +4201,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4146,6 +4212,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4163,6 +4230,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4174,6 +4242,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4185,6 +4254,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .templated-search
@@ -4195,6 +4265,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .template-box {
@@ -4208,6 +4279,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .template-box
@@ -4222,6 +4294,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .template-box
@@ -4235,6 +4308,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .template-box
@@ -4249,6 +4323,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .template-box
@@ -4263,6 +4338,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents {
@@ -4273,6 +4349,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4287,6 +4364,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4301,6 +4379,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4315,6 +4394,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4327,6 +4407,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4342,6 +4423,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4353,6 +4435,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4365,6 +4448,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4380,6 +4464,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4391,6 +4476,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4409,6 +4495,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4420,6 +4507,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4430,6 +4518,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4442,6 +4531,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4456,6 +4546,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4469,6 +4560,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
@@ -4485,6 +4577,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters {
   display: block;
@@ -4497,6 +4590,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .filter-search {
@@ -4507,6 +4601,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .filter-search
@@ -4521,6 +4616,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .filter-search
@@ -4531,6 +4627,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .filter-search
@@ -4549,6 +4646,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .filter-search
@@ -4559,6 +4657,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .filter-search
@@ -4578,6 +4677,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .templates-category {
@@ -4588,6 +4688,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .templates-category
@@ -4600,6 +4701,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .templates-category
@@ -4611,6 +4713,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .templates-category
@@ -4628,6 +4731,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters
   .templates-category
@@ -4639,6 +4743,7 @@ a:hover {
 .perfmanager-dashboard-container
   .catalogue-management-container
   .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .catalogue-right-container {
   background-color: #ffffff;

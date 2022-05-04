@@ -83,8 +83,9 @@ export class Filter extends React.Component<any, any>{
                     <div className="filter-search">
                         <strong>Filters</strong>
                         <div className="filter-input">
+                            <button className="search-icon" onClick={this.handleClearFilter}><i className="fa fa-search"></i></button>
                             <input type="text" placeholder="Search" value={searchString} onChange={this.searchFilter} />
-                            <button className="" onClick={this.handleClearFilter}><i className="fa fa-close"></i> Clear filter</button>
+                            <button className="close-icon" onClick={this.handleClearFilter}><i className="fa fa-close"></i></button>
                         </div>
                     </div>
                     <div className="catalogue-category">
