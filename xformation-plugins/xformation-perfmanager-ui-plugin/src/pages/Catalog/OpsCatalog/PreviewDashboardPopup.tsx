@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Modal, ModalBody } from 'reactstrap';
 //import './UnimplementedFeaturePopup.css';
-import previewDashboard from '../../img/preview-dashboard.png';
+import previewDashboard from '../../../img/preview-dashboard.png';
 
 export class PreviewDashboardPopup extends React.Component<any, any> {
     constructor(props: any) {
