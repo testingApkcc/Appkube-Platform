@@ -164,18 +164,18 @@ export class Performance extends React.Component<any, any>{
                 // slug: dashboard.slug,
                 // uid: dashboard.uid,
                 // data: dashboard,
-                Dashboard:JSON.parse(dashboard.data),
-                UserId:0,
+                Dashboard: JSON.parse(dashboard.data),
+                UserId: 0,
                 Overwrite: false,
                 Message: "",
-                OrgId:1,
-                PluginId:"",
-                FolderId:0,
+                OrgId: 1,
+                PluginId: "",
+                FolderId: 0,
                 IsFolder: false,
             };
             dataJs.Dashboard.id = 0;
             dataJs.Dashboard.uid = "";
-            dataJs.Dashboard.slug = dashboard.accountId+"_"+dashboard.elementType+"_"+(++index);
+            dataJs.Dashboard.slug = dashboard.accountId + "_" + dashboard.elementType + "_" + (++index);
             dataJs.Dashboard.title = dataJs.Dashboard.slug;
             var json = JSON.stringify(dataJs);
             var reqOpt = RestService.optionWithAuthentication(json, 'POST');
@@ -223,11 +223,14 @@ export class Performance extends React.Component<any, any>{
         });
     };
 
-    
+
     sendViewJSON = (responseArray: any) => {
-        console.log('Response array:::: ', responseArray);
-        var json = JSON.stringify(responseArray);
-        var reqOpt = RestService.optionWithAuthentication(json, 'POST');
+        const serviceId = this.getParameterByName('serviceId', window.location.href);
+        const result = {
+            serviceId,
+            viewJSON: responseArray
+        };
+        var reqOpt = RestService.optionWithAuthentication(JSON.stringify(result), 'POST');
         fetch(this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
             .then(response => response.json())
             .then(result => {
