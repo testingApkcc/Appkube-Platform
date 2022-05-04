@@ -221,6 +221,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                     </div>
                 </div>)
         }
+        else {return<></>}
     }
     render() {
         const {comp}=this.state;
