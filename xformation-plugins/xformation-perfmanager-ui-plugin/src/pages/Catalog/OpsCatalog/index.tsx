@@ -1,7 +1,8 @@
 import React from 'react';
 import { CloudDashboards } from './CloudDashboards';
 import { DataSources } from './DataSources';
-import { ProvisioningTemplates } from './ProvisionTemplate';
+import { ProvisioningTemplates } from './provisionTemplate';
+
 export class OpsCatalogue extends React.Component<any, any>{
     config: any;
     tabMapping: any = [{
@@ -18,6 +19,7 @@ export class OpsCatalogue extends React.Component<any, any>{
         component: ProvisioningTemplates
     }];
     previewDashboardPopupRef: any;
+
     constructor(props: any) {
         super(props)
         this.state = {
