@@ -5,6 +5,7 @@ import { ProvisioningTemplates } from './ProvisionTemplate';
 import {Collectors} from './Collectors';
 import {Diagonostics} from './Diagonostics'
 import {KubeOperators} from './KubeOperators'
+import {Workflows} from './Workflows'
 export class OpsCatalogue extends React.Component<any, any>{
     config: any;
     tabMapping: any = [{
@@ -34,6 +35,11 @@ export class OpsCatalogue extends React.Component<any, any>{
         name: "Kube Operators",
         dataKey: 'kubeOperators',
         component: KubeOperators
+    },
+    {
+        name: "Workflows",
+        dataKey: 'workflows',
+        component: Workflows
     },
 ];
     previewDashboardPopupRef: any;
