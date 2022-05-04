@@ -1,26 +1,14 @@
 import * as React from 'react';
-import { configFun } from '../../../config';
+import { v4 } from 'uuid';
 
 export class VerifyInputs extends React.Component<any, any> {
-  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
       inputName: this.props.inputName,
       configureInputs: false,
-      selectedData: [],
-      tableData: this.props.dashboard,
-      dashboardJSON: []
+      dashboardData: [],
     };
-    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
-  }
-
-  componentDidUpdate(prevProps: any, prevState: any) {
-    if (JSON.stringify(prevProps.dashboard) !== JSON.stringify(this.props.dashboard)) {
-      this.setState({
-        tableData: this.props.dashboard,
-      })
-    }
   }
 
   configureInputs = async () => {
@@ -29,118 +17,104 @@ export class VerifyInputs extends React.Component<any, any> {
     })
   };
 
-  async componentDidMount() {
-    if (this.props.dashboard) {
-      this.setState({
-        tableData: this.props.dashboard,
-      })
-    }
-  }
-
   setDashboardData = (data: any) => {
-    console.log(data)
     this.setState({
-      tableData: data,
+      dashboardData: data,
     });
   }
 
-  handleChange(e: any, i: any, j: any) {
+  handleChange(e: any, dataSourceIndex: any, dashboardIndex: any) {
     const { checked } = e.target;
-    const { tableData, selectedData } = this.state;
-    tableData.CloudDashBoards[j].isChecked = checked;
-    if (checked) {
-      tableData.DataSources[i].isChecked = checked;
+    const { dashboardData } = this.state;
+    dashboardData[dataSourceIndex].dashboards[dashboardIndex].isChecked = checked;
+    this.setState({
+      dashboardData,
+    });
+  }
+
+  getSelectedDashboards = () => {
+    const { isSelected, dashboardData } = this.checkIfDashboardSelected();
+    if (isSelected) {
+      return dashboardData;
     }
-    let count = 0;
-    if (tableData.CloudDashBoards) {
-      for (let k = 0; k < tableData.CloudDashBoards.length; k++) {
-        if (tableData.CloudDashBoards[k].associatedDataSourceType == tableData.DataSources[i].name) {
-          if (tableData.CloudDashBoards[k].isChecked == true) {
-            count++;
+    return false;
+  };
+
+  checkIfDashboardSelected = () => {
+    const { dashboardData } = this.state;
+    let isSelected = false;
+    for (let i = 0; i < dashboardData.length; i++) {
+      const dashboards = dashboardData[i].dashboards;
+      dashboardData[i].isChecked = false;
+      if (dashboards) {
+        for (let j = 0; j < dashboards.length; j++) {
+          if (dashboards[j].isChecked) {
+            isSelected = true;
+            dashboardData[i].isChecked = true;
+            break;
           }
         }
       }
     }
-    if (count == 0) {
-      tableData.DataSources[i].isChecked = false;
-    }
-    this.props.updateDashboard(tableData);
-    if (checked) {
-      selectedData.push(tableData.DataSources[i]);
-      this.setState({ selectedData: selectedData });
-    } else {
-      this.removeObject(tableData.DataSources[i], selectedData);
-    }
-  }
-
-  removeObject(obj: any, selData: any) {
-    let index = selData.indexOf(obj);
-    selData.splice(index, 1);
-    this.setState({ selectedData: selData });
-  }
-
-  getSelection = () => {
-    return this.state.selectedData;
+    return {
+      isSelected,
+      dashboardData
+    };
   };
 
   displayTable = () => {
-    const retData = [];
-    const { tableData } = this.state;
-    if (tableData && tableData.DataSources) {
-      for (let i = 0; i < tableData.DataSources.length; i++) {
-        let tableValue = tableData.DataSources[i];
-        let dashboardJSX = [];
-        if (tableData.CloudDashBoards && tableData.CloudDashBoards.length > 0) {
-          for (let j = 0; j < tableData.CloudDashBoards.length; j++) {
-            if (tableData.CloudDashBoards[j].associatedDataSourceType === tableValue.name) {
-              dashboardJSX.push(
-                <tbody>
-                  <tr>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={tableData.CloudDashBoards[j].isChecked}
-                        id={`${i}`}
-                        onChange={(e) => this.handleChange(e, i, j)}
-                      />
-                    </td>
-                    <td>{tableData.CloudDashBoards[j].name}</td>
-                    <td>
-                      <a>
-                        <i className="fa fa-eye"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              )
-            }
-          }
-        }
-        retData.push(
-          <table className="table-tbody first-table" width="100%">
-            <tr>
-              <td style={{ paddingLeft: "0", paddingRight: "0" }}>
-                <table width="100%">
-                  <tr>
-                    <td>
-                      <a>{tableValue.name}</a>
-                    </td>
-                    <td>
-                      <a>{tableValue.Type}</a>
-                    </td>
-                    <td>
-                      <table className="table-inner" width="100%">
-                        {dashboardJSX}
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        );
+    const retData: any = [];
+    const { dashboardData } = this.state;
+    dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
+      const { dashboards } = dataSource;
+      const dashboardJSX: any = [];
+      if (dashboards) {
+        dashboards.forEach((dashboard: any, dashboardIndex: any) => {
+          dashboardJSX.push(
+            <tbody key={v4()}>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={dashboard.isChecked}
+                    onChange={(e) => this.handleChange(e, dataSourceIndex, dashboardIndex)}
+                  />
+                </td>
+                <td>{dashboard.name}</td>
+                <td>
+                  <a>
+                    <i className="fa fa-eye"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          )
+        });
       }
-    }
+      retData.push(
+        <table key={v4()} className="table-tbody first-table" width="100%">
+          <tr>
+            <td style={{ paddingLeft: "0", paddingRight: "0" }}>
+              <table width="100%">
+                <tr>
+                  <td>
+                    <a>{dataSource.name}</a>
+                  </td>
+                  <td>
+                    <a>{dataSource.type}</a>
+                  </td>
+                  <td>
+                    <table className="table-inner" width="100%">
+                      {dashboardJSX}
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      );
+    });
     return retData;
   };
 

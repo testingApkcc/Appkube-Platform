@@ -646,14 +646,12 @@ PERFORMANCE OF THIS SOFTWARE.
           return {
             basePath: '/a/xformation-assetmanager-ui-plugin',
             octantURL: 'http://localhost:7777/#/',
-            SEVERITY_ERROR: 'error',
             GET_ALL_ACCOUNT: ''.concat(assetSrvUrl, '/cloud-environment/search?status=active'),
             GET_ACCOUNT_BY_ID: ''.concat(assetSrvUrl, '/getAccount'),
             GET_DEPARTMENTWISE_PRODUCT: ''.concat(assetSrvUrl, '/department-wise-analytics/search?orgId=78'),
             GET_PRODUCT_DATA: ''.concat(assetSrvUrl, '/department-wise-analytics/get?orgId=78'),
             GET_SERVICES_DATA: ''.concat(assetSrvUrl, '/service-detail/search'),
             PREVIEW_DASHBOARDS_URL: 'http://18.234.236.211:5057/api/dashboard/preview',
-            SEVERITY_SUCCESS: 'success',
             ADD_Organization: ''.concat(assetSrvUrl, '/addEnvironment'),
             SERVER_ERROR_MESSAGE: 'SERVER_ERROR_MESSAGE',
             DASHBOARD_JSON: {
@@ -29556,7 +29554,7 @@ object-assign
                         this.setState({
                           isAlertOpen: true,
                           message: grafanaResponse.message,
-                          severity: this.config.SEVERITY_ERROR,
+                          severity: 'error',
                         });
                         return [
                           3, /*break*/
@@ -29564,7 +29562,6 @@ object-assign
                         ];
 
                       case 2:
-                        console.log('No ERROR in grafana');
                         return [
                           4,
                           /*yield*/
@@ -29577,7 +29574,7 @@ object-assign
                         this.setState({
                           isAlertOpen: true,
                           message: grafanaResponse.message,
-                          severity: this.config.SEVERITY_SUCCESS,
+                          severity: 'success',
                         });
                         _a.label = 4;
 
@@ -32420,21 +32417,12 @@ object-assign
             function Performance(props) {
               var _this = _super.call(this, props) || this;
 
-              _this.updateDashboard = function (data) {
-                _this.setState({
-                  dashboardData: data,
-                });
-              };
-
               _this.getInputConfig = function () {
                 return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(_this, void 0, void 0, function () {
-                  var dashboard_1;
-
                   var _this = this;
 
                   return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__generator)(this, function (_a) {
                     try {
-                      dashboard_1 = {};
                       _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.getData(
                         ''.concat(this.config.SEARCH_CONFIG_DASHBOARD),
                         null,
@@ -32442,18 +32430,21 @@ object-assign
                       ).then(
                         function (response) {
                           if (response.code !== 417) {
-                            dashboard_1['CloudDashBoards'] = response.details.ops.cloudDashBoards;
-                            dashboard_1['DataSources'] = response.details.ops.dataSources;
+                            var _a = response.details.ops,
+                              cloudDashBoards = _a.cloudDashBoards,
+                              dataSources = _a.dataSources;
+
+                            var dashboardData = _this.manipulateCatalogueData(dataSources, cloudDashBoards);
 
                             _this.setState({
                               enablePerformanceMonitoring: true,
                               showConfigWizard: false,
                               activeDashboard: 0,
-                              dashboardData: dashboard_1,
+                              dashboardData: dashboardData,
                             });
 
                             _this.verifyInputsRef.current &&
-                              _this.verifyInputsRef.current.setDashboardData(dashboard_1);
+                              _this.verifyInputsRef.current.setDashboardData(dashboardData);
                           } else {
                             _this.setState({
                               showConfigWizard: true,
@@ -32474,6 +32465,22 @@ object-assign
                     ];
                   });
                 });
+              };
+
+              _this.manipulateCatalogueData = function (dataSources, dashboards) {
+                dataSources.forEach(function (dataSource) {
+                  var name = dataSource.name;
+                  dashboards.forEach(function (dashboard) {
+                    if (name === dashboard.associatedDataSourceType) {
+                      dataSource.isDashboardAdded = true;
+                      dataSource.dashboards = dataSource.dashboards || [];
+                      dataSource.dashboards.push(dashboard);
+                    }
+                  });
+                }); // const retData = dataSources.filter((source: any) => source.isDashboardAdded);
+                // return retData;
+
+                return dataSources;
               };
 
               _this.enablePerformanceMonitoring = function () {
@@ -32507,7 +32514,7 @@ object-assign
                       this.setState({
                         isAlertOpen: true,
                         message: 'Dashboard json is loading, wait for a while',
-                        severity: this.config.SEVERITY_ERROR,
+                        severity: 'warning',
                         isSuccess: false,
                       });
                       return [
@@ -32521,7 +32528,7 @@ object-assign
                       this.setState({
                         isAlertOpen: true,
                         message: 'Please select dashboard',
-                        severity: this.config.SEVERITY_ERROR,
+                        severity: 'warning',
                         isSuccess: false,
                       });
                       return [
@@ -32555,7 +32562,7 @@ object-assign
                         _this.setState({
                           isAlertOpen: true,
                           message: 'Enabling performance dashboards failed',
-                          severity: _this.config.SEVERITY_ERROR,
+                          severity: 'error',
                           isSuccess: true,
                         });
                       });
@@ -32615,12 +32622,31 @@ object-assign
               };
 
               _this.nextClick = function (step) {
+                var dashboardData = _this.verifyInputsRef.current.getSelectedDashboards();
+
+                if (!dashboardData) {
+                  _this.wizardRef.current.setActiveStep(0);
+
+                  _this.setState({
+                    isAlertOpen: true,
+                    message: 'Please select the dashboard',
+                    severity: 'warning',
+                    isSuccess: false,
+                  });
+
+                  return;
+                }
+
+                _this.setState({
+                  dashboardData: dashboardData,
+                });
+
                 if (step === 1) {
-                  _this.enableDashboardRef.current.setDashboardData(_this.state.dashboardData);
+                  _this.enableDashboardRef.current.setDashboardData(dashboardData);
                 } else if (step === 2) {
-                  _this.previewRef.current.setDashboardData(_this.state.dashboardData);
+                  _this.previewRef.current.setDashboardData(dashboardData);
                 } else if (step === 3) {
-                  _this.verifyAndSaveRef.current.setDashboardData(_this.state.dashboardData);
+                  _this.verifyAndSaveRef.current.setDashboardData(dashboardData);
                 }
               };
 
@@ -32638,8 +32664,6 @@ object-assign
 
               _this.state = {
                 enablePerformanceMonitoring: true,
-                inputName: 'Performance',
-                updatedDashboards: [],
                 isAlertOpen: false,
                 severity: null,
                 message: null,
@@ -32674,16 +32698,9 @@ object-assign
                   component: function () {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _VerifyInputs__WEBPACK_IMPORTED_MODULE_2__.VerifyInputs,
-                      (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
-                        {
-                          ref: _this.verifyInputsRef,
-                          dashboard: _this.state.dashboardData,
-                        },
-                        _this.props,
-                        {
-                          updateDashboard: _this.updateDashboard,
-                        }
-                      )
+                      {
+                        ref: _this.verifyInputsRef,
+                      }
                     );
                   },
                 },
@@ -32692,12 +32709,9 @@ object-assign
                   component: function () {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _EnableDashboard__WEBPACK_IMPORTED_MODULE_3__.EnableDashboard,
-                      (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
-                        {
-                          ref: _this.enableDashboardRef,
-                        },
-                        _this.props
-                      )
+                      {
+                        ref: _this.enableDashboardRef,
+                      }
                     );
                   },
                 },
@@ -33096,24 +33110,24 @@ object-assign
           /* harmony export */ VerifyInputs: () => /* binding */ VerifyInputs,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../config */ 5);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! uuid */ 138);
 
         var VerifyInputs =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__extends)(VerifyInputs, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(VerifyInputs, _super);
 
             function VerifyInputs(props) {
               var _this = _super.call(this, props) || this;
 
               _this.configureInputs = function () {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(_this, void 0, void 0, function () {
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__generator)(this, function (_a) {
                     this.setState({
                       configureInputs: !this.state.configureInputs,
                     });
@@ -33126,222 +33140,168 @@ object-assign
               };
 
               _this.setDashboardData = function (data) {
-                console.log(data);
-
                 _this.setState({
-                  tableData: data,
+                  dashboardData: data,
                 });
               };
 
-              _this.getSelection = function () {
-                return _this.state.selectedData;
+              _this.getSelectedDashboards = function () {
+                var _a = _this.checkIfDashboardSelected(),
+                  isSelected = _a.isSelected,
+                  dashboardData = _a.dashboardData;
+
+                if (isSelected) {
+                  return dashboardData;
+                }
+
+                return false;
+              };
+
+              _this.checkIfDashboardSelected = function () {
+                var dashboardData = _this.state.dashboardData;
+                var isSelected = false;
+
+                for (var i = 0; i < dashboardData.length; i++) {
+                  var dashboards = dashboardData[i].dashboards;
+                  dashboardData[i].isChecked = false;
+
+                  if (dashboards) {
+                    for (var j = 0; j < dashboards.length; j++) {
+                      if (dashboards[j].isChecked) {
+                        isSelected = true;
+                        dashboardData[i].isChecked = true;
+                        break;
+                      }
+                    }
+                  }
+                }
+
+                return {
+                  isSelected: isSelected,
+                  dashboardData: dashboardData,
+                };
               };
 
               _this.displayTable = function () {
                 var retData = [];
-                var tableData = _this.state.tableData;
+                var dashboardData = _this.state.dashboardData;
+                dashboardData.forEach(function (dataSource, dataSourceIndex) {
+                  var dashboards = dataSource.dashboards;
+                  var dashboardJSX = [];
 
-                if (tableData && tableData.DataSources) {
-                  var _loop_1 = function (i) {
-                    var tableValue = tableData.DataSources[i];
-                    var dashboardJSX = [];
-
-                    if (tableData.CloudDashBoards && tableData.CloudDashBoards.length > 0) {
-                      var _loop_2 = function (j) {
-                        if (tableData.CloudDashBoards[j].associatedDataSourceType === tableValue.name) {
-                          dashboardJSX.push(
+                  if (dashboards) {
+                    dashboards.forEach(function (dashboard, dashboardIndex) {
+                      dashboardJSX.push(
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'tbody',
+                          {
+                            key: (0, uuid__WEBPACK_IMPORTED_MODULE_2__['default'])(),
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'tr',
+                            null,
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'tbody',
+                              'td',
+                              null,
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+                                type: 'checkbox',
+                                checked: dashboard.isChecked,
+                                onChange: function (e) {
+                                  return _this.handleChange(e, dataSourceIndex, dashboardIndex);
+                                },
+                              })
+                            ),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'td',
                               null,
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'tr',
+                                'a',
                                 null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                                    type: 'checkbox',
-                                    checked: tableData.CloudDashBoards[j].isChecked,
-                                    id: ''.concat(i),
-                                    onChange: function (e) {
-                                      return _this.handleChange(e, i, j);
-                                    },
-                                  })
-                                ),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  tableData.CloudDashBoards[j].name
-                                ),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'a',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                      className: 'fa fa-eye',
-                                    })
-                                  )
-                                )
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                  className: 'fa fa-eye',
+                                })
                               )
                             )
-                          );
-                        }
-                      };
+                          )
+                        )
+                      );
+                    });
+                  }
 
-                      for (var j = 0; j < tableData.CloudDashBoards.length; j++) {
-                        _loop_2(j);
-                      }
-                    }
-
-                    retData.push(
+                  retData.push(
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'table',
+                      {
+                        key: (0, uuid__WEBPACK_IMPORTED_MODULE_2__['default'])(),
+                        className: 'table-tbody first-table',
+                        width: '100%',
+                      },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'table',
-                        {
-                          className: 'table-tbody first-table',
-                          width: '100%',
-                        },
+                        'tr',
+                        null,
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'tr',
-                          null,
+                          'td',
+                          {
+                            style: {
+                              paddingLeft: '0',
+                              paddingRight: '0',
+                            },
+                          },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'td',
+                            'table',
                             {
-                              style: {
-                                paddingLeft: '0',
-                                paddingRight: '0',
-                              },
+                              width: '100%',
                             },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'table',
-                              {
-                                width: '100%',
-                              },
+                              'tr',
+                              null,
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'tr',
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.type)
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
                                 null,
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, tableValue.name)
-                                ),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, tableValue.Type)
-                                ),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'table',
-                                    {
-                                      className: 'table-inner',
-                                      width: '100%',
-                                    },
-                                    dashboardJSX
-                                  )
+                                  'table',
+                                  {
+                                    className: 'table-inner',
+                                    width: '100%',
+                                  },
+                                  dashboardJSX
                                 )
                               )
                             )
                           )
                         )
                       )
-                    );
-                  };
-
-                  for (var i = 0; i < tableData.DataSources.length; i++) {
-                    _loop_1(i);
-                  }
-                }
-
+                    )
+                  );
+                });
                 return retData;
               };
 
               _this.state = {
                 inputName: _this.props.inputName,
                 configureInputs: false,
-                selectedData: [],
-                tableData: _this.props.dashboard,
-                dashboardJSON: [],
+                dashboardData: [],
               };
-              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_1__.configFun)(
-                props.meta.jsonData.apiUrl,
-                props.meta.jsonData.mainProductUrl
-              );
               return _this;
             }
 
-            VerifyInputs.prototype.componentDidUpdate = function (prevProps, prevState) {
-              if (JSON.stringify(prevProps.dashboard) !== JSON.stringify(this.props.dashboard)) {
-                this.setState({
-                  tableData: this.props.dashboard,
-                });
-              }
-            };
-
-            VerifyInputs.prototype.componentDidMount = function () {
-              return (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
-                  if (this.props.dashboard) {
-                    this.setState({
-                      tableData: this.props.dashboard,
-                    });
-                  }
-
-                  return [
-                    2,
-                    /*return*/
-                  ];
-                });
-              });
-            };
-
-            VerifyInputs.prototype.handleChange = function (e, i, j) {
+            VerifyInputs.prototype.handleChange = function (e, dataSourceIndex, dashboardIndex) {
               var checked = e.target.checked;
-              var _a = this.state,
-                tableData = _a.tableData,
-                selectedData = _a.selectedData;
-              tableData.CloudDashBoards[j].isChecked = checked;
-
-              if (checked) {
-                tableData.DataSources[i].isChecked = checked;
-              }
-
-              var count = 0;
-
-              if (tableData.CloudDashBoards) {
-                for (var k = 0; k < tableData.CloudDashBoards.length; k++) {
-                  if (tableData.CloudDashBoards[k].associatedDataSourceType == tableData.DataSources[i].name) {
-                    if (tableData.CloudDashBoards[k].isChecked == true) {
-                      count++;
-                    }
-                  }
-                }
-              }
-
-              if (count == 0) {
-                tableData.DataSources[i].isChecked = false;
-              }
-
-              this.props.updateDashboard(tableData);
-
-              if (checked) {
-                selectedData.push(tableData.DataSources[i]);
-                this.setState({
-                  selectedData: selectedData,
-                });
-              } else {
-                this.removeObject(tableData.DataSources[i], selectedData);
-              }
-            };
-
-            VerifyInputs.prototype.removeObject = function (obj, selData) {
-              var index = selData.indexOf(obj);
-              selData.splice(index, 1);
+              var dashboardData = this.state.dashboardData;
+              dashboardData[dataSourceIndex].dashboards[dashboardIndex].isChecked = checked;
               this.setState({
-                selectedData: selData,
+                dashboardData: dashboardData,
               });
             };
 
@@ -33413,188 +33373,135 @@ object-assign
           /* harmony export */ EnableDashboard: () => /* binding */ EnableDashboard,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../config */ 5);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! uuid */ 138);
 
         var EnableDashboard =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__extends)(EnableDashboard, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(EnableDashboard, _super);
 
             function EnableDashboard(props) {
               var _this = _super.call(this, props) || this;
 
               _this.setDashboardData = function (data) {
-                console.log(data);
-
                 _this.setState({
-                  selectedData: data,
+                  dashboardData: data,
                 });
-              };
-
-              _this.getSelection = function () {
-                return _this.state.enabledDashboards;
               };
 
               _this.displayTable = function () {
                 var retData = [];
-                var selectedData = _this.state.selectedData;
-
-                if (selectedData.DataSources) {
-                  var _loop_1 = function (i) {
-                    var dataSource = selectedData.DataSources[i];
-                    var dashboardJSX = [];
-
-                    if (selectedData.CloudDashBoards && selectedData.CloudDashBoards.length > 0) {
-                      var _loop_2 = function (j) {
-                        if (selectedData.CloudDashBoards[j].associatedDataSourceType === dataSource.name) {
-                          if (selectedData.CloudDashBoards[j].isChecked) {
-                            dashboardJSX.push(
+                var dashboardData = _this.state.dashboardData;
+                dashboardData.forEach(function (dataSource, dataSourceIndex) {
+                  if (dataSource.isChecked) {
+                    var dashboards = dataSource.dashboards;
+                    var dashboardJSX_1 = [];
+                    dashboards.forEach(function (dashboard, dashboardIndex) {
+                      if (dashboard.isChecked) {
+                        dashboardJSX_1.push(
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'tbody',
+                            {
+                              key: (0, uuid__WEBPACK_IMPORTED_MODULE_2__['default'])(),
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'tr',
+                              null,
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'tbody',
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+                                  type: 'checkbox',
+                                  checked: dashboard.isChecked,
+                                })
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
                                 null,
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'tr',
+                                  'a',
                                   null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                                      type: 'checkbox',
-                                      checked: selectedData.CloudDashBoards[j].isChecked,
-                                      id: ''.concat(i),
-                                      onChange: function (e) {
-                                        return _this.handleChange(e, i, j);
-                                      },
-                                    })
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    selectedData.CloudDashBoards[j].name
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'a',
-                                      null,
-                                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                        className: 'fa fa-eye',
-                                      })
-                                    )
-                                  )
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                    className: 'fa fa-eye',
+                                  })
                                 )
                               )
-                            );
-                          }
-                        }
-                      };
-
-                      for (var j = 0; j < selectedData.CloudDashBoards.length; j++) {
-                        _loop_2(j);
+                            )
+                          )
+                        );
                       }
-                    }
-
-                    if (dataSource.isChecked) {
-                      retData.push(
+                    });
+                    retData.push(
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'table',
+                        {
+                          key: (0, uuid__WEBPACK_IMPORTED_MODULE_2__['default'])(),
+                          className: 'table-tbody first-table',
+                          width: '100%',
+                        },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'table',
-                          {
-                            className: 'table-tbody first-table',
-                            width: '100%',
-                          },
+                          'tr',
+                          null,
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'tr',
-                            null,
+                            'td',
+                            {
+                              style: {
+                                paddingLeft: '0',
+                                paddingRight: '0',
+                              },
+                            },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'td',
+                              'table',
                               {
-                                style: {
-                                  paddingLeft: '0',
-                                  paddingRight: '0',
-                                },
+                                width: '100%',
                               },
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'table',
-                                {
-                                  width: '100%',
-                                },
+                                'tr',
+                                null,
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'tr',
+                                  'td',
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'td',
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.type)
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'td',
                                   null,
                                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.Type)
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'table',
-                                      {
-                                        className: 'table-inner',
-                                        width: '100%',
-                                      },
-                                      dashboardJSX
-                                    )
+                                    'table',
+                                    {
+                                      className: 'table-inner',
+                                      width: '100%',
+                                    },
+                                    dashboardJSX_1
                                   )
                                 )
                               )
                             )
                           )
                         )
-                      );
-                    }
-                  };
-
-                  for (var i = 0; i < selectedData.DataSources.length; i++) {
-                    _loop_1(i);
+                      )
+                    );
                   }
-                }
-
+                });
                 return retData;
               };
 
               _this.state = {
-                selectedData: [],
-                enabledDashboards: [],
+                dashboardData: [],
               };
-              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_1__.configFun)(
-                props.meta.jsonData.apiUrl,
-                props.meta.jsonData.mainProductUrl
-              );
               return _this;
             }
-
-            EnableDashboard.prototype.handleChange = function (e, i, j) {
-              // let isChecked = e.target.checked;
-              // const { enabledDashboards } = this.state;
-              // if (isChecked) {
-              //   enabledDashboards.push(obj);
-              //   this.setState({ enabledDashboards: enabledDashboards });
-              // } else {
-              //   this.removeObject(obj, enabledDashboards);
-              // }
-            };
-
-            EnableDashboard.prototype.removeObject = function (obj, selData) {
-              var index = selData.indexOf(obj);
-              selData.splice(index, 1);
-              this.setState({
-                enabledDashboards: selData,
-              });
-            };
 
             EnableDashboard.prototype.render = function () {
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -33682,38 +33589,11 @@ object-assign
               var _this = _super.call(this, props) || this;
 
               _this.setDashboardData = function (data) {
-                var selectedDashboards = _this.manipulateDashboardData(data);
-
                 _this.setState({
-                  selectedDashboards: selectedDashboards,
+                  dashboardData: data,
+                  activeDashboard: 0,
+                  activeDataSource: 0,
                 });
-              };
-
-              _this.manipulateDashboardData = function (data) {
-                if (data && data.DataSources) {
-                  var retData = [];
-
-                  for (var i = 0; i < data.DataSources.length; i++) {
-                    var dataSource = data.DataSources[i];
-
-                    if (dataSource.isChecked) {
-                      if (data.CloudDashBoards && data.CloudDashBoards.length > 0) {
-                        for (var j = 0; j < data.CloudDashBoards.length; j++) {
-                          if (data.CloudDashBoards[j].associatedDataSourceType === dataSource.name) {
-                            if (data.CloudDashBoards[j].isChecked) {
-                              retData.push({
-                                dashboard: data.CloudDashBoards[j],
-                                dataSource: dataSource,
-                              });
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-
-                  return retData;
-                }
               };
 
               _this.getParameterByName = function (name, url) {
@@ -33727,76 +33607,82 @@ object-assign
 
               _this.renderDashboardList = function () {
                 var _a = _this.state,
-                  selectedDashboards = _a.selectedDashboards,
-                  activeDashboard = _a.activeDashboard;
+                  dashboardData = _a.dashboardData,
+                  activeDashboard = _a.activeDashboard,
+                  activeDataSource = _a.activeDataSource;
                 var retData = [];
-
-                var _loop_1 = function (i) {
-                  var data = selectedDashboards[i];
-                  retData.push(
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'li',
-                      {
-                        title: data.dashboard.associatedDataSourceType,
-                        key: (0, uuid__WEBPACK_IMPORTED_MODULE_2__['default'])(),
-                        className: 'button '.concat(activeDashboard === i ? 'active' : ''),
-                        onClick: function () {
-                          return _this.setState({
-                            activeDashboard: i,
-                            iFrameLoaded: false,
-                          });
-                        },
-                      },
-                      data.dashboard.associatedDataSourceType
-                    )
-                  );
-                };
-
-                for (var i = 0; i < selectedDashboards.length; i++) {
-                  _loop_1(i);
-                }
-
+                dashboardData.forEach(function (dataSource, dataSourceIndex) {
+                  if (dataSource.isChecked) {
+                    var dashboards = dataSource.dashboards;
+                    dashboards.forEach(function (dashboard, dashboardIndex) {
+                      if (dashboard.isChecked) {
+                        retData.push(
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'li',
+                            {
+                              title: dashboard.associatedDataSourceType,
+                              key: (0, uuid__WEBPACK_IMPORTED_MODULE_2__['default'])(),
+                              className: 'button '.concat(
+                                activeDataSource === dataSourceIndex && dashboardIndex === activeDashboard
+                                  ? 'active'
+                                  : ''
+                              ),
+                              onClick: function () {
+                                return _this.setState({
+                                  activeDashboard: dashboardIndex,
+                                  activeDataSource: dataSourceIndex,
+                                });
+                              },
+                            },
+                            dashboard.associatedDataSourceType
+                          )
+                        );
+                      }
+                    });
+                  }
+                });
                 return retData;
               };
 
               _this.renderIframe = function () {
                 var _a = _this.state,
                   activeDashboard = _a.activeDashboard,
-                  selectedDashboards = _a.selectedDashboards;
+                  dashboardData = _a.dashboardData,
+                  activeDataSource = _a.activeDataSource;
 
                 var accountId = _this.getParameterByName('accountId', window.location.href);
 
                 var retData = [];
-                selectedDashboards.forEach(function (data, index) {
-                  var dashboard = data.dashboard,
-                    dataSource = data.dataSource;
-                  retData.push(
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('iframe', {
-                      key: dashboard.id,
-                      src: '/jsondashboard?dataSourceName='
-                        .concat(dataSource.name, '&associatedCloudElementType=')
-                        .concat(dashboard.associatedCloudElementType, '&associatedSLAType=')
-                        .concat(dashboard.associatedSLAType, '&jsonLocation=')
-                        .concat(dashboard.jsonLocation, '&associatedCloud=')
-                        .concat(dashboard.associatedCloud, '&accountId=')
-                        .concat(accountId),
-                      onLoad: function () {
-                        _this.setState({
-                          iFrameLoaded: true,
-                        });
-                      },
-                      style: {
-                        display: activeDashboard === index ? 'block' : 'none',
-                      },
-                    })
-                  );
+                dashboardData.forEach(function (dataSource, dataSourceIndex) {
+                  if (dataSource.isChecked) {
+                    var dashboards = dataSource.dashboards;
+                    dashboards.forEach(function (dashboard, dashboardIndex) {
+                      if (dashboard.isChecked) {
+                        if (activeDataSource === dataSourceIndex && dashboardIndex === activeDashboard) {
+                          retData.push(
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('iframe', {
+                              key: (0, uuid__WEBPACK_IMPORTED_MODULE_2__['default'])(),
+                              src: '/jsondashboard?dataSourceName='
+                                .concat(dataSource.name, '&associatedCloudElementType=')
+                                .concat(dashboard.associatedCloudElementType, '&associatedSLAType=')
+                                .concat(dashboard.associatedSLAType, '&jsonLocation=')
+                                .concat(dashboard.jsonLocation, '&associatedCloud=')
+                                .concat(dashboard.associatedCloud, '&accountId=')
+                                .concat(accountId),
+                            })
+                          );
+                        }
+                      }
+                    });
+                  }
                 });
-                return retData; // return <div>No Dashboard Selected</div>;
+                return retData;
               };
 
               _this.state = {
-                selectedDashboards: [],
+                dashboardData: [],
                 activeDashboard: 0,
+                activeDataSource: 0,
                 isLoading: false,
               };
               return _this;
@@ -33806,12 +33692,6 @@ object-assign
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                 react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
                 null,
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-                  style: {
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                  },
-                }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                   'div',
                   {
@@ -33875,6 +33755,7 @@ object-assign
           /*! ../../_service/RestService */ 7
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../config */ 5);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uuid */ 138);
 
         var VerifyAndSave =
           /** @class */
@@ -33888,158 +33769,143 @@ object-assign
                 var selectedDashboards = _this.manipulateDashboardData(data);
 
                 _this.setState({
-                  selectedData: data,
-                  manipulatedData: selectedDashboards,
+                  dashboardData: data,
+                  selectedDashboards: selectedDashboards,
                 });
 
                 _this.retriveDashboardJSONData(selectedDashboards);
               };
 
               _this.manipulateDashboardData = function (data) {
-                if (data && data.DataSources) {
-                  var retData = [];
-
-                  for (var i = 0; i < data.DataSources.length; i++) {
-                    var dataSource = data.DataSources[i];
-
-                    if (dataSource.isChecked) {
-                      if (data.CloudDashBoards && data.CloudDashBoards.length > 0) {
-                        for (var j = 0; j < data.CloudDashBoards.length; j++) {
-                          if (data.CloudDashBoards[j].associatedDataSourceType === dataSource.name) {
-                            if (data.CloudDashBoards[j].isChecked) {
-                              retData.push({
-                                dashboard: data.CloudDashBoards[j],
-                                dataSource: dataSource,
-                              });
-                            }
-                          }
-                        }
+                var dashboards = [];
+                data.forEach(function (dataSource) {
+                  if (dataSource.isChecked) {
+                    dataSource.dashboards.forEach(function (dashboard) {
+                      if (dashboard.isChecked) {
+                        dashboards.push(dashboard);
                       }
-                    }
+                    });
                   }
-
-                  return retData;
-                }
+                });
+                return dashboards;
               };
 
               _this.displayTable = function () {
                 var retData = [];
-                var selectedData = _this.state.selectedData;
-
-                if (selectedData && selectedData.DataSources) {
-                  for (var i = 0; i < selectedData.DataSources.length; i++) {
-                    var obj = selectedData.DataSources[i];
-                    var dashboardJSX = [];
-
-                    if (selectedData.CloudDashBoards && selectedData.CloudDashBoards.length > 0) {
-                      for (var j = 0; j < selectedData.CloudDashBoards.length; j++) {
-                        if (selectedData.CloudDashBoards[j].associatedDataSourceType === obj.name) {
-                          if (selectedData.CloudDashBoards[j].isChecked) {
-                            dashboardJSX.push(
+                var dashboardData = _this.state.dashboardData;
+                dashboardData.forEach(function (dataSource, dataSourceIndex) {
+                  if (dataSource.isChecked) {
+                    var dashboards = dataSource.dashboards;
+                    var dashboardJSX_1 = [];
+                    dashboards.forEach(function (dashboard, dashboardIndex) {
+                      if (dashboard.isChecked) {
+                        dashboardJSX_1.push(
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'tbody',
+                            {
+                              key: (0, uuid__WEBPACK_IMPORTED_MODULE_4__['default'])(),
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'tr',
+                              null,
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+                                  type: 'checkbox',
+                                  checked: dashboard.isChecked,
+                                })
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'a',
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                    className: 'fa fa-eye',
+                                  })
+                                )
+                              )
+                            )
+                          )
+                        );
+                      }
+                    });
+                    retData.push(
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'table',
+                        {
+                          key: (0, uuid__WEBPACK_IMPORTED_MODULE_4__['default'])(),
+                          className: 'table-tbody first-table',
+                          width: '100%',
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'tr',
+                          null,
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'td',
+                            {
+                              style: {
+                                paddingLeft: '0',
+                                paddingRight: '0',
+                              },
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'table',
+                              {
+                                width: '100%',
+                              },
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'tr',
                                 null,
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                   'td',
                                   null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                                    type: 'checkbox',
-                                    id: ''.concat(i),
-                                    checked: selectedData.CloudDashBoards[j].isChecked,
-                                  })
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
                                 ),
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                   'td',
                                   null,
-                                  selectedData.CloudDashBoards[j].associatedDataSourceType
-                                )
-                              )
-                            );
-                          }
-                        }
-                      }
-                    }
-
-                    if (obj.isChecked) {
-                      retData.push(
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'table',
-                          {
-                            className: 'table-tbody first-table',
-                            width: '100%',
-                          },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'tr',
-                            null,
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'td',
-                              {
-                                style: {
-                                  paddingLeft: '0',
-                                  paddingRight: '0',
-                                },
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'table',
-                                {
-                                  width: '100%',
-                                },
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.type)
+                                ),
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'tr',
+                                  'td',
                                   null,
                                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, obj.name)
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
-                                    null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, obj.Type)
-                                  ),
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'td',
+                                    'table',
                                     {
-                                      style: {
-                                        paddingLeft: '0',
-                                        paddingRight: '0',
-                                      },
+                                      className: 'table-inner',
+                                      width: '100%',
                                     },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                      'table',
-                                      {
-                                        className: 'table-inner',
-                                        width: '100%',
-                                      },
-                                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('tbody', null, dashboardJSX)
-                                    )
+                                    dashboardJSX_1
                                   )
                                 )
                               )
                             )
                           )
                         )
-                      );
-                    }
+                      )
+                    );
                   }
-                }
-
+                });
                 return retData;
               };
 
-              _this.retriveDashboardJSONData = function (selectedDashboards) {
+              _this.retriveDashboardJSONData = function (dashboards) {
                 var accountId = _this.getParameterByName('accountId', window.location.href);
 
                 var dashboardJSON = [];
 
-                if (selectedDashboards.length > 0) {
+                if (dashboards.length > 0) {
                   _this.setState({
                     isLoading: true,
                   });
                 }
 
-                for (var i = 0; i < selectedDashboards.length; i++) {
-                  var _a = selectedDashboards[i].dashboard,
+                for (var i = 0; i < dashboards.length; i++) {
+                  var _a = dashboards[i],
                     associatedDataSourceType = _a.associatedDataSourceType,
                     jsonLocation = _a.jsonLocation,
                     associatedCloudElementType = _a.associatedCloudElementType,
@@ -34087,9 +33953,9 @@ object-assign
               };
 
               _this.checkIfAllDashboardLoaded = function (dashboardJSON) {
-                var manipulatedData = _this.state.manipulatedData;
+                var selectedDashboards = _this.state.selectedDashboards;
 
-                if (manipulatedData.length === dashboardJSON.length) {
+                if (selectedDashboards.length === dashboardJSON.length) {
                   _this.setState({
                     isLoading: false,
                     dashboardJSON: dashboardJSON,
@@ -34115,11 +33981,10 @@ object-assign
               };
 
               _this.state = {
-                selectedData: {},
+                dashboardData: [],
                 selectedDashboards: [],
                 dashboardJSON: [],
                 isLoading: false,
-                manipulatedData: [],
               };
               _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(
                 props.meta.jsonData.apiUrl,

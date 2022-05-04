@@ -4,7 +4,6 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
   return {
     basePath: '/a/xformation-assetmanager-ui-plugin',
     octantURL: 'http://localhost:7777/#/',
-    SEVERITY_ERROR: 'error',
 
     GET_ALL_ACCOUNT: `${assetSrvUrl}/cloud-environment/search?status=active`,
     GET_ACCOUNT_BY_ID: `${assetSrvUrl}/getAccount`,
@@ -13,7 +12,6 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GET_SERVICES_DATA: `${assetSrvUrl}/service-detail/search`,
     PREVIEW_DASHBOARDS_URL: `http://18.234.236.211:5057/api/dashboard/preview`,
 
-    SEVERITY_SUCCESS: 'success',
     ADD_Organization: `${assetSrvUrl}/addEnvironment`,
     SERVER_ERROR_MESSAGE: 'SERVER_ERROR_MESSAGE',
 
