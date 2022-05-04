@@ -223,6 +223,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         }
     }
     render() {
+        const {comp}=this.state;
         return (
             <div className="catalogue-inner-tabs-container templates-container">
                 <div className="row">
@@ -237,8 +238,8 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             </div>
                             <div className="templates-category">
                                 <ul>
-                                    <li><label>Welcome</label></li>
-                                    <li><label>Account Creation</label></li>
+                                    <li className={comp===2?'active':''} onClick={() => this.setState({ comp:2 })}><label >Welcome</label></li>
+                                    <li className={comp===3?'active':''} onClick={() => this.setState({ comp:3 })} ><label >Account Creation</label></li>
                                 </ul>
                             </div>
                         </div>
