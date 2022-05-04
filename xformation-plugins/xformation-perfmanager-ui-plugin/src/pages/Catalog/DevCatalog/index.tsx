@@ -61,29 +61,32 @@ export class DevCatalogue extends React.Component<any, any>{
         const { catalogData, activeTab } = this.state;
         return (
             <>
-                <ul>
-                    {
-                        this.tabMapping.map((tabData: any, index: any) => {
-                            return (
-                                <li key={`ops-tab-${index}`}
-                                    className={index === activeTab ? 'active' : ''}
-                                    onClick={(e) => this.setActiveTab(index)}>
-                                    {tabData.name}
-                                </li>
-                            )
-                        })
-                    }
-                    {
-                        this.tabMapping.map((tabData: any, index: any) => {
-                            if (index === activeTab) {
-                                return <tabData.component data={catalogData[tabData.dataKey]} />
-                            } else {
-                                return <></>;
-                            }
+                <div className="catalogue-inner-tabs">
+                    <ul>
+                        {
+                            this.tabMapping.map((tabData: any, index: any) => {
+                                return (
+                                    <li key={`ops-tab-${index}`}
+                                        className={index === activeTab ? 'active' : ''}
+                                        onClick={(e) => this.setActiveTab(index)}>
+                                        {tabData.name}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
 
-                        })
-                    }
-                </ul>
+                {
+                    this.tabMapping.map((tabData: any, index: any) => {
+                        if (index === activeTab) {
+                            return <tabData.component data={catalogData[tabData.dataKey]} />
+                        } else {
+                            return <></>;
+                        }
+
+                    })
+                }
             </>
         )
     }

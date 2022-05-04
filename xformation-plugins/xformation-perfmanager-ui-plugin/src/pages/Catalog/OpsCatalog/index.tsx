@@ -1,11 +1,11 @@
 import React from 'react';
 import { CloudDashboards } from './CloudDashboards';
 import { DataSources } from './DataSources';
-import { ProvisioningTemplates } from './ProvisionTemplate';
-import {Collectors} from './Collectors';
-import {Diagonostics} from './Diagonostics'
-import {KubeOperators} from './KubeOperators'
-import {Workflows} from './Workflows'
+import { ProvisioningTemplates } from './provisionTemplate';
+import { Collectors } from './Collectors';
+import { Diagonostics } from './Diagonostics'
+import { KubeOperators } from './KubeOperators'
+import { Workflows } from './Workflows'
 export class OpsCatalogue extends React.Component<any, any>{
     config: any;
     tabMapping: any = [{
@@ -20,7 +20,7 @@ export class OpsCatalogue extends React.Component<any, any>{
         name: "Provisioning Templates",
         dataKey: 'provisioningTemplates',
         component: ProvisioningTemplates
-    }, 
+    },
     {
         name: "Collectors",
         dataKey: 'collectors',
@@ -41,7 +41,7 @@ export class OpsCatalogue extends React.Component<any, any>{
         dataKey: 'workflows',
         component: Workflows
     },
-];
+    ];
     previewDashboardPopupRef: any;
 
     constructor(props: any) {
@@ -70,28 +70,30 @@ export class OpsCatalogue extends React.Component<any, any>{
         const { catalogData, activeTab } = this.state;
         return (
             <>
-                <ul>
-                    {
-                        this.tabMapping.map((tabData: any, index: any) => {
-                            return (
-                                <li key={`ops-tab-${index}`}
-                                    className={index === activeTab ? 'active' : ''}
-                                    onClick={(e) => this.setActiveTab(index)}>
-                                    {tabData.name}
-                                </li>
-                            )
-                        })
-                    }
-                    {
-                        this.tabMapping.map((tabData: any, index: any) => {
-                            if(index === activeTab){
-                                return <tabData.component data={catalogData[tabData.dataKey]} />
-                            } else {
-                                return <></>;
-                            }
-                        })
-                    }
-                </ul>
+                <div className="catalogue-inner-tabs">
+                    <ul>
+                        {
+                            this.tabMapping.map((tabData: any, index: any) => {
+                                return (
+                                    <li key={`ops-tab-${index}`}
+                                        className={index === activeTab ? 'active' : ''}
+                                        onClick={(e) => this.setActiveTab(index)}>
+                                        {tabData.name}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
+                {
+                    this.tabMapping.map((tabData: any, index: any) => {
+                        if (index === activeTab) {
+                            return <tabData.component data={catalogData[tabData.dataKey]} />
+                        } else {
+                            return <></>;
+                        }
+                    })
+                }
             </>
         )
     }

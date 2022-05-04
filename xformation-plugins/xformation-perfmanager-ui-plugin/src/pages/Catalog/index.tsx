@@ -23,6 +23,7 @@ export class Catalog extends React.Component<any, any>{
     dataKey: 'ops',
     component: OpsCatalogue
   }];
+
   constructor(props: any) {
     super(props)
     this.state = {
@@ -165,17 +166,16 @@ export class Catalog extends React.Component<any, any>{
               </div>
             </div>
             <div className="catalogue-tabs-container">
-              <div className="catalogue-inner-tabs">
-                {
-                  this.tabMapping.map((tabData: any, index: any) => {
-                    if (activeTab === index) {
-                      return <tabData.component data={catalogueData[tabData.dataKey]} />;
-                    } else {
-                      return <></>;
-                    }
-                  })
-                }
-              </div>
+
+              {
+                this.tabMapping.map((tabData: any, index: any) => {
+                  if (activeTab === index) {
+                    return <tabData.component data={catalogueData[tabData.dataKey]} />;
+                  } else {
+                    return <></>;
+                  }
+                })
+              }
             </div>
           </div>
         </div>

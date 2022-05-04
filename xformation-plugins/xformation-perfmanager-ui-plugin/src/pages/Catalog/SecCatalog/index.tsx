@@ -1,10 +1,11 @@
 import React from 'react';
-import {CompliancePolicies} from './CompliancePolicies';
-import {ComplianceRules} from './ComplianceRules';
-import {ConainerSecurityTemplates} from'./ConainerSecurityTemplates';
-import {DataSecurityTemplates} from './DataSecurityTemplates';
-import {ComplianceAuditors} from'./ComplianceAuditors';
-import {CodeSecurityTemplates} from './CodeSecurityTemplets'
+import { CompliancePolicies } from './CompliancePolicies';
+import { ComplianceRules } from './ComplianceRules';
+import { ConainerSecurityTemplates } from './ConainerSecurityTemplates';
+import { DataSecurityTemplates } from './DataSecurityTemplates';
+import { ComplianceAuditors } from './ComplianceAuditors';
+import { CodeSecurityTemplates } from './CodeSecurityTemplets';
+
 export class SecCatalogue extends React.Component<any, any>{
     config: any;
     tabMapping: any = [
@@ -66,29 +67,32 @@ export class SecCatalogue extends React.Component<any, any>{
         const { catalogData, activeTab } = this.state;
         return (
             <>
-                <ul>
-                    {
-                        this.tabMapping.map((tabData: any, index: any) => {
-                            return (
-                                <li key={`ops-tab-${index}`}
-                                    className={index === activeTab ? 'active' : ''}
-                                    onClick={(e) => this.setActiveTab(index)}>
-                                    {tabData.name}
-                                </li>
-                            )
-                        })
-                    }
-                    {
-                        this.tabMapping.map((tabData: any, index: any) => {
-                            if(index === activeTab){
-                                return <tabData.component data={catalogData[tabData.dataKey]} />
-                            } else {
-                                return <></>;
-                            }
-                            
-                        })
-                    }
-                </ul>
+                <div className="catalogue-inner-tabs">
+                    <ul>
+                        {
+                            this.tabMapping.map((tabData: any, index: any) => {
+                                return (
+                                    <li key={`ops-tab-${index}`}
+                                        className={index === activeTab ? 'active' : ''}
+                                        onClick={(e) => this.setActiveTab(index)}>
+                                        {tabData.name}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
+                {
+                    this.tabMapping.map((tabData: any, index: any) => {
+                        if (index === activeTab) {
+                            return <tabData.component data={catalogData[tabData.dataKey]} />
+                        } else {
+                            return <></>;
+                        }
+
+                    })
+                }
+
             </>
         )
     }
