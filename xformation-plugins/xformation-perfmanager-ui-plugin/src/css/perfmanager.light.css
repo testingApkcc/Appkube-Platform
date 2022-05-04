@@ -4275,6 +4275,7 @@ a:hover {
   margin-bottom: 30px;
   padding: 15px;
   display: block;
+  cursor: pointer;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
@@ -4556,6 +4557,25 @@ a:hover {
   width: 30%;
   display: inline-block;
   border-color: #8a919c;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  .error {
+  display: block;
+  width: 100%;
+  padding-left: 35%;
+  font-size: 10px;
+  padding-top: 0px;
+  font-weight: 400;
+  color: red;
+  line-height: 16px;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container

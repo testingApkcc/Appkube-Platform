@@ -5,9 +5,126 @@ export class ProvisioningTemplates extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            comp: 1
+            comp: 1,
+            accountName: '',
+            accountEmail: '',
+            managedOrganisationalUnit: '',
+            ssoUserEmail:'',
+            ssoUserFirstName:'',
+            ssoUserLastName:'',
+            requestor: '',
+            requestReason: '',
+            customizationName: '',
+            isSubmitted: false,
         }
     }
+
+    handleStateChange = (e: any) => {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value,
+        });
+    };
+
+    validate = (isSubmitted: any) => {
+        const validObj = {
+            isValid: true,
+            message: '',
+        };
+        let isValid = true;
+        const retData = {
+            accountName: validObj,
+            accountEmail: validObj,
+            managedOrganisationalUnit: validObj,
+            ssoUserEmail: validObj,
+            ssoUserFirstName: validObj,
+            ssoUserLastName: validObj,
+            requestor: validObj,
+            requestReason: validObj,
+            customizationName: validObj,
+            isValid,
+        };
+        if (isSubmitted) {
+            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName } = this.state;
+            if (!accountName) {
+                retData.accountName = {
+                    isValid: false,
+                    message: 'Account Name is required',
+                };
+                isValid = false;
+            }
+            if (!accountEmail) {
+                retData.accountEmail = {
+                    isValid: false,
+                    message: 'Account Email is required',
+                };
+                isValid = false;
+            }
+            if (!managedOrganisationalUnit) {
+                retData.managedOrganisationalUnit = {
+                    isValid: false,
+                    message: 'Account Email is required',
+                };
+                isValid = false;
+            }
+            if (!ssoUserEmail) {
+                retData.ssoUserEmail = {
+                    isValid: false,
+                    message: 'SSO User Email is required',
+                };
+                isValid = false;
+            }
+            if (!ssoUserFirstName) {
+                retData.ssoUserFirstName = {
+                    isValid: false,
+                    message: 'SSO User First Name is required',
+                };
+                isValid = false;
+            }
+            if (!ssoUserLastName) {
+                retData.ssoUserLastName = {
+                    isValid: false,
+                    message: 'SSO User Last Name is required',
+                };
+                isValid = false;
+            }
+            if (!requestor) {
+                retData.requestor = {
+                    isValid: false,
+                    message: 'Requestor is required',
+                };
+                isValid = false;
+            }
+            if (!requestReason) {
+                retData.requestReason = {
+                    isValid: false,
+                    message: 'Request Reason is required',
+                };
+                isValid = false;
+            }
+            if (!customizationName) {
+                retData.customizationName = {
+                    isValid: false,
+                    message: 'Customization Name is required',
+                };
+                isValid = false;
+            }
+        }
+        retData.isValid = isValid;
+        return retData;
+    };
+
+    handleSubmit = (event: any) => {
+        event.preventDefault();
+        this.setState({
+            isSubmitted: true,
+        });
+        const errorData = this.validate(true);
+        if (errorData.isValid) {
+            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName } = this.state;
+            localStorage.setItem('viewData', JSON.stringify({ accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName }));
+        }
+    };
 
     formFields = () => {
         const { comp } = this.state;
@@ -143,6 +260,8 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             )
         }
         else if (comp === 3) {
+            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor,customizationName, requestReason, isSubmitted } = this.state;
+            const errorData = this.validate(isSubmitted);
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
@@ -153,37 +272,73 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             <strong>Account Details</strong>
                             <div className="form-group">
                                 <label>Account Name</label>
-                                <input type="text" className="form-control" placeholder="AWS Config" />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="AWS Config"
+                                    value={accountName}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.accountName.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Account Email</label>
-                                <input type="email" className="form-control" placeholder="AWS Config" />
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="AWS Config"
+                                    value={accountEmail}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.accountEmail.message}</span>}
                             </div>
                         </div>
                         <div className="form-detail-group">
                             <strong>Organisatoin Selection</strong>
                             <div className="form-group">
                                 <label>Managed Organisational Unit</label>
-                                <select className="form-control">
+                                <select className="form-control" value={managedOrganisationalUnit} onChange={this.handleStateChange}>
                                     <option>Select</option>
                                     <option>Select</option>
                                     <option>Select</option>
                                 </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.managedOrganisationalUnit.message}</span>}
                             </div>
                         </div>
                         <div className="form-detail-group">
                             <strong>Sign In Information</strong>
                             <div className="form-group">
                                 <label>SSO User Email</label>
-                                <input type="email" className="form-control" placeholder="user@domain.com" />
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="user@domain.com"
+                                    value={ssoUserEmail}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserEmail.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>SSO User First Name</label>
-                                <input type="text" className="form-control" placeholder="eg. Sandbox" />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="eg. Sandbox"
+                                    value={ssoUserFirstName}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserFirstName.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>SSO User Last Name</label>
-                                <input type="text" className="form-control" placeholder="eg. AFT" />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="eg. AFT"
+                                    value={ssoUserLastName}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserLastName.message}</span>}
                             </div>
                         </div>
                         <div className="form-detail-group">
@@ -196,35 +351,54 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             <strong>Request Reason</strong>
                             <div className="form-group">
                                 <label>Requestor</label>
-                                <input type="email" className="form-control" placeholder="user@domain.com" />
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="user@domain.com"
+                                    value={requestor}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.requestor.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Request Reason</label>
-                                <input type="text" className="form-control" placeholder="eg. Sandbox" />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="eg. Sandbox"
+                                    value={requestReason}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.requestReason.message}</span>}
                             </div>
                         </div>
                         <div className="form-detail-group">
                             <strong>Account Customization</strong>
                             <div className="form-group">
                                 <label>Name</label>
-                                <select className="form-control">
+                                <select 
+                                    className="form-control" 
+                                    value={customizationName}
+                                    onChange={this.handleStateChange}
+                                >
                                     <option>Select</option>
                                     <option>Select</option>
                                     <option>Select</option>
                                 </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.customizationName.message}</span>}
                             </div>
                         </div>
                         <div className="d-block text-right">
                             <button className="next-btn" onClick={() => this.setState({ comp: comp - 1 })}>Back</button>
-                            <button className="next-btn" >Create</button>
+                            <button className="next-btn" onClick={this.handleSubmit}>Create</button>
                         </div>
                     </div>
                 </div>)
         }
-        else {return<></>}
+        else { return <></> }
     }
     render() {
-        const {comp}=this.state;
+        const { comp } = this.state;
         return (
             <div className="catalogue-inner-tabs-container templates-container">
                 <div className="row">
@@ -239,8 +413,8 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             </div>
                             <div className="templates-category">
                                 <ul>
-                                    <li className={comp===2?'active':''} onClick={() => this.setState({ comp:2 })}><label >Welcome</label></li>
-                                    <li className={comp===3?'active':''} onClick={() => this.setState({ comp:3 })} ><label >Account Creation</label></li>
+                                    <li className={comp === 2 ? 'active' : ''} onClick={() => this.setState({ comp: 2 })}><label >Welcome</label></li>
+                                    <li className={comp === 3 ? 'active' : ''} onClick={() => this.setState({ comp: 3 })} ><label >Account Creation</label></li>
                                 </ul>
                             </div>
                         </div>
