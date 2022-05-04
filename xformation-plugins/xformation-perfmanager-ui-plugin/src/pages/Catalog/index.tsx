@@ -166,7 +166,6 @@ export class Catalog extends React.Component<any, any>{
               </div>
             </div>
             <div className="catalogue-tabs-container">
-
               {
                 this.tabMapping.map((tabData: any, index: any) => {
                   if (activeTab === index) {

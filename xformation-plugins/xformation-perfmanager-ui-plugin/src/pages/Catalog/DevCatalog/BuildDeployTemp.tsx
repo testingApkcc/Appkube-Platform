@@ -57,8 +57,7 @@ export class DeploymentTemplate extends React.Component<any, any>{
                     </>
                 )
             }
-        }
-        else {
+        } else {
             retData = [];
             retData.push(<div>No Data Found</div>)
         }
