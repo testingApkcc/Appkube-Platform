@@ -12,7 +12,8 @@ export class StorageDetails extends React.Component<any, any> {
         if (serviceData) {
             serviceData = JSON.parse(serviceData);
         } else {
-            props.history.go(-1);
+            const accountId = CommonService.getParameterByName('accountId', window.location.href);
+            props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
         }
         super(props);
         this.state = {
@@ -67,7 +68,8 @@ export class StorageDetails extends React.Component<any, any> {
             localStorage.setItem('added-services', JSON.stringify(serviceDetails));
         } else {
             localStorage.setItem('added-services', '');
-            window.history.go(-1);
+            const accountId = CommonService.getParameterByName('accountId', window.location.href);
+            this.props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
         }
     }
 

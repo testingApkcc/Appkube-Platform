@@ -372,7 +372,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&serviceId=${service.id}`}>{service.name}</Link></div>
+          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}`}>{service.name}</Link></div>
           <div className="performance">
             <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
               <i className="fa fa-check"></i>
