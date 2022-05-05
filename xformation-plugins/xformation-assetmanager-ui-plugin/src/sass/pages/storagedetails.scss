@@ -170,7 +170,7 @@
                 li {
                     display: inline-block;
                     list-style: none;
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 500;
                     color: $asset-contents-color;
 
@@ -181,9 +181,9 @@
                     }
 
                     i {
-                        font-size: 20px;
-                        margin-right: 15px;
-                        margin-left: 15px;
+                        font-size: 16px;
+                        margin-right: 10px;
+                        margin-left: 10px;
                         color: #8998AC;
                     }
                 }
@@ -434,7 +434,7 @@
                     }
                 }
             }
-           
+
 
             .table-tbody {
                 border: 1px solid #f5f6f5;
@@ -455,6 +455,7 @@
                 tr {
                     padding-top: 0;
                     padding-bottom: 0;
+
                     td {
                         padding-left: 15px;
                         // padding-right: 15px;
@@ -485,34 +486,39 @@
                             font-weight: 500;
                             line-height: 18px;
                         }
-                        .performance-pullmetric-api{
+
+                        .performance-pullmetric-api {
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
                             padding: 10px 30px;
                             background: #FFFFFF;
-                          &:nth-child(odd){
-                              background-color: #F8F9FB;
-                          }
-                          .pullmetric-content{
-                              display: flex;
-                              align-items: center;
-                              justify-content: center;
-                            span{
-                                font-size: 12px;
-                                line-height: 16px;
-                                font-weight: 400;
-                                color: #414D55;
-                                margin-left: 10px;
+
+                            &:nth-child(odd) {
+                                background-color: #F8F9FB;
                             }
-                          }
-                          span{
-                              margin: 0;
-                              float: right;
-                              color: #2662F0;
-                              font-size: 14px;
-                          }
-                         
+
+                            .pullmetric-content {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                span {
+                                    font-size: 12px;
+                                    line-height: 16px;
+                                    font-weight: 400;
+                                    color: #414D55;
+                                    margin-left: 10px;
+                                }
+                            }
+
+                            span {
+                                margin: 0;
+                                float: right;
+                                color: #2662F0;
+                                font-size: 14px;
+                            }
+
                         }
 
                         .table-inner {
@@ -588,8 +594,8 @@
             padding: 0px !important;
             text-align: center;
             border-right: 1px solid #ddd;
-            display: flex;
-            flex-direction: column;
+            display: inline-block;
+            vertical-align: top;
 
             .dashboard-side-tab {
                 opacity: 1;
@@ -602,6 +608,10 @@
                 border-left: 2px solid transparent;
                 text-decoration: none;
                 cursor: pointer;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: left;
 
                 &.active {
                     background-color: #3697ef;
@@ -622,9 +632,10 @@
         }
 
         .dashboard-view {
-            width: 100%;
+            width: 80%;
             height: 100%;
-            display: block;
+            display: inline-block;
+            vertical-align: top;
 
             iframe {
                 width: 100%;

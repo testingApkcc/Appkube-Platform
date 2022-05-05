@@ -531,8 +531,12 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             </div>
                             <div className="templates-category">
                                 <ul>
-                                    <li className={comp === 2 ? 'active' : ''} onClick={() => this.setState({ comp: 2 })}><label >Welcome</label></li>
-                                    <li className={comp === 3 ? 'active' : ''} onClick={() => this.setState({ comp: 3 })} ><label >Account Creation</label></li>
+                                    <li className={comp === 2 ? 'active' : ''} onClick={() => this.setState({ comp: 2 })}>
+                                        <label>Welcome</label>
+                                    </li>
+                                    <li className={comp === 3 ? 'active' : ''} onClick={() => this.setState({ comp: 3 })} >
+                                        <label>Account Creation</label>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
