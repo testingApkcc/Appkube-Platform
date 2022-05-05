@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
-// import { PLUGIN_BASE_URL } from '../../constants';
+import { PLUGIN_BASE_URL } from '../../constants';
 
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
@@ -80,6 +81,7 @@ export class StorageDetails extends React.Component<any, any> {
 
     render() {
         const { activeTab, serviceDetails } = this.state;
+        const accountId = this.getParameterByName('accountId', window.location.href);
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
@@ -93,10 +95,10 @@ export class StorageDetails extends React.Component<any, any> {
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-12">
                                 <div className="float-right common-right-btn">
-                                    <a onClick={() => window.history.go(-1)} className="asset-white-button min-width-inherit m-r-0">
+                                    <Link to={`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`} className="asset-white-button min-width-inherit m-r-0">
                                         <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;
                                         Back
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
