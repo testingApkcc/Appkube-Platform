@@ -9,13 +9,16 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             accountName: '',
             accountEmail: '',
             managedOrganisationalUnit: '',
-            ssoUserEmail:'',
-            ssoUserFirstName:'',
-            ssoUserLastName:'',
+            ssoUserEmail: '',
+            ssoUserFirstName: '',
+            ssoUserLastName: '',
             requestor: '',
             requestReason: '',
             customizationName: '',
+            label: [],
+            tagvalue: [],
             isSubmitted: false,
+            addTags: [],
         }
     }
 
@@ -42,10 +45,12 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             requestor: validObj,
             requestReason: validObj,
             customizationName: validObj,
+            label: validObj,
+            tagvalue: validObj,
             isValid,
         };
         if (isSubmitted) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName } = this.state;
+            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, addTags, } = this.state;
             if (!accountName) {
                 retData.accountName = {
                     isValid: false,
@@ -109,8 +114,28 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                 };
                 isValid = false;
             }
+            if (addTags.length > 0) {
+                debugger;
+                for (let i = 0; i < addTags.length; i++) {
+                    if (addTags[i].label==='') {
+                        retData.label = {
+                            isValid: false,
+                            message: 'Tag Label are required',
+                        }
+                    }
+                    if (addTags[i].tagvalue==='') {
+                        retData.tagvalue = {
+                            isValid: false,
+                            message: 'Tag values are required',
+                        }
+                    }
+
+                }
+                isValid = false;
+            }
         }
         retData.isValid = isValid;
+        console.log(retData)
         return retData;
     };
 
@@ -121,10 +146,80 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         });
         const errorData = this.validate(true);
         if (errorData.isValid) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName } = this.state;
-            localStorage.setItem('viewData', JSON.stringify({ accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName }));
+            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue } = this.state;
+            localStorage.setItem('viewData', JSON.stringify({ accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue }));
         }
     };
+
+    displayTags = () => {
+        let retData = []
+        const { isSubmitted, addTags } = this.state;
+        const errorData = this.validate(isSubmitted);
+        if (addTags && addTags.length > 0) {
+            for (let i = 0; i < addTags.length; i++) {
+                const { tagLabel, tagText } = addTags[i];
+                retData.push(
+                    <div className="row" key={tagText}>
+                        <div className="col-md-3 p-r-0">
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    name='label'
+                                    className="form-control"
+                                    placeholder='Tag Label'
+                                    value={addTags[i].label}
+                                    onChange={(e: any) => this.handleTagchange(e, i)}
+                                />
+                                {/* {errorData && !errorData.isValid && <span className="error">{errorData.label[i].message}</span>} */}
+                            </div>
+                        </div>
+                        <div className="col-md-3 p-r-0">
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    name='tagvalue'
+                                    className="form-control"
+                                    placeholder="Tag Value"
+                                    value={addTags[i].tagvalue}
+                                    onChange={(e: any) => this.handleTagchange(e, i)}
+                                />
+                                {/* {errorData && !errorData.isValid && <span className="error">{errorData.tagvalue.message}</span>} */}
+                            </div>
+                        </div>
+                        <div className="col-md-3 p-r-0">
+                            <button className="remove-tags-btn" onClick={() => this.onClickRemoveTag(i)}><i className="fa fa-close"></i></button>
+                        </div>
+                    </div>
+                )
+            }
+        }
+        return retData
+    };
+
+    onClickAddTag = () => {
+        let { addTags } = this.state;
+        addTags.push({ 'label': '', 'tagvalue': '' });
+        this.setState({
+            addTags,
+        });
+    };
+
+    onClickRemoveTag = (index: any) => {
+        let { addTags } = this.state;
+        addTags.splice(index, 1);
+        this.setState({
+            addTags,
+        });
+    };
+
+    handleTagchange = (event: any, index: any) => {
+        const { name, value } = event.target;
+        let { addTags } = this.state;
+        addTags[index][name] = value;
+        this.setState({
+            addTags,
+        })
+    }
 
     formFields = () => {
         const { comp } = this.state;
@@ -260,8 +355,9 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             )
         }
         else if (comp === 3) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor,customizationName, requestReason, isSubmitted } = this.state;
+            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, customizationName, requestReason, isSubmitted } = this.state;
             const errorData = this.validate(isSubmitted);
+            console.log(errorData)
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
@@ -274,6 +370,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 <label>Account Name</label>
                                 <input
                                     type="text"
+                                    name="accountName"
                                     className="form-control"
                                     placeholder="AWS Config"
                                     value={accountName}
@@ -285,6 +382,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 <label>Account Email</label>
                                 <input
                                     type="email"
+                                    name="accountEmail"
                                     className="form-control"
                                     placeholder="AWS Config"
                                     value={accountEmail}
@@ -297,10 +395,10 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             <strong>Organisatoin Selection</strong>
                             <div className="form-group">
                                 <label>Managed Organisational Unit</label>
-                                <select className="form-control" value={managedOrganisationalUnit} onChange={this.handleStateChange}>
-                                    <option>Select</option>
-                                    <option>Select</option>
-                                    <option>Select</option>
+                                <select className="form-control" value={managedOrganisationalUnit} onChange={this.handleStateChange} name="managedOrganisationalUnit">
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.managedOrganisationalUnit.message}</span>}
                             </div>
@@ -311,6 +409,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 <label>SSO User Email</label>
                                 <input
                                     type="email"
+                                    name="ssoUserEmail"
                                     className="form-control"
                                     placeholder="user@domain.com"
                                     value={ssoUserEmail}
@@ -322,6 +421,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 <label>SSO User First Name</label>
                                 <input
                                     type="text"
+                                    name="ssoUserFirstName"
                                     className="form-control"
                                     placeholder="eg. Sandbox"
                                     value={ssoUserFirstName}
@@ -333,6 +433,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 <label>SSO User Last Name</label>
                                 <input
                                     type="text"
+                                    name="ssoUserLastName"
                                     className="form-control"
                                     placeholder="eg. AFT"
                                     value={ssoUserLastName}
@@ -344,8 +445,26 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="form-detail-group">
                             <strong>Tagging</strong>
                             <div className="form-group">
-                                <button className="add-tags-btn"><i className="fa fa-plus"></i></button><label>Add Tags</label>
+                                <button className="add-tags-btn" onClick={this.onClickAddTag}><i className="fa fa-plus"></i></button><label>Add Tags</label>
                             </div>
+                            <div className="add-tags">
+                                {this.displayTags()}
+                                <div className="row">
+                                    <div className="col-md-3">
+                                        <div className="form-group">
+                                            {errorData && !errorData.label.isValid && <span className="error">{errorData.label.message}</span>}
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <div className="form-group">
+                                            {errorData && !errorData.tagvalue.isValid && <span className="error">{errorData.tagvalue.message}</span>}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            {/* < */}
                         </div>
                         <div className="form-detail-group">
                             <strong>Request Reason</strong>
@@ -353,6 +472,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 <label>Requestor</label>
                                 <input
                                     type="email"
+                                    name="requestor"
                                     className="form-control"
                                     placeholder="user@domain.com"
                                     value={requestor}
@@ -364,6 +484,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 <label>Request Reason</label>
                                 <input
                                     type="text"
+                                    name="requestReason"
                                     className="form-control"
                                     placeholder="eg. Sandbox"
                                     value={requestReason}
@@ -376,14 +497,15 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             <strong>Account Customization</strong>
                             <div className="form-group">
                                 <label>Name</label>
-                                <select 
-                                    className="form-control" 
+                                <select
+                                    name="customizationName"
+                                    className="form-control"
                                     value={customizationName}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select</option>
-                                    <option>Select</option>
-                                    <option>Select</option>
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.customizationName.message}</span>}
                             </div>
