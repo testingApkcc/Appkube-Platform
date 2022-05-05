@@ -546,7 +546,7 @@
                                         border-color: #8a919c;
                                     }
 
-                                    .error{
+                                    .error {
                                         display: block;
                                         width: 100%;
                                         padding-left: 35%;
@@ -558,6 +558,28 @@
                                     }
 
                                     .add-tags-btn {
+                                        border: 1px solid #8592a3;
+                                        background-color: #a2d2ff;
+                                        color: #707070;
+                                        padding: 5px 10px;
+                                        margin-right: 10px;
+                                        border-radius: 3px;
+                                    }
+                                }
+
+                                .add-tags {
+                                    .form-group {
+                                        .form-control {
+                                            width: 100%;
+                                        }
+
+                                        .error {
+                                            padding-left: 0;
+                                        }
+
+                                    }
+
+                                    .remove-tags-btn {
                                         border: 1px solid #8592a3;
                                         background-color: #a2d2ff;
                                         color: #707070;

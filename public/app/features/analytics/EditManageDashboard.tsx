@@ -107,13 +107,13 @@ class EditManageDashboard extends React.Component<any, any> {
               <PopoverBody>
                 <ul>
                   <li onClick={() => this.editTabTitle(i)}>
-                    <a href="#">
+                    <a>
                       <i className="fa fa-edit"></i>
                       Rename Tab
                     </a>
                   </li>
                   <li onClick={() => this.deleteTabData(i)}>
-                    <a href="#">
+                    <a>
                       <i className="fa fa-trash"></i>
                       Delete
                     </a>
@@ -215,7 +215,7 @@ class EditManageDashboard extends React.Component<any, any> {
               <PopoverBody>
                 <ul>
                   <li onClick={() => this.deletesidebarData(sideData, i)}>
-                    <a href="#">
+                    <a>
                       <i className="fa fa-trash"></i>
                       Delete
                     </a>
@@ -319,7 +319,7 @@ class EditManageDashboard extends React.Component<any, any> {
                     <div className="d-block text-right">
                       <button
                         className="analytics-white-button min-width-auto m-r-0"
-                        onClick={() => locationService.push('/analytics' )}
+                        onClick={() => locationService.push('/analytics')}
                       >
                         <i className="fa fa-arrow-circle-left"></i>
                         &nbsp;&nbsp;Back

@@ -81,11 +81,11 @@ export class VerifyInputs extends React.Component<any, any> {
                   />
                 </td>
                 <td>{dashboard.name}</td>
-                <td>
+                {/* <td>
                   <a>
                     <i className="fa fa-eye"></i>
                   </a>
-                </td>
+                </td> */}
               </tr>
             </tbody>
           )

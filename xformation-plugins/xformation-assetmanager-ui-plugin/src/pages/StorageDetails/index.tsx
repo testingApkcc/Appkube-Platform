@@ -7,10 +7,18 @@ import { Node } from './Node';
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
     constructor(props: any) {
+        // const serviceData = localStorage.getItem('added-services');
+
         super(props);
         this.state = {
             activeTab: 0,
-            storageData: [],
+            serviceDetails: [{
+                title: "Search",
+                id: '1212'
+            }, {
+                title: 'search-2',
+                id: '121211'
+            }],
         };
         this.breadCrumbs = [
             {
@@ -40,16 +48,16 @@ export class StorageDetails extends React.Component<any, any> {
     };
 
     displayTabs = () => {
-        const { activeTab, storageData } = this.state;
+        const { activeTab, serviceDetails } = this.state;
         let retData = [];
-        for (let i = 0; i < storageData.length; i++) {
-            let node = storageData[i];
+        for (let i = 0; i < serviceDetails.length; i++) {
+            let node = serviceDetails[i];
             retData.push(
                 <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
-                    <Link to={`#`}>
-                        {node.nodeTitle}
+                    <a>
+                        {node.title}
                         <i className="fa fa-times" aria-hidden="true" onClick={() => this.removeTab(i)}></i>
-                    </Link>
+                    </a>
                 </li>
             );
         }
@@ -57,11 +65,11 @@ export class StorageDetails extends React.Component<any, any> {
     }
 
     removeTab = (index: any) => {
-        const { storageData } = this.state;
+        const { serviceDetails } = this.state;
         if (index !== 0) {
-            storageData.splice(index, 1);
+            serviceDetails.splice(index, 1);
             this.setState({
-                storageData,
+                serviceDetails,
                 activeTab: index - 1,
             })
         } else {
@@ -70,7 +78,7 @@ export class StorageDetails extends React.Component<any, any> {
     }
 
     render() {
-        const { activeTab, storageData } = this.state;
+        const { activeTab, serviceDetails } = this.state;
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
@@ -100,7 +108,7 @@ export class StorageDetails extends React.Component<any, any> {
                                 </ul>
                             </div>
                             <div className="webservice-container">
-                                <Node data={storageData[activeTab]} {...this.props} />
+                                <Node data={serviceDetails[activeTab]} {...this.props} />
                             </div>
                         </div>
                     </div>

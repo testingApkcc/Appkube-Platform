@@ -8,6 +8,13 @@ import { VerifyAndSave } from './VerifyAndSave';
 import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 import AlertMessage from '../../Components/AlertMessage';
+
+const VIEW_TYPE = {
+    VIEW_DASHBOARDS: 'view_dashboard',
+    NO_DASHBOARDS: 'no_dashboards',
+    SHOW_WIZARD: 'show_wizard'
+};
+
 export class Performance extends React.Component<any, any>{
     steps: any;
     verifyInputsRef: any;
@@ -19,21 +26,16 @@ export class Performance extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            enablePerformanceMonitoring: true,
             isAlertOpen: false,
             severity: null,
             message: null,
             isSuccess: true,
             activeDashboard: 0,
-            showConfigWizard: false,
             iFrameLoaded: false,
-            viewJson: [
-                { title: 'dashboard demo', uid: 'HmQhPYQ7z' },
-                { title: 'dashboard 2', uid: 'zRQhasw7k' },
-                { title: 'dashboard 3', uid: 'wBJ0ayw7k' },
-            ],
+            viewJson: [],
             dashboardData: {},
             isLoading: false,
+            presentView: VIEW_TYPE.NO_DASHBOARDS
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -62,26 +64,38 @@ export class Performance extends React.Component<any, any>{
     }
 
     componentDidMount() {
-        this.getInputConfig();
+        this.getCategories();
+        this.getAddedDashboards();
     }
 
-    getInputConfig = async () => {
+    getCategories = () => {
         try {
             RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
                 (response: any) => {
-                    if (response.code !== 417) {
-                        const { cloudDashBoards, dataSources } = response.details.ops;
-                        const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
+                    const { cloudDashBoards, dataSources } = response.details.ops;
+                    const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
+                    this.setState({
+                        dashboardData,
+                    });
+                    this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboardData);
+
+                }, (error: any) => {
+                    console.log("Performance. Search input config failed. Error: ", error);
+                });
+        } catch (err) {
+            console.log("Performance. Excepiton in search input this.config. Error: ", err);
+        }
+    }
+
+    getAddedDashboards = () => {
+        const serviceId = this.getParameterByName('serviceId', window.location.href);
+        try {
+            RestService.getData(`${this.config.ADD_VIEW_JSON_TO_GRAFANA}?serviceId=${serviceId}`, null, null).then(
+                (response: any) => {
+                    if (response && response.performance && response.performance.length > 0) {
                         this.setState({
-                            enablePerformanceMonitoring: true,
-                            showConfigWizard: false,
-                            activeDashboard: 0,
-                            dashboardData,
-                        });
-                        this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboardData);
-                    } else {
-                        this.setState({
-                            showConfigWizard: true,
+                            viewJson: response.performance,
+                            presentView: VIEW_TYPE.VIEW_DASHBOARDS
                         });
                     }
                 }, (error: any) => {
@@ -90,7 +104,7 @@ export class Performance extends React.Component<any, any>{
         } catch (err) {
             console.log("Performance. Excepiton in search input this.config. Error: ", err);
         }
-    }
+    };
 
     manipulateCatalogueData = (dataSources: any, dashboards: any) => {
         dataSources.forEach((dataSource: any) => {
@@ -106,12 +120,6 @@ export class Performance extends React.Component<any, any>{
         // const retData = dataSources.filter((source: any) => source.isDashboardAdded);
         // return retData;
         return dataSources
-    };
-
-    enablePerformanceMonitoring = () => {
-        this.setState({
-            enablePerformanceMonitoring: !this.state.enablePerformanceMonitoring,
-        });
     };
 
     getParameterByName = (name: any, url: any) => {
@@ -179,50 +187,70 @@ export class Performance extends React.Component<any, any>{
             dataJs.Dashboard.title = dataJs.Dashboard.slug;
             var json = JSON.stringify(dataJs);
             var reqOpt = RestService.optionWithAuthentication(json, 'POST');
-            fetch(this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
-                .then(response => response.json())
-                .then(result => {
-                    responseArray.push({
-                        ...result,
-                        dashboardCatalogueId: dashboard.dashboardCatalogueId
-                    });
-                    if (responseArray.length === dashbaordJSONArray.length) {
-                        this.sendViewJSON(responseArray);
-                    }
-                }, error => {
-                    responseArray.push(null);
-                    if (responseArray.length === dashbaordJSONArray.length) {
+            try {
+                fetch(this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
+                    .then(response => response.json())
+                    .then(result => {
+                        if (!result.message) {
+                            responseArray.push({
+                                ...result,
+                                dashboardCatalogueId: dashboard.dashboardCatalogueId
+                            });
+                            if (responseArray.length === dashbaordJSONArray.length) {
+                                this.sendViewJSON(responseArray);
+                            }
+                        } else {
+                            this.setState({
+                                isAlertOpen: true,
+                                message: 'There was some error while importing dashboard',
+                                severity: 'error',
+                                isSuccess: true,
+                                isLoading: false
+                            });
+                        }
+                    }, error => {
+                        responseArray.push(null);
+                        if (responseArray.length === dashbaordJSONArray.length) {
+                            this.setState({
+                                isAlertOpen: true,
+                                message: 'There was some error while importing dashboard',
+                                severity: 'error',
+                                isSuccess: true,
+                                isLoading: false
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Dashboard import in grafana failed. Error', error);
                         this.setState({
                             isAlertOpen: true,
-                            message: 'There was some error while importing dashboard',
+                            message: 'Enabling performance dashboards failed',
                             severity: 'error',
-                            isSuccess: true,
-                            isLoading: false
+                            isSuccess: true
                         });
-                    }
-                })
-                .catch(error => {
-                    console.log('Dashboard import in grafana failed. Error', error);
-                    this.setState({
-                        isAlertOpen: true,
-                        message: 'Enabling performance dashboards failed',
-                        severity: 'error',
-                        isSuccess: true
+                        responseArray.push(null);
+                        if (responseArray.length === dashbaordJSONArray.length) {
+                            this.setState({
+                                isAlertOpen: true,
+                                message: 'There was some error while importing dashboard',
+                                severity: 'error',
+                                isSuccess: true,
+                                isLoading: false
+                            });
+                        }
                     });
-                    responseArray.push(null);
-                    if (responseArray.length === dashbaordJSONArray.length) {
-                        this.setState({
-                            isAlertOpen: true,
-                            message: 'There was some error while importing dashboard',
-                            severity: 'error',
-                            isSuccess: true,
-                            isLoading: false
-                        });
-                    }
+            }
+            catch (e) {
+                this.setState({
+                    isAlertOpen: true,
+                    message: 'There was some error while importing dashboard',
+                    severity: 'error',
+                    isSuccess: true,
+                    isLoading: false
                 });
+            }
         });
     };
-
 
     sendViewJSON = (responseArray: any) => {
         const serviceId = this.getParameterByName('serviceId', window.location.href);
@@ -276,8 +304,8 @@ export class Performance extends React.Component<any, any>{
             const retData = [];
             for (let i = 0; i < viewJson.length; i++) {
                 const dashboard = viewJson[i];
-                retData.push(<div title={dashboard.title} key={dashboard.uid} className={`dashboard-side-tab ${activeDashboard === i ? 'active' : ''}`} onClick={() => this.setState({ activeDashboard: i, iFrameLoaded: false })}>
-                    {dashboard.title}
+                retData.push(<div title={dashboard.slug} key={dashboard.uid} className={`dashboard-side-tab ${activeDashboard === i ? 'active' : ''}`} onClick={() => this.setState({ activeDashboard: i, iFrameLoaded: false })}>
+                    {dashboard.slug}
                 </div>);
             }
             return retData;
@@ -309,29 +337,32 @@ export class Performance extends React.Component<any, any>{
         }
     }
 
-    setConfigWizard = () => {
+    changeView = (view: any) => {
         this.setState({
-            showConfigWizard: true
+            presentView: view
         }, () => {
-            this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(this.state.dashboardData);
+            if (view === VIEW_TYPE.SHOW_WIZARD) {
+                this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(this.state.dashboardData);
+            }
         });
-    }
+    };
 
     render() {
-        const { enablePerformanceMonitoring, isAlertOpen, severity, message, showConfigWizard, iFrameLoaded, viewJson, activeDashboard } = this.state;
+        const { isAlertOpen, severity, message, iFrameLoaded, viewJson, activeDashboard, presentView } = this.state;
         let activeDB = null;
         if (viewJson && viewJson[activeDashboard]) {
             activeDB = viewJson[activeDashboard];
         }
         return (
             <>
-                {!enablePerformanceMonitoring && (
+                <AlertMessage handleCloseAlert={this.handleCloseAlert} open={isAlertOpen} severity={severity} msg={message}></AlertMessage>
+                {presentView === VIEW_TYPE.NO_DASHBOARDS && (
                     <>
                         <div className="performance-box">
                             <div className="performance-inner">
                                 <strong>Performance Monitoring is not enabled yet</strong>
                                 <p>To endble Performance Monitoring dashboards you will first have to configure the inputs for data collection</p>
-                                <button className="asset-blue-button" onClick={this.enablePerformanceMonitoring}>Enable Performance Monitoring</button>
+                                <button className="asset-blue-button" onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)}>Enable Performance Monitoring</button>
                             </div>
                         </div>
                         <div className="note-text">
@@ -341,35 +372,32 @@ export class Performance extends React.Component<any, any>{
                         </div>
                     </>
                 )}
-                {enablePerformanceMonitoring && (
+                {
+                    presentView === VIEW_TYPE.VIEW_DASHBOARDS &&
                     <>
-                        <AlertMessage handleCloseAlert={this.handleCloseAlert} open={isAlertOpen} severity={severity} msg={message}></AlertMessage>
-                        {!showConfigWizard &&
-                            <>
-                                <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                    <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={this.setConfigWizard} className="asset-blue-button m-b-0">Configure</button>
-                                </div>
-                                <div className="dashboard-view-container">
-                                    <aside className="aside-container">{this.renderDashboardList()}</aside>
-                                    <div className="dashboard-view">
-                                        {activeDB &&
-                                            <>
-                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=1`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
-                                                <div style={{ textAlign: "center", display: iFrameLoaded ? 'none' : '', marginTop: "20px" }}>
-                                                    Dashboard is loading...
-                                                </div>
-                                            </>
-                                        }
-                                    </div>
-                                </div>
-                            </>
-                        }
-                        {
-                            showConfigWizard &&
-                            <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} nextClick={this.nextClick} />
-                        }
+                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                            <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)} className="asset-blue-button m-b-0">Configure</button>
+                        </div>
+                        <div className="dashboard-view-container">
+                            <aside className="aside-container">{this.renderDashboardList()}</aside>
+                            <div className="dashboard-view">
+                                {activeDB &&
+                                    <>
+                                        <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=${activeDB.slug}`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
+                                        <div style={{ textAlign: "center", display: iFrameLoaded ? 'none' : '', marginTop: "20px" }}>
+                                            Dashboard is loading...
+                                        </div>
+                                    </>
+                                }
+                            </div>
+                        </div>
                     </>
-                )}
+                }
+                {
+                    presentView === VIEW_TYPE.SHOW_WIZARD &&
+                    <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} nextClick={this.nextClick} />
+                }
+
             </>
         );
     }
