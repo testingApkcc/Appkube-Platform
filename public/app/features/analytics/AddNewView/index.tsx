@@ -183,14 +183,14 @@ class AddNewView extends React.Component<any, any> {
               <PopoverBody>
                 <ul>
                   <li onClick={() => this.editTabTitle(i)}>
-                    <a href="#">
+                    <a>
                       <i className="fa fa-edit"></i>
                       Rename Tab
                     </a>
                   </li>
                   {i !== tabs.length - 1 && (
                     <li onClick={() => this.moveArrayPosition(i, i + 1)}>
-                      <a href="#">
+                      <a>
                         <i className="fa fa-caret-right"></i>
                         Move Right
                       </a>
@@ -198,18 +198,20 @@ class AddNewView extends React.Component<any, any> {
                   )}
                   {i !== 0 && (
                     <li onClick={() => this.moveArrayPosition(i, i - 1)}>
-                      <a href="#">
+                      <a>
                         <i className="fa fa-caret-left"></i>
                         Move Left
                       </a>
                     </li>
                   )}
-                  <li onClick={() => this.deleteTabData(i)}>
-                    <a href="#">
-                      <i className="fa fa-trash"></i>
-                      Delete
-                    </a>
-                  </li>
+                  {tabs.length !== 1 && (
+                    <li onClick={() => this.deleteTabData(i)}>
+                      <a>
+                        <i className="fa fa-trash"></i>
+                        Delete
+                      </a>
+                    </li>
+                  )}
                 </ul>
               </PopoverBody>
             </UncontrolledPopover>
