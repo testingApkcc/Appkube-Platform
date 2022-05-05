@@ -15,23 +15,19 @@ export class Node extends React.Component<any, any> {
         title: "Amazon Web Services",
         data: {},
         acNo: `AWS-(1234567890)`,
-        pagelink: [],
-        // pagelink: [
-        //     {
-        //         name: 'VPC 1'
-        //     },
-        //     {
-        //         name: 'EC2'
-        //     },
-        //     {
-        //         name: 'VPC 1'
-        //     }
-        // ],
+        // pagelink: [],
+        pagelink: [
+            {
+                name: 'VPC 1'
+            },
+            {
+                name: 'EC2'
+            },
+            {
+                name: 'VPC 1'
+            }
+        ],
         steps: [
-          {
-            name: "Entity",
-            component: <Entity />,
-          },
           {
             name: "Performance",
             component: <Performance {...this.props} />,
@@ -130,7 +126,7 @@ export class Node extends React.Component<any, any> {
                     Account Number - <span>AWS-({accountId})</span>{" "}
                     {" > "}{" "}
                   </li>
-                  {/* {this.displaylist(storageDetail.pagelink)} */}
+                  {this.displaylist(storageDetail.pagelink)}
                   {data && data.nodeTitle}
                 </ul>
               </div>

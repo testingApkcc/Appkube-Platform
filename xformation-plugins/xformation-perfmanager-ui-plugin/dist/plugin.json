@@ -13,8 +13,8 @@
       "large": "img/asset_logo.svg"
     },
     "screenshots": [],
-    "version": "1.0.0",
-    "updated": "2022-05-05"
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
   },
   "includes": [
     {
@@ -23,7 +23,7 @@
       "addToNav": false,
       "defaultNav": false,
       "role": "Admin",
-      "path": "/a/xformation-perfmanager-ui-plugin"
+      "path": "/a/%PLUGIN_ID%"
     },
     {
       "type": "page",
@@ -31,7 +31,7 @@
       "addToNav": false,
       "defaultNav": false,
       "role": "Admin",
-      "path": "/a/xformation-perfmanager-ui-plugin?path=catalog"
+      "path": "/a/%PLUGIN_ID%?path=catalog"
     },
     {
       "type": "page",
@@ -39,7 +39,7 @@
       "addToNav": false,
       "defaultNav": false,
       "role": "Admin",
-      "path": "/a/xformation-perfmanager-ui-plugin?path=collection"
+      "path": "/a/%PLUGIN_ID%?path=collection"
     },
     {
       "type": "page",
@@ -47,7 +47,7 @@
       "addToNav": false,
       "defaultNav": false,
       "role": "Admin",
-      "path": "/a/xformation-perfmanager-ui-plugin?path=library"
+      "path": "/a/%PLUGIN_ID%?path=library"
     },
     {
       "type": "page",
@@ -55,7 +55,7 @@
       "addToNav": false,
       "defaultNav": false,
       "role": "Admin",
-      "path": "/a/xformation-perfmanager-ui-plugin?path=collectionview"
+      "path": "/a/%PLUGIN_ID%?path=collectionview"
     },
     {
       "type": "page",
@@ -63,7 +63,7 @@
       "addToNav": false,
       "defaultNav": false,
       "role": "Admin",
-      "path": "/a/xformation-perfmanager-ui-plugin?path=cataloguemanagement"
+      "path": "/a/%PLUGIN_ID%?path=cataloguemanagement"
     }
   ],
   "dependencies": {

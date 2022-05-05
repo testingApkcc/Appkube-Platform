@@ -8,7 +8,7 @@ define([
   '@grafana/runtime',
   '@emotion/css',
 ], (
-  __WEBPACK_EXTERNAL_MODULE__63__,
+  __WEBPACK_EXTERNAL_MODULE__65__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__5__,
   __WEBPACK_EXTERNAL_MODULE__12__,
@@ -743,7 +743,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./plugin.json */ 79
+          /*! ./plugin.json */ 80
         );
 
         var PLUGIN_BASE_URL = '/a/'.concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
@@ -779,7 +779,7 @@ PERFORMANCE OF THIS SOFTWARE.
         });
         /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ../_common/common */ 73
+          /*! ../_common/common */ 75
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ 6);
 
@@ -1043,18 +1043,18 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */ images: () => /* binding */ images,
           /* harmony export */
         });
-        /* harmony import */ var _aws_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./aws.png */ 81);
+        /* harmony import */ var _aws_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./aws.png */ 82);
         /* harmony import */ var _microsoftazure_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./microsoftazure.png */ 82
+          /*! ./microsoftazure.png */ 83
         );
         /* harmony import */ var _google_cloud_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./google-cloud.png */ 83
+          /*! ./google-cloud.png */ 84
         );
         /* harmony import */ var _kubernetes_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./kubernetes.png */ 84
+          /*! ./kubernetes.png */ 85
         );
-        /* harmony import */ var _jobs_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./jobs.png */ 85);
-        /* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon.png */ 86);
+        /* harmony import */ var _jobs_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./jobs.png */ 86);
+        /* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon.png */ 87);
 
         var images = {
           awsLogo: _aws_png__WEBPACK_IMPORTED_MODULE_0__['default'],
@@ -1180,7 +1180,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 74
+          /*! ./setPrototypeOf.js */ 76
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -1784,7 +1784,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 21));
 
-        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 77);
+        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 78);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -2151,7 +2151,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 57
+          /*! ./chunks/helpers.segment.js */ 59
         );
         /*!
          * Chart.js v3.7.1
@@ -14501,16 +14501,16 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithoutHoles.js */ 104
+          /*! ./arrayWithoutHoles.js */ 105
         );
         /* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArray.js */ 105
+          /*! ./iterableToArray.js */ 106
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 49
         );
         /* harmony import */ var _nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableSpread.js */ 106
+          /*! ./nonIterableSpread.js */ 107
         );
 
         function _toConsumableArray(arr) {
@@ -14533,7 +14533,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 75);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 77);
         }
 
         /***/
@@ -16513,7 +16513,7 @@ object-assign
           /*! ../SelectCloudFilter */ 45
         );
         /* harmony import */ var _ServicesPerformance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./ServicesPerformance */ 94
+          /*! ./ServicesPerformance */ 95
         );
         /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! uuid */ 138);
 
@@ -17681,7 +17681,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 98);
+        var reactIs = __webpack_require__(/*! react-is */ 99);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -17884,16 +17884,16 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithHoles.js */ 107
+          /*! ./arrayWithHoles.js */ 108
         );
         /* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArrayLimit.js */ 108
+          /*! ./iterableToArrayLimit.js */ 109
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 49
         );
         /* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableRest.js */ 109
+          /*! ./nonIterableRest.js */ 110
         );
 
         function _slicedToArray(arr, i) {
@@ -18105,6 +18105,51 @@ object-assign
         /***/
       },
       /* 56 */
+      /*!*******************************************************************************!*\
+  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
+  \*******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
+
+        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
+
+        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
+
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
+
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+
+        module.exports = {
+          Transition: _Transition.default,
+          TransitionGroup: _TransitionGroup.default,
+          ReplaceTransition: _ReplaceTransition.default,
+          CSSTransition: _CSSTransition.default,
+        };
+
+        /***/
+      },
+      /* 57 */
+      /*!*****************************************************************************!*\
+  !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
+  \*****************************************************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
+          /* harmony export */
+        });
+        // We use the same empty object to ref count the styles that don't need a theme object.
+        var noopTheme = {};
+        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = noopTheme;
+
+        /***/
+      },
+      /* 58 */
       /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -18336,7 +18381,7 @@ object-assign
 
         /***/
       },
-      /* 57 */
+      /* 59 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -20986,7 +21031,7 @@ object-assign
 
         /***/
       },
-      /* 58 */
+      /* 60 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -21005,7 +21050,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 23
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 65);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 67);
 
         var App =
           /** @class */
@@ -21031,7 +21076,7 @@ object-assign
 
         /***/
       },
-      /* 59 */
+      /* 61 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -21053,19 +21098,19 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 66
+          /*! ../../pages/AccountSetup */ 68
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../../pages/AmazonServices */ 80
+          /*! ../../pages/AmazonServices */ 81
         );
         /* harmony import */ var _pages_Environments__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../pages/Environments */ 95
+          /*! ../../pages/Environments */ 96
         );
         /* harmony import */ var _pages_Kubernetes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../pages/Kubernetes */ 110
+          /*! ../../pages/Kubernetes */ 111
         );
         /* harmony import */ var _pages_StorageDetails__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../../pages/StorageDetails */ 111
+          /*! ../../pages/StorageDetails */ 112
         );
         /* harmony import */ var _pages_DepartmentWiseProducts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
           /*! ../../pages/DepartmentWiseProducts */ 122
@@ -21197,7 +21242,7 @@ object-assign
 
         /***/
       },
-      /* 60 */
+      /* 62 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -21579,7 +21624,7 @@ object-assign
 
         /***/
       },
-      /* 61 */
+      /* 63 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -21641,17 +21686,17 @@ object-assign
         /***/
       },
       ,
-      /* 62 */ /* 63 */
+      /* 64 */ /* 65 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__63__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__65__;
 
         /***/
       },
-      /* 64 */
+      /* 66 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -21662,11 +21707,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 58);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 60);
 
         /***/
       },
-      /* 65 */
+      /* 67 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -21677,11 +21722,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 59);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 61);
 
         /***/
       },
-      /* 66 */
+      /* 68 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -21706,16 +21751,16 @@ object-assign
           /*! ../Breadcrumbs */ 14
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 6);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 67);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 69);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 68
+          /*! ./OperationMode */ 70
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 69
+          /*! ./PreparePolicy */ 71
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 70);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 71);
-        /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 78);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 72);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 73);
+        /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 79);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../_service/RestService */ 8
         );
@@ -22034,7 +22079,7 @@ object-assign
 
         /***/
       },
-      /* 67 */
+      /* 69 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -22218,7 +22263,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 70 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -22355,7 +22400,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 71 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -22447,7 +22492,7 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 72 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -22766,7 +22811,7 @@ object-assign
 
         /***/
       },
-      /* 71 */
+      /* 73 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -22783,7 +22828,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 72
+          /*! ./CreateNewOU */ 74
         );
 
         var Ou =
@@ -22970,7 +23015,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 74 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -23313,7 +23358,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 75 */
       /*!*********************************!*\
   !*** ./pages/_common/common.ts ***!
   \*********************************/
@@ -23369,7 +23414,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 76 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -23393,7 +23438,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 77 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -23601,35 +23646,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
-      /*!*******************************************************************************!*\
-  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
-  \*******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 30));
-
-        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 34));
-
-        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 22));
-
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 41));
-
-        function _interopRequireDefault(obj) {
-          return obj && obj.__esModule ? obj : { default: obj };
-        }
-
-        module.exports = {
-          Transition: _Transition.default,
-          TransitionGroup: _TransitionGroup.default,
-          ReplaceTransition: _ReplaceTransition.default,
-          CSSTransition: _CSSTransition.default,
-        };
-
-        /***/
-      },
-      /* 77 */
+      /* 78 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/ChildMapping.js ***!
   \********************************************************************************************/
@@ -23785,7 +23802,7 @@ object-assign
 
         /***/
       },
-      /* 78 */
+      /* 79 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Review.tsx ***!
   \***************************************/
@@ -24080,7 +24097,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 80 */
       /*!*********************!*\
   !*** ./plugin.json ***!
   \*********************/
@@ -24092,7 +24109,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 81 */
       /*!****************************************!*\
   !*** ./pages/AmazonServices/index.tsx ***!
   \****************************************/
@@ -24118,19 +24135,19 @@ object-assign
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 6);
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img */ 13);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Wizard */ 87);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Wizard */ 88);
         /* harmony import */ var _DiscoveredAssets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./DiscoveredAssets */ 88
+          /*! ./DiscoveredAssets */ 89
         );
-        /* harmony import */ var _Billing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Billing */ 89);
+        /* harmony import */ var _Billing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Billing */ 90);
         /* harmony import */ var _ThreatAndSecurityEvents__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ./ThreatAndSecurityEvents */ 90
+          /*! ./ThreatAndSecurityEvents */ 91
         );
         /* harmony import */ var _CompliancePolicies__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ./CompliancePolicies */ 91
+          /*! ./CompliancePolicies */ 92
         );
-        /* harmony import */ var _Alerts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Alerts */ 92);
-        /* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Inputs */ 93);
+        /* harmony import */ var _Alerts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Alerts */ 93);
+        /* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Inputs */ 94);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
           /*! ../../constants */ 7
         );
@@ -24770,7 +24787,7 @@ object-assign
 
         /***/
       },
-      /* 81 */
+      /* 82 */
       /*!*********************!*\
   !*** ./img/aws.png ***!
   \*********************/
@@ -24786,7 +24803,7 @@ object-assign
 
         /***/
       },
-      /* 82 */
+      /* 83 */
       /*!********************************!*\
   !*** ./img/microsoftazure.png ***!
   \********************************/
@@ -24802,7 +24819,7 @@ object-assign
 
         /***/
       },
-      /* 83 */
+      /* 84 */
       /*!******************************!*\
   !*** ./img/google-cloud.png ***!
   \******************************/
@@ -24818,7 +24835,7 @@ object-assign
 
         /***/
       },
-      /* 84 */
+      /* 85 */
       /*!****************************!*\
   !*** ./img/kubernetes.png ***!
   \****************************/
@@ -24834,7 +24851,7 @@ object-assign
 
         /***/
       },
-      /* 85 */
+      /* 86 */
       /*!**********************!*\
   !*** ./img/jobs.png ***!
   \**********************/
@@ -24850,7 +24867,7 @@ object-assign
 
         /***/
       },
-      /* 86 */
+      /* 87 */
       /*!**********************!*\
   !*** ./img/icon.png ***!
   \**********************/
@@ -24866,7 +24883,7 @@ object-assign
 
         /***/
       },
-      /* 87 */
+      /* 88 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Wizard.tsx ***!
   \*****************************************/
@@ -24990,7 +25007,7 @@ object-assign
 
         /***/
       },
-      /* 88 */
+      /* 89 */
       /*!***************************************************!*\
   !*** ./pages/AmazonServices/DiscoveredAssets.tsx ***!
   \***************************************************/
@@ -26153,7 +26170,7 @@ object-assign
 
         /***/
       },
-      /* 89 */
+      /* 90 */
       /*!******************************************!*\
   !*** ./pages/AmazonServices/Billing.tsx ***!
   \******************************************/
@@ -26197,7 +26214,7 @@ object-assign
 
         /***/
       },
-      /* 90 */
+      /* 91 */
       /*!**********************************************************!*\
   !*** ./pages/AmazonServices/ThreatAndSecurityEvents.tsx ***!
   \**********************************************************/
@@ -26368,7 +26385,7 @@ object-assign
 
         /***/
       },
-      /* 91 */
+      /* 92 */
       /*!*****************************************************!*\
   !*** ./pages/AmazonServices/CompliancePolicies.tsx ***!
   \*****************************************************/
@@ -26582,7 +26599,7 @@ object-assign
 
         /***/
       },
-      /* 92 */
+      /* 93 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Alerts.tsx ***!
   \*****************************************/
@@ -26719,7 +26736,7 @@ object-assign
 
         /***/
       },
-      /* 93 */
+      /* 94 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Inputs.tsx ***!
   \*****************************************/
@@ -26893,7 +26910,7 @@ object-assign
 
         /***/
       },
-      /* 94 */
+      /* 95 */
       /*!****************************************************************!*\
   !*** ./components/ProductWiseServices/ServicesPerformance.tsx ***!
   \****************************************************************/
@@ -27810,7 +27827,7 @@ object-assign
 
         /***/
       },
-      /* 95 */
+      /* 96 */
       /*!**************************************!*\
   !*** ./pages/Environments/index.tsx ***!
   \**************************************/
@@ -27842,7 +27859,7 @@ object-assign
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../_service/RestService */ 8
         );
-        /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Action */ 96);
+        /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Action */ 97);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
           /*! ../../constants */ 7
         );
@@ -29393,7 +29410,7 @@ object-assign
 
         /***/
       },
-      /* 96 */
+      /* 97 */
       /*!***************************************!*\
   !*** ./pages/Environments/Action.tsx ***!
   \***************************************/
@@ -29422,7 +29439,7 @@ object-assign
           /*! ../_service/RestService */ 8
         );
         /* harmony import */ var _components_AlertMessage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../components/AlertMessage */ 97
+          /*! ../../components/AlertMessage */ 98
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../../constants */ 7
@@ -30187,7 +30204,7 @@ object-assign
 
         /***/
       },
-      /* 97 */
+      /* 98 */
       /*!*************************************!*\
   !*** ./components/AlertMessage.tsx ***!
   \*************************************/
@@ -30204,13 +30221,13 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_Snackbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! @material-ui/core/Snackbar */ 224
+          /*! @material-ui/core/Snackbar */ 223
         );
         /* harmony import */ var _material_ui_lab_Alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! @material-ui/lab/Alert */ 143
         );
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! @material-ui/core/styles */ 223
+          /*! @material-ui/core/styles */ 222
         );
 
         function Alert(props) {
@@ -30289,7 +30306,7 @@ object-assign
 
         /***/
       },
-      /* 98 */
+      /* 99 */
       /*!******************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
   \******************************************************************************/
@@ -30298,12 +30315,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 99);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 100);
         }
 
         /***/
       },
-      /* 99 */
+      /* 100 */
       /*!*************************************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
   \*************************************************************************************************/
@@ -30511,7 +30528,7 @@ object-assign
 
         /***/
       },
-      /* 100 */
+      /* 101 */
       /*!*****************************************!*\
   !*** ../node_modules/react-is/index.js ***!
   \*****************************************/
@@ -30520,12 +30537,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 101);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 102);
         }
 
         /***/
       },
-      /* 101 */
+      /* 102 */
       /*!************************************************************!*\
   !*** ../node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************/
@@ -30778,7 +30795,7 @@ object-assign
 
         /***/
       },
-      /* 102 */
+      /* 103 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -30810,7 +30827,7 @@ object-assign
 
         /***/
       },
-      /* 103 */
+      /* 104 */
       /*!*********************************************************!*\
   !*** ../node_modules/css-vendor/dist/css-vendor.esm.js ***!
   \*********************************************************/
@@ -31411,7 +31428,7 @@ object-assign
 
         /***/
       },
-      /* 104 */
+      /* 105 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
   \***********************************************************************/
@@ -31432,7 +31449,7 @@ object-assign
 
         /***/
       },
-      /* 105 */
+      /* 106 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
   \*********************************************************************/
@@ -31450,7 +31467,7 @@ object-assign
 
         /***/
       },
-      /* 106 */
+      /* 107 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js ***!
   \***********************************************************************/
@@ -31469,7 +31486,7 @@ object-assign
 
         /***/
       },
-      /* 107 */
+      /* 108 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
   \********************************************************************/
@@ -31486,7 +31503,7 @@ object-assign
 
         /***/
       },
-      /* 108 */
+      /* 109 */
       /*!**************************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
   \**************************************************************************/
@@ -31529,7 +31546,7 @@ object-assign
 
         /***/
       },
-      /* 109 */
+      /* 110 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
   \*********************************************************************/
@@ -31548,7 +31565,7 @@ object-assign
 
         /***/
       },
-      /* 110 */
+      /* 111 */
       /*!************************************!*\
   !*** ./pages/Kubernetes/index.tsx ***!
   \************************************/
@@ -31608,7 +31625,7 @@ object-assign
 
         /***/
       },
-      /* 111 */
+      /* 112 */
       /*!****************************************!*\
   !*** ./pages/StorageDetails/index.tsx ***!
   \****************************************/
@@ -31619,29 +31636,25 @@ object-assign
           /* harmony export */ StorageDetails: () => /* binding */ StorageDetails,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! react-router-dom */ 5
-        );
-        /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
-          /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
-        /* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+        /* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! ../Breadcrumbs */ 14
         );
-        /* harmony import */ var _Node__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Node */ 112);
+        /* harmony import */ var _Node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Node */ 113);
 
         // import { PLUGIN_BASE_URL } from '../../constants';
 
         var StorageDetails =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__extends)(StorageDetails, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(StorageDetails, _super);
 
             function StorageDetails(props) {
+              // const serviceData = localStorage.getItem('added-services');
               var _this = _super.call(this, props) || this;
 
               _this.getParameterByName = function (name, url) {
@@ -31662,11 +31675,11 @@ object-assign
               _this.displayTabs = function () {
                 var _a = _this.state,
                   activeTab = _a.activeTab,
-                  storageData = _a.storageData;
+                  serviceDetails = _a.serviceDetails;
                 var retData = [];
 
                 var _loop_1 = function (i) {
-                  var node = storageData[i];
+                  var node = serviceDetails[i];
                   retData.push(
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       'li',
@@ -31677,11 +31690,9 @@ object-assign
                         },
                       },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link,
-                        {
-                          to: '#',
-                        },
-                        node.nodeTitle,
+                        'a',
+                        null,
+                        node.title,
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                           className: 'fa fa-times',
                           'aria-hidden': 'true',
@@ -31694,7 +31705,7 @@ object-assign
                   );
                 };
 
-                for (var i = 0; i < storageData.length; i++) {
+                for (var i = 0; i < serviceDetails.length; i++) {
                   _loop_1(i);
                 }
 
@@ -31702,13 +31713,13 @@ object-assign
               };
 
               _this.removeTab = function (index) {
-                var storageData = _this.state.storageData;
+                var serviceDetails = _this.state.serviceDetails;
 
                 if (index !== 0) {
-                  storageData.splice(index, 1);
+                  serviceDetails.splice(index, 1);
 
                   _this.setState({
-                    storageData: storageData,
+                    serviceDetails: serviceDetails,
                     activeTab: index - 1,
                   });
                 } else {
@@ -31718,7 +31729,16 @@ object-assign
 
               _this.state = {
                 activeTab: 0,
-                storageData: [],
+                serviceDetails: [
+                  {
+                    title: 'Search',
+                    id: '1212',
+                  },
+                  {
+                    title: 'search-2',
+                    id: '121211',
+                  },
+                ],
               };
               _this.breadCrumbs = [
                 {
@@ -31736,14 +31756,14 @@ object-assign
             StorageDetails.prototype.render = function () {
               var _a = this.state,
                 activeTab = _a.activeTab,
-                storageData = _a.storageData;
+                serviceDetails = _a.serviceDetails;
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                 'div',
                 {
                   className: 'asset-container',
                 },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                  _Breadcrumbs__WEBPACK_IMPORTED_MODULE_2__.Breadcrumbs,
+                  _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.Breadcrumbs,
                   {
                     breadcrumbs: this.breadCrumbs,
                     pageTitle: 'PERFORMANCE MANAGEMENT',
@@ -31827,10 +31847,10 @@ object-assign
                           className: 'webservice-container',
                         },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          _Node__WEBPACK_IMPORTED_MODULE_3__.Node,
-                          (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)(
+                          _Node__WEBPACK_IMPORTED_MODULE_2__.Node,
+                          (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__assign)(
                             {
-                              data: storageData[activeTab],
+                              data: serviceDetails[activeTab],
                             },
                             this.props
                           )
@@ -31847,7 +31867,7 @@ object-assign
 
         /***/
       },
-      /* 112 */
+      /* 113 */
       /*!*********************************************!*\
   !*** ./pages/StorageDetails/Node/index.tsx ***!
   \*********************************************/
@@ -31858,24 +31878,23 @@ object-assign
           /* harmony export */ Node: () => /* binding */ Node,
           /* harmony export */
         });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../img */ 13);
         /* harmony import */ var _WebServiceWizard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./WebServiceWizard */ 113
+          /*! ./WebServiceWizard */ 114
         );
-        /* harmony import */ var _Entity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Entity */ 114);
-        /* harmony import */ var _Performance__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+        /* harmony import */ var _Performance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ./Performance */ 115
         );
 
         var Node =
           /** @class */
           (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__extends)(Node, _super);
+            (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__extends)(Node, _super);
 
             function Node(props) {
               var _this = _super.call(this, props) || this;
@@ -31916,31 +31935,24 @@ object-assign
                   title: 'Amazon Web Services',
                   data: {},
                   acNo: 'AWS-(1234567890)',
-                  pagelink: [],
-                  // pagelink: [
-                  //     {
-                  //         name: 'VPC 1'
-                  //     },
-                  //     {
-                  //         name: 'EC2'
-                  //     },
-                  //     {
-                  //         name: 'VPC 1'
-                  //     }
-                  // ],
-                  steps: [
+                  // pagelink: [],
+                  pagelink: [
                     {
-                      name: 'Entity',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        _Entity__WEBPACK_IMPORTED_MODULE_3__.Entity,
-                        null
-                      ),
+                      name: 'VPC 1',
                     },
+                    {
+                      name: 'EC2',
+                    },
+                    {
+                      name: 'VPC 1',
+                    },
+                  ],
+                  steps: [
                     {
                       name: 'Performance',
                       component: react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        _Performance__WEBPACK_IMPORTED_MODULE_4__.Performance,
-                        (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, _this.props)
+                        _Performance__WEBPACK_IMPORTED_MODULE_3__.Performance,
+                        (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, _this.props)
                       ),
                     },
                     {
@@ -32066,6 +32078,7 @@ object-assign
                             ' > ',
                             ' '
                           ),
+                          this.displaylist(storageDetail.pagelink),
                           data && data.nodeTitle
                         )
                       )
@@ -32118,7 +32131,7 @@ object-assign
 
         /***/
       },
-      /* 113 */
+      /* 114 */
       /*!********************************************************!*\
   !*** ./pages/StorageDetails/Node/WebServiceWizard.tsx ***!
   \********************************************************/
@@ -32259,142 +32272,6 @@ object-assign
 
         /***/
       },
-      /* 114 */
-      /*!**********************************************!*\
-  !*** ./pages/StorageDetails/Node/Entity.tsx ***!
-  \**********************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ Entity: () => /* binding */ Entity,
-          /* harmony export */
-        });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-          react__WEBPACK_IMPORTED_MODULE_0__
-        );
-
-        var Entity =
-          /** @class */
-          (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(Entity, _super);
-
-            function Entity(props) {
-              var _this = _super.call(this, props) || this;
-
-              _this.state = {};
-              return _this;
-            }
-
-            Entity.prototype.render = function () {
-              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                'div',
-                {
-                  className: 'storage-section',
-                },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                  'div',
-                  {
-                    className: 'row',
-                  },
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'div',
-                    {
-                      className: 'col-lg-3 col-md-3 col-sm-12',
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'network-boxs',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'ul',
-                        null,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'li',
-                          null,
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'a',
-                            null,
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                              className: 'fa fa-caret-right',
-                              'aria-hidden': 'true',
-                            }),
-                            'Storage'
-                          )
-                        ),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'li',
-                          null,
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'a',
-                            null,
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                              className: 'fa fa-caret-right',
-                              'aria-hidden': 'true',
-                            }),
-                            'Network'
-                          )
-                        ),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'li',
-                          null,
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'a',
-                            null,
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                              className: 'fa fa-caret-right',
-                              'aria-hidden': 'true',
-                            }),
-                            'Configuration'
-                          )
-                        ),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'li',
-                          {
-                            className: 'last',
-                          },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'a',
-                            null,
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                              className: 'fa fa-caret-right',
-                              'aria-hidden': 'true',
-                            }),
-                            'External Storage'
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'div',
-                    {
-                      className: 'col-lg-9 col-md-9 col-sm-12',
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'storage-details text-center',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'h4',
-                        null,
-                        'Storage details will be displayed here'
-                      )
-                    )
-                  )
-                )
-              );
-            };
-
-            return Entity;
-          })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-        /***/
-      },
       /* 115 */
       /*!***************************************************!*\
   !*** ./pages/StorageDetails/Node/Performance.tsx ***!
@@ -32476,16 +32353,18 @@ object-assign
               };
 
               _this.getAddedDashboards = function () {
+                var serviceId = _this.getParameterByName('serviceId', window.location.href);
+
                 try {
                   _service_RestService__WEBPACK_IMPORTED_MODULE_6__.RestService.getData(
-                    ''.concat(_this.config.ADD_VIEW_JSON_TO_GRAFANA),
+                    ''.concat(_this.config.ADD_VIEW_JSON_TO_GRAFANA, '?serviceId=').concat(serviceId),
                     null,
                     null
                   ).then(
                     function (response) {
-                      if (response && response.length > 0) {
+                      if (response && response.performance && response.performance.length > 0) {
                         _this.setState({
-                          viewJson: response,
+                          viewJson: response.performance,
                           presentView: VIEW_TYPE.VIEW_DASHBOARDS,
                         });
                       }
@@ -32603,26 +32482,61 @@ object-assign
                           json,
                           'POST'
                         );
-                      fetch(_this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
-                        .then(function (response) {
-                          return response.json();
-                        })
-                        .then(
-                          function (result) {
-                            responseArray.push(
-                              (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
-                                (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)({}, result),
-                                {
-                                  dashboardCatalogueId: dashboard.dashboardCatalogueId,
-                                }
-                              )
-                            );
 
-                            if (responseArray.length === dashbaordJSONArray.length) {
-                              _this.sendViewJSON(responseArray);
+                      try {
+                        fetch(_this.config.ADD_DASHBOARDS_TO_GRAFANA, reqOpt)
+                          .then(function (response) {
+                            return response.json();
+                          })
+                          .then(
+                            function (result) {
+                              if (!result.message) {
+                                responseArray.push(
+                                  (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)(
+                                    (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__assign)({}, result),
+                                    {
+                                      dashboardCatalogueId: dashboard.dashboardCatalogueId,
+                                    }
+                                  )
+                                );
+
+                                if (responseArray.length === dashbaordJSONArray.length) {
+                                  _this.sendViewJSON(responseArray);
+                                }
+                              } else {
+                                _this.setState({
+                                  isAlertOpen: true,
+                                  message: 'There was some error while importing dashboard',
+                                  severity: 'error',
+                                  isSuccess: true,
+                                  isLoading: false,
+                                });
+                              }
+                            },
+                            function (error) {
+                              responseArray.push(null);
+
+                              if (responseArray.length === dashbaordJSONArray.length) {
+                                _this.setState({
+                                  isAlertOpen: true,
+                                  message: 'There was some error while importing dashboard',
+                                  severity: 'error',
+                                  isSuccess: true,
+                                  isLoading: false,
+                                });
+                              }
                             }
-                          },
-                          function (error) {
+                          )
+                          .catch(function (error) {
+                            console.log('Dashboard import in grafana failed. Error', error);
+
+                            _this.setState({
+                              isAlertOpen: true,
+                              message: 'Enabling performance dashboards failed',
+                              severity: 'error',
+                              isSuccess: true,
+                            });
+
                             responseArray.push(null);
 
                             if (responseArray.length === dashbaordJSONArray.length) {
@@ -32634,30 +32548,16 @@ object-assign
                                 isLoading: false,
                               });
                             }
-                          }
-                        )
-                        .catch(function (error) {
-                          console.log('Dashboard import in grafana failed. Error', error);
-
-                          _this.setState({
-                            isAlertOpen: true,
-                            message: 'Enabling performance dashboards failed',
-                            severity: 'error',
-                            isSuccess: true,
                           });
-
-                          responseArray.push(null);
-
-                          if (responseArray.length === dashbaordJSONArray.length) {
-                            _this.setState({
-                              isAlertOpen: true,
-                              message: 'There was some error while importing dashboard',
-                              severity: 'error',
-                              isSuccess: true,
-                              isLoading: false,
-                            });
-                          }
+                      } catch (e) {
+                        _this.setState({
+                          isAlertOpen: true,
+                          message: 'There was some error while importing dashboard',
+                          severity: 'error',
+                          isSuccess: true,
+                          isLoading: false,
                         });
+                      }
                     });
                     return [
                       2,
@@ -32737,7 +32637,7 @@ object-assign
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'div',
                         {
-                          title: dashboard.title,
+                          title: dashboard.slug,
                           key: dashboard.uid,
                           className: 'dashboard-side-tab '.concat(activeDashboard === i ? 'active' : ''),
                           onClick: function () {
@@ -32747,7 +32647,7 @@ object-assign
                             });
                           },
                         },
-                        dashboard.title
+                        dashboard.slug
                       )
                     );
                   };
@@ -33020,7 +32920,7 @@ object-assign
                               style: {
                                 display: ''.concat(iFrameLoaded ? '' : 'none'),
                               },
-                              src: '/justdashboard?uid='.concat(activeDB.uid, '&slug=1'),
+                              src: '/justdashboard?uid='.concat(activeDB.uid, '&slug=').concat(activeDB.slug),
                               onLoad: function () {
                                 _this.setState({
                                   iFrameLoaded: true,
@@ -34190,13 +34090,13 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_Snackbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! @material-ui/core/Snackbar */ 224
+          /*! @material-ui/core/Snackbar */ 223
         );
         /* harmony import */ var _material_ui_lab_Alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! @material-ui/lab/Alert */ 143
         );
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! @material-ui/core/styles */ 223
+          /*! @material-ui/core/styles */ 222
         );
 
         // import Button from '@material-ui/core/Button';
@@ -34320,7 +34220,7 @@ object-assign
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! react-chartjs-2 */ 56
+          /*! react-chartjs-2 */ 58
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 26);
         /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ 124);
@@ -35946,7 +35846,7 @@ and limitations under the License.
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ 6);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-chartjs-2 */ 56
+          /*! react-chartjs-2 */ 58
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 26);
 
@@ -36451,7 +36351,7 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 60);
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 62);
 
         /***/
       },
@@ -36488,7 +36388,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 61
+          /*! ./SecretInput */ 63
         );
 
         /***/
@@ -37186,7 +37086,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 76
+          /*! react-transition-group */ 56
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -38060,7 +37960,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 76
+          /*! react-transition-group */ 56
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
@@ -38506,24 +38406,24 @@ and limitations under the License.
           /*! @material-ui/core/styles */ 150
         );
         /* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! @material-ui/core/Paper */ 208
+          /*! @material-ui/core/Paper */ 207
         );
         /* harmony import */ var _internal_svg_icons_SuccessOutlined__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../internal/svg-icons/SuccessOutlined */ 145
         );
         /* harmony import */ var _internal_svg_icons_ReportProblemOutlined__WEBPACK_IMPORTED_MODULE_6__ =
-          __webpack_require__(/*! ../internal/svg-icons/ReportProblemOutlined */ 204);
+          __webpack_require__(/*! ../internal/svg-icons/ReportProblemOutlined */ 203);
         /* harmony import */ var _internal_svg_icons_ErrorOutline__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../internal/svg-icons/ErrorOutline */ 205
+          /*! ../internal/svg-icons/ErrorOutline */ 204
         );
         /* harmony import */ var _internal_svg_icons_InfoOutlined__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../internal/svg-icons/InfoOutlined */ 206
+          /*! ../internal/svg-icons/InfoOutlined */ 205
         );
         /* harmony import */ var _internal_svg_icons_Close__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ../internal/svg-icons/Close */ 207
+          /*! ../internal/svg-icons/Close */ 206
         );
         /* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-          /*! @material-ui/core/IconButton */ 209
+          /*! @material-ui/core/IconButton */ 208
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
           /*! @material-ui/core/utils */ 148
@@ -39663,7 +39563,7 @@ and limitations under the License.
           /*! @material-ui/styles */ 151
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./defaultTheme */ 180
+          /*! ./defaultTheme */ 179
         );
 
         function withStyles(stylesOrCreator, options) {
@@ -39721,9 +39621,9 @@ and limitations under the License.
           /*! ../makeStyles */ 153
         );
         /* harmony import */ var _getThemeProps__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../getThemeProps */ 179
+          /*! ../getThemeProps */ 178
         );
-        /* harmony import */ var _useTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../useTheme */ 162);
+        /* harmony import */ var _useTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../useTheme */ 161);
 
         // Link a style sheet with a component.
         // It does not modify the component passed to it;
@@ -39901,7 +39801,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 18
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 100);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 101);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -39990,25 +39890,25 @@ and limitations under the License.
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_2__
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jss */ 157);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jss */ 156);
         /* harmony import */ var _mergeClasses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../mergeClasses */ 154
         );
         /* harmony import */ var _multiKeyStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./multiKeyStore */ 156
+          /*! ./multiKeyStore */ 155
         );
-        /* harmony import */ var _useTheme__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../useTheme */ 162);
+        /* harmony import */ var _useTheme__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../useTheme */ 161);
         /* harmony import */ var _StylesProvider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ../StylesProvider */ 164
+          /*! ../StylesProvider */ 163
         );
         /* harmony import */ var _indexCounter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ./indexCounter */ 161
+          /*! ./indexCounter */ 160
         );
         /* harmony import */ var _getStylesCreator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../getStylesCreator */ 159
+          /*! ../getStylesCreator */ 158
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 155
+          /*! ../getStylesCreator/noopTheme */ 57
         );
 
         function getClasses(_ref, classes, Component) {
@@ -40413,23 +40313,6 @@ and limitations under the License.
         /***/
       },
       /* 155 */
-      /*!*****************************************************************************!*\
-  !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
-  \*****************************************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
-          /* harmony export */
-        });
-        // We use the same empty object to ref count the styles that don't need a theme object.
-        var noopTheme = {};
-        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = noopTheme;
-
-        /***/
-      },
-      /* 156 */
       /*!***************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js ***!
   \***************************************************************************/
@@ -40465,7 +40348,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 157 */
+      /* 156 */
       /*!*******************************************!*\
   !*** ../node_modules/jss/dist/jss.esm.js ***!
   \*******************************************/
@@ -40493,10 +40376,10 @@ and limitations under the License.
           /*! is-in-browser */ 47
         );
         /* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! tiny-warning */ 158
+          /*! tiny-warning */ 157
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 102);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 103);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 15);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -42837,7 +42720,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 158 */
+      /* 157 */
       /*!******************************************************************************!*\
   !*** ../node_modules/jss/node_modules/tiny-warning/dist/tiny-warning.esm.js ***!
   \******************************************************************************/
@@ -42871,7 +42754,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 159 */
+      /* 158 */
       /*!************************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/getStylesCreator.js ***!
   \************************************************************************************/
@@ -42889,9 +42772,9 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/typeof */ 18
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! @material-ui/utils */ 160
+          /*! @material-ui/utils */ 159
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 155);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 57);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -42970,7 +42853,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 160 */
+      /* 159 */
       /*!***********************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/deepmerge.js ***!
   \***********************************************************/
@@ -43027,7 +42910,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 161 */
+      /* 160 */
       /*!**************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/makeStyles/indexCounter.js ***!
   \**************************************************************************/
@@ -43067,7 +42950,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 162 */
+      /* 161 */
       /*!********************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/useTheme/useTheme.js ***!
   \********************************************************************/
@@ -43083,7 +42966,7 @@ and limitations under the License.
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _ThemeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./ThemeContext */ 163
+          /*! ./ThemeContext */ 162
         );
 
         function useTheme() {
@@ -43101,7 +42984,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 163 */
+      /* 162 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/useTheme/ThemeContext.js ***!
   \************************************************************************/
@@ -43127,7 +43010,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 164 */
+      /* 163 */
       /*!********************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/StylesProvider/StylesProvider.js ***!
   \********************************************************************************/
@@ -43154,13 +43037,13 @@ and limitations under the License.
           prop_types__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! @material-ui/utils */ 178
+          /*! @material-ui/utils */ 177
         );
         /* harmony import */ var _createGenerateClassName__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../createGenerateClassName */ 176
+          /*! ../createGenerateClassName */ 175
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jss */ 157);
-        /* harmony import */ var _jssPreset__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jssPreset */ 165);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jss */ 156);
+        /* harmony import */ var _jssPreset__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jssPreset */ 164);
 
         // Default JSS instance.
 
@@ -43329,7 +43212,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 165 */
+      /* 164 */
       /*!**********************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/jssPreset/jssPreset.js ***!
   \**********************************************************************/
@@ -43341,25 +43224,25 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var jss_plugin_rule_value_function__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! jss-plugin-rule-value-function */ 166
+          /*! jss-plugin-rule-value-function */ 165
         );
         /* harmony import */ var jss_plugin_global__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! jss-plugin-global */ 168
+          /*! jss-plugin-global */ 167
         );
         /* harmony import */ var jss_plugin_nested__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! jss-plugin-nested */ 169
+          /*! jss-plugin-nested */ 168
         );
         /* harmony import */ var jss_plugin_camel_case__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! jss-plugin-camel-case */ 171
+          /*! jss-plugin-camel-case */ 170
         );
         /* harmony import */ var jss_plugin_default_unit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! jss-plugin-default-unit */ 173
+          /*! jss-plugin-default-unit */ 172
         );
         /* harmony import */ var jss_plugin_vendor_prefixer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! jss-plugin-vendor-prefixer */ 174
+          /*! jss-plugin-vendor-prefixer */ 173
         );
         /* harmony import */ var jss_plugin_props_sort__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! jss-plugin-props-sort */ 175
+          /*! jss-plugin-props-sort */ 174
         );
 
         // Subset of jss-preset-default with only the plugins the Material-UI components are using.
@@ -43384,7 +43267,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 166 */
+      /* 165 */
       /*!*************************************************************************************************!*\
   !*** ../node_modules/jss-plugin-rule-value-function/dist/jss-plugin-rule-value-function.esm.js ***!
   \*************************************************************************************************/
@@ -43396,9 +43279,9 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! tiny-warning */ 167
+          /*! tiny-warning */ 166
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 157);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 156);
 
         var now = Date.now();
         var fnValuesNs = 'fnValues' + now;
@@ -43470,7 +43353,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 167 */
+      /* 166 */
       /*!*********************************************************************************************************!*\
   !*** ../node_modules/jss-plugin-rule-value-function/node_modules/tiny-warning/dist/tiny-warning.esm.js ***!
   \*********************************************************************************************************/
@@ -43504,7 +43387,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 168 */
+      /* 167 */
       /*!***********************************************************************!*\
   !*** ../node_modules/jss-plugin-global/dist/jss-plugin-global.esm.js ***!
   \***********************************************************************/
@@ -43518,7 +43401,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 157);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 156);
 
         var at = '@global';
         var atPrefix = '@global ';
@@ -43714,7 +43597,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 169 */
+      /* 168 */
       /*!***********************************************************************!*\
   !*** ../node_modules/jss-plugin-nested/dist/jss-plugin-nested.esm.js ***!
   \***********************************************************************/
@@ -43729,7 +43612,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! tiny-warning */ 170
+          /*! tiny-warning */ 169
         );
 
         var separatorRegExp = /\s*,\s*/g;
@@ -43866,7 +43749,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 170 */
+      /* 169 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/jss-plugin-nested/node_modules/tiny-warning/dist/tiny-warning.esm.js ***!
   \********************************************************************************************/
@@ -43900,7 +43783,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 171 */
+      /* 170 */
       /*!*******************************************************************************!*\
   !*** ../node_modules/jss-plugin-camel-case/dist/jss-plugin-camel-case.esm.js ***!
   \*******************************************************************************/
@@ -43912,7 +43795,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var hyphenate_style_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! hyphenate-style-name */ 172
+          /*! hyphenate-style-name */ 171
         );
 
         /**
@@ -43976,7 +43859,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 172 */
+      /* 171 */
       /*!*****************************************************!*\
   !*** ../node_modules/hyphenate-style-name/index.js ***!
   \*****************************************************/
@@ -44009,7 +43892,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 173 */
+      /* 172 */
       /*!***********************************************************************************!*\
   !*** ../node_modules/jss-plugin-default-unit/dist/jss-plugin-default-unit.esm.js ***!
   \***********************************************************************************/
@@ -44020,7 +43903,7 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 157);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jss */ 156);
 
         var px = jss__WEBPACK_IMPORTED_MODULE_0__.hasCSSTOMSupport && CSS ? CSS.px : 'px';
         var ms = jss__WEBPACK_IMPORTED_MODULE_0__.hasCSSTOMSupport && CSS ? CSS.ms : 'ms';
@@ -44272,7 +44155,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 174 */
+      /* 173 */
       /*!*****************************************************************************************!*\
   !*** ../node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js ***!
   \*****************************************************************************************/
@@ -44283,8 +44166,8 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 103);
-        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 157);
+        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 104);
+        /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 156);
 
         /**
          * Add vendor prefix to a property name when needed.
@@ -44351,7 +44234,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 175 */
+      /* 174 */
       /*!*******************************************************************************!*\
   !*** ../node_modules/jss-plugin-props-sort/dist/jss-plugin-props-sort.esm.js ***!
   \*******************************************************************************/
@@ -44393,7 +44276,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 176 */
+      /* 175 */
       /*!**************************************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/createGenerateClassName/createGenerateClassName.js ***!
   \**************************************************************************************************/
@@ -44405,7 +44288,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _ThemeProvider_nested__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ../ThemeProvider/nested */ 177
+          /*! ../ThemeProvider/nested */ 176
         );
 
         /**
@@ -44498,7 +44381,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 177 */
+      /* 176 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/ThemeProvider/nested.js ***!
   \***********************************************************************/
@@ -44516,7 +44399,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 178 */
+      /* 177 */
       /*!***********************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/exactProp.js ***!
   \***********************************************************/
@@ -44575,7 +44458,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 179 */
+      /* 178 */
       /*!******************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js ***!
   \******************************************************************************/
@@ -44611,7 +44494,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 180 */
+      /* 179 */
       /*!********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/defaultTheme.js ***!
   \********************************************************************/
@@ -44623,7 +44506,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _createTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./createTheme */ 181
+          /*! ./createTheme */ 180
         );
 
         var defaultTheme = (0, _createTheme__WEBPACK_IMPORTED_MODULE_0__['default'])();
@@ -44631,7 +44514,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 181 */
+      /* 180 */
       /*!*******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/createTheme.js ***!
   \*******************************************************************/
@@ -44648,29 +44531,29 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ 2);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! @material-ui/utils */ 160
+          /*! @material-ui/utils */ 159
         );
         /* harmony import */ var _createBreakpoints__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./createBreakpoints */ 191
+          /*! ./createBreakpoints */ 190
         );
         /* harmony import */ var _createMixins__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./createMixins */ 198
+          /*! ./createMixins */ 197
         );
         /* harmony import */ var _createPalette__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./createPalette */ 182
+          /*! ./createPalette */ 181
         );
         /* harmony import */ var _createTypography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ./createTypography */ 200
+          /*! ./createTypography */ 199
         );
-        /* harmony import */ var _shadows__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shadows */ 199);
-        /* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./shape */ 201);
+        /* harmony import */ var _shadows__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shadows */ 198);
+        /* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./shape */ 200);
         /* harmony import */ var _createSpacing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./createSpacing */ 192
+          /*! ./createSpacing */ 191
         );
         /* harmony import */ var _transitions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ./transitions */ 202
+          /*! ./transitions */ 201
         );
-        /* harmony import */ var _zIndex__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./zIndex */ 203);
+        /* harmony import */ var _zIndex__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./zIndex */ 202);
 
         function createTheme() {
           var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -44803,7 +44686,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 182 */
+      /* 181 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/createPalette.js ***!
   \*********************************************************************/
@@ -44822,31 +44705,31 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ 2);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-          /*! @material-ui/utils */ 160
+          /*! @material-ui/utils */ 159
         );
         /* harmony import */ var _colors_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../colors/common */ 183
+          /*! ../colors/common */ 182
         );
         /* harmony import */ var _colors_grey__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../colors/grey */ 184
+          /*! ../colors/grey */ 183
         );
         /* harmony import */ var _colors_indigo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../colors/indigo */ 185
+          /*! ../colors/indigo */ 184
         );
         /* harmony import */ var _colors_pink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../colors/pink */ 186
+          /*! ../colors/pink */ 185
         );
         /* harmony import */ var _colors_red__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../colors/red */ 187
+          /*! ../colors/red */ 186
         );
         /* harmony import */ var _colors_orange__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../colors/orange */ 188
+          /*! ../colors/orange */ 187
         );
         /* harmony import */ var _colors_blue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ../colors/blue */ 189
+          /*! ../colors/blue */ 188
         );
         /* harmony import */ var _colors_green__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ../colors/green */ 190
+          /*! ../colors/green */ 189
         );
         /* harmony import */ var _colorManipulator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ./colorManipulator */ 144
@@ -45138,7 +45021,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 183 */
+      /* 182 */
       /*!**************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/common.js ***!
   \**************************************************************/
@@ -45157,7 +45040,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 184 */
+      /* 183 */
       /*!************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/grey.js ***!
   \************************************************************/
@@ -45188,7 +45071,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 185 */
+      /* 184 */
       /*!**************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/indigo.js ***!
   \**************************************************************/
@@ -45219,7 +45102,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 186 */
+      /* 185 */
       /*!************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/pink.js ***!
   \************************************************************/
@@ -45250,7 +45133,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 187 */
+      /* 186 */
       /*!***********************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/red.js ***!
   \***********************************************************/
@@ -45281,7 +45164,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 188 */
+      /* 187 */
       /*!**************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/orange.js ***!
   \**************************************************************/
@@ -45312,7 +45195,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 189 */
+      /* 188 */
       /*!************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/blue.js ***!
   \************************************************************/
@@ -45343,7 +45226,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 190 */
+      /* 189 */
       /*!*************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/colors/green.js ***!
   \*************************************************************/
@@ -45374,7 +45257,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 191 */
+      /* 190 */
       /*!*************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/createBreakpoints.js ***!
   \*************************************************************************/
@@ -45495,7 +45378,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 192 */
+      /* 191 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/createSpacing.js ***!
   \*********************************************************************/
@@ -45507,7 +45390,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _material_ui_system__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! @material-ui/system */ 193
+          /*! @material-ui/system */ 192
         );
 
         var warnOnce;
@@ -45585,7 +45468,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 193 */
+      /* 192 */
       /*!**********************************************************!*\
   !*** ../node_modules/@material-ui/system/esm/spacing.js ***!
   \**********************************************************/
@@ -45600,13 +45483,13 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ 50);
         /* harmony import */ var _responsivePropType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./responsivePropType */ 197
+          /*! ./responsivePropType */ 196
         );
         /* harmony import */ var _breakpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./breakpoints */ 195
+          /*! ./breakpoints */ 194
         );
-        /* harmony import */ var _merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./merge */ 196);
-        /* harmony import */ var _memoize__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./memoize */ 194);
+        /* harmony import */ var _merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./merge */ 195);
+        /* harmony import */ var _memoize__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./memoize */ 193);
 
         var properties = {
           m: 'margin',
@@ -45795,7 +45678,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 194 */
+      /* 193 */
       /*!**********************************************************!*\
   !*** ../node_modules/@material-ui/system/esm/memoize.js ***!
   \**********************************************************/
@@ -45819,7 +45702,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 195 */
+      /* 194 */
       /*!**************************************************************!*\
   !*** ../node_modules/@material-ui/system/esm/breakpoints.js ***!
   \**************************************************************/
@@ -45843,7 +45726,7 @@ and limitations under the License.
         /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/ __webpack_require__.n(
           prop_types__WEBPACK_IMPORTED_MODULE_4__
         );
-        /* harmony import */ var _merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./merge */ 196);
+        /* harmony import */ var _merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./merge */ 195);
 
         // The breakpoint **start** at this value.
         // For instance with the first breakpoint xs: [xs, sm[.
@@ -45938,7 +45821,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 196 */
+      /* 195 */
       /*!********************************************************!*\
   !*** ../node_modules/@material-ui/system/esm/merge.js ***!
   \********************************************************/
@@ -45950,7 +45833,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! @material-ui/utils */ 160
+          /*! @material-ui/utils */ 159
         );
 
         function merge(acc, item) {
@@ -45967,7 +45850,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 197 */
+      /* 196 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@material-ui/system/esm/responsivePropType.js ***!
   \*********************************************************************/
@@ -45995,7 +45878,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 198 */
+      /* 197 */
       /*!********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/createMixins.js ***!
   \********************************************************************/
@@ -46071,7 +45954,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 199 */
+      /* 198 */
       /*!***************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/shadows.js ***!
   \***************************************************************/
@@ -46140,7 +46023,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 200 */
+      /* 199 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/createTypography.js ***!
   \************************************************************************/
@@ -46157,7 +46040,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ 2);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! @material-ui/utils */ 160
+          /*! @material-ui/utils */ 159
         );
 
         function round(value) {
@@ -46301,7 +46184,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 201 */
+      /* 200 */
       /*!*************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/shape.js ***!
   \*************************************************************/
@@ -46319,7 +46202,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 202 */
+      /* 201 */
       /*!*******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/transitions.js ***!
   \*******************************************************************/
@@ -46449,7 +46332,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 203 */
+      /* 202 */
       /*!**************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/zIndex.js ***!
   \**************************************************************/
@@ -46475,7 +46358,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 204 */
+      /* 203 */
       /*!****************************************************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/internal/svg-icons/ReportProblemOutlined.js ***!
   \****************************************************************************************/
@@ -46508,7 +46391,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 205 */
+      /* 204 */
       /*!*******************************************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/internal/svg-icons/ErrorOutline.js ***!
   \*******************************************************************************/
@@ -46541,7 +46424,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 206 */
+      /* 205 */
       /*!*******************************************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/internal/svg-icons/InfoOutlined.js ***!
   \*******************************************************************************/
@@ -46574,7 +46457,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 207 */
+      /* 206 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/internal/svg-icons/Close.js ***!
   \************************************************************************/
@@ -46607,7 +46490,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 208 */
+      /* 207 */
       /*!************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/Paper/Paper.js ***!
   \************************************************************/
@@ -46770,7 +46653,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 209 */
+      /* 208 */
       /*!**********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/IconButton/IconButton.js ***!
   \**********************************************************************/
@@ -46806,7 +46689,7 @@ and limitations under the License.
           /*! ../styles/colorManipulator */ 144
         );
         /* harmony import */ var _ButtonBase__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../ButtonBase */ 210
+          /*! ../ButtonBase */ 209
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../utils/capitalize */ 148
@@ -47058,7 +46941,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 210 */
+      /* 209 */
       /*!**********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/ButtonBase/ButtonBase.js ***!
   \**********************************************************************/
@@ -47089,28 +46972,28 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! @material-ui/utils */ 220
+          /*! @material-ui/utils */ 219
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-          /*! @material-ui/utils */ 222
+          /*! @material-ui/utils */ 221
         );
         /* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../utils/useForkRef */ 213
+          /*! ../utils/useForkRef */ 212
         );
         /* harmony import */ var _utils_useEventCallback__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../utils/useEventCallback */ 212
+          /*! ../utils/useEventCallback */ 211
         );
         /* harmony import */ var _utils_deprecatedPropType__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ../utils/deprecatedPropType */ 221
+          /*! ../utils/deprecatedPropType */ 220
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
           /*! ../styles/withStyles */ 150
         );
         /* harmony import */ var _utils_useIsFocusVisible__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../utils/useIsFocusVisible */ 211
+          /*! ../utils/useIsFocusVisible */ 210
         );
         /* harmony import */ var _TouchRipple__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ./TouchRipple */ 215
+          /*! ./TouchRipple */ 214
         );
 
         var styles = {
@@ -47686,7 +47569,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 211 */
+      /* 210 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js ***!
   \************************************************************************/
@@ -47860,7 +47743,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 212 */
+      /* 211 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/useEventCallback.js ***!
   \***********************************************************************/
@@ -47898,7 +47781,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 213 */
+      /* 212 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/useForkRef.js ***!
   \*****************************************************************/
@@ -47913,7 +47796,7 @@ and limitations under the License.
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setRef */ 214);
+        /* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setRef */ 213);
 
         function useForkRef(refA, refB) {
           /**
@@ -47938,7 +47821,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 214 */
+      /* 213 */
       /*!*************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/setRef.js ***!
   \*************************************************************/
@@ -47960,7 +47843,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 215 */
+      /* 214 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/ButtonBase/TouchRipple.js ***!
   \***********************************************************************/
@@ -47989,13 +47872,13 @@ and limitations under the License.
           prop_types__WEBPACK_IMPORTED_MODULE_7__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! react-transition-group */ 217
+          /*! react-transition-group */ 216
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
           /*! ../styles/withStyles */ 150
         );
-        /* harmony import */ var _Ripple__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Ripple */ 216);
+        /* harmony import */ var _Ripple__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Ripple */ 215);
 
         var DURATION = 550;
         var DELAY_RIPPLE = 80;
@@ -48348,7 +48231,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 216 */
+      /* 215 */
       /*!******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/ButtonBase/Ripple.js ***!
   \******************************************************************/
@@ -48369,7 +48252,7 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _utils_useEventCallback__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../utils/useEventCallback */ 212
+          /*! ../utils/useEventCallback */ 211
         );
 
         var useEnhancedEffect =
@@ -48490,7 +48373,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 217 */
+      /* 216 */
       /*!*********************************************************************!*\
   !*** ../node_modules/react-transition-group/esm/TransitionGroup.js ***!
   \*********************************************************************/
@@ -48519,10 +48402,10 @@ and limitations under the License.
           react__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./TransitionGroupContext */ 219
+          /*! ./TransitionGroupContext */ 218
         );
         /* harmony import */ var _utils_ChildMapping__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./utils/ChildMapping */ 218
+          /*! ./utils/ChildMapping */ 217
         );
 
         var values =
@@ -48738,7 +48621,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 218 */
+      /* 217 */
       /*!************************************************************************!*\
   !*** ../node_modules/react-transition-group/esm/utils/ChildMapping.js ***!
   \************************************************************************/
@@ -48898,7 +48781,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 219 */
+      /* 218 */
       /*!****************************************************************************!*\
   !*** ../node_modules/react-transition-group/esm/TransitionGroupContext.js ***!
   \****************************************************************************/
@@ -48919,7 +48802,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 220 */
+      /* 219 */
       /*!*********************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/refType.js ***!
   \*********************************************************/
@@ -48943,7 +48826,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 221 */
+      /* 220 */
       /*!*************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/deprecatedPropType.js ***!
   \*************************************************************************/
@@ -48975,7 +48858,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 222 */
+      /* 221 */
       /*!*************************************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/elementTypeAcceptingRef.js ***!
   \*************************************************************************/
@@ -49043,7 +48926,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 223 */
+      /* 222 */
       /*!******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/makeStyles.js ***!
   \******************************************************************/
@@ -49061,7 +48944,7 @@ and limitations under the License.
           /*! @material-ui/styles */ 153
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./defaultTheme */ 180
+          /*! ./defaultTheme */ 179
         );
 
         function makeStyles(stylesOrCreator) {
@@ -49081,7 +48964,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 224 */
+      /* 223 */
       /*!******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/Snackbar/Snackbar.js ***!
   \******************************************************************/
@@ -49113,26 +48996,26 @@ and limitations under the License.
           /*! ../styles/withStyles */ 150
         );
         /* harmony import */ var _styles_transitions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../styles/transitions */ 202
+          /*! ../styles/transitions */ 201
         );
         /* harmony import */ var _ClickAwayListener__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../ClickAwayListener */ 231
+          /*! ../ClickAwayListener */ 230
         );
         /* harmony import */ var _utils_useEventCallback__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../utils/useEventCallback */ 212
+          /*! ../utils/useEventCallback */ 211
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
           /*! ../utils/capitalize */ 148
         );
         /* harmony import */ var _utils_createChainedFunction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ../utils/createChainedFunction */ 234
+          /*! ../utils/createChainedFunction */ 233
         );
         /* harmony import */ var _utils_deprecatedPropType__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! ../utils/deprecatedPropType */ 221
+          /*! ../utils/deprecatedPropType */ 220
         );
-        /* harmony import */ var _Grow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Grow */ 225);
+        /* harmony import */ var _Grow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Grow */ 224);
         /* harmony import */ var _SnackbarContent__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-          /*! ../SnackbarContent */ 235
+          /*! ../SnackbarContent */ 234
         );
 
         var styles = function styles(theme) {
@@ -49709,7 +49592,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 225 */
+      /* 224 */
       /*!**********************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/Grow/Grow.js ***!
   \**********************************************************/
@@ -49736,16 +49619,16 @@ and limitations under the License.
           prop_types__WEBPACK_IMPORTED_MODULE_8__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! react-transition-group */ 226
+          /*! react-transition-group */ 225
         );
         /* harmony import */ var _styles_useTheme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../styles/useTheme */ 229
+          /*! ../styles/useTheme */ 228
         );
         /* harmony import */ var _transitions_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../transitions/utils */ 230
+          /*! ../transitions/utils */ 229
         );
         /* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../utils/useForkRef */ 213
+          /*! ../utils/useForkRef */ 212
         );
 
         function getScale(value) {
@@ -50056,7 +49939,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 226 */
+      /* 225 */
       /*!****************************************************************!*\
   !*** ../node_modules/react-transition-group/esm/Transition.js ***!
   \****************************************************************/
@@ -50088,12 +49971,12 @@ and limitations under the License.
         /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/ __webpack_require__.n(
           react_dom__WEBPACK_IMPORTED_MODULE_3__
         );
-        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./config */ 227);
+        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./config */ 226);
         /* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ./utils/PropTypes */ 228
+          /*! ./utils/PropTypes */ 227
         );
         /* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./TransitionGroupContext */ 219
+          /*! ./TransitionGroupContext */ 218
         );
 
         var UNMOUNTED = 'unmounted';
@@ -50777,7 +50660,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 227 */
+      /* 226 */
       /*!************************************************************!*\
   !*** ../node_modules/react-transition-group/esm/config.js ***!
   \************************************************************/
@@ -50794,7 +50677,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 228 */
+      /* 227 */
       /*!*********************************************************************!*\
   !*** ../node_modules/react-transition-group/esm/utils/PropTypes.js ***!
   \*********************************************************************/
@@ -50842,7 +50725,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 229 */
+      /* 228 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/useTheme.js ***!
   \****************************************************************/
@@ -50854,14 +50737,14 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/styles */ 162
+          /*! @material-ui/styles */ 161
         );
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./defaultTheme */ 180
+          /*! ./defaultTheme */ 179
         );
 
         function useTheme() {
@@ -50879,7 +50762,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 230 */
+      /* 229 */
       /*!******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/transitions/utils.js ***!
   \******************************************************************/
@@ -50906,7 +50789,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 231 */
+      /* 230 */
       /*!************************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/ClickAwayListener/ClickAwayListener.js ***!
   \************************************************************************************/
@@ -50930,19 +50813,19 @@ and limitations under the License.
           prop_types__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var _utils_ownerDocument__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../utils/ownerDocument */ 232
+          /*! ../utils/ownerDocument */ 231
         );
         /* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../utils/useForkRef */ 213
+          /*! ../utils/useForkRef */ 212
         );
         /* harmony import */ var _utils_useEventCallback__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../utils/useEventCallback */ 212
+          /*! ../utils/useEventCallback */ 211
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! @material-ui/utils */ 233
+          /*! @material-ui/utils */ 232
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! @material-ui/utils */ 178
+          /*! @material-ui/utils */ 177
         );
 
         function mapEventPropToEvent(eventProp) {
@@ -51150,7 +51033,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 232 */
+      /* 231 */
       /*!********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/ownerDocument.js ***!
   \********************************************************************/
@@ -51167,7 +51050,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 233 */
+      /* 232 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/elementAcceptingRef.js ***!
   \*********************************************************************/
@@ -51240,7 +51123,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 234 */
+      /* 233 */
       /*!****************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/createChainedFunction.js ***!
   \****************************************************************************/
@@ -51292,7 +51175,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 235 */
+      /* 234 */
       /*!********************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/SnackbarContent/SnackbarContent.js ***!
   \********************************************************************************/
@@ -51323,7 +51206,7 @@ and limitations under the License.
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
           /*! ../styles/withStyles */ 150
         );
-        /* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Paper */ 208);
+        /* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Paper */ 207);
         /* harmony import */ var _styles_colorManipulator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../styles/colorManipulator */ 144
         );
@@ -51553,13 +51436,13 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 63
+        /*! @grafana/data */ 65
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 64
+        /*! ./components/App */ 66
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
         /*! ./components/AppConfig */ 127
