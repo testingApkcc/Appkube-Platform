@@ -228,7 +228,7 @@ export class Performance extends React.Component<any, any>{
         const serviceId = this.getParameterByName('serviceId', window.location.href);
         const result = {
             serviceId,
-            viewJSON: responseArray
+            performance: responseArray
         };
         var reqOpt = RestService.optionWithAuthentication(JSON.stringify(result), 'POST');
         fetch(this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
