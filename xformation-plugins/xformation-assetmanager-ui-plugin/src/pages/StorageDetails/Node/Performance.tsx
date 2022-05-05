@@ -19,19 +19,15 @@ export class Performance extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            enablePerformanceMonitoring: true,
+            enablePerformanceMonitoring: false,
             isAlertOpen: false,
             severity: null,
             message: null,
             isSuccess: true,
             activeDashboard: 0,
-            showConfigWizard: false,
+            showConfigWizard: true,
             iFrameLoaded: false,
-            viewJson: [
-                { title: 'dashboard demo', uid: 'HmQhPYQ7z' },
-                { title: 'dashboard 2', uid: 'zRQhasw7k' },
-                { title: 'dashboard 3', uid: 'wBJ0ayw7k' },
-            ],
+            viewJson: [],
             dashboardData: {},
             isLoading: false,
         };
@@ -62,26 +58,43 @@ export class Performance extends React.Component<any, any>{
     }
 
     componentDidMount() {
-        this.getInputConfig();
+        this.getCategories();
+        this.getAddedDashboards();
     }
 
-    getInputConfig = async () => {
+    getCategories = () => {
         try {
             RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
                 (response: any) => {
-                    if (response.code !== 417) {
-                        const { cloudDashBoards, dataSources } = response.details.ops;
-                        const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
+                    const { cloudDashBoards, dataSources } = response.details.ops;
+                    const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
+                    this.setState({
+                        dashboardData,
+                    });
+                    this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboardData);
+
+                }, (error: any) => {
+                    console.log("Performance. Search input config failed. Error: ", error);
+                });
+        } catch (err) {
+            console.log("Performance. Excepiton in search input this.config. Error: ", err);
+        }
+    }
+
+    getAddedDashboards = () => {
+        try {
+            RestService.getData(`${this.config.ADD_VIEW_JSON_TO_GRAFANA}`, null, null).then(
+                (response: any) => {
+                    if(response && response.length > 0){
                         this.setState({
+                            viewJson: response,
                             enablePerformanceMonitoring: true,
-                            showConfigWizard: false,
-                            activeDashboard: 0,
-                            dashboardData,
+                            showConfigWizard: false
                         });
-                        this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboardData);
                     } else {
                         this.setState({
-                            showConfigWizard: true,
+                            enablePerformanceMonitoring: false,
+                            showConfigWizard: true
                         });
                     }
                 }, (error: any) => {
@@ -90,7 +103,7 @@ export class Performance extends React.Component<any, any>{
         } catch (err) {
             console.log("Performance. Excepiton in search input this.config. Error: ", err);
         }
-    }
+    };
 
     manipulateCatalogueData = (dataSources: any, dashboards: any) => {
         dataSources.forEach((dataSource: any) => {
@@ -108,7 +121,7 @@ export class Performance extends React.Component<any, any>{
         return dataSources
     };
 
-    enablePerformanceMonitoring = () => {
+    togglePerformanceMonitoring = () => {
         this.setState({
             enablePerformanceMonitoring: !this.state.enablePerformanceMonitoring,
         });
@@ -223,7 +236,6 @@ export class Performance extends React.Component<any, any>{
         });
     };
 
-
     sendViewJSON = (responseArray: any) => {
         const serviceId = this.getParameterByName('serviceId', window.location.href);
         const result = {
@@ -331,7 +343,7 @@ export class Performance extends React.Component<any, any>{
                             <div className="performance-inner">
                                 <strong>Performance Monitoring is not enabled yet</strong>
                                 <p>To endble Performance Monitoring dashboards you will first have to configure the inputs for data collection</p>
-                                <button className="asset-blue-button" onClick={this.enablePerformanceMonitoring}>Enable Performance Monitoring</button>
+                                <button className="asset-blue-button" onClick={this.togglePerformanceMonitoring}>Enable Performance Monitoring</button>
                             </div>
                         </div>
                         <div className="note-text">
