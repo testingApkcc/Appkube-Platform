@@ -4598,6 +4598,49 @@ a:hover {
   .catalogue-management-container
   .common-container
   .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .add-tags
+  .form-group
+  .form-control {
+  width: 100%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .add-tags
+  .form-group
+  .error {
+  padding-left: 0;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .add-tags
+  .remove-tags-btn {
+  border: 1px solid #8592a3;
+  background-color: #a2d2ff;
+  color: #707070;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
   .templates-filters {
   display: block;
