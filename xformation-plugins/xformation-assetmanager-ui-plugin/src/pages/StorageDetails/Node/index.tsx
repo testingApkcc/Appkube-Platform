@@ -9,7 +9,7 @@ export class Node extends React.Component<any, any> {
     this.state = {
       currentStep: 0,
       accountId: '',
-      serviceData: props.data,
+      serviceData: props.serviceData,
       steps: [
         {
           name: "Performance",
@@ -51,10 +51,10 @@ export class Node extends React.Component<any, any> {
   }
 
   componentDidUpdate(prevProps: any, prevState: any) {
-    if (JSON.stringify(prevProps.data) !== JSON.stringify(this.props.data)) {
+    if (JSON.stringify(prevProps.serviceData) !== JSON.stringify(this.props.serviceData)) {
       this.setState({
         currentStep: 0,
-        serviceData: this.props.data,
+        serviceData: this.props.serviceData,
       });
     }
   }
