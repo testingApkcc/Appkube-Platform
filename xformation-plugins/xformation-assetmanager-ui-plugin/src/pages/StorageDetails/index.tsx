@@ -66,7 +66,7 @@ export class StorageDetails extends React.Component<any, any> {
 
     removeTab = (index: any) => {
         const { serviceDetails } = this.state;
-        if (index !== 0) {
+        if (serviceDetails.length > 1) {
             serviceDetails.splice(index, 1);
             this.setState({
                 serviceDetails,

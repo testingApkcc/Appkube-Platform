@@ -13,34 +13,50 @@ export class Node extends React.Component<any, any> {
       steps: [
         {
           name: "Performance",
-          component: <Performance {...this.props} />,
+          component: Performance,
+          apiKey: 'performance'
         },
         {
           name: "Availability",
-          component: <div>Availability</div>,
+          component: Performance,
+          apiKey: 'availability'
         },
         {
           name: "Reliability",
-          component: <div>Reliability</div>,
+          component: Performance,
+          apiKey: 'reliability'
         },
         {
           name: "End Usage",
-          component: <div>End Usage</div>,
+          component: Performance,
+          apiKey: 'endUsage'
         },
         {
           name: "Security",
-          component: <div>Security</div>,
+          component: Performance,
+          apiKey: 'security'
         },
         {
           name: "Compliance",
-          component: <div>Compliance</div>,
+          component: Performance,
+          apiKey: 'compliance'
         },
         {
           name: "Alerts",
-          component: <div>Alerts</div>,
+          component: Performance,
+          apiKey: 'alerts'
         },
       ],
     };
+  }
+
+  componentDidUpdate(prevProps: any, prevState: any) {
+    if (JSON.stringify(prevProps.data) !== JSON.stringify(this.props.data)) {
+      this.setState({
+        currentStep: 0,
+        serviceData: this.props.data,
+      });
+    }
   }
 
   getParameterByName = (name: any, url: any) => {
@@ -100,10 +116,9 @@ export class Node extends React.Component<any, any> {
               <div className="breadcrumbs">
                 <ul>
                   <li>
-                    <span>AWS-({accountId})</span>{" "}
-                    {" > "}{" "}
+                    <span>AWS-({accountId})</span>
                   </li>
-                  {serviceData.labelText}
+                  &nbsp;{serviceData.labelText}
                 </ul>
               </div>
             </div>
@@ -125,7 +140,7 @@ export class Node extends React.Component<any, any> {
         <div className="displayed-here">
           <p>Node details will be displayed here</p>
         </div>
-        <WebServiceWizard steps={steps} />
+        <WebServiceWizard steps={steps} {...this.props} />
       </div>
     );
   }
