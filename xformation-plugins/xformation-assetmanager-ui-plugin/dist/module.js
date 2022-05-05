@@ -32590,7 +32590,12 @@ object-assign
                         severity: 'success',
                         isSuccess: false,
                         isLoading: false,
+                        presentView: VIEW_TYPE.VIEW_DASHBOARDS,
                       });
+
+                      _this.wizardRef.current.setActiveStep(0);
+
+                      _this.getAddedDashboards();
                     },
                     function (error) {
                       _this.setState({

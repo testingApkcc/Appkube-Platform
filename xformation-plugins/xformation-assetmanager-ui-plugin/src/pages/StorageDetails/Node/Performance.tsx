@@ -268,7 +268,10 @@ export class Performance extends React.Component<any, any>{
                     severity: 'success',
                     isSuccess: false,
                     isLoading: false,
+                    presentView: VIEW_TYPE.VIEW_DASHBOARDS
                 });
+                this.wizardRef.current.setActiveStep(0);
+                this.getAddedDashboards();
             }, error => {
                 this.setState({
                     isAlertOpen: true,
