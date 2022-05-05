@@ -680,6 +680,12 @@
                                                 color: #3273dc;
                                             }
                                         }
+
+                                        &.active {
+                                            label {
+                                                color: #3273dc;
+                                            }
+                                        }
                                     }
                                 }
                             }

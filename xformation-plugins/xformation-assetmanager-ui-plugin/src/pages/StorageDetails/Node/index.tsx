@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { images } from '../../../img';
 import { WebServiceWizard } from './WebServiceWizard';
-import { Entity } from './Entity';
+// import { Entity } from './Entity';
 import { Performance } from './Performance';
 
 export class Node extends React.Component<any, any> {

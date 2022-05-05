@@ -113,7 +113,7 @@ export class Preview extends React.Component<any, any> {
           <ul className="dashboard-view-buttons">
             {this.renderDashboardList()}
           </ul>
-          <div className="dashboard-view">
+          <div className="dashboard-view" style={{ width: "100%" }}>
             {
               <>
                 {this.renderIframe()}

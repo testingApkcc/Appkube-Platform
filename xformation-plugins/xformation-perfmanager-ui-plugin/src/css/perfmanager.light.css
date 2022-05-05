@@ -4808,6 +4808,18 @@ a:hover {
   .common-container
   .catalogue-tabs-container
   .catalogue-inner-tabs-container.templates-container
+  .templates-filters
+  .templates-category
+  ul
+  li.active
+  label {
+  color: #3273dc;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container.templates-container
   .catalogue-right-container {
   background-color: #ffffff;
 }

@@ -2533,7 +2533,7 @@ a:hover {
 .service-account-container .account-box .breadcrumbs ul li {
   display: inline-block;
   list-style: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: #ffffff;
 }
@@ -2543,9 +2543,9 @@ a:hover {
   font-weight: 500;
 }
 .service-account-container .account-box .breadcrumbs ul li i {
-  font-size: 20px;
-  margin-right: 15px;
-  margin-left: 15px;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-left: 10px;
   color: #8998ac;
 }
 .service-account-container .account-box .search-box {
@@ -2953,8 +2953,8 @@ a:hover {
   padding: 0px !important;
   text-align: center;
   border-right: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  vertical-align: top;
 }
 .service-account-container .dashboard-view-container .aside-container .dashboard-side-tab {
   opacity: 1;
@@ -2967,6 +2967,10 @@ a:hover {
   border-left: 2px solid transparent;
   text-decoration: none;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
 .service-account-container .dashboard-view-container .aside-container .dashboard-side-tab.active {
   background-color: #3697ef;
@@ -2983,9 +2987,10 @@ a:hover {
   background: linear-gradient(#f05a28 30%, #fbca0a 99%);
 }
 .service-account-container .dashboard-view-container .dashboard-view {
-  width: 100%;
+  width: 80%;
   height: 100%;
-  display: block;
+  display: inline-block;
+  vertical-align: top;
 }
 .service-account-container .dashboard-view-container .dashboard-view iframe {
   width: 100%;

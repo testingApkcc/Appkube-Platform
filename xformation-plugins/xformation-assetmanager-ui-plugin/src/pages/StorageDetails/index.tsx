@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 // import { PLUGIN_BASE_URL } from '../../constants';
