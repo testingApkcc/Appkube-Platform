@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 import { v4 } from 'uuid';
+import { CommonService } from '../../_common/common';
 
 export class VerifyAndSave extends React.Component<any, any>{
     config: any;
@@ -97,7 +98,7 @@ export class VerifyAndSave extends React.Component<any, any>{
     }
 
     retriveDashboardJSONData = (dashboards: any) => {
-        const accountId = this.getParameterByName("accountId", window.location.href);
+        const accountId = CommonService.getParameterByName("accountId", window.location.href);
         const dashboardJSON: any = [];
         if (dashboards.length > 0) {
             this.setState({
@@ -136,15 +137,6 @@ export class VerifyAndSave extends React.Component<any, any>{
                 dashboardJSON
             });
         }
-    };
-
-    getParameterByName = (name: any, url: any) => {
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return "";
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
     };
 
     getDashboardJSONData = () => {

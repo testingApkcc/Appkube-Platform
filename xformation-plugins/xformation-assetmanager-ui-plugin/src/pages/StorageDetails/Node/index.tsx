@@ -2,6 +2,7 @@ import * as React from 'react';
 import { images } from '../../../img';
 import { WebServiceWizard } from './WebServiceWizard';
 import { Performance } from './Performance';
+import { CommonService } from '../../_common/common';
 
 export class Node extends React.Component<any, any> {
   constructor(props: any) {
@@ -59,17 +60,8 @@ export class Node extends React.Component<any, any> {
     }
   }
 
-  getParameterByName = (name: any, url: any) => {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-  }
-
   componentDidMount() {
-    const accountId = this.getParameterByName("accountId", window.location.href);
+    const accountId = CommonService.getParameterByName("accountId", window.location.href);
     if (accountId) {
       this.setState({
         accountId

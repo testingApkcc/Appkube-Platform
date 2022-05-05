@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { v4 } from 'uuid';
+import { CommonService } from '../../_common/common';
 
 export class Preview extends React.Component<any, any> {
   constructor(props: any) {
@@ -43,15 +44,6 @@ export class Preview extends React.Component<any, any> {
     };
   };
 
-  getParameterByName = (name: any, url: any) => {
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return "";
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  };
-
   renderDashboardList = () => {
     const { dashboardData, activeDashboard, activeDataSource } = this.state;
     const retData: any = [];
@@ -84,7 +76,7 @@ export class Preview extends React.Component<any, any> {
 
   renderIframe = () => {
     const { activeDashboard, dashboardData, activeDataSource } = this.state;
-    const accountId = this.getParameterByName("accountId", window.location.href);
+    const accountId = CommonService.getParameterByName("accountId", window.location.href);
     const retData: any = [];
     dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
       if (dataSource.isChecked) {

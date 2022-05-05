@@ -123,15 +123,6 @@ export class Performance extends React.Component<any, any>{
         return dataSources
     };
 
-    getParameterByName = (name: any, url: any) => {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
     onSubmit = async () => {
         if (this.state.isLoading) {
             this.setState({

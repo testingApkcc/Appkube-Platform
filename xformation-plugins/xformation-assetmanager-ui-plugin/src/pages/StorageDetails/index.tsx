@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 import { PLUGIN_BASE_URL } from '../../constants';
+import { CommonService } from '../_common/common';
 
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
@@ -11,7 +12,7 @@ export class StorageDetails extends React.Component<any, any> {
         if (serviceData) {
             serviceData = JSON.parse(serviceData);
         } else {
-            window.history.go(-1);
+            props.history.go(-1);
         }
         super(props);
         this.state = {
@@ -28,15 +29,6 @@ export class StorageDetails extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
-    }
-
-    getParameterByName = (name: any, url: any) => {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
     setActiveTab = (activeTab: any) => {
@@ -81,7 +73,7 @@ export class StorageDetails extends React.Component<any, any> {
 
     render() {
         const { activeTab, serviceDetails } = this.state;
-        const accountId = this.getParameterByName('accountId', window.location.href);
+        const accountId = CommonService.getParameterByName('accountId', window.location.href);
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
