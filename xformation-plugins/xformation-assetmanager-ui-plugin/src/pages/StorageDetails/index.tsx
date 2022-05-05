@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 // import { PLUGIN_BASE_URL } from '../../constants';
@@ -7,18 +6,16 @@ import { Node } from './Node';
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
     constructor(props: any) {
-        // const serviceData = localStorage.getItem('added-services');
-
+        let serviceData: any = localStorage.getItem('added-services');
+        if (serviceData) {
+            serviceData = JSON.parse(serviceData);
+        } else {
+            window.history.go(-1);
+        }
         super(props);
         this.state = {
             activeTab: 0,
-            serviceDetails: [{
-                title: "Search",
-                id: '1212'
-            }, {
-                title: 'search-2',
-                id: '121211'
-            }],
+            serviceDetails: serviceData,
         };
         this.breadCrumbs = [
             {
@@ -50,16 +47,18 @@ export class StorageDetails extends React.Component<any, any> {
     displayTabs = () => {
         const { activeTab, serviceDetails } = this.state;
         let retData = [];
-        for (let i = 0; i < serviceDetails.length; i++) {
-            let node = serviceDetails[i];
-            retData.push(
-                <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
-                    <a>
-                        {node.title}
-                        <i className="fa fa-times" aria-hidden="true" onClick={() => this.removeTab(i)}></i>
-                    </a>
-                </li>
-            );
+        if (serviceDetails) {
+            for (let i = 0; i < serviceDetails.length; i++) {
+                let node = serviceDetails[i];
+                retData.push(
+                    <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
+                        <a>
+                            {node.name}
+                            <i className="fa fa-times" aria-hidden="true" onClick={() => this.removeTab(i)}></i>
+                        </a>
+                    </li>
+                );
+            }
         }
         return retData;
     }
@@ -71,8 +70,10 @@ export class StorageDetails extends React.Component<any, any> {
             this.setState({
                 serviceDetails,
                 activeTab: index - 1,
-            })
+            });
+            localStorage.setItem('added-services', JSON.stringify(serviceDetails));
         } else {
+            localStorage.setItem('added-services', '');
             window.history.go(-1);
         }
     }

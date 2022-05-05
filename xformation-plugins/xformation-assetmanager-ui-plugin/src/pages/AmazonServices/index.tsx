@@ -82,29 +82,7 @@ export class AmazonServices extends React.Component<any, any> {
   };
 
   async componentDidMount() {
-    // const queryPrm = new URLSearchParams(this.props.location.search);
-    // const asset_id = queryPrm.get("asset_id");
-    // const orgId = queryPrm.get("org_id");
-    // //console.log("asset id: " + asset_id);
-    // await this.getAccounts(asset_id, orgId);
   }
-
-  // getAccounts = async (id: any, orgId: any) => {
-  //   try {
-  //     await RestService.getData(
-  //       `${this.config.GET_ACCOUNT_BY_ID}/${id}`,
-  //       null,
-  //       null
-  //     ).then((response: any) => {
-  //       this.setState({
-  //         displaygetEnvironmentData: response,
-  //         tableData: response.assetList,
-  //       });
-  //     });
-  //   } catch (err) {
-  //     console.log("Loading accounts failed. Error: ", err);
-  //   }
-  // };
 
   displayAwsData() {
     const { displaygetEnvironmentData } = this.state;

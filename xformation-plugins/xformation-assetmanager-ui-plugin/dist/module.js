@@ -24267,22 +24267,7 @@ object-assign
                   ];
                 });
               });
-            }; // getAccounts = async (id: any, orgId: any) => {
-            //   try {
-            //     await RestService.getData(
-            //       `${this.config.GET_ACCOUNT_BY_ID}/${id}`,
-            //       null,
-            //       null
-            //     ).then((response: any) => {
-            //       this.setState({
-            //         displaygetEnvironmentData: response,
-            //         tableData: response.assetList,
-            //       });
-            //     });
-            //   } catch (err) {
-            //     console.log("Loading accounts failed. Error: ", err);
-            //   }
-            // };
+            };
 
             AmazonServices.prototype.displayAwsData = function () {
               var displaygetEnvironmentData = this.state.displaygetEnvironmentData;
@@ -25236,11 +25221,8 @@ object-assign
               };
 
               _this.onClickAppDataService = function (nodeKey, clusterKey, serviceKey) {
-                var _a = _this.state,
-                  tableData = _a.tableData,
-                  labelText = _a.labelText;
-                var text = labelText;
-                text = nodeKey + '>' + clusterKey + '>' + serviceKey + ' Services';
+                var tableData = _this.state.tableData;
+                var text = nodeKey + ' > ' + clusterKey + ' > ' + serviceKey + ' Services';
 
                 _this.setState({
                   servicesData: tableData[nodeKey][clusterKey][serviceKey],
@@ -25684,6 +25666,9 @@ object-assign
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link,
                           {
+                            onClick: function (e) {
+                              return _this.onClickDirectService(e, service);
+                            },
                             to: ''
                               .concat(
                                 _constants__WEBPACK_IMPORTED_MODULE_4__.PLUGIN_BASE_URL,
@@ -25775,6 +25760,37 @@ object-assign
                 }
 
                 return retData;
+              };
+
+              _this.onClickDirectService = function (e, service) {
+                var labelText = _this.state.labelText;
+                var serviceData = localStorage.getItem('added-services');
+
+                if (serviceData) {
+                  serviceData = JSON.parse(serviceData);
+                } else {
+                  serviceData = [];
+                }
+
+                var existingIndex = -1;
+
+                for (var i = 0; i < serviceData.length; i++) {
+                  if (serviceData[i].id === service.id) {
+                    existingIndex = i;
+                    break;
+                  }
+                }
+
+                if (existingIndex !== -1) {
+                  serviceData.splice(existingIndex, 1);
+                }
+
+                serviceData.push({
+                  id: service.id,
+                  name: service.name,
+                  labelText: labelText,
+                });
+                localStorage.setItem('added-services', JSON.stringify(serviceData));
               };
 
               _this.getPerformanceClass = function (score) {
@@ -31654,8 +31670,17 @@ object-assign
             (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(StorageDetails, _super);
 
             function StorageDetails(props) {
-              // const serviceData = localStorage.getItem('added-services');
-              var _this = _super.call(this, props) || this;
+              var _this = this;
+
+              var serviceData = localStorage.getItem('added-services');
+
+              if (serviceData) {
+                serviceData = JSON.parse(serviceData);
+              } else {
+                window.history.go(-1);
+              }
+
+              _this = _super.call(this, props) || this;
 
               _this.getParameterByName = function (name, url) {
                 name = name.replace(/[\[\]]/g, '\\$&');
@@ -31678,35 +31703,37 @@ object-assign
                   serviceDetails = _a.serviceDetails;
                 var retData = [];
 
-                var _loop_1 = function (i) {
-                  var node = serviceDetails[i];
-                  retData.push(
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'li',
-                      {
-                        className: activeTab === i ? 'active' : '',
-                        onClick: function (e) {
-                          return _this.setActiveTab(i);
-                        },
-                      },
+                if (serviceDetails) {
+                  var _loop_1 = function (i) {
+                    var node = serviceDetails[i];
+                    retData.push(
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'a',
-                        null,
-                        node.title,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                          className: 'fa fa-times',
-                          'aria-hidden': 'true',
-                          onClick: function () {
-                            return _this.removeTab(i);
+                        'li',
+                        {
+                          className: activeTab === i ? 'active' : '',
+                          onClick: function (e) {
+                            return _this.setActiveTab(i);
                           },
-                        })
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'a',
+                          null,
+                          node.name,
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                            className: 'fa fa-times',
+                            'aria-hidden': 'true',
+                            onClick: function () {
+                              return _this.removeTab(i);
+                            },
+                          })
+                        )
                       )
-                    )
-                  );
-                };
+                    );
+                  };
 
-                for (var i = 0; i < serviceDetails.length; i++) {
-                  _loop_1(i);
+                  for (var i = 0; i < serviceDetails.length; i++) {
+                    _loop_1(i);
+                  }
                 }
 
                 return retData;
@@ -31722,23 +31749,17 @@ object-assign
                     serviceDetails: serviceDetails,
                     activeTab: index - 1,
                   });
+
+                  localStorage.setItem('added-services', JSON.stringify(serviceDetails));
                 } else {
+                  localStorage.setItem('added-services', '');
                   window.history.go(-1);
                 }
               };
 
               _this.state = {
                 activeTab: 0,
-                serviceDetails: [
-                  {
-                    title: 'Search',
-                    id: '1212',
-                  },
-                  {
-                    title: 'search-2',
-                    id: '121211',
-                  },
-                ],
+                serviceDetails: serviceData,
               };
               _this.breadCrumbs = [
                 {
@@ -31931,56 +31952,40 @@ object-assign
               _this.state = {
                 currentStep: 0,
                 accountId: '',
-                storageDetail: {
-                  title: 'Amazon Web Services',
-                  data: {},
-                  acNo: 'AWS-(1234567890)',
-                  // pagelink: [],
-                  pagelink: [
-                    {
-                      name: 'VPC 1',
-                    },
-                    {
-                      name: 'EC2',
-                    },
-                    {
-                      name: 'VPC 1',
-                    },
-                  ],
-                  steps: [
-                    {
-                      name: 'Performance',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        _Performance__WEBPACK_IMPORTED_MODULE_3__.Performance,
-                        (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, _this.props)
-                      ),
-                    },
-                    {
-                      name: 'Availability',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Availability'),
-                    },
-                    {
-                      name: 'Reliability',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Reliability'),
-                    },
-                    {
-                      name: 'End Usage',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'End Usage'),
-                    },
-                    {
-                      name: 'Security',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Security'),
-                    },
-                    {
-                      name: 'Compliance',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Compliance'),
-                    },
-                    {
-                      name: 'Alerts',
-                      component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Alerts'),
-                    },
-                  ],
-                },
+                serviceData: props.data,
+                steps: [
+                  {
+                    name: 'Performance',
+                    component: react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      _Performance__WEBPACK_IMPORTED_MODULE_3__.Performance,
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, _this.props)
+                    ),
+                  },
+                  {
+                    name: 'Availability',
+                    component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Availability'),
+                  },
+                  {
+                    name: 'Reliability',
+                    component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Reliability'),
+                  },
+                  {
+                    name: 'End Usage',
+                    component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'End Usage'),
+                  },
+                  {
+                    name: 'Security',
+                    component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Security'),
+                  },
+                  {
+                    name: 'Compliance',
+                    component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Compliance'),
+                  },
+                  {
+                    name: 'Alerts',
+                    component: react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, 'Alerts'),
+                  },
+                ],
               };
               return _this;
             }
@@ -31995,17 +32000,11 @@ object-assign
               }
             };
 
-            Node.prototype.componentWillReceiveProps = function (nextProps) {
-              this.setState({
-                data: nextProps.data,
-              });
-            };
-
             Node.prototype.render = function () {
               var _a = this.state,
-                storageDetail = _a.storageDetail,
-                data = _a.data,
-                accountId = _a.accountId;
+                accountId = _a.accountId,
+                serviceData = _a.serviceData,
+                steps = _a.steps;
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                 'div',
                 {
@@ -32027,7 +32026,7 @@ object-assign
                         alt: '',
                       })
                     ),
-                    storageDetail.title
+                    'Amazon Web Services'
                   ),
                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                     'div',
@@ -32059,7 +32058,7 @@ object-assign
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       'div',
                       {
-                        className: 'col-lg-7 col-md-7 col-sm-12',
+                        className: 'col-lg-12 col-md-12 col-sm-12',
                       },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'div',
@@ -32072,39 +32071,12 @@ object-assign
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'li',
                             null,
-                            'Account Number - ',
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, 'AWS-(', accountId, ')'),
                             ' ',
                             ' > ',
                             ' '
                           ),
-                          this.displaylist(storageDetail.pagelink),
-                          data && data.nodeTitle
-                        )
-                      )
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'col-lg-5 col-md-5 col-sm-12',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'search-box form-group',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                          type: 'text',
-                          className: 'control-form',
-                          placeholder: 'Search',
-                          value: '',
-                        }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'button',
-                          null,
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                            className: 'fa fa-search',
-                          })
+                          serviceData.labelText
                         )
                       )
                     )
@@ -32120,7 +32092,7 @@ object-assign
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                   _WebServiceWizard__WEBPACK_IMPORTED_MODULE_2__.WebServiceWizard,
                   {
-                    steps: storageDetail.steps,
+                    steps: steps,
                   }
                 )
               );
