@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { v4 } from 'uuid';
-import { CommonService } from '../../_common/common';
+import { CommonService } from '../../../_common/common';
 
 export class Preview extends React.Component<any, any> {
   constructor(props: any) {

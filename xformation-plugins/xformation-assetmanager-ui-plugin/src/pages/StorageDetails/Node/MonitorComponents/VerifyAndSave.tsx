@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { RestService } from '../../_service/RestService';
-import { configFun } from '../../../config';
+import { RestService } from '../../../_service/RestService';
+import { configFun } from '../../../../config';
 import { v4 } from 'uuid';
-import { CommonService } from '../../_common/common';
+import { CommonService } from '../../../_common/common';
 
 export class VerifyAndSave extends React.Component<any, any>{
     config: any;

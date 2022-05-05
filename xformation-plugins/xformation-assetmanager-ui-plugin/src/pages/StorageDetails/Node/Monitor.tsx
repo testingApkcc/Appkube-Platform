@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { Wizard } from './Wizard';
-import { VerifyInputs } from './VerifyInputs';
-import { EnableDashboard } from './EnableDashboard';
-import { Preview } from './Preview';
-import { VerifyAndSave } from './VerifyAndSave';
-// import dummyData from './dummyData.json';
+import { VerifyInputs, EnableDashboard, Preview, VerifyAndSave } from './MonitorComponents';
 import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 import AlertMessage from '../../Components/AlertMessage';
@@ -15,7 +11,7 @@ const VIEW_TYPE = {
     SHOW_WIZARD: 'show_wizard'
 };
 
-export class Performance extends React.Component<any, any>{
+export class Monitor extends React.Component<any, any>{
     steps: any;
     verifyInputsRef: any;
     enableDashboardRef: any;

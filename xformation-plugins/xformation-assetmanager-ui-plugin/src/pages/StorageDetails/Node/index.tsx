@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { images } from '../../../img';
 import { WebServiceWizard } from './WebServiceWizard';
-import { Performance } from './Performance';
+import { Monitor } from './Monitor';
 import { CommonService } from '../../_common/common';
 
 export class Node extends React.Component<any, any> {
@@ -14,37 +14,37 @@ export class Node extends React.Component<any, any> {
       steps: [
         {
           name: "Performance",
-          component: Performance,
+          component: Monitor,
           apiKey: 'performance'
         },
         {
           name: "Availability",
-          component: Performance,
+          component: Monitor,
           apiKey: 'availability'
         },
         {
           name: "Reliability",
-          component: Performance,
+          component: Monitor,
           apiKey: 'reliability'
         },
         {
           name: "End Usage",
-          component: Performance,
+          component: Monitor,
           apiKey: 'endUsage'
         },
         {
           name: "Security",
-          component: Performance,
+          component: Monitor,
           apiKey: 'security'
         },
         {
           name: "Compliance",
-          component: Performance,
+          component: Monitor,
           apiKey: 'compliance'
         },
         {
           name: "Alerts",
-          component: Performance,
+          component: Monitor,
           apiKey: 'alerts'
         },
       ],
