@@ -32432,6 +32432,12 @@ object-assign
 
         // import dummyData from './dummyData.json';
 
+        var VIEW_TYPE = {
+          VIEW_DASHBOARDS: 'view_dashboard',
+          NO_DASHBOARDS: 'no_dashboards',
+          SHOW_WIZARD: 'show_wizard',
+        };
+
         var Performance =
           /** @class */
           (function (_super) {
@@ -32480,13 +32486,7 @@ object-assign
                       if (response && response.length > 0) {
                         _this.setState({
                           viewJson: response,
-                          enablePerformanceMonitoring: true,
-                          showConfigWizard: false,
-                        });
-                      } else {
-                        _this.setState({
-                          enablePerformanceMonitoring: false,
-                          showConfigWizard: true,
+                          presentView: VIEW_TYPE.VIEW_DASHBOARDS,
                         });
                       }
                     },
@@ -32513,12 +32513,6 @@ object-assign
                 // return retData;
 
                 return dataSources;
-              };
-
-              _this.togglePerformanceMonitoring = function () {
-                _this.setState({
-                  enablePerformanceMonitoring: !_this.state.enablePerformanceMonitoring,
-                });
               };
 
               _this.getParameterByName = function (name, url) {
@@ -32797,30 +32791,31 @@ object-assign
                 }
               };
 
-              _this.setConfigWizard = function () {
+              _this.changeView = function (view) {
                 _this.setState(
                   {
-                    showConfigWizard: true,
+                    presentView: view,
                   },
                   function () {
-                    _this.verifyInputsRef.current &&
-                      _this.verifyInputsRef.current.setDashboardData(_this.state.dashboardData);
+                    if (view === VIEW_TYPE.SHOW_WIZARD) {
+                      _this.verifyInputsRef.current &&
+                        _this.verifyInputsRef.current.setDashboardData(_this.state.dashboardData);
+                    }
                   }
                 );
               };
 
               _this.state = {
-                enablePerformanceMonitoring: false,
                 isAlertOpen: false,
                 severity: null,
                 message: null,
                 isSuccess: true,
                 activeDashboard: 0,
-                showConfigWizard: true,
                 iFrameLoaded: false,
                 viewJson: [],
                 dashboardData: {},
                 isLoading: false,
+                presentView: VIEW_TYPE.NO_DASHBOARDS,
               };
               _this.verifyInputsRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
               _this.enableDashboardRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
@@ -32892,14 +32887,13 @@ object-assign
               var _this = this;
 
               var _a = this.state,
-                enablePerformanceMonitoring = _a.enablePerformanceMonitoring,
                 isAlertOpen = _a.isAlertOpen,
                 severity = _a.severity,
                 message = _a.message,
-                showConfigWizard = _a.showConfigWizard,
                 iFrameLoaded = _a.iFrameLoaded,
                 viewJson = _a.viewJson,
-                activeDashboard = _a.activeDashboard;
+                activeDashboard = _a.activeDashboard,
+                presentView = _a.presentView;
               var activeDB = null;
 
               if (viewJson && viewJson[activeDashboard]) {
@@ -32909,7 +32903,16 @@ object-assign
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                 react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
                 null,
-                !enablePerformanceMonitoring &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  _Components_AlertMessage__WEBPACK_IMPORTED_MODULE_8__['default'],
+                  {
+                    handleCloseAlert: this.handleCloseAlert,
+                    open: isAlertOpen,
+                    severity: severity,
+                    msg: message,
+                  }
+                ),
+                presentView === VIEW_TYPE.NO_DASHBOARDS &&
                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                     react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
                     null,
@@ -32937,7 +32940,9 @@ object-assign
                           'button',
                           {
                             className: 'asset-blue-button',
-                            onClick: this.togglePerformanceMonitoring,
+                            onClick: function () {
+                              return _this.changeView(VIEW_TYPE.SHOW_WIZARD);
+                            },
                           },
                           'Enable Performance Monitoring'
                         )
@@ -32962,100 +32967,88 @@ object-assign
                       )
                     )
                   ),
-                enablePerformanceMonitoring &&
+                presentView === VIEW_TYPE.VIEW_DASHBOARDS &&
                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                     react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
                     null,
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      _Components_AlertMessage__WEBPACK_IMPORTED_MODULE_8__['default'],
+                      'div',
                       {
-                        handleCloseAlert: this.handleCloseAlert,
-                        open: isAlertOpen,
-                        severity: severity,
-                        msg: message,
-                      }
-                    ),
-                    !showConfigWizard &&
+                        style: {
+                          display: 'flex',
+                          justifyContent: 'flex-end',
+                        },
+                      },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
-                        null,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'div',
-                          {
-                            style: {
-                              display: 'flex',
-                              justifyContent: 'flex-end',
-                            },
+                        'button',
+                        {
+                          style: {
+                            marginTop: '10px',
+                            float: 'right',
+                            marginRight: '10px',
                           },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'button',
-                            {
-                              style: {
-                                marginTop: '10px',
-                                float: 'right',
-                                marginRight: '10px',
-                              },
-                              onClick: this.setConfigWizard,
-                              className: 'asset-blue-button m-b-0',
-                            },
-                            'Configure'
-                          )
-                        ),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'div',
-                          {
-                            className: 'dashboard-view-container',
+                          onClick: function () {
+                            return _this.changeView(VIEW_TYPE.SHOW_WIZARD);
                           },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'aside',
-                            {
-                              className: 'aside-container',
-                            },
-                            this.renderDashboardList()
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'dashboard-view',
-                            },
-                            activeDB &&
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('iframe', {
-                                  style: {
-                                    display: ''.concat(iFrameLoaded ? '' : 'none'),
-                                  },
-                                  src: '/justdashboard?uid='.concat(activeDB.uid, '&slug=1'),
-                                  onLoad: function () {
-                                    _this.setState({
-                                      iFrameLoaded: true,
-                                    });
-                                  },
-                                }),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'div',
-                                  {
-                                    style: {
-                                      textAlign: 'center',
-                                      display: iFrameLoaded ? 'none' : '',
-                                      marginTop: '20px',
-                                    },
-                                  },
-                                  'Dashboard is loading...'
-                                )
-                              )
-                          )
-                        )
+                          className: 'asset-blue-button m-b-0',
+                        },
+                        'Configure'
+                      )
+                    ),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'div',
+                      {
+                        className: 'dashboard-view-container',
+                      },
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'aside',
+                        {
+                          className: 'aside-container',
+                        },
+                        this.renderDashboardList()
                       ),
-                    showConfigWizard &&
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Wizard__WEBPACK_IMPORTED_MODULE_1__.Wizard, {
-                        ref: this.wizardRef,
-                        steps: this.steps,
-                        submitPage: this.onSubmit,
-                        nextClick: this.nextClick,
-                      })
-                  )
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'div',
+                        {
+                          className: 'dashboard-view',
+                        },
+                        activeDB &&
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                            null,
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('iframe', {
+                              style: {
+                                display: ''.concat(iFrameLoaded ? '' : 'none'),
+                              },
+                              src: '/justdashboard?uid='.concat(activeDB.uid, '&slug=1'),
+                              onLoad: function () {
+                                _this.setState({
+                                  iFrameLoaded: true,
+                                });
+                              },
+                            }),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                style: {
+                                  textAlign: 'center',
+                                  display: iFrameLoaded ? 'none' : '',
+                                  marginTop: '20px',
+                                },
+                              },
+                              'Dashboard is loading...'
+                            )
+                          )
+                      )
+                    )
+                  ),
+                presentView === VIEW_TYPE.SHOW_WIZARD &&
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Wizard__WEBPACK_IMPORTED_MODULE_1__.Wizard, {
+                    ref: this.wizardRef,
+                    steps: this.steps,
+                    submitPage: this.onSubmit,
+                    nextClick: this.nextClick,
+                  })
               );
             };
 
@@ -33347,18 +33340,7 @@ object-assign
                                 },
                               })
                             ),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'td',
-                              null,
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'a',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                  className: 'fa fa-eye',
-                                })
-                              )
-                            )
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name)
                           )
                         )
                       );
@@ -33556,18 +33538,7 @@ object-assign
                                   checked: dashboard.isChecked,
                                 })
                               ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'td',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'a',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                    className: 'fa fa-eye',
-                                  })
-                                )
-                              )
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name)
                             )
                           )
                         );
@@ -33982,18 +33953,7 @@ object-assign
                                   checked: dashboard.isChecked,
                                 })
                               ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'td',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'a',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                    className: 'fa fa-eye',
-                                  })
-                                )
-                              )
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name)
                             )
                           )
                         );

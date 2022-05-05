@@ -8,6 +8,13 @@ import { VerifyAndSave } from './VerifyAndSave';
 import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 import AlertMessage from '../../Components/AlertMessage';
+
+const VIEW_TYPE = {
+    VIEW_DASHBOARDS: 'view_dashboard',
+    NO_DASHBOARDS: 'no_dashboards',
+    SHOW_WIZARD: 'show_wizard'
+};
+
 export class Performance extends React.Component<any, any>{
     steps: any;
     verifyInputsRef: any;
@@ -19,17 +26,16 @@ export class Performance extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            enablePerformanceMonitoring: false,
             isAlertOpen: false,
             severity: null,
             message: null,
             isSuccess: true,
             activeDashboard: 0,
-            showConfigWizard: true,
             iFrameLoaded: false,
             viewJson: [],
             dashboardData: {},
             isLoading: false,
+            presentView: VIEW_TYPE.NO_DASHBOARDS
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -85,16 +91,10 @@ export class Performance extends React.Component<any, any>{
         try {
             RestService.getData(`${this.config.ADD_VIEW_JSON_TO_GRAFANA}`, null, null).then(
                 (response: any) => {
-                    if(response && response.length > 0){
+                    if (response && response.length > 0) {
                         this.setState({
                             viewJson: response,
-                            enablePerformanceMonitoring: true,
-                            showConfigWizard: false
-                        });
-                    } else {
-                        this.setState({
-                            enablePerformanceMonitoring: false,
-                            showConfigWizard: true
+                            presentView: VIEW_TYPE.VIEW_DASHBOARDS
                         });
                     }
                 }, (error: any) => {
@@ -119,12 +119,6 @@ export class Performance extends React.Component<any, any>{
         // const retData = dataSources.filter((source: any) => source.isDashboardAdded);
         // return retData;
         return dataSources
-    };
-
-    togglePerformanceMonitoring = () => {
-        this.setState({
-            enablePerformanceMonitoring: !this.state.enablePerformanceMonitoring,
-        });
     };
 
     getParameterByName = (name: any, url: any) => {
@@ -321,29 +315,32 @@ export class Performance extends React.Component<any, any>{
         }
     }
 
-    setConfigWizard = () => {
+    changeView = (view: any) => {
         this.setState({
-            showConfigWizard: true
+            presentView: view
         }, () => {
-            this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(this.state.dashboardData);
+            if (view === VIEW_TYPE.SHOW_WIZARD) {
+                this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(this.state.dashboardData);
+            }
         });
-    }
+    };
 
     render() {
-        const { enablePerformanceMonitoring, isAlertOpen, severity, message, showConfigWizard, iFrameLoaded, viewJson, activeDashboard } = this.state;
+        const { isAlertOpen, severity, message, iFrameLoaded, viewJson, activeDashboard, presentView } = this.state;
         let activeDB = null;
         if (viewJson && viewJson[activeDashboard]) {
             activeDB = viewJson[activeDashboard];
         }
         return (
             <>
-                {!enablePerformanceMonitoring && (
+                <AlertMessage handleCloseAlert={this.handleCloseAlert} open={isAlertOpen} severity={severity} msg={message}></AlertMessage>
+                {presentView === VIEW_TYPE.NO_DASHBOARDS && (
                     <>
                         <div className="performance-box">
                             <div className="performance-inner">
                                 <strong>Performance Monitoring is not enabled yet</strong>
                                 <p>To endble Performance Monitoring dashboards you will first have to configure the inputs for data collection</p>
-                                <button className="asset-blue-button" onClick={this.togglePerformanceMonitoring}>Enable Performance Monitoring</button>
+                                <button className="asset-blue-button" onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)}>Enable Performance Monitoring</button>
                             </div>
                         </div>
                         <div className="note-text">
@@ -353,35 +350,32 @@ export class Performance extends React.Component<any, any>{
                         </div>
                     </>
                 )}
-                {enablePerformanceMonitoring && (
+                {
+                    presentView === VIEW_TYPE.VIEW_DASHBOARDS &&
                     <>
-                        <AlertMessage handleCloseAlert={this.handleCloseAlert} open={isAlertOpen} severity={severity} msg={message}></AlertMessage>
-                        {!showConfigWizard &&
-                            <>
-                                <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                    <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={this.setConfigWizard} className="asset-blue-button m-b-0">Configure</button>
-                                </div>
-                                <div className="dashboard-view-container">
-                                    <aside className="aside-container">{this.renderDashboardList()}</aside>
-                                    <div className="dashboard-view">
-                                        {activeDB &&
-                                            <>
-                                                <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=1`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
-                                                <div style={{ textAlign: "center", display: iFrameLoaded ? 'none' : '', marginTop: "20px" }}>
-                                                    Dashboard is loading...
-                                                </div>
-                                            </>
-                                        }
-                                    </div>
-                                </div>
-                            </>
-                        }
-                        {
-                            showConfigWizard &&
-                            <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} nextClick={this.nextClick} />
-                        }
+                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                            <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)} className="asset-blue-button m-b-0">Configure</button>
+                        </div>
+                        <div className="dashboard-view-container">
+                            <aside className="aside-container">{this.renderDashboardList()}</aside>
+                            <div className="dashboard-view">
+                                {activeDB &&
+                                    <>
+                                        <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=1`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>
+                                        <div style={{ textAlign: "center", display: iFrameLoaded ? 'none' : '', marginTop: "20px" }}>
+                                            Dashboard is loading...
+                                        </div>
+                                    </>
+                                }
+                            </div>
+                        </div>
                     </>
-                )}
+                }
+                {
+                    presentView === VIEW_TYPE.SHOW_WIZARD &&
+                    <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} nextClick={this.nextClick} />
+                }
+
             </>
         );
     }
