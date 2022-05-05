@@ -117,13 +117,13 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             if (addTags.length > 0) {
                 debugger;
                 for (let i = 0; i < addTags.length; i++) {
-                    if (addTags[i].label==='') {
+                    if (addTags[i].label === '') {
                         retData.label = {
                             isValid: false,
                             message: 'Tag Label are required',
                         }
                     }
-                    if (addTags[i].tagvalue==='') {
+                    if (addTags[i].tagvalue === '') {
                         retData.tagvalue = {
                             isValid: false,
                             message: 'Tag values are required',
@@ -153,13 +153,11 @@ export class ProvisioningTemplates extends React.Component<any, any>{
 
     displayTags = () => {
         let retData = []
-        const { isSubmitted, addTags } = this.state;
-        const errorData = this.validate(isSubmitted);
+        const { addTags } = this.state;
         if (addTags && addTags.length > 0) {
             for (let i = 0; i < addTags.length; i++) {
-                const { tagLabel, tagText } = addTags[i];
                 retData.push(
-                    <div className="row" key={tagText}>
+                    <div className="row" key={addTags[i]}>
                         <div className="col-md-3 p-r-0">
                             <div className="form-group">
                                 <input
@@ -170,7 +168,6 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                     value={addTags[i].label}
                                     onChange={(e: any) => this.handleTagchange(e, i)}
                                 />
-                                {/* {errorData && !errorData.isValid && <span className="error">{errorData.label[i].message}</span>} */}
                             </div>
                         </div>
                         <div className="col-md-3 p-r-0">
@@ -183,7 +180,6 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                     value={addTags[i].tagvalue}
                                     onChange={(e: any) => this.handleTagchange(e, i)}
                                 />
-                                {/* {errorData && !errorData.isValid && <span className="error">{errorData.tagvalue.message}</span>} */}
                             </div>
                         </div>
                         <div className="col-md-3 p-r-0">
@@ -462,8 +458,8 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
                             {/* < */}
                         </div>
                         <div className="form-detail-group">
