@@ -111,7 +111,7 @@ export class StorageDetails extends React.Component<any, any> {
                                 </ul>
                             </div>
                             <div className="webservice-container">
-                                <Node serviceData={serviceDetails[activeTab]} {...this.props} />
+                                <Node key={serviceDetails[activeTab].id} serviceData={serviceDetails[activeTab]} {...this.props} />
                             </div>
                         </div>
                     </div>

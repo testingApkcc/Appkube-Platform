@@ -118,7 +118,7 @@ export class Node extends React.Component<any, any> {
                   <li>
                     <span>AWS-({accountId})</span>
                   </li>
-                  &nbsp;{serviceData.labelText}
+                  &nbsp;{'>'}&nbsp;{serviceData.labelText}
                 </ul>
               </div>
             </div>
