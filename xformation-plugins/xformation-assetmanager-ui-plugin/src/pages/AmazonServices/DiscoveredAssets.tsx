@@ -161,9 +161,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   onClickAppDataService = (nodeKey: any, clusterKey: any, serviceKey: any) => {
-    const { tableData, labelText } = this.state;
-    let text = labelText;
-    text = nodeKey + '>' + clusterKey + '>' + serviceKey + ' Services';
+    const { tableData } = this.state;
+    let text = nodeKey + ' > ' + clusterKey + ' > ' + serviceKey + ' Services';
     this.setState({
       servicesData: tableData[nodeKey][clusterKey][serviceKey],
       labelText: text,
@@ -373,7 +372,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (list) {
       retData = list.map((service: any) => {
         return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&serviceId=${service.id}`}>{service.name}</Link></div>
+          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&serviceId=${service.id}`}>{service.name}</Link></div>
           <div className="performance">
             <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
               <i className="fa fa-check"></i>
@@ -403,6 +402,32 @@ export class DiscoveredAssets extends React.Component<any, any>{
       });
     }
     return retData;
+  };
+
+  onClickDirectService = (e: any, service: any) => {
+    const { labelText } = this.state;
+    let serviceData: any = localStorage.getItem('added-services');
+    if (serviceData) {
+      serviceData = JSON.parse(serviceData);
+    } else {
+      serviceData = [];
+    }
+    let existingIndex = -1;
+    for (let i = 0; i < serviceData.length; i++) {
+      if (serviceData[i].id === service.id) {
+        existingIndex = i;
+        break;
+      }
+    }
+    if (existingIndex !== -1) {
+      serviceData.splice(existingIndex, 1);
+    }
+    serviceData.push({
+      id: service.id,
+      name: service.name,
+      labelText
+    });
+    localStorage.setItem('added-services', JSON.stringify(serviceData));
   };
 
   getPerformanceClass = (score: any) => {

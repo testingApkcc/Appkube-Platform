@@ -39,15 +39,15 @@ export class WebServiceWizard extends React.Component<any, any> {
   createStepContainer = () => {
     const { steps } = this.props;
     const { currentStep } = this.state;
-    const retData = [];
     if (steps && steps.length > 0) {
-      retData.push(
-        <div className={`webservice-step-component`}>
-          {steps[currentStep].component}
+      const Component = steps[currentStep].component;
+      return (
+        <div key={steps[currentStep].apiKey} className={`webservice-step-component`}>
+          <Component {...this.props} apiKey={steps[currentStep].apiKey}/>
         </div>
       );
     }
-    return retData;
+    return <></>;
   };
 
   render() {

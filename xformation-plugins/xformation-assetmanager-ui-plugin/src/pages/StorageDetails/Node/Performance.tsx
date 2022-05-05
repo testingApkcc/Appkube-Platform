@@ -88,13 +88,14 @@ export class Performance extends React.Component<any, any>{
     }
 
     getAddedDashboards = () => {
-        const serviceId = this.getParameterByName('serviceId', window.location.href);
+        const { apiKey, serviceData } = this.props;
+        const serviceId = serviceData.id;
         try {
             RestService.getData(`${this.config.ADD_VIEW_JSON_TO_GRAFANA}?serviceId=${serviceId}`, null, null).then(
                 (response: any) => {
-                    if (response && response.performance && response.performance.length > 0) {
+                    if (response && response[apiKey] && response[apiKey].length > 0) {
                         this.setState({
-                            viewJson: response.performance,
+                            viewJson: response[apiKey],
                             presentView: VIEW_TYPE.VIEW_DASHBOARDS
                         });
                     }
@@ -224,7 +225,7 @@ export class Performance extends React.Component<any, any>{
                         console.log('Dashboard import in grafana failed. Error', error);
                         this.setState({
                             isAlertOpen: true,
-                            message: 'Enabling performance dashboards failed',
+                            message: 'Enabling dashboards failed',
                             severity: 'error',
                             isSuccess: true
                         });
@@ -253,10 +254,11 @@ export class Performance extends React.Component<any, any>{
     };
 
     sendViewJSON = (responseArray: any) => {
-        const serviceId = this.getParameterByName('serviceId', window.location.href);
+        const { apiKey, serviceData } = this.props;
+        const serviceId = serviceData.id;
         const result = {
             serviceId,
-            performance: responseArray
+            [apiKey]: responseArray
         };
         var reqOpt = RestService.optionWithAuthentication(JSON.stringify(result), 'POST');
         fetch(this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
@@ -363,9 +365,9 @@ export class Performance extends React.Component<any, any>{
                     <>
                         <div className="performance-box">
                             <div className="performance-inner">
-                                <strong>Performance Monitoring is not enabled yet</strong>
-                                <p>To endble Performance Monitoring dashboards you will first have to configure the inputs for data collection</p>
-                                <button className="asset-blue-button" onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)}>Enable Performance Monitoring</button>
+                                <strong>Monitoring is not enabled yet</strong>
+                                <p>To endble Monitoring dashboards you will first have to configure the inputs for data collection</p>
+                                <button className="asset-blue-button" onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)}>Enable Monitoring</button>
                             </div>
                         </div>
                         <div className="note-text">

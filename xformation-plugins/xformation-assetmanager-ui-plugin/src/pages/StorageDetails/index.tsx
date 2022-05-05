@@ -1,24 +1,22 @@
 import * as React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
-// import { PLUGIN_BASE_URL } from '../../constants';
+import { PLUGIN_BASE_URL } from '../../constants';
 
 export class StorageDetails extends React.Component<any, any> {
     breadCrumbs: any;
     constructor(props: any) {
-        // const serviceData = localStorage.getItem('added-services');
-
+        let serviceData: any = localStorage.getItem('added-services');
+        if (serviceData) {
+            serviceData = JSON.parse(serviceData);
+        } else {
+            window.history.go(-1);
+        }
         super(props);
         this.state = {
             activeTab: 0,
-            serviceDetails: [{
-                title: "Search",
-                id: '1212'
-            }, {
-                title: 'search-2',
-                id: '121211'
-            }],
+            serviceDetails: serviceData,
         };
         this.breadCrumbs = [
             {
@@ -50,35 +48,40 @@ export class StorageDetails extends React.Component<any, any> {
     displayTabs = () => {
         const { activeTab, serviceDetails } = this.state;
         let retData = [];
-        for (let i = 0; i < serviceDetails.length; i++) {
-            let node = serviceDetails[i];
-            retData.push(
-                <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
-                    <a>
-                        {node.title}
-                        <i className="fa fa-times" aria-hidden="true" onClick={() => this.removeTab(i)}></i>
-                    </a>
-                </li>
-            );
+        if (serviceDetails) {
+            for (let i = 0; i < serviceDetails.length; i++) {
+                let node = serviceDetails[i];
+                retData.push(
+                    <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
+                        <a>
+                            {node.name}
+                            <i className="fa fa-times" aria-hidden="true" onClick={() => this.removeTab(i)}></i>
+                        </a>
+                    </li>
+                );
+            }
         }
         return retData;
     }
 
     removeTab = (index: any) => {
         const { serviceDetails } = this.state;
-        if (index !== 0) {
+        if (serviceDetails.length > 1) {
             serviceDetails.splice(index, 1);
             this.setState({
                 serviceDetails,
                 activeTab: index - 1,
-            })
+            });
+            localStorage.setItem('added-services', JSON.stringify(serviceDetails));
         } else {
+            localStorage.setItem('added-services', '');
             window.history.go(-1);
         }
     }
 
     render() {
         const { activeTab, serviceDetails } = this.state;
+        const accountId = this.getParameterByName('accountId', window.location.href);
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
@@ -92,10 +95,10 @@ export class StorageDetails extends React.Component<any, any> {
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-12">
                                 <div className="float-right common-right-btn">
-                                    <a onClick={() => window.history.go(-1)} className="asset-white-button min-width-inherit m-r-0">
+                                    <Link to={`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`} className="asset-white-button min-width-inherit m-r-0">
                                         <i className="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;
                                         Back
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +111,7 @@ export class StorageDetails extends React.Component<any, any> {
                                 </ul>
                             </div>
                             <div className="webservice-container">
-                                <Node data={serviceDetails[activeTab]} {...this.props} />
+                                <Node key={serviceDetails[activeTab].id} serviceData={serviceDetails[activeTab]} {...this.props} />
                             </div>
                         </div>
                     </div>
