@@ -98,16 +98,18 @@ class AddNewView extends React.Component<any, any> {
       .then((response) => response.json())
       .then((response: any) => {
         const { viewJson, name, description } = response;
-        const tabs = this.checkEditedDashboards(JSON.parse(viewJson), this.state.folderArray);
+        const result: any = this.checkEditedDashboards(JSON.parse(viewJson), this.state.folderArray);
         this.setState({
           viewName: name,
           description: description,
           editedData: JSON.parse(viewJson),
           id: id,
         });
-        if (tabs) {
+        if (result && result.tabs) {
           this.setState({
-            tabs,
+            tabs: result.tabs,
+            selectedDashboards: result.selectedDashboards,
+            filterData: result.filterData,
           });
         }
       });
@@ -119,16 +121,18 @@ class AddNewView extends React.Component<any, any> {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id === id) {
           const { viewJson, name, description } = data[i];
-          const tabs = this.checkEditedDashboards(viewJson, this.state.folderArray);
+          const result: any = this.checkEditedDashboards(viewJson, this.state.folderArray);
           this.setState({
             viewName: name,
             description: description,
             editedData: viewJson,
             id: id,
           });
-          if (tabs) {
+          if (result && result.tabs) {
             this.setState({
-              tabs,
+              tabs: result.tabs,
+              selectedDashboards: result.selectedDashboards,
+              filterData: result.filterData,
             });
           }
           break;
@@ -141,8 +145,11 @@ class AddNewView extends React.Component<any, any> {
     if (viewJSON && folderArray && viewJSON.length > 0 && folderArray.length > 0) {
       viewJSON = JSON.parse(JSON.stringify(viewJSON));
       const tabs: any = [];
+      const selectedDashboards: any = [];
+      const filterData: any = [];
       for (let i = 0; i < viewJSON.length; i++) {
         const tab = viewJSON[i];
+        const dashbaordTab: any = [];
         const { dashboards, label } = tab;
         const folderList = JSON.parse(JSON.stringify(folderArray));
         const dashboardsUids = dashboards.map((dashboard: any) => dashboard.uid);
@@ -150,16 +157,29 @@ class AddNewView extends React.Component<any, any> {
           folder.subData.forEach((dashboard: any) => {
             if (dashboardsUids.indexOf(dashboard.uid) !== -1) {
               dashboard.checkValue = true;
+              dashbaordTab.push(dashboard.title);
             }
           });
         });
+        selectedDashboards.push(dashbaordTab);
         tabs.push({
           dashboardList: folderList,
           label,
         });
+        filterData.push({
+          isStarred: false,
+          selectedTags: [],
+          sortValue: 'alpha-asc',
+          searchKey: '',
+        });
       }
-      return tabs;
+      return {
+        tabs,
+        selectedDashboards,
+        filterData,
+      };
     }
+    return null;
   };
 
   getSearchData = (data: any, isFirstTime: any) => {
@@ -173,9 +193,13 @@ class AddNewView extends React.Component<any, any> {
         this.setState({
           folderArray: JSON.parse(JSON.stringify(retData)),
         });
-        let result = this.checkEditedDashboards(this.state.editedData, retData);
-        if (result) {
-          tabs = result;
+        let result: any = this.checkEditedDashboards(this.state.editedData, retData);
+        if (result && result.tabs) {
+          tabs = result.tabs;
+          this.setState({
+            selectedDashboards: result.selectedDashboards,
+            filterData: result.filterData,
+          });
         }
       }
       this.setState({
