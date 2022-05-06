@@ -153,7 +153,6 @@ export class Monitor extends React.Component<any, any>{
         this.setState({
             isLoading: true
         });
-        let index = 0;
         dashbaordJSONArray.forEach((dashboard: any) => {
             const dataJs = {
                 // title: dashboard.title,
@@ -171,7 +170,7 @@ export class Monitor extends React.Component<any, any>{
             };
             dataJs.Dashboard.id = 0;
             dataJs.Dashboard.uid = "";
-            dataJs.Dashboard.slug = dashboard.accountId + "_" + dashboard.elementType + "_" + (++index);
+            dataJs.Dashboard.slug = dashboard.inputType + "_" + dashboard.elementType + "_" + Math.random().toString(36).substring(2, 7);
             dataJs.Dashboard.title = dataJs.Dashboard.slug;
             var json = JSON.stringify(dataJs);
             var reqOpt = RestService.optionWithAuthentication(json, 'POST');
