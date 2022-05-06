@@ -6,7 +6,7 @@ import { locationService } from '@grafana/runtime';
 import { DashboardSection, OnDeleteItems } from '../types';
 import { getCheckedUids } from '../utils';
 import { deleteFoldersAndDashboards } from 'app/features/manage-dashboards/state/actions';
-import { config } from '../../config';
+// import { config } from '../../config';
 
 interface Props {
   onDeleteItems: OnDeleteItems;
@@ -44,28 +44,28 @@ export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, 
       locationService.push('/dashboards');
       onDeleteItems(folders, dashboards);
     });
-    let dashboardList = [];
-    if (results && results.length > 0) {
-      for (let i = 0; i < results.length; i++) {
-        const folder = results[i];
-        if (folder && folder.items && folder.items.length > 0) {
-          const items = folder.items;
-          for (let j = 0; j < items.length; j++) {
-            const uid = items[j].uid as string;
-            if (dashboards.indexOf(uid) !== -1) {
-              dashboardList.push({ id: items[j].id, uid: uid });
-            }
-          }
-        }
-      }
-    }
-    let requestOptions: any = {
-      method: `DELETE`,
-      body: JSON.stringify(dashboardList),
-    };
-    fetch(`${config.DELETE_DASHBOARD}`, requestOptions).then((response: any) => {
-      console.log(response);
-    });
+    // let dashboardList = [];
+    // if (results && results.length > 0) {
+    //   for (let i = 0; i < results.length; i++) {
+    //     const folder = results[i];
+    //     if (folder && folder.items && folder.items.length > 0) {
+    //       const items = folder.items;
+    //       for (let j = 0; j < items.length; j++) {
+    //         const uid = items[j].uid as string;
+    //         if (dashboards.indexOf(uid) !== -1) {
+    //           dashboardList.push({ id: items[j].id, uid: uid });
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+    // let requestOptions: any = {
+    //   method: `DELETE`,
+    //   body: JSON.stringify(dashboardList),
+    // };
+    // fetch(`${config.DELETE_DASHBOARD}`, requestOptions).then((response: any) => {
+    //   console.log(response);
+    // });
   };
 
   return isOpen ? (
