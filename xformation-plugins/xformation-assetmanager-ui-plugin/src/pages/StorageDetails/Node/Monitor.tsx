@@ -218,7 +218,6 @@ export class Monitor extends React.Component<any, any>{
                         isLoading: false,
                         presentView: VIEW_TYPE.VIEW_DASHBOARDS
                     });
-                    this.wizardRef.current.setActiveStep(0);
                     this.props.getAddedDashboards();
                 }, error => {
                     this.setState({
