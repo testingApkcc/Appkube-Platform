@@ -138,6 +138,7 @@ class Analytics extends React.Component<any, any> {
   };
 
   componentDidMount() {
+    console.log(JSON.parse(localStorage.getItem('dashboardList')));
     this.getTableData();
   }
 

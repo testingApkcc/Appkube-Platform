@@ -104,14 +104,23 @@ class AddNewView extends React.Component<any, any> {
     let tagList = [];
     for (let i = 0; i < result.length; i++) {
       const dash = result[i];
-      dash.checkValue = false;
       if (dash.type === 'dash-db') {
-        retData[dash.folderId] = retData[dash.folderId] || { subData: [] };
-        retData[dash.folderId].title = dash.folderTitle;
-        retData[dash.folderId].folderId = dash.folderId;
-        retData[dash.folderId].checkValueStatus = false;
-        retData[dash.folderId].openSubFolder = false;
-        retData[dash.folderId].subData.push(dash);
+        retData[dash.folderId] = retData[dash.folderId] || {
+          subData: [],
+          openSubFolder: false,
+          checkValueStatus: false,
+          id: dash.folderId,
+        };
+        if (dash.folderTitle) {
+          retData[dash.folderId].title = dash.folderTitle;
+        } else {
+          retData[dash.folderId].title = 'General';
+        }
+        retData[dash.folderId].subData.push({
+          ...dash,
+          title: dash.title,
+          checkValue: false,
+        });
       }
       if (dash.tags.length > 0 && isFirstTime) {
         for (let i = 0; i < dash.tags.length; i++) {
@@ -123,7 +132,7 @@ class AddNewView extends React.Component<any, any> {
         }
       }
     }
-    let keys = Object.keys(retData);
+    let keys: any = Object.keys(retData);
     let folders: any = [];
     for (let i = 0; i < keys.length; i++) {
       folders.push(retData[keys[i]]);
@@ -366,10 +375,11 @@ class AddNewView extends React.Component<any, any> {
     if (tabs[activeTab]) {
       const dashboardList = tabs[activeTab].dashboardList;
       const length = dashboardList.length;
+      let subFolderJSX = [];
       for (let i = 0; i < length; i++) {
         const folder = dashboardList[i];
         const subFolders = folder.subData;
-        const subFolderJSX = [];
+        subFolderJSX = [];
         for (let j = 0; j < subFolders.length; j++) {
           const attribute = subFolders[j].tags;
           const subAttributeFolder = [];

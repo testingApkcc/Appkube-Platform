@@ -218,10 +218,18 @@ class ViewNewView extends React.Component<Props, any> {
 
   saveDashboard = () => {
     const { tabs, viewName, description } = this.state;
+    console.log(tabs);
+    console.log(viewName, description);
     const formData = new FormData();
     formData.append('viewName', viewName);
     formData.append('description', description);
     formData.append('viewJson', JSON.stringify(tabs));
+    let sendData = {
+      viewName: viewName,
+      dashboard: tabs,
+      description: description,
+    };
+    localStorage.setItem('dashboardList', JSON.stringify(sendData));
     let requestOptions: any = {
       method: `POST`,
       body: formData,
@@ -235,6 +243,9 @@ class ViewNewView extends React.Component<Props, any> {
       });
       locationService.push('/analytics');
     });
+    setTimeout(() => {
+      locationService.push('/analytics');
+    }, 5000);
   };
 
   render() {
