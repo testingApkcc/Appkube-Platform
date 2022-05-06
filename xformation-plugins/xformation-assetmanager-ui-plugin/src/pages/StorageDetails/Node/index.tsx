@@ -3,8 +3,11 @@ import { images } from '../../../img';
 import { WebServiceWizard } from './WebServiceWizard';
 import { Monitor } from './Monitor';
 import { CommonService } from '../../_common/common';
+import { configFun } from '../../../config';
+import { RestService } from '../../_service/RestService';
 
 export class Node extends React.Component<any, any> {
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -48,7 +51,10 @@ export class Node extends React.Component<any, any> {
           apiKey: 'alerts'
         },
       ],
+      dashboardData: [],
+      viewJson: {}
     };
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
   componentDidUpdate(prevProps: any, prevState: any) {
@@ -67,6 +73,8 @@ export class Node extends React.Component<any, any> {
         accountId
       });
     }
+    this.getCategories();
+    this.getAddedDashboards();
   }
 
   displaylist = (list: any) => {
@@ -82,8 +90,58 @@ export class Node extends React.Component<any, any> {
     return retData;
   };
 
+  getCategories = () => {
+    try {
+      RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
+        (response: any) => {
+          const { cloudDashBoards, dataSources } = response.details.ops;
+          const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
+          this.setState({
+            dashboardData,
+          });
+        }, (error: any) => {
+          console.log("Performance. Search input config failed. Error: ", error);
+        });
+    } catch (err) {
+      console.log("Performance. Excepiton in search input this.config. Error: ", err);
+    }
+  }
+
+  manipulateCatalogueData = (dataSources: any, dashboards: any) => {
+    dataSources.forEach((dataSource: any) => {
+      const name = dataSource.name;
+      dashboards.forEach((dashboard: any) => {
+        if (name === dashboard.associatedDataSourceType) {
+          dataSource.isDashboardAdded = true;
+          dataSource.dashboards = dataSource.dashboards || [];
+          dataSource.dashboards.push(dashboard);
+        }
+      });
+    });
+    // const retData = dataSources.filter((source: any) => source.isDashboardAdded);
+    // return retData;
+    return dataSources
+  };
+
+  getAddedDashboards = () => {
+    const { serviceData } = this.props;
+    const serviceId = serviceData.id;
+    try {
+      RestService.getData(`${this.config.ADD_VIEW_JSON_TO_GRAFANA}?serviceId=${serviceId}`, null, null).then(
+        (response: any) => {
+          this.setState({
+            viewJson: response
+          });
+        }, (error: any) => {
+          console.log("Performance. Search input config failed. Error: ", error);
+        });
+    } catch (err) {
+      console.log("Performance. Excepiton in search input this.config. Error: ", err);
+    }
+  };
+
   render() {
-    const { accountId, serviceData, steps } = this.state;
+    const { accountId, serviceData, steps, dashboardData, viewJson } = this.state;
     return (
       <div className="inner">
         <div className="heading">
@@ -132,7 +190,7 @@ export class Node extends React.Component<any, any> {
         <div className="displayed-here">
           <p>Node details will be displayed here</p>
         </div>
-        <WebServiceWizard steps={steps} {...this.props} />
+        <WebServiceWizard steps={steps} {...this.props} dashboardData={dashboardData} viewJson={viewJson} getAddedDashboards={this.getAddedDashboards} />
       </div>
     );
   }
