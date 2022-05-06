@@ -6,6 +6,7 @@ import { locationService } from '@grafana/runtime';
 import { DashboardSection, OnDeleteItems } from '../types';
 import { getCheckedUids } from '../utils';
 import { deleteFoldersAndDashboards } from 'app/features/manage-dashboards/state/actions';
+import { config } from '../../config';
 
 interface Props {
   onDeleteItems: OnDeleteItems;
@@ -43,6 +44,13 @@ export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, 
       // Redirect to /dashboard in case folder was deleted from f/:folder.uid
       locationService.push('/dashboards');
       onDeleteItems(folders, dashboards);
+    });
+    let requestOptions: any = {
+      method: `DELETE`,
+      body: dashboards,
+    };
+    fetch(`${config.DELETE_DASHBOARD}`, requestOptions).then((response: any) => {
+      console.log(response);
     });
   };
 
