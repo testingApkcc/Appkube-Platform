@@ -425,7 +425,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
     serviceData.push({
       id: service.id,
       name: service.name,
-      labelText
+      labelText,
+      organizationUnit: service.associatedOU,
+      serviceType: service.serviceType,
+      serviceScore:'',
+      associatedProduct:service.associatedProduct,
+      asscociatedEnv:service.associatedEnv,
     });
     localStorage.setItem('added-services', JSON.stringify(serviceData));
   };

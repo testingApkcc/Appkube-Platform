@@ -5,7 +5,7 @@ import { Monitor } from './Monitor';
 import { CommonService } from '../../_common/common';
 import { configFun } from '../../../config';
 import { RestService } from '../../_service/RestService';
-
+import { PLUGIN_BASE_URL } from './../../../constants';
 export class Node extends React.Component<any, any> {
   config: any;
   constructor(props: any) {
@@ -52,7 +52,7 @@ export class Node extends React.Component<any, any> {
         },
       ],
       dashboardData: [],
-      viewJson: {}
+      viewJson: {},
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
@@ -153,7 +153,9 @@ export class Node extends React.Component<any, any> {
   };
 
   render() {
-    const { accountId, serviceData, steps, dashboardData, viewJson } = this.state;
+    const { accountId, steps, dashboardData, viewJson } = this.state;
+    // console.log(accountId, serviceData, steps, dashboardData, viewJson, "dashboardData");
+    const { serviceData } = this.props;
     return (
       <div className="inner">
         <div className="heading">
@@ -204,13 +206,13 @@ export class Node extends React.Component<any, any> {
             <div className="col-md-6">
               <div className="services-text">
                 <label>Organisation Unit</label>
-                <span>Synectiks - HR</span>
+                {serviceData && serviceData.organizationUnit && <span>{serviceData.organizationUnit}</span>}
               </div>
             </div>
             <div className="col-md-6">
               <div className="services-text">
                 <label>Associated Product</label>
-                <span>HRMS</span>
+                {serviceData && serviceData.associatedProduct && <span>{serviceData.associatedProduct}</span>}
               </div>
             </div>
             <div className="col-md-6">
@@ -222,13 +224,13 @@ export class Node extends React.Component<any, any> {
             <div className="col-md-6">
               <div className="services-text">
                 <label>Associated Environment</label>
-                <span>Production</span>
+                {serviceData && serviceData.asscociatedEnv && <span>{serviceData.asscociatedEnv}</span>}
               </div>
             </div>
             <div className="col-md-6">
               <div className="services-text">
                 <label>Service Type</label>
-                <span>In Cluster</span>
+                {serviceData && serviceData.serviceType && <span>{serviceData.serviceType}</span>}
               </div>
             </div>
             <div className="col-md-6">
