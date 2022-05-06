@@ -84,7 +84,7 @@ export function getAppRoutes(): RouteDescriptor[] {
       pageClass: 'page-dashboard',
       routeName: DashboardRoutes.Normal,
       component: SafeDynamicImport(
-        () => import(/* webpackChunkName: "AddNewViewPage" */ '../features/analytics/EditManageDashboard')
+        () => import(/* webpackChunkName: "AddNewViewPage" */ '../features/analytics/AddNewView')
       ),
     },
     {

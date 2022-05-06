@@ -8,6 +8,7 @@ import { SortPicker } from 'app/core/components/Select/SortPicker';
 import { TagFilter } from 'app/core/components/TagFilter/TagFilter';
 import { FilterInput } from 'app/core/components/FilterInput/FilterInput';
 import ViewNewView from './ViewNewView';
+import { config } from '../../config';
 
 export interface Props {
   $scope: any;
@@ -59,21 +60,29 @@ class AddNewView extends React.Component<any, any> {
       showView: false,
       viewName: '',
       description: '',
+      id: '',
+      editedData: [],
     };
     this.viewRef = React.createRef();
   }
 
   componentDidMount() {
-    let viewData: any = localStorage.getItem('viewData');
-    if (viewData) {
-      viewData = JSON.parse(viewData);
-      this.setState({
-        viewName: viewData.viewName,
-        description: viewData.description,
-      });
+    //Check if it is edit
+    const { match } = this.props;
+    if (match && match.params && match.params.id) {
+      this.getDashData(match.params.id);
     } else {
-      locationService.push('/analytics');
-      return;
+      let viewData: any = localStorage.getItem('viewData');
+      if (viewData) {
+        viewData = JSON.parse(viewData);
+        this.setState({
+          viewName: viewData.viewName,
+          description: viewData.description,
+        });
+      } else {
+        locationService.push('/analytics');
+        return;
+      }
     }
     const sendData = {
       tags: [],
@@ -81,10 +90,82 @@ class AddNewView extends React.Component<any, any> {
     this.getSearchData(sendData, true);
   }
 
+  getDashData = (id: any) => {
+    let requestOptionsGet: any = {
+      method: `GET`,
+    };
+    fetch(`${config.GET_ANALYTICS_VIEW}/${id}`, requestOptionsGet)
+      .then((response) => response.json())
+      .then((response: any) => {
+        const { viewJson, name, description } = response;
+        const tabs = this.checkEditedDashboards(JSON.parse(viewJson), this.state.folderArray);
+        this.setState({
+          viewName: name,
+          description: description,
+          editedData: JSON.parse(viewJson),
+          id: id,
+        });
+        if (tabs) {
+          this.setState({
+            tabs,
+          });
+        }
+      });
+
+    // Delete it after api implementation
+    let data: any = localStorage.getItem('dashboardList');
+    if (data) {
+      data = JSON.parse(data);
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id === id) {
+          const { viewJson, name, description } = data[i];
+          const tabs = this.checkEditedDashboards(viewJson, this.state.folderArray);
+          this.setState({
+            viewName: name,
+            description: description,
+            editedData: viewJson,
+            id: id,
+          });
+          if (tabs) {
+            this.setState({
+              tabs,
+            });
+          }
+          break;
+        }
+      }
+    }
+  };
+
+  checkEditedDashboards = (viewJSON: any, folderArray: any) => {
+    if (viewJSON && folderArray && viewJSON.length > 0 && folderArray.length > 0) {
+      viewJSON = JSON.parse(JSON.stringify(viewJSON));
+      const tabs: any = [];
+      for (let i = 0; i < viewJSON.length; i++) {
+        const tab = viewJSON[i];
+        const { dashboards, label } = tab;
+        const folderList = JSON.parse(JSON.stringify(folderArray));
+        const dashboardsUids = dashboards.map((dashboard: any) => dashboard.uid);
+        folderList.forEach((folder: any) => {
+          folder.subData.forEach((dashboard: any) => {
+            if (dashboardsUids.indexOf(dashboard.uid) !== -1) {
+              dashboard.checkValue = true;
+            }
+          });
+        });
+        tabs.push({
+          dashboardList: folderList,
+          label,
+        });
+      }
+      return tabs;
+    }
+  };
+
   getSearchData = (data: any, isFirstTime: any) => {
     backendSrv.search(data).then((result: any) => {
       const retData = this.manipulateData(result, isFirstTime);
-      const { tabs, activeTab } = this.state;
+      let { tabs, activeTab } = this.state;
       if (tabs[activeTab]) {
         tabs[activeTab].dashboardList = JSON.parse(JSON.stringify(retData));
       }
@@ -92,6 +173,10 @@ class AddNewView extends React.Component<any, any> {
         this.setState({
           folderArray: JSON.parse(JSON.stringify(retData)),
         });
+        let result = this.checkEditedDashboards(this.state.editedData, retData);
+        if (result) {
+          tabs = result;
+        }
       }
       this.setState({
         tabs,
@@ -396,7 +481,7 @@ class AddNewView extends React.Component<any, any> {
           }
           const subFolder = subFolders[j];
           subFolderJSX.push(
-            <tr>
+            <tr key={subFolder.id}>
               <td>
                 <input
                   type="checkbox"
@@ -441,12 +526,10 @@ class AddNewView extends React.Component<any, any> {
   };
 
   sendData = () => {
-    // const { tabs } = this.state;
-    // localStorage.setItem('newdashboarddata', JSON.stringify(tabs));
-    // locationService.push('/analytics/new/dashboard');
     const viewData = {
       viewName: this.state.viewName,
       description: this.state.description,
+      id: this.state.id,
     };
     this.viewRef.current.setData(this.state.tabs, viewData);
     this.setState({

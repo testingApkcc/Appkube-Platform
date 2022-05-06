@@ -36,16 +36,13 @@ class ViewNewView extends React.Component<Props, any> {
     super(props);
     this.state = {
       tabs: [],
-      sideBarData: [],
       activeTab: 0,
       activeSideTab: 0,
-      deletedId: 0,
-      activeSidebar: 0,
       loading: false,
       viewName: '',
       description: '',
+      id: '',
     };
-    // this.openDeleteTabRef = React.createRef();
   }
 
   setData = (tabs: any, viewData: any) => {
@@ -71,6 +68,7 @@ class ViewNewView extends React.Component<Props, any> {
       tabs: data,
       viewName: viewData.viewName,
       description: viewData.description,
+      id: viewData.id,
     });
   };
 
@@ -97,23 +95,6 @@ class ViewNewView extends React.Component<Props, any> {
     });
   }
 
-  // displayAction = (index: any) => {
-  //   const { sideBarData } = this.state;
-  //   sideBarData[index].checkValue = !sideBarData[index].checkValue;
-  //   this.setState({
-  //     sideBarData,
-  //   });
-  // };
-
-  // deleteTabData = (data: any, index: any) => {
-  //   console.log(data);
-  //   this.setState({
-  //     selectedData: data,
-  //     deletedId: index,
-  //   });
-  //   this.openDeleteTabRef.current.toggle();
-  // };
-
   setActiveSideTab = (index: any) => {
     this.setState({
       activeSideTab: index,
@@ -134,62 +115,12 @@ class ViewNewView extends React.Component<Props, any> {
               <span className={i === activeSideTab ? 'active' : ''} onClick={() => this.setActiveSideTab(i)}>
                 {sideData.title}
               </span>
-              {/* <i className="fa fa-ellipsis-h" id={`PopoverFocus-${i}`}></i> */}
             </a>
-            {/* <UncontrolledPopover trigger="legacy" placement="bottom" target={`PopoverFocus-${i}`}>
-            <PopoverBody className="popup-btn">
-              <ul>
-                {i !== 0 && (
-                  <li onClick={() => this.moveArrayPosition(i, i - 1)}>
-                    <a href="#">
-                      <i className="fa fa-caret-up"></i>
-                      Move Up
-                    </a>
-                  </li>
-                )}
-                {i !== sideBarData.length - 1 && (
-                  <li onClick={() => this.moveArrayPosition(i, i + 1)}>
-                    <a href="#">
-                      <i className="fa fa-caret-down"></i>Move Down
-                    </a>
-                  </li>
-                )}
-                <li onClick={() => this.deleteTabData(sideData, i)}>
-                  <a href="#">
-                    <i className="fa fa-trash"></i>
-                    Delete
-                  </a>
-                </li>
-              </ul>
-            </PopoverBody>
-          </UncontrolledPopover> */}
           </li>
         );
       }
     }
     return retData;
-  };
-
-  // removeDashboardRecord = () => {
-  //   const { deletedId, sideBarData } = this.state;
-  //   for (let i = 0; i < sideBarData.length; i++) {
-  //     if (i === deletedId) {
-  //       sideBarData.splice(i, 1);
-  //     }
-  //   }
-  //   this.setState({
-  //     sideBarData,
-  //   });
-  // };
-
-  moveArrayPosition = (fromIndex: any, toIndex: any) => {
-    const { sideBarData } = this.state;
-    var element = sideBarData[fromIndex];
-    sideBarData.splice(fromIndex, 1);
-    sideBarData.splice(toIndex, 0, element);
-    this.setState({
-      sideBarData,
-    });
   };
 
   createDashboard = () => {
@@ -217,7 +148,8 @@ class ViewNewView extends React.Component<Props, any> {
   };
 
   saveDashboard = () => {
-    const { tabs, viewName, description } = this.state;
+    //TO DO: if id is available, call edit api
+    const { tabs, viewName, description, id } = this.state;
     const formData = new FormData();
     formData.append('viewName', viewName);
     formData.append('description', description);
@@ -237,14 +169,36 @@ class ViewNewView extends React.Component<Props, any> {
     });
 
     //Delete it after api works properly
-    const sendData: any = [];
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for (var i = 0; i < 5; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    const data: any = localStorage.getItem('dashboardList');
+    let sendData: any = [];
+    if (data) {
+      sendData = JSON.parse(data);
     }
-    sendData.push({ name: viewName, viewJson: tabs, description: description, id: result });
+    if (id) {
+      let index = -1;
+      for (let i = 0; i < sendData.length; i++) {
+        if (sendData[i].id === id) {
+          index = i;
+          break;
+        }
+      }
+      if (index !== -1) {
+        sendData[index] = {
+          name: viewName,
+          viewJson: tabs,
+          description: description,
+          id: id,
+        };
+      }
+    } else {
+      let result = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      for (var i = 0; i < 5; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      sendData.push({ name: viewName, viewJson: tabs, description: description, id: result });
+    }
     localStorage.setItem('dashboardList', JSON.stringify(sendData));
     setTimeout(() => {
       locationService.push('/analytics');
@@ -311,33 +265,17 @@ class ViewNewView extends React.Component<Props, any> {
             </div>
           </div>
           <div className="analytics-tabs-container">
-            <ul className="nav nav-tabs">
-              {this.displayTabs()}
-              {/* <li className="nav-item">
-                  <a className="nav-link add-tab">
-                    <i className="fa fa-plus"></i>
-                  </a>
-                </li> */}
-            </ul>
+            <ul className="nav nav-tabs">{this.displayTabs()}</ul>
             <div className="analytics-tabs-section-container">
               <div className="tabs-left-section">
-                {/* <h5>AWS RDS</h5> */}
                 <ul>{this.renderSideBar()}</ul>
               </div>
               <div className="tabs-right-section">
-                {/* <div className="analytics-aws-heading">
-                    <p>AWS RDS {'>'} CPUUtilisation, CreditsUsage, CreditBalance</p>
-                  </div> */}
                 <div>{this.createDashboard()}</div>
               </div>
             </div>
           </div>
         </div>
-        {/* <DeleteTabPopup
-            ref={this.openDeleteTabRef}
-            deleteContent={selectedData}
-            deleteDataFromSidebar={this.removeDashboardRecord}
-          /> */}
       </React.Fragment>
     );
   }
