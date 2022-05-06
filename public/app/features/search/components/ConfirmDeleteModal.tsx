@@ -47,10 +47,13 @@ export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, 
     let dashboardList = [];
     if (results && results.length > 0) {
       for (let i = 0; i < results.length; i++) {
-        if (results[i].items && results[i].items.length > 0) {
-          for (let j = 0; j < results[i].items.length; j++) {
-            if (dashboards.indexOf(results[i].items[j].uid) !== -1) {
-              dashboardList.push({ id: results[i].items[j].id, uid: results[i].items[j].uid });
+        const folder = results[i];
+        if (folder && folder.items && folder.items.length > 0) {
+          const items = folder.items;
+          for (let j = 0; j < items.length; j++) {
+            const uid = items[j].uid as string;
+            if (dashboards.indexOf(uid) !== -1) {
+              dashboardList.push({ id: items[j].id, uid: uid });
             }
           }
         }
@@ -58,7 +61,7 @@ export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, 
     }
     let requestOptions: any = {
       method: `DELETE`,
-      body: dashboardList,
+      body: JSON.stringify(dashboardList),
     };
     fetch(`${config.DELETE_DASHBOARD}`, requestOptions).then((response: any) => {
       console.log(response);
