@@ -66,7 +66,7 @@ class Analytics extends React.Component<any, any> {
         {
           label: 'Action',
           key: 'action',
-          renderCallback: (value: any, viewObj: any) => {
+          z: (value: any, viewObj: any) => {
             return (
               <td>
                 <div className="d-inline-block">
@@ -138,7 +138,8 @@ class Analytics extends React.Component<any, any> {
   };
 
   componentDidMount() {
-    console.log(JSON.parse(localStorage.getItem('dashboardList')));
+    let data: any = localStorage.getItem('dashboardList');
+    console.log(JSON.parse(data));
     this.getTableData();
   }
 
