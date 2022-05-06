@@ -140,6 +140,18 @@ export class Node extends React.Component<any, any> {
     }
   };
 
+  getPerformanceClass = (score: any) => {
+    if (score >= 75) {
+      return 'green';
+    } else if (score >= 50) {
+      return 'orange';
+    } else if (score >= 25) {
+      return 'yellow';
+    } else {
+      return 'red';
+    }
+  };
+
   render() {
     const { accountId, serviceData, steps, dashboardData, viewJson } = this.state;
     return (
@@ -187,8 +199,51 @@ export class Node extends React.Component<any, any> {
             </div> */}
           </div>
         </div>
-        <div className="displayed-here">
-          <p>Node details will be displayed here</p>
+        <div className="services-displayed-here">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="services-text">
+                <label>Organisation Unit</label>
+                <span>Synectiks - HR</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="services-text">
+                <label>Associated Product</label>
+                <span>HRMS</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="services-text">
+                <label>Added At</label>
+                <span>Feb 01, 2021 21:30</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="services-text">
+                <label>Associated Environment</label>
+                <span>Production</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="services-text">
+                <label>Service Type</label>
+                <span>In Cluster</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="services-text">
+                <label>Alerts</label>
+                <span>2</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="services-text">
+                <label>Service Score</label>
+                <span className={`status ${this.getPerformanceClass('')}`}>100%</span>
+              </div>
+            </div>
+          </div>
         </div>
         <WebServiceWizard steps={steps} {...this.props} dashboardData={dashboardData} viewJson={viewJson} getAddedDashboards={this.getAddedDashboards} />
       </div>
