@@ -66,7 +66,7 @@ class Analytics extends React.Component<any, any> {
         {
           label: 'Action',
           key: 'action',
-          z: (value: any, viewObj: any) => {
+          renderCallback: (value: any, viewObj: any) => {
             return (
               <td>
                 <div className="d-inline-block">
@@ -88,11 +88,11 @@ class Analytics extends React.Component<any, any> {
     this.opencreateNewViewRef = React.createRef();
     this.openDeleteTabRef = React.createRef();
   }
-
   onClickDelete = (viewObj: any) => {
     this.setState({
       viewToDelete: viewObj,
     });
+    console.log(this.openDeleteTabRef.current.toggle);
     this.openDeleteTabRef.current.toggle();
   };
 
@@ -139,7 +139,10 @@ class Analytics extends React.Component<any, any> {
 
   componentDidMount() {
     let data: any = localStorage.getItem('dashboardList');
-    console.log(JSON.parse(data));
+    data = JSON.parse(data);
+    if (data && data.length > 0) {
+      this.setState({ viewList: data });
+    }
     this.getTableData();
   }
 
