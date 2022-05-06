@@ -138,11 +138,6 @@ class Analytics extends React.Component<any, any> {
   };
 
   componentDidMount() {
-    let data: any = localStorage.getItem('dashboardList');
-    data = JSON.parse(data);
-    if (data && data.length > 0) {
-      this.setState({ viewList: data });
-    }
     this.getTableData();
   }
 
@@ -159,6 +154,13 @@ class Analytics extends React.Component<any, any> {
           });
         }
       });
+
+    // Delete after api works
+    let data: any = localStorage.getItem('dashboardList');
+    data = JSON.parse(data);
+    if (data && data.length > 0) {
+      this.setState({ viewList: data });
+    }
   };
 
   onClickCreateNewView = (e: any) => {

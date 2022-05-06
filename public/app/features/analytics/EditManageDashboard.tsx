@@ -49,9 +49,9 @@ class EditManageDashboard extends React.Component<any, any> {
   }
 
   componentDidMount() {
-    const { location } = this.props;
-    if (location && location.routeParams && location.routeParams.id) {
-      this.getDashData(location.routeParams.id);
+    const { match } = this.props;
+    if (match && match.params && match.params.id) {
+      this.getDashData(match.params.id);
     } else {
       locationService.push(`/analytics`);
     }
@@ -75,7 +75,27 @@ class EditManageDashboard extends React.Component<any, any> {
           loading: false,
         });
       });
+
+    // Delete it after api implementation
+    let data: any = localStorage.getItem('dashboardList');
+    if (data) {
+      data = JSON.parse(data);
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id === id) {
+          const { viewJson, name, description } = data[i];
+          this.setState({
+            viewName: name,
+            description: description,
+            tabs: viewJson,
+            loading: false,
+            id: id,
+          });
+          break;
+        }
+      }
+    }
   };
+
   displayTabs = () => {
     const { tabs, activeTab } = this.state;
     const retData = [];

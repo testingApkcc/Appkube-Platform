@@ -218,13 +218,10 @@ class ViewNewView extends React.Component<Props, any> {
 
   saveDashboard = () => {
     const { tabs, viewName, description } = this.state;
-    let sendData: any = [];
     const formData = new FormData();
     formData.append('viewName', viewName);
     formData.append('description', description);
     formData.append('viewJson', JSON.stringify(tabs));
-    sendData.push({ name: viewName, dashboard: tabs, description: description });
-    localStorage.setItem('dashboardList', JSON.stringify(sendData));
     let requestOptions: any = {
       method: `POST`,
       body: formData,
@@ -238,6 +235,17 @@ class ViewNewView extends React.Component<Props, any> {
       });
       locationService.push('/analytics');
     });
+
+    //Delete it after api works properly
+    const sendData: any = [];
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (var i = 0; i < 5; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    sendData.push({ name: viewName, viewJson: tabs, description: description, id: result });
+    localStorage.setItem('dashboardList', JSON.stringify(sendData));
     setTimeout(() => {
       locationService.push('/analytics');
     }, 5000);
