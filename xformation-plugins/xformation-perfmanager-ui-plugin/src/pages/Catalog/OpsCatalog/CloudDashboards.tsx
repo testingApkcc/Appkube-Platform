@@ -11,32 +11,32 @@ export class CloudDashboards extends React.Component<any, any>{
         super(props)
         this.state = {
             dashboards: this.props.data || [],
-            images:[{name :"graph", imgUrl:'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id :101},
-            {name :"flow Chart", imgUrl:"https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id :102},
-            {name :"linear", imgUrl:'https://media.istockphoto.com/vectors/collection-of-infographics-isolated-illustration-vector-id1168529930?s=170667a', id :103},
-            {name :"image", imgUrl:'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id :104},
-            {name :"flow Chart", imgUrl:"https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id :105},
-            {name :"image", imgUrl:'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id :106},
-            {name :"flow Chart", imgUrl:"https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id :107},
-        ]
+            images: [{ name: "graph", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 101 },
+            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 102 },
+            { name: "linear", imgUrl: 'https://media.istockphoto.com/vectors/collection-of-infographics-isolated-illustration-vector-id1168529930?s=170667a', id: 103 },
+            { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 104 },
+            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 105 },
+            { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 106 },
+            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 107 },
+            ]
         }
         this.previewDashboardPopupRef = React.createRef();
     }
     componentDidMount() {
         let { dashboards, images } = this.state;
         let image = ''
-        if (dashboards.length>0){
-        for (let i = 0; i < dashboards.length; i++) {
-            if (images[i]) {
-            image = images[i].imgUrl;
-                dashboards[i]["imgUrl"] = image;
+        if (dashboards.length > 0) {
+            for (let i = 0; i < dashboards.length; i++) {
+                if (images[i]) {
+                    image = images[i].imgUrl;
+                    dashboards[i]["imgUrl"] = image;
+                }
+                else {
+                    dashboards[i]["imgUrl"] = " https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg"
+                }
             }
-            else{
-                dashboards[i]["imgUrl"]=" https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg"
-            }
+            this.setState({ dashboards })
         }
-        this.setState({dashboards})
-    }
     }
 
     onClickPreviewDashboard = () => {

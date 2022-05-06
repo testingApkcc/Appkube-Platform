@@ -224,7 +224,6 @@ class ViewNewView extends React.Component<Props, any> {
     formData.append('description', description);
     formData.append('viewJson', JSON.stringify(tabs));
     sendData.push({ name: viewName, dashboard: tabs, description: description });
-    console.log(sendData);
     localStorage.setItem('dashboardList', JSON.stringify(sendData));
     let requestOptions: any = {
       method: `POST`,
@@ -239,9 +238,9 @@ class ViewNewView extends React.Component<Props, any> {
       });
       locationService.push('/analytics');
     });
-    // setTimeout(() => {
-    //   locationService.push('/analytics');
-    // }, 5000);
+    setTimeout(() => {
+      locationService.push('/analytics');
+    }, 5000);
   };
 
   render() {
