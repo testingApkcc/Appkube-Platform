@@ -226,82 +226,80 @@ class ManageView extends React.Component<any, any> {
     return (
       <React.Fragment>
         <CustomNavigationBar />
-        <div className="scroll-canvas--dashboard monitor-main-body">
-          <div className="breadcrumbs-container">
-            {pageTitle && <div className="page-title">{pageTitle}</div>}
-            <div className="breadcrumbs">
-              {breadCrumbs.map((breadcrumb: any, index: any) => {
-                if (breadcrumb.isCurrentPage) {
-                  return (
-                    <span key={index} className="current-page">
+        <div className="breadcrumbs-container">
+          {pageTitle && <div className="page-title">{pageTitle}</div>}
+          <div className="breadcrumbs">
+            {breadCrumbs.map((breadcrumb: any, index: any) => {
+              if (breadcrumb.isCurrentPage) {
+                return (
+                  <span key={index} className="current-page">
+                    {breadcrumb.label}
+                  </span>
+                );
+              } else {
+                return (
+                  <React.Fragment key={index}>
+                    <a href={`${breadcrumb.route}`} className="breadcrumbs-link">
                       {breadcrumb.label}
+                    </a>
+                    <span className="separator">
+                      <i className="fa fa-chevron-right"></i>
                     </span>
-                  );
-                } else {
-                  return (
-                    <React.Fragment key={index}>
-                      <a href={`${breadcrumb.route}`} className="breadcrumbs-link">
-                        {breadcrumb.label}
-                      </a>
-                      <span className="separator">
-                        <i className="fa fa-chevron-right"></i>
-                      </span>
-                    </React.Fragment>
-                  );
-                }
-              })}
-            </div>
+                  </React.Fragment>
+                );
+              }
+            })}
           </div>
-          {loading && <div style={{ textAlign: 'center', marginTop: '40px' }}>View is loading</div>}
-          {!loading && tabs && tabs.length > 0 && (
-            <div className="analytics-container">
-              <div className="analytics-heading-container">
-                <div className="row">
-                  <div className="col-lg-6 col-md-6 col-sm-6">
-                    <h4 style={{ lineHeight: '36px' }}>{viewName}</h4>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-6">
-                    <div className="d-block text-right">
-                      <button
-                        className="analytics-white-button min-width-auto m-r-0"
-                        onClick={() => locationService.push('/analytics')}
-                      >
-                        <i className="fa fa-arrow-circle-left"></i>
-                        &nbsp;&nbsp;Back
-                      </button>
-                    </div>
+        </div>
+        {loading && <div style={{ textAlign: 'center', marginTop: '40px' }}>View is loading</div>}
+        {!loading && tabs && tabs.length > 0 && (
+          <div className="analytics-container">
+            <div className="analytics-heading-container">
+              <div className="row">
+                <div className="col-lg-6 col-md-6 col-sm-6">
+                  <h4 style={{ lineHeight: '36px' }}>{viewName}</h4>
+                </div>
+                <div className="col-lg-6 col-md-6 col-sm-6">
+                  <div className="d-block text-right">
+                    <button
+                      className="analytics-white-button min-width-auto m-r-0"
+                      onClick={() => locationService.push('/analytics')}
+                    >
+                      <i className="fa fa-arrow-circle-left"></i>
+                      &nbsp;&nbsp;Back
+                    </button>
                   </div>
                 </div>
               </div>
-              <div className="analytics-tabs-container">
-                <ul className="nav nav-tabs">
-                  {this.displayTabs()}
-                  {/* <li className="nav-item">
+            </div>
+            <div className="analytics-tabs-container">
+              <ul className="nav nav-tabs">
+                {this.displayTabs()}
+                {/* <li className="nav-item">
                     <a className="nav-link add-tab">
                       <i className="fa fa-plus"></i>
                     </a>
                   </li> */}
-                </ul>
-                <div className="analytics-tabs-section-container">
-                  <div className="tabs-left-section">
-                    <ul>{this.renderSideBar()}</ul>
-                  </div>
-                  <div className="tabs-right-section">
-                    <div>{this.createDashboard()}</div>
-                  </div>
+              </ul>
+              <div className="analytics-tabs-section-container">
+                <div className="tabs-left-section">
+                  <ul>{this.renderSideBar()}</ul>
+                </div>
+                <div className="tabs-right-section">
+                  <div>{this.createDashboard()}</div>
                 </div>
               </div>
             </div>
-          )}
-          {!loading && (!tabs || (tabs && !tabs.length)) && (
-            <div style={{ textAlign: 'center', marginTop: '40px' }}>There no data in this view</div>
-          )}
-          {/* <DeleteTabPopup
+          </div>
+        )}
+        {!loading && (!tabs || (tabs && !tabs.length)) && (
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>There no data in this view</div>
+        )}
+        {/* <DeleteTabPopup
             ref={this.openDeleteTabRef}
             deleteContent={selectedData}
             deleteDataFromSidebar={this.removeDashboardRecord}
           /> */}
-        </div>
       </React.Fragment>
     );
   }

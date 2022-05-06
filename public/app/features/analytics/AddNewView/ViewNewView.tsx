@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateLocation } from 'app/core/actions';
-import { CustomNavigationBar } from 'app/core/components/CustomNav';
+// import { CustomNavigationBar } from 'app/core/components/CustomNav';
 // import { DeleteTabPopup } from '../DeleteTabPopup';
 // import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import CustomDashboardLoader from '../../custom-dashboard-loader';
@@ -257,90 +257,87 @@ class ViewNewView extends React.Component<Props, any> {
     const { loading } = this.state;
     return (
       <React.Fragment>
-        <CustomNavigationBar />
-        <div className="scroll-canvas--dashboard monitor-main-body">
-          <div className="breadcrumbs-container">
-            {pageTitle && <div className="page-title">{pageTitle}</div>}
-            <div className="breadcrumbs">
-              {breadCrumbs.map((breadcrumb: any, index: any) => {
-                if (breadcrumb.isCurrentPage) {
-                  return (
-                    <span key={index} className="current-page">
+        <div className="breadcrumbs-container">
+          {pageTitle && <div className="page-title">{pageTitle}</div>}
+          <div className="breadcrumbs">
+            {breadCrumbs.map((breadcrumb: any, index: any) => {
+              if (breadcrumb.isCurrentPage) {
+                return (
+                  <span key={index} className="current-page">
+                    {breadcrumb.label}
+                  </span>
+                );
+              } else {
+                return (
+                  <React.Fragment key={index}>
+                    <a href={`${breadcrumb.route}`} className="breadcrumbs-link">
                       {breadcrumb.label}
-                    </span>
-                  );
-                } else {
-                  return (
-                    <React.Fragment key={index}>
-                      <a href={`${breadcrumb.route}`} className="breadcrumbs-link">
-                        {breadcrumb.label}
-                      </a>
-                      <span className="separator">
-                        <i className="fa fa-chevron-right"></i>
-                      </span>
-                    </React.Fragment>
-                  );
-                }
-              })}
-            </div>
-          </div>
-          <div className="analytics-container">
-            <div className="analytics-heading-container">
-              <div className="row">
-                <div className="col-lg-6 col-md-6 col-sm-6">
-                  <h4 style={{ lineHeight: '36px' }}>NGINX</h4>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-6">
-                  <div className="d-block text-right">
-                    <a>
-                      <button
-                        className="analytics-white-button min-width-auto m-r-1"
-                        onClick={() => this.props.hidedashboardView()}
-                      >
-                        <i className="fa fa-arrow-circle-left"></i>
-                        &nbsp;&nbsp;Back
-                      </button>
-                      <button
-                        disabled={loading}
-                        className={`analytics-blue-button ${loading ? 'disabled' : ''}`}
-                        onClick={this.saveDashboard}
-                      >
-                        Save and add to View list
-                      </button>
                     </a>
-                  </div>
+                    <span className="separator">
+                      <i className="fa fa-chevron-right"></i>
+                    </span>
+                  </React.Fragment>
+                );
+              }
+            })}
+          </div>
+        </div>
+        <div className="analytics-container">
+          <div className="analytics-heading-container">
+            <div className="row">
+              <div className="col-lg-6 col-md-6 col-sm-6">
+                <h4 style={{ lineHeight: '36px' }}>NGINX</h4>
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-6">
+                <div className="d-block text-right">
+                  <a>
+                    <button
+                      className="analytics-white-button min-width-auto m-r-1"
+                      onClick={() => this.props.hidedashboardView()}
+                    >
+                      <i className="fa fa-arrow-circle-left"></i>
+                      &nbsp;&nbsp;Back
+                    </button>
+                    <button
+                      disabled={loading}
+                      className={`analytics-blue-button ${loading ? 'disabled' : ''}`}
+                      onClick={this.saveDashboard}
+                    >
+                      Save and add to View list
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
-            <div className="analytics-tabs-container">
-              <ul className="nav nav-tabs">
-                {this.displayTabs()}
-                {/* <li className="nav-item">
+          </div>
+          <div className="analytics-tabs-container">
+            <ul className="nav nav-tabs">
+              {this.displayTabs()}
+              {/* <li className="nav-item">
                   <a className="nav-link add-tab">
                     <i className="fa fa-plus"></i>
                   </a>
                 </li> */}
-              </ul>
-              <div className="analytics-tabs-section-container">
-                <div className="tabs-left-section">
-                  {/* <h5>AWS RDS</h5> */}
-                  <ul>{this.renderSideBar()}</ul>
-                </div>
-                <div className="tabs-right-section">
-                  {/* <div className="analytics-aws-heading">
+            </ul>
+            <div className="analytics-tabs-section-container">
+              <div className="tabs-left-section">
+                {/* <h5>AWS RDS</h5> */}
+                <ul>{this.renderSideBar()}</ul>
+              </div>
+              <div className="tabs-right-section">
+                {/* <div className="analytics-aws-heading">
                     <p>AWS RDS {'>'} CPUUtilisation, CreditsUsage, CreditBalance</p>
                   </div> */}
-                  <div>{this.createDashboard()}</div>
-                </div>
+                <div>{this.createDashboard()}</div>
               </div>
             </div>
           </div>
-          {/* <DeleteTabPopup
+        </div>
+        {/* <DeleteTabPopup
             ref={this.openDeleteTabRef}
             deleteContent={selectedData}
             deleteDataFromSidebar={this.removeDashboardRecord}
           /> */}
-        </div>
       </React.Fragment>
     );
   }
