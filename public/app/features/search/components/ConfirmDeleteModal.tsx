@@ -18,7 +18,6 @@ interface Props {
 export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, onDismiss }) => {
   const theme = useTheme();
   const styles = getStyles(theme);
-
   const uids = getCheckedUids(results);
   const { folders, dashboards } = uids;
   const folderCount = folders.length;
@@ -45,9 +44,21 @@ export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, 
       locationService.push('/dashboards');
       onDeleteItems(folders, dashboards);
     });
+    let dashboardList = [];
+    if (results && results.length > 0) {
+      for (let i = 0; i < results.length; i++) {
+        if (results[i].items && results[i].items.length > 0) {
+          for (let j = 0; j < results[i].items.length; j++) {
+            if (dashboards.indexOf(results[i].items[j].uid) !== -1) {
+              dashboardList.push({ id: results[i].items[j].id, uid: results[i].items[j].uid });
+            }
+          }
+        }
+      }
+    }
     let requestOptions: any = {
       method: `DELETE`,
-      body: dashboards,
+      body: dashboardList,
     };
     fetch(`${config.DELETE_DASHBOARD}`, requestOptions).then((response: any) => {
       console.log(response);
