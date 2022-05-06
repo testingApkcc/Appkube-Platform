@@ -1,7 +1,7 @@
 import React from 'react';
 import previewDashboardIcon from '../../../img/preview-dashboard-icon.png';
 import libraryIcon from '../../../img/library-icon.png';
-import previewDashboard from '../../../img/preview-dashboard.png';
+// import previewDashboard from '../../../img/preview-dashboard.png';
 import { PreviewDashboardPopup } from './PreviewDashboardPopup';
 import { Filter } from './../filter';
 

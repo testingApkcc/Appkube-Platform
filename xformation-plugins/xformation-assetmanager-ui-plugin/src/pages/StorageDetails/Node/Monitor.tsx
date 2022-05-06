@@ -29,7 +29,7 @@ export class Monitor extends React.Component<any, any>{
             activeDashboard: 0,
             iFrameLoaded: false,
             viewJson: [],
-            dashboardData: {},
+            dashboardData: [],
             isLoading: false,
             presentView: VIEW_TYPE.NO_DASHBOARDS
         };
@@ -60,64 +60,42 @@ export class Monitor extends React.Component<any, any>{
     }
 
     componentDidMount() {
-        this.getCategories();
-        this.getAddedDashboards();
-    }
-
-    getCategories = () => {
-        try {
-            RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
-                (response: any) => {
-                    const { cloudDashBoards, dataSources } = response.details.ops;
-                    const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
-                    this.setState({
-                        dashboardData,
-                    });
-                    this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboardData);
-
-                }, (error: any) => {
-                    console.log("Performance. Search input config failed. Error: ", error);
-                });
-        } catch (err) {
-            console.log("Performance. Excepiton in search input this.config. Error: ", err);
-        }
-    }
-
-    getAddedDashboards = () => {
-        const { apiKey, serviceData } = this.props;
-        const serviceId = serviceData.id;
-        try {
-            RestService.getData(`${this.config.ADD_VIEW_JSON_TO_GRAFANA}?serviceId=${serviceId}`, null, null).then(
-                (response: any) => {
-                    if (response && response[apiKey] && response[apiKey].length > 0) {
-                        this.setState({
-                            viewJson: response[apiKey],
-                            presentView: VIEW_TYPE.VIEW_DASHBOARDS
-                        });
-                    }
-                }, (error: any) => {
-                    console.log("Performance. Search input config failed. Error: ", error);
-                });
-        } catch (err) {
-            console.log("Performance. Excepiton in search input this.config. Error: ", err);
-        }
-    };
-
-    manipulateCatalogueData = (dataSources: any, dashboards: any) => {
-        dataSources.forEach((dataSource: any) => {
-            const name = dataSource.name;
-            dashboards.forEach((dashboard: any) => {
-                if (name === dashboard.associatedDataSourceType) {
-                    dataSource.isDashboardAdded = true;
-                    dataSource.dashboards = dataSource.dashboards || [];
-                    dataSource.dashboards.push(dashboard);
-                }
+        if (this.props.dashboardData) {
+            this.setState({
+                dashboardData: JSON.parse(JSON.stringify(this.props.dashboardData))
             });
-        });
-        // const retData = dataSources.filter((source: any) => source.isDashboardAdded);
-        // return retData;
-        return dataSources
-    };
+        }
+        if (this.props.viewJson) {
+            const { apiKey } = this.props;
+            const viewJson = JSON.parse(JSON.stringify(this.props.viewJson));
+            if (viewJson && viewJson[apiKey] && viewJson[apiKey].length > 0) {
+                this.setState({
+                    viewJson: viewJson[apiKey],
+                    presentView: VIEW_TYPE.VIEW_DASHBOARDS
+                });
+            }
+        }
+    }
+
+    componentDidUpdate(prevProps: any, prevState: any) {
+        if (JSON.stringify(prevProps.dashboardData) !== JSON.stringify(this.props.dashboardData)) {
+            const dashboardData = JSON.parse(JSON.stringify(this.props.dashboardData));
+            this.setState({
+                dashboardData
+            });
+            this.verifyInputsRef.current && this.verifyInputsRef.current.setDashboardData(dashboardData);
+        }
+        if (JSON.stringify(prevProps.viewJson) !== JSON.stringify(this.props.viewJson)) {
+            const { apiKey } = this.props;
+            const viewJson = JSON.parse(JSON.stringify(this.props.viewJson));
+            if (viewJson && viewJson[apiKey] && viewJson[apiKey].length > 0) {
+                this.setState({
+                    viewJson: viewJson[apiKey],
+                    presentView: VIEW_TYPE.VIEW_DASHBOARDS
+                });
+            }
+        }
+    }
 
     onSubmit = async () => {
         if (this.state.isLoading) {
@@ -153,7 +131,6 @@ export class Monitor extends React.Component<any, any>{
         this.setState({
             isLoading: true
         });
-        let index = 0;
         dashbaordJSONArray.forEach((dashboard: any) => {
             const dataJs = {
                 // title: dashboard.title,
@@ -171,7 +148,7 @@ export class Monitor extends React.Component<any, any>{
             };
             dataJs.Dashboard.id = 0;
             dataJs.Dashboard.uid = "";
-            dataJs.Dashboard.slug = dashboard.accountId + "_" + dashboard.elementType + "_" + (++index);
+            dataJs.Dashboard.slug = dashboard.inputType + "_" + dashboard.elementType + "_" + Math.random().toString(36).substring(2, 7);
             dataJs.Dashboard.title = dataJs.Dashboard.slug;
             var json = JSON.stringify(dataJs);
             var reqOpt = RestService.optionWithAuthentication(json, 'POST');
@@ -208,25 +185,6 @@ export class Monitor extends React.Component<any, any>{
                             });
                         }
                     })
-                    .catch(error => {
-                        console.log('Dashboard import in grafana failed. Error', error);
-                        this.setState({
-                            isAlertOpen: true,
-                            message: 'Enabling dashboards failed',
-                            severity: 'error',
-                            isSuccess: true
-                        });
-                        responseArray.push(null);
-                        if (responseArray.length === dashbaordJSONArray.length) {
-                            this.setState({
-                                isAlertOpen: true,
-                                message: 'There was some error while importing dashboard',
-                                severity: 'error',
-                                isSuccess: true,
-                                isLoading: false
-                            });
-                        }
-                    });
             }
             catch (e) {
                 this.setState({
@@ -248,38 +206,38 @@ export class Monitor extends React.Component<any, any>{
             [apiKey]: responseArray
         };
         var reqOpt = RestService.optionWithAuthentication(JSON.stringify(result), 'POST');
-        fetch(this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
-            .then(response => response.json())
-            .then(result => {
-                this.setState({
-                    isAlertOpen: true,
-                    message: 'Dashboards imported successfully',
-                    severity: 'success',
-                    isSuccess: false,
-                    isLoading: false,
-                    presentView: VIEW_TYPE.VIEW_DASHBOARDS
-                });
-                this.wizardRef.current.setActiveStep(0);
-                this.getAddedDashboards();
-            }, error => {
-                this.setState({
-                    isAlertOpen: true,
-                    message: 'There was some issue while adding view',
-                    severity: 'error',
-                    isSuccess: false,
-                    isLoading: false,
-                });
-            })
-            .catch(error => {
-                console.log('There was some issue while adding ', error);
-                this.setState({
-                    isAlertOpen: true,
-                    message: 'There was some issue while adding ',
-                    severity: 'error',
-                    isSuccess: true,
-                    isLoading: false,
-                });
+        try {
+            fetch(this.config.ADD_VIEW_JSON_TO_GRAFANA, reqOpt)
+                .then(response => response.json())
+                .then(result => {
+                    this.setState({
+                        isAlertOpen: true,
+                        message: 'Dashboards imported successfully',
+                        severity: 'success',
+                        isSuccess: false,
+                        isLoading: false,
+                        presentView: VIEW_TYPE.VIEW_DASHBOARDS
+                    });
+                    this.props.getAddedDashboards();
+                }, error => {
+                    this.setState({
+                        isAlertOpen: true,
+                        message: 'There was some issue while adding view',
+                        severity: 'error',
+                        isSuccess: false,
+                        isLoading: false,
+                    });
+                })
+        }
+        catch (e) {
+            this.setState({
+                isAlertOpen: true,
+                message: 'There was some issue while adding view',
+                severity: 'error',
+                isSuccess: false,
+                isLoading: false,
             });
+        }
     };
 
     handleCloseAlert = (e: any) => {
