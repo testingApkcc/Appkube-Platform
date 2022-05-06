@@ -16,6 +16,10 @@
   //min-height: 932px;
 }
 
+.custom-scrollbar--page {
+  overflow: inherit !important;
+}
+
 .scroll-canvas--dashboard {
   overflow-x: scroll;
 }

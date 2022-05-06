@@ -22,7 +22,7 @@ export const config = {
   PARENT_NAME: '',
   basePath: '',
   PREVIEW_DASHBOARDS_URL: `${previewUrl}/dashboard/preview`,
-  DELETE_DASHBOARD: `${previewUrl}//dashboard/view-json`,
+  DELETE_DASHBOARD: `${previewUrl}/dashboard/view-json`,
 };
 
 export const appconfig = {

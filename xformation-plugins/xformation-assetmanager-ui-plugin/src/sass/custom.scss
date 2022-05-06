@@ -6,6 +6,10 @@ a {
   }
 }
 
+.custom-scrollbar--page{
+  overflow: inherit !important;
+}
+
 .float-right {
   float: right;
 }
