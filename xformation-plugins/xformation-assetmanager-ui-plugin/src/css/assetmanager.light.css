@@ -4,6 +4,10 @@ a:hover {
   color: #000000;
 }
 
+.custom-scrollbar--page {
+  overflow: inherit !important;
+}
+
 .float-right {
   float: right;
 }
@@ -2576,6 +2580,48 @@ a:hover {
   color: #8998ac;
 }
 
+.service-account-container .services-displayed-here {
+  display: block;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 10px;
+}
+.service-account-container .services-displayed-here .services-text {
+  display: block;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 2px;
+}
+.service-account-container .services-displayed-here .services-text label {
+  width: 45%;
+  vertical-align: top;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 28px;
+  font-weight: 500;
+}
+.service-account-container .services-displayed-here .services-text span {
+  width: 55%;
+  vertical-align: top;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 28px;
+  font-weight: 500;
+}
+.service-account-container .services-displayed-here .services-text .status.red {
+  color: red;
+}
+.service-account-container .services-displayed-here .services-text .status.yellow {
+  color: yellow;
+}
+.service-account-container .services-displayed-here .services-text .status.orange {
+  color: orange;
+}
+.service-account-container .services-displayed-here .services-text .status.green {
+  color: green;
+}
+
 .service-account-container .storage-section .network-boxs {
   min-height: 450px;
 }
@@ -2955,6 +3001,10 @@ a:hover {
   border-right: 1px solid #ddd;
   display: inline-block;
   vertical-align: top;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: thin;
 }
 .service-account-container .dashboard-view-container .aside-container .dashboard-side-tab {
   opacity: 1;

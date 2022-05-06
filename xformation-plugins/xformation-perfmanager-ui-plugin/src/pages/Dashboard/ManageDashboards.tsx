@@ -221,7 +221,7 @@ export class ManageDashboards extends React.Component<any, any> {
                                     <input type="checkbox" className="checkbox" />
                                     <span>
                                         Filter by starred
-                                            </span>
+                                    </span>
                                 </div>
                                 <div className="sort-select-menu">
                                     <span>

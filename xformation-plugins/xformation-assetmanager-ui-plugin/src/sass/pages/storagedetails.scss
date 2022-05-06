@@ -221,6 +221,53 @@
         }
     }
 
+    .services-displayed-here {
+        display: block;
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 10px;
+
+        .services-text {
+            display: block;
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 2px;
+
+            label {
+                width: 45%;
+                vertical-align: top;
+                display: inline-block;
+                font-size: 14px;
+                line-height: 28px;
+                font-weight: 500;
+            }
+
+            span {
+                width: 55%;
+                vertical-align: top;
+                display: inline-block;
+                font-size: 14px;
+                line-height: 28px;
+                font-weight: 500;
+            }
+            .status{
+                &.red{
+                    color: red;
+                }
+                &.yellow{
+                    color: yellow;
+                }
+                &.orange{
+                    color: orange;
+                }
+                &.green{
+                    color: green;
+                }
+            }
+        }
+    }
+
     .storage-section {
         .network-boxs {
             min-height: 450px;
@@ -596,6 +643,10 @@
             border-right: 1px solid #ddd;
             display: inline-block;
             vertical-align: top;
+            overflow: hidden;
+            overflow-y: auto;
+            height: 100%;
+            scrollbar-width: thin;
 
             .dashboard-side-tab {
                 opacity: 1;
