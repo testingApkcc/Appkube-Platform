@@ -5,7 +5,7 @@ import { Monitor } from './Monitor';
 import { CommonService } from '../../_common/common';
 import { configFun } from '../../../config';
 import { RestService } from '../../_service/RestService';
-import { PLUGIN_BASE_URL } from './../../../constants';
+// import { PLUGIN_BASE_URL } from './../../../constants';
 export class Node extends React.Component<any, any> {
   config: any;
   constructor(props: any) {
