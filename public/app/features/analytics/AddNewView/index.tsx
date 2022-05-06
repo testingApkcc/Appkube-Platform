@@ -463,7 +463,7 @@ class AddNewView extends React.Component<any, any> {
         retData.push(
           <li key={`left-side-dash-name-${i}`}>
             <a href="javascript: void(0)">
-              <i className="fa fa-ellipsis-h"></i>
+              {/* <i className="fa fa-ellipsis-h"></i> */}
               <span>{selectedDashboardsForTab[i]}</span>
             </a>
           </li>

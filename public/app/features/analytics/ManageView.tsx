@@ -137,7 +137,7 @@ class ManageView extends React.Component<any, any> {
               <span className={i === activeSideTab ? 'active' : ''} onClick={() => this.setActiveSideTab(i)}>
                 {sideData.title}
               </span>
-              <i className="fa fa-ellipsis-h" id={`PopoverFocus-${i}`}></i>
+              {/* <i className="fa fa-ellipsis-h" id={`PopoverFocus-${i}`}></i> */}
             </a>
             {/* <UncontrolledPopover trigger="legacy" placement="bottom" target={`PopoverFocus-${i}`}>
             <PopoverBody className="popup-btn">
