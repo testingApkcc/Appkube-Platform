@@ -1,6 +1,5 @@
-//import { withWidth } from '@material-ui/core';
 import * as React from 'react';
-// import { threadId } from 'worker_threads';
+// import { v4 } from 'uuid';
 
 export class SelectCloudFilter extends React.Component<any, any> {
     constructor(props: any) {
@@ -9,65 +8,15 @@ export class SelectCloudFilter extends React.Component<any, any> {
             codeEditorValue: "",
             displayJsonData: [
             ],
-            optionJsonData: [
-                {
-                    name: 'OU',
-                    value: 'ou',
-                    isChecked: false,
-                    id: 1,
-                    subdata: [
-                        { name: 'IT Department', value: 'itdepartment', isChecked: false, id: 1 },
-                        { name: 'Network Department', value: 'networkdepartment', isChecked: false, id: 2 },
-                        { name: 'Development', value: 'development', isChecked: false, id: 3 },
-                        { name: 'Testing', value: 'testing', isChecked: false, id: 4 },
-                    ],
-                },
-                {
-                    name: 'Status',
-                    value: 'status',
-                    isChecked: false,
-                    id: 2,
-                    subdata: [
-                        { name: 'Enable', value: 'enable', isChecked: false, id: 1 },
-                        { name: 'Disable', value: 'disable', isChecked: false, id: 2 },
-                    ],
-                },
-                {
-                    name: 'No of Assets',
-                    value: 'noOFssets',
-                    isChecked: false,
-                    id: 3,
-                    subdata: [],
-                },
-                {
-                    name: 'Platform',
-                    value: 'platform',
-                    isChecked: false,
-                    id: 4,
-                    subdata: [],
-                }, {
-                    name: 'Logs',
-                    value: 'logs',
-                    isChecked: false,
-                    id: 5,
-                    subdata: [],
-                }, {
-                    name: 'Performance & Availability',
-                    value: 'availabiity',
-                    isChecked: false,
-                    id: 6,
-                    subdata: []
-                }
-            ],
             showTagFilter: false,
             searchKey: [],
         };
     }
 
     componentDidMount() {
-    if (this.props.filterJsonData && this.props.filterJsonData.length>0 ){
-        this.setState({ displayJsonData:this.props.filterJsonData })
-    }
+        if (this.props.filterJsonData && this.props.filterJsonData.length > 0) {
+            this.setState({ displayJsonData: this.props.filterJsonData })
+        }
     }
 
     displaySelectedTags = () => {
@@ -84,17 +33,36 @@ export class SelectCloudFilter extends React.Component<any, any> {
                                 <span
                                 >{label.label}</span>
                                 <i className="fa fa-times"
-                                    onClick={() => this.removeSelectedTag(i,j)}
+                                    onClick={() => this.removeSelectedTag(i, j)}
                                 ></i>
                             </div>
                         );
-                        
+
                     }
                 }
             }
         }
         return retData;
     }
+
+    onChangeFilters = (filterData: any) => {
+        const retData: any = {};
+        if (filterData && filterData.length > 0) {
+            for (let i = 0; i < filterData.length; i++) {
+                let filter = filterData[i].filter;
+                for (let j = 0; j < filter.length; j++) {
+                    const label = filterData[i].filter[j];
+                    if (label.isChecked) {
+                        retData[filterData[i].name] = retData[filterData[i].name] || [];
+                        retData[filterData[i].name].push(label.value);
+                    }
+                }
+            }
+        }
+        if (this.props.onChangeFilter) {
+            this.props.onChangeFilter(retData);
+        }
+    };
 
     setChildData = (data: any) => {
         if (data.subdata.length > 0) {
@@ -109,19 +77,20 @@ export class SelectCloudFilter extends React.Component<any, any> {
         }
     }
 
-    removeSelectedTag = (index: any, key:any) => {
+    removeSelectedTag = (filterIndex: any, index: any) => {
         let { displayJsonData } = this.state
-        displayJsonData[index].filter[key].isChecked = false
+        displayJsonData[filterIndex].filter[index].isChecked = false
         this.setState({ displayJsonData })
+        this.onChangeFilters(displayJsonData);
     }
 
-    displayTagList = (filterData: any) => {
+    displayTagList = (filterData: any, filterIndex: any) => {
         let retData = [];
         for (let i = 0; i < filterData.length; i++) {
             if (!filterData[i].isHide) {
                 retData.push(
                     <div className="form-check"
-                        onClick={() => this.changeHandleState(i, filterData[i])}
+                        onClick={() => this.changeHandleState(filterIndex, i)}
                     >
                         <input type="checkbox" checked={filterData[i].isChecked} className="checkbox" />
                         <label htmlFor={filterData[i].value}>{filterData[i].label}</label>
@@ -132,10 +101,11 @@ export class SelectCloudFilter extends React.Component<any, any> {
         return retData;
     }
 
-    changeHandleState = (index: any, value: any) => {
-        value.isChecked = !value.isChecked;
-        let { displayJsonData, optionJsonData } = this.state;
-        this.setState({ displayJsonData, optionJsonData })
+    changeHandleState = (filterIndex: any, index: any) => {
+        let { displayJsonData } = this.state;
+        displayJsonData[filterIndex].filter[index].isChecked = !displayJsonData[filterIndex].filter[index].isChecked;
+        this.setState({ displayJsonData });
+        this.onChangeFilters(displayJsonData);
     }
 
     displaymainTagData = () => {
@@ -211,7 +181,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                                             </button>
                                         </div>
                                         <div className="fliters-links">
-                                            { filterData.filter && filterData.filter.length> 0 &&this.displayTagList(filterData.filter)}
+                                            {filterData.filter && filterData.filter.length > 0 && this.displayTagList(filterData.filter, index)}
                                         </div>
                                     </div>
                                 </div>

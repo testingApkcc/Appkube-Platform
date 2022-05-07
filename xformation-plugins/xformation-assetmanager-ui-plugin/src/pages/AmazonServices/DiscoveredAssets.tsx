@@ -26,7 +26,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
       openCreateMenu: '',
       servicesData: null,
       servicesLength: {},
-      totalProducts: 0,
       activeNode: '',
       accountId: ''
     };
@@ -99,34 +98,51 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
   getAppDataServices = (treeData: any) => {
     const nodeKeys = Object.keys(treeData);
-    const uniqueProducts: any = [];
     const servicesLength: any = {};
     nodeKeys.forEach((nodeKey: any) => {
-      const clusterData = treeData[nodeKey];
-      const clusterKeys = Object.keys(clusterData);
-      clusterKeys.forEach((clusterKey: any) => {
-        const appDataServices = clusterData[clusterKey];
-        const appDataKeys = Object.keys(appDataServices);
-        appDataKeys.forEach((appDataKey: any) => {
-          const commonBusinessServices = appDataServices[appDataKey];
-          const commonBusinessKeys = Object.keys(commonBusinessServices);
-          commonBusinessKeys.forEach((commonBusinessKey: any) => {
-            const productData = commonBusinessServices[commonBusinessKey];
-            const productKeys = Object.keys(productData);
-            productKeys.forEach((productKey: any) => {
-              if (uniqueProducts.indexOf(productKey) === -1) {
-                uniqueProducts.push(productKey);
-              }
-              servicesLength[nodeKey] = servicesLength[nodeKey] || {};
-              servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
-              servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
+      if (nodeKey === 'Global Services') {
+        const uniqueProducts: any = [];
+        const commonBusinessServices = treeData['Global Services'];
+        const commonBusinessKeys = Object.keys(commonBusinessServices);
+        commonBusinessKeys.forEach((commonBusinessKey: any) => {
+          const productData = commonBusinessServices[commonBusinessKey];
+          const productKeys = Object.keys(productData);
+          productKeys.forEach((productKey: any) => {
+            if (uniqueProducts.indexOf(productKey) === -1) {
+              uniqueProducts.push(productKey);
+            }
+            servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+            servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+          });
+        });
+      } else {
+        const uniqueProducts: any = [];
+        const clusterData = treeData[nodeKey];
+        const clusterKeys = Object.keys(clusterData);
+        clusterKeys.forEach((clusterKey: any) => {
+          const appDataServices = clusterData[clusterKey];
+          const appDataKeys = Object.keys(appDataServices);
+          appDataKeys.forEach((appDataKey: any) => {
+            const commonBusinessServices = appDataServices[appDataKey];
+            const commonBusinessKeys = Object.keys(commonBusinessServices);
+            commonBusinessKeys.forEach((commonBusinessKey: any) => {
+              const productData = commonBusinessServices[commonBusinessKey];
+              const productKeys = Object.keys(productData);
+              productKeys.forEach((productKey: any) => {
+                if (uniqueProducts.indexOf(productKey) === -1) {
+                  uniqueProducts.push(productKey);
+                }
+                servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+                servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+                servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
+                servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+              });
             });
           });
         });
-      });
+      }
     });
     this.setState({
-      totalProducts: uniqueProducts.length,
       servicesLength
     });
   };
@@ -179,7 +195,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderNodes = (nodes: any) => {
-    const { totalProducts, servicesLength, activeNode } = this.state;
+    const { servicesLength, activeNode } = this.state;
     const retData: any = [];
     if (nodes) {
       const keys = Object.keys(nodes);
@@ -193,9 +209,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
                 {key}
               </div>
-              <div className="tbody-td">{totalProducts}</div>
-              {servicesLength[key] && <div className="tbody-td">{servicesLength[key]['App']}</div>}
-              {servicesLength[key] && <div className="tbody-td">{servicesLength[key]['Data']}</div>}
+              <div className="tbody-td">{servicesLength[key] ? (servicesLength[key]['uniqueProducts'] || 0) : 0}</div>
+              <div className="tbody-td">{servicesLength[key] ? (servicesLength[key]['App'] || 0) : 0}</div>
+              <div className="tbody-td">{servicesLength[key] ? (servicesLength[key]['Data'] || 0) : 0}</div>
               <div className="tbody-td">
                 <div className="d-block text-center action-edit">
                   {node.showMenu &&
@@ -316,14 +332,13 @@ export class DiscoveredAssets extends React.Component<any, any>{
           User exp
         </div>
       </div>;
-      let retData: any = [];
+      let servicesJSX: any = [];
       const keys = Object.keys(servicesData);
       keys.forEach((key: any) => {
         if (SERVICE_MAPPING[key]) {
           const service = servicesData[key];
-          retData.push(
-            <div className="data-table">
-              {tableHead}
+          servicesJSX.push(
+            <>
               <div className="tbody" onClick={() => this.toggleCommonBusinessService(key)}>
                 <div className="name" style={{ paddingLeft: '15px' }}>
                   {SERVICE_MAPPING[key]} <span><i className="fa fa-angle-down"></i></span>
@@ -333,11 +348,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 service.isOpened ?
                   this.renderProducts(key, service) : <></>
               }
-            </div>
+            </>
           );
         }
       });
-      return retData;
+      return <div className="data-table">
+        {tableHead}
+        {servicesJSX}
+      </div>;
     }
     return <></>;
   };
@@ -428,9 +446,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
       labelText,
       organizationUnit: service.associatedOU,
       serviceType: service.serviceType,
-      serviceScore:'',
-      associatedProduct:service.associatedProduct,
-      asscociatedEnv:service.associatedEnv,
+      serviceScore: '',
+      associatedProduct: service.associatedProduct,
+      asscociatedEnv: service.associatedEnv,
     });
     localStorage.setItem('added-services', JSON.stringify(serviceData));
   };

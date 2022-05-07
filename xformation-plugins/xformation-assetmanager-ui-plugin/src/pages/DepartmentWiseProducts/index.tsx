@@ -165,24 +165,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           id: 40,
           filter: []
         },
-        {
-          name: 'Common Services',
-          key: 'common-services',
-          id: 51,
-          filter: []
-        },
-        {
-          name: 'Business Services',
-          key: 'business-services',
-          id: 57,
-          filter: []
-        },
-        {
-          name: 'SAL Violation',
-          key: 'sal-violation',
-          id: 68,
-          filter: []
-        },
       ],
     };
     this.breadCrumbs = [
@@ -198,8 +180,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
 
-  async componentDidMount() {
-    let departmentList = await localStorage.getItem('departmentData');
+  componentDidMount() {
+    let departmentList = localStorage.getItem('departmentData');
     let department: any;
     if (departmentList) {
       department = JSON.parse(departmentList);

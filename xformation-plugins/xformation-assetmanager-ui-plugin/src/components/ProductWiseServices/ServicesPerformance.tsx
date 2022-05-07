@@ -66,13 +66,18 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   renderStages = (deploymentEnvironmentList: any) => {
+    const { filters } = this.props;
+    const environmentFilters = filters['Environments'];
     if (deploymentEnvironmentList) {
       return deploymentEnvironmentList.map((environment: any, environmentIndex: number) => {
-        return (
-          <li onClick={() => this.toggleEnvironmentView(environmentIndex)} className={environment.isOpen == true ? 'active' : ''}>
-            {environment.name}
-          </li>
-        )
+        if (!environmentFilters || (environmentFilters && environmentFilters.indexOf(environment.name) !== -1)) {
+          return (
+            <li onClick={() => this.toggleEnvironmentView(environmentIndex)} className={environment.isOpen == true ? 'active' : ''}>
+              {environment.name}
+            </li>
+          )
+        }
+        return <></>;
       })
     }
     return null;
@@ -102,7 +107,7 @@ export class ServicesPerformance extends React.Component<any, any> {
           retData.push(
             <>
               <li>
-                {!category.isOpen && 
+                {!category.isOpen &&
                   <div className='icon'>
                     <div className="gauge">
                       <div className="gauge__container">
@@ -111,11 +116,10 @@ export class ServicesPerformance extends React.Component<any, any> {
                         <div
                           className="gauge__needle"
                           style={{
-                            transform: `rotate(${
-                              parseInt(category.overallScore, 10) /
-                                200 +
+                            transform: `rotate(${parseInt(category.overallScore, 10) /
+                              200 +
                               0.5
-                            }turn)`,
+                              }turn)`,
                           }}
                         ></div>
                       </div>
