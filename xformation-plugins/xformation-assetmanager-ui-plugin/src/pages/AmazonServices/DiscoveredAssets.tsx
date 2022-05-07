@@ -13,7 +13,7 @@ const SERVICE_MAPPING: any = {
   'Other': 'Other Services',
   'Network': 'Network Services',
   'Common': 'Common Services',
-  'Business': 'Business Services'
+  'Business': 'Business Services',
 };
 
 export class DiscoveredAssets extends React.Component<any, any>{
@@ -23,7 +23,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
     super(props);
     this.state = {
       tableData: {},
-      backupData: {},
       labelText: '',
       openCreateMenu: '',
       servicesData: null,
@@ -37,6 +36,10 @@ export class DiscoveredAssets extends React.Component<any, any>{
       }, {
         name: 'Clusters',
         key: 'clusters',
+        filter: []
+      }, {
+        name: 'Environments',
+        key: 'environments',
         filter: []
       }, {
         name: 'Service Type',
@@ -84,11 +87,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { filterData } = this.state;
     const filteredNodes: any = {};
     const filteredClusters: any = {};
+    const filteredEnvironment: any = {};
     const filteredServiceType: any = {};
     const filteredServiceNature: any = {};
     const filteredProducts: any = {};
     services.forEach((service: any) => {
-      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct } =
+      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct, associatedEnv } =
         service.details;
       const id = service.id;
       if (associatedProductEnclave) {
@@ -102,7 +106,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
           value: associatedCluster,
           label: associatedCluster,
         };
-        const serviceTypeData = clusterData[serviceType] || {};
+        const environmentData = clusterData[associatedEnv] || {};
+        filteredEnvironment[associatedEnv] = {
+          value: associatedEnv,
+          label: associatedEnv,
+        };
+        const serviceTypeData = environmentData[serviceType] || {};
         filteredServiceType[serviceType] = {
           value: serviceType,
           label: serviceType,
@@ -123,7 +132,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
         };
         assiciatedServiceData[associatedProduct] = productData;
         serviceTypeData[serviceNature] = assiciatedServiceData;
-        clusterData[serviceType] = serviceTypeData;
+        environmentData[serviceType] = serviceTypeData;
+        clusterData[associatedEnv] = environmentData;
         node[associatedCluster] = clusterData;
         treeData[associatedProductEnclave] = node;
       } else {
@@ -133,7 +143,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
           label: 'Global Services',
         };
         node.isGlobalService = true;
-        const assiciatedServiceData = node[serviceNature] || {};
+        const environmentData = node[associatedEnv] || {};
+        filteredEnvironment[associatedEnv] = {
+          value: associatedEnv,
+          label: associatedEnv,
+        };
+        const assiciatedServiceData = environmentData[serviceNature] || {};
         filteredServiceNature[serviceNature] = {
           value: serviceNature,
           label: serviceNature,
@@ -148,18 +163,19 @@ export class DiscoveredAssets extends React.Component<any, any>{
           label: associatedProduct,
         };
         assiciatedServiceData[associatedProduct] = productData;
-        node[serviceNature] = assiciatedServiceData;
+        environmentData[serviceNature] = assiciatedServiceData;
+        node[associatedEnv] = environmentData;
         treeData['Global Services'] = node;
       }
     });
     filterData[0].filter = this.convertObjectIntoArray(filteredNodes);
     filterData[1].filter = this.convertObjectIntoArray(filteredClusters);
-    filterData[2].filter = this.convertObjectIntoArray(filteredServiceType);
-    filterData[3].filter = this.convertObjectIntoArray(filteredServiceNature);
-    filterData[4].filter = this.convertObjectIntoArray(filteredProducts);
+    filterData[2].filter = this.convertObjectIntoArray(filteredEnvironment);
+    filterData[3].filter = this.convertObjectIntoArray(filteredServiceType);
+    filterData[4].filter = this.convertObjectIntoArray(filteredServiceNature);
+    filterData[5].filter = this.convertObjectIntoArray(filteredProducts);
     this.setState({
       tableData: treeData,
-      backupData: JSON.parse(JSON.stringify(treeData)),
       filterData
     });
     this.getAppDataServices(treeData);
@@ -178,17 +194,21 @@ export class DiscoveredAssets extends React.Component<any, any>{
     nodeKeys.forEach((nodeKey: any) => {
       if (nodeKey === 'Global Services') {
         const uniqueProducts: any = [];
-        const commonBusinessServices = treeData['Global Services'];
-        const commonBusinessKeys = Object.keys(commonBusinessServices);
-        commonBusinessKeys.forEach((commonBusinessKey: any) => {
-          const productData = commonBusinessServices[commonBusinessKey];
-          const productKeys = Object.keys(productData);
-          productKeys.forEach((productKey: any) => {
-            if (uniqueProducts.indexOf(productKey) === -1) {
-              uniqueProducts.push(productKey);
-            }
-            servicesLength[nodeKey] = servicesLength[nodeKey] || {};
-            servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+        const environmentData = treeData['Global Services'];
+        const environemntKeys = Object.keys(environmentData);
+        environemntKeys.forEach((enviornemntKey: any) => {
+          const commonBusinessServices = environmentData[enviornemntKey];
+          const commonBusinessKeys = Object.keys(commonBusinessServices);
+          commonBusinessKeys.forEach((commonBusinessKey: any) => {
+            const productData = commonBusinessServices[commonBusinessKey];
+            const productKeys = Object.keys(productData);
+            productKeys.forEach((productKey: any) => {
+              if (uniqueProducts.indexOf(productKey) === -1) {
+                uniqueProducts.push(productKey);
+              }
+              servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+              servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+            });
           });
         });
       } else {
@@ -196,22 +216,26 @@ export class DiscoveredAssets extends React.Component<any, any>{
         const clusterData = treeData[nodeKey];
         const clusterKeys = Object.keys(clusterData);
         clusterKeys.forEach((clusterKey: any) => {
-          const appDataServices = clusterData[clusterKey];
-          const appDataKeys = Object.keys(appDataServices);
-          appDataKeys.forEach((appDataKey: any) => {
-            const commonBusinessServices = appDataServices[appDataKey];
-            const commonBusinessKeys = Object.keys(commonBusinessServices);
-            commonBusinessKeys.forEach((commonBusinessKey: any) => {
-              const productData = commonBusinessServices[commonBusinessKey];
-              const productKeys = Object.keys(productData);
-              productKeys.forEach((productKey: any) => {
-                if (uniqueProducts.indexOf(productKey) === -1) {
-                  uniqueProducts.push(productKey);
-                }
-                servicesLength[nodeKey] = servicesLength[nodeKey] || {};
-                servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
-                servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
-                servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+          const environmentData = clusterData[clusterKey];
+          const environemntKeys = Object.keys(environmentData);
+          environemntKeys.forEach((enviornemntKey: any) => {
+            const appDataServices = environmentData[enviornemntKey];
+            const appDataKeys = Object.keys(appDataServices);
+            appDataKeys.forEach((appDataKey: any) => {
+              const commonBusinessServices = appDataServices[appDataKey];
+              const commonBusinessKeys = Object.keys(commonBusinessServices);
+              commonBusinessKeys.forEach((commonBusinessKey: any) => {
+                const productData = commonBusinessServices[commonBusinessKey];
+                const productKeys = Object.keys(productData);
+                productKeys.forEach((productKey: any) => {
+                  if (uniqueProducts.indexOf(productKey) === -1) {
+                    uniqueProducts.push(productKey);
+                  }
+                  servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+                  servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+                  servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
+                  servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+                });
               });
             });
           });
@@ -225,22 +249,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
   toggleNode = (key: any) => {
     const { tableData } = this.state;
-    if (tableData[key].isGlobalService) {
-      const data = JSON.parse(JSON.stringify(tableData[key]));
-      delete data.isGlobalService;
-      this.setState({
-        servicesData: data,
-        activeNode: key,
-        labelText: 'Global services',
-      });
-    } else {
-      tableData[key].isOpened = !tableData[key].isOpened;
-      this.setState({
-        tableData,
-        servicesData: null,
-        activeNode: key,
-      });
-    }
+    tableData[key].isOpened = !tableData[key].isOpened;
+    this.setState({
+      tableData,
+      servicesData: null,
+      activeNode: key,
+    });
   }
 
   toggleCluster = (nodeKey: any, clusterKey: any) => {
@@ -253,11 +267,31 @@ export class DiscoveredAssets extends React.Component<any, any>{
     });
   }
 
-  onClickAppDataService = (nodeKey: any, clusterKey: any, serviceKey: any) => {
+  toggleEnvironemt = (nodeKey: any, clusterKey: any, environmentKey: any) => {
     const { tableData } = this.state;
-    let text = nodeKey + ' > ' + clusterKey + ' > ' + serviceKey + ' Services';
+    tableData[nodeKey][clusterKey][environmentKey].isOpened = !tableData[nodeKey][clusterKey][environmentKey].isOpened;
     this.setState({
-      servicesData: tableData[nodeKey][clusterKey][serviceKey],
+      tableData,
+      servicesData: null,
+      activeNode: environmentKey
+    });
+  }
+
+  onClickGlobalEnvironment = (nodeKey: any, environmentKey: any) => {
+    const { tableData } = this.state;
+    const data = JSON.parse(JSON.stringify(tableData[nodeKey][environmentKey]));
+    this.setState({
+      servicesData: data,
+      activeNode: environmentKey,
+      labelText: 'Global services',
+    });
+  };
+
+  onClickAppDataService = (nodeKey: any, clusterKey: any, environmentKey: any, serviceKey: any) => {
+    const { tableData } = this.state;
+    let text = nodeKey + ' > ' + clusterKey + ' > ' + environmentKey + ' > ' + serviceKey + ' Services';
+    this.setState({
+      servicesData: tableData[nodeKey][clusterKey][environmentKey][serviceKey],
       labelText: text,
       activeNode: serviceKey
     });
@@ -311,9 +345,13 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 </div>
               </div>
               {
-                !node.isGlobalService && node.isOpened ?
+                node.isOpened ?
                   <Collapse className="collapse-content" isOpen={node.isOpened}>
-                    {this.renderClusters(key, node)}
+                    {
+                      node.isGlobalService ?
+                        this.renderGlobalEnvironments(key, node) :
+                        this.renderClusters(key, node)
+                    }
                   </Collapse> : <></>
               }
             </div>
@@ -345,7 +383,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
               {
                 cluster.isOpened ?
                   <Collapse className="collapse-content" isOpen={cluster.isOpened}>
-                    {this.renerAppDataServices(nodeKey, key, cluster)}
+                    {this.renderEnviornents(nodeKey, key, cluster)}
                   </Collapse> : <></>
               }
             </div >
@@ -356,7 +394,64 @@ export class DiscoveredAssets extends React.Component<any, any>{
     return retData;
   };
 
-  renerAppDataServices = (nodeKey: any, clusterKey: any, services: any) => {
+  renderEnviornents = (nodeKey: any, clusterKey: any, environents: any) => {
+    const { activeNode, filters } = this.state;
+    const filteredEnvironments = filters['Environments'];
+    const retData: any = [];
+    const keys = Object.keys(environents);
+    keys.forEach(((key: any) => {
+      if ((filteredEnvironments && filteredEnvironments.indexOf(key) !== -1) || !filteredEnvironments) {
+        if (key !== 'isOpened' && key !== 'showMenu') {
+          const environment = environents[key];
+          retData.push(
+            <div className="tbody">
+              <div className="tbody-inner">
+                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleEnvironemt(nodeKey, clusterKey, key)}>
+                  <div className={environment.isOpened ? "caret-down" : "caret-right"}></div>
+                  {key}
+                </div >
+                {/* </Link> */}
+              </div >
+              {
+                environment.isOpened ?
+                  <Collapse className="collapse-content" isOpen={environment.isOpened}>
+                    {this.renerAppDataServices(nodeKey, clusterKey, key, environment)}
+                  </Collapse> : <></>
+              }
+            </div >
+          );
+        }
+      }
+    }));
+    return retData;
+  };
+
+  renderGlobalEnvironments = (nodeKey: any, environents: any) => {
+    const { activeNode, filters } = this.state;
+    const filteredEnvironments = filters['Environments'];
+    const retData: any = [];
+    const keys = Object.keys(environents);
+    keys.forEach(((key: any) => {
+      if ((filteredEnvironments && filteredEnvironments.indexOf(key) !== -1) || !filteredEnvironments) {
+        if (key !== 'isOpened' && key !== 'showMenu' && key !== 'isGlobalService') {
+          const environment = environents[key];
+          retData.push(
+            <div className="tbody">
+              <div className="tbody-inner">
+                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickGlobalEnvironment(nodeKey, key)}>
+                  <div className={environment.isOpened ? "caret-down" : "caret-right"}></div>
+                  {key}
+                </div >
+              </div >
+            </div >
+          );
+        }
+      }
+    }));
+    return retData;
+  };
+
+  renerAppDataServices = (nodeKey: any, clusterKey: any, environmentKey: any, services: any) => {
     const { activeNode, filters } = this.state;
     const filteredServiceType = filters['Service Type'];
     const retData: any = [];
@@ -367,7 +462,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
           retData.push(
             <div className="tbody">
               <div className="tbody-inner">
-                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, key)}>
+                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, environmentKey, key)}>
                   {SERVICE_MAPPING[key]}
                 </div>
               </div>
