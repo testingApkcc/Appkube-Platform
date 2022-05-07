@@ -26219,6 +26219,7 @@ object-assign
                 var filterData = _this.state.filterData;
                 var filteredNodes = {};
                 var filteredClusters = {};
+                var filteredEnvironment = {};
                 var filteredServiceType = {};
                 var filteredServiceNature = {};
                 var filteredProducts = {};
@@ -26228,7 +26229,8 @@ object-assign
                     associatedCluster = _a.associatedCluster,
                     serviceType = _a.serviceType,
                     serviceNature = _a.serviceNature,
-                    associatedProduct = _a.associatedProduct;
+                    associatedProduct = _a.associatedProduct,
+                    associatedEnv = _a.associatedEnv;
                   var id = service.id;
 
                   if (associatedProductEnclave) {
@@ -26242,7 +26244,12 @@ object-assign
                       value: associatedCluster,
                       label: associatedCluster,
                     };
-                    var serviceTypeData = clusterData[serviceType] || {};
+                    var environmentData = clusterData[associatedEnv] || {};
+                    filteredEnvironment[associatedEnv] = {
+                      value: associatedEnv,
+                      label: associatedEnv,
+                    };
+                    var serviceTypeData = environmentData[serviceType] || {};
                     filteredServiceType[serviceType] = {
                       value: serviceType,
                       label: serviceType,
@@ -26270,7 +26277,8 @@ object-assign
                     };
                     assiciatedServiceData[associatedProduct] = productData;
                     serviceTypeData[serviceNature] = assiciatedServiceData;
-                    clusterData[serviceType] = serviceTypeData;
+                    environmentData[serviceType] = serviceTypeData;
+                    clusterData[associatedEnv] = environmentData;
                     node[associatedCluster] = clusterData;
                     treeData[associatedProductEnclave] = node;
                   } else {
@@ -26280,7 +26288,12 @@ object-assign
                       label: 'Global Services',
                     };
                     node.isGlobalService = true;
-                    var assiciatedServiceData = node[serviceNature] || {};
+                    var environmentData = node[associatedEnv] || {};
+                    filteredEnvironment[associatedEnv] = {
+                      value: associatedEnv,
+                      label: associatedEnv,
+                    };
+                    var assiciatedServiceData = environmentData[serviceNature] || {};
                     filteredServiceNature[serviceNature] = {
                       value: serviceNature,
                       label: serviceNature,
@@ -26302,19 +26315,20 @@ object-assign
                       label: associatedProduct,
                     };
                     assiciatedServiceData[associatedProduct] = productData;
-                    node[serviceNature] = assiciatedServiceData;
+                    environmentData[serviceNature] = assiciatedServiceData;
+                    node[associatedEnv] = environmentData;
                     treeData['Global Services'] = node;
                   }
                 });
                 filterData[0].filter = _this.convertObjectIntoArray(filteredNodes);
                 filterData[1].filter = _this.convertObjectIntoArray(filteredClusters);
-                filterData[2].filter = _this.convertObjectIntoArray(filteredServiceType);
-                filterData[3].filter = _this.convertObjectIntoArray(filteredServiceNature);
-                filterData[4].filter = _this.convertObjectIntoArray(filteredProducts);
+                filterData[2].filter = _this.convertObjectIntoArray(filteredEnvironment);
+                filterData[3].filter = _this.convertObjectIntoArray(filteredServiceType);
+                filterData[4].filter = _this.convertObjectIntoArray(filteredServiceNature);
+                filterData[5].filter = _this.convertObjectIntoArray(filteredProducts);
 
                 _this.setState({
                   tableData: treeData,
-                  backupData: JSON.parse(JSON.stringify(treeData)),
                   filterData: filterData,
                 });
 
@@ -26334,18 +26348,22 @@ object-assign
                 nodeKeys.forEach(function (nodeKey) {
                   if (nodeKey === 'Global Services') {
                     var uniqueProducts_1 = [];
-                    var commonBusinessServices_1 = treeData['Global Services'];
-                    var commonBusinessKeys = Object.keys(commonBusinessServices_1);
-                    commonBusinessKeys.forEach(function (commonBusinessKey) {
-                      var productData = commonBusinessServices_1[commonBusinessKey];
-                      var productKeys = Object.keys(productData);
-                      productKeys.forEach(function (productKey) {
-                        if (uniqueProducts_1.indexOf(productKey) === -1) {
-                          uniqueProducts_1.push(productKey);
-                        }
+                    var environmentData_1 = treeData['Global Services'];
+                    var environemntKeys = Object.keys(environmentData_1);
+                    environemntKeys.forEach(function (enviornemntKey) {
+                      var commonBusinessServices = environmentData_1[enviornemntKey];
+                      var commonBusinessKeys = Object.keys(commonBusinessServices);
+                      commonBusinessKeys.forEach(function (commonBusinessKey) {
+                        var productData = commonBusinessServices[commonBusinessKey];
+                        var productKeys = Object.keys(productData);
+                        productKeys.forEach(function (productKey) {
+                          if (uniqueProducts_1.indexOf(productKey) === -1) {
+                            uniqueProducts_1.push(productKey);
+                          }
 
-                        servicesLength[nodeKey] = servicesLength[nodeKey] || {};
-                        servicesLength[nodeKey].uniqueProducts = uniqueProducts_1.length;
+                          servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+                          servicesLength[nodeKey].uniqueProducts = uniqueProducts_1.length;
+                        });
                       });
                     });
                   } else {
@@ -26353,23 +26371,27 @@ object-assign
                     var clusterData_1 = treeData[nodeKey];
                     var clusterKeys = Object.keys(clusterData_1);
                     clusterKeys.forEach(function (clusterKey) {
-                      var appDataServices = clusterData_1[clusterKey];
-                      var appDataKeys = Object.keys(appDataServices);
-                      appDataKeys.forEach(function (appDataKey) {
-                        var commonBusinessServices = appDataServices[appDataKey];
-                        var commonBusinessKeys = Object.keys(commonBusinessServices);
-                        commonBusinessKeys.forEach(function (commonBusinessKey) {
-                          var productData = commonBusinessServices[commonBusinessKey];
-                          var productKeys = Object.keys(productData);
-                          productKeys.forEach(function (productKey) {
-                            if (uniqueProducts_2.indexOf(productKey) === -1) {
-                              uniqueProducts_2.push(productKey);
-                            }
+                      var environmentData = clusterData_1[clusterKey];
+                      var environemntKeys = Object.keys(environmentData);
+                      environemntKeys.forEach(function (enviornemntKey) {
+                        var appDataServices = environmentData[enviornemntKey];
+                        var appDataKeys = Object.keys(appDataServices);
+                        appDataKeys.forEach(function (appDataKey) {
+                          var commonBusinessServices = appDataServices[appDataKey];
+                          var commonBusinessKeys = Object.keys(commonBusinessServices);
+                          commonBusinessKeys.forEach(function (commonBusinessKey) {
+                            var productData = commonBusinessServices[commonBusinessKey];
+                            var productKeys = Object.keys(productData);
+                            productKeys.forEach(function (productKey) {
+                              if (uniqueProducts_2.indexOf(productKey) === -1) {
+                                uniqueProducts_2.push(productKey);
+                              }
 
-                            servicesLength[nodeKey] = servicesLength[nodeKey] || {};
-                            servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
-                            servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
-                            servicesLength[nodeKey].uniqueProducts = uniqueProducts_2.length;
+                              servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+                              servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+                              servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
+                              servicesLength[nodeKey].uniqueProducts = uniqueProducts_2.length;
+                            });
                           });
                         });
                       });
@@ -26384,25 +26406,13 @@ object-assign
 
               _this.toggleNode = function (key) {
                 var tableData = _this.state.tableData;
+                tableData[key].isOpened = !tableData[key].isOpened;
 
-                if (tableData[key].isGlobalService) {
-                  var data = JSON.parse(JSON.stringify(tableData[key]));
-                  delete data.isGlobalService;
-
-                  _this.setState({
-                    servicesData: data,
-                    activeNode: key,
-                    labelText: 'Global services',
-                  });
-                } else {
-                  tableData[key].isOpened = !tableData[key].isOpened;
-
-                  _this.setState({
-                    tableData: tableData,
-                    servicesData: null,
-                    activeNode: key,
-                  });
-                }
+                _this.setState({
+                  tableData: tableData,
+                  servicesData: null,
+                  activeNode: key,
+                });
               };
 
               _this.toggleCluster = function (nodeKey, clusterKey) {
@@ -26416,12 +26426,35 @@ object-assign
                 });
               };
 
-              _this.onClickAppDataService = function (nodeKey, clusterKey, serviceKey) {
+              _this.toggleEnvironemt = function (nodeKey, clusterKey, environmentKey) {
                 var tableData = _this.state.tableData;
-                var text = nodeKey + ' > ' + clusterKey + ' > ' + serviceKey + ' Services';
+                tableData[nodeKey][clusterKey][environmentKey].isOpened =
+                  !tableData[nodeKey][clusterKey][environmentKey].isOpened;
 
                 _this.setState({
-                  servicesData: tableData[nodeKey][clusterKey][serviceKey],
+                  tableData: tableData,
+                  servicesData: null,
+                  activeNode: environmentKey,
+                });
+              };
+
+              _this.onClickGlobalEnvironment = function (nodeKey, environmentKey) {
+                var tableData = _this.state.tableData;
+                var data = JSON.parse(JSON.stringify(tableData[nodeKey][environmentKey]));
+
+                _this.setState({
+                  servicesData: data,
+                  activeNode: environmentKey,
+                  labelText: 'Global services',
+                });
+              };
+
+              _this.onClickAppDataService = function (nodeKey, clusterKey, environmentKey, serviceKey) {
+                var tableData = _this.state.tableData;
+                var text = nodeKey + ' > ' + clusterKey + ' > ' + environmentKey + ' > ' + serviceKey + ' Services';
+
+                _this.setState({
+                  servicesData: tableData[nodeKey][clusterKey][environmentKey][serviceKey],
                   labelText: text,
                   activeNode: serviceKey,
                 });
@@ -26551,14 +26584,16 @@ object-assign
                               )
                             )
                           ),
-                          !node.isGlobalService && node.isOpened
+                          node.isOpened
                             ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 reactstrap__WEBPACK_IMPORTED_MODULE_8__['default'],
                                 {
                                   className: 'collapse-content',
                                   isOpen: node.isOpened,
                                 },
-                                _this.renderClusters(key, node)
+                                node.isGlobalService
+                                  ? _this.renderGlobalEnvironments(key, node)
+                                  : _this.renderClusters(key, node)
                               )
                             : react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
@@ -26620,7 +26655,7 @@ object-assign
                                   className: 'collapse-content',
                                   isOpen: cluster.isOpened,
                                 },
-                                _this.renerAppDataServices(nodeKey, key, cluster)
+                                _this.renderEnviornents(nodeKey, key, cluster)
                               )
                             : react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
@@ -26634,7 +26669,108 @@ object-assign
                 return retData;
               };
 
-              _this.renerAppDataServices = function (nodeKey, clusterKey, services) {
+              _this.renderEnviornents = function (nodeKey, clusterKey, environents) {
+                var _a = _this.state,
+                  activeNode = _a.activeNode,
+                  filters = _a.filters;
+                var filteredEnvironments = filters['Environments'];
+                var retData = [];
+                var keys = Object.keys(environents);
+                keys.forEach(function (key) {
+                  if ((filteredEnvironments && filteredEnvironments.indexOf(key) !== -1) || !filteredEnvironments) {
+                    if (key !== 'isOpened' && key !== 'showMenu') {
+                      var environment = environents[key];
+                      retData.push(
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'tbody',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'tbody-inner',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                className: 'tbody-td first '.concat(activeNode === key ? 'active' : ''),
+                                onClick: function () {
+                                  return _this.toggleEnvironemt(nodeKey, clusterKey, key);
+                                },
+                              },
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+                                className: environment.isOpened ? 'caret-down' : 'caret-right',
+                              }),
+                              key
+                            )
+                          ),
+                          environment.isOpened
+                            ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                reactstrap__WEBPACK_IMPORTED_MODULE_8__['default'],
+                                {
+                                  className: 'collapse-content',
+                                  isOpen: environment.isOpened,
+                                },
+                                _this.renerAppDataServices(nodeKey, clusterKey, key, environment)
+                              )
+                            : react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                                null
+                              )
+                        )
+                      );
+                    }
+                  }
+                });
+                return retData;
+              };
+
+              _this.renderGlobalEnvironments = function (nodeKey, environents) {
+                var _a = _this.state,
+                  activeNode = _a.activeNode,
+                  filters = _a.filters;
+                var filteredEnvironments = filters['Environments'];
+                var retData = [];
+                var keys = Object.keys(environents);
+                keys.forEach(function (key) {
+                  if ((filteredEnvironments && filteredEnvironments.indexOf(key) !== -1) || !filteredEnvironments) {
+                    if (key !== 'isOpened' && key !== 'showMenu' && key !== 'isGlobalService') {
+                      var environment = environents[key];
+                      retData.push(
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'tbody',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'tbody-inner',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                className: 'tbody-td first '.concat(activeNode === key ? 'active' : ''),
+                                onClick: function () {
+                                  return _this.onClickGlobalEnvironment(nodeKey, key);
+                                },
+                              },
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+                                className: environment.isOpened ? 'caret-down' : 'caret-right',
+                              }),
+                              key
+                            )
+                          )
+                        )
+                      );
+                    }
+                  }
+                });
+                return retData;
+              };
+
+              _this.renerAppDataServices = function (nodeKey, clusterKey, environmentKey, services) {
                 var _a = _this.state,
                   activeNode = _a.activeNode,
                   filters = _a.filters;
@@ -26660,7 +26796,7 @@ object-assign
                               {
                                 className: 'tbody-td first '.concat(activeNode === key ? 'active' : ''),
                                 onClick: function () {
-                                  return _this.onClickAppDataService(nodeKey, clusterKey, key);
+                                  return _this.onClickAppDataService(nodeKey, clusterKey, environmentKey, key);
                                 },
                               },
                               SERVICE_MAPPING[key]
@@ -27052,7 +27188,6 @@ object-assign
 
               _this.state = {
                 tableData: {},
-                backupData: {},
                 labelText: '',
                 openCreateMenu: '',
                 servicesData: null,
@@ -27068,6 +27203,11 @@ object-assign
                   {
                     name: 'Clusters',
                     key: 'clusters',
+                    filter: [],
+                  },
+                  {
+                    name: 'Environments',
+                    key: 'environments',
                     filter: [],
                   },
                   {
