@@ -48,7 +48,7 @@ export class StorageDetails extends React.Component<any, any> {
                     <li className={activeTab === i ? 'active' : ''} onClick={e => this.setActiveTab(i)}>
                         <a>
                             {node.name}
-                            <i className="fa fa-times" aria-hidden="true" onClick={() => this.removeTab(i)}></i>
+                            <i className="fa fa-times" aria-hidden="true" onClick={(e: any) => this.removeTab(i, e)}></i>
                         </a>
                     </li>
                 );
@@ -57,13 +57,14 @@ export class StorageDetails extends React.Component<any, any> {
         return retData;
     }
 
-    removeTab = (index: any) => {
-        const { serviceDetails } = this.state;
+    removeTab = (index: any, e: any) => {
+        e.stopPropagation();
+        const { serviceDetails, activeTab } = this.state;
         if (serviceDetails.length > 1) {
             serviceDetails.splice(index, 1);
             this.setState({
                 serviceDetails,
-                activeTab: serviceDetails.length,
+                activeTab: serviceDetails[activeTab] ? activeTab : serviceDetails.length - 1,
             });
             localStorage.setItem('added-services', JSON.stringify(serviceDetails));
         } else {

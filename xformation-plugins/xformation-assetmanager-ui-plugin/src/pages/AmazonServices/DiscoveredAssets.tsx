@@ -230,7 +230,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
       delete data.isGlobalService;
       this.setState({
         servicesData: data,
-        activeNode: key
+        activeNode: key,
+        labelText: 'Global services',
       });
     } else {
       tableData[key].isOpened = !tableData[key].isOpened;
@@ -532,13 +533,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (existingIndex !== -1) {
       serviceData.splice(existingIndex, 1);
     }
+    let avgScore = (service.performance.score + service.availability.score + service.security.score + service.dataProtection.score + service.userExperiance.score) / 5;
     serviceData.push({
       id: service.id,
       name: service.name,
       labelText,
       organizationUnit: service.associatedOU,
       serviceType: service.serviceType,
-      serviceScore: '',
+      serviceScore: avgScore.toFixed(2),
       associatedProduct: service.associatedProduct,
       asscociatedEnv: service.associatedEnv,
     });
@@ -610,14 +612,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className={servicesData ? "organisational-data-table-right" : ""}>
                 <div className="right-part-filters">
                   <div className="row">
-                    <div className="col-lg-6 col-md-12 col-sm-12">
+                    <div className="col-lg-12 col-md-12 col-sm-12">
                       <div className="filters-breadcrumbs">
                         <ul>
                           <li>{labelText}</li>
                         </ul>
                       </div>
                     </div>
-                    <div className="col-lg-6 col-md-12 col-sm-12">
+                    <div className="col-lg-6 col-md-12 col-sm-12" style={{ display: 'none' }}>
                       <div className="filters-buttons">
                         <button className="asset-white-button min-width-inherit">
                           <i className="fa fa-plus"></i> Add
@@ -631,7 +633,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                       </div>
                     </div>
                   </div>
-                  <div className="row">
+                  <div className="row" style={{ display: 'none' }}>
                     <div className="col-lg-4 col-md-12 col-sm-12">
                       <div className="filters-search">
                         <label>Filter by deployment name</label>

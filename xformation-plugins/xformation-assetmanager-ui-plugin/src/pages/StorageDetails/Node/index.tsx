@@ -201,52 +201,55 @@ export class Node extends React.Component<any, any> {
             </div> */}
           </div>
         </div>
-        <div className="services-displayed-here">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="services-text">
-                <label>Organisation Unit</label>
-                {serviceData && serviceData.organizationUnit && <span>{serviceData.organizationUnit}</span>}
+        {
+          serviceData ?
+            <div className="services-displayed-here">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Organisation Unit</label>
+                    <span>{serviceData.organizationUnit}</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Associated Product</label>
+                    <span>{serviceData.associatedProduct}</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Added At</label>
+                    <span>Feb 01, 2021 21:30</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Associated Environment</label>
+                    <span>{serviceData.asscociatedEnv}</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Service Type</label>
+                    <span>{serviceData.serviceType}</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Alerts</label>
+                    <span>2</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Service Score</label>
+                    <span className={`status ${this.getPerformanceClass(serviceData.serviceScore)}`}>{serviceData.serviceScore}%</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="col-md-6">
-              <div className="services-text">
-                <label>Associated Product</label>
-                {serviceData && serviceData.associatedProduct && <span>{serviceData.associatedProduct}</span>}
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="services-text">
-                <label>Added At</label>
-                <span>Feb 01, 2021 21:30</span>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="services-text">
-                <label>Associated Environment</label>
-                {serviceData && serviceData.asscociatedEnv && <span>{serviceData.asscociatedEnv}</span>}
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="services-text">
-                <label>Service Type</label>
-                {serviceData && serviceData.serviceType && <span>{serviceData.serviceType}</span>}
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="services-text">
-                <label>Alerts</label>
-                <span>2</span>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="services-text">
-                <label>Service Score</label>
-                <span className={`status ${this.getPerformanceClass('')}`}>100%</span>
-              </div>
-            </div>
-          </div>
-        </div>
+            </div> : <></>
+        }
         <WebServiceWizard steps={steps} {...this.props} dashboardData={dashboardData} viewJson={viewJson} getAddedDashboards={this.getAddedDashboards} />
       </div>
     );
