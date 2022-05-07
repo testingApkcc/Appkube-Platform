@@ -15,7 +15,6 @@ export interface Props {
 }
 
 class ManageView extends React.Component<any, any> {
-  // openDeleteTabRef: any;
   breadCrumbs: any = [
     {
       label: 'Home',
@@ -38,19 +37,16 @@ class ManageView extends React.Component<any, any> {
       sideBarData: [],
       activeTab: 0,
       activeSideTab: 0,
-      deletedId: 0,
-      activeSidebar: 0,
       loading: false,
       viewName: '',
       description: '',
     };
-    // this.openDeleteTabRef = React.createRef();
   }
 
   componentDidMount() {
-    const { location } = this.props;
-    if (location && location.routeParams && location.routeParams.id) {
-      this.getDashData(location.routeParams.id);
+    const { match } = this.props;
+    if (match && match.params && match.params.id) {
+      this.getDashData(match.params.id);
     } else {
       locationService.push(`/analytics`);
     }
@@ -74,6 +70,23 @@ class ManageView extends React.Component<any, any> {
           loading: false,
         });
       });
+
+    let data: any = localStorage.getItem('dashboardList');
+    if (data) {
+      data = JSON.parse(data);
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id === id) {
+          const { viewJson, name, description } = data[i];
+          this.setState({
+            viewName: name,
+            description: description,
+            tabs: viewJson,
+            loading: false,
+          });
+          break;
+        }
+      }
+    }
   };
 
   displayTabs = () => {
@@ -105,24 +118,6 @@ class ManageView extends React.Component<any, any> {
     });
   };
 
-  // addTab = () => {
-  //   const { tabs } = this.state;
-  //   const length = tabs.length;
-  //   tabs.push({ label: 'Tab' + (length + 1) });
-  //   this.setState({
-  //     tabs,
-  //     activeTab: length,
-  //   });
-  // };
-
-  // deleteTabData = (data: any, index: any) => {
-  //   this.setState({
-  //     selectedData: data,
-  //     deletedId: index,
-  //   });
-  //   this.openDeleteTabRef.current.toggle();
-  // };
-
   renderSideBar = () => {
     const { activeTab, tabs, activeSideTab } = this.state;
     let retData = [];
@@ -137,50 +132,12 @@ class ManageView extends React.Component<any, any> {
               <span className={i === activeSideTab ? 'active' : ''} onClick={() => this.setActiveSideTab(i)}>
                 {sideData.title}
               </span>
-              {/* <i className="fa fa-ellipsis-h" id={`PopoverFocus-${i}`}></i> */}
             </a>
-            {/* <UncontrolledPopover trigger="legacy" placement="bottom" target={`PopoverFocus-${i}`}>
-            <PopoverBody className="popup-btn">
-              <ul>
-                {i !== 0 && (
-                  <li onClick={() => this.moveArrayPosition(i, i - 1)}>
-                    <a href="#">
-                      <i className="fa fa-caret-up"></i>
-                      Move Up
-                    </a>
-                  </li>
-                )}
-                {i !== sideBarData.length - 1 && (
-                  <li onClick={() => this.moveArrayPosition(i, i + 1)}>
-                    <a href="#">
-                      <i className="fa fa-caret-down"></i>Move Down
-                    </a>
-                  </li>
-                )}
-                <li onClick={() => this.deleteTabData(sideData, i)}>
-                  <a href="#">
-                    <i className="fa fa-trash"></i>
-                    Delete
-                  </a>
-                </li>
-              </ul>
-            </PopoverBody>
-          </UncontrolledPopover> */}
           </li>
         );
       }
     }
     return retData;
-  };
-
-  moveArrayPosition = (fromIndex: any, toIndex: any) => {
-    const { sideBarData } = this.state;
-    var element = sideBarData[fromIndex];
-    sideBarData.splice(fromIndex, 1);
-    sideBarData.splice(toIndex, 0, element);
-    this.setState({
-      sideBarData,
-    });
   };
 
   createDashboard = () => {
@@ -205,18 +162,6 @@ class ManageView extends React.Component<any, any> {
       }
     }
     return retData;
-  };
-
-  removeDashboardRecord = () => {
-    const { deletedId, sideBarData } = this.state;
-    for (let i = 0; i < sideBarData.length; i++) {
-      if (i === deletedId) {
-        sideBarData.splice(i, 1);
-      }
-    }
-    this.setState({
-      sideBarData,
-    });
   };
 
   render() {
@@ -295,11 +240,6 @@ class ManageView extends React.Component<any, any> {
         {!loading && (!tabs || (tabs && !tabs.length)) && (
           <div style={{ textAlign: 'center', marginTop: '40px' }}>There no data in this view</div>
         )}
-        {/* <DeleteTabPopup
-            ref={this.openDeleteTabRef}
-            deleteContent={selectedData}
-            deleteDataFromSidebar={this.removeDashboardRecord}
-          /> */}
       </React.Fragment>
     );
   }
