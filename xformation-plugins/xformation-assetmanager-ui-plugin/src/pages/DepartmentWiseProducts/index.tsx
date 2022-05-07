@@ -5,14 +5,12 @@ import { images } from '../../img';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
-// import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { ProductWiseServices } from '../../components/ProductWiseServices';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import _ from 'lodash';
-// import { values } from 'lodash';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

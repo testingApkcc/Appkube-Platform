@@ -552,6 +552,10 @@ a:hover {
   line-height: 20px;
   margin-bottom: 0;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 140px;
 }
 .fliters-container .fliters-collapse-bg {
   position: fixed;
