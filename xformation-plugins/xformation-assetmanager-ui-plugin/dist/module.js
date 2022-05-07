@@ -26392,6 +26392,7 @@ object-assign
                   _this.setState({
                     servicesData: data,
                     activeNode: key,
+                    labelText: 'Global services',
                   });
                 } else {
                   tableData[key].isOpened = !tableData[key].isOpened;
@@ -27011,13 +27012,20 @@ object-assign
                   serviceData.splice(existingIndex, 1);
                 }
 
+                var avgScore =
+                  (service.performance.score +
+                    service.availability.score +
+                    service.security.score +
+                    service.dataProtection.score +
+                    service.userExperiance.score) /
+                  5;
                 serviceData.push({
                   id: service.id,
                   name: service.name,
                   labelText: labelText,
                   organizationUnit: service.associatedOU,
                   serviceType: service.serviceType,
-                  serviceScore: '',
+                  serviceScore: avgScore.toFixed(2),
                   associatedProduct: service.associatedProduct,
                   asscociatedEnv: service.associatedEnv,
                 });
@@ -27275,7 +27283,7 @@ object-assign
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
                               {
-                                className: 'col-lg-6 col-md-12 col-sm-12',
+                                className: 'col-lg-12 col-md-12 col-sm-12',
                               },
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'div',
@@ -27293,6 +27301,9 @@ object-assign
                               'div',
                               {
                                 className: 'col-lg-6 col-md-12 col-sm-12',
+                                style: {
+                                  display: 'none',
+                                },
                               },
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'div',
@@ -27336,6 +27347,9 @@ object-assign
                             'div',
                             {
                               className: 'row',
+                              style: {
+                                display: 'none',
+                              },
                             },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
@@ -32741,8 +32755,8 @@ object-assign
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
                             className: 'fa fa-times',
                             'aria-hidden': 'true',
-                            onClick: function () {
-                              return _this.removeTab(i);
+                            onClick: function (e) {
+                              return _this.removeTab(i, e);
                             },
                           })
                         )
@@ -32758,15 +32772,18 @@ object-assign
                 return retData;
               };
 
-              _this.removeTab = function (index) {
-                var serviceDetails = _this.state.serviceDetails;
+              _this.removeTab = function (index, e) {
+                e.stopPropagation();
+                var _a = _this.state,
+                  serviceDetails = _a.serviceDetails,
+                  activeTab = _a.activeTab;
 
                 if (serviceDetails.length > 1) {
                   serviceDetails.splice(index, 1);
 
                   _this.setState({
                     serviceDetails: serviceDetails,
-                    activeTab: serviceDetails.length,
+                    activeTab: serviceDetails[activeTab] ? activeTab : serviceDetails.length - 1,
                   });
 
                   localStorage.setItem('added-services', JSON.stringify(serviceDetails));
@@ -33223,130 +33240,129 @@ object-assign
                     )
                   )
                 ),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                  'div',
-                  {
-                    className: 'services-displayed-here',
-                  },
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'div',
-                    {
-                      className: 'row',
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                serviceData
+                  ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       'div',
                       {
-                        className: 'col-md-6',
+                        className: 'services-displayed-here',
                       },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'div',
                         {
-                          className: 'services-text',
+                          className: 'row',
                         },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Organisation Unit'),
-                        serviceData &&
-                          serviceData.organizationUnit &&
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceData.organizationUnit)
-                      )
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'col-md-6',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'services-text',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Associated Product'),
-                        serviceData &&
-                          serviceData.associatedProduct &&
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceData.associatedProduct)
-                      )
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'col-md-6',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'services-text',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Added At'),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, 'Feb 01, 2021 21:30')
-                      )
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'col-md-6',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'services-text',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Associated Environment'),
-                        serviceData &&
-                          serviceData.asscociatedEnv &&
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceData.asscociatedEnv)
-                      )
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'col-md-6',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'services-text',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Service Type'),
-                        serviceData &&
-                          serviceData.serviceType &&
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceData.serviceType)
-                      )
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'col-md-6',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'services-text',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Alerts'),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, '2')
-                      )
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: 'col-md-6',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'services-text',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Service Score'),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'span',
+                          'div',
                           {
-                            className: 'status '.concat(this.getPerformanceClass('')),
+                            className: 'col-md-6',
                           },
-                          '100%'
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'services-text',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Organisation Unit'),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceData.organizationUnit)
+                          )
+                        ),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'col-md-6',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'services-text',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Associated Product'),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'span',
+                              null,
+                              serviceData.associatedProduct
+                            )
+                          )
+                        ),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'col-md-6',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'services-text',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Added At'),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, 'Feb 01, 2021 21:30')
+                          )
+                        ),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'col-md-6',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'services-text',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Associated Environment'),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceData.asscociatedEnv)
+                          )
+                        ),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'col-md-6',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'services-text',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Service Type'),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, serviceData.serviceType)
+                          )
+                        ),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'col-md-6',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'services-text',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Alerts'),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, '2')
+                          )
+                        ),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'col-md-6',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'services-text',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Service Score'),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'span',
+                              {
+                                className: 'status '.concat(this.getPerformanceClass(serviceData.serviceScore)),
+                              },
+                              serviceData.serviceScore,
+                              '%'
+                            )
+                          )
                         )
                       )
                     )
-                  )
-                ),
+                  : react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                   _WebServiceWizard__WEBPACK_IMPORTED_MODULE_2__.WebServiceWizard,
                   (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)(
