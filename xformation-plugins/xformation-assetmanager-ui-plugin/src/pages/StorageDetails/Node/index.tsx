@@ -53,6 +53,7 @@ export class Node extends React.Component<any, any> {
       ],
       dashboardData: [],
       viewJson: {},
+      collapseInfo: false,
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
@@ -153,7 +154,7 @@ export class Node extends React.Component<any, any> {
   };
 
   render() {
-    const { accountId, steps, dashboardData, viewJson } = this.state;
+    const { accountId, steps, dashboardData, viewJson, collapseInfo } = this.state;
     // console.log(accountId, serviceData, steps, dashboardData, viewJson, "dashboardData");
     const { serviceData } = this.props;
     return (
@@ -176,7 +177,7 @@ export class Node extends React.Component<any, any> {
         </div>
         <div className="account-box">
           <div className="row d-flex justify-content-center align-items-center">
-            <div className="col-lg-12 col-md-12 col-sm-12">
+            <div className="col-lg-10 col-md-10 col-sm-10">
               <div className="breadcrumbs">
                 <ul>
                   <li>
@@ -186,24 +187,18 @@ export class Node extends React.Component<any, any> {
                 </ul>
               </div>
             </div>
-            {/* <div className="col-lg-5 col-md-5 col-sm-12">
-              <div className="search-box form-group">
-                <input
-                  type="text"
-                  className="control-form"
-                  placeholder="Search"
-                  value=""
-                />
-                <button>
-                  <i className="fa fa-search"></i>
-                </button>
-              </div>
-            </div> */}
+            <div className="col-lg-2 col-md-2 col-sm-2" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <button style={{ borderColor: 'transparent' }} onClick={() => this.setState({
+                collapseInfo: !collapseInfo
+              })}>
+                <i className={`fa ${collapseInfo ? 'fa-arrow-down' : 'fa-arrow-up'}`}></i>
+              </button>
+            </div>
           </div>
         </div>
         {
           serviceData ?
-            <div className="services-displayed-here">
+            <div className="services-displayed-here" style={{ display: collapseInfo ? 'none' : 'block' }}>
               <div className="row">
                 <div className="col-md-6">
                   <div className="services-text">
