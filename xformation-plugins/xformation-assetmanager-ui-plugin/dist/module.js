@@ -33122,6 +33122,7 @@ object-assign
                 ],
                 dashboardData: [],
                 viewJson: {},
+                collapseInfo: false,
               };
               _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_5__.configFun)(
                 props.meta.jsonData.apiUrl,
@@ -33156,11 +33157,14 @@ object-assign
             };
 
             Node.prototype.render = function () {
+              var _this = this;
+
               var _a = this.state,
                 accountId = _a.accountId,
                 steps = _a.steps,
                 dashboardData = _a.dashboardData,
-                viewJson = _a.viewJson; // console.log(accountId, serviceData, steps, dashboardData, viewJson, "dashboardData");
+                viewJson = _a.viewJson,
+                collapseInfo = _a.collapseInfo; // console.log(accountId, serviceData, steps, dashboardData, viewJson, "dashboardData");
 
               var serviceData = this.props.serviceData;
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -33216,7 +33220,7 @@ object-assign
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       'div',
                       {
-                        className: 'col-lg-12 col-md-12 col-sm-12',
+                        className: 'col-lg-10 col-md-10 col-sm-10',
                       },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'div',
@@ -33237,6 +33241,32 @@ object-assign
                           serviceData.labelText
                         )
                       )
+                    ),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'div',
+                      {
+                        className: 'col-lg-2 col-md-2 col-sm-2',
+                        style: {
+                          display: 'flex',
+                          justifyContent: 'flex-end',
+                        },
+                      },
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'button',
+                        {
+                          style: {
+                            borderColor: 'transparent',
+                          },
+                          onClick: function () {
+                            return _this.setState({
+                              collapseInfo: !collapseInfo,
+                            });
+                          },
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                          className: 'fa '.concat(collapseInfo ? 'fa-arrow-down' : 'fa-arrow-up'),
+                        })
+                      )
                     )
                   )
                 ),
@@ -33245,6 +33275,9 @@ object-assign
                       'div',
                       {
                         className: 'services-displayed-here',
+                        style: {
+                          display: collapseInfo ? 'none' : 'block',
+                        },
                       },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'div',
