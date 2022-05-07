@@ -4,6 +4,7 @@ import { Collapse } from 'reactstrap';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
 import { PLUGIN_BASE_URL } from '../../constants';
+import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { Link } from 'react-router-dom';
 
 const SERVICE_MAPPING: any = {
@@ -22,12 +23,26 @@ export class DiscoveredAssets extends React.Component<any, any>{
     super(props);
     this.state = {
       tableData: {},
+      backupData: {},
       labelText: '',
       openCreateMenu: '',
       servicesData: null,
       servicesLength: {},
       activeNode: '',
-      accountId: ''
+      accountId: '',
+      filterData: [{
+        name: 'Nodes',
+        key: 'nodes',
+        filter: []
+      }, {
+        name: 'Clusters',
+        key: 'clusters',
+        filter: []
+      }, {
+        name: 'Products',
+        key: 'products',
+        filter: []
+      }],
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
@@ -91,7 +106,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
       }
     });
     this.setState({
-      tableData: treeData
+      tableData: treeData,
+      backupData: JSON.parse(JSON.stringify(treeData)),
     });
     this.getAppDataServices(treeData);
   }
@@ -469,9 +485,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { labelText, tableData, servicesData } = this.state;
     return (
       <>
-        <div className="Filters-box">
+        {/* <div className="Filters-box">
           <p>Select and add Filters</p>
           <span><i className="fa fa-angle-down" aria-hidden="true"></i></span>
+        </div> */}
+        <div style={{ margin: '0px 10px' }}>
+          <SelectCloudFilter filterJsonData={{}} />
         </div>
         <div className="showing-export">
           <div className="row d-flex justify-content-center">

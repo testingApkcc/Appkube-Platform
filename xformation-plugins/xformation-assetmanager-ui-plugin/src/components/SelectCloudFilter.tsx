@@ -188,7 +188,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                             )
                         })}
                     </div>
-                ) : <>.... LOADING</>}
+                ) : <></>}
                 <div className={showTagFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showTagFilter: !showTagFilter })}></div>
             </div>
         );

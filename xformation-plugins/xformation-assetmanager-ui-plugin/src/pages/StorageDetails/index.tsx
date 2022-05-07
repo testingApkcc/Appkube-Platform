@@ -17,7 +17,7 @@ export class StorageDetails extends React.Component<any, any> {
         }
         super(props);
         this.state = {
-            activeTab: 0,
+            activeTab: serviceData.length - 1,
             serviceDetails: serviceData,
         };
         this.breadCrumbs = [
@@ -63,7 +63,7 @@ export class StorageDetails extends React.Component<any, any> {
             serviceDetails.splice(index, 1);
             this.setState({
                 serviceDetails,
-                activeTab: index - 1,
+                activeTab: serviceDetails.length,
             });
             localStorage.setItem('added-services', JSON.stringify(serviceDetails));
         } else {
