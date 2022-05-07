@@ -88,11 +88,11 @@ class Analytics extends React.Component<any, any> {
     this.opencreateNewViewRef = React.createRef();
     this.openDeleteTabRef = React.createRef();
   }
+
   onClickDelete = (viewObj: any) => {
     this.setState({
       viewToDelete: viewObj,
     });
-    console.log(this.openDeleteTabRef.current.toggle);
     this.openDeleteTabRef.current.toggle();
   };
 
@@ -101,20 +101,41 @@ class Analytics extends React.Component<any, any> {
   };
 
   deleteView = () => {
-    if (this.state.viewToDelete) {
+    const { viewToDelete } = this.state;
+    if (viewToDelete) {
       this.setState({
         isDeleting: true,
       });
       let requestOptionsGet: any = {
         method: `DELETE`,
       };
-      fetch(`${config.DELETE_ANALYTICS_VIEW}/${this.state.viewToDelete.id}`, requestOptionsGet).then(() => {
+      fetch(`${config.DELETE_ANALYTICS_VIEW}/${viewToDelete.id}`, requestOptionsGet).then(() => {
         this.setState({
           isDeleting: false,
         });
         this.openDeleteTabRef.current.toggle();
         this.removeViewFromTable();
       });
+
+      // Delete it after api works
+      let data: any = localStorage.getItem('dashboardList');
+      let index = -1;
+      if (data) {
+        data = JSON.parse(data);
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].id === viewToDelete.id) {
+            index = i;
+            break;
+          }
+        }
+        if (index !== -1) {
+          data.splice(index, 1);
+          localStorage.setItem('dashboardList', JSON.stringify(data));
+          this.setState({
+            viewList: data,
+          });
+        }
+      }
     }
   };
 

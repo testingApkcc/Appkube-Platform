@@ -71,6 +71,7 @@ class ManageView extends React.Component<any, any> {
         });
       });
 
+    // Delete it after api works
     let data: any = localStorage.getItem('dashboardList');
     if (data) {
       data = JSON.parse(data);
