@@ -33,7 +33,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       activeNode: '',
       accountId: '',
       filterData: [{
-        name: 'Nodes',
+        name: 'Product Enclave',
         key: 'nodes',
         filter: []
       }, {
@@ -119,7 +119,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
           }
           filteredClusters[associatedCluster] = {
             value: associatedCluster,
-            label: this.clusterMapping[associatedCluster],
+            label: `${this.nodeMapping[associatedProductEnclave]} > ${this.clusterMapping[associatedCluster]}`,
           };
           const environmentData = clusterData[associatedEnv] || {};
           filteredEnvironment[associatedEnv] = {
@@ -328,7 +328,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { servicesLength, activeNode, filters } = this.state;
     const retData: any = [];
     if (nodes) {
-      const filteredNodes = filters['Nodes'];
+      const filteredNodes = filters['Product Enclave'];
       let keys = Object.keys(nodes);
       const globalIndex = keys.indexOf('Global Services');
       if (globalIndex !== -1) {
@@ -487,7 +487,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
           retData.push(
             <div className="tbody">
               <div className="tbody-inner">
-                <div style={{paddingLeft: '80px'}} className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, environmentKey, key)}>
+                <div style={{ paddingLeft: '80px' }} className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, environmentKey, key)}>
                   {SERVICE_MAPPING[key]}
                 </div>
               </div>
