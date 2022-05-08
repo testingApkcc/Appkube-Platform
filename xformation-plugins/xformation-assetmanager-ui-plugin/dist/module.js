@@ -26266,7 +26266,9 @@ object-assign
 
                       filteredClusters[associatedCluster] = {
                         value: associatedCluster,
-                        label: _this.clusterMapping[associatedCluster],
+                        label: ''
+                          .concat(_this.nodeMapping[associatedProductEnclave], ' > ')
+                          .concat(_this.clusterMapping[associatedCluster]),
                       };
                       var environmentData = clusterData[associatedEnv] || {};
                       filteredEnvironment[associatedEnv] = {
@@ -26507,7 +26509,7 @@ object-assign
                 var retData = [];
 
                 if (nodes) {
-                  var filteredNodes = filters['Nodes'];
+                  var filteredNodes = filters['Product Enclave'];
                   var keys = Object.keys(nodes);
                   var globalIndex = keys.indexOf('Global Services');
 
@@ -27239,7 +27241,7 @@ object-assign
                 accountId: '',
                 filterData: [
                   {
-                    name: 'Nodes',
+                    name: 'Product Enclave',
                     key: 'nodes',
                     filter: [],
                   },
