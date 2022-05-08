@@ -26166,6 +26166,9 @@ object-assign
             function DiscoveredAssets(props) {
               var _this = _super.call(this, props) || this;
 
+              _this.nodeMapping = {};
+              _this.clusterMapping = {};
+
               _this.getServicesData = function () {
                 return (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
                   var err_1;
@@ -26217,13 +26220,17 @@ object-assign
 
               _this.manipulateServiceData = function (services) {
                 var treeData = [];
-                var filterData = _this.state.filterData;
+                var _a = _this.state,
+                  filterData = _a.filterData,
+                  accountId = _a.accountId;
                 var filteredNodes = {};
                 var filteredClusters = {};
                 var filteredEnvironment = {};
                 var filteredServiceType = {};
                 var filteredServiceNature = {};
                 var filteredProducts = {};
+                var nodeIndex = 1;
+                var clusterIndex = 1;
                 services.forEach(function (service) {
                   var _a = service.details,
                     associatedProductEnclave = _a.associatedProductEnclave,
@@ -26231,94 +26238,116 @@ object-assign
                     serviceType = _a.serviceType,
                     serviceNature = _a.serviceNature,
                     associatedProduct = _a.associatedProduct,
-                    associatedEnv = _a.associatedEnv;
-                  var id = service.id;
+                    associatedEnv = _a.associatedEnv,
+                    associatedLandingZone = _a.associatedLandingZone;
 
-                  if (associatedProductEnclave) {
-                    var node = treeData[associatedProductEnclave] || {};
-                    filteredNodes[associatedProductEnclave] = {
-                      value: associatedProductEnclave,
-                      label: associatedProductEnclave,
-                    };
-                    var clusterData = node[associatedCluster] || {};
-                    filteredClusters[associatedCluster] = {
-                      value: associatedCluster,
-                      label: associatedCluster,
-                    };
-                    var environmentData = clusterData[associatedEnv] || {};
-                    filteredEnvironment[associatedEnv] = {
-                      value: associatedEnv,
-                      label: associatedEnv,
-                    };
-                    var serviceTypeData = environmentData[serviceType] || {};
-                    filteredServiceType[serviceType] = {
-                      value: serviceType,
-                      label: serviceType,
-                    };
-                    var assiciatedServiceData = serviceTypeData[serviceNature] || {};
-                    filteredServiceNature[serviceNature] = {
-                      value: serviceNature,
-                      label: serviceNature,
-                    };
-                    var productData = assiciatedServiceData[associatedProduct] || {
-                      title: associatedProduct,
-                      services: [],
-                    };
-                    productData.services.push(
-                      (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)(
-                        {
-                          id: id,
-                        },
-                        service.details
-                      )
-                    );
-                    filteredProducts[associatedProduct] = {
-                      value: associatedProduct,
-                      label: associatedProduct,
-                    };
-                    assiciatedServiceData[associatedProduct] = productData;
-                    serviceTypeData[serviceNature] = assiciatedServiceData;
-                    environmentData[serviceType] = serviceTypeData;
-                    clusterData[associatedEnv] = environmentData;
-                    node[associatedCluster] = clusterData;
-                    treeData[associatedProductEnclave] = node;
-                  } else {
-                    var node = treeData['Global Services'] || {};
-                    filteredNodes['Global Services'] = {
-                      value: 'Global Services',
-                      label: 'Global Services',
-                    };
-                    node.isGlobalService = true;
-                    var environmentData = node[associatedEnv] || {};
-                    filteredEnvironment[associatedEnv] = {
-                      value: associatedEnv,
-                      label: associatedEnv,
-                    };
-                    var assiciatedServiceData = environmentData[serviceNature] || {};
-                    filteredServiceNature[serviceNature] = {
-                      value: serviceNature,
-                      label: serviceNature,
-                    };
-                    var productData = assiciatedServiceData[associatedProduct] || {
-                      title: associatedProduct,
-                      services: [],
-                    };
-                    productData.services.push(
-                      (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)(
-                        {
-                          id: id,
-                        },
-                        service.details
-                      )
-                    );
-                    filteredProducts[associatedProduct] = {
-                      value: associatedProduct,
-                      label: associatedProduct,
-                    };
-                    assiciatedServiceData[associatedProduct] = productData;
-                    environmentData[serviceNature] = assiciatedServiceData;
-                    node[associatedEnv] = environmentData;
-                    treeData['Global Services'] = node;
+                  if (accountId === associatedLandingZone) {
+                    var id = service.id;
+
+                    if (associatedProductEnclave) {
+                      var node = treeData[associatedProductEnclave] || {};
+
+                      if (!_this.nodeMapping[associatedProductEnclave]) {
+                        _this.nodeMapping[associatedProductEnclave] = 'VPC '.concat(nodeIndex);
+                        nodeIndex += 1;
+                        clusterIndex = 1;
+                      }
+
+                      filteredNodes[associatedProductEnclave] = {
+                        value: associatedProductEnclave,
+                        label: _this.nodeMapping[associatedProductEnclave],
+                      };
+                      var clusterData = node[associatedCluster] || {};
+
+                      if (!_this.clusterMapping[associatedCluster]) {
+                        _this.clusterMapping[associatedCluster] = 'Cluster '.concat(clusterIndex);
+                        clusterIndex += 1;
+                      }
+
+                      filteredClusters[associatedCluster] = {
+                        value: associatedCluster,
+                        label: _this.clusterMapping[associatedCluster],
+                      };
+                      var environmentData = clusterData[associatedEnv] || {};
+                      filteredEnvironment[associatedEnv] = {
+                        value: associatedEnv,
+                        label: associatedEnv,
+                      };
+                      var serviceTypeData = environmentData[serviceType] || {};
+                      filteredServiceType[serviceType] = {
+                        value: serviceType,
+                        label: serviceType,
+                      };
+                      var assiciatedServiceData = serviceTypeData[serviceNature] || {};
+                      filteredServiceNature[serviceNature] = {
+                        value: serviceNature,
+                        label: serviceNature,
+                      };
+                      var productData = assiciatedServiceData[associatedProduct] || {
+                        title: associatedProduct,
+                        services: [],
+                      };
+                      productData.services.push(
+                        (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)(
+                          {
+                            id: id,
+                          },
+                          service.details
+                        )
+                      );
+                      filteredProducts[associatedProduct] = {
+                        value: associatedProduct,
+                        label: associatedProduct,
+                      };
+                      assiciatedServiceData[associatedProduct] = productData;
+                      serviceTypeData[serviceNature] = assiciatedServiceData;
+                      environmentData[serviceType] = serviceTypeData;
+                      clusterData[associatedEnv] = environmentData;
+                      node[associatedCluster] = clusterData;
+                      treeData[associatedProductEnclave] = node;
+                    } else {
+                      var node = treeData['Global Services'] || {};
+
+                      if (!_this.nodeMapping['Global Services']) {
+                        _this.nodeMapping['Global Services'] = 'Global Services';
+                      }
+
+                      filteredNodes['Global Services'] = {
+                        value: 'Global Services',
+                        label: 'Global Services',
+                      };
+                      node.isGlobalService = true;
+                      var environmentData = node[associatedEnv] || {};
+                      filteredEnvironment[associatedEnv] = {
+                        value: associatedEnv,
+                        label: associatedEnv,
+                      };
+                      var assiciatedServiceData = environmentData[serviceNature] || {};
+                      filteredServiceNature[serviceNature] = {
+                        value: serviceNature,
+                        label: serviceNature,
+                      };
+                      var productData = assiciatedServiceData[associatedProduct] || {
+                        title: associatedProduct,
+                        services: [],
+                      };
+                      productData.services.push(
+                        (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)(
+                          {
+                            id: id,
+                          },
+                          service.details
+                        )
+                      );
+                      filteredProducts[associatedProduct] = {
+                        value: associatedProduct,
+                        label: associatedProduct,
+                      };
+                      assiciatedServiceData[associatedProduct] = productData;
+                      environmentData[serviceNature] = assiciatedServiceData;
+                      node[associatedEnv] = environmentData;
+                      treeData['Global Services'] = node;
+                    }
                   }
                 });
                 filterData[0].filter = _this.convertObjectIntoArray(filteredNodes);
@@ -26517,7 +26546,7 @@ object-assign
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
                                 className: node.isOpened ? 'caret-down' : 'caret-right',
                               }),
-                              key === 'Global Services' ? key : 'VPC '.concat(i + 1)
+                              _this.nodeMapping[key]
                             ),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
@@ -26656,8 +26685,7 @@ object-assign
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
                                 className: cluster.isOpened ? 'caret-down' : 'caret-right',
                               }),
-                              'Cluster ',
-                              index + 1
+                              _this.clusterMapping[key]
                             )
                           ),
                           cluster.isOpened
@@ -29890,10 +29918,10 @@ object-assign
                           ')'
                         )
                       ),
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.organizationProductEnclave),
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.organizationalProducts),
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.organizationalAppServices),
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.organizationalDataServices),
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.totalProductEnclave),
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.totalProducts),
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.totalAppServices),
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, row.totalDataServices),
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'td',
                         null,
