@@ -487,7 +487,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
           retData.push(
             <div className="tbody">
               <div className="tbody-inner">
-                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, environmentKey, key)}>
+                <div style={{paddingLeft: '80px'}} className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickAppDataService(nodeKey, clusterKey, environmentKey, key)}>
                   {SERVICE_MAPPING[key]}
                 </div>
               </div>
