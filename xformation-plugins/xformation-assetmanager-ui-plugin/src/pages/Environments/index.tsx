@@ -357,11 +357,11 @@ export class Environments extends React.Component<any, any> {
                 AWS ({row.accountId})
               </Link>
             </td>
-            <td>{row.organizationProductEnclave}</td>
-            <td>{row.organizationalProducts}</td>
-            <td>{row.organizationalAppServices}</td>
+            <td>{row.totalProductEnclave}</td>
+            <td>{row.totalProducts}</td>
+            <td>{row.totalAppServices}</td>
             <td>
-              {row.organizationalDataServices}
+              {row.totalDataServices}
               {/* <div className={row.status === 'ACTIVE' ? 'status enable' : 'status disable'}></div> */}
             </td>
             <td>

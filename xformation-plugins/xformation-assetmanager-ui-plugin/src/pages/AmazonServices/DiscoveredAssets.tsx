@@ -20,6 +20,8 @@ const SERVICE_MAPPING: any = {
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
   config: any;
+  nodeMapping: any = {};
+  clusterMapping: any = {};
   constructor(props: any) {
     super(props);
     this.state = {
@@ -85,88 +87,104 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
   manipulateServiceData = (services: any) => {
     const treeData: any = [];
-    const { filterData } = this.state;
+    const { filterData, accountId } = this.state;
     const filteredNodes: any = {};
     const filteredClusters: any = {};
     const filteredEnvironment: any = {};
     const filteredServiceType: any = {};
     const filteredServiceNature: any = {};
     const filteredProducts: any = {};
+    let nodeIndex = 1;
+    let clusterIndex = 1;
     services.forEach((service: any) => {
-      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct, associatedEnv } =
+      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct, associatedEnv, associatedLandingZone } =
         service.details;
-      const id = service.id;
-      if (associatedProductEnclave) {
-        const node = treeData[associatedProductEnclave] || {};
-        filteredNodes[associatedProductEnclave] = {
-          value: associatedProductEnclave,
-          label: associatedProductEnclave,
-        };
-        const clusterData = node[associatedCluster] || {};
-        filteredClusters[associatedCluster] = {
-          value: associatedCluster,
-          label: associatedCluster,
-        };
-        const environmentData = clusterData[associatedEnv] || {};
-        filteredEnvironment[associatedEnv] = {
-          value: associatedEnv,
-          label: associatedEnv,
-        };
-        const serviceTypeData = environmentData[serviceType] || {};
-        filteredServiceType[serviceType] = {
-          value: serviceType,
-          label: serviceType,
-        };
-        const assiciatedServiceData = serviceTypeData[serviceNature] || {};
-        filteredServiceNature[serviceNature] = {
-          value: serviceNature,
-          label: serviceNature,
-        };
-        const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push({
-          id,
-          ...service.details
-        });
-        filteredProducts[associatedProduct] = {
-          value: associatedProduct,
-          label: associatedProduct,
-        };
-        assiciatedServiceData[associatedProduct] = productData;
-        serviceTypeData[serviceNature] = assiciatedServiceData;
-        environmentData[serviceType] = serviceTypeData;
-        clusterData[associatedEnv] = environmentData;
-        node[associatedCluster] = clusterData;
-        treeData[associatedProductEnclave] = node;
-      } else {
-        const node = treeData['Global Services'] || {};
-        filteredNodes['Global Services'] = {
-          value: 'Global Services',
-          label: 'Global Services',
-        };
-        node.isGlobalService = true;
-        const environmentData = node[associatedEnv] || {};
-        filteredEnvironment[associatedEnv] = {
-          value: associatedEnv,
-          label: associatedEnv,
-        };
-        const assiciatedServiceData = environmentData[serviceNature] || {};
-        filteredServiceNature[serviceNature] = {
-          value: serviceNature,
-          label: serviceNature,
-        };
-        const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-        productData.services.push({
-          id,
-          ...service.details
-        });
-        filteredProducts[associatedProduct] = {
-          value: associatedProduct,
-          label: associatedProduct,
-        };
-        assiciatedServiceData[associatedProduct] = productData;
-        environmentData[serviceNature] = assiciatedServiceData;
-        node[associatedEnv] = environmentData;
-        treeData['Global Services'] = node;
+      if (accountId === associatedLandingZone) {
+        const id = service.id;
+        if (associatedProductEnclave) {
+          const node = treeData[associatedProductEnclave] || {};
+          if (!this.nodeMapping[associatedProductEnclave]) {
+            this.nodeMapping[associatedProductEnclave] = `VPC ${nodeIndex}`;
+            nodeIndex += 1;
+            clusterIndex = 1;
+          }
+          filteredNodes[associatedProductEnclave] = {
+            value: associatedProductEnclave,
+            label: this.nodeMapping[associatedProductEnclave],
+          };
+          const clusterData = node[associatedCluster] || {};
+          if (!this.clusterMapping[associatedCluster]) {
+            this.clusterMapping[associatedCluster] = `Cluster ${clusterIndex}`;
+            clusterIndex += 1;
+          }
+          filteredClusters[associatedCluster] = {
+            value: associatedCluster,
+            label: this.clusterMapping[associatedCluster],
+          };
+          const environmentData = clusterData[associatedEnv] || {};
+          filteredEnvironment[associatedEnv] = {
+            value: associatedEnv,
+            label: associatedEnv,
+          };
+          const serviceTypeData = environmentData[serviceType] || {};
+          filteredServiceType[serviceType] = {
+            value: serviceType,
+            label: serviceType,
+          };
+          const assiciatedServiceData = serviceTypeData[serviceNature] || {};
+          filteredServiceNature[serviceNature] = {
+            value: serviceNature,
+            label: serviceNature,
+          };
+          const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
+          productData.services.push({
+            id,
+            ...service.details
+          });
+          filteredProducts[associatedProduct] = {
+            value: associatedProduct,
+            label: associatedProduct,
+          };
+          assiciatedServiceData[associatedProduct] = productData;
+          serviceTypeData[serviceNature] = assiciatedServiceData;
+          environmentData[serviceType] = serviceTypeData;
+          clusterData[associatedEnv] = environmentData;
+          node[associatedCluster] = clusterData;
+          treeData[associatedProductEnclave] = node;
+        } else {
+          const node = treeData['Global Services'] || {};
+          if (!this.nodeMapping['Global Services']) {
+            this.nodeMapping['Global Services'] = 'Global Services';
+          }
+          filteredNodes['Global Services'] = {
+            value: 'Global Services',
+            label: 'Global Services',
+          };
+          node.isGlobalService = true;
+          const environmentData = node[associatedEnv] || {};
+          filteredEnvironment[associatedEnv] = {
+            value: associatedEnv,
+            label: associatedEnv,
+          };
+          const assiciatedServiceData = environmentData[serviceNature] || {};
+          filteredServiceNature[serviceNature] = {
+            value: serviceNature,
+            label: serviceNature,
+          };
+          const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
+          productData.services.push({
+            id,
+            ...service.details
+          });
+          filteredProducts[associatedProduct] = {
+            value: associatedProduct,
+            label: associatedProduct,
+          };
+          assiciatedServiceData[associatedProduct] = productData;
+          environmentData[serviceNature] = assiciatedServiceData;
+          node[associatedEnv] = environmentData;
+          treeData['Global Services'] = node;
+        }
       }
     });
     filterData[0].filter = this.convertObjectIntoArray(filteredNodes);
@@ -327,7 +345,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className="tbody-inner">
                 <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleNode(key)} title={key}>
                   <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
-                  {key === 'Global Services' ? key : `VPC ${i + 1}`}
+                  {this.nodeMapping[key]}
                 </div>
                 <div className="tbody-td">{servicesLength[key] ? (servicesLength[key]['uniqueProducts'] || 0) : 0}</div>
                 <div className="tbody-td">{servicesLength[key] ? (servicesLength[key]['App'] || 0) : 0}</div>
@@ -383,7 +401,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className="tbody-inner">
                 <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleCluster(nodeKey, key)} title={key}>
                   <div className={cluster.isOpened ? "caret-down" : "caret-right"}></div>
-                  Cluster {index + 1}
+                  {this.clusterMapping[key]}
                 </div >
                 {/* </Link> */}
               </div >
