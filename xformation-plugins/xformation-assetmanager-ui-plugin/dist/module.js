@@ -1204,12 +1204,12 @@ PERFORMANCE OF THIS SOFTWARE.
          */
 
         if (true) {
-          var ReactIs = __webpack_require__(/*! react-is */ 37);
+          var ReactIs = __webpack_require__(/*! react-is */ 38);
 
           // By explicitly using `prop-types` you are opting into new development behavior.
           // http://fb.me/prop-types-in-prod
           var throwOnDirectAccess = true;
-          module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ 38)(
+          module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ 39)(
             ReactIs.isElement,
             throwOnDirectAccess
           );
@@ -1846,7 +1846,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _react = _interopRequireDefault(__webpack_require__(/*! react */ 0));
 
-        var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ 43);
+        var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ 44);
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 22));
 
@@ -2160,6 +2160,383 @@ PERFORMANCE OF THIS SOFTWARE.
         /***/
       },
       /* 27 */
+      /*!******************************************!*\
+  !*** ./components/SelectCloudFilter.tsx ***!
+  \******************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ SelectCloudFilter: () => /* binding */ SelectCloudFilter,
+          /* harmony export */
+        });
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4);
+        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+          react__WEBPACK_IMPORTED_MODULE_0__
+        );
+
+        // import { v4 } from 'uuid';
+
+        var SelectCloudFilter =
+          /** @class */
+          (function (_super) {
+            (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(SelectCloudFilter, _super);
+
+            function SelectCloudFilter(props) {
+              var _this = _super.call(this, props) || this;
+
+              _this.displaySelectedTags = function () {
+                var displayJsonData = _this.state.displayJsonData;
+                var retData = [];
+
+                if (displayJsonData && displayJsonData.length > 0) {
+                  var _loop_1 = function (i) {
+                    var filter = displayJsonData[i].filter;
+
+                    var _loop_2 = function (j) {
+                      var label = displayJsonData[i].filter[j];
+
+                      if (label.isChecked) {
+                        retData.push(
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'fliter-selected',
+                              key: label.id,
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, label.label),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                              className: 'fa fa-times',
+                              onClick: function () {
+                                return _this.removeSelectedTag(i, j);
+                              },
+                            })
+                          )
+                        );
+                      }
+                    };
+
+                    for (var j = 0; j < filter.length; j++) {
+                      _loop_2(j);
+                    }
+                  };
+
+                  for (var i = 0; i < displayJsonData.length; i++) {
+                    _loop_1(i);
+                  }
+                }
+
+                return retData;
+              };
+
+              _this.onChangeFilters = function (filterData) {
+                var retData = {};
+
+                if (filterData && filterData.length > 0) {
+                  for (var i = 0; i < filterData.length; i++) {
+                    var filter = filterData[i].filter;
+
+                    for (var j = 0; j < filter.length; j++) {
+                      var label = filterData[i].filter[j];
+
+                      if (label.isChecked) {
+                        retData[filterData[i].name] = retData[filterData[i].name] || [];
+                        retData[filterData[i].name].push(label.value);
+                      }
+                    }
+                  }
+                }
+
+                if (_this.props.onChangeFilter) {
+                  _this.props.onChangeFilter(retData);
+                }
+              };
+
+              _this.setChildData = function (data) {
+                if (data.subdata.length > 0) {
+                  _this.setState({
+                    showTagFilter: true,
+                    displayJsonData: data.subdata,
+                  });
+                } else {
+                  _this.setState({
+                    showTagFilter: false,
+                  });
+                }
+              };
+
+              _this.removeSelectedTag = function (filterIndex, index) {
+                var displayJsonData = _this.state.displayJsonData;
+                displayJsonData[filterIndex].filter[index].isChecked = false;
+
+                _this.setState({
+                  displayJsonData: displayJsonData,
+                });
+
+                _this.onChangeFilters(displayJsonData);
+              };
+
+              _this.displayTagList = function (filterData, filterIndex) {
+                var retData = [];
+
+                var _loop_3 = function (i) {
+                  if (!filterData[i].isHide) {
+                    retData.push(
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'div',
+                        {
+                          className: 'form-check',
+                          onClick: function () {
+                            return _this.changeHandleState(filterIndex, i);
+                          },
+                          title: filterData[i].label,
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+                          type: 'checkbox',
+                          checked: filterData[i].isChecked,
+                          className: 'checkbox',
+                        }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'label',
+                          {
+                            htmlFor: filterData[i].value,
+                          },
+                          filterData[i].label
+                        )
+                      )
+                    );
+                  }
+                };
+
+                for (var i = 0; i < filterData.length; i++) {
+                  _loop_3(i);
+                }
+
+                return retData;
+              };
+
+              _this.changeHandleState = function (filterIndex, index) {
+                var displayJsonData = _this.state.displayJsonData;
+                displayJsonData[filterIndex].filter[index].isChecked =
+                  !displayJsonData[filterIndex].filter[index].isChecked;
+
+                _this.setState({
+                  displayJsonData: displayJsonData,
+                });
+
+                _this.onChangeFilters(displayJsonData);
+              };
+
+              _this.displaymainTagData = function () {
+                _this.setState({
+                  showTagFilter: !_this.state.showTagFilter,
+                });
+              };
+
+              _this.clearAllTagFilter = function (index) {
+                var _a = _this.state,
+                  searchKey = _a.searchKey,
+                  displayJsonData = _a.displayJsonData;
+                searchKey[index] = '';
+
+                for (var k = 0; k < displayJsonData[index].filter.length; k++) {
+                  displayJsonData[index].filter[k].isHide = false;
+                }
+
+                _this.setState({
+                  displayJsonData: displayJsonData,
+                  searchKey: searchKey,
+                });
+              };
+
+              _this.searchTag = function (e, index) {
+                var _a = _this.state,
+                  displayJsonData = _a.displayJsonData,
+                  searchKey = _a.searchKey;
+                var value = e.target.value;
+                searchKey[index] = value;
+
+                _this.setState({
+                  searchKey: searchKey,
+                });
+
+                if (value === '') {
+                  for (var k = 0; k < displayJsonData[index].filter.length; k++) {
+                    displayJsonData[index].filter[k].isHide = false;
+                  }
+                } else {
+                  for (var k = 0; k < displayJsonData[index].filter.length; k++) {
+                    if (displayJsonData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                      displayJsonData[index].filter[k].isHide = false;
+                    } else {
+                      displayJsonData[index].filter[k].isHide = true;
+                    }
+                  }
+                }
+
+                _this.setState({
+                  displayJsonData: displayJsonData,
+                  searchKey: searchKey,
+                });
+              };
+
+              _this.state = {
+                codeEditorValue: '',
+                displayJsonData: [],
+                showTagFilter: false,
+                searchKey: [],
+              };
+              return _this;
+            }
+
+            SelectCloudFilter.prototype.componentDidMount = function () {
+              if (this.props.filterJsonData && this.props.filterJsonData.length > 0) {
+                this.setState({
+                  displayJsonData: this.props.filterJsonData,
+                });
+              }
+            };
+
+            SelectCloudFilter.prototype.render = function () {
+              var _this = this;
+
+              var _a = this.state,
+                showTagFilter = _a.showTagFilter,
+                displayJsonData = _a.displayJsonData,
+                searchKey = _a.searchKey;
+              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                'div',
+                {
+                  className: 'fliters-container',
+                },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  'div',
+                  {
+                    className: 'select-fliters',
+                  },
+                  this.displaySelectedTags(),
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'div',
+                    {
+                      className: 'add-fliters',
+                      onClick: function () {
+                        return _this.displaymainTagData();
+                      },
+                    },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                      className: 'fa fa-plus',
+                    })
+                  ),
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+                    className: 'fliter-toggel',
+                    onClick: function () {
+                      return _this.setState({
+                        showTagFilter: !showTagFilter,
+                      });
+                    },
+                  }),
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                    className: 'fa fa-angle-down',
+                    onClick: function () {
+                      return _this.setState({
+                        showTagFilter: !showTagFilter,
+                      });
+                    },
+                  })
+                ),
+                displayJsonData && displayJsonData.length > 0
+                  ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'div',
+                      {
+                        className: showTagFilter === true ? 'fliters-collapse active' : 'fliters-collapse',
+                      },
+                      displayJsonData.map(function (filterData, index) {
+                        return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'div',
+                          {
+                            className: 'fliters',
+                            key: filterData.id,
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'div',
+                            {
+                              className: 'fliter-box',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                className: 'heading',
+                              },
+                              filterData.name
+                            ),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                className: 'form-group search-control',
+                              },
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'button',
+                                {
+                                  className: 'btn btn-search',
+                                },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                  className: 'fa fa-search',
+                                })
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+                                type: 'text',
+                                className: 'input-group-text',
+                                value: searchKey[index],
+                                onChange: function (e) {
+                                  return _this.searchTag(e, index);
+                                },
+                                placeholder: 'Search',
+                              }),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'button',
+                                {
+                                  className: 'btn btn-clear',
+                                  onClick: function () {
+                                    return _this.clearAllTagFilter(index);
+                                  },
+                                },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
+                                  className: 'fa fa-times',
+                                })
+                              )
+                            ),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'div',
+                              {
+                                className: 'fliters-links',
+                              },
+                              filterData.filter &&
+                                filterData.filter.length > 0 &&
+                                _this.displayTagList(filterData.filter, index)
+                            )
+                          )
+                        );
+                      })
+                    )
+                  : react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+                  className: showTagFilter === true ? 'fliters-collapse-bg active' : 'fliters-collapse-bg',
+                  onClick: function () {
+                    return _this.setState({
+                      showTagFilter: !showTagFilter,
+                    });
+                  },
+                })
+              );
+            };
+
+            return SelectCloudFilter;
+          })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+        /***/
+      },
+      /* 28 */
       /*!**************************************************!*\
   !*** ../node_modules/chart.js/dist/chart.esm.js ***!
   \**************************************************/
@@ -13779,7 +14156,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 28 */
+      /* 29 */
       /*!**********************************************************************************************************************************!*\
   !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!../node_modules/react-circular-progressbar/dist/styles.css ***!
   \**********************************************************************************************************************************/
@@ -13812,7 +14189,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 29 */
+      /* 30 */
       /*!****************************************************************************************************!*\
   !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/assetmanager.light.css ***!
   \****************************************************************************************************/
@@ -13845,7 +14222,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 30 */
+      /* 31 */
       /*!***************************************************************************************************!*\
   !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/assetmanager.dark.css ***!
   \***************************************************************************************************/
@@ -13878,7 +14255,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 31 */
+      /* 32 */
       /*!***************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/CSSTransition.js ***!
   \***************************************************************************************/
@@ -13890,15 +14267,15 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var PropTypes = _interopRequireWildcard(__webpack_require__(/*! prop-types */ 16));
 
-        var _addClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/addClass */ 32));
+        var _addClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/addClass */ 33));
 
-        var _removeClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/removeClass */ 41));
+        var _removeClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/removeClass */ 42));
 
         var _react = _interopRequireDefault(__webpack_require__(/*! react */ 0));
 
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 42));
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 43));
 
-        var _PropTypes = __webpack_require__(/*! ./utils/PropTypes */ 44);
+        var _PropTypes = __webpack_require__(/*! ./utils/PropTypes */ 45);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -14306,19 +14683,19 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 32 */
+      /* 33 */
       /*!*****************************************************!*\
   !*** ../node_modules/dom-helpers/class/addClass.js ***!
   \*****************************************************/
       /***/ (module, exports, __webpack_require__) => {
         'use strict';
 
-        var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 33);
+        var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 34);
 
         exports.__esModule = true;
         exports['default'] = addClass;
 
-        var _hasClass = _interopRequireDefault(__webpack_require__(/*! ./hasClass */ 34));
+        var _hasClass = _interopRequireDefault(__webpack_require__(/*! ./hasClass */ 35));
 
         function addClass(element, className) {
           if (element.classList) element.classList.add(className);
@@ -14332,7 +14709,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 33 */
+      /* 34 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
   \***********************************************************************/
@@ -14351,7 +14728,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 34 */
+      /* 35 */
       /*!*****************************************************!*\
   !*** ../node_modules/dom-helpers/class/hasClass.js ***!
   \*****************************************************/
@@ -14371,7 +14748,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 35 */
+      /* 36 */
       /*!*******************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/ReplaceTransition.js ***!
   \*******************************************************************************************/
@@ -14555,7 +14932,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 36 */
+      /* 37 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/toConsumableArray.js ***!
   \***********************************************************************/
@@ -14590,7 +14967,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 37 */
+      /* 38 */
       /*!*****************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/index.js ***!
   \*****************************************************************/
@@ -14604,7 +14981,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 38 */
+      /* 39 */
       /*!*************************************************************!*\
   !*** ../node_modules/prop-types/factoryWithTypeCheckers.js ***!
   \*************************************************************/
@@ -14617,12 +14994,12 @@ PERFORMANCE OF THIS SOFTWARE.
          * LICENSE file in the root directory of this source tree.
          */
 
-        var ReactIs = __webpack_require__(/*! react-is */ 37);
-        var assign = __webpack_require__(/*! object-assign */ 39);
+        var ReactIs = __webpack_require__(/*! react-is */ 38);
+        var assign = __webpack_require__(/*! object-assign */ 40);
 
         var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 25);
         var has = __webpack_require__(/*! ./lib/has */ 26);
-        var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ 40);
+        var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ 41);
 
         var printWarning = function () {};
 
@@ -15398,7 +15775,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 39 */
+      /* 40 */
       /*!**********************************************!*\
   !*** ../node_modules/object-assign/index.js ***!
   \**********************************************/
@@ -15497,7 +15874,7 @@ object-assign
 
         /***/
       },
-      /* 40 */
+      /* 41 */
       /*!****************************************************!*\
   !*** ../node_modules/prop-types/checkPropTypes.js ***!
   \****************************************************/
@@ -15627,7 +16004,7 @@ object-assign
 
         /***/
       },
-      /* 41 */
+      /* 42 */
       /*!********************************************************!*\
   !*** ../node_modules/dom-helpers/class/removeClass.js ***!
   \********************************************************/
@@ -15654,7 +16031,7 @@ object-assign
 
         /***/
       },
-      /* 42 */
+      /* 43 */
       /*!************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/Transition.js ***!
   \************************************************************************************/
@@ -15676,9 +16053,9 @@ object-assign
 
         var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ 12));
 
-        var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ 43);
+        var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ 44);
 
-        var _PropTypes = __webpack_require__(/*! ./utils/PropTypes */ 44);
+        var _PropTypes = __webpack_require__(/*! ./utils/PropTypes */ 45);
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 22));
 
@@ -16346,7 +16723,7 @@ object-assign
 
         /***/
       },
-      /* 43 */
+      /* 44 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js ***!
   \*****************************************************************************/
@@ -16501,7 +16878,7 @@ object-assign
 
         /***/
       },
-      /* 44 */
+      /* 45 */
       /*!*****************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/PropTypes.js ***!
   \*****************************************************************************************/
@@ -16550,7 +16927,7 @@ object-assign
 
         /***/
       },
-      /* 45 */
+      /* 46 */
       /*!**************************************************!*\
   !*** ./components/ProductWiseServices/index.tsx ***!
   \**************************************************/
@@ -16576,7 +16953,7 @@ object-assign
           /*! ../../constants */ 7
         );
         /* harmony import */ var _SelectCloudFilter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../SelectCloudFilter */ 46
+          /*! ../SelectCloudFilter */ 27
         );
         /* harmony import */ var _ServicesPerformance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ./ServicesPerformance */ 103
@@ -17266,383 +17643,6 @@ object-assign
 
         /***/
       },
-      /* 46 */
-      /*!******************************************!*\
-  !*** ./components/SelectCloudFilter.tsx ***!
-  \******************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ SelectCloudFilter: () => /* binding */ SelectCloudFilter,
-          /* harmony export */
-        });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-          react__WEBPACK_IMPORTED_MODULE_0__
-        );
-
-        // import { v4 } from 'uuid';
-
-        var SelectCloudFilter =
-          /** @class */
-          (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(SelectCloudFilter, _super);
-
-            function SelectCloudFilter(props) {
-              var _this = _super.call(this, props) || this;
-
-              _this.displaySelectedTags = function () {
-                var displayJsonData = _this.state.displayJsonData;
-                var retData = [];
-
-                if (displayJsonData && displayJsonData.length > 0) {
-                  var _loop_1 = function (i) {
-                    var filter = displayJsonData[i].filter;
-
-                    var _loop_2 = function (j) {
-                      var label = displayJsonData[i].filter[j];
-
-                      if (label.isChecked) {
-                        retData.push(
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'fliter-selected',
-                              key: label.id,
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, label.label),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                              className: 'fa fa-times',
-                              onClick: function () {
-                                return _this.removeSelectedTag(i, j);
-                              },
-                            })
-                          )
-                        );
-                      }
-                    };
-
-                    for (var j = 0; j < filter.length; j++) {
-                      _loop_2(j);
-                    }
-                  };
-
-                  for (var i = 0; i < displayJsonData.length; i++) {
-                    _loop_1(i);
-                  }
-                }
-
-                return retData;
-              };
-
-              _this.onChangeFilters = function (filterData) {
-                var retData = {};
-
-                if (filterData && filterData.length > 0) {
-                  for (var i = 0; i < filterData.length; i++) {
-                    var filter = filterData[i].filter;
-
-                    for (var j = 0; j < filter.length; j++) {
-                      var label = filterData[i].filter[j];
-
-                      if (label.isChecked) {
-                        retData[filterData[i].name] = retData[filterData[i].name] || [];
-                        retData[filterData[i].name].push(label.value);
-                      }
-                    }
-                  }
-                }
-
-                if (_this.props.onChangeFilter) {
-                  _this.props.onChangeFilter(retData);
-                }
-              };
-
-              _this.setChildData = function (data) {
-                if (data.subdata.length > 0) {
-                  _this.setState({
-                    showTagFilter: true,
-                    displayJsonData: data.subdata,
-                  });
-                } else {
-                  _this.setState({
-                    showTagFilter: false,
-                  });
-                }
-              };
-
-              _this.removeSelectedTag = function (filterIndex, index) {
-                var displayJsonData = _this.state.displayJsonData;
-                displayJsonData[filterIndex].filter[index].isChecked = false;
-
-                _this.setState({
-                  displayJsonData: displayJsonData,
-                });
-
-                _this.onChangeFilters(displayJsonData);
-              };
-
-              _this.displayTagList = function (filterData, filterIndex) {
-                var retData = [];
-
-                var _loop_3 = function (i) {
-                  if (!filterData[i].isHide) {
-                    retData.push(
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'div',
-                        {
-                          className: 'form-check',
-                          onClick: function () {
-                            return _this.changeHandleState(filterIndex, i);
-                          },
-                          title: filterData[i].label,
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                          type: 'checkbox',
-                          checked: filterData[i].isChecked,
-                          className: 'checkbox',
-                        }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'label',
-                          {
-                            htmlFor: filterData[i].value,
-                          },
-                          filterData[i].label
-                        )
-                      )
-                    );
-                  }
-                };
-
-                for (var i = 0; i < filterData.length; i++) {
-                  _loop_3(i);
-                }
-
-                return retData;
-              };
-
-              _this.changeHandleState = function (filterIndex, index) {
-                var displayJsonData = _this.state.displayJsonData;
-                displayJsonData[filterIndex].filter[index].isChecked =
-                  !displayJsonData[filterIndex].filter[index].isChecked;
-
-                _this.setState({
-                  displayJsonData: displayJsonData,
-                });
-
-                _this.onChangeFilters(displayJsonData);
-              };
-
-              _this.displaymainTagData = function () {
-                _this.setState({
-                  showTagFilter: !_this.state.showTagFilter,
-                });
-              };
-
-              _this.clearAllTagFilter = function (index) {
-                var _a = _this.state,
-                  searchKey = _a.searchKey,
-                  displayJsonData = _a.displayJsonData;
-                searchKey[index] = '';
-
-                for (var k = 0; k < displayJsonData[index].filter.length; k++) {
-                  displayJsonData[index].filter[k].isHide = false;
-                }
-
-                _this.setState({
-                  displayJsonData: displayJsonData,
-                  searchKey: searchKey,
-                });
-              };
-
-              _this.searchTag = function (e, index) {
-                var _a = _this.state,
-                  displayJsonData = _a.displayJsonData,
-                  searchKey = _a.searchKey;
-                var value = e.target.value;
-                searchKey[index] = value;
-
-                _this.setState({
-                  searchKey: searchKey,
-                });
-
-                if (value === '') {
-                  for (var k = 0; k < displayJsonData[index].filter.length; k++) {
-                    displayJsonData[index].filter[k].isHide = false;
-                  }
-                } else {
-                  for (var k = 0; k < displayJsonData[index].filter.length; k++) {
-                    if (displayJsonData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-                      displayJsonData[index].filter[k].isHide = false;
-                    } else {
-                      displayJsonData[index].filter[k].isHide = true;
-                    }
-                  }
-                }
-
-                _this.setState({
-                  displayJsonData: displayJsonData,
-                  searchKey: searchKey,
-                });
-              };
-
-              _this.state = {
-                codeEditorValue: '',
-                displayJsonData: [],
-                showTagFilter: false,
-                searchKey: [],
-              };
-              return _this;
-            }
-
-            SelectCloudFilter.prototype.componentDidMount = function () {
-              if (this.props.filterJsonData && this.props.filterJsonData.length > 0) {
-                this.setState({
-                  displayJsonData: this.props.filterJsonData,
-                });
-              }
-            };
-
-            SelectCloudFilter.prototype.render = function () {
-              var _this = this;
-
-              var _a = this.state,
-                showTagFilter = _a.showTagFilter,
-                displayJsonData = _a.displayJsonData,
-                searchKey = _a.searchKey;
-              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                'div',
-                {
-                  className: 'fliters-container',
-                },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                  'div',
-                  {
-                    className: 'select-fliters',
-                  },
-                  this.displaySelectedTags(),
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'div',
-                    {
-                      className: 'add-fliters',
-                      onClick: function () {
-                        return _this.displaymainTagData();
-                      },
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                      className: 'fa fa-plus',
-                    })
-                  ),
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-                    className: 'fliter-toggel',
-                    onClick: function () {
-                      return _this.setState({
-                        showTagFilter: !showTagFilter,
-                      });
-                    },
-                  }),
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                    className: 'fa fa-angle-down',
-                    onClick: function () {
-                      return _this.setState({
-                        showTagFilter: !showTagFilter,
-                      });
-                    },
-                  })
-                ),
-                displayJsonData && displayJsonData.length > 0
-                  ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'div',
-                      {
-                        className: showTagFilter === true ? 'fliters-collapse active' : 'fliters-collapse',
-                      },
-                      displayJsonData.map(function (filterData, index) {
-                        return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'div',
-                          {
-                            className: 'fliters',
-                            key: filterData.id,
-                          },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'div',
-                            {
-                              className: 'fliter-box',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className: 'heading',
-                              },
-                              filterData.name
-                            ),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className: 'form-group search-control',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'button',
-                                {
-                                  className: 'btn btn-search',
-                                },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                  className: 'fa fa-search',
-                                })
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                                type: 'text',
-                                className: 'input-group-text',
-                                value: searchKey[index],
-                                onChange: function (e) {
-                                  return _this.searchTag(e, index);
-                                },
-                                placeholder: 'Search',
-                              }),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'button',
-                                {
-                                  className: 'btn btn-clear',
-                                  onClick: function () {
-                                    return _this.clearAllTagFilter(index);
-                                  },
-                                },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('i', {
-                                  className: 'fa fa-times',
-                                })
-                              )
-                            ),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'div',
-                              {
-                                className: 'fliters-links',
-                              },
-                              filterData.filter &&
-                                filterData.filter.length > 0 &&
-                                _this.displayTagList(filterData.filter, index)
-                            )
-                          )
-                        );
-                      })
-                    )
-                  : react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-                  className: showTagFilter === true ? 'fliters-collapse-bg active' : 'fliters-collapse-bg',
-                  onClick: function () {
-                    return _this.setState({
-                      showTagFilter: !showTagFilter,
-                    });
-                  },
-                })
-              );
-            };
-
-            return SelectCloudFilter;
-          })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-        /***/
-      },
       /* 47 */
       /*!***********************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
@@ -17882,7 +17882,7 @@ object-assign
   \******************************************************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         var content = __webpack_require__(
-          /*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./styles.css */ 28
+          /*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./styles.css */ 29
         );
 
         if (typeof content === 'string') content = [[module.id, content, '']];
@@ -18023,7 +18023,7 @@ object-assign
   \************************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         var content = __webpack_require__(
-          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.light.css */ 29
+          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.light.css */ 30
         );
 
         if (typeof content === 'string') content = [[module.id, content, '']];
@@ -18051,7 +18051,7 @@ object-assign
   \***********************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         var content = __webpack_require__(
-          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.dark.css */ 30
+          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.dark.css */ 31
         );
 
         if (typeof content === 'string') content = [[module.id, content, '']];
@@ -18748,7 +18748,7 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ 27);
+        /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ 28);
 
         const defaultDatasetIdKey = 'label';
         function reforwardRef(ref, value) {
@@ -24903,13 +24903,13 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 31));
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 32));
 
-        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 35));
+        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 36));
 
         var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 23));
 
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 42));
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 43));
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -25274,7 +25274,7 @@ object-assign
           /*! ../../constants */ 7
         );
         /* harmony import */ var _components_ProductWiseServices__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! ../../components/ProductWiseServices */ 45
+          /*! ../../components/ProductWiseServices */ 46
         );
 
         // import { RestService } from "../_service/RestService";
@@ -26131,7 +26131,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../img */ 13);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ 138);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ 138);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ../_service/RestService */ 8
         );
@@ -26140,13 +26140,14 @@ object-assign
           /*! ../../constants */ 7
         );
         /* harmony import */ var _components_SelectCloudFilter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../components/SelectCloudFilter */ 46
+          /*! ../../components/SelectCloudFilter */ 27
         );
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! react-router-dom */ 6
         );
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_6__);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! uuid */ 139);
 
         var SERVICE_MAPPING = {
           App: 'App Services',
@@ -26479,6 +26480,13 @@ object-assign
                 if (nodes) {
                   var filteredNodes = filters['Nodes'];
                   var keys = Object.keys(nodes);
+                  var globalIndex = keys.indexOf('Global Services');
+
+                  if (globalIndex !== -1) {
+                    //push the global services at last
+                    keys.splice(globalIndex, 1);
+                    keys.push('Global Services');
+                  }
 
                   var _loop_1 = function (i) {
                     var key = keys[i];
@@ -26490,6 +26498,7 @@ object-assign
                           'div',
                           {
                             className: 'tbody',
+                            key: (0, uuid__WEBPACK_IMPORTED_MODULE_8__['default'])(),
                           },
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                             'div',
@@ -26503,11 +26512,12 @@ object-assign
                                 onClick: function () {
                                   return _this.toggleNode(key);
                                 },
+                                title: key,
                               },
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
                                 className: node.isOpened ? 'caret-down' : 'caret-right',
                               }),
-                              key
+                              key === 'Global Services' ? key : 'VPC '.concat(i + 1)
                             ),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
@@ -26586,7 +26596,7 @@ object-assign
                           ),
                           node.isOpened
                             ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                reactstrap__WEBPACK_IMPORTED_MODULE_8__['default'],
+                                reactstrap__WEBPACK_IMPORTED_MODULE_9__['default'],
                                 {
                                   className: 'collapse-content',
                                   isOpen: node.isOpened,
@@ -26619,7 +26629,7 @@ object-assign
                 var filteredClusters = filters['Clusters'];
                 var keys = Object.keys(clusters);
                 var retData = [];
-                keys.forEach(function (key) {
+                keys.forEach(function (key, index) {
                   if ((filteredClusters && filteredClusters.indexOf(key) !== -1) || !filteredClusters) {
                     if (key !== 'isOpened' && key !== 'showMenu') {
                       var cluster = clusters[key];
@@ -26641,16 +26651,18 @@ object-assign
                                 onClick: function () {
                                   return _this.toggleCluster(nodeKey, key);
                                 },
+                                title: key,
                               },
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
                                 className: cluster.isOpened ? 'caret-down' : 'caret-right',
                               }),
-                              key
+                              'Cluster ',
+                              index + 1
                             )
                           ),
                           cluster.isOpened
                             ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                reactstrap__WEBPACK_IMPORTED_MODULE_8__['default'],
+                                reactstrap__WEBPACK_IMPORTED_MODULE_9__['default'],
                                 {
                                   className: 'collapse-content',
                                   isOpen: cluster.isOpened,
@@ -26707,7 +26719,7 @@ object-assign
                           ),
                           environment.isOpened
                             ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                reactstrap__WEBPACK_IMPORTED_MODULE_8__['default'],
+                                reactstrap__WEBPACK_IMPORTED_MODULE_9__['default'],
                                 {
                                   className: 'collapse-content',
                                   isOpen: environment.isOpened,
@@ -29303,7 +29315,7 @@ object-assign
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img */ 13);
         /* harmony import */ var _components_SelectCloudFilter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../components/SelectCloudFilter */ 46
+          /*! ../../components/SelectCloudFilter */ 27
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../_service/RestService */ 8
@@ -32026,7 +32038,7 @@ object-assign
           /*! is-in-browser */ 48
         );
         /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 36);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 37);
 
         // Export javascript style and css style vendor prefixes.
         var js = '';
@@ -34668,7 +34680,7 @@ object-assign
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var _components_ProductWiseServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../../components/ProductWiseServices */ 45
+          /*! ../../components/ProductWiseServices */ 46
         );
         /* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
           /*! react-circular-progressbar */ 124
@@ -34680,7 +34692,7 @@ object-assign
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
           /*! react-chartjs-2 */ 64
         );
-        /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 27);
+        /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 28);
         /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ 125);
         /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/ __webpack_require__.n(
           lodash__WEBPACK_IMPORTED_MODULE_11__
@@ -36262,7 +36274,7 @@ and limitations under the License.
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
           /*! react-chartjs-2 */ 64
         );
-        /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 27);
+        /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 28);
 
         chart_js__WEBPACK_IMPORTED_MODULE_6__.Chart.register(
           chart_js__WEBPACK_IMPORTED_MODULE_6__.CategoryScale,
@@ -46129,7 +46141,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 36);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 37);
         /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
@@ -48274,7 +48286,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 36);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 37);
         /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ 2);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ 0);
