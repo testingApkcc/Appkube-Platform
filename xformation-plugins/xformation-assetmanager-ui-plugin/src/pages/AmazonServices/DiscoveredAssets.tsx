@@ -6,6 +6,7 @@ import { configFun } from '../../config';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
 
 const SERVICE_MAPPING: any = {
   'App': 'App Services',
@@ -310,17 +311,23 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const retData: any = [];
     if (nodes) {
       const filteredNodes = filters['Nodes'];
-      const keys = Object.keys(nodes);
+      let keys = Object.keys(nodes);
+      const globalIndex = keys.indexOf('Global Services');
+      if (globalIndex !== -1) {
+        //push the global services at last
+        keys.splice(globalIndex, 1);
+        keys.push('Global Services');
+      }
       for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const node = nodes[key];
         if ((filteredNodes && filteredNodes.indexOf(key) !== -1) || !filteredNodes) {
           retData.push(
-            <div className="tbody">
+            <div className="tbody" key={v4()}>
               <div className="tbody-inner">
-                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleNode(key)}>
+                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleNode(key)} title={key}>
                   <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
-                  {key}
+                  {key === 'Global Services' ? key : `VPC ${i + 1}`}
                 </div>
                 <div className="tbody-td">{servicesLength[key] ? (servicesLength[key]['uniqueProducts'] || 0) : 0}</div>
                 <div className="tbody-td">{servicesLength[key] ? (servicesLength[key]['App'] || 0) : 0}</div>
@@ -367,16 +374,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const filteredClusters = filters['Clusters'];
     const keys = Object.keys(clusters);
     const retData: any = [];
-    keys.forEach(((key: any) => {
+    keys.forEach(((key: any, index: any) => {
       if ((filteredClusters && filteredClusters.indexOf(key) !== -1) || !filteredClusters) {
         if (key !== 'isOpened' && key !== 'showMenu') {
           const cluster = clusters[key];
           retData.push(
             <div className="tbody">
               <div className="tbody-inner">
-                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleCluster(nodeKey, key)}>
+                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleCluster(nodeKey, key)} title={key}>
                   <div className={cluster.isOpened ? "caret-down" : "caret-right"}></div>
-                  {key}
+                  Cluster {index + 1}
                 </div >
                 {/* </Link> */}
               </div >
