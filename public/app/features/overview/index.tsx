@@ -246,6 +246,74 @@ class Overview extends React.Component<any, any> {
           },
         },
       },
+      centralTable: {
+        slacentral: {},
+        devcentral: {
+          volume: {
+            product: '+56',
+            services: '-21',
+            release: '-35',
+            useCase: '+40',
+            bugs: '+45',
+            workFlow: '-32',
+            documentation: '-10',
+            automationTest: '+12',
+          },
+          velocity: {
+            scheduleDeviation: '+56',
+            releaseTime: '-21',
+            bugFixing: '+40',
+            useCaseDelivery: '+45',
+            bugs: '+45',
+            workFlowGeneration: '-32',
+            documentation: '-10',
+            automationTest: '+12',
+          },
+          reliability: {
+            postReleaseDefects: '+56',
+            usageStats: '-21',
+          },
+        },
+        seccentral: {
+          infra: {
+            account: '+56',
+            vpc: '-21',
+            cluster: '-35',
+            managedServices: '+40',
+          },
+          app: {
+            container: '+56',
+            code: '-21',
+          },
+          data: {
+            accessControl: '+56',
+            governance: '-21',
+            transitAndStore: '-35',
+          },
+        },
+        opscentral: {
+          volume: {
+            newCloudProvisioning: '+56',
+            newPeoduct: '-21',
+            serviceOnboarding: '-35',
+            newAutomation: '+40',
+            alertResolved: '+45',
+          },
+          velocity: {
+            scheduleDeviation: '+56',
+            releaseTime: '-21',
+            bugFixing: '-35',
+            usecaseDelivery: '+40',
+            bugs: '+45',
+            workflowGeneration: '-32',
+            documentation: '-10',
+            automationTest: '+12',
+          },
+          reliability: {
+            rateofReopenTickets: '+56',
+          },
+        },
+      },
     };
   }
 
@@ -360,11 +428,11 @@ class Overview extends React.Component<any, any> {
   };
   handletableColor = (val: any) => {
     let color = '';
-    if (val >= 98) {
+    if (val * 1 > 98) {
       color = 'green';
-    } else if (val <= 90) {
+    } else if (val * 1 < 75) {
       color = 'red';
-    } else if (val > 90 || val <= 97) {
+    } else if (val * 1 > 90) {
       color = 'orange';
     }
     return color;
