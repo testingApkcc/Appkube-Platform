@@ -97,7 +97,7 @@ class Analytics extends React.Component<any, any> {
   };
 
   editDashbord = (viewObj: any) => {
-    locationService.push(`/analytics/edit/${viewObj.id}`);
+    locationService.push(`/analytics/edit/dashboard?id=${viewObj.id}`);
   };
 
   deleteView = () => {
@@ -189,7 +189,7 @@ class Analytics extends React.Component<any, any> {
   };
 
   onClickView = (view: any) => {
-    locationService.push(`/analytics/${view.id}`);
+    locationService.push(`/analytics/view?id=${view.id}`);
   };
 
   render() {

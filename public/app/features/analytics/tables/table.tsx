@@ -67,7 +67,7 @@ export class Table extends React.Component<any, any> {
                 tdJSX.push(
                   key === 'name' ? (
                     <td>
-                      <a href={`/analytics/${i + 1}`}>{row[key]}</a>
+                      <a href={`/analytics/view?id=${i + 1}`}>{row[key]}</a>
                     </td>
                   ) : (
                     <td>{row[key]}</td>
