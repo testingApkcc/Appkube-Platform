@@ -95,7 +95,7 @@ export class CreateNewViewPopup extends React.Component<any, any> {
             <div className="form-group">
               <label htmlFor="viewName">View Name</label>
               <CustomTextbox
-                containerClass="form-group mb-4 position-relative"
+                containerClass="position-relative"
                 inputClass="input-group-text"
                 htmlFor="viewName"
                 id="viewName"
@@ -110,7 +110,7 @@ export class CreateNewViewPopup extends React.Component<any, any> {
             <div className="form-group">
               <label htmlFor="description">Description</label>
               <CustomTextarea
-                containerClass="form-group position-relative"
+                containerClass="position-relative"
                 inputClass="input-group-text"
                 htmlFor="description"
                 id="description"

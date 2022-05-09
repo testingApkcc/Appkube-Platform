@@ -45,7 +45,7 @@ export class Table extends React.Component<any, any> {
                   type="checkbox"
                   checked={displayData[i].checkStatus}
                   className="checkbox"
-                  onChange={e => {
+                  onChange={(e) => {
                     this.onChangeParentCheckbox(e, i);
                   }}
                 />
@@ -151,7 +151,7 @@ export class Table extends React.Component<any, any> {
           <th key={i}>
             {item.label}
             <span
-              onClick={e => {
+              onClick={(e) => {
                 this.sortTable(item.key, e, onClickSortType);
               }}
               className={`sort-icon ${icon}`}
@@ -210,7 +210,7 @@ export class Table extends React.Component<any, any> {
             <a
               className={currentPage === i ? 'page-link active' : 'page-link deactive'}
               href="#"
-              onClick={e => this.navigatePage('btn-click', e, i)}
+              onClick={(e) => this.navigatePage('btn-click', e, i)}
             >
               {i + 1}
             </a>
@@ -223,7 +223,7 @@ export class Table extends React.Component<any, any> {
             <a
               className={currentPage === 0 ? 'page-link desable' : 'page-link enable'}
               href="#"
-              onClick={e => this.navigatePage('pre', e, '')}
+              onClick={(e) => this.navigatePage('pre', e, '')}
             >
               Previous
             </a>
@@ -233,7 +233,7 @@ export class Table extends React.Component<any, any> {
             <a
               href="#"
               className={currentPage === this.state.totalPages - 1 ? 'page-link desable' : 'page-link enable'}
-              onClick={e => this.navigatePage('next', e, '')}
+              onClick={(e) => this.navigatePage('next', e, '')}
             >
               Next
             </a>
@@ -381,7 +381,7 @@ export class Table extends React.Component<any, any> {
         const item = columns[i];
         retData.push(
           <label className="option" htmlFor={item.key}>
-            <input id={item.key} checked={!item.isRemoved} type="checkbox" onChange={e => this.handleChecked(e, i)} />
+            <input id={item.key} checked={!item.isRemoved} type="checkbox" onChange={(e) => this.handleChecked(e, i)} />
             {item.label}
           </label>
         );
@@ -437,6 +437,7 @@ export class Table extends React.Component<any, any> {
               <div style={{ display: showSelect ? '' : 'none' }} className="options">
                 {this.renderColumns()}
               </div>
+              {showSelect && <div className="multiselect-bg" onClick={this.toggleColumnSelect}></div>}
             </div>
             <div className="d-inline-block pull-right form-group filter-search-control">
               <input
