@@ -265,11 +265,11 @@ class Overview extends React.Component<any, any> {
 
   handletableColor = (val: any) => {
     let color = '';
-    if (val * 1 > 98) {
+    if (val * 1 > 90) {
       color = 'green';
-    } else if (val * 1 < 75) {
+    } else if (val * 1 <= 75) {
       color = 'red';
-    } else if (val * 1 > 90) {
+    } else if (val * 1 <= 90 || val * 1 > 74) {
       color = 'orange';
     }
     return color;
