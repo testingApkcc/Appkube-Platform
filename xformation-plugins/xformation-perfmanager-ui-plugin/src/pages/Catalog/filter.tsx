@@ -13,6 +13,7 @@ export class Filter extends React.Component<any, any>{
             // { 'name': 'Filter 6', 'id': 6, 'isHide': 'true' },
             // { 'name': 'Filter 7', 'id': 7, 'isHide': 'true' },
             filterJsonData: {},
+            duplicatefilterJsonData: {},
             searchString: '',
             showPreview: false,
             searchKey: '',
@@ -36,75 +37,14 @@ export class Filter extends React.Component<any, any>{
                             filterobj[data].push(row[data]);
                         }
                     } else if (filterobj[data] && filterobj[data].length === 0) {
-                        console.log(filterobj[data]);
                         filterobj[data].push(row[data]);
                     }
                 }
                 );
             }
-            console.log(filterobj);
-            this.setState({ filterData: filterobj })
+            this.setState({ filterData: filterobj, duplicatefilterJsonData: filterobj })
         }
     }
-
-
-    // searchFilter = (e: any) => {
-    //     const { filterData } = this.state;
-    //     const { value } = e.target;
-    //     if (value !== '') {
-    //         for (let i = 0; i < filterData.length; i++) {
-    //             if (filterData[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-    //                 filterData[i].isHide = true;
-    //                 // filterData[i].isChecked = true;
-    //             }
-    //             else {
-    //                 filterData[i].isHide = false;
-    //                 // filterData[i].isChecked = false;
-    //             }
-    //         }
-    //     } else {
-    //         for (let i = 0; i < filterData.length; i++) {
-    //             filterData[i].isHide = true;
-    //             // filterData[i].isChecked = false
-    //         }
-    //     }
-    //     this.setState({
-    //         filterData,
-    //         searchString: value
-    //     })
-    // }
-
-    // handleFilterList = (filterValues: any) => {
-    //     let retData: any = [];
-    //     for (let i = 0; i < filterValues.length; i++) {
-    //         let { associatedCloudElementType, name } = filterValues[i];
-    //         // if (isHide) {
-    //         retData.push(
-    //             <li key={i}>
-    //                 <input type="checkbox" id={`filter-${i}`} name='associat' value={associatedCloudElementType} onClick={() => this.handleChecked(i)} />
-    //                 <label>{name}</label>
-    //             </li>
-    //         )
-    //         // }
-    //     }
-    //     return retData;
-    // }
-
-    // handleChecked = (index: any) => {
-    //     const { filterData } = this.state;
-    //     // filterData[index].isChecked = !filterData[index].isChecked;
-    //     this.setState({ filterData });
-    // }
-
-    // handleClearFilter = () => {
-    //     let { filterData } = this.state;
-    //     for (let i = 0; i < filterData.length; i++) {
-    //         filterData[i].isHide = true;
-    //         // filterData[i].isChecked = false;
-    //     }
-    //     this.setState({ filterData, searchString: '' })
-    // }
-
 
     displaySelectedTags = () => {
         const { filterData } = this.state;
@@ -172,7 +112,6 @@ export class Filter extends React.Component<any, any>{
     }
 
     displayTagList = (filterData: any, filterIndex: any) => {
-        console.log(filterData);
         let retData = [];
         for (let i = 0; i < filterData.length; i++) {
             if (!filterData[i].isHide) {
@@ -205,46 +144,54 @@ export class Filter extends React.Component<any, any>{
 
     clearAllTagFilter = (index: any) => {
         const { searchKey, filterData } = this.state;
-        searchKey[index] = "";
+        // searchKey[index] = "";
         for (let k = 0; k < filterData[index].filter.length; k++) {
             filterData[index].filter[k].isHide = false;
         }
         this.setState({
             filterData,
-            searchKey
+            // searchKey
         })
     }
 
-    searchTag = (e: any, index: any) => {
-        let { filterData, searchKey } = this.state;
+    searchTag = (e: any) => {
+        let { duplicatefilterJsonData } = this.state;
         const { value } = e.target;
-        searchKey[index] = value
-        this.setState({ searchKey })
-        if (value === "") {
-            for (let k = 0; k < filterData[index].filter.length; k++) {
-                filterData[index].filter[k].isHide = false;
-            }
+        this.setState({ searchKey: value });
+        let searchResult: any = {};
+        if (value) {
+            Object.keys(duplicatefilterJsonData).map((data, index) => {
+                if (duplicatefilterJsonData[data] && duplicatefilterJsonData[data].length > 0) {
+                    for (let i = 0; i < duplicatefilterJsonData[data].length; i++) {
+                        if (duplicatefilterJsonData[data][i].toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                            searchResult[data] = duplicatefilterJsonData[data];
+                            // filterData[data][i].isHide = false;
+                        } else {
+                            searchResult = duplicatefilterJsonData;
+                            // filterData[data][i].isHide = true;
+                        }
+                    }
+                }
+            });
         }
         else {
-            for (let k = 0; k < filterData[index].filter.length; k++) {
-                if (filterData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-                    filterData[index].filter[k].isHide = false
-                }
-                else {
-                    filterData[index].filter[k].isHide = true;
-                }
-            }
+            // for (let k = 0; k < filterData[index].filter.length; k++) {
+            //     if (filterData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+            //         filterData[index].filter[k].isHide = false
+            //     }
+            //     else {
+            //         filterData[index].filter[k].isHide = true;
+            //     }
+            // }
         }
+        console.log(searchResult);
         this.setState({
-            filterData,
-            searchKey
+            filterData: searchResult,
         })
     }
 
     render() {
         const { filterData, showTagFilter, searchKey } = this.state;
-        // const{filterData}
-        console.log(this.props.filterData);
         return (
             <div className="catalogue-filters">
                 <div className="filter-search">
@@ -253,7 +200,7 @@ export class Filter extends React.Component<any, any>{
                         <button className="btn btn-search">
                             <i className="fa fa-search"></i>
                         </button>
-                        <input type="text" placeholder="Search" value={searchKey} onChange={(e) => this.searchTag(e, 1)} />
+                        <input type="text" placeholder="Search" value={searchKey} onChange={(e) => this.searchTag(e)} />
                         <button className="btn btn-clear" onClick={() => this.clearAllTagFilter(1)}>
                             <i className="fa fa-times"></i>
                         </button>
@@ -283,7 +230,6 @@ export class Filter extends React.Component<any, any>{
                 <div className="catalogue-category">
                     {filterData &&
                         Object.keys(filterData).map((data, index) => {
-                            console.log(data);
                             if (filterData[data] && filterData[data].length > 0) {
                                 return (
                                     <div className={showTagFilter === true ? "fliters-collapse active" : "fliters-collapse"}>
