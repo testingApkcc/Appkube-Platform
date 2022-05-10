@@ -1,5 +1,6 @@
 import React from 'react';
 import awsIcon from '../../../img/aws.png';
+import { Filter } from './../filter';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
     constructor(props: any) {
@@ -19,6 +20,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             tagvalue: [],
             isSubmitted: false,
             addTags: [],
+            view: 'grid'
         }
     }
 
@@ -217,8 +219,12 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         })
     }
 
+    dashboardsView = (type: any) => {
+        this.setState({ view: type })
+    }
+
     formFields = () => {
-        const { comp } = this.state;
+        const { comp, view } = this.state;
         if (comp === 1) {
             return (
                 <div className="catalogue-right-container">
@@ -235,85 +241,160 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                             </div>
                             <div className="col-sm-2">
                                 <div className="btnContainer">
-                                    <button className="btn btn-grid btn-active"><i className="fa fa-th-large"></i></button>
-                                    <button className="btn btn-list"><i className="fa fa-list"></i></button>
+                                    <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
+                                    <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="templated-boxs">
-                        <div className="row">
-                            <div className="col-md-6 col-sm-12">
-                                <div className="template-box">
-                                    <div className="heading">
-                                        <img src={awsIcon} alt='' />
-                                        Landing Zone
+                        {view === 'grid' ?
+                            <div className="row">
+                                <div className="col-md-6 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
                                     </div>
-                                    <div className="sub-text">
-                                        Create Landing Zone with DevSecOps best practice in AWS
+                                </div>
+                                <div className="col-md-6 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
                                     </div>
-                                    <div className="text">
-                                        Description text related to creating LAmding zone on AWS will be displayed here
+                                </div>
+                                <div className="col-md-6 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6 col-sm-12" onClick={() => this.setState({ comp: comp + 1 })}>
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Account Creation
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6 col-sm-12">
-                                <div className="template-box">
-                                    <div className="heading">
-                                        <img src={awsIcon} alt='' />
-                                        Landing Zone
+                            :
+                            <div className="row">
+                                <div className="col-md-12 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
                                     </div>
-                                    <div className="sub-text">
-                                        Create Landing Zone with DevSecOps best practice in AWS
+                                </div>
+                                <div className="col-md-12 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
                                     </div>
-                                    <div className="text">
-                                        Description text related to creating LAmding zone on AWS will be displayed here
+                                </div>
+                                <div className="col-md-12 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-12 col-sm-12">
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Landing Zone
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-12 col-sm-12" onClick={() => this.setState({ comp: comp + 1 })}>
+                                    <div className="template-box">
+                                        <div className="heading">
+                                            <img src={awsIcon} alt='' />
+                                            Account Creation
+                                        </div>
+                                        <div className="sub-text">
+                                            Create Landing Zone with DevSecOps best practice in AWS
+                                        </div>
+                                        <div className="text">
+                                            Description text related to creating LAmding zone on AWS will be displayed here
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6 col-sm-12">
-                                <div className="template-box">
-                                    <div className="heading">
-                                        <img src={awsIcon} alt='' />
-                                        Landing Zone
-                                    </div>
-                                    <div className="sub-text">
-                                        Create Landing Zone with DevSecOps best practice in AWS
-                                    </div>
-                                    <div className="text">
-                                        Description text related to creating LAmding zone on AWS will be displayed here
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-sm-12">
-                                <div className="template-box">
-                                    <div className="heading">
-                                        <img src={awsIcon} alt='' />
-                                        Landing Zone
-                                    </div>
-                                    <div className="sub-text">
-                                        Create Landing Zone with DevSecOps best practice in AWS
-                                    </div>
-                                    <div className="text">
-                                        Description text related to creating LAmding zone on AWS will be displayed here
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-sm-12" onClick={() => this.setState({ comp: comp + 1 })}>
-                                <div className="template-box">
-                                    <div className="heading">
-                                        <img src={awsIcon} alt='' />
-                                        Landing Zone
-                                    </div>
-                                    <div className="sub-text">
-                                        Create Landing Zone with DevSecOps best practice in AWS
-                                    </div>
-                                    <div className="text">
-                                        Description text related to creating LAmding zone on AWS will be displayed here
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             )
@@ -353,7 +434,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         else if (comp === 3) {
             const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, customizationName, requestReason, isSubmitted } = this.state;
             const errorData = this.validate(isSubmitted);
-            console.log(errorData)
+            // console.log(errorData)
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
@@ -521,25 +602,30 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             <div className="catalogue-inner-tabs-container templates-container">
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                        <div className="templates-filters">
-                            <div className="filter-search">
-                                <strong>Filters</strong>
-                                <div className="filter-input">
-                                    <button className="search-icon"><i className="fa fa-search"></i></button>
-                                    <input type="text" placeholder="Search" value={''} />
+
+                        {comp === 2 || comp === 3 ?
+                            <div className="templates-filters">
+                                <div className="filter-search">
+                                    <strong>Filters</strong>
+                                    <div className="filter-input">
+                                        <button className="search-icon"><i className="fa fa-search"></i></button>
+                                        <input type="text" placeholder="Search" value={''} />
+                                    </div>
+                                </div>
+                                <div className="templates-category">
+                                    <ul>
+                                        <li className={comp === 2 ? 'active' : ''} onClick={() => this.setState({ comp: 2 })}>
+                                            <label>Welcome</label>
+                                        </li>
+                                        <li className={comp === 3 ? 'active' : ''} onClick={() => this.setState({ comp: 3 })} >
+                                            <label>Account Creation</label>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div className="templates-category">
-                                <ul>
-                                    <li className={comp === 2 ? 'active' : ''} onClick={() => this.setState({ comp: 2 })}>
-                                        <label>Welcome</label>
-                                    </li>
-                                    <li className={comp === 3 ? 'active' : ''} onClick={() => this.setState({ comp: 3 })} >
-                                        <label>Account Creation</label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                            :
+                            <Filter />
+                        }
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         {
