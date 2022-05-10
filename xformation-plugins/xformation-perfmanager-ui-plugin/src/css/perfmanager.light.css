@@ -4017,6 +4017,42 @@ a:hover {
   .catalogue-tabs-container
   .catalogue-inner-tabs-container
   .catalogue-right-container
+  .heading
+  .btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 6px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .heading
+  .btnContainer
+  .btn {
+  background-color: #ffffff;
+  font-size: 16px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .heading
+  .btnContainer
+  .btn.btn-active {
+  background-color: #d9e4f2;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
   .catalogue-boxes {
   display: block;
 }
@@ -4028,6 +4064,9 @@ a:hover {
   .catalogue-right-container
   .catalogue-boxes
   .box {
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
   border-radius: 2px;
   box-shadow: 0 0 0 0 transparent;
   border: 1px solid #dce0e6;
@@ -4159,6 +4198,196 @@ a:hover {
   img {
   margin-right: 5px;
   margin-top: -4px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item {
+  width: 49%;
+  text-align: center;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item:nth-child(odd) {
+  margin-left: 0;
+  margin-right: 1%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item:nth-child(even) {
+  margin-left: 1%;
+  margin-right: 0;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content {
+  padding-bottom: 15px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .image {
+  display: block;
+  width: 100%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .image
+  img {
+  max-height: 100px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  h3 {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .subtitle {
+  margin-bottom: 25px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .library-icon {
+  display: inline-block;
+  margin-right: 1%;
+  width: 48%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .library-icon
+  a {
+  display: block;
+  font-size: 11px;
+  line-height: 20px;
+  font-weight: 500;
+  padding: 5px 5px;
+  color: #ffffff;
+  border-radius: 5px;
+  background-color: #3b7cff;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .library-icon
+  a:hover {
+  background-color: #3273dc;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .preview-dashboard-icon {
+  display: inline-block;
+  margin-left: 1%;
+  width: 48%;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .preview-dashboard-icon
+  a {
+  display: block;
+  font-size: 11px;
+  line-height: 20px;
+  font-weight: 500;
+  padding: 5px 5px;
+  color: #ffffff;
+  border-radius: 5px;
+  background-color: #3b7cff;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .catalogue-boxes
+  .box.blog-grid-item
+  .module-card-content
+  .preview-dashboard-icon
+  a:hover {
+  background-color: #3273dc;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
