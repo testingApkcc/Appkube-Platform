@@ -28,6 +28,53 @@ class Overview extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
+      SLAToggle: {
+        'DEV Central': 'volume',
+        'SEC Central': 'infra',
+        'OPS Central': 'volume',
+      },
+      titles: {
+        devcentral: 'DEV Central',
+        volume: 'Volume',
+        product: 'Product',
+        services: 'Services',
+        release: 'Release',
+        useCase: 'Use Case',
+        bugs: 'Bugs',
+        workFlow: 'Workflow',
+        documentation: 'Documentation',
+        automationTest: 'Automation Test',
+        velocity: 'Velocity',
+        scheduleDeviation: 'Schedule Deviation',
+        releaseTime: 'Release Time',
+        bugFixing: 'Bug Fixing',
+        useCaseDelivery: 'Use Case Delivery',
+        workFlowGeneration: 'Work Flow Generation',
+        reliability: 'Reliability',
+        postReleaseDefects: 'Post Release Defects',
+        usageStats: 'Usage Stats',
+        seccentral: 'SEC Central',
+        infra: 'Infra',
+        account: 'Account',
+        vpc: 'VPC',
+        cluster: 'Cluster',
+        managedServices: 'Managed Services',
+        app: 'APP',
+        container: 'Container',
+        code: 'Code',
+        data: 'Data',
+        accessControl: 'Access Control',
+        governance: 'Governance',
+        transitAndStore: 'Transit And Store',
+        opscentral: 'OPS Central',
+        newCloudProvisioning: 'New Cloud Provisioning',
+        newProduct: 'New Product',
+        serviceOnboarding: 'Service On Boarding',
+        newAutomation: 'New Automation',
+        alertResolved: 'Alert Resolved',
+        usecaseDelivery: 'Use Case Delivery',
+        rateofReopenTickets: 'Rate of Reopen Tickets',
+      },
       dashboardData: {
         totalSpent: {
           value: '$6,71,456',
@@ -238,7 +285,7 @@ class Overview extends React.Component<any, any> {
         opscentral: {
           volume: {
             newCloudProvisioning: '+56',
-            newPeoduct: '-21',
+            newProduct: '-21',
             serviceOnboarding: '-35',
             newAutomation: '+40',
             alertResolved: '+45',
@@ -249,7 +296,7 @@ class Overview extends React.Component<any, any> {
             bugFixing: '-35',
             usecaseDelivery: '+40',
             bugs: '+45',
-            workflowGeneration: '-32',
+            workFlowGeneration: '-32',
             documentation: '-10',
             automationTest: '+12',
           },
@@ -257,11 +304,6 @@ class Overview extends React.Component<any, any> {
             rateofReopenTickets: '+56',
           },
         },
-      },
-      SLAToggle: {
-        'DEV Central': 'volume',
-        'SEC Central': 'infra',
-        'OPS Central': 'volume',
       },
     };
   }
@@ -284,11 +326,12 @@ class Overview extends React.Component<any, any> {
   };
   handleSLATValues = (val: any) => {
     let retData = [];
+    const { titles } = this.state;
     for (let i = 0; i < Object.keys(val).length; i++) {
       if (val[Object.keys(val)[i]]) {
         retData.push(
           <div className="report-box">
-            <strong>{Object.keys(val)[i]}</strong>
+            <strong>{titles[Object.keys(val)[i]]}</strong>
             <div className="report">
               {val[Object.keys(val)[i]] * 1 > 0 ? (
                 <span className="up">
@@ -308,20 +351,22 @@ class Overview extends React.Component<any, any> {
     return retData;
   };
   handleSLATable = (data: any, label: any) => {
+    console.log(data);
     let retData: any = [];
     let list: any = [];
     let KeyData: any = [];
     let key = '';
-    const { SLAToggle } = this.state;
+    const { SLAToggle, titles } = this.state;
+    console.log(SLAToggle[label]);
     if ((data !== undefined || null) && Object.keys(data).length > 0) {
       for (let i = 0; i < Object.keys(data).length; i++) {
         key = Object.keys(data)[i];
         KeyData.push(
           <li
-            className={SLAToggle[label] === key ? 'active' : ''}
+            className={SLAToggle[label] === Object.keys(data)[i] ? 'active' : ''}
             onClick={() => this.handleSLATToggle(label, Object.keys(data)[i])}
           >
-            {key}
+            {titles[key]}
           </li>
         );
       }
@@ -354,7 +399,7 @@ class Overview extends React.Component<any, any> {
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'MONITOR | OVERVIEW';
-    const { dashboardData, centralTable } = this.state;
+    const { dashboardData, centralTable, titles } = this.state;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -654,9 +699,15 @@ class Overview extends React.Component<any, any> {
               </div>
             </div>
             <div className="main-collapse-expand">
-              {centralTable && centralTable.devcentral && this.handleSLATable(centralTable.devcentral, 'DEV Central')}
-              {centralTable && centralTable.seccentral && this.handleSLATable(centralTable.seccentral, 'SEC Central')}
-              {centralTable && centralTable.opscentral && this.handleSLATable(centralTable.opscentral, 'OPS Central')}
+              {centralTable &&
+                centralTable.devcentral &&
+                this.handleSLATable(centralTable.devcentral, titles.devcentral)}
+              {centralTable &&
+                centralTable.seccentral &&
+                this.handleSLATable(centralTable.seccentral, titles.seccentral)}
+              {centralTable &&
+                centralTable.opscentral &&
+                this.handleSLATable(centralTable.opscentral, titles.opscentral)}
             </div>
           </div>
         </div>
