@@ -4641,6 +4641,18 @@ a:hover {
   .catalogue-inner-tabs-container
   .catalogue-right-container
   .contents
+  p
+  strong {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
   ul {
   display: block;
   margin: 0 0 20px 0;

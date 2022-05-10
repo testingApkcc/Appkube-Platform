@@ -572,6 +572,10 @@
                                 color: #000000;
                                 font-weight: 400;
                                 margin-bottom: 20px;
+                                strong {
+                                    display: inline-block;
+                                    margin-bottom: 0;
+                                }
                             }
 
                             ul {
