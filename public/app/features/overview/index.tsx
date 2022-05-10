@@ -261,8 +261,6 @@ class Overview extends React.Component<any, any> {
     };
   }
 
-  componentDidMount() {}
-
   handletableColor = (val: any) => {
     let color = '';
     if (val * 1 > 98) {
@@ -274,11 +272,75 @@ class Overview extends React.Component<any, any> {
     }
     return color;
   };
-
+  handleSLATToggle = (value: any) => {
+    const { centralTable } = this.state;
+    value.isHide = !value.isHide;
+    this.setState({ centralTable });
+  };
+  handleSLATValues = (val: any) => {
+    let retData = [];
+    for (let i = 0; i < Object.keys(val).length; i++) {
+      if (val[Object.keys(val)[i]]) {
+        retData.push(
+          <li>
+            <div className="report-box">
+              <strong>{Object.keys(val)[i]}</strong>
+              <div className="report">
+                <span>{`${Math.abs(val[Object.keys(val)[i]])}%`}</span>
+                {val[Object.keys(val)[i]] * 1 > 0 ? (
+                  <span className="up">
+                    <i className="fa fa-caret-up"></i>
+                  </span>
+                ) : (
+                  <span className="down">
+                    <i className="fa fa-caret-down"></i>
+                  </span>
+                )}
+              </div>
+            </div>
+          </li>
+        );
+      }
+    }
+    return retData;
+  };
+  handleSLATable = (data: any, label: any) => {
+    let retData: any = [];
+    let list: any = [];
+    let key = '';
+    if ((data !== undefined || null) && Object.keys(data).length > 0) {
+      for (let i = 0; i < Object.keys(data).length; i++) {
+        key = Object.keys(data)[i];
+        let value: any = data[Object.keys(data)[i]];
+        if (key !== 'isHide') {
+          list.push(
+            <>
+              <div className="reports-boxes">
+                <h4>{key}</h4>
+                <ul>{this.handleSLATValues(value)}</ul>
+              </div>
+            </>
+          );
+        }
+      }
+    }
+    retData.push(
+      <>
+        <div className="collapse-expand">
+          <div className="heading">
+            <h3>{label}</h3>
+            <i className="fa fa-chevron-down" onClick={() => this.handleSLATToggle(data)}></i>
+          </div>
+          <div className="contents">{!data.isHide && list}</div>
+        </div>
+      </>
+    );
+    return retData;
+  };
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'MONITOR | OVERVIEW';
-    const { dashboardData } = this.state;
+    const { dashboardData, centralTable } = this.state;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -577,7 +639,15 @@ class Overview extends React.Component<any, any> {
                 </div>
               </div>
             </div>
-            <div className="collapse-expand">
+
+            {centralTable && centralTable.devcentral && this.handleSLATable(centralTable.devcentral, 'DEV Central')}
+            <div>
+              {centralTable && centralTable.seccentral && this.handleSLATable(centralTable.seccentral, 'SEC Central')}
+            </div>
+            <div>
+              {centralTable && centralTable.opscentral && this.handleSLATable(centralTable.opscentral, 'Ops Central')}
+            </div>
+            {/* <div className="collapse-expand">
               <div className="heading">
                 <h3>DEV Central</h3>
                 <i className="fa fa-chevron-down"></i>
@@ -819,8 +889,8 @@ class Overview extends React.Component<any, any> {
                   </ul>
                 </div>
               </div>
-            </div>
-            <div className="collapse-expand">
+            </div> */}
+            {/* <div className="collapse-expand">
               <div className="heading">
                 <h3>DEV Central</h3>
                 <i className="fa fa-chevron-down"></i>
@@ -1062,7 +1132,7 @@ class Overview extends React.Component<any, any> {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </React.Fragment>
