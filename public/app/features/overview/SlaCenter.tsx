@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { mappingData } from './MapingValues.json';
 const dummyData = {
   devcentral: {
     volume: {
@@ -69,48 +69,49 @@ const dummyData = {
 };
 
 export class SlaCenter extends React.Component<any, any> {
-  mapping: any = {
-    devcentral: 'DEV Central',
-    volume: 'Volume',
-    product: 'Product',
-    services: 'Services',
-    release: 'Release',
-    useCase: 'Use Case',
-    bugs: 'Bugs',
-    workFlow: 'Workflow',
-    documentation: 'Documentation',
-    automationTest: 'Automation Test',
-    velocity: 'Velocity',
-    scheduleDeviation: 'Schedule Deviation',
-    releaseTime: 'Release Time',
-    bugFixing: 'Bug Fixing',
-    useCaseDelivery: 'Use Case Delivery',
-    workFlowGeneration: 'Work Flow Generation',
-    reliability: 'Reliability',
-    postReleaseDefects: 'Post Release Defects',
-    usageStats: 'Usage Stats',
-    seccentral: 'SEC Central',
-    infra: 'Infra',
-    account: 'Account',
-    vpc: 'VPC',
-    cluster: 'Cluster',
-    managedServices: 'Managed Services',
-    app: 'APP',
-    container: 'Container',
-    code: 'Code',
-    data: 'Data',
-    accessControl: 'Access Control',
-    governance: 'Governance',
-    transitAndStore: 'Transit And Store',
-    opscentral: 'OPS Central',
-    newCloudProvisioning: 'New Cloud Provisioning',
-    newProduct: 'New Product',
-    serviceOnboarding: 'Service On Boarding',
-    newAutomation: 'New Automation',
-    alertResolved: 'Alert Resolved',
-    usecaseDelivery: 'Use Case Delivery',
-    rateofReopenTickets: 'Rate of Reopen Tickets',
-  };
+  mapping: any = mappingData;
+  // mapping: any = {
+  //   devcentral: 'DEV Central',
+  //   volume: 'Volume',
+  //   product: 'Product',
+  //   services: 'Services',
+  //   release: 'Release',
+  //   useCase: 'Use Case',
+  //   bugs: 'Bugs',
+  //   workFlow: 'Workflow',
+  //   documentation: 'Documentation',
+  //   automationTest: 'Automation Test',
+  //   velocity: 'Velocity',
+  //   scheduleDeviation: 'Schedule Deviation',
+  //   releaseTime: 'Release Time',
+  //   bugFixing: 'Bug Fixing',
+  //   useCaseDelivery: 'Use Case Delivery',
+  //   workFlowGeneration: 'Work Flow Generation',
+  //   reliability: 'Reliability',
+  //   postReleaseDefects: 'Post Release Defects',
+  //   usageStats: 'Usage Stats',
+  //   seccentral: 'SEC Central',
+  //   infra: 'Infra',
+  //   account: 'Account',
+  //   vpc: 'VPC',
+  //   cluster: 'Cluster',
+  //   managedServices: 'Managed Services',
+  //   app: 'APP',
+  //   container: 'Container',
+  //   code: 'Code',
+  //   data: 'Data',
+  //   accessControl: 'Access Control',
+  //   governance: 'Governance',
+  //   transitAndStore: 'Transit And Store',
+  //   opscentral: 'OPS Central',
+  //   newCloudProvisioning: 'New Cloud Provisioning',
+  //   newProduct: 'New Product',
+  //   serviceOnboarding: 'Service On Boarding',
+  //   newAutomation: 'New Automation',
+  //   alertResolved: 'Alert Resolved',
+  //   usecaseDelivery: 'Use Case Delivery',
+  //   rateofReopenTickets: 'Rate of Reopen Tickets',
+  // };
   constructor(props: any) {
     super(props);
     this.state = {
@@ -134,29 +135,33 @@ export class SlaCenter extends React.Component<any, any> {
     activeTabs[table] = key;
     this.setState({ activeTabs });
   };
-
-  //run Object.keys only first time. save result and use that
   renderRows = (val: any) => {
     let retData = [];
-    for (let i = 0; i < Object.keys(val).length; i++) {
-      if (val[Object.keys(val)[i]]) {
-        retData.push(
-          <div className="report-box">
-            <strong>{this.mapping[Object.keys(val)[i]]}</strong>
-            <div className="report">
-              {val[Object.keys(val)[i]] * 1 > 0 ? (
-                <span className="up">
-                  <i className="fa fa-caret-up"></i>
-                </span>
-              ) : (
-                <span className="down">
-                  <i className="fa fa-caret-down"></i>
-                </span>
-              )}
-              <span>{`${Math.abs(val[Object.keys(val)[i]])}%`}</span>
+    if (val) {
+      let key: any;
+      let value: any;
+      for (let i = 0; i < Object.keys(val).length; i++) {
+        key = Object.keys(val)[i];
+        value = val[Object.keys(val)[i]];
+        if (value) {
+          retData.push(
+            <div className="report-box">
+              <strong>{this.mapping[key]}</strong>
+              <div className="report">
+                {value * 1 > 0 ? (
+                  <span className="up">
+                    <i className="fa fa-caret-up"></i>
+                  </span>
+                ) : (
+                  <span className="down">
+                    <i className="fa fa-caret-down"></i>
+                  </span>
+                )}
+                <span>{`${Math.abs(value)}%`}</span>
+              </div>
             </div>
-          </div>
-        );
+          );
+        }
       }
     }
     return retData;
@@ -171,6 +176,7 @@ export class SlaCenter extends React.Component<any, any> {
       const tabs = Object.keys(data);
       for (let i = 0; i < tabs.length; i++) {
         const tab = tabs[i];
+        let rows: any = data[tab];
         tabsJSX.push(
           <li
             className={activeTabs[tableKey] === tab ? 'active' : ''}
@@ -179,17 +185,9 @@ export class SlaCenter extends React.Component<any, any> {
             {this.mapping[tab]}
           </li>
         );
-      }
-      //why there are two loops. I think we need only one loop.
-      for (let i = 0; i < tabs.length; i++) {
-        const tab = tabs[i];
-        let rows: any = data[tab];
-        //why ishide
-        if (tab !== 'isHide') {
-          {
-            activeTabs[tableKey] === tab &&
-              listJSX.push(<div className="reports-boxes active">{this.renderRows(rows)}</div>);
-          }
+        {
+          activeTabs[tableKey] === tab &&
+            listJSX.push(<div className="reports-boxes active">{this.renderRows(rows)}</div>);
         }
       }
     }
