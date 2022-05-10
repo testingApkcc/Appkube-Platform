@@ -1,6 +1,5 @@
 // Libraries
 import React from 'react';
-import { CustomNavigationBar } from 'app/core/components/CustomNav';
 import CustomDashboardLoader from '../custom-dashboard-loader';
 // import { DeleteTabPopup } from './DeleteTabPopup';
 // import { UncontrolledPopover, PopoverBody } from 'reactstrap';
@@ -186,7 +185,6 @@ class ManageView extends React.Component<any, any> {
     const { loading, viewName, tabs } = this.state;
     return (
       <React.Fragment>
-        <CustomNavigationBar />
         <div className="breadcrumbs-container">
           {pageTitle && <div className="page-title">{pageTitle}</div>}
           <div className="breadcrumbs">
