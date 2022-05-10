@@ -10,15 +10,15 @@ export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
   config: any;
   tabMapping: any = [{
-    name: "Dev Catalogue",
+    name: "DEV",
     dataKey: 'dev',
     component: DevCatalogue
   }, {
-    name: "Sec Catalogue",
+    name: "SEC",
     dataKey: 'sec',
     component: SecCatalogue
   }, {
-    name: "Ops Catalogue",
+    name: "OPS",
     dataKey: 'ops',
     component: OpsCatalogue
   }];
