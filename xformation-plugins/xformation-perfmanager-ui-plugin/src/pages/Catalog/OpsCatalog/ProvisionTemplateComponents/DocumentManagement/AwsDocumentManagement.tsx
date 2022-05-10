@@ -4,17 +4,19 @@ export class AwsDocumentManagement extends React.Component<any, any>{
         super(props);
         this.state = {
             activeTab: 0,
-            accountName: '',
-            accountEmail: '',
-            managedOrganisationalUnit: '',
-            ssoUserEmail: '',
-            ssoUserFirstName: '',
-            ssoUserLastName: '',
-            requestor: '',
-            requestReason: '',
-            customizationName: '',
-            label: [],
-            tagvalue: [],
+            stackName: '',
+            AWSRegion: '',
+            adminEmail: '',
+            AppEnvironment: '',
+            EnablePublicURLs: '',
+            PasswordMinimumLength: '',
+            passwordRequresLowercase: '',
+            passwordRequresNumber: '',
+            passwordRequresSymbols: '',
+            passwordRequresUppercase: '',
+            ConfirmChangeBefore: '',
+            AllowSAMCLIIAMRoleCreation: '',
+            SaveArgumentTosamconfig: '',
             isSubmitted: false,
             addTags: [],
         };
@@ -40,101 +42,112 @@ export class AwsDocumentManagement extends React.Component<any, any>{
         };
         let isValid = true;
         const retData = {
-            accountName: validObj,
-            accountEmail: validObj,
-            managedOrganisationalUnit: validObj,
-            ssoUserEmail: validObj,
-            ssoUserFirstName: validObj,
-            ssoUserLastName: validObj,
-            requestor: validObj,
-            requestReason: validObj,
-            customizationName: validObj,
-            label: validObj,
-            tagvalue: validObj,
+            stackName: validObj,
+            AWSRegion: validObj,
+            adminEmail: validObj,
+            AppEnvironment: validObj,
+            EnablePublicURLs: validObj,
+            PasswordMinimumLength: validObj,
+            passwordRequresLowercase: validObj,
+            passwordRequresNumber: validObj,
+            passwordRequresSymbols: validObj,
+            passwordRequresUppercase: validObj,
+            ConfirmChangeBefore: validObj,
+            AllowSAMCLIIAMRoleCreation: validObj,
+            SaveArgumentTosamconfig: validObj,
             isValid,
         };
         if (isSubmitted) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, addTags, } = this.state;
-            if (!accountName) {
-                retData.accountName = {
+            const { stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig } = this.state;
+            if (!stackName) {
+                retData.stackName = {
                     isValid: false,
-                    message: 'Account Name is required',
+                    message: 'Stack Name is required',
                 };
                 isValid = false;
             }
-            if (!accountEmail) {
-                retData.accountEmail = {
+            if (!AWSRegion) {
+                retData.AWSRegion = {
                     isValid: false,
-                    message: 'Account Email is required',
+                    message: 'AWS Region is required',
                 };
                 isValid = false;
             }
-            if (!managedOrganisationalUnit) {
-                retData.managedOrganisationalUnit = {
+            if (!adminEmail) {
+                retData.adminEmail = {
                     isValid: false,
-                    message: 'Account Email is required',
+                    message: 'Admin Email is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserEmail) {
-                retData.ssoUserEmail = {
+            if (!AppEnvironment) {
+                retData.AppEnvironment = {
                     isValid: false,
-                    message: 'SSO User Email is required',
+                    message: 'App Environment is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserFirstName) {
-                retData.ssoUserFirstName = {
+            if (!EnablePublicURLs) {
+                retData.EnablePublicURLs = {
                     isValid: false,
-                    message: 'SSO User First Name is required',
+                    message: 'Enable Public URLs is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserLastName) {
-                retData.ssoUserLastName = {
+            if (!PasswordMinimumLength) {
+                retData.PasswordMinimumLength = {
                     isValid: false,
-                    message: 'SSO User Last Name is required',
+                    message: 'Password Minimum Length is required',
                 };
                 isValid = false;
             }
-            if (!requestor) {
-                retData.requestor = {
+            if (!passwordRequresLowercase) {
+                retData.passwordRequresLowercase = {
                     isValid: false,
-                    message: 'Requestor is required',
+                    message: 'Password Requres Lowercase is required',
                 };
                 isValid = false;
             }
-            if (!requestReason) {
-                retData.requestReason = {
+            if (!passwordRequresNumber) {
+                retData.passwordRequresNumber = {
                     isValid: false,
-                    message: 'Request Reason is required',
+                    message: 'Password Requres Number is required',
                 };
                 isValid = false;
             }
-            if (!customizationName) {
-                retData.customizationName = {
+            if (!passwordRequresSymbols) {
+                retData.passwordRequresSymbols = {
                     isValid: false,
-                    message: 'Customization Name is required',
+                    message: 'Password Requres Symbols is required',
                 };
                 isValid = false;
             }
-            if (addTags.length > 0) {
-                debugger;
-                for (let i = 0; i < addTags.length; i++) {
-                    if (addTags[i].label === '') {
-                        retData.label = {
-                            isValid: false,
-                            message: 'Tag Label are required',
-                        }
-                    }
-                    if (addTags[i].tagvalue === '') {
-                        retData.tagvalue = {
-                            isValid: false,
-                            message: 'Tag values are required',
-                        }
-                    }
-
-                }
+            if (!passwordRequresUppercase) {
+                retData.passwordRequresUppercase = {
+                    isValid: false,
+                    message: 'Password Requres Uppercase is required',
+                };
+                isValid = false;
+            }
+            if (!ConfirmChangeBefore) {
+                retData.ConfirmChangeBefore = {
+                    isValid: false,
+                    message: 'Confirm Change Before is required',
+                };
+                isValid = false;
+            }
+            if (!AllowSAMCLIIAMRoleCreation) {
+                retData.AllowSAMCLIIAMRoleCreation = {
+                    isValid: false,
+                    message: 'Allow SAM CLI IAM Role Creation is required',
+                };
+                isValid = false;
+            }
+            if (!SaveArgumentTosamconfig) {
+                retData.SaveArgumentTosamconfig = {
+                    isValid: false,
+                    message: 'Save Argument To Samconfig is required',
+                };
                 isValid = false;
             }
         }
@@ -150,8 +163,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
         });
         const errorData = this.validate(true);
         if (errorData.isValid) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue } = this.state;
-            localStorage.setItem('viewData', JSON.stringify({ accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue }));
+            const { stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig } = this.state;
+            localStorage.setItem('viewData', JSON.stringify({ stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig }));
         }
     };
 
@@ -227,26 +240,23 @@ export class AwsDocumentManagement extends React.Component<any, any>{
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>create an Account with DevSecOps best practice in AWS</strong>
-                        <h3>Welcome</h3>
+                        <strong>Document Management System with DevSecOps best practice in AWS</strong>
+                        <h3>Document Management System</h3>
                         <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
                         <h3>Prerequisites</h3>
-                        <p>Prerequisites of Account creation will be mentioned here.</p>
-                        <h3>Description</h3>
-                        <p>Use DevSecOps practices to support continuous deployment of your application, including evidence collection, GitOps flow, change management, and compliance scans.</p>
-                        <ul>
-                            <li><a href='#'>View docs</a></li>
-                            <li><a href='#'>Read tutorial</a></li>
-                            <li><a href='#'>Template repo</a></li>
-                        </ul>
-                        <h3>Important</h3>
-                        <ol>
-                            <li>This template uses a guided experience You be asked, step by step, what tools should be inclu ded in your toolchain.</li>
-                            <li>You must configure some prerequisites in other IBM or external services. Refer to the toolchain prerequisites setup steps in the documentation for creting this toolchain. You will need to enter the details from those instances in the relevant template steps.</li>
-                            <li>The toolchain created from this template consumes artifacts and evidence produced by an associated continuous integration (CI) toolchain. To create one see CI-Develop a secure app with DevSecOps practices.</li>
-                            <li>In most steps you will be asked to name each tool they will appear in your toolchain.</li>
-                            <li>Some steps are mandatory. To skip to the next mandatory step click Create toolchain'</li>
-                        </ol>
+                        <p><strong>Stack Name:</strong> The name of the stack to deploy to CloudFormation; this should be unique to your account and region, and a good starting point would be formkiq-core-& AppEnvironment; where AppEnvironment matches your installation environment, e.g. prod, dev, test</p>
+                        <p><strong>AWS Region:</strong> The AWS region you want to deploy your app to use</p>
+                        <p><strong>Admin Email:</strong> The Administration Email you want FormKiQ to useAppEnvironment: your installation environment, e.g. prod, dev, test; must be unique per account</p>
+                        <p><strong>App Environment:</strong> your installation environment, e.g. prod, dev, test; must be unique per account</p>
+                        <p><strong>Enable Public Url’s:</strong> Whether to Enable /public/ urls.</p>
+                        <p><strong>Password Minimum Length:</strong> The minimum Password Length for User Accounts</p>
+                        <p><strong>Password Require Lowercase:</strong> Whether at least one lowercase letter is required in User</p>
+                        <p><strong>Passwords Password Require Numbers:</strong> Whether at least one number is required in User</p>
+                        <p><strong>Passwords Password Require Symbols:</strong> Whether at least one symbol is required in User</p>
+                        <p><strong>Passwords Password Require Uppercase:</strong> Whether at least one uppercase letter is required in User Passwords</p>
+                        <p><strong>Confirm changes before deploy:</strong> If set to yes, any change sets will be shown to you before execution for manual review; if set to no, the AWS SAM CLI will automatically deploy application changes</p>
+                        <p><strong>Allow SAM CLI IAM role creation:</strong> FormKiQ Core’s AWS SAM templates create AWS IAM roles required for the AWS  Lambda function(s) included to access AWS services; the permissions are passed in by the sam deploy command  above, so this value should be set to "Y" </p>
+                        <p><strong>Save arguments to samconfig.toml:</strong> if set to "Y", your choices will be saved to a configuration file inside the project, so that in the future you can just re-run sam deploy without parameters to deploy changes to your application</p>
                         <div className="d-block text-right">
                             <button className="next-btn" onClick={() => this.props.showMainView()}>Back</button>
                             <button className="next-btn" onClick={() => this.setActiveTab(1)}>Next</button>
@@ -256,161 +266,191 @@ export class AwsDocumentManagement extends React.Component<any, any>{
             )
         }
         else if (activeTab === 1) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, customizationName, requestReason, isSubmitted } = this.state;
+            const { stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig, isSubmitted } = this.state;
             const errorData = this.validate(isSubmitted);
             // console.log(errorData)
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>create an Account with DevSecOps best practice in AWS</strong>
-                        <h3>Account Creation</h3>
-                        <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
+                        <strong>Document Management System with DevSecOps best practice in AWS</strong>
+                        <h3>Document Management System</h3>
+                        <p>This Command will package and deploy your application to AWS, with a series of prompts</p>
                         <div className="form-detail-group">
-                            <strong>Account Details</strong>
+                            <strong>Prerequisites</strong>
                             <div className="form-group">
-                                <label>Account Name</label>
+                                <label>Stack Name</label>
                                 <input
                                     type="text"
-                                    name="accountName"
+                                    name="stackName"
                                     className="form-control"
-                                    placeholder="AWS Config"
-                                    value={accountName}
+                                    placeholder="Name of the stack to deploy"
+                                    value={stackName}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.accountName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.stackName.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>Account Email</label>
+                                <label>AWS Region</label>
+                                <input
+                                    type="text"
+                                    name="AWSRegion"
+                                    className="form-control"
+                                    placeholder="AWS Region"
+                                    value={AWSRegion}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.AWSRegion.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Admin Email</label>
                                 <input
                                     type="email"
-                                    name="accountEmail"
+                                    name="adminEmail"
                                     className="form-control"
-                                    placeholder="AWS Config"
-                                    value={accountEmail}
+                                    placeholder="example@demain.com"
+                                    value={adminEmail}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.accountEmail.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Organisatoin Selection</strong>
-                            <div className="form-group">
-                                <label>Managed Organisational Unit</label>
-                                <select className="form-control" value={managedOrganisationalUnit} onChange={this.handleStateChange} name="managedOrganisationalUnit">
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
-                                </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.managedOrganisationalUnit.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Sign In Information</strong>
-                            <div className="form-group">
-                                <label>SSO User Email</label>
-                                <input
-                                    type="email"
-                                    name="ssoUserEmail"
-                                    className="form-control"
-                                    placeholder="user@domain.com"
-                                    value={ssoUserEmail}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserEmail.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.adminEmail.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>SSO User First Name</label>
+                                <label>App Environment</label>
                                 <input
                                     type="text"
-                                    name="ssoUserFirstName"
+                                    name="AppEnvironment"
                                     className="form-control"
-                                    placeholder="eg. Sandbox"
-                                    value={ssoUserFirstName}
+                                    placeholder="Installation environment"
+                                    value={AppEnvironment}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserFirstName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.AppEnvironment.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>SSO User Last Name</label>
-                                <input
-                                    type="text"
-                                    name="ssoUserLastName"
-                                    className="form-control"
-                                    placeholder="eg. AFT"
-                                    value={ssoUserLastName}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserLastName.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Tagging</strong>
-                            <div className="form-group">
-                                <button className="add-tags-btn" onClick={this.onClickAddTag}><i className="fa fa-plus"></i></button><label>Add Tags</label>
-                            </div>
-                            <div className="add-tags">
-                                {this.displayTags()}
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <div className="form-group">
-                                            {errorData && !errorData.label.isValid && <span className="error">{errorData.label.message}</span>}
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="form-group">
-                                            {errorData && !errorData.tagvalue.isValid && <span className="error">{errorData.tagvalue.message}</span>}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            {/* < */}
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Request Reason</strong>
-                            <div className="form-group">
-                                <label>Requestor</label>
-                                <input
-                                    type="email"
-                                    name="requestor"
-                                    className="form-control"
-                                    placeholder="user@domain.com"
-                                    value={requestor}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.requestor.message}</span>}
-                            </div>
-                            <div className="form-group">
-                                <label>Request Reason</label>
-                                <input
-                                    type="text"
-                                    name="requestReason"
-                                    className="form-control"
-                                    placeholder="eg. Sandbox"
-                                    value={requestReason}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.requestReason.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Account Customization</strong>
-                            <div className="form-group">
-                                <label>Name</label>
+                                <label>Enable Public URL's</label>
                                 <select
-                                    name="customizationName"
+                                    name="EnablePublicURLs"
                                     className="form-control"
-                                    value={customizationName}
+                                    value={EnablePublicURLs}
                                     onChange={this.handleStateChange}
                                 >
                                     <option>Select 1</option>
                                     <option>Select 2</option>
                                     <option>Select 3</option>
                                 </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.customizationName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.EnablePublicURLs.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Password minimum length</label>
+                                <input
+                                    type="text"
+                                    name="PasswordMinimumLength"
+                                    className="form-control"
+                                    placeholder="insert any number"
+                                    value={PasswordMinimumLength}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.PasswordMinimumLength.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Password requres lowercase</label>
+                                <select
+                                    name="passwordRequresLowercase"
+                                    className="form-control"
+                                    value={passwordRequresLowercase}
+                                    onChange={this.handleStateChange}
+                                >
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
+                                </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresLowercase.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Password requres number</label>
+                                <select
+                                    name="passwordRequresNumber"
+                                    className="form-control"
+                                    value={passwordRequresNumber}
+                                    onChange={this.handleStateChange}
+                                >
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
+                                </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresNumber.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Password requres symbols</label>
+                                <select
+                                    name="passwordRequresSymbols"
+                                    className="form-control"
+                                    value={passwordRequresSymbols}
+                                    onChange={this.handleStateChange}
+                                >
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
+                                </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresSymbols.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Password requres uppercase</label>
+                                <select
+                                    name="passwordRequresUppercase"
+                                    className="form-control"
+                                    value={passwordRequresUppercase}
+                                    onChange={this.handleStateChange}
+                                >
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
+                                </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresUppercase.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Confirm change before</label>
+                                <select
+                                    name="ConfirmChangeBefore"
+                                    className="form-control"
+                                    value={ConfirmChangeBefore}
+                                    onChange={this.handleStateChange}
+                                >
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
+                                </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ConfirmChangeBefore.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Allow SAM CLI IAM role creation</label>
+                                <select
+                                    name="AllowSAMCLIIAMRoleCreation"
+                                    className="form-control"
+                                    value={AllowSAMCLIIAMRoleCreation}
+                                    onChange={this.handleStateChange}
+                                >
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
+                                </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.AllowSAMCLIIAMRoleCreation.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>Save argument to samconfig.toml</label>
+                                <select
+                                    name="SaveArgumentTosamconfig"
+                                    className="form-control"
+                                    value={SaveArgumentTosamconfig}
+                                    onChange={this.handleStateChange}
+                                >
+                                    <option>Select 1</option>
+                                    <option>Select 2</option>
+                                    <option>Select 3</option>
+                                </select>
+                                {errorData && !errorData.isValid && <span className="error">{errorData.SaveArgumentTosamconfig.message}</span>}
                             </div>
                         </div>
+
                         <div className="d-block text-right">
                             <button className="next-btn" onClick={() => this.setActiveTab(0)}>Back</button>
                             <button className="next-btn" onClick={this.handleSubmit}>Create</button>
@@ -441,7 +481,7 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                         <label>Welcome</label>
                                     </li>
                                     <li className={activeTab === 1 ? 'active' : ''} onClick={() => this.setActiveTab(1)} >
-                                        <label>Account Creation</label>
+                                        <label>Documentation</label>
                                     </li>
                                 </ul>
                             </div>
