@@ -96,7 +96,7 @@ export class CloudDashboards extends React.Component<any, any>{
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                        <Filter />
+                        <Filter filterJsonData={dashboards}/>
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">
