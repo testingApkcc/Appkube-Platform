@@ -255,7 +255,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
       ],
     },
     {
-      link: '/import-module-pack',
+      link: '/a/xformation-perfmanager-ui-plugin/catalog',
       text: 'App Catalogue',
       cssClass: 'app-catalogue',
       childName: 'app-catalogue',
@@ -347,6 +347,26 @@ export class CustomSideMenu extends PureComponent<any, any> {
           text: 'Manage Views',
           childName: 'analytics',
           isImplemented: true,
+          subMenu: [
+            {
+              link: '/analytics/new/dashboard',
+              text: 'New Dashboards',
+              childName: 'analytics',
+              isImplemented: true,
+            },
+            {
+              link: '/analytics/edit/dashboard',
+              text: 'Edit Dashboards',
+              childName: 'analytics',
+              isImplemented: true,
+            },
+            {
+              link: '/analytics/view',
+              text: 'View Dashboards',
+              childName: 'analytics',
+              isImplemented: true,
+            },
+          ],
         },
         {
           link: '/taskmanager',

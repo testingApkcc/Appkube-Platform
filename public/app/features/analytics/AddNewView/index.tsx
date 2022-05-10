@@ -110,6 +110,7 @@ class AddNewView extends React.Component<any, any> {
             tabs: result.tabs,
             selectedDashboards: result.selectedDashboards,
             filterData: result.filterData,
+            isPreviewEnabled: true,
           });
         }
       });
@@ -133,6 +134,7 @@ class AddNewView extends React.Component<any, any> {
               tabs: result.tabs,
               selectedDashboards: result.selectedDashboards,
               filterData: result.filterData,
+              isPreviewEnabled: true,
             });
           }
           break;
@@ -199,6 +201,7 @@ class AddNewView extends React.Component<any, any> {
           this.setState({
             selectedDashboards: result.selectedDashboards,
             filterData: result.filterData,
+            isPreviewEnabled: true,
           });
         }
       }
@@ -569,7 +572,7 @@ class AddNewView extends React.Component<any, any> {
       for (let i = 0; i < selectedDashboardsForTab.length; i++) {
         retData.push(
           <li key={`left-side-dash-name-${i}`}>
-            <a href="javascript: void(0)">
+            <a>
               {/* <i className="fa fa-ellipsis-h"></i> */}
               <span>{selectedDashboardsForTab[i]}</span>
             </a>

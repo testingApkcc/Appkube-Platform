@@ -64,7 +64,7 @@ export function getAppRoutes(): RouteDescriptor[] {
       component: SafeDynamicImport(() => import(/* webpackChunkName: "AnalyticsPage" */ '../features/analytics')),
     },
     {
-      path: '/analytics/:id',
+      path: '/analytics/view',
       pageClass: 'page-dashboard',
       routeName: DashboardRoutes.Normal,
       component: SafeDynamicImport(
@@ -80,7 +80,7 @@ export function getAppRoutes(): RouteDescriptor[] {
       ),
     },
     {
-      path: '/analytics/edit/:id',
+      path: '/analytics/edit/dashboard',
       pageClass: 'page-dashboard',
       routeName: DashboardRoutes.Normal,
       component: SafeDynamicImport(

@@ -107,7 +107,7 @@
 
         > a {
           background-color: #f8f9fb;
-          border: 0.5px solid #8392a7;
+          border: 1px solid #8392a7;
           border-right: none;
           position: relative;
           margin: 0;
@@ -132,6 +132,7 @@
               width: 100%;
               padding: 0px 10px;
             }
+
             .tab-edit {
               margin-left: 10px;
               margin-top: 5px;
@@ -147,7 +148,7 @@
               box-shadow: 2px 2px 6px #00000029;
 
               &:hover {
-                border: 0.5px solid #8392a7;
+                border: 1px solid #8392a7;
                 border-right: none;
               }
             }
@@ -161,12 +162,24 @@
 
           &.add-tab {
             width: auto;
-            border-right: 0.5px solid #8392a7;
+            border-right: 1px solid #8392a7;
             padding: 0 15px;
             min-width: auto;
 
             i {
               float: none;
+            }
+          }
+        }
+
+        &:last-child {
+          a {
+            border-right: 1px solid #8392a7;
+
+            &.active {
+              &:hover {
+                border: 1px solid #8392a7;
+              }
             }
           }
         }
@@ -800,6 +813,7 @@
 
 .invalid-feedback {
   color: #ff4040ed;
+  font-size: 12px;
 }
 
 .bs-popover-auto {

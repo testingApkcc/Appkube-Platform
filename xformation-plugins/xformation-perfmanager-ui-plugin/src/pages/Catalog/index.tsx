@@ -1,6 +1,5 @@
 import React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { TopMenu } from './TopMenu';
 import { RestService } from './../_service/RestService';
 import { config } from './../../config';
 import { DevCatalogue } from './DevCatalog';
@@ -145,7 +144,7 @@ export class Catalog extends React.Component<any, any>{
           <div className="common-container">
             <div className="catalogue-tabs">
               <div className="row">
-                <div className="col-lg-9 col-md-9 col-sm-12">
+                <div className="col-lg-12 col-md-12 col-sm-12">
                   <ul>
                     {
                       this.tabMapping.map((tabData: any, index: any) => {
@@ -159,9 +158,6 @@ export class Catalog extends React.Component<any, any>{
                       })
                     }
                   </ul>
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-12">
-                  <TopMenu />
                 </div>
               </div>
             </div>

@@ -44,12 +44,27 @@ class ManageView extends React.Component<any, any> {
   }
 
   componentDidMount() {
-    const { match } = this.props;
-    if (match && match.params && match.params.id) {
-      this.getDashData(match.params.id);
+    // const { match } = this.props;
+    let id = this.getParameterByName('id', window.location.href);
+    console.log(id);
+    if (id) {
+      this.getDashData(id);
     } else {
-      locationService.push(`/analytics`);
+      // locationService.push(`/analytics`);
     }
+  }
+
+  getParameterByName(name: any, url: any) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) {
+      return null;
+    }
+    if (!results[2]) {
+      return '';
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
   getDashData = (id: any) => {
