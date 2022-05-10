@@ -4,3 +4,5 @@ interface RequireImport {
 
 declare module '*.png';
 declare module '@wojtekmaj/react-datetimerange-picker';
+
+declare module 'uuid';
