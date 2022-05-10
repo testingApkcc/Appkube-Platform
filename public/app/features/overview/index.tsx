@@ -258,6 +258,11 @@ class Overview extends React.Component<any, any> {
           },
         },
       },
+      SLAToggle: {
+        'DEV Central': 'volume',
+        'SEC Central': 'infra',
+        'OPS Central': 'volume',
+      },
     };
   }
 
@@ -272,33 +277,31 @@ class Overview extends React.Component<any, any> {
     }
     return color;
   };
-  handleSLATToggle = (value: any) => {
-    const { centralTable } = this.state;
-    value.isHide = !value.isHide;
-    this.setState({ centralTable });
+  handleSLATToggle = (label: any, key: any) => {
+    const { SLAToggle } = this.state;
+    SLAToggle[label] = key;
+    this.setState({ SLAToggle });
   };
   handleSLATValues = (val: any) => {
     let retData = [];
     for (let i = 0; i < Object.keys(val).length; i++) {
       if (val[Object.keys(val)[i]]) {
         retData.push(
-          <li>
-            <div className="report-box">
-              <strong>{Object.keys(val)[i]}</strong>
-              <div className="report">
-                <span>{`${Math.abs(val[Object.keys(val)[i]])}%`}</span>
-                {val[Object.keys(val)[i]] * 1 > 0 ? (
-                  <span className="up">
-                    <i className="fa fa-caret-up"></i>
-                  </span>
-                ) : (
-                  <span className="down">
-                    <i className="fa fa-caret-down"></i>
-                  </span>
-                )}
-              </div>
+          <div className="report-box">
+            <strong>{Object.keys(val)[i]}</strong>
+            <div className="report">
+              {val[Object.keys(val)[i]] * 1 > 0 ? (
+                <span className="up">
+                  <i className="fa fa-caret-up"></i>
+                </span>
+              ) : (
+                <span className="down">
+                  <i className="fa fa-caret-down"></i>
+                </span>
+              )}
+              <span>{`${Math.abs(val[Object.keys(val)[i]])}%`}</span>
             </div>
-          </li>
+          </div>
         );
       }
     }
@@ -307,20 +310,28 @@ class Overview extends React.Component<any, any> {
   handleSLATable = (data: any, label: any) => {
     let retData: any = [];
     let list: any = [];
+    let KeyData: any = [];
     let key = '';
+    const { SLAToggle } = this.state;
     if ((data !== undefined || null) && Object.keys(data).length > 0) {
       for (let i = 0; i < Object.keys(data).length; i++) {
         key = Object.keys(data)[i];
+        KeyData.push(
+          <li
+            className={SLAToggle[label] === key ? 'active' : ''}
+            onClick={() => this.handleSLATToggle(label, Object.keys(data)[i])}
+          >
+            {key}
+          </li>
+        );
+      }
+      for (let i = 0; i < Object.keys(data).length; i++) {
         let value: any = data[Object.keys(data)[i]];
         if (key !== 'isHide') {
-          list.push(
-            <>
-              <div className="reports-boxes">
-                <h4>{key}</h4>
-                <ul>{this.handleSLATValues(value)}</ul>
-              </div>
-            </>
-          );
+          {
+            SLAToggle[label] === Object.keys(data)[i] &&
+              list.push(<div className="reports-boxes active">{this.handleSLATValues(value)}</div>);
+          }
         }
       }
     }
@@ -329,9 +340,12 @@ class Overview extends React.Component<any, any> {
         <div className="collapse-expand">
           <div className="heading">
             <h3>{label}</h3>
-            <i className="fa fa-chevron-down" onClick={() => this.handleSLATToggle(data)}></i>
+            {/* <i className="fa fa-chevron-down" onClick={() => this.handleSLATToggle(data)}></i> */}
           </div>
-          <div className="contents">{!data.isHide && list}</div>
+          <div className="contents">
+            <ul className="tabs">{KeyData}</ul>
+            {!data.isHide && list}
+          </div>
         </div>
       </>
     );
@@ -624,10 +638,10 @@ class Overview extends React.Component<any, any> {
           <div className="report-inner-container">
             <div className="header">
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-8 col-sm-8">
                   <h2>SLA Central</h2>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 col-sm-4">
                   <div className="float-right">
                     <select>
                       <option>Day</option>
@@ -639,500 +653,11 @@ class Overview extends React.Component<any, any> {
                 </div>
               </div>
             </div>
-
-            {centralTable && centralTable.devcentral && this.handleSLATable(centralTable.devcentral, 'DEV Central')}
-            <div>
+            <div className="main-collapse-expand">
+              {centralTable && centralTable.devcentral && this.handleSLATable(centralTable.devcentral, 'DEV Central')}
               {centralTable && centralTable.seccentral && this.handleSLATable(centralTable.seccentral, 'SEC Central')}
+              {centralTable && centralTable.opscentral && this.handleSLATable(centralTable.opscentral, 'OPS Central')}
             </div>
-            <div>
-              {centralTable && centralTable.opscentral && this.handleSLATable(centralTable.opscentral, 'Ops Central')}
-            </div>
-            {/* <div className="collapse-expand">
-              <div className="heading">
-                <h3>DEV Central</h3>
-                <i className="fa fa-chevron-down"></i>
-              </div>
-              <div className="contents">
-                <div className="reports-boxes">
-                  <h4>Volume</h4>
-                  <ul>
-                    <li>
-                      <div className="report-box">
-                        <strong>Product</strong>
-                        <div className="report">
-                          <span>56%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Services</strong>
-                        <div className="report">
-                          <span>21%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Release</strong>
-                        <div className="report">
-                          <span>35%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Usecase</strong>
-                        <div className="report">
-                          <span>40%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Bugs</strong>
-                        <div className="report">
-                          <span>45%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Workflow</strong>
-                        <div className="report">
-                          <span>32%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Documentation</strong>
-                        <div className="report">
-                          <span>10%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Automation Test</strong>
-                        <div className="report">
-                          <span>12%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="reports-boxes">
-                  <h4>Volume</h4>
-                  <ul>
-                    <li>
-                      <div className="report-box">
-                        <strong>Product</strong>
-                        <div className="report">
-                          <span>56%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Services</strong>
-                        <div className="report">
-                          <span>21%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Release</strong>
-                        <div className="report">
-                          <span>35%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Usecase</strong>
-                        <div className="report">
-                          <span>40%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Bugs</strong>
-                        <div className="report">
-                          <span>45%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Workflow</strong>
-                        <div className="report">
-                          <span>32%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Documentation</strong>
-                        <div className="report">
-                          <span>10%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Automation Test</strong>
-                        <div className="report">
-                          <span>12%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="reports-boxes">
-                  <h4>Volume</h4>
-                  <ul>
-                    <li>
-                      <div className="report-box">
-                        <strong>Product</strong>
-                        <div className="report">
-                          <span>56%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Services</strong>
-                        <div className="report">
-                          <span>21%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Release</strong>
-                        <div className="report">
-                          <span>35%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Usecase</strong>
-                        <div className="report">
-                          <span>40%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> */}
-            {/* <div className="collapse-expand">
-              <div className="heading">
-                <h3>DEV Central</h3>
-                <i className="fa fa-chevron-down"></i>
-              </div>
-              <div className="contents">
-                <div className="reports-boxes">
-                  <h4>Volume</h4>
-                  <ul>
-                    <li>
-                      <div className="report-box">
-                        <strong>Product</strong>
-                        <div className="report">
-                          <span>56%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Services</strong>
-                        <div className="report">
-                          <span>21%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Release</strong>
-                        <div className="report">
-                          <span>35%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Usecase</strong>
-                        <div className="report">
-                          <span>40%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Bugs</strong>
-                        <div className="report">
-                          <span>45%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Workflow</strong>
-                        <div className="report">
-                          <span>32%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Documentation</strong>
-                        <div className="report">
-                          <span>10%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Automation Test</strong>
-                        <div className="report">
-                          <span>12%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="reports-boxes">
-                  <h4>Volume</h4>
-                  <ul>
-                    <li>
-                      <div className="report-box">
-                        <strong>Product</strong>
-                        <div className="report">
-                          <span>56%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Services</strong>
-                        <div className="report">
-                          <span>21%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Release</strong>
-                        <div className="report">
-                          <span>35%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Usecase</strong>
-                        <div className="report">
-                          <span>40%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Bugs</strong>
-                        <div className="report">
-                          <span>45%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Workflow</strong>
-                        <div className="report">
-                          <span>32%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Documentation</strong>
-                        <div className="report">
-                          <span>10%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Automation Test</strong>
-                        <div className="report">
-                          <span>12%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="reports-boxes">
-                  <h4>Volume</h4>
-                  <ul>
-                    <li>
-                      <div className="report-box">
-                        <strong>Product</strong>
-                        <div className="report">
-                          <span>56%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Services</strong>
-                        <div className="report">
-                          <span>21%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Release</strong>
-                        <div className="report">
-                          <span>35%</span>
-                          <span className="down">
-                            <i className="fa fa-caret-down"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="report-box">
-                        <strong>Usecase</strong>
-                        <div className="report">
-                          <span>40%</span>
-                          <span className="up">
-                            <i className="fa fa-caret-up"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </React.Fragment>
