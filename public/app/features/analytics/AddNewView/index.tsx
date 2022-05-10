@@ -68,9 +68,9 @@ class AddNewView extends React.Component<any, any> {
 
   componentDidMount() {
     //Check if it is edit
-    const { match } = this.props;
-    if (match && match.params && match.params.id) {
-      this.getDashData(match.params.id);
+    let id = this.getParameterByName('id', window.location.href);
+    if (id) {
+      this.getDashData(id);
     } else {
       let viewData: any = localStorage.getItem('viewData');
       if (viewData) {
@@ -88,6 +88,19 @@ class AddNewView extends React.Component<any, any> {
       tags: [],
     };
     this.getSearchData(sendData, true);
+  }
+
+  getParameterByName(name: any, url: any) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) {
+      return null;
+    }
+    if (!results[2]) {
+      return '';
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
   getDashData = (id: any) => {

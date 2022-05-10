@@ -45,7 +45,6 @@ class ManageView extends React.Component<any, any> {
   componentDidMount() {
     // const { match } = this.props;
     let id = this.getParameterByName('id', window.location.href);
-    console.log(id);
     if (id) {
       this.getDashData(id);
     } else {
