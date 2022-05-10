@@ -1,10 +1,10 @@
 import React from 'react';
 import awsIcon from '../../../img/aws.png';
 import { Filter } from './../filter';
-import { AwsAccountCreation } from './ProvisionTemplateComponents';
+import { AwsAccountCreation, AwsDocumentManagement, AwsLandingZone, AwsProductEnclave } from './ProvisionTemplateComponents';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
-    componentMapping = [AwsAccountCreation];
+    componentMapping = [AwsAccountCreation, AwsDocumentManagement, AwsLandingZone, AwsProductEnclave];
     constructor(props: any) {
         super(props)
         this.state = {
@@ -62,11 +62,11 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`}>
+                        <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`} onClick={() => this.setActiveView(1)}>
                             <div className="template-box">
                                 <div className="heading">
                                     <img src={awsIcon} alt='' />
-                                    Landing Zone
+                                    Document management
                                 </div>
                                 <div className="sub-text">
                                     Create Landing Zone with DevSecOps best practice in AWS
@@ -76,11 +76,11 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`}>
+                        <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`} onClick={() => this.setActiveView(3)}>
                             <div className="template-box">
                                 <div className="heading">
                                     <img src={awsIcon} alt='' />
-                                    Landing Zone
+                                    Product Enclave
                                 </div>
                                 <div className="sub-text">
                                     Create Landing Zone with DevSecOps best practice in AWS
@@ -90,7 +90,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`}>
+                        <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`} onClick={() => this.setActiveView(2)}>
                             <div className="template-box">
                                 <div className="heading">
                                     <img src={awsIcon} alt='' />
