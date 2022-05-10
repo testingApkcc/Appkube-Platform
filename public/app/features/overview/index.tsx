@@ -1,6 +1,7 @@
 import React from 'react';
 import 'react-multi-carousel/lib/styles.css';
 import { Line } from 'react-chartjs-2';
+import { SlaCenter } from './SlaCenter';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,53 +29,6 @@ class Overview extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      SLAToggle: {
-        'DEV Central': 'volume',
-        'SEC Central': 'infra',
-        'OPS Central': 'volume',
-      },
-      titles: {
-        devcentral: 'DEV Central',
-        volume: 'Volume',
-        product: 'Product',
-        services: 'Services',
-        release: 'Release',
-        useCase: 'Use Case',
-        bugs: 'Bugs',
-        workFlow: 'Workflow',
-        documentation: 'Documentation',
-        automationTest: 'Automation Test',
-        velocity: 'Velocity',
-        scheduleDeviation: 'Schedule Deviation',
-        releaseTime: 'Release Time',
-        bugFixing: 'Bug Fixing',
-        useCaseDelivery: 'Use Case Delivery',
-        workFlowGeneration: 'Work Flow Generation',
-        reliability: 'Reliability',
-        postReleaseDefects: 'Post Release Defects',
-        usageStats: 'Usage Stats',
-        seccentral: 'SEC Central',
-        infra: 'Infra',
-        account: 'Account',
-        vpc: 'VPC',
-        cluster: 'Cluster',
-        managedServices: 'Managed Services',
-        app: 'APP',
-        container: 'Container',
-        code: 'Code',
-        data: 'Data',
-        accessControl: 'Access Control',
-        governance: 'Governance',
-        transitAndStore: 'Transit And Store',
-        opscentral: 'OPS Central',
-        newCloudProvisioning: 'New Cloud Provisioning',
-        newProduct: 'New Product',
-        serviceOnboarding: 'Service On Boarding',
-        newAutomation: 'New Automation',
-        alertResolved: 'Alert Resolved',
-        usecaseDelivery: 'Use Case Delivery',
-        rateofReopenTickets: 'Rate of Reopen Tickets',
-      },
       dashboardData: {
         totalSpent: {
           value: '$6,71,456',
@@ -237,74 +191,6 @@ class Overview extends React.Component<any, any> {
           },
         },
       },
-      centralTable: {
-        slacentral: {},
-        devcentral: {
-          volume: {
-            product: '+56',
-            services: '-21',
-            release: '-35',
-            useCase: '+40',
-            bugs: '+45',
-            workFlow: '-32',
-            documentation: '-10',
-            automationTest: '+12',
-          },
-          velocity: {
-            scheduleDeviation: '+56',
-            releaseTime: '-21',
-            bugFixing: '+40',
-            useCaseDelivery: '+45',
-            bugs: '+45',
-            workFlowGeneration: '-32',
-            documentation: '-10',
-            automationTest: '+12',
-          },
-          reliability: {
-            postReleaseDefects: '+56',
-            usageStats: '-21',
-          },
-        },
-        seccentral: {
-          infra: {
-            account: '+56',
-            vpc: '-21',
-            cluster: '-35',
-            managedServices: '+40',
-          },
-          app: {
-            container: '+56',
-            code: '-21',
-          },
-          data: {
-            accessControl: '+56',
-            governance: '-21',
-            transitAndStore: '-35',
-          },
-        },
-        opscentral: {
-          volume: {
-            newCloudProvisioning: '+56',
-            newProduct: '-21',
-            serviceOnboarding: '-35',
-            newAutomation: '+40',
-            alertResolved: '+45',
-          },
-          velocity: {
-            scheduleDeviation: '+56',
-            releaseTime: '-21',
-            bugFixing: '-35',
-            usecaseDelivery: '+40',
-            bugs: '+45',
-            workFlowGeneration: '-32',
-            documentation: '-10',
-            automationTest: '+12',
-          },
-          reliability: {
-            rateofReopenTickets: '+56',
-          },
-        },
-      },
     };
   }
 
@@ -319,87 +205,11 @@ class Overview extends React.Component<any, any> {
     }
     return color;
   };
-  handleSLATToggle = (label: any, key: any) => {
-    const { SLAToggle } = this.state;
-    SLAToggle[label] = key;
-    this.setState({ SLAToggle });
-  };
-  handleSLATValues = (val: any) => {
-    let retData = [];
-    const { titles } = this.state;
-    for (let i = 0; i < Object.keys(val).length; i++) {
-      if (val[Object.keys(val)[i]]) {
-        retData.push(
-          <div className="report-box">
-            <strong>{titles[Object.keys(val)[i]]}</strong>
-            <div className="report">
-              {val[Object.keys(val)[i]] * 1 > 0 ? (
-                <span className="up">
-                  <i className="fa fa-caret-up"></i>
-                </span>
-              ) : (
-                <span className="down">
-                  <i className="fa fa-caret-down"></i>
-                </span>
-              )}
-              <span>{`${Math.abs(val[Object.keys(val)[i]])}%`}</span>
-            </div>
-          </div>
-        );
-      }
-    }
-    return retData;
-  };
-  handleSLATable = (data: any, label: any) => {
-    console.log(data);
-    let retData: any = [];
-    let list: any = [];
-    let KeyData: any = [];
-    let key = '';
-    const { SLAToggle, titles } = this.state;
-    console.log(SLAToggle[label]);
-    if ((data !== undefined || null) && Object.keys(data).length > 0) {
-      for (let i = 0; i < Object.keys(data).length; i++) {
-        key = Object.keys(data)[i];
-        KeyData.push(
-          <li
-            className={SLAToggle[label] === Object.keys(data)[i] ? 'active' : ''}
-            onClick={() => this.handleSLATToggle(label, Object.keys(data)[i])}
-          >
-            {titles[key]}
-          </li>
-        );
-      }
-      for (let i = 0; i < Object.keys(data).length; i++) {
-        let value: any = data[Object.keys(data)[i]];
-        if (key !== 'isHide') {
-          {
-            SLAToggle[label] === Object.keys(data)[i] &&
-              list.push(<div className="reports-boxes active">{this.handleSLATValues(value)}</div>);
-          }
-        }
-      }
-    }
-    retData.push(
-      <>
-        <div className="collapse-expand">
-          <div className="heading">
-            <h3>{label}</h3>
-            {/* <i className="fa fa-chevron-down" onClick={() => this.handleSLATToggle(data)}></i> */}
-          </div>
-          <div className="contents">
-            <ul className="tabs">{KeyData}</ul>
-            {!data.isHide && list}
-          </div>
-        </div>
-      </>
-    );
-    return retData;
-  };
+
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'MONITOR | OVERVIEW';
-    const { dashboardData, centralTable, titles } = this.state;
+    const { dashboardData } = this.state;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -679,38 +489,7 @@ class Overview extends React.Component<any, any> {
             </div>
           </div>
         )}
-        <div className="report-container">
-          <div className="report-inner-container">
-            <div className="header">
-              <div className="row">
-                <div className="col-md-8 col-sm-8">
-                  <h2>SLA Central</h2>
-                </div>
-                <div className="col-md-4 col-sm-4">
-                  <div className="float-right">
-                    <select>
-                      <option>Day</option>
-                      <option>Weekly</option>
-                      <option>Month</option>
-                      <option>Year</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="main-collapse-expand">
-              {centralTable &&
-                centralTable.devcentral &&
-                this.handleSLATable(centralTable.devcentral, titles.devcentral)}
-              {centralTable &&
-                centralTable.seccentral &&
-                this.handleSLATable(centralTable.seccentral, titles.seccentral)}
-              {centralTable &&
-                centralTable.opscentral &&
-                this.handleSLATable(centralTable.opscentral, titles.opscentral)}
-            </div>
-          </div>
-        </div>
+        <SlaCenter />
       </React.Fragment>
     );
   }
