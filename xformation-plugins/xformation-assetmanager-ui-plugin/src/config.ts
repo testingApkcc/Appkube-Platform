@@ -8,7 +8,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GET_ALL_ACCOUNT: `${assetSrvUrl}/cloud-environment/search?status=active`,
     GET_ACCOUNT_BY_ID: `${assetSrvUrl}/getAccount`,
     GET_DEPARTMENTWISE_PRODUCT: `${assetSrvUrl}/department-wise-analytics/search?orgId=78`,
-    GET_PRODUCT_DATA: `${assetSrvUrl}/department-wise-analytics/get?orgId=78`,
+    GET_PRODUCT_DATA: `${assetSrvUrl}/department-wise-analytics/get-data`,
     GET_SERVICES_DATA: `${assetSrvUrl}/service-detail/search`,
     PREVIEW_DASHBOARDS_URL: `${assetSrvUrl}/dashboard/preview`,
 

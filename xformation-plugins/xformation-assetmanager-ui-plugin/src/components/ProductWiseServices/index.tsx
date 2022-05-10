@@ -20,7 +20,7 @@ export class ProductWiseServices extends React.Component<any, any> {
       productComponent: [],
       product: [],
       isDataLoaded: false,
-      hostingType: 'CloudManaged',
+      hostingType: 'Cluster',
       filters: {}
     };
   }
@@ -53,7 +53,7 @@ export class ProductWiseServices extends React.Component<any, any> {
     const { hostingType } = this.state;
     if (hostingType === 'CloudManaged') {
       this.setState({
-        hostingType: 'InCluster'
+        hostingType: 'Cluster'
       })
     } else {
       this.setState({

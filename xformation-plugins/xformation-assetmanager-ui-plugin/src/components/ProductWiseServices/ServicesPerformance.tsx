@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { images } from '../../img';
+import { Link } from 'react-router-dom';
+import { PLUGIN_BASE_URL } from '../../constants';
 
 export class ServicesPerformance extends React.Component<any, any> {
   tagNameServiceMapping: any = {
-    'APP': 'App Services',
-    'NETWORK': 'Network Services',
-    'DATA': 'Data Services',
-    'OTHER': 'Other Services',
+    'App': 'App Services',
+    'Network': 'Network Services',
+    'Data': 'Data Services',
+    'Other': 'Other Services',
   };
   viewMapping: any = {
     'CloudManaged': 'Cloud Managed',
-    'InCluster': 'In Cluster'
+    'Cluster': 'Cluster'
   };
   constructor(props: any) {
     super(props);
@@ -169,7 +171,9 @@ export class ServicesPerformance extends React.Component<any, any> {
                         <div className='th'>Data Protection</div>
                         <div className='th'>User exp</div>
                       </div>
-                      {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
+                      <div style={{ maxHeight: '400px', overflowX: 'hidden', overflowY: 'auto' }}>
+                        {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
+                      </div>
                     </div>
                   </div>
                 }
@@ -203,7 +207,7 @@ export class ServicesPerformance extends React.Component<any, any> {
           displayType.push(tag.tagName);
         }
       }
-      if (displayType.indexOf('UNLINKED') === -1) {
+      if (displayType.indexOf('Unlinked') === -1) {
         retData.push(<div className='table performance-table'>
           <div className='tbody'>
             <div className='tbody' onClick={() => this.openTagServices(indexArr, index)}>
@@ -242,9 +246,41 @@ export class ServicesPerformance extends React.Component<any, any> {
     return retData;
   };
 
+  onClickDirectService = (e: any, service: any) => {
+    const { labelText } = this.state;
+    let serviceData: any = localStorage.getItem('added-services');
+    if (serviceData) {
+      serviceData = JSON.parse(serviceData);
+    } else {
+      serviceData = [];
+    }
+    let existingIndex = -1;
+    for (let i = 0; i < serviceData.length; i++) {
+      if (serviceData[i].id === service.id) {
+        existingIndex = i;
+        break;
+      }
+    }
+    if (existingIndex !== -1) {
+      serviceData.splice(existingIndex, 1);
+    }
+    let avgScore = (service.performance.score + service.availability.score + service.security.score + service.dataProtection.score + service.userExperiance.score) / 5;
+    serviceData.push({
+      id: service.id,
+      name: service.name,
+      labelText,
+      organizationUnit: service.associatedOU,
+      serviceType: service.serviceType,
+      serviceScore: avgScore.toFixed(2),
+      associatedProduct: service.associatedProduct,
+      asscociatedEnv: service.associatedEnv,
+    });
+    localStorage.setItem('added-services', JSON.stringify(serviceData));
+  };
+
   renderTags = (tagList: any) => {
     const retData: any = [];
-    const renderIndex = ['APP', 'DATA', 'NETWORK', 'OTHER'];
+    const renderIndex = ['App', 'Data', 'Network', 'Other'];
     renderIndex.forEach((renderTag: any) => {
       tagList.forEach((tag: any, i: any) => {
         if (tag.tagName === renderTag) {
@@ -254,7 +290,9 @@ export class ServicesPerformance extends React.Component<any, any> {
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
                 return (
                   <div className='tbody'>
-                    <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>{service.name}</span></div>
+                    <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>
+                      <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link>
+                    </span></div>
                     <div className='td'>
                       <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
                         <i className='fa fa-check-circle'></i>
@@ -299,7 +337,7 @@ export class ServicesPerformance extends React.Component<any, any> {
       tag.serviceList && tag.serviceList.forEach((service: any, i: any) => {
         servicesJSX.push(
           <div className='tbody'>
-            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}>{service.name}</span></div>
+            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}><Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link></span></div>
             <div className='td'>
               <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
                 <i className='fa fa-check-circle'></i>
