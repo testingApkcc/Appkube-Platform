@@ -46,6 +46,7 @@ export class CloudDashboards extends React.Component<any, any>{
         this.previewDashboardPopupRef = React.createRef();
     }
     componentDidMount() {
+        console.log(this.props.data);
         let { dashboards, images } = this.state;
         let image = ''
         if (dashboards.length > 0) {
