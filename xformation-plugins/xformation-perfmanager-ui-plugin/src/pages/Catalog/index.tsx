@@ -5,7 +5,7 @@ import { config } from './../../config';
 import { DevCatalogue } from './DevCatalog';
 import { SecCatalogue } from './SecCatalog';
 import { OpsCatalogue } from './OpsCatalog';
-import { catalogData } from './catalogue.json';
+import { catalogData } from './catalogue';
 
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
