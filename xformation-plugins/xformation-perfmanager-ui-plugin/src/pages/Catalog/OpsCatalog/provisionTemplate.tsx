@@ -27,9 +27,25 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             type: '',
             associatedCloud: '',
             dashboards: this.props.data || [],
+
+            filterData: [
+                {
+                    name: "Associated Cloud",
+                    key: "associatedCloud",
+                    filter: [],
+                },
+                {
+                    name: "Associated Creds",
+                    key: "associatedCreds",
+                    filter: [],
+                },
+            ]
         }
     }
 
+    componentDidMount(){
+        this.createFilterJson(); 
+    }
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
@@ -41,16 +57,46 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         });
     };
 
+    createFilterJson = () => {
+        let { dashboards, filterData } = this.state;
+        const filterKeys = ['associatedCloud', 'associatedCreds'];
+        const filteredData: any = {};
+        for (let i = 0; i < dashboards.length; i++) {
+            let dashboard = dashboards[i];
+            for (let j = 0; j < filterKeys.length; j++) {
+                const filter = filterKeys[j];
+                filteredData[filter] = filteredData[filter] || [];
+                if (filteredData[filter].indexOf(dashboard[filter]) === -1) {
+                    filteredData[filter].push(dashboard[filter]);
+                }
+            }
+        }
+        if (filterKeys && filterData && filterData.length > 0 && filterKeys.length > 0) {
+            for (let i = 0; i < filterData.length; i++) {
+                for (let k = 0; k < filterKeys.length; k++) {
+                    const filter = filterKeys[k];
+                    for (let j = 0; j < filteredData[filter].length; j++) {
+                        let filters = filteredData[filter][j]
+                        if (filterData[i].key == filter) {
+                            filterData[i].filter.push({ value: filters, label: filters });
+                        }
+                    }
+                }
+            }
+        }
+        this.setState({
+            filterData
+        })
+    }
     renderDashboards = (dashboards: any) => {
         let retData = []
         if (dashboards && dashboards.length > 0) {
             retData = [];
-            console.log(this.props.data);
             for (let i = 0; i < dashboards.length; i++) {
                 const { associatedCloud, name, Type, description } = dashboards[i];
                 const { view } = this.state;
                 retData.push(
-                    <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`} onClick={() => this.setActiveView(Type,associatedCloud)}>
+                    <div className={`col-sm-12 ${view === 'grid' ? 'col-md-6' : 'col-md-12'}`} onClick={() => this.setActiveView(Type, associatedCloud)}>
                         <div className="template-box">
                             <div className="heading">
                                 {associatedCloud === 'AWS' &&
@@ -87,7 +133,6 @@ export class ProvisioningTemplates extends React.Component<any, any>{
 
     formFields = () => {
         const { view, dashboards } = this.state;
-
         return (
             <div className="catalogue-right-container">
                 <div>
@@ -127,7 +172,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
     };
 
     render() {
-        const { type, associatedCloud } = this.state;
+        const { type, associatedCloud, filterData } = this.state;
         let ActiveViewComponent = null;
         if (type !== '' && associatedCloud !== '') {
             ActiveViewComponent = this.componentMapping[`${type}-${associatedCloud}`];
@@ -138,7 +183,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                 <div className="catalogue-inner-tabs-container templates-container">
                     <div className="row">
                         <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                            <Filter />
+                            <Filter filterJsonData={filterData} />
                         </div>
                         <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                             {
