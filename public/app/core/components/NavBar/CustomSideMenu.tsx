@@ -701,7 +701,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
   extra: any = [
     {
       link: '/plugins/xformation-rbac-ui-plugin/page/home',
-      text: 'Rbac Settings',
+      text: 'RBAC Settings',
       cssClass: 'rbac-settings',
       childName: 'rbac-settings',
       isImplemented: true,
