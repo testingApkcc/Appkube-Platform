@@ -37,11 +37,17 @@ export class Applications extends React.Component<any, any> {
                     filter: []
                 },
             ],
+            accountId: '',
         };
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
 
     componentDidMount() {
+        const queryPrm = new URLSearchParams(this.props.location.search);
+        const accountId = queryPrm.get("accountId");
+        this.setState({
+            accountId
+        });
         let departmentList = localStorage.getItem('applicationData');
         let department: any;
         if (departmentList) {
@@ -49,13 +55,13 @@ export class Applications extends React.Component<any, any> {
             this.manipulateDepartmentWiseProductData(_.cloneDeep(department.organization.departmentList));
             this.getFilterData(_.cloneDeep(department.organization.departmentList));
         }
-        this.getDepartmentData();
+        this.getDepartmentData(accountId);
     }
 
-    getDepartmentData = async () => {
+    getDepartmentData = async (accountId: any) => {
         try {
             await RestService.getData(
-                `${this.config.GET_PRODUCT_DATA}`,
+                `${this.config.GET_PRODUCT_DATA}?associatedLandingZone=${accountId}`,
                 null,
                 null
             ).then((response: any) => {
