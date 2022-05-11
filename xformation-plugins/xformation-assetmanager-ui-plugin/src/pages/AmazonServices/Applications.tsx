@@ -10,7 +10,7 @@ export class Applications extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            product: [],
+            product: null,
             displayJsonData: [
                 {
                     name: 'Products',
@@ -48,13 +48,16 @@ export class Applications extends React.Component<any, any> {
         this.setState({
             accountId
         });
-        let departmentList = localStorage.getItem('applicationData');
-        let department: any;
-        if (departmentList) {
-            department = JSON.parse(departmentList);
-            this.manipulateDepartmentWiseProductData(_.cloneDeep(department.organization.departmentList));
-            this.getFilterData(_.cloneDeep(department.organization.departmentList));
-        }
+        // let departmentList = localStorage.getItem('applicationData');
+        // let department: any;
+        // if (departmentList) {
+        //     departmentList = JSON.parse(departmentList);
+        //     if(departmentList[accountId]){
+        //         department = departmentList ? departmentList[accountId] : {};
+        //     this.manipulateDepartmentWiseProductData(_.cloneDeep(department.organization.departmentList));
+        //     this.getFilterData(_.cloneDeep(department.organization.departmentList));
+        //     }
+        // }
         this.getDepartmentData(accountId);
     }
 
@@ -67,7 +70,7 @@ export class Applications extends React.Component<any, any> {
             ).then((response: any) => {
                 this.manipulateDepartmentWiseProductData(_.cloneDeep(response.organization.departmentList));
                 this.getFilterData(_.cloneDeep(response.organization.departmentList));
-                localStorage.setItem('applicationData', JSON.stringify(response));
+                // localStorage.setItem('applicationData', JSON.stringify(response));
             });
         } catch (err) {
             console.log("Loading accounts failed. Error: ", err);
