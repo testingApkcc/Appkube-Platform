@@ -1,15 +1,16 @@
 import React from 'react';
-export class AwsProductEnclave extends React.Component<any, any>{
+export class AzureLandingZone extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
             activeTab: 0,
-            webACLName: '',
-            vpcName: '',
-            vpcCIDR: '',
-            privateSubnetCIDRBlocks: '',
-            publicSubnetCIDRBlocks: '',
-            apiGatewayName: '',
+            logArchiveAccountId: '',
+            accountEmail: '',
+            auditAccountId: '',
+            aftManagementAccountId: '',
+            gitHubUsername: '',
+            ctHomeRegion: '',
+            tfBackendSecondaryRegion: '',
             isSubmitted: false,
             addTags: [],
         };
@@ -35,55 +36,63 @@ export class AwsProductEnclave extends React.Component<any, any>{
         };
         let isValid = true;
         const retData = {
-            webACLName: validObj,
-            vpcName: validObj,
-            vpcCIDR: validObj,
-            privateSubnetCIDRBlocks: validObj,
-            publicSubnetCIDRBlocks: validObj,
-            apiGatewayName: validObj,
+            ctManagementAccountId: validObj,
+            logArchiveAccountId: validObj,
+            auditAccountId: validObj,
+            aftManagementAccountId: validObj,
+            gitHubUsername: validObj,
+            ctHomeRegion: validObj,
+            tfBackendSecondaryRegion: validObj,
             isValid,
         };
         if (isSubmitted) {
-            const { webACLName, vpcName, vpcCIDR, privateSubnetCIDRBlocks, publicSubnetCIDRBlocks, apiGatewayName } = this.state;
-            if (!webACLName) {
-                retData.webACLName = {
+            const { ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId,gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion } = this.state;
+            if (!ctManagementAccountId) {
+                retData.ctManagementAccountId = {
                     isValid: false,
-                    message: 'Web ACL Name is required',
+                    message: 'CT Management Account ID is required',
                 };
                 isValid = false;
             }
-            if (!vpcName) {
-                retData.vpcName = {
+            if (!logArchiveAccountId) {
+                retData.logArchiveAccountId = {
                     isValid: false,
-                    message: 'VPC Name is required',
+                    message: 'Log Archive Account ID is required',
                 };
                 isValid = false;
             }
-            if (!vpcCIDR) {
-                retData.vpcCIDR = {
+            if (!auditAccountId) {
+                retData.auditAccountId = {
                     isValid: false,
-                    message: 'VPC CIDR is required',
+                    message: 'Audit Account ID is required',
                 };
                 isValid = false;
             }
-            if (!privateSubnetCIDRBlocks) {
-                retData.privateSubnetCIDRBlocks = {
+            if (!aftManagementAccountId) {
+                retData.aftManagementAccountId = {
                     isValid: false,
-                    message: 'Private Subnet CIDR Blocks is required',
+                    message: 'AFT Management Account Id is required',
                 };
                 isValid = false;
             }
-            if (!publicSubnetCIDRBlocks) {
-                retData.publicSubnetCIDRBlocks = {
+            if (!gitHubUsername) {
+                retData.gitHubUsername = {
                     isValid: false,
-                    message: 'Public Subnet CIDR Blocks is required',
+                    message: 'GitHub Username Id is required',
                 };
                 isValid = false;
             }
-            if (!apiGatewayName) {
-                retData.apiGatewayName = {
+            if (!ctHomeRegion) {
+                retData.ctHomeRegion = {
                     isValid: false,
-                    message: 'API Gateway Name is required',
+                    message: 'CT Home Region Id is required',
+                };
+                isValid = false;
+            }
+            if (!tfBackendSecondaryRegion) {
+                retData.tfBackendSecondaryRegion = {
+                    isValid: false,
+                    message: 'TC Backend Secondary Region Id is required',
                 };
                 isValid = false;
             }
@@ -100,8 +109,8 @@ export class AwsProductEnclave extends React.Component<any, any>{
         });
         const errorData = this.validate(true);
         if (errorData.isValid) {
-            const { webACLName, vpcName, vpcCIDR, privateSubnetCIDRBlocks, publicSubnetCIDRBlocks, apiGatewayName } = this.state;
-            localStorage.setItem('viewData', JSON.stringify({ webACLName, vpcName, vpcCIDR, privateSubnetCIDRBlocks, publicSubnetCIDRBlocks, apiGatewayName }));
+            const { ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId, gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion } = this.state;
+            localStorage.setItem('viewData', JSON.stringify({ ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId, gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion }));
         }
     };
 
@@ -177,11 +186,11 @@ export class AwsProductEnclave extends React.Component<any, any>{
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>Create new Product Enclave with DevSecOps best practice in AWS</strong>
-                        <h3>Product Enclave</h3>
-                        <p>The command will package and deploy your application to AWS, with a series of prompts</p>
+                        <strong>Create new landing zone with DevSecOps best practice in Azure</strong>
+                        <h3>Landing Zone</h3>
+                        <p>The command will package and deploy your application to Azure, with a series of prompts</p>
                         <h3>Prerequisites</h3>
-                        <p><strong>Product Enclave:</strong> The command will package and deploy your application to AWS, with a series of prompts</p>
+                        <p><strong>Landing Zone:</strong> The command will package and deploy your application to Azure, with a series of prompts</p>
                         <div className="d-block text-right">
                             <button className="next-btn" onClick={() => this.props.showMainView()}>Back</button>
                             <button className="next-btn" onClick={() => this.setActiveTab(1)}>Next</button>
@@ -191,88 +200,100 @@ export class AwsProductEnclave extends React.Component<any, any>{
             )
         }
         else if (activeTab === 1) {
-            const { webACLName, vpcName, vpcCIDR, privateSubnetCIDRBlocks, publicSubnetCIDRBlocks, apiGatewayName, isSubmitted } = this.state;
+            const { ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId, gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion, isSubmitted } = this.state;
             const errorData = this.validate(isSubmitted);
             // console.log(errorData)
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong> Create new Product Enclave with DevSecOps practice in AWS</strong>
-                        <h3>Product Enclave</h3>
-                        <p>The command will package and deploy your application to AWS, with a series of prompts</p>
+                        <strong> Create new landing zone with DevSecOps practice in Azure</strong>
+                        <h3>Landing Zone</h3>
+                        <p>The command will package and deploy your application to Azure, with a series of prompts</p>
                         <div className="form-detail-group">
                             <strong>Prerequisites</strong>
                             <div className="form-group">
-                                <label>Web ACL Name</label>
+                                <label>CT Management Account ID</label>
                                 <input
                                     type="text"
-                                    name="webACLName"
+                                    name="ctManagementAccountId"
                                     className="form-control"
                                     placeholder="Enter value"
-                                    value={webACLName}
+                                    value={ctManagementAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.webACLName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ctManagementAccountId.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>VPC Name</label>
+                                <label>Log Archive Account ID</label>
                                 <input
                                     type="email"
-                                    name="vpcName"
+                                    name="logArchiveAccountId"
                                     className="form-control"
                                     placeholder="Enter value"
-                                    value={vpcName}
+                                    value={logArchiveAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.vpcName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.logArchiveAccountId.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>VPC CIDR</label>
+                                <label>Audit Account ID</label>
                                 <input
                                     type="email"
-                                    name="vpcCIDR"
+                                    name="auditAccountId"
                                     className="form-control"
                                     placeholder="Enter value"
-                                    value={vpcCIDR}
+                                    value={auditAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.vpcCIDR.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.auditAccountId.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>Private Subnet CIDR Blocks</label>
+                                <label>AFT Management Account ID</label>
                                 <input
                                     type="email"
-                                    name="privateSubnetCIDRBlocks"
+                                    name="aftManagementAccountId"
                                     className="form-control"
                                     placeholder="Enter value"
-                                    value={privateSubnetCIDRBlocks}
+                                    value={aftManagementAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.privateSubnetCIDRBlocks.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.aftManagementAccountId.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>Public Subnet CIDR Blocks</label>
+                                <label>GitHub Username</label>
                                 <input
                                     type="email"
-                                    name="publicSubnetCIDRBlocks"
+                                    name="gitHubUsername"
                                     className="form-control"
                                     placeholder="Enter value"
-                                    value={publicSubnetCIDRBlocks}
+                                    value={gitHubUsername}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.publicSubnetCIDRBlocks.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.gitHubUsername.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>API Gateway Name</label>
+                                <label>CT Home Region</label>
                                 <input
                                     type="email"
-                                    name="apiGatewayName"
+                                    name="ctHomeRegion"
                                     className="form-control"
                                     placeholder="Enter value"
-                                    value={apiGatewayName}
+                                    value={ctHomeRegion}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.apiGatewayName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ctHomeRegion.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>TF Backend Secondary Region</label>
+                                <input
+                                    type="email"
+                                    name="tfBackendSecondaryRegion"
+                                    className="form-control"
+                                    placeholder="Enter value"
+                                    value={tfBackendSecondaryRegion}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.tfBackendSecondaryRegion.message}</span>}
                             </div>
                         </div>
                         <div className="d-block text-right">
@@ -317,6 +338,7 @@ export class AwsProductEnclave extends React.Component<any, any>{
                         }
                     </div>
                 </div>
+
             </div>
         );
     }

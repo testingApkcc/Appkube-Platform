@@ -32,11 +32,6 @@ export class CloudDashboards extends React.Component<any, any>{
                     filter: [],
                 },
                 {
-                    name: "Associated Cloud ElementType",
-                    key: "associatedCloudElementType",
-                    filter: [],
-                },
-                {
                     name: "Associated SLAType",
                     key: "associatedSLAType",
                     filter: [],
@@ -60,35 +55,30 @@ export class CloudDashboards extends React.Component<any, any>{
                 }
             }
             this.setState({ dashboards });
-            // console.log(dashboards);
-            this.createFilterJson();
+            console.log(dashboards);
+            
         }
+        this.createFilterJson();
     }
 
     createFilterJson = () => {
-        let { dashboards, filterData } = this.state;
+        let { dashboards } = this.state;
+        const filterKeys = ['associatedDataSourceType', 'associatedDataType',  'associatedSLAType'];
+        const filteredData: any = {};
         for (let i = 0; i < dashboards.length; i++) {
-            let row = dashboards[i];
-            for (let j = 0; j < filterData.length; j++) {
-                Object.keys(row).map((data) => {
-                    if (data == filterData[j].key) {
-                        if (filterData[j].filter && filterData[j].filter.length > 0) {
-                            for (let k = 0; k < filterData[j].filter.length; k++) {
-                                if (filterData[j].filter[k] && filterData[j].filter[k].label && filterData[j].filter[k].label.indexOf(row[data]) === -1) {
-                                    filterData[j].filter.push({ value: row[data], label: row[data] });
-                                }
-                            }
-                        } else {
-                            filterData[j].filter.push({ value: row[data], label: row[data] })
-                        }
-                    }
-                })
+            let dashboard = dashboards[i];
+            for (let j = 0; j < filterKeys.length; j++) {
+                const filter = filterKeys[j];
+                filteredData[filter] = filteredData[filter] || [];
+                if(filteredData[filter].indexOf(dashboard[filter]) === -1){
+                    filteredData[filter].push(dashboard[filter]);
+                }
             }
         }
-        // console.log(filterData);
-        this.setState({
-            filterData
-        })
+        console.log(filteredData);
+        // this.setState({
+        //     filterData
+        // })
     }
 
 
