@@ -27,41 +27,6 @@ export class Filter extends React.Component<any, any>{
         })
     }
 
-    searchTag = (e: any) => {
-        let { duplicatefilterJsonData } = this.state;
-        const { value } = e.target;
-        this.setState({ searchKey: value });
-        let searchResult: any = {};
-        if (value) {
-            Object.keys(duplicatefilterJsonData).map((data, index) => {
-                if (duplicatefilterJsonData[data] && duplicatefilterJsonData[data].length > 0) {
-                    for (let i = 0; i < duplicatefilterJsonData[data].length; i++) {
-                        if (duplicatefilterJsonData[data][i].toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-                            searchResult[data] = duplicatefilterJsonData[data];
-                            // filterData[data][i].isHide = false;
-                        } else {
-                            searchResult = duplicatefilterJsonData;
-                            // filterData[data][i].isHide = true;
-                        }
-                    }
-                }
-            });
-        } else {
-            // for (let k = 0; k < filterData[index].filter.length; k++) {
-            //     if (filterData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-            //         filterData[index].filter[k].isHide = false
-            //     }
-            //     else {
-            //         filterData[index].filter[k].isHide = true;
-            //     }
-            // }
-        }
-        console.log(searchResult);
-        this.setState({
-            filterData: searchResult,
-        })
-    }
-
     handleClearFilter = () => {
         let { filterData } = this.state;
         for (let i = 0; i < filterData.length; i++) {

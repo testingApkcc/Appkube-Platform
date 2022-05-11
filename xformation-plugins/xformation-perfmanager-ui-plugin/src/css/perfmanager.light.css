@@ -4800,7 +4800,7 @@ a:hover {
   label {
   display: inline-block;
   vertical-align: top;
-  width: 35%;
+  width: 37%;
   line-height: 34px;
 }
 .perfmanager-dashboard-container
@@ -4813,7 +4813,7 @@ a:hover {
   .form-detail-group
   .form-group
   .form-control {
-  width: 30%;
+  width: 40%;
   display: inline-block;
   border-color: #8a919c;
 }
