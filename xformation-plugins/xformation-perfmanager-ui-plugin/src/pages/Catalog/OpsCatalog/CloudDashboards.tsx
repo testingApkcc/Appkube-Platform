@@ -31,24 +31,19 @@ export class CloudDashboards extends React.Component<any, any>{
                     key: "associatedDataType",
                     filter: [],
                 },
-                // {
-                //     name: "Associated Cloud ElementType",
-                //     key: "associatedCloudElementType",
-                //     filter: [],
-                // },
                 {
                     name: "Associated SLAType",
                     key: "associatedSLAType",
                     filter: [],
                 },
-            ]
+            ],
+            selectedFilter: {},
         }
         this.previewDashboardPopupRef = React.createRef();
     }
 
     componentDidMount() {
         let { dashboards, images } = this.state;
-        this.createFilterJson();
         let image = ''
         if (dashboards.length > 0) {
             for (let i = 0; i < dashboards.length; i++) {
@@ -61,7 +56,6 @@ export class CloudDashboards extends React.Component<any, any>{
                 }
             }
             this.setState({ dashboards });
-            // console.log(dashboards);
         }
         this.createFilterJson();
     }
@@ -75,8 +69,8 @@ export class CloudDashboards extends React.Component<any, any>{
             for (let j = 0; j < filterKeys.length; j++) {
                 const filter = filterKeys[j];
                 filteredData[filter] = filteredData[filter] || [];
-                if (filteredData[filter].indexOf(dashboard[filter]) === -1) {
-                    filteredData[filter].push(dashboard[filter]);
+                if (filteredData[filter].indexOf(dashboard[filter].trim()) === -1) {
+                    filteredData[filter].push(dashboard[filter].trim());
                 }
             }
         }
@@ -86,7 +80,7 @@ export class CloudDashboards extends React.Component<any, any>{
                     const filter = filterKeys[k];
                     for (let j = 0; j < filteredData[filter].length; j++) {
                         let filters = filteredData[filter][j]
-                        if (filterData[i].key == filter) {
+                        if (filterData[i].key == filter.trim() && filters) {
                             filterData[i].filter.push({ value: filters, label: filters });
                         }
                     }
@@ -98,49 +92,78 @@ export class CloudDashboards extends React.Component<any, any>{
         })
     }
 
-
     onClickPreviewDashboard = () => {
         this.previewDashboardPopupRef.current.setLink('');
         this.previewDashboardPopupRef.current.toggle();
     };
 
-    renderDashboardsList = (dashboards: any) => {
+    renderDashboardsView = (dashboards: any) => {
+        const { view } = this.state;
         let retData = []
         if (dashboards && dashboards.length > 0) {
             retData = [];
             for (let i = 0; i < dashboards.length; i++) {
-                const { id, name, description, imgUrl } = dashboards[i]
-                retData.push(
-                    <>
-                        <div className={`blog-list-item box`} key={id}>
-                            <div className="module-card-content">
-                                <div className="row">
-                                    <div className="col-md-1 col-sm-12 p-r-0">
-                                        <img height='100px' width='100px' src={imgUrl} alt={name} />
-                                    </div>
-                                    <div className="col-md-11 col-sm-12">
-                                        <h3 className="title is-block">{name}</h3>
-                                        <p className="subtitle is-block">{description}</p>
-                                    </div>
-                                </div>
+                const { id, name, description, imgUrl, associatedDataSourceType, associatedDataType, associatedSLAType } = dashboards[i];
+                if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType)) {
+                    retData.push(
+                        <>
+                            <div className={view === 'list' ? `blog-list-item box` : `box blog-grid-item`} key={id}>
+                                {view === 'list' ?
+                                    <>
+                                        <div className="module-card-content">
+                                            <div className="row">
+                                                <div className="col-md-1 col-sm-12 p-r-0">
+                                                    <img height='100px' width='100px' src={imgUrl} alt={name} />
+                                                </div>
+                                                <div className="col-md-11 col-sm-12">
+                                                    <h3 className="title is-block">{name}</h3>
+                                                    <p className="subtitle is-block">{description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="module-card-footer">
+                                            <div className="module-card-footer-details">
+                                                <a>
+                                                    <img src={libraryIcon} alt="" />
+                                                    {`Add Catalog To library`}
+                                                </a>
+                                            </div>
+                                            <div className="module-card-footer-provider">
+                                                <a onClick={this.onClickPreviewDashboard}>
+                                                    <img src={previewDashboardIcon} alt="" />
+                                                    {`Preview Dashboard`}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                        <div className="module-card-content">
+                                            <div className="image">
+                                                <img src={imgUrl} alt={name} />
+                                            </div>
+                                            <h3 className="title is-block">{name}</h3>
+                                            <p className="subtitle is-block">{description}</p>
+                                            <div className="library-icon">
+                                                <a>
+                                                    {`Add Catalog To library`}
+                                                </a>
+                                            </div>
+                                            <div className="preview-dashboard-icon">
+                                                <a onClick={this.onClickPreviewDashboard}>
+                                                    {`Preview Dashboard`}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </>
+                                }
                             </div>
-                            <div className="module-card-footer">
-                                <div className="module-card-footer-details">
-                                    <a>
-                                        <img src={libraryIcon} alt="" />
-                                        {`Add Catalog To library`}
-                                    </a>
-                                </div>
-                                <div className="module-card-footer-provider">
-                                    <a onClick={this.onClickPreviewDashboard}>
-                                        <img src={previewDashboardIcon} alt="" />
-                                        {`Preview Dashboard`}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </>
-                )
+                        </>
+                    );
+                }
+            }
+            if (retData.length === 0) {
+                retData.push(<div>No dashboard found for applied filter</div>)
             }
         }
         else {
@@ -150,44 +173,22 @@ export class CloudDashboards extends React.Component<any, any>{
         return retData
     }
 
-    renderDashboardsGrid = (dashboards: any) => {
-        let retData = []
-        if (dashboards && dashboards.length > 0) {
-            retData = [];
-            for (let i = 0; i < dashboards.length; i++) {
-                const { name, description, imgUrl } = dashboards[i];
-                retData.push(
-                    <div className={`box blog-grid-item`} key={i}>
-                        <div className="module-card-content">
-                            <div className="image">
-                                <img src={imgUrl} alt={name} />
-                            </div>
-                            <h3 className="title is-block">{name}</h3>
-                            <p className="subtitle is-block">{description}</p>
-                            <div className="library-icon">
-                                <a>
-                                    {`Add Catalog To library`}
-                                </a>
-                            </div>
-                            <div className="preview-dashboard-icon">
-                                <a onClick={this.onClickPreviewDashboard}>
-                                    {`Preview Dashboard`}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-        }
-        else {
-            retData = [];
-            retData.push(<div>No Data Found</div>)
-        }
-        return retData
-    }
+    hideDashboard = (associatedDataSourceType: any, associatedDataType: any, associatedSLAType: any) => {
+        const { selectedFilter } = this.state;
+        const isAssociatedDatasourceType = !selectedFilter['associatedDataSourceType'] || (selectedFilter['associatedDataSourceType'] && selectedFilter['associatedDataSourceType'].indexOf(associatedDataSourceType) !== -1);
+        const isAssociatedDataType = !selectedFilter['associatedDataType'] || (selectedFilter['associatedDataType'] && selectedFilter['associatedDataType'].indexOf(associatedDataType) !== -1);
+        const isAssociatedSLAType = !selectedFilter['associatedSLAType'] || (selectedFilter['associatedSLAType'] && selectedFilter['associatedSLAType'].indexOf(associatedSLAType) !== -1);
+        return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType;
+    };
 
     dashboardsView = (type: any) => {
         this.setState({ view: type })
+    }
+
+    onChangeFilter = (filters: any) => {
+        this.setState({
+            selectedFilter: filters,
+        });
     }
 
     render() {
@@ -196,7 +197,7 @@ export class CloudDashboards extends React.Component<any, any>{
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                        <Filter filterJsonData={filterData} />
+                        <Filter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">
@@ -214,15 +215,9 @@ export class CloudDashboards extends React.Component<any, any>{
                                     </div>
                                 </div>
                             </div>
-                            {view === 'grid' ?
-                                <div className="catalogue-boxes grid">
-                                    {this.renderDashboardsGrid(dashboards)}
-                                </div>
-                                :
-                                <div className="catalogue-boxes list">
-                                    {this.renderDashboardsList(dashboards)}
-                                </div>
-                            }
+                            <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
+                                {this.renderDashboardsView(dashboards)}
+                            </div>
                         </div>
 
                     </div>
