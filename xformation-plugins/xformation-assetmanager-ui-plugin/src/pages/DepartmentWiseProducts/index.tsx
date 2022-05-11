@@ -152,7 +152,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
           filter: []
         },
         {
-          name: 'APP Services',
+          name: 'App Services',
           key: 'app-services',
           id: 31,
           filter: []
