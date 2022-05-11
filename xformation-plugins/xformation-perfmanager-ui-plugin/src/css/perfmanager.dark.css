@@ -4829,12 +4829,71 @@ a:hover {
   .error {
   display: block;
   width: 100%;
-  padding-left: 35%;
+  padding-left: 37%;
   font-size: 10px;
   padding-top: 0px;
   font-weight: 400;
   color: red;
   line-height: 16px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  .form-group-checks {
+  width: 40%;
+  display: inline-block;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  .form-group-checks
+  .form-check {
+  width: 100%;
+  display: block;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  .form-group-checks
+  .form-check
+  .form-check-input {
+  display: inline-block;
+  width: 20px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents
+  .form-detail-group
+  .form-group
+  .form-group-checks
+  .form-check
+  .form-check-label {
+  width: calc(100% - 25px);
+  line-height: 24px;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
