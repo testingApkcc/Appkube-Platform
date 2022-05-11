@@ -688,19 +688,19 @@ export class DiscoveredAssets extends React.Component<any, any>{
   render() {
     const { labelText, tableData, servicesData, filterData } = this.state;
     return (
-      <>
-        {/* <div className="Filters-box">
+      <div className='department-wise-container'>
+        <div className='common-container'>
+          {/* <div className="Filters-box">
           <p>Select and add Filters</p>
           <span><i className="fa fa-angle-down" aria-hidden="true"></i></span>
         </div> */}
-        <div style={{ margin: '0px 10px' }}>
-          <SelectCloudFilter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
-        </div>
-        <div className="showing-export">
+          <div style={{marginBottom: '20px'}}>
+            <SelectCloudFilter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
+          </div>
+          {/* <div className="showing-export">
           <div className="row d-flex justify-content-center">
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
               <div className="showing-heading">
-                {/* Showing results 81 of 81 */}
               </div>
             </div>
             <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -715,81 +715,82 @@ export class DiscoveredAssets extends React.Component<any, any>{
               </div>
             </div>
           </div>
-        </div>
-        <div className="organisational-details">
-          <div className="container-inner">
-            <div className="organisational-data-table">
-              <div className={servicesData ? "organisational-data-table-left" : ""}>
-                <div className="thead">
-                  <div className="thead-th organisational-heading"><span><img src={images.awsLogo} alt="" /></span> AWS</div>
-                  <div className="thead-th">Products</div>
-                  <div className="thead-th">App Services</div>
-                  <div className="thead-th">Data Services</div>
-                  <div className="thead-th">Action</div>
+        </div> */}
+          <div className="organisational-details">
+            <div className="container-inner">
+              <div className="organisational-data-table">
+                <div className={servicesData ? "organisational-data-table-left" : ""}>
+                  <div className="thead">
+                    <div className="thead-th organisational-heading"><span><img src={images.awsLogo} alt="" /></span> AWS</div>
+                    <div className="thead-th">Products</div>
+                    <div className="thead-th">App Services</div>
+                    <div className="thead-th">Data Services</div>
+                    <div className="thead-th">Action</div>
+                  </div>
+                  {this.renderNodes(tableData)}
                 </div>
-                {this.renderNodes(tableData)}
-              </div>
-              <div className={servicesData ? "organisational-data-table-right" : ""}>
-                <div className="right-part-filters">
-                  <div className="row">
-                    <div className="col-lg-12 col-md-12 col-sm-12">
-                      <div className="filters-breadcrumbs">
-                        <ul>
-                          <li>{labelText}</li>
-                        </ul>
+                <div className={servicesData ? "organisational-data-table-right" : ""}>
+                  <div className="right-part-filters">
+                    <div className="row">
+                      <div className="col-lg-12 col-md-12 col-sm-12">
+                        <div className="filters-breadcrumbs">
+                          <ul>
+                            <li>{labelText}</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="col-lg-6 col-md-12 col-sm-12" style={{ display: 'none' }}>
+                        <div className="filters-buttons">
+                          <button className="asset-white-button min-width-inherit">
+                            <i className="fa fa-plus"></i> Add
+                          </button>
+                          <button className="asset-white-button min-width-inherit">
+                            <i className="fa fa-refresh"></i> Refresh
+                          </button>
+                          <button className="asset-white-button min-width-inherit m-r-0">
+                            <i className="fa fa-trash"></i> Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <div className="col-lg-6 col-md-12 col-sm-12" style={{ display: 'none' }}>
-                      <div className="filters-buttons">
-                        <button className="asset-white-button min-width-inherit">
-                          <i className="fa fa-plus"></i> Add
-                        </button>
-                        <button className="asset-white-button min-width-inherit">
-                          <i className="fa fa-refresh"></i> Refresh
-                        </button>
-                        <button className="asset-white-button min-width-inherit m-r-0">
-                          <i className="fa fa-trash"></i> Delete
-                        </button>
+                    <div className="row" style={{ display: 'none' }}>
+                      <div className="col-lg-4 col-md-12 col-sm-12">
+                        <div className="filters-search">
+                          <label>Filter by deployment name</label>
+                          <div className="form-group">
+                            <input type="text" className="control-form" placeholder="Enter the full deployment name" value="" />
+                            <button><i className="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-md-12 col-sm-12">
+                        <div className="filters-search">
+                          <label>Filter by App</label>
+                          <div className="form-group">
+                            <input type="text" className="control-form" placeholder="foo-bar,key!=value" value="" />
+                            <button><i className="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-md-12 col-sm-12">
+                        <div className="filters-search">
+                          <label>Filter by SLA</label>
+                          <div className="form-group">
+                            <input type="text" className="control-form" placeholder="All SLA" value="" />
+                            <button><i className="fa fa-search"></i></button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="row" style={{ display: 'none' }}>
-                    <div className="col-lg-4 col-md-12 col-sm-12">
-                      <div className="filters-search">
-                        <label>Filter by deployment name</label>
-                        <div className="form-group">
-                          <input type="text" className="control-form" placeholder="Enter the full deployment name" value="" />
-                          <button><i className="fa fa-search"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-4 col-md-12 col-sm-12">
-                      <div className="filters-search">
-                        <label>Filter by App</label>
-                        <div className="form-group">
-                          <input type="text" className="control-form" placeholder="foo-bar,key!=value" value="" />
-                          <button><i className="fa fa-search"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-4 col-md-12 col-sm-12">
-                      <div className="filters-search">
-                        <label>Filter by SLA</label>
-                        <div className="form-group">
-                          <input type="text" className="control-form" placeholder="All SLA" value="" />
-                          <button><i className="fa fa-search"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {this.renderCommonBusinessServices()}
                 </div>
-                {this.renderCommonBusinessServices()}
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
-      </>
+      </div>
     );
   }
 }

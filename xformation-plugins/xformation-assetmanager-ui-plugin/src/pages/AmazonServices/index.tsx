@@ -7,13 +7,13 @@ import { images } from "../../img";
 // import *as dateFormat from "dateformat";
 import { Wizard } from "./Wizard";
 import { DiscoveredAssets } from "./DiscoveredAssets";
+import { Applications } from './Applications';
 import { Billing } from "./Billing";
 import { ThreatAndSecurityEvents } from "./ThreatAndSecurityEvents";
 import { CompliancePolicies } from "./CompliancePolicies";
 import { Alerts } from "./Alerts";
 import { Inputs } from "./Inputs";
 import { PLUGIN_BASE_URL } from '../../constants';
-import { ProductWiseServices } from "../../components/ProductWiseServices";
 
 export class AmazonServices extends React.Component<any, any> {
   breadCrumbs: any;
@@ -44,7 +44,7 @@ export class AmazonServices extends React.Component<any, any> {
       },
       {
         name: "Applications",
-        component:  <div className="department-wise-container"><ProductWiseServices product={this.state.product} type='amazonService' /></div>,
+        component:  <Applications {...props} />,
       },
       {
         name: "Billing",

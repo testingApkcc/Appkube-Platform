@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { images } from '../../img';
-import { PLUGIN_BASE_URL } from '../../constants';
+// import { Link } from 'react-router-dom';
+// import { images } from '../../img';
+// import { PLUGIN_BASE_URL } from '../../constants';
 import { SelectCloudFilter } from '../SelectCloudFilter';
 import { ServicesPerformance } from './ServicesPerformance';
 import { v4 } from 'uuid';
@@ -15,8 +15,8 @@ export class ProductWiseServices extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      showRecentFilter: false,
-      showAddNewFilter: false,
+      // showRecentFilter: false,
+      // showAddNewFilter: false,
       productComponent: [],
       product: [],
       isDataLoaded: false,
@@ -116,8 +116,8 @@ export class ProductWiseServices extends React.Component<any, any> {
                       <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                     </div>
                     <div className="cloud-environment"></div>
-                    <div className="app-services">{serviceByType.APP || 0}</div>
-                    <div className="data-services">{serviceByType.DATA || 0}</div>
+                    <div className="app-services">{serviceByType['App'] || 0}</div>
+                    <div className="data-services">{serviceByType['Data'] || 0}</div>
                     <div className="product-environment">{productServiceList.join()}</div>
                     <div className="edit">
                       {/* onClick={() => this.onClickMenu(defaultView, i)} */}
@@ -189,13 +189,13 @@ export class ProductWiseServices extends React.Component<any, any> {
   };
 
   render() {
-    const { showRecentFilter, showAddNewFilter } = this.state;
+    // const { showRecentFilter, showAddNewFilter } = this.state;
     return (
       <div className="common-container department-fliters-container">
-        <div className="selects-container">
+        <div className="selects-container" style={{marginBottom: '20px'}}>
           <SelectCloudFilter filterJsonData={this.props.displayJsonData} onChangeFilter={this.onChangeFilter} />
         </div>
-        <div className="fliter-container">
+        {/* <div className="fliter-container">
           <div className="row">
             <div className="col-lg-8 col-md-8 col-sm-12">
               <div className="row">
@@ -294,7 +294,7 @@ export class ProductWiseServices extends React.Component<any, any> {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="data-table">
           <div className="thead">
             <div className="name">Name</div>
