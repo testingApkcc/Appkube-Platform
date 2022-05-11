@@ -154,8 +154,8 @@ export class Filter extends React.Component<any, any>{
                 for (let j = 0; j < filter.length; j++) {
                     const label = filterData[i].filter[j];
                     if (label.isChecked) {
-                        retData[filterData[i].name] = retData[filterData[i].name] || [];
-                        retData[filterData[i].name].push(label.value);
+                        retData[filterData[i].key] = retData[filterData[i].key] || [];
+                        retData[filterData[i].key].push(label.value);
                     }
                 }
             }
