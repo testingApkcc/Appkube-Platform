@@ -4055,6 +4055,9 @@ a:hover {
   .catalogue-right-container
   .catalogue-boxes {
   display: block;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 900px;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
@@ -4149,6 +4152,7 @@ a:hover {
   line-height: 20px;
   margin-bottom: 0rem;
   margin-top: 0;
+  min-height: 60px;
   color: #202020;
 }
 .perfmanager-dashboard-container

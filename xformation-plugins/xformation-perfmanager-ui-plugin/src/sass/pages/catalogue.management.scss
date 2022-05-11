@@ -290,6 +290,10 @@
 
                         .catalogue-boxes {
                             display: block;
+                            overflow: hidden;
+                            overflow-y: auto;
+                            height: 900px;
+                            
 
                             .box {
                                 width: 100%;
@@ -332,6 +336,7 @@
                                         line-height: 20px;
                                         margin-bottom: 0rem;
                                         margin-top: 0;
+                                        min-height: 60px;
                                         color: #202020;
                                     }
                                 }
