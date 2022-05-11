@@ -247,7 +247,6 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   onClickDirectService = (e: any, service: any) => {
-    const { labelText } = this.state;
     let serviceData: any = localStorage.getItem('added-services');
     if (serviceData) {
       serviceData = JSON.parse(serviceData);
@@ -268,7 +267,7 @@ export class ServicesPerformance extends React.Component<any, any> {
     serviceData.push({
       id: service.id,
       name: service.name,
-      labelText,
+      labelText: `${service.associatedProductEnclave} > ${service.associatedCluster} > ${service.associatedEnv} > ${service.serviceType} Services`,
       organizationUnit: service.associatedOU,
       serviceType: service.serviceType,
       serviceScore: avgScore.toFixed(2),
