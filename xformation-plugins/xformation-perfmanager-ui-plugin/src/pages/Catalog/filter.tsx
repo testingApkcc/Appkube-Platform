@@ -1,61 +1,61 @@
 import React from 'react';
 import { v4 } from 'uuid';
 
-const filterData = [
-    {
-        name: "Product Enclave",
-        key: "nodes",
-        filter: [
-            { value: "687373481-VPC1", label: "VPC 1" },
-            { value: "Global Services", label: "Global Services" },
-        ],
-    },
-    {
-        name: "Clusters",
-        key: "clusters",
-        filter: [
-            { value: "687373481-VPC1-Cluster1", label: "VPC 1 > Cluster 1" },
-            { value: "687373481-VPC1-Cluster2", label: "VPC 1 > Cluster 2" },
-        ],
-    },
-    {
-        name: "Environments",
-        key: "environments",
-        filter: [
-            { value: "PROD", label: "PROD" },
-            { value: "STAGE", label: "STAGE" },
-            { value: "TEST", label: "TEST" },
-        ],
-    },
-    {
-        name: "Service Type",
-        key: "serviceType",
-        filter: [
-            { value: "App", label: "App" },
-            { value: "Data", label: "Data" },
-        ],
-    },
-    {
-        name: "Service Nature",
-        key: "serviceNature",
-        filter: [
-            { value: "Common", label: "Common" },
-            { value: "Business", label: "Business" },
-        ],
-    },
-    {
-        name: "Products",
-        key: "products",
-        filter: [{ value: "PROCUREMENT", label: "PROCUREMENT" }],
-    },
-];
+// const filterData = [
+//     {
+//         name: "Product Enclave",
+//         key: "nodes",
+//         filter: [
+//             { value: "687373481-VPC1", label: "VPC 1" },
+//             { value: "Global Services", label: "Global Services" },
+//         ],
+//     },
+//     {
+//         name: "Clusters",
+//         key: "clusters",
+//         filter: [
+//             { value: "687373481-VPC1-Cluster1", label: "VPC 1 > Cluster 1" },
+//             { value: "687373481-VPC1-Cluster2", label: "VPC 1 > Cluster 2" },
+//         ],
+//     },
+//     {
+//         name: "Environments",
+//         key: "environments",
+//         filter: [
+//             { value: "PROD", label: "PROD" },
+//             { value: "STAGE", label: "STAGE" },
+//             { value: "TEST", label: "TEST" },
+//         ],
+//     },
+//     {
+//         name: "Service Type",
+//         key: "serviceType",
+//         filter: [
+//             { value: "App", label: "App" },
+//             { value: "Data", label: "Data" },
+//         ],
+//     },
+//     {
+//         name: "Service Nature",
+//         key: "serviceNature",
+//         filter: [
+//             { value: "Common", label: "Common" },
+//             { value: "Business", label: "Business" },
+//         ],
+//     },
+//     {
+//         name: "Products",
+//         key: "products",
+//         filter: [{ value: "PROCUREMENT", label: "PROCUREMENT" }],
+//     },
+// ];
 
 export class Filter extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            filterData: filterData,
-            duplicateFilterData: filterData,
+            filterData: this.props.filterJsonData,
+            duplicateFilterData: this.props.filterJsonData,
             filterJsonData: {},
             duplicatefilterJsonData: {},
             searchString: '',
@@ -67,7 +67,6 @@ export class Filter extends React.Component<any, any>{
 
     clearAllTagFilter = (index: any) => {
         const { filterData } = this.state;
-        // searchKey[index] = "";
         for (let k = 0; k < filterData[index].filter.length; k++) {
             filterData[index].filter[k].isHide = false;
         }
@@ -96,8 +95,7 @@ export class Filter extends React.Component<any, any>{
                     }
                 }
             });
-        }
-        else {
+        } else {
             // for (let k = 0; k < filterData[index].filter.length; k++) {
             //     if (filterData[index].filter[k].label.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
             //         filterData[index].filter[k].isHide = false
