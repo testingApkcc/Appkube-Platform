@@ -50,8 +50,8 @@ export const catalogData = {
         associatedCloudElementType: 'CLOUDTRAIL',
         jsonLocation: 's3://updated-dashboards-bucket/NewDashboards/CloudTrail/AWS CloudTrail - Overview.txt',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Overview.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Overview1.png',
         ],
       },
       {
@@ -65,8 +65,8 @@ export const catalogData = {
         associatedCloudElementType: 'CLOUDTRAIL',
         jsonLocation: 's3://updated-dashboards-bucket/NewDashboards/CloudTrail/AWS CloudTrail - User Monitoring.txt',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/User-Monitoring.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/User-Monitoring1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/User-Monitoring.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/User-Monitoring1.png',
         ],
       },
       {
@@ -81,13 +81,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/CloudTrail/AWS Cloudtrail Network & Security.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Network-and-security1.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Network-and-security2.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Network-and-security3.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Network-and-security1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Network-and-security2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Network-and-security3.png',
         ],
       },
       {
-        id: 4,
+        id: 5,
         name: 'AWS-CloudTrail-Operations',
         description: 'AWS CloudTrail Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -96,10 +96,10 @@ export const catalogData = {
         associatedCloud: 'AWS',
         associatedCloudElementType: 'CloudTrail',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/CloudTrail/AWS CloudTrail - Operations.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/CloudTrail/AWS-CLOUDTRAILOPERATIONS1.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/AWS-CLOUDTRAILOPERATIONS1.png'],
       },
       {
-        id: 5,
+        id: 6,
         name: 'AWS-CloudTrail-Console-Logins',
         description: 'AWS CloudTrail Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -109,12 +109,12 @@ export const catalogData = {
         associatedCloudElementType: 'CloudTrail',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/CloudTrail/Console Logins.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/AWS-CLOUDTRAIL-CONSOLE-LOGINS1.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/AWS-CLOUDTRAIL-CONSOLE-LOGINS2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/AWS-CLOUDTRAIL-CONSOLE-LOGINS1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/AWS-CLOUDTRAIL-CONSOLE-LOGINS2.png',
         ],
       },
       {
-        id: 6,
+        id: 8,
         name: 'AWS-Config-Overview',
         description: 'AWS Config Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -123,10 +123,10 @@ export const catalogData = {
         associatedCloud: 'AWS',
         associatedCloudElementType: 'Config',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/Config/AWS Config Overview.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/Config/Overview.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Config/Overview.png'],
       },
       {
-        id: 7,
+        id: 10,
         name: 'AWS-ELB-Application-Overview',
         description: 'AWS ELB Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -136,10 +136,10 @@ export const catalogData = {
         associatedCloudElementType: 'ELB',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS ELB/ALB/AWS ELB Application Load Balancer Overview.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/ELB/Application-Overview.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ELB/Application-Overview.png'],
       },
       {
-        id: 8,
+        id: 12,
         name: 'AWS-ELB-Status-Code-Analysis',
         description: 'AWS ELB Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -149,10 +149,10 @@ export const catalogData = {
         associatedCloudElementType: 'ELB',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS ELB/ALB/AWS ELB Application Status Code Analysis.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/ELB/STATUS-CODE-ANALYSIS.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ELB/STATUS-CODE-ANALYSIS.png'],
       },
       {
-        id: 9,
+        id: 13,
         name: 'AWS-ELB-Request-Analysis',
         description: 'AWS ELB Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -162,10 +162,10 @@ export const catalogData = {
         associatedCloudElementType: 'ELB',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS ELB/ALB/AWS ELB - Application - Request Analysis.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/ELB/Request-Analysis.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ELB/Request-Analysis.png'],
       },
       {
-        id: 10,
+        id: 43,
         name: 'AWS-LAMBDA-OVERVIEW',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -175,12 +175,12 @@ export const catalogData = {
         associatedCloudElementType: 'Lambda',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/AWS Lambda - Overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-Overview1.png',
         ],
       },
       {
-        id: 11,
+        id: 45,
         name: 'AWS-LAMBDA-CLOUDTRAIL-EVENT-OVERVIEW',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -191,12 +191,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/LAMBDA-CLOUDTRAIL-EVENTS-OVERVIEW.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/CloudTrail-Events-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/CloudTrail-Events-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/CloudTrail-Events-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/CloudTrail-Events-Overview1.png',
         ],
       },
       {
-        id: 12,
+        id: 46,
         name: 'AWS-LAMBDA-Cloudwatch-Duration-And-Memory',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -206,10 +206,10 @@ export const catalogData = {
         associatedCloudElementType: 'Lambda',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/Aws-lambda logs/Aws-lambda-cloudwatch-duration-memory.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/Lambda/CloudWatch-Duration-And-Memory.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/CloudWatch-Duration-And-Memory.png'],
       },
       {
-        id: 13,
+        id: 47,
         name: 'AWS-LAMBDA-Cloudwatch-Duration-And-Memory',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -219,10 +219,10 @@ export const catalogData = {
         associatedCloudElementType: 'Lambda',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/AWS-LAMBDA-METRICS/aws lambda cloudwatch durations metric.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/Lambda/CloudWatch-Duration-And-Memory.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/CloudWatch-Duration-And-Memory.png'],
       },
       {
-        id: 14,
+        id: 48,
         name: 'AWS-LAMBDA-Cloudwatch-Usage',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -233,12 +233,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/Aws Lambda - Cloudwatch - usage.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/CloudWatch-Usage.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/CloudWatch-Usage1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/CloudWatch-Usage.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/CloudWatch-Usage1.png',
         ],
       },
       {
-        id: 15,
+        id: 49,
         name: 'AWS-LAMBDA-ULM-Overview',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -249,13 +249,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/Aws-lambda logs/lambda ulm overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Overview1.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Overview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Overview2.png',
         ],
       },
       {
-        id: 16,
+        id: 50,
         name: 'AWS-LAMBDA-ULM-Overview',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -266,13 +266,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/AWS-LAMBDA-METRICS/lambda ulm overview metrics.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Overview1.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Overview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Overview2.png',
         ],
       },
       {
-        id: 17,
+        id: 51,
         name: 'AWS-LAMBDA-ULM-Error-Analysis',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -283,12 +283,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/AWS-LAMBDA-METRICS/lambda ulm error analysis metrics.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Error-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Error-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Error-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Error-Analysis1.png',
         ],
       },
       {
-        id: 18,
+        id: 52,
         name: 'AWS-LAMBDA-ULM-Error-Aanlysis',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -299,12 +299,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/Aws-lambda logs/lambda ulm error analysis logs.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Error-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Error-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Error-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Error-Analysis1.png',
         ],
       },
       {
-        id: 19,
+        id: 53,
         name: 'AWS-LAMBDA-ULM-Performance-Analysis',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -315,12 +315,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/Aws-lambda logs/lambda ulm Performance analysis logs.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis1.png',
         ],
       },
       {
-        id: 20,
+        id: 54,
         name: 'AWS-LAMBDA-ULM-Performance-Analysis',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -331,12 +331,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/AWS-LAMBDA-METRICS/lambda ulm Performance analysis metrics.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Performance-Analysis1.png',
         ],
       },
       {
-        id: 21,
+        id: 57,
         name: 'AWS-LAMBDA-ULM-Request-Analysis',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -347,13 +347,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/AWS Lambda ULM Request Analysis.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Request-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Request-Analysis1.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Request-Analysis2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Request-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Request-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Request-Analysis2.png',
         ],
       },
       {
-        id: 22,
+        id: 61,
         name: 'AWS-LAMBDA-ULM-Usage-Analysis',
         description: 'AWS LAMBDA Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -364,12 +364,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Lambda/Amazon Lambda ulm usage analysis.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Usage-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/Lambda/Lambda-ULM-Usage-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Usage-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Lambda/Lambda-ULM-Usage-Analysis1.png',
         ],
       },
       {
-        id: 23,
+        id: 62,
         name: 'AWS-Secutity-Hub-Overview',
         description: 'AWS SECURITY Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -380,12 +380,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon Security Hub/AWS Security Hub -  Overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/Security-Hub/AWS- Security-Hub-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/Security-Hub/AWS-Security Hub-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Security-Hub/AWS- Security-Hub-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Security-Hub/AWS-Security Hub-Overview1.png',
         ],
       },
       {
-        id: 24,
+        id: 66,
         name: 'AWS-Secutity-Hub-Resource-Effected',
         description: 'AWS SECURITY Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -395,10 +395,12 @@ export const catalogData = {
         associatedCloudElementType: 'Security-hub',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon Security Hub/Amazon Security hub resource effected.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/Security-Hub/AWS-Security-Hub -Resource-Effected.png'],
+        images: [
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Security-Hub/AWS-Security-Hub -Resource-Effected.png',
+        ],
       },
       {
-        id: 25,
+        id: 71,
         name: 'AWS-WAF-TRAFFIC',
         description: 'AWS WAF Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -408,12 +410,12 @@ export const catalogData = {
         associatedCloudElementType: 'WAF-Operations',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS WAF/AWS WAF- Traffic.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/WAF/Security-Analysis-Traffic.png',
-          's3://syn-monitoring-images/AWS-Images/WAF/Security-Analysis-Traffic1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Security-Analysis-Traffic.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Security-Analysis-Traffic1.png',
         ],
       },
       {
-        id: 26,
+        id: 76,
         name: 'AWS-DYNAMODB-CAPACITY-PLANNING',
         description: 'AWS DYNAMODB Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -423,10 +425,10 @@ export const catalogData = {
         associatedCloudElementType: 'DynamoDB',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS DynamoDb/Amazon DynamoDB - Capacity Planning.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/DynamoDB/DynamoDB-CapacityPlanning.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/DynamoDB/DynamoDB-CapacityPlanning.png'],
       },
       {
-        id: 27,
+        id: 78,
         name: 'AWS-DYNAMODB-EVENTS',
         description: 'AWS DYNAMODB Event Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -436,12 +438,12 @@ export const catalogData = {
         associatedCloudElementType: 'DynamoDB',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS DynamoDb/Amazon DynamoDB - Events.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/DynamoDB/DynamoDB-Events.png',
-          's3://syn-monitoring-images/AWS-Images/DynamoDB/DynamoDB-Events1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/DynamoDB/DynamoDB-Events.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/DynamoDB/DynamoDB-Events1.png',
         ],
       },
       {
-        id: 28,
+        id: 80,
         name: 'AWS-DYNAMODB-LATENCY-&-ERRORS',
         description: 'AWS DYNAMODB Latency and Errors Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -451,10 +453,10 @@ export const catalogData = {
         associatedCloudElementType: 'DynamoDB',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS DynamoDb/Amazon DynamoDB - Latency & Errors.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/DynamoDB/Latency-And-Errors.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/DynamoDB/Latency-And-Errors.png'],
       },
       {
-        id: 29,
+        id: 81,
         name: 'AWS-DYNAMODB-CAPACITY-PLANNING',
         description: 'AWS DYNAMODB Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -464,10 +466,10 @@ export const catalogData = {
         associatedCloudElementType: 'DynamoDB',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS DynamoDb/Amazon DynamoDB - Capacity Planning.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/DynamoDB/DynamoDB-CapacityPlanning.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/DynamoDB/DynamoDB-CapacityPlanning.png'],
       },
       {
-        id: 30,
+        id: 82,
         name: 'AWS-ECS-Overview',
         description: 'AWS ECS Monitoring Overview',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -478,12 +480,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ECS/AWS ECS Metrics/AWS ECS Overview metrics.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ECS/Overview.png',
-          's3://syn-monitoring-images/AWS-Images/ECS/Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/Overview1.png',
         ],
       },
       {
-        id: 31,
+        id: 83,
         name: 'AWS-ECS-Overview',
         description: 'AWS ECS Monitoring Overview',
         associatedDataSourceType: 'AWS-PullLg-Api',
@@ -494,12 +496,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ECS/AWS ECS Logs/Amazon ECS - Events.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ECS/Overview.png',
-          's3://syn-monitoring-images/AWS-Images/ECS/Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/Overview1.png',
         ],
       },
       {
-        id: 32,
+        id: 84,
         name: 'AWS-ECS-CPU-Utilization-Cluster-And-Service',
         description: 'AWS ECS Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -509,10 +511,12 @@ export const catalogData = {
         associatedCloudElementType: 'ECS',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ECS/AWS ECS Metrics/AWS ECS - CPU Utilization - Cluster & Service.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/ECS/CPU-Utilization-Cluster-And-Service.png'],
+        images: [
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/CPU-Utilization-Cluster-And-Service.png',
+        ],
       },
       {
-        id: 33,
+        id: 85,
         name: 'AWS-ECS-CPU-&-MEMORY-RESERVATION-CLUSTER',
         description: 'AWS ECS Operations',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -522,10 +526,12 @@ export const catalogData = {
         associatedCloudElementType: 'ECS',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ECS/AWS ECS Metrics/AWS ECS - CPU & Memory Reservation - Cluster.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/ECS/CPU-and-Memory-Reservation-Cluster.png'],
+        images: [
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/CPU-and-Memory-Reservation-Cluster.png',
+        ],
       },
       {
-        id: 34,
+        id: 86,
         name: 'AWS-ECS-EVENTS',
         description: 'AWS ECS Events',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -536,13 +542,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ECS/AWS ECS Logs/Amazon ECS - Events.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ECS/Events.png',
-          's3://syn-monitoring-images/AWS-Images/ECS/Events1.png',
-          's3://syn-monitoring-images/AWS-Images/ECS/Events2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/Events.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/Events1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ECS/Events2.png',
         ],
       },
       {
-        id: 35,
+        id: 93,
         name: 'Amazon-ElastiCache-REDIS-ULM-EVENT-OVERVIEW',
         description: 'AWS ELASTICACHE Events Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -553,14 +559,14 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ElastiCache Redis/Amazon-Elasticache-redis-ulm-events-overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview1.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview2.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview3.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-Events-Overview3.png',
         ],
       },
       {
-        id: 36,
+        id: 97,
         name: 'Amazon-ElastiCache-Redis-ULM-Performance-Overview',
         description: 'AWS ElastiCache Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -571,13 +577,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ElastiCache Redis/Amazon ElastiCache Redis ULM-Performance Overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview2.png',
         ],
       },
       {
-        id: 37,
+        id: 98,
         name: 'Amazon ElastiCache Redis ULM-Performance Overview',
         description: 'AWS ElastiCache Redis ULM Monitoring Performance Overview',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -588,13 +594,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ElastiCache Redis/Amazon ElastiCache Redis ULM-Performance Overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceOverview2.png',
         ],
       },
       {
-        id: 38,
+        id: 99,
         name: 'Amazon ElastiCache Redis ULM–Performance by Cluster',
         description: 'AWS ElastiCache Redis ULM Performance Monitoring by Cluster',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -605,13 +611,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ElastiCache Redis/Amazon ElastiCache Redis ULM-Performance by Cluster.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-performance-ByCluster.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-performance-ByCluster1.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-performance-ByCluster2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-performance-ByCluster.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-performance-ByCluster1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-performance-ByCluster2.png',
         ],
       },
       {
-        id: 39,
+        id: 101,
         name: 'Amazon ElastiCache Redis ULM–Performance by Host',
         description: 'AWS ElastiCache Redis ULM Monitoring Performance by Host',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -622,12 +628,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ElastiCache Redis/Amazon ElastiCache Redis ULM-Performance by Host.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceBy-host1.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/REDIS-ULM-PerformanceBy-host2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceBy-host1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/REDIS-ULM-PerformanceBy-host2.png',
         ],
       },
       {
-        id: 40,
+        id: 104,
         name: 'Amazon ElastiCache Redis ULM – Notifications',
         description: 'AWS ElastiCache Redis ULM Monitoring Notifications',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -638,12 +644,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon ElastiCache Redis/Amazon-elasticache-redis-ulm-notifications.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/ElastiCache-Redis-ULM–Notifications.png',
-          's3://syn-monitoring-images/AWS-Images/ElastiCache/ElastiCache-Redis-ULM–Notifications1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/ElastiCache-Redis-ULM–Notifications.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/ElastiCache/ElastiCache-Redis-ULM–Notifications1.png',
         ],
       },
       {
-        id: 41,
+        id: 105,
         name: 'Amazon GuardDuty - Overview',
         description: 'Amazon GuardDuty Monitoring Performance Overview',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -654,13 +660,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GuardDuty/Amazon GuardDuty-Overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/GuardDuty/GuardDuty-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/GuardDuty/GuardDuty-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/GuardDuty/GuardDuty-Overview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GuardDuty/GuardDuty-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GuardDuty/GuardDuty-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GuardDuty/GuardDuty-Overview2.png',
         ],
       },
       {
-        id: 42,
+        id: 106,
         name: 'Amazon GuardDuty – CloudTrail Details',
         description: 'Amazon GuardDuty Monitoring CloudTrail Details',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -671,12 +677,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GuardDuty/Amazon GuardDuty-CloudTrail-Details.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/GuardDuty/GuardDuty-CloudTrail Details1.png',
-          's3://syn-monitoring-images/AWS-Images/GuardDuty/GuardDuty-CloudTrail-Details.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GuardDuty/GuardDuty-CloudTrail Details1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GuardDuty/GuardDuty-CloudTrail-Details.png',
         ],
       },
       {
-        id: 43,
+        id: 108,
         name: 'Amazon GuardDuty - Details(VPC,Subnet,Security Group)',
         description: 'Amazon GuardDuty Monitoring VPC,Subnet,Security Group Details',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -686,10 +692,12 @@ export const catalogData = {
         associatedCloudElementType: 'GuardDuty',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GuardDuty/Amazon GuardDuty-Details(VPC,SUBNETS.SG).json',
-        images: ['s3://syn-monitoring-images/AWS-Images/GuardDuty/GuardDuty-Details(VPC, SUBNETSecurity Group).png'],
+        images: [
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GuardDuty/GuardDuty-Details(VPC, SUBNETSecurity Group).png',
+        ],
       },
       {
-        id: 44,
+        id: 111,
         name: 'Amazon Kinesis – Streams - Events',
         description: 'Amazon Kinesis Streams Monitoring Events',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -699,10 +707,10 @@ export const catalogData = {
         associatedCloudElementType: 'Kinesis',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS kinesis/Amazon Kinesis - Streams - Events.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/Kinesis/Kinesis-Streams-Events.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/Kinesis/Kinesis-Streams-Events.png'],
       },
       {
-        id: 45,
+        id: 118,
         name: 'Amazon Redshift - Overview',
         description: 'Amazon Redshift Monitoring Performance Overview ',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -711,10 +719,10 @@ export const catalogData = {
         associatedCloud: 'AWS',
         associatedCloudElementType: 'Redshift',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Redshift/AWS - RedShift Overview.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/RedShift/Overview.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Overview.png'],
       },
       {
-        id: 46,
+        id: 119,
         name: 'Amazon Redshift - Overview',
         description: 'Amazon Redshift Monitoring Performance Overview ',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -723,10 +731,10 @@ export const catalogData = {
         associatedCloud: 'AWS',
         associatedCloudElementType: 'Redshift',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Redshift/AWS - RedShift Overview.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/RedShift/Overview.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Overview.png'],
       },
       {
-        id: 47,
+        id: 120,
         name: 'Amazon Redshift – Audit - Connection Log',
         description: 'Amazon Redshift Monitoring and Audit connection Log',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -737,12 +745,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Redshift/AWS - Redshift - Audit - Connection Log.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/RedShift/Audit-Connection-Log.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/Audit-connection-Log1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Audit-Connection-Log.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Audit-connection-Log1.png',
         ],
       },
       {
-        id: 48,
+        id: 125,
         name: 'Amazon Redshift – CloudTrail Events Overview',
         description: 'Amazon Redshift Monitoring and Overview of CloudTrail Events',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -753,13 +761,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Redshift/AWS - RedShift - CloudTrail events Overview1.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/RedShift/Cloudtrail-Events-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/CloudTrail-Events-Overview1.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/Cloudtrail-Events-Overview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Cloudtrail-Events-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/CloudTrail-Events-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Cloudtrail-Events-Overview2.png',
         ],
       },
       {
-        id: 49,
+        id: 127,
         name: 'Amazon Redshift – Resource Utilization by ClusterIdentifier',
         description: 'Amazon Redshift Monitoring Resource Utilization by ClusterIdentifier ',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -770,13 +778,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Redshift/AWS-Redshift-Resource utilization by cluster identifier.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/RedShift/Resource-Utilization-By-ClusterIdentifier.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/Resource-Utilization-By-ClusterIdentifier1.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/Resource-Utilization-By-ClusterIdentifier2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Resource-Utilization-By-ClusterIdentifier.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Resource-Utilization-By-ClusterIdentifier1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Resource-Utilization-By-ClusterIdentifier2.png',
         ],
       },
       {
-        id: 50,
+        id: 128,
         name: 'Amazon Redshift – Resource Utilization by NodeID',
         description: 'Amazon Redshift Monitoring Resource Utilization by NodeID ',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -787,14 +795,14 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS Redshift/AWS-Redshift-Resource utilization by NODE ID.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/RedShift/Resource-Utilization-By-NodeID.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/Resource-Utilization-By-NodeID1.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/Resource-Utilization-By-NodeID2.png',
-          's3://syn-monitoring-images/AWS-Images/RedShift/Resource-Utilization-By-NodeID3.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Resource-Utilization-By-NodeID.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Resource-Utilization-By-NodeID1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Resource-Utilization-By-NodeID2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/RedShift/Resource-Utilization-By-NodeID3.png',
         ],
       },
       {
-        id: 51,
+        id: 132,
         name: 'Amazon SES – CloudTrail Events Overview',
         description: 'Amazon SES Monitoring and Overview of CloudTrail Events',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -805,13 +813,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon SES/Amazon SES - Cloud Trail Events Overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SES/cloudtrail-Events-overview.png',
-          's3://syn-monitoring-images/AWS-Images/SES/cloudtrail-Events-overview1.png',
-          's3://syn-monitoring-images/AWS-Images/SES/cloudtrail-Events-overview2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SES/cloudtrail-Events-overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SES/cloudtrail-Events-overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SES/cloudtrail-Events-overview2.png',
         ],
       },
       {
-        id: 52,
+        id: 134,
         name: 'Amazon SES –CloudTrail Events by Event Name',
         description: 'Amazon SES Monitoring of CloudTrail Events by Event name',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -822,12 +830,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon SES/AWS-SES-CLOUDTRAIL-EVENTS-BY-EVENTNAMES.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SES/CloudTrail Events by Eventname.png',
-          's3://syn-monitoring-images/AWS-Images/SES/CloudTrail Events by Eventname1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SES/CloudTrail Events by Eventname.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SES/CloudTrail Events by Eventname1.png',
         ],
       },
       {
-        id: 53,
+        id: 141,
         name: 'Amazon SNS - Overview',
         description: 'Amazon SNS Performance Monitoring and OverView',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -837,12 +845,12 @@ export const catalogData = {
         associatedCloudElementType: 'SNS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS SNS/sns overview metrics.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SNS/Overview.png',
-          's3://syn-monitoring-images/AWS-Images/SNS/Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/Overview1.png',
         ],
       },
       {
-        id: 54,
+        id: 142,
         name: 'Amazon SNS - Overview',
         description: 'Amazon SNS Performance Monitoring and OverView',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -852,12 +860,12 @@ export const catalogData = {
         associatedCloudElementType: 'SNS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS SNS/sns overview logs.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SNS/Overview.png',
-          's3://syn-monitoring-images/AWS-Images/SNS/Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/Overview1.png',
         ],
       },
       {
-        id: 55,
+        id: 145,
         name: 'Amazon SNS – Metric by Region',
         description: 'Amazon SNS Region Monitoring by metrics',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -866,10 +874,10 @@ export const catalogData = {
         associatedCloud: 'AWS',
         associatedCloudElementType: 'SNS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS SNS/Amazon SNS - Metric By Region.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/SNS/Metric-By-Region.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/Metric-By-Region.png'],
       },
       {
-        id: 56,
+        id: 146,
         name: 'Amazon SNS – Metric by TopicName',
         description: 'Amazon SNS TopicName Monitoring by metrics',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -879,10 +887,10 @@ export const catalogData = {
         associatedCloudElementType: 'SNS',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS SNS/Amazon SNS - Metric By TopicName.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/SNS/Metric-By-TopicName.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/Metric-By-TopicName.png'],
       },
       {
-        id: 57,
+        id: 147,
         name: 'Amazon SNS – CloudTrail Events',
         description: 'Amazon SNS Monitoring by CloudTrail Events',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -892,13 +900,13 @@ export const catalogData = {
         associatedCloudElementType: 'SNS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS SNS/Amazon SNS - CloudTrail Events.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SNS/CloudTrail-Events.png',
-          's3://syn-monitoring-images/AWS-Images/SNS/CloudTrail-Events2.png',
-          's3://syn-monitoring-images/AWS-Images/SNS/CloudTrail-Events3.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/CloudTrail-Events.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/CloudTrail-Events2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/CloudTrail-Events3.png',
         ],
       },
       {
-        id: 58,
+        id: 149,
         name: 'Amazon SNS – CloudTrail Events',
         description: 'Amazon SQS Monitoring  by CloudTrail Events',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -908,13 +916,13 @@ export const catalogData = {
         associatedCloudElementType: 'SQS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS-SQS/AWS-SQS-CloudTrail-Events.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SNS/CloudTrail-Events.png',
-          's3://syn-monitoring-images/AWS-Images/SNS/CloudTrail-Events2.png',
-          's3://syn-monitoring-images/AWS-Images/SNS/CloudTrail-Events3.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/CloudTrail-Events.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/CloudTrail-Events2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SNS/CloudTrail-Events3.png',
         ],
       },
       {
-        id: 59,
+        id: 151,
         name: 'Amazon SQS – Overview',
         description: 'Amazon SQS Monitoring and Overview',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -924,12 +932,12 @@ export const catalogData = {
         associatedCloudElementType: 'SQS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS-SQS/sqs overview logs.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-Overview1.png',
         ],
       },
       {
-        id: 60,
+        id: 152,
         name: 'Amazon SQS – Overview',
         description: 'Amazon SQS Monitoring and Overview',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -939,12 +947,12 @@ export const catalogData = {
         associatedCloudElementType: 'SQS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS-SQS/sqs overview metrics.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-Overview1.png',
         ],
       },
       {
-        id: 61,
+        id: 153,
         name: 'Amazon SQS by QueueName',
         description: 'Amazon SQS Monitoring by QueueName',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -954,12 +962,12 @@ export const catalogData = {
         associatedCloudElementType: 'SQS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS-SQS/AWS-SQS-QueueName.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-By-QueueName.png',
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-By-QueueName1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-By-QueueName.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-By-QueueName1.png',
         ],
       },
       {
-        id: 62,
+        id: 155,
         name: 'Amazon SQS by Region',
         description: 'Amazon SQS Monitoring by Region',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -969,12 +977,12 @@ export const catalogData = {
         associatedCloudElementType: 'SQS',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS-SQS/AWS-SQS-By-Region.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-By-Region.png',
-          's3://syn-monitoring-images/AWS-Images/SQS/Amazon-SQS-By-Region1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-By-Region.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/SQS/Amazon-SQS-By-Region1.png',
         ],
       },
       {
-        id: 63,
+        id: 157,
         name: 'Amazon VPC Flow Logs - Overview',
         description: 'Amazon VPC Flow Logs Monitoring and OverView',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -984,13 +992,13 @@ export const catalogData = {
         associatedCloudElementType: 'VPC',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/vpc/Amazon VPC Flow Logs - Overview.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/VPC/Flow-logs-overview.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/Flow-logs-overview1.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/Flow-logs-overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/Flow-logs-overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/Flow-logs-overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/Flow-logs-overview1.png',
         ],
       },
       {
-        id: 64,
+        id: 159,
         name: 'Amazon VPC Flow Logs - Traffic',
         description: 'Amazon VPC Flow Logs Monitoring Traffic',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1000,13 +1008,13 @@ export const catalogData = {
         associatedCloudElementType: 'VPC',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/vpc/Amazon VPC Flow Logs - Traffic.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/VPC/flowLogs-Traffic.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/flowLogs-Traffic1.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/flowLogs-Traffic2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/flowLogs-Traffic.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/flowLogs-Traffic1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/flowLogs-Traffic2.png',
         ],
       },
       {
-        id: 65,
+        id: 161,
         name: 'Amazon VPC Flow Logs - Accepts',
         description: 'Amazon VPC Flow Logs Monitoring by Accepts',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1016,13 +1024,13 @@ export const catalogData = {
         associatedCloudElementType: 'VPC',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/vpc/Amazon VPC Flow Logs - Accepts.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/VPC/Accepted-flowLogs.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/Accepted-flowLogs1.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/Accepted-flowLogs2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/Accepted-flowLogs.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/Accepted-flowLogs1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/Accepted-flowLogs2.png',
         ],
       },
       {
-        id: 66,
+        id: 163,
         name: 'Amazon VPC Flow Logs - Rejects',
         description: 'Amazon VPC Flow Logs Monitoring by Rejects',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1032,13 +1040,13 @@ export const catalogData = {
         associatedCloudElementType: 'VPC',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/vpc/Amazon VPC Flow Logs - Rejects.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/VPC/FlowLogs-Rejects.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/FlowLogs-Rejects1.png',
-          's3://syn-monitoring-images/AWS-Images/VPC/FlowLogs-Rejects2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/FlowLogs-Rejects.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/FlowLogs-Rejects1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/VPC/FlowLogs-Rejects2.png',
         ],
       },
       {
-        id: 67,
+        id: 167,
         name: 'CIS AWS Monitoring – Access & Authentication',
         description: 'CIS AWS Monitoring Access & Authentication',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1049,12 +1057,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/CIS AWS Monitoring- Access & Authentication/CIS AWS Monitoring – Access & Authentication.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CIS/Monitoring-Access-and-Authentication.png',
-          's3://syn-monitoring-images/AWS-Images/CIS/Monitoring-Access-and-Authentication1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CIS/Monitoring-Access-and-Authentication.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CIS/Monitoring-Access-and-Authentication1.png',
         ],
       },
       {
-        id: 68,
+        id: 168,
         name: 'CIS AWS Monitoring – Change Control',
         description: 'CIS AWS Monitoring Change Control',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1064,10 +1072,10 @@ export const catalogData = {
         associatedCloudElementType: 'CIS',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/CIS AWS Monitoring- Access & Authentication/CIS AWS Monitoring - Change Control.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/CIS/Monitoring -Control-Change.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CIS/Monitoring -Control-Change.png'],
       },
       {
-        id: 69,
+        id: 169,
         name: 'GI GuardDuty – Global Baseline',
         description: 'GI GuardDuty Monitoring Global Baseline',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1078,12 +1086,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GI GuardDuty/GI GuardDuty Global Baseline.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/GI/GuardDuty-GlobalBaseline.png',
-          's3://syn-monitoring-images/AWS-Images/GI/GuardDuty-GlobalBaseline1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/GuardDuty-GlobalBaseline.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/GuardDuty-GlobalBaseline1.png',
         ],
       },
       {
-        id: 70,
+        id: 173,
         name: 'GI GuardDuty – Findings Analysis',
         description: 'GI GuardDuty Monitoring and Findings Analysis',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1094,12 +1102,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GI GuardDuty/GI GuardDuty Finding Analysis.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/GI/GuardDuty-Finding-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/GI/GuardDuty-Finding-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/GuardDuty-Finding-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/GuardDuty-Finding-Analysis1.png',
         ],
       },
       {
-        id: 71,
+        id: 174,
         name: 'GI GuardDuty – Findings Analysis(1)',
         description: 'GI GuardDuty Monitoring and Findings Analysis',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1110,12 +1118,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GI GuardDuty/GI GuardDuty Finding Analysis(1).json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/GI/GuardDuty-Finding-Analysis.png',
-          's3://syn-monitoring-images/AWS-Images/GI/GuardDuty-Finding-Analysis1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/GuardDuty-Finding-Analysis.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/GuardDuty-Finding-Analysis1.png',
         ],
       },
       {
-        id: 72,
+        id: 180,
         name: 'GI CloudTrail – Tactics & Techniques',
         description: 'GI CloudTrail Monitoring Tactics & Techniques',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1125,10 +1133,10 @@ export const catalogData = {
         associatedCloudElementType: 'GI-CloudTrail',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GI CloudTrail/GI CloudTrail Tactic and Techniques.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/GI/CloudTrail-Tactics-and-Techniques.png'],
+        images: ['https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/CloudTrail-Tactics-and-Techniques.png'],
       },
       {
-        id: 73,
+        id: 184,
         name: 'GI CloudTrail – Action Plan',
         description: 'GI CloudTrail Monitoring by Action Plan',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1139,13 +1147,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GI CloudTrail/GI CloudTrail Action Plan.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/GI/CloudTrail-ActionPlan1.png',
-          's3://syn-monitoring-images/AWS-Images/GI/CloudTrail-ActionPlan2.png',
-          's3://syn-monitoring-images/AWS-Images/GI/CloudTrail-ActionPlan3.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/CloudTrail-ActionPlan1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/CloudTrail-ActionPlan2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/CloudTrail-ActionPlan3.png',
         ],
       },
       {
-        id: 74,
+        id: 185,
         name: 'GI CloudTrail – Action Plan(1)',
         description: 'GI CloudTrail Monitoring by Action Plan',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1156,13 +1164,13 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/Amazon GI CloudTrail/GI CloudTrail Action Plan(1).json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/GI/CloudTrail-ActionPlan1.png',
-          's3://syn-monitoring-images/AWS-Images/GI/CloudTrail-ActionPlan2.png',
-          's3://syn-monitoring-images/AWS-Images/GI/CloudTrail-ActionPlan3.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/CloudTrail-ActionPlan1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/CloudTrail-ActionPlan2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/GI/CloudTrail-ActionPlan3.png',
         ],
       },
       {
-        id: 75,
+        id: 187,
         name: 'AWS CloudTrail - Access Monitoring',
         description: 'CloudTrail - Access Monitoring Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1173,12 +1181,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/CloudTrail/AWS-CloudTrails-logs/AWS CloudTrail - Access Monitoring.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Amazon-CloudTrail-Access-Monitoring1.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Amazon-CloudTrail-Access-Monitoring2.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Amazon-CloudTrail-Access-Monitoring1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Amazon-CloudTrail-Access-Monitoring2.png',
         ],
       },
       {
-        id: 76,
+        id: 188,
         name: 'AWS CloudTrail - Account, System Monitoring',
         description: 'CloudTrail - Account & System Monitoring Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1188,10 +1196,12 @@ export const catalogData = {
         associatedCloudElementType: 'CloudTrail',
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/CloudTrail/AWS-CloudTrails-logs/AWS CloudTrail - Account , System Monitoring.json',
-        images: ['s3://syn-monitoring-images/AWS-Images/CloudTrail/Amazon-CloudTrail-Account-System-Monitoring.png'],
+        images: [
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Amazon-CloudTrail-Account-System-Monitoring.png',
+        ],
       },
       {
-        id: 77,
+        id: 189,
         name: 'AWS CloudTrail -Privileged Activity',
         description: 'CloudTrail -Privileged Activity Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1202,12 +1212,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/CloudTrail/AWS-CloudTrails-logs/AWS CloudTrail -Privileged Activity.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Amazon-CloudTrail-Account-Privileged Activity.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Amazon-CloudTrail-Account-Privileged-Activity1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Amazon-CloudTrail-Account-Privileged Activity.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Amazon-CloudTrail-Account-Privileged-Activity1.png',
         ],
       },
       {
-        id: 78,
+        id: 190,
         name: 'AWS CloudTrail -Login Activity',
         description: 'CloudTrail -Login Activity Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1218,12 +1228,12 @@ export const catalogData = {
         jsonLocation:
           's3://synectiks-monitoring-dashboards/AWS Dashboards/CloudTrail/AWS-CloudTrails-logs/AWS CloudTrail -Login Activity.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Amazon-CloudTrail-Login-Activity.png',
-          's3://syn-monitoring-images/AWS-Images/CloudTrail/Amazon-CloudTrail-Login-Activity1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Amazon-CloudTrail-Login-Activity.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/CloudTrail/Amazon-CloudTrail-Login-Activity1.png',
         ],
       },
       {
-        id: 79,
+        id: 195,
         name: 'AWS WAF - Overview',
         description: 'WAF Monitering Overview',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1233,12 +1243,12 @@ export const catalogData = {
         associatedCloudElementType: 'WAF',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS WAF/waf overview logs.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/WAF/Overview.png',
-          's3://syn-monitoring-images/AWS-Images/WAF/Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Overview1.png',
         ],
       },
       {
-        id: 80,
+        id: 196,
         name: 'AWS WAF - Overview',
         description: 'WAF Monitering Overview',
         associatedDataSourceType: 'AWS-PullMetric-Api',
@@ -1248,12 +1258,12 @@ export const catalogData = {
         associatedCloudElementType: 'WAF',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS WAF/waf overview metrics.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/WAF/Overview.png',
-          's3://syn-monitoring-images/AWS-Images/WAF/Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Overview1.png',
         ],
       },
       {
-        id: 81,
+        id: 197,
         name: 'AWS WAF - Security Analytics Traffic',
         description: 'WAF - Security Analytics Traffic Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1263,12 +1273,12 @@ export const catalogData = {
         associatedCloudElementType: 'WAF',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS WAF/waf-security-analysis-traffic.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/WAF/Security-Analysis-Traffic.png',
-          's3://syn-monitoring-images/AWS-Images/WAF/Security-Analysis-Traffic1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Security-Analysis-Traffic.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Security-Analysis-Traffic1.png',
         ],
       },
       {
-        id: 82,
+        id: 199,
         name: 'AWS WAF - Security Monitoring Overview',
         description: 'WAF - Security Monitoring Overview Operations',
         associatedDataSourceType: 'AWS-PullLog-Api',
@@ -1278,12 +1288,12 @@ export const catalogData = {
         associatedCloudElementType: 'WAF',
         jsonLocation: 's3://synectiks-monitoring-dashboards/AWS Dashboards/AWS WAF/waf-security-monitoring.json',
         images: [
-          's3://syn-monitoring-images/AWS-Images/WAF/Security-Monitoring-Overview.png',
-          's3://syn-monitoring-images/AWS-Images/WAF/Security-Monitoring-Overview1.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Security-Monitoring-Overview.png',
+          'https://syn-monitoring-images.s3.amazonaws.com/AWS-Images/WAF/Security-Monitoring-Overview1.png',
         ],
       },
       {
-        id: 83,
+        id: 1,
         name: 'Azure Active Directory - Overview',
         description: 'Azure Active Directory Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1295,7 +1305,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Active Directory/Azure Active Directory - Overview.json',
       },
       {
-        id: 84,
+        id: 2,
         name: 'Azure Active Directory - Application Management',
         description: 'Azure Active Directory Applicaion Management Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1307,7 +1317,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Active Directory/Azure Active Directory - Application Management.json',
       },
       {
-        id: 85,
+        id: 3,
         name: 'Azure Active Directory -  Authorization/Authentication',
         description: 'Azure Active Directory Applicaion Management Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1319,7 +1329,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Active Directory/Azure Active Directory - Authorization, Authentication.json',
       },
       {
-        id: 86,
+        id: 4,
         name: 'Azure Active Directiory - Directory Management',
         description: 'Azure Active Directory management Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1331,7 +1341,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Active Directory/Azure Active Directory - Directory Management.json',
       },
       {
-        id: 87,
+        id: 5,
         name: 'Azure Active Directory - Failure Sign-in Events ',
         description: 'Azure Active Directory Failed Sign-in Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1343,7 +1353,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Active Directory/Azure Active Directory -- Failure Sign_In Events.json',
       },
       {
-        id: 88,
+        id: 6,
         name: 'Azure Active Directory - Successful  Sign-in Events ',
         description: 'Azure Active Directory Success Sign-in Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1355,7 +1365,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Active Directory/Azure Active Directory - Success Sign-Ins.json',
       },
       {
-        id: 89,
+        id: 7,
         name: 'Azure Audit - Overview',
         description: 'Azure Audit - Overview- Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1366,7 +1376,7 @@ export const catalogData = {
         jsonLocation: 's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Audit/Azure Audit - OverView.json',
       },
       {
-        id: 90,
+        id: 8,
         name: 'Azure Audit Resource usage',
         description: 'Azure Audit Resource usage - Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1378,7 +1388,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Audit/Azure Audit - Resource Usage.json',
       },
       {
-        id: 91,
+        id: 9,
         name: 'Azure SQL – Blocking Stats',
         description: ' SQL – Blocking Stats - Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1389,7 +1399,7 @@ export const catalogData = {
         jsonLocation: 's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure SQL/Azure SQL-Blocking Stats.json',
       },
       {
-        id: 92,
+        id: 10,
         name: 'Azure SQL –Errors',
         description: ' SQL – Errors - Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1400,7 +1410,7 @@ export const catalogData = {
         jsonLocation: 's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure SQL/Azure SQL Errors.json',
       },
       {
-        id: 93,
+        id: 11,
         name: 'Azure SQL – QueryStoreRuntime Stats',
         description: 'SQL – QueryStoreRuntime Stats  Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1412,7 +1422,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure SQL/Azure SQL - Query StoreRuntime Stats.json',
       },
       {
-        id: 94,
+        id: 12,
         name: 'Azure SQL – QueryStoreWait Stats',
         description: 'Azure SQL – QueryStoreWait Stats  Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1424,7 +1434,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure SQL/Azure SQL-Query Store Wait Stats.json',
       },
       {
-        id: 95,
+        id: 13,
         name: 'Azure SQL – Timeouts',
         description: 'Azure SQL – Timeouts  Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1435,7 +1445,7 @@ export const catalogData = {
         jsonLocation: 's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure SQL/Azure SQL TimeOuts.json',
       },
       {
-        id: 96,
+        id: 14,
         name: 'Azure Web Apps Overview',
         description: 'Azure Web Apps – Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1447,7 +1457,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Web Apps/Azure Web Apps-Overview.json',
       },
       {
-        id: 97,
+        id: 15,
         name: 'Azure Web Apps – Server Operation – Errors and Response Codes',
         description: 'Azure Web Server Operation – Errors and Response Codes',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1459,7 +1469,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Web Apps/Azure Web Apps-Server Operation-Errors and Response Codes.json',
       },
       {
-        id: 98,
+        id: 16,
         name: 'Azure Web Apps – Traffic Insights – Apps and Requests',
         description: 'Azure Web Apps – Traffic Insights – Apps and Requests',
         associatedDataSourceType: 'Azure-PullLog-Api',
@@ -1471,7 +1481,7 @@ export const catalogData = {
           's3://synectiks-monitoring-dashboards/Azure Dashboards/Azure Web Apps/Azure Web Apps - Traffic insights - Apps and requests.json',
       },
       {
-        id: 99,
+        id: 17,
         name: 'Office 365 – SharePoint – Shared Content Non-Domain Activities',
         description: 'Office 365 – SharePoint – Shared Content Non-Domain Activities Operations',
         associatedDataSourceType: 'Azure-PullLog-Api',
