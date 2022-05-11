@@ -31,11 +31,6 @@ export class CloudDashboards extends React.Component<any, any>{
                     key: "associatedDataType",
                     filter: [],
                 },
-                // {
-                //     name: "Associated Cloud ElementType",
-                //     key: "associatedCloudElementType",
-                //     filter: [],
-                // },
                 {
                     name: "Associated SLAType",
                     key: "associatedSLAType",
@@ -48,7 +43,6 @@ export class CloudDashboards extends React.Component<any, any>{
 
     componentDidMount() {
         let { dashboards, images } = this.state;
-        this.createFilterJson();
         let image = ''
         if (dashboards.length > 0) {
             for (let i = 0; i < dashboards.length; i++) {
@@ -61,7 +55,6 @@ export class CloudDashboards extends React.Component<any, any>{
                 }
             }
             this.setState({ dashboards });
-            // console.log(dashboards);
         }
         this.createFilterJson();
     }
@@ -75,8 +68,8 @@ export class CloudDashboards extends React.Component<any, any>{
             for (let j = 0; j < filterKeys.length; j++) {
                 const filter = filterKeys[j];
                 filteredData[filter] = filteredData[filter] || [];
-                if (filteredData[filter].indexOf(dashboard[filter]) === -1) {
-                    filteredData[filter].push(dashboard[filter]);
+                if (filteredData[filter].indexOf(dashboard[filter].trim()) === -1) {
+                    filteredData[filter].push(dashboard[filter].trim());
                 }
             }
         }
@@ -86,7 +79,7 @@ export class CloudDashboards extends React.Component<any, any>{
                     const filter = filterKeys[k];
                     for (let j = 0; j < filteredData[filter].length; j++) {
                         let filters = filteredData[filter][j]
-                        if (filterData[i].key == filter) {
+                        if (filterData[i].key == filter.trim() && filters) {
                             filterData[i].filter.push({ value: filters, label: filters });
                         }
                     }
