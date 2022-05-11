@@ -16,11 +16,11 @@ export class Catalog extends React.Component<any, any>{
     component: DevCatalogue
   }, {
     name: "SEC",
-    dataKey: 'Dec',
+    dataKey: 'Sec',
     component: SecCatalogue
   }, {
     name: "OPS",
-    dataKey: 'Dps',
+    dataKey: 'Ops',
     component: OpsCatalogue
   }];
 

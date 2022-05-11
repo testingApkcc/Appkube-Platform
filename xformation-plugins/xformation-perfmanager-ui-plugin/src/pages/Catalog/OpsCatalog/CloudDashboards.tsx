@@ -31,11 +31,11 @@ export class CloudDashboards extends React.Component<any, any>{
                     key: "associatedDataType",
                     filter: [],
                 },
-                {
-                    name: "Associated Cloud ElementType",
-                    key: "associatedCloudElementType",
-                    filter: [],
-                },
+                // {
+                //     name: "Associated Cloud ElementType",
+                //     key: "associatedCloudElementType",
+                //     filter: [],
+                // },
                 {
                     name: "Associated SLAType",
                     key: "associatedSLAType",
@@ -45,9 +45,10 @@ export class CloudDashboards extends React.Component<any, any>{
         }
         this.previewDashboardPopupRef = React.createRef();
     }
+
     componentDidMount() {
-        console.log(this.props.data);
         let { dashboards, images } = this.state;
+        this.createFilterJson();
         let image = ''
         if (dashboards.length > 0) {
             for (let i = 0; i < dashboards.length; i++) {
@@ -61,31 +62,36 @@ export class CloudDashboards extends React.Component<any, any>{
             }
             this.setState({ dashboards });
             // console.log(dashboards);
-            this.createFilterJson();
         }
     }
 
     createFilterJson = () => {
         let { dashboards, filterData } = this.state;
+        const filterKeys = ['associatedDataSourceType', 'associatedDataType', 'associatedSLAType'];
+        const filteredData: any = {};
         for (let i = 0; i < dashboards.length; i++) {
-            let row = dashboards[i];
-            for (let j = 0; j < filterData.length; j++) {
-                Object.keys(row).map((data) => {
-                    if (data == filterData[j].key) {
-                        if (filterData[j].filter && filterData[j].filter.length > 0) {
-                            for (let k = 0; k < filterData[j].filter.length; k++) {
-                                if (filterData[j].filter[k] && filterData[j].filter[k].label && filterData[j].filter[k].label.indexOf(row[data]) === -1) {
-                                    filterData[j].filter.push({ value: row[data], label: row[data] });
-                                }
-                            }
-                        } else {
-                            filterData[j].filter.push({ value: row[data], label: row[data] })
-                        }
-                    }
-                })
+            let dashboard = dashboards[i];
+            for (let j = 0; j < filterKeys.length; j++) {
+                const filter = filterKeys[j];
+                filteredData[filter] = filteredData[filter] || [];
+                if (filteredData[filter].indexOf(dashboard[filter]) === -1) {
+                    filteredData[filter].push(dashboard[filter]);
+                }
             }
         }
-        // console.log(filterData);
+        if (filterKeys && filterData && filterData.length > 0 && filterKeys.length > 0) {
+            for (let i = 0; i < filterData.length; i++) {
+                for (let k = 0; k < filterKeys.length; k++) {
+                    const filter = filterKeys[k];
+                    for (let j = 0; j < filteredData[filter].length; j++) {
+                        let filters = filteredData[filter][j]
+                        if (filterData[i].key == filter) {
+                            filterData[i].filter.push({ value: filters, label: filters });
+                        }
+                    }
+                }
+            }
+        }
         this.setState({
             filterData
         })
@@ -184,7 +190,7 @@ export class CloudDashboards extends React.Component<any, any>{
     }
 
     render() {
-        const { dashboards, images, view,filterData } = this.state;
+        const { dashboards, images, view, filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
