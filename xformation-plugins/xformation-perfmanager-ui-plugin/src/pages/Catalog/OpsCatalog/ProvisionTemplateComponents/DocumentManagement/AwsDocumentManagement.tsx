@@ -5,18 +5,18 @@ export class AwsDocumentManagement extends React.Component<any, any>{
         this.state = {
             activeTab: 0,
             stackName: '',
-            AWSRegion: '',
+            awsRegion: '',
             adminEmail: '',
-            AppEnvironment: '',
-            EnablePublicURLs: '',
-            PasswordMinimumLength: '',
+            appEnvironment: '',
+            enablePublicURLs: '',
+            passwordMinimumLength: '',
             passwordRequresLowercase: '',
             passwordRequresNumber: '',
             passwordRequresSymbols: '',
             passwordRequresUppercase: '',
-            ConfirmChangeBefore: '',
-            AllowSAMCLIIAMRoleCreation: '',
-            SaveArgumentTosamconfig: '',
+            confirmChangeBefore: '',
+            allowSAMCLIIAMRoleCreation: '',
+            saveArgumentTosamconfig: '',
             isSubmitted: false,
             addTags: [],
         };
@@ -43,22 +43,22 @@ export class AwsDocumentManagement extends React.Component<any, any>{
         let isValid = true;
         const retData = {
             stackName: validObj,
-            AWSRegion: validObj,
+            awsRegion: validObj,
             adminEmail: validObj,
-            AppEnvironment: validObj,
-            EnablePublicURLs: validObj,
-            PasswordMinimumLength: validObj,
+            appEnvironment: validObj,
+            enablePublicURLs: validObj,
+            passwordMinimumLength: validObj,
             passwordRequresLowercase: validObj,
             passwordRequresNumber: validObj,
             passwordRequresSymbols: validObj,
             passwordRequresUppercase: validObj,
-            ConfirmChangeBefore: validObj,
-            AllowSAMCLIIAMRoleCreation: validObj,
-            SaveArgumentTosamconfig: validObj,
+            confirmChangeBefore: validObj,
+            allowSAMCLIIAMRoleCreation: validObj,
+            saveArgumentTosamconfig: validObj,
             isValid,
         };
         if (isSubmitted) {
-            const { stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig } = this.state;
+            const { stackName, awsRegion, adminEmail, appEnvironment, enablePublicURLs, passwordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, confirmChangeBefore, allowSAMCLIIAMRoleCreation, saveArgumentTosamconfig } = this.state;
             if (!stackName) {
                 retData.stackName = {
                     isValid: false,
@@ -66,8 +66,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                 };
                 isValid = false;
             }
-            if (!AWSRegion) {
-                retData.AWSRegion = {
+            if (!awsRegion) {
+                retData.awsRegion = {
                     isValid: false,
                     message: 'AWS Region is required',
                 };
@@ -80,22 +80,22 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                 };
                 isValid = false;
             }
-            if (!AppEnvironment) {
-                retData.AppEnvironment = {
+            if (!appEnvironment) {
+                retData.appEnvironment = {
                     isValid: false,
                     message: 'App Environment is required',
                 };
                 isValid = false;
             }
-            if (!EnablePublicURLs) {
-                retData.EnablePublicURLs = {
+            if (!enablePublicURLs) {
+                retData.enablePublicURLs = {
                     isValid: false,
                     message: 'Enable Public URLs is required',
                 };
                 isValid = false;
             }
-            if (!PasswordMinimumLength) {
-                retData.PasswordMinimumLength = {
+            if (!passwordMinimumLength) {
+                retData.passwordMinimumLength = {
                     isValid: false,
                     message: 'Password Minimum Length is required',
                 };
@@ -129,22 +129,22 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                 };
                 isValid = false;
             }
-            if (!ConfirmChangeBefore) {
-                retData.ConfirmChangeBefore = {
+            if (!confirmChangeBefore) {
+                retData.confirmChangeBefore = {
                     isValid: false,
                     message: 'Confirm Change Before is required',
                 };
                 isValid = false;
             }
-            if (!AllowSAMCLIIAMRoleCreation) {
-                retData.AllowSAMCLIIAMRoleCreation = {
+            if (!allowSAMCLIIAMRoleCreation) {
+                retData.allowSAMCLIIAMRoleCreation = {
                     isValid: false,
                     message: 'Allow SAM CLI IAM Role Creation is required',
                 };
                 isValid = false;
             }
-            if (!SaveArgumentTosamconfig) {
-                retData.SaveArgumentTosamconfig = {
+            if (!saveArgumentTosamconfig) {
+                retData.saveArgumentTosamconfig = {
                     isValid: false,
                     message: 'Save Argument To Samconfig is required',
                 };
@@ -163,8 +163,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
         });
         const errorData = this.validate(true);
         if (errorData.isValid) {
-            const { stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig } = this.state;
-            localStorage.setItem('viewData', JSON.stringify({ stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig }));
+            const { stackName, awsRegion, adminEmail, appEnvironment, enablePublicURLs, passwordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, confirmChangeBefore, allowSAMCLIIAMRoleCreation, saveArgumentTosamconfig } = this.state;
+            localStorage.setItem('viewData', JSON.stringify({ stackName, awsRegion, adminEmail, appEnvironment, enablePublicURLs, passwordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, confirmChangeBefore, allowSAMCLIIAMRoleCreation, saveArgumentTosamconfig }));
         }
     };
 
@@ -244,9 +244,9 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                         <h3>Document Management System</h3>
                         <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
                         <h3>Prerequisites</h3>
-                        <p><strong>Stack Name:</strong> The name of the stack to deploy to CloudFormation; this should be unique to your account and region, and a good starting point would be formkiq-core-& AppEnvironment; where AppEnvironment matches your installation environment, e.g. prod, dev, test</p>
+                        <p><strong>Stack Name:</strong> The name of the stack to deploy to CloudFormation; this should be unique to your account and region, and a good starting point would be formkiq-core-& appEnvironment; where appEnvironment matches your installation environment, e.g. prod, dev, test</p>
                         <p><strong>AWS Region:</strong> The AWS region you want to deploy your app to use</p>
-                        <p><strong>Admin Email:</strong> The Administration Email you want FormKiQ to useAppEnvironment: your installation environment, e.g. prod, dev, test; must be unique per account</p>
+                        <p><strong>Admin Email:</strong> The Administration Email you want FormKiQ to useappEnvironment: your installation environment, e.g. prod, dev, test; must be unique per account</p>
                         <p><strong>App Environment:</strong> your installation environment, e.g. prod, dev, test; must be unique per account</p>
                         <p><strong>Enable Public Url’s:</strong> Whether to Enable /public/ urls.</p>
                         <p><strong>Password Minimum Length:</strong> The minimum Password Length for User Accounts</p>
@@ -266,7 +266,7 @@ export class AwsDocumentManagement extends React.Component<any, any>{
             )
         }
         else if (activeTab === 1) {
-            const { stackName, AWSRegion, adminEmail, AppEnvironment, EnablePublicURLs, PasswordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, ConfirmChangeBefore, AllowSAMCLIIAMRoleCreation, SaveArgumentTosamconfig, isSubmitted } = this.state;
+            const { stackName, awsRegion, adminEmail, appEnvironment, enablePublicURLs, passwordMinimumLength, passwordRequresLowercase, passwordRequresNumber, passwordRequresSymbols, passwordRequresUppercase, confirmChangeBefore, allowSAMCLIIAMRoleCreation, saveArgumentTosamconfig, isSubmitted } = this.state;
             const errorData = this.validate(isSubmitted);
             // console.log(errorData)
             return (
@@ -293,13 +293,13 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                 <label>AWS Region</label>
                                 <input
                                     type="text"
-                                    name="AWSRegion"
+                                    name="awsRegion"
                                     className="form-control"
                                     placeholder="AWS Region"
-                                    value={AWSRegion}
+                                    value={awsRegion}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.AWSRegion.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.awsRegion.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Admin Email</label>
@@ -317,39 +317,39 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                 <label>App Environment</label>
                                 <input
                                     type="text"
-                                    name="AppEnvironment"
+                                    name="appEnvironment"
                                     className="form-control"
                                     placeholder="Installation environment"
-                                    value={AppEnvironment}
+                                    value={appEnvironment}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.AppEnvironment.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.appEnvironment.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Enable Public URL's</label>
                                 <select
-                                    name="EnablePublicURLs"
+                                    name="enablePublicURLs"
                                     className="form-control"
-                                    value={EnablePublicURLs}
+                                    value={enablePublicURLs}
                                     onChange={this.handleStateChange}
                                 >
                                     <option>Select 1</option>
                                     <option>Select 2</option>
                                     <option>Select 3</option>
                                 </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.EnablePublicURLs.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.enablePublicURLs.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Password minimum length</label>
                                 <input
                                     type="text"
-                                    name="PasswordMinimumLength"
+                                    name="passwordMinimumLength"
                                     className="form-control"
                                     placeholder="insert any number"
-                                    value={PasswordMinimumLength}
+                                    value={passwordMinimumLength}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.PasswordMinimumLength.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.passwordMinimumLength.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Password requres lowercase</label>
@@ -410,44 +410,44 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                             <div className="form-group">
                                 <label>Confirm change before</label>
                                 <select
-                                    name="ConfirmChangeBefore"
+                                    name="confirmChangeBefore"
                                     className="form-control"
-                                    value={ConfirmChangeBefore}
+                                    value={confirmChangeBefore}
                                     onChange={this.handleStateChange}
                                 >
                                     <option>Select 1</option>
                                     <option>Select 2</option>
                                     <option>Select 3</option>
                                 </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ConfirmChangeBefore.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.confirmChangeBefore.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Allow SAM CLI IAM role creation</label>
                                 <select
-                                    name="AllowSAMCLIIAMRoleCreation"
+                                    name="allowSAMCLIIAMRoleCreation"
                                     className="form-control"
-                                    value={AllowSAMCLIIAMRoleCreation}
+                                    value={allowSAMCLIIAMRoleCreation}
                                     onChange={this.handleStateChange}
                                 >
                                     <option>Select 1</option>
                                     <option>Select 2</option>
                                     <option>Select 3</option>
                                 </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.AllowSAMCLIIAMRoleCreation.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.allowSAMCLIIAMRoleCreation.message}</span>}
                             </div>
                             <div className="form-group">
                                 <label>Save argument to samconfig.toml</label>
                                 <select
-                                    name="SaveArgumentTosamconfig"
+                                    name="saveArgumentTosamconfig"
                                     className="form-control"
-                                    value={SaveArgumentTosamconfig}
+                                    value={saveArgumentTosamconfig}
                                     onChange={this.handleStateChange}
                                 >
                                     <option>Select 1</option>
                                     <option>Select 2</option>
                                     <option>Select 3</option>
                                 </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.SaveArgumentTosamconfig.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.saveArgumentTosamconfig.message}</span>}
                             </div>
                         </div>
 
