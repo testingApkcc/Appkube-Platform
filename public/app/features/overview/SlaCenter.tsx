@@ -215,7 +215,7 @@ export class SlaCenter extends React.Component<any, any> {
           <div className="header">
             <div className="row">
               <div className="col-md-8 col-sm-8">
-                <h2>SLA Central</h2>
+                <h2>DevSecOps Central</h2>
               </div>
               <div className="col-md-4 col-sm-4">
                 <div className="float-right">

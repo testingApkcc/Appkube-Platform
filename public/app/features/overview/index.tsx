@@ -430,7 +430,7 @@ class Overview extends React.Component<any, any> {
           <div className="overview-container">
             <div className="applications-container">
               <div className="header">
-                <div className="heading">SLA Metrics</div>
+                <div className="heading">SLA Central</div>
               </div>
               <div className="applications-inner-container">
                 <div className="metrics-table">
