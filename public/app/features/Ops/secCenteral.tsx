@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 class SecCenteral extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -60,9 +62,10 @@ class SecCenteral extends React.Component<any, any> {
         },
         {
           id: 26,
-          category: 'cloud Compiance',
+          category: 'Cloud Compiance',
           info: 'sampleText',
           icon: '/public/img/sec-central/cloud_compiance.svg',
+          link: '/a/xformation-compliancemanager-ui-plugin/dashboard',
         },
       ],
       duplicateTableData: [],
@@ -127,12 +130,18 @@ class SecCenteral extends React.Component<any, any> {
                         </div>
                       </div>
                       <div className="explore-content">
-                        <span>
-                          <img src="/public/img/Explore-icon.png" alt="image" />
-                        </span>
-                        <a href="#">
-                          Explore <i className="fa fa-caret-right" aria-hidden="true"></i>
-                        </a>
+                        {value.link ? (
+                          <>
+                            <span>
+                              <img src="/public/img/Explore-icon.png" alt="image" />
+                            </span>
+                            <Link to={value.link}>
+                              Explore <i className="fa fa-caret-right" aria-hidden="true"></i>
+                            </Link>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </div>
                     </div>
                   </div>
