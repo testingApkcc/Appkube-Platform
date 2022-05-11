@@ -56,7 +56,6 @@ export class Catalog extends React.Component<any, any>{
 
   componentDidMount() {
     // this.getInputConfig();
-    console.log(catalogData);
     this.setState({
       catalogueData: catalogData
     })
@@ -169,7 +168,6 @@ export class Catalog extends React.Component<any, any>{
             <div className="catalogue-tabs-container">
               {
                 this.tabMapping.map((tabData: any, index: any) => {
-                  console.log(catalogueData[tabData.dataKey])
                   if (activeTab === index) {
                     return <tabData.component data={catalogueData[tabData.dataKey]} />;
                   } else {
