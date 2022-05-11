@@ -60,7 +60,6 @@ export class DataSources extends React.Component<any, any>{
 
     createFilterJson = () => {
         let { dashboards, filterData } = this.state;
-        console.log(dashboards)
         const filterKeys = ['associatedApplicationLocation', 'associatedCloud', 'associatedCreds'];
         const filteredData: any = {};
         for (let i = 0; i < dashboards.length; i++) {
@@ -79,7 +78,7 @@ export class DataSources extends React.Component<any, any>{
                     const filter = filterKeys[k];
                     for (let j = 0; j < filteredData[filter].length; j++) {
                         let filters = filteredData[filter][j]
-                        if (filterData[i].key == filter) {
+                        if (filterData[i].key == filter && filters) {
                             filterData[i].filter.push({ value: filters, label: filters });
                         }
                     }
@@ -190,12 +189,12 @@ export class DataSources extends React.Component<any, any>{
     }
 
     render() {
-        const { dashboards, images, view, filterData } = this.state;
+        const { dashboards, images, view,filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                        <Filter filterJsonData={filterData} />
+                        <Filter filterJsonData={filterData}/>
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">
