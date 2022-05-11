@@ -19,6 +19,28 @@ export class CloudDashboards extends React.Component<any, any>{
             { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 105 },
             { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 106 },
             { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 107 },
+            ],
+            filterData: [
+                {
+                    name: "Associated DataSource Type",
+                    key: "associatedDataSourceType",
+                    filter: [],
+                },
+                {
+                    name: "Associated DataType",
+                    key: "associatedDataType",
+                    filter: [],
+                },
+                {
+                    name: "Associated Cloud ElementType",
+                    key: "associatedCloudElementType",
+                    filter: [],
+                },
+                {
+                    name: "Associated SLAType",
+                    key: "associatedSLAType",
+                    filter: [],
+                },
             ]
         }
         this.previewDashboardPopupRef = React.createRef();
@@ -36,9 +58,38 @@ export class CloudDashboards extends React.Component<any, any>{
                     dashboards[i]["imgUrl"] = " https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg"
                 }
             }
-            this.setState({ dashboards })
+            this.setState({ dashboards });
+            // console.log(dashboards);
+            this.createFilterJson();
         }
     }
+
+    createFilterJson = () => {
+        let { dashboards, filterData } = this.state;
+        for (let i = 0; i < dashboards.length; i++) {
+            let row = dashboards[i];
+            for (let j = 0; j < filterData.length; j++) {
+                Object.keys(row).map((data) => {
+                    if (data == filterData[j].key) {
+                        if (filterData[j].filter && filterData[j].filter.length > 0) {
+                            for (let k = 0; k < filterData[j].filter.length; k++) {
+                                if (filterData[j].filter[k] && filterData[j].filter[k].label && filterData[j].filter[k].label.indexOf(row[data]) === -1) {
+                                    filterData[j].filter.push({ value: row[data], label: row[data] });
+                                }
+                            }
+                        } else {
+                            filterData[j].filter.push({ value: row[data], label: row[data] })
+                        }
+                    }
+                })
+            }
+        }
+        // console.log(filterData);
+        this.setState({
+            filterData
+        })
+    }
+
 
     onClickPreviewDashboard = () => {
         this.previewDashboardPopupRef.current.setLink('');
@@ -132,12 +183,12 @@ export class CloudDashboards extends React.Component<any, any>{
     }
 
     render() {
-        const { dashboards, images, view } = this.state;
+        const { dashboards, images, view,filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                        <Filter filterJsonData={dashboards} />
+                        <Filter filterJsonData={filterData} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">
