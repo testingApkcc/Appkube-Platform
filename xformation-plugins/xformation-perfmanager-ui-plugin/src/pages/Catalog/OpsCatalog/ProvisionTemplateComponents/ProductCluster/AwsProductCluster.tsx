@@ -4,17 +4,11 @@ export class AwsProductCluster extends React.Component<any, any>{
         super(props);
         this.state = {
             activeTab: 0,
-            accountName: '',
-            accountEmail: '',
-            managedOrganisationalUnit: '',
-            ssoUserEmail: '',
-            ssoUserFirstName: '',
-            ssoUserLastName: '',
-            requestor: '',
-            requestReason: '',
-            customizationName: '',
-            label: [],
-            tagvalue: [],
+            region: '',
+            clusterName: '',
+            clusterVersion: '',
+            vaultUser: '',
+            selectNodeGroup: '',
             isSubmitted: false,
             addTags: [],
         };
@@ -40,101 +34,48 @@ export class AwsProductCluster extends React.Component<any, any>{
         };
         let isValid = true;
         const retData = {
-            accountName: validObj,
-            accountEmail: validObj,
-            managedOrganisationalUnit: validObj,
-            ssoUserEmail: validObj,
-            ssoUserFirstName: validObj,
-            ssoUserLastName: validObj,
-            requestor: validObj,
-            requestReason: validObj,
-            customizationName: validObj,
-            label: validObj,
-            tagvalue: validObj,
+            region: validObj,
+            clusterName: validObj,
+            clusterVersion: validObj,
+            vaultUser: validObj,
+            selectNodeGroup: validObj,
             isValid,
         };
         if (isSubmitted) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, addTags, } = this.state;
-            if (!accountName) {
-                retData.accountName = {
+            const { region, clusterName, clusterVersion, vaultUser, selectNodeGroup } = this.state;
+            if (!region) {
+                retData.region = {
                     isValid: false,
-                    message: 'Account Name is required',
+                    message: 'Region is required',
                 };
                 isValid = false;
             }
-            if (!accountEmail) {
-                retData.accountEmail = {
+            if (!clusterName) {
+                retData.clusterName = {
                     isValid: false,
-                    message: 'Account Email is required',
+                    message: 'Cluster Name is required',
                 };
                 isValid = false;
             }
-            if (!managedOrganisationalUnit) {
-                retData.managedOrganisationalUnit = {
+            if (!clusterVersion) {
+                retData.clusterVersion = {
                     isValid: false,
-                    message: 'Account Email is required',
+                    message: 'Cluster Version is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserEmail) {
-                retData.ssoUserEmail = {
+            if (!vaultUser) {
+                retData.vaultUser = {
                     isValid: false,
-                    message: 'SSO User Email is required',
+                    message: 'Vault User is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserFirstName) {
-                retData.ssoUserFirstName = {
+            if (!selectNodeGroup) {
+                retData.selectNodeGroup = {
                     isValid: false,
-                    message: 'SSO User First Name is required',
+                    message: 'Select Node Group is required',
                 };
-                isValid = false;
-            }
-            if (!ssoUserLastName) {
-                retData.ssoUserLastName = {
-                    isValid: false,
-                    message: 'SSO User Last Name is required',
-                };
-                isValid = false;
-            }
-            if (!requestor) {
-                retData.requestor = {
-                    isValid: false,
-                    message: 'Requestor is required',
-                };
-                isValid = false;
-            }
-            if (!requestReason) {
-                retData.requestReason = {
-                    isValid: false,
-                    message: 'Request Reason is required',
-                };
-                isValid = false;
-            }
-            if (!customizationName) {
-                retData.customizationName = {
-                    isValid: false,
-                    message: 'Customization Name is required',
-                };
-                isValid = false;
-            }
-            if (addTags.length > 0) {
-                debugger;
-                for (let i = 0; i < addTags.length; i++) {
-                    if (addTags[i].label === '') {
-                        retData.label = {
-                            isValid: false,
-                            message: 'Tag Label are required',
-                        }
-                    }
-                    if (addTags[i].tagvalue === '') {
-                        retData.tagvalue = {
-                            isValid: false,
-                            message: 'Tag values are required',
-                        }
-                    }
-
-                }
                 isValid = false;
             }
         }
@@ -150,8 +91,8 @@ export class AwsProductCluster extends React.Component<any, any>{
         });
         const errorData = this.validate(true);
         if (errorData.isValid) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue } = this.state;
-            localStorage.setItem('viewData', JSON.stringify({ accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue }));
+            const { region, clusterName, clusterVersion, vaultUser, selectNodeGroup } = this.state;
+            localStorage.setItem('viewData', JSON.stringify({ region, clusterName, clusterVersion, vaultUser, selectNodeGroup }));
         }
     };
 
@@ -227,26 +168,18 @@ export class AwsProductCluster extends React.Component<any, any>{
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>create an Account with DevSecOps best practice in AWS</strong>
-                        <h3>Welcome</h3>
-                        <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
+                        <strong>Create new Product Cluster with DevSecOps best practice in AWS</strong>
+                        <h3>Product Cluster</h3>
+                        <p>The command will package and deploy your application to AWS, with a series of prompts</p>
                         <h3>Prerequisites</h3>
-                        <p>Prerequisites of Account creation will be mentioned here.</p>
-                        <h3>Description</h3>
-                        <p>Use DevSecOps practices to support continuous deployment of your application, including evidence collection, GitOps flow, change management, and compliance scans.</p>
-                        <ul>
-                            <li><a href='#'>View docs</a></li>
-                            <li><a href='#'>Read tutorial</a></li>
-                            <li><a href='#'>Template repo</a></li>
-                        </ul>
-                        <h3>Important</h3>
-                        <ol>
-                            <li>This template uses a guided experience You be asked, step by step, what tools should be inclu ded in your toolchain.</li>
-                            <li>You must configure some prerequisites in other IBM or external services. Refer to the toolchain prerequisites setup steps in the documentation for creting this toolchain. You will need to enter the details from those instances in the relevant template steps.</li>
-                            <li>The toolchain created from this template consumes artifacts and evidence produced by an associated continuous integration (CI) toolchain. To create one see CI-Develop a secure app with DevSecOps practices.</li>
-                            <li>In most steps you will be asked to name each tool they will appear in your toolchain.</li>
-                            <li>Some steps are mandatory. To skip to the next mandatory step click Create toolchain'</li>
-                        </ol>
+                        <p><strong>Region:</strong> AWS region code for creating resources</p>
+                        <p><strong>AWS Region:</strong> The AWS region you want to deploy your app to use</p>
+                        <p><strong>Cluster Name:</strong> Variable to provide your desired name for the cluster</p>
+                        <p><strong>Cluster Version:</strong> Kubernetes version to use for the EKS cluster</p>
+                        <p><strong>Vault User:</strong> The AWS IAM Username whose credentials will be used to authenticate the Vault pods against AWS</p>
+                        <p><strong>EKS Managed Node Group:</strong> Auto provision and lifecycle management of nodes for Amazon EKS clusters</p>
+                        <p><strong>Self-Managed Node Group:</strong> Needs to provide Launch template for Node initialization and registration</p>
+                        <p><strong>Fargate Profile:</strong> With AWS Fargate, you don't have to provision, configure, or scale groups of virtual machines on your own to run Pods</p>
                         <div className="d-block text-right">
                             <button className="next-btn" onClick={() => this.props.showMainView()}>Back</button>
                             <button className="next-btn" onClick={() => this.setActiveTab(1)}>Next</button>
@@ -256,159 +189,103 @@ export class AwsProductCluster extends React.Component<any, any>{
             )
         }
         else if (activeTab === 1) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, customizationName, requestReason, isSubmitted } = this.state;
+            const { region, clusterName, clusterVersion, vaultUser, selectNodeGroup, isSubmitted } = this.state;
             const errorData = this.validate(isSubmitted);
             // console.log(errorData)
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>create an Account with DevSecOps best practice in AWS</strong>
-                        <h3>Account Creation</h3>
-                        <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
+                        <strong>Create new Product Cluster with DevSecOps best practice in AWS</strong>
+                        <h3>Product Cluster</h3>
+                        <p>The command will package and deploy your application to AWS, with a series of prompts</p>
                         <div className="form-detail-group">
-                            <strong>Account Details</strong>
+                            <strong>Prerequisites</strong>
                             <div className="form-group">
-                                <label>Account Name</label>
-                                <input
-                                    type="text"
-                                    name="accountName"
-                                    className="form-control"
-                                    placeholder="AWS Config"
-                                    value={accountName}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.accountName.message}</span>}
-                            </div>
-                            <div className="form-group">
-                                <label>Account Email</label>
-                                <input
-                                    type="email"
-                                    name="accountEmail"
-                                    className="form-control"
-                                    placeholder="AWS Config"
-                                    value={accountEmail}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.accountEmail.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Organisatoin Selection</strong>
-                            <div className="form-group">
-                                <label>Managed Organisational Unit</label>
-                                <select className="form-control" value={managedOrganisationalUnit} onChange={this.handleStateChange} name="managedOrganisationalUnit">
+                                <label>Region</label>
+                                <select className="form-control" value={region} onChange={this.handleStateChange} name="region">
                                     <option>Select 1</option>
                                     <option>Select 2</option>
                                     <option>Select 3</option>
                                 </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.managedOrganisationalUnit.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.region.message}</span>}
                             </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Sign In Information</strong>
                             <div className="form-group">
-                                <label>SSO User Email</label>
+                                <label>Cluster Name</label>
                                 <input
                                     type="email"
-                                    name="ssoUserEmail"
+                                    name="clusterName"
                                     className="form-control"
-                                    placeholder="user@domain.com"
-                                    value={ssoUserEmail}
+                                    placeholder="Enter Value"
+                                    value={clusterName}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserEmail.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.clusterName.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>SSO User First Name</label>
+                                <label>Cluster Version</label>
                                 <input
-                                    type="text"
-                                    name="ssoUserFirstName"
+                                    type="email"
+                                    name="clusterVersion"
                                     className="form-control"
-                                    placeholder="eg. Sandbox"
-                                    value={ssoUserFirstName}
+                                    placeholder="Enter Value"
+                                    value={clusterVersion}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserFirstName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.clusterVersion.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>SSO User Last Name</label>
+                                <label>Vault User</label>
                                 <input
-                                    type="text"
-                                    name="ssoUserLastName"
+                                    type="email"
+                                    name="vaultUser"
                                     className="form-control"
-                                    placeholder="eg. AFT"
-                                    value={ssoUserLastName}
+                                    placeholder="Enter Value"
+                                    value={vaultUser}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserLastName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.vaultUser.message}</span>}
                             </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Tagging</strong>
                             <div className="form-group">
-                                <button className="add-tags-btn" onClick={this.onClickAddTag}><i className="fa fa-plus"></i></button><label>Add Tags</label>
-                            </div>
-                            <div className="add-tags">
-                                {this.displayTags()}
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <div className="form-group">
-                                            {errorData && !errorData.label.isValid && <span className="error">{errorData.label.message}</span>}
-                                        </div>
+                                <label>Select Node Group</label>
+                                <div className="form-group-checks">
+                                    <div className="form-check">
+                                        <input 
+                                            className="form-check-input" 
+                                            type="radio" 
+                                            name="selectNodeGroup"
+                                            id="selectNodeGroup1" 
+                                            value={selectNodeGroup} 
+                                        />
+                                        <label className="form-check-label" htmlFor="selectNodeGroup1">
+                                            EKS Managed Node Group
+                                        </label>
                                     </div>
-                                    <div className="col-md-3">
-                                        <div className="form-group">
-                                            {errorData && !errorData.tagvalue.isValid && <span className="error">{errorData.tagvalue.message}</span>}
-                                        </div>
+                                    <div className="form-check">
+                                        <input 
+                                            className="form-check-input" 
+                                            type="radio" 
+                                            name="selectNodeGroup"
+                                            id="selectNodeGroup2" 
+                                            value={selectNodeGroup}
+                                        />
+                                        <label className="form-check-label" htmlFor="selectNodeGroup2">
+                                            Self Managed Node Group
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input 
+                                            className="form-check-input" 
+                                            type="radio" 
+                                            name="selectNodeGroup"
+                                            id="selectNodeGroup3" 
+                                            value={selectNodeGroup}
+                                        />
+                                        <label className="form-check-label" htmlFor="selectNodeGroup3">
+                                            Fargate Profile
+                                        </label>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            {/* < */}
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Request Reason</strong>
-                            <div className="form-group">
-                                <label>Requestor</label>
-                                <input
-                                    type="email"
-                                    name="requestor"
-                                    className="form-control"
-                                    placeholder="user@domain.com"
-                                    value={requestor}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.requestor.message}</span>}
-                            </div>
-                            <div className="form-group">
-                                <label>Request Reason</label>
-                                <input
-                                    type="text"
-                                    name="requestReason"
-                                    className="form-control"
-                                    placeholder="eg. Sandbox"
-                                    value={requestReason}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.requestReason.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Account Customization</strong>
-                            <div className="form-group">
-                                <label>Name</label>
-                                <select
-                                    name="customizationName"
-                                    className="form-control"
-                                    value={customizationName}
-                                    onChange={this.handleStateChange}
-                                >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
-                                </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.customizationName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.selectNodeGroup.message}</span>}
                             </div>
                         </div>
                         <div className="d-block text-right">

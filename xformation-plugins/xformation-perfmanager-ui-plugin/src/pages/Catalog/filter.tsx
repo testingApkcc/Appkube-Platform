@@ -28,6 +28,7 @@ export class Filter extends React.Component<any, any>{
     }
 
     handleClearFilter = () => {
+<<<<<<< HEAD
         let { filterData } = this.state;
             for (let i = 0; i < filterData.length; i++) {
                 for (let j = 0; j<filterData[i].filter.length; j++){
@@ -36,6 +37,16 @@ export class Filter extends React.Component<any, any>{
                 }
             }
         this.setState({ filterData, searchString: '' });
+=======
+        const { duplicateFilterData } = this.state;
+        const filterData = JSON.parse(JSON.stringify(duplicateFilterData));
+        filterData.forEach((data: any) => {
+            data.filter.forEach((checkbox: any) => {
+                checkbox.isHide = false;
+            });
+        });
+        this.setState({ filterData, searchString: '' })
+>>>>>>> a9bf060a6eae1745550e9fe99b3090cd7fb6a504
     }
 
     handleChangeSearch = (e: any) => {

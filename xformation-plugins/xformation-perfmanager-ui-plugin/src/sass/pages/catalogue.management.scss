@@ -578,6 +578,7 @@
                                 color: #000000;
                                 font-weight: 400;
                                 margin-bottom: 20px;
+
                                 strong {
                                     display: inline-block;
                                     margin-bottom: 0;
@@ -667,13 +668,36 @@
                                     .error {
                                         display: block;
                                         width: 100%;
-                                        padding-left: 35%;
+                                        padding-left: 37%;
                                         font-size: 10px;
                                         padding-top: 0px;
                                         font-weight: 400;
                                         color: red;
                                         line-height: 16px;
                                     }
+
+                                    .form-group-checks {
+                                        width: 40%;
+                                        display: inline-block;
+
+                                        .form-check {
+                                            width: 100%;
+                                            display: block;
+
+                                            .form-check-input {
+                                                display: inline-block;
+                                                width: 20px;
+                                                margin-right: 5px;
+                                                margin-top: 5px;
+                                            }
+
+                                            .form-check-label {
+                                                width: calc(100% - 25px);
+                                                line-height: 24px;
+                                            }
+                                        }
+                                    }
+
 
                                     .add-tags-btn {
                                         border: 1px solid #8592a3;
