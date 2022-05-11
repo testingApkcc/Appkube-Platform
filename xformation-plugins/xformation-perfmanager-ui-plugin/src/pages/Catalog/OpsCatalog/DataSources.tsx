@@ -36,7 +36,8 @@ export class DataSources extends React.Component<any, any>{
                     key: "associatedCreds",
                     filter: [],
                 },
-            ]
+            ],
+            selectedFilter: {},
         }
         this.previewDashboardPopupRef = React.createRef();
     }
@@ -148,33 +149,73 @@ export class DataSources extends React.Component<any, any>{
         return retData
     }
 
-    renderDashboardsGrid = (dashboards: any) => {
+    renderDashboardsView = (dashboards: any) => {
+        const { view } = this.state;
         let retData = []
         if (dashboards && dashboards.length > 0) {
             retData = [];
             for (let i = 0; i < dashboards.length; i++) {
-                const { name, description, imgUrl } = dashboards[i];
-                retData.push(
-                    <div className={`box blog-grid-item`} key={i}>
-                        <div className="module-card-content">
-                            <div className="image">
-                                <img src={imgUrl} alt={name} />
+                const { name, description, imgUrl, associatedApplicationLocation, associatedCloud, associatedCreds, id } = dashboards[i];
+                if (this.hideDashboard(associatedApplicationLocation, associatedCloud, associatedCreds)) {
+                    retData.push(
+                        <>
+                            <div className={view === 'list' ? `blog-list-item box` : `box blog-grid-item`} key={id}>
+                                {view === 'list' ?
+                                    <>
+                                        <div className="module-card-content">
+                                            <div className="row">
+                                                <div className="col-md-1 col-sm-12 p-r-0">
+                                                    <img height='100px' width='100px' src={imgUrl} alt={name} />
+                                                </div>
+                                                <div className="col-md-11 col-sm-12">
+                                                    <h3 className="title is-block">{name}</h3>
+                                                    <p className="subtitle is-block">{description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="module-card-footer">
+                                            <div className="module-card-footer-details">
+                                                <a>
+                                                    <img src={libraryIcon} alt="" />
+                                                    {`Add Catalog To library`}
+                                                </a>
+                                            </div>
+                                            <div className="module-card-footer-provider">
+                                                <a onClick={this.onClickPreviewDashboard}>
+                                                    <img src={previewDashboardIcon} alt="" />
+                                                    {`Preview Dashboard`}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                        <div className="module-card-content">
+                                            <div className="image">
+                                                <img src={imgUrl} alt={name} />
+                                            </div>
+                                            <h3 className="title is-block">{name}</h3>
+                                            <p className="subtitle is-block">{description}</p>
+                                            <div className="library-icon">
+                                                <a>
+                                                    {`Add Catalog To library`}
+                                                </a>
+                                            </div>
+                                            <div className="preview-dashboard-icon">
+                                                <a onClick={this.onClickPreviewDashboard}>
+                                                    {`Preview Dashboard`}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </>
+                                }
                             </div>
-                            <h3 className="title is-block">{name}</h3>
-                            <p className="subtitle is-block">{description}</p>
-                            <div className="library-icon">
-                                <a>
-                                    {`Add Catalog To library`}
-                                </a>
-                            </div>
-                            <div className="preview-dashboard-icon">
-                                <a onClick={this.onClickPreviewDashboard}>
-                                    {`Preview Dashboard`}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                )
+                        </>
+                    )
+                }
+            }
+            if (retData.length === 0) {
+                retData.push(<div>No dashboard found for applied filter</div>)
             }
         }
         else {
@@ -188,13 +229,27 @@ export class DataSources extends React.Component<any, any>{
         this.setState({ view: type })
     }
 
+    onChangeFilter = (filters: any) => {
+        this.setState({
+            selectedFilter: filters,
+        });
+    }
+
+    hideDashboard = (associatedApplicationLocation: any, associatedCloud: any, associatedCreds: any) => {
+        const { selectedFilter } = this.state;
+        const isassociatedApplicationLocation = !selectedFilter['associatedApplicationLocation'] || (selectedFilter['associatedApplicationLocation'] && selectedFilter['associatedApplicationLocation'].indexOf(associatedApplicationLocation) !== -1);
+        const isassociatedCloud = !selectedFilter['associatedCloud'] || (selectedFilter['associatedCloud'] && selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
+        const isassociatedCreds = !selectedFilter['associatedCreds'] || (selectedFilter['associatedCreds'] && selectedFilter['associatedCreds'].indexOf(associatedCreds) !== -1);
+        return isassociatedApplicationLocation && isassociatedCloud && isassociatedCreds;
+    };
+
     render() {
-        const { dashboards, images, view,filterData } = this.state;
+        const { dashboards, images, view, filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                        <Filter filterJsonData={filterData}/>
+                        <Filter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">
@@ -212,15 +267,9 @@ export class DataSources extends React.Component<any, any>{
                                     </div>
                                 </div>
                             </div>
-                            {view === 'grid' ?
-                                <div className="catalogue-boxes grid">
-                                    {this.renderDashboardsGrid(dashboards)}
-                                </div>
-                                :
-                                <div className="catalogue-boxes list">
-                                    {this.renderDashboardsList(dashboards)}
-                                </div>
-                            }
+                            <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
+                                {this.renderDashboardsView(dashboards)}
+                            </div>
                         </div>
                     </div>
                 </div>
