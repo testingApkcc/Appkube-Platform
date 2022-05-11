@@ -1,5 +1,5 @@
 import React from 'react';
-export class AwsDocumentManagement extends React.Component<any, any>{
+export class GoogleDocumentManagement extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
@@ -69,7 +69,7 @@ export class AwsDocumentManagement extends React.Component<any, any>{
             if (!awsRegion) {
                 retData.awsRegion = {
                     isValid: false,
-                    message: 'AWS Region is required',
+                    message: 'Google Region is required',
                 };
                 isValid = false;
             }
@@ -240,12 +240,12 @@ export class AwsDocumentManagement extends React.Component<any, any>{
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>Document Management System with DevSecOps best practice in AWS</strong>
+                        <strong>Document Management System with DevSecOps best practice in Google</strong>
                         <h3>Document Management System</h3>
                         <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
                         <h3>Prerequisites</h3>
                         <p><strong>Stack Name:</strong> The name of the stack to deploy to CloudFormation; this should be unique to your account and region, and a good starting point would be formkiq-core-& appEnvironment; where appEnvironment matches your installation environment, e.g. prod, dev, test</p>
-                        <p><strong>AWS Region:</strong> The AWS region you want to deploy your app to use</p>
+                        <p><strong>Google Region:</strong> The Google region you want to deploy your app to use</p>
                         <p><strong>Admin Email:</strong> The Administration Email you want FormKiQ to useappEnvironment: your installation environment, e.g. prod, dev, test; must be unique per account</p>
                         <p><strong>App Environment:</strong> your installation environment, e.g. prod, dev, test; must be unique per account</p>
                         <p><strong>Enable Public Url’s:</strong> Whether to Enable /public/ urls.</p>
@@ -254,8 +254,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                         <p><strong>Passwords Password Require Numbers:</strong> Whether at least one number is required in User</p>
                         <p><strong>Passwords Password Require Symbols:</strong> Whether at least one symbol is required in User</p>
                         <p><strong>Passwords Password Require Uppercase:</strong> Whether at least one uppercase letter is required in User Passwords</p>
-                        <p><strong>Confirm changes before deploy:</strong> If set to yes, any change sets will be shown to you before execution for manual review; if set to no, the AWS SAM CLI will automatically deploy application changes</p>
-                        <p><strong>Allow SAM CLI IAM role creation:</strong> FormKiQ Core’s AWS SAM templates create AWS IAM roles required for the AWS  Lambda function(s) included to access AWS services; the permissions are passed in by the sam deploy command  above, so this value should be set to "Y" </p>
+                        <p><strong>Confirm changes before deploy:</strong> If set to yes, any change sets will be shown to you before execution for manual review; if set to no, the Google SAM CLI will automatically deploy application changes</p>
+                        <p><strong>Allow SAM CLI IAM role creation:</strong> FormKiQ Core’s Google SAM templates create Google IAM roles required for the Google Lambda function(s) included to access Google services; the permissions are passed in by the sam deploy command  above, so this value should be set to "Y" </p>
                         <p><strong>Save arguments to samconfig.toml:</strong> if set to "Y", your choices will be saved to a configuration file inside the project, so that in the future you can just re-run sam deploy without parameters to deploy changes to your application</p>
                         <div className="d-block text-right">
                             <button className="next-btn" onClick={() => this.props.showMainView()}>Back</button>
@@ -272,9 +272,9 @@ export class AwsDocumentManagement extends React.Component<any, any>{
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>Document Management System with DevSecOps best practice in AWS</strong>
+                        <strong>Document Management System with DevSecOps best practice in Google</strong>
                         <h3>Document Management System</h3>
-                        <p>This Command will package and deploy your application to AWS, with a series of prompts</p>
+                        <p>This Command will package and deploy your application to Google, with a series of prompts</p>
                         <div className="form-detail-group">
                             <strong>Prerequisites</strong>
                             <div className="form-group">
@@ -290,7 +290,7 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                 {errorData && !errorData.isValid && <span className="error">{errorData.stackName.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>AWS Region</label>
+                                <label>Google Region</label>
                                 <input
                                     type="text"
                                     name="awsRegion"
