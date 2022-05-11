@@ -28,11 +28,13 @@ export class Filter extends React.Component<any, any>{
     }
 
     handleClearFilter = () => {
-        let { filterData } = this.state;
-        for (let i = 0; i < filterData.length; i++) {
-            filterData[i].isHide = true;
-            filterData[i].isChecked = false;
-        }
+        const { duplicateFilterData } = this.state;
+        const filterData = JSON.parse(JSON.stringify(duplicateFilterData));
+        filterData.forEach((data: any) => {
+            data.filter.forEach((checkbox: any) => {
+                checkbox.isHide = false;
+            });
+        });
         this.setState({ filterData, searchString: '' })
     }
 
