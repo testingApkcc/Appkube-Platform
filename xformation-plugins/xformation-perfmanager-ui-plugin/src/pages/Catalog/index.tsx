@@ -5,21 +5,22 @@ import { config } from './../../config';
 import { DevCatalogue } from './DevCatalog';
 import { SecCatalogue } from './SecCatalog';
 import { OpsCatalogue } from './OpsCatalog';
+import { catalogData } from './catalogue.json';
 
 export class Catalog extends React.Component<any, any>{
   breadCrumbs: any;
   config: any;
   tabMapping: any = [{
     name: "DEV",
-    dataKey: 'dev',
+    dataKey: 'Dev',
     component: DevCatalogue
   }, {
     name: "SEC",
-    dataKey: 'sec',
+    dataKey: 'Dec',
     component: SecCatalogue
   }, {
     name: "OPS",
-    dataKey: 'ops',
+    dataKey: 'Dps',
     component: OpsCatalogue
   }];
 
@@ -54,7 +55,11 @@ export class Catalog extends React.Component<any, any>{
   }
 
   componentDidMount() {
-    this.getInputConfig();
+    // this.getInputConfig();
+    console.log(catalogData);
+    this.setState({
+      catalogueData: catalogData
+    })
   }
 
   getInputConfig = () => {
@@ -164,6 +169,7 @@ export class Catalog extends React.Component<any, any>{
             <div className="catalogue-tabs-container">
               {
                 this.tabMapping.map((tabData: any, index: any) => {
+                  console.log(catalogueData[tabData.dataKey])
                   if (activeTab === index) {
                     return <tabData.component data={catalogueData[tabData.dataKey]} />;
                   } else {

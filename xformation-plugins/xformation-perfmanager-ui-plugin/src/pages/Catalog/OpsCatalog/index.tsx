@@ -10,35 +10,35 @@ export class OpsCatalogue extends React.Component<any, any>{
     config: any;
     tabMapping: any = [{
         name: "Cloud Dashboards",
-        dataKey: 'cloudDashBoards',
+        dataKey: 'CloudDashBoards',
         component: CloudDashboards
     }, {
         name: "Datasources",
-        dataKey: 'dataSources',
+        dataKey: 'DataSources',
         component: DataSources
     }, {
         name: "Provisioning Templates",
-        dataKey: 'provisioningTemplates',
+        dataKey: 'ProvisioningTemplates',
         component: ProvisioningTemplates
     },
     {
         name: "Collectors",
-        dataKey: 'collectors',
+        dataKey: 'Collectors',
         component: Collectors
     },
     {
         name: "Diagonostics",
-        dataKey: 'diagonostics',
+        dataKey: 'Diagonostics',
         component: Diagonostics
     },
     {
         name: "Kube Operators",
-        dataKey: 'kubeOperators',
+        dataKey: 'KubeOperators',
         component: KubeOperators
     },
     {
         name: "Workflows",
-        dataKey: 'workflows',
+        dataKey: 'Workflows',
         component: Workflows
     },
     ];
