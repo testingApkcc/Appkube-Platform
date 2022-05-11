@@ -316,7 +316,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                         if (setviceList.tagList && setviceList.tagList.length > 0) {
                           for (let p = 0; p < setviceList.tagList.length; p++) {
                             let tagName = setviceList.tagList[p];
-                            if (tagName.tagName === 'DATA') {
+                            if (tagName.tagName === 'Data') {
                               if (tagName.serviceList && tagName.serviceList.length > 0) {
                                 for (let q = 0; q < tagName.serviceList.length; q++) {
                                   if (dataList.indexOf(tagName.serviceList[q].name) === -1) {
@@ -324,7 +324,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
                                   }
                                 }
                               }
-                            } else if (tagName.tagName === 'APP') {
+                            } else if (tagName.tagName === 'App') {
                               if (tagName.serviceList && tagName.serviceList.length > 0) {
                                 for (let q = 0; q < tagName.serviceList.length; q++) {
                                   if (appList.indexOf(tagName.serviceList[q].name) === -1) {
