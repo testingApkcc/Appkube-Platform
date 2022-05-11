@@ -4,17 +4,13 @@ export class AwsLandingZone extends React.Component<any, any>{
         super(props);
         this.state = {
             activeTab: 0,
-            accountName: '',
+            logArchiveAccountId: '',
             accountEmail: '',
-            managedOrganisationalUnit: '',
-            ssoUserEmail: '',
-            ssoUserFirstName: '',
-            ssoUserLastName: '',
-            requestor: '',
-            requestReason: '',
-            customizationName: '',
-            label: [],
-            tagvalue: [],
+            auditAccountId: '',
+            aftManagementAccountId: '',
+            gitHubUsername: '',
+            ctHomeRegion: '',
+            tfBackendSecondaryRegion: '',
             isSubmitted: false,
             addTags: [],
         };
@@ -40,101 +36,64 @@ export class AwsLandingZone extends React.Component<any, any>{
         };
         let isValid = true;
         const retData = {
-            accountName: validObj,
-            accountEmail: validObj,
-            managedOrganisationalUnit: validObj,
-            ssoUserEmail: validObj,
-            ssoUserFirstName: validObj,
-            ssoUserLastName: validObj,
-            requestor: validObj,
-            requestReason: validObj,
-            customizationName: validObj,
-            label: validObj,
-            tagvalue: validObj,
+            ctManagementAccountId: validObj,
+            logArchiveAccountId: validObj,
+            auditAccountId: validObj,
+            aftManagementAccountId: validObj,
+            gitHubUsername: validObj,
+            ctHomeRegion: validObj,
+            tfBackendSecondaryRegion: validObj,
             isValid,
         };
         if (isSubmitted) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, addTags, } = this.state;
-            if (!accountName) {
-                retData.accountName = {
+            const { ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId,gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion } = this.state;
+            if (!ctManagementAccountId) {
+                retData.ctManagementAccountId = {
                     isValid: false,
-                    message: 'Account Name is required',
+                    message: 'CT Management Account ID is required',
                 };
                 isValid = false;
             }
-            if (!accountEmail) {
-                retData.accountEmail = {
+            if (!logArchiveAccountId) {
+                retData.logArchiveAccountId = {
                     isValid: false,
-                    message: 'Account Email is required',
+                    message: 'Log Archive Account ID is required',
                 };
                 isValid = false;
             }
-            if (!managedOrganisationalUnit) {
-                retData.managedOrganisationalUnit = {
+            if (!auditAccountId) {
+                retData.auditAccountId = {
                     isValid: false,
-                    message: 'Account Email is required',
+                    message: 'Audit Account ID is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserEmail) {
-                retData.ssoUserEmail = {
+            if (!aftManagementAccountId) {
+                retData.aftManagementAccountId = {
                     isValid: false,
-                    message: 'SSO User Email is required',
+                    message: 'AFT Management Account Id is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserFirstName) {
-                retData.ssoUserFirstName = {
+            if (!gitHubUsername) {
+                retData.gitHubUsername = {
                     isValid: false,
-                    message: 'SSO User First Name is required',
+                    message: 'GitHub Username Id is required',
                 };
                 isValid = false;
             }
-            if (!ssoUserLastName) {
-                retData.ssoUserLastName = {
+            if (!ctHomeRegion) {
+                retData.ctHomeRegion = {
                     isValid: false,
-                    message: 'SSO User Last Name is required',
+                    message: 'CT Home Region Id is required',
                 };
                 isValid = false;
             }
-            if (!requestor) {
-                retData.requestor = {
+            if (!tfBackendSecondaryRegion) {
+                retData.tfBackendSecondaryRegion = {
                     isValid: false,
-                    message: 'Requestor is required',
+                    message: 'TC Backend Secondary Region Id is required',
                 };
-                isValid = false;
-            }
-            if (!requestReason) {
-                retData.requestReason = {
-                    isValid: false,
-                    message: 'Request Reason is required',
-                };
-                isValid = false;
-            }
-            if (!customizationName) {
-                retData.customizationName = {
-                    isValid: false,
-                    message: 'Customization Name is required',
-                };
-                isValid = false;
-            }
-            if (addTags.length > 0) {
-                debugger;
-                for (let i = 0; i < addTags.length; i++) {
-                    if (addTags[i].label === '') {
-                        retData.label = {
-                            isValid: false,
-                            message: 'Tag Label are required',
-                        }
-                    }
-                    if (addTags[i].tagvalue === '') {
-                        retData.tagvalue = {
-                            isValid: false,
-                            message: 'Tag values are required',
-                        }
-                    }
-
-                }
                 isValid = false;
             }
         }
@@ -150,8 +109,8 @@ export class AwsLandingZone extends React.Component<any, any>{
         });
         const errorData = this.validate(true);
         if (errorData.isValid) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue } = this.state;
-            localStorage.setItem('viewData', JSON.stringify({ accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, requestReason, customizationName, label, tagvalue }));
+            const { ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId, gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion } = this.state;
+            localStorage.setItem('viewData', JSON.stringify({ ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId, gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion }));
         }
     };
 
@@ -227,26 +186,11 @@ export class AwsLandingZone extends React.Component<any, any>{
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>create an Account with DevSecOps best practice in AWS</strong>
-                        <h3>Welcome</h3>
-                        <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
+                        <strong>Create new landing zone with DevSecOps best practice in AWS</strong>
+                        <h3>Landing Zone</h3>
+                        <p>The command will package and deploy your application to AWS, with a series of prompts</p>
                         <h3>Prerequisites</h3>
-                        <p>Prerequisites of Account creation will be mentioned here.</p>
-                        <h3>Description</h3>
-                        <p>Use DevSecOps practices to support continuous deployment of your application, including evidence collection, GitOps flow, change management, and compliance scans.</p>
-                        <ul>
-                            <li><a href='#'>View docs</a></li>
-                            <li><a href='#'>Read tutorial</a></li>
-                            <li><a href='#'>Template repo</a></li>
-                        </ul>
-                        <h3>Important</h3>
-                        <ol>
-                            <li>This template uses a guided experience You be asked, step by step, what tools should be inclu ded in your toolchain.</li>
-                            <li>You must configure some prerequisites in other IBM or external services. Refer to the toolchain prerequisites setup steps in the documentation for creting this toolchain. You will need to enter the details from those instances in the relevant template steps.</li>
-                            <li>The toolchain created from this template consumes artifacts and evidence produced by an associated continuous integration (CI) toolchain. To create one see CI-Develop a secure app with DevSecOps practices.</li>
-                            <li>In most steps you will be asked to name each tool they will appear in your toolchain.</li>
-                            <li>Some steps are mandatory. To skip to the next mandatory step click Create toolchain'</li>
-                        </ol>
+                        <p><strong>Landing Zone:</strong> The command will package and deploy your application to AWS, with a series of prompts</p>
                         <div className="d-block text-right">
                             <button className="next-btn" onClick={() => this.props.showMainView()}>Back</button>
                             <button className="next-btn" onClick={() => this.setActiveTab(1)}>Next</button>
@@ -256,159 +200,100 @@ export class AwsLandingZone extends React.Component<any, any>{
             )
         }
         else if (activeTab === 1) {
-            const { accountName, accountEmail, managedOrganisationalUnit, ssoUserEmail, ssoUserFirstName, ssoUserLastName, requestor, customizationName, requestReason, isSubmitted } = this.state;
+            const { ctManagementAccountId, logArchiveAccountId, auditAccountId, aftManagementAccountId, gitHubUsername, ctHomeRegion, tfBackendSecondaryRegion, isSubmitted } = this.state;
             const errorData = this.validate(isSubmitted);
             // console.log(errorData)
             return (
                 <div className="catalogue-right-container">
                     <div className="contents">
-                        <strong>create an Account with DevSecOps best practice in AWS</strong>
-                        <h3>Account Creation</h3>
-                        <p>This is demo text to get look and feel of the page, it will be replaced by proper content related to account creation,</p>
+                        <strong> Create new landing zone with DevSecOps practice in AWS</strong>
+                        <h3>Landing Zone</h3>
+                        <p>The command will package and deploy your application to AWS, with a series of prompts</p>
                         <div className="form-detail-group">
-                            <strong>Account Details</strong>
+                            <strong>Prerequisites</strong>
                             <div className="form-group">
-                                <label>Account Name</label>
+                                <label>CT Management Account ID</label>
                                 <input
                                     type="text"
-                                    name="accountName"
+                                    name="ctManagementAccountId"
                                     className="form-control"
-                                    placeholder="AWS Config"
-                                    value={accountName}
+                                    placeholder="Enter value"
+                                    value={ctManagementAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.accountName.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ctManagementAccountId.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>Account Email</label>
+                                <label>Log Archive Account ID</label>
                                 <input
                                     type="email"
-                                    name="accountEmail"
+                                    name="logArchiveAccountId"
                                     className="form-control"
-                                    placeholder="AWS Config"
-                                    value={accountEmail}
+                                    placeholder="Enter value"
+                                    value={logArchiveAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.accountEmail.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.logArchiveAccountId.message}</span>}
                             </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Organisatoin Selection</strong>
                             <div className="form-group">
-                                <label>Managed Organisational Unit</label>
-                                <select className="form-control" value={managedOrganisationalUnit} onChange={this.handleStateChange} name="managedOrganisationalUnit">
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
-                                </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.managedOrganisationalUnit.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Sign In Information</strong>
-                            <div className="form-group">
-                                <label>SSO User Email</label>
+                                <label>Audit Account ID</label>
                                 <input
                                     type="email"
-                                    name="ssoUserEmail"
+                                    name="auditAccountId"
                                     className="form-control"
-                                    placeholder="user@domain.com"
-                                    value={ssoUserEmail}
+                                    placeholder="Enter value"
+                                    value={auditAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserEmail.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.auditAccountId.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>SSO User First Name</label>
-                                <input
-                                    type="text"
-                                    name="ssoUserFirstName"
-                                    className="form-control"
-                                    placeholder="eg. Sandbox"
-                                    value={ssoUserFirstName}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserFirstName.message}</span>}
-                            </div>
-                            <div className="form-group">
-                                <label>SSO User Last Name</label>
-                                <input
-                                    type="text"
-                                    name="ssoUserLastName"
-                                    className="form-control"
-                                    placeholder="eg. AFT"
-                                    value={ssoUserLastName}
-                                    onChange={this.handleStateChange}
-                                />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.ssoUserLastName.message}</span>}
-                            </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Tagging</strong>
-                            <div className="form-group">
-                                <button className="add-tags-btn" onClick={this.onClickAddTag}><i className="fa fa-plus"></i></button><label>Add Tags</label>
-                            </div>
-                            <div className="add-tags">
-                                {this.displayTags()}
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <div className="form-group">
-                                            {errorData && !errorData.label.isValid && <span className="error">{errorData.label.message}</span>}
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="form-group">
-                                            {errorData && !errorData.tagvalue.isValid && <span className="error">{errorData.tagvalue.message}</span>}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            {/* < */}
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Request Reason</strong>
-                            <div className="form-group">
-                                <label>Requestor</label>
+                                <label>AFT Management Account ID</label>
                                 <input
                                     type="email"
-                                    name="requestor"
+                                    name="aftManagementAccountId"
                                     className="form-control"
-                                    placeholder="user@domain.com"
-                                    value={requestor}
+                                    placeholder="Enter value"
+                                    value={aftManagementAccountId}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.requestor.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.aftManagementAccountId.message}</span>}
                             </div>
                             <div className="form-group">
-                                <label>Request Reason</label>
+                                <label>GitHub Username</label>
                                 <input
-                                    type="text"
-                                    name="requestReason"
+                                    type="email"
+                                    name="gitHubUsername"
                                     className="form-control"
-                                    placeholder="eg. Sandbox"
-                                    value={requestReason}
+                                    placeholder="Enter value"
+                                    value={gitHubUsername}
                                     onChange={this.handleStateChange}
                                 />
-                                {errorData && !errorData.isValid && <span className="error">{errorData.requestReason.message}</span>}
+                                {errorData && !errorData.isValid && <span className="error">{errorData.gitHubUsername.message}</span>}
                             </div>
-                        </div>
-                        <div className="form-detail-group">
-                            <strong>Account Customization</strong>
                             <div className="form-group">
-                                <label>Name</label>
-                                <select
-                                    name="customizationName"
+                                <label>CT Home Region</label>
+                                <input
+                                    type="email"
+                                    name="ctHomeRegion"
                                     className="form-control"
-                                    value={customizationName}
+                                    placeholder="Enter value"
+                                    value={ctHomeRegion}
                                     onChange={this.handleStateChange}
-                                >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
-                                </select>
-                                {errorData && !errorData.isValid && <span className="error">{errorData.customizationName.message}</span>}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.ctHomeRegion.message}</span>}
+                            </div>
+                            <div className="form-group">
+                                <label>TF Backend Secondary Region</label>
+                                <input
+                                    type="email"
+                                    name="tfBackendSecondaryRegion"
+                                    className="form-control"
+                                    placeholder="Enter value"
+                                    value={tfBackendSecondaryRegion}
+                                    onChange={this.handleStateChange}
+                                />
+                                {errorData && !errorData.isValid && <span className="error">{errorData.tfBackendSecondaryRegion.message}</span>}
                             </div>
                         </div>
                         <div className="d-block text-right">
@@ -441,7 +326,7 @@ export class AwsLandingZone extends React.Component<any, any>{
                                         <label>Welcome</label>
                                     </li>
                                     <li className={activeTab === 1 ? 'active' : ''} onClick={() => this.setActiveTab(1)} >
-                                        <label>Account Creation</label>
+                                        <label>Inputs</label>
                                     </li>
                                 </ul>
                             </div>
