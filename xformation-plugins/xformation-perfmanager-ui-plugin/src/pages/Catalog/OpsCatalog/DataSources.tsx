@@ -19,6 +19,23 @@ export class DataSources extends React.Component<any, any>{
             { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 105 },
             { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 106 },
             { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 107 },
+            ],
+            filterData: [
+                {
+                    name: "Associated Application Location",
+                    key: "associatedApplicationLocation",
+                    filter: [],
+                },
+                {
+                    name: "Associated Cloud",
+                    key: "associatedCloud",
+                    filter: [],
+                },
+                {
+                    name: "Associated Creds",
+                    key: "associatedCreds",
+                    filter: [],
+                },
             ]
         }
         this.previewDashboardPopupRef = React.createRef();
@@ -37,9 +54,41 @@ export class DataSources extends React.Component<any, any>{
                 }
             }
             this.setState({ dashboards })
+            this.createFilterJson();
         }
     }
 
+    createFilterJson = () => {
+        let { dashboards, filterData } = this.state;
+        const filterKeys = ['associatedApplicationLocation', 'associatedCloud', 'associatedCreds'];
+        const filteredData: any = {};
+        for (let i = 0; i < dashboards.length; i++) {
+            let dashboard = dashboards[i];
+            for (let j = 0; j < filterKeys.length; j++) {
+                const filter = filterKeys[j];
+                filteredData[filter] = filteredData[filter] || [];
+                if (filteredData[filter].indexOf(dashboard[filter]) === -1) {
+                    filteredData[filter].push(dashboard[filter]);
+                }
+            }
+        }
+        if (filterKeys && filterData && filterData.length > 0 && filterKeys.length > 0) {
+            for (let i = 0; i < filterData.length; i++) {
+                for (let k = 0; k < filterKeys.length; k++) {
+                    const filter = filterKeys[k];
+                    for (let j = 0; j < filteredData[filter].length; j++) {
+                        let filters = filteredData[filter][j]
+                        if (filterData[i].key == filter && filters) {
+                            filterData[i].filter.push({ value: filters, label: filters });
+                        }
+                    }
+                }
+            }
+        }
+        this.setState({
+            filterData
+        })
+    }
     componentDidUpdate(prevProps: any, prevState: any) {
         if (JSON.stringify(prevProps.data) !== JSON.stringify(this.props.data)) {
             this.setState({
@@ -140,12 +189,12 @@ export class DataSources extends React.Component<any, any>{
     }
 
     render() {
-        const { dashboards, images, view } = this.state;
+        const { dashboards, images, view,filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-12 col-r-p">
-                        <Filter />
+                        <Filter filterJsonData={filterData}/>
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
                         <div className="catalogue-right-container">

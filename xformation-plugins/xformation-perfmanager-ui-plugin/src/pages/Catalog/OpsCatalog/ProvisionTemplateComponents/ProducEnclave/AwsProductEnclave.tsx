@@ -317,7 +317,6 @@ export class AwsProductEnclave extends React.Component<any, any>{
                         }
                     </div>
                 </div>
-
             </div>
         );
     }

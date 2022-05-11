@@ -250,9 +250,9 @@ a:hover {
 
 .common-container {
   padding-top: 15px;
-  padding-left: 45px;
+  padding-left: 15px;
   padding-bottom: 15px;
-  padding-right: 45px;
+  padding-right: 15px;
   border-bottom: 1px solid #202226;
 }
 
@@ -791,12 +791,11 @@ a:hover {
 .environments-page-container .environments-services-container .services-box .heading span {
   display: inline-block;
   margin-right: 10px;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   padding: 0 3px;
-  line-height: 26px;
+  line-height: 36px;
   text-align: center;
-  background-color: #ffffff;
   vertical-align: top;
 }
 .environments-page-container .environments-services-container .services-box .heading span img {
@@ -806,13 +805,13 @@ a:hover {
 .environments-page-container .environments-services-container .services-box .heading h3 {
   display: inline-block;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 31px;
   font-weight: 600;
   color: #3b4859;
   margin-bottom: 0;
   margin-top: 5px;
   vertical-align: top;
-  width: 78%;
+  width: calc(100% - 46px);
 }
 .environments-page-container .environments-services-container .services-box .table-box {
   border-radius: 0px 0px 10px 10px;

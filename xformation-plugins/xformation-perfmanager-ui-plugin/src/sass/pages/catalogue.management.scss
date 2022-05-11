@@ -290,6 +290,10 @@
 
                         .catalogue-boxes {
                             display: block;
+                            overflow: hidden;
+                            overflow-y: auto;
+                            height: 900px;
+
 
                             .box {
                                 width: 100%;
@@ -332,6 +336,7 @@
                                         line-height: 20px;
                                         margin-bottom: 0rem;
                                         margin-top: 0;
+                                        min-height: 60px;
                                         color: #202020;
                                     }
                                 }
@@ -511,7 +516,7 @@
                                 display: block;
                                 padding: 0;
                                 font-size: 16px;
-                                line-height: 20px;
+                                line-height: 30px;
                                 font-weight: 600;
                                 color: #000000;
 
@@ -525,7 +530,7 @@
 
                             .sub-text {
                                 display: block;
-                                padding: 15px 0;
+                                padding: 15px 0 0 0;
                                 font-size: 14px;
                                 line-height: 18px;
                                 font-weight: 600;
@@ -534,7 +539,8 @@
 
                             .text {
                                 display: block;
-                                padding: 0;
+                                padding: 15px 0 0 0;
+                                min-height: 70px;
                                 font-size: 13px;
                                 line-height: 18px;
                                 font-weight: 400;
@@ -648,12 +654,12 @@
                                     label {
                                         display: inline-block;
                                         vertical-align: top;
-                                        width: 35%;
+                                        width: 37%;
                                         line-height: 34px;
                                     }
 
                                     .form-control {
-                                        width: 30%;
+                                        width: 40%;
                                         display: inline-block;
                                         border-color: #8a919c;
                                     }

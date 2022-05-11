@@ -58,6 +58,7 @@ export class CloudDashboards extends React.Component<any, any>{
             }
             this.setState({ dashboards });
         }
+        this.createFilterJson();
     }
 
     createFilterJson = () => {

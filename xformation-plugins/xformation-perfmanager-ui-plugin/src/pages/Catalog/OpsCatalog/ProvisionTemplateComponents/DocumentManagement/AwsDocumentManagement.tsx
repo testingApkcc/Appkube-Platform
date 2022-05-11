@@ -333,9 +333,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={enablePublicURLs}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Enable</option>
+                                    <option>Disable</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.enablePublicURLs.message}</span>}
                             </div>
@@ -359,9 +358,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={passwordRequresLowercase}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresLowercase.message}</span>}
                             </div>
@@ -373,9 +371,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={passwordRequresNumber}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresNumber.message}</span>}
                             </div>
@@ -387,9 +384,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={passwordRequresSymbols}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresSymbols.message}</span>}
                             </div>
@@ -401,9 +397,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={passwordRequresUppercase}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.passwordRequresUppercase.message}</span>}
                             </div>
@@ -415,9 +410,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={confirmChangeBefore}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.confirmChangeBefore.message}</span>}
                             </div>
@@ -429,9 +423,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={allowSAMCLIIAMRoleCreation}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.allowSAMCLIIAMRoleCreation.message}</span>}
                             </div>
@@ -443,9 +436,8 @@ export class AwsDocumentManagement extends React.Component<any, any>{
                                     value={saveArgumentTosamconfig}
                                     onChange={this.handleStateChange}
                                 >
-                                    <option>Select 1</option>
-                                    <option>Select 2</option>
-                                    <option>Select 3</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
                                 </select>
                                 {errorData && !errorData.isValid && <span className="error">{errorData.saveArgumentTosamconfig.message}</span>}
                             </div>

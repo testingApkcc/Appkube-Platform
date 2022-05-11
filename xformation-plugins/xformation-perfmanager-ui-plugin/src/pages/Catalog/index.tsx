@@ -12,15 +12,15 @@ export class Catalog extends React.Component<any, any>{
   config: any;
   tabMapping: any = [{
     name: "DEV",
-    dataKey: 'Dev',
+    dataKey: 'dev',
     component: DevCatalogue
   }, {
     name: "SEC",
-    dataKey: 'Sec',
+    dataKey: 'sec',
     component: SecCatalogue
   }, {
     name: "OPS",
-    dataKey: 'Ops',
+    dataKey: 'ops',
     component: OpsCatalogue
   }];
 
