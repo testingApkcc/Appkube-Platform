@@ -61,7 +61,7 @@ class Overview extends React.Component<any, any> {
         },
         productList: [
           {
-            name: 'Product 1',
+            name: 'EMS',
             performance: '89',
             availabilty: '99',
             reliability: '67',
@@ -69,7 +69,7 @@ class Overview extends React.Component<any, any> {
             endUsage: '92',
           },
           {
-            name: 'Product 2',
+            name: 'HRMS',
             performance: '99',
             availabilty: '91',
             reliability: '75',
@@ -77,7 +77,7 @@ class Overview extends React.Component<any, any> {
             endUsage: '96',
           },
           {
-            name: 'Product 3',
+            name: 'PROCUREMENT',
             performance: '85',
             availabilty: '91',
             reliability: '75',
@@ -86,22 +86,13 @@ class Overview extends React.Component<any, any> {
             color: 'red',
           },
           {
-            name: 'Product 4',
+            name: 'AUCTION',
             performance: '78',
             availabilty: '92',
             reliability: '68',
             security: '79',
             endUsage: '90',
             color: 'green',
-          },
-          {
-            name: 'Product 5',
-            performance: '81',
-            availabilty: '98',
-            reliability: '91',
-            security: '88',
-            endUsage: '87',
-            color: 'red',
           },
         ],
         cloudWiseProduct: [
@@ -439,7 +430,7 @@ class Overview extends React.Component<any, any> {
           <div className="overview-container">
             <div className="applications-container">
               <div className="header">
-                <div className="heading">SLA Metrics</div>
+                <div className="heading">SLA Central</div>
               </div>
               <div className="applications-inner-container">
                 <div className="metrics-table">
