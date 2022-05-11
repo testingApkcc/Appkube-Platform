@@ -116,8 +116,8 @@ export class ProductWiseServices extends React.Component<any, any> {
                       <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />
                     </div>
                     <div className="cloud-environment"></div>
-                    <div className="app-services">{serviceByType.APP || 0}</div>
-                    <div className="data-services">{serviceByType.DATA || 0}</div>
+                    <div className="app-services">{serviceByType['App'] || 0}</div>
+                    <div className="data-services">{serviceByType['Data'] || 0}</div>
                     <div className="product-environment">{productServiceList.join()}</div>
                     <div className="edit">
                       {/* onClick={() => this.onClickMenu(defaultView, i)} */}
