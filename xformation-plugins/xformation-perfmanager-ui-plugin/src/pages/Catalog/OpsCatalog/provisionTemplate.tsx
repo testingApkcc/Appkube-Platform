@@ -5,13 +5,13 @@ import googleCloudIcon from '../../../img/google-cloud-1.png';
 import acronisIcon from '../../../img/acronis.png';
 
 import { Filter } from './../filter';
-import { AwsAccountCreation, AwsDocumentManagement, AwsLandingZone, AwsProductEnclave } from './ProvisionTemplateComponents';
+import { AwsAccountCreation, AwsDocumentManagement, AwsLandingZone, AzureLandingZone, GoogleLandingZone, AwsProductEnclave } from './ProvisionTemplateComponents';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
     componentMapping: any = {
         'LandingZone-AWS': AwsLandingZone,
-        'LandingZone-Azure': AwsLandingZone,
-        'LandingZone-Google': AwsLandingZone,
+        'LandingZone-Azure': AzureLandingZone,
+        'LandingZone-Google': GoogleLandingZone,
         'ProductEnclave-AWS': AwsProductEnclave,
         'ProductEnclave-Azure': AwsProductEnclave,
         'ProductEnclave-Google': AwsProductEnclave,
