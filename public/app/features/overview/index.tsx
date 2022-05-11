@@ -106,7 +106,7 @@ class Overview extends React.Component<any, any> {
         ],
         cloudWiseProduct: [
           {
-            icon: '/public/img/fav32.png',
+            icon: '/public/img/overview/aws.svg',
             name: 'AWS',
             value: '$2,47,518',
             diff: '5%',
@@ -115,7 +115,7 @@ class Overview extends React.Component<any, any> {
             percentageColor: 'orange',
           },
           {
-            icon: '/public/img/fav32.png',
+            icon: '/public/img/overview/azure.svg',
             name: 'AZURE',
             value: '$90756',
             diff: '2%',
@@ -124,7 +124,7 @@ class Overview extends React.Component<any, any> {
             percentageColor: 'blue',
           },
           {
-            icon: '/public/img/fav32.png',
+            icon: '/public/img/overview/gcp.svg',
             name: 'GCP',
             value: '$11,508',
             diff: '1%',
@@ -133,8 +133,8 @@ class Overview extends React.Component<any, any> {
             percentageColor: 'red',
           },
           {
-            icon: '/public/img/fav32.png',
-            name: 'GCP',
+            icon: '/public/img/overview/cloud.svg',
+            name: 'OTHER',
             value: '$11,508',
             diff: '1%',
             status: 'down',
