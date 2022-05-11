@@ -31,12 +31,12 @@ export class ProvisioningTemplates extends React.Component<any, any>{
 
             filterData: [
                 {
-                    name: "Associated Cloud",
+                    name: "Cloud",
                     key: "associatedCloud",
                     filter: [],
                 },
                 {
-                    name: "Associated Creds",
+                    name: "Creds",
                     key: "associatedCreds",
                     filter: [],
                 },

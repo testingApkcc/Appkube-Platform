@@ -16,17 +16,17 @@ export class CloudDashboards extends React.Component<any, any>{
             images: [],
             filterData: [
                 {
-                    name: "Associated DataSource Type",
+                    name: "DataSource Type",
                     key: "associatedDataSourceType",
                     filter: [],
                 },
                 {
-                    name: "Associated DataType",
+                    name: "DataType",
                     key: "associatedDataType",
                     filter: [],
                 },
                 {
-                    name: "Associated SLAType",
+                    name: "SLAType",
                     key: "associatedSLAType",
                     filter: [],
                 },

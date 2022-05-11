@@ -22,17 +22,17 @@ export class DataSources extends React.Component<any, any>{
             ],
             filterData: [
                 {
-                    name: "Associated Application Location",
+                    name: "Application Location",
                     key: "associatedApplicationLocation",
                     filter: [],
                 },
                 {
-                    name: "Associated Cloud",
+                    name: "Cloud",
                     key: "associatedCloud",
                     filter: [],
                 },
                 {
-                    name: "Associated Creds",
+                    name: "Creds",
                     key: "associatedCreds",
                     filter: [],
                 },
