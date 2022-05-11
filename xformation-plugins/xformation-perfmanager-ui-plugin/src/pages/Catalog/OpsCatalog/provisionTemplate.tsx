@@ -5,20 +5,22 @@ import googleCloudIcon from '../../../img/google-cloud-1.png';
 import acronisIcon from '../../../img/acronis.png';
 
 import { Filter } from './../filter';
-import { AwsAccountCreation, AwsDocumentManagement, AwsLandingZone, AzureLandingZone, GoogleLandingZone, AwsProductEnclave } from './ProvisionTemplateComponents';
+import { AwsAccountCreation, AzureAccountCreation, GoogleAccountCreation, AwsDocumentManagement, GoogleDocumentManagement, AzureDocumentManagement, AwsLandingZone, AzureLandingZone, GoogleLandingZone, AwsProductEnclave, AzureProductEnclave, GoogleProductEnclave } from './ProvisionTemplateComponents';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
     componentMapping: any = {
+        'ProductCluster-AWS': AwsAccountCreation,
+        'ProductCluster-Azure': AzureAccountCreation,
+        'ProductCluster-Google': GoogleAccountCreation,
+        'CommonService-AWS': AwsDocumentManagement,
+        'CommonService-Azure': AzureDocumentManagement,
+        'CommonService-Google': GoogleDocumentManagement,
         'LandingZone-AWS': AwsLandingZone,
         'LandingZone-Azure': AzureLandingZone,
         'LandingZone-Google': GoogleLandingZone,
         'ProductEnclave-AWS': AwsProductEnclave,
-        'ProductEnclave-Azure': AwsProductEnclave,
-        'ProductEnclave-Google': AwsProductEnclave,
-        'ProductCluster-AWS': AwsAccountCreation,
-        'ProductCluster-Azure': AwsAccountCreation,
-        'ProductCluster-Google': AwsAccountCreation,
-        'CommonService-Google': AwsDocumentManagement,
+        'ProductEnclave-Azure': AzureProductEnclave,
+        'ProductEnclave-Google': GoogleProductEnclave,
     };
     constructor(props: any) {
         super(props)
