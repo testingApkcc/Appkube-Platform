@@ -64,7 +64,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
     let subMenuState = 0;
     let showSubMenu = false;
     let activeMenuItem = null;
-    let isSubMenuPinned = localStorage.getItem('sideMenuPinned');
+    let isSubMenuPinned = false;
     let activeSubMenuItem = null;
     for (let i = 0; i < totalItem; i++) {
       const item = menuList[i];
@@ -74,7 +74,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
           if (pathName === sMenu.link) {
             subMenuState = menuStates.SUBMENU_OPEN;
             showSubMenu = true;
-            // isSubMenuPinned = true;
+            isSubMenuPinned = true;
             activeSubMenuItem = sMenu;
             activeMenuItem = item;
             isFound = true;
@@ -85,7 +85,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
               if (pathName === childmenu.link) {
                 subMenuState = menuStates.SUBMENU_OPEN;
                 showSubMenu = true;
-                // isSubMenuPinned = true;
+                isSubMenuPinned = true;
                 activeSubMenuItem = childmenu;
                 activeMenuItem = item;
                 isFound = true;
@@ -96,7 +96,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
                   if (pathName === childs.link) {
                     subMenuState = menuStates.SUBMENU_OPEN;
                     showSubMenu = true;
-                    // isSubMenuPinned = true;
+                    isSubMenuPinned = true;
                     activeSubMenuItem = childs;
                     activeMenuItem = item;
                     isFound = true;
@@ -114,9 +114,6 @@ export class CustomSideMenu extends PureComponent<any, any> {
           break;
         }
       }
-    }
-    if (!isSubMenuPinned) {
-      subMenuState = 8;
     }
     return {
       subMenuState,
@@ -163,11 +160,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
       window.dispatchEvent(new Event('locationchange'));
     });
     const menuData: any = this.handleLocationChange();
-    if (menuData.isSubMenuPinned === 'false') {
-      this.updateState(8, -1);
-    } else {
-      this.updateState(menuData.subMenuState, -1);
-    }
+    this.updateState(menuData.subMenuState, -1);
     this.setState({
       subMenuState: menuData.subMenuState,
       showSubMenu: menuData.showSubMenu,
@@ -735,7 +728,6 @@ export class CustomSideMenu extends PureComponent<any, any> {
       subMenuState = menuStates.SUBMENU_OPEN;
     }
     this.updateState(subMenuState, lastState);
-    localStorage.setItem('sideMenuPinned', isSubMenuPinned);
     this.setState({
       subMenuState,
       isSubMenuPinned,
@@ -821,7 +813,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
               className={`menu-item ${isActive ? 'active' : ''}`}
               onClick={(e: any) => this.onClickLink(e, menuItem)}
             >
-              <div className={`menu-item-image ${menuItem.cssClass}`} />
+              <div className={`menu-item-image ${menuItem.cssClass}`}></div>
               <div className="menu-item-text">{menuItem.text}</div>
             </a>
           </li>
@@ -844,7 +836,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
         <Rbac parentName={menuItem.text || ''} childName={menuItem.text || ''} key={menuItem.text}>
           <li className="item" title={menuItem.text}>
             <a className={`menu-item ${isActive ? 'active' : ''}`} onClick={(e: any) => this.onClickLink(e, menuItem)}>
-              <div className={`menu-item-image ${menuItem.cssClass}`} />
+              <div className={`menu-item-image ${menuItem.cssClass}`}></div>
               <div className="menu-item-text">{menuItem.text}</div>
             </a>
           </li>
@@ -989,7 +981,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
       <div className="menu-item-container">
         <CustomScrollbar>
           <div className="main-menu">
-            <div className="sidemenu-search-container" />
+            <div className="sidemenu-search-container"></div>
             <ul className="m-0">{this.createCloseMenu(this.mainMenu)}</ul>
 
             {/* <Rbac parentName={'OPS CENTRAL'} childName={'OPS CENTRAL'}>
@@ -1052,7 +1044,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
                 style={{
                   transform: isSubMenuPinned ? 'rotate(0deg)' : 'rotate(-90deg)',
                 }}
-              />
+              ></i>
               {/* <div className="side-menu-toggle text-right" onClick={this.onClickToggleSubMenu}> */}
               {/* <div className="side-menu-toggle text-right"> */}
               {/* <i className="fa fa-thumb-tack"></i> */}
@@ -1061,7 +1053,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
           </div>
           <div className="close-menu" onMouseEnter={this.onMouseEnterClosedSubMenu}>
             <div className="side-menu-toggle" onClick={this.onClickToggleSubMenu}>
-              <i className="fa fa-thumb-tack" style={{ transform: 'rotate(-90deg)' }} />
+              <i className="fa fa-thumb-tack" style={{ transform: 'rotate(-90deg)' }}></i>
             </div>
             <ul>{this.createCloseSubMenu()}</ul>
           </div>
