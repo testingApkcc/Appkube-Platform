@@ -209,9 +209,6 @@ export class CloudDashboards extends React.Component<any, any>{
         const { view, dashboards } = this.state;
         return (
             <div className="catalogue-right-container">
-                <div>
-                    Select a template to start with. You can use filters or the seach box the scope.
-                </div>
                 <div className="templated-search">
                     <div className="row">
                         <div className="col-sm-10">
