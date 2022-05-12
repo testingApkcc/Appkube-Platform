@@ -28373,6 +28373,30 @@ object-assign
                 );
               };
 
+              _this.filterValues = function (e) {
+                var value = e.target.value;
+                var duplicatdashboards = JSON.parse(JSON.stringify(_this.props.data)) || [];
+                var filtedValue = [];
+
+                if (value) {
+                  for (var i = 0; i < duplicatdashboards.length; i++) {
+                    if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                      filtedValue.push(duplicatdashboards[i]);
+                    }
+                  }
+
+                  _this.setState({
+                    dashboards: filtedValue,
+                  });
+                } else {
+                  if (_this.props.data && _this.props.data.length > 0) {
+                    _this.setState({
+                      dashboards: _this.props.data,
+                    });
+                  }
+                }
+              };
+
               _this.dashboardsView = function (type) {
                 _this.setState({
                   view: type,
@@ -28383,6 +28407,102 @@ object-assign
                 _this.setState({
                   selectedFilter: filters,
                 });
+              };
+
+              _this.formFields = function () {
+                var _a = _this.state,
+                  view = _a.view,
+                  dashboards = _a.dashboards;
+                return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                  'div',
+                  {
+                    className: 'catalogue-right-container',
+                  },
+                  react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                    'div',
+                    {
+                      className: 'templated-search',
+                    },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                      'div',
+                      {
+                        className: 'row',
+                      },
+                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                        'div',
+                        {
+                          className: 'col-sm-10',
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                          'div',
+                          {
+                            className: 'search-box',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                            'button',
+                            {
+                              className: 'search-button',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
+                              className: 'fa fa-search',
+                            })
+                          ),
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement('input', {
+                            type: 'text',
+                            onChange: function (e) {
+                              return _this.filterValues(e);
+                            },
+                            placeholder: 'Search Template here',
+                            className: 'input',
+                          })
+                        )
+                      ),
+                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                        'div',
+                        {
+                          className: 'col-sm-2',
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                          'div',
+                          {
+                            className: 'btnContainer',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                            'button',
+                            {
+                              className: view == 'grid' ? 'btn btn-grid btn-active' : 'btn btn-grid',
+                              onClick: function () {
+                                return _this.dashboardsView('grid');
+                              },
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
+                              className: 'fa fa-th-large',
+                            })
+                          ),
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                            'button',
+                            {
+                              className: view == 'list' ? 'btn btn-list btn-active' : 'btn btn-list',
+                              onClick: function () {
+                                return _this.dashboardsView('list');
+                              },
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
+                              className: 'fa fa-list',
+                            })
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                    'div',
+                    {
+                      className: view === 'grid' ? 'catalogue-boxes grid' : 'catalogue-boxes list',
+                    },
+                    _this.renderDashboardsView(dashboards)
+                  )
+                );
               };
 
               _this.state = {
@@ -28426,8 +28546,6 @@ object-assign
             };
 
             CloudDashboards.prototype.render = function () {
-              var _this = this;
-
               var _a = this.state,
                 dashboards = _a.dashboards,
                 view = _a.view,
@@ -28460,79 +28578,7 @@ object-assign
                     {
                       className: 'col-lg-9 col-md-9 col-sm-12 col-l-p',
                     },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                      'div',
-                      {
-                        className: 'catalogue-right-container',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                        'div',
-                        {
-                          className: 'heading',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                          'div',
-                          {
-                            className: 'row',
-                          },
-                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                            'div',
-                            {
-                              className: 'col-md-9 col-sm-12',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('h3', null, 'Catalogue'),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                              'p',
-                              null,
-                              'A catalogue is collection of dashboards'
-                            )
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                            'div',
-                            {
-                              className: 'col-md-3 col-sm-12',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                              'div',
-                              {
-                                className: 'btnContainer',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                                'button',
-                                {
-                                  className: view == 'grid' ? 'btn btn-grid btn-active' : 'btn btn-grid',
-                                  onClick: function () {
-                                    return _this.dashboardsView('grid');
-                                  },
-                                },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
-                                  className: 'fa fa-th-large',
-                                })
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                                'button',
-                                {
-                                  className: view == 'list' ? 'btn btn-list btn-active' : 'btn btn-list',
-                                  onClick: function () {
-                                    return _this.dashboardsView('list');
-                                  },
-                                },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
-                                  className: 'fa fa-list',
-                                })
-                              )
-                            )
-                          )
-                        )
-                      ),
-                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                        'div',
-                        {
-                          className: view === 'grid' ? 'catalogue-boxes grid' : 'catalogue-boxes list',
-                        },
-                        this.renderDashboardsView(dashboards)
-                      )
-                    )
+                    this.formFields()
                   )
                 ),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
@@ -28587,6 +28633,9 @@ object-assign
             function DataSources(props) {
               var _this = _super.call(this, props) || this;
 
+              _this.backupUrl =
+                'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg';
+
               _this.createFilterJson = function () {
                 var _a = _this.state,
                   dashboards = _a.dashboards,
@@ -28631,10 +28680,18 @@ object-assign
                 });
               };
 
-              _this.onClickPreviewDashboard = function () {
-                _this.previewDashboardPopupRef.current.setLink('');
+              _this.onClickPreviewDashboard = function (images) {
+                if (images && images.length > 0) {
+                  _this.previewDashboardPopupRef.current.setSliderIndex(0);
 
-                _this.previewDashboardPopupRef.current.toggle();
+                  _this.previewDashboardPopupRef.current.setImages(images);
+
+                  _this.previewDashboardPopupRef.current.setLink('');
+
+                  _this.previewDashboardPopupRef.current.toggle();
+                } else {
+                  alert('No preview available');
+                }
               };
 
               _this.renderDashboardsList = function (dashboards) {
@@ -28770,7 +28827,8 @@ object-assign
                       associatedApplicationLocation = _a.associatedApplicationLocation,
                       associatedCloud = _a.associatedCloud,
                       associatedCreds = _a.associatedCreds,
-                      id = _a.id;
+                      id = _a.id,
+                      images = _a.images;
 
                     if (_this.hideDashboard(associatedApplicationLocation, associatedCloud, associatedCreds)) {
                       retData.push(
@@ -28884,7 +28942,7 @@ object-assign
                                         className: 'image',
                                       },
                                       react__WEBPACK_IMPORTED_MODULE_0___default().createElement('img', {
-                                        src: imgUrl,
+                                        src: images && images.length > 0 ? images[0] : _this.backupUrl,
                                         alt: name,
                                       })
                                     ),
@@ -28959,6 +29017,30 @@ object-assign
                 });
               };
 
+              _this.filterValues = function (e) {
+                var value = e.target.value;
+                var duplicatdashboards = JSON.parse(JSON.stringify(_this.props.data)) || [];
+                var filtedValue = [];
+
+                if (value) {
+                  for (var i = 0; i < duplicatdashboards.length; i++) {
+                    if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                      filtedValue.push(duplicatdashboards[i]);
+                    }
+                  }
+
+                  _this.setState({
+                    dashboards: filtedValue,
+                  });
+                } else {
+                  if (_this.props.data && _this.props.data.length > 0) {
+                    _this.setState({
+                      dashboards: _this.props.data,
+                    });
+                  }
+                }
+              };
+
               _this.onChangeFilter = function (filters) {
                 _this.setState({
                   selectedFilter: filters,
@@ -28982,53 +29064,105 @@ object-assign
                 return isassociatedApplicationLocation && isassociatedCloud && isassociatedCreds;
               };
 
+              _this.formFields = function () {
+                var _a = _this.state,
+                  view = _a.view,
+                  dashboards = _a.dashboards;
+                return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                  'div',
+                  {
+                    className: 'catalogue-right-container',
+                  },
+                  react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                    'div',
+                    {
+                      className: 'templated-search',
+                    },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                      'div',
+                      {
+                        className: 'row',
+                      },
+                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                        'div',
+                        {
+                          className: 'col-sm-10',
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                          'div',
+                          {
+                            className: 'search-box',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                            'button',
+                            {
+                              className: 'search-button',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
+                              className: 'fa fa-search',
+                            })
+                          ),
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement('input', {
+                            type: 'text',
+                            onChange: function (e) {
+                              return _this.filterValues(e);
+                            },
+                            placeholder: 'Search Template here',
+                            className: 'input',
+                          })
+                        )
+                      ),
+                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                        'div',
+                        {
+                          className: 'col-sm-2',
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                          'div',
+                          {
+                            className: 'btnContainer',
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                            'button',
+                            {
+                              className: view == 'grid' ? 'btn btn-grid btn-active' : 'btn btn-grid',
+                              onClick: function () {
+                                return _this.dashboardsView('grid');
+                              },
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
+                              className: 'fa fa-th-large',
+                            })
+                          ),
+                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                            'button',
+                            {
+                              className: view == 'list' ? 'btn btn-list btn-active' : 'btn btn-list',
+                              onClick: function () {
+                                return _this.dashboardsView('list');
+                              },
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
+                              className: 'fa fa-list',
+                            })
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                    'div',
+                    {
+                      className: view === 'grid' ? 'catalogue-boxes grid' : 'catalogue-boxes list',
+                    },
+                    _this.renderDashboardsView(dashboards)
+                  )
+                );
+              };
+
               _this.state = {
                 dashboards: _this.props.data || [],
                 view: 'grid',
-                images: [
-                  {
-                    name: 'graph',
-                    imgUrl:
-                      'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg',
-                    id: 101,
-                  },
-                  {
-                    name: 'flow Chart',
-                    imgUrl:
-                      'https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=',
-                    id: 102,
-                  },
-                  {
-                    name: 'linear',
-                    imgUrl:
-                      'https://media.istockphoto.com/vectors/collection-of-infographics-isolated-illustration-vector-id1168529930?s=170667a',
-                    id: 103,
-                  },
-                  {
-                    name: 'image',
-                    imgUrl:
-                      'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg',
-                    id: 104,
-                  },
-                  {
-                    name: 'flow Chart',
-                    imgUrl:
-                      'https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=',
-                    id: 105,
-                  },
-                  {
-                    name: 'image',
-                    imgUrl:
-                      'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg',
-                    id: 106,
-                  },
-                  {
-                    name: 'flow Chart',
-                    imgUrl:
-                      'https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=',
-                    id: 107,
-                  },
-                ],
                 filterData: [
                   {
                     name: 'Application Location',
@@ -29053,27 +29187,7 @@ object-assign
             }
 
             DataSources.prototype.componentDidMount = function () {
-              var _a = this.state,
-                dashboards = _a.dashboards,
-                images = _a.images;
-              var image = '';
-
-              if (dashboards.length > 0) {
-                for (var i = 0; i < dashboards.length; i++) {
-                  if (images[i]) {
-                    image = images[i].imgUrl;
-                    dashboards[i]['imgUrl'] = image;
-                  } else {
-                    dashboards[i]['imgUrl'] =
-                      ' https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg';
-                  }
-                }
-
-                this.setState({
-                  dashboards: dashboards,
-                });
-                this.createFilterJson();
-              }
+              this.createFilterJson();
             };
 
             DataSources.prototype.componentDidUpdate = function (prevProps, prevState) {
@@ -29085,12 +29199,8 @@ object-assign
             };
 
             DataSources.prototype.render = function () {
-              var _this = this;
-
               var _a = this.state,
-                dashboards = _a.dashboards,
                 images = _a.images,
-                view = _a.view,
                 filterData = _a.filterData;
               return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
                 'div',
@@ -29120,79 +29230,7 @@ object-assign
                     {
                       className: 'col-lg-9 col-md-9 col-sm-12 col-l-p',
                     },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                      'div',
-                      {
-                        className: 'catalogue-right-container',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                        'div',
-                        {
-                          className: 'heading',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                          'div',
-                          {
-                            className: 'row',
-                          },
-                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                            'div',
-                            {
-                              className: 'col-md-9 col-sm-12',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement('h3', null, 'Catalogue'),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                              'p',
-                              null,
-                              'A catalogue is collection of dashboards'
-                            )
-                          ),
-                          react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                            'div',
-                            {
-                              className: 'col-md-3 col-sm-12',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                              'div',
-                              {
-                                className: 'btnContainer',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                                'button',
-                                {
-                                  className: view == 'grid' ? 'btn btn-grid btn-active' : 'btn btn-grid',
-                                  onClick: function () {
-                                    return _this.dashboardsView('grid');
-                                  },
-                                },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
-                                  className: 'fa fa-th-large',
-                                })
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                                'button',
-                                {
-                                  className: view == 'list' ? 'btn btn-list btn-active' : 'btn btn-list',
-                                  onClick: function () {
-                                    return _this.dashboardsView('list');
-                                  },
-                                },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement('i', {
-                                  className: 'fa fa-list',
-                                })
-                              )
-                            )
-                          )
-                        )
-                      ),
-                      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
-                        'div',
-                        {
-                          className: view === 'grid' ? 'catalogue-boxes grid' : 'catalogue-boxes list',
-                        },
-                        this.renderDashboardsView(dashboards)
-                      )
-                    )
+                    this.formFields()
                   )
                 ),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
@@ -29403,7 +29441,11 @@ object-assign
                     retData.push(
                       react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
                         'div',
-                        null,
+                        {
+                          style: {
+                            paddingLeft: '20px',
+                          },
+                        },
                         'No dashboard found for applied filter'
                       )
                     );
@@ -29411,7 +29453,15 @@ object-assign
                 } else {
                   retData = [];
                   retData.push(
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement('div', null, 'No Data Found')
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(
+                      'div',
+                      {
+                        style: {
+                          paddingLeft: '20px',
+                        },
+                      },
+                      'No Data Found'
+                    )
                   );
                 }
 
@@ -29429,6 +29479,30 @@ object-assign
                   (selectedFilter['associatedCloud'] &&
                     selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
                 return isassociatedCreds && isassociatedCloud;
+              };
+
+              _this.filterValues = function (e) {
+                var value = e.target.value;
+                var duplicatdashboards = JSON.parse(JSON.stringify(_this.props.data)) || [];
+                var filtedValue = [];
+
+                if (value) {
+                  for (var i = 0; i < duplicatdashboards.length; i++) {
+                    if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                      filtedValue.push(duplicatdashboards[i]);
+                    }
+                  }
+
+                  _this.setState({
+                    dashboards: filtedValue,
+                  });
+                } else {
+                  if (_this.props.data && _this.props.data.length > 0) {
+                    _this.setState({
+                      dashboards: _this.props.data,
+                    });
+                  }
+                }
               };
 
               _this.formFields = function () {
@@ -29476,6 +29550,9 @@ object-assign
                           ),
                           react__WEBPACK_IMPORTED_MODULE_0___default().createElement('input', {
                             type: 'text',
+                            onChange: function (e) {
+                              return _this.filterValues(e);
+                            },
                             placeholder: 'Search Template here',
                             className: 'input',
                           })
