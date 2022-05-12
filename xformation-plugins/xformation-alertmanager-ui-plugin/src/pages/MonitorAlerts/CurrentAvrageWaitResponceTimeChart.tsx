@@ -17,35 +17,34 @@ import { config } from '../../config';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
 const options: any = {
+  plugins: {
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  },
   scales: {
-    yAxes: [
-      {
-        ticks: {
-          fontColor: 'white',
-          stepSize: 10,
-          beginAtZero: true,
-        },
+    y: {
+      ticks: {
+        color: 'white',
+        stepSize: 10,
+        beginAtZero: true,
       },
-    ],
-    xAxes: [
-      {
-        ticks: {
-          fontColor: 'white',
-          stepSize: 10,
-          callback: function (value: any) {
-            let str = value.split('-', 3);
-            let newData = str[1] + '-' + str[2];
-            return newData;
-          },
-        },
+      grid: {
+        display: false
+      }
+    },
+    x: {
+      ticks: {
+        color: 'white',
+        stepSize: 10,
       },
-    ],
+      grid: {
+        display: false
+      }
+    },
   },
-  legend: {
-    display: false,
-  },
-  responsive: true,
-  maintainAspectRatio: false,
 };
 
 const barchart: any = {
@@ -105,7 +104,7 @@ export class CurrentAvrageWaitResponceTimeChart extends React.Component<any, any
       });
       console.log('Avg Resp Time Data :::::: ', response);
     });
-  };
+  }
 
   render() {
     return (
