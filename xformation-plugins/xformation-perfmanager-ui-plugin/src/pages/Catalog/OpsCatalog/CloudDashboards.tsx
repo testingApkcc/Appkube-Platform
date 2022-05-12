@@ -7,32 +7,26 @@ import { Filter } from './../filter';
 
 export class CloudDashboards extends React.Component<any, any>{
     previewDashboardPopupRef: any;
+    backupUrl = 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg';
     constructor(props: any) {
         super(props)
         this.state = {
             dashboards: this.props.data || [],
             view: 'grid',
-            images: [{ name: "graph", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 101 },
-            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 102 },
-            { name: "linear", imgUrl: 'https://media.istockphoto.com/vectors/collection-of-infographics-isolated-illustration-vector-id1168529930?s=170667a', id: 103 },
-            { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 104 },
-            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 105 },
-            { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 106 },
-            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 107 },
-            ],
+            images: [],
             filterData: [
                 {
-                    name: "Associated DataSource Type",
+                    name: "DataSource Type",
                     key: "associatedDataSourceType",
                     filter: [],
                 },
                 {
-                    name: "Associated DataType",
+                    name: "DataType",
                     key: "associatedDataType",
                     filter: [],
                 },
                 {
-                    name: "Associated SLAType",
+                    name: "SLAType",
                     key: "associatedSLAType",
                     filter: [],
                 },
@@ -43,20 +37,6 @@ export class CloudDashboards extends React.Component<any, any>{
     }
 
     componentDidMount() {
-        let { dashboards, images } = this.state;
-        let image = ''
-        if (dashboards.length > 0) {
-            for (let i = 0; i < dashboards.length; i++) {
-                if (images[i]) {
-                    image = images[i].imgUrl;
-                    dashboards[i]["imgUrl"] = image;
-                }
-                else {
-                    dashboards[i]["imgUrl"] = " https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg"
-                }
-            }
-            this.setState({ dashboards });
-        }
         this.createFilterJson();
     }
 
@@ -92,9 +72,14 @@ export class CloudDashboards extends React.Component<any, any>{
         })
     }
 
-    onClickPreviewDashboard = () => {
-        this.previewDashboardPopupRef.current.setLink('');
-        this.previewDashboardPopupRef.current.toggle();
+    onClickPreviewDashboard = (images: any) => {
+        if (images && images.length > 0) {
+            this.previewDashboardPopupRef.current.setImages(images);
+            this.previewDashboardPopupRef.current.setLink('');
+            this.previewDashboardPopupRef.current.toggle();
+        } else {
+            alert("No preview available");
+        }
     };
 
     renderDashboardsView = (dashboards: any) => {
@@ -103,7 +88,7 @@ export class CloudDashboards extends React.Component<any, any>{
         if (dashboards && dashboards.length > 0) {
             retData = [];
             for (let i = 0; i < dashboards.length; i++) {
-                const { id, name, description, imgUrl, associatedDataSourceType, associatedDataType, associatedSLAType } = dashboards[i];
+                const { id, name, description, images, associatedDataSourceType, associatedDataType, associatedSLAType } = dashboards[i];
                 if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType)) {
                     retData.push(
                         <>
@@ -113,7 +98,7 @@ export class CloudDashboards extends React.Component<any, any>{
                                         <div className="module-card-content">
                                             <div className="row">
                                                 <div className="col-md-1 col-sm-12 p-r-0">
-                                                    <img height='100px' width='100px' src={imgUrl} alt={name} />
+                                                    <img height='100px' width='100px' src={images && images.length > 0 ? images[0] : this.backupUrl} alt={name} />
                                                 </div>
                                                 <div className="col-md-11 col-sm-12">
                                                     <h3 className="title is-block">{name}</h3>
@@ -129,7 +114,7 @@ export class CloudDashboards extends React.Component<any, any>{
                                                 </a>
                                             </div>
                                             <div className="module-card-footer-provider">
-                                                <a onClick={this.onClickPreviewDashboard}>
+                                                <a onClick={() => this.onClickPreviewDashboard(images)}>
                                                     <img src={previewDashboardIcon} alt="" />
                                                     {`Preview Dashboard`}
                                                 </a>
@@ -140,7 +125,7 @@ export class CloudDashboards extends React.Component<any, any>{
                                     <>
                                         <div className="module-card-content">
                                             <div className="image">
-                                                <img src={imgUrl} alt={name} />
+                                                <img src={images && images.length > 0 ? images[0] : this.backupUrl} alt={name} />
                                             </div>
                                             <h3 className="title is-block">{name}</h3>
                                             <p className="subtitle is-block">{description}</p>
@@ -150,7 +135,7 @@ export class CloudDashboards extends React.Component<any, any>{
                                                 </a>
                                             </div>
                                             <div className="preview-dashboard-icon">
-                                                <a onClick={this.onClickPreviewDashboard}>
+                                                <a onClick={() => this.onClickPreviewDashboard(images)}>
                                                     {`Preview Dashboard`}
                                                 </a>
                                             </div>
@@ -192,7 +177,7 @@ export class CloudDashboards extends React.Component<any, any>{
     }
 
     render() {
-        const { dashboards, images, view, filterData } = this.state;
+        const { dashboards, view, filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
@@ -222,7 +207,7 @@ export class CloudDashboards extends React.Component<any, any>{
 
                     </div>
                 </div>
-                <PreviewDashboardPopup ref={this.previewDashboardPopupRef} images={images} />
+                <PreviewDashboardPopup ref={this.previewDashboardPopupRef} images={[]} />
             </div>
         )
     }
