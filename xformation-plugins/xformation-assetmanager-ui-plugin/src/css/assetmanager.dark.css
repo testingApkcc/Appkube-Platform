@@ -1861,9 +1861,19 @@ a:hover {
   .status.red {
   background-color: #e13a20;
 }
+.service-container .organisational-details .container-inner .organisational-data-table .data-table .data-table {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 300px;
+}
 .service-container .organisational-details .container-inner .organisational-data-table .d-flex {
   display: block;
   text-align: center;
+}
+.service-container .organisational-details .container-inner .organisational-data-table .action-edit .open-create-menu {
+  top: 30px;
+  right: 0px;
+  width: 190px;
 }
 .service-container
   .organisational-details

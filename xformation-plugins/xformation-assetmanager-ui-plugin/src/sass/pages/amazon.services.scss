@@ -600,6 +600,13 @@
               }
             }
           }
+
+          .data-table {
+            overflow: hidden;
+            overflow-y: auto;
+            max-height: 300px;
+          }
+
         }
 
         .d-flex {
@@ -608,6 +615,11 @@
         }
 
         .action-edit {
+          .open-create-menu{
+            top: 30px;
+            right: 0px;
+            width: 190px;
+          }
           .asset-white-button {
             padding: 0;
             background-color: transparent;

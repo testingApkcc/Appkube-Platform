@@ -7,19 +7,12 @@ import { Filter } from './../filter';
 
 export class DataSources extends React.Component<any, any>{
     previewDashboardPopupRef: any;
+    backupUrl = 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg';
     constructor(props: any) {
         super(props)
         this.state = {
             dashboards: this.props.data || [],
             view: 'grid',
-            images: [{ name: "graph", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 101 },
-            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 102 },
-            { name: "linear", imgUrl: 'https://media.istockphoto.com/vectors/collection-of-infographics-isolated-illustration-vector-id1168529930?s=170667a', id: 103 },
-            { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 104 },
-            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 105 },
-            { name: "image", imgUrl: 'https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg', id: 106 },
-            { name: "flow Chart", imgUrl: "https://media.istockphoto.com/vectors/graphs-vector-id873960850?k=20&m=873960850&s=612x612&w=0&h=v2qLecko35u5eee3o-GNy5aza0kZFfxr6uLbjEm3pNQ=", id: 107 },
-            ],
             filterData: [
                 {
                     name: "Application Location",
@@ -42,21 +35,7 @@ export class DataSources extends React.Component<any, any>{
         this.previewDashboardPopupRef = React.createRef();
     }
     componentDidMount() {
-        let { dashboards, images } = this.state;
-        let image = ''
-        if (dashboards.length > 0) {
-            for (let i = 0; i < dashboards.length; i++) {
-                if (images[i]) {
-                    image = images[i].imgUrl;
-                    dashboards[i]["imgUrl"] = image;
-                }
-                else {
-                    dashboards[i]["imgUrl"] = " https://image.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg"
-                }
-            }
-            this.setState({ dashboards })
-            this.createFilterJson();
-        }
+        this.createFilterJson();
     }
 
     createFilterJson = () => {
@@ -98,9 +77,15 @@ export class DataSources extends React.Component<any, any>{
         }
     }
 
-    onClickPreviewDashboard = () => {
-        this.previewDashboardPopupRef.current.setLink('');
-        this.previewDashboardPopupRef.current.toggle();
+    onClickPreviewDashboard = (images: any) => {
+        if (images && images.length > 0) {
+            this.previewDashboardPopupRef.current.setSliderIndex(0)
+            this.previewDashboardPopupRef.current.setImages(images);
+            this.previewDashboardPopupRef.current.setLink('');
+            this.previewDashboardPopupRef.current.toggle();
+        } else {
+            alert("No preview available");
+        }
     };
 
     renderDashboardsList = (dashboards: any) => {
@@ -155,7 +140,7 @@ export class DataSources extends React.Component<any, any>{
         if (dashboards && dashboards.length > 0) {
             retData = [];
             for (let i = 0; i < dashboards.length; i++) {
-                const { name, description, imgUrl, associatedApplicationLocation, associatedCloud, associatedCreds, id } = dashboards[i];
+                const { name, description, imgUrl, associatedApplicationLocation, associatedCloud, associatedCreds, id, images } = dashboards[i];
                 if (this.hideDashboard(associatedApplicationLocation, associatedCloud, associatedCreds)) {
                     retData.push(
                         <>
@@ -192,7 +177,7 @@ export class DataSources extends React.Component<any, any>{
                                     <>
                                         <div className="module-card-content">
                                             <div className="image">
-                                                <img src={imgUrl} alt={name} />
+                                                <img src={images && images.length > 0 ? images[0] : this.backupUrl} alt={name} />
                                             </div>
                                             <h3 className="title is-block">{name}</h3>
                                             <p className="subtitle is-block">{description}</p>
@@ -228,7 +213,24 @@ export class DataSources extends React.Component<any, any>{
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
-
+    filterValues = (e: any) => {
+        const { value } = e.target;
+        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data)) || [];
+        let filtedValue: any = [];
+        if (value) {
+            for (let i = 0; i < duplicatdashboards.length; i++) {
+                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                    filtedValue.push(duplicatdashboards[i])
+                }
+            }
+            this.setState({ dashboards: filtedValue });
+        }
+        else {
+            if (this.props.data && this.props.data.length > 0) {
+                this.setState({ dashboards: this.props.data });
+            }
+        }
+    }
     onChangeFilter = (filters: any) => {
         this.setState({
             selectedFilter: filters,
@@ -242,9 +244,36 @@ export class DataSources extends React.Component<any, any>{
         const isassociatedCreds = !selectedFilter['associatedCreds'] || (selectedFilter['associatedCreds'] && selectedFilter['associatedCreds'].indexOf(associatedCreds) !== -1);
         return isassociatedApplicationLocation && isassociatedCloud && isassociatedCreds;
     };
+    formFields = () => {
+        const { view, dashboards } = this.state;
+        return (
+            <div className="catalogue-right-container">
+                <div className="templated-search">
+                    <div className="row">
+                        <div className="col-sm-10">
+                            <div className="search-box">
+                                <button className="search-button"><i className="fa fa-search"></i></button>
+                                <input type="text" onChange={(e) => this.filterValues(e)} placeholder="Search Template here" className="input" />
+                            </div>
+                        </div>
+                        <div className="col-sm-2">
+                            <div className="btnContainer">
+                                <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
+                                <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
+                    {this.renderDashboardsView(dashboards)}
+                </div>
+            </div>
+        )
+
+    }
 
     render() {
-        const { dashboards, images, view, filterData } = this.state;
+        const { images, filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
@@ -252,25 +281,7 @@ export class DataSources extends React.Component<any, any>{
                         <Filter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
-                        <div className="catalogue-right-container">
-                            <div className="heading">
-                                <div className="row">
-                                    <div className="col-md-9 col-sm-12">
-                                        <h3>Catalogue</h3>
-                                        <p>A catalogue is collection of dashboards</p>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12">
-                                        <div className="btnContainer">
-                                            <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
-                                            <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
-                                {this.renderDashboardsView(dashboards)}
-                            </div>
-                        </div>
+                        {this.formFields()}
                     </div>
                 </div>
                 <PreviewDashboardPopup ref={this.previewDashboardPopupRef} images={images} />
