@@ -244,27 +244,7 @@ export class CloudDashboards extends React.Component<any, any>{
                         <Filter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
-                        {/* <div className="catalogue-right-container">
-                            <div className="heading">
-                                <div className="row">
-                                    <div className="col-md-9 col-sm-12">
-                                        <h3>Catalogue</h3>
-                                        <p>A catalogue is collection of dashboards</p>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12">
-                                        <div className="btnContainer">
-                                            <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
-                                            <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
-                                {this.renderDashboardsView(dashboards)}
-                            </div>
-                        </div> */}
                         {this.formFields()}
-
                     </div>
                 </div>
                 <PreviewDashboardPopup ref={this.previewDashboardPopupRef} images={[]} />
