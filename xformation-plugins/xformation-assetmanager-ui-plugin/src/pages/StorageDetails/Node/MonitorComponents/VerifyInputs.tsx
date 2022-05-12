@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { v4 } from 'uuid';
+// import { v4 } from 'uuid';
 
 export class VerifyInputs extends React.Component<any, any> {
   constructor(props: any) {
@@ -71,7 +71,7 @@ export class VerifyInputs extends React.Component<any, any> {
       if (dashboards) {
         dashboards.forEach((dashboard: any, dashboardIndex: any) => {
           dashboardJSX.push(
-            <tbody key={v4()}>
+            <tbody key={`${dataSourceIndex}-${dashboardIndex}-datasource`}>
               <tr>
                 <td>
                   <input
@@ -92,7 +92,7 @@ export class VerifyInputs extends React.Component<any, any> {
         });
       }
       retData.push(
-        <table key={v4()} className="table-tbody first-table" width="100%">
+        <table key={`${dataSourceIndex}-datasource`} className="table-tbody first-table" width="100%">
           <tr>
             <td style={{ paddingLeft: "0", paddingRight: "0" }}>
               <table width="100%">
