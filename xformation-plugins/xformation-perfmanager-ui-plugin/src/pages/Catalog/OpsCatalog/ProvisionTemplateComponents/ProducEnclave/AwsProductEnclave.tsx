@@ -176,6 +176,7 @@ export class AwsProductEnclave extends React.Component<any, any>{
         if (activeTab === 0) {
             return (
                 <div className="catalogue-right-container">
+                    <button onClick={() => this.props.showMainView()} className="contents-close"><i className="fa fa-close"></i></button>
                     <div className="contents">
                         <strong>Create new Product Enclave with DevSecOps best practice in AWS</strong>
                         <h3>Product Enclave</h3>
@@ -196,6 +197,7 @@ export class AwsProductEnclave extends React.Component<any, any>{
             // console.log(errorData)
             return (
                 <div className="catalogue-right-container">
+                    <button onClick={() => this.props.showMainView()} className="contents-close"><i className="fa fa-close"></i></button>
                     <div className="contents">
                         <strong> Create new Product Enclave with DevSecOps practice in AWS</strong>
                         <h3>Product Enclave</h3>
