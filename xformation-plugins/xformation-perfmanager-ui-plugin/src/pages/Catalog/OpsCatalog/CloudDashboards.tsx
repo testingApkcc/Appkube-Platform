@@ -13,11 +13,15 @@ export class CloudDashboards extends React.Component<any, any>{
         this.state = {
             dashboards: this.props.data || [],
             view: 'grid',
-            images: [],
             filterData: [
                 {
                     name: "DataSource Type",
                     key: "associatedDataSourceType",
+                    filter: [],
+                },
+                {
+                    name: "Cloud",
+                    key: "associatedCloud",
                     filter: [],
                 },
                 {
@@ -42,7 +46,7 @@ export class CloudDashboards extends React.Component<any, any>{
 
     createFilterJson = () => {
         let { dashboards, filterData } = this.state;
-        const filterKeys = ['associatedDataSourceType', 'associatedDataType', 'associatedSLAType'];
+        const filterKeys = ['associatedDataSourceType', 'associatedCloud', 'associatedDataType', 'associatedSLAType'];
         const filteredData: any = {};
         for (let i = 0; i < dashboards.length; i++) {
             let dashboard = dashboards[i];
@@ -88,8 +92,8 @@ export class CloudDashboards extends React.Component<any, any>{
         if (dashboards && dashboards.length > 0) {
             retData = [];
             for (let i = 0; i < dashboards.length; i++) {
-                const { id, name, description, images, associatedDataSourceType, associatedDataType, associatedSLAType } = dashboards[i];
-                if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType)) {
+                const { id, name, description, images, associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud } = dashboards[i];
+                if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud)) {
                     retData.push(
                         <>
                             <div className={view === 'list' ? `blog-list-item box` : `box blog-grid-item`} key={id}>
@@ -158,12 +162,13 @@ export class CloudDashboards extends React.Component<any, any>{
         return retData
     }
 
-    hideDashboard = (associatedDataSourceType: any, associatedDataType: any, associatedSLAType: any) => {
+    hideDashboard = (associatedDataSourceType: any, associatedDataType: any, associatedSLAType: any, associatedCloud: any) => {
         const { selectedFilter } = this.state;
         const isAssociatedDatasourceType = !selectedFilter['associatedDataSourceType'] || (selectedFilter['associatedDataSourceType'] && selectedFilter['associatedDataSourceType'].indexOf(associatedDataSourceType) !== -1);
         const isAssociatedDataType = !selectedFilter['associatedDataType'] || (selectedFilter['associatedDataType'] && selectedFilter['associatedDataType'].indexOf(associatedDataType) !== -1);
         const isAssociatedSLAType = !selectedFilter['associatedSLAType'] || (selectedFilter['associatedSLAType'] && selectedFilter['associatedSLAType'].indexOf(associatedSLAType) !== -1);
-        return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType;
+        const isCloud = !selectedFilter['associatedCloud'] || (selectedFilter['associatedCloud'] && selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
+        return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType && isCloud;
     };
 
     dashboardsView = (type: any) => {
