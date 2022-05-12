@@ -25,6 +25,12 @@ export class PreviewDashboardPopup extends React.Component<any, any> {
         });
     };
 
+    setImages = (images: any) => {
+        this.setState({
+            images,
+        });
+    };
+
     render() {
         const state = this.state;
         const { images, sliderIndex } = state;
@@ -39,7 +45,7 @@ export class PreviewDashboardPopup extends React.Component<any, any> {
                                     <>
                                         <button disabled={index == 0} className="nabtn-left" onClick={() => { this.setState({ sliderIndex: index - 1 }) }}><i className="fa fa-angle-left"></i></button>
                                         <div className="item-image active">
-                                            <img src={val.imgUrl} alt={val.name} />
+                                            <img src={val} />
                                         </div>
                                         <button disabled={index == images.length - 1} className="nabtn-right" onClick={() => { this.setState({ sliderIndex: index + 1 }) }}><i className="fa fa-angle-right"></i></button>
                                     </>

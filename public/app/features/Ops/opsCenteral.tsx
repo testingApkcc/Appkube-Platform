@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class OpsCenteral extends React.Component<any, any> {
   constructor(props: any) {
@@ -28,6 +29,7 @@ class OpsCenteral extends React.Component<any, any> {
           category: 'Service Desk',
           info: 'sampleText',
           icon: '/public/img/ops-central/service_desk.svg',
+          link: '/a/xformation-servicedesk-ui-plugin/dashboard',
         },
         {
           id: 10,
@@ -164,12 +166,18 @@ class OpsCenteral extends React.Component<any, any> {
                         </div>
                       </div>
                       <div className="explore-content">
-                        <span>
-                          <img src="/public/img/Explore-icon.png" alt="image" />
-                        </span>
-                        <a href="#">
-                          Explore <i className="fa fa-caret-right" aria-hidden="true"></i>
-                        </a>
+                        {value.link ? (
+                          <>
+                            <span>
+                              <img src="/public/img/Explore-icon.png" alt="image" />
+                            </span>
+                            <Link to={value.link}>
+                              Explore <i className="fa fa-caret-right" aria-hidden="true"></i>
+                            </Link>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -228,24 +228,6 @@ class Overview extends React.Component<any, any> {
         </div>
         <div className="overview-container">
           <div className="applications-container">
-            <div className="header">
-              <div className="row">
-                <div className="col-xl-9 col-lg-8 col-md-7 col-sm-12">
-                  <div className="heading">Monitor your applications and infrastructure</div>
-                  <div className="description">
-                    Get full stack visibility, find and fix problems, optimize your performance and understand customer
-                    behavior all in one place.
-                  </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                  <div className="new-discovery-btn">
-                    <a href="#" className="overview-blue-button">
-                      New Discovery
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
             {dashboardData && (
               <div className="applications-inner-container">
                 <div className="dashboard-spent-main">
