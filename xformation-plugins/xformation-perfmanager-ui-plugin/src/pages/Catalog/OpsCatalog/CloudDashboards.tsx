@@ -13,7 +13,6 @@ export class CloudDashboards extends React.Component<any, any>{
         this.state = {
             dashboards: this.props.data || [],
             view: 'grid',
-            images: [],
             filterData: [
                 {
                     name: "DataSource Type",
