@@ -129,12 +129,12 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                 }
             }
             if (retData.length === 0) {
-                retData.push(<div>No dashboard found for applied filter</div>)
+                retData.push(<div style={{paddingLeft: '20px'}}>No dashboard found for applied filter</div>)
             }
         }
         else {
             retData = [];
-            retData.push(<div>No Data Found</div>)
+            retData.push(<div style={{paddingLeft: '20px'}}>No Data Found</div>)
         }
         return retData
     }
@@ -145,6 +145,25 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         const isassociatedCloud = !selectedFilter['associatedCloud'] || (selectedFilter['associatedCloud'] && selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
         return isassociatedCreds && isassociatedCloud;
     };
+
+    filterValues = (e: any) => {
+        const { value } = e.target;
+        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data)) || [];
+        let filtedValue: any = [];
+        if (value) {
+            for (let i = 0; i < duplicatdashboards.length; i++) {
+                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                    filtedValue.push(duplicatdashboards[i])
+                }
+            }
+            this.setState({ dashboards: filtedValue });
+        }
+        else {
+            if (this.props.data && this.props.data.length > 0) {
+                this.setState({ dashboards: this.props.data });
+            }
+        }
+    }
 
     formFields = () => {
         const { view, dashboards } = this.state;
@@ -158,7 +177,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="col-sm-10">
                             <div className="search-box">
                                 <button className="search-button"><i className="fa fa-search"></i></button>
-                                <input type="text" placeholder="Search Template here" className="input" />
+                                <input type="text" onChange={(e) => this.filterValues(e)} placeholder="Search Template here" className="input" />
                             </div>
                         </div>
                         <div className="col-sm-2">
