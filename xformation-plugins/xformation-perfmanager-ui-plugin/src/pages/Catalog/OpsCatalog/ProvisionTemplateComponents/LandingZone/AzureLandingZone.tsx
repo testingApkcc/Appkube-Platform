@@ -185,6 +185,7 @@ export class AzureLandingZone extends React.Component<any, any>{
         if (activeTab === 0) {
             return (
                 <div className="catalogue-right-container">
+                    <button onClick={() => this.props.showMainView()} className="contents-close"><i className="fa fa-close"></i></button>
                     <div className="contents">
                         <strong>Create new landing zone with DevSecOps best practice in Azure</strong>
                         <h3>Landing Zone</h3>
@@ -205,6 +206,7 @@ export class AzureLandingZone extends React.Component<any, any>{
             // console.log(errorData)
             return (
                 <div className="catalogue-right-container">
+                    <button onClick={() => this.props.showMainView()} className="contents-close"><i className="fa fa-close"></i></button>
                     <div className="contents">
                         <strong> Create new landing zone with DevSecOps practice in Azure</strong>
                         <h3>Landing Zone</h3>

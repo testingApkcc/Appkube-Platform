@@ -3952,6 +3952,35 @@ a:hover {
   background-color: #f9f9f9;
   min-height: 500px;
   padding: 15px;
+  position: relative;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents-close {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border: none;
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
+  font-size: 18px;
+  color: #6f7682;
+}
+.perfmanager-dashboard-container
+  .catalogue-management-container
+  .common-container
+  .catalogue-tabs-container
+  .catalogue-inner-tabs-container
+  .catalogue-right-container
+  .contents-close:hover {
+  background-color: #3b7cff;
+  color: #ffffff;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container

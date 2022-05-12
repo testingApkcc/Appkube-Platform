@@ -4,7 +4,7 @@ import azureIcon from '../../../img/azure-1.png';
 import googleCloudIcon from '../../../img/google-cloud-1.png';
 import acronisIcon from '../../../img/acronis.png';
 import { Filter } from './../filter';
-import { AwsProductCluster, AzureProductCluster, GoogleProductCluster, AwsDocumentManagement, GoogleDocumentManagement, AzureDocumentManagement, AwsLandingZone, AzureLandingZone, GoogleLandingZone, AwsProductEnclave, AzureProductEnclave, GoogleProductEnclave } from './ProvisionTemplateComponents';
+import { AwsProductCluster, AzureProductCluster, GoogleProductCluster, AwsDocumentManagement, AzureDocumentManagement, AwsLandingZone, AzureLandingZone, GoogleLandingZone, AwsProductEnclave, AzureProductEnclave, GoogleProductEnclave, GoogleCommonServiceFIleRepo } from './ProvisionTemplateComponents';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
     componentMapping: any = {
@@ -13,7 +13,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         'ProductCluster-Google': GoogleProductCluster,
         'CommonService-AWS': AwsDocumentManagement,
         'CommonService-Azure': AzureDocumentManagement,
-        'CommonService-Google': GoogleDocumentManagement,
+        'CommonService-Google': GoogleCommonServiceFIleRepo,
         'LandingZone-AWS': AwsLandingZone,
         'LandingZone-Azure': AzureLandingZone,
         'LandingZone-Google': GoogleLandingZone,
@@ -44,21 +44,18 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             selectedFilter: {},
         }
     }
-
     componentDidMount() {
         this.createFilterJson();
     }
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
-
     showMainView = () => {
         this.setState({
             type: '',
             associatedCloud: '',
         });
-    };
-
+    }
     createFilterJson = () => {
         let { dashboards, filterData } = this.state;
         const filterKeys = ['associatedCloud', 'associatedCreds'];
@@ -90,7 +87,6 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             filterData
         })
     }
-
     renderDashboards = (dashboards: any) => {
         let retData = []
         if (dashboards && dashboards.length > 0) {
@@ -138,14 +134,12 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         }
         return retData
     }
-
     hideDashboard = (associatedCreds: any, associatedCloud: any,) => {
         const { selectedFilter } = this.state;
         const isassociatedCreds = !selectedFilter['associatedCreds'] || (selectedFilter['associatedCreds'] && selectedFilter['associatedCreds'].indexOf(associatedCreds) !== -1);
         const isassociatedCloud = !selectedFilter['associatedCloud'] || (selectedFilter['associatedCloud'] && selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
         return isassociatedCreds && isassociatedCloud;
-    };
-
+    }
     filterValues = (e: any) => {
         const { value } = e.target;
         let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data)) || [];
@@ -164,7 +158,6 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             }
         }
     }
-
     formFields = () => {
         const { view, dashboards } = this.state;
         return (
@@ -197,20 +190,17 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         )
 
     }
-
     setActiveView = (type: any, associatedCloud: any) => {
         this.setState({
             type,
             associatedCloud
         });
-    };
-
+    }
     onChangeFilter = (filters: any) => {
         this.setState({
             selectedFilter: filters,
         });
     }
-
     render() {
         const { type, associatedCloud, filterData } = this.state;
         let ActiveViewComponent = null;
