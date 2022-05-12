@@ -11,7 +11,7 @@ define([
   __WEBPACK_EXTERNAL_MODULE__100__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__6__,
-  __WEBPACK_EXTERNAL_MODULE__27__,
+  __WEBPACK_EXTERNAL_MODULE__42__,
   __WEBPACK_EXTERNAL_MODULE__119__,
   __WEBPACK_EXTERNAL_MODULE__91__,
   __WEBPACK_EXTERNAL_MODULE__191__,
@@ -552,7 +552,7 @@ PERFORMANCE OF THIS SOFTWARE.
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var bind = __webpack_require__(/*! ./helpers/bind */ 29);
+        var bind = __webpack_require__(/*! ./helpers/bind */ 26);
 
         // utils is a library of generic helper functions non-specific to axios
 
@@ -1800,7 +1800,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var utils = __webpack_require__(/*! ./utils */ 3);
         var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 62);
-        var enhanceError = __webpack_require__(/*! ./core/enhanceError */ 31);
+        var enhanceError = __webpack_require__(/*! ./core/enhanceError */ 28);
 
         var DEFAULT_CONTENT_TYPE = {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -2293,64 +2293,6 @@ PERFORMANCE OF THIS SOFTWARE.
         /***/
       },
       /* 23 */
-      /*!***********************************************************************************************************************!*\
-  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./pages/ComplianceRulesets/query/QueryPanel.css ***!
-  \***********************************************************************************************************************/
-      /***/ (module, exports, __webpack_require__) => {
-        exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ 11)(
-          true
-        );
-        // imports
-
-        // module
-        exports.push([
-          module.id,
-          '.App {\r\n  text-align: center;\r\n}\r\n\r\n.App input {\r\n  margin: 5px 50px 5px 10px;\r\n}\r\n\r\n.whiteBG {\r\n  background: #fff;\r\n}\r\n\r\n.loadingBG {\r\n  background: #fff url(/img/loader.gif) no-repeat right center;\r\n}\r\n\r\n.maxHeight {\r\n  text-align: left;\r\n  max-height: 150px;\r\n  overflow-y: auto;\r\n}\r\n\r\n.suggesstionBox {\r\n  margin: 5px;\r\n  z-index: 1;\r\n}\r\n\r\n.suggesstions {\r\n  float: left;\r\n  list-style: none;\r\n  margin-top: -3px;\r\n  padding: 0;\r\n  position: absolute;\r\n}\r\n\r\n.suggesstions li {\r\n  padding: 10px;\r\n  background: #f0f0f0;\r\n  border-bottom: #bbb9b9 1px solid;\r\n}\r\n\r\n.suggesstions li:hover {\r\n  background: #ece3d2;\r\n  cursor: pointer;\r\n}\r\n.hideSuggesstionBox {\r\n  display: none;\r\n  z-index: 1;\r\n}\r\n.showSuggesstionBox {\r\n  display: block;\r\n  z-index: 1;\r\n}\r\n\r\ncaption {\r\n  text-transform: capitalize;\r\n  text-align: center;\r\n  caption-side: top;\r\n}\r\n\r\n/* thead {\r\n\tbackground-color: #627769;\r\n\ttext-transform: capitalize;\r\n}\r\n\r\ntbody tr:nth-child(odd) {\r\n\tbackground-color: #d9e9f7;\r\n}\r\n  \r\ntbody tr:nth-child(even) {\r\n\tbackground-color: #FFFFFF;\r\n} */\r\n\r\n#trnsResTbl {\r\n  margin: 10px;\r\n  border-collapse: collapse;\r\n}\r\n\r\n#trnsResTbl table {\r\n  margin: 5px;\r\n  background-color: #ffffff;\r\n}\r\n\r\n#trnsResTbl table caption {\r\n  visibility: hidden;\r\n}\r\n\r\n#trnsResTbl table thead {\r\n  background-color: #ccd8b9;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(odd) {\r\n  background-color: #c5e9e3;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(even) {\r\n  background-color: #f8e4e4;\r\n}\r\n\r\ntd,\r\n#trnsResTbl td {\r\n  border: 0px;\r\n}\r\n',
-          '',
-          {
-            version: 3,
-            sources: [
-              'E:/GIT_2/Appkube-Platform/xformation-plugins/xformation-compliancemanager-ui-plugin/src/pages/ComplianceRulesets/query/QueryPanel.css',
-            ],
-            names: [],
-            mappings:
-              'AAAA;EACE,mBAAmB;CACpB;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,6DAA6D;CAC9D;;AAED;EACE,iBAAiB;EACjB,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,YAAY;EACZ,WAAW;CACZ;;AAED;EACE,YAAY;EACZ,iBAAiB;EACjB,iBAAiB;EACjB,WAAW;EACX,mBAAmB;CACpB;;AAED;EACE,cAAc;EACd,oBAAoB;EACpB,iCAAiC;CAClC;;AAED;EACE,oBAAoB;EACpB,gBAAgB;CACjB;AACD;EACE,cAAc;EACd,WAAW;CACZ;AACD;EACE,eAAe;EACf,WAAW;CACZ;;AAED;EACE,2BAA2B;EAC3B,mBAAmB;EACnB,kBAAkB;CACnB;;AAED;;;;;;;;;;;IAWI;;AAEJ;EACE,aAAa;EACb,0BAA0B;CAC3B;;AAED;EACE,YAAY;EACZ,0BAA0B;CAC3B;;AAED;EACE,mBAAmB;CACpB;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,0BAA0B;CAC3B;;AAED;;EAEE,YAAY;CACb',
-            file: 'QueryPanel.css',
-            sourcesContent: [
-              '.App {\r\n  text-align: center;\r\n}\r\n\r\n.App input {\r\n  margin: 5px 50px 5px 10px;\r\n}\r\n\r\n.whiteBG {\r\n  background: #fff;\r\n}\r\n\r\n.loadingBG {\r\n  background: #fff url(/img/loader.gif) no-repeat right center;\r\n}\r\n\r\n.maxHeight {\r\n  text-align: left;\r\n  max-height: 150px;\r\n  overflow-y: auto;\r\n}\r\n\r\n.suggesstionBox {\r\n  margin: 5px;\r\n  z-index: 1;\r\n}\r\n\r\n.suggesstions {\r\n  float: left;\r\n  list-style: none;\r\n  margin-top: -3px;\r\n  padding: 0;\r\n  position: absolute;\r\n}\r\n\r\n.suggesstions li {\r\n  padding: 10px;\r\n  background: #f0f0f0;\r\n  border-bottom: #bbb9b9 1px solid;\r\n}\r\n\r\n.suggesstions li:hover {\r\n  background: #ece3d2;\r\n  cursor: pointer;\r\n}\r\n.hideSuggesstionBox {\r\n  display: none;\r\n  z-index: 1;\r\n}\r\n.showSuggesstionBox {\r\n  display: block;\r\n  z-index: 1;\r\n}\r\n\r\ncaption {\r\n  text-transform: capitalize;\r\n  text-align: center;\r\n  caption-side: top;\r\n}\r\n\r\n/* thead {\r\n\tbackground-color: #627769;\r\n\ttext-transform: capitalize;\r\n}\r\n\r\ntbody tr:nth-child(odd) {\r\n\tbackground-color: #d9e9f7;\r\n}\r\n  \r\ntbody tr:nth-child(even) {\r\n\tbackground-color: #FFFFFF;\r\n} */\r\n\r\n#trnsResTbl {\r\n  margin: 10px;\r\n  border-collapse: collapse;\r\n}\r\n\r\n#trnsResTbl table {\r\n  margin: 5px;\r\n  background-color: #ffffff;\r\n}\r\n\r\n#trnsResTbl table caption {\r\n  visibility: hidden;\r\n}\r\n\r\n#trnsResTbl table thead {\r\n  background-color: #ccd8b9;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(odd) {\r\n  background-color: #c5e9e3;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(even) {\r\n  background-color: #f8e4e4;\r\n}\r\n\r\ntd,\r\n#trnsResTbl td {\r\n  border: 0px;\r\n}\r\n',
-            ],
-            sourceRoot: '',
-          },
-        ]);
-
-        // exports
-
-        /***/
-      },
-      /* 24 */
-      /*!*******************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
-  \*******************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _inheritsLoose,
-          /* harmony export */
-        });
-        /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 107
-        );
-
-        function _inheritsLoose(subClass, superClass) {
-          subClass.prototype = Object.create(superClass.prototype);
-          subClass.prototype.constructor = subClass;
-          (0, _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__['default'])(subClass, superClass);
-        }
-
-        /***/
-      },
-      /* 25 */
       /*!**************************************************************!*\
   !*** ../node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
   \**************************************************************/
@@ -2369,7 +2311,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 26 */
+      /* 24 */
       /*!*********************************************!*\
   !*** ../node_modules/prop-types/lib/has.js ***!
   \*********************************************/
@@ -2378,17 +2320,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 27 */
-      /*!****************************!*\
-  !*** external "react-dom" ***!
-  \****************************/
-      /***/ (module) => {
-        'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__27__;
-
-        /***/
-      },
-      /* 28 */
+      /* 25 */
       /*!******************************!*\
   !*** ./components/table.tsx ***!
   \******************************/
@@ -3130,7 +3062,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 29 */
+      /* 26 */
       /*!*************************************************!*\
   !*** ../node_modules/axios/lib/helpers/bind.js ***!
   \*************************************************/
@@ -3149,7 +3081,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 30 */
+      /* 27 */
       /*!*****************************************************!*\
   !*** ../node_modules/axios/lib/helpers/buildURL.js ***!
   \*****************************************************/
@@ -3227,7 +3159,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 31 */
+      /* 28 */
       /*!******************************************************!*\
   !*** ../node_modules/axios/lib/core/enhanceError.js ***!
   \******************************************************/
@@ -3277,14 +3209,14 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 32 */
+      /* 29 */
       /*!*****************************************************!*\
   !*** ../node_modules/axios/lib/core/createError.js ***!
   \*****************************************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var enhanceError = __webpack_require__(/*! ./enhanceError */ 31);
+        var enhanceError = __webpack_require__(/*! ./enhanceError */ 28);
 
         /**
          * Create an Error with the specified message, config, error code, request and response.
@@ -3303,7 +3235,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 33 */
+      /* 30 */
       /*!****************************************************!*\
   !*** ../node_modules/axios/lib/cancel/isCancel.js ***!
   \****************************************************/
@@ -3316,7 +3248,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 34 */
+      /* 31 */
       /*!*****************************************************!*\
   !*** ../node_modules/axios/lib/core/mergeConfig.js ***!
   \*****************************************************/
@@ -3428,7 +3360,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 35 */
+      /* 32 */
       /*!**************************************************!*\
   !*** ../node_modules/axios/lib/cancel/Cancel.js ***!
   \**************************************************/
@@ -3455,7 +3387,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 36 */
+      /* 33 */
       /*!**********************************************************************************************!*\
   !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./components/table.css ***!
   \**********************************************************************************************/
@@ -3488,7 +3420,42 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 37 */
+      /* 34 */
+      /*!***********************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./pages/ComplianceRulesets/query/QueryPanel.css ***!
+  \***********************************************************************************************************************/
+      /***/ (module, exports, __webpack_require__) => {
+        exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ 11)(
+          true
+        );
+        // imports
+
+        // module
+        exports.push([
+          module.id,
+          '.App {\r\n  text-align: center;\r\n}\r\n\r\n.App input {\r\n  margin: 5px 50px 5px 10px;\r\n}\r\n\r\n.whiteBG {\r\n  background: #fff;\r\n}\r\n\r\n.loadingBG {\r\n  background: #fff url(/img/loader.gif) no-repeat right center;\r\n}\r\n\r\n.maxHeight {\r\n  text-align: left;\r\n  max-height: 150px;\r\n  overflow-y: auto;\r\n}\r\n\r\n.suggesstionBox {\r\n  margin: 5px;\r\n  z-index: 1;\r\n}\r\n\r\n.suggesstions {\r\n  float: left;\r\n  list-style: none;\r\n  margin-top: -3px;\r\n  padding: 0;\r\n  position: absolute;\r\n}\r\n\r\n.suggesstions li {\r\n  padding: 10px;\r\n  background: #f0f0f0;\r\n  border-bottom: #bbb9b9 1px solid;\r\n}\r\n\r\n.suggesstions li:hover {\r\n  background: #ece3d2;\r\n  cursor: pointer;\r\n}\r\n.hideSuggesstionBox {\r\n  display: none;\r\n  z-index: 1;\r\n}\r\n.showSuggesstionBox {\r\n  display: block;\r\n  z-index: 1;\r\n}\r\n\r\ncaption {\r\n  text-transform: capitalize;\r\n  text-align: center;\r\n  caption-side: top;\r\n}\r\n\r\n/* thead {\r\n\tbackground-color: #627769;\r\n\ttext-transform: capitalize;\r\n}\r\n\r\ntbody tr:nth-child(odd) {\r\n\tbackground-color: #d9e9f7;\r\n}\r\n  \r\ntbody tr:nth-child(even) {\r\n\tbackground-color: #FFFFFF;\r\n} */\r\n\r\n#trnsResTbl {\r\n  margin: 10px;\r\n  border-collapse: collapse;\r\n}\r\n\r\n#trnsResTbl table {\r\n  margin: 5px;\r\n  background-color: #ffffff;\r\n}\r\n\r\n#trnsResTbl table caption {\r\n  visibility: hidden;\r\n}\r\n\r\n#trnsResTbl table thead {\r\n  background-color: #ccd8b9;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(odd) {\r\n  background-color: #c5e9e3;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(even) {\r\n  background-color: #f8e4e4;\r\n}\r\n\r\ntd,\r\n#trnsResTbl td {\r\n  border: 0px;\r\n}\r\n',
+          '',
+          {
+            version: 3,
+            sources: [
+              'E:/GIT_2/Appkube-Platform/xformation-plugins/xformation-compliancemanager-ui-plugin/src/pages/ComplianceRulesets/query/QueryPanel.css',
+            ],
+            names: [],
+            mappings:
+              'AAAA;EACE,mBAAmB;CACpB;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,6DAA6D;CAC9D;;AAED;EACE,iBAAiB;EACjB,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,YAAY;EACZ,WAAW;CACZ;;AAED;EACE,YAAY;EACZ,iBAAiB;EACjB,iBAAiB;EACjB,WAAW;EACX,mBAAmB;CACpB;;AAED;EACE,cAAc;EACd,oBAAoB;EACpB,iCAAiC;CAClC;;AAED;EACE,oBAAoB;EACpB,gBAAgB;CACjB;AACD;EACE,cAAc;EACd,WAAW;CACZ;AACD;EACE,eAAe;EACf,WAAW;CACZ;;AAED;EACE,2BAA2B;EAC3B,mBAAmB;EACnB,kBAAkB;CACnB;;AAED;;;;;;;;;;;IAWI;;AAEJ;EACE,aAAa;EACb,0BAA0B;CAC3B;;AAED;EACE,YAAY;EACZ,0BAA0B;CAC3B;;AAED;EACE,mBAAmB;CACpB;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,0BAA0B;CAC3B;;AAED;;EAEE,YAAY;CACb',
+            file: 'QueryPanel.css',
+            sourcesContent: [
+              '.App {\r\n  text-align: center;\r\n}\r\n\r\n.App input {\r\n  margin: 5px 50px 5px 10px;\r\n}\r\n\r\n.whiteBG {\r\n  background: #fff;\r\n}\r\n\r\n.loadingBG {\r\n  background: #fff url(/img/loader.gif) no-repeat right center;\r\n}\r\n\r\n.maxHeight {\r\n  text-align: left;\r\n  max-height: 150px;\r\n  overflow-y: auto;\r\n}\r\n\r\n.suggesstionBox {\r\n  margin: 5px;\r\n  z-index: 1;\r\n}\r\n\r\n.suggesstions {\r\n  float: left;\r\n  list-style: none;\r\n  margin-top: -3px;\r\n  padding: 0;\r\n  position: absolute;\r\n}\r\n\r\n.suggesstions li {\r\n  padding: 10px;\r\n  background: #f0f0f0;\r\n  border-bottom: #bbb9b9 1px solid;\r\n}\r\n\r\n.suggesstions li:hover {\r\n  background: #ece3d2;\r\n  cursor: pointer;\r\n}\r\n.hideSuggesstionBox {\r\n  display: none;\r\n  z-index: 1;\r\n}\r\n.showSuggesstionBox {\r\n  display: block;\r\n  z-index: 1;\r\n}\r\n\r\ncaption {\r\n  text-transform: capitalize;\r\n  text-align: center;\r\n  caption-side: top;\r\n}\r\n\r\n/* thead {\r\n\tbackground-color: #627769;\r\n\ttext-transform: capitalize;\r\n}\r\n\r\ntbody tr:nth-child(odd) {\r\n\tbackground-color: #d9e9f7;\r\n}\r\n  \r\ntbody tr:nth-child(even) {\r\n\tbackground-color: #FFFFFF;\r\n} */\r\n\r\n#trnsResTbl {\r\n  margin: 10px;\r\n  border-collapse: collapse;\r\n}\r\n\r\n#trnsResTbl table {\r\n  margin: 5px;\r\n  background-color: #ffffff;\r\n}\r\n\r\n#trnsResTbl table caption {\r\n  visibility: hidden;\r\n}\r\n\r\n#trnsResTbl table thead {\r\n  background-color: #ccd8b9;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(odd) {\r\n  background-color: #c5e9e3;\r\n}\r\n\r\n#trnsResTbl table tbody tr:nth-child(even) {\r\n  background-color: #f8e4e4;\r\n}\r\n\r\ntd,\r\n#trnsResTbl td {\r\n  border: 0px;\r\n}\r\n',
+            ],
+            sourceRoot: '',
+          },
+        ]);
+
+        // exports
+
+        /***/
+      },
+      /* 35 */
       /*!*********************************************************************************************************!*\
   !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/compliancemanager.light.css ***!
   \*********************************************************************************************************/
@@ -3521,7 +3488,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 38 */
+      /* 36 */
       /*!********************************************************************************************************!*\
   !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/compliancemanager.dark.css ***!
   \********************************************************************************************************/
@@ -3554,7 +3521,30 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 39 */
+      /* 37 */
+      /*!*******************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \*******************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _inheritsLoose,
+          /* harmony export */
+        });
+        /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./setPrototypeOf.js */ 107
+        );
+
+        function _inheritsLoose(subClass, superClass) {
+          subClass.prototype = Object.create(superClass.prototype);
+          subClass.prototype.constructor = subClass;
+          (0, _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__['default'])(subClass, superClass);
+        }
+
+        /***/
+      },
+      /* 38 */
       /*!***************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/CSSTransition.js ***!
   \***************************************************************************************/
@@ -3566,7 +3556,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var PropTypes = _interopRequireWildcard(__webpack_require__(/*! prop-types */ 8));
 
-        var _addClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/addClass */ 40));
+        var _addClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/addClass */ 39));
 
         var _removeClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/removeClass */ 51));
 
@@ -3982,19 +3972,19 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 40 */
+      /* 39 */
       /*!*****************************************************!*\
   !*** ../node_modules/dom-helpers/class/addClass.js ***!
   \*****************************************************/
       /***/ (module, exports, __webpack_require__) => {
         'use strict';
 
-        var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 41);
+        var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 40);
 
         exports.__esModule = true;
         exports['default'] = addClass;
 
-        var _hasClass = _interopRequireDefault(__webpack_require__(/*! ./hasClass */ 42));
+        var _hasClass = _interopRequireDefault(__webpack_require__(/*! ./hasClass */ 41));
 
         function addClass(element, className) {
           if (element.classList) element.classList.add(className);
@@ -4008,7 +3998,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 41 */
+      /* 40 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
   \***********************************************************************/
@@ -4027,7 +4017,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
-      /* 42 */
+      /* 41 */
       /*!*****************************************************!*\
   !*** ../node_modules/dom-helpers/class/hasClass.js ***!
   \*****************************************************/
@@ -4047,6 +4037,16 @@ PERFORMANCE OF THIS SOFTWARE.
 
         /***/
       },
+      /* 42 */
+      /*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+      /***/ (module) => {
+        'use strict';
+        module.exports = __WEBPACK_EXTERNAL_MODULE__42__;
+
+        /***/
+      },
       /* 43 */
       /*!*******************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/ReplaceTransition.js ***!
@@ -4061,7 +4061,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _react = _interopRequireDefault(__webpack_require__(/*! react */ 0));
 
-        var _reactDom = __webpack_require__(/*! react-dom */ 27);
+        var _reactDom = __webpack_require__(/*! react-dom */ 42);
 
         var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 21));
 
@@ -4241,11 +4241,11 @@ PERFORMANCE OF THIS SOFTWARE.
         var utils = __webpack_require__(/*! ./../utils */ 3);
         var settle = __webpack_require__(/*! ./../core/settle */ 63);
         var cookies = __webpack_require__(/*! ./../helpers/cookies */ 64);
-        var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 30);
+        var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 27);
         var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ 65);
         var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 68);
         var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 69);
-        var createError = __webpack_require__(/*! ../core/createError */ 32);
+        var createError = __webpack_require__(/*! ../core/createError */ 29);
 
         module.exports = function xhrAdapter(config) {
           return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -4517,8 +4517,8 @@ PERFORMANCE OF THIS SOFTWARE.
         var ReactIs = __webpack_require__(/*! react-is */ 47);
         var assign = __webpack_require__(/*! object-assign */ 49);
 
-        var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 25);
-        var has = __webpack_require__(/*! ./lib/has */ 26);
+        var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 23);
+        var has = __webpack_require__(/*! ./lib/has */ 24);
         var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ 50);
 
         var printWarning = function () {};
@@ -5410,9 +5410,9 @@ object-assign
         var printWarning = function () {};
 
         if (true) {
-          var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 25);
+          var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 23);
           var loggedTypeFailures = {};
-          var has = __webpack_require__(/*! ./lib/has */ 26);
+          var has = __webpack_require__(/*! ./lib/has */ 24);
 
           printWarning = function (text) {
             var message = 'Warning: ' + text;
@@ -5571,7 +5571,7 @@ object-assign
 
         var _react = _interopRequireDefault(__webpack_require__(/*! react */ 0));
 
-        var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ 27));
+        var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ 42));
 
         var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ 53);
 
@@ -6453,7 +6453,7 @@ object-assign
   \******************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         var content = __webpack_require__(
-          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./table.css */ 36
+          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./table.css */ 33
         );
 
         if (typeof content === 'string') content = [[module.id, content, '']];
@@ -6586,9 +6586,9 @@ object-assign
         'use strict';
 
         var utils = __webpack_require__(/*! ./utils */ 3);
-        var bind = __webpack_require__(/*! ./helpers/bind */ 29);
+        var bind = __webpack_require__(/*! ./helpers/bind */ 26);
         var Axios = __webpack_require__(/*! ./core/Axios */ 58);
-        var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ 34);
+        var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ 31);
         var defaults = __webpack_require__(/*! ./defaults */ 16);
 
         /**
@@ -6622,9 +6622,9 @@ object-assign
         };
 
         // Expose Cancel & CancelToken
-        axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 35);
+        axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 32);
         axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 71);
-        axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 33);
+        axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 30);
 
         // Expose all/spread
         axios.all = function all(promises) {
@@ -6650,10 +6650,10 @@ object-assign
         'use strict';
 
         var utils = __webpack_require__(/*! ./../utils */ 3);
-        var buildURL = __webpack_require__(/*! ../helpers/buildURL */ 30);
+        var buildURL = __webpack_require__(/*! ../helpers/buildURL */ 27);
         var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 59);
         var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 60);
-        var mergeConfig = __webpack_require__(/*! ./mergeConfig */ 34);
+        var mergeConfig = __webpack_require__(/*! ./mergeConfig */ 31);
         var validator = __webpack_require__(/*! ../helpers/validator */ 70);
 
         var validators = validator.validators;
@@ -6876,7 +6876,7 @@ object-assign
 
         var utils = __webpack_require__(/*! ./../utils */ 3);
         var transformData = __webpack_require__(/*! ./transformData */ 61);
-        var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 33);
+        var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 30);
         var defaults = __webpack_require__(/*! ../defaults */ 16);
 
         /**
@@ -7007,7 +7007,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var createError = __webpack_require__(/*! ./createError */ 32);
+        var createError = __webpack_require__(/*! ./createError */ 29);
 
         /**
          * Resolve or reject a Promise based on response status.
@@ -7429,7 +7429,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var Cancel = __webpack_require__(/*! ./Cancel */ 35);
+        var Cancel = __webpack_require__(/*! ./Cancel */ 32);
 
         /**
          * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -7547,7 +7547,7 @@ object-assign
   \*******************************************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         var content = __webpack_require__(
-          /*! !!../../../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./QueryPanel.css */ 23
+          /*! !!../../../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./QueryPanel.css */ 34
         );
 
         if (typeof content === 'string') content = [[module.id, content, '']];
@@ -20400,7 +20400,7 @@ object-assign
   \*****************************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         var content = __webpack_require__(
-          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./compliancemanager.light.css */ 37
+          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./compliancemanager.light.css */ 35
         );
 
         if (typeof content === 'string') content = [[module.id, content, '']];
@@ -20428,7 +20428,7 @@ object-assign
   \****************************************/
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         var content = __webpack_require__(
-          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./compliancemanager.dark.css */ 38
+          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./compliancemanager.dark.css */ 36
         );
 
         if (typeof content === 'string') content = [[module.id, content, '']];
@@ -23582,12 +23582,18 @@ object-assign
                   // This is not ideal, however unfortunately currently there is no supported way for updating the plugin state.
 
                   _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.locationService.reload();
-                  return [3 /*break*/, 3];
+                  return [
+                    3, /*break*/
+                    3,
+                  ];
 
                 case 2:
                   e_1 = _a.sent();
                   console.error('Error while updating the plugin', e_1);
-                  return [3 /*break*/, 3];
+                  return [
+                    3, /*break*/
+                    3,
+                  ];
 
                 case 3:
                   return [
@@ -24765,7 +24771,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 39));
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 38));
 
         var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 43));
 
@@ -25080,7 +25086,7 @@ object-assign
           /*! ../../img/file-export.png */ 22
         );
         /* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./../../components/table */ 28
+          /*! ./../../components/table */ 25
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../../constants */ 2
@@ -29245,7 +29251,7 @@ object-assign
           /*! ../../img/file-export.png */ 22
         );
         /* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./../../components/table */ 28
+          /*! ./../../components/table */ 25
         );
 
         var ComplianceRemediation =
@@ -30246,7 +30252,7 @@ object-assign
           /*! ../../components/Breadcrumbs */ 4
         );
         /* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./../../components/table */ 28
+          /*! ./../../components/table */ 25
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ../../constants */ 2
@@ -38038,7 +38044,7 @@ object-assign
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ 46);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 24);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 37);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_4__
@@ -39290,12 +39296,12 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 24);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 37);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ 0);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_1__
         );
-        /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ 27);
+        /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ 42);
         /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/ __webpack_require__.n(
           react_dom__WEBPACK_IMPORTED_MODULE_2__
         );
@@ -40084,7 +40090,7 @@ object-assign
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ 46);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 24);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 37);
         /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_4__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ 15);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ 0);
