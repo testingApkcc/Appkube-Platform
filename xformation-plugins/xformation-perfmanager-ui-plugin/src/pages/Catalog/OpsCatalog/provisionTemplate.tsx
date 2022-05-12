@@ -90,8 +90,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
 
     filterValues = (e: any) => {
         const { value } = e.target;
-        const { dashboards } = this.state;
-        let duplicatdashboards = JSON.parse(JSON.stringify(dashboards)) || [];
+        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data )) || [];
         let filtedValue: any = [];
         if (value) {
             for (let i = 0; i < duplicatdashboards.length; i++) {
