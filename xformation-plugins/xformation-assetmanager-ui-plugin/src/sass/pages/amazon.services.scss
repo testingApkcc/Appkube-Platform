@@ -600,6 +600,13 @@
               }
             }
           }
+
+          .data-table {
+            overflow: hidden;
+            overflow-y: auto;
+            max-height: 300px;
+          }
+
         }
 
         .d-flex {
