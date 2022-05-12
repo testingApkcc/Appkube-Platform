@@ -5,7 +5,6 @@ import googleCloudIcon from '../../../img/google-cloud-1.png';
 import acronisIcon from '../../../img/acronis.png';
 import { Filter } from './../filter';
 import { AwsProductCluster, AzureProductCluster, GoogleProductCluster, AwsDocumentManagement, GoogleDocumentManagement, AzureDocumentManagement, AwsLandingZone, AzureLandingZone, GoogleLandingZone, AwsProductEnclave, AzureProductEnclave, GoogleProductEnclave } from './ProvisionTemplateComponents';
-import { filter } from 'lodash';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
     componentMapping: any = {
@@ -29,6 +28,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             type: '',
             associatedCloud: '',
             dashboards: this.props.data || [],
+
             filterData: [
                 {
                     name: "Cloud",
@@ -45,6 +45,9 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         }
     }
 
+    componentDidMount() {
+        this.createFilterJson();
+    }
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
@@ -88,27 +91,6 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         })
     }
 
-    filterValues = (e: any) => {
-        const { value } = e.target;
-        const { dashboards } = this.state;
-        let duplicatdashboards = JSON.parse(JSON.stringify(dashboards)) || [];
-        let filtedValue: any = [];
-        if (value) {
-            for (let i = 0; i < duplicatdashboards.length; i++) {
-                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-                    filtedValue.push(duplicatdashboards[i])
-                }
-            }
-            this.setState({ dashboards: filtedValue });
-        }
-        else {
-            if (this.props.data && this.props.data.length > 0) {
-                this.setState({ dashboards: this.props.data });
-            }
-        }
-
-    }
-
     renderDashboards = (dashboards: any) => {
         let retData = []
         if (dashboards && dashboards.length > 0) {
@@ -147,12 +129,12 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                 }
             }
             if (retData.length === 0) {
-                retData.push(<div>No dashboard found for applied filter</div>)
+                retData.push(<div style={{paddingLeft: '20px'}}>No dashboard found for applied filter</div>)
             }
         }
         else {
             retData = [];
-            retData.push(<div>No Data Found</div>)
+            retData.push(<div style={{paddingLeft: '20px'}}>No Data Found</div>)
         }
         return retData
     }
@@ -163,6 +145,25 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         const isassociatedCloud = !selectedFilter['associatedCloud'] || (selectedFilter['associatedCloud'] && selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
         return isassociatedCreds && isassociatedCloud;
     };
+
+    filterValues = (e: any) => {
+        const { value } = e.target;
+        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data)) || [];
+        let filtedValue: any = [];
+        if (value) {
+            for (let i = 0; i < duplicatdashboards.length; i++) {
+                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                    filtedValue.push(duplicatdashboards[i])
+                }
+            }
+            this.setState({ dashboards: filtedValue });
+        }
+        else {
+            if (this.props.data && this.props.data.length > 0) {
+                this.setState({ dashboards: this.props.data });
+            }
+        }
+    }
 
     formFields = () => {
         const { view, dashboards } = this.state;

@@ -15,11 +15,6 @@ export class CloudDashboards extends React.Component<any, any>{
             view: 'grid',
             filterData: [
                 {
-                    name: "DataSource Type",
-                    key: "associatedDataSourceType",
-                    filter: [],
-                },
-                {
                     name: "Cloud",
                     key: "associatedCloud",
                     filter: [],
@@ -34,6 +29,16 @@ export class CloudDashboards extends React.Component<any, any>{
                     key: "associatedSLAType",
                     filter: [],
                 },
+                {
+                    name: "Element",
+                    key: "associatedCloudElementType",
+                    filter: [],
+                },
+                {
+                    name: "DataSource Type",
+                    key: "associatedDataSourceType",
+                    filter: [],
+                },
             ],
             selectedFilter: {},
         }
@@ -46,7 +51,7 @@ export class CloudDashboards extends React.Component<any, any>{
 
     createFilterJson = () => {
         let { dashboards, filterData } = this.state;
-        const filterKeys = ['associatedDataSourceType', 'associatedCloud', 'associatedDataType', 'associatedSLAType'];
+        const filterKeys = ['associatedDataSourceType', 'associatedCloudElementType', 'associatedCloud', 'associatedDataType', 'associatedSLAType'];
         const filteredData: any = {};
         for (let i = 0; i < dashboards.length; i++) {
             let dashboard = dashboards[i];
@@ -78,6 +83,7 @@ export class CloudDashboards extends React.Component<any, any>{
 
     onClickPreviewDashboard = (images: any) => {
         if (images && images.length > 0) {
+            this.previewDashboardPopupRef.current.setSliderIndex(0)
             this.previewDashboardPopupRef.current.setImages(images);
             this.previewDashboardPopupRef.current.setLink('');
             this.previewDashboardPopupRef.current.toggle();
@@ -92,8 +98,8 @@ export class CloudDashboards extends React.Component<any, any>{
         if (dashboards && dashboards.length > 0) {
             retData = [];
             for (let i = 0; i < dashboards.length; i++) {
-                const { id, name, description, images, associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud } = dashboards[i];
-                if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud)) {
+                const { id, name, description, images, associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud, associatedCloudElementType } = dashboards[i];
+                if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud, associatedCloudElementType)) {
                     retData.push(
                         <>
                             <div className={view === 'list' ? `blog-list-item box` : `box blog-grid-item`} key={id}>
@@ -162,15 +168,33 @@ export class CloudDashboards extends React.Component<any, any>{
         return retData
     }
 
-    hideDashboard = (associatedDataSourceType: any, associatedDataType: any, associatedSLAType: any, associatedCloud: any) => {
+    hideDashboard = (associatedDataSourceType: any, associatedDataType: any, associatedSLAType: any, associatedCloud: any, associatedCloudElementType: any) => {
         const { selectedFilter } = this.state;
         const isAssociatedDatasourceType = !selectedFilter['associatedDataSourceType'] || (selectedFilter['associatedDataSourceType'] && selectedFilter['associatedDataSourceType'].indexOf(associatedDataSourceType) !== -1);
         const isAssociatedDataType = !selectedFilter['associatedDataType'] || (selectedFilter['associatedDataType'] && selectedFilter['associatedDataType'].indexOf(associatedDataType) !== -1);
         const isAssociatedSLAType = !selectedFilter['associatedSLAType'] || (selectedFilter['associatedSLAType'] && selectedFilter['associatedSLAType'].indexOf(associatedSLAType) !== -1);
         const isCloud = !selectedFilter['associatedCloud'] || (selectedFilter['associatedCloud'] && selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
-        return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType && isCloud;
+        const isElement = !selectedFilter['associatedCloudElementType'] || (selectedFilter['associatedCloudElementType'] && selectedFilter['associatedCloudElementType'].indexOf(associatedCloudElementType) !== -1);
+        return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType && isCloud && isElement;
     };
-
+    filterValues = (e: any) => {
+        const { value } = e.target;
+        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data)) || [];
+        let filtedValue: any = [];
+        if (value) {
+            for (let i = 0; i < duplicatdashboards.length; i++) {
+                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                    filtedValue.push(duplicatdashboards[i])
+                }
+            }
+            this.setState({ dashboards: filtedValue });
+        }
+        else {
+            if (this.props.data && this.props.data.length > 0) {
+                this.setState({ dashboards: this.props.data });
+            }
+        }
+    }
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
@@ -181,6 +205,33 @@ export class CloudDashboards extends React.Component<any, any>{
         });
     }
 
+    formFields = () => {
+        const { view, dashboards } = this.state;
+        return (
+            <div className="catalogue-right-container">
+                <div className="templated-search">
+                    <div className="row">
+                        <div className="col-sm-10">
+                            <div className="search-box">
+                                <button className="search-button"><i className="fa fa-search"></i></button>
+                                <input type="text" onChange={(e) => this.filterValues(e)} placeholder="Search Template here" className="input" />
+                            </div>
+                        </div>
+                        <div className="col-sm-2">
+                            <div className="btnContainer">
+                                <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
+                                <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
+                    {this.renderDashboardsView(dashboards)}
+                </div>
+            </div>
+        )
+
+    }
     render() {
         const { dashboards, view, filterData } = this.state;
         return (
@@ -190,26 +241,7 @@ export class CloudDashboards extends React.Component<any, any>{
                         <Filter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
-                        <div className="catalogue-right-container">
-                            <div className="heading">
-                                <div className="row">
-                                    <div className="col-md-9 col-sm-12">
-                                        <h3>Catalogue</h3>
-                                        <p>A catalogue is collection of dashboards</p>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12">
-                                        <div className="btnContainer">
-                                            <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
-                                            <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
-                                {this.renderDashboardsView(dashboards)}
-                            </div>
-                        </div>
-
+                        {this.formFields()}
                     </div>
                 </div>
                 <PreviewDashboardPopup ref={this.previewDashboardPopupRef} images={[]} />
