@@ -2888,6 +2888,12 @@ a:hover {
   td:nth-child(3) {
   width: 5%;
 }
+.service-account-container .verify-inputs-section .configure-inputs-table .table-inner {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 210px;
+  display: block;
+}
 
 .service-account-container .dashboard-view-container {
   display: block;
