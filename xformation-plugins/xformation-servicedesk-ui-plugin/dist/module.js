@@ -5750,18 +5750,12 @@ PERFORMANCE OF THIS SOFTWARE.
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       return [
@@ -8830,18 +8824,12 @@ PERFORMANCE OF THIS SOFTWARE.
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       return [
@@ -9883,18 +9871,12 @@ PERFORMANCE OF THIS SOFTWARE.
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       _a.trys.push([3, 5, , 6]);
@@ -9926,18 +9908,12 @@ PERFORMANCE OF THIS SOFTWARE.
                     case 4:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 5:
                       err_2 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_2);
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 6:
                       return [
@@ -16170,18 +16146,12 @@ object-assign
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       return [
@@ -33402,18 +33372,12 @@ object-assign
                   // This is not ideal, however unfortunately currently there is no supported way for updating the plugin state.
 
                   _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.locationService.reload();
-                  return [
-                    3, /*break*/
-                    3,
-                  ];
+                  return [3 /*break*/, 3];
 
                 case 2:
                   e_1 = _a.sent();
                   console.error('Error while updating the plugin', e_1);
-                  return [
-                    3, /*break*/
-                    3,
-                  ];
+                  return [3 /*break*/, 3];
 
                 case 3:
                   return [
@@ -33999,18 +33963,12 @@ object-assign
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading ticket data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       _a.trys.push([3, 5, , 6]);
@@ -34032,18 +33990,12 @@ object-assign
                     case 4:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 5:
                       err_2 = _a.sent();
                       console.log('Loading ticketing data failed. Error: ', err_2);
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 6:
                       _a.trys.push([6, 8, , 9]);
@@ -34065,18 +34017,12 @@ object-assign
                     case 7:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        9,
-                      ];
+                      return [3 /*break*/, 9];
 
                     case 8:
                       err_3 = _a.sent();
                       console.log('Loading top performer data failed. Error: ', err_3);
-                      return [
-                        3, /*break*/
-                        9,
-                      ];
+                      return [3 /*break*/, 9];
 
                     case 9:
                       _a.trys.push([9, 11, , 12]);
@@ -34120,18 +34066,12 @@ object-assign
                     case 10:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        12,
-                      ];
+                      return [3 /*break*/, 12];
 
                     case 11:
                       err_4 = _a.sent();
                       console.log('Loading Bar stat data failed. Error: ', err_4);
-                      return [
-                        3, /*break*/
-                        12,
-                      ];
+                      return [3 /*break*/, 12];
 
                     case 12:
                       return [
@@ -40716,18 +40656,12 @@ object-assign
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading Ticket data failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -40794,18 +40728,12 @@ object-assign
                       case 2:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          4,
-                        ];
+                        return [3 /*break*/, 4];
 
                       case 3:
                         err_2 = _a.sent();
                         console.log('Loading Ticket data failed. Error: ', err_2);
-                        return [
-                          3, /*break*/
-                          4,
-                        ];
+                        return [3 /*break*/, 4];
 
                       case 4:
                         this.setState({
@@ -41283,18 +41211,12 @@ object-assign
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_3 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_3);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       _a.trys.push([3, 5, , 6]);
@@ -41326,18 +41248,12 @@ object-assign
                     case 4:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 5:
                       err_4 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_4);
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 6:
                       return [
@@ -42321,18 +42237,12 @@ object-assign
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading quick stat data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       _a.trys.push([3, 5, , 6]);
@@ -42389,18 +42299,12 @@ object-assign
                     case 4:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 5:
                       err_2 = _a.sent();
                       console.log('Loading Bar stat data failed. Error: ', err_2);
-                      return [
-                        3, /*break*/
-                        6,
-                      ];
+                      return [3 /*break*/, 6];
 
                     case 6:
                       return [
@@ -43523,18 +43427,12 @@ object-assign
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading contact data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       return [
@@ -44113,18 +44011,12 @@ object-assign
                     case 2:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        4,
-                      ];
+                      return [3 /*break*/, 4];
 
                     case 3:
                       err_1 = _a.sent();
                       console.log('Loading ticket data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        4,
-                      ];
+                      return [3 /*break*/, 4];
 
                     case 4:
                       _a.trys.push([4, 6, , 7]);
@@ -44155,18 +44047,12 @@ object-assign
                     case 5:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        7,
-                      ];
+                      return [3 /*break*/, 7];
 
                     case 6:
                       err_2 = _a.sent();
                       console.log('Loading agent data failed. Error: ', err_2);
-                      return [
-                        3, /*break*/
-                        7,
-                      ];
+                      return [3 /*break*/, 7];
 
                     case 7:
                       _a.trys.push([7, 9, , 10]);
@@ -44199,18 +44085,12 @@ object-assign
                     case 8:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        10,
-                      ];
+                      return [3 /*break*/, 10];
 
                     case 9:
                       err_3 = _a.sent();
                       console.log('Loading contact data failed. Error: ', err_3);
-                      return [
-                        3, /*break*/
-                        10,
-                      ];
+                      return [3 /*break*/, 10];
 
                     case 10:
                       _a.trys.push([10, 12, , 13]);
@@ -44241,18 +44121,12 @@ object-assign
                     case 11:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        13,
-                      ];
+                      return [3 /*break*/, 13];
 
                     case 12:
                       err_4 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_4);
-                      return [
-                        3, /*break*/
-                        13,
-                      ];
+                      return [3 /*break*/, 13];
 
                     case 13:
                       return [
@@ -45103,18 +44977,12 @@ object-assign
                     case 1:
                       _a.sent();
 
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 2:
                       err_1 = _a.sent();
                       console.log('Loading company data failed. Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        3,
-                      ];
+                      return [3 /*break*/, 3];
 
                     case 3:
                       return [

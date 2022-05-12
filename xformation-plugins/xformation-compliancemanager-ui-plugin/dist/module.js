@@ -23582,18 +23582,12 @@ object-assign
                   // This is not ideal, however unfortunately currently there is no supported way for updating the plugin state.
 
                   _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.locationService.reload();
-                  return [
-                    3, /*break*/
-                    3,
-                  ];
+                  return [3 /*break*/, 3];
 
                 case 2:
                   e_1 = _a.sent();
                   console.error('Error while updating the plugin', e_1);
-                  return [
-                    3, /*break*/
-                    3,
-                  ];
+                  return [3 /*break*/, 3];
 
                 case 3:
                   return [

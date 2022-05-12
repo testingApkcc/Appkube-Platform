@@ -486,6 +486,7 @@
                     width: 6%;
                     text-align: right;
                     float: right;
+                    position: relative;
 
                     .edit-btn {
                         border: none;
@@ -501,6 +502,10 @@
                             margin-left: 2px;
                             margin-right: 2px;
                         }
+                    }
+
+                    .open-create-menu {
+                        right: 0;
                     }
                 }
             }
@@ -573,6 +578,7 @@
                     width: 6%;
                     float: right;
                     text-align: right;
+                    position: relative;
 
                     .edit-btn {
                         border: none;
@@ -588,6 +594,11 @@
                             margin-left: 2px;
                             margin-right: 2px;
                         }
+                    }
+
+                    .open-create-menu {
+                        right: 0;
+                        width: 150px;
                     }
                 }
             }
