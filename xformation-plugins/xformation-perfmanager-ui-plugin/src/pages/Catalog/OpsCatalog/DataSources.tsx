@@ -35,7 +35,7 @@ export class DataSources extends React.Component<any, any>{
         this.previewDashboardPopupRef = React.createRef();
     }
     componentDidMount() {
-            this.createFilterJson();
+        this.createFilterJson();
     }
 
     createFilterJson = () => {
@@ -176,7 +176,7 @@ export class DataSources extends React.Component<any, any>{
                                     :
                                     <>
                                         <div className="module-card-content">
-                                        <div className="image">
+                                            <div className="image">
                                                 <img src={images && images.length > 0 ? images[0] : this.backupUrl} alt={name} />
                                             </div>
                                             <h3 className="title is-block">{name}</h3>
@@ -213,7 +213,24 @@ export class DataSources extends React.Component<any, any>{
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
-
+    filterValues = (e: any) => {
+        const { value } = e.target;
+        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data)) || [];
+        let filtedValue: any = [];
+        if (value) {
+            for (let i = 0; i < duplicatdashboards.length; i++) {
+                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                    filtedValue.push(duplicatdashboards[i])
+                }
+            }
+            this.setState({ dashboards: filtedValue });
+        }
+        else {
+            if (this.props.data && this.props.data.length > 0) {
+                this.setState({ dashboards: this.props.data });
+            }
+        }
+    }
     onChangeFilter = (filters: any) => {
         this.setState({
             selectedFilter: filters,
@@ -227,9 +244,39 @@ export class DataSources extends React.Component<any, any>{
         const isassociatedCreds = !selectedFilter['associatedCreds'] || (selectedFilter['associatedCreds'] && selectedFilter['associatedCreds'].indexOf(associatedCreds) !== -1);
         return isassociatedApplicationLocation && isassociatedCloud && isassociatedCreds;
     };
+    formFields = () => {
+        const { view, dashboards } = this.state;
+        return (
+            <div className="catalogue-right-container">
+                <div>
+                    Select a template to start with. You can use filters or the seach box the scope.
+                </div>
+                <div className="templated-search">
+                    <div className="row">
+                        <div className="col-sm-10">
+                            <div className="search-box">
+                                <button className="search-button"><i className="fa fa-search"></i></button>
+                                <input type="text" onChange={(e) => this.filterValues(e)} placeholder="Search Template here" className="input" />
+                            </div>
+                        </div>
+                        <div className="col-sm-2">
+                            <div className="btnContainer">
+                                <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
+                                <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
+                    {this.renderDashboardsView(dashboards)}
+                </div>
+            </div>
+        )
+
+    }
 
     render() {
-        const { dashboards, images, view, filterData } = this.state;
+        const { images, filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">
@@ -237,25 +284,7 @@ export class DataSources extends React.Component<any, any>{
                         <Filter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
-                        <div className="catalogue-right-container">
-                            <div className="heading">
-                                <div className="row">
-                                    <div className="col-md-9 col-sm-12">
-                                        <h3>Catalogue</h3>
-                                        <p>A catalogue is collection of dashboards</p>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12">
-                                        <div className="btnContainer">
-                                            <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
-                                            <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
-                                {this.renderDashboardsView(dashboards)}
-                            </div>
-                        </div>
+                        {this.formFields()}
                     </div>
                 </div>
                 <PreviewDashboardPopup ref={this.previewDashboardPopupRef} images={images} />
