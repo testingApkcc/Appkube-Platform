@@ -2544,7 +2544,7 @@ a:hover {
   color: red;
 }
 .service-account-container .services-displayed-here .services-text .status.yellow {
-  color: yellow;
+  color: #8b8b08;
 }
 .service-account-container .services-displayed-here .services-text .status.orange {
   color: orange;

@@ -233,7 +233,7 @@ export class CloudDashboards extends React.Component<any, any>{
 
     }
     render() {
-        const { dashboards, view, filterData } = this.state;
+        const { filterData } = this.state;
         return (
             <div className="catalogue-inner-tabs-container">
                 <div className="row">

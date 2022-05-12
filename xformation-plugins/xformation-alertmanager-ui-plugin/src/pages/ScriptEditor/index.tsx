@@ -74,7 +74,7 @@ export class ScriptEditor extends React.Component<any, any> {
                 lineNumbers: true,
                 theme: 'material',
               }}
-              onBeforeChange={(value: any) => {
+              onBeforeChange={(editor: any, data: any, value: any) => {
                 this.setState({ codeEditorValue: value });
               }}
             />
