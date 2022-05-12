@@ -31,6 +31,12 @@ export class PreviewDashboardPopup extends React.Component<any, any> {
         });
     };
 
+    setSliderIndex = (sliderIndex: any) => {
+        this.setState({
+            sliderIndex
+        });
+    };
+
     render() {
         const state = this.state;
         const { images, sliderIndex } = state;

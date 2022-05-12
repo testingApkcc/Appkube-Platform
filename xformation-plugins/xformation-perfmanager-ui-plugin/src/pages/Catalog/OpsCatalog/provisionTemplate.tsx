@@ -5,7 +5,6 @@ import googleCloudIcon from '../../../img/google-cloud-1.png';
 import acronisIcon from '../../../img/acronis.png';
 import { Filter } from './../filter';
 import { AwsProductCluster, AzureProductCluster, GoogleProductCluster, AwsDocumentManagement, GoogleDocumentManagement, AzureDocumentManagement, AwsLandingZone, AzureLandingZone, GoogleLandingZone, AwsProductEnclave, AzureProductEnclave, GoogleProductEnclave } from './ProvisionTemplateComponents';
-import { filter } from 'lodash';
 
 export class ProvisioningTemplates extends React.Component<any, any>{
     componentMapping: any = {
@@ -29,6 +28,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
             type: '',
             associatedCloud: '',
             dashboards: this.props.data || [],
+
             filterData: [
                 {
                     name: "Cloud",
@@ -45,6 +45,9 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         }
     }
 
+    componentDidMount() {
+        this.createFilterJson();
+    }
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
@@ -86,26 +89,6 @@ export class ProvisioningTemplates extends React.Component<any, any>{
         this.setState({
             filterData
         })
-    }
-
-    filterValues = (e: any) => {
-        const { value } = e.target;
-        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data )) || [];
-        let filtedValue: any = [];
-        if (value) {
-            for (let i = 0; i < duplicatdashboards.length; i++) {
-                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-                    filtedValue.push(duplicatdashboards[i])
-                }
-            }
-            this.setState({ dashboards: filtedValue });
-        }
-        else {
-            if (this.props.data && this.props.data.length > 0) {
-                this.setState({ dashboards: this.props.data });
-            }
-        }
-
     }
 
     renderDashboards = (dashboards: any) => {
@@ -175,7 +158,7 @@ export class ProvisioningTemplates extends React.Component<any, any>{
                         <div className="col-sm-10">
                             <div className="search-box">
                                 <button className="search-button"><i className="fa fa-search"></i></button>
-                                <input type="text" onChange={(e) => this.filterValues(e)} placeholder="Search Template here" className="input" />
+                                <input type="text" placeholder="Search Template here" className="input" />
                             </div>
                         </div>
                         <div className="col-sm-2">

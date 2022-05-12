@@ -78,6 +78,7 @@ export class CloudDashboards extends React.Component<any, any>{
 
     onClickPreviewDashboard = (images: any) => {
         if (images && images.length > 0) {
+            this.previewDashboardPopupRef.current.setSliderIndex(0)
             this.previewDashboardPopupRef.current.setImages(images);
             this.previewDashboardPopupRef.current.setLink('');
             this.previewDashboardPopupRef.current.toggle();
