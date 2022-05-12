@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -17,37 +16,6 @@ import { config } from '../../config';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
-// const barOptions: any = {
-//   scales: {
-//     yAxes: [
-//       {
-//         ticks: {
-//           fontColor: 'white',
-//           stepSize: 10,
-//           beginAtZero: true,
-//         },
-//       },
-//     ],
-//     xAxes: [
-//       {
-//         ticks: {
-//           fontColor: 'white',
-//           stepSize: 10,
-//           callback: function (value: any) {
-//             let str = value.split('-', 3);
-//             let newData = str[1] + '-' + str[2];
-//             return newData;
-//           },
-//         },
-//       },
-//     ],
-//   },
-//   legend: {
-//     display: false,
-//   },
-//   responsive: true,
-//   maintainAspectRatio: false,
-// };
 const barchart: any = {
   labels: ['01', '02', '03', '04', '05', '06'],
   datasets: [
@@ -142,7 +110,6 @@ export class CurrentAvrageWaitTimeChart extends React.Component<any, any> {
   }
 
   render() {
-    //const { barchart, barOptions } = this.state;
     return (
       <div className="" style={{ width: '100%', height: '100%' }}>
         <Bar data={barchart} options={barOptions} />
