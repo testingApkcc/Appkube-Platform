@@ -177,7 +177,24 @@ export class CloudDashboards extends React.Component<any, any>{
         const isElement = !selectedFilter['associatedCloudElementType'] || (selectedFilter['associatedCloudElementType'] && selectedFilter['associatedCloudElementType'].indexOf(associatedCloudElementType) !== -1);
         return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType && isCloud && isElement;
     };
-
+    filterValues = (e: any) => {
+        const { value } = e.target;
+        let duplicatdashboards = JSON.parse(JSON.stringify(this.props.data)) || [];
+        let filtedValue: any = [];
+        if (value) {
+            for (let i = 0; i < duplicatdashboards.length; i++) {
+                if (duplicatdashboards[i].name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                    filtedValue.push(duplicatdashboards[i])
+                }
+            }
+            this.setState({ dashboards: filtedValue });
+        }
+        else {
+            if (this.props.data && this.props.data.length > 0) {
+                this.setState({ dashboards: this.props.data });
+            }
+        }
+    }
     dashboardsView = (type: any) => {
         this.setState({ view: type })
     }
@@ -188,6 +205,36 @@ export class CloudDashboards extends React.Component<any, any>{
         });
     }
 
+    formFields = () => {
+        const { view, dashboards } = this.state;
+        return (
+            <div className="catalogue-right-container">
+                <div>
+                    Select a template to start with. You can use filters or the seach box the scope.
+                </div>
+                <div className="templated-search">
+                    <div className="row">
+                        <div className="col-sm-10">
+                            <div className="search-box">
+                                <button className="search-button"><i className="fa fa-search"></i></button>
+                                <input type="text" onChange={(e) => this.filterValues(e)} placeholder="Search Template here" className="input" />
+                            </div>
+                        </div>
+                        <div className="col-sm-2">
+                            <div className="btnContainer">
+                                <button className={view == 'grid' ? "btn btn-grid btn-active" : "btn btn-grid"} onClick={() => this.dashboardsView('grid')}><i className="fa fa-th-large"></i></button>
+                                <button className={view == 'list' ? "btn btn-list btn-active" : "btn btn-list"} onClick={() => this.dashboardsView('list')}><i className="fa fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
+                    {this.renderDashboardsView(dashboards)}
+                </div>
+            </div>
+        )
+
+    }
     render() {
         const { dashboards, view, filterData } = this.state;
         return (
@@ -197,7 +244,7 @@ export class CloudDashboards extends React.Component<any, any>{
                         <Filter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
                     </div>
                     <div className="col-lg-9 col-md-9 col-sm-12 col-l-p">
-                        <div className="catalogue-right-container">
+                        {/* <div className="catalogue-right-container">
                             <div className="heading">
                                 <div className="row">
                                     <div className="col-md-9 col-sm-12">
@@ -215,7 +262,8 @@ export class CloudDashboards extends React.Component<any, any>{
                             <div className={view === 'grid' ? "catalogue-boxes grid" : "catalogue-boxes list"}>
                                 {this.renderDashboardsView(dashboards)}
                             </div>
-                        </div>
+                        </div> */}
+                        {this.formFields()}
 
                     </div>
                 </div>
