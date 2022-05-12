@@ -15,11 +15,6 @@ export class CloudDashboards extends React.Component<any, any>{
             view: 'grid',
             filterData: [
                 {
-                    name: "DataSource Type",
-                    key: "associatedDataSourceType",
-                    filter: [],
-                },
-                {
                     name: "Cloud",
                     key: "associatedCloud",
                     filter: [],
@@ -34,6 +29,16 @@ export class CloudDashboards extends React.Component<any, any>{
                     key: "associatedSLAType",
                     filter: [],
                 },
+                {
+                    name: "Element",
+                    key: "associatedCloudElementType",
+                    filter: [],
+                },
+                {
+                    name: "DataSource Type",
+                    key: "associatedDataSourceType",
+                    filter: [],
+                },
             ],
             selectedFilter: {},
         }
@@ -46,7 +51,7 @@ export class CloudDashboards extends React.Component<any, any>{
 
     createFilterJson = () => {
         let { dashboards, filterData } = this.state;
-        const filterKeys = ['associatedDataSourceType', 'associatedCloud', 'associatedDataType', 'associatedSLAType'];
+        const filterKeys = ['associatedDataSourceType', 'associatedCloudElementType', 'associatedCloud', 'associatedDataType', 'associatedSLAType'];
         const filteredData: any = {};
         for (let i = 0; i < dashboards.length; i++) {
             let dashboard = dashboards[i];
@@ -93,8 +98,8 @@ export class CloudDashboards extends React.Component<any, any>{
         if (dashboards && dashboards.length > 0) {
             retData = [];
             for (let i = 0; i < dashboards.length; i++) {
-                const { id, name, description, images, associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud } = dashboards[i];
-                if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud)) {
+                const { id, name, description, images, associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud, associatedCloudElementType } = dashboards[i];
+                if (this.hideDashboard(associatedDataSourceType, associatedDataType, associatedSLAType, associatedCloud, associatedCloudElementType)) {
                     retData.push(
                         <>
                             <div className={view === 'list' ? `blog-list-item box` : `box blog-grid-item`} key={id}>
@@ -163,13 +168,14 @@ export class CloudDashboards extends React.Component<any, any>{
         return retData
     }
 
-    hideDashboard = (associatedDataSourceType: any, associatedDataType: any, associatedSLAType: any, associatedCloud: any) => {
+    hideDashboard = (associatedDataSourceType: any, associatedDataType: any, associatedSLAType: any, associatedCloud: any, associatedCloudElementType: any) => {
         const { selectedFilter } = this.state;
         const isAssociatedDatasourceType = !selectedFilter['associatedDataSourceType'] || (selectedFilter['associatedDataSourceType'] && selectedFilter['associatedDataSourceType'].indexOf(associatedDataSourceType) !== -1);
         const isAssociatedDataType = !selectedFilter['associatedDataType'] || (selectedFilter['associatedDataType'] && selectedFilter['associatedDataType'].indexOf(associatedDataType) !== -1);
         const isAssociatedSLAType = !selectedFilter['associatedSLAType'] || (selectedFilter['associatedSLAType'] && selectedFilter['associatedSLAType'].indexOf(associatedSLAType) !== -1);
         const isCloud = !selectedFilter['associatedCloud'] || (selectedFilter['associatedCloud'] && selectedFilter['associatedCloud'].indexOf(associatedCloud) !== -1);
-        return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType && isCloud;
+        const isElement = !selectedFilter['associatedCloudElementType'] || (selectedFilter['associatedCloudElementType'] && selectedFilter['associatedCloudElementType'].indexOf(associatedCloudElementType) !== -1);
+        return isAssociatedDatasourceType && isAssociatedDataType && isAssociatedSLAType && isCloud && isElement;
     };
 
     dashboardsView = (type: any) => {
