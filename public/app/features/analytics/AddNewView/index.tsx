@@ -169,12 +169,21 @@ class AddNewView extends React.Component<any, any> {
         const folderList = JSON.parse(JSON.stringify(folderArray));
         const dashboardsUids = dashboards.map((dashboard: any) => dashboard.uid);
         folderList.forEach((folder: any) => {
+          let count = 0;
           folder.subData.forEach((dashboard: any) => {
             if (dashboardsUids.indexOf(dashboard.uid) !== -1) {
               dashboard.checkValue = true;
               dashbaordTab.push(dashboard.title);
             }
+            if (dashboard.checkValue === true) {
+              count++;
+            }
           });
+          if (count === 0) {
+            folder.checkValueStatus = false;
+          } else if (count === folder.subData.length) {
+            folder.checkValueStatus = true;
+          }
         });
         selectedDashboards.push(dashbaordTab);
         tabs.push({
