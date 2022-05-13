@@ -53,7 +53,7 @@ export class Monitor extends React.Component<any, any>{
             },
             {
                 name: "Verify and save",
-                component: () => <VerifyAndSave ref={this.verifyAndSaveRef} {...this.props} disabledButton={this.disabledButton} />
+                component: () => <VerifyAndSave ref={this.verifyAndSaveRef} {...this.props} disableSubmitButton={this.disableSubmitButton} />
             }
         ];
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
@@ -196,9 +196,11 @@ export class Monitor extends React.Component<any, any>{
             }
         });
     };
-disabledButton=(value:any)=>{
-this.setState({isLoading:value});
-}
+
+    disableSubmitButton = (value: any) => {
+        this.setState({ isLoading: value });
+    }
+
     sendViewJSON = (responseArray: any) => {
         const { apiKey, serviceData } = this.props;
         const serviceId = serviceData.id;
@@ -278,7 +280,7 @@ this.setState({isLoading:value});
         }
         this.setState({
             dashboardData,
-            isLoading:false,
+            isLoading: false,
         });
         if (step === 1) {
             this.enableDashboardRef.current.setDashboardData(dashboardData);
