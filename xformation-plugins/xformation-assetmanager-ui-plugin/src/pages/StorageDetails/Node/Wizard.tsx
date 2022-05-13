@@ -66,7 +66,8 @@ export class Wizard extends React.Component<any, any> {
 
   render() {
     const { currentStep } = this.state;
-    const { steps } = this.props;
+    const { steps, isDisabled } = this.props;
+    // console.log(isDisabled);
     return (
       <div className="wizard-container">
         <div className="wizard-step-line-container">
@@ -95,8 +96,9 @@ export class Wizard extends React.Component<any, any> {
             )}
             {currentStep >= steps.length - 1 && (
               <button
+              disabled={isDisabled ? true : false}
                 onClick={this.props.submitPage}
-                className="asset-blue-button m-r-0 m-b-0"
+                className={isDisabled?"asset-disabled":"asset-blue-button m-r-0 m-b-0"}
               >
                 Submit
               </button>

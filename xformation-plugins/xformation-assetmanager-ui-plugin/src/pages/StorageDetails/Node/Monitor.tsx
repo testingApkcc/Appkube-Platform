@@ -53,7 +53,7 @@ export class Monitor extends React.Component<any, any>{
             },
             {
                 name: "Verify and save",
-                component: () => <VerifyAndSave ref={this.verifyAndSaveRef} {...this.props} />
+                component: () => <VerifyAndSave ref={this.verifyAndSaveRef} {...this.props} disabledButton={this.disabledButton} />
             }
         ];
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
@@ -96,7 +96,6 @@ export class Monitor extends React.Component<any, any>{
             }
         }
     }
-
     onSubmit = async () => {
         if (this.state.isLoading) {
             this.setState({
@@ -197,7 +196,9 @@ export class Monitor extends React.Component<any, any>{
             }
         });
     };
-
+disabledButton=(value:any)=>{
+this.setState({isLoading:value});
+}
     sendViewJSON = (responseArray: any) => {
         const { apiKey, serviceData } = this.props;
         const serviceId = serviceData.id;
@@ -271,12 +272,13 @@ export class Monitor extends React.Component<any, any>{
                 isAlertOpen: true,
                 message: 'Please select the dashboard',
                 severity: 'warning',
-                isSuccess: false
+                isSuccess: false,
             });
             return;
         }
         this.setState({
-            dashboardData
+            dashboardData,
+            isLoading:false,
         });
         if (step === 1) {
             this.enableDashboardRef.current.setDashboardData(dashboardData);
@@ -298,7 +300,7 @@ export class Monitor extends React.Component<any, any>{
     };
 
     render() {
-        const { isAlertOpen, severity, message, iFrameLoaded, viewJson, activeDashboard, presentView } = this.state;
+        const { isAlertOpen, severity, message, iFrameLoaded, viewJson, activeDashboard, presentView, isLoading } = this.state;
         let activeDB = null;
         if (viewJson && viewJson[activeDashboard]) {
             activeDB = viewJson[activeDashboard];
@@ -345,7 +347,7 @@ export class Monitor extends React.Component<any, any>{
                 }
                 {
                     presentView === VIEW_TYPE.SHOW_WIZARD &&
-                    <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} nextClick={this.nextClick} />
+                    <Wizard ref={this.wizardRef} steps={this.steps} submitPage={this.onSubmit} nextClick={this.nextClick} isDisabled={isLoading} />
                 }
 
             </>

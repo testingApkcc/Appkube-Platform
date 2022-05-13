@@ -16,7 +16,9 @@ export class VerifyAndSave extends React.Component<any, any>{
         };
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
-
+   componentDidMount(){
+    this.props.disabledButton(true);
+     }
     setDashboardData = (data: any) => {
         const selectedDashboards = this.manipulateDashboardData(data);
         this.setState({
@@ -98,6 +100,7 @@ export class VerifyAndSave extends React.Component<any, any>{
     }
 
     retriveDashboardJSONData = (dashboards: any) => {
+        const {disabledButton}=this.props;
         const accountId = CommonService.getParameterByName("accountId", window.location.href);
         const dashboardJSON: any = [];
         if (dashboards.length > 0) {
@@ -111,16 +114,19 @@ export class VerifyAndSave extends React.Component<any, any>{
                 const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${associatedDataSourceType}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
                 try {
                     RestService.getData(url, null, null).then((res: any) => {
+                        disabledButton(false);
                         dashboardJSON.push({
                             dashboardCatalogueId: id,
                             ...res
                         });
                         this.checkIfAllDashboardLoaded(dashboardJSON);
                     }, (err: any) => {
+                        disabledButton(true);
                         dashboardJSON.push(null);
                         this.checkIfAllDashboardLoaded(dashboardJSON);
                     });
                 } catch (err) {
+                    disabledButton(true);
                     console.log('Loading aws regions failed. Error: ', err);
                     dashboardJSON.push(null);
                     this.checkIfAllDashboardLoaded(dashboardJSON);
