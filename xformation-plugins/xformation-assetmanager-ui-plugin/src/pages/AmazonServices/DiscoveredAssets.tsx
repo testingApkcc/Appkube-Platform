@@ -602,34 +602,36 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { accountId } = this.state;
     if (list) {
       retData = list.map((service: any) => {
-        return (<div className="tbody">
-          <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}`}>{service.name}</Link></div>
-          <div className="performance">
-            <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
-              <i className="fa fa-check"></i>
+        return (
+          <div className="tbody">
+            <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}`}>{service.name}</Link></div>
+            <div className="performance">
+              <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
+                <i className="fa fa-check"></i>
+              </div>
+            </div>
+            <div className="availability">
+              <div className={`status ${this.getPerformanceClass(service.availability.score)}`}>
+                <i className="fa fa-check"></i>
+              </div>
+            </div>
+            <div className="security">
+              <div className={`status ${this.getPerformanceClass(service.security.score)}`}>
+                <i className="fa fa-check"></i>
+              </div>
+            </div>
+            <div className="data-protection">
+              <div className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
+                <i className="fa fa-check"></i>
+              </div>
+            </div>
+            <div className="user-exp">
+              <div className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
+                <i className="fa fa-check"></i>
+              </div>
             </div>
           </div>
-          <div className="availability">
-            <div className={`status ${this.getPerformanceClass(service.availability.score)}`}>
-              <i className="fa fa-check"></i>
-            </div>
-          </div>
-          <div className="security">
-            <div className={`status ${this.getPerformanceClass(service.security.score)}`}>
-              <i className="fa fa-check"></i>
-            </div>
-          </div>
-          <div className="data-protection">
-            <div className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
-              <i className="fa fa-check"></i>
-            </div>
-          </div>
-          <div className="user-exp">
-            <div className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
-              <i className="fa fa-check"></i>
-            </div>
-          </div>
-        </div>);
+        );
       });
     }
     return retData;
@@ -690,32 +692,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
     return (
       <div className='department-wise-container'>
         <div className='common-container'>
-          {/* <div className="Filters-box">
-          <p>Select and add Filters</p>
-          <span><i className="fa fa-angle-down" aria-hidden="true"></i></span>
-        </div> */}
-          <div style={{marginBottom: '20px'}}>
+          <div style={{ marginBottom: '20px' }}>
             <SelectCloudFilter filterJsonData={filterData} onChangeFilter={this.onChangeFilter} />
           </div>
-          {/* <div className="showing-export">
-          <div className="row d-flex justify-content-center">
-            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <div className="showing-heading">
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-              <div className="export-files">
-                <span><i className="fa fa-sign-out"></i></span>
-                <p>Export</p>
-              </div>
-            </div>
-            <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-              <div className="search-box form-group">
-                <input type="text" className="control-form" placeholder="Search" value="" /><button><i className="fa fa-search"></i></button>
-              </div>
-            </div>
-          </div>
-        </div> */}
           <div className="organisational-details">
             <div className="container-inner">
               <div className="organisational-data-table">

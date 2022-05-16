@@ -215,15 +215,6 @@ export class ServicesPerformance extends React.Component<any, any> {
                 <strong style={{ marginRight: "15px" }}>{serviceName.name}</strong>
                 <i className={serviceName.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
               </div>
-              {/* {index == 0 &&
-                <>
-                  <div className='td'>Performance</div>
-                  <div className='td'>Availability</div>
-                  <div className='td'>Security</div>
-                  <div className='td'>Data Protection</div>
-                  <div className='td'>User exp</div>
-                </>
-              } */}
             </div>
             {
               serviceName.tagList && serviceName.tagList.length > 0 ?

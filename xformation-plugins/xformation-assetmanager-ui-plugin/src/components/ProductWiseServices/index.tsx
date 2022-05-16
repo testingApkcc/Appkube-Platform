@@ -92,15 +92,6 @@ export class ProductWiseServices extends React.Component<any, any> {
                                 (subServices: any) => {
                                   serviceByType[subServices.tagName] = serviceByType[subServices.tagName] || 0;
                                   serviceByType[subServices.tagName] += subServices.serviceList ? subServices.serviceList.length : 0;
-                                  // if (subServices.serviceList) {
-                                  //   for (let d = 0; d < subServices.serviceList.length; d++) {
-                                  //     if (subServices.serviceList[d].hostingType == hostingType) {
-                                  //       val.deploymentEnvironmentList[b].hostingShow = true;
-                                  //     } else {
-                                  //       val.deploymentEnvironmentList[b].hostingShow = false;
-                                  //     }
-                                  //   }
-                                  // }
                                 }, 0);
                             }
                           }
@@ -189,112 +180,11 @@ export class ProductWiseServices extends React.Component<any, any> {
   };
 
   render() {
-    // const { showRecentFilter, showAddNewFilter } = this.state;
     return (
       <div className="common-container department-fliters-container">
-        <div className="selects-container" style={{marginBottom: '20px'}}>
+        <div className="selects-container" style={{ marginBottom: '20px' }}>
           <SelectCloudFilter filterJsonData={this.props.displayJsonData} onChangeFilter={this.onChangeFilter} />
         </div>
-        {/* <div className="fliter-container">
-          <div className="row">
-            <div className="col-lg-8 col-md-8 col-sm-12">
-              <div className="row">
-                <div className="col-lg-4 col-md-4 col-sm-12">
-                  <div className="fliter">
-                    <div
-                      className="fliter-toggel"
-                      onClick={() =>
-                        this.setState({
-                          showRecentFilter: !showRecentFilter,
-                        })
-                      }
-                    >
-                      <i className="fa fa-clock-o"></i>
-                      <span>Recent</span>
-                    </div>
-                    <div className={showRecentFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
-                      <ul>
-                        <li>
-                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                            <span><img src={images.awsLogo} alt="" /></span>
-                            <p>AWS (657907747545)</p>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                            <span><img src={images.awsLogo} alt="" /></span>
-                            <p>AWS (655668745458)</p>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className={showRecentFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showRecentFilter: !showRecentFilter })}></div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-12">
-                  <div className="fliter">
-                    <div
-                      className="fliter-toggel"
-                      onClick={() =>
-                        this.setState({
-                          showAddNewFilter: !showAddNewFilter,
-                        })
-                      }
-                    >
-                      <i className="fa fa-plus"></i>
-                      <span>Add New Product</span>
-                    </div>
-                    <div className={showAddNewFilter === true ? 'fliter-collapse active' : 'fliter-collapse'}>
-                      <ul>
-                        <li>
-                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                            <span><img src={images.awsLogo} alt="" /></span>
-                            <p>AWS Environment</p>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                            <span><img src={images.microsoftAzureLogo} alt="" /></span>
-                            <p>Azure Environment</p>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                            <span><img src={images.gcpLogo} alt="" /></span>
-                            <p>GCP Environment</p>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={`${PLUGIN_BASE_URL}/account-setup`}>
-                            <span><img src={images.KubernetesLogo} alt="" /></span>
-                            <p>Kubernetes</p>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className={showAddNewFilter === true ? "fliters-collapse-bg active" : "fliters-collapse-bg"} onClick={() => this.setState({ showAddNewFilter: !showAddNewFilter })}></div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-12">
-                  <div className="fliter">
-                    <div className="fliter-toggel">
-                      <i className="fa fa-sign-out"></i>
-                      <span>Export</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-4 col-sm-12">
-              <div className="form-group search-control m-b-0">
-                <button className="btn btn-search">
-                  <i className="fa fa-search"></i>
-                </button>
-                <input type="text" className="input-group-text" placeholder="Search" />
-              </div>
-            </div>
-          </div>
-        </div> */}
         <div className="data-table">
           <div className="thead">
             <div className="name">Name</div>

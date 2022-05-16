@@ -51,7 +51,6 @@ export class AccountSetup extends React.Component<any, any> {
             },
             {
                 name: "Review",
-                // component: () => <div>Review</div>
                 component: () => <Review ref={this.reviewRef} selectedOrg={this.ouRef.current !== null ? this.ouRef.current.getSelection() : null} selectedData={this.roleRef.current !== null ? this.roleRef.current.getRoleData() : null}/>
             }
         ];
@@ -139,12 +138,6 @@ export class AccountSetup extends React.Component<any, any> {
                 });
             });    
         }
-        // RestService.getData(config.GET_ALL_ORGANIZATIONS, null, null).then(
-        //     (response: any) => {
-        //         this.setState({
-        //             organizationList: response,
-        //         });
-        //     });
     }
     render() {
         return (
