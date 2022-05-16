@@ -140,7 +140,6 @@ export class MonitorAlerts extends React.Component<any, any> {
   };
   fetchDatatopAlertToday = () => {
     RestService.getData(config.TOP_ALERT_TODAY, null, null).then((response: any) => {
-      // this.topAlertsTodayData=response;
       this.setState({
         topAlertsTodayData: response,
       });
@@ -149,7 +148,6 @@ export class MonitorAlerts extends React.Component<any, any> {
   };
   fetchTeamMatricsData = () => {
     RestService.getData(config.GET_TEAM_MATRICS_DATA_URL, null, null).then((response: any) => {
-      // this.teamMetricsData=response;
       this.setState({
         teamMetricsData: response,
       });

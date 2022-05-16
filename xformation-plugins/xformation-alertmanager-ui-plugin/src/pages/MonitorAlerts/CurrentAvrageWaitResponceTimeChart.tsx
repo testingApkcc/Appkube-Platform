@@ -80,15 +80,7 @@ export class CurrentAvrageWaitResponceTimeChart extends React.Component<any, any
     RestService.getData(config.GET_AVG_RESP_TIME_DATA, null, null).then((response: any) => {
       this.setState({
         datasets: [
-          {
-            /*  bar data set
-                        label: 'Bar Dataset',
-                        data: [50, 50, 50, 10, 50, 50,30],
-                        backgroundColor: 'rgba(255,255,255,0.1)',
-                        // borderColor: 'rgba(0,0,0,0.1)',
-                        // borderWidth: 2,
-                        */
-          },
+          
           {
             label: 'Line Dataset',
             lineTension: 0.2,

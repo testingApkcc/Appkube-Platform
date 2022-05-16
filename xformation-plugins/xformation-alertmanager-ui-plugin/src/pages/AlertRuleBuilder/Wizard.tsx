@@ -25,7 +25,6 @@ export class Wizard extends React.Component<any, any> {
         const step = steps[i];
         retData.push(
           <div className={`wizard-step-button ${currentStep === i ? 'active' : ''}`}>{step.name}</div>
-          // onClick={e => this.onClickStepButton(i)}
         );
       }
     }
