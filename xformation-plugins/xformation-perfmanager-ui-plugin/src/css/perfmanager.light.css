@@ -197,37 +197,6 @@ a:hover {
   margin-right: 0;
 }
 
-.breadcrumbs-container {
-  background-color: #eff2f7;
-  padding: 14px 20px 15px;
-  font-size: 13px;
-}
-.breadcrumbs-container .page-title {
-  color: #3b4859;
-  display: inline-block;
-}
-.breadcrumbs-container .breadcrumbs {
-  float: right;
-}
-.breadcrumbs-container a.breadcrumbs-link {
-  color: #89898a;
-}
-.breadcrumbs-container .current-page {
-  color: #2a9ce7;
-}
-.breadcrumbs-container .separator {
-  color: #89898a;
-  display: inline-block;
-  padding: 0 10px;
-}
-
-@media (max-width: 768px) {
-  .breadcrumbs-container .breadcrumbs {
-    float: none;
-    padding-top: 5px;
-  }
-}
-
 .perfmanager-modal-container {
   max-width: 992px !important;
   box-shadow: 0px 0px 16px #3b48593d;
@@ -3910,6 +3879,7 @@ a:hover {
   li {
   display: block;
   margin-bottom: 3px;
+  cursor: pointer;
 }
 .perfmanager-dashboard-container
   .catalogue-management-container
@@ -3940,6 +3910,7 @@ a:hover {
   font-size: 12px;
   line-height: 16px;
   color: #434c53;
+  width: calc(100% - 18px);
 }
 .perfmanager-dashboard-container
   .catalogue-management-container

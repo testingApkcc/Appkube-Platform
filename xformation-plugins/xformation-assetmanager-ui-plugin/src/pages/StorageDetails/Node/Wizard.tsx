@@ -98,7 +98,7 @@ export class Wizard extends React.Component<any, any> {
               <button
               disabled={isDisabled ? true : false}
                 onClick={this.props.submitPage}
-                className={isDisabled?"asset-disabled":"asset-blue-button m-r-0 m-b-0"}
+                className={isDisabled?"asset-blue-button asset-disabled m-r-0 m-b-0 ":"asset-blue-button m-r-0 m-b-0"}
               >
                 Submit
               </button>

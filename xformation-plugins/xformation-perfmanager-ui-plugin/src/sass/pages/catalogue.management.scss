@@ -211,6 +211,7 @@
                                 li {
                                     display: block;
                                     margin-bottom: 3px;
+                                    cursor: pointer;
 
                                     input {
                                         display: inline-block;
@@ -224,6 +225,7 @@
                                         font-size: 12px;
                                         line-height: 16px;
                                         color: #434c53;
+                                        width: calc(100% - 18px);
                                     }
                                 }
                             }
