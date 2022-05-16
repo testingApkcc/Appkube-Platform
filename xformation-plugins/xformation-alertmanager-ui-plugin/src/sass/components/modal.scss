@@ -46,17 +46,17 @@
       border-bottom: 1px dashed #a2c0d4;
       margin-bottom: 20px;
       padding: 0 10px 10px;
+      width: 100%;
       .modal-title {
         color: #3b4859;
-        float: left;
         margin: 0px;
         font-size: 16px;
         font-weight: 500;
         padding: 0;
         line-height: 28px;
+        width: 100%;
       }
       button {
-        float: right;
         font-size: 28px;
         top: 0;
         position: relative;
@@ -69,6 +69,7 @@
         border: none;
         line-height: 28px;
         text-align: center;
+        display: inline-block;
       }
     }
     .modal-body{
