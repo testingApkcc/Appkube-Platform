@@ -92,96 +92,96 @@ export class ServicesPerformance extends React.Component<any, any> {
       for (let h = 0; h < categories.length; h++) {
         let category = categories[h];
         let categoryIndex = h;
-        if (category.serviceNameList && category.serviceNameList.length > 0) {
-          for (let i = 0; i < category.serviceNameList.length; i++) {
-            if (category.serviceNameList[i].tagList && category.serviceNameList[i].tagList.length > 0) {
-              for (let j = 0; j < category.serviceNameList[i].tagList.length; j++) {
-                if (category.serviceNameList[i].tagList[j].serviceList && category.serviceNameList[i].tagList[j].serviceList.length > 0) {
-                  for (let k = 0; k < category.serviceNameList[i].tagList[j].serviceList.length; k++) {
-                    category['hostingType'] = category.serviceNameList[i].tagList[j].serviceList[k].hostingType;
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (category.hostingType === this.props.hostingType) {
-          retData.push(
-            <>
-              <li>
-                {!category.isOpen &&
-                  <div className='icon'>
-                    <div className="gauge">
-                      <div className="gauge__container">
-                        <img src={images.Icon} alt="" />
-                        <div className="gauge__center"></div>
-                        <div
-                          className="gauge__needle"
-                          style={{
-                            transform: `rotate(${parseInt(category.overallScore, 10) /
-                              200 +
-                              0.5
-                              }turn)`,
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                }
-                <div className={category.isOpen === true ? 'heading full' : 'heading'} >
-                  <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
-                    {category.name}
-                  </span>
-                  <div className='icon'>
-                    <div
-                      className='fa-icon'
-                      onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}
-                    >
-                      <i className={category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
-                    </div>
-                    <div className='edit'>
+        // if (category.serviceNameList && category.serviceNameList.length > 0) {
+        //   for (let i = 0; i < category.serviceNameList.length; i++) {
+        //     if (category.serviceNameList[i].tagList && category.serviceNameList[i].tagList.length > 0) {
+        //       for (let j = 0; j < category.serviceNameList[i].tagList.length; j++) {
+        //         if (category.serviceNameList[i].tagList[j].serviceList && category.serviceNameList[i].tagList[j].serviceList.length > 0) {
+        //           for (let k = 0; k < category.serviceNameList[i].tagList[j].serviceList.length; k++) {
+        //             category['hostingType'] = category.serviceNameList[i].tagList[j].serviceList[k].hostingType;
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
+        // if (category.hostingType === this.props.hostingType) {
+        retData.push(
+          <>
+            <li>
+              {!category.isOpen &&
+                <div className='icon'>
+                  <div className="gauge">
+                    <div className="gauge__container">
+                      <img src={images.Icon} alt="" />
+                      <div className="gauge__center"></div>
                       <div
-                        className='bars'
-                        onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}
-                      >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                      {category.menuOpen == true && (
-                        <>
-                          <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
-                          <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
-                            <a href='#'> Add Firewall </a>
-                            <a href='#'> Remove Firewall </a>
-                          </div>
-                        </>
-                      )}
+                        className="gauge__needle"
+                        style={{
+                          transform: `rotate(${parseInt(category.overallScore, 10) /
+                            200 +
+                            0.5
+                            }turn)`,
+                        }}
+                      ></div>
                     </div>
                   </div>
                 </div>
-                {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
-                  <div className='content-table'>
-                    <div className='table'>
-                      <div className='thead'>
-                        <div className='th'>Name</div>
-                        <div className='th'>Performance</div>
-                        <div className='th'>Availability</div>
-                        <div className='th'>Security</div>
-                        <div className='th'>Data Protection</div>
-                        <div className='th'>User exp</div>
-                      </div>
-                      <div style={{ maxHeight: '400px', overflowX: 'hidden', overflowY: 'auto' }}>
-                        {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
-                      </div>
+              }
+              <div className={category.isOpen === true ? 'heading full' : 'heading'} >
+                <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
+                  {category.name}
+                </span>
+                <div className='icon'>
+                  <div
+                    className='fa-icon'
+                    onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}
+                  >
+                    <i className={category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+                  </div>
+                  <div className='edit'>
+                    <div
+                      className='bars'
+                      onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}
+                    >
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    {category.menuOpen == true && (
+                      <>
+                        <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
+                        <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                          <a href='#'> Add Firewall </a>
+                          <a href='#'> Remove Firewall </a>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+              {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
+                <div className='content-table'>
+                  <div className='table'>
+                    <div className='thead'>
+                      <div className='th'>Name</div>
+                      <div className='th'>Performance</div>
+                      <div className='th'>Availability</div>
+                      <div className='th'>Security</div>
+                      <div className='th'>Data Protection</div>
+                      <div className='th'>User exp</div>
+                    </div>
+                    <div style={{ maxHeight: '400px', overflowX: 'hidden', overflowY: 'auto' }}>
+                      {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
                     </div>
                   </div>
-                }
-              </li>
+                </div>
+              }
+            </li>
 
-            </>
-          );
-        }
+          </>
+        );
+        // }
       }
     }
     if (retData.length > 0) {
@@ -287,38 +287,41 @@ export class ServicesPerformance extends React.Component<any, any> {
             <div className='tbody'>
               <div className='td'><span>{this.tagNameServiceMapping[tag.tagName]}</span></div>
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
-                return (
-                  <div className='tbody'>
-                    <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>
-                      <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link>
-                    </span></div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
-                        <i className='fa fa-check-circle'></i>
+                if (service.hostingType === this.props.hostingType) {
+                  return (
+                    <div className='tbody'>
+                      <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>
+                        <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link>
+                      </span></div>
+                      <div className='td'>
+                        <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
+                          <i className='fa fa-check-circle'></i>
+                        </div>
+                      </div>
+                      <div className='td'>
+                        <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
+                          <i className='fa fa-check-circle'></i>
+                        </div>
+                      </div>
+                      <div className='td'>
+                        <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
+                          <i className='fa fa-check-circle'></i>
+                        </div>
+                      </div>
+                      <div className='td'>
+                        <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
+                          <i className='fa fa-check-circle'></i>
+                        </div>
+                      </div>
+                      <div className='td'>
+                        <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
+                          <i className='fa fa-check-circle'></i>
+                        </div>
                       </div>
                     </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                    <div className='td'>
-                      <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
-                        <i className='fa fa-check-circle'></i>
-                      </div>
-                    </div>
-                  </div>
-                )
+                  );
+                }
+                return <></>;
               })
               }
             </div>
@@ -334,36 +337,38 @@ export class ServicesPerformance extends React.Component<any, any> {
     tagList.forEach((tag: any, i: any) => {
       const servicesJSX: any = [];
       tag.serviceList && tag.serviceList.forEach((service: any, i: any) => {
-        servicesJSX.push(
-          <div className='tbody'>
-            <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}><Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link></span></div>
-            <div className='td'>
-              <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
-                <i className='fa fa-check-circle'></i>
+        if (service.hostingType === this.props.hostingType) {
+          servicesJSX.push(
+            <div className='tbody'>
+              <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}><Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link></span></div>
+              <div className='td'>
+                <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
+                  <i className='fa fa-check-circle'></i>
+                </div>
+              </div>
+              <div className='td'>
+                <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
+                  <i className='fa fa-check-circle'></i>
+                </div>
+              </div>
+              <div className='td'>
+                <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
+                  <i className='fa fa-check-circle'></i>
+                </div>
+              </div>
+              <div className='td'>
+                <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
+                  <i className='fa fa-check-circle'></i>
+                </div>
+              </div>
+              <div className='td'>
+                <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
+                  <i className='fa fa-check-circle'></i>
+                </div>
               </div>
             </div>
-            <div className='td'>
-              <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
-                <i className='fa fa-check-circle'></i>
-              </div>
-            </div>
-            <div className='td'>
-              <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
-                <i className='fa fa-check-circle'></i>
-              </div>
-            </div>
-            <div className='td'>
-              <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
-                <i className='fa fa-check-circle'></i>
-              </div>
-            </div>
-            <div className='td'>
-              <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
-                <i className='fa fa-check-circle'></i>
-              </div>
-            </div>
-          </div>
-        )
+          );
+        }
       });
       retData.push(<div className='performance-table'>{servicesJSX}</div>)
     });
