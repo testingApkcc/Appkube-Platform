@@ -307,7 +307,7 @@ export class Environments extends React.Component<any, any> {
 
 	async componentDidMount() {
 		await this.getAccountList();
-		await this.getAwsRegionsList();
+		// await this.getAwsRegionsList();
 	}
 
 	getAwsRegionsList = async () => {
