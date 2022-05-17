@@ -642,6 +642,9 @@
                 .heading {
                     background-color: #0077B6;
                     padding: 5px 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
 
                     h3 {
                         display: inline-block;
@@ -654,6 +657,16 @@
                     .buttons {
                         float: right;
                         width: auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        select{
+                            width: 140px;
+                            height: 25px;
+                            font-size: 12px;
+                            line-height: 16px;
+                            font-weight: 500;
+                        }
 
                         .btn {
                             margin-left: 5px;
