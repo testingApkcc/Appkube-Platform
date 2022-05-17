@@ -483,8 +483,8 @@ export class ServicesPerformance extends React.Component<any, any> {
           <div className='heading'>
             <h3>Deployment environments</h3>
             <div className='buttons'>
-              <h3 style={{ paddingRight: '10px' }}>{viewMapping}</h3>
-              <select name="viewMapping" id="options" value={viewMapping} onChange={this.handleView}>
+              {/* <h3 style={{ paddingRight: '10px' }}>{viewMapping}</h3> */}
+              <select name="viewMapping" id="options"  value={viewMapping} onChange={this.handleView}>
                 <option value="CloudManaged">Cloud Managed</option>
                 <option value="Cluster">Cluster</option>
                 <option value="ViewAll">View All</option>
