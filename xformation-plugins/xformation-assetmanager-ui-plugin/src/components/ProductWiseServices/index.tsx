@@ -49,17 +49,8 @@ export class ProductWiseServices extends React.Component<any, any> {
     });
   }
 
-  handleChangeViewOfProduct = () => {
-    const { hostingType } = this.state;
-    if (hostingType === 'CloudManaged') {
-      this.setState({
-        hostingType: 'Cluster'
-      })
-    } else {
-      this.setState({
-        hostingType: 'CloudManaged'
-      })
-    }
+  handleChangeViewOfProduct = (viewType:any) => {
+    this.setState({hostingType:viewType})
   }
 
   displayProductServices = () => {
@@ -130,7 +121,7 @@ export class ProductWiseServices extends React.Component<any, any> {
                     </div>
                     {val.isOpen == true &&
                       <ServicesPerformance
-                        handleChangeViewOfProduct={() => this.handleChangeViewOfProduct()}
+                        handleChangeViewOfProduct={this.handleChangeViewOfProduct}
                         product={val}
                         hostingType={hostingType}
                         filters={filters}

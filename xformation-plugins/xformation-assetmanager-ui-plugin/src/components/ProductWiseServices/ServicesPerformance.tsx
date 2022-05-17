@@ -10,15 +10,17 @@ export class ServicesPerformance extends React.Component<any, any> {
     'Data': 'Data Services',
     'Other': 'Other Services',
   };
-  viewMapping: any = {
-    'CloudManaged': 'Cloud Managed',
-    'Cluster': 'Cluster'
-  };
   constructor(props: any) {
     super(props);
     this.state = {
       product: props.product,
-      productToggle: { index: 0, isOpened: false }
+      productToggle: { index: 0, isOpened: false },
+      viewMapping: this.props.hostingType,
+      mappingOptions: [
+        { key: "CloudManaged", name: "Cloud Managed" },
+        { key: "Cluster", name: "Cluster" },
+        { key: "ViewAll", name: "View All" }
+      ]
     };
   }
 
@@ -48,8 +50,12 @@ export class ServicesPerformance extends React.Component<any, any> {
     }
   }
 
-  handleView = () => {
-    this.props.handleChangeViewOfProduct();
+  handleView = (e: any) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    })
+    this.props.handleChangeViewOfProduct(value);
   }
 
   onClickMenu = (k: any, l: any) => {
@@ -92,96 +98,173 @@ export class ServicesPerformance extends React.Component<any, any> {
       for (let h = 0; h < categories.length; h++) {
         let category = categories[h];
         let categoryIndex = h;
-        // if (category.serviceNameList && category.serviceNameList.length > 0) {
-        //   for (let i = 0; i < category.serviceNameList.length; i++) {
-        //     if (category.serviceNameList[i].tagList && category.serviceNameList[i].tagList.length > 0) {
-        //       for (let j = 0; j < category.serviceNameList[i].tagList.length; j++) {
-        //         if (category.serviceNameList[i].tagList[j].serviceList && category.serviceNameList[i].tagList[j].serviceList.length > 0) {
-        //           for (let k = 0; k < category.serviceNameList[i].tagList[j].serviceList.length; k++) {
-        //             category['hostingType'] = category.serviceNameList[i].tagList[j].serviceList[k].hostingType;
-        //           }
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
-        // if (category.hostingType === this.props.hostingType) {
-        retData.push(
-          <>
-            <li>
-              {!category.isOpen &&
-                <div className='icon'>
-                  <div className="gauge">
-                    <div className="gauge__container">
-                      <img src={images.Icon} alt="" />
-                      <div className="gauge__center"></div>
-                      <div
-                        className="gauge__needle"
-                        style={{
-                          transform: `rotate(${parseInt(category.overallScore, 10) /
-                            200 +
-                            0.5
-                            }turn)`,
-                        }}
-                      ></div>
+        if (category.serviceNameList && category.serviceNameList.length > 0) {
+          for (let i = 0; i < category.serviceNameList.length; i++) {
+            if (category.serviceNameList[i].tagList && category.serviceNameList[i].tagList.length > 0) {
+              for (let j = 0; j < category.serviceNameList[i].tagList.length; j++) {
+                if (category.serviceNameList[i].tagList[j].serviceList && category.serviceNameList[i].tagList[j].serviceList.length > 0) {
+                  for (let k = 0; k < category.serviceNameList[i].tagList[j].serviceList.length; k++) {
+                    category['hostingType'] = category.serviceNameList[i].tagList[j].serviceList[k].hostingType;
+                  }
+                }
+              }
+            }
+          }
+        }
+        if ((category.hostingType === this.props.hostingType) &&(this.props.hostingType!=="ViewAll") ) {
+          retData.push(
+            <>
+              <li>
+                {!category.isOpen &&
+                  <div className='icon'>
+                    <div className="gauge">
+                      <div className="gauge__container">
+                        <img src={images.Icon} alt="" />
+                        <div className="gauge__center"></div>
+                        <div
+                          className="gauge__needle"
+                          style={{
+                            transform: `rotate(${parseInt(category.overallScore, 10) /
+                              200 +
+                              0.5
+                              }turn)`,
+                          }}
+                        ></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              }
-              <div className={category.isOpen === true ? 'heading full' : 'heading'} >
-                <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
-                  {category.name}
-                </span>
-                <div className='icon'>
-                  <div
-                    className='fa-icon'
-                    onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}
-                  >
-                    <i className={category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
-                  </div>
-                  <div className='edit'>
+                }
+                <div className={category.isOpen === true ? 'heading full' : 'heading'} >
+                  <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
+                    {category.name}
+                  </span>
+                  <div className='icon'>
                     <div
-                      className='bars'
-                      onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}
+                      className='fa-icon'
+                      onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}
                     >
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                      <i className={category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
                     </div>
-                    {category.menuOpen == true && (
-                      <>
-                        <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
-                        <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
-                          <a href='#'> Add Firewall </a>
-                          <a href='#'> Remove Firewall </a>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-              {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
-                <div className='content-table'>
-                  <div className='table'>
-                    <div className='thead'>
-                      <div className='th'>Name</div>
-                      <div className='th'>Performance</div>
-                      <div className='th'>Availability</div>
-                      <div className='th'>Security</div>
-                      <div className='th'>Data Protection</div>
-                      <div className='th'>User exp</div>
-                    </div>
-                    <div style={{ maxHeight: '400px', overflowX: 'hidden', overflowY: 'auto' }}>
-                      {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
+                    <div className='edit'>
+                      <div
+                        className='bars'
+                        onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}
+                      >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      {category.menuOpen == true && (
+                        <>
+                          <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
+                          <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                            <a href='#'> Add Firewall </a>
+                            <a href='#'> Remove Firewall </a>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
-              }
-            </li>
+                {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
+                  <div className='content-table'>
+                    <div className='table'>
+                      <div className='thead'>
+                        <div className='th'>Name</div>
+                        <div className='th'>Performance</div>
+                        <div className='th'>Availability</div>
+                        <div className='th'>Security</div>
+                        <div className='th'>Data Protection</div>
+                        <div className='th'>User exp</div>
+                      </div>
+                      <div style={{ maxHeight: '400px', overflowX: 'hidden', overflowY: 'auto' }}>
+                        {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
+                      </div>
+                    </div>
+                  </div>
+                }
+              </li>
 
-          </>
-        );
-        // }
+            </>
+          );
+        }
+        else if(this.props.hostingType === "ViewAll"){
+          retData.push(
+            <>
+              <li>
+                {!category.isOpen &&
+                  <div className='icon'>
+                    <div className="gauge">
+                      <div className="gauge__container">
+                        <img src={images.Icon} alt="" />
+                        <div className="gauge__center"></div>
+                        <div
+                          className="gauge__needle"
+                          style={{
+                            transform: `rotate(${parseInt(category.overallScore, 10) /
+                              200 +
+                              0.5
+                              }turn)`,
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                }
+                <div className={category.isOpen === true ? 'heading full' : 'heading'} >
+                  <span onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}>
+                    {category.name}
+                  </span>
+                  <div className='icon'>
+                    <div
+                      className='fa-icon'
+                      onClick={() => this.toggleCategories(environmentIndex, categoryIndex)}
+                    >
+                      <i className={category.isOpen === true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}></i>
+                    </div>
+                    <div className='edit'>
+                      <div
+                        className='bars'
+                        onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}
+                      >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      {category.menuOpen == true && (
+                        <>
+                          <div className="open-create-menu-close" onClick={() => this.onClickMenu(environmentIndex, categoryIndex)}>    </div>
+                          <div className="text-center open-create-menu" style={{ right: '5px', top: '30px', backgroundColor: '#ffffff' }}>
+                            <a href='#'> Add Firewall </a>
+                            <a href='#'> Remove Firewall </a>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                {category.isOpen === true && category.serviceNameList && category.serviceNameList.length > 0 &&
+                  <div className='content-table'>
+                    <div className='table'>
+                      <div className='thead'>
+                        <div className='th'>Name</div>
+                        <div className='th'>Performance</div>
+                        <div className='th'>Availability</div>
+                        <div className='th'>Security</div>
+                        <div className='th'>Data Protection</div>
+                        <div className='th'>User exp</div>
+                      </div>
+                      <div style={{ maxHeight: '400px', overflowX: 'hidden', overflowY: 'auto' }}>
+                        {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
+                      </div>
+                    </div>
+                  </div>
+                }
+              </li>
+
+            </>
+          );
+        }
       }
     }
     if (retData.length > 0) {
@@ -393,24 +476,26 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   render() {
-    const { product } = this.state;
-    const { hostingType } = this.props;
+    const { product, viewMapping } = this.state;
     return (
       <div className='environments'>
         <div className='environments-inner'>
           <div className='heading'>
             <h3>Deployment environments</h3>
             <div className='buttons'>
-              <h3 style={{ paddingRight: '10px' }}>{this.viewMapping[hostingType]}</h3>
-              <button className='btn' onClick={() => this.handleView()}>
-                <i className='fa fa-eye'></i>
-              </button>
+              <h3 style={{ paddingRight: '10px' }}>{viewMapping}</h3>
+              <select name="viewMapping" id="options" value={viewMapping} onChange={this.handleView}>
+                <option value="CloudManaged">Cloud Managed</option>
+                <option value="Cluster">Cluster</option>
+                <option value="ViewAll">View All</option>
+              </select>
               <button className='btn'>
                 <i className='fa fa-plus'></i>
               </button>
               <button className='btn'>
                 <i className='fa fa-bars'></i>
               </button>
+
             </div>
           </div>
           <div className='content'>
