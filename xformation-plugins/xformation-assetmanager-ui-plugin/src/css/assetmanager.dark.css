@@ -312,6 +312,11 @@ a:hover {
   color: #57a4ff !important;
 }
 
+.asset-disabled {
+  cursor: no-drop;
+  opacity: 0.8;
+}
+
 .open-create-menu {
   position: absolute;
   background-color: #ffffff;
@@ -568,37 +573,6 @@ a:hover {
 }
 .fliters-container .fliters-collapse-bg.active {
   display: block;
-}
-
-.breadcrumbs-container {
-  background-color: #3b4859;
-  padding: 14px 20px 15px;
-  font-size: 13px;
-}
-.breadcrumbs-container .page-title {
-  color: #ffffff;
-  display: inline-block;
-}
-.breadcrumbs-container .breadcrumbs {
-  float: right;
-}
-.breadcrumbs-container a.breadcrumbs-link {
-  color: #fcfcfc;
-}
-.breadcrumbs-container .current-page {
-  color: #fcfcfc;
-}
-.breadcrumbs-container .separator {
-  color: #fcfcfc;
-  display: inline-block;
-  padding: 0 10px;
-}
-
-@media (max-width: 768px) {
-  .breadcrumbs-container .breadcrumbs {
-    float: none;
-    padding-top: 5px;
-  }
 }
 
 .modal {

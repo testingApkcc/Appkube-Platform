@@ -31,7 +31,9 @@ export class UnimplementedFeaturePopup extends React.Component<any, any> {
             <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container alert-modal-container">
                 <ModalHeader>
                     Unimplemented Feature
-                    <button type="button" className="close" aria-label="Close" onClick={this.toggle} ><span aria-hidden="true">×</span></button>
+                    <button type="button" className="close" aria-label="Close" onClick={this.toggle}>
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </ModalHeader>
                 <ModalBody style={{ overflowY: 'auto', overflowX: "hidden" }}>
                     <p>The feature you are asking is not implemented yet. Do you want to continue?</p>

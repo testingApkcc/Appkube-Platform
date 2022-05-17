@@ -61,7 +61,6 @@ export class AlertRuleBuilder extends React.Component<any, any> {
     }
 
     callbackFunction = (childData: any) => {
-        console.log(childData)
         this.conditionsRef.current.onChangeAlertType(childData);
     }
 

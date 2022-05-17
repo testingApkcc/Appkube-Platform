@@ -100,7 +100,6 @@ export class AlertVolumeChart extends React.Component<any, any> {
             lineTension: 0.1,
             fill: false,
             borderColor: 'rgba(252, 203, 80, 1)',
-            // backgroundColor: "rgba(255, 255,255, 0.1)",
             data: response.newAlertList,
           },
           {
@@ -108,7 +107,6 @@ export class AlertVolumeChart extends React.Component<any, any> {
             lineTension: 0.1,
             fill: false,
             borderColor: 'rgba(73, 183, 234, 1)',
-            // backgroundColor: "rgba(255, 255,255, 0.1)",
             data: response.closedAlertList,
           },
         ],
