@@ -352,6 +352,7 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   renderTags = (tagList: any) => {
+    const { viewMapping } = this.state;
     const retData: any = [];
     const renderIndex = ['App', 'Data', 'Network', 'Other'];
     renderIndex.forEach((renderTag: any) => {
@@ -361,7 +362,7 @@ export class ServicesPerformance extends React.Component<any, any> {
             <div className='tbody'>
               <div className='td'><span>{this.tagNameServiceMapping[tag.tagName]}</span></div>
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
-                if (service.hostingType === this.props.hostingType) {
+                if (service.hostingType === this.props.hostingType || viewMapping === 'ViewAll') {
                   return (
                     <div className='tbody'>
                       <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>
