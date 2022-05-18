@@ -660,12 +660,26 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        select{
-                            width: 140px;
-                            height: 25px;
+
+                        select {
+                            width: 120px;
+                            height: 22px;
                             font-size: 12px;
-                            line-height: 16px;
+                            line-height: 22px;
                             font-weight: 500;
+                            white-space: nowrap;
+                            overflow: hidden !important;
+                            text-overflow: ellipsis;
+                            cursor: pointer;
+                            color: #0077B6;
+                            border: none;
+                            padding: 0 2px;
+                            border-radius: 2px;
+                            background-image: linear-gradient(to top, #efefef, #efefef, #efefef, #eeeeee, #eeeeee);
+
+                            &:focus {
+                                outline: none;
+                            }
                         }
 
                         .btn {

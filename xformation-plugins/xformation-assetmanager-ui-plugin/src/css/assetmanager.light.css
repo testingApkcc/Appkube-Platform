@@ -3716,6 +3716,9 @@ a:hover {
 .department-wise-container .department-fliters-container .environments .environments-inner .heading {
   background-color: #0077b6;
   padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .department-wise-container .department-fliters-container .environments .environments-inner .heading h3 {
   display: inline-block;
@@ -3727,6 +3730,34 @@ a:hover {
 .department-wise-container .department-fliters-container .environments .environments-inner .heading .buttons {
   float: right;
   width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.department-wise-container .department-fliters-container .environments .environments-inner .heading .buttons select {
+  width: 120px;
+  height: 22px;
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  color: #0077b6;
+  border: none;
+  padding: 0 2px;
+  border-radius: 2px;
+  background-image: linear-gradient(to top, #efefef, #efefef, #efefef, #eeeeee, #eeeeee);
+}
+.department-wise-container
+  .department-fliters-container
+  .environments
+  .environments-inner
+  .heading
+  .buttons
+  select:focus {
+  outline: none;
 }
 .department-wise-container .department-fliters-container .environments .environments-inner .heading .buttons .btn {
   margin-left: 5px;
