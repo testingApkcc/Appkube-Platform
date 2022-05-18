@@ -52,6 +52,8 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   handleView = (e: any) => {
     const { name, value } = e.target;
+    let { hostingType } = this.props;
+    hostingType = value;
     this.setState({
       [name]: value,
     })
@@ -362,6 +364,7 @@ export class ServicesPerformance extends React.Component<any, any> {
             <div className='tbody'>
               <div className='td'><span>{this.tagNameServiceMapping[tag.tagName]}</span></div>
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
+                console.log(service.hostingType);
                 if (service.hostingType === this.props.hostingType || viewMapping === 'ViewAll') {
                   return (
                     <div className='tbody'>
