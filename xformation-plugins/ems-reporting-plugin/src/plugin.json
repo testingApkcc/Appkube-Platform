@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "app",
+  "name": "EMS Reporting",
+  "id": "ems-reporting-plugin",
+  "info": {
+    "description": "EMS Reporting",
+    "author": {
+      "name": "Synectiks"
+    },
+    "logos": {
+      "small": "img/asset_logo.svg",
+      "large": "img/asset_logo.svg"
+    },
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "includes": [
+    {
+      "type": "page",
+      "name": "Dashboard",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%"
+    }
+  ],
+  "dependencies": {
+    "grafanaDependency": ">=8.0.0",
+    "plugins": []
+  }
+}
