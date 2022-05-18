@@ -2053,6 +2053,16 @@ a:hover {
   .first {
   padding-left: 60px;
 }
+.service-container
+  .organisational-details
+  .container-inner
+  .organisational-data-table
+  .tbody
+  .collapse-content
+  .collapse-content
+  .caret-down::after {
+  left: 42px;
+}
 .service-container .organisational-details .container-inner .organisational-data-table .caret-right {
   display: inline-block;
   vertical-align: top;

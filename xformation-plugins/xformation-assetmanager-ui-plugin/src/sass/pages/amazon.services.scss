@@ -783,6 +783,11 @@
               .first {
                 padding-left: 60px;
               }
+              .caret-down {
+                &::after {
+                  left: 42px;
+                }
+              }
             }
           }
         }
