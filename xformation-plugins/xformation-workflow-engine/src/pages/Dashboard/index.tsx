@@ -21,7 +21,7 @@ export class Dashboard extends React.Component<any, any> {
         route: `/`,
       },
       {
-        label: 'Log Managment',
+        label: 'Kubernetes | Overview',
         isCurrentPage: true,
       },
     ];
@@ -30,9 +30,9 @@ export class Dashboard extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="logmanager-dashboard-container">
-        <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="LOG MANAGMENT" />
-        <div className="logmanager-page-container">
+      <div className="owrkflow-dashboard-container">
+        <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="WORKFLOW MANAGEMENT" />
+        <div className="owrkflow-page-container">
         </div>
       </div>
     );
