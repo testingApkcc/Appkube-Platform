@@ -92,6 +92,7 @@ export class SelectCloudFilter extends React.Component<any, any> {
                     <div className="form-check"
                         onClick={() => this.changeHandleState(filterIndex, i)}
                         title={filterData[i].label}
+                        key={i}
                     >
                         <input type="checkbox" checked={filterData[i].isChecked} className="checkbox" />
                         <label htmlFor={filterData[i].value}>{filterData[i].label}</label>

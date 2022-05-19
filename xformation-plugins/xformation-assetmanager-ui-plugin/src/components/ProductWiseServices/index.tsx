@@ -92,7 +92,7 @@ export class ProductWiseServices extends React.Component<any, any> {
                   }
                 }
                 return (
-                  <div className="tbody">
+                  <div className="tbody" key={index}>
                     <div className="name" onClick={() => this.openProduct(i, index)}>
                       <span>{val.name}</span>
                       <i className={val.isOpen == true ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} />

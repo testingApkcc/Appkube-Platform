@@ -428,7 +428,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 		let data: any = [];
 		let productioncount = 0;
 		let otherCount = 0;
-		let labels: any = [ 'Production', 'Others' ];
+		let labels: any = ['Production', 'Others'];
 		if (departmentWiseData && departmentWiseData.length > 0) {
 			for (let i = 0; i < departmentWiseData.length; i++) {
 				let department = departmentWiseData[i];
@@ -585,7 +585,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 					color = this.colorMapping[25];
 				}
 				return (
-					<div className="department-box">
+					<div className="department-box" key={index}>
 						<Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading">
 							{department.name}
 						</Link>
@@ -646,7 +646,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 								<span>${othersTotal}</span>
 							</div>
 						</div>
-					</div>
+					</div >
 				);
 			});
 		}
@@ -705,8 +705,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 										</div>
 										<div className="chart">
 											{graphData.productWiseCostData &&
-											graphData.productWiseCostData.datasets[0].data.length > 0 &&
-											graphData.productWiseCostData.labels.length > 0 ? (
+												graphData.productWiseCostData.datasets[0].data.length > 0 &&
+												graphData.productWiseCostData.labels.length > 0 ? (
 												<Doughnut
 													data={graphData.productWiseCostData}
 													options={productWiseCostOptions}
@@ -733,8 +733,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 										</div>
 										<div className="chart">
 											{graphData.productionvsOthersData &&
-											graphData.productionvsOthersData.datasets[0].data.length > 0 &&
-											graphData.productionvsOthersData.labels.length > 0 ? (
+												graphData.productionvsOthersData.datasets[0].data.length > 0 &&
+												graphData.productionvsOthersData.labels.length > 0 ? (
 												<Pie
 													data={graphData.productionvsOthersData}
 													options={productionvsOthersOptions}
@@ -756,8 +756,8 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 										</div>
 										<div className="chart">
 											{graphData.serviceWiseCoastData &&
-											graphData.serviceWiseCoastData.datasets[0].data.length > 0 &&
-											graphData.serviceWiseCoastData.labels.length > 0 ? (
+												graphData.serviceWiseCoastData.datasets[0].data.length > 0 &&
+												graphData.serviceWiseCoastData.labels.length > 0 ? (
 												<Pie
 													data={graphData.serviceWiseCoastData}
 													options={serviceWiseCoastOptions}

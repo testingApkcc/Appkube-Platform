@@ -475,32 +475,34 @@ export class Environments extends React.Component<any, any> {
 							</div>
 							<div className="table-box">
 								<table className="table">
-									<a
-										style={{
-											float: 'left',
-											marginRight: '-54px',
-											fontSize: '14px'
-										}}
-										onClick={(e) => this.onClickAddAccount(e, val)}
-									>
-										<i>Add Account</i>
-									</a>
-									<tr>
-										<td>Accounts</td>
-										<td>20</td>
-									</tr>
-									<tr>
-										<td>Assets</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td>Log Monitored</td>
-										<td>100 </td>
-									</tr>
-									<tr>
-										<td>KPI Monitored</td>
-										<td>18</td>
-									</tr>
+									<tbody>
+										<a
+											style={{
+												float: 'left',
+												marginRight: '-54px',
+												fontSize: '14px'
+											}}
+											onClick={(e) => this.onClickAddAccount(e, val)}
+										>
+											<i>Add Account</i>
+										</a>
+										<tr>
+											<td>Accounts</td>
+											<td>20</td>
+										</tr>
+										<tr>
+											<td>Assets</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td>Log Monitored</td>
+											<td>100 </td>
+										</tr>
+										<tr>
+											<td>KPI Monitored</td>
+											<td>18</td>
+										</tr>
+									</tbody>
 								</table>
 							</div>
 						</div>
@@ -549,22 +551,24 @@ export class Environments extends React.Component<any, any> {
 									</div>
 									<div className="table-box">
 										<table className="table">
-											<tr>
-												<td>Accounts</td>
-												<td>{this.displayAWSAccountList().length}</td>
-											</tr>
-											<tr>
-												<td>Assets</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Alerts</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Total Billing</td>
-												<td>0</td>
-											</tr>
+											<tbody>
+												<tr>
+													<td>Accounts</td>
+													<td>{this.displayAWSAccountList().length}</td>
+												</tr>
+												<tr>
+													<td>Assets</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Alerts</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Total Billing</td>
+													<td>0</td>
+												</tr>
+											</tbody>
 										</table>
 									</div>
 								</div>
@@ -579,22 +583,24 @@ export class Environments extends React.Component<any, any> {
 									</div>
 									<div className="table-box">
 										<table className="table">
-											<tr>
-												<td>Accounts</td>
-												<td>{this.displayAzureTableData().length}</td>
-											</tr>
-											<tr>
-												<td>Assets</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Alerts</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Total Billing</td>
-												<td>0</td>
-											</tr>
+											<tbody>
+												<tr>
+													<td>Accounts</td>
+													<td>{this.displayAzureTableData().length}</td>
+												</tr>
+												<tr>
+													<td>Assets</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Alerts</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Total Billing</td>
+													<td>0</td>
+												</tr>
+											</tbody>
 										</table>
 									</div>
 								</div>
@@ -609,22 +615,24 @@ export class Environments extends React.Component<any, any> {
 									</div>
 									<div className="table-box">
 										<table className="table">
-											<tr>
-												<td>Accounts</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Assets</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Alerts</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Total Billing</td>
-												<td>0</td>
-											</tr>
+											<tbody>
+												<tr>
+													<td>Accounts</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Assets</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Alerts</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Total Billing</td>
+													<td>0</td>
+												</tr>
+											</tbody>
 										</table>
 									</div>
 								</div>
@@ -639,22 +647,24 @@ export class Environments extends React.Component<any, any> {
 									</div>
 									<div className="table-box">
 										<table className="table">
-											<tr>
-												<td>Accounts</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Assets</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Alerts</td>
-												<td>0</td>
-											</tr>
-											<tr>
-												<td>Total Billing</td>
-												<td>0</td>
-											</tr>
+											<tbody>
+												<tr>
+													<td>Accounts</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Assets</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Alerts</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Total Billing</td>
+													<td>0</td>
+												</tr>
+											</tbody>
 										</table>
 									</div>
 								</div>

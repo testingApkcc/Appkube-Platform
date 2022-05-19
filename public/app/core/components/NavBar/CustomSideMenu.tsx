@@ -806,14 +806,14 @@ export class CustomSideMenu extends PureComponent<any, any> {
       const menuItem = menuItems[i];
       const isActive = activeMenuItem.link === menuItem.link;
       retItem.push(
-        <Rbac parentName={menuItem.text || ''} childName={menuItem.text || ''} key={menuItem.text}>
+        <Rbac parentName={menuItem.text || ''} childName={menuItem.text || ''} key={i}>
           <li className="item">
             <a
               href={'#'}
               className={`menu-item ${isActive ? 'active' : ''}`}
               onClick={(e: any) => this.onClickLink(e, menuItem)}
             >
-              <div className={`menu-item-image ${menuItem.cssClass}`}></div>
+              <div className={`menu-item-image ${menuItem.cssClass}`} />
               <div className="menu-item-text">{menuItem.text}</div>
             </a>
           </li>
@@ -833,10 +833,10 @@ export class CustomSideMenu extends PureComponent<any, any> {
         isActive = activeMenuItem.link === menuItem.link;
       }
       retItem.push(
-        <Rbac parentName={menuItem.text || ''} childName={menuItem.text || ''} key={menuItem.text}>
+        <Rbac parentName={menuItem.text || ''} childName={menuItem.text || ''} key={i}>
           <li className="item" title={menuItem.text}>
             <a className={`menu-item ${isActive ? 'active' : ''}`} onClick={(e: any) => this.onClickLink(e, menuItem)}>
-              <div className={`menu-item-image ${menuItem.cssClass}`}></div>
+              <div className={`menu-item-image ${menuItem.cssClass}`} />
               <div className="menu-item-text">{menuItem.text}</div>
             </a>
           </li>
@@ -877,7 +877,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
           <Rbac
             parentName={activeMenuItem.subMenu[j].text || ''}
             childName={activeMenuItem.subMenu[j].text || ''}
-            key={activeMenuItem.subMenu[j].text}
+            key={j}
           >
             <li>
               <a
@@ -902,7 +902,11 @@ export class CustomSideMenu extends PureComponent<any, any> {
       for (let j = 0; j < activeMenuItem.subMenu.length; j++) {
         if (activeSubMenuItem && activeSubMenuItem.link === activeMenuItem.subMenu[j].link) {
           retData.push(
-            <Rbac parentName={activeMenuItem.subMenu[j].text || ''} childName={activeMenuItem.subMenu[j].text || ''}>
+            <Rbac
+              parentName={activeMenuItem.subMenu[j].text || ''}
+              childName={activeMenuItem.subMenu[j].text || ''}
+              key={j}
+            >
               <li>
                 <div className="menu-item-text">{activeMenuItem.subMenu[j].text}</div>
               </li>
@@ -917,6 +921,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
                   <Rbac
                     parentName={activeMenuItem.subMenu[j].text || ''}
                     childName={activeMenuItem.subMenu[j].text || ''}
+                    key={k}
                   >
                     <li>
                       <div className="menu-item-text">{activeMenuItem.subMenu[j].text}</div>
@@ -935,6 +940,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
                         <Rbac
                           parentName={activeMenuItem.subMenu[j].text || ''}
                           childName={activeMenuItem.subMenu[j].text || ''}
+                          key={m}
                         >
                           <li>
                             <div className="menu-item-text">{activeMenuItem.subMenu[j].text}</div>
@@ -981,7 +987,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
       <div className="menu-item-container">
         <CustomScrollbar>
           <div className="main-menu">
-            <div className="sidemenu-search-container"></div>
+            <div className="sidemenu-search-container" />
             <ul className="m-0">{this.createCloseMenu(this.mainMenu)}</ul>
 
             {/* <Rbac parentName={'OPS CENTRAL'} childName={'OPS CENTRAL'}>
@@ -1044,7 +1050,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
                 style={{
                   transform: isSubMenuPinned ? 'rotate(0deg)' : 'rotate(-90deg)',
                 }}
-              ></i>
+              />
               {/* <div className="side-menu-toggle text-right" onClick={this.onClickToggleSubMenu}> */}
               {/* <div className="side-menu-toggle text-right"> */}
               {/* <i className="fa fa-thumb-tack"></i> */}
@@ -1053,7 +1059,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
           </div>
           <div className="close-menu" onMouseEnter={this.onMouseEnterClosedSubMenu}>
             <div className="side-menu-toggle" onClick={this.onClickToggleSubMenu}>
-              <i className="fa fa-thumb-tack" style={{ transform: 'rotate(-90deg)' }}></i>
+              <i className="fa fa-thumb-tack" style={{ transform: 'rotate(-90deg)' }} />
             </div>
             <ul>{this.createCloseSubMenu()}</ul>
           </div>
