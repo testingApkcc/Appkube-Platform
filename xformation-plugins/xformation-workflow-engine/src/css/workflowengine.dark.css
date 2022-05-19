@@ -1,9 +1,584 @@
-.owrkflow-page-container {
+.owrkflow-dashboard-container {
+  display: block;
+  width: 100%;
+}
+.owrkflow-dashboard-container .dashboard-container {
+  display: block;
+  width: 100%;
   background-color: #f9fafc;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container {
+  display: block;
+  width: 100%;
+  padding-bottom: 30px;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container .heading {
+  display: block;
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #3b4859;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
+  float: right;
+  width: auto;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {
+  display: inline-block;
+  width: 250px;
+  height: 32px;
+  border-radius: 20px;
+  padding: 0;
+  border: 1px solid #a9b9c6;
+  margin-right: 15px;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {
+  background: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 26px;
+  color: #d1dae2;
+  padding: 5px 10px;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {
+  outline: none;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {
+  outline: none;
+}
+.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {
+  display: inline-block;
+  width: 250px;
+  height: 32px;
+  border-radius: 20px;
+  padding: 0;
+  border: 1px solid #a9b9c6;
+  margin-right: 0px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .fliter-container
+  .fliter-search
+  .fliter-search-box
+  .input-group-text {
+  background: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 26px;
+  color: #d1dae2;
+  padding: 5px 10px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .fliter-container
+  .fliter-search
+  .fliter-search-box
+  .input-group-text:focus {
+  outline: none;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .fliter-container
+  .fliter-search
+  .fliter-search-box
+  .input-group-text:focus-visible {
+  outline: none;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section {
+  padding: 0 0 30px 0;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {
+  margin: 0;
+  font-weight: 600;
+  color: #202020;
+  letter-spacing: 1px;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {
+  font-size: 13px;
+  line-height: 24px;
+  color: #a5a5a5;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {
+  width: 100%;
+  border: none;
+  vertical-align: middle;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {
+  line-height: 20px;
+  cursor: pointer;
+  padding: 10px 20px;
+  position: relative;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {
+  color: #6418c3;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {
+  color: #aaaaaa;
+  float: right;
+  margin-top: 5px;
+  vertical-align: middle;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  color: #000000;
+  margin-bottom: 0;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #393939;
+  width: 65px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .range-picker-input {
+  border: none;
+  width: auto;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .range-picker-input
+  .range-picker-input__icon {
+  padding-right: 7px;
+  width: auto;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .range-picker-input
+  .range-picker-input__icon
+  svg {
+  display: none;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .range-picker-input
+  .range-picker-input__icon::after {
+  content: 'To';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #393939;
+  display: inline-block;
+  vertical-align: top;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .range-picker-input
+  .range-picker-input__start
+  .picker-input__text {
+  padding: 0 !important;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #393939;
+  background-color: transparent;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .range-picker-input
+  .range-picker-input__end
+  .picker-input__text {
+  padding: 0 !important;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #393939;
+  background-color: transparent;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .picker__trigger {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  padding: 30px 0 0 60px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .picker__container {
+  right: 0 !important;
+  left: auto !important;
+  z-index: 1;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .picker__container
+  .calendar__day {
+  height: 32px;
+  line-height: 32px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .dashbord-top-section
+  .calender
+  .clender-content
+  .calender-text
+  span
+  .rc-backdrop {
+  z-index: 0;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {
+  padding: 20px 15px;
+  height: 130px;
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 45px;
+  position: relative;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {
+  width: 75px;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {
+  position: absolute;
+  top: 13px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  line-height: 20px;
+  background: #5fcffd;
+  border-radius: 50%;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {
+  font-size: 50px;
+  color: #7924ca;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {
+  width: 18px;
+  height: 45px;
+  margin-right: 5px;
+  border-radius: 15px;
+  display: inline-block;
+  background-color: #dfecf2;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {
+  width: 18px;
+  height: 75px;
+  border-radius: 15px;
+  display: inline-block;
+  background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0);
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {
+  width: auto;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #a5a5a5;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #a5a5a5;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {
+  margin: 0;
+  line-height: 16px;
+  font-weight: 700;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .progress-rfp-boxs
+  .progress-box
+  .progress-content
+  .completed
+  h5::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #60dfff;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {
+  position: relative;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #a5a5a5;
+}
+.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {
+  margin: 0;
+  line-height: 16px;
+  font-weight: 700;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .progress-rfp-boxs
+  .progress-box
+  .progress-content
+  .in-progrss
+  h5::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #dfecf2;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+}
+.owrkflow-dashboard-container .dashboard-container .average-section {
+  padding-top: 30px;
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {
+  background-color: #ffffff;
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #202020;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .requistions-heading
+  .requistions-dropdown
+  .opensens-dropdown {
+  text-align: right;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .requistions-heading
+  .requistions-dropdown
+  .opensens-dropdown
+  .opensens-content {
+  border: 1px solid #8f8f8f;
+  border-radius: 10px;
+  width: 110px;
+  margin-right: 10px;
+  padding: 0 5px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .requistions-heading
+  .requistions-dropdown
+  .opensens-dropdown
+  .opensens-content:focus {
+  outline: none;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .requistions-heading
+  .requistions-dropdown
+  .opensens-dropdown
+  .opensens-content:focus-visible {
+  outline: none;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .requistions-heading
+  .requistions-dropdown
+  .meore-menu-icon {
+  float: right;
+  color: #a5a5a5;
+  padding: 5px;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 28px;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .requistions-heading
+  .requistions-dropdown
+  .meore-menu-icon
+  i {
+  font-size: 1.2rem;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .requistions-heading
+  .requistions-dropdown
+  .meore-menu-icon:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {
+  width: 150px;
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 20px;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .totalpaid
+  .paid-content
+  span::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  border-radius: 50%;
+  background-color: #8884d8;
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {
+  background-color: #82ca9d;
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {
+  margin-top: 30px;
+  text-align: center;
+}
+.owrkflow-dashboard-container
+  .dashboard-container
+  .average-section
+  .statistics-graph
+  .chartbar-content
+  .recharts-layer
+  tspan {
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=workflowengine.dark.css.map */
