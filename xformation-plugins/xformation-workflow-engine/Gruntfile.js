@@ -11,8 +11,8 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'src/css/logmanager.dark.css': 'src/sass/logmanager.dark.scss',
-          'src/css/logmanager.light.css': 'src/sass/logmanager.light.scss',
+          'src/css/workflowengine.dark.css': 'src/sass/workflowengine.dark.scss',
+          'src/css/workflowengine.light.css': 'src/sass/workflowengine.light.scss',
         },
       },
     },

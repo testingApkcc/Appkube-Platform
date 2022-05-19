@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"file": "workflowengine.dark.css",
+	"sources": [
+		"../sass/workflowengine.dark.scss",
+		"../sass/variables.dark.scss",
+		"../sass/workflowengine.scss",
+		"../sass/custom.scss",
+		"../sass/pages/dashboard.scss"
+	],
+	"names": [],
+	"mappings": "AIAA,AAAA,wBAAwB,CAAC;EACrB,gBAAgB,EAAE,OAAO;EACzB,YAAY,EAAE,IAAI;EAClB,aAAa,EAAE,IAAI;EACnB,WAAW,EAAE,IAAI;EACjB,cAAc,EAAE,IAAI,GACvB"
+}
