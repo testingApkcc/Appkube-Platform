@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import headerIcon from '../../img/header-icon.png';
 import resourcesUserImg from '../../img/resources-user-img.png';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 export class ProjectWise extends React.Component<any, any> {
   breadCrumbs: any;
@@ -170,8 +174,8 @@ export class ProjectWise extends React.Component<any, any> {
                 <div className="project-resources-heading">Project Resources</div>
               </div>
             </div>
-            <div className="row">
-              <div className="col-lg-3">
+            <SimpleBar style={{ maxWidth: '1200px' }} className="project-resources-section">
+              <div className="project-resources-inner">
                 <div className="project-resources-box">
                   <div className="user-content">
                     <div className="user-img"><img src={resourcesUserImg} alt="" /></div>
@@ -180,10 +184,23 @@ export class ProjectWise extends React.Component<any, any> {
                       <p>Project Manager</p>
                     </div>
                   </div>
-                  <div className="resources-progress-heading">Current Task-User Document</div>
+                  <div className="resources-progress-heading">
+                    <h4>Current Task-User Document</h4>
+                    <span>Total Task-  10</span>
+                  </div>
+                  <div className="project-progressbar text-center">
+                    <CircularProgressbar value={66} text={`80%`}
+                      strokeWidth={15}
+                      styles={buildStyles({
+                        strokeLinecap: {},
+                        trailColor: "#E5E7E9",
+                        pathColor: "#6317c2",
+                        textColor: "black",
+                      })}
+                    />
+                    <p>Task Completed</p>
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-3">
                 <div className="project-resources-box">
                   <div className="user-content">
                     <div className="user-img"><img src={resourcesUserImg} alt="" /></div>
@@ -192,10 +209,23 @@ export class ProjectWise extends React.Component<any, any> {
                       <p>Project Manager</p>
                     </div>
                   </div>
-                  <div className="resources-progress-heading">Current Task-User Document</div>
+                  <div className="resources-progress-heading">
+                    <h4>Current Task-User Document</h4>
+                    <span>Total Task-  10</span>
+                  </div>
+                  <div className="project-progressbar text-center">
+                    <CircularProgressbar value={66} text={`80%`}
+                      strokeWidth={15}
+                      styles={buildStyles({
+                        strokeLinecap: {},
+                        trailColor: "#E5E7E9",
+                        pathColor: "#6317c2",
+                        textColor: "black",
+                      })}
+                    />
+                    <p>Task Completed</p>
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-3">
                 <div className="project-resources-box">
                   <div className="user-content">
                     <div className="user-img"><img src={resourcesUserImg} alt="" /></div>
@@ -204,10 +234,23 @@ export class ProjectWise extends React.Component<any, any> {
                       <p>Project Manager</p>
                     </div>
                   </div>
-                  <div className="resources-progress-heading">Current Task-User Document</div>
+                  <div className="resources-progress-heading">
+                    <h4>Current Task-User Document</h4>
+                    <span>Total Task-  10</span>
+                  </div>
+                  <div className="project-progressbar text-center">
+                    <CircularProgressbar value={66} text={`80%`}
+                      strokeWidth={15}
+                      styles={buildStyles({
+                        strokeLinecap: {},
+                        trailColor: "#E5E7E9",
+                        pathColor: "#6317c2",
+                        textColor: "black",
+                      })}
+                    />
+                    <p>Task Completed</p>
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-3">
                 <div className="project-resources-box">
                   <div className="user-content">
                     <div className="user-img"><img src={resourcesUserImg} alt="" /></div>
@@ -216,10 +259,25 @@ export class ProjectWise extends React.Component<any, any> {
                       <p>Project Manager</p>
                     </div>
                   </div>
-                  <div className="resources-progress-heading">Current Task-User Document</div>
+                  <div className="resources-progress-heading">
+                    <h4>Current Task-User Document</h4>
+                    <span>Total Task-  10</span>
+                  </div>
+                  <div className="project-progressbar text-center">
+                    <CircularProgressbar value={66} text={`80%`}
+                      strokeWidth={15}
+                      styles={buildStyles({
+                        strokeLinecap: {},
+                        trailColor: "#E5E7E9",
+                        pathColor: "#6317c2",
+                        textColor: "black",
+                      })}
+                    />
+                    <p>Task Completed</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </SimpleBar>
           </div>
         </div>
       </div>
