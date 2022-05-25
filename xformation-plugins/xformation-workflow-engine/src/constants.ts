@@ -6,6 +6,7 @@ export const PLUGIN_BASE_URL = `/a/${pluginJson.id}`;
 export enum ROUTES {
   Dashboard = 'dashboard',
   ProjectWise = 'project-wise',
+  ResourceWiseViewAllTasks = 'ResourceWiseViewAllTasks',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
