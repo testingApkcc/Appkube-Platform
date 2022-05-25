@@ -4,7 +4,7 @@ import headerIcon from '../../img/header-icon.png';
 import resourcesUserImg from '../../img/resources-user-img.png';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import SimpleBar from 'simplebar-react';
+// import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 export class ProjectWise extends React.Component<any, any> {
@@ -59,6 +59,7 @@ export class ProjectWise extends React.Component<any, any> {
             </div>
           </div>
           <div className="project-wise-status">
+            <div className="status-fliter">
             <div className="row d-flex align-items-center justify-content-center">
               <div className="col-lg-4">
                 <div className="project-status-heading">Project Status</div>
@@ -80,6 +81,7 @@ export class ProjectWise extends React.Component<any, any> {
                 </div>
               </div>
             </div>
+            </div>
             <div className="project-wise-table">
               <div className="table">
                 <div className="thead">
@@ -94,87 +96,83 @@ export class ProjectWise extends React.Component<any, any> {
                 <div className="tbody">
                   <div className="tr">
                     <div className="td">Usecase 1</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
+                    <div className="td"></div>
+                    <div className="td"></div>
+                    <div className="td"></div>
                   </div>
                   <div className="tr">
                     <div className="td">Usecase 2</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
+                    <div className="td"></div>
+                    <div className="td"></div>
                   </div>
                   <div className="tr">
                     <div className="td">Usecase 3</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
+                    <div className="td"></div>
+                    <div className="td"></div>
                   </div>
                   <div className="tr">
                     <div className="td">Usecase 4</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
                   </div>
                   <div className="tr">
                     <div className="td">Usecase 5</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                   </div>
                   <div className="tr">
                     <div className="td">Usecase 6</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
+                    <div className="td"></div>
                   </div>
                   <div className="tr">
                     <div className="td">Usecase 7</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                   </div>
                   <div className="tr">
                     <div className="td">Usecase 8</div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
-                    <div className="td"><i className="fa fa-check" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
+                    <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="project-wise-resources">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="project-resources-heading">Project Resources</div>
-              </div>
-            </div>
-            <SimpleBar style={{ maxWidth: '1200px' }} className="project-resources-section">
+            <div className="project-resources-heading">Project Resources</div>
+            <div className="project-resources-section">
               <div className="project-resources-inner">
                 <div className="project-resources-box">
                   <div className="user-content">
@@ -276,8 +274,58 @@ export class ProjectWise extends React.Component<any, any> {
                     <p>Task Completed</p>
                   </div>
                 </div>
+                <div className="project-resources-box">
+                  <div className="user-content">
+                    <div className="user-img"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="user-text">
+                      <span>Angela Moss</span>
+                      <p>Project Manager</p>
+                    </div>
+                  </div>
+                  <div className="resources-progress-heading">
+                    <h4>Current Task-User Document</h4>
+                    <span>Total Task-  10</span>
+                  </div>
+                  <div className="project-progressbar text-center">
+                    <CircularProgressbar value={66} text={`80%`}
+                      strokeWidth={15}
+                      styles={buildStyles({
+                        strokeLinecap: {},
+                        trailColor: "#E5E7E9",
+                        pathColor: "#6317c2",
+                        textColor: "black",
+                      })}
+                    />
+                    <p>Task Completed</p>
+                  </div>
+                </div>
+                <div className="project-resources-box">
+                  <div className="user-content">
+                    <div className="user-img"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="user-text">
+                      <span>Angela Moss</span>
+                      <p>Project Manager</p>
+                    </div>
+                  </div>
+                  <div className="resources-progress-heading">
+                    <h4>Current Task-User Document</h4>
+                    <span>Total Task-  10</span>
+                  </div>
+                  <div className="project-progressbar text-center">
+                    <CircularProgressbar value={66} text={`80%`}
+                      strokeWidth={15}
+                      styles={buildStyles({
+                        strokeLinecap: {},
+                        trailColor: "#E5E7E9",
+                        pathColor: "#6317c2",
+                        textColor: "black",
+                      })}
+                    />
+                    <p>Task Completed</p>
+                  </div>
+                </div>
               </div>
-            </SimpleBar>
+            </div>
           </div>
         </div>
       </div>

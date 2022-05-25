@@ -6,10 +6,12 @@
         background-color: #f9fafc;
         padding-left: 15px;
         padding-right: 15px;
-        padding-top: 15px;
+        padding-top: 30px;
         padding-bottom: 15px;
 
         .project-wise-page-heading {
+            padding-left: 16px;
+            padding-right: 16px;
             .heading-content-left {
                 display: flex;
 
@@ -72,6 +74,10 @@
                 font-weight: 500;
                 color: #202020;
             }
+            .status-fliter{
+                padding-left: 16px;
+                padding-right: 16px;
+            }
 
             .filler-search {
                 width: 100%;
@@ -125,7 +131,9 @@
             }
 
             .project-wise-table {
-                margin-top: 30px;
+                padding-top: 30px;
+                padding-left: 16px;
+                padding-right: 16px;
 
                 .table {
                     .thead {
@@ -174,7 +182,12 @@
 
                                 i {
                                     font-size: 18px;
-                                    color: #57d25f;
+                                    &.green{
+                                        color: #57d25f;
+                                    }
+                                    &.orange{
+                                        color: #eea515;
+                                    }
                                 }
                             }
                         }
@@ -184,7 +197,9 @@
         }
 
         .project-wise-resources {
-            margin-top: 30px;
+            padding-top: 30px;
+            padding-left: 16px;
+            padding-right: 16px;
 
             .project-resources-heading {
                 font-size: 16px;
@@ -192,79 +207,93 @@
                 font-weight: 500;
                 color: #202020;
             }
+            .project-resources-section{
+                display: block;
+                width: 100%;
 
-            .project-resources-inner {
-                margin-top: 30px;
-                display: flex;
+                .project-resources-inner {
+                    margin-top: 30px;
+                    display: flex;
+                    display: -webkit-box;
+                    width: 100%;
+                    overflow: hidden;
+                    overflow-x: auto;
 
-                .project-resources-box {
-                    width: 280px;
-                    max-width: 100%;
-                    margin-right: 30px;
-                    border-radius: 8px;
-                    padding: 20px;
-                    margin-bottom: 15px;
-                    background: #ffffff;
-                    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-
-                    .user-content {
+                    .project-resources-box {
                         display: flex;
+                        width: 280px;
+                        max-width: 280px;
+                        margin-right: 30px;
+                        border-radius: 8px;
+                        flex-wrap: wrap;
+                        padding: 20px;
                         margin-bottom: 15px;
-                        align-items: center;
-                        justify-content: start;
+                        background: #ffffff;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 
-                        .user-text {
-                            margin-left: 15px;
+                        .user-content {
+                            display: flex;
+                            margin-bottom: 15px;
+                            align-items: center;
+                            justify-content: start;
+                            width: 100%;
 
-                            span {
-                                font-size: 18px;
+                            .user-text {
+                                margin-left: 15px;
+
+                                span {
+                                    font-size: 18px;
+                                    line-height: 20px;
+                                    font-weight: 500;
+                                    color: 202020;
+                                }
+
+                                p {
+                                    font-size: 14px;
+                                    line-height: 20px;
+                                    font-weight: 400;
+                                    color: #a5a5a5;
+                                    margin: 8px 0 0 0;
+                                }
+                            }
+                        }
+
+                        .resources-progress-heading {
+                            margin-bottom: 15px;
+                            width: 100%;
+                            display: block;
+
+                            h4 {
+                                font-size: 14px;
                                 line-height: 20px;
                                 font-weight: 500;
                                 color: 202020;
                             }
 
-                            p {
+                            span {
                                 font-size: 14px;
                                 line-height: 20px;
                                 font-weight: 400;
-                                color: #a5a5a5;
-                                margin: 8px 0 0 0;
+                                color: #202020;
+                                margin-top: 10px;
                             }
                         }
-                    }
 
-                    .resources-progress-heading {
-                        margin-bottom: 15px;
+                        .project-progressbar {
+                            display: block;
+                            width: 100%;
+                            .CircularProgressbar {
+                                width: 130px;
+                                height: 130px;
+                            }
 
-                        h4 {
-                            font-size: 14px;
-                            line-height: 20px;
-                            font-weight: 500;
-                            color: 202020;
-                        }
-
-                        span {
-                            font-size: 14px;
-                            line-height: 20px;
-                            font-weight: 400;
-                            color: #202020;
-                            margin-top: 10px;
-                        }
-                    }
-
-                    .project-progressbar {
-
-                        .CircularProgressbar {
-                            width: 130px;
-                            height: 130px;
-                        }
-
-                        p {
-                            margin: 15px 0 0 0;
-                            font-size: 14px;
-                            line-height: 20px;
-                            font-weight: 500;
-                            color: #202020;
+                            p {
+                                margin: 15px 0 0 0;
+                                font-size: 14px;
+                                line-height: 20px;
+                                font-weight: 500;
+                                color: #202020;
+                            }
                         }
                     }
                 }
