@@ -7,11 +7,10 @@ import resourseIcon3 from '../../img/resourse-icon3.png';
 import cardArrowIcon from '../../img/card-arrow-icon.png';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import SimpleBar from 'simplebar-react';
+//import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
-import { left } from '@popperjs/core';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
 
