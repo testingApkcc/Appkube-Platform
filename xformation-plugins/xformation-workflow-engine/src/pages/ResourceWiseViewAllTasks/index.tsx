@@ -4,12 +4,14 @@ import resourcesUserImg from '../../img/resources-user-img.png';
 import resourseIcon1 from '../../img/resourse-icon1.png';
 import resourseIcon2 from '../../img/resourse-icon2.png';
 import resourseIcon3 from '../../img/resourse-icon3.png';
+import cardArrowIcon from '../../img/card-arrow-icon.png';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
+import { left } from '@popperjs/core';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
 
@@ -128,7 +130,7 @@ export class ResourceWiseViewAllTasks extends React.Component<any, any> {
                 <div className="project-resources-heading">Project</div>
               </div>
             </div>
-            <SimpleBar style={{ maxWidth: '1400px' }} className="project-resources-section">
+            <div className="project-resources-section">
               <div className="project-resources-inner">
                 <div className="project-resources-box">
                   <div className="user-content">
@@ -152,6 +154,7 @@ export class ResourceWiseViewAllTasks extends React.Component<any, any> {
                       })}
                     />
                     <p>Task Completed</p>
+                    <div className="card-arrow-image"><img src={cardArrowIcon} alt="" /></div>
                   </div>
                 </div>
                 <div className="project-resources-box">
@@ -176,6 +179,7 @@ export class ResourceWiseViewAllTasks extends React.Component<any, any> {
                       })}
                     />
                     <p>Task Completed</p>
+                    <div className="card-arrow-image"><img src={cardArrowIcon} alt="" /></div>
                   </div>
                 </div>
                 <div className="project-resources-box">
@@ -200,10 +204,11 @@ export class ResourceWiseViewAllTasks extends React.Component<any, any> {
                       })}
                     />
                     <p>Task Completed</p>
+                    <div className="card-arrow-image"><img src={cardArrowIcon} alt="" /></div>
                   </div>
                 </div>
               </div>
-            </SimpleBar>
+            </div>
           </div>
           <div className="project-wise-status">
             <div className="heading">All Task</div>

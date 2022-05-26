@@ -12,6 +12,7 @@
         .project-wise-page-heading {
             padding-left: 16px;
             padding-right: 16px;
+
             .heading-content-left {
                 display: flex;
 
@@ -74,7 +75,8 @@
                 font-weight: 500;
                 color: #202020;
             }
-            .status-fliter{
+
+            .status-fliter {
                 padding-left: 16px;
                 padding-right: 16px;
             }
@@ -83,20 +85,35 @@
                 width: 100%;
 
                 select {
+                    -moz-appearance: none;
+                    -webkit-appearance: none;
+                    appearance: none;
                     width: 100%;
                     height: 45px;
                     border: none;
                     cursor: pointer;
-                    color: #a274db;
+                    color: #aaaaaa;
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 45px;
                     border-radius: 8px;
-                    padding: 0 20px 0 25px;
+                    padding: 0 20px 0 40px;
 
                     &:focus-visible {
                         outline: none;
                     }
+
+                }
+
+                &::after {
+                    content: "\F107";
+                    position: absolute;
+                    top: 7px;
+                    left: 30px;
+                    font-weight: 900;
+                    font-size: 20px;
+                    color: #a274db;
+                    font-family: 'FontAwesome';
                 }
             }
 
@@ -182,10 +199,12 @@
 
                                 i {
                                     font-size: 18px;
-                                    &.green{
+
+                                    &.green {
                                         color: #57d25f;
                                     }
-                                    &.orange{
+
+                                    &.orange {
                                         color: #eea515;
                                     }
                                 }
@@ -207,7 +226,8 @@
                 font-weight: 500;
                 color: #202020;
             }
-            .project-resources-section{
+
+            .project-resources-section {
                 display: block;
                 width: 100%;
 
@@ -282,6 +302,7 @@
                         .project-progressbar {
                             display: block;
                             width: 100%;
+
                             .CircularProgressbar {
                                 width: 130px;
                                 height: 130px;
