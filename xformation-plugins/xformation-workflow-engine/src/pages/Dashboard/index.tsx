@@ -483,7 +483,7 @@ export class Dashboard extends React.Component<any, any> {
             <div className="heading">
               <h5>Project Progress Overview</h5>
             </div>
-            <div className="table">
+            <div className="table progress">
               <table>
                 <thead>
                   <tr>
@@ -498,40 +498,416 @@ export class Dashboard extends React.Component<any, any> {
                 </thead>
                 <tbody>
                   <tr>
+                    <td colSpan={7}></td>
+                  </tr>
+                  <tr>
                     <td>
                       <strong><a href="#">Xformation</a></strong>
                     </td>
-                    <td>80</td>
-                    <td><span>Ganesh</span></td>
-                    <td>15/02/2021</td>
-                    <td>7d</td>
-                    <td><div className="progress">In progress</div></td>
-                    <td><a href="#">View Logs</a></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check orange"></i></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td>
                       <strong><a href="#">Procurement</a></strong>
                     </td>
-                    <td>95</td>
-                    <td><span>Akhila</span></td>
-                    <td>17/02/2021</td>
-                    <td>5d</td>
-                    <td><div className="pending">Pending for review</div></td>
-                    <td><a href="#">View Logs</a></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check orange"></i></td>
                   </tr>
                   <tr>
                     <td>
                       <strong><a href="#">Supply chail</a></strong>
                     </td>
-                    <td>70</td>
-                    <td><span>Zakir</span></td>
-                    <td>15/02/2021</td>
-                    <td>7d</td>
-                    <td><div className="progress">In progress</div></td>
-                    <td><a href="#">View Logs</a></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check green"></i></td>
+                    <td><i className="fa fa-check orange"></i></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+          <div className="project-allocation-section">
+            <div className="heading">
+              <h5>Project Wise Resource Allocation</h5>
+            </div>
+            <div className="resource-allocation">
+              <div className="allocation-box">
+                <h3>Xformation</h3>
+                <div className="resource-box">
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="allocation-box">
+                <h3>Xformation</h3>
+                <div className="resource-box">
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="allocation-box">
+                <h3>Xformation</h3>
+                <div className="resource-box">
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="allocation-box">
+                <h3>Xformation</h3>
+                <div className="resource-box">
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="allocation-box">
+                <h3>Xformation</h3>
+                <div className="resource-box">
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="allocation-box">
+                <h3>Xformation</h3>
+                <div className="resource-box">
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                  <div className="resource">
+                    <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="content">
+                      <h4>Angela Moss</h4>
+                      <p>Employee</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="project-overview-section">
@@ -558,32 +934,54 @@ export class Dashboard extends React.Component<any, any> {
                     </td>
                     <td>4851232</td>
                     <td>Kubernets</td>
-                    <td>New</td>
-                    <td>Akhila</td>
-                    <td><div className="progress">In progress</div></td>
-                    <td><a href="#">View Logs</a></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#">Procurement</a>
-                    </td>
-                    <td>95</td>
                     <td><span>Akhila</span></td>
-                    <td>17/02/2021</td>
+                    <td>17/022021</td>
                     <td>5d</td>
-                    <td><div className="pending">Pending for review</div></td>
-                    <td><a href="#">View Logs</a></td>
+                    <td><div className="completed">Completed</div></td>
                   </tr>
                   <tr>
                     <td>
-                      <a href="#">Supply chail</a>
+                      <a href="#">Siddhesh</a>
                     </td>
-                    <td>70</td>
-                    <td><span>Zakir</span></td>
-                    <td>15/02/2021</td>
-                    <td>7d</td>
+                    <td>4851232</td>
+                    <td>Kubernets</td>
+                    <td><span>Akhila</span></td>
+                    <td>17/022021</td>
+                    <td>5d</td>
                     <td><div className="progress">In progress</div></td>
-                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="#">Siddhesh</a>
+                    </td>
+                    <td>4851232</td>
+                    <td>Kubernets</td>
+                    <td><span>Akhila</span></td>
+                    <td>17/022021</td>
+                    <td>5d</td>
+                    <td><div className="completed">Completed</div></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="#">Siddhesh</a>
+                    </td>
+                    <td>4851232</td>
+                    <td>Kubernets</td>
+                    <td><span>Akhila</span></td>
+                    <td>17/022021</td>
+                    <td>5d</td>
+                    <td><div className="progress">In progress</div></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="#">Siddhesh</a>
+                    </td>
+                    <td>4851232</td>
+                    <td>Kubernets</td>
+                    <td><span>Akhila</span></td>
+                    <td>17/022021</td>
+                    <td>5d</td>
+                    <td><div className="completed">Completed</div></td>
                   </tr>
                 </tbody>
               </table>

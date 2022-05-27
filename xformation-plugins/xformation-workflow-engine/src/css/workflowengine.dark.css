@@ -333,12 +333,12 @@
                 width: 10px;
                 height: 10px;
                 position: absolute;
-                top: 2px;
+                top: 3px;
                 left: 0;
                 border-radius: 50%;
-                background-color: #8884d8; }
+                background-color: #38e25d; }
           .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {
-            background-color: #82ca9d; }
+            background-color: #5ecfff; }
         .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {
           margin-top: 30px;
           text-align: center; }
@@ -637,6 +637,138 @@
             color: #ffa000; }
           .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {
             color: #860000; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .completed {
+            color: #00861b; }
+        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th {
+          position: relative;
+          border-bottom: 1px solid #e6e6e6;
+          padding-bottom: 15px; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th::after {
+            border-right: 1px solid #e6e6e6;
+            display: inline-block;
+            height: calc(100% - 15px);
+            position: absolute;
+            right: 0;
+            top: 0;
+            content: "";
+            width: 0px; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th:last-child::after {
+            border-right: none; }
+        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody {
+          padding-top: 0px; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td {
+            border-right: 1px solid #e6e6e6;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center; }
+            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:first-child {
+              text-align: left; }
+            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:last-child {
+              border-right: none; }
+            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa {
+              font-size: 20px;
+              line-height: 24px; }
+              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.green {
+                color: #00861b; }
+              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.orange {
+                color: #eea515; }
+    .owrkflow-dashboard-container .dashboard-container .project-allocation-section {
+      display: block;
+      background-color: #ffffff;
+      margin-top: 30px;
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading {
+        display: block;
+        width: 100%;
+        padding-bottom: 30px; }
+        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading h5 {
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 30px;
+          color: #202020;
+          margin-bottom: 0px;
+          letter-spacing: 1px; }
+      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation {
+        display: flex;
+        display: -webkit-box;
+        width: 100%;
+        overflow: hidden;
+        overflow-x: auto; }
+        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box {
+          display: flex;
+          width: 250px;
+          max-width: 250px;
+          margin-right: 15px;
+          border-radius: 8px;
+          flex-wrap: wrap;
+          padding: 5px;
+          background: #87b5ff; }
+          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(2) {
+            background-color: #fbb987; }
+          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(3) {
+            background-color: #8ce4be; }
+          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(4) {
+            background-color: #ff9d9d; }
+          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(5) {
+            background-color: #b28ef9; }
+          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box h3 {
+            display: block;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-weight: 400px;
+            font-size: 18px;
+            line-height: 22px;
+            padding-top: 15px;
+            padding-bottom: 15px; }
+          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box {
+            display: block;
+            width: 100%;
+            max-height: 300px;
+            overflow: hidden;
+            overflow-y: auto; }
+            .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource {
+              display: flex;
+              width: 100%;
+              background-color: #f3f8ff;
+              border-radius: 8px;
+              margin-bottom: 10px;
+              padding: 15px; }
+              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image {
+                display: flex;
+                width: 48px;
+                height: 48px;
+                border-radius: 10px;
+                margin-right: 12px;
+                justify-content: center;
+                align-items: center; }
+                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image img {
+                  max-width: 100%;
+                  height: auto; }
+              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content {
+                display: flex;
+                flex-wrap: wrap;
+                width: calc(100% - 60px); }
+                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content h4 {
+                  display: block;
+                  width: 100%;
+                  color: #202020;
+                  font-weight: 500;
+                  font-size: 16px;
+                  line-height: 22px;
+                  margin-bottom: 2px; }
+                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content p {
+                  display: block;
+                  width: 100%;
+                  color: #a5a5a5;
+                  font-weight: 300;
+                  font-size: 13px;
+                  line-height: 18px;
+                  margin-bottom: 0; }
 
 .owrkflow-project-wise-container {
   display: block;

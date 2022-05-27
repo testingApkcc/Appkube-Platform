@@ -1,449 +1,776 @@
-define(["@grafana/data","react","react-router-dom","@grafana/ui","@grafana/runtime","@emotion/css"], (__WEBPACK_EXTERNAL_MODULE__23__, __WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__4__, __WEBPACK_EXTERNAL_MODULE__15__, __WEBPACK_EXTERNAL_MODULE__35__, __WEBPACK_EXTERNAL_MODULE__36__) => { return /******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
-
-/***/ 20:
-/*!********************************************!*\
-  !*** ./components/AppConfig/AppConfig.tsx ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppConfig": () => (/* binding */ AppConfig),
-/* harmony export */   "updatePlugin": () => (/* binding */ updatePlugin)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 1);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 15);
-/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @grafana/runtime */ 35);
-/* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_grafana_runtime__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/css */ 36);
-/* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_emotion_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SecretInput */ 37);
-
-
-
-
-
-
-var AppConfig = function (_a) {
-  var plugin = _a.plugin;
-  var s = (0,_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.useStyles2)(getStyles);
-  var _b = plugin.meta,
-      enabled = _b.enabled,
-      pinned = _b.pinned,
-      jsonData = _b.jsonData;
-
-  var _c = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__read)((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    apiUrl: (jsonData === null || jsonData === void 0 ? void 0 : jsonData.apiUrl) || '',
-    apiKey: '',
-    isApiKeySet: Boolean(jsonData === null || jsonData === void 0 ? void 0 : jsonData.isApiKeySet)
-  }), 2),
-      state = _c[0],
-      setState = _c[1];
-
-  var onResetApiKey = function () {
-    return setState((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, state), {
-      apiKey: '',
-      isApiKeySet: false
-    }));
-  };
-
-  var onChangeApiKey = function (event) {
-    setState((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, state), {
-      apiKey: event.target.value.trim()
-    }));
-  };
-
-  var onChangeApiUrl = function (event) {
-    setState((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, state), {
-      apiUrl: event.target.value.trim()
-    }));
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.FieldSet, {
-    label: "Enable / Disable"
-  }, !enabled && react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: s.colorWeak
-  }, "The plugin is currently not enabled."), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    className: s.marginTop,
-    variant: "primary",
-    onClick: function () {
-      return updatePluginAndReload(plugin.meta.id, {
-        enabled: true,
-        pinned: true,
-        jsonData: jsonData
-      });
-    }
-  }, "Enable plugin")), enabled && react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: s.colorWeak
-  }, "The plugin is currently enabled."), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    className: s.marginTop,
-    variant: "destructive",
-    onClick: function () {
-      return updatePluginAndReload(plugin.meta.id, {
-        enabled: false,
-        pinned: false,
-        jsonData: jsonData
-      });
-    }
-  }, "Disable plugin"))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.FieldSet, {
-    label: "API Settings",
-    className: s.marginTopXl
-  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Field, {
-    label: "API Key",
-    description: "A secret key for authenticating to our custom API"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SecretInput__WEBPACK_IMPORTED_MODULE_4__.SecretInput, {
-    width: 60,
-    "data-testid": "api-key",
-    id: "api-key",
-    value: state === null || state === void 0 ? void 0 : state.apiKey,
-    isConfigured: state.isApiKeySet,
-    placeholder: 'Your secret API key',
-    onChange: onChangeApiKey,
-    onReset: onResetApiKey
-  })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Field, {
-    label: "API Url",
-    description: "",
-    className: s.marginTop
-  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Input, {
-    width: 60,
-    id: "api-url",
-    "data-testid": "api-url",
-    label: "API Url",
-    value: state === null || state === void 0 ? void 0 : state.apiUrl,
-    placeholder: "E.g.: http://mywebsite.com/api/v1",
-    onChange: onChangeApiUrl
-  })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: s.marginTop
-  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    type: "submit",
-    onClick: function () {
-      return updatePluginAndReload(plugin.meta.id, {
-        enabled: enabled,
-        pinned: pinned,
-        jsonData: {
-          apiUrl: state.apiUrl,
-          isApiKeySet: true
-        },
-        // This cannot be queried later by the frontend.
-        // We don't want to override it in case it was set previously and left untouched now.
-        secureJsonData: state.isApiKeySet ? undefined : {
-          apiKey: state.apiKey
-        }
-      });
-    },
-    disabled: Boolean(!state.apiUrl || !state.isApiKeySet && !state.apiKey)
-  }, "Save API settings"))));
-};
-
-var getStyles = function (theme) {
-  return {
-    colorWeak: (0,_emotion_css__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_1 || (templateObject_1 = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__makeTemplateObject)(["\n    color: ", ";\n  "], ["\n    color: ", ";\n  "])), theme.colors.text.secondary),
-    marginTop: (0,_emotion_css__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_2 || (templateObject_2 = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__makeTemplateObject)(["\n    margin-top: ", ";\n  "], ["\n    margin-top: ", ";\n  "])), theme.spacing(3)),
-    marginTopXl: (0,_emotion_css__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_3 || (templateObject_3 = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__makeTemplateObject)(["\n    margin-top: ", ";\n  "], ["\n    margin-top: ", ";\n  "])), theme.spacing(6))
-  };
-};
-
-var updatePluginAndReload = function (pluginId, data) {
-  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
-    var e_1;
-    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
-      switch (_a.label) {
-        case 0:
-          _a.trys.push([0, 2,, 3]);
-
-          return [4
-          /*yield*/
-          , updatePlugin(pluginId, data)];
-
-        case 1:
-          _a.sent(); // Reloading the page as the changes made here wouldn't be propagated to the actual plugin otherwise.
-          // This is not ideal, however unfortunately currently there is no supported way for updating the plugin state.
-
-
-          _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.locationService.reload();
-          return [3
-          /*break*/
-          , 3];
-
-        case 2:
-          e_1 = _a.sent();
-          console.error('Error while updating the plugin', e_1);
-          return [3
-          /*break*/
-          , 3];
-
-        case 3:
-          return [2
-          /*return*/
-          ];
-      }
-    });
-  });
-};
-
-var updatePlugin = function (pluginId, data) {
-  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
-    var response;
-    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
-      switch (_a.label) {
-        case 0:
-          return [4
-          /*yield*/
-          , (0,_grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.getBackendSrv)().datasourceRequest({
-            url: "/api/plugins/".concat(pluginId, "/settings"),
-            method: 'POST',
-            data: data
-          })];
-
-        case 1:
-          response = _a.sent();
-          return [2
-          /*return*/
-          , response === null || response === void 0 ? void 0 : response.data];
-      }
-    });
-  });
-};
-var templateObject_1, templateObject_2, templateObject_3;
-
-/***/ }),
-
-/***/ 34:
-/*!****************************************!*\
-  !*** ./components/AppConfig/index.tsx ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+define(["@grafana/data","react","react-router-dom","@grafana/ui","@grafana/runtime","@emotion/css"], (__WEBPACK_EXTERNAL_MODULE__28__, __WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__4__, __WEBPACK_EXTERNAL_MODULE__19__, __WEBPACK_EXTERNAL_MODULE__42__, __WEBPACK_EXTERNAL_MODULE__43__) => { return /******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ([
+/* 0 */
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/***/ ((module) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppConfig": () => (/* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.AppConfig),
-/* harmony export */   "updatePlugin": () => (/* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin)
-/* harmony export */ });
-/* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 20);
-
+module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
 
 /***/ }),
-
-/***/ 18:
-/*!********************************!*\
-  !*** ./components/App/App.tsx ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "App": () => (/* binding */ App)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 1);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils/utils.plugin */ 9);
-/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 25);
-
-
-
-
-
-var App =
-/** @class */
-function (_super) {
-  (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(App, _super);
-
-  function App() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  App.prototype.render = function () {
-    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__.PluginPropsContext.Provider, {
-      value: this.props
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Routes__WEBPACK_IMPORTED_MODULE_2__.Routes, null));
-  };
-
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
-
-
-
-/***/ }),
-
-/***/ 24:
-/*!**********************************!*\
-  !*** ./components/App/index.tsx ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "App": () => (/* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App)
-/* harmony export */ });
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 18);
-
-
-/***/ }),
-
-/***/ 19:
-/*!**************************************!*\
-  !*** ./components/Routes/Routes.tsx ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Routes": () => (/* binding */ Routes)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ 4);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../pages/Dashboard */ 26);
-/* harmony import */ var _pages_ProjectWise__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pages/ProjectWise */ 28);
-/* harmony import */ var _pages_ResourceWiseViewAllTasks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../pages/ResourceWiseViewAllTasks */ 184);
-/* harmony import */ var _utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils.routing */ 32);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../constants */ 14);
-
-
-
-
-
-
-
-var Routes = function () {
-  (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.useNavigation)();
-  return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Switch, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
-    exact: true,
-    path: (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.prefixRoute)(_constants__WEBPACK_IMPORTED_MODULE_6__.ROUTES.Dashboard),
-    component: _pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__.Dashboard
-  }), react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
-    exact: true,
-    path: (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.prefixRoute)(_constants__WEBPACK_IMPORTED_MODULE_6__.ROUTES.ProjectWise),
-    component: _pages_ProjectWise__WEBPACK_IMPORTED_MODULE_3__.ProjectWise
-  }), react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
-    exact: true,
-    path: (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.prefixRoute)(_constants__WEBPACK_IMPORTED_MODULE_6__.ROUTES.ResourceWiseViewAllTasks),
-    component: _pages_ResourceWiseViewAllTasks__WEBPACK_IMPORTED_MODULE_4__.ResourceWiseViewAllTasks
-  }));
-};
-
-/***/ }),
-
-/***/ 25:
-/*!*************************************!*\
-  !*** ./components/Routes/index.tsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Routes": () => (/* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes)
-/* harmony export */ });
-/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 19);
-
-
-/***/ }),
-
-/***/ 21:
-/*!************************************************!*\
-  !*** ./components/SecretInput/SecretInput.tsx ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SecretInput": () => (/* binding */ SecretInput)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 1);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 15);
-/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__);
-
-
- // This replaces the "LegacyForms.SecretFormField" component from @grafana/ui, so we can start using the newer form components.
-
-var SecretInput = function (_a) {
-  var isConfigured = _a.isConfigured,
-      onReset = _a.onReset,
-      props = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["isConfigured", "onReset"]);
-
-  if (isConfigured) {
-    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.HorizontalGroup, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Input, (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, props, {
-      type: "text",
-      disabled: true,
-      value: "configured"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      onClick: onReset,
-      variant: "secondary"
-    }, "Reset"));
-  }
-
-  return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Input, (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, props, {
-    type: "password"
-  }));
-};
-
-/***/ }),
-
-/***/ 37:
+/* 1 */
 /*!******************************************!*\
-  !*** ./components/SecretInput/index.tsx ***!
+  !*** ../node_modules/tslib/tslib.es6.js ***!
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SecretInput": () => (/* reexport safe */ _SecretInput__WEBPACK_IMPORTED_MODULE_0__.SecretInput)
+/* harmony export */   "__extends": () => (/* binding */ __extends),
+/* harmony export */   "__assign": () => (/* binding */ __assign),
+/* harmony export */   "__rest": () => (/* binding */ __rest),
+/* harmony export */   "__decorate": () => (/* binding */ __decorate),
+/* harmony export */   "__param": () => (/* binding */ __param),
+/* harmony export */   "__metadata": () => (/* binding */ __metadata),
+/* harmony export */   "__awaiter": () => (/* binding */ __awaiter),
+/* harmony export */   "__generator": () => (/* binding */ __generator),
+/* harmony export */   "__createBinding": () => (/* binding */ __createBinding),
+/* harmony export */   "__exportStar": () => (/* binding */ __exportStar),
+/* harmony export */   "__values": () => (/* binding */ __values),
+/* harmony export */   "__read": () => (/* binding */ __read),
+/* harmony export */   "__spread": () => (/* binding */ __spread),
+/* harmony export */   "__spreadArrays": () => (/* binding */ __spreadArrays),
+/* harmony export */   "__spreadArray": () => (/* binding */ __spreadArray),
+/* harmony export */   "__await": () => (/* binding */ __await),
+/* harmony export */   "__asyncGenerator": () => (/* binding */ __asyncGenerator),
+/* harmony export */   "__asyncDelegator": () => (/* binding */ __asyncDelegator),
+/* harmony export */   "__asyncValues": () => (/* binding */ __asyncValues),
+/* harmony export */   "__makeTemplateObject": () => (/* binding */ __makeTemplateObject),
+/* harmony export */   "__importStar": () => (/* binding */ __importStar),
+/* harmony export */   "__importDefault": () => (/* binding */ __importDefault),
+/* harmony export */   "__classPrivateFieldGet": () => (/* binding */ __classPrivateFieldGet),
+/* harmony export */   "__classPrivateFieldSet": () => (/* binding */ __classPrivateFieldSet)
 /* harmony export */ });
-/* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SecretInput */ 21);
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+var __createBinding = Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+});
+
+function __exportStar(m, o) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+}
+
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+/** @deprecated */
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+/** @deprecated */
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+}
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+var __setModuleDefault = Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+}
 
 
 /***/ }),
+/* 2 */
+/*!**************************************************!*\
+  !*** ../node_modules/css-loader/lib/css-base.js ***!
+  \**************************************************/
+/***/ ((module) => {
 
-/***/ 14:
-/*!**********************!*\
-  !*** ./constants.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 3 */
+/*!*****************************************************!*\
+  !*** ../node_modules/style-loader/lib/addStyles.js ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target) {
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ 16);
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertInto + " " + options.insertAt.before);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = options.transform(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+/* 4 */
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/***/ ((module) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PLUGIN_BASE_URL": () => (/* binding */ PLUGIN_BASE_URL),
-/* harmony export */   "ROUTES": () => (/* binding */ ROUTES),
-/* harmony export */   "NAVIGATION_TITLE": () => (/* binding */ NAVIGATION_TITLE),
-/* harmony export */   "NAVIGATION_SUBTITLE": () => (/* binding */ NAVIGATION_SUBTITLE),
-/* harmony export */   "NAVIGATION": () => (/* binding */ NAVIGATION)
-/* harmony export */ });
-/* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plugin.json */ 33);
-
-var PLUGIN_BASE_URL = "/a/".concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
-var ROUTES;
-
-(function (ROUTES) {
-  ROUTES["Dashboard"] = "dashboard";
-  ROUTES["ProjectWise"] = "project-wise";
-  ROUTES["ResourceWiseViewAllTasks"] = "ResourceWiseViewAllTasks";
-})(ROUTES || (ROUTES = {}));
-
-var NAVIGATION_TITLE = 'Basic App Plugin';
-var NAVIGATION_SUBTITLE = 'Some extra description...'; // Add a navigation item for each route you would like to display in the navigation bar
-
-var NAVIGATION = {};
+module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
 
 /***/ }),
-
-/***/ 10:
+/* 5 */
 /*!*******************************!*\
   !*** ./pages/Breadcrumbs.tsx ***!
   \*******************************/
@@ -513,1590 +840,145 @@ function (_super) {
 ;
 
 /***/ }),
-
-/***/ 26:
-/*!***********************************!*\
-  !*** ./pages/Dashboard/index.tsx ***!
-  \***********************************/
+/* 6 */
+/*!************************************!*\
+  !*** ./img/resources-user-img.png ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Dashboard": () => (/* binding */ Dashboard)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 1);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Breadcrumbs */ 10);
-/* harmony import */ var _img_rfp_img_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/rfp-img.png */ 27);
-/* harmony import */ var _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/resources-user-img.png */ 30);
-/* harmony import */ var _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img/header-icon.png */ 29);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resources-user-img.png");
+
+/***/ }),
+/* 7 */
+/*!******************************************************************!*\
+  !*** ../node_modules/react-circular-progressbar/dist/styles.css ***!
+  \******************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+var content = __webpack_require__(/*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./styles.css */ 9);
+
+if(typeof content === 'string') content = [[module.id, content, '']];
+
+var transform;
+var insertInto;
 
 
 
+var options = {"hmr":true}
 
- // import DateFormat from './DateFormat';
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! !../../style-loader/lib/addStyles.js */ 3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 8 */
+/*!********************************************************!*\
+  !*** ../node_modules/simplebar/dist/simplebar.min.css ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+var content = __webpack_require__(/*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./simplebar.min.css */ 10);
+
+if(typeof content === 'string') content = [[module.id, content, '']];
+
+var transform;
+var insertInto;
 
 
 
-var Dashboard =
-/** @class */
-function (_super) {
-  (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__extends)(Dashboard, _super);
+var options = {"hmr":true}
 
-  function Dashboard(props) {
-    var _this = _super.call(this, props) || this;
+options.transform = transform
+options.insertInto = undefined;
 
-    _this.state = {};
-    _this.breadCrumbs = [{
-      label: 'Home',
-      route: "/"
-    }, {
-      label: 'Kubernetes | Overview',
-      isCurrentPage: true
-    }];
-    return _this;
-  }
+var update = __webpack_require__(/*! !../../style-loader/lib/addStyles.js */ 3)(content, options);
 
-  Dashboard.prototype.render = function () {
-    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "owrkflow-dashboard-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.Breadcrumbs, {
-      breadcrumbs: this.breadCrumbs,
-      pageTitle: "WORKFLOW MANAGEMENT"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "dashboard-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "fliter-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, "Procurement Workflow management")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "fliter-search"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "fliter-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by 3"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "fliter-search-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: 'Search for...',
-      className: "input-group-text",
-      placeholder: 'Search for...'
-    })))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "dashbord-top-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Dashboard"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Lorem ipsum dolor sit amet"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-8"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "calender"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-rfp-boxs"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-3 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_rfp_img_png__WEBPACK_IMPORTED_MODULE_2__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "215"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Today's RFP")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-3 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_rfp_img_png__WEBPACK_IMPORTED_MODULE_2__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "26685"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total RFP")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-3 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "mail-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-envelope"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "!")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "35"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Important Emails")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-3 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-img order"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "in-progress"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "complate-progress"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "completed"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "2,841"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Completed Orders")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "in-progrss"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "1.456"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "In-progrss Orders"))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "average-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "statistics-graph"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "requistions-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
-      className: "d-block"
-    }, 'Workflow Statistics')), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "requistions-graph"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "statistics-graph"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "requistions-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-6 col-md-6 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
-      className: "d-block"
-    }, 'Project Overview')), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-6 col-md-6 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "requistions-dropdown"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "opensens-dropdown"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-      className: "opensens-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: ""
-    }, "Monthly"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: 10
-    }, "abc"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: 20
-    }, "def"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: 30
-    }, "abc")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "meore-menu-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-ellipsis-v"
-    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: ""
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "totalpaid"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "paid-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Completed Task")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "paid-content unpaid"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Pending Task")))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-9"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-list"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-7"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Project List")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-5"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-      className: "tabs"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-      className: "active"
-    }, "All Projects"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "In Progress"))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "projects"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project active"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "star-box active"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-star"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-circle"
-    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "star-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-star"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-circle"
-    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "star-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-star"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-circle"
-    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "star-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-star"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-circle"
-    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "star-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-star"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-circle"
-    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "star-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-star"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-circle"
-    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.")))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-3"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-list"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Resources"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "All Resources")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "plus-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-plus"
-    }))))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-overview-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Project Overview")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "table"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project Name"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Total Usecase"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project Manager"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Assigned date"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Age"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Status"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Activity Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Xformation"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "80"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Ganesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "15/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "7d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress"
-    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Procurement"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "95"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "pending"
-    }, "Pending for review")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Supply chail"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "70"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Zakir")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "15/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "7d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress"
-    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-overview-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Project Progress Overview")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "table"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project Name"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Reuirements"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Mock Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Actual Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "CI/CD Test"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Staging/Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Publish/Operate"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Xformation"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "80"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Ganesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "15/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "7d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress"
-    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Procurement"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "95"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "pending"
-    }, "Pending for review")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Supply chail"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "70"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Zakir")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "15/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "7d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress"
-    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-overview-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Rask wise Resource Progress Overview")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "table"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Resource Name"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Reuirements"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Mock Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Actual Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "CI/CD Test"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Staging/Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Publish/Operate"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Siddhesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "4851232"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Kubernets"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "New"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Akhila"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress"
-    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Procurement")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "95"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "pending"
-    }, "Pending for review")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "Supply chail")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "70"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Zakir")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "15/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "7d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "progress"
-    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "#"
-    }, "View Logs")))))))));
-  };
+if(content.locals) module.exports = content.locals;
 
-  return Dashboard;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+if(false) {}
 
+/***/ }),
+/* 9 */
+/*!**********************************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!../node_modules/react-circular-progressbar/dist/styles.css ***!
+  \**********************************************************************************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ 2)(true);
+// imports
+
+
+// module
+exports.push([module.id, "/*\n * react-circular-progressbar styles\n * All of the styles in this file are configurable!\n */\n\n.CircularProgressbar {\n  /*\n   * This fixes an issue where the CircularProgressbar svg has\n   * 0 width inside a \"display: flex\" container, and thus not visible.\n   */\n  width: 100%;\n  /*\n   * This fixes a centering issue with CircularProgressbarWithChildren:\n   * https://github.com/kevinsqi/react-circular-progressbar/issues/94\n   */\n  vertical-align: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-path {\n  stroke: #3e98c7;\n  stroke-linecap: round;\n  -webkit-transition: stroke-dashoffset 0.5s ease 0s;\n  transition: stroke-dashoffset 0.5s ease 0s;\n}\n\n.CircularProgressbar .CircularProgressbar-trail {\n  stroke: #d6d6d6;\n  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */\n  stroke-linecap: round;\n}\n\n.CircularProgressbar .CircularProgressbar-text {\n  fill: #3e98c7;\n  font-size: 20px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-background {\n  fill: #d6d6d6;\n}\n\n/*\n * Sample background styles. Use these with e.g.:\n *\n *   <CircularProgressbar\n *     className=\"CircularProgressbar-inverted\"\n *     background\n *     percentage={50}\n *   />\n */\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {\n  fill: #3e98c7;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {\n  fill: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {\n  stroke: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {\n  stroke: transparent;\n}\n", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/node_modules/react-circular-progressbar/dist/styles.css"],"names":[],"mappings":"AAAA;;;GAGG;;AAEH;EACE;;;KAGG;EACH,YAAY;EACZ;;;KAGG;EACH,uBAAuB;CACxB;;AAED;EACE,gBAAgB;EAChB,sBAAsB;EACtB,mDAAmD;EACnD,2CAA2C;CAC5C;;AAED;EACE,gBAAgB;EAChB,8EAA8E;EAC9E,sBAAsB;CACvB;;AAED;EACE,cAAc;EACd,gBAAgB;EAChB,0BAA0B;EAC1B,oBAAoB;CACrB;;AAED;EACE,cAAc;CACf;;AAED;;;;;;;;GAQG;AACH;EACE,cAAc;CACf;;AAED;EACE,WAAW;CACZ;;AAED;EACE,aAAa;CACd;;AAED;EACE,oBAAoB;CACrB","file":"styles.css","sourcesContent":["/*\n * react-circular-progressbar styles\n * All of the styles in this file are configurable!\n */\n\n.CircularProgressbar {\n  /*\n   * This fixes an issue where the CircularProgressbar svg has\n   * 0 width inside a \"display: flex\" container, and thus not visible.\n   */\n  width: 100%;\n  /*\n   * This fixes a centering issue with CircularProgressbarWithChildren:\n   * https://github.com/kevinsqi/react-circular-progressbar/issues/94\n   */\n  vertical-align: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-path {\n  stroke: #3e98c7;\n  stroke-linecap: round;\n  -webkit-transition: stroke-dashoffset 0.5s ease 0s;\n  transition: stroke-dashoffset 0.5s ease 0s;\n}\n\n.CircularProgressbar .CircularProgressbar-trail {\n  stroke: #d6d6d6;\n  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */\n  stroke-linecap: round;\n}\n\n.CircularProgressbar .CircularProgressbar-text {\n  fill: #3e98c7;\n  font-size: 20px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-background {\n  fill: #d6d6d6;\n}\n\n/*\n * Sample background styles. Use these with e.g.:\n *\n *   <CircularProgressbar\n *     className=\"CircularProgressbar-inverted\"\n *     background\n *     percentage={50}\n *   />\n */\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {\n  fill: #3e98c7;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {\n  fill: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {\n  stroke: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {\n  stroke: transparent;\n}\n"],"sourceRoot":""}]);
+
+// exports
 
 
 /***/ }),
+/* 10 */
+/*!************************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!../node_modules/simplebar/dist/simplebar.min.css ***!
+  \************************************************************************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
 
-/***/ 28:
-/*!*************************************!*\
-  !*** ./pages/ProjectWise/index.tsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProjectWise": () => (/* binding */ ProjectWise)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 1);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Breadcrumbs */ 10);
-/* harmony import */ var _img_header_icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/header-icon.png */ 29);
-/* harmony import */ var _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/resources-user-img.png */ 30);
-/* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-circular-progressbar */ 31);
-/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 11);
-/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! simplebar/dist/simplebar.min.css */ 13);
-/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_6__);
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ 2)(true);
+// imports
 
 
+// module
+exports.push([module.id, "[data-simplebar]{position:relative;flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start}.simplebar-wrapper{overflow:hidden;width:inherit;height:inherit;max-width:inherit;max-height:inherit}.simplebar-mask{direction:inherit;position:absolute;overflow:hidden;padding:0;margin:0;left:0;top:0;bottom:0;right:0;width:auto!important;height:auto!important;z-index:0}.simplebar-offset{direction:inherit!important;box-sizing:inherit!important;resize:none!important;position:absolute;top:0;left:0;bottom:0;right:0;padding:0;margin:0;-webkit-overflow-scrolling:touch}.simplebar-content-wrapper{direction:inherit;box-sizing:border-box!important;position:relative;display:block;height:100%;width:auto;max-width:100%;max-height:100%;scrollbar-width:none;-ms-overflow-style:none}.simplebar-content-wrapper::-webkit-scrollbar,.simplebar-hide-scrollbar::-webkit-scrollbar{width:0;height:0}.simplebar-content:after,.simplebar-content:before{content:' ';display:table}.simplebar-placeholder{max-height:100%;max-width:100%;width:100%;pointer-events:none}.simplebar-height-auto-observer-wrapper{box-sizing:inherit!important;height:100%;width:100%;max-width:1px;position:relative;float:left;max-height:1px;overflow:hidden;z-index:-1;padding:0;margin:0;pointer-events:none;flex-grow:inherit;flex-shrink:0;flex-basis:0}.simplebar-height-auto-observer{box-sizing:inherit;display:block;opacity:0;position:absolute;top:0;left:0;height:1000%;width:1000%;min-height:1px;min-width:1px;overflow:hidden;pointer-events:none;z-index:-1}.simplebar-track{z-index:1;position:absolute;right:0;bottom:0;pointer-events:none;overflow:hidden}[data-simplebar].simplebar-dragging .simplebar-content{pointer-events:none;user-select:none;-webkit-user-select:none}[data-simplebar].simplebar-dragging .simplebar-track{pointer-events:all}.simplebar-scrollbar{position:absolute;left:0;right:0;min-height:10px}.simplebar-scrollbar:before{position:absolute;content:'';background:#000;border-radius:7px;left:2px;right:2px;opacity:0;transition:opacity .2s linear}.simplebar-scrollbar.simplebar-visible:before{opacity:.5;transition:opacity 0s linear}.simplebar-track.simplebar-vertical{top:0;width:11px}.simplebar-track.simplebar-vertical .simplebar-scrollbar:before{top:2px;bottom:2px}.simplebar-track.simplebar-horizontal{left:0;height:11px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before{height:100%;left:2px;right:2px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar{right:auto;left:0;top:2px;height:7px;min-height:0;min-width:10px;width:auto}[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical{right:auto;left:0}.hs-dummy-scrollbar-size{direction:rtl;position:fixed;opacity:0;visibility:hidden;height:500px;width:500px;overflow-y:hidden;overflow-x:scroll}.simplebar-hide-scrollbar{position:fixed;left:0;visibility:hidden;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none}\n", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/node_modules/simplebar/dist/simplebar.min.css"],"names":[],"mappings":"AAAA,iBAAiB,kBAAkB,sBAAsB,eAAe,2BAA2B,yBAAyB,sBAAsB,CAAC,mBAAmB,gBAAgB,cAAc,eAAe,kBAAkB,kBAAkB,CAAC,gBAAgB,kBAAkB,kBAAkB,gBAAgB,UAAU,SAAS,OAAO,MAAM,SAAS,QAAQ,qBAAqB,sBAAsB,SAAS,CAAC,kBAAkB,4BAA4B,6BAA6B,sBAAsB,kBAAkB,MAAM,OAAO,SAAS,QAAQ,UAAU,SAAS,gCAAgC,CAAC,2BAA2B,kBAAkB,gCAAgC,kBAAkB,cAAc,YAAY,WAAW,eAAe,gBAAgB,qBAAqB,uBAAuB,CAAC,2FAA2F,QAAQ,QAAQ,CAAC,mDAAmD,YAAY,aAAa,CAAC,uBAAuB,gBAAgB,eAAe,WAAW,mBAAmB,CAAC,wCAAwC,6BAA6B,YAAY,WAAW,cAAc,kBAAkB,WAAW,eAAe,gBAAgB,WAAW,UAAU,SAAS,oBAAoB,kBAAkB,cAAc,YAAY,CAAC,gCAAgC,mBAAmB,cAAc,UAAU,kBAAkB,MAAM,OAAO,aAAa,YAAY,eAAe,cAAc,gBAAgB,oBAAoB,UAAU,CAAC,iBAAiB,UAAU,kBAAkB,QAAQ,SAAS,oBAAoB,eAAe,CAAC,uDAAuD,oBAAoB,iBAAiB,wBAAwB,CAAC,qDAAqD,kBAAkB,CAAC,qBAAqB,kBAAkB,OAAO,QAAQ,eAAe,CAAC,4BAA4B,kBAAkB,WAAW,gBAAgB,kBAAkB,SAAS,UAAU,UAAU,6BAA6B,CAAC,8CAA8C,WAAW,4BAA4B,CAAC,oCAAoC,MAAM,UAAU,CAAC,gEAAgE,QAAQ,UAAU,CAAC,sCAAsC,OAAO,WAAW,CAAC,kEAAkE,YAAY,SAAS,SAAS,CAAC,2DAA2D,WAAW,OAAO,QAAQ,WAAW,aAAa,eAAe,UAAU,CAAC,mEAAmE,WAAW,MAAM,CAAC,yBAAyB,cAAc,eAAe,UAAU,kBAAkB,aAAa,YAAY,kBAAkB,iBAAiB,CAAC,0BAA0B,eAAe,OAAO,kBAAkB,kBAAkB,qBAAqB,uBAAuB,CAAC","file":"simplebar.min.css","sourcesContent":["[data-simplebar]{position:relative;flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start}.simplebar-wrapper{overflow:hidden;width:inherit;height:inherit;max-width:inherit;max-height:inherit}.simplebar-mask{direction:inherit;position:absolute;overflow:hidden;padding:0;margin:0;left:0;top:0;bottom:0;right:0;width:auto!important;height:auto!important;z-index:0}.simplebar-offset{direction:inherit!important;box-sizing:inherit!important;resize:none!important;position:absolute;top:0;left:0;bottom:0;right:0;padding:0;margin:0;-webkit-overflow-scrolling:touch}.simplebar-content-wrapper{direction:inherit;box-sizing:border-box!important;position:relative;display:block;height:100%;width:auto;max-width:100%;max-height:100%;scrollbar-width:none;-ms-overflow-style:none}.simplebar-content-wrapper::-webkit-scrollbar,.simplebar-hide-scrollbar::-webkit-scrollbar{width:0;height:0}.simplebar-content:after,.simplebar-content:before{content:' ';display:table}.simplebar-placeholder{max-height:100%;max-width:100%;width:100%;pointer-events:none}.simplebar-height-auto-observer-wrapper{box-sizing:inherit!important;height:100%;width:100%;max-width:1px;position:relative;float:left;max-height:1px;overflow:hidden;z-index:-1;padding:0;margin:0;pointer-events:none;flex-grow:inherit;flex-shrink:0;flex-basis:0}.simplebar-height-auto-observer{box-sizing:inherit;display:block;opacity:0;position:absolute;top:0;left:0;height:1000%;width:1000%;min-height:1px;min-width:1px;overflow:hidden;pointer-events:none;z-index:-1}.simplebar-track{z-index:1;position:absolute;right:0;bottom:0;pointer-events:none;overflow:hidden}[data-simplebar].simplebar-dragging .simplebar-content{pointer-events:none;user-select:none;-webkit-user-select:none}[data-simplebar].simplebar-dragging .simplebar-track{pointer-events:all}.simplebar-scrollbar{position:absolute;left:0;right:0;min-height:10px}.simplebar-scrollbar:before{position:absolute;content:'';background:#000;border-radius:7px;left:2px;right:2px;opacity:0;transition:opacity .2s linear}.simplebar-scrollbar.simplebar-visible:before{opacity:.5;transition:opacity 0s linear}.simplebar-track.simplebar-vertical{top:0;width:11px}.simplebar-track.simplebar-vertical .simplebar-scrollbar:before{top:2px;bottom:2px}.simplebar-track.simplebar-horizontal{left:0;height:11px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before{height:100%;left:2px;right:2px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar{right:auto;left:0;top:2px;height:7px;min-height:0;min-width:10px;width:auto}[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical{right:auto;left:0}.hs-dummy-scrollbar-size{direction:rtl;position:fixed;opacity:0;visibility:hidden;height:500px;width:500px;overflow-y:hidden;overflow-x:scroll}.simplebar-hide-scrollbar{position:fixed;left:0;visibility:hidden;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none}\n"],"sourceRoot":""}]);
 
-
-
-
- // import SimpleBar from 'simplebar-react';
-
-
-
-var ProjectWise =
-/** @class */
-function (_super) {
-  (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__extends)(ProjectWise, _super);
-
-  function ProjectWise(props) {
-    var _this = _super.call(this, props) || this;
-
-    _this.state = {
-      tcpInputs: [],
-      openCreateMenu: false,
-      streamTableData: [],
-      indexSets: []
-    };
-    _this.breadCrumbs = [{
-      label: 'Home',
-      route: "/"
-    }, {
-      label: 'Kubernetes | Overview',
-      isCurrentPage: true
-    }];
-    return _this;
-  }
-
-  ProjectWise.prototype.render = function () {
-    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "owrkflow-project-wise-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.Breadcrumbs, {
-      breadcrumbs: this.breadCrumbs,
-      pageTitle: "WORKFLOW MANAGEMENT"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-page-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-page-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-10"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-content-left"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_2__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laboreet dolore magna aliqua. Ut enim ad minim, quis nostrud exercitation ullamco laboris nisi...")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-2"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-content-right"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-times",
-      "aria-hidden": "true"
-    })))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-status"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "status-fliter"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row d-flex align-items-center justify-content-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-status-heading"
-    }, "Project Status")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "filler-search"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 3")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "search-bar"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "text",
-      className: "control-form",
-      placeholder: "Search Usecase"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-search",
-      "aria-hidden": "true"
-    }))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-table"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "table"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "thead"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Usecase "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Requirements"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Mock Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Actual Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "CI/CD Test"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Staging/Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th last"
-    }, "Publish/Operate")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tbody"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check orange",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check orange",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 3"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check orange",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 4"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check orange",
-      "aria-hidden": "true"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 5"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 6"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check orange",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 7"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, "Usecase 8"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-check green",
-      "aria-hidden": "true"
-    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-resources"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-heading"
-    }, "Project Resources"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-inner"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))))))));
-  };
-
-  return ProjectWise;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
+// exports
 
 
 /***/ }),
+/* 11 */
+/*!******************************************************************************************************!*\
+  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/workflowengine.light.css ***!
+  \******************************************************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
 
-/***/ 184:
-/*!**************************************************!*\
-  !*** ./pages/ResourceWiseViewAllTasks/index.tsx ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ResourceWiseViewAllTasks": () => (/* binding */ ResourceWiseViewAllTasks)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tslib */ 1);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Breadcrumbs */ 10);
-/* harmony import */ var _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/resources-user-img.png */ 30);
-/* harmony import */ var _img_resourse_icon1_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/resourse-icon1.png */ 186);
-/* harmony import */ var _img_resourse_icon2_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img/resourse-icon2.png */ 187);
-/* harmony import */ var _img_resourse_icon3_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../img/resourse-icon3.png */ 188);
-/* harmony import */ var _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../img/card-arrow-icon.png */ 220);
-/* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-circular-progressbar */ 31);
-/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 11);
-/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! simplebar/dist/simplebar.min.css */ 13);
-/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-chartjs-2 */ 219);
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 181);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ 2)(true);
+// imports
 
 
+// module
+exports.push([module.id, ".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 3px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #38e25d; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #5ecfff; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .completed {\n            color: #00861b; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th {\n          position: relative;\n          border-bottom: 1px solid #e6e6e6;\n          padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th::after {\n            border-right: 1px solid #e6e6e6;\n            display: inline-block;\n            height: calc(100% - 15px);\n            position: absolute;\n            right: 0;\n            top: 0;\n            content: \"\";\n            width: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th:last-child::after {\n            border-right: none; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody {\n          padding-top: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td {\n            border-right: 1px solid #e6e6e6;\n            padding-top: 10px;\n            padding-bottom: 10px;\n            text-align: center; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:first-child {\n              text-align: left; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:last-child {\n              border-right: none; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa {\n              font-size: 20px;\n              line-height: 24px; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.green {\n                color: #00861b; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.orange {\n                color: #eea515; }\n    .owrkflow-dashboard-container .dashboard-container .project-allocation-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading {\n        display: block;\n        width: 100%;\n        padding-bottom: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation {\n        display: flex;\n        display: -webkit-box;\n        width: 100%;\n        overflow: hidden;\n        overflow-x: auto; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box {\n          display: flex;\n          width: 250px;\n          max-width: 250px;\n          margin-right: 15px;\n          border-radius: 8px;\n          flex-wrap: wrap;\n          padding: 5px;\n          background: #87b5ff; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(2) {\n            background-color: #fbb987; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(3) {\n            background-color: #8ce4be; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(4) {\n            background-color: #ff9d9d; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(5) {\n            background-color: #b28ef9; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box h3 {\n            display: block;\n            width: 100%;\n            text-align: center;\n            color: #fff;\n            font-weight: 400px;\n            font-size: 18px;\n            line-height: 22px;\n            padding-top: 15px;\n            padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box {\n            display: block;\n            width: 100%;\n            max-height: 300px;\n            overflow: hidden;\n            overflow-y: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource {\n              display: flex;\n              width: 100%;\n              background-color: #f3f8ff;\n              border-radius: 8px;\n              margin-bottom: 10px;\n              padding: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image {\n                display: flex;\n                width: 48px;\n                height: 48px;\n                border-radius: 10px;\n                margin-right: 12px;\n                justify-content: center;\n                align-items: center; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image img {\n                  max-width: 100%;\n                  height: auto; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content {\n                display: flex;\n                flex-wrap: wrap;\n                width: calc(100% - 60px); }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content h4 {\n                  display: block;\n                  width: 100%;\n                  color: #202020;\n                  font-weight: 500;\n                  font-size: 16px;\n                  line-height: 22px;\n                  margin-bottom: 2px; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content p {\n                  display: block;\n                  width: 100%;\n                  color: #a5a5a5;\n                  font-weight: 300;\n                  font-size: 13px;\n                  line-height: 18px;\n                  margin-bottom: 0; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.light.css.map */", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/src/css/workflowengine.light.css"],"names":[],"mappings":"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","file":"workflowengine.light.css","sourcesContent":[".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 3px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #38e25d; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #5ecfff; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .completed {\n            color: #00861b; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th {\n          position: relative;\n          border-bottom: 1px solid #e6e6e6;\n          padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th::after {\n            border-right: 1px solid #e6e6e6;\n            display: inline-block;\n            height: calc(100% - 15px);\n            position: absolute;\n            right: 0;\n            top: 0;\n            content: \"\";\n            width: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th:last-child::after {\n            border-right: none; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody {\n          padding-top: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td {\n            border-right: 1px solid #e6e6e6;\n            padding-top: 10px;\n            padding-bottom: 10px;\n            text-align: center; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:first-child {\n              text-align: left; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:last-child {\n              border-right: none; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa {\n              font-size: 20px;\n              line-height: 24px; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.green {\n                color: #00861b; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.orange {\n                color: #eea515; }\n    .owrkflow-dashboard-container .dashboard-container .project-allocation-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading {\n        display: block;\n        width: 100%;\n        padding-bottom: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation {\n        display: flex;\n        display: -webkit-box;\n        width: 100%;\n        overflow: hidden;\n        overflow-x: auto; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box {\n          display: flex;\n          width: 250px;\n          max-width: 250px;\n          margin-right: 15px;\n          border-radius: 8px;\n          flex-wrap: wrap;\n          padding: 5px;\n          background: #87b5ff; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(2) {\n            background-color: #fbb987; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(3) {\n            background-color: #8ce4be; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(4) {\n            background-color: #ff9d9d; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(5) {\n            background-color: #b28ef9; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box h3 {\n            display: block;\n            width: 100%;\n            text-align: center;\n            color: #fff;\n            font-weight: 400px;\n            font-size: 18px;\n            line-height: 22px;\n            padding-top: 15px;\n            padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box {\n            display: block;\n            width: 100%;\n            max-height: 300px;\n            overflow: hidden;\n            overflow-y: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource {\n              display: flex;\n              width: 100%;\n              background-color: #f3f8ff;\n              border-radius: 8px;\n              margin-bottom: 10px;\n              padding: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image {\n                display: flex;\n                width: 48px;\n                height: 48px;\n                border-radius: 10px;\n                margin-right: 12px;\n                justify-content: center;\n                align-items: center; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image img {\n                  max-width: 100%;\n                  height: auto; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content {\n                display: flex;\n                flex-wrap: wrap;\n                width: calc(100% - 60px); }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content h4 {\n                  display: block;\n                  width: 100%;\n                  color: #202020;\n                  font-weight: 500;\n                  font-size: 16px;\n                  line-height: 22px;\n                  margin-bottom: 2px; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content p {\n                  display: block;\n                  width: 100%;\n                  color: #a5a5a5;\n                  font-weight: 300;\n                  font-size: 13px;\n                  line-height: 18px;\n                  margin-bottom: 0; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.light.css.map */"],"sourceRoot":""}]);
 
-
-
-
-
-
-
- //import SimpleBar from 'simplebar-react';
-
-
-
-
-chart_js__WEBPACK_IMPORTED_MODULE_10__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_10__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_10__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_10__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_10__.Title, chart_js__WEBPACK_IMPORTED_MODULE_10__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_10__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_10__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_10__.LineElement);
-
-var ResourceWiseViewAllTasks =
-/** @class */
-function (_super) {
-  (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__extends)(ResourceWiseViewAllTasks, _super);
-
-  function ResourceWiseViewAllTasks(props) {
-    var _this = _super.call(this, props) || this;
-
-    _this.state = {
-      tcpInputs: [],
-      openCreateMenu: false,
-      streamTableData: [],
-      indexSets: [],
-      humanResources: {
-        total: null,
-        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26],
-        datasets: [{
-          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-          lineTension: 0.2,
-          backgroundColor: ['rgba(113, 234, 255, 21)' // 'rgba(255, 153, 0, 1)',
-          // 'rgba(0, 137, 214, 1)',
-          // 'rgba(216, 69, 57, 1)',
-          ]
-        }]
-      },
-      barOptions: {
-        indexAxis: "x",
-        plugins: {
-          scales: {
-            y: {
-              ticks: {
-                fontColor: 'black',
-                stepSize: 10,
-                beginAtZero: true
-              },
-              gridLines: {
-                display: false
-              }
-            },
-            x: {
-              ticks: {
-                fontColor: 'black',
-                display: false,
-                stepSize: 10
-              },
-              gridLines: {
-                display: false
-              }
-            }
-          },
-          legend: {
-            display: false
-          },
-          title: {
-            display: false,
-            text: 'Total Cost: $6,71,246',
-            position: 'bottom',
-            color: '#202020',
-            font: {
-              size: 18
-            }
-          },
-          responsive: true
-        }
-      }
-    };
-    _this.breadCrumbs = [{
-      label: 'Home',
-      route: "/"
-    }, {
-      label: 'Kubernetes | Overview',
-      isCurrentPage: true
-    }];
-    return _this;
-  }
-
-  ResourceWiseViewAllTasks.prototype.render = function () {
-    var _a = this.state,
-        barOptions = _a.barOptions,
-        humanResources = _a.humanResources;
-    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "owrkflow-resource-wise-View-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.Breadcrumbs, {
-      breadcrumbs: this.breadCrumbs,
-      pageTitle: "WORKFLOW MANAGEMENT"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource-wise-View-page-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resource-wise-View-page-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-10"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-content-left"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_2__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Project-Xformation")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-2"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading-content-right"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-times",
-      "aria-hidden": "true"
-    })))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-resources"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-12"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-heading"
-    }, "Project"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-inner"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resourse_icon1_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Xformation Platform"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Role-Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "card-arrow-image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__["default"],
-      alt: ""
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resourse_icon2_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Procurement Solution"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Role-Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "card-arrow-image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__["default"],
-      alt: ""
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-resources-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-img"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_resourse_icon3_png__WEBPACK_IMPORTED_MODULE_5__["default"],
-      alt: ""
-    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "user-text"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "HRMS"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "resources-progress-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Role-Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-progressbar text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.CircularProgressbar, {
-      value: 66,
-      text: "80%",
-      strokeWidth: 15,
-      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.buildStyles)({
-        strokeLinecap: {},
-        trailColor: "#E5E7E9",
-        pathColor: "#6317c2",
-        textColor: "black"
-      })
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "card-arrow-image"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__["default"],
-      alt: ""
-    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-status"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "heading"
-    }, "All Task"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row d-flex align-items-center justify-content-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "task-heading-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Role - Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task- 10"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "filler-search"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 3")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "search-bar"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "text",
-      className: "control-form",
-      placeholder: "Search Usecase"
-    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-search",
-      "aria-hidden": "true"
-    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "project-wise-table"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "table"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "thead"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Task "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Project"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Stage"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Status"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th"
-    }, "Duedate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "th last"
-    }, "Duedate")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tbody"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 3"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 4"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 5"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 6"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 7"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 8"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 9"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "tr"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td tast-content"
-    }, "Task 10"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "td project-content"
-    }, "Xformation")))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "average-section"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-md-12"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "statistics-graph"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "requistions-heading"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-6 col-md-6 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
-      className: "d-block"
-    }, 'Project Overview')), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "col-lg-6 col-md-6 col-sm-6"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "requistions-dropdown"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "opensens-dropdown"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-      className: "opensens-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: ""
-    }, "Monthly"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: 10
-    }, "abc"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: 20
-    }, "def"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-      value: 30
-    }, "abc")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "meore-menu-icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-      className: "fa fa-ellipsis-v"
-    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: ""
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "totalpaid"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "paid-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Completed Task")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "paid-content unpaid"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Pending Task")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "chart"
-    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__.Bar, {
-      data: humanResources,
-      options: barOptions,
-      height: 70
-    }))))))));
-  };
-
-  return ResourceWiseViewAllTasks;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
+// exports
 
 
 /***/ }),
+/* 12 */
+/*!*****************************************************************************************************!*\
+  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/workflowengine.dark.css ***!
+  \*****************************************************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
 
-/***/ 9:
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ 2)(true);
+// imports
+
+
+// module
+exports.push([module.id, ".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 3px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #38e25d; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #5ecfff; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .completed {\n            color: #00861b; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th {\n          position: relative;\n          border-bottom: 1px solid #e6e6e6;\n          padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th::after {\n            border-right: 1px solid #e6e6e6;\n            display: inline-block;\n            height: calc(100% - 15px);\n            position: absolute;\n            right: 0;\n            top: 0;\n            content: \"\";\n            width: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th:last-child::after {\n            border-right: none; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody {\n          padding-top: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td {\n            border-right: 1px solid #e6e6e6;\n            padding-top: 10px;\n            padding-bottom: 10px;\n            text-align: center; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:first-child {\n              text-align: left; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:last-child {\n              border-right: none; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa {\n              font-size: 20px;\n              line-height: 24px; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.green {\n                color: #00861b; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.orange {\n                color: #eea515; }\n    .owrkflow-dashboard-container .dashboard-container .project-allocation-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading {\n        display: block;\n        width: 100%;\n        padding-bottom: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation {\n        display: flex;\n        display: -webkit-box;\n        width: 100%;\n        overflow: hidden;\n        overflow-x: auto; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box {\n          display: flex;\n          width: 250px;\n          max-width: 250px;\n          margin-right: 15px;\n          border-radius: 8px;\n          flex-wrap: wrap;\n          padding: 5px;\n          background: #87b5ff; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(2) {\n            background-color: #fbb987; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(3) {\n            background-color: #8ce4be; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(4) {\n            background-color: #ff9d9d; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(5) {\n            background-color: #b28ef9; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box h3 {\n            display: block;\n            width: 100%;\n            text-align: center;\n            color: #fff;\n            font-weight: 400px;\n            font-size: 18px;\n            line-height: 22px;\n            padding-top: 15px;\n            padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box {\n            display: block;\n            width: 100%;\n            max-height: 300px;\n            overflow: hidden;\n            overflow-y: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource {\n              display: flex;\n              width: 100%;\n              background-color: #f3f8ff;\n              border-radius: 8px;\n              margin-bottom: 10px;\n              padding: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image {\n                display: flex;\n                width: 48px;\n                height: 48px;\n                border-radius: 10px;\n                margin-right: 12px;\n                justify-content: center;\n                align-items: center; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image img {\n                  max-width: 100%;\n                  height: auto; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content {\n                display: flex;\n                flex-wrap: wrap;\n                width: calc(100% - 60px); }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content h4 {\n                  display: block;\n                  width: 100%;\n                  color: #202020;\n                  font-weight: 500;\n                  font-size: 16px;\n                  line-height: 22px;\n                  margin-bottom: 2px; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content p {\n                  display: block;\n                  width: 100%;\n                  color: #a5a5a5;\n                  font-weight: 300;\n                  font-size: 13px;\n                  line-height: 18px;\n                  margin-bottom: 0; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.dark.css.map */", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/src/css/workflowengine.dark.css"],"names":[],"mappings":"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","file":"workflowengine.dark.css","sourcesContent":[".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 3px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #38e25d; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #5ecfff; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .completed {\n            color: #00861b; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th {\n          position: relative;\n          border-bottom: 1px solid #e6e6e6;\n          padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th::after {\n            border-right: 1px solid #e6e6e6;\n            display: inline-block;\n            height: calc(100% - 15px);\n            position: absolute;\n            right: 0;\n            top: 0;\n            content: \"\";\n            width: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table thead th:last-child::after {\n            border-right: none; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody {\n          padding-top: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td {\n            border-right: 1px solid #e6e6e6;\n            padding-top: 10px;\n            padding-bottom: 10px;\n            text-align: center; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:first-child {\n              text-align: left; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td:last-child {\n              border-right: none; }\n            .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa {\n              font-size: 20px;\n              line-height: 24px; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.green {\n                color: #00861b; }\n              .owrkflow-dashboard-container .dashboard-container .project-overview-section .table.progress table tbody td .fa.orange {\n                color: #eea515; }\n    .owrkflow-dashboard-container .dashboard-container .project-allocation-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading {\n        display: block;\n        width: 100%;\n        padding-bottom: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation {\n        display: flex;\n        display: -webkit-box;\n        width: 100%;\n        overflow: hidden;\n        overflow-x: auto; }\n        .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box {\n          display: flex;\n          width: 250px;\n          max-width: 250px;\n          margin-right: 15px;\n          border-radius: 8px;\n          flex-wrap: wrap;\n          padding: 5px;\n          background: #87b5ff; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(2) {\n            background-color: #fbb987; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(3) {\n            background-color: #8ce4be; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(4) {\n            background-color: #ff9d9d; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box:nth-child(5) {\n            background-color: #b28ef9; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box h3 {\n            display: block;\n            width: 100%;\n            text-align: center;\n            color: #fff;\n            font-weight: 400px;\n            font-size: 18px;\n            line-height: 22px;\n            padding-top: 15px;\n            padding-bottom: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box {\n            display: block;\n            width: 100%;\n            max-height: 300px;\n            overflow: hidden;\n            overflow-y: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource {\n              display: flex;\n              width: 100%;\n              background-color: #f3f8ff;\n              border-radius: 8px;\n              margin-bottom: 10px;\n              padding: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image {\n                display: flex;\n                width: 48px;\n                height: 48px;\n                border-radius: 10px;\n                margin-right: 12px;\n                justify-content: center;\n                align-items: center; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .image img {\n                  max-width: 100%;\n                  height: auto; }\n              .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content {\n                display: flex;\n                flex-wrap: wrap;\n                width: calc(100% - 60px); }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content h4 {\n                  display: block;\n                  width: 100%;\n                  color: #202020;\n                  font-weight: 500;\n                  font-size: 16px;\n                  line-height: 22px;\n                  margin-bottom: 2px; }\n                .owrkflow-dashboard-container .dashboard-container .project-allocation-section .resource-allocation .allocation-box .resource-box .resource .content p {\n                  display: block;\n                  width: 100%;\n                  color: #a5a5a5;\n                  font-weight: 300;\n                  font-size: 13px;\n                  line-height: 18px;\n                  margin-bottom: 0; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.dark.css.map */"],"sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 13 */
 /*!*******************************!*\
   !*** ./utils/utils.plugin.ts ***!
   \*******************************/
@@ -2124,91 +1006,332 @@ var usePluginMeta = function () {
 };
 
 /***/ }),
-
-/***/ 32:
-/*!********************************!*\
-  !*** ./utils/utils.routing.ts ***!
-  \********************************/
+/* 14 */
+/*!*****************************!*\
+  !*** ./img/header-icon.png ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useNavigation": () => (/* binding */ useNavigation),
-/* harmony export */   "prefixRoute": () => (/* binding */ prefixRoute),
-/* harmony export */   "getNavModel": () => (/* binding */ getNavModel)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 1);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ 4);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils.plugin */ 9);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ 14);
-
-
-
-
- // Displays a top navigation tab-bar if needed
-
-function useNavigation() {
-  var pluginProps = (0,_utils_plugin__WEBPACK_IMPORTED_MODULE_2__.usePluginProps)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!pluginProps) {
-      console.error('Root plugin props are not available in the context.');
-      return;
-    }
-
-    var activeId = Object.keys(_constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION).find(function (routeId) {
-      return location.pathname.includes(routeId);
-    }) || '';
-    var activeNavItem = _constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION[activeId];
-    var onNavChanged = pluginProps.onNavChanged,
-        meta = pluginProps.meta,
-        basename = pluginProps.basename; // Disable tab navigation
-    // (the route is not registered as a navigation item)
-
-    if (!activeNavItem) {
-      onNavChanged(undefined);
-    } // Show tabbed navigation with the active tab
-    else {
-      onNavChanged(getNavModel({
-        activeId: activeId,
-        basePath: basename,
-        logoUrl: meta.info.logos.large
-      }));
-    }
-  }, [location.pathname, pluginProps]);
-} // Prefixes the route with the base URL of the plugin
-
-function prefixRoute(route) {
-  return "".concat(_constants__WEBPACK_IMPORTED_MODULE_3__.PLUGIN_BASE_URL, "/").concat(route);
-}
-function getNavModel(_a) {
-  var activeId = _a.activeId,
-      basePath = _a.basePath,
-      logoUrl = _a.logoUrl;
-  var main = {
-    text: _constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION_TITLE,
-    subTitle: _constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION_SUBTITLE,
-    url: basePath,
-    img: logoUrl,
-    children: Object.values(_constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION).map(function (navItem) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, navItem), {
-        active: navItem.id === activeId
-      });
-    })
-  };
-  return {
-    main: main,
-    node: main
-  };
-}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/header-icon.png");
 
 /***/ }),
+/* 15 */
+/*!********************************************************************!*\
+  !*** ../node_modules/react-circular-progressbar/dist/index.esm.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/***/ 181:
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CircularProgressbar": () => (/* binding */ CircularProgressbar),
+/* harmony export */   "CircularProgressbarWithChildren": () => (/* binding */ CircularProgressbarWithChildren),
+/* harmony export */   "buildStyles": () => (/* binding */ buildStyles)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
+    return t;
+}
+
+var VIEWBOX_WIDTH = 100;
+var VIEWBOX_HEIGHT = 100;
+var VIEWBOX_HEIGHT_HALF = 50;
+var VIEWBOX_CENTER_X = 50;
+var VIEWBOX_CENTER_Y = 50;
+
+function Path(_a) {
+    var className = _a.className, counterClockwise = _a.counterClockwise, dashRatio = _a.dashRatio, pathRadius = _a.pathRadius, strokeWidth = _a.strokeWidth, style = _a.style;
+    return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", { className: className, style: Object.assign({}, style, getDashStyle({ pathRadius: pathRadius, dashRatio: dashRatio, counterClockwise: counterClockwise })), d: getPathDescription({
+            pathRadius: pathRadius,
+            counterClockwise: counterClockwise,
+        }), strokeWidth: strokeWidth, fillOpacity: 0 }));
+}
+function getPathDescription(_a) {
+    var pathRadius = _a.pathRadius, counterClockwise = _a.counterClockwise;
+    var radius = pathRadius;
+    var rotation = counterClockwise ? 1 : 0;
+    return "\n      M " + VIEWBOX_CENTER_X + "," + VIEWBOX_CENTER_Y + "\n      m 0,-" + radius + "\n      a " + radius + "," + radius + " " + rotation + " 1 1 0," + 2 * radius + "\n      a " + radius + "," + radius + " " + rotation + " 1 1 0,-" + 2 * radius + "\n    ";
+}
+function getDashStyle(_a) {
+    var counterClockwise = _a.counterClockwise, dashRatio = _a.dashRatio, pathRadius = _a.pathRadius;
+    var diameter = Math.PI * 2 * pathRadius;
+    var gapLength = (1 - dashRatio) * diameter;
+    return {
+        strokeDasharray: diameter + "px " + diameter + "px",
+        strokeDashoffset: (counterClockwise ? -gapLength : gapLength) + "px",
+    };
+}
+
+var CircularProgressbar = (function (_super) {
+    __extends(CircularProgressbar, _super);
+    function CircularProgressbar() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    CircularProgressbar.prototype.getBackgroundPadding = function () {
+        if (!this.props.background) {
+            return 0;
+        }
+        return this.props.backgroundPadding;
+    };
+    CircularProgressbar.prototype.getPathRadius = function () {
+        return VIEWBOX_HEIGHT_HALF - this.props.strokeWidth / 2 - this.getBackgroundPadding();
+    };
+    CircularProgressbar.prototype.getPathRatio = function () {
+        var _a = this.props, value = _a.value, minValue = _a.minValue, maxValue = _a.maxValue;
+        var boundedValue = Math.min(Math.max(value, minValue), maxValue);
+        return (boundedValue - minValue) / (maxValue - minValue);
+    };
+    CircularProgressbar.prototype.render = function () {
+        var _a = this.props, circleRatio = _a.circleRatio, className = _a.className, classes = _a.classes, counterClockwise = _a.counterClockwise, styles = _a.styles, strokeWidth = _a.strokeWidth, text = _a.text;
+        var pathRadius = this.getPathRadius();
+        var pathRatio = this.getPathRatio();
+        return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", { className: classes.root + " " + className, style: styles.root, viewBox: "0 0 " + VIEWBOX_WIDTH + " " + VIEWBOX_HEIGHT, "data-test-id": "CircularProgressbar" },
+            this.props.background ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", { className: classes.background, style: styles.background, cx: VIEWBOX_CENTER_X, cy: VIEWBOX_CENTER_Y, r: VIEWBOX_HEIGHT_HALF })) : null,
+            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Path, { className: classes.trail, counterClockwise: counterClockwise, dashRatio: circleRatio, pathRadius: pathRadius, strokeWidth: strokeWidth, style: styles.trail }),
+            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Path, { className: classes.path, counterClockwise: counterClockwise, dashRatio: pathRatio * circleRatio, pathRadius: pathRadius, strokeWidth: strokeWidth, style: styles.path }),
+            text ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("text", { className: classes.text, style: styles.text, x: VIEWBOX_CENTER_X, y: VIEWBOX_CENTER_Y }, text)) : null));
+    };
+    CircularProgressbar.defaultProps = {
+        background: false,
+        backgroundPadding: 0,
+        circleRatio: 1,
+        classes: {
+            root: 'CircularProgressbar',
+            trail: 'CircularProgressbar-trail',
+            path: 'CircularProgressbar-path',
+            text: 'CircularProgressbar-text',
+            background: 'CircularProgressbar-background',
+        },
+        counterClockwise: false,
+        className: '',
+        maxValue: 100,
+        minValue: 0,
+        strokeWidth: 8,
+        styles: {
+            root: {},
+            trail: {},
+            path: {},
+            text: {},
+            background: {},
+        },
+        text: '',
+    };
+    return CircularProgressbar;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component));
+
+function CircularProgressbarWithChildren(props) {
+    var children = props.children, circularProgressbarProps = __rest(props, ["children"]);
+    return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { "data-test-id": "CircularProgressbarWithChildren" },
+        (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { style: { position: 'relative', width: '100%', height: '100%' } },
+            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(CircularProgressbar, __assign({}, circularProgressbarProps)),
+            props.children ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { "data-test-id": "CircularProgressbarWithChildren__children", style: {
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    marginTop: '-100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                } }, props.children)) : null)));
+}
+
+function buildStyles(_a) {
+    var rotation = _a.rotation, strokeLinecap = _a.strokeLinecap, textColor = _a.textColor, textSize = _a.textSize, pathColor = _a.pathColor, pathTransition = _a.pathTransition, pathTransitionDuration = _a.pathTransitionDuration, trailColor = _a.trailColor, backgroundColor = _a.backgroundColor;
+    var rotationTransform = rotation == null ? undefined : "rotate(" + rotation + "turn)";
+    var rotationTransformOrigin = rotation == null ? undefined : 'center center';
+    return {
+        root: {},
+        path: removeUndefinedValues({
+            stroke: pathColor,
+            strokeLinecap: strokeLinecap,
+            transform: rotationTransform,
+            transformOrigin: rotationTransformOrigin,
+            transition: pathTransition,
+            transitionDuration: pathTransitionDuration == null ? undefined : pathTransitionDuration + "s",
+        }),
+        trail: removeUndefinedValues({
+            stroke: trailColor,
+            strokeLinecap: strokeLinecap,
+            transform: rotationTransform,
+            transformOrigin: rotationTransformOrigin,
+        }),
+        text: removeUndefinedValues({
+            fill: textColor,
+            fontSize: textSize,
+        }),
+        background: removeUndefinedValues({
+            fill: backgroundColor,
+        }),
+    };
+}
+function removeUndefinedValues(obj) {
+    Object.keys(obj).forEach(function (key) {
+        if (obj[key] == null) {
+            delete obj[key];
+        }
+    });
+    return obj;
+}
+
+
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+/* 16 */
+/*!************************************************!*\
+  !*** ../node_modules/style-loader/lib/urls.js ***!
+  \************************************************/
+/***/ ((module) => {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+/* 17 */
 /*!**************************************************!*\
   !*** ../node_modules/chart.js/dist/chart.esm.js ***!
   \**************************************************/
@@ -2264,7 +1387,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "registry": () => (/* binding */ registry),
 /* harmony export */   "scales": () => (/* binding */ scales)
 /* harmony export */ });
-/* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunks/helpers.segment.js */ 182);
+/* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunks/helpers.segment.js */ 22);
 /*!
  * Chart.js v3.7.1
  * https://www.chartjs.org
@@ -12895,8 +12018,105 @@ const registerables = [
 
 
 /***/ }),
+/* 18 */
+/*!**********************!*\
+  !*** ./constants.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/***/ 182:
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PLUGIN_BASE_URL": () => (/* binding */ PLUGIN_BASE_URL),
+/* harmony export */   "ROUTES": () => (/* binding */ ROUTES),
+/* harmony export */   "NAVIGATION_TITLE": () => (/* binding */ NAVIGATION_TITLE),
+/* harmony export */   "NAVIGATION_SUBTITLE": () => (/* binding */ NAVIGATION_SUBTITLE),
+/* harmony export */   "NAVIGATION": () => (/* binding */ NAVIGATION)
+/* harmony export */ });
+/* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plugin.json */ 40);
+
+var PLUGIN_BASE_URL = "/a/".concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
+var ROUTES;
+
+(function (ROUTES) {
+  ROUTES["Dashboard"] = "dashboard";
+  ROUTES["ProjectWise"] = "project-wise";
+  ROUTES["ResourceWiseViewAllTasks"] = "ResourceWiseViewAllTasks";
+})(ROUTES || (ROUTES = {}));
+
+var NAVIGATION_TITLE = 'Basic App Plugin';
+var NAVIGATION_SUBTITLE = 'Some extra description...'; // Add a navigation item for each route you would like to display in the navigation bar
+
+var NAVIGATION = {};
+
+/***/ }),
+/* 19 */
+/*!******************************!*\
+  !*** external "@grafana/ui" ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__19__;
+
+/***/ }),
+/* 20 */
+/*!**************************************!*\
+  !*** ./css/workflowengine.light.css ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+var content = __webpack_require__(/*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./workflowengine.light.css */ 11);
+
+if(typeof content === 'string') content = [[module.id, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 21 */
+/*!*************************************!*\
+  !*** ./css/workflowengine.dark.css ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+var content = __webpack_require__(/*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./workflowengine.dark.css */ 12);
+
+if(typeof content === 'string') content = [[module.id, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 22 */
 /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -15530,256 +14750,1379 @@ function styleChanged(style, prevStyle) {
 
 
 /***/ }),
+/* 23 */
+/*!********************************!*\
+  !*** ./components/App/App.tsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/***/ 5:
-/*!**********************************************************************************************************************************!*\
-  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!../node_modules/react-circular-progressbar/dist/styles.css ***!
-  \**********************************************************************************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
-
-exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ 2)(true);
-// imports
-
-
-// module
-exports.push([module.id, "/*\n * react-circular-progressbar styles\n * All of the styles in this file are configurable!\n */\n\n.CircularProgressbar {\n  /*\n   * This fixes an issue where the CircularProgressbar svg has\n   * 0 width inside a \"display: flex\" container, and thus not visible.\n   */\n  width: 100%;\n  /*\n   * This fixes a centering issue with CircularProgressbarWithChildren:\n   * https://github.com/kevinsqi/react-circular-progressbar/issues/94\n   */\n  vertical-align: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-path {\n  stroke: #3e98c7;\n  stroke-linecap: round;\n  -webkit-transition: stroke-dashoffset 0.5s ease 0s;\n  transition: stroke-dashoffset 0.5s ease 0s;\n}\n\n.CircularProgressbar .CircularProgressbar-trail {\n  stroke: #d6d6d6;\n  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */\n  stroke-linecap: round;\n}\n\n.CircularProgressbar .CircularProgressbar-text {\n  fill: #3e98c7;\n  font-size: 20px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-background {\n  fill: #d6d6d6;\n}\n\n/*\n * Sample background styles. Use these with e.g.:\n *\n *   <CircularProgressbar\n *     className=\"CircularProgressbar-inverted\"\n *     background\n *     percentage={50}\n *   />\n */\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {\n  fill: #3e98c7;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {\n  fill: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {\n  stroke: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {\n  stroke: transparent;\n}\n", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/node_modules/react-circular-progressbar/dist/styles.css"],"names":[],"mappings":"AAAA;;;GAGG;;AAEH;EACE;;;KAGG;EACH,YAAY;EACZ;;;KAGG;EACH,uBAAuB;CACxB;;AAED;EACE,gBAAgB;EAChB,sBAAsB;EACtB,mDAAmD;EACnD,2CAA2C;CAC5C;;AAED;EACE,gBAAgB;EAChB,8EAA8E;EAC9E,sBAAsB;CACvB;;AAED;EACE,cAAc;EACd,gBAAgB;EAChB,0BAA0B;EAC1B,oBAAoB;CACrB;;AAED;EACE,cAAc;CACf;;AAED;;;;;;;;GAQG;AACH;EACE,cAAc;CACf;;AAED;EACE,WAAW;CACZ;;AAED;EACE,aAAa;CACd;;AAED;EACE,oBAAoB;CACrB","file":"styles.css","sourcesContent":["/*\n * react-circular-progressbar styles\n * All of the styles in this file are configurable!\n */\n\n.CircularProgressbar {\n  /*\n   * This fixes an issue where the CircularProgressbar svg has\n   * 0 width inside a \"display: flex\" container, and thus not visible.\n   */\n  width: 100%;\n  /*\n   * This fixes a centering issue with CircularProgressbarWithChildren:\n   * https://github.com/kevinsqi/react-circular-progressbar/issues/94\n   */\n  vertical-align: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-path {\n  stroke: #3e98c7;\n  stroke-linecap: round;\n  -webkit-transition: stroke-dashoffset 0.5s ease 0s;\n  transition: stroke-dashoffset 0.5s ease 0s;\n}\n\n.CircularProgressbar .CircularProgressbar-trail {\n  stroke: #d6d6d6;\n  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */\n  stroke-linecap: round;\n}\n\n.CircularProgressbar .CircularProgressbar-text {\n  fill: #3e98c7;\n  font-size: 20px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-background {\n  fill: #d6d6d6;\n}\n\n/*\n * Sample background styles. Use these with e.g.:\n *\n *   <CircularProgressbar\n *     className=\"CircularProgressbar-inverted\"\n *     background\n *     percentage={50}\n *   />\n */\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {\n  fill: #3e98c7;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {\n  fill: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {\n  stroke: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {\n  stroke: transparent;\n}\n"],"sourceRoot":""}]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 6:
-/*!************************************************************************************************************************!*\
-  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!../node_modules/simplebar/dist/simplebar.min.css ***!
-  \************************************************************************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
-
-exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ 2)(true);
-// imports
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "App": () => (/* binding */ App)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils/utils.plugin */ 13);
+/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 30);
 
 
-// module
-exports.push([module.id, "[data-simplebar]{position:relative;flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start}.simplebar-wrapper{overflow:hidden;width:inherit;height:inherit;max-width:inherit;max-height:inherit}.simplebar-mask{direction:inherit;position:absolute;overflow:hidden;padding:0;margin:0;left:0;top:0;bottom:0;right:0;width:auto!important;height:auto!important;z-index:0}.simplebar-offset{direction:inherit!important;box-sizing:inherit!important;resize:none!important;position:absolute;top:0;left:0;bottom:0;right:0;padding:0;margin:0;-webkit-overflow-scrolling:touch}.simplebar-content-wrapper{direction:inherit;box-sizing:border-box!important;position:relative;display:block;height:100%;width:auto;max-width:100%;max-height:100%;scrollbar-width:none;-ms-overflow-style:none}.simplebar-content-wrapper::-webkit-scrollbar,.simplebar-hide-scrollbar::-webkit-scrollbar{width:0;height:0}.simplebar-content:after,.simplebar-content:before{content:' ';display:table}.simplebar-placeholder{max-height:100%;max-width:100%;width:100%;pointer-events:none}.simplebar-height-auto-observer-wrapper{box-sizing:inherit!important;height:100%;width:100%;max-width:1px;position:relative;float:left;max-height:1px;overflow:hidden;z-index:-1;padding:0;margin:0;pointer-events:none;flex-grow:inherit;flex-shrink:0;flex-basis:0}.simplebar-height-auto-observer{box-sizing:inherit;display:block;opacity:0;position:absolute;top:0;left:0;height:1000%;width:1000%;min-height:1px;min-width:1px;overflow:hidden;pointer-events:none;z-index:-1}.simplebar-track{z-index:1;position:absolute;right:0;bottom:0;pointer-events:none;overflow:hidden}[data-simplebar].simplebar-dragging .simplebar-content{pointer-events:none;user-select:none;-webkit-user-select:none}[data-simplebar].simplebar-dragging .simplebar-track{pointer-events:all}.simplebar-scrollbar{position:absolute;left:0;right:0;min-height:10px}.simplebar-scrollbar:before{position:absolute;content:'';background:#000;border-radius:7px;left:2px;right:2px;opacity:0;transition:opacity .2s linear}.simplebar-scrollbar.simplebar-visible:before{opacity:.5;transition:opacity 0s linear}.simplebar-track.simplebar-vertical{top:0;width:11px}.simplebar-track.simplebar-vertical .simplebar-scrollbar:before{top:2px;bottom:2px}.simplebar-track.simplebar-horizontal{left:0;height:11px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before{height:100%;left:2px;right:2px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar{right:auto;left:0;top:2px;height:7px;min-height:0;min-width:10px;width:auto}[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical{right:auto;left:0}.hs-dummy-scrollbar-size{direction:rtl;position:fixed;opacity:0;visibility:hidden;height:500px;width:500px;overflow-y:hidden;overflow-x:scroll}.simplebar-hide-scrollbar{position:fixed;left:0;visibility:hidden;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none}\n", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/node_modules/simplebar/dist/simplebar.min.css"],"names":[],"mappings":"AAAA,iBAAiB,kBAAkB,sBAAsB,eAAe,2BAA2B,yBAAyB,sBAAsB,CAAC,mBAAmB,gBAAgB,cAAc,eAAe,kBAAkB,kBAAkB,CAAC,gBAAgB,kBAAkB,kBAAkB,gBAAgB,UAAU,SAAS,OAAO,MAAM,SAAS,QAAQ,qBAAqB,sBAAsB,SAAS,CAAC,kBAAkB,4BAA4B,6BAA6B,sBAAsB,kBAAkB,MAAM,OAAO,SAAS,QAAQ,UAAU,SAAS,gCAAgC,CAAC,2BAA2B,kBAAkB,gCAAgC,kBAAkB,cAAc,YAAY,WAAW,eAAe,gBAAgB,qBAAqB,uBAAuB,CAAC,2FAA2F,QAAQ,QAAQ,CAAC,mDAAmD,YAAY,aAAa,CAAC,uBAAuB,gBAAgB,eAAe,WAAW,mBAAmB,CAAC,wCAAwC,6BAA6B,YAAY,WAAW,cAAc,kBAAkB,WAAW,eAAe,gBAAgB,WAAW,UAAU,SAAS,oBAAoB,kBAAkB,cAAc,YAAY,CAAC,gCAAgC,mBAAmB,cAAc,UAAU,kBAAkB,MAAM,OAAO,aAAa,YAAY,eAAe,cAAc,gBAAgB,oBAAoB,UAAU,CAAC,iBAAiB,UAAU,kBAAkB,QAAQ,SAAS,oBAAoB,eAAe,CAAC,uDAAuD,oBAAoB,iBAAiB,wBAAwB,CAAC,qDAAqD,kBAAkB,CAAC,qBAAqB,kBAAkB,OAAO,QAAQ,eAAe,CAAC,4BAA4B,kBAAkB,WAAW,gBAAgB,kBAAkB,SAAS,UAAU,UAAU,6BAA6B,CAAC,8CAA8C,WAAW,4BAA4B,CAAC,oCAAoC,MAAM,UAAU,CAAC,gEAAgE,QAAQ,UAAU,CAAC,sCAAsC,OAAO,WAAW,CAAC,kEAAkE,YAAY,SAAS,SAAS,CAAC,2DAA2D,WAAW,OAAO,QAAQ,WAAW,aAAa,eAAe,UAAU,CAAC,mEAAmE,WAAW,MAAM,CAAC,yBAAyB,cAAc,eAAe,UAAU,kBAAkB,aAAa,YAAY,kBAAkB,iBAAiB,CAAC,0BAA0B,eAAe,OAAO,kBAAkB,kBAAkB,qBAAqB,uBAAuB,CAAC","file":"simplebar.min.css","sourcesContent":["[data-simplebar]{position:relative;flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start}.simplebar-wrapper{overflow:hidden;width:inherit;height:inherit;max-width:inherit;max-height:inherit}.simplebar-mask{direction:inherit;position:absolute;overflow:hidden;padding:0;margin:0;left:0;top:0;bottom:0;right:0;width:auto!important;height:auto!important;z-index:0}.simplebar-offset{direction:inherit!important;box-sizing:inherit!important;resize:none!important;position:absolute;top:0;left:0;bottom:0;right:0;padding:0;margin:0;-webkit-overflow-scrolling:touch}.simplebar-content-wrapper{direction:inherit;box-sizing:border-box!important;position:relative;display:block;height:100%;width:auto;max-width:100%;max-height:100%;scrollbar-width:none;-ms-overflow-style:none}.simplebar-content-wrapper::-webkit-scrollbar,.simplebar-hide-scrollbar::-webkit-scrollbar{width:0;height:0}.simplebar-content:after,.simplebar-content:before{content:' ';display:table}.simplebar-placeholder{max-height:100%;max-width:100%;width:100%;pointer-events:none}.simplebar-height-auto-observer-wrapper{box-sizing:inherit!important;height:100%;width:100%;max-width:1px;position:relative;float:left;max-height:1px;overflow:hidden;z-index:-1;padding:0;margin:0;pointer-events:none;flex-grow:inherit;flex-shrink:0;flex-basis:0}.simplebar-height-auto-observer{box-sizing:inherit;display:block;opacity:0;position:absolute;top:0;left:0;height:1000%;width:1000%;min-height:1px;min-width:1px;overflow:hidden;pointer-events:none;z-index:-1}.simplebar-track{z-index:1;position:absolute;right:0;bottom:0;pointer-events:none;overflow:hidden}[data-simplebar].simplebar-dragging .simplebar-content{pointer-events:none;user-select:none;-webkit-user-select:none}[data-simplebar].simplebar-dragging .simplebar-track{pointer-events:all}.simplebar-scrollbar{position:absolute;left:0;right:0;min-height:10px}.simplebar-scrollbar:before{position:absolute;content:'';background:#000;border-radius:7px;left:2px;right:2px;opacity:0;transition:opacity .2s linear}.simplebar-scrollbar.simplebar-visible:before{opacity:.5;transition:opacity 0s linear}.simplebar-track.simplebar-vertical{top:0;width:11px}.simplebar-track.simplebar-vertical .simplebar-scrollbar:before{top:2px;bottom:2px}.simplebar-track.simplebar-horizontal{left:0;height:11px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before{height:100%;left:2px;right:2px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar{right:auto;left:0;top:2px;height:7px;min-height:0;min-width:10px;width:auto}[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical{right:auto;left:0}.hs-dummy-scrollbar-size{direction:rtl;position:fixed;opacity:0;visibility:hidden;height:500px;width:500px;overflow-y:hidden;overflow-x:scroll}.simplebar-hide-scrollbar{position:fixed;left:0;visibility:hidden;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none}\n"],"sourceRoot":""}]);
-
-// exports
 
 
-/***/ }),
 
-/***/ 8:
-/*!*****************************************************************************************************!*\
-  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/workflowengine.dark.css ***!
-  \*****************************************************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
+var App =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(App, _super);
 
-exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ 2)(true);
-// imports
+  function App() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
 
+  App.prototype.render = function () {
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__.PluginPropsContext.Provider, {
+      value: this.props
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Routes__WEBPACK_IMPORTED_MODULE_2__.Routes, null));
+  };
 
-// module
-exports.push([module.id, ".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.dark.css.map */", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/src/css/workflowengine.dark.css"],"names":[],"mappings":"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","file":"workflowengine.dark.css","sourcesContent":[".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.dark.css.map */"],"sourceRoot":""}]);
+  return App;
+}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
 
-// exports
 
 
 /***/ }),
+/* 24 */
+/*!**************************************!*\
+  !*** ./components/Routes/Routes.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/***/ 7:
-/*!******************************************************************************************************!*\
-  !*** ../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./css/workflowengine.light.css ***!
-  \******************************************************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Routes": () => (/* binding */ Routes)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ 4);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../pages/Dashboard */ 31);
+/* harmony import */ var _pages_ProjectWise__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pages/ProjectWise */ 33);
+/* harmony import */ var _pages_ResourceWiseViewAllTasks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../pages/ResourceWiseViewAllTasks */ 34);
+/* harmony import */ var _utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils.routing */ 39);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../constants */ 18);
 
-exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ 2)(true);
-// imports
 
 
-// module
-exports.push([module.id, ".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.light.css.map */", "", {"version":3,"sources":["E:/Appkube-Platform/xformation-plugins/xformation-workflow-engine/src/css/workflowengine.light.css"],"names":[],"mappings":"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","file":"workflowengine.light.css","sourcesContent":[".owrkflow-dashboard-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-dashboard-container .dashboard-container {\n    display: block;\n    width: 100%;\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-dashboard-container .dashboard-container .fliter-container {\n      display: block;\n      width: 100%;\n      padding-bottom: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {\n        display: block;\n        font-size: 14px;\n        line-height: 32px;\n        font-weight: 600;\n        color: #3b4859; }\n      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {\n        float: right;\n        width: auto; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 15px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {\n          display: inline-block;\n          width: 250px;\n          height: 32px;\n          border-radius: 20px;\n          padding: 0;\n          border: 1px solid #a9b9c6;\n          margin-right: 0px; }\n          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {\n            background: none;\n            border: none;\n            width: 100%;\n            height: 100%;\n            font-size: 12px;\n            line-height: 26px;\n            color: #d1dae2;\n            padding: 5px 10px; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {\n              outline: none; }\n    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {\n      padding: 0 0 30px 0; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {\n        margin: 0;\n        font-weight: 600;\n        color: #202020;\n        letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {\n        font-size: 13px;\n        line-height: 24px;\n        color: #a5a5a5; }\n      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {\n        width: 100%;\n        border: none;\n        vertical-align: middle;\n        border-radius: 10px;\n        background-color: #ffffff;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {\n          line-height: 20px;\n          cursor: pointer;\n          padding: 10px 20px;\n          position: relative; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {\n            color: #6418c3;\n            margin-right: 15px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {\n            color: #aaaaaa;\n            float: right;\n            margin-top: 5px;\n            vertical-align: middle; }\n          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {\n            display: inline-block;\n            vertical-align: middle;\n            cursor: pointer; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {\n              font-weight: 500;\n              font-size: 14px;\n              line-height: 14px;\n              color: #000000;\n              margin-bottom: 0; }\n            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {\n              font-weight: 500;\n              font-size: 12px;\n              line-height: 14px;\n              color: #393939;\n              width: 65px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {\n                border: none;\n                width: auto; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {\n                  padding-right: 7px;\n                  width: auto; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {\n                    display: none; }\n                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {\n                    content: \"To\";\n                    font-weight: 500;\n                    font-size: 12px;\n                    line-height: 14px;\n                    color: #393939;\n                    display: inline-block;\n                    vertical-align: top; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {\n                  padding: 0 !important;\n                  font-weight: 500;\n                  font-size: 12px;\n                  line-height: 14px;\n                  color: #393939;\n                  background-color: transparent; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {\n                position: absolute;\n                left: 0;\n                top: 0;\n                width: 100%;\n                height: 100%;\n                z-index: 1;\n                padding: 30px 0 0 60px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {\n                right: 0 !important;\n                left: auto !important;\n                z-index: 1; }\n                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {\n                  height: 32px;\n                  line-height: 32px; }\n              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {\n                z-index: 0; }\n    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {\n      padding: 20px 15px;\n      height: 130px;\n      border-radius: 15px;\n      border: none;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #ffffff;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 45px;\n        position: relative; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {\n          width: 75px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {\n          position: absolute;\n          top: 13px;\n          right: -8px;\n          width: 20px;\n          height: 20px;\n          text-align: center;\n          color: #fff;\n          font-weight: 700;\n          line-height: 20px;\n          background: #5fcffd;\n          border-radius: 50%; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {\n          font-size: 50px;\n          color: #7924ca; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {\n          width: 18px;\n          height: 45px;\n          margin-right: 5px;\n          border-radius: 15px;\n          display: inline-block;\n          background-color: #dfecf2; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {\n          width: 18px;\n          height: 75px;\n          border-radius: 15px;\n          display: inline-block;\n          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }\n      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {\n        width: auto;\n        display: inline-block;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {\n          font-size: 14px;\n          font-weight: 500;\n          color: #a5a5a5; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {\n          margin: 0;\n          margin-bottom: 5px;\n          font-size: 30px;\n          line-height: 36px;\n          font-weight: 700; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {\n          margin-bottom: 10px;\n          position: relative;\n          padding-left: 20px;\n          display: block;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #60dfff;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {\n          position: relative;\n          padding-left: 20px;\n          white-space: nowrap;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {\n            font-size: 12px;\n            font-weight: 500;\n            color: #a5a5a5; }\n          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {\n            margin: 0;\n            line-height: 16px;\n            font-weight: 700; }\n            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {\n              content: \"\";\n              width: 10px;\n              height: 10px;\n              background: #dfecf2;\n              border-radius: 50%;\n              position: absolute;\n              top: 5px;\n              left: 0px; }\n    .owrkflow-dashboard-container .dashboard-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        max-height: 400px;\n        min-height: 400px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n    .owrkflow-dashboard-container .dashboard-container .project-resources-section {\n      display: block;\n      padding-top: 30px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 40px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {\n            display: flex;\n            padding: 0;\n            margin: 0;\n            list-style: none;\n            border-bottom: 2px solid #f8f8f8; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {\n              display: inline-block;\n              padding-left: 15px;\n              padding-right: 15px;\n              padding-bottom: 10px;\n              margin-right: 10px;\n              font-size: 14px;\n              line-height: 22px;\n              font-weight: 500;\n              color: #a5a5a5;\n              cursor: pointer;\n              border-bottom: 2px solid transparent; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {\n                color: #6418c3;\n                border-bottom: 2px solid #6418c3; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {\n                margin-right: 0; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {\n          display: block;\n          width: 100%;\n          padding: 0;\n          max-height: 300px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {\n            display: flex;\n            width: 100%;\n            padding: 15px 20px;\n            border-left: 5px solid #f6eeff;\n            border-bottom: 1px solid #f6eeff;\n            justify-content: flex-start;\n            align-items: flex-start; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {\n              border-left: 5px solid #6418c3; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {\n              display: flex;\n              margin-right: 15px;\n              width: 44px;\n              height: 44px;\n              border-radius: 15px;\n              padding-left: 3px;\n              padding-right: 3px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              border: 1px solid #f8f8f8;\n              background-color: #ffffff;\n              cursor: pointer; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {\n                display: inline-block;\n                font-size: 16px;\n                color: #c2c2c2;\n                line-height: 22px;\n                border: 1px solid #f8f8f8; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {\n                background-color: #ffebcc; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {\n                  color: #ffab2d; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {\n              display: flex;\n              width: 30px;\n              height: 44px;\n              justify-content: center;\n              align-items: center;\n              text-align: center;\n              margin-right: 15px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {\n              display: flex;\n              width: calc(100% - 104px);\n              flex-wrap: wrap;\n              justify-content: flex-start;\n              align-items: flex-start; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {\n                display: block;\n                width: 100%;\n                margin-bottom: 5px;\n                font-size: 16px;\n                line-height: 22px;\n                font-weight: 600;\n                color: #202020; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {\n                display: block;\n                width: 100%;\n                margin-bottom: 10px;\n                font-size: 15px;\n                line-height: 18px;\n                font-weight: 500;\n                color: #a5a5a5; }\n                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {\n                  display: inline-block;\n                  font-size: 6px;\n                  margin-left: 10px;\n                  margin-right: 10px;\n                  line-height: 10px;\n                  vertical-align: top;\n                  margin-top: 6px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {\n                display: block;\n                display: -webkit-box;\n                -webkit-line-clamp: 2;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n                width: 100%;\n                margin-bottom: 0px;\n                font-size: 13px;\n                line-height: 18px;\n                font-weight: 300;\n                color: #202020;\n                height: 40px; }\n      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {\n        display: block;\n        background-color: #ffffff;\n        padding: 10px 5px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          padding-top: 20px;\n          padding-bottom: 20px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {\n            font-size: 22px;\n            font-weight: 600;\n            line-height: 30px;\n            color: #202020;\n            margin-bottom: 0px;\n            letter-spacing: 1px; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {\n            color: #a5a5a5;\n            font-weight: 400; }\n        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {\n          display: block;\n          width: 100%;\n          padding-left: 15px;\n          padding-right: 15px;\n          max-height: 289px;\n          overflow: hidden;\n          overflow-y: auto; }\n          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            width: 100%;\n            margin-bottom: 15px; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {\n              display: flex;\n              width: 48px;\n              height: 48px;\n              margin-right: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {\n                max-width: 100%;\n                height: auto; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {\n              display: flex;\n              width: calc(100% - 102px);\n              justify-content: center;\n              align-items: center;\n              flex-wrap: wrap; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {\n                display: block;\n                width: 100%;\n                font-size: 16px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020;\n                margin-bottom: 5px; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {\n                display: block;\n                width: 100%;\n                color: #a5a5a5;\n                font-size: 13px;\n                line-height: 16px;\n                margin-bottom: 0;\n                font-weight: 300; }\n            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {\n              display: flex;\n              width: 24px;\n              height: 24px;\n              margin-left: 15px;\n              justify-content: center;\n              align-items: center; }\n              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {\n                background-color: #6418c3;\n                border-radius: 50%;\n                width: 24px;\n                height: 24px;\n                text-align: center;\n                color: #ffffff;\n                font-size: 12px;\n                line-height: 24px; }\n    .owrkflow-dashboard-container .dashboard-container .project-overview-section {\n      display: block;\n      background-color: #ffffff;\n      margin-top: 30px;\n      padding: 30px 20px;\n      border-radius: 15px;\n      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {\n        display: block;\n        width: 100%; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 0px;\n          letter-spacing: 1px; }\n      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {\n        display: block;\n        width: 100%;\n        padding-top: 30px; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 18px;\n          font-weight: 400;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {\n            text-align: center; }\n        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {\n          padding-left: 10px;\n          padding-right: 10px;\n          padding-bottom: 15px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #414d55;\n          width: 14.2857%; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {\n            color: #2662f0; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {\n            text-align: center; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {\n            color: #ffa000; }\n          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {\n            color: #860000; }\n\n.owrkflow-project-wise-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-project-wise-container .project-wise-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n    padding-bottom: 15px; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {\n        display: flex; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {\n          display: inline-block; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {\n          margin-left: 20px;\n          display: inline-block; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {\n            font-size: 18px;\n            line-height: 22px;\n            font-weight: 500;\n            color: #202020;\n            margin: 0; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {\n            font-size: 14px;\n            line-height: 18px;\n            font-weight: 500;\n            color: #202020; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {\n            font-size: 12px;\n            line-height: 16px;\n            font-weight: 400;\n            color: #202020;\n            margin: 10px 0 0 0; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {\n        float: right; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {\n          display: inline-block;\n          width: 25px;\n          height: 25px;\n          line-height: 25px;\n          border-radius: 25px;\n          text-align: center;\n          color: #fff;\n          font-size: 14px;\n          background-color: #8145cd; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {\n      margin-top: 50px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {\n        padding-left: 16px;\n        padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {\n        padding-top: 30px;\n        padding-left: 16px;\n        padding-right: 16px; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {\n                color: #57d25f; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {\n                color: #eea515; }\n    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {\n      padding-top: 30px;\n      padding-left: 16px;\n      padding-right: 16px; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            display: flex;\n            width: 280px;\n            max-width: 280px;\n            margin-right: 30px;\n            border-radius: 8px;\n            flex-wrap: wrap;\n            padding: 20px;\n            margin-bottom: 15px;\n            background: #ffffff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 18px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: 202020; }\n                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {\n                  font-size: 14px;\n                  line-height: 20px;\n                  font-weight: 400;\n                  color: #a5a5a5;\n                  margin: 8px 0 0 0; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px;\n              width: 100%;\n              display: block; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {\n              display: block;\n              width: 100%; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n                width: 130px;\n                height: 130px; }\n              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n                margin: 15px 0 0 0;\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: #202020; }\n\n.owrkflow-resource-wise-View-container {\n  display: block;\n  width: 100%; }\n  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {\n    background-color: #f9fafc;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 15px;\n    padding-bottom: 15px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {\n      display: flex;\n      align-items: center;\n      justify-content: flex-start; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {\n        display: inline-block; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {\n        margin-left: 20px;\n        display: inline-block; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {\n          font-size: 18px;\n          line-height: 22px;\n          font-weight: 500;\n          color: #202020;\n          margin: 0 0 10px 0; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {\n          font-size: 14px;\n          line-height: 18px;\n          font-weight: 400;\n          color: #a5a5a5; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {\n      float: right; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {\n        display: inline-block;\n        width: 25px;\n        height: 25px;\n        line-height: 25px;\n        border-radius: 25px;\n        text-align: center;\n        color: #fff;\n        font-size: 14px;\n        background-color: #8145cd; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {\n      border-radius: 8px;\n      margin-top: 50px;\n      padding: 40px 20px 20px 20px;\n      background-color: #fefefe; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {\n        margin-bottom: 30px;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        color: #202020;\n        margin-bottom: 8px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {\n          -moz-appearance: none;\n          -webkit-appearance: none;\n          appearance: none;\n          width: 100%;\n          height: 45px;\n          border: none;\n          cursor: pointer;\n          color: #aaaaaa;\n          font-size: 16px;\n          font-weight: 500;\n          line-height: 45px;\n          border-radius: 8px;\n          padding: 0 20px 0 40px;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {\n          content: \"\\F107\";\n          position: absolute;\n          top: 7px;\n          left: 30px;\n          font-weight: 900;\n          font-size: 20px;\n          color: #a274db;\n          font-family: 'FontAwesome'; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {\n        width: 100%;\n        position: relative; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {\n          width: 100%;\n          height: 45px;\n          font-size: 16px;\n          font-weight: 500;\n          color: #aaaaaa;\n          line-height: 45px;\n          padding-left: 45px;\n          border-radius: 8px;\n          background-color: #ffffff;\n          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {\n            outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {\n          top: 14px;\n          left: 20px;\n          font-size: 18px;\n          color: #a274db;\n          font-weight: 600;\n          position: absolute;\n          vertical-align: middle; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {\n        margin-top: 50px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {\n          width: 100%;\n          display: flex;\n          border-bottom: 1px solid #e6e6e6; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 500;\n            line-height: 20px;\n            color: #414d55;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {\n              border-right: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {\n          width: 100%;\n          display: flex;\n          margin-top: 8px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {\n            width: 100%;\n            padding: 10px;\n            font-size: 14px;\n            font-weight: 400;\n            height: 40px;\n            line-height: 20px;\n            color: #2662f0;\n            margin-bottom: 8px;\n            text-align: center;\n            border-right: 1px solid #e6e6e6; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {\n              border-right: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {\n              font-size: 18px;\n              color: #57d25f; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {\n            font-weight: 500;\n            color: #2662f0; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {\n            color: #414d55; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {\n      margin-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 500;\n        color: #202020; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {\n        display: block;\n        width: 100%; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {\n          margin-top: 30px;\n          display: flex;\n          display: -webkit-box;\n          width: 100%;\n          overflow: hidden;\n          overflow-x: auto; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {\n            width: 300px;\n            max-width: 100%;\n            margin-right: 30px;\n            border-radius: 8px;\n            padding: 15px 15px 5px 15px;\n            margin-bottom: 15px;\n            cursor: pointer;\n            background: #fefefe;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {\n              display: flex;\n              margin-bottom: 15px;\n              align-items: center;\n              justify-content: start; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {\n                margin-left: 15px; }\n                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {\n                  font-size: 16px;\n                  line-height: 20px;\n                  font-weight: 500;\n                  color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {\n              margin-bottom: 15px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 500;\n                color: 202020; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {\n                font-size: 14px;\n                line-height: 20px;\n                font-weight: 400;\n                color: #202020;\n                margin-top: 10px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {\n              width: 130px;\n              height: 130px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {\n              margin: 15px 0 0 0;\n              font-size: 14px;\n              line-height: 20px;\n              font-weight: 500;\n              color: #202020; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {\n              margin-top: 20px; }\n    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {\n      padding-top: 30px; }\n      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {\n        background-color: #ffffff;\n        padding: 30px 20px;\n        border-radius: 15px;\n        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);\n        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {\n          font-size: 22px;\n          font-weight: 600;\n          line-height: 30px;\n          color: #202020;\n          margin-bottom: 30px;\n          letter-spacing: 1px; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {\n          text-align: right; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {\n            border: 1px solid #8f8f8f;\n            border-radius: 10px;\n            width: 110px;\n            margin-right: 10px;\n            padding: 0 5px; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {\n              outline: none; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {\n              outline: none; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {\n          float: right;\n          color: #a5a5a5;\n          padding: 5px;\n          width: 34px;\n          height: 34px;\n          text-align: center;\n          cursor: pointer;\n          border-radius: 50%;\n          line-height: 28px;\n          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {\n            font-size: 1.2rem; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {\n            background-color: rgba(0, 0, 0, 0.04); }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {\n          width: 150px; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {\n            display: block;\n            margin-bottom: 10px;\n            position: relative; }\n            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {\n              display: block;\n              font-size: 12px;\n              line-height: 16px;\n              margin-left: 20px; }\n              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {\n                content: \"\";\n                width: 10px;\n                height: 10px;\n                position: absolute;\n                top: 2px;\n                left: 0;\n                border-radius: 50%;\n                background-color: #8884d8; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {\n            background-color: #82ca9d; }\n        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {\n          margin-top: 30px;\n          text-align: center; }\n          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {\n            font-size: 12px; }\n\n/*# sourceMappingURL=workflowengine.light.css.map */"],"sourceRoot":""}]);
-
-// exports
 
 
-/***/ }),
 
-/***/ 2:
-/*!**************************************************!*\
-  !*** ../node_modules/css-loader/lib/css-base.js ***!
-  \**************************************************/
-/***/ ((module) => {
 
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
+var Routes = function () {
+  (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.useNavigation)();
+  return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Switch, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
+    exact: true,
+    path: (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.prefixRoute)(_constants__WEBPACK_IMPORTED_MODULE_6__.ROUTES.Dashboard),
+    component: _pages_Dashboard__WEBPACK_IMPORTED_MODULE_2__.Dashboard
+  }), react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
+    exact: true,
+    path: (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.prefixRoute)(_constants__WEBPACK_IMPORTED_MODULE_6__.ROUTES.ProjectWise),
+    component: _pages_ProjectWise__WEBPACK_IMPORTED_MODULE_3__.ProjectWise
+  }), react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
+    exact: true,
+    path: (0,_utils_utils_routing__WEBPACK_IMPORTED_MODULE_5__.prefixRoute)(_constants__WEBPACK_IMPORTED_MODULE_6__.ROUTES.ResourceWiseViewAllTasks),
+    component: _pages_ResourceWiseViewAllTasks__WEBPACK_IMPORTED_MODULE_4__.ResourceWiseViewAllTasks
+  }));
 };
 
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
 /***/ }),
-
-/***/ 220:
-/*!*********************************!*\
-  !*** ./img/card-arrow-icon.png ***!
-  \*********************************/
+/* 25 */
+/*!********************************************!*\
+  !*** ./components/AppConfig/AppConfig.tsx ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "AppConfig": () => (/* binding */ AppConfig),
+/* harmony export */   "updatePlugin": () => (/* binding */ updatePlugin)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/card-arrow-icon.png");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 19);
+/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @grafana/runtime */ 42);
+/* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_grafana_runtime__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/css */ 43);
+/* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_emotion_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SecretInput */ 44);
+
+
+
+
+
+
+var AppConfig = function (_a) {
+  var plugin = _a.plugin;
+  var s = (0,_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.useStyles2)(getStyles);
+  var _b = plugin.meta,
+      enabled = _b.enabled,
+      pinned = _b.pinned,
+      jsonData = _b.jsonData;
+
+  var _c = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__read)((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    apiUrl: (jsonData === null || jsonData === void 0 ? void 0 : jsonData.apiUrl) || '',
+    apiKey: '',
+    isApiKeySet: Boolean(jsonData === null || jsonData === void 0 ? void 0 : jsonData.isApiKeySet)
+  }), 2),
+      state = _c[0],
+      setState = _c[1];
+
+  var onResetApiKey = function () {
+    return setState((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, state), {
+      apiKey: '',
+      isApiKeySet: false
+    }));
+  };
+
+  var onChangeApiKey = function (event) {
+    setState((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, state), {
+      apiKey: event.target.value.trim()
+    }));
+  };
+
+  var onChangeApiUrl = function (event) {
+    setState((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, state), {
+      apiUrl: event.target.value.trim()
+    }));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.FieldSet, {
+    label: "Enable / Disable"
+  }, !enabled && react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: s.colorWeak
+  }, "The plugin is currently not enabled."), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    className: s.marginTop,
+    variant: "primary",
+    onClick: function () {
+      return updatePluginAndReload(plugin.meta.id, {
+        enabled: true,
+        pinned: true,
+        jsonData: jsonData
+      });
+    }
+  }, "Enable plugin")), enabled && react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: s.colorWeak
+  }, "The plugin is currently enabled."), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    className: s.marginTop,
+    variant: "destructive",
+    onClick: function () {
+      return updatePluginAndReload(plugin.meta.id, {
+        enabled: false,
+        pinned: false,
+        jsonData: jsonData
+      });
+    }
+  }, "Disable plugin"))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.FieldSet, {
+    label: "API Settings",
+    className: s.marginTopXl
+  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Field, {
+    label: "API Key",
+    description: "A secret key for authenticating to our custom API"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SecretInput__WEBPACK_IMPORTED_MODULE_4__.SecretInput, {
+    width: 60,
+    "data-testid": "api-key",
+    id: "api-key",
+    value: state === null || state === void 0 ? void 0 : state.apiKey,
+    isConfigured: state.isApiKeySet,
+    placeholder: 'Your secret API key',
+    onChange: onChangeApiKey,
+    onReset: onResetApiKey
+  })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Field, {
+    label: "API Url",
+    description: "",
+    className: s.marginTop
+  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Input, {
+    width: 60,
+    id: "api-url",
+    "data-testid": "api-url",
+    label: "API Url",
+    value: state === null || state === void 0 ? void 0 : state.apiUrl,
+    placeholder: "E.g.: http://mywebsite.com/api/v1",
+    onChange: onChangeApiUrl
+  })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: s.marginTop
+  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    type: "submit",
+    onClick: function () {
+      return updatePluginAndReload(plugin.meta.id, {
+        enabled: enabled,
+        pinned: pinned,
+        jsonData: {
+          apiUrl: state.apiUrl,
+          isApiKeySet: true
+        },
+        // This cannot be queried later by the frontend.
+        // We don't want to override it in case it was set previously and left untouched now.
+        secureJsonData: state.isApiKeySet ? undefined : {
+          apiKey: state.apiKey
+        }
+      });
+    },
+    disabled: Boolean(!state.apiUrl || !state.isApiKeySet && !state.apiKey)
+  }, "Save API settings"))));
+};
+
+var getStyles = function (theme) {
+  return {
+    colorWeak: (0,_emotion_css__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_1 || (templateObject_1 = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__makeTemplateObject)(["\n    color: ", ";\n  "], ["\n    color: ", ";\n  "])), theme.colors.text.secondary),
+    marginTop: (0,_emotion_css__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_2 || (templateObject_2 = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__makeTemplateObject)(["\n    margin-top: ", ";\n  "], ["\n    margin-top: ", ";\n  "])), theme.spacing(3)),
+    marginTopXl: (0,_emotion_css__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_3 || (templateObject_3 = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__makeTemplateObject)(["\n    margin-top: ", ";\n  "], ["\n    margin-top: ", ";\n  "])), theme.spacing(6))
+  };
+};
+
+var updatePluginAndReload = function (pluginId, data) {
+  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
+    var e_1;
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          _a.trys.push([0, 2,, 3]);
+
+          return [4
+          /*yield*/
+          , updatePlugin(pluginId, data)];
+
+        case 1:
+          _a.sent(); // Reloading the page as the changes made here wouldn't be propagated to the actual plugin otherwise.
+          // This is not ideal, however unfortunately currently there is no supported way for updating the plugin state.
+
+
+          _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.locationService.reload();
+          return [3
+          /*break*/
+          , 3];
+
+        case 2:
+          e_1 = _a.sent();
+          console.error('Error while updating the plugin', e_1);
+          return [3
+          /*break*/
+          , 3];
+
+        case 3:
+          return [2
+          /*return*/
+          ];
+      }
+    });
+  });
+};
+
+var updatePlugin = function (pluginId, data) {
+  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
+    var response;
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          return [4
+          /*yield*/
+          , (0,_grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.getBackendSrv)().datasourceRequest({
+            url: "/api/plugins/".concat(pluginId, "/settings"),
+            method: 'POST',
+            data: data
+          })];
+
+        case 1:
+          response = _a.sent();
+          return [2
+          /*return*/
+          , response === null || response === void 0 ? void 0 : response.data];
+      }
+    });
+  });
+};
+var templateObject_1, templateObject_2, templateObject_3;
 
 /***/ }),
-
-/***/ 29:
-/*!*****************************!*\
-  !*** ./img/header-icon.png ***!
-  \*****************************/
+/* 26 */
+/*!************************************************!*\
+  !*** ./components/SecretInput/SecretInput.tsx ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "SecretInput": () => (/* binding */ SecretInput)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/header-icon.png");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 19);
+/* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__);
+
+
+ // This replaces the "LegacyForms.SecretFormField" component from @grafana/ui, so we can start using the newer form components.
+
+var SecretInput = function (_a) {
+  var isConfigured = _a.isConfigured,
+      onReset = _a.onReset,
+      props = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["isConfigured", "onReset"]);
+
+  if (isConfigured) {
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.HorizontalGroup, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Input, (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, props, {
+      type: "text",
+      disabled: true,
+      value: "configured"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
+      onClick: onReset,
+      variant: "secondary"
+    }, "Reset"));
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_grafana_ui__WEBPACK_IMPORTED_MODULE_1__.Input, (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, props, {
+    type: "password"
+  }));
+};
 
 /***/ }),
-
-/***/ 30:
-/*!************************************!*\
-  !*** ./img/resources-user-img.png ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resources-user-img.png");
-
-/***/ }),
-
-/***/ 186:
+/* 27 */,
+/* 28 */
 /*!********************************!*\
-  !*** ./img/resourse-icon1.png ***!
+  !*** external "@grafana/data" ***!
   \********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__28__;
+
+/***/ }),
+/* 29 */
+/*!**********************************!*\
+  !*** ./components/App/index.tsx ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "App": () => (/* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resourse-icon1.png");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 23);
+
 
 /***/ }),
-
-/***/ 187:
-/*!********************************!*\
-  !*** ./img/resourse-icon2.png ***!
-  \********************************/
+/* 30 */
+/*!*************************************!*\
+  !*** ./components/Routes/index.tsx ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "Routes": () => (/* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resourse-icon2.png");
+/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 24);
+
 
 /***/ }),
-
-/***/ 188:
-/*!********************************!*\
-  !*** ./img/resourse-icon3.png ***!
-  \********************************/
+/* 31 */
+/*!***********************************!*\
+  !*** ./pages/Dashboard/index.tsx ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "Dashboard": () => (/* binding */ Dashboard)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resourse-icon3.png");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Breadcrumbs */ 5);
+/* harmony import */ var _img_rfp_img_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/rfp-img.png */ 32);
+/* harmony import */ var _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/resources-user-img.png */ 6);
+/* harmony import */ var _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img/header-icon.png */ 14);
+
+
+
+
+ // import DateFormat from './DateFormat';
+
+
+
+var Dashboard =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__extends)(Dashboard, _super);
+
+  function Dashboard(props) {
+    var _this = _super.call(this, props) || this;
+
+    _this.state = {};
+    _this.breadCrumbs = [{
+      label: 'Home',
+      route: "/"
+    }, {
+      label: 'Kubernetes | Overview',
+      isCurrentPage: true
+    }];
+    return _this;
+  }
+
+  Dashboard.prototype.render = function () {
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "owrkflow-dashboard-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.Breadcrumbs, {
+      breadcrumbs: this.breadCrumbs,
+      pageTitle: "WORKFLOW MANAGEMENT"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "dashboard-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "fliter-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, "Procurement Workflow management")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "fliter-search"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "fliter-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Fliter by 3"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "fliter-search-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: 'Search for...',
+      className: "input-group-text",
+      placeholder: 'Search for...'
+    })))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "dashbord-top-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Dashboard"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Lorem ipsum dolor sit amet"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-8"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "calender"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-rfp-boxs"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-3 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_rfp_img_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "215"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Today's RFP")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-3 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_rfp_img_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "26685"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total RFP")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-3 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "mail-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-envelope"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "!")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "35"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Important Emails")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-3 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-img order"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "in-progress"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "complate-progress"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "completed"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "2,841"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Completed Orders")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "in-progrss"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "1.456"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "In-progrss Orders"))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "average-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "statistics-graph"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "requistions-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
+      className: "d-block"
+    }, 'Workflow Statistics')), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "requistions-graph"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "statistics-graph"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "requistions-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-6 col-md-6 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
+      className: "d-block"
+    }, 'Project Overview')), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-6 col-md-6 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "requistions-dropdown"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "opensens-dropdown"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      className: "opensens-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: ""
+    }, "Monthly"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: 10
+    }, "abc"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: 20
+    }, "def"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: 30
+    }, "abc")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "meore-menu-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-ellipsis-v"
+    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: ""
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "totalpaid"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "paid-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Completed Task")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "paid-content unpaid"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Pending Task")))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-9"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-list"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-7"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Project List")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-5"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      className: "tabs"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      className: "active"
+    }, "All Projects"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "In Progress"))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "projects"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project active"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "star-box active"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-star"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-circle"
+    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "star-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-star"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-circle"
+    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "star-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-star"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-circle"
+    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "star-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-star"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-circle"
+    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "star-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-star"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-circle"
+    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "star-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-star"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D ", react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-circle"
+    }), " 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.")))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-3"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-list"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Resources"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "All Resources")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project - Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "plus-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-plus"
+    }))))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-overview-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Project Overview")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "table"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project Name"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Total Usecase"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project Manager"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Assigned date"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Age"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Status"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Activity Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Xformation"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "80"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Ganesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "15/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "7d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress"
+    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Procurement"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "95"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "pending"
+    }, "Pending for review")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "View Logs"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Supply chail"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "70"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Zakir")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "15/02/2021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "7d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress"
+    }, "In progress")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "View Logs"))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-overview-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Project Progress Overview")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "table progress"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project Name"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Reuirements"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Mock Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Actual Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "CI/CD Test"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Staging/Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Publish/Operate"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+      colSpan: 7
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Xformation"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Procurement"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Supply chail"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null)))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-allocation-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Project Wise Resource Allocation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-allocation"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "allocation-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "allocation-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "allocation-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "allocation-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "allocation-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "allocation-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Employee"))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-overview-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, "Rask wise Resource Progress Overview")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "table"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Resource Name"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Reuirements"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Mock Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Actual Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "CI/CD Test"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Staging/Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Publish/Operate"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Siddhesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "4851232"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Kubernets"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/022021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "completed"
+    }, "Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Siddhesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "4851232"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Kubernets"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/022021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress"
+    }, "In progress"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Siddhesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "4851232"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Kubernets"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/022021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "completed"
+    }, "Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Siddhesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "4851232"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Kubernets"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/022021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "progress"
+    }, "In progress"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "#"
+    }, "Siddhesh")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "4851232"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Kubernets"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Akhila")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "17/022021"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "5d"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "completed"
+    }, "Completed")))))))));
+  };
+
+  return Dashboard;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+
 
 /***/ }),
-
-/***/ 27:
+/* 32 */
 /*!*************************!*\
   !*** ./img/rfp-img.png ***!
   \*************************/
@@ -15793,8 +16136,1274 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/rfp-img.png");
 
 /***/ }),
+/* 33 */
+/*!*************************************!*\
+  !*** ./pages/ProjectWise/index.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/***/ 219:
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProjectWise": () => (/* binding */ ProjectWise)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Breadcrumbs */ 5);
+/* harmony import */ var _img_header_icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/header-icon.png */ 14);
+/* harmony import */ var _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/resources-user-img.png */ 6);
+/* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-circular-progressbar */ 15);
+/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 7);
+/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! simplebar/dist/simplebar.min.css */ 8);
+/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+ // import SimpleBar from 'simplebar-react';
+
+
+
+var ProjectWise =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__extends)(ProjectWise, _super);
+
+  function ProjectWise(props) {
+    var _this = _super.call(this, props) || this;
+
+    _this.state = {
+      tcpInputs: [],
+      openCreateMenu: false,
+      streamTableData: [],
+      indexSets: []
+    };
+    _this.breadCrumbs = [{
+      label: 'Home',
+      route: "/"
+    }, {
+      label: 'Kubernetes | Overview',
+      isCurrentPage: true
+    }];
+    return _this;
+  }
+
+  ProjectWise.prototype.render = function () {
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "owrkflow-project-wise-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.Breadcrumbs, {
+      breadcrumbs: this.breadCrumbs,
+      pageTitle: "WORKFLOW MANAGEMENT"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-page-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-page-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-10"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-content-left"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_header_icon_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Xformation Platform"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Last updated by Siddhesh D 24 min ago"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laboreet dolore magna aliqua. Ut enim ad minim, quis nostrud exercitation ullamco laboris nisi...")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-2"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-content-right"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-times",
+      "aria-hidden": "true"
+    })))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-status"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "status-fliter"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row d-flex align-items-center justify-content-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-status-heading"
+    }, "Project Status")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "filler-search"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 3")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "search-bar"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "text",
+      className: "control-form",
+      placeholder: "Search Usecase"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-search",
+      "aria-hidden": "true"
+    }))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-table"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "table"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "thead"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Usecase "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Requirements"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Mock Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Actual Development"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "CI/CD Test"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Staging/Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th last"
+    }, "Publish/Operate")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tbody"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 3"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 4"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange",
+      "aria-hidden": "true"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 5"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 6"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check orange",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 7"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    }))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, "Usecase 8"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-check green",
+      "aria-hidden": "true"
+    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-resources"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-heading"
+    }, "Project Resources"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-inner"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Project Manager"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Current Task-User Document"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_4__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"))))))));
+  };
+
+  return ProjectWise;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+
+
+/***/ }),
+/* 34 */
+/*!**************************************************!*\
+  !*** ./pages/ResourceWiseViewAllTasks/index.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ResourceWiseViewAllTasks": () => (/* binding */ ResourceWiseViewAllTasks)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tslib */ 1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Breadcrumbs */ 5);
+/* harmony import */ var _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/resources-user-img.png */ 6);
+/* harmony import */ var _img_resourse_icon1_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/resourse-icon1.png */ 35);
+/* harmony import */ var _img_resourse_icon2_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img/resourse-icon2.png */ 36);
+/* harmony import */ var _img_resourse_icon3_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../img/resourse-icon3.png */ 37);
+/* harmony import */ var _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../img/card-arrow-icon.png */ 38);
+/* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-circular-progressbar */ 15);
+/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 7);
+/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! simplebar/dist/simplebar.min.css */ 8);
+/* harmony import */ var simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_min_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-chartjs-2 */ 45);
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 17);
+
+
+
+
+
+
+
+
+
+ //import SimpleBar from 'simplebar-react';
+
+
+
+
+chart_js__WEBPACK_IMPORTED_MODULE_10__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_10__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_10__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_10__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_10__.Title, chart_js__WEBPACK_IMPORTED_MODULE_10__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_10__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_10__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_10__.LineElement);
+
+var ResourceWiseViewAllTasks =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__extends)(ResourceWiseViewAllTasks, _super);
+
+  function ResourceWiseViewAllTasks(props) {
+    var _this = _super.call(this, props) || this;
+
+    _this.state = {
+      tcpInputs: [],
+      openCreateMenu: false,
+      streamTableData: [],
+      indexSets: [],
+      humanResources: {
+        total: null,
+        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26],
+        datasets: [{
+          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          lineTension: 0.2,
+          backgroundColor: ['rgba(113, 234, 255, 21)' // 'rgba(255, 153, 0, 1)',
+          // 'rgba(0, 137, 214, 1)',
+          // 'rgba(216, 69, 57, 1)',
+          ]
+        }]
+      },
+      barOptions: {
+        indexAxis: "x",
+        plugins: {
+          scales: {
+            y: {
+              ticks: {
+                fontColor: 'black',
+                stepSize: 10,
+                beginAtZero: true
+              },
+              gridLines: {
+                display: false
+              }
+            },
+            x: {
+              ticks: {
+                fontColor: 'black',
+                display: false,
+                stepSize: 10
+              },
+              gridLines: {
+                display: false
+              }
+            }
+          },
+          legend: {
+            display: false
+          },
+          title: {
+            display: false,
+            text: 'Total Cost: $6,71,246',
+            position: 'bottom',
+            color: '#202020',
+            font: {
+              size: 18
+            }
+          },
+          responsive: true
+        }
+      }
+    };
+    _this.breadCrumbs = [{
+      label: 'Home',
+      route: "/"
+    }, {
+      label: 'Kubernetes | Overview',
+      isCurrentPage: true
+    }];
+    return _this;
+  }
+
+  ResourceWiseViewAllTasks.prototype.render = function () {
+    var _a = this.state,
+        barOptions = _a.barOptions,
+        humanResources = _a.humanResources;
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "owrkflow-resource-wise-View-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.Breadcrumbs, {
+      breadcrumbs: this.breadCrumbs,
+      pageTitle: "WORKFLOW MANAGEMENT"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-wise-View-page-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resource-wise-View-page-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-10"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-content-left"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resources_user_img_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Angela Moss"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Project-Xformation")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-2"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading-content-right"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-times",
+      "aria-hidden": "true"
+    })))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-resources"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-12"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-heading"
+    }, "Project"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-inner"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resourse_icon1_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Xformation Platform"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Role-Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "card-arrow-image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__["default"],
+      alt: ""
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resourse_icon2_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Procurement Solution"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Role-Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "card-arrow-image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__["default"],
+      alt: ""
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-resources-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-img"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_resourse_icon3_png__WEBPACK_IMPORTED_MODULE_5__["default"],
+      alt: ""
+    })), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "user-text"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "HRMS"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "resources-progress-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Role-Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task-  10")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-progressbar text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.CircularProgressbar, {
+      value: 66,
+      text: "80%",
+      strokeWidth: 15,
+      styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_7__.buildStyles)({
+        strokeLinecap: {},
+        trailColor: "#E5E7E9",
+        pathColor: "#6317c2",
+        textColor: "black"
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Task Completed"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "card-arrow-image"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: _img_card_arrow_icon_png__WEBPACK_IMPORTED_MODULE_6__["default"],
+      alt: ""
+    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-status"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "heading"
+    }, "All Task"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row d-flex align-items-center justify-content-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "task-heading-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Role - Project Management"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Total Task- 10"))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "filler-search"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Sort by 3")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "search-bar"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "text",
+      className: "control-form",
+      placeholder: "Search Usecase"
+    }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-search",
+      "aria-hidden": "true"
+    })))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "project-wise-table"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "table"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "thead"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Task "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Project"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Release"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Stage"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Status"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th"
+    }, "Duedate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "th last"
+    }, "Duedate")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tbody"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 1"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 2"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 3"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 4"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 5"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 6"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 7"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 8"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 9"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "tr"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td tast-content"
+    }, "Task 10"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "2nd"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Publish/Oprate"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Completed  "), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "25/02/2022"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "td project-content"
+    }, "Xformation")))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "average-section"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-md-12"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "statistics-graph"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "requistions-heading"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-6 col-md-6 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
+      className: "d-block"
+    }, 'Project Overview')), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "col-lg-6 col-md-6 col-sm-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "requistions-dropdown"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "opensens-dropdown"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      className: "opensens-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: ""
+    }, "Monthly"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: 10
+    }, "abc"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: 20
+    }, "def"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: 30
+    }, "abc")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "meore-menu-icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      className: "fa fa-ellipsis-v"
+    }))))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: ""
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "totalpaid"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "paid-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Completed Task")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "paid-content unpaid"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Pending Task")))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "chart"
+    }, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_12__.Bar, {
+      data: humanResources,
+      options: barOptions,
+      height: 70
+    }))))))));
+  };
+
+  return ResourceWiseViewAllTasks;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+
+
+/***/ }),
+/* 35 */
+/*!********************************!*\
+  !*** ./img/resourse-icon1.png ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resourse-icon1.png");
+
+/***/ }),
+/* 36 */
+/*!********************************!*\
+  !*** ./img/resourse-icon2.png ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resourse-icon2.png");
+
+/***/ }),
+/* 37 */
+/*!********************************!*\
+  !*** ./img/resourse-icon3.png ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/resourse-icon3.png");
+
+/***/ }),
+/* 38 */
+/*!*********************************!*\
+  !*** ./img/card-arrow-icon.png ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("public/plugins/xformation-workflow-engine/img/img/card-arrow-icon.png");
+
+/***/ }),
+/* 39 */
+/*!********************************!*\
+  !*** ./utils/utils.routing.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useNavigation": () => (/* binding */ useNavigation),
+/* harmony export */   "prefixRoute": () => (/* binding */ prefixRoute),
+/* harmony export */   "getNavModel": () => (/* binding */ getNavModel)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ 4);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils.plugin */ 13);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ 18);
+
+
+
+
+ // Displays a top navigation tab-bar if needed
+
+function useNavigation() {
+  var pluginProps = (0,_utils_plugin__WEBPACK_IMPORTED_MODULE_2__.usePluginProps)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!pluginProps) {
+      console.error('Root plugin props are not available in the context.');
+      return;
+    }
+
+    var activeId = Object.keys(_constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION).find(function (routeId) {
+      return location.pathname.includes(routeId);
+    }) || '';
+    var activeNavItem = _constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION[activeId];
+    var onNavChanged = pluginProps.onNavChanged,
+        meta = pluginProps.meta,
+        basename = pluginProps.basename; // Disable tab navigation
+    // (the route is not registered as a navigation item)
+
+    if (!activeNavItem) {
+      onNavChanged(undefined);
+    } // Show tabbed navigation with the active tab
+    else {
+      onNavChanged(getNavModel({
+        activeId: activeId,
+        basePath: basename,
+        logoUrl: meta.info.logos.large
+      }));
+    }
+  }, [location.pathname, pluginProps]);
+} // Prefixes the route with the base URL of the plugin
+
+function prefixRoute(route) {
+  return "".concat(_constants__WEBPACK_IMPORTED_MODULE_3__.PLUGIN_BASE_URL, "/").concat(route);
+}
+function getNavModel(_a) {
+  var activeId = _a.activeId,
+      basePath = _a.basePath,
+      logoUrl = _a.logoUrl;
+  var main = {
+    text: _constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION_TITLE,
+    subTitle: _constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION_SUBTITLE,
+    url: basePath,
+    img: logoUrl,
+    children: Object.values(_constants__WEBPACK_IMPORTED_MODULE_3__.NAVIGATION).map(function (navItem) {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, navItem), {
+        active: navItem.id === activeId
+      });
+    })
+  };
+  return {
+    main: main,
+    node: main
+  };
+}
+
+/***/ }),
+/* 40 */
+/*!*********************!*\
+  !*** ./plugin.json ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"$schema":"https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json","type":"app","name":"Workflow Engine","id":"xformation-workflow-engine","info":{"description":"Workflow Engine","author":{"name":"Synectiks"},"logos":{"small":"img/asset_logo.svg","large":"img/asset_logo.svg"},"screenshots":[],"version":"%VERSION%","updated":"%TODAY%"},"includes":[{"type":"page","name":"Dashboard","addToNav":false,"defaultNav":false,"role":"Admin","path":"/a/%PLUGIN_ID%"}],"dependencies":{"grafanaDependency":">=8.0.0","plugins":[]}}');
+
+/***/ }),
+/* 41 */
+/*!****************************************!*\
+  !*** ./components/AppConfig/index.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AppConfig": () => (/* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.AppConfig),
+/* harmony export */   "updatePlugin": () => (/* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin)
+/* harmony export */ });
+/* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 25);
+
+
+/***/ }),
+/* 42 */
+/*!***********************************!*\
+  !*** external "@grafana/runtime" ***!
+  \***********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__42__;
+
+/***/ }),
+/* 43 */
+/*!*******************************!*\
+  !*** external "@emotion/css" ***!
+  \*******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__43__;
+
+/***/ }),
+/* 44 */
+/*!******************************************!*\
+  !*** ./components/SecretInput/index.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SecretInput": () => (/* reexport safe */ _SecretInput__WEBPACK_IMPORTED_MODULE_0__.SecretInput)
+/* harmony export */ });
+/* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SecretInput */ 26);
+
+
+/***/ }),
+/* 45 */
 /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -15818,7 +17427,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ 181);
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ 17);
 
 
 
@@ -15991,1182 +17600,8 @@ const Scatter = /* #__PURE__ */ createTypedChart('scatter', chart_js__WEBPACK_IM
 //# sourceMappingURL=index.js.map
 
 
-/***/ }),
-
-/***/ 31:
-/*!********************************************************************!*\
-  !*** ../node_modules/react-circular-progressbar/dist/index.esm.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CircularProgressbar": () => (/* binding */ CircularProgressbar),
-/* harmony export */   "CircularProgressbarWithChildren": () => (/* binding */ CircularProgressbarWithChildren),
-/* harmony export */   "buildStyles": () => (/* binding */ buildStyles)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
-}
-
-var VIEWBOX_WIDTH = 100;
-var VIEWBOX_HEIGHT = 100;
-var VIEWBOX_HEIGHT_HALF = 50;
-var VIEWBOX_CENTER_X = 50;
-var VIEWBOX_CENTER_Y = 50;
-
-function Path(_a) {
-    var className = _a.className, counterClockwise = _a.counterClockwise, dashRatio = _a.dashRatio, pathRadius = _a.pathRadius, strokeWidth = _a.strokeWidth, style = _a.style;
-    return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", { className: className, style: Object.assign({}, style, getDashStyle({ pathRadius: pathRadius, dashRatio: dashRatio, counterClockwise: counterClockwise })), d: getPathDescription({
-            pathRadius: pathRadius,
-            counterClockwise: counterClockwise,
-        }), strokeWidth: strokeWidth, fillOpacity: 0 }));
-}
-function getPathDescription(_a) {
-    var pathRadius = _a.pathRadius, counterClockwise = _a.counterClockwise;
-    var radius = pathRadius;
-    var rotation = counterClockwise ? 1 : 0;
-    return "\n      M " + VIEWBOX_CENTER_X + "," + VIEWBOX_CENTER_Y + "\n      m 0,-" + radius + "\n      a " + radius + "," + radius + " " + rotation + " 1 1 0," + 2 * radius + "\n      a " + radius + "," + radius + " " + rotation + " 1 1 0,-" + 2 * radius + "\n    ";
-}
-function getDashStyle(_a) {
-    var counterClockwise = _a.counterClockwise, dashRatio = _a.dashRatio, pathRadius = _a.pathRadius;
-    var diameter = Math.PI * 2 * pathRadius;
-    var gapLength = (1 - dashRatio) * diameter;
-    return {
-        strokeDasharray: diameter + "px " + diameter + "px",
-        strokeDashoffset: (counterClockwise ? -gapLength : gapLength) + "px",
-    };
-}
-
-var CircularProgressbar = (function (_super) {
-    __extends(CircularProgressbar, _super);
-    function CircularProgressbar() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    CircularProgressbar.prototype.getBackgroundPadding = function () {
-        if (!this.props.background) {
-            return 0;
-        }
-        return this.props.backgroundPadding;
-    };
-    CircularProgressbar.prototype.getPathRadius = function () {
-        return VIEWBOX_HEIGHT_HALF - this.props.strokeWidth / 2 - this.getBackgroundPadding();
-    };
-    CircularProgressbar.prototype.getPathRatio = function () {
-        var _a = this.props, value = _a.value, minValue = _a.minValue, maxValue = _a.maxValue;
-        var boundedValue = Math.min(Math.max(value, minValue), maxValue);
-        return (boundedValue - minValue) / (maxValue - minValue);
-    };
-    CircularProgressbar.prototype.render = function () {
-        var _a = this.props, circleRatio = _a.circleRatio, className = _a.className, classes = _a.classes, counterClockwise = _a.counterClockwise, styles = _a.styles, strokeWidth = _a.strokeWidth, text = _a.text;
-        var pathRadius = this.getPathRadius();
-        var pathRatio = this.getPathRatio();
-        return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", { className: classes.root + " " + className, style: styles.root, viewBox: "0 0 " + VIEWBOX_WIDTH + " " + VIEWBOX_HEIGHT, "data-test-id": "CircularProgressbar" },
-            this.props.background ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", { className: classes.background, style: styles.background, cx: VIEWBOX_CENTER_X, cy: VIEWBOX_CENTER_Y, r: VIEWBOX_HEIGHT_HALF })) : null,
-            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Path, { className: classes.trail, counterClockwise: counterClockwise, dashRatio: circleRatio, pathRadius: pathRadius, strokeWidth: strokeWidth, style: styles.trail }),
-            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Path, { className: classes.path, counterClockwise: counterClockwise, dashRatio: pathRatio * circleRatio, pathRadius: pathRadius, strokeWidth: strokeWidth, style: styles.path }),
-            text ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("text", { className: classes.text, style: styles.text, x: VIEWBOX_CENTER_X, y: VIEWBOX_CENTER_Y }, text)) : null));
-    };
-    CircularProgressbar.defaultProps = {
-        background: false,
-        backgroundPadding: 0,
-        circleRatio: 1,
-        classes: {
-            root: 'CircularProgressbar',
-            trail: 'CircularProgressbar-trail',
-            path: 'CircularProgressbar-path',
-            text: 'CircularProgressbar-text',
-            background: 'CircularProgressbar-background',
-        },
-        counterClockwise: false,
-        className: '',
-        maxValue: 100,
-        minValue: 0,
-        strokeWidth: 8,
-        styles: {
-            root: {},
-            trail: {},
-            path: {},
-            text: {},
-            background: {},
-        },
-        text: '',
-    };
-    return CircularProgressbar;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component));
-
-function CircularProgressbarWithChildren(props) {
-    var children = props.children, circularProgressbarProps = __rest(props, ["children"]);
-    return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { "data-test-id": "CircularProgressbarWithChildren" },
-        (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { style: { position: 'relative', width: '100%', height: '100%' } },
-            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(CircularProgressbar, __assign({}, circularProgressbarProps)),
-            props.children ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { "data-test-id": "CircularProgressbarWithChildren__children", style: {
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    marginTop: '-100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                } }, props.children)) : null)));
-}
-
-function buildStyles(_a) {
-    var rotation = _a.rotation, strokeLinecap = _a.strokeLinecap, textColor = _a.textColor, textSize = _a.textSize, pathColor = _a.pathColor, pathTransition = _a.pathTransition, pathTransitionDuration = _a.pathTransitionDuration, trailColor = _a.trailColor, backgroundColor = _a.backgroundColor;
-    var rotationTransform = rotation == null ? undefined : "rotate(" + rotation + "turn)";
-    var rotationTransformOrigin = rotation == null ? undefined : 'center center';
-    return {
-        root: {},
-        path: removeUndefinedValues({
-            stroke: pathColor,
-            strokeLinecap: strokeLinecap,
-            transform: rotationTransform,
-            transformOrigin: rotationTransformOrigin,
-            transition: pathTransition,
-            transitionDuration: pathTransitionDuration == null ? undefined : pathTransitionDuration + "s",
-        }),
-        trail: removeUndefinedValues({
-            stroke: trailColor,
-            strokeLinecap: strokeLinecap,
-            transform: rotationTransform,
-            transformOrigin: rotationTransformOrigin,
-        }),
-        text: removeUndefinedValues({
-            fill: textColor,
-            fontSize: textSize,
-        }),
-        background: removeUndefinedValues({
-            fill: backgroundColor,
-        }),
-    };
-}
-function removeUndefinedValues(obj) {
-    Object.keys(obj).forEach(function (key) {
-        if (obj[key] == null) {
-            delete obj[key];
-        }
-    });
-    return obj;
-}
-
-
-//# sourceMappingURL=index.esm.js.map
-
-
-/***/ }),
-
-/***/ 11:
-/*!******************************************************************!*\
-  !*** ../node_modules/react-circular-progressbar/dist/styles.css ***!
-  \******************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-var content = __webpack_require__(/*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./styles.css */ 5);
-
-if(typeof content === 'string') content = [[module.id, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! !../../style-loader/lib/addStyles.js */ 3)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ 13:
-/*!********************************************************!*\
-  !*** ../node_modules/simplebar/dist/simplebar.min.css ***!
-  \********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-var content = __webpack_require__(/*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./simplebar.min.css */ 6);
-
-if(typeof content === 'string') content = [[module.id, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! !../../style-loader/lib/addStyles.js */ 3)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ 17:
-/*!*************************************!*\
-  !*** ./css/workflowengine.dark.css ***!
-  \*************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-var content = __webpack_require__(/*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./workflowengine.dark.css */ 8);
-
-if(typeof content === 'string') content = [[module.id, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 3)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ 16:
-/*!**************************************!*\
-  !*** ./css/workflowengine.light.css ***!
-  \**************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-var content = __webpack_require__(/*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./workflowengine.light.css */ 7);
-
-if(typeof content === 'string') content = [[module.id, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 3)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ 3:
-/*!*****************************************************!*\
-  !*** ../node_modules/style-loader/lib/addStyles.js ***!
-  \*****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-
-var stylesInDom = {};
-
-var	memoize = function (fn) {
-	var memo;
-
-	return function () {
-		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-		return memo;
-	};
-};
-
-var isOldIE = memoize(function () {
-	// Test for IE <= 9 as proposed by Browserhacks
-	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-	// Tests for existence of standard globals is to allow style-loader
-	// to operate correctly into non-standard environments
-	// @see https://github.com/webpack-contrib/style-loader/issues/177
-	return window && document && document.all && !window.atob;
-});
-
-var getTarget = function (target) {
-  return document.querySelector(target);
-};
-
-var getElement = (function (fn) {
-	var memo = {};
-
-	return function(target) {
-                // If passing function in options, then use it for resolve "head" element.
-                // Useful for Shadow Root style i.e
-                // {
-                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
-                // }
-                if (typeof target === 'function') {
-                        return target();
-                }
-                if (typeof memo[target] === "undefined") {
-			var styleTarget = getTarget.call(this, target);
-			// Special case to return head of iframe instead of iframe itself
-			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
-				try {
-					// This will throw an exception if access to iframe is blocked
-					// due to cross-origin restrictions
-					styleTarget = styleTarget.contentDocument.head;
-				} catch(e) {
-					styleTarget = null;
-				}
-			}
-			memo[target] = styleTarget;
-		}
-		return memo[target]
-	};
-})();
-
-var singleton = null;
-var	singletonCounter = 0;
-var	stylesInsertedAtTop = [];
-
-var	fixUrls = __webpack_require__(/*! ./urls */ 12);
-
-module.exports = function(list, options) {
-	if (typeof DEBUG !== "undefined" && DEBUG) {
-		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-	}
-
-	options = options || {};
-
-	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-
-	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-	// tags it will allow on a page
-	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
-
-	// By default, add <style> tags to the <head> element
-        if (!options.insertInto) options.insertInto = "head";
-
-	// By default, add <style> tags to the bottom of the target
-	if (!options.insertAt) options.insertAt = "bottom";
-
-	var styles = listToStyles(list, options);
-
-	addStylesToDom(styles, options);
-
-	return function update (newList) {
-		var mayRemove = [];
-
-		for (var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-
-			domStyle.refs--;
-			mayRemove.push(domStyle);
-		}
-
-		if(newList) {
-			var newStyles = listToStyles(newList, options);
-			addStylesToDom(newStyles, options);
-		}
-
-		for (var i = 0; i < mayRemove.length; i++) {
-			var domStyle = mayRemove[i];
-
-			if(domStyle.refs === 0) {
-				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
-
-				delete stylesInDom[domStyle.id];
-			}
-		}
-	};
-};
-
-function addStylesToDom (styles, options) {
-	for (var i = 0; i < styles.length; i++) {
-		var item = styles[i];
-		var domStyle = stylesInDom[item.id];
-
-		if(domStyle) {
-			domStyle.refs++;
-
-			for(var j = 0; j < domStyle.parts.length; j++) {
-				domStyle.parts[j](item.parts[j]);
-			}
-
-			for(; j < item.parts.length; j++) {
-				domStyle.parts.push(addStyle(item.parts[j], options));
-			}
-		} else {
-			var parts = [];
-
-			for(var j = 0; j < item.parts.length; j++) {
-				parts.push(addStyle(item.parts[j], options));
-			}
-
-			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-		}
-	}
-}
-
-function listToStyles (list, options) {
-	var styles = [];
-	var newStyles = {};
-
-	for (var i = 0; i < list.length; i++) {
-		var item = list[i];
-		var id = options.base ? item[0] + options.base : item[0];
-		var css = item[1];
-		var media = item[2];
-		var sourceMap = item[3];
-		var part = {css: css, media: media, sourceMap: sourceMap};
-
-		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
-		else newStyles[id].parts.push(part);
-	}
-
-	return styles;
-}
-
-function insertStyleElement (options, style) {
-	var target = getElement(options.insertInto)
-
-	if (!target) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-	}
-
-	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
-
-	if (options.insertAt === "top") {
-		if (!lastStyleElementInsertedAtTop) {
-			target.insertBefore(style, target.firstChild);
-		} else if (lastStyleElementInsertedAtTop.nextSibling) {
-			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
-		} else {
-			target.appendChild(style);
-		}
-		stylesInsertedAtTop.push(style);
-	} else if (options.insertAt === "bottom") {
-		target.appendChild(style);
-	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
-		var nextSibling = getElement(options.insertInto + " " + options.insertAt.before);
-		target.insertBefore(style, nextSibling);
-	} else {
-		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
-	}
-}
-
-function removeStyleElement (style) {
-	if (style.parentNode === null) return false;
-	style.parentNode.removeChild(style);
-
-	var idx = stylesInsertedAtTop.indexOf(style);
-	if(idx >= 0) {
-		stylesInsertedAtTop.splice(idx, 1);
-	}
-}
-
-function createStyleElement (options) {
-	var style = document.createElement("style");
-
-	if(options.attrs.type === undefined) {
-		options.attrs.type = "text/css";
-	}
-
-	addAttrs(style, options.attrs);
-	insertStyleElement(options, style);
-
-	return style;
-}
-
-function createLinkElement (options) {
-	var link = document.createElement("link");
-
-	if(options.attrs.type === undefined) {
-		options.attrs.type = "text/css";
-	}
-	options.attrs.rel = "stylesheet";
-
-	addAttrs(link, options.attrs);
-	insertStyleElement(options, link);
-
-	return link;
-}
-
-function addAttrs (el, attrs) {
-	Object.keys(attrs).forEach(function (key) {
-		el.setAttribute(key, attrs[key]);
-	});
-}
-
-function addStyle (obj, options) {
-	var style, update, remove, result;
-
-	// If a transform function was defined, run it on the css
-	if (options.transform && obj.css) {
-	    result = options.transform(obj.css);
-
-	    if (result) {
-	    	// If transform returns a value, use that instead of the original css.
-	    	// This allows running runtime transformations on the css.
-	    	obj.css = result;
-	    } else {
-	    	// If the transform function returns a falsy value, don't add this css.
-	    	// This allows conditional loading of css
-	    	return function() {
-	    		// noop
-	    	};
-	    }
-	}
-
-	if (options.singleton) {
-		var styleIndex = singletonCounter++;
-
-		style = singleton || (singleton = createStyleElement(options));
-
-		update = applyToSingletonTag.bind(null, style, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-
-	} else if (
-		obj.sourceMap &&
-		typeof URL === "function" &&
-		typeof URL.createObjectURL === "function" &&
-		typeof URL.revokeObjectURL === "function" &&
-		typeof Blob === "function" &&
-		typeof btoa === "function"
-	) {
-		style = createLinkElement(options);
-		update = updateLink.bind(null, style, options);
-		remove = function () {
-			removeStyleElement(style);
-
-			if(style.href) URL.revokeObjectURL(style.href);
-		};
-	} else {
-		style = createStyleElement(options);
-		update = applyToTag.bind(null, style);
-		remove = function () {
-			removeStyleElement(style);
-		};
-	}
-
-	update(obj);
-
-	return function updateStyle (newObj) {
-		if (newObj) {
-			if (
-				newObj.css === obj.css &&
-				newObj.media === obj.media &&
-				newObj.sourceMap === obj.sourceMap
-			) {
-				return;
-			}
-
-			update(obj = newObj);
-		} else {
-			remove();
-		}
-	};
-}
-
-var replaceText = (function () {
-	var textStore = [];
-
-	return function (index, replacement) {
-		textStore[index] = replacement;
-
-		return textStore.filter(Boolean).join('\n');
-	};
-})();
-
-function applyToSingletonTag (style, index, remove, obj) {
-	var css = remove ? "" : obj.css;
-
-	if (style.styleSheet) {
-		style.styleSheet.cssText = replaceText(index, css);
-	} else {
-		var cssNode = document.createTextNode(css);
-		var childNodes = style.childNodes;
-
-		if (childNodes[index]) style.removeChild(childNodes[index]);
-
-		if (childNodes.length) {
-			style.insertBefore(cssNode, childNodes[index]);
-		} else {
-			style.appendChild(cssNode);
-		}
-	}
-}
-
-function applyToTag (style, obj) {
-	var css = obj.css;
-	var media = obj.media;
-
-	if(media) {
-		style.setAttribute("media", media)
-	}
-
-	if(style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		while(style.firstChild) {
-			style.removeChild(style.firstChild);
-		}
-
-		style.appendChild(document.createTextNode(css));
-	}
-}
-
-function updateLink (link, options, obj) {
-	var css = obj.css;
-	var sourceMap = obj.sourceMap;
-
-	/*
-		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-	*/
-	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-
-	if (options.convertToAbsoluteUrls || autoFixUrls) {
-		css = fixUrls(css);
-	}
-
-	if (sourceMap) {
-		// http://stackoverflow.com/a/26603875
-		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-	}
-
-	var blob = new Blob([css], { type: "text/css" });
-
-	var oldSrc = link.href;
-
-	link.href = URL.createObjectURL(blob);
-
-	if(oldSrc) URL.revokeObjectURL(oldSrc);
-}
-
-
-/***/ }),
-
-/***/ 12:
-/*!************************************************!*\
-  !*** ../node_modules/style-loader/lib/urls.js ***!
-  \************************************************/
-/***/ ((module) => {
-
-
-/**
- * When source maps are enabled, `style-loader` uses a link element with a data-uri to
- * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
- *
- * One solution is to only use full urls, but that may be impossible.
- *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
- *
- * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
- *
- */
-
-module.exports = function (css) {
-  // get current location
-  var location = typeof window !== "undefined" && window.location;
-
-  if (!location) {
-    throw new Error("fixUrls requires window.location");
-  }
-
-	// blank or null?
-	if (!css || typeof css !== "string") {
-	  return css;
-  }
-
-  var baseUrl = location.protocol + "//" + location.host;
-  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-
-	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-		// strip quotes (if they exist)
-		var unquotedOrigUrl = origUrl
-			.trim()
-			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-
-		// already a full url? no change
-		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
-		  return fullMatch;
-		}
-
-		// convert the url to a full url
-		var newUrl;
-
-		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
-			newUrl = unquotedOrigUrl;
-		} else if (unquotedOrigUrl.indexOf("/") === 0) {
-			// path should be relative to the base url
-			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-		} else {
-			// path should be relative to current directory
-			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-		}
-
-		// send back the fixed url(...)
-		return "url(" + JSON.stringify(newUrl) + ")";
-	});
-
-	// send back the fixed css
-	return fixedCss;
-};
-
-
-/***/ }),
-
-/***/ 1:
-/*!******************************************!*\
-  !*** ../node_modules/tslib/tslib.es6.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__extends": () => (/* binding */ __extends),
-/* harmony export */   "__assign": () => (/* binding */ __assign),
-/* harmony export */   "__rest": () => (/* binding */ __rest),
-/* harmony export */   "__decorate": () => (/* binding */ __decorate),
-/* harmony export */   "__param": () => (/* binding */ __param),
-/* harmony export */   "__metadata": () => (/* binding */ __metadata),
-/* harmony export */   "__awaiter": () => (/* binding */ __awaiter),
-/* harmony export */   "__generator": () => (/* binding */ __generator),
-/* harmony export */   "__createBinding": () => (/* binding */ __createBinding),
-/* harmony export */   "__exportStar": () => (/* binding */ __exportStar),
-/* harmony export */   "__values": () => (/* binding */ __values),
-/* harmony export */   "__read": () => (/* binding */ __read),
-/* harmony export */   "__spread": () => (/* binding */ __spread),
-/* harmony export */   "__spreadArrays": () => (/* binding */ __spreadArrays),
-/* harmony export */   "__spreadArray": () => (/* binding */ __spreadArray),
-/* harmony export */   "__await": () => (/* binding */ __await),
-/* harmony export */   "__asyncGenerator": () => (/* binding */ __asyncGenerator),
-/* harmony export */   "__asyncDelegator": () => (/* binding */ __asyncDelegator),
-/* harmony export */   "__asyncValues": () => (/* binding */ __asyncValues),
-/* harmony export */   "__makeTemplateObject": () => (/* binding */ __makeTemplateObject),
-/* harmony export */   "__importStar": () => (/* binding */ __importStar),
-/* harmony export */   "__importDefault": () => (/* binding */ __importDefault),
-/* harmony export */   "__classPrivateFieldGet": () => (/* binding */ __classPrivateFieldGet),
-/* harmony export */   "__classPrivateFieldSet": () => (/* binding */ __classPrivateFieldSet)
-/* harmony export */ });
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    }
-    return __assign.apply(this, arguments);
-}
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __param(paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-var __createBinding = Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-});
-
-function __exportStar(m, o) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
-}
-
-function __values(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
-    if (o && typeof o.length === "number") return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-}
-
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
-
-/** @deprecated */
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
-/** @deprecated */
-function __spreadArrays() {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-}
-
-function __spreadArray(to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-}
-
-function __await(v) {
-    return this instanceof __await ? (this.v = v, this) : new __await(v);
-}
-
-function __asyncGenerator(thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-}
-
-function __asyncDelegator(o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-}
-
-function __asyncValues(o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-}
-
-function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-
-var __setModuleDefault = Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-};
-
-function __importStar(mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-}
-
-function __importDefault(mod) {
-    return (mod && mod.__esModule) ? mod : { default: mod };
-}
-
-function __classPrivateFieldGet(receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-}
-
-function __classPrivateFieldSet(receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-}
-
-
-/***/ }),
-
-/***/ 36:
-/*!*******************************!*\
-  !*** external "@emotion/css" ***!
-  \*******************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__36__;
-
-/***/ }),
-
-/***/ 23:
-/*!********************************!*\
-  !*** external "@grafana/data" ***!
-  \********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__23__;
-
-/***/ }),
-
-/***/ 35:
-/*!***********************************!*\
-  !*** external "@grafana/runtime" ***!
-  \***********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__35__;
-
-/***/ }),
-
-/***/ 15:
-/*!******************************!*\
-  !*** external "@grafana/ui" ***!
-  \******************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__15__;
-
-/***/ }),
-
-/***/ 0:
-/*!************************!*\
-  !*** external "react" ***!
-  \************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
-
-/***/ }),
-
-/***/ 4:
-/*!***********************************!*\
-  !*** external "react-router-dom" ***!
-  \***********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
-
-/***/ }),
-
-/***/ 33:
-/*!*********************!*\
-  !*** ./plugin.json ***!
-  \*********************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"$schema":"https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json","type":"app","name":"Workflow Engine","id":"xformation-workflow-engine","info":{"description":"Workflow Engine","author":{"name":"Synectiks"},"logos":{"small":"img/asset_logo.svg","large":"img/asset_logo.svg"},"screenshots":[],"version":"%VERSION%","updated":"%TODAY%"},"includes":[{"type":"page","name":"Dashboard","addToNav":false,"defaultNav":false,"role":"Admin","path":"/a/%PLUGIN_ID%"}],"dependencies":{"grafanaDependency":">=8.0.0","plugins":[]}}');
-
 /***/ })
-
-/******/ 	});
+/******/ 	]);
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -17246,10 +17681,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "loadPluginCss": () => (/* binding */ loadPluginCss),
 /* harmony export */   "plugin": () => (/* binding */ plugin)
 /* harmony export */ });
-/* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @grafana/data */ 23);
+/* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @grafana/data */ 28);
 /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_grafana_data__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/App */ 24);
-/* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/AppConfig */ 34);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/App */ 29);
+/* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/AppConfig */ 41);
 
 
 
@@ -17257,9 +17692,9 @@ function loadPluginCss() {
   var w = window;
 
   if (w.grafanaBootData.user.lightTheme) {
-    __webpack_require__(/*! ./css/workflowengine.light.css */ 16);
+    __webpack_require__(/*! ./css/workflowengine.light.css */ 20);
   } else {
-    __webpack_require__(/*! ./css/workflowengine.dark.css */ 17);
+    __webpack_require__(/*! ./css/workflowengine.dark.css */ 21);
   }
 }
 loadPluginCss();
