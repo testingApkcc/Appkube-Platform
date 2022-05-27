@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import rfpImg from '../../img/rfp-img.png';
+import resourcesUserImg from '../../img/resources-user-img.png';
 // import DateFormat from './DateFormat';
 import headerIcon from '../../img/header-icon.png';
 
@@ -130,6 +131,9 @@ export class Dashboard extends React.Component<any, any> {
                   <div className="requistions-heading">
                     <h5 className="d-block">{'Workflow Statistics'}</h5>
                   </div>
+                  <div className="requistions-graph">
+
+                  </div>
                 </div>
               </div>
               <div className="col-md-6">
@@ -252,10 +256,337 @@ export class Dashboard extends React.Component<any, any> {
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                       </div>
                     </div>
+                    <div className="project">
+                      <div className="star-box">
+                        <span>
+                          <i className="fa fa-star"></i>
+                        </span>
+                      </div>
+                      <div className="icon">
+                        <img src={headerIcon} alt="" />
+                      </div>
+                      <div className="content">
+                        <h4>Xformation Platform</h4>
+                        <span>Last updated by Siddhesh D <i className="fa fa-circle"></i> 24 min ago</span>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                      </div>
+                    </div>
+                    <div className="project">
+                      <div className="star-box">
+                        <span>
+                          <i className="fa fa-star"></i>
+                        </span>
+                      </div>
+                      <div className="icon">
+                        <img src={headerIcon} alt="" />
+                      </div>
+                      <div className="content">
+                        <h4>Xformation Platform</h4>
+                        <span>Last updated by Siddhesh D <i className="fa fa-circle"></i> 24 min ago</span>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                      </div>
+                    </div>
+                    <div className="project">
+                      <div className="star-box">
+                        <span>
+                          <i className="fa fa-star"></i>
+                        </span>
+                      </div>
+                      <div className="icon">
+                        <img src={headerIcon} alt="" />
+                      </div>
+                      <div className="content">
+                        <h4>Xformation Platform</h4>
+                        <span>Last updated by Siddhesh D <i className="fa fa-circle"></i> 24 min ago</span>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-3"></div>
+              <div className="col-md-3">
+                <div className="resources-list">
+                  <div className="heading">
+                    <h5>Resources</h5>
+                    <p>All Resources</p>
+                  </div>
+                  <div className="resources">
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="resource">
+                      <div className="image"><img src={resourcesUserImg} alt="" /></div>
+                      <div className="content">
+                        <h3>Angela Moss</h3>
+                        <p>Project - Xformation</p>
+                      </div>
+                      <div className="plus-icon">
+                        <span>
+                          <i className="fa fa-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="project-overview-section">
+            <div className="heading">
+              <h5>Project Overview</h5>
+            </div>
+            <div className="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Project Name</th>
+                    <th>Total Usecase</th>
+                    <th>Project Manager</th>
+                    <th>Assigned date</th>
+                    <th>Age</th>
+                    <th>Status</th>
+                    <th>Activity Logs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong><a href="#">Xformation</a></strong>
+                    </td>
+                    <td>80</td>
+                    <td><span>Ganesh</span></td>
+                    <td>15/02/2021</td>
+                    <td>7d</td>
+                    <td><div className="progress">In progress</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong><a href="#">Procurement</a></strong>
+                    </td>
+                    <td>95</td>
+                    <td><span>Akhila</span></td>
+                    <td>17/02/2021</td>
+                    <td>5d</td>
+                    <td><div className="pending">Pending for review</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong><a href="#">Supply chail</a></strong>
+                    </td>
+                    <td>70</td>
+                    <td><span>Zakir</span></td>
+                    <td>15/02/2021</td>
+                    <td>7d</td>
+                    <td><div className="progress">In progress</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="project-overview-section">
+            <div className="heading">
+              <h5>Project Progress Overview</h5>
+            </div>
+            <div className="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Project Name</th>
+                    <th>Reuirements</th>
+                    <th>Mock Development</th>
+                    <th>Actual Development</th>
+                    <th>CI/CD Test</th>
+                    <th>Staging/Release</th>
+                    <th>Publish/Operate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong><a href="#">Xformation</a></strong>
+                    </td>
+                    <td>80</td>
+                    <td><span>Ganesh</span></td>
+                    <td>15/02/2021</td>
+                    <td>7d</td>
+                    <td><div className="progress">In progress</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong><a href="#">Procurement</a></strong>
+                    </td>
+                    <td>95</td>
+                    <td><span>Akhila</span></td>
+                    <td>17/02/2021</td>
+                    <td>5d</td>
+                    <td><div className="pending">Pending for review</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong><a href="#">Supply chail</a></strong>
+                    </td>
+                    <td>70</td>
+                    <td><span>Zakir</span></td>
+                    <td>15/02/2021</td>
+                    <td>7d</td>
+                    <td><div className="progress">In progress</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="project-overview-section">
+            <div className="heading">
+              <h5>Rask wise Resource Progress Overview</h5>
+            </div>
+            <div className="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Resource Name</th>
+                    <th>Reuirements</th>
+                    <th>Mock Development</th>
+                    <th>Actual Development</th>
+                    <th>CI/CD Test</th>
+                    <th>Staging/Release</th>
+                    <th>Publish/Operate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href="#">Siddhesh</a>
+                    </td>
+                    <td>4851232</td>
+                    <td>Kubernets</td>
+                    <td>New</td>
+                    <td>Akhila</td>
+                    <td><div className="progress">In progress</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="#">Procurement</a>
+                    </td>
+                    <td>95</td>
+                    <td><span>Akhila</span></td>
+                    <td>17/02/2021</td>
+                    <td>5d</td>
+                    <td><div className="pending">Pending for review</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="#">Supply chail</a>
+                    </td>
+                    <td>70</td>
+                    <td><span>Zakir</span></td>
+                    <td>15/02/2021</td>
+                    <td>7d</td>
+                    <td><div className="progress">In progress</div></td>
+                    <td><a href="#">View Logs</a></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

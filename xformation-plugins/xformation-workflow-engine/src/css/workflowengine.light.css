@@ -1,1878 +1,1159 @@
 .owrkflow-dashboard-container {
   display: block;
-  width: 100%;
-}
-.owrkflow-dashboard-container .dashboard-container {
-  display: block;
-  width: 100%;
-  background-color: #f9fafc;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container {
-  display: block;
-  width: 100%;
-  padding-bottom: 30px;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container .heading {
-  display: block;
-  font-size: 14px;
-  line-height: 32px;
-  font-weight: 600;
-  color: #3b4859;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
-  float: right;
-  width: auto;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {
-  display: inline-block;
-  width: 250px;
-  height: 32px;
-  border-radius: 20px;
-  padding: 0;
-  border: 1px solid #a9b9c6;
-  margin-right: 15px;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {
-  background: none;
-  border: none;
-  width: 100%;
-  height: 100%;
-  font-size: 12px;
-  line-height: 26px;
-  color: #d1dae2;
-  padding: 5px 10px;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {
-  outline: none;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {
-  outline: none;
-}
-.owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {
-  display: inline-block;
-  width: 250px;
-  height: 32px;
-  border-radius: 20px;
-  padding: 0;
-  border: 1px solid #a9b9c6;
-  margin-right: 0px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .fliter-container
-  .fliter-search
-  .fliter-search-box
-  .input-group-text {
-  background: none;
-  border: none;
-  width: 100%;
-  height: 100%;
-  font-size: 12px;
-  line-height: 26px;
-  color: #d1dae2;
-  padding: 5px 10px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .fliter-container
-  .fliter-search
-  .fliter-search-box
-  .input-group-text:focus {
-  outline: none;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .fliter-container
-  .fliter-search
-  .fliter-search-box
-  .input-group-text:focus-visible {
-  outline: none;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section {
-  padding: 0 0 30px 0;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {
-  margin: 0;
-  font-weight: 600;
-  color: #202020;
-  letter-spacing: 1px;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {
-  font-size: 13px;
-  line-height: 24px;
-  color: #a5a5a5;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {
-  width: 100%;
-  border: none;
-  vertical-align: middle;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {
-  line-height: 20px;
-  cursor: pointer;
-  padding: 10px 20px;
-  position: relative;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {
-  color: #6418c3;
-  margin-right: 15px;
-  vertical-align: middle;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {
-  color: #aaaaaa;
-  float: right;
-  margin-top: 5px;
-  vertical-align: middle;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
-}
-.owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 14px;
-  color: #000000;
-  margin-bottom: 0;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  color: #393939;
-  width: 65px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .range-picker-input {
-  border: none;
-  width: auto;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .range-picker-input
-  .range-picker-input__icon {
-  padding-right: 7px;
-  width: auto;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .range-picker-input
-  .range-picker-input__icon
-  svg {
-  display: none;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .range-picker-input
-  .range-picker-input__icon::after {
-  content: 'To';
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  color: #393939;
-  display: inline-block;
-  vertical-align: top;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .range-picker-input
-  .range-picker-input__start
-  .picker-input__text {
-  padding: 0 !important;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  color: #393939;
-  background-color: transparent;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .range-picker-input
-  .range-picker-input__end
-  .picker-input__text {
-  padding: 0 !important;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  color: #393939;
-  background-color: transparent;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .picker__trigger {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  padding: 30px 0 0 60px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .picker__container {
-  right: 0 !important;
-  left: auto !important;
-  z-index: 1;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .picker__container
-  .calendar__day {
-  height: 32px;
-  line-height: 32px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .dashbord-top-section
-  .calender
-  .clender-content
-  .calender-text
-  span
-  .rc-backdrop {
-  z-index: 0;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {
-  padding: 20px 15px;
-  height: 130px;
-  border-radius: 15px;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
-  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 45px;
-  position: relative;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {
-  width: 75px;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {
-  position: absolute;
-  top: 13px;
-  right: -8px;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  color: #fff;
-  font-weight: 700;
-  line-height: 20px;
-  background: #5fcffd;
-  border-radius: 50%;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {
-  font-size: 50px;
-  color: #7924ca;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {
-  width: 18px;
-  height: 45px;
-  margin-right: 5px;
-  border-radius: 15px;
-  display: inline-block;
-  background-color: #dfecf2;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {
-  width: 18px;
-  height: 75px;
-  border-radius: 15px;
-  display: inline-block;
-  background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0);
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {
-  width: auto;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {
-  font-size: 14px;
-  font-weight: 500;
-  color: #a5a5a5;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {
-  margin: 0;
-  margin-bottom: 5px;
-  font-size: 30px;
-  line-height: 36px;
-  font-weight: 700;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {
-  margin-bottom: 10px;
-  position: relative;
-  padding-left: 20px;
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {
-  font-size: 12px;
-  font-weight: 500;
-  color: #a5a5a5;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {
-  margin: 0;
-  line-height: 16px;
-  font-weight: 700;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .progress-rfp-boxs
-  .progress-box
-  .progress-content
-  .completed
-  h5::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background: #60dfff;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  left: 0px;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {
-  position: relative;
-  padding-left: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {
-  font-size: 12px;
-  font-weight: 500;
-  color: #a5a5a5;
-}
-.owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {
-  margin: 0;
-  line-height: 16px;
-  font-weight: 700;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .progress-rfp-boxs
-  .progress-box
-  .progress-content
-  .in-progrss
-  h5::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background: #dfecf2;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  left: 0px;
-}
-.owrkflow-dashboard-container .dashboard-container .average-section {
-  padding-top: 30px;
-}
-.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {
-  background-color: #ffffff;
-  padding: 30px 20px;
-  border-radius: 15px;
-  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-}
-.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 30px;
-  color: #202020;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown {
-  text-align: right;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown
-  .opensens-content {
-  border: 1px solid #8f8f8f;
-  border-radius: 10px;
-  width: 110px;
-  margin-right: 10px;
-  padding: 0 5px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown
-  .opensens-content:focus {
-  outline: none;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown
-  .opensens-content:focus-visible {
-  outline: none;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .meore-menu-icon {
-  float: right;
-  color: #a5a5a5;
-  padding: 5px;
-  width: 34px;
-  height: 34px;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 50%;
-  line-height: 28px;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .meore-menu-icon
-  i {
-  font-size: 1.2rem;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .meore-menu-icon:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {
-  width: 150px;
-}
-.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {
-  display: block;
-  margin-bottom: 10px;
-  position: relative;
-}
-.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {
-  display: block;
-  font-size: 12px;
-  line-height: 16px;
-  margin-left: 20px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .totalpaid
-  .paid-content
-  span::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 2px;
-  left: 0;
-  border-radius: 50%;
-  background-color: #8884d8;
-}
-.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {
-  background-color: #82ca9d;
-}
-.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {
-  margin-top: 30px;
-  text-align: center;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .average-section
-  .statistics-graph
-  .chartbar-content
-  .recharts-layer
-  tspan {
-  font-size: 12px;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section {
-  display: block;
-  padding-top: 30px;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {
-  display: block;
-  background-color: #ffffff;
-  padding: 10px 5px;
-  border-radius: 15px;
-  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {
-  display: block;
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 20px;
-  padding-bottom: 40px;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 30px;
-  color: #202020;
-  margin-bottom: 0px;
-  letter-spacing: 1px;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  border-bottom: 2px solid #f8f8f8;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {
-  display: inline-block;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 10px;
-  margin-right: 10px;
-  font-size: 14px;
-  line-height: 22px;
-  font-weight: 500;
-  color: #a5a5a5;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {
-  color: #6418c3;
-  border-bottom: 2px solid #6418c3;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {
-  color: #6418c3;
-  border-bottom: 2px solid #6418c3;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .heading
-  .tabs
-  li:last-child {
-  margin-right: 0;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {
-  display: block;
-  width: 100%;
-  padding: 0;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {
-  display: flex;
-  width: 100%;
-  padding: 15px 20px;
-  border-left: 5px solid #f6eeff;
-  border-bottom: 1px solid #f6eeff;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {
-  border-left: 5px solid #6418c3;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .star-box {
-  display: flex;
-  margin-right: 15px;
-  width: 44px;
-  height: 44px;
-  border-radius: 15px;
-  padding-left: 3px;
-  padding-right: 3px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px solid #f8f8f8;
-  background-color: #ffffff;
-  cursor: pointer;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .star-box
-  span {
-  display: inline-block;
-  font-size: 16px;
-  color: #c2c2c2;
-  line-height: 22px;
-  border: 1px solid #f8f8f8;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .star-box.active {
-  background-color: #ffebcc;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .star-box.active
-  span {
-  color: #ffab2d;
-}
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {
-  display: flex;
-  width: 30px;
-  height: 44px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-right: 15px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .icon
-  img {
-  max-width: 100%;
-  height: auto;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .content {
-  display: flex;
-  width: calc(100% - 104px);
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .content
-  h4 {
-  display: block;
-  width: 100%;
-  margin-bottom: 5px;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  color: #202020;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .content
-  span {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  font-size: 15px;
-  line-height: 18px;
-  font-weight: 500;
-  color: #a5a5a5;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .content
-  span
-  i {
-  display: inline-block;
-  font-size: 12px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.owrkflow-dashboard-container
-  .dashboard-container
-  .project-resources-section
-  .project-list
-  .projects
-  .project
-  .content
-  p {
-  display: block;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  margin-bottom: 0px;
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 300;
-  color: #202020;
-  height: 40px;
-}
+  width: 100%; }
+  .owrkflow-dashboard-container .dashboard-container {
+    display: block;
+    width: 100%;
+    background-color: #f9fafc;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px; }
+    .owrkflow-dashboard-container .dashboard-container .fliter-container {
+      display: block;
+      width: 100%;
+      padding-bottom: 30px; }
+      .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {
+        display: block;
+        font-size: 14px;
+        line-height: 32px;
+        font-weight: 600;
+        color: #3b4859; }
+      .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
+        float: right;
+        width: auto; }
+        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {
+          display: inline-block;
+          width: 250px;
+          height: 32px;
+          border-radius: 20px;
+          padding: 0;
+          border: 1px solid #a9b9c6;
+          margin-right: 15px; }
+          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select {
+            background: none;
+            border: none;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            line-height: 26px;
+            color: #d1dae2;
+            padding: 5px 10px; }
+            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus {
+              outline: none; }
+            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box select:focus-visible {
+              outline: none; }
+        .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {
+          display: inline-block;
+          width: 250px;
+          height: 32px;
+          border-radius: 20px;
+          padding: 0;
+          border: 1px solid #a9b9c6;
+          margin-right: 0px; }
+          .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text {
+            background: none;
+            border: none;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            line-height: 26px;
+            color: #d1dae2;
+            padding: 5px 10px; }
+            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus {
+              outline: none; }
+            .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box .input-group-text:focus-visible {
+              outline: none; }
+    .owrkflow-dashboard-container .dashboard-container .dashbord-top-section {
+      padding: 0 0 30px 0; }
+      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading h3 {
+        margin: 0;
+        font-weight: 600;
+        color: #202020;
+        letter-spacing: 1px; }
+      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .heading span {
+        font-size: 13px;
+        line-height: 24px;
+        color: #a5a5a5; }
+      .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender {
+        width: 100%;
+        border: none;
+        vertical-align: middle;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+        .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content {
+          line-height: 20px;
+          cursor: pointer;
+          padding: 10px 20px;
+          position: relative; }
+          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-icon {
+            color: #6418c3;
+            margin-right: 15px;
+            vertical-align: middle; }
+          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-arrow {
+            color: #aaaaaa;
+            float: right;
+            margin-top: 5px;
+            vertical-align: middle; }
+          .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text {
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer; }
+            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text p {
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 14px;
+              color: #000000;
+              margin-bottom: 0; }
+            .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span {
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 14px;
+              color: #393939;
+              width: 65px; }
+              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input {
+                border: none;
+                width: auto; }
+                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon {
+                  padding-right: 7px;
+                  width: auto; }
+                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon svg {
+                    display: none; }
+                  .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__icon::after {
+                    content: "To";
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 14px;
+                    color: #393939;
+                    display: inline-block;
+                    vertical-align: top; }
+                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__start .picker-input__text {
+                  padding: 0 !important;
+                  font-weight: 500;
+                  font-size: 12px;
+                  line-height: 14px;
+                  color: #393939;
+                  background-color: transparent; }
+                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .range-picker-input .range-picker-input__end .picker-input__text {
+                  padding: 0 !important;
+                  font-weight: 500;
+                  font-size: 12px;
+                  line-height: 14px;
+                  color: #393939;
+                  background-color: transparent; }
+              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__trigger {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                padding: 30px 0 0 60px; }
+              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container {
+                right: 0 !important;
+                left: auto !important;
+                z-index: 1; }
+                .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .picker__container .calendar__day {
+                  height: 32px;
+                  line-height: 32px; }
+              .owrkflow-dashboard-container .dashboard-container .dashbord-top-section .calender .clender-content .calender-text span .rc-backdrop {
+                z-index: 0; }
+    .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {
+      padding: 20px 15px;
+      height: 130px;
+      border-radius: 15px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 45px;
+        position: relative; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img img {
+          width: 75px; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img span {
+          position: absolute;
+          top: 13px;
+          right: -8px;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          color: #fff;
+          font-weight: 700;
+          line-height: 20px;
+          background: #5fcffd;
+          border-radius: 50%; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .mail-icon {
+          font-size: 50px;
+          color: #7924ca; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .in-progress {
+          width: 18px;
+          height: 45px;
+          margin-right: 5px;
+          border-radius: 15px;
+          display: inline-block;
+          background-color: #dfecf2; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-img .complate-progress {
+          width: 18px;
+          height: 75px;
+          border-radius: 15px;
+          display: inline-block;
+          background-image: linear-gradient(180deg, #60dfff, #7ff0ffb0); }
+      .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content {
+        width: auto;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content span {
+          font-size: 14px;
+          font-weight: 500;
+          color: #a5a5a5; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content h3 {
+          margin: 0;
+          margin-bottom: 5px;
+          font-size: 30px;
+          line-height: 36px;
+          font-weight: 700; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed {
+          margin-bottom: 10px;
+          position: relative;
+          padding-left: 20px;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed span {
+            font-size: 12px;
+            font-weight: 500;
+            color: #a5a5a5; }
+          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5 {
+            margin: 0;
+            line-height: 16px;
+            font-weight: 700; }
+            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .completed h5::before {
+              content: "";
+              width: 10px;
+              height: 10px;
+              background: #60dfff;
+              border-radius: 50%;
+              position: absolute;
+              top: 5px;
+              left: 0px; }
+        .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss {
+          position: relative;
+          padding-left: 20px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss span {
+            font-size: 12px;
+            font-weight: 500;
+            color: #a5a5a5; }
+          .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5 {
+            margin: 0;
+            line-height: 16px;
+            font-weight: 700; }
+            .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box .progress-content .in-progrss h5::before {
+              content: "";
+              width: 10px;
+              height: 10px;
+              background: #dfecf2;
+              border-radius: 50%;
+              position: absolute;
+              top: 5px;
+              left: 0px; }
+    .owrkflow-dashboard-container .dashboard-container .average-section {
+      padding-top: 30px; }
+      .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {
+        background-color: #ffffff;
+        padding: 30px 20px;
+        border-radius: 15px;
+        max-height: 400px;
+        min-height: 400px;
+        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 30px;
+          color: #202020;
+          margin-bottom: 30px;
+          letter-spacing: 1px; }
+        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {
+          text-align: right; }
+          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {
+            border: 1px solid #8f8f8f;
+            border-radius: 10px;
+            width: 110px;
+            margin-right: 10px;
+            padding: 0 5px; }
+            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {
+              outline: none; }
+            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {
+              outline: none; }
+        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {
+          float: right;
+          color: #a5a5a5;
+          padding: 5px;
+          width: 34px;
+          height: 34px;
+          text-align: center;
+          cursor: pointer;
+          border-radius: 50%;
+          line-height: 28px;
+          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
+          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {
+            font-size: 1.2rem; }
+          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {
+            background-color: rgba(0, 0, 0, 0.04); }
+        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {
+          width: 150px; }
+          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content {
+            display: block;
+            margin-bottom: 10px;
+            position: relative; }
+            .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span {
+              display: block;
+              font-size: 12px;
+              line-height: 16px;
+              margin-left: 20px; }
+              .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .paid-content span::before {
+                content: "";
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 2px;
+                left: 0;
+                border-radius: 50%;
+                background-color: #8884d8; }
+          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid .unpaid span::before {
+            background-color: #82ca9d; }
+        .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content {
+          margin-top: 30px;
+          text-align: center; }
+          .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {
+            font-size: 12px; }
+    .owrkflow-dashboard-container .dashboard-container .project-resources-section {
+      display: block;
+      padding-top: 30px; }
+      .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list {
+        display: block;
+        background-color: #ffffff;
+        padding: 10px 5px;
+        border-radius: 15px;
+        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading {
+          display: block;
+          width: 100%;
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 20px;
+          padding-bottom: 40px; }
+          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 30px;
+            color: #202020;
+            margin-bottom: 0px;
+            letter-spacing: 1px; }
+          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border-bottom: 2px solid #f8f8f8; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {
+              display: inline-block;
+              padding-left: 15px;
+              padding-right: 15px;
+              padding-bottom: 10px;
+              margin-right: 10px;
+              font-size: 14px;
+              line-height: 22px;
+              font-weight: 500;
+              color: #a5a5a5;
+              cursor: pointer;
+              border-bottom: 2px solid transparent; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:hover {
+                color: #6418c3;
+                border-bottom: 2px solid #6418c3; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li.active {
+                color: #6418c3;
+                border-bottom: 2px solid #6418c3; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li:last-child {
+                margin-right: 0; }
+        .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {
+          display: block;
+          width: 100%;
+          padding: 0;
+          max-height: 300px;
+          overflow: hidden;
+          overflow-y: auto; }
+          .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {
+            display: flex;
+            width: 100%;
+            padding: 15px 20px;
+            border-left: 5px solid #f6eeff;
+            border-bottom: 1px solid #f6eeff;
+            justify-content: flex-start;
+            align-items: flex-start; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {
+              border-left: 5px solid #6418c3; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box {
+              display: flex;
+              margin-right: 15px;
+              width: 44px;
+              height: 44px;
+              border-radius: 15px;
+              padding-left: 3px;
+              padding-right: 3px;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              border: 1px solid #f8f8f8;
+              background-color: #ffffff;
+              cursor: pointer; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box span {
+                display: inline-block;
+                font-size: 16px;
+                color: #c2c2c2;
+                line-height: 22px;
+                border: 1px solid #f8f8f8; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active {
+                background-color: #ffebcc; }
+                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .star-box.active span {
+                  color: #ffab2d; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {
+              display: flex;
+              width: 30px;
+              height: 44px;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-right: 15px; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon img {
+                max-width: 100%;
+                height: auto; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content {
+              display: flex;
+              width: calc(100% - 104px);
+              flex-wrap: wrap;
+              justify-content: flex-start;
+              align-items: flex-start; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content h4 {
+                display: block;
+                width: 100%;
+                margin-bottom: 5px;
+                font-size: 16px;
+                line-height: 22px;
+                font-weight: 600;
+                color: #202020; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+                font-size: 15px;
+                line-height: 18px;
+                font-weight: 500;
+                color: #a5a5a5; }
+                .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content span i {
+                  display: inline-block;
+                  font-size: 6px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  line-height: 10px;
+                  vertical-align: top;
+                  margin-top: 6px; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .content p {
+                display: block;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                margin-bottom: 0px;
+                font-size: 13px;
+                line-height: 18px;
+                font-weight: 300;
+                color: #202020;
+                height: 40px; }
+      .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {
+        display: block;
+        background-color: #ffffff;
+        padding: 10px 5px;
+        border-radius: 15px;
+        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading {
+          display: block;
+          width: 100%;
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 20px;
+          padding-bottom: 20px; }
+          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 30px;
+            color: #202020;
+            margin-bottom: 0px;
+            letter-spacing: 1px; }
+          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading p {
+            color: #a5a5a5;
+            font-weight: 400; }
+        .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources {
+          display: block;
+          width: 100%;
+          padding-left: 15px;
+          padding-right: 15px;
+          max-height: 289px;
+          overflow: hidden;
+          overflow-y: auto; }
+          .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 15px; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image {
+              display: flex;
+              width: 48px;
+              height: 48px;
+              margin-right: 15px;
+              justify-content: center;
+              align-items: center; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .image img {
+                max-width: 100%;
+                height: auto; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content {
+              display: flex;
+              width: calc(100% - 102px);
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content h3 {
+                display: block;
+                width: 100%;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 500;
+                color: #202020;
+                margin-bottom: 5px; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .content p {
+                display: block;
+                width: 100%;
+                color: #a5a5a5;
+                font-size: 13px;
+                line-height: 16px;
+                margin-bottom: 0;
+                font-weight: 300; }
+            .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon {
+              display: flex;
+              width: 24px;
+              height: 24px;
+              margin-left: 15px;
+              justify-content: center;
+              align-items: center; }
+              .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .resources .resource .plus-icon span {
+                background-color: #6418c3;
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+                text-align: center;
+                color: #ffffff;
+                font-size: 12px;
+                line-height: 24px; }
+    .owrkflow-dashboard-container .dashboard-container .project-overview-section {
+      display: block;
+      background-color: #ffffff;
+      margin-top: 30px;
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+      .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading {
+        display: block;
+        width: 100%; }
+        .owrkflow-dashboard-container .dashboard-container .project-overview-section .heading h5 {
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 30px;
+          color: #202020;
+          margin-bottom: 0px;
+          letter-spacing: 1px; }
+      .owrkflow-dashboard-container .dashboard-container .project-overview-section .table {
+        display: block;
+        width: 100%;
+        padding-top: 30px; }
+        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th {
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-bottom: 15px;
+          font-size: 18px;
+          font-weight: 400;
+          color: #414d55;
+          width: 14.2857%; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(2) {
+            text-align: center; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(4) {
+            text-align: center; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table thead th:nth-child(5) {
+            text-align: center; }
+        .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td {
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          font-weight: 300;
+          color: #414d55;
+          width: 14.2857%; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td span {
+            color: #2662f0; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td a {
+            color: #2662f0; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(2) {
+            text-align: center; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(4) {
+            text-align: center; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td:nth-child(5) {
+            text-align: center; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .progress {
+            color: #ffa000; }
+          .owrkflow-dashboard-container .dashboard-container .project-overview-section .table table tbody td .pending {
+            color: #860000; }
 
 .owrkflow-project-wise-container {
   display: block;
-  width: 100%;
-}
-.owrkflow-project-wise-container .project-wise-page-container {
-  background-color: #f9fafc;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 30px;
-  padding-bottom: 15px;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {
-  display: flex;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-page-heading
-  .heading-content-left
-  .heading-icon {
-  display: inline-block;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-page-heading
-  .heading-content-left
-  .heading-content {
-  margin-left: 20px;
-  display: inline-block;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-page-heading
-  .heading-content-left
-  .heading-content
-  h3 {
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 500;
-  color: #202020;
-  margin: 0;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-page-heading
-  .heading-content-left
-  .heading-content
-  span {
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-page-heading
-  .heading-content-left
-  .heading-content
-  p {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 400;
-  color: #202020;
-  margin: 10px 0 0 0;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {
-  float: right;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  border-radius: 25px;
-  text-align: center;
-  color: #fff;
-  font-size: 14px;
-  background-color: #8145cd;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status {
-  margin-top: 50px;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {
-  width: 100%;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 45px;
-  border: none;
-  cursor: pointer;
-  color: #aaaaaa;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 45px;
-  border-radius: 8px;
-  padding: 0 20px 0 40px;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {
-  outline: none;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {
-  content: '\F107';
-  position: absolute;
-  top: 7px;
-  left: 30px;
-  font-weight: 900;
-  font-size: 20px;
-  color: #a274db;
-  font-family: 'FontAwesome';
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {
-  width: 100%;
-  position: relative;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {
-  width: 100%;
-  height: 45px;
-  font-size: 16px;
-  color: #aaaaaa;
-  line-height: 45px;
-  padding-left: 45px;
-  border-radius: 8px;
-  background-color: #ffffff;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .search-bar
-  .control-form:focus-visible {
-  outline: none;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {
-  top: 14px;
-  left: 20px;
-  font-size: 18px;
-  color: #a274db;
-  font-weight: 600;
-  position: absolute;
-  vertical-align: middle;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {
-  padding-top: 30px;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {
-  width: 100%;
-  display: flex;
-  border-bottom: 1px solid #e6e6e6;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .thead
-  .th {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  color: #414d55;
-  margin-bottom: 8px;
-  text-align: center;
-  border-right: 1px solid #e6e6e6;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .thead
-  .th:last-child {
-  border-right: none;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr {
-  width: 100%;
-  display: flex;
-  margin-top: 8px;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  color: #2662f0;
-  margin-bottom: 8px;
-  text-align: center;
-  border-right: 1px solid #e6e6e6;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td:last-child {
-  border-right: none;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td
-  i {
-  font-size: 18px;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td
-  i.green {
-  color: #57d25f;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td
-  i.orange {
-  color: #eea515;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {
-  padding-top: 30px;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {
-  display: block;
-  width: 100%;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner {
-  margin-top: 30px;
-  display: flex;
-  display: -webkit-box;
-  width: 100%;
-  overflow: hidden;
-  overflow-x: auto;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box {
-  display: flex;
-  width: 280px;
-  max-width: 280px;
-  margin-right: 30px;
-  border-radius: 8px;
-  flex-wrap: wrap;
-  padding: 20px;
-  margin-bottom: 15px;
-  background: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .user-content {
-  display: flex;
-  margin-bottom: 15px;
-  align-items: center;
-  justify-content: start;
-  width: 100%;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .user-content
-  .user-text {
-  margin-left: 15px;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .user-content
-  .user-text
-  span {
-  font-size: 18px;
-  line-height: 20px;
-  font-weight: 500;
-  color: 202020;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .user-content
-  .user-text
-  p {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  color: #a5a5a5;
-  margin: 8px 0 0 0;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .resources-progress-heading {
-  margin-bottom: 15px;
-  width: 100%;
-  display: block;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .resources-progress-heading
-  h4 {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 500;
-  color: 202020;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .resources-progress-heading
-  span {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  color: #202020;
-  margin-top: 10px;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .project-progressbar {
-  display: block;
-  width: 100%;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .project-progressbar
-  .CircularProgressbar {
-  width: 130px;
-  height: 130px;
-}
-.owrkflow-project-wise-container
-  .project-wise-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .project-progressbar
-  p {
-  margin: 15px 0 0 0;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
+  width: 100%; }
+  .owrkflow-project-wise-container .project-wise-page-container {
+    background-color: #f9fafc;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 15px; }
+    .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading {
+      padding-left: 16px;
+      padding-right: 16px; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left {
+        display: flex; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-icon {
+          display: inline-block; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content {
+          margin-left: 20px;
+          display: inline-block; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content h3 {
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 500;
+            color: #202020;
+            margin: 0; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content span {
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 500;
+            color: #202020; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-left .heading-content p {
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            color: #202020;
+            margin: 10px 0 0 0; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right {
+        float: right; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span {
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+          border-radius: 25px;
+          text-align: center;
+          color: #fff;
+          font-size: 14px;
+          background-color: #8145cd; }
+    .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {
+      margin-top: 50px; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #202020; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {
+        padding-left: 16px;
+        padding-right: 16px; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {
+        width: 100%; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 45px;
+          border: none;
+          cursor: pointer;
+          color: #aaaaaa;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 45px;
+          border-radius: 8px;
+          padding: 0 20px 0 40px; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {
+            outline: none; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {
+          content: "\F107";
+          position: absolute;
+          top: 7px;
+          left: 30px;
+          font-weight: 900;
+          font-size: 20px;
+          color: #a274db;
+          font-family: 'FontAwesome'; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {
+        width: 100%;
+        position: relative; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {
+          width: 100%;
+          height: 45px;
+          font-size: 16px;
+          color: #aaaaaa;
+          line-height: 45px;
+          padding-left: 45px;
+          border-radius: 8px;
+          background-color: #ffffff; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form:focus-visible {
+            outline: none; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {
+          top: 14px;
+          left: 20px;
+          font-size: 18px;
+          color: #a274db;
+          font-weight: 600;
+          position: absolute;
+          vertical-align: middle; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {
+        padding-top: 30px;
+        padding-left: 16px;
+        padding-right: 16px; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead {
+          width: 100%;
+          display: flex;
+          border-bottom: 1px solid #e6e6e6; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            color: #414d55;
+            margin-bottom: 8px;
+            text-align: center;
+            border-right: 1px solid #e6e6e6; }
+            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {
+              border-right: none; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr {
+          width: 100%;
+          display: flex;
+          margin-top: 8px; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            color: #2662f0;
+            margin-bottom: 8px;
+            text-align: center;
+            border-right: 1px solid #e6e6e6; }
+            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {
+              border-right: none; }
+            .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {
+              font-size: 18px; }
+              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.green {
+                color: #57d25f; }
+              .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i.orange {
+                color: #eea515; }
+    .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources {
+      padding-top: 30px;
+      padding-left: 16px;
+      padding-right: 16px; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #202020; }
+      .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {
+        display: block;
+        width: 100%; }
+        .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner {
+          margin-top: 30px;
+          display: flex;
+          display: -webkit-box;
+          width: 100%;
+          overflow: hidden;
+          overflow-x: auto; }
+          .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {
+            display: flex;
+            width: 280px;
+            max-width: 280px;
+            margin-right: 30px;
+            border-radius: 8px;
+            flex-wrap: wrap;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }
+            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {
+              display: flex;
+              margin-bottom: 15px;
+              align-items: center;
+              justify-content: start;
+              width: 100%; }
+              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {
+                margin-left: 15px; }
+                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {
+                  font-size: 18px;
+                  line-height: 20px;
+                  font-weight: 500;
+                  color: 202020; }
+                .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text p {
+                  font-size: 14px;
+                  line-height: 20px;
+                  font-weight: 400;
+                  color: #a5a5a5;
+                  margin: 8px 0 0 0; }
+            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {
+              margin-bottom: 15px;
+              width: 100%;
+              display: block; }
+              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                color: 202020; }
+              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 400;
+                color: #202020;
+                margin-top: 10px; }
+            .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar {
+              display: block;
+              width: 100%; }
+              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {
+                width: 130px;
+                height: 130px; }
+              .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {
+                margin: 15px 0 0 0;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                color: #202020; }
 
 .owrkflow-resource-wise-View-container {
   display: block;
-  width: 100%;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container {
-  background-color: #f9fafc;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .resource-wise-View-page-heading
-  .heading-content-left {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .resource-wise-View-page-heading
-  .heading-content-left
-  .heading-icon {
-  display: inline-block;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .resource-wise-View-page-heading
-  .heading-content-left
-  .heading-content {
-  margin-left: 20px;
-  display: inline-block;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .resource-wise-View-page-heading
-  .heading-content-left
-  .heading-content
-  h3 {
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 500;
-  color: #202020;
-  margin: 0 0 10px 0;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .resource-wise-View-page-heading
-  .heading-content-left
-  .heading-content
-  span {
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 400;
-  color: #a5a5a5;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .resource-wise-View-page-heading
-  .heading-content-right {
-  float: right;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .resource-wise-View-page-heading
-  .heading-content-right
-  span {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  border-radius: 25px;
-  text-align: center;
-  color: #fff;
-  font-size: 14px;
-  background-color: #8145cd;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {
-  border-radius: 8px;
-  margin-top: 50px;
-  padding: 40px 20px 20px 20px;
-  background-color: #fefefe;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {
-  margin-bottom: 30px;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
-  color: #202020;
-  margin-bottom: 8px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .task-heading-content
-  span {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {
-  width: 100%;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 45px;
-  border: none;
-  cursor: pointer;
-  color: #aaaaaa;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 45px;
-  border-radius: 8px;
-  padding: 0 20px 0 40px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .filler-search
-  select:focus-visible {
-  outline: none;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {
-  content: '\F107';
-  position: absolute;
-  top: 7px;
-  left: 30px;
-  font-weight: 900;
-  font-size: 20px;
-  color: #a274db;
-  font-family: 'FontAwesome';
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {
-  width: 100%;
-  position: relative;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .search-bar
-  .control-form {
-  width: 100%;
-  height: 45px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #aaaaaa;
-  line-height: 45px;
-  padding-left: 45px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .search-bar
-  .control-form:focus-visible {
-  outline: none;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {
-  top: 14px;
-  left: 20px;
-  font-size: 18px;
-  color: #a274db;
-  font-weight: 600;
-  position: absolute;
-  vertical-align: middle;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {
-  margin-top: 50px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .thead {
-  width: 100%;
-  display: flex;
-  border-bottom: 1px solid #e6e6e6;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .thead
-  .th {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  color: #414d55;
-  margin-bottom: 8px;
-  text-align: center;
-  border-right: 1px solid #e6e6e6;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .thead
-  .th:last-child {
-  border-right: none;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr {
-  width: 100%;
-  display: flex;
-  margin-top: 8px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 400;
-  height: 40px;
-  line-height: 20px;
-  color: #2662f0;
-  margin-bottom: 8px;
-  text-align: center;
-  border-right: 1px solid #e6e6e6;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td:last-child {
-  border-right: none;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .td
-  i {
-  font-size: 18px;
-  color: #57d25f;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .tast-content {
-  font-weight: 500;
-  color: #2662f0;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-status
-  .project-wise-table
-  .table
-  .tbody
-  .tr
-  .project-content {
-  color: #414d55;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {
-  margin-top: 30px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-heading {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section {
-  display: block;
-  width: 100%;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner {
-  margin-top: 30px;
-  display: flex;
-  display: -webkit-box;
-  width: 100%;
-  overflow: hidden;
-  overflow-x: auto;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box {
-  width: 300px;
-  max-width: 100%;
-  margin-right: 30px;
-  border-radius: 8px;
-  padding: 15px 15px 5px 15px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  background: #fefefe;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .user-content {
-  display: flex;
-  margin-bottom: 15px;
-  align-items: center;
-  justify-content: start;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .user-content
-  .user-text {
-  margin-left: 15px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .user-content
-  .user-text
-  span {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .resources-progress-heading {
-  margin-bottom: 15px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .resources-progress-heading
-  h4 {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 500;
-  color: 202020;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .resources-progress-heading
-  span {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  color: #202020;
-  margin-top: 10px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .project-progressbar
-  .CircularProgressbar {
-  width: 130px;
-  height: 130px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .project-progressbar
-  p {
-  margin: 15px 0 0 0;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .project-wise-resources
-  .project-resources-section
-  .project-resources-inner
-  .project-resources-box
-  .project-progressbar
-  .card-arrow-image {
-  margin-top: 20px;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {
-  padding-top: 30px;
-}
-.owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {
-  background-color: #ffffff;
-  padding: 30px 20px;
-  border-radius: 15px;
-  box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  h5 {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 30px;
-  color: #202020;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown {
-  text-align: right;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown
-  .opensens-content {
-  border: 1px solid #8f8f8f;
-  border-radius: 10px;
-  width: 110px;
-  margin-right: 10px;
-  padding: 0 5px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown
-  .opensens-content:focus {
-  outline: none;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .opensens-dropdown
-  .opensens-content:focus-visible {
-  outline: none;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .meore-menu-icon {
-  float: right;
-  color: #a5a5a5;
-  padding: 5px;
-  width: 34px;
-  height: 34px;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 50%;
-  line-height: 28px;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .meore-menu-icon
-  i {
-  font-size: 1.2rem;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .requistions-heading
-  .requistions-dropdown
-  .meore-menu-icon:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .totalpaid {
-  width: 150px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .totalpaid
-  .paid-content {
-  display: block;
-  margin-bottom: 10px;
-  position: relative;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .totalpaid
-  .paid-content
-  span {
-  display: block;
-  font-size: 12px;
-  line-height: 16px;
-  margin-left: 20px;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .totalpaid
-  .paid-content
-  span::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 2px;
-  left: 0;
-  border-radius: 50%;
-  background-color: #8884d8;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .totalpaid
-  .unpaid
-  span::before {
-  background-color: #82ca9d;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .chartbar-content {
-  margin-top: 30px;
-  text-align: center;
-}
-.owrkflow-resource-wise-View-container
-  .resource-wise-View-page-container
-  .average-section
-  .statistics-graph
-  .chartbar-content
-  .recharts-layer
-  tspan {
-  font-size: 12px;
-}
+  width: 100%; }
+  .owrkflow-resource-wise-View-container .resource-wise-View-page-container {
+    background-color: #f9fafc;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px; }
+    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-icon {
+        display: inline-block; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content {
+        margin-left: 20px;
+        display: inline-block; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content h3 {
+          font-size: 18px;
+          line-height: 22px;
+          font-weight: 500;
+          color: #202020;
+          margin: 0 0 10px 0; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-left .heading-content span {
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: 400;
+          color: #a5a5a5; }
+    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right {
+      float: right; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .resource-wise-View-page-heading .heading-content-right span {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        border-radius: 25px;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        background-color: #8145cd; }
+    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {
+      border-radius: 8px;
+      margin-top: 50px;
+      padding: 40px 20px 20px 20px;
+      background-color: #fefefe; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .heading {
+        margin-bottom: 30px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #202020; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content p {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #202020;
+        margin-bottom: 8px; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .task-heading-content span {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #202020; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search {
+        width: 100%; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select {
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 45px;
+          border: none;
+          cursor: pointer;
+          color: #aaaaaa;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 45px;
+          border-radius: 8px;
+          padding: 0 20px 0 40px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search select:focus-visible {
+            outline: none; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .filler-search::after {
+          content: "\F107";
+          position: absolute;
+          top: 7px;
+          left: 30px;
+          font-weight: 900;
+          font-size: 20px;
+          color: #a274db;
+          font-family: 'FontAwesome'; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar {
+        width: 100%;
+        position: relative; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form {
+          width: 100%;
+          height: 45px;
+          font-size: 16px;
+          font-weight: 500;
+          color: #aaaaaa;
+          line-height: 45px;
+          padding-left: 45px;
+          border-radius: 8px;
+          background-color: #ffffff;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar .control-form:focus-visible {
+            outline: none; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .search-bar i {
+          top: 14px;
+          left: 20px;
+          font-size: 18px;
+          color: #a274db;
+          font-weight: 600;
+          position: absolute;
+          vertical-align: middle; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table {
+        margin-top: 50px; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead {
+          width: 100%;
+          display: flex;
+          border-bottom: 1px solid #e6e6e6; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            color: #414d55;
+            margin-bottom: 8px;
+            text-align: center;
+            border-right: 1px solid #e6e6e6; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .thead .th:last-child {
+              border-right: none; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr {
+          width: 100%;
+          display: flex;
+          margin-top: 8px; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 400;
+            height: 40px;
+            line-height: 20px;
+            color: #2662f0;
+            margin-bottom: 8px;
+            text-align: center;
+            border-right: 1px solid #e6e6e6; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td:last-child {
+              border-right: none; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .td i {
+              font-size: 18px;
+              color: #57d25f; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .tast-content {
+            font-weight: 500;
+            color: #2662f0; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status .project-wise-table .table .tbody .tr .project-content {
+            color: #414d55; }
+    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources {
+      margin-top: 30px; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-heading {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #202020; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section {
+        display: block;
+        width: 100%; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner {
+          margin-top: 30px;
+          display: flex;
+          display: -webkit-box;
+          width: 100%;
+          overflow: hidden;
+          overflow-x: auto; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box {
+            width: 300px;
+            max-width: 100%;
+            margin-right: 30px;
+            border-radius: 8px;
+            padding: 15px 15px 5px 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            background: #fefefe;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content {
+              display: flex;
+              margin-bottom: 15px;
+              align-items: center;
+              justify-content: start; }
+              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text {
+                margin-left: 15px; }
+                .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .user-content .user-text span {
+                  font-size: 16px;
+                  line-height: 20px;
+                  font-weight: 500;
+                  color: #202020; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading {
+              margin-bottom: 15px; }
+              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading h4 {
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                color: 202020; }
+              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .resources-progress-heading span {
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 400;
+                color: #202020;
+                margin-top: 10px; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .CircularProgressbar {
+              width: 130px;
+              height: 130px; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar p {
+              margin: 15px 0 0 0;
+              font-size: 14px;
+              line-height: 20px;
+              font-weight: 500;
+              color: #202020; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-resources .project-resources-section .project-resources-inner .project-resources-box .project-progressbar .card-arrow-image {
+              margin-top: 20px; }
+    .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section {
+      padding-top: 30px; }
+      .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph {
+        background-color: #ffffff;
+        padding: 30px 20px;
+        border-radius: 15px;
+        box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3); }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading h5 {
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 30px;
+          color: #202020;
+          margin-bottom: 30px;
+          letter-spacing: 1px; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown {
+          text-align: right; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content {
+            border: 1px solid #8f8f8f;
+            border-radius: 10px;
+            width: 110px;
+            margin-right: 10px;
+            padding: 0 5px; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus {
+              outline: none; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .opensens-dropdown .opensens-content:focus-visible {
+              outline: none; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon {
+          float: right;
+          color: #a5a5a5;
+          padding: 5px;
+          width: 34px;
+          height: 34px;
+          text-align: center;
+          cursor: pointer;
+          border-radius: 50%;
+          line-height: 28px;
+          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon i {
+            font-size: 1.2rem; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .requistions-heading .requistions-dropdown .meore-menu-icon:hover {
+            background-color: rgba(0, 0, 0, 0.04); }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid {
+          width: 150px; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content {
+            display: block;
+            margin-bottom: 10px;
+            position: relative; }
+            .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span {
+              display: block;
+              font-size: 12px;
+              line-height: 16px;
+              margin-left: 20px; }
+              .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .paid-content span::before {
+                content: "";
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 2px;
+                left: 0;
+                border-radius: 50%;
+                background-color: #8884d8; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .totalpaid .unpaid span::before {
+            background-color: #82ca9d; }
+        .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content {
+          margin-top: 30px;
+          text-align: center; }
+          .owrkflow-resource-wise-View-container .resource-wise-View-page-container .average-section .statistics-graph .chartbar-content .recharts-layer tspan {
+            font-size: 12px; }
 
 /*# sourceMappingURL=workflowengine.light.css.map */
