@@ -859,5 +859,30 @@ func GetAvailableNotifiers() []*alerting.NotifierPlugin {
 				},
 			},
 		},
+
+		{
+			Type:        "gelf",
+			Name:        "GELF",
+			Description: "Send alerts as GELF TCP messages to GELF server",
+			Heading:     "GELF settings",
+			Options: []alerting.NotifierOption{
+				{
+					Label:        "IP Address",
+					Element:      alerting.ElementTypeInput,
+					InputType:    alerting.InputTypeText,
+					Placeholder:  "127.0.0.1",
+					PropertyName: "gelfTcpInputIpAddress",
+					Required:     true,
+				},
+				{
+					Label:        "Port No",
+					Element:      alerting.ElementTypeInput,
+					InputType:    alerting.InputTypeText,
+					Placeholder:  "12201",
+					PropertyName: "gelfTcpInputPort",
+					Required:     true,
+				},
+			},
+		},
 	}
 }

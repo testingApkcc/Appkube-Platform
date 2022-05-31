@@ -20,6 +20,11 @@ import (
 type WebhookSender interface {
 	SendWebhookSync(ctx context.Context, cmd *models.SendWebhookSync) error
 }
+
+type GelfTcpSender interface {
+	SendGelfTcpSync(ctx context.Context, cmd *models.SendGelfTcpSync) error
+}
+
 type EmailSender interface {
 	SendEmailCommandHandlerSync(ctx context.Context, cmd *models.SendEmailCommandSync) error
 	SendEmailCommandHandler(ctx context.Context, cmd *models.SendEmailCommand) error
@@ -27,6 +32,7 @@ type EmailSender interface {
 type Service interface {
 	WebhookSender
 	EmailSender
+	GelfTcpSender
 }
 
 type Store interface {
@@ -54,6 +60,7 @@ func ProvideService(bus bus.Bus, cfg *setting.Cfg, mailer Mailer) (*Notification
 
 	ns.Bus.AddHandler(ns.SendEmailCommandHandlerSync)
 	ns.Bus.AddHandler(ns.SendWebhookSync)
+	ns.Bus.AddHandler(ns.SendGelfTcpSync)
 
 	ns.Bus.AddEventListener(ns.signUpStartedHandler)
 	ns.Bus.AddEventListener(ns.signUpCompletedHandler)
@@ -127,6 +134,14 @@ func (ns *NotificationService) SendWebhookSync(ctx context.Context, cmd *models.
 		HttpMethod:  cmd.HttpMethod,
 		HttpHeader:  cmd.HttpHeader,
 		ContentType: cmd.ContentType,
+	})
+}
+
+func (ns *NotificationService) SendGelfTcpSync(ctx context.Context, cmd *models.SendGelfTcpSync) error {
+	return ns.sendGelfTcpRequestSync(ctx, &GelfTcp{
+		GelfServer:  cmd.GelfServer,
+		GelfTcpPort: cmd.GelfTcpPort,
+		GelfMessage: cmd.GelfMessage,
 	})
 }
 

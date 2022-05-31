@@ -54,7 +54,8 @@ export type GrafanaNotifierType =
   | 'victorops'
   | 'pushover'
   | 'LINE'
-  | 'kafka';
+  | 'kafka'
+  | 'gelf';
 
 export type CloudNotifierType =
   | 'email'

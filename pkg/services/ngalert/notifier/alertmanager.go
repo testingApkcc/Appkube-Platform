@@ -534,6 +534,8 @@ func (am *Alertmanager) buildReceiverIntegration(r *apimodels.PostableGrafanaRec
 		n, err = channels.NewOpsgenieNotifier(cfg, am.NotificationService, tmpl, am.decryptFn)
 	case "prometheus-alertmanager":
 		n, err = channels.NewAlertmanagerNotifier(cfg, tmpl, am.decryptFn)
+	case "gelf":
+		n, err = channels.NewGelfTcpNotifier(cfg, am.NotificationService, tmpl)
 	default:
 		return nil, InvalidReceiverError{
 			Receiver: r,

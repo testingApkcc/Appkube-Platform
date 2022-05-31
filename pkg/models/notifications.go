@@ -47,3 +47,9 @@ type ValidateResetPasswordCodeQuery struct {
 	Code   string
 	Result *User
 }
+
+type SendGelfTcpSync struct {
+	GelfServer  string
+	GelfTcpPort string
+	GelfMessage string
+}
