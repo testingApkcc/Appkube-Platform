@@ -36,24 +36,32 @@ export class ProcurementDetail extends React.Component<any, any> {
     return (
       <div className="owrkflow-project-wise-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="WORKFLOW MANAGEMENT" />
-        <div className="project-wise-page-container">
+        <div className="project-wise-page-container row">
+          <div className='col-12'>
+                  <ul className="row">
           {
-            this.stepper.map(({ title, key, component }: any, index: any) => {
+            this.stepper.map(({ title, key}: any, index: any) => {
               return (
-              <div className="row" key={index}>
-                <div className='col-12'>
-                  <ul >
-                    <li onClick={() => this.activeTab(key)} className={key === activeTab ? "active col-4" : 'col-4'}>{title}</li>
-                  </ul>
-                </div>
-                <div className='col-12'>
-                  {activeTab === key ? <div >
-                    <>{component}</>
-                  </div> : <></>}</div>
-              </div>
+          
+                    <li key={index} onClick={() => this.activeTab(key)} className={key === activeTab ? "active col-4" : 'col-4'}>{title}</li>
+                
               )
             })
           }
+            </ul>
+          </div>
+          <div className='col-12'>
+          {
+            this.stepper.map(({  key, component }: any, index: any) => {
+              return (
+              <div key={index}>
+                  {activeTab === key ? 
+                    <>{component}</>
+                 : <></>}
+              </div>
+              )
+            })
+          }</div>
         </div>
       </div>
     );
