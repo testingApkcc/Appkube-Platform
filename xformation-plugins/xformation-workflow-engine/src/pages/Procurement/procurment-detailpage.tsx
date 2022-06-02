@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { AssetView } from './assetView';
+import AssetView from './assetView';
 import { OverView } from './overView';
-import  WorkFlowView  from './workFlowView';
+import WorkFlowView from './workFlowView';
 import headerIcon from '../../img/header-icon.png';
 import 'react-circular-progressbar/dist/styles.css';
 import 'simplebar/dist/simplebar.min.css';
@@ -25,9 +25,10 @@ export class ProcurementDetail extends React.Component<any, any> {
         isCurrentPage: true,
       },
     ];
-    this.stepper = [{ title: "Over View", key: 0, component: <OverView /> },
-    { title: "Workflow View", key: 1, component: <WorkFlowView /> },
-    { title: "Asset View", key: 2, component: <AssetView /> }]
+    this.stepper = [
+      { title: "Over View", key: 0, component: <OverView /> },
+      { title: "Workflow View", key: 1, component: <WorkFlowView /> },
+      { title: "Asset View", key: 2, component: <AssetView /> }]
   }
   activeTab = (key: any) => {
     this.setState({ activeTab: key });
