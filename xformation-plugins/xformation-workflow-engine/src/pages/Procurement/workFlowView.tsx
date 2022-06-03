@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react';
-// import { WorkflowAction } from './../../_action';
-// import { connect } from 'react-redux';
-// import { status } from '../../_constants';
-import { Link, useParams } from 'react-router-dom';
-import editIcon from '../../img/edit-icon.png';
+import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
 
 const WorkFlowView = (props: any) => {
-	// const { id } = useParams();
 	const [ usecaseData, setUsecaseData ] = useState({
 		name: 'ipsa',
 		description: 'Recusandae libero eveniet ducimus.',
@@ -129,41 +124,8 @@ const WorkFlowView = (props: any) => {
 			}
 		]
 	});
-	// const [workflowDetail, setWorkflowDetail] = useState({});
-	const [ Id, setId ] = useState(1);
+	// const [Id, setId] = useState(props.id);
 	const [ activeStage, setActivestage ] = useState(0);
-
-	// useEffect(() => {
-	// 	// props.dispatch(WorkflowAction.getWorkflowDetail({ 'id': Id }));
-	// }, []);
-
-	// useEffect(
-	// 	() => {
-	// 		if (props.workflow_detail_status == status.SUCCESS) {
-	// 			setUsecaseData(props.workflow_detail_data);
-	// 			if (
-	// 				props.workflow_detail_data &&
-	// 				props.workflow_detail_data.stages &&
-	// 				props.workflow_detail_data.stages.length > 0
-	// 			) {
-	// 				// if (Object.keys(workflowDetail).length == 0) {
-	// 				//     // setWorkflowDetail(props.workflow_detail_data.stages[0])
-	// 				// }
-	// 				setActivestage(0);
-	// 			}
-	// 		}
-	// 	},
-	// 	[ props.workflow_detail_status ]
-	// );
-
-	// useEffect(
-	// 	() => {
-	// 		if (props.update_checklist_status && props.update_checklist_status === status.SUCCESS) {
-	// 			// props.dispatch(WorkflowAction.getWorkflowDetail({ 'id': Id }));
-	// 		}
-	// 	},
-	// 	[ props.update_checklist_status ]
-	// );
 
 	const displayUsecase = () => {
 		let retData = [];
@@ -200,7 +162,7 @@ const WorkFlowView = (props: any) => {
 	const displayCheckList = () => {
 		let retData = [];
 		if (usecaseData && usecaseData.stages) {
-			const workflowDetail = usecaseData.stages[activeStage];
+			const workflowDetail: any = usecaseData.stages[activeStage];
 			if (workflowDetail && workflowDetail.checkList && workflowDetail.checkList.length > 0) {
 				for (let i = 0; i < workflowDetail.checkList.length; i++) {
 					let row = workflowDetail.checkList[i];
@@ -208,7 +170,7 @@ const WorkFlowView = (props: any) => {
 						<div key={i + 'checkbox'} className="requirement-data">
 							<input
 								type="checkbox"
-								// checked={row.isChecked}
+								checked={row.isChecked}
 								onChange={(e) => handleStateChangeCheckList(e, i)}
 							/>
 							<span>{row.label}</span>
@@ -221,8 +183,6 @@ const WorkFlowView = (props: any) => {
 	};
 
 	const getUsecaseStageData = (data: any, index: any) => {
-		// setWorkflowDetail({})
-		// setWorkflowDetail(JSON.parse(JSON.stringify(data)));
 		setActivestage(index);
 	};
 
@@ -256,31 +216,32 @@ const WorkFlowView = (props: any) => {
 	};
 
 	const handleStageChange = (e: any, index: any) => {
-		// const { name, value } = e.target;
+		const { name, value } = e.target;
+		let stages: any = usecaseData.stages;
 		if (usecaseData.stages) {
-			// usecaseData.stages[index][name] = value;
+			stages[index][name] = value;
 		}
 	};
 
 	const handleStateChange = (event: any, index: any) => {
-		// const { name, value } = event.target;
-		const workflowDetail = usecaseData.stages[activeStage];
+		const { name, value } = event.target;
+		const workflowDetail: any = usecaseData.stages[activeStage];
 		if (workflowDetail.steps) {
-			// workflowDetail.steps[index][name] = value;
+			workflowDetail.steps[index][name] = value;
 		}
 		setUsecaseData(JSON.parse(JSON.stringify(usecaseData)));
 	};
 
 	const handleStateChangeCheckList = (e: any, index: any) => {
-		// const { checked } = e.target;
+		const { checked } = e.target;
 		let count = 0;
-		const workflowDetail = usecaseData.stages[activeStage];
+		const workflowDetail: any = usecaseData.stages[activeStage];
 		if (workflowDetail.checkList) {
-			// workflowDetail.checkList[index]['isChecked'] = checked;
+			workflowDetail.checkList[index]['isChecked'] = checked;
 			for (let i = 0; i < workflowDetail.checkList.length; i++) {
-				// if (workflowDetail.checkList[i].isChecked) {
-				// 	count++;
-				// }
+				if (workflowDetail.checkList[i].isChecked) {
+					count++;
+				}
 			}
 		}
 		// setWorkflowDetail({ ...workflowDetail, workflowDetail });
@@ -292,21 +253,20 @@ const WorkFlowView = (props: any) => {
 			usecaseData.stages[activeStage]['status'] = '';
 		}
 		setUsecaseData({ ...usecaseData });
-		// props.dispatch(WorkflowAction.updateStageChecklist({ id: workflowDetail.checkList[index].id }));
 	};
 
 	const updateStep = (updatedStep: any) => {
 		// props.dispatch(WorkflowAction.updateWorkflowStep({ id: Id, step: updatedStep }));
 	};
 
-	const updateStage = () => {
-		// props.dispatch(WorkflowAction.updateWorkflowStage({ id: Id, stage: usecaseData }));
-	};
+	// const updateStage = () => {
+	// 	// props.dispatch(WorkflowAction.updateWorkflowStage({ id: Id, stage: usecaseData }));
+	// };
 
 	const moveToNextPage = (type: any) => {
 		if (type == 'next') {
 			if (usecaseData && usecaseData.stages) {
-				let data = usecaseData.stages[activeStage];
+				// let data = usecaseData.stages[activeStage];
 				// setWorkflowDetail({})
 				// setWorkflowDetail(JSON.parse(JSON.stringify(data)));
 				setActivestage(activeStage + 1);
@@ -314,7 +274,7 @@ const WorkFlowView = (props: any) => {
 		} else {
 			if (usecaseData && usecaseData.stages) {
 				let index = activeStage - 1;
-				let data = usecaseData.stages[index];
+				// let data = usecaseData.stages[index];
 				// setWorkflowDetail({})
 				// setWorkflowDetail(JSON.parse(JSON.stringify(data)));
 				setActivestage(index);
@@ -326,9 +286,9 @@ const WorkFlowView = (props: any) => {
 		<div className="workflow-content">
 			<div className="workflow-stage">
 				<ul>{displayWorkflowStage()}</ul>
-				<Link to={`/editworkflow/${Id}`} className="btn btn-primary btn-edit">
+				{/* <Link to={`/editworkflow/${Id}`} className="btn btn-primary btn-edit">
 					<img src={editIcon} alt="" />&nbsp; Edit
-				</Link>
+				</Link> */}
 			</div>
 			<div className="workflow-data">{displayUsecase()}</div>
 			<div className="workflow-requirement">
@@ -361,26 +321,5 @@ const WorkFlowView = (props: any) => {
 		</div>
 	);
 };
-// function mapStateToProps(state) {
-// 	const {
-// 		workflow_detail_status,
-// 		workflow_detail_data,
-// 		update_workflow_step_status,
-// 		updated_workflow_step,
-// 		update_workflow_stage_status,
-// 		updated_workflow_stage,
-// 		update_checklist_status,
-// 		update_checklist_data
-// 	} = state.workflow;
-// 	return {
-// 		workflow_detail_status,
-// 		workflow_detail_data,
-// 		update_workflow_step_status,
-// 		updated_workflow_step,
-// 		update_workflow_stage_status,
-// 		updated_workflow_stage,
-// 		update_checklist_status,
-// 		update_checklist_data
-// 	};
-// }
+
 export default WorkFlowView;

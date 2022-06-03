@@ -8,6 +8,7 @@ export enum ROUTES {
   ProjectWise = 'project-wise',
   ResourceWiseViewAllTasks = 'ResourceWiseViewAllTasks',
   ProcurementDetail = 'procurement-detail/:id',
+  MatrixView = 'matrixView',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
