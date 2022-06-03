@@ -5,6 +5,7 @@ import resourcesUserImg from '../../img/resources-user-img.png';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 // import SimpleBar from 'simplebar-react';
+import { Link } from 'react-router-dom';
 import 'simplebar/dist/simplebar.min.css';
 
 export class ProjectWise extends React.Component<any, any> {
@@ -94,8 +95,8 @@ export class ProjectWise extends React.Component<any, any> {
                   <div className="th last">Publish/Operate</div>
                 </div>
                 <div className="tbody">
-                  <div className="tr" onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/1')}>
-                    <div className="td">Usecase 1</div>
+                  <div className="tr" >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${1}`}>Usecase 1</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
@@ -103,8 +104,8 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"></div>
                     <div className="td"></div>
                   </div>
-                  <div className="tr"  onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/2')}>
-                    <div className="td">Usecase 2</div>
+                  <div className="tr"  >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${2}`}>Usecase 2</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -112,8 +113,8 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"></div>
                     <div className="td"></div>
                   </div>
-                  <div className="tr"  onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/3')}>
-                    <div className="td">Usecase 3</div>
+                  <div className="tr"  >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${3}`}>Usecase 3</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -121,8 +122,8 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"></div>
                     <div className="td"></div>
                   </div>
-                  <div className="tr"  onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/4')}>
-                    <div className="td">Usecase 4</div>
+                  <div className="tr"  >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${4}`}>Usecase 4</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -130,8 +131,8 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
                   </div>
-                  <div className="tr"  onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/5')}>
-                    <div className="td">Usecase 5</div>
+                  <div className="tr"  >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${5}`}>Usecase 5</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -139,8 +140,8 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                   </div>
-                  <div className="tr"  onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/6')}>
-                    <div className="td">Usecase 6</div>
+                  <div className="tr"  >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${6}`}>Usecase 6</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -148,8 +149,8 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
                     <div className="td"></div>
                   </div>
-                  <div className="tr"  onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/7')}>
-                    <div className="td">Usecase 7</div>
+                  <div className="tr"  >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${7}`}>Usecase 7</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -157,8 +158,8 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                   </div>
-                  <div className="tr"  onClick={()=>this.props.history.push('/a/xformation-workflow-engine/procurement-detail/8')}>
-                    <div className="td">Usecase 8</div>
+                  <div className="tr"  >
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${8}`}>Usecase 8</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
