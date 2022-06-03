@@ -475,18 +475,18 @@
                 text-overflow: ellipsis;
 
                 &.active {
-                    background-image: url(../images/check-icon1.png);
+                    background-image: url(../img/check-icon1.png);
                 }
 
                 &.inprosseg {
-                    background-image: url(../images/check-icon2.png);
+                    background-image: url(../img/check-icon2.png);
                 }
             }
         }
 
         &::after {
             content: "";
-            background-image: url(../images/right-arrow.png);
+            background-image: url(../img/right-arrow.png);
             background-repeat: no-repeat;
             position: absolute;
             right: -70px;
