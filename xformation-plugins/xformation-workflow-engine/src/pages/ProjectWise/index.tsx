@@ -61,27 +61,27 @@ export class ProjectWise extends React.Component<any, any> {
           </div>
           <div className="project-wise-status">
             <div className="status-fliter">
-            <div className="row d-flex align-items-center justify-content-center">
-              <div className="col-lg-4">
-                <div className="project-status-heading">Project Status</div>
-              </div>
-              <div className="col-lg-4">
-                <div className="filler-search">
-                  <select>
-                    <option>Sort by</option>
-                    <option>Sort by 1</option>
-                    <option>Sort by 2</option>
-                    <option>Sort by 3</option>
-                  </select>
+              <div className="row d-flex align-items-center justify-content-center">
+                <div className="col-lg-4">
+                  <div className="project-status-heading">Project Status</div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="filler-search">
+                    <select>
+                      <option>Sort by</option>
+                      <option>Sort by 1</option>
+                      <option>Sort by 2</option>
+                      <option>Sort by 3</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="search-bar">
+                    <input type="text" className="control-form" placeholder="Search Usecase" />
+                    <i className="fa fa-search" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
-              <div className="col-lg-4">
-                <div className="search-bar">
-                  <input type="text" className="control-form" placeholder="Search Usecase" />
-                  <i className="fa fa-search" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
             </div>
             <div className="project-wise-table">
               <div className="table">
@@ -96,7 +96,7 @@ export class ProjectWise extends React.Component<any, any> {
                 </div>
                 <div className="tbody">
                   <div className="tr" >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${1}`}>Usecase 1</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${1}`}>Usecase 1</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
@@ -105,7 +105,7 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"></div>
                   </div>
                   <div className="tr"  >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${2}`}>Usecase 2</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${2}`}>Usecase 2</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -114,7 +114,7 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"></div>
                   </div>
                   <div className="tr"  >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${3}`}>Usecase 3</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${3}`}>Usecase 3</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -123,7 +123,7 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"></div>
                   </div>
                   <div className="tr"  >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${4}`}>Usecase 4</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${4}`}>Usecase 4</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -132,7 +132,7 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
                   </div>
                   <div className="tr"  >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${5}`}>Usecase 5</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${5}`}>Usecase 5</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -141,7 +141,7 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                   </div>
                   <div className="tr"  >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${6}`}>Usecase 6</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${6}`}>Usecase 6</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -150,7 +150,7 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"></div>
                   </div>
                   <div className="tr"  >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${7}`}>Usecase 7</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${7}`}>Usecase 7</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
@@ -159,7 +159,7 @@ export class ProjectWise extends React.Component<any, any> {
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                   </div>
                   <div className="tr"  >
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${8}`}>Usecase 8</Link>
+                    <Link to={`/a/xformation-workflow-engine/procurement-detail/${8}`}>Usecase 8</Link>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
                     <div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
