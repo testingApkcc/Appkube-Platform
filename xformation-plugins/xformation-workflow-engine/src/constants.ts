@@ -7,7 +7,7 @@ export enum ROUTES {
   Dashboard = 'dashboard',
   ProjectWise = 'project-wise',
   ResourceWiseViewAllTasks = 'ResourceWiseViewAllTasks',
-  ProcurementDetail = 'procurement-detail',
+  ProcurementDetail = 'procurement-detail/:id',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
