@@ -9,6 +9,7 @@ export enum ROUTES {
   ResourceWiseViewAllTasks = 'ResourceWiseViewAllTasks',
   ProcurementDetail = 'procurement-detail/:id',
   MatrixView = 'matrixView',
+  CreateNewUsecase = 'create-new-usecase',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
