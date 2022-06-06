@@ -1,3 +1,4 @@
+// import { values } from 'lodash';
 import * as React from 'react';
 
 export class CreateUsecase extends React.Component<any, any> {
@@ -16,6 +17,8 @@ export class CreateUsecase extends React.Component<any, any> {
       ],
       usecase: { name: '' },
       isSubmitted: false,
+      subStageName: '',
+      activeIndex: -1,
     }
     this.id = 10;
   }
@@ -73,12 +76,17 @@ export class CreateUsecase extends React.Component<any, any> {
     };
     stages({ stages: JSON.parse(JSON.stringify(stages)) });
   }
-addDetails=(index:any , name:any)=>{
-const {stages}=this.state;
-let obj={name,description:JSON.parse(JSON.stringify(this.state.subStageDetails)) }
-stages[index].details.push(obj)
-this.setState({stages})
-}
+  addDetails = (index: any) => {
+    let { activeIndex } = this.state;
+    if (index === activeIndex) {
+      activeIndex = -1
+    }
+    else {
+      activeIndex = index;
+    }
+
+    this.setState({ activeIndex })
+  }
 
   validateForm = (submitted: any) => {
     const { usecase, stages } = this.state
@@ -156,15 +164,46 @@ this.setState({stages})
     this.setState({ stages: [...stages, { 'name': '', 'description': '', 'assignedTo': '' }] });
 
   }
+  handleSubStageName = (index: any, e: any) => {
+    const { value } = e.target;
+    this.setState({ subStageName: value });
+  }
+  addSubStage = () => {
+    const { subStageName, activeIndex, stages } = this.state
+    console.log(subStageName)
 
-  removeStage = (index: any) => {
-    let { stages } = this.state;
-    stages.splice(index, 1);
-    this.setState({ stages: [...stages] })
+    if (subStageName) {
+   
+      if (stages[activeIndex].details.length > 0) {
+        let existName=-1;
+      for(let i=0;i<stages[activeIndex].details.length;i++ ){
+        if (stages[activeIndex].details[i].name===subStageName){
+          existName=1;
+        }
+      }
+        if (existName===-1) {
+          let obj = { name: subStageName, ...JSON.parse(JSON.stringify(this.state.subStageDetails)) }
+          stages[activeIndex].details.push(obj)
+        }
+      }
+      else {
+        let obj = { name: subStageName, ...JSON.parse(JSON.stringify(this.state.subStageDetails)) }
+        stages[activeIndex].details.push(obj)
+      }
+    }
+
+    this.setState({ stages, subStageName:'' })
+    console.log(stages)
+  }
+  removeSubString=(stageIndex:any, subStringIndex:any)=>{
+ const {stages}=this.state;
+    this.state.stages[stageIndex].details.splice(subStringIndex,1)
+    console.log(this.state.stages)
+    this.setState({stages})
   }
   render() {
     const errorData = this.validateForm(this.state.isSubmitted)
-    const { usecase, stages } = this.state
+    const {stages, subStageName } = this.state
     return (
       <div className="dashboard-content">
         {/* <div className="basic-details">
@@ -201,7 +240,6 @@ this.setState({stages})
                 <span>{i + 1}</span>
                 <div className="workflow-type">
                   <input className="form-control" type="text" name="name" placeholder="Enter your workflow type" value={val.name} onChange={(e) => this.handleStageDetail(e, i)} />
-                  <div className="close" onClick={() => this.removeStage(i)}><button>&#9747;</button></div>
                 </div>
                 <div className="description">
                   <label>Description</label>
@@ -216,36 +254,41 @@ this.setState({stages})
                     <option value="3">xyz</option>
                   </select>
                 </div>
-                <a onClick={(e) =>this.addDetails(i , "hrDepartment") }>View More </a>
-                <div>
-                  {val.details&& val.details.length>0 && 
+                <a onClick={(e) => this.addDetails(i)}>Add New Substage </a>
+                {this.state.activeIndex === i &&
                   <div>
-                    <table>
-                      <thead>
-                      <tr>
-            <th></th>
-            <th>Assign to</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Comments</th>
-         </tr>
-                      </thead>
-                    <tbody>
-            {val.details.map(({name,assignto, startDate, endDate, comments }:any, index:any)=>(
-           <tr>
-           <td>{name}</td>
-            <td><select name="assignto" id="assignto">
-  <option value={assignto}>Volvo</option>
-</select></td>
-            <td><input type='date' name="startDate" value={startDate} placeholder='Select'/></td>
-            <td><input type='date' name="endDate" placeholder='Select' value={endDate} /></td>
-            <td><input type='comments' name="comments" placeholder='Select' value={comments} /></td>
-            </tr>
-            )
-            )}
-        
-                    </tbody>
-                    </table>
+                    <input type='text' name="subStageName" value={subStageName} onChange={(e) => this.handleSubStageName(i, e)} />
+                    <div onClick={this.addSubStage}>+</div>
+                  </div>}
+                <div>
+                  {val.details && val.details.length > 0 &&
+                    <div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Assign to</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Comments</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {val.details.map(({ name, assignto, startDate, endDate, comments }: any, index: any) => (
+                            <tr>
+                              <td>{name}</td>
+                              <td><select name="assignto" id="assignto">
+                                <option value={assignto}>Volvo</option>
+                              </select></td>
+                              <td><input type='date' name="startDate" value={startDate} placeholder='Select' /></td>
+                              <td><input type='date' name="endDate" placeholder='Select' value={endDate} /></td>
+                              <td><input type='comments' name="comments" placeholder='Select' value={comments} /></td>
+                              <td onClick={()=>{this.removeSubString(i, index)}}>Remove Substage</td>
+                            </tr>
+                          )
+                          )}
+                        </tbody>
+                      </table>
                     </div>}
                 </div>
               </div>
