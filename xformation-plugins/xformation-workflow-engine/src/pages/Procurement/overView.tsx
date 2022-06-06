@@ -6,7 +6,6 @@ import 'simplebar/dist/simplebar.min.css';
 import { Link } from 'react-router-dom';
 
 export class OverView extends React.Component<any, any> {
-	// breadCrumbs: any;
 	createStreamRef: any;
 	newStreamRef: any;
 	manageOutputRef: any;
@@ -19,23 +18,12 @@ export class OverView extends React.Component<any, any> {
 			streamTableData: [],
 			indexSets: [],
 		};
-		// this.breadCrumbs = [
-		// 	{
-		// 		label: 'Home',
-		// 		route: `/`,
-		// 	},
-		// 	{
-		// 		label: 'Kubernetes | Overview',
-		// 		isCurrentPage: true,
-		// 	},
-		// ];
 
 	}
 
 	render() {
 		return (
 			<div className="owrkflow-project-wise-container">
-				{/* <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="Usecase Status" /> */}
 				<div className="project-wise-page-container">
 					<div className="project-wise-status">
 						<div className="status-fliter">
@@ -108,12 +96,11 @@ export class OverView extends React.Component<any, any> {
 								<div><label>Deviation</label><p>0 Days</p></div>
 							</div>
 						</div>
-
 						<div className="col-lg-8">
 							<div className='row'><button className="col-9">View Detailed Log</button>
 								<p><label>Sort By</label>:<Link to={""}>Most Recent </Link></p>
 							</div>
-							<div >
+							<div>
 								<p><strong>Task Created</strong> Day 1</p>
 								<p>create by Zakir 25 Feb 2021 at 03.01 PM</p>
 							</div>

@@ -1,133 +1,460 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 // import { Link } from 'react-router-dom';
 
-const WorkFlowView = (props: any) => {
-	const [ usecaseData, setUsecaseData ] = useState({
-		name: 'ipsa',
-		description: 'Recusandae libero eveniet ducimus.',
-		assignTo: 'string',
-		id: 3,
-		stages: [
-			{
-				checkList: [
-					{ label: 'string', id: 3 },
-					{ label: 'string', id: 10 },
-					{ label: 'string', id: 6 },
-					{ label: 'string', id: 6 },
-					{ label: 'string', id: 1 }
-				],
-				steps: [
-					{ label: 'et', description: 'string', link: 'https://waino.org', status: 'string', id: 7 },
-					{ label: 'eum', description: 'string', link: 'https://noemi.org', status: 'string', id: 7 }
-				],
-				name: 'quaerat',
-				assignedTo: 'string',
-				description: 'string',
-				id: 7,
-				status: 'string'
-			},
-			{
-				checkList: [
-					{ label: 'string', id: 6 },
-					{ label: 'string', id: 7 },
-					{ label: 'string', id: 9 },
-					{ label: 'string', id: 8 },
-					{ label: 'string', id: 8 }
-				],
-				steps: [
-					{ label: 'dolores', description: 'string', link: 'http://camron.com', status: 'string', id: 9 },
+export class WorkFlowView extends React.Component<any, any> {
+	constructor(props: any) {
+		super(props);
+		this.state = {
+			usecaseData: {
+				name: 'ipsa',
+				description: 'Recusandae libero eveniet ducimus.',
+				assignTo: 'string',
+				id: 3,
+				stages: [
 					{
-						label: 'voluptatem',
+						checkList: [
+							{ label: 'string', id: 3 },
+							{ label: 'string', id: 10 },
+							{ label: 'string', id: 6 },
+							{ label: 'string', id: 6 },
+							{ label: 'string', id: 1 }
+						],
+						steps: [
+							{
+								label: 'et',
+								description: 'string',
+								link: 'https://waino.org',
+								status: 'string',
+								id: 7
+							},
+							{
+								label: 'eum',
+								description: 'string',
+								link: 'https://noemi.org',
+								status: 'string',
+								id: 7
+							}
+						],
+						name: 'quaerat',
+						assignedTo: 'string',
 						description: 'string',
-						link: 'https://nicholaus.biz',
-						status: 'string',
-						id: 7
+						id: 7,
+						status: 'string'
+					},
+					{
+						checkList: [
+							{ label: 'string', id: 6 },
+							{ label: 'string', id: 7 },
+							{ label: 'string', id: 9 },
+							{ label: 'string', id: 8 },
+							{ label: 'string', id: 8 }
+						],
+						steps: [
+							{
+								label: 'dolores',
+								description: 'string',
+								link: 'http://camron.com',
+								status: 'string',
+								id: 9
+							},
+							{
+								label: 'voluptatem',
+								description: 'string',
+								link: 'https://nicholaus.biz',
+								status: 'string',
+								id: 7
+							}
+						],
+						name: 'qui',
+						assignedTo: 'string',
+						description: 'string',
+						id: 8,
+						status: 'string'
+					},
+					{
+						checkList: [
+							{ label: 'string', id: 2 },
+							{ label: 'string', id: 7 },
+							{ label: 'string', id: 4 },
+							{ label: 'string', id: 1 },
+							{ label: 'string', id: 2 }
+						],
+						steps: [
+							{
+								label: 'corporis',
+								description: 'string',
+								link: 'http://hershel.com',
+								status: 'string',
+								id: 6
+							},
+							{
+								label: 'dolorum',
+								description: 'string',
+								link: 'http://elisabeth.net',
+								status: 'string',
+								id: 5
+							}
+						],
+						name: 'omnis',
+						assignedTo: 'string',
+						description: 'string',
+						id: 5,
+						status: 'string'
+					},
+					{
+						checkList: [
+							{ label: 'string', id: 7 },
+							{ label: 'string', id: 6 },
+							{ label: 'string', id: 4 },
+							{ label: 'string', id: 7 },
+							{ label: 'string', id: 4 }
+						],
+						steps: [
+							{
+								label: 'error',
+								description: 'string',
+								link: 'https://triston.us',
+								status: 'string',
+								id: 8
+							},
+							{
+								label: 'aspernatur',
+								description: 'string',
+								link: 'http://blanca.us',
+								status: 'string',
+								id: 2
+							}
+						],
+						name: 'veritatis',
+						assignedTo: 'string',
+						description: 'string',
+						id: 6,
+						status: 'string'
+					},
+					{
+						checkList: [
+							{ label: 'string', id: 5 },
+							{ label: 'string', id: 3 },
+							{ label: 'string', id: 7 },
+							{ label: 'string', id: 10 },
+							{ label: 'string', id: 6 }
+						],
+						steps: [
+							{
+								label: 'aut',
+								description: 'string',
+								link: 'https://audie.us',
+								status: 'string',
+								id: 1
+							},
+							{
+								label: 'provident',
+								description: 'string',
+								link: 'http://gavin.biz',
+								status: 'string',
+								id: 3
+							}
+						],
+						name: 'nostrum',
+						assignedTo: 'string',
+						description: 'string',
+						id: 8,
+						status: 'string'
+					},
+					{
+						checkList: [
+							{ label: 'string', id: 5 },
+							{ label: 'string', id: 9 },
+							{ label: 'string', id: 4 },
+							{ label: 'string', id: 8 },
+							{ label: 'string', id: 7 }
+						],
+						steps: [
+							{
+								label: 'qui',
+								description: 'string',
+								link: 'http://candida.us',
+								status: 'string',
+								id: 10
+							},
+							{
+								label: 'in',
+								description: 'string',
+								link: 'https://antonette.info',
+								status: 'string',
+								id: 8
+							}
+						],
+						name: 'non',
+						assignedTo: 'string',
+						description: 'string',
+						id: 4,
+						status: 'string'
 					}
-				],
-				name: 'qui',
-				assignedTo: 'string',
-				description: 'string',
-				id: 8,
-				status: 'string'
+				]
 			},
-			{
-				checkList: [
-					{ label: 'string', id: 2 },
-					{ label: 'string', id: 7 },
-					{ label: 'string', id: 4 },
-					{ label: 'string', id: 1 },
-					{ label: 'string', id: 2 }
-				],
-				steps: [
-					{ label: 'corporis', description: 'string', link: 'http://hershel.com', status: 'string', id: 6 },
-					{ label: 'dolorum', description: 'string', link: 'http://elisabeth.net', status: 'string', id: 5 }
-				],
-				name: 'omnis',
-				assignedTo: 'string',
-				description: 'string',
-				id: 5,
-				status: 'string'
-			},
-			{
-				checkList: [
-					{ label: 'string', id: 7 },
-					{ label: 'string', id: 6 },
-					{ label: 'string', id: 4 },
-					{ label: 'string', id: 7 },
-					{ label: 'string', id: 4 }
-				],
-				steps: [
-					{ label: 'error', description: 'string', link: 'https://triston.us', status: 'string', id: 8 },
-					{ label: 'aspernatur', description: 'string', link: 'http://blanca.us', status: 'string', id: 2 }
-				],
-				name: 'veritatis',
-				assignedTo: 'string',
-				description: 'string',
-				id: 6,
-				status: 'string'
-			},
-			{
-				checkList: [
-					{ label: 'string', id: 5 },
-					{ label: 'string', id: 3 },
-					{ label: 'string', id: 7 },
-					{ label: 'string', id: 10 },
-					{ label: 'string', id: 6 }
-				],
-				steps: [
-					{ label: 'aut', description: 'string', link: 'https://audie.us', status: 'string', id: 1 },
-					{ label: 'provident', description: 'string', link: 'http://gavin.biz', status: 'string', id: 3 }
-				],
-				name: 'nostrum',
-				assignedTo: 'string',
-				description: 'string',
-				id: 8,
-				status: 'string'
-			},
-			{
-				checkList: [
-					{ label: 'string', id: 5 },
-					{ label: 'string', id: 9 },
-					{ label: 'string', id: 4 },
-					{ label: 'string', id: 8 },
-					{ label: 'string', id: 7 }
-				],
-				steps: [
-					{ label: 'qui', description: 'string', link: 'http://candida.us', status: 'string', id: 10 },
-					{ label: 'in', description: 'string', link: 'https://antonette.info', status: 'string', id: 8 }
-				],
-				name: 'non',
-				assignedTo: 'string',
-				description: 'string',
-				id: 4,
-				status: 'string'
-			}
-		]
-	});
-	// const [Id, setId] = useState(props.id);
-	const [ activeStage, setActivestage ] = useState(0);
+			activeStage: 0,
+			stageList: [
+				{
+					name: 'Requirements',
+					stepList: [
+						{
+							name: 'Create Usecase Document',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Create Screen Design',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Updating Usecase in Netlifi',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						}
+					]
+				},
+				{
+					name: 'Mock Development',
+					stepList: [
+						{
+							name: 'Create API Spec',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Create Postman Test',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Create UI Screen with Mock API',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Create Test API',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						}
+					]
+				},
+				{
+					name: 'Actual Development',
+					stepList: [
+						{
+							name: 'Data Design GitHub Page',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'API Source Code in GitHub',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Populate Test data in GitHub',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Junit5 Test in GitHub',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Cucumber BDD tests in GitHub',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Gatling Performance',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Code Review with Tech Lead',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Actual UI-API Integration',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Branch Merge after Review',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						}
+					]
+				},
+				{
+					name: 'CI/CD Test',
+					stepList: [
+						{
+							name: 'Create CI/CD Pipeline',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Create Kubernetes Operator',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Link API with GitHub and Netlifi',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Upload Test results in S3 Website',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'Upload Test env URL in Netlifi site',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Stage after review',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						}
+					]
+				},
+				{
+					name: 'Stage Release',
+					stepList: [
+						{
+							name: 'Stage Test and Review',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Promote to Prod',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						},
+						{
+							name: 'API Security Test in Prod',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Create/Update Release Note',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						}
+					]
+				},
+				{
+					name: 'Publish and Operate',
+					stepList: [
+						{
+							name: 'Security & Operation Readiness',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 1,
+							endDate: '01/05/2022',
+							endDeviation: 1
+						},
+						{
+							name: 'Release Note',
+							assignTo: 'Team member',
+							startDate: '01/05/2022',
+							startDeviation: 0,
+							endDate: '01/05/2022',
+							endDeviation: 0
+						}
+					]
+				}
+			]
+		};
+	}
 
-	const displayUsecase = () => {
+	displayUsecase = () => {
+		const { usecaseData, activeStage } = this.state;
 		let retData = [];
 		if (usecaseData && usecaseData.stages) {
 			const workflowDetail = usecaseData.stages[activeStage];
@@ -145,9 +472,12 @@ const WorkFlowView = (props: any) => {
 									type="text"
 									name="link"
 									value={row.link}
-									onChange={(e) => handleStateChange(e, i)}
+									onChange={(e) => this.handleStateChange(e, i)}
 								/>
-								<button onClick={() => updateStep(row)} className="btn btn-primary code-update-btn">
+								<button
+									onClick={() => this.updateStep(row)}
+									className="btn btn-primary code-update-btn"
+								>
 									Update
 								</button>
 							</div>
@@ -159,7 +489,8 @@ const WorkFlowView = (props: any) => {
 		return retData;
 	};
 
-	const displayCheckList = () => {
+	displayCheckList = () => {
+		const { usecaseData, activeStage } = this.state;
 		let retData = [];
 		if (usecaseData && usecaseData.stages) {
 			const workflowDetail: any = usecaseData.stages[activeStage];
@@ -171,7 +502,7 @@ const WorkFlowView = (props: any) => {
 							<input
 								type="checkbox"
 								checked={row.isChecked}
-								onChange={(e) => handleStateChangeCheckList(e, i)}
+								onChange={(e) => this.handleStateChangeCheckList(e, i)}
 							/>
 							<span>{row.label}</span>
 						</div>
@@ -182,18 +513,21 @@ const WorkFlowView = (props: any) => {
 		return retData;
 	};
 
-	const getUsecaseStageData = (data: any, index: any) => {
-		setActivestage(index);
+	getUsecaseStageData = (data: any, index: any) => {
+		this.setState({
+			activeStage: index
+		});
 	};
 
-	const displayWorkflowStage = () => {
+	displayWorkflowStage = () => {
+		const { usecaseData, activeStage } = this.state;
 		let retData = [];
 		if (usecaseData && usecaseData.stages && usecaseData.stages.length > 0) {
 			for (let i = 0; i < usecaseData.stages.length; i++) {
 				let row = usecaseData.stages[i];
 				retData.push(
 					<li
-						onClick={() => getUsecaseStageData(row, i)}
+						onClick={() => this.getUsecaseStageData(row, i)}
 						className={
 							row.status == 'completed' ? 'completed' : row.status == 'inprogress' ? 'inprosseg' : ''
 						}
@@ -204,7 +538,7 @@ const WorkFlowView = (props: any) => {
 								type="text"
 								value={row.name}
 								name="name"
-								onChange={(e) => handleStageChange(e, i)}
+								onChange={(e) => this.handleStageChange(e, i)}
 								readOnly
 							/>
 						</div>
@@ -215,7 +549,8 @@ const WorkFlowView = (props: any) => {
 		return retData;
 	};
 
-	const handleStageChange = (e: any, index: any) => {
+	handleStageChange = (e: any, index: any) => {
+		const { usecaseData } = this.state;
 		const { name, value } = e.target;
 		let stages: any = usecaseData.stages;
 		if (usecaseData.stages) {
@@ -223,17 +558,21 @@ const WorkFlowView = (props: any) => {
 		}
 	};
 
-	const handleStateChange = (event: any, index: any) => {
+	handleStateChange = (event: any, index: any) => {
+		const { usecaseData, activeStage } = this.state;
 		const { name, value } = event.target;
 		const workflowDetail: any = usecaseData.stages[activeStage];
 		if (workflowDetail.steps) {
 			workflowDetail.steps[index][name] = value;
 		}
-		setUsecaseData(JSON.parse(JSON.stringify(usecaseData)));
+		this.setState({
+			usecaseData: JSON.parse(JSON.stringify(usecaseData))
+		});
 	};
 
-	const handleStateChangeCheckList = (e: any, index: any) => {
+	handleStateChangeCheckList = (e: any, index: any) => {
 		const { checked } = e.target;
+		const { usecaseData, activeStage } = this.state;
 		let count = 0;
 		const workflowDetail: any = usecaseData.stages[activeStage];
 		if (workflowDetail.checkList) {
@@ -244,7 +583,6 @@ const WorkFlowView = (props: any) => {
 				}
 			}
 		}
-		// setWorkflowDetail({ ...workflowDetail, workflowDetail });
 		if (count == workflowDetail.checkList.length) {
 			usecaseData.stages[activeStage]['status'] = 'completed';
 		} else if (count < workflowDetail.checkList.length) {
@@ -252,10 +590,12 @@ const WorkFlowView = (props: any) => {
 		} else if (count == 0) {
 			usecaseData.stages[activeStage]['status'] = '';
 		}
-		setUsecaseData({ ...usecaseData });
+		this.setState({
+			usecaseData
+		});
 	};
 
-	const updateStep = (updatedStep: any) => {
+	updateStep = (updatedStep: any) => {
 		// props.dispatch(WorkflowAction.updateWorkflowStep({ id: Id, step: updatedStep }));
 	};
 
@@ -263,63 +603,115 @@ const WorkFlowView = (props: any) => {
 	// 	// props.dispatch(WorkflowAction.updateWorkflowStage({ id: Id, stage: usecaseData }));
 	// };
 
-	const moveToNextPage = (type: any) => {
+	moveToNextPage = (type: any) => {
+		const { usecaseData, activeStage } = this.state;
 		if (type == 'next') {
 			if (usecaseData && usecaseData.stages) {
-				// let data = usecaseData.stages[activeStage];
-				// setWorkflowDetail({})
-				// setWorkflowDetail(JSON.parse(JSON.stringify(data)));
-				setActivestage(activeStage + 1);
+				this.setState({
+					activeStage: activeStage + 1
+				});
 			}
 		} else {
 			if (usecaseData && usecaseData.stages) {
 				let index = activeStage - 1;
-				// let data = usecaseData.stages[index];
-				// setWorkflowDetail({})
-				// setWorkflowDetail(JSON.parse(JSON.stringify(data)));
-				setActivestage(index);
+				this.setState({
+					activeStage: index
+				});
 			}
 		}
 	};
 
-	return (
-		<div className="workflow-content">
-			<div className="workflow-stage">
-				<ul>{displayWorkflowStage()}</ul>
-				{/* <Link to={`/editworkflow/${Id}`} className="btn btn-primary btn-edit">
+	displayStageList = () => {
+		let retData = [];
+		const { stageList } = this.state;
+		if (stageList && stageList.length > 0) {
+			for (let i = 0; i < stageList.length; i++) {
+				let stepJSXList = [];
+				let stage = stageList[i];
+				if (stage && stage.stepList && stage.stepList.length > 0) {
+					for (let j = 0; j < stage.stepList.length; j++) {
+						let step = stage.stepList[j];
+						stepJSXList.push(
+							<tr>
+								<td>{step.name}</td>
+								<td>{step.assignTo}</td>
+								<td>{step.startDate}</td>
+								<td>{step.startDeviation}</td>
+								<td>{step.endDate}</td>
+								<td>{step.endDeviation}</td>
+							</tr>
+						);
+					}
+				}
+				retData.push(
+					<>
+						<tr>
+							<td colSpan={6}><strong>{stage.name}</strong></td>
+						</tr>
+						{stepJSXList}
+					</>
+				);
+			}
+		}
+		return retData;
+	};
+
+	render() {
+		const { usecaseData, activeStage } = this.state;
+		return (
+			<div className="workflow-content">
+				<div className="workflow-stage">
+					<ul>{this.displayWorkflowStage()}</ul>
+					{/* <Link to={`/editworkflow/${Id}`} className="btn btn-primary btn-edit">
 					<img src={editIcon} alt="" />&nbsp; Edit
 				</Link> */}
-			</div>
-			<div className="workflow-data">{displayUsecase()}</div>
-			<div className="workflow-requirement">
-				<div className="heading">
-					<h5>Checklist for Requirements</h5>
 				</div>
-				{displayCheckList()}
-			</div>
-			<div className="d-flex justify-content-end workflow-buttons">
-				<button
-					type="button"
-					disabled={activeStage == 0}
-					className="btn btn-primary"
-					onClick={() => moveToNextPage('previous')}
-				>
-					Previous
-				</button>
-				{usecaseData &&
-				usecaseData.stages && (
+				<div className="workflow-data">{this.displayUsecase()}</div>
+				<div className="workflow-stages">
+					<table>
+						<thead>
+							<tr>
+								<td>Stages</td>
+								<td>Assigned to</td>
+								<td>Start Date</td>
+								<td>Deviation</td>
+								<td>End Date</td>
+								<td>Deviation</td>
+							</tr>
+						</thead>
+						<tbody>{this.displayStageList()}</tbody>
+					</table>
+				</div>
+				<div className="workflow-requirement">
+					<div className="heading">
+						<h5>Checklist for Requirements</h5>
+					</div>
+					{this.displayCheckList()}
+				</div>
+				<div className="d-flex justify-content-end workflow-buttons">
 					<button
 						type="button"
-						disabled={activeStage == usecaseData.stages.length - 1}
+						disabled={activeStage == 0}
 						className="btn btn-primary"
-						onClick={() => moveToNextPage('next')}
+						onClick={() => this.moveToNextPage('previous')}
 					>
-						Next
+						Previous
 					</button>
-				)}
+					{usecaseData &&
+						usecaseData.stages && (
+							<button
+								type="button"
+								disabled={activeStage == usecaseData.stages.length - 1}
+								className="btn btn-primary"
+								onClick={() => this.moveToNextPage('next')}
+							>
+								Next
+							</button>
+						)}
+				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}
 
 export default WorkFlowView;
