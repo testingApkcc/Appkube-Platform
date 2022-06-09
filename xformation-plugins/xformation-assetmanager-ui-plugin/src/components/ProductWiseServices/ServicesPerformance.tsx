@@ -52,8 +52,8 @@ export class ServicesPerformance extends React.Component<any, any> {
 
   handleView = (e: any) => {
     const { name, value } = e.target;
-    let { hostingType } = this.props;
-    hostingType = value;
+    // let { hostingType } = this.props;
+    // hostingType = value;
     this.setState({
       [name]: value,
     })
