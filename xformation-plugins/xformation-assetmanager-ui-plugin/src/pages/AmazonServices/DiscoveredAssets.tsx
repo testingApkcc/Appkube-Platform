@@ -45,10 +45,6 @@ export class DiscoveredAssets extends React.Component<any, any>{
         key: 'environments',
         filter: []
       }, {
-        name: 'Service Type',
-        key: 'serviceType',
-        filter: []
-      }, {
         name: 'Service Nature',
         key: 'serviceNature',
         filter: []
