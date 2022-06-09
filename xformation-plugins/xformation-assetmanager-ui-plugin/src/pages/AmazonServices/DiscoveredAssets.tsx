@@ -91,13 +91,13 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const filteredNodes: any = {};
     const filteredClusters: any = {};
     const filteredEnvironment: any = {};
-    const filteredServiceType: any = {};
+    // const filteredServiceType: any = {};
     const filteredServiceNature: any = {};
     const filteredProducts: any = {};
     let nodeIndex = 1;
     let clusterIndex = 1;
     services.forEach((service: any) => {
-      const { associatedProductEnclave, associatedCluster, serviceType, serviceNature, associatedProduct, associatedEnv, associatedLandingZone } =
+      const { associatedProductEnclave, associatedCluster, serviceNature, associatedProduct, associatedEnv, associatedLandingZone, associatedBusinessService, associatedCommonService } =
         service.details;
       if (accountId === associatedLandingZone) {
         const id = service.id;
@@ -126,28 +126,37 @@ export class DiscoveredAssets extends React.Component<any, any>{
             value: associatedEnv,
             label: associatedEnv,
           };
-          const serviceTypeData = environmentData[serviceType] || {};
-          filteredServiceType[serviceType] = {
-            value: serviceType,
-            label: serviceType,
-          };
-          const assiciatedServiceData = serviceTypeData[serviceNature] || {};
+          // const serviceTypeData = environmentData[serviceType] || {};
+          // filteredServiceType[serviceType] = {
+          //   value: serviceType,
+          //   label: serviceType,
+          // };
+          const assiciatedServiceData = environmentData[serviceNature] || {};
           filteredServiceNature[serviceNature] = {
             value: serviceNature,
             label: serviceNature,
           };
-          const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-          productData.services.push({
-            id,
-            ...service.details
-          });
+          const productData = assiciatedServiceData[associatedProduct] || {};
           filteredProducts[associatedProduct] = {
             value: associatedProduct,
             label: associatedProduct,
           };
+
+          let associatedServiceName = "";
+          if (serviceNature === "Business") {
+            associatedServiceName = associatedBusinessService;
+          } else {
+            associatedServiceName = associatedCommonService;
+          }
+          const serviceData = productData[associatedServiceName] || { title: associatedServiceName, services: [] };
+          serviceData.services.push({
+            id,
+            ...service.details
+          });
+          productData[associatedServiceName] = serviceData;
           assiciatedServiceData[associatedProduct] = productData;
-          serviceTypeData[serviceNature] = assiciatedServiceData;
-          environmentData[serviceType] = serviceTypeData;
+          environmentData[serviceNature] = assiciatedServiceData;
+          // environmentData[serviceType] = serviceTypeData;
           clusterData[associatedEnv] = environmentData;
           node[associatedCluster] = clusterData;
           treeData[associatedProductEnclave] = node;
@@ -171,15 +180,24 @@ export class DiscoveredAssets extends React.Component<any, any>{
             value: serviceNature,
             label: serviceNature,
           };
-          const productData = assiciatedServiceData[associatedProduct] || { title: associatedProduct, services: [] };
-          productData.services.push({
-            id,
-            ...service.details
-          });
+          const productData = assiciatedServiceData[associatedProduct] || {};
           filteredProducts[associatedProduct] = {
             value: associatedProduct,
             label: associatedProduct,
           };
+
+          let associatedServiceName = "";
+          if (serviceNature === "Business") {
+            associatedServiceName = associatedBusinessService;
+          } else {
+            associatedServiceName = associatedCommonService;
+          }
+          const serviceData = productData[associatedServiceName] || { title: associatedServiceName, services: [] };
+          serviceData.services.push({
+            id,
+            ...service.details
+          });
+          productData[associatedServiceName] = serviceData;
           assiciatedServiceData[associatedProduct] = productData;
           environmentData[serviceNature] = assiciatedServiceData;
           node[associatedEnv] = environmentData;
@@ -190,14 +208,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
     filterData[0].filter = this.convertObjectIntoArray(filteredNodes);
     filterData[1].filter = this.convertObjectIntoArray(filteredClusters);
     filterData[2].filter = this.convertObjectIntoArray(filteredEnvironment);
-    filterData[3].filter = this.convertObjectIntoArray(filteredServiceType);
-    filterData[4].filter = this.convertObjectIntoArray(filteredServiceNature);
-    filterData[5].filter = this.convertObjectIntoArray(filteredProducts);
+    // filterData[3].filter = this.convertObjectIntoArray(filteredServiceType);
+    filterData[3].filter = this.convertObjectIntoArray(filteredServiceNature);
+    filterData[4].filter = this.convertObjectIntoArray(filteredProducts);
     this.setState({
       tableData: treeData,
       filterData
     });
-    this.getAppDataServices(treeData);
+    // this.getAppDataServices(treeData);
   }
 
   convertObjectIntoArray = (obj: any) => {
@@ -303,6 +321,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
       servicesData: data,
       activeNode: environmentKey,
       labelText: 'Global services',
+    });
+  };
+
+  onClickEnvironment = (nodeKey: any, clusterKey: any, environmentKey: any) => {
+    const { tableData } = this.state;
+    let text = nodeKey + ' > ' + clusterKey + ' > ' + environmentKey;
+    this.setState({
+      servicesData: JSON.parse(JSON.stringify(tableData[nodeKey][clusterKey][environmentKey])),
+      labelText: text,
+      activeNode: environmentKey
     });
   };
 
@@ -427,22 +455,21 @@ export class DiscoveredAssets extends React.Component<any, any>{
     keys.forEach(((key: any) => {
       if ((filteredEnvironments && filteredEnvironments.indexOf(key) !== -1) || !filteredEnvironments) {
         if (key !== 'isOpened' && key !== 'showMenu') {
-          const environment = environents[key];
+          // const environment = environents[key];
           retData.push(
             <div className="tbody">
               <div className="tbody-inner">
-                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.toggleEnvironemt(nodeKey, clusterKey, key)}>
-                  <div className={environment.isOpened ? "caret-down" : "caret-right"}></div>
+                <div className={`tbody-td first ${activeNode === key ? 'active' : ''}`} onClick={() => this.onClickEnvironment(nodeKey, clusterKey, key)}>
                   {key}
                 </div >
                 {/* </Link> */}
               </div >
-              {
+              {/* {
                 environment.isOpened ?
                   <Collapse className="collapse-content" isOpen={environment.isOpened}>
                     {this.renerAppDataServices(nodeKey, clusterKey, key, environment)}
                   </Collapse> : <></>
-              }
+              } */}
             </div >
           );
         }
@@ -510,6 +537,14 @@ export class DiscoveredAssets extends React.Component<any, any>{
   toggleProducts = (serviceKey: any, productKey: any) => {
     const { servicesData } = this.state;
     servicesData[serviceKey][productKey].isOpened = !servicesData[serviceKey][productKey].isOpened;
+    this.setState({
+      servicesData
+    });
+  };
+
+  toggleAssociatedServices = (serviceKey: any, productKey: any, associatedServiceKey: any) => {
+    const { servicesData } = this.state;
+    servicesData[serviceKey][productKey][associatedServiceKey].isOpened = !servicesData[serviceKey][productKey][associatedServiceKey].isOpened;
     this.setState({
       servicesData
     });
@@ -587,11 +622,35 @@ export class DiscoveredAssets extends React.Component<any, any>{
               </div>
               {
                 product.isOpened ?
-                  this.renderDirectServices(product.services) : <></>
+                  this.renderAssociatedServices(serviceKey, key, product) : <></>
               }
             </div>
           );
         }
+      }
+    });
+    return retData;
+  };
+
+  renderAssociatedServices = (serviceKey: any, productKey: any, associatedServices: any) => {
+    const keys = Object.keys(associatedServices);
+    let retData: any = [];
+    keys.forEach((key: any) => {
+      if (key !== 'isOpened') {
+        const associatedService = associatedServices[key];
+        retData.push(
+          <div className="data-table">
+            <div className="tbody" onClick={() => this.toggleAssociatedServices(serviceKey, productKey, key)}>
+              <div className="name" style={{ paddingLeft: '45px' }}>
+                {key} <span><i className="fa fa-angle-down"></i></span>
+              </div>
+            </div>
+            {
+              associatedService.isOpened ?
+                this.renderDirectServices(associatedService.services) : <></>
+            }
+          </div>
+        );
       }
     });
     return retData;
@@ -604,7 +663,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       retData = list.map((service: any) => {
         return (
           <div className="tbody">
-            <div className="service-name" style={{ paddingLeft: '45px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}`}>{service.name}</Link></div>
+            <div className="service-name" style={{ paddingLeft: '60px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}`}>{service.name}</Link></div>
             <div className="performance">
               <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
                 <i className="fa fa-check"></i>
