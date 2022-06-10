@@ -8,14 +8,14 @@ define([
   '@grafana/runtime',
   '@emotion/css',
 ], (
-  __WEBPACK_EXTERNAL_MODULE__69__,
+  __WEBPACK_EXTERNAL_MODULE__75__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__6__,
   __WEBPACK_EXTERNAL_MODULE__12__,
   __WEBPACK_EXTERNAL_MODULE__47__,
   __WEBPACK_EXTERNAL_MODULE__55__,
-  __WEBPACK_EXTERNAL_MODULE__129__,
-  __WEBPACK_EXTERNAL_MODULE__130__
+  __WEBPACK_EXTERNAL_MODULE__130__,
+  __WEBPACK_EXTERNAL_MODULE__131__
 ) => {
   return /******/ (() => {
     // webpackBootstrap
@@ -876,7 +876,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _plugin_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./plugin.json */ 84
+          /*! ./plugin.json */ 90
         );
 
         var PLUGIN_BASE_URL = '/a/'.concat(_plugin_json__WEBPACK_IMPORTED_MODULE_0__.id);
@@ -1145,7 +1145,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 79
+          /*! ./setPrototypeOf.js */ 85
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -1194,18 +1194,18 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */ images: () => /* binding */ images,
           /* harmony export */
         });
-        /* harmony import */ var _aws_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./aws.png */ 86);
+        /* harmony import */ var _aws_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./aws.png */ 92);
         /* harmony import */ var _microsoftazure_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./microsoftazure.png */ 87
+          /*! ./microsoftazure.png */ 93
         );
         /* harmony import */ var _google_cloud_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./google-cloud.png */ 88
+          /*! ./google-cloud.png */ 94
         );
         /* harmony import */ var _kubernetes_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./kubernetes.png */ 89
+          /*! ./kubernetes.png */ 95
         );
-        /* harmony import */ var _jobs_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./jobs.png */ 90);
-        /* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon.png */ 91);
+        /* harmony import */ var _jobs_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./jobs.png */ 96);
+        /* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon.png */ 97);
 
         var images = {
           awsLogo: _aws_png__WEBPACK_IMPORTED_MODULE_0__['default'],
@@ -1850,7 +1850,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 22));
 
-        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 82);
+        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 88);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -2595,7 +2595,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 59
+          /*! ./chunks/helpers.segment.js */ 65
         );
         /*!
          * Chart.js v3.7.1
@@ -14945,16 +14945,16 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithoutHoles.js */ 110
+          /*! ./arrayWithoutHoles.js */ 111
         );
         /* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArray.js */ 111
+          /*! ./iterableToArray.js */ 112
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 51
         );
         /* harmony import */ var _nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableSpread.js */ 112
+          /*! ./nonIterableSpread.js */ 113
         );
 
         function _toConsumableArray(arr) {
@@ -14977,7 +14977,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 80);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 86);
         }
 
         /***/
@@ -16948,9 +16948,9 @@ object-assign
           /*! ../SelectCloudFilter */ 27
         );
         /* harmony import */ var _ServicesPerformance__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./ServicesPerformance */ 95
+          /*! ./ServicesPerformance */ 101
         );
-        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uuid */ 138);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uuid */ 139);
 
         // import { Link } from 'react-router-dom';
         // import { images } from '../../img';
@@ -17341,7 +17341,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 104);
+        var reactIs = __webpack_require__(/*! react-is */ 58);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -17544,16 +17544,16 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithHoles.js */ 113
+          /*! ./arrayWithHoles.js */ 114
         );
         /* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArrayLimit.js */ 114
+          /*! ./iterableToArrayLimit.js */ 115
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 51
         );
         /* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableRest.js */ 115
+          /*! ./nonIterableRest.js */ 116
         );
 
         function _slicedToArray(arr, i) {
@@ -17765,6 +17765,544 @@ object-assign
         /***/
       },
       /* 58 */
+      /*!******************************************************************************!*\
+  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
+  \******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        if (false) {
+        } else {
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 59);
+        }
+
+        /***/
+      },
+      /* 59 */
+      /*!*************************************************************************************************!*\
+  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
+  \*************************************************************************************************/
+      /***/ (__unused_webpack_module, exports) => {
+        'use strict';
+        /** @license React v16.13.1
+         * react-is.development.js
+         *
+         * Copyright (c) Facebook, Inc. and its affiliates.
+         *
+         * This source code is licensed under the MIT license found in the
+         * LICENSE file in the root directory of this source tree.
+         */
+
+        if (true) {
+          (function () {
+            'use strict';
+
+            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+            // nor polyfill, then a plain number is used for performance.
+            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+            // (unstable) APIs that have been removed. Can we remove the symbols?
+
+            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+            function isValidElementType(type) {
+              return (
+                typeof type === 'string' ||
+                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+                type === REACT_FRAGMENT_TYPE ||
+                type === REACT_CONCURRENT_MODE_TYPE ||
+                type === REACT_PROFILER_TYPE ||
+                type === REACT_STRICT_MODE_TYPE ||
+                type === REACT_SUSPENSE_TYPE ||
+                type === REACT_SUSPENSE_LIST_TYPE ||
+                (typeof type === 'object' &&
+                  type !== null &&
+                  (type.$$typeof === REACT_LAZY_TYPE ||
+                    type.$$typeof === REACT_MEMO_TYPE ||
+                    type.$$typeof === REACT_PROVIDER_TYPE ||
+                    type.$$typeof === REACT_CONTEXT_TYPE ||
+                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
+                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
+                    type.$$typeof === REACT_RESPONDER_TYPE ||
+                    type.$$typeof === REACT_SCOPE_TYPE ||
+                    type.$$typeof === REACT_BLOCK_TYPE))
+              );
+            }
+
+            function typeOf(object) {
+              if (typeof object === 'object' && object !== null) {
+                var $$typeof = object.$$typeof;
+
+                switch ($$typeof) {
+                  case REACT_ELEMENT_TYPE:
+                    var type = object.type;
+
+                    switch (type) {
+                      case REACT_ASYNC_MODE_TYPE:
+                      case REACT_CONCURRENT_MODE_TYPE:
+                      case REACT_FRAGMENT_TYPE:
+                      case REACT_PROFILER_TYPE:
+                      case REACT_STRICT_MODE_TYPE:
+                      case REACT_SUSPENSE_TYPE:
+                        return type;
+
+                      default:
+                        var $$typeofType = type && type.$$typeof;
+
+                        switch ($$typeofType) {
+                          case REACT_CONTEXT_TYPE:
+                          case REACT_FORWARD_REF_TYPE:
+                          case REACT_LAZY_TYPE:
+                          case REACT_MEMO_TYPE:
+                          case REACT_PROVIDER_TYPE:
+                            return $$typeofType;
+
+                          default:
+                            return $$typeof;
+                        }
+                    }
+
+                  case REACT_PORTAL_TYPE:
+                    return $$typeof;
+                }
+              }
+
+              return undefined;
+            } // AsyncMode is deprecated along with isAsyncMode
+
+            var AsyncMode = REACT_ASYNC_MODE_TYPE;
+            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+            var ContextConsumer = REACT_CONTEXT_TYPE;
+            var ContextProvider = REACT_PROVIDER_TYPE;
+            var Element = REACT_ELEMENT_TYPE;
+            var ForwardRef = REACT_FORWARD_REF_TYPE;
+            var Fragment = REACT_FRAGMENT_TYPE;
+            var Lazy = REACT_LAZY_TYPE;
+            var Memo = REACT_MEMO_TYPE;
+            var Portal = REACT_PORTAL_TYPE;
+            var Profiler = REACT_PROFILER_TYPE;
+            var StrictMode = REACT_STRICT_MODE_TYPE;
+            var Suspense = REACT_SUSPENSE_TYPE;
+            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+            function isAsyncMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
+                      'and will be removed in React 17+. Update your code to use ' +
+                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
+                  );
+                }
+              }
+
+              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+            }
+            function isConcurrentMode(object) {
+              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+            }
+            function isContextConsumer(object) {
+              return typeOf(object) === REACT_CONTEXT_TYPE;
+            }
+            function isContextProvider(object) {
+              return typeOf(object) === REACT_PROVIDER_TYPE;
+            }
+            function isElement(object) {
+              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+            }
+            function isForwardRef(object) {
+              return typeOf(object) === REACT_FORWARD_REF_TYPE;
+            }
+            function isFragment(object) {
+              return typeOf(object) === REACT_FRAGMENT_TYPE;
+            }
+            function isLazy(object) {
+              return typeOf(object) === REACT_LAZY_TYPE;
+            }
+            function isMemo(object) {
+              return typeOf(object) === REACT_MEMO_TYPE;
+            }
+            function isPortal(object) {
+              return typeOf(object) === REACT_PORTAL_TYPE;
+            }
+            function isProfiler(object) {
+              return typeOf(object) === REACT_PROFILER_TYPE;
+            }
+            function isStrictMode(object) {
+              return typeOf(object) === REACT_STRICT_MODE_TYPE;
+            }
+            function isSuspense(object) {
+              return typeOf(object) === REACT_SUSPENSE_TYPE;
+            }
+
+            exports.AsyncMode = AsyncMode;
+            exports.ConcurrentMode = ConcurrentMode;
+            exports.ContextConsumer = ContextConsumer;
+            exports.ContextProvider = ContextProvider;
+            exports.Element = Element;
+            exports.ForwardRef = ForwardRef;
+            exports.Fragment = Fragment;
+            exports.Lazy = Lazy;
+            exports.Memo = Memo;
+            exports.Portal = Portal;
+            exports.Profiler = Profiler;
+            exports.StrictMode = StrictMode;
+            exports.Suspense = Suspense;
+            exports.isAsyncMode = isAsyncMode;
+            exports.isConcurrentMode = isConcurrentMode;
+            exports.isContextConsumer = isContextConsumer;
+            exports.isContextProvider = isContextProvider;
+            exports.isElement = isElement;
+            exports.isForwardRef = isForwardRef;
+            exports.isFragment = isFragment;
+            exports.isLazy = isLazy;
+            exports.isMemo = isMemo;
+            exports.isPortal = isPortal;
+            exports.isProfiler = isProfiler;
+            exports.isStrictMode = isStrictMode;
+            exports.isSuspense = isSuspense;
+            exports.isValidElementType = isValidElementType;
+            exports.typeOf = typeOf;
+          })();
+        }
+
+        /***/
+      },
+      /* 60 */
+      /*!*****************************************!*\
+  !*** ../node_modules/react-is/index.js ***!
+  \*****************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        if (false) {
+        } else {
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 61);
+        }
+
+        /***/
+      },
+      /* 61 */
+      /*!************************************************************!*\
+  !*** ../node_modules/react-is/cjs/react-is.development.js ***!
+  \************************************************************/
+      /***/ (__unused_webpack_module, exports) => {
+        'use strict';
+        /** @license React v17.0.2
+         * react-is.development.js
+         *
+         * Copyright (c) Facebook, Inc. and its affiliates.
+         *
+         * This source code is licensed under the MIT license found in the
+         * LICENSE file in the root directory of this source tree.
+         */
+
+        if (true) {
+          (function () {
+            'use strict';
+
+            // ATTENTION
+            // When adding new symbols to this file,
+            // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+            // nor polyfill, then a plain number is used for performance.
+            var REACT_ELEMENT_TYPE = 0xeac7;
+            var REACT_PORTAL_TYPE = 0xeaca;
+            var REACT_FRAGMENT_TYPE = 0xeacb;
+            var REACT_STRICT_MODE_TYPE = 0xeacc;
+            var REACT_PROFILER_TYPE = 0xead2;
+            var REACT_PROVIDER_TYPE = 0xeacd;
+            var REACT_CONTEXT_TYPE = 0xeace;
+            var REACT_FORWARD_REF_TYPE = 0xead0;
+            var REACT_SUSPENSE_TYPE = 0xead1;
+            var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+            var REACT_MEMO_TYPE = 0xead3;
+            var REACT_LAZY_TYPE = 0xead4;
+            var REACT_BLOCK_TYPE = 0xead9;
+            var REACT_SERVER_BLOCK_TYPE = 0xeada;
+            var REACT_FUNDAMENTAL_TYPE = 0xead5;
+            var REACT_SCOPE_TYPE = 0xead7;
+            var REACT_OPAQUE_ID_TYPE = 0xeae0;
+            var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+            var REACT_OFFSCREEN_TYPE = 0xeae2;
+            var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+            if (typeof Symbol === 'function' && Symbol.for) {
+              var symbolFor = Symbol.for;
+              REACT_ELEMENT_TYPE = symbolFor('react.element');
+              REACT_PORTAL_TYPE = symbolFor('react.portal');
+              REACT_FRAGMENT_TYPE = symbolFor('react.fragment');
+              REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
+              REACT_PROFILER_TYPE = symbolFor('react.profiler');
+              REACT_PROVIDER_TYPE = symbolFor('react.provider');
+              REACT_CONTEXT_TYPE = symbolFor('react.context');
+              REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+              REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
+              REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+              REACT_MEMO_TYPE = symbolFor('react.memo');
+              REACT_LAZY_TYPE = symbolFor('react.lazy');
+              REACT_BLOCK_TYPE = symbolFor('react.block');
+              REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+              REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+              REACT_SCOPE_TYPE = symbolFor('react.scope');
+              REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
+              REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+              REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
+              REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+            }
+
+            // Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
+
+            var enableScopeAPI = false; // Experimental Create Event Handle API.
+
+            function isValidElementType(type) {
+              if (typeof type === 'string' || typeof type === 'function') {
+                return true;
+              } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+              if (
+                type === REACT_FRAGMENT_TYPE ||
+                type === REACT_PROFILER_TYPE ||
+                type === REACT_DEBUG_TRACING_MODE_TYPE ||
+                type === REACT_STRICT_MODE_TYPE ||
+                type === REACT_SUSPENSE_TYPE ||
+                type === REACT_SUSPENSE_LIST_TYPE ||
+                type === REACT_LEGACY_HIDDEN_TYPE ||
+                enableScopeAPI
+              ) {
+                return true;
+              }
+
+              if (typeof type === 'object' && type !== null) {
+                if (
+                  type.$$typeof === REACT_LAZY_TYPE ||
+                  type.$$typeof === REACT_MEMO_TYPE ||
+                  type.$$typeof === REACT_PROVIDER_TYPE ||
+                  type.$$typeof === REACT_CONTEXT_TYPE ||
+                  type.$$typeof === REACT_FORWARD_REF_TYPE ||
+                  type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
+                  type.$$typeof === REACT_BLOCK_TYPE ||
+                  type[0] === REACT_SERVER_BLOCK_TYPE
+                ) {
+                  return true;
+                }
+              }
+
+              return false;
+            }
+
+            function typeOf(object) {
+              if (typeof object === 'object' && object !== null) {
+                var $$typeof = object.$$typeof;
+
+                switch ($$typeof) {
+                  case REACT_ELEMENT_TYPE:
+                    var type = object.type;
+
+                    switch (type) {
+                      case REACT_FRAGMENT_TYPE:
+                      case REACT_PROFILER_TYPE:
+                      case REACT_STRICT_MODE_TYPE:
+                      case REACT_SUSPENSE_TYPE:
+                      case REACT_SUSPENSE_LIST_TYPE:
+                        return type;
+
+                      default:
+                        var $$typeofType = type && type.$$typeof;
+
+                        switch ($$typeofType) {
+                          case REACT_CONTEXT_TYPE:
+                          case REACT_FORWARD_REF_TYPE:
+                          case REACT_LAZY_TYPE:
+                          case REACT_MEMO_TYPE:
+                          case REACT_PROVIDER_TYPE:
+                            return $$typeofType;
+
+                          default:
+                            return $$typeof;
+                        }
+                    }
+
+                  case REACT_PORTAL_TYPE:
+                    return $$typeof;
+                }
+              }
+
+              return undefined;
+            }
+            var ContextConsumer = REACT_CONTEXT_TYPE;
+            var ContextProvider = REACT_PROVIDER_TYPE;
+            var Element = REACT_ELEMENT_TYPE;
+            var ForwardRef = REACT_FORWARD_REF_TYPE;
+            var Fragment = REACT_FRAGMENT_TYPE;
+            var Lazy = REACT_LAZY_TYPE;
+            var Memo = REACT_MEMO_TYPE;
+            var Portal = REACT_PORTAL_TYPE;
+            var Profiler = REACT_PROFILER_TYPE;
+            var StrictMode = REACT_STRICT_MODE_TYPE;
+            var Suspense = REACT_SUSPENSE_TYPE;
+            var hasWarnedAboutDeprecatedIsAsyncMode = false;
+            var hasWarnedAboutDeprecatedIsConcurrentMode = false; // AsyncMode should be deprecated
+
+            function isAsyncMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
+                  );
+                }
+              }
+
+              return false;
+            }
+            function isConcurrentMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsConcurrentMode) {
+                  hasWarnedAboutDeprecatedIsConcurrentMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isConcurrentMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
+                  );
+                }
+              }
+
+              return false;
+            }
+            function isContextConsumer(object) {
+              return typeOf(object) === REACT_CONTEXT_TYPE;
+            }
+            function isContextProvider(object) {
+              return typeOf(object) === REACT_PROVIDER_TYPE;
+            }
+            function isElement(object) {
+              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+            }
+            function isForwardRef(object) {
+              return typeOf(object) === REACT_FORWARD_REF_TYPE;
+            }
+            function isFragment(object) {
+              return typeOf(object) === REACT_FRAGMENT_TYPE;
+            }
+            function isLazy(object) {
+              return typeOf(object) === REACT_LAZY_TYPE;
+            }
+            function isMemo(object) {
+              return typeOf(object) === REACT_MEMO_TYPE;
+            }
+            function isPortal(object) {
+              return typeOf(object) === REACT_PORTAL_TYPE;
+            }
+            function isProfiler(object) {
+              return typeOf(object) === REACT_PROFILER_TYPE;
+            }
+            function isStrictMode(object) {
+              return typeOf(object) === REACT_STRICT_MODE_TYPE;
+            }
+            function isSuspense(object) {
+              return typeOf(object) === REACT_SUSPENSE_TYPE;
+            }
+
+            exports.ContextConsumer = ContextConsumer;
+            exports.ContextProvider = ContextProvider;
+            exports.Element = Element;
+            exports.ForwardRef = ForwardRef;
+            exports.Fragment = Fragment;
+            exports.Lazy = Lazy;
+            exports.Memo = Memo;
+            exports.Portal = Portal;
+            exports.Profiler = Profiler;
+            exports.StrictMode = StrictMode;
+            exports.Suspense = Suspense;
+            exports.isAsyncMode = isAsyncMode;
+            exports.isConcurrentMode = isConcurrentMode;
+            exports.isContextConsumer = isContextConsumer;
+            exports.isContextProvider = isContextProvider;
+            exports.isElement = isElement;
+            exports.isForwardRef = isForwardRef;
+            exports.isFragment = isFragment;
+            exports.isLazy = isLazy;
+            exports.isMemo = isMemo;
+            exports.isPortal = isPortal;
+            exports.isProfiler = isProfiler;
+            exports.isStrictMode = isStrictMode;
+            exports.isSuspense = isSuspense;
+            exports.isValidElementType = isValidElementType;
+            exports.typeOf = typeOf;
+          })();
+        }
+
+        /***/
+      },
+      /* 62 */
+      /*!*****************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
+  \*****************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _createClass,
+          /* harmony export */
+        });
+        function _defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ('value' in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }
+
+        function _createClass(Constructor, protoProps, staticProps) {
+          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+          if (staticProps) _defineProperties(Constructor, staticProps);
+          Object.defineProperty(Constructor, 'prototype', {
+            writable: false,
+          });
+          return Constructor;
+        }
+
+        /***/
+      },
+      /* 63 */
+      /*!*****************************************************************************!*\
+  !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
+  \*****************************************************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
+          /* harmony export */
+        });
+        // We use the same empty object to ref count the styles that don't need a theme object.
+        var noopTheme = {};
+        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = noopTheme;
+
+        /***/
+      },
+      /* 64 */
       /*!*****************************************************!*\
   !*** ../node_modules/react-chartjs-2/dist/index.js ***!
   \*****************************************************/
@@ -17996,7 +18534,7 @@ object-assign
 
         /***/
       },
-      /* 59 */
+      /* 65 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -20646,7 +21184,7 @@ object-assign
 
         /***/
       },
-      /* 60 */
+      /* 66 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -20665,7 +21203,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 24
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 71);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 77);
 
         var App =
           /** @class */
@@ -20691,7 +21229,7 @@ object-assign
 
         /***/
       },
-      /* 61 */
+      /* 67 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -20713,27 +21251,27 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 72
+          /*! ../../pages/AccountSetup */ 78
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../../pages/AmazonServices */ 85
+          /*! ../../pages/AmazonServices */ 91
         );
         /* harmony import */ var _pages_Environments__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../pages/Environments */ 101
+          /*! ../../pages/Environments */ 107
         );
         /* harmony import */ var _pages_Kubernetes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../pages/Kubernetes */ 116
+          /*! ../../pages/Kubernetes */ 117
         );
         /* harmony import */ var _pages_StorageDetails__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../../pages/StorageDetails */ 117
+          /*! ../../pages/StorageDetails */ 118
         );
         /* harmony import */ var _pages_DepartmentWiseProducts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../../pages/DepartmentWiseProducts */ 124
+          /*! ../../pages/DepartmentWiseProducts */ 125
         );
         /* harmony import */ var pages_DepartmentWiseProducts_departmentChart__WEBPACK_IMPORTED_MODULE_8__ =
-          __webpack_require__(/*! pages/DepartmentWiseProducts/departmentChart */ 126);
+          __webpack_require__(/*! pages/DepartmentWiseProducts/departmentChart */ 127);
         /* harmony import */ var _utils_utils_routing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ../../utils/utils.routing */ 127
+          /*! ../../utils/utils.routing */ 128
         );
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! utils/utils.plugin */ 24
@@ -20857,7 +21395,7 @@ object-assign
 
         /***/
       },
-      /* 62 */
+      /* 68 */
       /*!*************************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/EnableDashboard.tsx ***!
   \*************************************************************************/
@@ -20873,7 +21411,7 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! uuid */ 138);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! uuid */ 139);
 
         var EnableDashboard =
           /** @class */
@@ -21046,7 +21584,7 @@ object-assign
 
         /***/
       },
-      /* 63 */
+      /* 69 */
       /*!*****************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/Preview.tsx ***!
   \*****************************************************************/
@@ -21062,7 +21600,7 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ 138);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ 139);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! ../../../_common/common */ 17
         );
@@ -21247,7 +21785,7 @@ object-assign
 
         /***/
       },
-      /* 64 */
+      /* 70 */
       /*!***********************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyAndSave.tsx ***!
   \***********************************************************************/
@@ -21269,7 +21807,7 @@ object-assign
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ../../../../config */ 5
         );
-        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! uuid */ 138);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! uuid */ 139);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../../../_common/common */ 17
         );
@@ -21552,7 +22090,7 @@ object-assign
 
         /***/
       },
-      /* 65 */
+      /* 71 */
       /*!**********************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyInputs.tsx ***!
   \**********************************************************************/
@@ -21805,7 +22343,7 @@ object-assign
 
         /***/
       },
-      /* 66 */
+      /* 72 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -21827,17 +22365,17 @@ object-assign
           _grafana_ui__WEBPACK_IMPORTED_MODULE_1__
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! @grafana/runtime */ 129
+          /*! @grafana/runtime */ 130
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2___default =
           /*#__PURE__*/ __webpack_require__.n(_grafana_runtime__WEBPACK_IMPORTED_MODULE_2__);
         /* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! @emotion/css */ 130
+          /*! @emotion/css */ 131
         );
         /* harmony import */ var _emotion_css__WEBPACK_IMPORTED_MODULE_3___default =
           /*#__PURE__*/ __webpack_require__.n(_emotion_css__WEBPACK_IMPORTED_MODULE_3__);
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../SecretInput */ 131
+          /*! ../SecretInput */ 132
         );
 
         var AppConfig = function (_a) {
@@ -22187,7 +22725,7 @@ object-assign
 
         /***/
       },
-      /* 67 */
+      /* 73 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -22249,17 +22787,17 @@ object-assign
         /***/
       },
       ,
-      /* 68 */ /* 69 */
+      /* 74 */ /* 75 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__69__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__75__;
 
         /***/
       },
-      /* 70 */
+      /* 76 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -22270,11 +22808,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 60);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 66);
 
         /***/
       },
-      /* 71 */
+      /* 77 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -22285,11 +22823,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 61);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 67);
 
         /***/
       },
-      /* 72 */
+      /* 78 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -22314,16 +22852,16 @@ object-assign
           /*! ../Breadcrumbs */ 13
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 73);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 79);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 74
+          /*! ./OperationMode */ 80
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 75
+          /*! ./PreparePolicy */ 81
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 76);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 77);
-        /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 83);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 82);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 83);
+        /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 89);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
@@ -22636,7 +23174,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 79 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -22820,7 +23358,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 80 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -22957,7 +23495,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 81 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -23049,7 +23587,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 82 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -23368,7 +23906,7 @@ object-assign
 
         /***/
       },
-      /* 77 */
+      /* 83 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -23385,7 +23923,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 78
+          /*! ./CreateNewOU */ 84
         );
 
         var Ou =
@@ -23570,7 +24108,7 @@ object-assign
 
         /***/
       },
-      /* 78 */
+      /* 84 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -23586,9 +24124,9 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ 132);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ 136);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ 137);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ 133);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ 137);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ 138);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
@@ -23912,7 +24450,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 85 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -23936,7 +24474,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 86 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -24144,7 +24682,7 @@ object-assign
 
         /***/
       },
-      /* 81 */
+      /* 87 */
       /*!*******************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
   \*******************************************************************************/
@@ -24172,7 +24710,7 @@ object-assign
 
         /***/
       },
-      /* 82 */
+      /* 88 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/ChildMapping.js ***!
   \********************************************************************************************/
@@ -24328,7 +24866,7 @@ object-assign
 
         /***/
       },
-      /* 83 */
+      /* 89 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Review.tsx ***!
   \***************************************/
@@ -24617,7 +25155,7 @@ object-assign
 
         /***/
       },
-      /* 84 */
+      /* 90 */
       /*!*********************!*\
   !*** ./plugin.json ***!
   \*********************/
@@ -24629,7 +25167,7 @@ object-assign
 
         /***/
       },
-      /* 85 */
+      /* 91 */
       /*!****************************************!*\
   !*** ./pages/AmazonServices/index.tsx ***!
   \****************************************/
@@ -24655,22 +25193,22 @@ object-assign
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img */ 16);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Wizard */ 92);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Wizard */ 98);
         /* harmony import */ var _DiscoveredAssets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./DiscoveredAssets */ 93
+          /*! ./DiscoveredAssets */ 99
         );
         /* harmony import */ var _Applications__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ./Applications */ 94
+          /*! ./Applications */ 100
         );
-        /* harmony import */ var _Billing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Billing */ 96);
+        /* harmony import */ var _Billing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Billing */ 102);
         /* harmony import */ var _ThreatAndSecurityEvents__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ./ThreatAndSecurityEvents */ 97
+          /*! ./ThreatAndSecurityEvents */ 103
         );
         /* harmony import */ var _CompliancePolicies__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-          /*! ./CompliancePolicies */ 98
+          /*! ./CompliancePolicies */ 104
         );
-        /* harmony import */ var _Alerts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Alerts */ 99);
-        /* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Inputs */ 100);
+        /* harmony import */ var _Alerts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Alerts */ 105);
+        /* harmony import */ var _Inputs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Inputs */ 106);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
           /*! ../../constants */ 8
         );
@@ -25283,7 +25821,7 @@ object-assign
 
         /***/
       },
-      /* 86 */
+      /* 92 */
       /*!*********************!*\
   !*** ./img/aws.png ***!
   \*********************/
@@ -25299,7 +25837,7 @@ object-assign
 
         /***/
       },
-      /* 87 */
+      /* 93 */
       /*!********************************!*\
   !*** ./img/microsoftazure.png ***!
   \********************************/
@@ -25315,7 +25853,7 @@ object-assign
 
         /***/
       },
-      /* 88 */
+      /* 94 */
       /*!******************************!*\
   !*** ./img/google-cloud.png ***!
   \******************************/
@@ -25331,7 +25869,7 @@ object-assign
 
         /***/
       },
-      /* 89 */
+      /* 95 */
       /*!****************************!*\
   !*** ./img/kubernetes.png ***!
   \****************************/
@@ -25347,7 +25885,7 @@ object-assign
 
         /***/
       },
-      /* 90 */
+      /* 96 */
       /*!**********************!*\
   !*** ./img/jobs.png ***!
   \**********************/
@@ -25363,7 +25901,7 @@ object-assign
 
         /***/
       },
-      /* 91 */
+      /* 97 */
       /*!**********************!*\
   !*** ./img/icon.png ***!
   \**********************/
@@ -25379,7 +25917,7 @@ object-assign
 
         /***/
       },
-      /* 92 */
+      /* 98 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Wizard.tsx ***!
   \*****************************************/
@@ -25503,7 +26041,7 @@ object-assign
 
         /***/
       },
-      /* 93 */
+      /* 99 */
       /*!***************************************************!*\
   !*** ./pages/AmazonServices/DiscoveredAssets.tsx ***!
   \***************************************************/
@@ -25520,7 +26058,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../img */ 16);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ 143);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ 144);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
@@ -25536,7 +26074,7 @@ object-assign
         );
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_6__);
-        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! uuid */ 138);
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! uuid */ 139);
 
         var SERVICE_MAPPING = {
           App: 'App Services',
@@ -26572,7 +27110,11 @@ object-assign
                               )
                               .concat(accountId),
                           },
-                          service.name
+                          service.name,
+                          ' ',
+                          service.associatedGlobalServiceLocation
+                            ? '('.concat(service.associatedGlobalServiceLocation, ')')
+                            : ''
                         )
                       ),
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -27075,7 +27617,7 @@ object-assign
 
         /***/
       },
-      /* 94 */
+      /* 100 */
       /*!***********************************************!*\
   !*** ./pages/AmazonServices/Applications.tsx ***!
   \***********************************************/
@@ -27443,7 +27985,7 @@ object-assign
 
         /***/
       },
-      /* 95 */
+      /* 101 */
       /*!****************************************************************!*\
   !*** ./components/ProductWiseServices/ServicesPerformance.tsx ***!
   \****************************************************************/
@@ -28502,7 +29044,7 @@ object-assign
 
         /***/
       },
-      /* 96 */
+      /* 102 */
       /*!******************************************!*\
   !*** ./pages/AmazonServices/Billing.tsx ***!
   \******************************************/
@@ -28546,7 +29088,7 @@ object-assign
 
         /***/
       },
-      /* 97 */
+      /* 103 */
       /*!**********************************************************!*\
   !*** ./pages/AmazonServices/ThreatAndSecurityEvents.tsx ***!
   \**********************************************************/
@@ -28717,7 +29259,7 @@ object-assign
 
         /***/
       },
-      /* 98 */
+      /* 104 */
       /*!*****************************************************!*\
   !*** ./pages/AmazonServices/CompliancePolicies.tsx ***!
   \*****************************************************/
@@ -28931,7 +29473,7 @@ object-assign
 
         /***/
       },
-      /* 99 */
+      /* 105 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Alerts.tsx ***!
   \*****************************************/
@@ -29068,7 +29610,7 @@ object-assign
 
         /***/
       },
-      /* 100 */
+      /* 106 */
       /*!*****************************************!*\
   !*** ./pages/AmazonServices/Inputs.tsx ***!
   \*****************************************/
@@ -29242,7 +29784,7 @@ object-assign
 
         /***/
       },
-      /* 101 */
+      /* 107 */
       /*!**************************************!*\
   !*** ./pages/Environments/index.tsx ***!
   \**************************************/
@@ -29274,7 +29816,7 @@ object-assign
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
-        /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Action */ 102);
+        /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Action */ 108);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
           /*! ../../constants */ 8
         );
@@ -30836,7 +31378,7 @@ object-assign
 
         /***/
       },
-      /* 102 */
+      /* 108 */
       /*!***************************************!*\
   !*** ./pages/Environments/Action.tsx ***!
   \***************************************/
@@ -30857,15 +31399,15 @@ object-assign
         );
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ 132);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ 136);
-        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ 137);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ 133);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ 137);
+        /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ 138);
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../_service/RestService */ 7
         );
         /* harmony import */ var _components_AlertMessage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../../components/AlertMessage */ 103
+          /*! ../../components/AlertMessage */ 109
         );
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../../constants */ 8
@@ -31630,7 +32172,7 @@ object-assign
 
         /***/
       },
-      /* 103 */
+      /* 109 */
       /*!*************************************!*\
   !*** ./components/AlertMessage.tsx ***!
   \*************************************/
@@ -31650,7 +32192,7 @@ object-assign
           /*! @material-ui/core/Snackbar */ 225
         );
         /* harmony import */ var _material_ui_lab_Alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/lab/Alert */ 144
+          /*! @material-ui/lab/Alert */ 145
         );
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/core/styles */ 224
@@ -31732,528 +32274,7 @@ object-assign
 
         /***/
       },
-      /* 104 */
-      /*!******************************************************************************!*\
-  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
-  \******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        if (false) {
-        } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 105);
-        }
-
-        /***/
-      },
-      /* 105 */
-      /*!*************************************************************************************************!*\
-  !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js ***!
-  \*************************************************************************************************/
-      /***/ (__unused_webpack_module, exports) => {
-        'use strict';
-        /** @license React v16.13.1
-         * react-is.development.js
-         *
-         * Copyright (c) Facebook, Inc. and its affiliates.
-         *
-         * This source code is licensed under the MIT license found in the
-         * LICENSE file in the root directory of this source tree.
-         */
-
-        if (true) {
-          (function () {
-            'use strict';
-
-            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-            // nor polyfill, then a plain number is used for performance.
-            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-            // (unstable) APIs that have been removed. Can we remove the symbols?
-
-            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-            function isValidElementType(type) {
-              return (
-                typeof type === 'string' ||
-                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-                type === REACT_FRAGMENT_TYPE ||
-                type === REACT_CONCURRENT_MODE_TYPE ||
-                type === REACT_PROFILER_TYPE ||
-                type === REACT_STRICT_MODE_TYPE ||
-                type === REACT_SUSPENSE_TYPE ||
-                type === REACT_SUSPENSE_LIST_TYPE ||
-                (typeof type === 'object' &&
-                  type !== null &&
-                  (type.$$typeof === REACT_LAZY_TYPE ||
-                    type.$$typeof === REACT_MEMO_TYPE ||
-                    type.$$typeof === REACT_PROVIDER_TYPE ||
-                    type.$$typeof === REACT_CONTEXT_TYPE ||
-                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
-                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
-                    type.$$typeof === REACT_RESPONDER_TYPE ||
-                    type.$$typeof === REACT_SCOPE_TYPE ||
-                    type.$$typeof === REACT_BLOCK_TYPE))
-              );
-            }
-
-            function typeOf(object) {
-              if (typeof object === 'object' && object !== null) {
-                var $$typeof = object.$$typeof;
-
-                switch ($$typeof) {
-                  case REACT_ELEMENT_TYPE:
-                    var type = object.type;
-
-                    switch (type) {
-                      case REACT_ASYNC_MODE_TYPE:
-                      case REACT_CONCURRENT_MODE_TYPE:
-                      case REACT_FRAGMENT_TYPE:
-                      case REACT_PROFILER_TYPE:
-                      case REACT_STRICT_MODE_TYPE:
-                      case REACT_SUSPENSE_TYPE:
-                        return type;
-
-                      default:
-                        var $$typeofType = type && type.$$typeof;
-
-                        switch ($$typeofType) {
-                          case REACT_CONTEXT_TYPE:
-                          case REACT_FORWARD_REF_TYPE:
-                          case REACT_LAZY_TYPE:
-                          case REACT_MEMO_TYPE:
-                          case REACT_PROVIDER_TYPE:
-                            return $$typeofType;
-
-                          default:
-                            return $$typeof;
-                        }
-                    }
-
-                  case REACT_PORTAL_TYPE:
-                    return $$typeof;
-                }
-              }
-
-              return undefined;
-            } // AsyncMode is deprecated along with isAsyncMode
-
-            var AsyncMode = REACT_ASYNC_MODE_TYPE;
-            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-            var ContextConsumer = REACT_CONTEXT_TYPE;
-            var ContextProvider = REACT_PROVIDER_TYPE;
-            var Element = REACT_ELEMENT_TYPE;
-            var ForwardRef = REACT_FORWARD_REF_TYPE;
-            var Fragment = REACT_FRAGMENT_TYPE;
-            var Lazy = REACT_LAZY_TYPE;
-            var Memo = REACT_MEMO_TYPE;
-            var Portal = REACT_PORTAL_TYPE;
-            var Profiler = REACT_PROFILER_TYPE;
-            var StrictMode = REACT_STRICT_MODE_TYPE;
-            var Suspense = REACT_SUSPENSE_TYPE;
-            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-            function isAsyncMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
-                      'and will be removed in React 17+. Update your code to use ' +
-                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
-                  );
-                }
-              }
-
-              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-            }
-            function isConcurrentMode(object) {
-              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-            }
-            function isContextConsumer(object) {
-              return typeOf(object) === REACT_CONTEXT_TYPE;
-            }
-            function isContextProvider(object) {
-              return typeOf(object) === REACT_PROVIDER_TYPE;
-            }
-            function isElement(object) {
-              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-            }
-            function isForwardRef(object) {
-              return typeOf(object) === REACT_FORWARD_REF_TYPE;
-            }
-            function isFragment(object) {
-              return typeOf(object) === REACT_FRAGMENT_TYPE;
-            }
-            function isLazy(object) {
-              return typeOf(object) === REACT_LAZY_TYPE;
-            }
-            function isMemo(object) {
-              return typeOf(object) === REACT_MEMO_TYPE;
-            }
-            function isPortal(object) {
-              return typeOf(object) === REACT_PORTAL_TYPE;
-            }
-            function isProfiler(object) {
-              return typeOf(object) === REACT_PROFILER_TYPE;
-            }
-            function isStrictMode(object) {
-              return typeOf(object) === REACT_STRICT_MODE_TYPE;
-            }
-            function isSuspense(object) {
-              return typeOf(object) === REACT_SUSPENSE_TYPE;
-            }
-
-            exports.AsyncMode = AsyncMode;
-            exports.ConcurrentMode = ConcurrentMode;
-            exports.ContextConsumer = ContextConsumer;
-            exports.ContextProvider = ContextProvider;
-            exports.Element = Element;
-            exports.ForwardRef = ForwardRef;
-            exports.Fragment = Fragment;
-            exports.Lazy = Lazy;
-            exports.Memo = Memo;
-            exports.Portal = Portal;
-            exports.Profiler = Profiler;
-            exports.StrictMode = StrictMode;
-            exports.Suspense = Suspense;
-            exports.isAsyncMode = isAsyncMode;
-            exports.isConcurrentMode = isConcurrentMode;
-            exports.isContextConsumer = isContextConsumer;
-            exports.isContextProvider = isContextProvider;
-            exports.isElement = isElement;
-            exports.isForwardRef = isForwardRef;
-            exports.isFragment = isFragment;
-            exports.isLazy = isLazy;
-            exports.isMemo = isMemo;
-            exports.isPortal = isPortal;
-            exports.isProfiler = isProfiler;
-            exports.isStrictMode = isStrictMode;
-            exports.isSuspense = isSuspense;
-            exports.isValidElementType = isValidElementType;
-            exports.typeOf = typeOf;
-          })();
-        }
-
-        /***/
-      },
-      /* 106 */
-      /*!*****************************************!*\
-  !*** ../node_modules/react-is/index.js ***!
-  \*****************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        if (false) {
-        } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 107);
-        }
-
-        /***/
-      },
-      /* 107 */
-      /*!************************************************************!*\
-  !*** ../node_modules/react-is/cjs/react-is.development.js ***!
-  \************************************************************/
-      /***/ (__unused_webpack_module, exports) => {
-        'use strict';
-        /** @license React v17.0.2
-         * react-is.development.js
-         *
-         * Copyright (c) Facebook, Inc. and its affiliates.
-         *
-         * This source code is licensed under the MIT license found in the
-         * LICENSE file in the root directory of this source tree.
-         */
-
-        if (true) {
-          (function () {
-            'use strict';
-
-            // ATTENTION
-            // When adding new symbols to this file,
-            // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-            // nor polyfill, then a plain number is used for performance.
-            var REACT_ELEMENT_TYPE = 0xeac7;
-            var REACT_PORTAL_TYPE = 0xeaca;
-            var REACT_FRAGMENT_TYPE = 0xeacb;
-            var REACT_STRICT_MODE_TYPE = 0xeacc;
-            var REACT_PROFILER_TYPE = 0xead2;
-            var REACT_PROVIDER_TYPE = 0xeacd;
-            var REACT_CONTEXT_TYPE = 0xeace;
-            var REACT_FORWARD_REF_TYPE = 0xead0;
-            var REACT_SUSPENSE_TYPE = 0xead1;
-            var REACT_SUSPENSE_LIST_TYPE = 0xead8;
-            var REACT_MEMO_TYPE = 0xead3;
-            var REACT_LAZY_TYPE = 0xead4;
-            var REACT_BLOCK_TYPE = 0xead9;
-            var REACT_SERVER_BLOCK_TYPE = 0xeada;
-            var REACT_FUNDAMENTAL_TYPE = 0xead5;
-            var REACT_SCOPE_TYPE = 0xead7;
-            var REACT_OPAQUE_ID_TYPE = 0xeae0;
-            var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
-            var REACT_OFFSCREEN_TYPE = 0xeae2;
-            var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
-
-            if (typeof Symbol === 'function' && Symbol.for) {
-              var symbolFor = Symbol.for;
-              REACT_ELEMENT_TYPE = symbolFor('react.element');
-              REACT_PORTAL_TYPE = symbolFor('react.portal');
-              REACT_FRAGMENT_TYPE = symbolFor('react.fragment');
-              REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
-              REACT_PROFILER_TYPE = symbolFor('react.profiler');
-              REACT_PROVIDER_TYPE = symbolFor('react.provider');
-              REACT_CONTEXT_TYPE = symbolFor('react.context');
-              REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
-              REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
-              REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
-              REACT_MEMO_TYPE = symbolFor('react.memo');
-              REACT_LAZY_TYPE = symbolFor('react.lazy');
-              REACT_BLOCK_TYPE = symbolFor('react.block');
-              REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
-              REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
-              REACT_SCOPE_TYPE = symbolFor('react.scope');
-              REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
-              REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
-              REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
-              REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
-            }
-
-            // Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
-
-            var enableScopeAPI = false; // Experimental Create Event Handle API.
-
-            function isValidElementType(type) {
-              if (typeof type === 'string' || typeof type === 'function') {
-                return true;
-              } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
-
-              if (
-                type === REACT_FRAGMENT_TYPE ||
-                type === REACT_PROFILER_TYPE ||
-                type === REACT_DEBUG_TRACING_MODE_TYPE ||
-                type === REACT_STRICT_MODE_TYPE ||
-                type === REACT_SUSPENSE_TYPE ||
-                type === REACT_SUSPENSE_LIST_TYPE ||
-                type === REACT_LEGACY_HIDDEN_TYPE ||
-                enableScopeAPI
-              ) {
-                return true;
-              }
-
-              if (typeof type === 'object' && type !== null) {
-                if (
-                  type.$$typeof === REACT_LAZY_TYPE ||
-                  type.$$typeof === REACT_MEMO_TYPE ||
-                  type.$$typeof === REACT_PROVIDER_TYPE ||
-                  type.$$typeof === REACT_CONTEXT_TYPE ||
-                  type.$$typeof === REACT_FORWARD_REF_TYPE ||
-                  type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
-                  type.$$typeof === REACT_BLOCK_TYPE ||
-                  type[0] === REACT_SERVER_BLOCK_TYPE
-                ) {
-                  return true;
-                }
-              }
-
-              return false;
-            }
-
-            function typeOf(object) {
-              if (typeof object === 'object' && object !== null) {
-                var $$typeof = object.$$typeof;
-
-                switch ($$typeof) {
-                  case REACT_ELEMENT_TYPE:
-                    var type = object.type;
-
-                    switch (type) {
-                      case REACT_FRAGMENT_TYPE:
-                      case REACT_PROFILER_TYPE:
-                      case REACT_STRICT_MODE_TYPE:
-                      case REACT_SUSPENSE_TYPE:
-                      case REACT_SUSPENSE_LIST_TYPE:
-                        return type;
-
-                      default:
-                        var $$typeofType = type && type.$$typeof;
-
-                        switch ($$typeofType) {
-                          case REACT_CONTEXT_TYPE:
-                          case REACT_FORWARD_REF_TYPE:
-                          case REACT_LAZY_TYPE:
-                          case REACT_MEMO_TYPE:
-                          case REACT_PROVIDER_TYPE:
-                            return $$typeofType;
-
-                          default:
-                            return $$typeof;
-                        }
-                    }
-
-                  case REACT_PORTAL_TYPE:
-                    return $$typeof;
-                }
-              }
-
-              return undefined;
-            }
-            var ContextConsumer = REACT_CONTEXT_TYPE;
-            var ContextProvider = REACT_PROVIDER_TYPE;
-            var Element = REACT_ELEMENT_TYPE;
-            var ForwardRef = REACT_FORWARD_REF_TYPE;
-            var Fragment = REACT_FRAGMENT_TYPE;
-            var Lazy = REACT_LAZY_TYPE;
-            var Memo = REACT_MEMO_TYPE;
-            var Portal = REACT_PORTAL_TYPE;
-            var Profiler = REACT_PROFILER_TYPE;
-            var StrictMode = REACT_STRICT_MODE_TYPE;
-            var Suspense = REACT_SUSPENSE_TYPE;
-            var hasWarnedAboutDeprecatedIsAsyncMode = false;
-            var hasWarnedAboutDeprecatedIsConcurrentMode = false; // AsyncMode should be deprecated
-
-            function isAsyncMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
-                  );
-                }
-              }
-
-              return false;
-            }
-            function isConcurrentMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsConcurrentMode) {
-                  hasWarnedAboutDeprecatedIsConcurrentMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isConcurrentMode() alias has been deprecated, ' + 'and will be removed in React 18+.'
-                  );
-                }
-              }
-
-              return false;
-            }
-            function isContextConsumer(object) {
-              return typeOf(object) === REACT_CONTEXT_TYPE;
-            }
-            function isContextProvider(object) {
-              return typeOf(object) === REACT_PROVIDER_TYPE;
-            }
-            function isElement(object) {
-              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-            }
-            function isForwardRef(object) {
-              return typeOf(object) === REACT_FORWARD_REF_TYPE;
-            }
-            function isFragment(object) {
-              return typeOf(object) === REACT_FRAGMENT_TYPE;
-            }
-            function isLazy(object) {
-              return typeOf(object) === REACT_LAZY_TYPE;
-            }
-            function isMemo(object) {
-              return typeOf(object) === REACT_MEMO_TYPE;
-            }
-            function isPortal(object) {
-              return typeOf(object) === REACT_PORTAL_TYPE;
-            }
-            function isProfiler(object) {
-              return typeOf(object) === REACT_PROFILER_TYPE;
-            }
-            function isStrictMode(object) {
-              return typeOf(object) === REACT_STRICT_MODE_TYPE;
-            }
-            function isSuspense(object) {
-              return typeOf(object) === REACT_SUSPENSE_TYPE;
-            }
-
-            exports.ContextConsumer = ContextConsumer;
-            exports.ContextProvider = ContextProvider;
-            exports.Element = Element;
-            exports.ForwardRef = ForwardRef;
-            exports.Fragment = Fragment;
-            exports.Lazy = Lazy;
-            exports.Memo = Memo;
-            exports.Portal = Portal;
-            exports.Profiler = Profiler;
-            exports.StrictMode = StrictMode;
-            exports.Suspense = Suspense;
-            exports.isAsyncMode = isAsyncMode;
-            exports.isConcurrentMode = isConcurrentMode;
-            exports.isContextConsumer = isContextConsumer;
-            exports.isContextProvider = isContextProvider;
-            exports.isElement = isElement;
-            exports.isForwardRef = isForwardRef;
-            exports.isFragment = isFragment;
-            exports.isLazy = isLazy;
-            exports.isMemo = isMemo;
-            exports.isPortal = isPortal;
-            exports.isProfiler = isProfiler;
-            exports.isStrictMode = isStrictMode;
-            exports.isSuspense = isSuspense;
-            exports.isValidElementType = isValidElementType;
-            exports.typeOf = typeOf;
-          })();
-        }
-
-        /***/
-      },
-      /* 108 */
-      /*!*****************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
-  \*****************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _createClass,
-          /* harmony export */
-        });
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ('value' in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          Object.defineProperty(Constructor, 'prototype', {
-            writable: false,
-          });
-          return Constructor;
-        }
-
-        /***/
-      },
-      /* 109 */
+      /* 110 */
       /*!*********************************************************!*\
   !*** ../node_modules/css-vendor/dist/css-vendor.esm.js ***!
   \*********************************************************/
@@ -32854,7 +32875,7 @@ object-assign
 
         /***/
       },
-      /* 110 */
+      /* 111 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
   \***********************************************************************/
@@ -32875,7 +32896,7 @@ object-assign
 
         /***/
       },
-      /* 111 */
+      /* 112 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
   \*********************************************************************/
@@ -32893,7 +32914,7 @@ object-assign
 
         /***/
       },
-      /* 112 */
+      /* 113 */
       /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js ***!
   \***********************************************************************/
@@ -32912,7 +32933,7 @@ object-assign
 
         /***/
       },
-      /* 113 */
+      /* 114 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
   \********************************************************************/
@@ -32929,7 +32950,7 @@ object-assign
 
         /***/
       },
-      /* 114 */
+      /* 115 */
       /*!**************************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
   \**************************************************************************/
@@ -32972,7 +32993,7 @@ object-assign
 
         /***/
       },
-      /* 115 */
+      /* 116 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
   \*********************************************************************/
@@ -32991,7 +33012,7 @@ object-assign
 
         /***/
       },
-      /* 116 */
+      /* 117 */
       /*!************************************!*\
   !*** ./pages/Kubernetes/index.tsx ***!
   \************************************/
@@ -33051,7 +33072,7 @@ object-assign
 
         /***/
       },
-      /* 117 */
+      /* 118 */
       /*!****************************************!*\
   !*** ./pages/StorageDetails/index.tsx ***!
   \****************************************/
@@ -33075,7 +33096,7 @@ object-assign
         /* harmony import */ var _Breadcrumbs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ../Breadcrumbs */ 13
         );
-        /* harmony import */ var _Node__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Node */ 118);
+        /* harmony import */ var _Node__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Node */ 119);
         /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ../../constants */ 8
         );
@@ -33326,7 +33347,7 @@ object-assign
 
         /***/
       },
-      /* 118 */
+      /* 119 */
       /*!*********************************************!*\
   !*** ./pages/StorageDetails/Node/index.tsx ***!
   \*********************************************/
@@ -33344,9 +33365,9 @@ object-assign
         );
         /* harmony import */ var _img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../img */ 16);
         /* harmony import */ var _WebServiceWizard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./WebServiceWizard */ 119
+          /*! ./WebServiceWizard */ 120
         );
-        /* harmony import */ var _Monitor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Monitor */ 120);
+        /* harmony import */ var _Monitor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Monitor */ 121);
         /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ../../_common/common */ 17
         );
@@ -33803,7 +33824,7 @@ object-assign
 
         /***/
       },
-      /* 119 */
+      /* 120 */
       /*!********************************************************!*\
   !*** ./pages/StorageDetails/Node/WebServiceWizard.tsx ***!
   \********************************************************/
@@ -33951,7 +33972,7 @@ object-assign
 
         /***/
       },
-      /* 120 */
+      /* 121 */
       /*!***********************************************!*\
   !*** ./pages/StorageDetails/Node/Monitor.tsx ***!
   \***********************************************/
@@ -33967,16 +33988,16 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Wizard */ 121);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Wizard */ 122);
         /* harmony import */ var _MonitorComponents__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./MonitorComponents */ 122
+          /*! ./MonitorComponents */ 123
         );
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../../_service/RestService */ 7
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../config */ 5);
         /* harmony import */ var _Components_AlertMessage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../../Components/AlertMessage */ 123
+          /*! ../../Components/AlertMessage */ 124
         );
 
         var VIEW_TYPE = {
@@ -34622,7 +34643,7 @@ object-assign
 
         /***/
       },
-      /* 121 */
+      /* 122 */
       /*!**********************************************!*\
   !*** ./pages/StorageDetails/Node/Wizard.tsx ***!
   \**********************************************/
@@ -34799,7 +34820,7 @@ object-assign
 
         /***/
       },
-      /* 122 */
+      /* 123 */
       /*!***************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/index.tsx ***!
   \***************************************************************/
@@ -34817,19 +34838,19 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _EnableDashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./EnableDashboard */ 62
+          /*! ./EnableDashboard */ 68
         );
-        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 63);
+        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 69);
         /* harmony import */ var _VerifyAndSave__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./VerifyAndSave */ 64
+          /*! ./VerifyAndSave */ 70
         );
         /* harmony import */ var _VerifyInputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./VerifyInputs */ 65
+          /*! ./VerifyInputs */ 71
         );
 
         /***/
       },
-      /* 123 */
+      /* 124 */
       /*!*******************************************!*\
   !*** ./pages/Components/AlertMessage.tsx ***!
   \*******************************************/
@@ -34849,7 +34870,7 @@ object-assign
           /*! @material-ui/core/Snackbar */ 225
         );
         /* harmony import */ var _material_ui_lab_Alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/lab/Alert */ 144
+          /*! @material-ui/lab/Alert */ 145
         );
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/core/styles */ 224
@@ -34933,7 +34954,7 @@ object-assign
 
         /***/
       },
-      /* 124 */
+      /* 125 */
       /*!************************************************!*\
   !*** ./pages/DepartmentWiseProducts/index.tsx ***!
   \************************************************/
@@ -34969,14 +34990,14 @@ object-assign
           /*! ../../components/ProductWiseServices */ 46
         );
         /* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-circular-progressbar */ 125
+          /*! react-circular-progressbar */ 126
         );
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__ =
           __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 53);
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! react-chartjs-2 */ 58
+          /*! react-chartjs-2 */ 64
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! chart.js */ 28);
         /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ 47);
@@ -36169,7 +36190,7 @@ object-assign
 
         /***/
       },
-      /* 125 */
+      /* 126 */
       /*!********************************************************************!*\
   !*** ../node_modules/react-circular-progressbar/dist/index.esm.js ***!
   \********************************************************************/
@@ -36506,7 +36527,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 126 */
+      /* 127 */
       /*!**********************************************************!*\
   !*** ./pages/DepartmentWiseProducts/departmentChart.tsx ***!
   \**********************************************************/
@@ -36538,7 +36559,7 @@ and limitations under the License.
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ 5);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! react-chartjs-2 */ 58
+          /*! react-chartjs-2 */ 64
         );
         /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ 28);
 
@@ -36936,7 +36957,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 127 */
+      /* 128 */
       /*!********************************!*\
   !*** ./utils/utils.routing.ts ***!
   \********************************/
@@ -37030,7 +37051,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 128 */
+      /* 129 */
       /*!****************************************!*\
   !*** ./components/AppConfig/index.tsx ***!
   \****************************************/
@@ -37043,24 +37064,14 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 66);
-
-        /***/
-      },
-      /* 129 */
-      /*!***********************************!*\
-  !*** external "@grafana/runtime" ***!
-  \***********************************/
-      /***/ (module) => {
-        'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__129__;
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 72);
 
         /***/
       },
       /* 130 */
-      /*!*******************************!*\
-  !*** external "@emotion/css" ***!
-  \*******************************/
+      /*!***********************************!*\
+  !*** external "@grafana/runtime" ***!
+  \***********************************/
       /***/ (module) => {
         'use strict';
         module.exports = __WEBPACK_EXTERNAL_MODULE__130__;
@@ -37068,6 +37079,16 @@ and limitations under the License.
         /***/
       },
       /* 131 */
+      /*!*******************************!*\
+  !*** external "@emotion/css" ***!
+  \*******************************/
+      /***/ (module) => {
+        'use strict';
+        module.exports = __WEBPACK_EXTERNAL_MODULE__131__;
+
+        /***/
+      },
+      /* 132 */
       /*!******************************************!*\
   !*** ./components/SecretInput/index.tsx ***!
   \******************************************/
@@ -37080,12 +37101,12 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 67
+          /*! ./SecretInput */ 73
         );
 
         /***/
       },
-      /* 132 */
+      /* 133 */
       /*!**********************************************!*\
   !*** ../node_modules/reactstrap/es/Modal.js ***!
   \**********************************************/
@@ -37117,9 +37138,9 @@ and limitations under the License.
         /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/ __webpack_require__.n(
           classnames__WEBPACK_IMPORTED_MODULE_5__
         );
-        /* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Portal */ 135);
-        /* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Fade */ 133);
-        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils */ 134);
+        /* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Portal */ 136);
+        /* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Fade */ 134);
+        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils */ 135);
 
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
@@ -37747,7 +37768,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 133 */
+      /* 134 */
       /*!*********************************************!*\
   !*** ../node_modules/reactstrap/es/Fade.js ***!
   \*********************************************/
@@ -37778,11 +37799,11 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 81
+          /*! react-transition-group */ 87
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
-        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils */ 134);
+        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils */ 135);
 
         var _excluded = ['tag', 'baseClass', 'baseClassActive', 'className', 'cssModule', 'children', 'innerRef'];
 
@@ -37913,7 +37934,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 134 */
+      /* 135 */
       /*!**********************************************!*\
   !*** ../node_modules/reactstrap/es/utils.js ***!
   \**********************************************/
@@ -38344,7 +38365,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 135 */
+      /* 136 */
       /*!***********************************************!*\
   !*** ../node_modules/reactstrap/es/Portal.js ***!
   \***********************************************/
@@ -38369,7 +38390,7 @@ and limitations under the License.
         /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/ __webpack_require__.n(
           prop_types__WEBPACK_IMPORTED_MODULE_3__
         );
-        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ 134);
+        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ 135);
 
         var propTypes = {
           children: prop_types__WEBPACK_IMPORTED_MODULE_3___default().node.isRequired,
@@ -38420,7 +38441,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 136 */
+      /* 137 */
       /*!****************************************************!*\
   !*** ../node_modules/reactstrap/es/ModalHeader.js ***!
   \****************************************************/
@@ -38448,7 +38469,7 @@ and limitations under the License.
         /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/ __webpack_require__.n(
           classnames__WEBPACK_IMPORTED_MODULE_3__
         );
-        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ 134);
+        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ 135);
 
         var _excluded = [
           'className',
@@ -38548,7 +38569,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 137 */
+      /* 138 */
       /*!**************************************************!*\
   !*** ../node_modules/reactstrap/es/ModalBody.js ***!
   \**************************************************/
@@ -38576,7 +38597,7 @@ and limitations under the License.
         /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/ __webpack_require__.n(
           classnames__WEBPACK_IMPORTED_MODULE_3__
         );
-        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ 134);
+        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ 135);
 
         var _excluded = ['className', 'cssModule', 'tag'];
 
@@ -38617,7 +38638,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 138 */
+      /* 139 */
       /*!***************************************************!*\
   !*** ../node_modules/uuid/dist/esm-browser/v4.js ***!
   \***************************************************/
@@ -38628,9 +38649,9 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rng.js */ 139);
+        /* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rng.js */ 140);
         /* harmony import */ var _stringify_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./stringify.js */ 140
+          /*! ./stringify.js */ 141
         );
 
         function v4(options, buf, offset) {
@@ -38657,7 +38678,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 139 */
+      /* 140 */
       /*!****************************************************!*\
   !*** ../node_modules/uuid/dist/esm-browser/rng.js ***!
   \****************************************************/
@@ -38696,7 +38717,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 140 */
+      /* 141 */
       /*!**********************************************************!*\
   !*** ../node_modules/uuid/dist/esm-browser/stringify.js ***!
   \**********************************************************/
@@ -38708,7 +38729,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _validate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./validate.js */ 141
+          /*! ./validate.js */ 142
         );
 
         /**
@@ -38764,7 +38785,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 141 */
+      /* 142 */
       /*!*********************************************************!*\
   !*** ../node_modules/uuid/dist/esm-browser/validate.js ***!
   \*********************************************************/
@@ -38775,7 +38796,7 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var _regex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./regex.js */ 142);
+        /* harmony import */ var _regex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./regex.js */ 143);
 
         function validate(uuid) {
           return typeof uuid === 'string' && _regex_js__WEBPACK_IMPORTED_MODULE_0__['default'].test(uuid);
@@ -38785,7 +38806,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 142 */
+      /* 143 */
       /*!******************************************************!*\
   !*** ../node_modules/uuid/dist/esm-browser/regex.js ***!
   \******************************************************/
@@ -38801,7 +38822,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 143 */
+      /* 144 */
       /*!*************************************************!*\
   !*** ../node_modules/reactstrap/es/Collapse.js ***!
   \*************************************************/
@@ -38836,11 +38857,11 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 81
+          /*! react-transition-group */ 87
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
-        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils */ 134);
+        /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils */ 135);
 
         var _excluded = ['tag', 'isOpen', 'className', 'navbar', 'cssModule', 'children', 'innerRef'];
 
@@ -39065,7 +39086,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 144 */
+      /* 145 */
       /*!***********************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/Alert/Alert.js ***!
   \***********************************************************/
@@ -39092,16 +39113,16 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! @material-ui/core/styles */ 145
+          /*! @material-ui/core/styles */ 146
         );
         /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
-          /*! @material-ui/core/styles */ 151
+          /*! @material-ui/core/styles */ 152
         );
         /* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! @material-ui/core/Paper */ 209
         );
         /* harmony import */ var _internal_svg_icons_SuccessOutlined__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../internal/svg-icons/SuccessOutlined */ 146
+          /*! ../internal/svg-icons/SuccessOutlined */ 147
         );
         /* harmony import */ var _internal_svg_icons_ReportProblemOutlined__WEBPACK_IMPORTED_MODULE_6__ =
           __webpack_require__(/*! ../internal/svg-icons/ReportProblemOutlined */ 205);
@@ -39118,7 +39139,7 @@ and limitations under the License.
           /*! @material-ui/core/IconButton */ 210
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 149
+          /*! @material-ui/core/utils */ 150
         );
 
         var styles = function styles(theme) {
@@ -39498,7 +39519,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 145 */
+      /* 146 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/colorManipulator.js ***!
   \************************************************************************/
@@ -39852,7 +39873,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 146 */
+      /* 147 */
       /*!**********************************************************************************!*\
   !*** ../node_modules/@material-ui/lab/esm/internal/svg-icons/SuccessOutlined.js ***!
   \**********************************************************************************/
@@ -39868,7 +39889,7 @@ and limitations under the License.
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 147
+          /*! @material-ui/core/utils */ 148
         );
 
         /**
@@ -39885,7 +39906,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 147 */
+      /* 148 */
       /*!********************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/createSvgIcon.js ***!
   \********************************************************************/
@@ -39903,7 +39924,7 @@ and limitations under the License.
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_1__
         );
-        /* harmony import */ var _SvgIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SvgIcon */ 148);
+        /* harmony import */ var _SvgIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SvgIcon */ 149);
 
         /**
          * Private module reserved for @material-ui/x packages.
@@ -39937,7 +39958,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 148 */
+      /* 149 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js ***!
   \****************************************************************/
@@ -39964,13 +39985,13 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! @material-ui/utils */ 150
+          /*! @material-ui/utils */ 151
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! ../styles/withStyles */ 151
+          /*! ../styles/withStyles */ 152
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../utils/capitalize */ 149
+          /*! ../utils/capitalize */ 150
         );
 
         var styles = function styles(theme) {
@@ -40189,7 +40210,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 149 */
+      /* 150 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/utils/capitalize.js ***!
   \*****************************************************************/
@@ -40215,7 +40236,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 150 */
+      /* 151 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/chainPropTypes.js ***!
   \****************************************************************/
@@ -40237,7 +40258,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 151 */
+      /* 152 */
       /*!******************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/withStyles.js ***!
   \******************************************************************/
@@ -40252,7 +40273,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/styles */ 152
+          /*! @material-ui/styles */ 153
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./defaultTheme */ 181
@@ -40274,7 +40295,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 152 */
+      /* 153 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/withStyles/withStyles.js ***!
   \************************************************************************/
@@ -40304,13 +40325,13 @@ and limitations under the License.
         /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3___default =
           /*#__PURE__*/ __webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3__);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! @material-ui/utils */ 153
+          /*! @material-ui/utils */ 154
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! @material-ui/utils */ 150
+          /*! @material-ui/utils */ 151
         );
         /* harmony import */ var _makeStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../makeStyles */ 154
+          /*! ../makeStyles */ 155
         );
         /* harmony import */ var _getThemeProps__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
           /*! ../getThemeProps */ 180
@@ -40478,7 +40499,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 153 */
+      /* 154 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/utils/esm/getDisplayName.js ***!
   \****************************************************************/
@@ -40493,7 +40514,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 19
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 106);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 60);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -40562,7 +40583,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 154 */
+      /* 155 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js ***!
   \************************************************************************/
@@ -40584,7 +40605,7 @@ and limitations under the License.
         );
         /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jss */ 158);
         /* harmony import */ var _mergeClasses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../mergeClasses */ 155
+          /*! ../mergeClasses */ 156
         );
         /* harmony import */ var _multiKeyStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ./multiKeyStore */ 157
@@ -40600,7 +40621,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 160
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 156
+          /*! ../getStylesCreator/noopTheme */ 63
         );
 
         function getClasses(_ref, classes, Component) {
@@ -40917,7 +40938,7 @@ and limitations under the License.
 
         /***/
       },
-      /* 155 */
+      /* 156 */
       /*!****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/mergeClasses/mergeClasses.js ***!
   \****************************************************************************/
@@ -40932,7 +40953,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/utils */ 153
+          /*! @material-ui/utils */ 154
         );
 
         function mergeClasses() {
@@ -41004,23 +41025,6 @@ and limitations under the License.
 
         /***/
       },
-      /* 156 */
-      /*!*****************************************************************************!*\
-  !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
-  \*****************************************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
-          /* harmony export */
-        });
-        // We use the same empty object to ref count the styles that don't need a theme object.
-        var noopTheme = {};
-        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = noopTheme;
-
-        /***/
-      },
       /* 157 */
       /*!***************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js ***!
@@ -41088,7 +41092,7 @@ and limitations under the License.
           /*! tiny-warning */ 159
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 108);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 62);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 14);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -43483,7 +43487,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 161
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 156);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 63);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -44875,7 +44879,7 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 109);
+        /* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ 110);
         /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ 158);
 
         /**
@@ -45441,7 +45445,7 @@ and limitations under the License.
           /*! ../colors/green */ 191
         );
         /* harmony import */ var _colorManipulator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./colorManipulator */ 145
+          /*! ./colorManipulator */ 146
         );
 
         var light = {
@@ -47083,7 +47087,7 @@ and limitations under the License.
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 147
+          /*! @material-ui/core/utils */ 148
         );
 
         /**
@@ -47116,7 +47120,7 @@ and limitations under the License.
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 147
+          /*! @material-ui/core/utils */ 148
         );
 
         /**
@@ -47149,7 +47153,7 @@ and limitations under the License.
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 147
+          /*! @material-ui/core/utils */ 148
         );
 
         /**
@@ -47182,7 +47186,7 @@ and limitations under the License.
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _material_ui_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/core/utils */ 147
+          /*! @material-ui/core/utils */ 148
         );
 
         /**
@@ -47226,10 +47230,10 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! @material-ui/utils */ 150
+          /*! @material-ui/utils */ 151
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../styles/withStyles */ 151
+          /*! ../styles/withStyles */ 152
         );
 
         var styles = function styles(theme) {
@@ -47389,19 +47393,19 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! @material-ui/utils */ 150
+          /*! @material-ui/utils */ 151
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ../styles/withStyles */ 151
+          /*! ../styles/withStyles */ 152
         );
         /* harmony import */ var _styles_colorManipulator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ../styles/colorManipulator */ 145
+          /*! ../styles/colorManipulator */ 146
         );
         /* harmony import */ var _ButtonBase__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../ButtonBase */ 211
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../utils/capitalize */ 149
+          /*! ../utils/capitalize */ 150
         );
 
         var styles = function styles(theme) {
@@ -47696,7 +47700,7 @@ and limitations under the License.
           /*! ../utils/deprecatedPropType */ 222
         );
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          /*! ../styles/withStyles */ 151
+          /*! ../styles/withStyles */ 152
         );
         /* harmony import */ var _utils_useIsFocusVisible__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
           /*! ../utils/useIsFocusVisible */ 212
@@ -48585,7 +48589,7 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../styles/withStyles */ 151
+          /*! ../styles/withStyles */ 152
         );
         /* harmony import */ var _Ripple__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Ripple */ 217);
 
@@ -49583,7 +49587,7 @@ and limitations under the License.
           prop_types__WEBPACK_IMPORTED_MODULE_1__
         );
         /* harmony import */ var _chainPropTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chainPropTypes */ 150
+          /*! ./chainPropTypes */ 151
         );
 
         function isClassComponent(elementType) {
@@ -49650,7 +49654,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/styles */ 154
+          /*! @material-ui/styles */ 155
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./defaultTheme */ 181
@@ -49702,7 +49706,7 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
-          /*! ../styles/withStyles */ 151
+          /*! ../styles/withStyles */ 152
         );
         /* harmony import */ var _styles_transitions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! ../styles/transitions */ 203
@@ -49714,7 +49718,7 @@ and limitations under the License.
           /*! ../utils/useEventCallback */ 213
         );
         /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-          /*! ../utils/capitalize */ 149
+          /*! ../utils/capitalize */ 150
         );
         /* harmony import */ var _utils_createChainedFunction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../utils/createChainedFunction */ 235
@@ -51775,7 +51779,7 @@ and limitations under the License.
           prop_types__WEBPACK_IMPORTED_MODULE_1__
         );
         /* harmony import */ var _chainPropTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chainPropTypes */ 150
+          /*! ./chainPropTypes */ 151
         );
 
         function isClassComponent(elementType) {
@@ -51913,11 +51917,11 @@ and limitations under the License.
         );
         /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ 3);
         /* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! ../styles/withStyles */ 151
+          /*! ../styles/withStyles */ 152
         );
         /* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Paper */ 209);
         /* harmony import */ var _styles_colorManipulator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../styles/colorManipulator */ 145
+          /*! ../styles/colorManipulator */ 146
         );
 
         var styles = function styles(theme) {
@@ -52145,16 +52149,16 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 69
+        /*! @grafana/data */ 75
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 70
+        /*! ./components/App */ 76
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-        /*! ./components/AppConfig */ 128
+        /*! ./components/AppConfig */ 129
       );
 
       function loadPluginCss() {
