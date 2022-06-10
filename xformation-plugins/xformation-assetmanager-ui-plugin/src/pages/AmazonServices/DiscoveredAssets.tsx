@@ -93,7 +93,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     let nodeIndex = 1;
     let clusterIndex = 1;
     services.forEach((service: any) => {
-      const { associatedProductEnclave, associatedCluster, serviceNature, associatedProduct, associatedEnv, associatedLandingZone, associatedBusinessService, associatedCommonService } =
+      const { associatedProductEnclave, associatedCluster, serviceNature, associatedProduct, associatedEnv, associatedLandingZone, associatedBusinessService, associatedCommonService, serviceType } =
         service.details;
       if (accountId === associatedLandingZone) {
         const id = service.id;
@@ -144,11 +144,15 @@ export class DiscoveredAssets extends React.Component<any, any>{
           } else {
             associatedServiceName = associatedCommonService;
           }
-          const serviceData = productData[associatedServiceName] || { title: associatedServiceName, services: [] };
+          const serviceData = productData[associatedServiceName] || { title: associatedServiceName, services: [], appData: {} };
           serviceData.services.push({
             id,
             ...service.details
           });
+          if (!serviceData.appData[serviceType]) {
+            serviceData.appData[serviceType] = 0;
+          }
+          serviceData.appData[serviceType] += 1;
           productData[associatedServiceName] = serviceData;
           assiciatedServiceData[associatedProduct] = productData;
           environmentData[serviceNature] = assiciatedServiceData;
@@ -188,11 +192,15 @@ export class DiscoveredAssets extends React.Component<any, any>{
           } else {
             associatedServiceName = associatedCommonService;
           }
-          const serviceData = productData[associatedServiceName] || { title: associatedServiceName, services: [] };
+          const serviceData = productData[associatedServiceName] || { title: associatedServiceName, services: [], appData: {} };
           serviceData.services.push({
             id,
             ...service.details
           });
+          if (!serviceData.appData[serviceType]) {
+            serviceData.appData[serviceType] = 0;
+          }
+          serviceData.appData[serviceType] += 1;
           productData[associatedServiceName] = serviceData;
           assiciatedServiceData[associatedProduct] = productData;
           environmentData[serviceNature] = assiciatedServiceData;
@@ -211,7 +219,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       tableData: treeData,
       filterData
     });
-    // this.getAppDataServices(treeData);
+    this.getAppDataServices(treeData);
   }
 
   convertObjectIntoArray = (obj: any) => {
@@ -252,22 +260,26 @@ export class DiscoveredAssets extends React.Component<any, any>{
           const environmentData = clusterData[clusterKey];
           const environemntKeys = Object.keys(environmentData);
           environemntKeys.forEach((enviornemntKey: any) => {
-            const appDataServices = environmentData[enviornemntKey];
-            const appDataKeys = Object.keys(appDataServices);
-            appDataKeys.forEach((appDataKey: any) => {
-              const commonBusinessServices = appDataServices[appDataKey];
-              const commonBusinessKeys = Object.keys(commonBusinessServices);
-              commonBusinessKeys.forEach((commonBusinessKey: any) => {
-                const productData = commonBusinessServices[commonBusinessKey];
-                const productKeys = Object.keys(productData);
-                productKeys.forEach((productKey: any) => {
-                  if (uniqueProducts.indexOf(productKey) === -1) {
-                    uniqueProducts.push(productKey);
-                  }
-                  servicesLength[nodeKey] = servicesLength[nodeKey] || {};
-                  servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
-                  servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
-                  servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+            const commonBusinessServices = environmentData[enviornemntKey];
+            const commonBusinessKeys = Object.keys(commonBusinessServices);
+            commonBusinessKeys.forEach((commonBusinessKey: any) => {
+              const productData = commonBusinessServices[commonBusinessKey];
+              const productKeys = Object.keys(productData);
+              productKeys.forEach((productKey: any) => {
+                if (uniqueProducts.indexOf(productKey) === -1) {
+                  uniqueProducts.push(productKey);
+                }
+                const serviceDatas = productData[productKey];
+                const serviceDataKeys = Object.keys(serviceDatas);
+                serviceDataKeys.forEach((serviceDataKey: any) => {
+                  const appData = serviceDatas[serviceDataKey].appData;
+                  const appDataKeys = Object.keys(appData);
+                  appDataKeys.forEach((appDataKey: any) => {
+                    servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+                    servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+                    servicesLength[nodeKey][appDataKey] += appData[appDataKey];
+                    servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+                  });
                 });
               });
             });
