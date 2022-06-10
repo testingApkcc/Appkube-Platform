@@ -17,6 +17,8 @@ const SERVICE_MAPPING: any = {
   'Business': 'Business Services',
 };
 
+const GLOBAL_SERVICE = 'Cloud Managed';
+
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
   config: any;
@@ -161,13 +163,13 @@ export class DiscoveredAssets extends React.Component<any, any>{
           node[associatedCluster] = clusterData;
           treeData[associatedProductEnclave] = node;
         } else {
-          const node = treeData['Global Services'] || {};
-          if (!this.nodeMapping['Global Services']) {
-            this.nodeMapping['Global Services'] = 'Global Services';
+          const node = treeData[GLOBAL_SERVICE] || {};
+          if (!this.nodeMapping[GLOBAL_SERVICE]) {
+            this.nodeMapping[GLOBAL_SERVICE] = GLOBAL_SERVICE;
           }
-          filteredNodes['Global Services'] = {
-            value: 'Global Services',
-            label: 'Global Services',
+          filteredNodes[GLOBAL_SERVICE] = {
+            value: GLOBAL_SERVICE,
+            label: GLOBAL_SERVICE,
           };
           node.isGlobalService = true;
           const environmentData = node[associatedEnv] || {};
@@ -205,7 +207,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
           assiciatedServiceData[associatedProduct] = productData;
           environmentData[serviceNature] = assiciatedServiceData;
           node[associatedEnv] = environmentData;
-          treeData['Global Services'] = node;
+          treeData[GLOBAL_SERVICE] = node;
         }
       }
     });
@@ -233,9 +235,9 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const nodeKeys = Object.keys(treeData);
     const servicesLength: any = {};
     nodeKeys.forEach((nodeKey: any) => {
-      if (nodeKey === 'Global Services') {
+      if (nodeKey === GLOBAL_SERVICE) {
         const uniqueProducts: any = [];
-        const environmentData = treeData['Global Services'];
+        const environmentData = treeData[GLOBAL_SERVICE];
         const environemntKeys = Object.keys(environmentData);
         environemntKeys.forEach((enviornemntKey: any) => {
           const commonBusinessServices = environmentData[enviornemntKey];
@@ -328,7 +330,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     this.setState({
       servicesData: data,
       activeNode: environmentKey,
-      labelText: 'Global services',
+      labelText: GLOBAL_SERVICE,
     });
   };
 
@@ -366,11 +368,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
     if (nodes) {
       const filteredNodes = filters['Product Enclave'];
       let keys = Object.keys(nodes);
-      const globalIndex = keys.indexOf('Global Services');
+      const globalIndex = keys.indexOf(GLOBAL_SERVICE);
       if (globalIndex !== -1) {
         //push the global services at last
         keys.splice(globalIndex, 1);
-        keys.push('Global Services');
+        keys.push(GLOBAL_SERVICE);
       }
       for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
