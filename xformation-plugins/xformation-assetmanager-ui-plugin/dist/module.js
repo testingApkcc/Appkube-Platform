@@ -25546,6 +25546,7 @@ object-assign
           Common: 'Common Services',
           Business: 'Business Services',
         };
+        var GLOBAL_SERVICE = 'Cloud Managed';
 
         var DiscoveredAssets =
           /** @class */
@@ -25629,7 +25630,8 @@ object-assign
                     associatedEnv = _a.associatedEnv,
                     associatedLandingZone = _a.associatedLandingZone,
                     associatedBusinessService = _a.associatedBusinessService,
-                    associatedCommonService = _a.associatedCommonService;
+                    associatedCommonService = _a.associatedCommonService,
+                    serviceType = _a.serviceType;
 
                   if (accountId === associatedLandingZone) {
                     var id = service.id;
@@ -25691,6 +25693,7 @@ object-assign
                       var serviceData = productData[associatedServiceName] || {
                         title: associatedServiceName,
                         services: [],
+                        appData: {},
                       };
                       serviceData.services.push(
                         (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)(
@@ -25700,6 +25703,12 @@ object-assign
                           service.details
                         )
                       );
+
+                      if (!serviceData.appData[serviceType]) {
+                        serviceData.appData[serviceType] = 0;
+                      }
+
+                      serviceData.appData[serviceType] += 1;
                       productData[associatedServiceName] = serviceData;
                       assiciatedServiceData[associatedProduct] = productData;
                       environmentData[serviceNature] = assiciatedServiceData; // environmentData[serviceType] = serviceTypeData;
@@ -25708,15 +25717,15 @@ object-assign
                       node[associatedCluster] = clusterData;
                       treeData[associatedProductEnclave] = node;
                     } else {
-                      var node = treeData['Global Services'] || {};
+                      var node = treeData[GLOBAL_SERVICE] || {};
 
-                      if (!_this.nodeMapping['Global Services']) {
-                        _this.nodeMapping['Global Services'] = 'Global Services';
+                      if (!_this.nodeMapping[GLOBAL_SERVICE]) {
+                        _this.nodeMapping[GLOBAL_SERVICE] = GLOBAL_SERVICE;
                       }
 
-                      filteredNodes['Global Services'] = {
-                        value: 'Global Services',
-                        label: 'Global Services',
+                      filteredNodes[GLOBAL_SERVICE] = {
+                        value: GLOBAL_SERVICE,
+                        label: GLOBAL_SERVICE,
                       };
                       node.isGlobalService = true;
                       var environmentData = node[associatedEnv] || {};
@@ -25745,6 +25754,7 @@ object-assign
                       var serviceData = productData[associatedServiceName] || {
                         title: associatedServiceName,
                         services: [],
+                        appData: {},
                       };
                       serviceData.services.push(
                         (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)(
@@ -25754,11 +25764,17 @@ object-assign
                           service.details
                         )
                       );
+
+                      if (!serviceData.appData[serviceType]) {
+                        serviceData.appData[serviceType] = 0;
+                      }
+
+                      serviceData.appData[serviceType] += 1;
                       productData[associatedServiceName] = serviceData;
                       assiciatedServiceData[associatedProduct] = productData;
                       environmentData[serviceNature] = assiciatedServiceData;
                       node[associatedEnv] = environmentData;
-                      treeData['Global Services'] = node;
+                      treeData[GLOBAL_SERVICE] = node;
                     }
                   }
                 });
@@ -25772,7 +25788,9 @@ object-assign
                 _this.setState({
                   tableData: treeData,
                   filterData: filterData,
-                }); // this.getAppDataServices(treeData);
+                });
+
+                _this.getAppDataServices(treeData);
               };
 
               _this.convertObjectIntoArray = function (obj) {
@@ -25786,9 +25804,9 @@ object-assign
                 var nodeKeys = Object.keys(treeData);
                 var servicesLength = {};
                 nodeKeys.forEach(function (nodeKey) {
-                  if (nodeKey === 'Global Services') {
+                  if (nodeKey === GLOBAL_SERVICE) {
                     var uniqueProducts_1 = [];
-                    var environmentData_1 = treeData['Global Services'];
+                    var environmentData_1 = treeData[GLOBAL_SERVICE];
                     var environemntKeys = Object.keys(environmentData_1);
                     environemntKeys.forEach(function (enviornemntKey) {
                       var commonBusinessServices = environmentData_1[enviornemntKey];
@@ -25814,23 +25832,27 @@ object-assign
                       var environmentData = clusterData_1[clusterKey];
                       var environemntKeys = Object.keys(environmentData);
                       environemntKeys.forEach(function (enviornemntKey) {
-                        var appDataServices = environmentData[enviornemntKey];
-                        var appDataKeys = Object.keys(appDataServices);
-                        appDataKeys.forEach(function (appDataKey) {
-                          var commonBusinessServices = appDataServices[appDataKey];
-                          var commonBusinessKeys = Object.keys(commonBusinessServices);
-                          commonBusinessKeys.forEach(function (commonBusinessKey) {
-                            var productData = commonBusinessServices[commonBusinessKey];
-                            var productKeys = Object.keys(productData);
-                            productKeys.forEach(function (productKey) {
-                              if (uniqueProducts_2.indexOf(productKey) === -1) {
-                                uniqueProducts_2.push(productKey);
-                              }
+                        var commonBusinessServices = environmentData[enviornemntKey];
+                        var commonBusinessKeys = Object.keys(commonBusinessServices);
+                        commonBusinessKeys.forEach(function (commonBusinessKey) {
+                          var productData = commonBusinessServices[commonBusinessKey];
+                          var productKeys = Object.keys(productData);
+                          productKeys.forEach(function (productKey) {
+                            if (uniqueProducts_2.indexOf(productKey) === -1) {
+                              uniqueProducts_2.push(productKey);
+                            }
 
-                              servicesLength[nodeKey] = servicesLength[nodeKey] || {};
-                              servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
-                              servicesLength[nodeKey][appDataKey] += productData[productKey].services.length;
-                              servicesLength[nodeKey].uniqueProducts = uniqueProducts_2.length;
+                            var serviceDatas = productData[productKey];
+                            var serviceDataKeys = Object.keys(serviceDatas);
+                            serviceDataKeys.forEach(function (serviceDataKey) {
+                              var appData = serviceDatas[serviceDataKey].appData;
+                              var appDataKeys = Object.keys(appData);
+                              appDataKeys.forEach(function (appDataKey) {
+                                servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+                                servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+                                servicesLength[nodeKey][appDataKey] += appData[appDataKey];
+                                servicesLength[nodeKey].uniqueProducts = uniqueProducts_2.length;
+                              });
                             });
                           });
                         });
@@ -25885,7 +25907,7 @@ object-assign
                 _this.setState({
                   servicesData: data,
                   activeNode: environmentKey,
-                  labelText: 'Global services',
+                  labelText: GLOBAL_SERVICE,
                 });
               };
 
@@ -25930,12 +25952,12 @@ object-assign
                 if (nodes) {
                   var filteredNodes = filters['Product Enclave'];
                   var keys = Object.keys(nodes);
-                  var globalIndex = keys.indexOf('Global Services');
+                  var globalIndex = keys.indexOf(GLOBAL_SERVICE);
 
                   if (globalIndex !== -1) {
                     //push the global services at last
                     keys.splice(globalIndex, 1);
-                    keys.push('Global Services');
+                    keys.push(GLOBAL_SERVICE);
                   }
 
                   var _loop_1 = function (i) {
@@ -34271,6 +34293,12 @@ object-assign
                 );
               };
 
+              _this.onClickCollapseSideView = function () {
+                _this.setState({
+                  showAside: !_this.state.showAside,
+                });
+              };
+
               _this.state = {
                 isAlertOpen: false,
                 severity: null,
@@ -34282,6 +34310,7 @@ object-assign
                 dashboardData: [],
                 isLoading: false,
                 presentView: VIEW_TYPE.NO_DASHBOARDS,
+                showAside: true,
               };
               _this.verifyInputsRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
               _this.enableDashboardRef = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
@@ -34400,7 +34429,8 @@ object-assign
                 viewJson = _a.viewJson,
                 activeDashboard = _a.activeDashboard,
                 presentView = _a.presentView,
-                isLoading = _a.isLoading;
+                isLoading = _a.isLoading,
+                showAside = _a.showAside;
               var activeDB = null;
 
               if (viewJson && viewJson[activeDashboard]) {
@@ -34483,7 +34513,7 @@ object-assign
                       {
                         style: {
                           display: 'flex',
-                          justifyContent: 'flex-end',
+                          justifyContent: 'space-between',
                         },
                       },
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -34491,8 +34521,27 @@ object-assign
                         {
                           style: {
                             marginTop: '10px',
+                            float: 'left',
+                            marginLeft: '10px',
+                            minWidth: '60px',
+                            padding: '4px',
+                            fontSize: '10px',
+                          },
+                          onClick: this.onClickCollapseSideView,
+                          className: 'asset-blue-button m-b-0',
+                        },
+                        showAside ? 'Collapse' : 'Expand'
+                      ),
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'button',
+                        {
+                          style: {
+                            marginTop: '10px',
                             float: 'right',
                             marginRight: '10px',
+                            minWidth: '60px',
+                            padding: '4px',
+                            fontSize: '10px',
                           },
                           onClick: function () {
                             return _this.changeView(VIEW_TYPE.SHOW_WIZARD);
@@ -34507,17 +34556,25 @@ object-assign
                       {
                         className: 'dashboard-view-container',
                       },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'aside',
-                        {
-                          className: 'aside-container',
-                        },
-                        this.renderDashboardList()
-                      ),
+                      showAside
+                        ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'aside',
+                            {
+                              className: 'aside-container',
+                            },
+                            this.renderDashboardList()
+                          )
+                        : react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
+                            null
+                          ),
                       react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                         'div',
                         {
                           className: 'dashboard-view',
+                          style: {
+                            width: showAside ? '80%' : '100%',
+                          },
                         },
                         activeDB &&
                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
