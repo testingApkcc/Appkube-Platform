@@ -31,7 +31,8 @@ export class Monitor extends React.Component<any, any>{
             viewJson: [],
             dashboardData: [],
             isLoading: false,
-            presentView: VIEW_TYPE.NO_DASHBOARDS
+            presentView: VIEW_TYPE.NO_DASHBOARDS,
+            showAside: true,
         };
         this.verifyInputsRef = React.createRef();
         this.enableDashboardRef = React.createRef();
@@ -301,8 +302,14 @@ export class Monitor extends React.Component<any, any>{
         });
     };
 
+    onClickCollapseSideView = () => {
+        this.setState({
+            showAside: !this.state.showAside,
+        });
+    };
+
     render() {
-        const { isAlertOpen, severity, message, iFrameLoaded, viewJson, activeDashboard, presentView, isLoading } = this.state;
+        const { isAlertOpen, severity, message, iFrameLoaded, viewJson, activeDashboard, presentView, isLoading, showAside } = this.state;
         let activeDB = null;
         if (viewJson && viewJson[activeDashboard]) {
             activeDB = viewJson[activeDashboard];
@@ -329,12 +336,16 @@ export class Monitor extends React.Component<any, any>{
                 {
                     presentView === VIEW_TYPE.VIEW_DASHBOARDS &&
                     <>
-                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                            <button style={{ marginTop: "10px", float: "right", marginRight: "10px" }} onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)} className="asset-blue-button m-b-0">Configure</button>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <button style={{ marginTop: "10px", float: "left", marginLeft: "10px", minWidth: "60px", padding: "4px", fontSize: "10px" }} onClick={this.onClickCollapseSideView} className="asset-blue-button m-b-0">{showAside ? 'Collapse' : 'Expand'}</button>
+                            <button style={{ marginTop: "10px", float: "right", marginRight: "10px", minWidth: "60px", padding: "4px", fontSize: "10px" }} onClick={() => this.changeView(VIEW_TYPE.SHOW_WIZARD)} className="asset-blue-button m-b-0">Configure</button>
                         </div>
                         <div className="dashboard-view-container">
-                            <aside className="aside-container">{this.renderDashboardList()}</aside>
-                            <div className="dashboard-view">
+                            {
+                                showAside ?
+                                    <aside className="aside-container">{this.renderDashboardList()}</aside> : <></>
+                            }
+                            <div className="dashboard-view" style={{ width: showAside ? "80%" : "100%" }}>
                                 {activeDB &&
                                     <>
                                         <iframe style={{ display: `${iFrameLoaded ? '' : 'none'}` }} src={`/justdashboard?uid=${activeDB.uid}&slug=${activeDB.slug}`} onLoad={() => { this.setState({ iFrameLoaded: true }) }}></iframe>

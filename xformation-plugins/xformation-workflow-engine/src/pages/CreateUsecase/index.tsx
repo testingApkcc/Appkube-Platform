@@ -152,7 +152,6 @@ export class CreateUsecase extends React.Component<any, any> {
       }
       if (this.id && this.id !== '') {
         // this.props.dispatch(WorkflowAction.editWorkflow(sendData));
-        console.log(sendData)
       } else {
         // this.props.dispatch(WorkflowAction.createNewWorkflow(sendData));
       }
@@ -170,18 +169,17 @@ export class CreateUsecase extends React.Component<any, any> {
   }
   addSubStage = () => {
     const { subStageName, activeIndex, stages } = this.state
-    console.log(subStageName)
 
     if (subStageName) {
-   
+
       if (stages[activeIndex].details.length > 0) {
-        let existName=-1;
-      for(let i=0;i<stages[activeIndex].details.length;i++ ){
-        if (stages[activeIndex].details[i].name===subStageName){
-          existName=1;
+        let existName = -1;
+        for (let i = 0; i < stages[activeIndex].details.length; i++) {
+          if (stages[activeIndex].details[i].name === subStageName) {
+            existName = 1;
+          }
         }
-      }
-        if (existName===-1) {
+        if (existName === -1) {
           let obj = { name: subStageName, ...JSON.parse(JSON.stringify(this.state.subStageDetails)) }
           stages[activeIndex].details.push(obj)
         }
@@ -192,18 +190,24 @@ export class CreateUsecase extends React.Component<any, any> {
       }
     }
 
-    this.setState({ stages, subStageName:'' })
-    console.log(stages)
+    this.setState({ stages, subStageName: '' })
   }
-  removeSubString=(stageIndex:any, subStringIndex:any)=>{
- const {stages}=this.state;
-    this.state.stages[stageIndex].details.splice(subStringIndex,1)
-    console.log(this.state.stages)
-    this.setState({stages})
+  removeSubString = (stageIndex: any, subStringIndex: any) => {
+    const { stages } = this.state;
+    this.state.stages[stageIndex].details.splice(subStringIndex, 1)
+    this.setState({ stages })
+  }
+  handleSubStageData = (e: any, i: any, index: any) => {
+    const { name, value } = e.target
+    const { stages } = this.state;
+    let details = stages[i].details[index];
+    details[name] = value
+    this.setState({ stages })
+
   }
   render() {
     const errorData = this.validateForm(this.state.isSubmitted)
-    const {stages, subStageName } = this.state
+    const { stages, subStageName } = this.state
     return (
       <div className="dashboard-content">
         {/* <div className="basic-details">
@@ -277,13 +281,16 @@ export class CreateUsecase extends React.Component<any, any> {
                           {val.details.map(({ name, assignto, startDate, endDate, comments }: any, index: any) => (
                             <tr>
                               <td>{name}</td>
-                              <td><select name="assignto" id="assignto">
-                                <option value={assignto}>Volvo</option>
+                              <td><select name="assignto" id="assignto" onChange={(e) => this.handleSubStageData(e, i, index)}>
+                                <option value="">--select--</option>
+                                <option value="1">abc</option>
+                                <option value="2">def</option>
+                                <option value="3">xyz</option>
                               </select></td>
-                              <td><input type='date' name="startDate" value={startDate} placeholder='Select' /></td>
-                              <td><input type='date' name="endDate" placeholder='Select' value={endDate} /></td>
-                              <td><input type='comments' name="comments" placeholder='Select' value={comments} /></td>
-                              <td onClick={()=>{this.removeSubString(i, index)}}>Remove Substage</td>
+                              <td><input type='date' name="startDate" value={startDate} placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} /></td>
+                              <td><input type='date' name="endDate" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={endDate} /></td>
+                              <td><input type='comments' name="comments" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={comments} /></td>
+                              <td onClick={() => { this.removeSubString(i, index) }}>Remove Substage</td>
                             </tr>
                           )
                           )}
