@@ -16,11 +16,11 @@ export class Dashboard extends React.Component<any, any> {
 		super(props);
 		this.state = {
 			workflowStatistics: {
-				labels: [ 'Completed', 'Pending', 'In Progress', 'Un Assigned' ],
+				labels: ['Completed', 'Pending', 'In Progress', 'Un Assigned'],
 				datasets: [
 					{
-						data: [ 27, 38, 15, 20 ],
-						backgroundColor: [ '#71A7FE', '#FF4A55', '#FFD55E', '#70DEAE' ]
+						data: [27, 38, 15, 20],
+						backgroundColor: ['#71A7FE', '#FF4A55', '#FFD55E', '#70DEAE']
 					}
 				]
 			},
@@ -49,17 +49,17 @@ export class Dashboard extends React.Component<any, any> {
 			},
 			overViewData: {
 				total: null,
-				labels: [ 'Procurement', 'HRMS', 'EMS', 'Xformation', 'SPM', 'xfo' ],
+				labels: ['Procurement', 'HRMS', 'EMS', 'Xformation', 'SPM', 'xfo'],
 				datasets: [
 					{
-						data: [ 85, 90, 80, 40, 60, 75 ],
+						data: [85, 90, 80, 40, 60, 75],
 						lineTension: 0.2,
-						backgroundColor: [ '#71EAFF' ]
+						backgroundColor: ['#71EAFF']
 					},
 					{
-						data: [ 100, 95, 100, 70, 80, 100 ],
+						data: [100, 95, 100, 70, 80, 100],
 						lineTension: 0.2,
-						backgroundColor: [ '#71A7FE' ]
+						backgroundColor: ['#71A7FE']
 					}
 				]
 			},
@@ -277,10 +277,10 @@ export class Dashboard extends React.Component<any, any> {
 								<div className="project-list">
 									<div className="heading">
 										<div className="row">
-											<div className="col-md-7">
+											<div className="col-md-6">
 												<h5>Project List</h5>
 											</div>
-											<div className="col-md-5">
+											<div className="col-md-6">
 												<ul className="tabs">
 													<li className="active">All Projects</li>
 													<li>Completed</li>
@@ -324,7 +324,7 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={headerIcon} alt="" />
 											</div>
 											<div className="content">
-                      <Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
 												<span>
 													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
 												</span>
@@ -346,7 +346,7 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={headerIcon} alt="" />
 											</div>
 											<div className="content">
-                      <Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
 												<span>
 													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
 												</span>
@@ -368,7 +368,7 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={headerIcon} alt="" />
 											</div>
 											<div className="content">
-                      <Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
 												<span>
 													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
 												</span>
@@ -390,7 +390,7 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={headerIcon} alt="" />
 											</div>
 											<div className="content">
-                      <Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
 												<span>
 													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
 												</span>
@@ -412,7 +412,7 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={headerIcon} alt="" />
 											</div>
 											<div className="content">
-                      <Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
 												<span>
 													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
 												</span>
