@@ -6,7 +6,7 @@ import { PLUGIN_BASE_URL } from '../../constants';
 import { CommonService } from '../_common/common';
 import { Modal, ModalBody, ModalHeader, Button } from 'reactstrap';
 
-export class StorageDetails extends React.Component<any, any> {
+export class StorageViewDetails extends React.Component<any, any> {
 	breadCrumbs: any;
 	constructor(props: any) {
 		let serviceData: any = localStorage.getItem('added-services');

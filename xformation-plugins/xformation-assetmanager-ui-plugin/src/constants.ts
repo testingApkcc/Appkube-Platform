@@ -10,7 +10,8 @@ export enum ROUTES {
   StorageDetails = 'storage-details',
   AccountSetup = 'account-setup',
   DepartmentWiseProducts = 'department-wise-products',
-  DepartmentWiseCharts = 'department-wise-charts'
+  DepartmentWiseCharts = 'department-wise-charts',
+  StorageViewDetails = 'view-storage-details',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
