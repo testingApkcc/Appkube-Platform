@@ -144,6 +144,13 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
+							<div className="plus-icon col-12">
+								<Link to="/a/xformation-workflow-engine/create-new-usecase">
+									<span> Create New UseCase
+										<i className="fa fa-plus" />
+									</span>
+								</Link>
+							</div>
 						</div>
 					</div>
 					<div className="dashbord-top-section">
@@ -439,10 +446,10 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={resourcesUserImg} alt="" />
 											</div>
 											<Link className="content" to="ResourceWiseViewAllTasks/10">
-											<div >
-												<h3>Angela Moss</h3>
-												<p>Project - Xformation</p>
-											</div></Link>
+												<div >
+													<h3>Angela Moss</h3>
+													<p>Project - Xformation</p>
+												</div></Link>
 											<div className="plus-icon">
 												<span>
 													<i className="fa fa-plus" />
@@ -454,10 +461,10 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={resourcesUserImg} alt="" />
 											</div>
 											<Link className="content" to="ResourceWiseViewAllTasks/11">
-											<div >
-												<h3>Angela Moss</h3>
-												<p>Project - Xformation</p>
-											</div>
+												<div >
+													<h3>Angela Moss</h3>
+													<p>Project - Xformation</p>
+												</div>
 											</Link>
 											<div className="plus-icon">
 												<span>
@@ -470,10 +477,10 @@ export class Dashboard extends React.Component<any, any> {
 												<img src={resourcesUserImg} alt="" />
 											</div>
 											<Link className="content" to="ResourceWiseViewAllTasks/13">
-											<div >
-												<h3>Angela Moss</h3>
-												<p>Project - Xformation</p>
-											</div>
+												<div >
+													<h3>Angela Moss</h3>
+													<p>Project - Xformation</p>
+												</div>
 											</Link>
 											<div className="plus-icon">
 												<span>
@@ -485,11 +492,11 @@ export class Dashboard extends React.Component<any, any> {
 											<div className="image">
 												<img src={resourcesUserImg} alt="" />
 											</div>
-											<Link  className="content" to="ResourceWiseViewAllTasks/16">
-											<div>
-												<h3>Angela Moss</h3>
-												<p>Project - Xformation</p>
-											</div>
+											<Link className="content" to="ResourceWiseViewAllTasks/16">
+												<div>
+													<h3>Angela Moss</h3>
+													<p>Project - Xformation</p>
+												</div>
 											</Link>
 											<div className="plus-icon">
 												<span>
@@ -501,11 +508,11 @@ export class Dashboard extends React.Component<any, any> {
 											<div className="image">
 												<img src={resourcesUserImg} alt="" />
 											</div>
-											<Link  className="content" to="ResourceWiseViewAllTasks/10">
-											<div >
-												<h3>Angela Moss</h3>
-												<p>Project - Xformation</p>
-											</div>
+											<Link className="content" to="ResourceWiseViewAllTasks/10">
+												<div >
+													<h3>Angela Moss</h3>
+													<p>Project - Xformation</p>
+												</div>
 											</Link>
 											<div className="plus-icon">
 												<span>
