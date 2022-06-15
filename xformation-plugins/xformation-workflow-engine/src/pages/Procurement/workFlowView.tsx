@@ -667,8 +667,8 @@ export class WorkFlowView extends React.Component<any, any> {
 				</Link> */}
 				</div>
 				<div className="workflow-data">{this.displayUsecase()}</div>
-				<div className="workflow-stages">
-					<table>
+				<div className="overflow-view-table">
+					<table className="table">
 						<thead>
 							<tr>
 								<td>Stages</td>
