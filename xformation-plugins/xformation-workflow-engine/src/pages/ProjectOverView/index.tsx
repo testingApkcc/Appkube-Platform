@@ -1,0 +1,240 @@
+// import { values } from 'lodash';
+import * as React from 'react';
+
+export class ProjectOverView extends React.Component<any, any> {
+  id: any;
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      subStageDetails: { "assignto": '', "startDate": '', "endDate": '', "comments": '' },
+      stages: [
+        { 'name': 'Requirements', 'description': '', 'assignedTo': '', "details": [] },
+        { 'name': 'Mock Development', 'description': '', 'assignedTo': '', "details": [] },
+        { 'name': 'Actual Development', 'description': '', 'assignedTo': '', "details": [] },
+        { 'name': 'CI/CD/TEST', 'description': '', 'assignedTo': '', "details": [] },
+        { 'name': 'Stage / Release', 'description': '', 'assignedTo': '', "details": [] },
+        { 'name': 'Publish/Operate', 'description': '', 'assignedTo': '', "details": [] }
+      ],
+      usecase: { name: '' },
+      isSubmitted: false,
+      subStageName: '',
+      activeIndex: -1,
+    }
+    this.id = 10;
+  }
+
+  handleStateChange = (e: any) => {
+    const { name, value } = e.target;
+    const { usecase } = this.state;
+    this.setState({ usecase: { ...usecase, [name]: value } });
+  }
+
+  handleStageDetail = (e: any, index: any) => {
+    const { name, value } = e.target;
+    const { stages } = this.state;
+    stages[index] = {
+      ...stages[index],
+      [name]: value
+    };
+    stages({ stages: JSON.parse(JSON.stringify(stages)) });
+  }
+
+  addDetails = (index: any) => {
+    let { activeIndex } = this.state;
+    if (index === activeIndex) {
+      activeIndex = -1
+    }
+    else {
+      activeIndex = index;
+    }
+
+    this.setState({ activeIndex })
+  }
+
+  validateForm = (submitted: any) => {
+    const { usecase, stages } = this.state
+    const validObj = {
+      isValid: true,
+      message: ""
+    };
+    let isValid = true;
+    const retData = {
+      name: validObj,
+      description: validObj,
+      assignTo: validObj,
+      stageDetail: validObj,
+      isValid
+    };
+    if (submitted) {
+      if (!usecase.name) {
+        retData.name = {
+          isValid: false,
+          message: "Name is required"
+        };
+        isValid = false;
+      }
+      if (!usecase.description) {
+        retData.description = {
+          isValid: false,
+          message: "Description is required"
+        };
+        isValid = false;
+      }
+      if (!usecase.assignTo) {
+        retData.assignTo = {
+          isValid: false,
+          message: "Assig to is required"
+        };
+        isValid = false;
+      }
+      if (stages && stages.length > 0) {
+        for (let i = 0; i < stages.length; i++) {
+          if (!stages[i].description || !stages[i].assignedTo || !stages[i].name) {
+            retData.stageDetail = {
+              isValid: false,
+              message: "Stage Detail is required"
+            };
+            isValid = false;
+          }
+        }
+      }
+    }
+    retData.isValid = isValid;
+    return retData;
+  }
+
+  submitWorkflow = () => {
+    this.setState({ isSubmitted: true })
+  }
+
+  addMoreworkflowStage = () => {
+    let { stages } = this.state;
+    this.setState({ stages: [...stages, { 'name': '', 'description': '', 'assignedTo': '' }] });
+
+  }
+  handleSubStageName = (index: any, e: any) => {
+    const { value } = e.target;
+    this.setState({ subStageName: value });
+  }
+  addSubStage = () => {
+    const { subStageName, activeIndex, stages } = this.state
+
+    if (subStageName) {
+
+      if (stages[activeIndex].details.length > 0) {
+        let existName = -1;
+        for (let i = 0; i < stages[activeIndex].details.length; i++) {
+          if (stages[activeIndex].details[i].name === subStageName) {
+            existName = 1;
+          }
+        }
+        if (existName === -1) {
+          let obj = { name: subStageName, ...JSON.parse(JSON.stringify(this.state.subStageDetails)) }
+          stages[activeIndex].details.push(obj)
+        }
+      }
+      else {
+        let obj = { name: subStageName, ...JSON.parse(JSON.stringify(this.state.subStageDetails)) }
+        stages[activeIndex].details.push(obj)
+      }
+    }
+
+    this.setState({ stages, subStageName: '' })
+  }
+  removeSubString = (stageIndex: any, subStringIndex: any) => {
+    const { stages } = this.state;
+    this.state.stages[stageIndex].details.splice(subStringIndex, 1)
+    this.setState({ stages })
+  }
+  handleSubStageData = (e: any, i: any, index: any) => {
+    const { name, value } = e.target
+    const { stages } = this.state;
+    let details = stages[i].details[index];
+    details[name] = value
+    this.setState({ stages })
+
+  }
+  render() {
+    const errorData = this.validateForm(this.state.isSubmitted)
+    const { stages, subStageName } = this.state
+    return (
+      <div className="dashboard-content">
+        <div className="workflow-detail">
+          <h5>Workflow Stage Detail</h5>
+        </div>
+        {errorData && errorData.stageDetail && <span className='error'>{errorData.stageDetail.message}</span>}
+        {stages && stages.length > 0 &&
+          stages.map((val: any, i: any) => {
+            return (
+              <div className="add-workflow-list">
+                <span>{i + 1}</span>
+                <div className="workflow-type">
+                  <input className="form-control" type="text" name="name" placeholder="Enter your workflow type" value={val.name} onChange={(e) => this.handleStageDetail(e, i)} />
+                </div>
+                <div className="description">
+                  <label>Description</label>
+                  <textarea className="form-control" rows={3} name="description" placeholder="describe task and checklist to be followed at this stage" value={val.description} onChange={(e) => this.handleStageDetail(e, i)} />
+                </div>
+                <div className="description">
+                  <label>Assign To</label>
+                  <select name="assignedTo" className="assign" value={val.assignedTo} onChange={(e) => this.handleStageDetail(e, i)}>
+                    <option value="">--select--</option>
+                    <option value="1">abc</option>
+                    <option value="2">def</option>
+                    <option value="3">xyz</option>
+                  </select>
+                </div>
+                <a onClick={(e) => this.addDetails(i)}>Add New Substage </a>
+                {this.state.activeIndex === i &&
+                  <div>
+                    <input type='text' name="subStageName" value={subStageName} onChange={(e) => this.handleSubStageName(i, e)} />
+                    <div onClick={this.addSubStage}>+</div>
+                  </div>}
+                <div>
+                  {val.details && val.details.length > 0 &&
+                    <div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Assign to</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Comments</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {val.details.map(({ name, assignto, startDate, endDate, comments }: any, index: any) => (
+                            <tr>
+                              <td>{name}</td>
+                              <td><select name="assignto" id="assignto" onChange={(e) => this.handleSubStageData(e, i, index)}>
+                                <option value="">--select--</option>
+                                <option value="1">abc</option>
+                                <option value="2">def</option>
+                                <option value="3">xyz</option>
+                              </select></td>
+                              <td><input type='date' name="startDate" value={startDate} placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} /></td>
+                              <td><input type='date' name="endDate" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={endDate} /></td>
+                              <td><input type='comments' name="comments" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={comments} /></td>
+                              <td onClick={() => { this.removeSubString(i, index) }}>Remove Substage</td>
+                            </tr>
+                          )
+                          )}
+                        </tbody>
+                      </table>
+                    </div>}
+                </div>
+              </div>
+            )
+          })
+        }
+
+        {stages && stages.length > 0 &&
+          <div className="basic-details-btn">
+            <button className="btn btn-primary" onClick={this.submitWorkflow}>Save</button>
+          </div>
+        }
+      </div>
+    )
+  }
+}
