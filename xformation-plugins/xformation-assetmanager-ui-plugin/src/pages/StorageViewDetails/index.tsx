@@ -4,7 +4,6 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { CommonService } from '../_common/common';
-import { Button } from 'reactstrap';
 
 export class StorageViewDetails extends React.Component<any, any> {
 	breadCrumbs: any;
@@ -145,11 +144,15 @@ export class StorageViewDetails extends React.Component<any, any> {
 					</div>
 					<div className="common-container">
 						<div className="service-account-container">
-							<div className="account-tabs">
-								<ul>{this.displayTabs()}</ul>
-							</div>
-							<div>
-								<Button onClick={this.saveEnvironmentView}>Save view</Button>
+							<div className="d-flex" style={{ width: '100%', justifyContent: 'space-between' }}>
+								<div className="account-tabs">
+									<ul>{this.displayTabs()}</ul>
+								</div>
+								<div className="float-right">
+									<button className="asset-blue-button" onClick={this.saveEnvironmentView}>
+										Save view
+									</button>
+								</div>
 							</div>
 							{serviceDetails &&
 							serviceDetails.length > 0 && (

@@ -166,11 +166,13 @@ export class StorageDetails extends React.Component<any, any> {
 					</div>
 					<div className="common-container">
 						<div className="service-account-container">
-							<div className="account-tabs">
-								<ul>{this.displayTabs()}</ul>
-							</div>
-							<div>
-								<Button onClick={this.openViewModal}>Save view</Button>
+							<div className='d-flex' style={{ width: '100%', justifyContent: 'space-between' }}>
+								<div className="account-tabs">
+									<ul>{this.displayTabs()}</ul>
+								</div>
+								<div className="float-right">
+									<button className='asset-blue-button' onClick={this.openViewModal}>Save view</button>
+								</div>
 							</div>
 							<div className="webservice-container">
 								<Node
@@ -179,6 +181,7 @@ export class StorageDetails extends React.Component<any, any> {
 									{...this.props}
 								/>
 							</div>
+							
 						</div>
 					</div>
 				</div>
