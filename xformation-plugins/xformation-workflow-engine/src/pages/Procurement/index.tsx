@@ -37,11 +37,11 @@ export class ProcurementDetail extends React.Component<any, any> {
   render() {
     const { activeTab } = this.state;
     return (
-      <div className="owrkflow-project-wise-container">
+      <div className="owrkflow-procument-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="Usecase 1" />
-        <div className="project-wise-page-container">
-          <div className="project-wise-page-headin">
-            <div className="row">
+        <div className="procument-page-container">
+          <div className="project-wise-page-heading">
+            <div className="row d-flex align-items-center justify-content-center">
               <div className="col-lg-10">
                 <div className="heading-content-left">
                   <div className="heading-icon"><img src={headerIcon} alt="" /></div>
@@ -53,13 +53,13 @@ export class ProcurementDetail extends React.Component<any, any> {
               </div>
               <div className="col-lg-2">
                 <div className="heading-content-right">
-                  <button >Project Overview</button>
+                  <button type="button" className="btn-primary pro-overview-btn">Project Overview</button>
                 </div>
               </div>
             </div>
           </div>
-          <div >
-            <ul className="row">
+          <div className="procurement-details">
+            <ul>
               {
                 this.stepper.map(({ title, key }: any, index: any) => {
                   return (
@@ -69,7 +69,7 @@ export class ProcurementDetail extends React.Component<any, any> {
               }
             </ul>
           </div>
-          <div>
+          <div className="tebs-inner-content">
             {
               this.stepper.map(({ key, component }: any, index: any) => {
                 return (

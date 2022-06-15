@@ -1,3 +1,169 @@
+.owrkflow-procument-container {
+    display: block;
+    width: 100%;
+
+    .procument-page-container {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 30px;
+        padding-bottom: 15px;
+
+        .project-wise-page-heading {
+            margin-bottom: 50px;
+
+            .heading-content-left {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .heading-content {
+                    margin-left: 15px;
+
+                    h3 {
+                        font-size: 18px;
+                        line-height: 22px;
+                        font-weight: 500;
+                        color: #202020;
+                        margin: 0;
+                    }
+
+                    span {
+                        font-size: 14px;
+                        line-height: 18px;
+                        font-weight: 500;
+                        color: #202020;
+                    }
+                }
+            }
+
+            .heading-content-right {
+                .pro-overview-btn {
+                    background: #3B7CFF;
+                    color: #F9FAFC;
+                    border: none;
+                    padding: 10px 15px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 20px;
+                    border-radius: 3px;
+                    box-shadow: 0px 2px 2px #8392A71A;
+                }
+            }
+        }
+
+        .procurement-details {
+            position: relative;
+            z-index: 1;
+
+            ul {
+                display: block;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    cursor: pointer;
+                    display: inline-block;
+                    list-style: none;
+                    padding: 10px 20px;
+                    margin-right: 2px;
+                    border: 1px solid #707070;
+                    box-shadow: 0px 1px 2px #00000029;
+                    background-color: #ffffff;
+
+                    &.active {
+                        border-bottom: none;
+                        box-shadow: none;
+                        padding-bottom: 15px;
+                    }
+                }
+
+
+            }
+        }
+
+        .tebs-inner-content {
+            margin-top: -2px;
+            border: 1px solid #707070;
+            padding: 20px 30px;
+        }
+
+        .project-wise-table {
+            padding-top: 30px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            .table {
+                .thead {
+                    width: 100%;
+                    display: flex;
+                    border-bottom: 1px solid #e6e6e6;
+
+                    .th {
+                        width: 100%;
+                        padding: 10px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 20px;
+                        color: #414d55;
+                        margin-bottom: 8px;
+                        text-align: center;
+                        border-right: 1px solid #e6e6e6;
+
+                        &:last-child {
+                            border-right: none;
+                        }
+                    }
+
+                }
+
+                .tbody {
+                    .tr {
+                        width: 100%;
+                        display: flex;
+                        margin-top: 8px;
+
+                        .td {
+                            width: 100%;
+                            padding: 10px;
+                            font-size: 14px;
+                            font-weight: 500;
+                            line-height: 20px;
+                            color: #2662f0;
+                            margin-bottom: 8px;
+                            text-align: center;
+                            border-right: 1px solid #e6e6e6;
+
+                            a {
+                                color: #2662f0;
+                                font-size: 12px;
+                                font-weight: 600;
+                            }
+
+                            &:last-child {
+                                border-right: none;
+                            }
+
+                            i {
+                                font-size: 18px;
+
+                                &.green {
+                                    color: #57d25f;
+                                }
+
+                                &.orange {
+                                    color: #eea515;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
 .workflow-content {
     .workflow-stage {
         display: flex;
