@@ -10,6 +10,7 @@ export enum ROUTES {
   ProcurementDetail = 'procurement-detail/:id',
   MatrixView = 'matrixView',
   CreateNewUsecase = 'create-new-usecase',
+  ProjectOverView = 'project-overview',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';

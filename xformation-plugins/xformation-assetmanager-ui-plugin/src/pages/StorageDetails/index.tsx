@@ -192,11 +192,11 @@ export class StorageDetails extends React.Component<any, any> {
 							<span aria-hidden="true">×</span>
 						</button>
 					</ModalHeader>
-					<ModalBody style={{ height: 'calc(40vh - 40px)', overflowY: 'auto', overflowX: 'hidden' }}>
+					<ModalBody style={{ height: 'calc(25vh - 25px)', overflowY: 'auto', overflowX: 'hidden' }}>
 						<div className="d-block width-100">
 							<div className="form-group">
 								<label htmlFor="viewName">View Name</label>
-								<input type="text" name="viewName" value={viewName} onChange={this.handleStateChange} />
+								<input type="text" name="viewName" className='input-group-text' value={viewName} onChange={this.handleStateChange} />
 								<span>{errorData.viewName.message}</span>
 							</div>
 							<div className="d-block text-right">

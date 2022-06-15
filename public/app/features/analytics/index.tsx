@@ -44,7 +44,7 @@ class Analytics extends React.Component<any, any> {
           renderCallback: (value: any, view: any) => {
             return (
               <td>
-                <div style={{ color: '#0099ff', cursor: 'pointer' }} onClick={() => this.onClickView(view)}>
+                <div style={{ color: '#0099ff', cursor: 'pointer' }} onClick={() => this.editDashbord(view)}>
                   {value}
                 </div>
               </td>
@@ -70,9 +70,9 @@ class Analytics extends React.Component<any, any> {
             return (
               <td>
                 <div className="d-inline-block">
-                  <button className="btn btn-link" onClick={() => this.editDashbord(viewObj)}>
+                  {/* <button className="btn btn-link" onClick={() => this.editDashbord(viewObj)}>
                     <i className="fa fa-edit" />
-                  </button>
+                  </button> */}
                   <button className="btn btn-link" onClick={() => this.onClickDelete(viewObj)}>
                     <i className="fa fa-trash" />
                   </button>
@@ -99,7 +99,7 @@ class Analytics extends React.Component<any, any> {
 
   editDashbord = (viewObj: any) => {
     locationService.push(
-      `/a/xformation-assetmanager-ui-plugin/view-storage-details?accountId=${viewObj.accountId}?viewId=${viewObj.id}`
+      `/a/xformation-assetmanager-ui-plugin/view-storage-details?accountId=${viewObj.accountId}&&viewId=${viewObj.id}`
     );
   };
 
@@ -182,9 +182,9 @@ class Analytics extends React.Component<any, any> {
     this.opencreateNewViewRef.current.toggle();
   };
 
-  onClickView = (view: any) => {
-    locationService.push(`/analytics/view?id=${view.id}`);
-  };
+  // onClickView = (view: any) => {
+  //   locationService.push(`/analytics/view?id=${view.id}`);
+  // };
 
   render() {
     const breadCrumbs = this.breadCrumbs;

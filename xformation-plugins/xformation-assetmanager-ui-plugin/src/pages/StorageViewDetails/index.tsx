@@ -41,7 +41,7 @@ export class StorageViewDetails extends React.Component<any, any> {
 
 	componentDidMount() {
 		let serviceData: any = localStorage.getItem('viewData');
-		const { viewId } = this.state;
+		const { viewId, serviceDetails } = this.state;
 		let servicedetail = [];
 		let activeId: any = 0;
 		if (serviceData) {
@@ -55,7 +55,8 @@ export class StorageViewDetails extends React.Component<any, any> {
 			}
 			this.setState({
 				serviceDetails: servicedetail,
-				activeId: activeId
+				activeId: activeId,
+				activeTab: serviceDetails.length > 0 ? serviceDetails.length - 1 : 0,
 			});
 		}
 	}
@@ -120,6 +121,7 @@ export class StorageViewDetails extends React.Component<any, any> {
 
 	render() {
 		const { activeTab, serviceDetails } = this.state;
+		console.log(activeTab);
 		const accountId = CommonService.getParameterByName('accountId', window.location.href);
 		return (
 			<div className="asset-container">
@@ -158,7 +160,7 @@ export class StorageViewDetails extends React.Component<any, any> {
 							serviceDetails.length > 0 && (
 								<div className="webservice-container">
 									<Node
-										key={serviceDetails[activeTab].id}
+										// key={serviceDetails[activeTab].id}
 										serviceData={serviceDetails[activeTab]}
 										{...this.props}
 									/>
