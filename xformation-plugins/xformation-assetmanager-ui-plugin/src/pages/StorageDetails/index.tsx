@@ -4,7 +4,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { CommonService } from '../_common/common';
-import { Modal, ModalBody, ModalHeader, Button } from 'reactstrap';
+import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 
 export class StorageDetails extends React.Component<any, any> {
 	breadCrumbs: any;
