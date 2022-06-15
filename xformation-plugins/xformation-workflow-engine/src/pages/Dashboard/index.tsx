@@ -438,10 +438,11 @@ export class Dashboard extends React.Component<any, any> {
 											<div className="image">
 												<img src={resourcesUserImg} alt="" />
 											</div>
-											<div className="content">
+											<Link className="content" to="ResourceWiseViewAllTasks/10">
+											<div >
 												<h3>Angela Moss</h3>
 												<p>Project - Xformation</p>
-											</div>
+											</div></Link>
 											<div className="plus-icon">
 												<span>
 													<i className="fa fa-plus" />
@@ -452,10 +453,12 @@ export class Dashboard extends React.Component<any, any> {
 											<div className="image">
 												<img src={resourcesUserImg} alt="" />
 											</div>
-											<div className="content">
+											<Link className="content" to="ResourceWiseViewAllTasks/11">
+											<div >
 												<h3>Angela Moss</h3>
 												<p>Project - Xformation</p>
 											</div>
+											</Link>
 											<div className="plus-icon">
 												<span>
 													<i className="fa fa-plus" />
@@ -466,10 +469,12 @@ export class Dashboard extends React.Component<any, any> {
 											<div className="image">
 												<img src={resourcesUserImg} alt="" />
 											</div>
-											<div className="content">
+											<Link className="content" to="ResourceWiseViewAllTasks/13">
+											<div >
 												<h3>Angela Moss</h3>
 												<p>Project - Xformation</p>
 											</div>
+											</Link>
 											<div className="plus-icon">
 												<span>
 													<i className="fa fa-plus" />
@@ -480,10 +485,12 @@ export class Dashboard extends React.Component<any, any> {
 											<div className="image">
 												<img src={resourcesUserImg} alt="" />
 											</div>
-											<div className="content">
+											<Link  className="content" to="ResourceWiseViewAllTasks/16">
+											<div>
 												<h3>Angela Moss</h3>
 												<p>Project - Xformation</p>
 											</div>
+											</Link>
 											<div className="plus-icon">
 												<span>
 													<i className="fa fa-plus" />
@@ -494,10 +501,12 @@ export class Dashboard extends React.Component<any, any> {
 											<div className="image">
 												<img src={resourcesUserImg} alt="" />
 											</div>
-											<div className="content">
+											<Link  className="content" to="ResourceWiseViewAllTasks/10">
+											<div >
 												<h3>Angela Moss</h3>
 												<p>Project - Xformation</p>
 											</div>
+											</Link>
 											<div className="plus-icon">
 												<span>
 													<i className="fa fa-plus" />

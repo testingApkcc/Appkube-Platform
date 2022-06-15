@@ -141,15 +141,15 @@ export class CreateUsecase extends React.Component<any, any> {
   }
 
   submitWorkflow = () => {
-    const { usecase, stages } = this.state;
+    // const { usecase, stages } = this.state;
     this.setState({ isSubmitted: true })
     const errorData = this.validateForm(true);
     if (errorData.isValid) {
-      let sendData = {
-        ...usecase,
-        stages,
-        id: this.id
-      }
+      // let sendData = {
+      //   ...usecase,
+      //   stages,
+      //   id: this.id
+      // }
       if (this.id && this.id !== '') {
         // this.props.dispatch(WorkflowAction.editWorkflow(sendData));
       } else {

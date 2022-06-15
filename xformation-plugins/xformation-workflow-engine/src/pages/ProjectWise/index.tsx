@@ -54,7 +54,7 @@ export class ProjectWise extends React.Component<any, any> {
               </div>
               <div className="col-lg-2">
                 <div className="heading-content-right">
-                  <span><i className="fa fa-times" aria-hidden="true"></i></span>
+                  <span><Link to="/a/xformation-workflow-engine/dashboard"><i className="fa fa-times" aria-hidden="true"></i></Link></span>
                 </div>
               </div>
             </div>
