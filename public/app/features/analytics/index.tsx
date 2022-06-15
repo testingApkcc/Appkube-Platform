@@ -98,7 +98,9 @@ class Analytics extends React.Component<any, any> {
   };
 
   editDashbord = (viewObj: any) => {
-    locationService.push(`/a/xformation-assetmanager-ui-plugin/view-storage-details?viewId=${viewObj.id}`);
+    locationService.push(
+      `/a/xformation-assetmanager-ui-plugin/view-storage-details?accountId=${viewObj.accountId}?viewId=${viewObj.id}`
+    );
   };
 
   deleteView = () => {

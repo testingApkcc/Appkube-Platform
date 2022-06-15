@@ -10,10 +10,10 @@ export class StorageDetails extends React.Component<any, any> {
 	breadCrumbs: any;
 	constructor(props: any) {
 		let serviceData: any = localStorage.getItem('added-services');
+		const accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (serviceData) {
 			serviceData = JSON.parse(serviceData);
 		} else {
-			const accountId = CommonService.getParameterByName('accountId', window.location.href);
 			props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
 		}
 		super(props);
@@ -22,7 +22,8 @@ export class StorageDetails extends React.Component<any, any> {
 			serviceDetails: serviceData,
 			openView: false,
 			viewName: '',
-			isSubmitted: false
+			isSubmitted: false,
+			accountId: accountId
 		};
 		this.breadCrumbs = [
 			{
@@ -80,7 +81,7 @@ export class StorageDetails extends React.Component<any, any> {
 	};
 
 	saveEnvironmentView = () => {
-		const { serviceDetails, viewName } = this.state;
+		const { serviceDetails, viewName, accountId } = this.state;
 		this.setState({ isSubmitted: true });
 		const errorData = this.validate(true);
 		if (errorData.isValid) {
@@ -93,7 +94,7 @@ export class StorageDetails extends React.Component<any, any> {
 				for (var i = 0; i < 5; i++) {
 					result += characters.charAt(Math.floor(Math.random() * charactersLength));
 				}
-				viewdata.push({ viewName: viewName, services: serviceDetails, id: result });
+				viewdata.push({ viewName: viewName, services: serviceDetails, id: result, accountId: accountId });
 				localStorage.setItem('viewData', JSON.stringify(viewdata));
 				this.openViewModal();
 			}
@@ -165,11 +166,13 @@ export class StorageDetails extends React.Component<any, any> {
 					</div>
 					<div className="common-container">
 						<div className="service-account-container">
-							<div className="account-tabs">
-								<ul>{this.displayTabs()}</ul>
-							</div>
-							<div>
-								<Button onClick={this.openViewModal}>Save view</Button>
+							<div className='d-flex' style={{ width: '100%', justifyContent: 'space-between' }}>
+								<div className="account-tabs">
+									<ul>{this.displayTabs()}</ul>
+								</div>
+								<div className="float-right">
+									<button className='asset-blue-button' onClick={this.openViewModal}>Save view</button>
+								</div>
 							</div>
 							<div className="webservice-container">
 								<Node
@@ -178,6 +181,7 @@ export class StorageDetails extends React.Component<any, any> {
 									{...this.props}
 								/>
 							</div>
+							
 						</div>
 					</div>
 				</div>
