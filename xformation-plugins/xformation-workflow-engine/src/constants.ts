@@ -6,7 +6,7 @@ export const PLUGIN_BASE_URL = `/a/${pluginJson.id}`;
 export enum ROUTES {
   Dashboard = 'dashboard',
   ProjectWise = 'project-wise',
-  ResourceWiseViewAllTasks = 'ResourceWiseViewAllTasks',
+  ResourceWiseViewAllTasks = 'ResourceWiseViewAllTasks/:id',
   ProcurementDetail = 'procurement-detail/:id',
   MatrixView = 'matrixView',
   CreateNewUsecase = 'create-new-usecase',
