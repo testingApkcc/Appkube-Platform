@@ -4,12 +4,12 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { Node } from './Node';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { CommonService } from '../_common/common';
-import { Modal, ModalBody, ModalHeader, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 export class StorageViewDetails extends React.Component<any, any> {
 	breadCrumbs: any;
 	constructor(props: any) {
-		let serviceData: any = localStorage.getItem('added-services');
+		let serviceData: any = localStorage.getItem('viewData');
 		if (serviceData) {
 			serviceData = JSON.parse(serviceData);
 		} else {
@@ -17,12 +17,16 @@ export class StorageViewDetails extends React.Component<any, any> {
 			props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
 		}
 		super(props);
+		let viewid = CommonService.getParameterByName('viewId', window.location.href);
 		this.state = {
 			activeTab: serviceData.length - 1,
-			serviceDetails: serviceData,
+			serviceDetails: [],
 			openView: false,
 			viewName: '',
-			isSubmitted: false
+			isSubmitted: false,
+			viewId: viewid,
+			activeId: 0,
+			serviceList: serviceData
 		};
 		this.breadCrumbs = [
 			{
@@ -34,7 +38,27 @@ export class StorageViewDetails extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
-		console.log(serviceData);
+	}
+
+	componentDidMount() {
+		let serviceData: any = localStorage.getItem('viewData');
+		const { viewId } = this.state;
+		let servicedetail = [];
+		let activeId: any = 0;
+		if (serviceData) {
+			serviceData = JSON.parse(serviceData);
+			for (let i = 0; i < serviceData.length; i++) {
+				console.log(serviceData[i]);
+				if (serviceData[i].id == viewId) {
+					servicedetail = serviceData[i].services;
+					activeId = i;
+				}
+			}
+			this.setState({
+				serviceDetails: servicedetail,
+				activeId: activeId
+			});
+		}
 	}
 
 	setActiveTab = (activeTab: any) => {
@@ -46,7 +70,7 @@ export class StorageViewDetails extends React.Component<any, any> {
 	displayTabs = () => {
 		const { activeTab, serviceDetails } = this.state;
 		let retData = [];
-		if (serviceDetails) {
+		if (serviceDetails && serviceDetails.length > 0) {
 			for (let i = 0; i < serviceDetails.length; i++) {
 				let node = serviceDetails[i];
 				retData.push(
@@ -64,84 +88,40 @@ export class StorageViewDetails extends React.Component<any, any> {
 
 	removeTab = (index: any, e: any) => {
 		e.stopPropagation();
-		const { serviceDetails, activeTab } = this.state;
-		if (serviceDetails.length > 1) {
-			serviceDetails.splice(index, 1);
-			this.setState({
-				serviceDetails,
-				activeTab: serviceDetails[activeTab] ? activeTab : serviceDetails.length - 1
-			});
-			localStorage.setItem('added-services', JSON.stringify(serviceDetails));
-		} else {
-			localStorage.setItem('added-services', '');
-			const accountId = CommonService.getParameterByName('accountId', window.location.href);
-			this.props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+		const { serviceDetails, activeTab, activeId } = this.state;
+		let serviceData: any = localStorage.getItem('viewData');
+		if (serviceData) {
+			serviceData = JSON.parse(serviceData);
+			if (serviceDetails.length > 1) {
+				serviceDetails.splice(index, 1);
+				this.setState({
+					serviceDetails,
+					activeTab: serviceDetails[activeTab] ? activeTab : serviceDetails.length - 1
+				});
+				serviceData[activeId].services = serviceDetails;
+				this.setState({
+					serviceList: serviceData
+				});
+			} else {
+				serviceData.splice(activeId, 1);
+				this.setState({
+					serviceList: serviceData
+				});
+				const accountId = CommonService.getParameterByName('accountId', window.location.href);
+				this.props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+			}
 		}
 	};
 
 	saveEnvironmentView = () => {
-		const { serviceDetails, viewName } = this.state;
-		this.setState({ isSubmitted: true });
-		const errorData = this.validate(true);
-		if (errorData.isValid) {
-			if (serviceDetails && serviceDetails.length > 0) {
-				let data: any = localStorage.getItem('viewData');
-				let viewdata = JSON.parse(data) || [];
-				let result = '';
-				const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-				const charactersLength = characters.length;
-				for (var i = 0; i < 5; i++) {
-					result += characters.charAt(Math.floor(Math.random() * charactersLength));
-				}
-				viewdata.push({ viewName: viewName, services: serviceDetails, id: result });
-				localStorage.setItem('viewData', JSON.stringify(viewdata));
-				this.openViewModal();
-			}
-		}
-	};
-
-	openViewModal = () => {
-		const { openView } = this.state;
-		this.setState({
-			openView: !openView
-		});
-	};
-
-	handleStateChange = (e: any) => {
-		const { name, value } = e.target;
-		this.setState({
-			[name]: value
-		});
-	};
-
-	validate = (isSubmitted: any) => {
-		const validObj = {
-			isValid: true,
-			message: ''
-		};
-		let isValid = true;
-		const retData = {
-			viewName: validObj,
-			isValid
-		};
-		if (isSubmitted) {
-			const { viewName } = this.state;
-			if (!viewName) {
-				retData.viewName = {
-					isValid: false,
-					message: 'View name is required'
-				};
-				isValid = false;
-			}
-		}
-		retData.isValid = isValid;
-		return retData;
+		const { serviceList } = this.state;
+		localStorage.removeItem('viewData');
+		localStorage.setItem('viewData', JSON.stringify(serviceList));
 	};
 
 	render() {
-		const { activeTab, serviceDetails, openView, viewName, isSubmitted } = this.state;
+		const { activeTab, serviceDetails } = this.state;
 		const accountId = CommonService.getParameterByName('accountId', window.location.href);
-		const errorData = this.validate(isSubmitted);
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
@@ -169,46 +149,21 @@ export class StorageViewDetails extends React.Component<any, any> {
 								<ul>{this.displayTabs()}</ul>
 							</div>
 							<div>
-								<Button onClick={this.openViewModal}>Save view</Button>
+								<Button onClick={this.saveEnvironmentView}>Save view</Button>
 							</div>
-							<div className="webservice-container">
-								<Node
-									key={serviceDetails[activeTab].id}
-									serviceData={serviceDetails[activeTab]}
-									{...this.props}
-								/>
-							</div>
+							{serviceDetails &&
+							serviceDetails.length > 0 && (
+								<div className="webservice-container">
+									<Node
+										key={serviceDetails[activeTab].id}
+										serviceData={serviceDetails[activeTab]}
+										{...this.props}
+									/>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
-				<Modal isOpen={openView} toggle={this.openViewModal} className="analytics-modal-container">
-					<ModalHeader>
-						Save View
-						<button type="button" className="close" aria-label="Close" onClick={this.openViewModal}>
-							<span aria-hidden="true">×</span>
-						</button>
-					</ModalHeader>
-					<ModalBody style={{ height: 'calc(40vh - 40px)', overflowY: 'auto', overflowX: 'hidden' }}>
-						<div className="d-block width-100">
-							<div className="form-group">
-								<label htmlFor="viewName">View Name</label>
-								<input type="text" name="viewName" value={viewName} onChange={this.handleStateChange} />
-								<span>{errorData.viewName.message}</span>
-							</div>
-							<div className="d-block text-right">
-								<button className="analytics-gray-button cancel" onClick={this.openViewModal}>
-									Cancel
-								</button>
-								<button
-									className="analytics-blue-button m-r-0 continue"
-									onClick={this.saveEnvironmentView}
-								>
-									Continue
-								</button>
-							</div>
-						</div>
-					</ModalBody>
-				</Modal>
 			</div>
 		);
 	}
