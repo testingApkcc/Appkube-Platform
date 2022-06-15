@@ -3,7 +3,7 @@ import React from 'react';
 import { updateLocation } from 'app/core/actions';
 import Table from './tables/table';
 import { CreateNewViewPopup } from './CreateNewViewPopup';
-import { config } from '../config';
+// import { config } from '../config';
 import { locationService } from '@grafana/runtime';
 import { DeleteTabPopup } from './DeleteTabPopup';
 //import { Link } from 'react-router-dom';
@@ -40,7 +40,7 @@ class Analytics extends React.Component<any, any> {
       columns: [
         {
           label: 'Name',
-          key: 'name',
+          key: 'viewName',
           renderCallback: (value: any, view: any) => {
             return (
               <td>
@@ -51,18 +51,18 @@ class Analytics extends React.Component<any, any> {
             );
           },
         },
-        {
-          label: 'Description',
-          key: 'description',
-        },
-        {
-          label: 'Created By',
-          key: 'createdBy',
-        },
-        {
-          label: 'Last Modified',
-          key: 'updatedOn',
-        },
+        // {
+        // 	label: 'Description',
+        // 	key: 'description'
+        // },
+        // {
+        // 	label: 'Created By',
+        // 	key: 'createdBy'
+        // },
+        // {
+        // 	label: 'Last Modified',
+        // 	key: 'updatedOn'
+        // },
         {
           label: 'Action',
           key: 'action',
@@ -71,10 +71,10 @@ class Analytics extends React.Component<any, any> {
               <td>
                 <div className="d-inline-block">
                   <button className="btn btn-link" onClick={() => this.editDashbord(viewObj)}>
-                    <i className="fa fa-edit"></i>
+                    <i className="fa fa-edit" />
                   </button>
                   <button className="btn btn-link" onClick={() => this.onClickDelete(viewObj)}>
-                    <i className="fa fa-trash"></i>
+                    <i className="fa fa-trash" />
                   </button>
                 </div>
               </td>
@@ -90,6 +90,7 @@ class Analytics extends React.Component<any, any> {
   }
 
   onClickDelete = (viewObj: any) => {
+    console.log(viewObj);
     this.setState({
       viewToDelete: viewObj,
     });
@@ -97,28 +98,20 @@ class Analytics extends React.Component<any, any> {
   };
 
   editDashbord = (viewObj: any) => {
-    locationService.push(`/analytics/edit/dashboard?id=${viewObj.id}`);
+    locationService.push(
+      `/a/xformation-assetmanager-ui-plugin/view-storage-details?accountId=${viewObj.accountId}?viewId=${viewObj.id}`
+    );
   };
 
   deleteView = () => {
     const { viewToDelete } = this.state;
+    console.log(viewToDelete);
     if (viewToDelete) {
       this.setState({
         isDeleting: true,
       });
-      let requestOptionsGet: any = {
-        method: `DELETE`,
-      };
-      fetch(`${config.DELETE_ANALYTICS_VIEW}/${viewToDelete.id}`, requestOptionsGet).then(() => {
-        this.setState({
-          isDeleting: false,
-        });
-        this.openDeleteTabRef.current.toggle();
-        this.removeViewFromTable();
-      });
 
-      // Delete it after api works
-      let data: any = localStorage.getItem('dashboardList');
+      let data: any = localStorage.getItem('viewData');
       let index = -1;
       if (data) {
         data = JSON.parse(data);
@@ -130,7 +123,7 @@ class Analytics extends React.Component<any, any> {
         }
         if (index !== -1) {
           data.splice(index, 1);
-          localStorage.setItem('dashboardList', JSON.stringify(data));
+          localStorage.setItem('viewData', JSON.stringify(data));
           this.setState({
             viewList: data,
           });
@@ -163,22 +156,23 @@ class Analytics extends React.Component<any, any> {
   }
 
   getTableData = () => {
-    let requestOptionsGet: any = {
-      method: `GET`,
-    };
-    fetch(`${config.ANALYTICS_LIST_VIEW}`, requestOptionsGet)
-      .then((response) => response.json())
-      .then((response: any) => {
-        if (response) {
-          this.setState({
-            viewList: response,
-          });
-        }
-      });
+    // let requestOptionsGet: any = {
+    //   method: `GET`,
+    // };
+    // fetch(`${config.ANALYTICS_LIST_VIEW}`, requestOptionsGet)
+    //   .then((response) => response.json())
+    //   .then((response: any) => {
+    //     if (response) {
+    //       this.setState({
+    //         viewList: response,
+    //       });
+    //     }
+    //   });
 
     // Delete after api works
-    let data: any = localStorage.getItem('dashboardList');
+    let data: any = localStorage.getItem('viewData');
     data = JSON.parse(data);
+    console.log(data);
     if (data && data.length > 0) {
       this.setState({ viewList: data });
     }
@@ -215,7 +209,7 @@ class Analytics extends React.Component<any, any> {
                       {breadcrumb.label}
                     </a>
                     <span className="separator">
-                      <i className="fa fa-chevron-right"></i>
+                      <i className="fa fa-chevron-right" />
                     </span>
                   </React.Fragment>
                 );

@@ -23,10 +23,10 @@ export class OverView extends React.Component<any, any> {
 
 	render() {
 		return (
-			<div className="owrkflow-project-wise-container">
-				<div className="project-wise-page-container">
+			<div className="owrkflow-procument-container">
+				<div className="procument-page-containe">
 					<div className="project-wise-status">
-						<div className="status-fliter">
+						{/* <div className="status-fliter">
 							<div className="row d-flex align-items-center justify-content-center">
 								<div className="col-lg-4">
 									<div className="project-status-heading">Project Status</div>
@@ -48,7 +48,7 @@ export class OverView extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> */}
 						<div className="project-wise-table">
 							<div className="table">
 								<div className="thead">
@@ -79,7 +79,7 @@ export class OverView extends React.Component<any, any> {
 							<div><label>Assigned To</label></div>
 							<div>
 								<div>
-									<img style={{borderRadius:"13px"}} width='50px' height='50px' src="https://www.pinoytechnoguide.com/wp-content/uploads/2021/10/vivo-X70-sample-picture-person-portrait-mode.jpg" alt="image" />
+									<img style={{ borderRadius: "13px" }} width='50px' height='50px' src="https://www.pinoytechnoguide.com/wp-content/uploads/2021/10/vivo-X70-sample-picture-person-portrait-mode.jpg" alt="image" />
 									<strong>Angela Moss</strong>
 									<p>Project Manager</p>
 								</div>
@@ -120,9 +120,9 @@ export class OverView extends React.Component<any, any> {
 						<div className="col-lg-12">
 							<strong>Updates and Comments</strong>
 							<div>
-								<input type="text" style={{width:"1615px", height:"50px"}} placeholder='Add new comment here'/> 
+								<input type="text" style={{ width: "1615px", height: "50px" }} placeholder='Add new comment here' />
 								<div>
-									<img width='30px' height='30px' style={{borderRadius:"50%"}}src="https://www.pinoytechnoguide.com/wp-content/uploads/2021/10/vivo-X70-sample-picture-person-portrait-mode.jpg" alt="image"/>
+									<img width='30px' height='30px' style={{ borderRadius: "50%" }} src="https://www.pinoytechnoguide.com/wp-content/uploads/2021/10/vivo-X70-sample-picture-person-portrait-mode.jpg" alt="image" />
 									<p><Link to="">Angela Moss</Link> Added a comment - 30 minutes ago</p>
 									<p>Code is developed and updated in GitHub</p>
 									<div><label>comment</label> <Link to=''> Like</Link></div>
