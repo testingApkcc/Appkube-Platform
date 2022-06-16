@@ -629,9 +629,19 @@
                         .heading {
                             background: #b1c9f8;
                             padding: 10px 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
 
                             h5 {
                                 color: #3b4859;
+                                margin: 0;
+                            }
+
+                            i {
+                                font-size: 20px;
+                                color: #525252;
+                                font-weight: 700;
                             }
                         }
 
@@ -666,14 +676,71 @@
                     }
                 }
 
-                .overflow-view-table {
-                    margin-top: 15px;
+                .workflow-view-table-section {
+                    .heading {
+                        padding: 10px 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
 
-                    .table {
-                        width: 100%;
-                        border-bottom: 1px solid #f0f3f7;
+                        i {
+                            font-size: 20px;
+                            color: #525252;
+                            font-weight: 700;
+                        }
+                    }
+
+                    .workflow-view-table {
+                        margin-top: 8px;
+
+                        .table {
+                            width: 100%;
+                            border-bottom: 1px solid #f0f3f7;
+
+                            thead {
+                                tr {
+                                    th {
+                                        font-size: 16px;
+                                        line-height: 20px;
+                                        font-weight: 500;
+                                        color: #3b4859;
+                                        padding: 10px 15px;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+
+                                    td {
+                                        padding: 10px 15px;
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        color: #525252;
+
+                                        strong {
+                                            font-size: 16px;
+                                            line-height: 20px;
+                                            font-weight: 600;
+                                            color: #525252;
+                                        }
+                                    }
+
+                                    &:nth-child(odd) {
+                                        background: #B1C9F8;
+                                    }
+
+                                    &:nth-child(even) {
+                                        background: #ffffff;
+                                    }
+
+
+                                }
+                            }
+                        }
                     }
                 }
+
 
                 .workflow-requirement {
                     border: 1px solid #707070;
