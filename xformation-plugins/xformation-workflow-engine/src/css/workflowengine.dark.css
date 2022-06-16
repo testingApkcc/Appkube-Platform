@@ -442,8 +442,8 @@
   background-color: #ffffff;
   padding: 30px 20px;
   border-radius: 15px;
-  max-height: 400px;
-  min-height: 400px;
+  max-height: 455px;
+  min-height: 455px;
   box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.3);
@@ -535,6 +535,10 @@
   .requistions-dropdown
   .meore-menu-icon:hover {
   background-color: rgba(0, 0, 0, 0.04);
+}
+.owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-graph {
+  width: 360px;
+  margin: 0 auto;
 }
 .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {
   width: 150px;
@@ -1370,20 +1374,29 @@
 .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {
   margin-top: 50px;
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-status-heading {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  color: #202020;
-}
 .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter {
   padding-left: 16px;
   padding-right: 16px;
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search {
+.owrkflow-project-wise-container
+  .project-wise-page-container
+  .project-wise-status
+  .status-fliter
+  .project-status-heading {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #202020;
+}
+.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter .filler-search {
   width: 100%;
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select {
+.owrkflow-project-wise-container
+  .project-wise-page-container
+  .project-wise-status
+  .status-fliter
+  .filler-search
+  select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -1398,10 +1411,19 @@
   border-radius: 8px;
   padding: 0 20px 0 40px;
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search select:focus-visible {
+.owrkflow-project-wise-container
+  .project-wise-page-container
+  .project-wise-status
+  .status-fliter
+  .filler-search
+  select:focus-visible {
   outline: none;
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .filler-search::after {
+.owrkflow-project-wise-container
+  .project-wise-page-container
+  .project-wise-status
+  .status-fliter
+  .filler-search::after {
   content: '\F107';
   position: absolute;
   top: 7px;
@@ -1411,11 +1433,16 @@
   color: #a274db;
   font-family: 'FontAwesome';
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar {
+.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter .search-bar {
   width: 100%;
   position: relative;
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar .control-form {
+.owrkflow-project-wise-container
+  .project-wise-page-container
+  .project-wise-status
+  .status-fliter
+  .search-bar
+  .control-form {
   width: 100%;
   height: 45px;
   font-size: 16px;
@@ -1428,11 +1455,12 @@
 .owrkflow-project-wise-container
   .project-wise-page-container
   .project-wise-status
+  .status-fliter
   .search-bar
   .control-form:focus-visible {
   outline: none;
 }
-.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .search-bar i {
+.owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter .search-bar i {
   top: 14px;
   left: 20px;
   font-size: 18px;
@@ -1513,6 +1541,19 @@
   .table
   .tbody
   .tr
+  .td
+  a {
+  color: #2662f0;
+  font-size: 12px;
+  font-weight: 600;
+}
+.owrkflow-project-wise-container
+  .project-wise-page-container
+  .project-wise-status
+  .project-wise-table
+  .table
+  .tbody
+  .tr
   .td:last-child {
   border-right: none;
 }
@@ -1557,7 +1598,7 @@
 .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-heading {
   font-size: 16px;
   line-height: 20px;
-  font-weight: 500;
+  font-weight: 600;
   color: #202020;
 }
 .owrkflow-project-wise-container .project-wise-page-container .project-wise-resources .project-resources-section {
@@ -2341,23 +2382,635 @@
   font-size: 12px;
 }
 
-.workflow-content .workflow-stage {
+.owrkflow-procument-container {
+  display: block;
+  width: 100%;
+}
+.owrkflow-procument-container .procument-page-container {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-page-heading {
+  margin-bottom: 50px;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-page-heading .heading-content-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-page-heading
+  .heading-content-left
+  .heading-content {
+  margin-left: 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-page-heading
+  .heading-content-left
+  .heading-content
+  h3 {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #202020;
+  margin: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-page-heading
+  .heading-content-left
+  .heading-content
+  span {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: #202020;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-page-heading
+  .heading-content-right
+  .pro-overview-btn {
+  background: #3b7cff;
+  color: #f9fafc;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 3px;
+  box-shadow: 0px 2px 2px #8392a71a;
+}
+.owrkflow-procument-container .procument-page-container .procurement-details {
+  position: relative;
+  z-index: 1;
+}
+.owrkflow-procument-container .procument-page-container .procurement-details ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.owrkflow-procument-container .procument-page-container .procurement-details ul li {
+  cursor: pointer;
+  display: inline-block;
+  list-style: none;
+  width: 250px;
+  padding: 10px 20px;
+  margin-right: 2px;
+  border: 1px solid #00000029;
+  box-shadow: 0px 1px 2px #00000029;
+  background-color: #ffffff;
+}
+.owrkflow-procument-container .procument-page-container .procurement-details ul li.active {
+  border-bottom: none;
+  box-shadow: none;
+  padding-bottom: 15px;
+}
+.owrkflow-procument-container .procument-page-container .tebs-inner-content {
+  margin-top: -2px;
+  border: 1px solid #00000029;
+  box-shadow: 0px 1px 2px #00000029;
+  padding: 20px 30px;
+}
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .overview-inner-content {
+  margin-top: 40px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content {
+  margin-bottom: 20px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  label {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #000000;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box {
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 15px 20px 20px 20px;
+  box-shadow: 0px 1px 4px #00000029;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-datails {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-datails
+  .user-image
+  img {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-datails
+  .user-text {
+  margin-left: 20px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-datails
+  .user-text
+  strong {
+  font-size: 16px;
+  line-height: 20px;
+  color: #202020;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-datails
+  .user-text
+  p {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #a5a5a5;
+  margin: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-content {
+  margin-top: 25px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-content
+  p {
+  margin-bottom: 12px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-content
+  p
+  strong {
+  font-size: 14px;
+  line-height: 20px;
+  color: #202020;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  .user-content
+  span {
+  font-size: 14px;
+  line-height: 20px;
+  color: #202020;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  ul
+  li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  ul
+  li
+  label {
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  ul
+  li
+  span {
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-left-content
+  .assigned-content
+  .assigned-box
+  ul
+  li:last-child {
+  margin-bottom: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-heading
+  .heading-left
+  .detailed-btn {
+  padding: 10px 15px;
+  color: #f9fafc;
+  font-size: 14px;
+  line-height: 18px;
+  background: #3b7cff;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-heading
+  .heading-right
+  label {
+  font-size: 14px;
+  line-height: 18px;
+  color: #414d55;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-heading
+  .heading-right
+  a {
+  font-size: 14px;
+  line-height: 18px;
+  color: #3b7cff;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content {
+  margin-top: 12px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content
+  ul {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content
+  ul
+  li {
+  list-style: none;
+  display: block;
+  padding: 15px 25px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content
+  ul
+  li
+  p {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #414d55;
+  margin-bottom: 12px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content
+  ul
+  li
+  p
+  strong {
+  font-size: 16px;
+  line-height: 20px;
+  color: #414d55;
+  margin-right: 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content
+  ul
+  li
+  span {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #414d55;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content
+  ul
+  li:nth-child(odd) {
+  background: #f8f9fb;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .overview-right-content
+  .overview-right-inner-content
+  ul
+  li:nth-child(even) {
+  background: #ffffff;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  label {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #000000;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box {
+  padding: 10px;
+  height: 300px;
+  margin-top: 20px;
+  border: 1px solid #00000029;
+  box-shadow: 1px 1px 4px #00000029;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .search-bar
+  .control-form {
+  font-size: 14px;
+  line-height: 20px;
+  font-style: italic;
+  font-weight: 400;
+  width: 100%;
+  padding: 10px 20px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #00000029;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content {
+  display: flex;
+  align-items: top;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content
+  .user-image {
+  margin-right: 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content
+  .user-image
+  img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content
+  .user-comments-text
+  .user-name
+  p {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #000000;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content
+  .user-comments-text
+  .user-name
+  p
+  a {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #2662f0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content
+  .user-comments-text
+  .user-text
+  p {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #000000;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content
+  .user-comments-text
+  .user-coment
+  label {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #2662f0;
+  margin-right: 10px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .overview-inner-content
+  .updates-comments-section
+  .update-content-box
+  .user-comments-content
+  .user-comments-text
+  .user-coment
+  a {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #2662f0;
+}
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-stage {
   display: flex;
   width: 100%;
 }
-.workflow-content .workflow-stage ul {
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-stage ul {
   padding: 70px 0;
   display: flex;
   width: 100%;
   list-style: none;
 }
-.workflow-content .workflow-stage ul li {
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-stage ul li {
   position: relative;
   width: 16.6666%;
   text-align: center;
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li::before {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -2366,7 +3019,14 @@
   width: 100%;
   height: 2px;
 }
-.workflow-content .workflow-stage ul li span {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li
+  span {
   display: inline-block;
   width: 32px;
   height: 32px;
@@ -2380,7 +3040,13 @@
   z-index: 1;
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li.completed::before {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li.completed::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -2389,7 +3055,14 @@
   width: 100%;
   height: 2px;
 }
-.workflow-content .workflow-stage ul li.completed span {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li.completed
+  span {
   display: inline-block;
   width: 32px;
   height: 32px;
@@ -2402,16 +3075,44 @@
   position: relative;
   z-index: 1;
 }
-.workflow-content .workflow-stage ul li.laudantium input {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li.laudantium
+  input {
   position: absolute;
   top: -30px;
   left: 0;
   width: 100%;
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control {
   position: absolute;
   top: -60px;
   width: 100%;
@@ -2423,19 +3124,85 @@
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control.active,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control.active,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control.active {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control.active,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control.active,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control.active {
   background-color: #e6f2ff;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control.active::after,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control.active::after,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control.active::after {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control.active::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control.active::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control.active::after {
   border-top-color: #e6f2ff;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control input,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control input,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control input {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control
+  input,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control
+  input,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control
+  input {
   width: 100%;
   text-align: center;
   border: none;
@@ -2446,17 +3213,83 @@
   background-color: transparent;
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control input:focus-visible,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control input:focus-visible,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control input:focus-visible {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control
+  input:focus-visible,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control
+  input:focus-visible,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control
+  input:focus-visible {
   outline: none;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control::after {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::after {
   top: 100%;
   left: 50%;
   border: solid transparent;
@@ -2466,25 +3299,88 @@
   position: absolute;
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control::before {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::before {
   border-color: rgba(194, 225, 245, 0);
   border-top-color: #399ef7;
   border-width: 14px;
   margin-left: -14px;
 }
-.workflow-content .workflow-stage ul li:nth-child(1) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(3) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(5) .form-control::after {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::after {
   border-color: rgba(136, 183, 213, 0);
   border-top-color: #fff;
   border-width: 12px;
   margin-left: -12px;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control {
   position: absolute;
   bottom: -60px;
   width: 100%;
@@ -2496,19 +3392,85 @@
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control.active,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control.active,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control.active {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control.active,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control.active,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control.active {
   background-color: #e6f2ff;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control.active::after,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control.active::after,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control.active::after {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control.active::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control.active::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control.active::after {
   border-bottom-color: #e6f2ff;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control input,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control input,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control input {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control
+  input,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control
+  input,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control
+  input {
   width: 100%;
   text-align: center;
   border: none;
@@ -2519,17 +3481,83 @@
   background-color: transparent;
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control input:focus-visible,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control input:focus-visible,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control input:focus-visible {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control
+  input:focus-visible,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control
+  input:focus-visible,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control
+  input:focus-visible {
   outline: none;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control::after {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::after {
   bottom: 100%;
   left: 50%;
   border: solid transparent;
@@ -2539,23 +3567,71 @@
   position: absolute;
   cursor: pointer;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control::before,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control::before {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::before,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::before {
   border-color: rgba(194, 225, 245, 0);
   border-bottom-color: #399ef7;
   border-width: 14px;
   margin-left: -14px;
 }
-.workflow-content .workflow-stage ul li:nth-child(2) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(4) .form-control::after,
-.workflow-content .workflow-stage ul li:nth-child(6) .form-control::after {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::after,
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::after {
   border-color: rgba(136, 183, 213, 0);
   border-bottom-color: #fff;
   border-width: 12px;
   margin-left: -12px;
 }
-.workflow-content .workflow-stage ul .inprosseg::before {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  .inprosseg::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -2564,7 +3640,14 @@
   width: 100%;
   height: 2px;
 }
-.workflow-content .workflow-stage ul .inprosseg span {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  .inprosseg
+  span {
   display: inline-block;
   width: 32px;
   height: 32px;
@@ -2577,85 +3660,231 @@
   position: relative;
   z-index: 1;
 }
-.workflow-content .workflow-stage .btn-edit {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  .btn-edit {
   height: 40px;
   white-space: nowrap;
 }
-
-.workflow-content .workflow-data {
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-data {
   border-top: 1px dotted #abd5f9;
 }
-.workflow-content .workflow-data .api-code {
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-data .api-code {
   border: 1px solid #707070;
   margin-top: 15px;
   border-radius: 3px;
 }
-.workflow-content .workflow-data .api-code .heading {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .heading {
   background: #b1c9f8;
   padding: 10px 15px;
 }
-.workflow-content .workflow-data .api-code .heading h5 {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .heading
+  h5 {
   color: #3b4859;
 }
-.workflow-content .workflow-data .api-code .api-content {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .api-content {
   padding: 30px 15px;
 }
-.workflow-content .workflow-data .api-code .api-content label {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .api-content
+  label {
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
   color: #3a4758;
   margin-right: 15px;
 }
-.workflow-content .workflow-data .api-code .api-content input {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .api-content
+  input {
   width: 60%;
   margin-right: 15px;
   border: 1px solid #e0e0e0;
   border-radius: 3px;
   padding: 5px 10px;
 }
-.workflow-content .workflow-data .api-code .api-content input:focus-visible {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .api-content
+  input:focus-visible {
   outline: none;
 }
-.workflow-content .workflow-data .api-code .api-content .code-update-btn {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .api-content
+  .code-update-btn {
   padding: 5px 25px;
   vertical-align: initial;
 }
-
-.workflow-content .workflow-requirement {
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .overflow-view-table {
+  margin-top: 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .overflow-view-table
+  .table {
+  width: 100%;
+  border-bottom: 1px solid #f0f3f7;
+}
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-requirement {
   border: 1px solid #707070;
   margin-top: 15px;
   border-radius: 3px;
   padding-bottom: 10px;
 }
-.workflow-content .workflow-requirement .heading {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-requirement
+  .heading {
   background: #b1c9f8;
   padding: 10px 15px;
 }
-.workflow-content .workflow-requirement .heading h5 {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-requirement
+  .heading
+  h5 {
   margin-bottom: 0;
   color: #3b4859;
 }
-.workflow-content .workflow-requirement .requirement-data {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-requirement
+  .requirement-data {
   padding: 5px 15px 0 15px;
 }
-.workflow-content .workflow-requirement .requirement-data input {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-requirement
+  .requirement-data
+  input {
   margin-right: 10px;
   vertical-align: middle;
 }
-.workflow-content .workflow-requirement .requirement-data span {
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-requirement
+  .requirement-data
+  span {
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
   color: #3b4859;
   vertical-align: baseline;
 }
-
-.workflow-content .workflow-buttons {
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-buttons {
   margin-top: 20px;
 }
-.workflow-content .workflow-buttons .btn {
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-buttons .btn {
   margin-left: 15px;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table {
+  padding-top: 30px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .thead {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #e6e6e6;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .thead .th {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #414d55;
+  margin-bottom: 8px;
+  text-align: center;
+  border-right: 1px solid #e6e6e6;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .thead .th:last-child {
+  border-right: none;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr {
+  width: 100%;
+  display: flex;
+  margin-top: 8px;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #2662f0;
+  margin-bottom: 8px;
+  text-align: center;
+  border-right: 1px solid #e6e6e6;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td a {
+  color: #2662f0;
+  font-size: 12px;
+  font-weight: 600;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td:last-child {
+  border-right: none;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td i {
+  font-size: 18px;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td i.green {
+  color: #57d25f;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td i.orange {
+  color: #eea515;
 }
 
 .receive-rfq-content {
