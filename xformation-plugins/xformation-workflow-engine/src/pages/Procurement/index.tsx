@@ -6,6 +6,7 @@ import WorkFlowView from './workFlowView';
 import headerIcon from '../../img/header-icon.png';
 import 'react-circular-progressbar/dist/styles.css';
 import 'simplebar/dist/simplebar.min.css';
+import { Link } from 'react-router-dom';
 
 export class ProcurementDetail extends React.Component<any, any> {
   breadCrumbs: any;
@@ -53,7 +54,7 @@ export class ProcurementDetail extends React.Component<any, any> {
               </div>
               <div className="col-lg-2">
                 <div className="heading-content-right">
-                  <button type="button" className="btn-primary pro-overview-btn">Project Overview</button>
+                  <Link to="/a/xformation-workflow-engine/project-overview" className="btn-primary pro-overview-btn">Project Overview</Link>
                 </div>
               </div>
             </div>
@@ -80,7 +81,8 @@ export class ProcurementDetail extends React.Component<any, any> {
                   </div>
                 )
               })
-            }</div>
+            }
+          </div>
         </div>
       </div>
     );
