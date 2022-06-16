@@ -3686,6 +3686,9 @@
   .heading {
   background: #b1c9f8;
   padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .owrkflow-procument-container
   .procument-page-container
@@ -3696,6 +3699,19 @@
   .heading
   h5 {
   color: #3b4859;
+  margin: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .heading
+  i {
+  font-size: 20px;
+  color: #525252;
+  font-weight: 700;
 }
 .owrkflow-procument-container
   .procument-page-container
@@ -3755,17 +3771,114 @@
   padding: 5px 25px;
   vertical-align: initial;
 }
-.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .overflow-view-table {
-  margin-top: 15px;
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .heading {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .owrkflow-procument-container
   .procument-page-container
   .tebs-inner-content
   .workflow-content
-  .overflow-view-table
+  .workflow-view-table-section
+  .heading
+  i {
+  font-size: 20px;
+  color: #525252;
+  font-weight: 700;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table {
+  margin-top: 8px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
   .table {
   width: 100%;
   border-bottom: 1px solid #f0f3f7;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  thead
+  tr
+  th {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #3b4859;
+  padding: 10px 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr
+  td {
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #525252;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr
+  td
+  strong {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #525252;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr:nth-child(odd) {
+  background: #b1c9f8;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr:nth-child(even) {
+  background: #ffffff;
 }
 .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-requirement {
   border: 1px solid #707070;

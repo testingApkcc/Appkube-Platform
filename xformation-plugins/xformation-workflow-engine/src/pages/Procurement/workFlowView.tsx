@@ -465,6 +465,7 @@ export class WorkFlowView extends React.Component<any, any> {
 						<div key={`${i}-usecase`} className="api-code">
 							<div className="heading">
 								<h5>{row.label}</h5>
+								<i className="fa fa-angle-down" aria-hidden="true"></i>
 							</div>
 							<div className="api-content">
 								<label>Github Link:</label>
@@ -667,20 +668,26 @@ export class WorkFlowView extends React.Component<any, any> {
 				</Link> */}
 				</div>
 				<div className="workflow-data">{this.displayUsecase()}</div>
-				<div className="overflow-view-table">
-					<table className="table">
-						<thead>
-							<tr>
-								<td>Stages</td>
-								<td>Assigned to</td>
-								<td>Start Date</td>
-								<td>Deviation</td>
-								<td>End Date</td>
-								<td>Deviation</td>
-							</tr>
-						</thead>
-						<tbody>{this.displayStageList()}</tbody>
-					</table>
+				<div className="workflow-view-table-section">
+					<div className="heading">
+						<h5></h5>
+						<i className="fa fa-angle-down" aria-hidden="true"></i>
+					</div>
+					<div className="workflow-view-table">
+						<table className="table">
+							<thead>
+								<tr>
+									<th>Stages</th>
+									<th>Assigned to</th>
+									<th>Start Date</th>
+									<th>Deviation</th>
+									<th>End Date</th>
+									<th>Deviation</th>
+								</tr>
+							</thead>
+							<tbody>{this.displayStageList()}</tbody>
+						</table>
+					</div>
 				</div>
 				<div className="workflow-requirement">
 					<div className="heading">
