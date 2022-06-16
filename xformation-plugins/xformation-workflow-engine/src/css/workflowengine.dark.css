@@ -4398,4 +4398,917 @@
   }
 }
 
+.project-over-view-content {
+  background-color: #f9fafc;
+  padding: 10px;
+}
+.project-over-view-content .project-over-view-inner-content {
+  display: flex;
+  padding: 10px 15px 25px 15px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px #eff2f7;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar {
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar ul {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar ul li {
+  font-size: 16px;
+  color: #323c47;
+  font-weight: 500;
+  list-style: none;
+  width: 250px;
+  background: #c2e0ff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 3px;
+  border: 0.3px solid #00000029;
+  margin-bottom: 10px;
+  height: 60px;
+  padding: 15px;
+  margin-right: 15px;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar ul li.active {
+  background: #ffffff;
+  border-color: #add6ff;
+  border-right: none;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content {
+  border: 1px solid #add6ff;
+  padding: 20px 30px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px;
+  margin-left: -17px;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage {
+  display: flex;
+  width: 100%;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage ul {
+  padding: 70px 0;
+  display: flex;
+  width: 100%;
+  list-style: none;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage ul li {
+  position: relative;
+  width: 16.6666%;
+  text-align: center;
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  background-color: #9ec7fc;
+  width: 100%;
+  height: 2px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li
+  span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: #b1c9f8;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  color: #2662f0;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li.completed::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  background-color: #398038;
+  width: 100%;
+  height: 2px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li.completed
+  span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: #398038;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li.laudantium
+  input {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control {
+  position: absolute;
+  top: -60px;
+  width: 100%;
+  border: 1px solid #399ef7;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control.active,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control.active,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control.active {
+  background-color: #e6f2ff;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control.active::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control.active::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control.active::after {
+  border-top-color: #e6f2ff;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control
+  input,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control
+  input,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control
+  input {
+  width: 100%;
+  text-align: center;
+  border: none;
+  color: #777777;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control
+  input:focus-visible,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control
+  input:focus-visible,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control
+  input:focus-visible {
+  outline: none;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::before {
+  border-color: rgba(194, 225, 245, 0);
+  border-top-color: #399ef7;
+  border-width: 14px;
+  margin-left: -14px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(1)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(3)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(5)
+  .form-control::after {
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: #fff;
+  border-width: 12px;
+  margin-left: -12px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control {
+  position: absolute;
+  bottom: -60px;
+  width: 100%;
+  border: 1px solid #399ef7;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control.active,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control.active,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control.active {
+  background-color: #e6f2ff;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control.active::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control.active::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control.active::after {
+  border-bottom-color: #e6f2ff;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control
+  input,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control
+  input,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control
+  input {
+  width: 100%;
+  text-align: center;
+  border: none;
+  color: #777777;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control
+  input:focus-visible,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control
+  input:focus-visible,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control
+  input:focus-visible {
+  outline: none;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::after {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  cursor: pointer;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::before,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::before {
+  border-color: rgba(194, 225, 245, 0);
+  border-bottom-color: #399ef7;
+  border-width: 14px;
+  margin-left: -14px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(2)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(4)
+  .form-control::after,
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li:nth-child(6)
+  .form-control::after {
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #fff;
+  border-width: 12px;
+  margin-left: -12px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  .inprosseg::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  background-color: #ff5400;
+  width: 100%;
+  height: 2px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  .inprosseg
+  span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: #ff5400;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage .btn-edit {
+  height: 40px;
+  white-space: nowrap;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-data {
+  border-top: 1px dotted #abd5f9;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-data .api-code {
+  border: 1px solid #707070;
+  margin-top: 15px;
+  border-radius: 3px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .heading {
+  background: #b1c9f8;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .heading
+  h5 {
+  color: #3b4859;
+  margin: 0;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .heading
+  i {
+  font-size: 20px;
+  color: #525252;
+  font-weight: 700;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .api-content {
+  padding: 30px 15px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .api-content
+  label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #3a4758;
+  margin-right: 15px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .api-content
+  input {
+  width: 60%;
+  margin-right: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .api-content
+  input:focus-visible {
+  outline: none;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code
+  .api-content
+  .code-update-btn {
+  padding: 5px 25px;
+  vertical-align: initial;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .heading {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .heading
+  i {
+  font-size: 20px;
+  color: #525252;
+  font-weight: 700;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table {
+  margin-top: 8px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table {
+  width: 100%;
+  border-bottom: 1px solid #f0f3f7;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  thead
+  tr
+  th {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #3b4859;
+  padding: 10px 15px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr
+  td {
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #525252;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr
+  td
+  strong {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #525252;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr:nth-child(odd) {
+  background: #b1c9f8;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  tr:nth-child(even) {
+  background: #ffffff;
+}
+.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-requirement {
+  border: 1px solid #707070;
+  margin-top: 15px;
+  border-radius: 3px;
+  padding-bottom: 10px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-requirement
+  .heading {
+  background: #b1c9f8;
+  padding: 10px 15px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-requirement
+  .heading
+  h5 {
+  margin-bottom: 0;
+  color: #3b4859;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-requirement
+  .requirement-data {
+  padding: 5px 15px 0 15px;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-requirement
+  .requirement-data
+  input {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.project-over-view-content
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-requirement
+  .requirement-data
+  span {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #3b4859;
+  vertical-align: baseline;
+}
+
 /*# sourceMappingURL=workflowengine.dark.css.map */

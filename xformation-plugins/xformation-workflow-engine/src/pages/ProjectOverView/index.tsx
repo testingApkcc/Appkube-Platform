@@ -475,6 +475,7 @@ export class ProjectOverView extends React.Component<any, any> {
             <div key={`${i}-usecase`} className="api-code">
               <div className="heading">
                 <h5>{row.label}</h5>
+                <i className="fa fa-angle-down" aria-hidden="true"></i>
               </div>
               <div className="api-content">
                 <label>{row.link}</label>
@@ -668,9 +669,10 @@ export class ProjectOverView extends React.Component<any, any> {
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
-          <li>
-            <Link to="/" className={i == 0 ? "active" : ''}>
-              <img src={useCaseList[i].img} alt="" /> {useCaseList[i].name}</Link>
+          <li className={i == 0 ? "active" : ''}>
+            {/* <Link to="/"> */}
+            <img src={useCaseList[i].img} alt="" /> {useCaseList[i].name}
+            {/* </Link> */}
           </li>
         )
       }
@@ -681,60 +683,70 @@ export class ProjectOverView extends React.Component<any, any> {
   render() {
     const { usecaseData, activeStage } = this.state;
     return (
-      <div className="workflow-content">
-        <div className="sidebar">
-          <ul>
-            {this.displayUseCaseList()}
-          </ul>
-        </div>
-        <div className="workflow-stage">
-          <ul>{this.displayWorkflowStage()}</ul>
-        </div>
-        <div className="workflow-data">{this.displayUsecase()}</div>
-        <div className='heading'>
-          <h5>SCRUM Planning</h5>
-        </div>
-        <div className="overflow-view-table">
-          <table className="table">
-            <thead>
-              <tr>
-                <td>Stages</td>
-                <td>Assigned to</td>
-                <td>Start Date</td>
-                <td>Deviation</td>
-                <td>End Date</td>
-                <td>Deviation</td>
-              </tr>
-            </thead>
-            <tbody>{this.displayStageList()}</tbody>
-          </table>
-        </div>
-        <div className="workflow-requirement">
-          <div className="heading">
-            <h5>Checklist for Requirements</h5>
+      <div className="project-over-view-content">
+        <div className="project-over-view-inner-content">
+          <div className="project-over-view-left-content">
+            <div className="sidebar">
+              <ul>
+                {this.displayUseCaseList()}
+              </ul>
+            </div>
           </div>
-          {this.displayCheckList()}
-        </div>
-        <div className="d-flex justify-content-end workflow-buttons">
-          <button
-            type="button"
-            disabled={activeStage == 0}
-            className="btn btn-primary"
-            onClick={() => this.moveToNextPage('previous')}
-          >
-            Previous
-          </button>
-          {usecaseData &&
-            usecaseData.stages && (
+          <div className="project-over-view-right-content">
+            <div className="workflow-stage">
+              <ul>{this.displayWorkflowStage()}</ul>
+            </div>
+            <div className="workflow-data">{this.displayUsecase()}</div>
+
+            <div className="workflow-view-table-section">
+              <div className='heading'>
+                <h5>SCRUM Planning</h5>
+                <i className="fa fa-angle-down" aria-hidden="true"></i>
+              </div>
+              <div className="workflow-view-table">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Stages</th>
+                      <th>Assigned to</th>
+                      <th>Start Date</th>
+                      <th>Deviation</th>
+                      <th>End Date</th>
+                      <th>Deviation</th>
+                    </tr>
+                  </thead>
+                  <tbody>{this.displayStageList()}</tbody>
+                </table>
+              </div>
+            </div>
+            <div className="workflow-requirement">
+              <div className="heading">
+                <h5>Checklist for Requirements</h5>
+              </div>
+              {this.displayCheckList()}
+            </div>
+            <div className="d-flex justify-content-end workflow-buttons">
               <button
                 type="button"
-                disabled={activeStage == usecaseData.stages.length - 1}
+                disabled={activeStage == 0}
                 className="btn btn-primary"
-                onClick={() => this.moveToNextPage('next')}
+                onClick={() => this.moveToNextPage('previous')}
               >
-                Next
+                Previous
               </button>
-            )}
+              {usecaseData &&
+                usecaseData.stages && (
+                  <button
+                    type="button"
+                    disabled={activeStage == usecaseData.stages.length - 1}
+                    className="btn btn-primary"
+                    onClick={() => this.moveToNextPage('next')}
+                  >
+                    Next
+                  </button>
+                )}
+            </div>
+          </div>
         </div>
       </div>
     );
