@@ -1,5 +1,13 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import downloadIcon from '../../img/projectoverview/download-icon.png';
+import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
+import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
+import overviewMenu3 from '../../img/projectoverview/overview-menu3.png';
+import overviewMenu4 from '../../img/projectoverview/overview-menu4.png';
+import overviewMenu5 from '../../img/projectoverview/overview-menu5.png';
+import overviewMenu6 from '../../img/projectoverview/overview-menu6.png';
+import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
 
 export class ProjectOverView extends React.Component<any, any> {
   constructor(props: any) {
@@ -451,14 +459,14 @@ export class ProjectOverView extends React.Component<any, any> {
         }
       ],
       useCaseList: [
-        { name: 'Send RFQ', id: '1', img: '' },
-        { name: 'Receive RFQ', id: '2', img: '' },
-        { name: 'Kanban', id: '3', img: '' },
-        { name: 'Setup Committee', id: '4', img: '' },
-        { name: 'Approval Requisation', id: '5', img: '' },
-        { name: 'Approved Requisation', id: '6', img: '' },
-        { name: 'New RFQ', id: '7', img: '' },
-        { name: 'Conditional Approval', id: '8', img: '' }
+        { name: 'Send RFQ', id: '1', img: overviewMenu1 },
+        { name: 'Receive RFQ', id: '2', img: overviewMenu2 },
+        { name: 'Kanban', id: '3', img: overviewMenu3 },
+        { name: 'Setup Committee', id: '4', img: overviewMenu4 },
+        { name: 'Approval Requisation', id: '5', img: overviewMenu5 },
+        { name: 'Approved Requisation', id: '6', img: overviewMenu6 },
+        { name: 'New RFQ', id: '7', img: overviewMenu7 },
+        { name: 'Conditional Approval', id: '8', img: overviewMenu1 }
       ]
     };
   }
@@ -671,7 +679,8 @@ export class ProjectOverView extends React.Component<any, any> {
         retData.push(
           <li className={i == 0 ? "active" : ''}>
             {/* <Link to="/"> */}
-            <img src={useCaseList[i].img} alt="" /> {useCaseList[i].name}
+            <img src={useCaseList[i].img} alt="" />
+            <span>{useCaseList[i].name}</span>
             {/* </Link> */}
           </li>
         )
@@ -683,68 +692,106 @@ export class ProjectOverView extends React.Component<any, any> {
   render() {
     const { usecaseData, activeStage } = this.state;
     return (
-      <div className="project-over-view-content">
-        <div className="project-over-view-inner-content">
-          <div className="project-over-view-left-content">
-            <div className="sidebar">
-              <ul>
-                {this.displayUseCaseList()}
-              </ul>
+      <div className="project-over-view-container">
+        <div className="project-over-view-section">
+          <div className="fliter-container">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="heading">Procurement Workflow management</div>
+              </div>
+              <div className="col-md-6">
+                <div className="fliter-right-content">
+                  <div className="plus-icon col-12">
+                    <Link to="/a/xformation-workflow-engine/create-new-usecase">
+                      <i className="fa fa-plus" />
+                    </Link>
+                  </div>
+                  <div className="image">
+                    <img src={downloadIcon} alt="" />
+                  </div>
+                  <div className="fliter-search">
+                    <div className="fliter-box">
+                      <select>
+                        <option>Fliter by</option>
+                        <option>Fliter by 1</option>
+                        <option>Fliter by 2</option>
+                        <option>Fliter by 3</option>
+                      </select>
+                    </div>
+                    <div className="fliter-search-box">
+                      <input
+                        type={'Search for...'}
+                        className="input-group-text"
+                        placeholder={'Search for...'}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="project-over-view-right-content">
-            <div className="workflow-stage">
-              <ul>{this.displayWorkflowStage()}</ul>
+          <div className="project-over-view-inner-content">
+            <div className="project-over-view-left-content">
+              <div className="sidebar">
+                <ul>
+                  {this.displayUseCaseList()}
+                </ul>
+              </div>
             </div>
-            <div className="workflow-data">{this.displayUsecase()}</div>
+            <div className="project-over-view-right-content">
+              <div className="workflow-stage">
+                <ul>{this.displayWorkflowStage()}</ul>
+              </div>
+              <div className="workflow-data">{this.displayUsecase()}</div>
 
-            <div className="workflow-view-table-section">
-              <div className='heading'>
-                <h5>SCRUM Planning</h5>
-                <i className="fa fa-angle-down" aria-hidden="true"></i>
+              <div className="workflow-view-table-section">
+                <div className='heading'>
+                  <h5>SCRUM Planning</h5>
+                  <i className="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div className="workflow-view-table">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>Stages</th>
+                        <th>Assigned to</th>
+                        <th>Start Date</th>
+                        <th>Deviation</th>
+                        <th>End Date</th>
+                        <th>Deviation</th>
+                      </tr>
+                    </thead>
+                    <tbody>{this.displayStageList()}</tbody>
+                  </table>
+                </div>
               </div>
-              <div className="workflow-view-table">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Stages</th>
-                      <th>Assigned to</th>
-                      <th>Start Date</th>
-                      <th>Deviation</th>
-                      <th>End Date</th>
-                      <th>Deviation</th>
-                    </tr>
-                  </thead>
-                  <tbody>{this.displayStageList()}</tbody>
-                </table>
+              <div className="workflow-requirement">
+                <div className="heading">
+                  <h5>Checklist for Requirements</h5>
+                </div>
+                {this.displayCheckList()}
               </div>
-            </div>
-            <div className="workflow-requirement">
-              <div className="heading">
-                <h5>Checklist for Requirements</h5>
+              <div className="d-flex justify-content-end workflow-buttons">
+                <button
+                  type="button"
+                  disabled={activeStage == 0}
+                  className="btn btn-primary"
+                  onClick={() => this.moveToNextPage('previous')}
+                >
+                  Previous
+                </button>
+                {usecaseData &&
+                  usecaseData.stages && (
+                    <button
+                      type="button"
+                      disabled={activeStage == usecaseData.stages.length - 1}
+                      className="btn btn-primary"
+                      onClick={() => this.moveToNextPage('next')}
+                    >
+                      Next
+                    </button>
+                  )}
               </div>
-              {this.displayCheckList()}
-            </div>
-            <div className="d-flex justify-content-end workflow-buttons">
-              <button
-                type="button"
-                disabled={activeStage == 0}
-                className="btn btn-primary"
-                onClick={() => this.moveToNextPage('previous')}
-              >
-                Previous
-              </button>
-              {usecaseData &&
-                usecaseData.stages && (
-                  <button
-                    type="button"
-                    disabled={activeStage == usecaseData.stages.length - 1}
-                    className="btn btn-primary"
-                    onClick={() => this.moveToNextPage('next')}
-                  >
-                    Next
-                  </button>
-                )}
             </div>
           </div>
         </div>

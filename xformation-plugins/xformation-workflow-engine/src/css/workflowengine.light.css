@@ -4398,34 +4398,171 @@
   }
 }
 
-.project-over-view-content {
+.project-over-view-container {
   background-color: #f9fafc;
   padding: 10px;
 }
-.project-over-view-content .project-over-view-inner-content {
-  display: flex;
+.project-over-view-container .project-over-view-section {
+  display: block;
   padding: 10px 15px 25px 15px;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 2px 4px #eff2f7;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar {
+.project-over-view-container .project-over-view-section .fliter-container {
+  display: block;
+  width: 100%;
+  padding-bottom: 30px;
+}
+.project-over-view-container .project-over-view-section .fliter-container .heading {
+  display: block;
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #3b4859;
+}
+.project-over-view-container .project-over-view-section .fliter-container .fliter-right-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .plus-icon a {
+  padding: 4px 8px;
+  color: #848484;
+  background: #b1c9f8;
+}
+.project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .fliter-search {
+  float: right;
+  width: auto;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-box {
+  display: inline-block;
+  width: 250px;
+  height: 32px;
+  border-radius: 20px;
+  padding: 0;
+  border: 1px solid #a9b9c6;
+  margin-right: 15px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-box
+  select {
+  background: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 26px;
+  color: #d1dae2;
+  padding: 5px 10px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-box
+  select:focus {
+  outline: none;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-box
+  select:focus-visible {
+  outline: none;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-search-box {
+  display: inline-block;
+  width: 250px;
+  height: 32px;
+  border-radius: 20px;
+  padding: 0;
+  border: 1px solid #a9b9c6;
+  margin-right: 0px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-search-box
+  .input-group-text {
+  background: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 26px;
+  color: #d1dae2;
+  padding: 5px 10px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-search-box
+  .input-group-text:focus {
+  outline: none;
+}
+.project-over-view-container
+  .project-over-view-section
+  .fliter-container
+  .fliter-right-content
+  .fliter-search
+  .fliter-search-box
+  .input-group-text:focus-visible {
+  outline: none;
+}
+.project-over-view-container .project-over-view-section .project-over-view-inner-content {
+  display: flex;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-left-content
+  .sidebar {
   margin-top: 15px;
   position: relative;
   z-index: 1;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar ul {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-left-content
+  .sidebar
+  ul {
   margin: 0;
   padding: 0;
   display: block;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar ul li {
-  font-size: 16px;
-  color: #323c47;
-  font-weight: 500;
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-left-content
+  .sidebar
+  ul
+  li {
   list-style: none;
   width: 250px;
-  background: #c2e0ff;
+  background: #e7f3ff;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -4436,37 +4573,79 @@
   padding: 15px;
   margin-right: 15px;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-left-content .sidebar ul li.active {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-left-content
+  .sidebar
+  ul
+  li
+  span {
+  font-size: 14px;
+  line-height: 18px;
+  color: #323c47;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-left-content
+  .sidebar
+  ul
+  li.active {
   background: #ffffff;
   border-color: #add6ff;
   border-right: none;
+  width: 265px;
+  margin-right: 0;
+  box-shadow: -2px 3px 4px -2px rgba(0, 0, 0, 0.2);
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content {
   border: 1px solid #add6ff;
   padding: 20px 30px;
   width: 100%;
   background: #ffffff;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 5px;
-  margin-left: -17px;
+  margin-left: -1px;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage {
   display: flex;
   width: 100%;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage ul {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul {
   padding: 70px 0;
   display: flex;
   width: 100%;
   list-style: none;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage ul li {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  ul
+  li {
   position: relative;
   width: 16.6666%;
   text-align: center;
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4480,7 +4659,8 @@
   width: 100%;
   height: 2px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4500,7 +4680,8 @@
   z-index: 1;
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4514,7 +4695,8 @@
   width: 100%;
   height: 2px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4533,7 +4715,8 @@
   position: relative;
   z-index: 1;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4546,21 +4729,24 @@
   width: 100%;
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(1)
   .form-control,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(3)
   .form-control,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4578,21 +4764,24 @@
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(1)
   .form-control.active,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(3)
   .form-control.active,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4601,21 +4790,24 @@
   .form-control.active {
   background-color: #e6f2ff;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(1)
   .form-control.active::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(3)
   .form-control.active::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4624,7 +4816,8 @@
   .form-control.active::after {
   border-top-color: #e6f2ff;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4632,7 +4825,8 @@
   li:nth-child(1)
   .form-control
   input,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4640,7 +4834,8 @@
   li:nth-child(3)
   .form-control
   input,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4658,7 +4853,8 @@
   background-color: transparent;
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4666,7 +4862,8 @@
   li:nth-child(1)
   .form-control
   input:focus-visible,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4674,7 +4871,8 @@
   li:nth-child(3)
   .form-control
   input:focus-visible,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4684,42 +4882,48 @@
   input:focus-visible {
   outline: none;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(1)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(1)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(3)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(3)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(5)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4735,21 +4939,24 @@
   position: absolute;
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(1)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(3)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4761,21 +4968,24 @@
   border-width: 14px;
   margin-left: -14px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(1)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(3)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4787,21 +4997,24 @@
   border-width: 12px;
   margin-left: -12px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(2)
   .form-control,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(4)
   .form-control,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4819,21 +5032,24 @@
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(2)
   .form-control.active,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(4)
   .form-control.active,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4842,21 +5058,24 @@
   .form-control.active {
   background-color: #e6f2ff;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(2)
   .form-control.active::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(4)
   .form-control.active::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4865,7 +5084,8 @@
   .form-control.active::after {
   border-bottom-color: #e6f2ff;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4873,7 +5093,8 @@
   li:nth-child(2)
   .form-control
   input,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4881,7 +5102,8 @@
   li:nth-child(4)
   .form-control
   input,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4899,7 +5121,8 @@
   background-color: transparent;
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4907,7 +5130,8 @@
   li:nth-child(2)
   .form-control
   input:focus-visible,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4915,7 +5139,8 @@
   li:nth-child(4)
   .form-control
   input:focus-visible,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4925,42 +5150,48 @@
   input:focus-visible {
   outline: none;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(2)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(2)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(4)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(4)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(6)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -4976,21 +5207,24 @@
   position: absolute;
   cursor: pointer;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(2)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(4)
   .form-control::before,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -5002,21 +5236,24 @@
   border-width: 14px;
   margin-left: -14px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(2)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
   ul
   li:nth-child(4)
   .form-control::after,
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -5028,7 +5265,8 @@
   border-width: 12px;
   margin-left: -12px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -5042,7 +5280,8 @@
   width: 100%;
   height: 2px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-stage
@@ -5061,19 +5300,34 @@
   position: relative;
   z-index: 1;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-stage .btn-edit {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-stage
+  .btn-edit {
   height: 40px;
   white-space: nowrap;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-data {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data {
   border-top: 1px dotted #abd5f9;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-data .api-code {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-data
+  .api-code {
   border: 1px solid #707070;
   margin-top: 15px;
   border-radius: 3px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5085,7 +5339,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5095,7 +5350,8 @@
   color: #3b4859;
   margin: 0;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5106,7 +5362,8 @@
   color: #525252;
   font-weight: 700;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5114,7 +5371,8 @@
   .api-content {
   padding: 30px 15px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5127,7 +5385,8 @@
   color: #3a4758;
   margin-right: 15px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5140,7 +5399,8 @@
   border-radius: 3px;
   padding: 5px 10px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5149,7 +5409,8 @@
   input:focus-visible {
   outline: none;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-data
@@ -5159,7 +5420,8 @@
   padding: 5px 25px;
   vertical-align: initial;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5169,7 +5431,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5179,14 +5442,16 @@
   color: #525252;
   font-weight: 700;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
   .workflow-view-table {
   margin-top: 8px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5195,7 +5460,8 @@
   width: 100%;
   border-bottom: 1px solid #f0f3f7;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5210,7 +5476,8 @@
   color: #3b4859;
   padding: 10px 15px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5224,7 +5491,8 @@
   line-height: 20px;
   color: #525252;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5239,7 +5507,8 @@
   font-weight: 600;
   color: #525252;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5249,7 +5518,8 @@
   tr:nth-child(odd) {
   background: #b1c9f8;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-view-table-section
@@ -5259,13 +5529,18 @@
   tr:nth-child(even) {
   background: #ffffff;
 }
-.project-over-view-content .project-over-view-inner-content .project-over-view-right-content .workflow-requirement {
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-requirement {
   border: 1px solid #707070;
   margin-top: 15px;
   border-radius: 3px;
   padding-bottom: 10px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-requirement
@@ -5273,7 +5548,8 @@
   background: #b1c9f8;
   padding: 10px 15px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-requirement
@@ -5282,14 +5558,16 @@
   margin-bottom: 0;
   color: #3b4859;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-requirement
   .requirement-data {
   padding: 5px 15px 0 15px;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-requirement
@@ -5298,7 +5576,8 @@
   margin-right: 10px;
   vertical-align: middle;
 }
-.project-over-view-content
+.project-over-view-container
+  .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
   .workflow-requirement

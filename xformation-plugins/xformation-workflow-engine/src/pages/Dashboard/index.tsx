@@ -144,13 +144,6 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="plus-icon col-12">
-								<Link to="/a/xformation-workflow-engine/create-new-usecase">
-									<span> Create New UseCase
-										<i className="fa fa-plus" />
-									</span>
-								</Link>
-							</div>
 						</div>
 					</div>
 					<div className="dashbord-top-section">
