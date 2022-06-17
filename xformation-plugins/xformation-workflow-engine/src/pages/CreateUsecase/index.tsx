@@ -1,5 +1,13 @@
 // import { values } from 'lodash';
 import * as React from 'react';
+import downloadIcon from '../../img/projectoverview/download-icon.png';
+import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
+import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
+import overviewMenu3 from '../../img/projectoverview/overview-menu3.png';
+import overviewMenu4 from '../../img/projectoverview/overview-menu4.png';
+import overviewMenu5 from '../../img/projectoverview/overview-menu5.png';
+import overviewMenu6 from '../../img/projectoverview/overview-menu6.png';
+import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
 
 export class CreateUsecase extends React.Component<any, any> {
   id: any;
@@ -19,6 +27,16 @@ export class CreateUsecase extends React.Component<any, any> {
       isSubmitted: false,
       subStageName: '',
       activeIndex: -1,
+      useCaseList: [
+        { name: 'New Usecase', id: '1', img: overviewMenu1 },
+        { name: 'Receive RFQ', id: '2', img: overviewMenu2 },
+        { name: 'Kanban', id: '3', img: overviewMenu3 },
+        { name: 'Setup Committee', id: '4', img: overviewMenu4 },
+        { name: 'Approval Requisation', id: '5', img: overviewMenu5 },
+        { name: 'Approved Requisation', id: '6', img: overviewMenu6 },
+        { name: 'New RFQ', id: '7', img: overviewMenu7 },
+        { name: 'Conditional Approval', id: '8', img: overviewMenu1 }
+      ]
     }
     this.id = 10;
   }
@@ -206,112 +224,173 @@ export class CreateUsecase extends React.Component<any, any> {
     this.setState({ stages })
 
   }
+  displayUseCaseList = () => {
+    const { useCaseList } = this.state;
+    let retData = [];
+    if (useCaseList && useCaseList.length > 0) {
+      for (let i = 0; i < useCaseList.length; i++) {
+        retData.push(
+          <li className={i == 0 ? "active" : ''}>
+            {/* <Link to="/"> */}
+            <img src={useCaseList[i].img} alt="" />
+            <span>{useCaseList[i].name}</span>
+            {/* </Link> */}
+          </li>
+        )
+      }
+    }
+    return retData;
+  }
   render() {
     const errorData = this.validateForm(this.state.isSubmitted)
     const { stages, subStageName } = this.state
     return (
-      <div className="dashboard-content">
-        {/* <div className="basic-details">
-          <h5>Basic Details</h5>
-          <div className="input-group">
-            <label>Usecase Name</label>
-            <input className="form-control" type="text" name="name" placeholder="name of usecase" value={usecase.name} onChange={(e: any) => this.handleStateChange(e)} />
-          </div>
-          {errorData && errorData.name && <span>{errorData.name.message}</span>}
-          <div className="input-group">
-            <label>Usecase Description</label>
-            <textarea className="form-control" rows={3} name="description" placeholder="name of usecase" value={usecase.description} onChange={(e: any) => this.handleStateChange(e)} />
-          </div>
-          {errorData && errorData.description && <span>{errorData.description.message}</span>}
-          <div className="input-group">
-            <label>Assign To</label>
-            <select name="assignTo" className="assign" onChange={(e: any) => this.handleStateChange(e)}>
-              <option value="">--select--</option>
-              <option value="1">abc</option>.
-              <option value="2">def</option>
-              <option value="2">xyz</option>
-            </select>
-          </div>
-          {errorData && errorData.assignTo && <span>{errorData.assignTo.message}</span>}
-        </div> */}
-        <div className="workflow-detail">
-          <h5>Workflow Stage Detail</h5>
-        </div>
-        {errorData && errorData.stageDetail && <span className='error'>{errorData.stageDetail.message}</span>}
-        {stages && stages.length > 0 &&
-          stages.map((val: any, i: any) => {
-            return (
-              <div className="add-workflow-list">
-                <span>{i + 1}</span>
-                <div className="workflow-type">
-                  <input className="form-control" type="text" name="name" placeholder="Enter your workflow type" value={val.name} onChange={(e) => this.handleStageDetail(e, i)} />
-                </div>
-                <div className="description">
-                  <label>Description</label>
-                  <textarea className="form-control" rows={3} name="description" placeholder="describe task and checklist to be followed at this stage" value={val.description} onChange={(e) => this.handleStageDetail(e, i)} />
-                </div>
-                <div className="description">
-                  <label>Assign To</label>
-                  <select name="assignedTo" className="assign" value={val.assignedTo} onChange={(e) => this.handleStageDetail(e, i)}>
-                    <option value="">--select--</option>
-                    <option value="1">abc</option>
-                    <option value="2">def</option>
-                    <option value="3">xyz</option>
-                  </select>
-                </div>
-                <a onClick={(e) => this.addDetails(i)}>Add New Substage </a>
-                {this.state.activeIndex === i &&
-                  <div>
-                    <input type='text' name="subStageName" value={subStageName} onChange={(e) => this.handleSubStageName(i, e)} />
-                    <div onClick={this.addSubStage}>+</div>
-                  </div>}
-                <div>
-                  {val.details && val.details.length > 0 &&
-                    <div>
-                      <table>
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th>Assign to</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Comments</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {val.details.map(({ name, assignto, startDate, endDate, comments }: any, index: any) => (
-                            <tr>
-                              <td>{name}</td>
-                              <td><select name="assignto" id="assignto" onChange={(e) => this.handleSubStageData(e, i, index)}>
-                                <option value="">--select--</option>
-                                <option value="1">abc</option>
-                                <option value="2">def</option>
-                                <option value="3">xyz</option>
-                              </select></td>
-                              <td><input type='date' name="startDate" value={startDate} placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} /></td>
-                              <td><input type='date' name="endDate" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={endDate} /></td>
-                              <td><input type='comments' name="comments" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={comments} /></td>
-                              <td onClick={() => { this.removeSubString(i, index) }}>Remove Substage</td>
-                            </tr>
-                          )
-                          )}
-                        </tbody>
-                      </table>
-                    </div>}
+      <div className="project-over-view-container">
+        <div className="project-over-view-section">
+          <div className="fliter-container">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="heading">Procurement Workflow management</div>
+              </div>
+              <div className="col-md-6">
+                <div className="fliter-right-content">
+                  <div className="image">
+                    <img src={downloadIcon} alt="" />
+                  </div>
+                  <div className="fliter-search">
+                    <div className="fliter-box">
+                      <select>
+                        <option>Fliter by</option>
+                        <option>Fliter by 1</option>
+                        <option>Fliter by 2</option>
+                        <option>Fliter by 3</option>
+                      </select>
+                    </div>
+                    <div className="fliter-search-box">
+                      <input
+                        type={'Search for...'}
+                        className="input-group-text"
+                        placeholder={'Search for...'}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-            )
-          })
-        }
-        {/* <div className="workflow-detail">
-          <button className="btn btn-primary add-workflow-btn" onClick={this.addMoreworkflowStage}><span>add More Workflow Stage</span></button>
-        </div> */}
-
-        {stages && stages.length > 0 &&
-          <div className="basic-details-btn">
-            <button className="btn btn-primary" onClick={this.submitWorkflow}>Save</button>
+            </div>
           </div>
-        }
+          <div className="project-over-view-inner-content">
+            <div className="project-over-view-left-content">
+              <div className="sidebar">
+                <ul>
+                  {this.displayUseCaseList()}
+                </ul>
+              </div>
+            </div>
+            <div className="project-over-view-right-content">
+              <div className="create-new-usecase">
+                <div className="basic-details">
+                  <h4>Basic Details</h4>
+                  <div className="input-group">
+                    <label>Usecase Name</label>
+                    <input className="form-control name-usecase" type="text" name="name" placeholder="name of usecase" />
+                  </div>
+                  {errorData && errorData.name && <span>{errorData.name.message}</span>}
+                  <div className="input-group">
+                    <label>Usecase Description</label>
+                    <textarea className="form-control" rows={3} name="description" placeholder="name of usecase" />
+                  </div>
+                  {errorData && errorData.description && <span>{errorData.description.message}</span>}
+                  <div className="input-group menu-dropdown">
+                    <label>Assign To</label>
+                    <select name="assignTo" className="assign" onChange={(e: any) => this.handleStateChange(e)}>
+                      <option value="">--select--</option>
+                      <option value="1">abc</option>.
+                      <option value="2">def</option>
+                      <option value="2">xyz</option>
+                    </select>
+                  </div>
+                  {errorData && errorData.assignTo && <span>{errorData.assignTo.message}</span>}
+                </div>
+                <div className="workflow-detail">
+                  <h4>Workflow Stage Detail</h4>
+                </div>
+                {errorData && errorData.stageDetail && <span className='error'>{errorData.stageDetail.message}</span>}
+                {stages && stages.length > 0 &&
+                  stages.map((val: any, i: any) => {
+                    return (
+                      <div className="add-workflow-list">
+                        <span>{i + 1}</span>
+                        <div className="workflow-type">
+                          <input className="form-control" type="text" name="name" placeholder="Enter your workflow type" value={val.name} onChange={(e) => this.handleStageDetail(e, i)} />
+                        </div>
+                        <div className="workflow-details-content">
+                          <div className="workflow-dropdown">
+                            <label>Assign To</label>
+                            <select name="assignedTo" className="assign" value={val.assignedTo} onChange={(e) => this.handleStageDetail(e, i)}>
+                              <option value="">--select--</option>
+                              <option value="1">abc</option>
+                              <option value="2">def</option>
+                              <option value="3">xyz</option>
+                            </select>
+                          </div>
+                          <div className="description">
+                            <label>Description</label>
+                            <input className="form-control" name="description" placeholder="describe task and checklist to be followed at this stage" value={val.description} onChange={(e) => this.handleStageDetail(e, i)} />
+                          </div>
+                        </div>
+                        <a onClick={(e) => this.addDetails(i)}>Add New Substage </a>
+                        {this.state.activeIndex === i &&
+                          <div>
+                            <input type='text' name="subStageName" value={subStageName} onChange={(e) => this.handleSubStageName(i, e)} />
+                            <div onClick={this.addSubStage}>+</div>
+                          </div>}
+                        <div>
+                          {val.details && val.details.length > 0 &&
+                            <div>
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th></th>
+                                    <th>Assign to</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Comments</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {val.details.map(({ name, assignto, startDate, endDate, comments }: any, index: any) => (
+                                    <tr>
+                                      <td>{name}</td>
+                                      <td><select name="assignto" id="assignto" onChange={(e) => this.handleSubStageData(e, i, index)}>
+                                        <option value="">--select--</option>
+                                        <option value="1">abc</option>
+                                        <option value="2">def</option>
+                                        <option value="3">xyz</option>
+                                      </select></td>
+                                      <td><input type='date' name="startDate" value={startDate} placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} /></td>
+                                      <td><input type='date' name="endDate" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={endDate} /></td>
+                                      <td><input type='comments' name="comments" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={comments} /></td>
+                                      <td onClick={() => { this.removeSubString(i, index) }}>Remove Substage</td>
+                                    </tr>
+                                  )
+                                  )}
+                                </tbody>
+                              </table>
+                            </div>}
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+                {stages && stages.length > 0 &&
+                  <div className="basic-details-btn">
+                    <button className="btn btn-primary" onClick={this.submitWorkflow}>Save</button>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

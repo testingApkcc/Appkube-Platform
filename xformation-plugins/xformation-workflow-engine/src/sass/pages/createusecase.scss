@@ -1,10 +1,15 @@
-.dashboard-content {
+.create-new-usecase {
     .basic-details {
-        h5 {
-            color: #3b4859;
+        border-bottom: 1px dashed #8392A7;
+        margin-bottom: 30px;
+
+        h4 {
+            color: #3B4859;
+            font-weight: 500;
         }
 
         .input-group {
+            margin-top: 15px;
             display: block;
             margin-bottom: 20px;
             width: 500px;
@@ -18,11 +23,16 @@
                 display: block;
             }
 
+            .name-usecase {
+                height: 40px;
+            }
+
             .form-control {
                 width: 100%;
-                border-color: #8392a7;
                 color: #757f8a;
+                padding: 10px 15px;
                 font-style: italic;
+                border: 1px solid #8392a7;
                 border-radius: 0.25rem !important;
 
                 &:focus {
@@ -43,11 +53,16 @@
 
             }
         }
+
+        .menu-dropdown {
+            margin-bottom: 30px;
+        }
     }
 
     .workflow-detail {
-        h5 {
+        h4 {
             color: #3b4859;
+            font-weight: 500;
             margin-bottom: 20px;
         }
 
@@ -91,7 +106,7 @@
 
             .form-control {
                 display: inline-block;
-                width: 75%;
+                width: 50%;
                 border: 1px solid #399ef7;
                 background-color: #ffffff;
                 text-align: center;
@@ -128,7 +143,7 @@
             &::before,
             &::after {
                 right: calc(100% - 31px);
-                top: 7%;
+                top: 11%;
                 border: solid transparent;
                 content: "";
                 height: 0;
@@ -152,45 +167,79 @@
             }
         }
 
-        .description {
+        .workflow-details-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
             padding-bottom: 25px;
-            margin-left: 25px;
-            width: 500px;
 
-            label {
-                font-size: 16px;
-                line-height: 20px;
-                font-weight: 500;
-                color: #414d55;
-                margin-bottom: 8px;
-                display: block;
-            }
+            .workflow-dropdown {
+                width: 300px;
 
-            .form-control {
-                width: 100%;
-                border-color: #8392a7;
-                color: #757f8a;
-                font-style: italic;
-                border-radius: 0.25rem !important;
+                label {
+                    font-size: 16px;
+                    line-height: 20px;
+                    font-weight: 500;
+                    color: #414d55;
+                    margin-bottom: 8px;
+                    display: block;
+                }
 
-                &:focus {
-                    box-shadow: none;
+                select {
+                    width: 100%;
+                    height: 35px;
+                    border-color: #8392a7;
+                    color: #757f8a;
+                    font-style: italic;
+                    border-radius: 0.25rem !important;
                 }
             }
 
-            .assign {
-                width: 100%;
-                height: 40px;
-                border-color: #8392a7;
-                color: #757f8a;
-                border-radius: 0.25rem !important;
+            .description {
 
-                &:focus-visible {
-                    outline: none;
+                margin-left: 15px;
+                width: -webkit-fill-available;
+
+                label {
+                    font-size: 16px;
+                    line-height: 20px;
+                    font-weight: 500;
+                    color: #414d55;
+                    margin-bottom: 8px;
+                    display: block;
                 }
 
+                .form-control {
+                    width: 100%;
+                    border-color: #8392a7;
+                    color: #757f8a;
+                    padding: 8px 15px;
+                    font-size: 14px;
+                    height: 35px;
+                    font-style: italic;
+                    border: 1px solid #8392a7;
+                    border-radius: 0.25rem !important;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+
+                .assign {
+                    width: 100%;
+                    height: 40px;
+                    border-color: #8392a7;
+                    color: #757f8a;
+                    border-radius: 0.25rem !important;
+
+                    &:focus-visible {
+                        outline: none;
+                    }
+
+                }
             }
         }
+
     }
 
     .basic-details-btn {
