@@ -338,16 +338,19 @@ export class CreateUsecase extends React.Component<any, any> {
                             <input className="form-control" name="description" placeholder="describe task and checklist to be followed at this stage" value={val.description} onChange={(e) => this.handleStageDetail(e, i)} />
                           </div>
                         </div>
-                        <a onClick={(e) => this.addDetails(i)}>Add New Substage </a>
-                        {this.state.activeIndex === i &&
-                          <div>
-                            <input type='text' name="subStageName" value={subStageName} onChange={(e) => this.handleSubStageName(i, e)} />
-                            <div onClick={this.addSubStage}>+</div>
-                          </div>}
-                        <div>
+                        <button className='add-stage-btn' onClick={(e) => this.addDetails(i)}><div className='d-inline-block' onClick={this.addSubStage}><i className="fa fa-plus" aria-hidden="true"></i>
+                        </div>Add Stage </button>
+                        {
+                          this.state.activeIndex === i &&
+                          <div className="add-stage-name">
+                            <input type='text' className="form-control" name="subStageName" value={subStageName} onChange={(e) => this.handleSubStageName(i, e)} />
+                          </div>
+                        }
+                        <div className='requirement-details'>
                           {val.details && val.details.length > 0 &&
-                            <div>
-                              <table>
+                            <div className='requirement-inner-content'>
+                              <h4 className='heading'>Requirement Sub-Stage details</h4>
+                              <table >
                                 <thead>
                                   <tr>
                                     <th></th>
@@ -360,17 +363,18 @@ export class CreateUsecase extends React.Component<any, any> {
                                 <tbody>
                                   {val.details.map(({ name, assignto, startDate, endDate, comments }: any, index: any) => (
                                     <tr>
-                                      <td>{name}</td>
+                                      <td className="user-name">{name}</td>
                                       <td><select name="assignto" id="assignto" onChange={(e) => this.handleSubStageData(e, i, index)}>
                                         <option value="">--select--</option>
                                         <option value="1">abc</option>
                                         <option value="2">def</option>
                                         <option value="3">xyz</option>
                                       </select></td>
-                                      <td><input type='date' name="startDate" value={startDate} placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} /></td>
-                                      <td><input type='date' name="endDate" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={endDate} /></td>
-                                      <td><input type='comments' name="comments" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={comments} /></td>
-                                      <td onClick={() => { this.removeSubString(i, index) }}>Remove Substage</td>
+                                      <td className="start-date"><input type='date' className="form-control" name="startDate" value={startDate} placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} /></td>
+                                      <td className="start-date end-date"><input type='date' className="form-control" name="endDate" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={endDate} /></td>
+                                      <td className="comment-box"><input type='comments' className="form-control" name="comments" placeholder='Select' onChange={(e) => this.handleSubStageData(e, i, index)} value={comments} /></td>
+                                      <td className="remove-btn" onClick={() => { this.removeSubString(i, index) }}><i className="fa fa-times" aria-hidden="true"></i>
+                                      </td>
                                     </tr>
                                   )
                                   )}
@@ -391,7 +395,7 @@ export class CreateUsecase extends React.Component<any, any> {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }
