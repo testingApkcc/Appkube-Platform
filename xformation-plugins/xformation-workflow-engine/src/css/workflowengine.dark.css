@@ -5616,12 +5616,22 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-view-table-section {
+  border: 1px solid #707070;
+  margin-top: 15px;
+  border-radius: 3px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
   .workflow-view-table-section
   .heading {
   padding: 10px 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #b1c9f8;
 }
 .project-over-view-container
   .project-over-view-section
@@ -5677,11 +5687,8 @@
   .table
   tbody
   tr
-  td {
+  th {
   padding: 10px 15px;
-  font-size: 14px;
-  line-height: 20px;
-  color: #525252;
 }
 .project-over-view-container
   .project-over-view-section
@@ -5692,7 +5699,7 @@
   .table
   tbody
   tr
-  td
+  th
   strong {
   font-size: 16px;
   line-height: 20px;
@@ -5707,8 +5714,15 @@
   .workflow-view-table
   .table
   tbody
-  tr:nth-child(odd) {
-  background: #b1c9f8;
+  .table-inner-content
+  td {
+  padding: 10px 22px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #525252;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .project-over-view-container
   .project-over-view-section
@@ -5718,8 +5732,19 @@
   .workflow-view-table
   .table
   tbody
-  tr:nth-child(even) {
+  .table-inner-content:nth-child(odd) {
   background: #ffffff;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  .table-inner-content:nth-child(even) {
+  background: #ebf1fd;
 }
 .project-over-view-container
   .project-over-view-section
@@ -5780,6 +5805,38 @@
   font-weight: 400;
   color: #3b4859;
   vertical-align: baseline;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-buttons {
+  text-align: end;
+  margin-top: 20px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-buttons
+  .previous-btn {
+  margin-right: 15px;
+  background: #3b7cff;
+  color: #f9fafc;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 3px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-buttons
+  .next-btn {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=workflowengine.dark.css.map */

@@ -647,7 +647,7 @@ export class ProjectOverView extends React.Component<any, any> {
           for (let j = 0; j < stage.stepList.length; j++) {
             let step = stage.stepList[j];
             stepJSXList.push(
-              <tr>
+              <tr className='table-inner-content'>
                 <td>{step.name}</td>
                 <td>{step.assignTo}</td>
                 <td>{step.startDate}</td>
@@ -661,7 +661,7 @@ export class ProjectOverView extends React.Component<any, any> {
         retData.push(
           <>
             <tr>
-              <td colSpan={6}><strong>{stage.name}</strong></td>
+              <th colSpan={6}><strong>{stage.name}</strong></th>
             </tr>
             {stepJSXList}
           </>
@@ -751,7 +751,7 @@ export class ProjectOverView extends React.Component<any, any> {
                 </div>
                 <div className="workflow-view-table">
                   <table className="table">
-                    <thead>
+                    <thead >
                       <tr>
                         <th>Stages</th>
                         <th>Assigned to</th>
@@ -771,11 +771,11 @@ export class ProjectOverView extends React.Component<any, any> {
                 </div>
                 {this.displayCheckList()}
               </div>
-              <div className="d-flex justify-content-end workflow-buttons">
+              <div className="workflow-buttons">
                 <button
                   type="button"
                   disabled={activeStage == 0}
-                  className="btn btn-primary"
+                  className="btn btn-primary previous-btn"
                   onClick={() => this.moveToNextPage('previous')}
                 >
                   Previous
@@ -785,7 +785,7 @@ export class ProjectOverView extends React.Component<any, any> {
                     <button
                       type="button"
                       disabled={activeStage == usecaseData.stages.length - 1}
-                      className="btn btn-primary"
+                      className="btn btn-primary previous-btn next-btn"
                       onClick={() => this.moveToNextPage('next')}
                     >
                       Next
