@@ -473,11 +473,16 @@
                 }
 
                 .workflow-view-table-section {
+                    border: 1px solid #707070;
+                    margin-top: 15px;
+                    border-radius: 3px;
+
                     .heading {
                         padding: 10px 15px;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        background: #b1c9f8;
 
                         i {
                             font-size: 20px;
@@ -508,11 +513,8 @@
                             tbody {
                                 tr {
 
-                                    td {
+                                    th {
                                         padding: 10px 15px;
-                                        font-size: 14px;
-                                        line-height: 20px;
-                                        color: #525252;
 
                                         strong {
                                             font-size: 16px;
@@ -521,16 +523,27 @@
                                             color: #525252;
                                         }
                                     }
+                                }
 
-                                    &:nth-child(odd) {
-                                        background: #B1C9F8;
+                                .table-inner-content {
+                                    td {
+                                        padding: 10px 22px;
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        color: #525252;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
                                     }
 
-                                    &:nth-child(even) {
+                                    &:nth-child(odd) {
+
                                         background: #ffffff;
                                     }
 
-
+                                    &:nth-child(even) {
+                                        background: #ebf1fd;
+                                    }
                                 }
                             }
                         }
@@ -569,6 +582,28 @@
                             vertical-align: baseline;
                         }
                     }
+                }
+
+                .workflow-buttons {
+                    text-align: end;
+                    margin-top: 20px;
+
+                    .previous-btn {
+                        margin-right: 15px;
+                        background: #3B7CFF;
+                        color: #F9FAFC;
+                        border: none;
+                        padding: 10px 15px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 20px;
+                        border-radius: 3px;
+                    }
+
+                    .next-btn {
+                        margin-right: 0;
+                    }
+
                 }
             }
         }
