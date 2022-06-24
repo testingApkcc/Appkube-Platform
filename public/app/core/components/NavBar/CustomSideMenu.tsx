@@ -222,9 +222,16 @@ export class CustomSideMenu extends PureComponent<any, any> {
           ],
         },
         {
+          link: '/a/xformation-assetmanager-ui-plugin/product-wise-services-sla',
+          text: 'Product Wise Services SLA',
+          childName: 'assets',
+          isImplemented: true,
+        },
+        {
           link: '/a/xformation-assetmanager-ui-plugin/all-services',
           text: 'All Services',
           childName: 'assets',
+          isImplemented: false,
         },
         // {
         //   link: '/a/xformation-assetmanager-ui-plugin/storage-details',

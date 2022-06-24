@@ -7,6 +7,7 @@ import { Kubernetes } from '../../pages/Kubernetes';
 import { StorageDetails } from '../../pages/StorageDetails';
 import { DepartmentWiseProducts } from '../../pages/DepartmentWiseProducts';
 import { DepartmentWiseCharts } from 'pages/DepartmentWiseProducts/departmentChart';
+import { ProductWiseServicesSla } from '../../pages/ProductWiseServicesSla';
 import { StorageViewDetails } from '../../pages/StorageViewDetails';
 import { useNavigation, prefixRoute } from '../../utils/utils.routing';
 import { usePluginMeta } from 'utils/utils.plugin';
@@ -50,6 +51,11 @@ export const Routes = () => {
 				exact
 				path={prefixRoute(ROUTES.DepartmentWiseProducts)}
 				component={(props: any) => <DepartmentWiseProducts {...props} meta={meta} />}
+			/>
+			<Route
+				exact
+				path={prefixRoute(ROUTES.ProductWiseServicesSla)}
+				component={(props: any) => <ProductWiseServicesSla {...props} meta={meta} />}
 			/>
 			<Route
 				exact
