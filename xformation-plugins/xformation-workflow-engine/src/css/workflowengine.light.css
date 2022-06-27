@@ -2501,6 +2501,9 @@
   font-weight: 500;
   color: #202020;
 }
+.owrkflow-procument-container .procument-page-container .project-wise-page-heading .heading-content-right {
+  text-align: right;
+}
 .owrkflow-procument-container
   .procument-page-container
   .project-wise-page-heading
@@ -4013,17 +4016,26 @@
 .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-buttons .btn {
   margin-left: 15px;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table {
+.owrkflow-procument-container .procument-page-container .project-wise-status {
+  display: block;
+  width: 100%;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-status .project-wise-table {
   padding-top: 30px;
   padding-left: 16px;
   padding-right: 16px;
+  overflow: hidden;
+  overflow-x: auto;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .thead {
+.owrkflow-procument-container .procument-page-container .project-wise-status .project-wise-table .table {
+  width: 1100px;
+}
+.owrkflow-procument-container .procument-page-container .project-wise-status .project-wise-table .table .thead {
   width: 100%;
   display: flex;
   border-bottom: 1px solid #e6e6e6;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .thead .th {
+.owrkflow-procument-container .procument-page-container .project-wise-status .project-wise-table .table .thead .th {
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -4034,15 +4046,21 @@
   text-align: center;
   border-right: 1px solid #e6e6e6;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .thead .th:last-child {
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-status
+  .project-wise-table
+  .table
+  .thead
+  .th:last-child {
   border-right: none;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr {
+.owrkflow-procument-container .procument-page-container .project-wise-status .project-wise-table .table .tbody .tr {
   width: 100%;
   display: flex;
   margin-top: 8px;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td {
+.owrkflow-procument-container .procument-page-container .project-wise-status .project-wise-table .table .tbody .tr .td {
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -4053,21 +4071,60 @@
   text-align: center;
   border-right: 1px solid #e6e6e6;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td a {
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-status
+  .project-wise-table
+  .table
+  .tbody
+  .tr
+  .td
+  a {
   color: #2662f0;
   font-size: 12px;
   font-weight: 600;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td:last-child {
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-status
+  .project-wise-table
+  .table
+  .tbody
+  .tr
+  .td:last-child {
   border-right: none;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td i {
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-status
+  .project-wise-table
+  .table
+  .tbody
+  .tr
+  .td
+  i {
   font-size: 18px;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td i.green {
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-status
+  .project-wise-table
+  .table
+  .tbody
+  .tr
+  .td
+  i.green {
   color: #57d25f;
 }
-.owrkflow-procument-container .procument-page-container .project-wise-table .table .tbody .tr .td i.orange {
+.owrkflow-procument-container
+  .procument-page-container
+  .project-wise-status
+  .project-wise-table
+  .table
+  .tbody
+  .tr
+  .td
+  i.orange {
   color: #eea515;
 }
 
@@ -4208,6 +4265,36 @@
 }
 .receive-rfq-content .receive-rfq-box.inprosseg {
   border-top: 5px solid #ff5400;
+}
+
+@media only screen and (max-width: 991px) {
+  .owrkflow-procument-container .procument-page-container .procurement-details ul li {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .owrkflow-procument-container .procument-page-container .project-wise-page-heading .heading-content-right {
+    text-align: right;
+  }
+  .owrkflow-procument-container .procument-page-container .procurement-details ul li {
+    width: 140px;
+    padding: 10px 10px;
+  }
+  .owrkflow-procument-container
+    .procument-page-container
+    .tebs-inner-content
+    .overview-inner-content
+    .overview-right-content {
+    margin: 30px 0;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .owrkflow-procument-container .procument-page-container .project-wise-page-heading .heading-content-right {
+    text-align: left;
+    margin-top: 20px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {

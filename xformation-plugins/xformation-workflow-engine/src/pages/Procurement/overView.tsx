@@ -54,7 +54,7 @@ export class OverView extends React.Component<any, any> {
 				</div>
 				<div className="overview-inner-content">
 					<div className="row">
-						<div className="col-lg-4">
+						<div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
 							<div className="overview-left-content">
 								<div className="assigned-content">
 									<label>Assigned To </label>
@@ -87,7 +87,7 @@ export class OverView extends React.Component<any, any> {
 								</div>
 							</div>
 						</div>
-						<div className="col-lg-8">
+						<div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
 							<div className="overview-right-content">
 								<div className="overview-heading">
 									<div className="heading-left">
@@ -157,7 +157,7 @@ export class OverView extends React.Component<any, any> {
 								</div>
 							</div>
 						</div>
-						<div className="col-lg-12">
+						<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div className="updates-comments-section">
 								<label>Updates and Comments</label>
 								<div className="update-content-box">
