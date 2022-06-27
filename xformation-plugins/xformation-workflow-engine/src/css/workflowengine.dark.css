@@ -1413,9 +1413,11 @@
   line-height: 25px;
   border-radius: 25px;
   text-align: center;
-  color: #fff;
   font-size: 14px;
   background-color: #8145cd;
+}
+.owrkflow-project-wise-container .project-wise-page-container .project-wise-page-heading .heading-content-right span i {
+  color: #fff;
 }
 .owrkflow-project-wise-container .project-wise-page-container .project-wise-status {
   margin-top: 50px;
@@ -1804,6 +1806,29 @@
   line-height: 20px;
   font-weight: 500;
   color: #202020;
+}
+
+@media only screen and (max-width: 1200px) {
+  .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table {
+    display: block;
+    display: -webkit-box;
+    width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .owrkflow-project-wise-container
+    .project-wise-page-container
+    .project-wise-status
+    .status-fliter
+    .project-status-heading {
+    margin-bottom: 20px;
+  }
+  .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter .search-bar {
+    margin-top: 20px;
+  }
 }
 
 .owrkflow-resource-wise-View-container {
