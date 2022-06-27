@@ -65,30 +65,33 @@ export class VerifyInputs extends React.Component<any, any> {
   displayTable = () => {
     const retData: any = [];
     const { dashboardData } = this.state;
+    const { apiKey } = this.props;
     dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
       const { dashboards } = dataSource;
       const dashboardJSX: any = [];
       if (dashboards) {
         dashboards.forEach((dashboard: any, dashboardIndex: any) => {
-          dashboardJSX.push(
-            <tbody key={`${dataSourceIndex}-${dashboardIndex}-datasource`}>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={dashboard.isChecked}
-                    onChange={(e) => this.handleChange(e, dataSourceIndex, dashboardIndex)}
-                  />
-                </td>
-                <td>{dashboard.name}</td>
-                {/* <td>
-                  <a>
-                    <i className="fa fa-eye"></i>
-                  </a>
-                </td> */}
-              </tr>
-            </tbody>
-          )
+          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase()) {
+            dashboardJSX.push(
+              <tbody key={`${dataSourceIndex}-${dashboardIndex}-datasource`}>
+                <tr>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={dashboard.isChecked}
+                      onChange={(e) => this.handleChange(e, dataSourceIndex, dashboardIndex)}
+                    />
+                  </td>
+                  <td>{dashboard.name}</td>
+                  {/* <td>
+                    <a>
+                      <i className="fa fa-eye"></i>
+                    </a>
+                  </td> */}
+                </tr>
+              </tbody>
+            )
+          }
         });
       }
       retData.push(

@@ -32,6 +32,8 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type Props = ConnectedProps<typeof connector>;
 
+const RENDERED_CATEGORY = ['cloud'];
+const RENDERED_PLUGINS = ['cloudwatch', 'grafana-azure-monitor-datasource'];
 class NewDataSourcePage extends PureComponent<Props> {
   componentDidMount() {
     this.props.loadDataSourcePlugins();
@@ -59,13 +61,19 @@ class NewDataSourcePage extends PureComponent<Props> {
           }
         `}
         getItemKey={(item) => item.id.toString()}
-        renderItem={(item) => (
-          <DataSourceTypeCard
-            plugin={item}
-            onClick={() => this.onDataSourceTypeClicked(item)}
-            onLearnMoreClick={this.onLearnMoreClick}
-          />
-        )}
+        renderItem={(item) => {
+          if (RENDERED_PLUGINS.indexOf(item.id) !== -1) {
+            return (
+              <DataSourceTypeCard
+                plugin={item}
+                onClick={() => this.onDataSourceTypeClicked(item)}
+                onLearnMoreClick={this.onLearnMoreClick}
+              />
+            );
+          } else {
+            return <></>;
+          }
+        }}
         aria-labelledby={id}
       />
     );
@@ -80,14 +88,20 @@ class NewDataSourcePage extends PureComponent<Props> {
 
     return (
       <>
-        {categories.map((category) => (
-          <div className="add-data-source-category" key={category.id}>
-            <div className="add-data-source-category__header" id={category.id}>
-              {category.title}
-            </div>
-            {this.renderPlugins(category.plugins, category.id)}
-          </div>
-        ))}
+        {categories.map((category) => {
+          if (RENDERED_CATEGORY.indexOf(category.id) !== -1) {
+            return (
+              <div className="add-data-source-category" key={category.id}>
+                <div className="add-data-source-category__header" id={category.id}>
+                  {category.title}
+                </div>
+                {this.renderPlugins(category.plugins, category.id)}
+              </div>
+            );
+          } else {
+            return <></>;
+          }
+        })}
         <div className="add-data-source-more">
           <LinkButton
             variant="secondary"

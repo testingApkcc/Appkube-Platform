@@ -80,6 +80,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/%PLUGIN_ID%?path=view-storage-details"
+    },
+    {
+      "type": "page",
+      "name": "ProductWiseServicesSla",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=product-wise-services-sla"
     }
   ],
   "dependencies": {

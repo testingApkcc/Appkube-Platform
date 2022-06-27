@@ -12,6 +12,7 @@ export enum ROUTES {
   DepartmentWiseProducts = 'department-wise-products',
   DepartmentWiseCharts = 'department-wise-charts',
   StorageViewDetails = 'view-storage-details',
+  ProductWiseServicesSla = 'product-wise-services-sla',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
