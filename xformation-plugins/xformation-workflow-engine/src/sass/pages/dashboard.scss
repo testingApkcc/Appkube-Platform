@@ -517,6 +517,7 @@
                 display: block;
                 background-color: #ffffff;
                 padding: 10px 5px;
+                min-height: 415px;
                 border-radius: 15px;
                 box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.30);
                 -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.30);
@@ -707,6 +708,7 @@
                 background-color: #ffffff;
                 padding: 10px 5px;
                 border-radius: 15px;
+                min-height: 415px;
                 box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.30);
                 -webkit-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.30);
                 -moz-box-shadow: 1px 2px 6px -2px rgba(0, 0, 0, 0.30);
@@ -731,6 +733,7 @@
                     p {
                         color: #a5a5a5;
                         font-weight: 400;
+                        margin: 0;
                     }
                 }
 
@@ -746,7 +749,7 @@
                     .resource {
                         display: flex;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: space-between;
                         width: 100%;
                         margin-bottom: 15px;
 
@@ -766,7 +769,7 @@
 
                         .content {
                             display: flex;
-                            width: calc(100% - 102px);
+                            // width: calc(100% - 102px);
                             justify-content: center;
                             align-items: center;
                             flex-wrap: wrap;
@@ -841,17 +844,22 @@
             }
 
             .table {
-                display: block;
+                display: flex;
                 width: 100%;
+                display: -webkit-box;
+                overflow: hidden;
+                overflow-x: auto;
                 padding-top: 30px;
 
                 table {
+                    width: 100%;
+
                     thead {
                         th {
                             padding-left: 10px;
                             padding-right: 10px;
                             padding-bottom: 15px;
-                            font-size: 18px;
+                            font-size: 16px;
                             font-weight: 400;
                             color: #414d55;
                             width: 14.2857%;
@@ -1109,4 +1117,76 @@
             }
         }
     }
+}
+
+@media only screen and (max-width: 1200px) {
+    .owrkflow-dashboard-container {
+        .dashboard-container {
+            .fliter-container {
+                .fliter-search {
+                    .fliter-box {
+                        display: inline-block;
+                        width: 230px;
+                        height: 32px;
+                        border-radius: 20px;
+                        padding: 0;
+                        border: 1px solid #a9b9c6;
+                        margin-right: 15px;
+                    }
+                }
+            }
+
+            .progress-rfp-boxs {
+                .progress-box {
+                    margin-bottom: 30px;
+                }
+            }
+
+            .average-section {
+                padding-top: 0;
+            }
+
+            .project-resources-section {
+                .project-list {
+                    .heading {
+                        .tabs {
+                            li {
+                                padding-left: 10px;
+                                padding-right: 10px;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .owrkflow-dashboard-container {
+        .dashboard-container {
+            .fliter-container {
+                .fliter-search {
+                    float: left;
+                    margin-top: 15px;
+                }
+            }
+
+            .average-section {
+                .statistics-graph {
+                    margin-bottom: 30px;
+                }
+            }
+
+            .project-resources-section {
+                padding-top: 0;
+
+                .resources-list {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+
 }
