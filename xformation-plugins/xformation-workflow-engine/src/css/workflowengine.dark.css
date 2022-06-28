@@ -1333,6 +1333,95 @@
   .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list {
     margin-top: 30px;
   }
+  .owrkflow-dashboard-container .dashboard-container .project-overview-section .table .overview {
+    width: 1000px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {
+    line-height: 20px;
+  }
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
+    display: block;
+    width: 100%;
+  }
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {
+    display: block;
+    width: 100%;
+  }
+  .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {
+    display: block;
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {
+    line-height: 20px;
+  }
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
+    display: block;
+    width: 100%;
+  }
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {
+    display: block;
+    width: 100%;
+  }
+  .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-heading h5 {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 0;
+  }
+  .owrkflow-dashboard-container
+    .dashboard-container
+    .average-section
+    .statistics-graph
+    .requistions-heading
+    .requistions-dropdown {
+    margin: 15px 0;
+  }
+  .owrkflow-dashboard-container
+    .dashboard-container
+    .average-section
+    .statistics-graph
+    .requistions-heading
+    .requistions-dropdown
+    .opensens-dropdown {
+    text-align: left;
+  }
+  .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .requistions-graph {
+    width: 100%;
+    margin: 30px auto 0;
+  }
+  .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph .totalpaid {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs {
+    display: block;
+    margin-top: 15px;
+  }
+  .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading .tabs li {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+  }
 }
 
 .owrkflow-project-wise-container {

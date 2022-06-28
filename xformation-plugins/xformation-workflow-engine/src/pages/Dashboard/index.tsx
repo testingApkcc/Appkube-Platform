@@ -122,10 +122,10 @@ export class Dashboard extends React.Component<any, any> {
 				<div className="dashboard-container">
 					<div className="fliter-container">
 						<div className="row">
-							<div className="col-xl-4 col-lg-5 col-md-4 col-sm-12 col-12">
+							<div className="col-xl-4 col-lg-5 col-md-4 col-sm-12 col-xs-12">
 								<div className="heading">Procurement Workflow management</div>
 							</div>
-							<div className="col-xl-8 col-lg-7 col-md-8 col-sm-12 col-12">
+							<div className="col-xl-8 col-lg-7 col-md-8 col-sm-12 col-xs-12">
 								<div className="fliter-search">
 									<div className="fliter-box">
 										<select>
@@ -148,20 +148,20 @@ export class Dashboard extends React.Component<any, any> {
 					</div>
 					<div className="dashbord-top-section">
 						<div className="row">
-							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
 								<div className="heading">
 									<h3>{'Dashboard'}</h3>
 									<span>Lorem ipsum dolor sit amet</span>
 								</div>
 							</div>
-							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-sx-12">
 								<div className="calender">{/* <DateFormat className="d-block" /> */}</div>
 							</div>
 						</div>
 					</div>
 					<div className="progress-rfp-boxs">
 						<div className="row">
-							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div className="progress-box">
 									<div className="progress-img">
 										<img src={rfpImg} alt="" />
@@ -172,7 +172,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div className="progress-box">
 									<div className="progress-img">
 										<img src={rfpImg} alt="" />
@@ -183,7 +183,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div className="progress-box">
 									<div className="progress-img">
 										<div className="mail-icon">
@@ -197,7 +197,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div className="progress-box">
 									<div className="progress-img order">
 										<div className="in-progress" />
@@ -219,7 +219,7 @@ export class Dashboard extends React.Component<any, any> {
 					</div>
 					<div className="average-section">
 						<div className="row">
-							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-lg-2">
+							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 pl-lg-2">
 								<div className="statistics-graph">
 									<div className="requistions-heading">
 										<h5 className="d-block">{'Workflow Statistics'}</h5>
@@ -232,14 +232,14 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-lg-2">
+							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 pl-lg-2">
 								<div className="statistics-graph">
 									<div className="requistions-heading">
 										<div className="row">
-											<div className="col-lg-6 col-md-6 col-sm-6">
+											<div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 												<h5 className="d-block">{'Project Overview'}</h5>
 											</div>
-											<div className="col-lg-6 col-md-6 col-sm-6">
+											<div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 												<div className="requistions-dropdown">
 													<div className="opensens-dropdown">
 														<select className="opensens-content">
@@ -273,14 +273,14 @@ export class Dashboard extends React.Component<any, any> {
 					</div>
 					<div className="project-resources-section">
 						<div className="row">
-							<div className="col-xl-9 col-lg-8 col-md-12 col-sm-12 pl-lg-2">
+							<div className="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-xs-12 pl-lg-2">
 								<div className="project-list">
 									<div className="heading">
 										<div className="row">
-											<div className="col-xl-6 col-lg-4 col-md-4 col-sm-4 col-12">
+											<div className="col-xl-6 col-lg-4 col-md-4 col-sm-12 col-xs-12">
 												<h5>Project List</h5>
 											</div>
-											<div className="col-xl-6 col-lg-8 col-md-8 col-sm-8 col-12">
+											<div className="col-xl-6 col-lg-8 col-md-8 col-sm-12 col-xs-12">
 												<ul className="tabs">
 													<li className="active">All Projects</li>
 													<li>Completed</li>
@@ -427,7 +427,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-xl-3 col-lg-4 col-md-12 col-sm-12 pr-lg-2">
+							<div className="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-xs-12 pr-lg-2">
 								<div className="resources-list">
 									<div className="heading">
 										<h5>Resources</h5>
@@ -595,7 +595,7 @@ export class Dashboard extends React.Component<any, any> {
 							<h5>Project Overview</h5>
 						</div>
 						<div className="table">
-							<table>
+							<table className="overview">
 								<thead>
 									<tr>
 										<th>Project Name</th>

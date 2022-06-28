@@ -1186,7 +1186,138 @@
                     margin-top: 30px;
                 }
             }
+
+            .project-overview-section {
+                .table {
+                    .overview {
+                        width: 1000px;
+                    }
+                }
+            }
         }
     }
 
+
+}
+
+@media only screen and (max-width: 767px) {
+    .owrkflow-dashboard-container {
+        .dashboard-container {
+            .fliter-container {
+                .heading {
+                    line-height: 20px;
+                }
+
+                .fliter-search {
+                    display: block;
+                    width: 100%;
+
+                    .fliter-box {
+                        display: block;
+                        width: 100%;
+                        margin-bottom: 15px;
+                        margin-right: 0;
+                    }
+
+                    .fliter-search-box {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .project-resources-section {
+                .project-list {
+                    .heading {
+                        .tabs {
+                            display: block;
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .owrkflow-dashboard-container {
+        .dashboard-container {
+            .fliter-container {
+                .heading {
+                    line-height: 20px;
+                }
+
+                .fliter-search {
+                    display: block;
+                    width: 100%;
+
+                    .fliter-box {
+                        display: block;
+                        width: 100%;
+                        margin-bottom: 15px;
+                        margin-right: 0;
+                    }
+
+                    .fliter-search-box {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .average-section {
+                .statistics-graph {
+                    .requistions-heading {
+                        h5 {
+                            font-size: 20px;
+                            line-height: 26px;
+                            margin-bottom: 0;
+                        }
+
+                        .requistions-dropdown {
+                            margin: 15px 0;
+
+                            .opensens-dropdown {
+                                text-align: left;
+                            }
+                        }
+                    }
+
+                    .requistions-graph {
+                        width: 100%;
+                        margin: 30px auto 0;
+                    }
+
+                    .totalpaid {
+                        width: 100%;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .owrkflow-dashboard-container {
+        .dashboard-container {
+            .project-resources-section {
+                .project-list {
+                    .heading {
+                        .tabs {
+                            display: block;
+                            margin-top: 15px;
+
+                            li {
+                                display: block;
+                                text-align: center;
+                                margin-bottom: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
