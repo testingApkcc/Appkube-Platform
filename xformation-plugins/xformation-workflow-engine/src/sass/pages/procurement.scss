@@ -702,6 +702,10 @@
 
                     .workflow-view-table {
                         margin-top: 8px;
+                        display: flex;
+                        display: -webkit-box;
+                        overflow: hidden;
+                        overflow-x: auto;
 
                         .table {
                             width: 100%;
@@ -788,9 +792,11 @@
 
                 .workflow-buttons {
                     margin-top: 20px;
+                    text-align: end;
 
                     .btn {
                         margin-left: 15px;
+                        background: #3B7CFF;
                     }
                 }
             }
@@ -1049,6 +1055,37 @@
         }
 
     }
+
+}
+
+@media only screen and(max-width: 1200px) {
+    .owrkflow-procument-container {
+        .procument-page-container {
+            .tebs-inner-content {
+                .workflow-content {
+                    .workflow-view-table-section {
+                        .workflow-view-table {
+                            .table {
+                                width: 1000px;
+                                border-bottom: 1px solid #f0f3f7;
+                            }
+                        }
+                    }
+
+                    .workflow-stage {
+                        display: -webkit-box;
+                        overflow: hidden;
+                        overflow-x: auto;
+
+                        ul {
+                            width: 1000px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
 }
 

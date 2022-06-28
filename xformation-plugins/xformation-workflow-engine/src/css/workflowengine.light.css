@@ -2675,6 +2675,10 @@
   line-height: 22px;
   font-weight: 500;
   color: #000000;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .owrkflow-procument-container
   .procument-page-container
@@ -3981,6 +3985,10 @@
   .workflow-view-table-section
   .workflow-view-table {
   margin-top: 8px;
+  display: flex;
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-x: auto;
 }
 .owrkflow-procument-container
   .procument-page-container
@@ -4119,9 +4127,11 @@
 }
 .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-buttons {
   margin-top: 20px;
+  text-align: end;
 }
 .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-buttons .btn {
   margin-left: 15px;
+  background: #3b7cff;
 }
 .owrkflow-procument-container .procument-page-container .project-wise-status {
   display: block;
@@ -4372,6 +4382,27 @@
 }
 .receive-rfq-content .receive-rfq-box.inprosseg {
   border-top: 5px solid #ff5400;
+}
+
+@media only screen and (max-width: 1200px) {
+  .owrkflow-procument-container
+    .procument-page-container
+    .tebs-inner-content
+    .workflow-content
+    .workflow-view-table-section
+    .workflow-view-table
+    .table {
+    width: 1000px;
+    border-bottom: 1px solid #f0f3f7;
+  }
+  .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-stage {
+    display: -webkit-box;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-stage ul {
+    width: 1000px;
+  }
 }
 
 @media only screen and (max-width: 991px) {
