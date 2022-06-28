@@ -137,6 +137,9 @@
                                 color: #323C47;
                                 font-weight: 500;
                                 margin-left: 10px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                             }
 
 
@@ -162,6 +165,7 @@
                 box-shadow: 0px 3px 6px #00000029;
                 border-radius: 5px;
                 margin-left: -1px;
+                overflow: hidden;
 
 
                 .workflow-stage {
@@ -608,6 +612,70 @@
             }
         }
     }
+}
 
+@media only screen and (max-width: 1200px) {
+    .project-over-view-container {
+        .project-over-view-section {
+            .fliter-container {
+                .fliter-right-content {
+                    .fliter-search {
+                        .fliter-box {
+                            width: 200px;
+                        }
 
+                        .fliter-search-box {
+                            width: 200px;
+                        }
+                    }
+                }
+            }
+
+            .project-over-view-inner-content {
+                .project-over-view-right-content {
+                    .workflow-stage {
+                        overflow: hidden;
+                        overflow-x: auto;
+                        display: -webkit-box;
+
+                        ul {
+                            width: 800px;
+                        }
+                    }
+
+                    .workflow-view-table-section {
+                        .workflow-view-table {
+                            overflow: hidden;
+                            overflow-x: auto;
+                            display: -webkit-box;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .project-over-view-container {
+        .project-over-view-section {
+            .project-over-view-inner-content {
+                .project-over-view-left-content {
+                    .sidebar {
+                        ul {
+                            li {
+                                width: 210px;
+                                padding: 10px;
+                                margin-right: 10px;
+
+                                &.active {
+                                    width: 225px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
