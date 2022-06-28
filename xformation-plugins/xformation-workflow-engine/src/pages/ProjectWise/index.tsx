@@ -42,7 +42,7 @@ export class ProjectWise extends React.Component<any, any> {
         <div className="project-wise-page-container">
           <div className="project-wise-page-heading">
             <div className="row">
-              <div className="col-lx-10 col-lg-10 col-md-10 col-sm-10 col-10">
+              <div className="col-lx-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
                 <div className="heading-content-left">
                   <div className="heading-icon"><img src={headerIcon} alt="" /></div>
                   <div className="heading-content">
@@ -52,7 +52,7 @@ export class ProjectWise extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
-              <div className="col-lx-2 col-lg-2 col-md-2 col-sm-2 col-2">
+              <div className="col-lx-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <div className="heading-content-right">
                   <span><Link to="/a/xformation-workflow-engine/dashboard"><i className="fa fa-times" aria-hidden="true"></i></Link></span>
                 </div>
@@ -62,10 +62,10 @@ export class ProjectWise extends React.Component<any, any> {
           <div className="project-wise-status">
             <div className="status-fliter">
               <div className="row d-flex align-items-center justify-content-center">
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <div className="project-status-heading">Project Status</div>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <div className="filler-search">
                     <select>
                       <option>Sort by</option>
@@ -75,7 +75,7 @@ export class ProjectWise extends React.Component<any, any> {
                     </select>
                   </div>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <div className="search-bar">
                     <input type="text" className="control-form" placeholder="Search Usecase" />
                     <i className="fa fa-search" aria-hidden="true"></i>

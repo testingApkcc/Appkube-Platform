@@ -1905,9 +1905,12 @@
     overflow: hidden;
     overflow-x: auto;
   }
+  .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .project-wise-table .table {
+    width: 1000px;
+  }
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 768px) {
   .owrkflow-project-wise-container
     .project-wise-page-container
     .project-wise-status
@@ -1917,6 +1920,17 @@
   }
   .owrkflow-project-wise-container .project-wise-page-container .project-wise-status .status-fliter .search-bar {
     margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .owrkflow-project-wise-container
+    .project-wise-page-container
+    .project-wise-page-heading
+    .heading-content-left
+    .heading-content
+    p {
+    display: none;
   }
 }
 

@@ -348,13 +348,35 @@
                     width: 100%;
                     overflow: hidden;
                     overflow-x: auto;
+
+                    .table {
+                        width: 1000px;
+                    }
                 }
             }
         }
     }
 }
 
-@media only screen and (max-width: 991px) {
+// @media only screen and (max-width: 991px) {
+    //     .owrkflow-project-wise-container {
+    //         .project-wise-page-container {
+    //             .project-wise-status {
+    //                 .status-fliter {
+    //                     .project-status-heading {
+    //                         margin-bottom: 20px;
+    //                     }
+
+    //                     .search-bar {
+    //                         margin-top: 20px;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+@media only screen and (max-width: 768px) {
     .owrkflow-project-wise-container {
         .project-wise-page-container {
             .project-wise-status {
@@ -365,6 +387,22 @@
 
                     .search-bar {
                         margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .owrkflow-project-wise-container {
+        .project-wise-page-container {
+            .project-wise-page-heading {
+                .heading-content-left {
+                    .heading-content {
+                        p {
+                            display: none;
+                        }
                     }
                 }
             }
