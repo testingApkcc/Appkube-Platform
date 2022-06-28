@@ -43,7 +43,7 @@ export class ProcurementDetail extends React.Component<any, any> {
         <div className="procument-page-container">
           <div className="project-wise-page-heading">
             <div className="row d-flex align-items-center justify-content-center">
-              <div className="col-xl-9 col-lg-9 col-md-8 col-sm-7 col-12">
+              <div className="col-xl-9 col-lg-9 col-md-8 col-sm-7 col-xs-12">
                 <div className="heading-content-left">
                   <div className="heading-icon"><img src={headerIcon} alt="" /></div>
                   <div className="heading-content">
@@ -52,7 +52,7 @@ export class ProcurementDetail extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-12">
+              <div className="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-xs-12">
                 <div className="heading-content-right">
                   <Link to="/a/xformation-workflow-engine/project-overview" className="btn-primary pro-overview-btn">Project Overview</Link>
                 </div>

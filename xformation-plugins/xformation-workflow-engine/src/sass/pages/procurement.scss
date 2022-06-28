@@ -102,6 +102,10 @@
                             line-height: 22px;
                             font-weight: 500;
                             color: #000000;
+                            width: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
 
                         .assigned-box {
@@ -281,6 +285,10 @@
                         line-height: 22px;
                         font-weight: 500;
                         color: #000000;
+                        width: 100%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
 
                     .update-content-box {
@@ -1091,14 +1099,50 @@
     .owrkflow-procument-container {
         .procument-page-container {
             .project-wise-page-heading {
+                .heading-content-left {
+                    margin-bottom: 30px;
+                }
+
                 .heading-content-right {
                     text-align: left;
-                    margin-top: 20px;
+                }
+            }
+
+            .tebs-inner-content {
+                margin-top: 0;
+                padding: 12px 12px;
+
+                .overview-inner-content {
+                    .overview-right-content {
+                        .overview-heading {
+                            display: block;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .heading-left {
+                                margin-bottom: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .procurement-details {
+                ul {
+                    li {
+                        width: 100%;
+                        text-align: center;
+                    }
                 }
             }
         }
     }
+
 }
+
+
+
+
 
 @media only screen and (min-width: 768px)and(max-width: 992px) {
     .workflow-content {
