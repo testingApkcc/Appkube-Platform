@@ -249,10 +249,10 @@ export class CreateUsecase extends React.Component<any, any> {
         <div className="project-over-view-section">
           <div className="fliter-container">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-xl-6 col-lg-5 col-md-12 col-sm-12 col-xs-12">
                 <div className="heading">Procurement Workflow management</div>
               </div>
-              <div className="col-md-6">
+              <div className="col-xl-6 col-lg-7 col-md-12 col-sm-12 col-xs-12">
                 <div className="fliter-right-content">
                   <div className="image">
                     <img src={downloadIcon} alt="" />

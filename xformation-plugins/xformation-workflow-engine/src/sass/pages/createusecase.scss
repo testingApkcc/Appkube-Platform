@@ -432,6 +432,51 @@
     }
 }
 
+@media only screen and (max-width: 991px) {
+    .project-over-view-container {
+        .project-over-view-section {
+            .fliter-container {
+                .fliter-right-content {
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: start !important;
+                    margin-top: 15px;
+
+                    .image {
+                        margin-right: 30px;
+                    }
+                }
+            }
+
+            .project-over-view-inner-content {
+                display: flex;
+                display: -webkit-box;
+                overflow: hidden;
+                overflow-x: auto;
+                width: 100%;
+
+
+
+                .project-over-view-left-content {
+                    .sidebar {
+                        ul {
+                            li {
+                                width: 210px;
+                                padding: 10px;
+                                margin-right: 10px;
+
+                                &.active {
+                                    width: 225px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media only screen and (min-width: 768px)and(max-width: 992px) {
     .dashboard-content {
         .basic-details {
