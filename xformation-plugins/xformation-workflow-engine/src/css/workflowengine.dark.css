@@ -653,7 +653,12 @@
   li:last-child {
   margin-right: 0;
 }
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects {
+.owrkflow-dashboard-container
+  .dashboard-container
+  .project-resources-section
+  .project-list
+  .project-list-content
+  .projects {
   display: block;
   width: 100%;
   padding: 0;
@@ -661,7 +666,13 @@
   overflow: hidden;
   overflow-y: auto;
 }
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project {
+.owrkflow-dashboard-container
+  .dashboard-container
+  .project-resources-section
+  .project-list
+  .project-list-content
+  .projects
+  .project {
   display: flex;
   width: 100%;
   padding: 15px 20px;
@@ -670,13 +681,20 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project.active {
+.owrkflow-dashboard-container
+  .dashboard-container
+  .project-resources-section
+  .project-list
+  .project-list-content
+  .projects
+  .project.active {
   border-left: 5px solid #6418c3;
 }
 .owrkflow-dashboard-container
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .star-box {
@@ -698,6 +716,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .star-box
@@ -712,6 +731,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .star-box.active {
@@ -721,13 +741,21 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .star-box.active
   span {
   color: #ffab2d;
 }
-.owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .projects .project .icon {
+.owrkflow-dashboard-container
+  .dashboard-container
+  .project-resources-section
+  .project-list
+  .project-list-content
+  .projects
+  .project
+  .icon {
   display: flex;
   width: 30px;
   height: 44px;
@@ -740,6 +768,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .icon
@@ -751,6 +780,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .content {
@@ -764,6 +794,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .content
@@ -780,6 +811,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .content
@@ -796,6 +828,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .content
@@ -813,6 +846,7 @@
   .dashboard-container
   .project-resources-section
   .project-list
+  .project-list-content
   .projects
   .project
   .content
@@ -1306,6 +1340,20 @@
     padding: 0;
     border: 1px solid #a9b9c6;
     margin-right: 15px;
+  }
+  .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .project-list-content {
+    display: flex;
+    display: -webkit-box;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  .owrkflow-dashboard-container
+    .dashboard-container
+    .project-resources-section
+    .project-list
+    .project-list-content
+    .projects {
+    width: 700px;
   }
   .owrkflow-dashboard-container .dashboard-container .progress-rfp-boxs .progress-box {
     margin-bottom: 30px;

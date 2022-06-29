@@ -155,7 +155,9 @@ export class Dashboard extends React.Component<any, any> {
 								</div>
 							</div>
 							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-sx-12">
-								<div className="calender">{/* <DateFormat className="d-block" /> */}</div>
+								<div className="calender">
+									{/* <DateFormat className="d-block" /> */}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -289,139 +291,141 @@ export class Dashboard extends React.Component<any, any> {
 											</div>
 										</div>
 									</div>
-									<div className="projects">
-										<div className="project active">
-											<div className="star-box active">
-												<span>
-													<i className="fa fa-star" />
-												</span>
+									<div className="project-list-content">
+										<div className="projects">
+											<div className="project active">
+												<div className="star-box active">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise">
+														<h4>Xformation Platform</h4>
+													</Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise">
-													<h4>Xformation Platform</h4>
-												</Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
 										</div>
 									</div>
