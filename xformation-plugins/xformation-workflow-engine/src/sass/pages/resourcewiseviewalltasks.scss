@@ -10,50 +10,60 @@
         padding-bottom: 15px;
 
         .resource-wise-View-page-heading {
-            .heading-content-left {
+            .resource-wise-View-head {
                 display: flex;
-                align-items: center;
-                justify-content: flex-start;
+                align-items: top;
+                justify-content: space-between;
 
-                .heading-icon {
-                    display: inline-block;
+                .heading-content-left {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    .heading-icon {
+                        display: inline-block;
+                    }
+
+                    .heading-content {
+                        margin-left: 20px;
+                        display: inline-block;
+
+                        h3 {
+                            font-size: 18px;
+                            line-height: 22px;
+                            font-weight: 500;
+                            color: #202020;
+                            margin: 0 0 10px 0;
+                        }
+
+                        span {
+                            font-size: 14px;
+                            line-height: 18px;
+                            font-weight: 400;
+                            color: #a5a5a5;
+                        }
+
+                    }
                 }
 
-                .heading-content {
-                    margin-left: 20px;
-                    display: inline-block;
-
-                    h3 {
-                        font-size: 18px;
-                        line-height: 22px;
-                        font-weight: 500;
-                        color: #202020;
-                        margin: 0 0 10px 0;
-                    }
+                .heading-content-right {
+                    float: right;
 
                     span {
+                        display: inline-block;
+                        width: 25px;
+                        height: 25px;
+                        line-height: 25px;
+                        border-radius: 25px;
+                        text-align: center;
+                        color: #fff;
                         font-size: 14px;
-                        line-height: 18px;
-                        font-weight: 400;
-                        color: #a5a5a5;
+                        background-color: #8145cd;
+
+                        a {
+                            color: #fff;
+                        }
                     }
-
-                }
-            }
-
-            .heading-content-right {
-                float: right;
-
-                span {
-                    display: inline-block;
-                    width: 25px;
-                    height: 25px;
-                    line-height: 25px;
-                    border-radius: 25px;
-                    text-align: center;
-                    color: #fff;
-                    font-size: 14px;
-                    background-color: #8145cd;
                 }
             }
         }

@@ -605,8 +605,8 @@
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 20px;
-  padding-bottom: 40px;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 .owrkflow-dashboard-container .dashboard-container .project-resources-section .project-list .heading h5 {
   font-size: 22px;
@@ -846,7 +846,7 @@
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 20px;
 }
 .owrkflow-dashboard-container .dashboard-container .project-resources-section .resources-list .heading h5 {
@@ -1948,6 +1948,15 @@
 .owrkflow-resource-wise-View-container
   .resource-wise-View-page-container
   .resource-wise-View-page-heading
+  .resource-wise-View-head {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+}
+.owrkflow-resource-wise-View-container
+  .resource-wise-View-page-container
+  .resource-wise-View-page-heading
+  .resource-wise-View-head
   .heading-content-left {
   display: flex;
   align-items: center;
@@ -1956,6 +1965,7 @@
 .owrkflow-resource-wise-View-container
   .resource-wise-View-page-container
   .resource-wise-View-page-heading
+  .resource-wise-View-head
   .heading-content-left
   .heading-icon {
   display: inline-block;
@@ -1963,6 +1973,7 @@
 .owrkflow-resource-wise-View-container
   .resource-wise-View-page-container
   .resource-wise-View-page-heading
+  .resource-wise-View-head
   .heading-content-left
   .heading-content {
   margin-left: 20px;
@@ -1971,6 +1982,7 @@
 .owrkflow-resource-wise-View-container
   .resource-wise-View-page-container
   .resource-wise-View-page-heading
+  .resource-wise-View-head
   .heading-content-left
   .heading-content
   h3 {
@@ -1983,6 +1995,7 @@
 .owrkflow-resource-wise-View-container
   .resource-wise-View-page-container
   .resource-wise-View-page-heading
+  .resource-wise-View-head
   .heading-content-left
   .heading-content
   span {
@@ -1994,12 +2007,14 @@
 .owrkflow-resource-wise-View-container
   .resource-wise-View-page-container
   .resource-wise-View-page-heading
+  .resource-wise-View-head
   .heading-content-right {
   float: right;
 }
 .owrkflow-resource-wise-View-container
   .resource-wise-View-page-container
   .resource-wise-View-page-heading
+  .resource-wise-View-head
   .heading-content-right
   span {
   display: inline-block;
@@ -2011,6 +2026,15 @@
   color: #fff;
   font-size: 14px;
   background-color: #8145cd;
+}
+.owrkflow-resource-wise-View-container
+  .resource-wise-View-page-container
+  .resource-wise-View-page-heading
+  .resource-wise-View-head
+  .heading-content-right
+  span
+  a {
+  color: #fff;
 }
 .owrkflow-resource-wise-View-container .resource-wise-View-page-container .project-wise-status {
   border-radius: 8px;

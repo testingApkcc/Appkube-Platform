@@ -10,7 +10,7 @@ import 'react-circular-progressbar/dist/styles.css';
 //import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { Bar } from 'react-chartjs-2';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
@@ -108,25 +108,20 @@ export class ResourceWiseViewAllTasks extends React.Component<any, any> {
         <div className="resource-wise-View-page-container">
           <div className="resource-wise-View-page-heading">
             <div className="row">
-            <div className="col-lg-12">
-                <div className="heading-content-right">
-                  <span><Link to="/a/xformation-workflow-engine/dashboard"><i className="fa fa-times" aria-hidden="true"></i></Link></span>
-                </div>
-              </div>
-              <div className="col-lg-10">
-                <div className="heading-content-left">
-                  <div className="heading-icon"><img src={resourcesUserImg} alt="" /></div>
-                  <div className="heading-content">
-                    <h3>Angela Moss</h3>
-                    <span>Project-Xformation</span>
+              <div className="col-lg-12">
+                <div className="resource-wise-View-head">
+                  <div className="heading-content-left">
+                    <div className="heading-icon"><img src={resourcesUserImg} alt="" /></div>
+                    <div className="heading-content">
+                      <h3>Angela Moss</h3>
+                      <span>Project-Xformation</span>
+                    </div>
+                  </div>
+                  <div className="heading-content-right">
+                    <span><Link to="/a/xformation-workflow-engine/dashboard"><i className="fa fa-times" aria-hidden="true"></i></Link></span>
                   </div>
                 </div>
               </div>
-              {/* <div className="col-lg-2">
-                <div className="heading-content-right">
-                  <span><i className="fa fa-times" aria-hidden="true"></i></span>
-                </div>
-              </div> */}
             </div>
           </div>
           <div className="project-wise-resources">
