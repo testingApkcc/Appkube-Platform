@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import rfpImg from '../../img/rfp-img.png';
+import resourcesUserImg1 from '../../img/dashboard/resources-user-img1.png';
 import resourcesUserImg from '../../img/resources-user-img.png';
 // import DateFormat from './DateFormat';
 import headerIcon from '../../img/header-icon.png';
@@ -101,7 +102,55 @@ export class Dashboard extends React.Component<any, any> {
 					},
 					responsive: true
 				}
-			}
+			},
+			resourcesData: [
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg1,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				}
+			]
 		};
 		this.breadCrumbs = [
 			{
@@ -113,6 +162,31 @@ export class Dashboard extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
+	}
+	displayResourcesData = () => {
+		const { resourcesData } = this.state;
+		let retData: any = [];
+		for (let i = 0; i < resourcesData.length; i++) {
+			let row = resourcesData[i]
+			retData.push(
+				<div className="resource" key={row.name}>
+					<Link className="content" to="ResourceWiseViewAllTasks/10">
+						<div className="image">
+							<img src={row.profile} alt="" />
+						</div>
+						<div className="user-name" >
+							<h3>{row.name}</h3>
+							<p>{row.product}</p>
+						</div></Link>
+					<div className="plus-icon">
+						<span>
+							<i className="fa fa-plus" />
+						</span>
+					</div>
+				</div>
+			)
+		}
+		return retData;
 	}
 
 	render() {
@@ -155,7 +229,9 @@ export class Dashboard extends React.Component<any, any> {
 								</div>
 							</div>
 							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-sx-12">
-								<div className="calender">{/* <DateFormat className="d-block" /> */}</div>
+								<div className="calender">
+									{/* <DateFormat className="d-block" /> */}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -289,139 +365,141 @@ export class Dashboard extends React.Component<any, any> {
 											</div>
 										</div>
 									</div>
-									<div className="projects">
-										<div className="project active">
-											<div className="star-box active">
-												<span>
-													<i className="fa fa-star" />
-												</span>
+									<div className="project-list-content">
+										<div className="projects">
+											<div className="project active">
+												<div className="star-box active">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise">
+														<h4>Xformation Platform</h4>
+													</Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise">
-													<h4>Xformation Platform</h4>
-												</Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
-											</div>
-										</div>
-										<div className="project">
-											<div className="star-box">
-												<span>
-													<i className="fa fa-star" />
-												</span>
-											</div>
-											<div className="icon">
-												<img src={headerIcon} alt="" />
-											</div>
-											<div className="content">
-												<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-												<span>
-													Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-												</span>
-												<p>
-													Lorem Ipsum is simply dummy text of the printing and typesetting
-													industry. Lorem Ipsum has been the industry's standard dummy text
-													ever since the 1500s, when an unknown printer took a galley of type
-													and scrambled it to make a type specimen book.
-												</p>
+											<div className="project">
+												<div className="star-box">
+													<span>
+														<i className="fa fa-star" />
+													</span>
+												</div>
+												<div className="icon">
+													<img src={headerIcon} alt="" />
+												</div>
+												<div className="content">
+													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
+													<span>
+														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
+													</span>
+													<p>
+														Lorem Ipsum is simply dummy text of the printing and typesetting
+														industry. Lorem Ipsum has been the industry's standard dummy text
+														ever since the 1500s, when an unknown printer took a galley of type
+														and scrambled it to make a type specimen book.
+													</p>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -434,157 +512,7 @@ export class Dashboard extends React.Component<any, any> {
 										<p>All Resources</p>
 									</div>
 									<div className="resources">
-										<div className="resource">
-											<Link className="content" to="ResourceWiseViewAllTasks/10">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name" >
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div></Link>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<Link className="content" to="ResourceWiseViewAllTasks/11">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name" >
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</Link>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<Link className="content" to="ResourceWiseViewAllTasks/13">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name">
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</Link>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<Link className="content" to="ResourceWiseViewAllTasks/16">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name">
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</Link>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<Link className="content" to="ResourceWiseViewAllTasks/10">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name">
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</Link>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<div className="content">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name">
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</div>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<div className="content">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name">
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</div>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<div className="content">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name">
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</div>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
-										<div className="resource">
-
-											<div className="content">
-												<div className="image">
-													<img src={resourcesUserImg} alt="" />
-												</div>
-												<div className="user-name">
-													<h3>Angela Moss</h3>
-													<p>Project - Xformation</p>
-												</div>
-											</div>
-											<div className="plus-icon">
-												<span>
-													<i className="fa fa-plus" />
-												</span>
-											</div>
-										</div>
+										{this.displayResourcesData()}
 									</div>
 								</div>
 							</div>
