@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
-// import { Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
 
@@ -14,7 +14,8 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			chartData: {
+			chartData: [],
+			auctionchartData: {
 				labels: [],
 				datasets: [
 					{
@@ -25,15 +26,6 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			},
 			accountId: '',
 			tableData: [],
-			chartDemo: {
-				labels: [],
-				datasets: [
-					{
-						data: [],
-						backgroundColor: [ '#5AB66F', '#E08600', '#DC3F1F', '#DC3F1F', '#E08600' ]
-					}
-				]
-			},
 			serviceType: 'PROD',
 			productName: 'AUCTION'
 		};
@@ -52,18 +44,6 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 
 	componentDidMount() {
 		this.getServicesData();
-		// let { chartData, tableData, chartDemo } = this.state;
-		// let chart: any = {};
-		// if (tableData) {
-		// 	Object.keys(tableData).map((key, index) => {
-		// 		chart[key] = chart[key] || chartDemo;
-		// 	});
-		// 	chartData.push(chart);
-		// 	console.log(chart);
-		// }
-		// this.setState({
-		// 	chartData
-		// });
 	}
 
 	getServicesData = async () => {
@@ -191,8 +171,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	displayServiceSLA = () => {
-		let { tableData, serviceType, chartData } = this.state;
-		console.log(chartData);
+		let { tableData, serviceType, auctionchartData } = this.state;
 		let retData: any = [];
 		let labels: any = [];
 		if (tableData) {
@@ -201,7 +180,13 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				let datacount = 0;
 				let data: any = {};
 				let chartticksdata: any = [];
+				let chart: any = {};
+				chart[key] = chart[key] || {};
+				chart[key] = auctionchartData;
+				let totalCount = 0;
+				let envCount = 0;
 				Object.keys(tableData[key]).map((service, i) => {
+					envCount = envCount + 1;
 					if (service == serviceType) {
 						let serviceByType: any = {};
 						Object.keys(tableData[key][service]).map((serviceName, j) => {
@@ -234,6 +219,8 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											serviceByType['Reliabillity'] + servicearry[i].dataProtection['score'];
 										serviceByType['End Usage'] =
 											serviceByType['End Usage'] + servicearry[i].userExperiance['score'];
+
+										totalCount = totalCount + parseInt(servicearry[i].stats.totalCostSoFar);
 									}
 								}
 							});
@@ -256,10 +243,11 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 						});
 					}
 				});
-
-				// chartData.labels = labels;
-				// chartData['datasets']['data'] = chartticksdata;
-				// console.log(chartData.datasets.data);
+				chart[key].labels = labels;
+				console.log(chartticksdata)
+				chart[key].datasets[0].data = chartticksdata;
+				console.log(chart)
+				chartticksdata = [];
 				retData.push(
 					<div
 						className="services-sla-box"
@@ -272,7 +260,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 							<ul>
 								<li>
 									<label>No of Env:</label>
-									<span>2</span>
+									<span>{envCount}</span>
 								</li>
 								<li>
 									<label>No of App Services:</label>
@@ -284,9 +272,10 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 								</li>
 							</ul>
 							<div className="production-chart">
-								{/* <Bar
-									data={chartData}
+								<Bar
+									data={chart[key]}
 									height={200}
+									ref={React.createRef()}
 									options={{
 										responsive: false,
 										plugins: {
@@ -296,7 +285,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											},
 											title: {
 												display: true,
-												text: 'Total Cost : $80',
+												text: `Total Cost : $${totalCount}`,
 												color: '#202020',
 												font: {
 													size: 18
@@ -304,7 +293,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											}
 										}
 									}}
-								/> */}
+								/>
 							</div>
 						</div>
 					</div>
@@ -316,20 +305,22 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	displayEnvServices = () => {
-		const { tableData, serviceType } = this.state;
+		const { tableData, serviceType, productName } = this.state;
 		let retData: any = [];
 		let serviceList: any = [];
 		if (tableData) {
 			Object.keys(tableData).map((key, index) => {
-				Object.keys(tableData[key]).map((service, i) => {
-					if (serviceList && serviceList.length > 0) {
-						if (serviceList.indexOf(service) === -1) {
+				if (productName === key) {
+					Object.keys(tableData[key]).map((service, i) => {
+						if (serviceList && serviceList.length > 0) {
+							if (serviceList.indexOf(service) === -1) {
+								serviceList.push(service);
+							}
+						} else {
 							serviceList.push(service);
 						}
-					} else {
-						serviceList.push(service);
-					}
-				});
+					});
+				}
 			});
 			if (serviceList && serviceList.length > 0) {
 				for (let i = 0; i < serviceList.length; i++) {
