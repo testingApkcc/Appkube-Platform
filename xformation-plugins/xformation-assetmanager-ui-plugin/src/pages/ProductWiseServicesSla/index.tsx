@@ -1,21 +1,41 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { Bar } from 'react-chartjs-2';
+// import { Bar } from 'react-chartjs-2';
+import { RestService } from '../_service/RestService';
+import { configFun } from '../../config';
+
+const GLOBAL_SERVICE = 'Cloud Managed';
 
 export class ProductWiseServicesSla extends React.Component<any, any> {
 	breadCrumbs: any;
+	config: any;
+	nodeMapping: any = {};
+	clusterMapping: any = {};
 	constructor(props: any) {
 		super(props);
 		this.state = {
 			chartData: {
-				labels: ['Performance', 'Availability', 'Reliability', 'Security', 'End usage'],
+				labels: [],
 				datasets: [
 					{
-						data: [97, 77, 39, 42, 59],
-						backgroundColor: ['#5AB66F', '#E08600', '#DC3F1F', '#DC3F1F', '#E08600'],
-					},
-				],
-			}
+						data: [],
+						backgroundColor: [ '#5AB66F', '#E08600', '#DC3F1F', '#DC3F1F', '#E08600' ]
+					}
+				]
+			},
+			accountId: '',
+			tableData: [],
+			chartDemo: {
+				labels: [],
+				datasets: [
+					{
+						data: [],
+						backgroundColor: [ '#5AB66F', '#E08600', '#DC3F1F', '#DC3F1F', '#E08600' ]
+					}
+				]
+			},
+			serviceType: 'PROD',
+			productName: 'AUCTION'
 		};
 		this.breadCrumbs = [
 			{
@@ -27,262 +47,446 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
+		this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
 	}
 
+	componentDidMount() {
+		this.getServicesData();
+		// let { chartData, tableData, chartDemo } = this.state;
+		// let chart: any = {};
+		// if (tableData) {
+		// 	Object.keys(tableData).map((key, index) => {
+		// 		chart[key] = chart[key] || chartDemo;
+		// 	});
+		// 	chartData.push(chart);
+		// 	console.log(chart);
+		// }
+		// this.setState({
+		// 	chartData
+		// });
+	}
+
+	getServicesData = async () => {
+		try {
+			await RestService.getData(`${this.config.GET_SERVICES_DATA}`, null, null).then((response: any) => {
+				this.manipulateServiceData(response.services);
+			});
+		} catch (err) {
+			console.log('Loading accounts failed. Error: ', err);
+		}
+	};
+
+	manipulateServiceData = (services: any) => {
+		const treeData: any = [];
+		const { filterData } = this.state;
+		// const filteredNodes: any = {};
+		// const filteredClusters: any = {};
+		// const filteredEnvironment: any = {};
+		// const filteredServiceNature: any = {};
+		// const filteredProducts: any = {};
+		// let nodeIndex = 1;
+		// let clusterIndex = 1;
+		services.forEach((service: any) => {
+			const { serviceNature, associatedProduct, associatedEnv, serviceType } = service.details;
+			const node = treeData[associatedProduct] || {};
+			const clusterData = node[associatedEnv] || {};
+			const environmentData = clusterData[serviceNature] || {};
+			const assiciatedServiceData = environmentData[serviceType] || {};
+			const productData = assiciatedServiceData[serviceType] || {};
+			const serviceData = assiciatedServiceData[serviceType] || {
+				services: []
+			};
+			if (serviceData && serviceData.services) {
+				serviceData.services.push({
+					...service.details
+				});
+			}
+			productData[serviceType] = serviceData;
+			// let associatedServiceName = '';
+			// if (serviceNature === 'Business') {
+			// 	associatedServiceName = associatedBusinessService;
+			// } else {
+			// 	associatedServiceName = associatedCommonService;
+			// }
+			environmentData[serviceType] = productData;
+			clusterData[serviceNature] = environmentData;
+			node[associatedEnv] = clusterData;
+			treeData[associatedProduct] = node;
+		});
+		this.setState({
+			tableData: treeData,
+			filterData
+		});
+		// this.getAppDataServices(treeData);
+	};
+
+	convertObjectIntoArray = (obj: any) => {
+		const keys = Object.keys(obj);
+		return keys.map((key) => {
+			return obj[key];
+		});
+	};
+
+	getAppDataServices = (treeData: any) => {
+		const nodeKeys = Object.keys(treeData);
+		const servicesLength: any = {};
+		nodeKeys.forEach((nodeKey: any) => {
+			if (nodeKey === GLOBAL_SERVICE) {
+				const uniqueProducts: any = [];
+				const environmentData = treeData[GLOBAL_SERVICE];
+				const environemntKeys = Object.keys(environmentData);
+				environemntKeys.forEach((enviornemntKey: any) => {
+					const commonBusinessServices = environmentData[enviornemntKey];
+					const commonBusinessKeys = Object.keys(commonBusinessServices);
+					commonBusinessKeys.forEach((commonBusinessKey: any) => {
+						const productData = commonBusinessServices[commonBusinessKey];
+						const productKeys = Object.keys(productData);
+						productKeys.forEach((productKey: any) => {
+							if (uniqueProducts.indexOf(productKey) === -1) {
+								uniqueProducts.push(productKey);
+							}
+							servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+							servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+						});
+					});
+				});
+			} else {
+				const uniqueProducts: any = [];
+				const clusterData = treeData[nodeKey];
+				const clusterKeys = Object.keys(clusterData);
+				clusterKeys.forEach((clusterKey: any) => {
+					const environmentData = clusterData[clusterKey];
+					const environemntKeys = Object.keys(environmentData);
+					environemntKeys.forEach((enviornemntKey: any) => {
+						const commonBusinessServices = environmentData[enviornemntKey];
+						const commonBusinessKeys = Object.keys(commonBusinessServices);
+						commonBusinessKeys.forEach((commonBusinessKey: any) => {
+							const productData = commonBusinessServices[commonBusinessKey];
+							const productKeys = Object.keys(productData);
+							productKeys.forEach((productKey: any) => {
+								if (uniqueProducts.indexOf(productKey) === -1) {
+									uniqueProducts.push(productKey);
+								}
+								const serviceDatas = productData[productKey];
+								const serviceDataKeys = Object.keys(serviceDatas);
+								serviceDataKeys.forEach((serviceDataKey: any) => {
+									const appData = serviceDatas[serviceDataKey].appData;
+									const appDataKeys = Object.keys(appData);
+									appDataKeys.forEach((appDataKey: any) => {
+										servicesLength[nodeKey] = servicesLength[nodeKey] || {};
+										servicesLength[nodeKey][appDataKey] = servicesLength[nodeKey][appDataKey] || 0;
+										servicesLength[nodeKey][appDataKey] += appData[appDataKey];
+										servicesLength[nodeKey].uniqueProducts = uniqueProducts.length;
+									});
+								});
+							});
+						});
+					});
+				});
+			}
+		});
+		this.setState({
+			servicesLength
+		});
+	};
+
+	displayServiceSLA = () => {
+		let { tableData, serviceType, chartData } = this.state;
+		console.log(chartData);
+		let retData: any = [];
+		let labels: any = [];
+		if (tableData) {
+			Object.keys(tableData).map((key, index) => {
+				let appcount = 0;
+				let datacount = 0;
+				let data: any = {};
+				let chartticksdata: any = [];
+				Object.keys(tableData[key]).map((service, i) => {
+					if (service == serviceType) {
+						let serviceByType: any = {};
+						Object.keys(tableData[key][service]).map((serviceName, j) => {
+							Object.keys(tableData[key][service][serviceName]).map((servicetype) => {
+								if (servicetype === 'Data') {
+									datacount =
+										datacount + tableData[key][service][serviceName][servicetype].services.length;
+								} else if (servicetype === 'App') {
+									appcount =
+										appcount + tableData[key][service][serviceName][servicetype].services.length;
+								}
+								if (
+									tableData[key][service][serviceName][servicetype]['services'] &&
+									tableData[key][service][serviceName][servicetype]['services'].length > 0
+								) {
+									let servicearry = tableData[key][service][serviceName][servicetype]['services'];
+									serviceByType['performance'] = serviceByType['performance'] || 0;
+									serviceByType['availability'] = serviceByType['availability'] || 0;
+									serviceByType['security'] = serviceByType['security'] || 0;
+									serviceByType['Reliabillity'] = serviceByType['Reliabillity'] || 0;
+									serviceByType['End Usage'] = serviceByType['End Usage'] || 0;
+									for (let i = 0; i < servicearry.length; i++) {
+										serviceByType['performance'] =
+											serviceByType['performance'] + servicearry[i].performance['score'];
+										serviceByType['availability'] =
+											serviceByType['availability'] + servicearry[i].availability['score'];
+										serviceByType['security'] =
+											serviceByType['security'] + servicearry[i].security['score'];
+										serviceByType['Reliabillity'] =
+											serviceByType['Reliabillity'] + servicearry[i].dataProtection['score'];
+										serviceByType['End Usage'] =
+											serviceByType['End Usage'] + servicearry[i].userExperiance['score'];
+									}
+								}
+							});
+						});
+						for (var val in serviceByType) {
+							data[val] = serviceByType[val] || 0;
+							data[val] = data[val] + serviceByType[val];
+							if (labels && labels.length > 0) {
+								for (let j = 0; j < labels.length; j++) {
+									if (labels.indexOf(val) === -1) {
+										labels.push(val);
+									}
+								}
+							} else {
+								labels.push(val);
+							}
+						}
+						Object.keys(data).map((ser, ind) => {
+							chartticksdata.push(data[ser]);
+						});
+					}
+				});
+
+				// chartData.labels = labels;
+				// chartData['datasets']['data'] = chartticksdata;
+				// console.log(chartData.datasets.data);
+				retData.push(
+					<div
+						className="services-sla-box"
+						onClick={() => {
+							this.setState({ productName: key });
+						}}
+					>
+						<a className="heading">{key}</a>
+						<div className="contents">
+							<ul>
+								<li>
+									<label>No of Env:</label>
+									<span>2</span>
+								</li>
+								<li>
+									<label>No of App Services:</label>
+									<span>{appcount}</span>
+								</li>
+								<li>
+									<label>No of Data Services:</label>
+									<span>{datacount}</span>
+								</li>
+							</ul>
+							<div className="production-chart">
+								{/* <Bar
+									data={chartData}
+									height={200}
+									options={{
+										responsive: false,
+										plugins: {
+											legend: {
+												position: 'top',
+												display: false
+											},
+											title: {
+												display: true,
+												text: 'Total Cost : $80',
+												color: '#202020',
+												font: {
+													size: 18
+												}
+											}
+										}
+									}}
+								/> */}
+							</div>
+						</div>
+					</div>
+				);
+			});
+		}
+
+		return retData;
+	};
+
+	displayEnvServices = () => {
+		const { tableData, serviceType } = this.state;
+		let retData: any = [];
+		let serviceList: any = [];
+		if (tableData) {
+			Object.keys(tableData).map((key, index) => {
+				Object.keys(tableData[key]).map((service, i) => {
+					if (serviceList && serviceList.length > 0) {
+						if (serviceList.indexOf(service) === -1) {
+							serviceList.push(service);
+						}
+					} else {
+						serviceList.push(service);
+					}
+				});
+			});
+			if (serviceList && serviceList.length > 0) {
+				for (let i = 0; i < serviceList.length; i++) {
+					retData.push(
+						<li
+							className={serviceType == serviceList[i] ? 'active' : ''}
+							onClick={() => {
+								this.setState({ serviceType: serviceList[i] });
+							}}
+						>
+							{serviceList[i]}
+						</li>
+					);
+				}
+			}
+		}
+		return retData;
+	};
+
+	displayServiceData = () => {
+		const { tableData, serviceType, productName } = this.state;
+		let retServiceData: any = [];
+		let servicesJSX: any = [];
+		Object.keys(tableData).map((key, index) => {
+			if (key === productName) {
+				Object.keys(tableData[key]).map((service, i) => {
+					if (service == serviceType) {
+						let serviceByType: any = {};
+						Object.keys(tableData[key][service]).map((serviceName, j) => {
+							servicesJSX = [];
+							Object.keys(tableData[key][service][serviceName]).map((servicetype) => {
+								if (
+									tableData[key][service][serviceName][servicetype]['services'] &&
+									tableData[key][service][serviceName][servicetype]['services'].length > 0
+								) {
+									let servicearry = tableData[key][service][serviceName][servicetype]['services'];
+									serviceByType['performance'] = serviceByType['performance'] || 0;
+									serviceByType['availability'] = serviceByType['availability'] || 0;
+									serviceByType['security'] = serviceByType['security'] || 0;
+									serviceByType['Reliabillity'] = serviceByType['Reliabillity'] || 0;
+									serviceByType['End Usage'] = serviceByType['End Usage'] || 0;
+									for (let i = 0; i < servicearry.length; i++) {
+										serviceByType['performance'] =
+											serviceByType['performance'] + servicearry[i].performance['score'];
+										serviceByType['availability'] =
+											serviceByType['availability'] + servicearry[i].availability['score'];
+										serviceByType['security'] =
+											serviceByType['security'] + servicearry[i].security['score'];
+										serviceByType['Reliabillity'] =
+											serviceByType['Reliabillity'] + servicearry[i].dataProtection['score'];
+										serviceByType['End Usage'] =
+											serviceByType['End Usage'] + servicearry[i].userExperiance['score'];
+									}
+								}
+
+								servicesJSX.push(
+									<div className="service-box">
+										<div className="heading">{servicetype}</div>
+										<div className="contents">
+											<div className="total-cost-text">Total Cost : $80</div>
+											<div className="quality-score-text">Quality Score : 80%</div>
+											<ul>
+												<li>
+													<label>Performance:</label>
+													<span>
+														{serviceByType['performance']}%{' '}
+														<span style={{ backgroundColor: '#5AB66F' }} />
+													</span>
+												</li>
+												<li>
+													<label>Availability:</label>
+													<span>
+														{serviceByType['availability']}%{' '}
+														<span style={{ backgroundColor: '#E08600' }} />
+													</span>
+												</li>
+												<li>
+													<label>Reliability:</label>
+													<span>
+														{serviceByType['Reliabillity']}%{' '}
+														<span style={{ backgroundColor: '#DC3F1F' }} />
+													</span>
+												</li>
+												<li>
+													<label>Security:</label>
+													<span>
+														{serviceByType['security']}%{' '}
+														<span style={{ backgroundColor: '#5AB66F' }} />
+													</span>
+												</li>
+												<li>
+													<label>End Usage:</label>
+													<span>
+														{serviceByType['End Usage']}%{' '}
+														<span style={{ backgroundColor: '#E08600' }} />
+													</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								);
+							});
+							retServiceData.push(
+								<React.Fragment>
+									<div className="heading">
+										<div className="row">
+											<div className="col-md-7">
+												<h3>{serviceName}</h3>
+											</div>
+											<div className="col-md-5">
+												<div className="show-more">
+													Show More <i className="fa fa-chevron-down" />
+												</div>
+												<div className="form-group search-control m-b-0">
+													<button className="btn btn-search">
+														<i className="fa fa-search" />
+													</button>
+													<input
+														type="text"
+														className="input-group-text"
+														placeholder="Search"
+													/>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div className="services-boxes">{servicesJSX}</div>
+								</React.Fragment>
+							);
+						});
+					}
+				});
+			}
+		});
+		return retServiceData;
+	};
+
 	render() {
-		const { chartData } = this.state;
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="services-sla-container">
 					<div className="common-container border-bottom-0">
-						<div className="services-heading">
-							Product Wise Services SLA
-						</div>
+						<div className="services-heading">Product Wise Services SLA</div>
 						<div className="services-sla-boxs">
-							<div className="services-sla-inner">
-								<div className="services-sla-box">
-									<a href='#' className="heading">HRMS</a>
-									<div className="contents">
-										<ul>
-											<li>
-												<label>No of Env:</label>
-												<span>2</span>
-											</li>
-											<li>
-												<label>No of App Services:</label>
-												<span>10</span>
-											</li>
-											<li>
-												<label>No of Data Services:</label>
-												<span>5</span>
-											</li>
-										</ul>
-										<div className="production-chart">
-											<Bar
-												data={chartData}
-												height={200}
-												options={{
-													responsive: false,
-													plugins: {
-														legend: {
-															position: 'top',
-															display: false,
-														},
-														title: {
-															display: true,
-															text: 'Total Cost : $80',
-															color: '#202020',
-															font: {
-																size: 18
-															}
-														},
-													},
-												}}
-											/>
-										</div>
-									</div>
-								</div>
-								<div className="services-sla-box">
-									<a href='#' className="heading">EMS</a>
-									<div className="contents">
-										<ul>
-											<li>
-												<label>No of Products:</label>
-												<span>2</span>
-											</li>
-											<li>
-												<label>No of App Services:</label>
-												<span>10</span>
-											</li>
-											<li>
-												<label>No of Data Services:</label>
-												<span>5</span>
-											</li>
-										</ul>
-										<div className="production-chart">
-											<Bar
-												data={chartData}
-												height={200}
-												options={{
-													responsive: false,
-													plugins: {
-														legend: {
-															position: 'top',
-															display: false,
-														},
-														title: {
-															display: true,
-															text: 'Total Cost : $80',
-															color: '#202020',
-															font: {
-																size: 18
-															}
-														},
-													},
-												}}
-											/>
-										</div>
-									</div>
-								</div>
-								<div className="services-sla-box">
-									<a href='#' className="heading">Procurement</a>
-									<div className="contents">
-										<ul>
-											<li>
-												<label>No of Products:</label>
-												<span>2</span>
-											</li>
-											<li>
-												<label>No of App Services:</label>
-												<span>10</span>
-											</li>
-											<li>
-												<label>No of Data Services:</label>
-												<span>5</span>
-											</li>
-										</ul>
-										<div className="production-chart">
-											<Bar
-												data={chartData}
-												height={200}
-												options={{
-													responsive: false,
-													plugins: {
-														legend: {
-															position: 'top',
-															display: false,
-														},
-														title: {
-															display: true,
-															text: 'Total Cost : $80',
-															color: '#202020',
-															font: {
-																size: 18
-															}
-														},
-													},
-												}}
-											/>
-										</div>
-									</div>
-								</div>
-								<div className="services-sla-box">
-									<a href='#' className="heading">Service Desk</a>
-									<div className="contents">
-										<ul>
-											<li>
-												<label>No of Products:</label>
-												<span>2</span>
-											</li>
-											<li>
-												<label>No of App Services:</label>
-												<span>10</span>
-											</li>
-											<li>
-												<label>No of Data Services:</label>
-												<span>5</span>
-											</li>
-										</ul>
-										<div className="production-chart">
-											<Bar
-												data={chartData}
-												height={200}
-												options={{
-													responsive: false,
-													plugins: {
-														legend: {
-															position: 'top',
-															display: false,
-														},
-														title: {
-															display: true,
-															text: 'Total Cost : $80',
-															color: '#202020',
-															font: {
-																size: 18
-															}
-														},
-													},
-												}}
-											/>
-										</div>
-									</div>
-								</div>
-								<div className="services-sla-box">
-									<a href='#' className="heading">Purchase</a>
-									<div className="contents">
-										<ul>
-											<li>
-												<label>No of Products:</label>
-												<span>2</span>
-											</li>
-											<li>
-												<label>No of App Services:</label>
-												<span>10</span>
-											</li>
-											<li>
-												<label>No of Data Services:</label>
-												<span>5</span>
-											</li>
-										</ul>
-										<div className="production-chart">
-											<Bar
-												data={chartData}
-												height={200}
-												options={{
-													responsive: false,
-													plugins: {
-														legend: {
-															position: 'top',
-															display: false,
-														},
-														title: {
-															display: true,
-															text: 'Total Cost : $80',
-															color: '#202020',
-															font: {
-																size: 18
-															}
-														},
-													},
-												}}
-											/>
-										</div>
-									</div>
-								</div>
-							</div>
+							<div className="services-sla-inner">{this.displayServiceSLA()}</div>
 						</div>
 					</div>
 					<div className="common-container border-bottom-0">
-						<div className="services-heading">
-							EMS - Environment wise SLA
-						</div>
+						<div className="services-heading">EMS - Environment wise SLA</div>
 						<div className="services-tabs">
-							<ul className="tabs">
-								<li className="active">Production</li>
-								<li>Test</li>
-								<li>Stage</li>
-								<li>Development</li>
-							</ul>
+							<ul className="tabs">{this.displayEnvServices()}</ul>
 							<div className="services-contents active">
 								<div className="environment-services">
-									<div className="heading">
-										<div className="row">
-											<div className="col-md-7">
-												<h3>Gateway Services</h3>
-											</div>
-											<div className="col-md-5">
-												<div className="show-more">Show More <i className="fa fa-chevron-down"></i></div>
-												<div className="form-group search-control m-b-0">
-													<button className="btn btn-search"><i className="fa fa-search"></i></button>
-													<input type="text" className="input-group-text" placeholder="Search" />
-												</div>
-											</div>
-										</div>
-									</div>
 									<div className="services-boxes">
-										<div className="service-box">
+										{this.displayServiceData()}
+										{/* <div className="service-box">
 											<div className="heading">API Gateway</div>
 											<div className="contents">
 												<div className="total-cost-text">Total Cost : $80</div>
@@ -290,23 +494,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -319,23 +533,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -348,23 +572,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -377,23 +611,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -406,40 +650,58 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
-										</div>
+										</div> */}
 									</div>
 								</div>
-								<div className="environment-services">
+								{/* <div className="environment-services">
 									<div className="heading">
 										<div className="row">
 											<div className="col-md-7">
 												<h3>Business Services</h3>
 											</div>
 											<div className="col-md-5">
-												<div className="show-more">Show More <i className="fa fa-chevron-down"></i></div>
+												<div className="show-more">
+													Show More <i className="fa fa-chevron-down" />
+												</div>
 												<div className="form-group search-control m-b-0">
-													<button className="btn btn-search"><i className="fa fa-search"></i></button>
-													<input type="text" className="input-group-text" placeholder="Search" />
+													<button className="btn btn-search">
+														<i className="fa fa-search" />
+													</button>
+													<input
+														type="text"
+														className="input-group-text"
+														placeholder="Search"
+													/>
 												</div>
 											</div>
 										</div>
@@ -453,23 +715,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -482,23 +754,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -511,23 +793,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -540,23 +832,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -570,10 +872,18 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<h3>Common Services</h3>
 											</div>
 											<div className="col-md-5">
-												<div className="show-more">Show More <i className="fa fa-chevron-down"></i></div>
+												<div className="show-more">
+													Show More <i className="fa fa-chevron-down" />
+												</div>
 												<div className="form-group search-control m-b-0">
-													<button className="btn btn-search"><i className="fa fa-search"></i></button>
-													<input type="text" className="input-group-text" placeholder="Search" />
+													<button className="btn btn-search">
+														<i className="fa fa-search" />
+													</button>
+													<input
+														type="text"
+														className="input-group-text"
+														placeholder="Search"
+													/>
 												</div>
 											</div>
 										</div>
@@ -587,23 +897,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -616,23 +936,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -645,23 +975,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -674,29 +1014,39 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<ul>
 													<li>
 														<label>Performance:</label>
-														<span>97% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															97% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Availability:</label>
-														<span>77% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															77% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 													<li>
 														<label>Reliability:</label>
-														<span>39% <span style={{ backgroundColor: '#DC3F1F' }}></span></span>
+														<span>
+															39% <span style={{ backgroundColor: '#DC3F1F' }} />
+														</span>
 													</li>
 													<li>
 														<label>Security:</label>
-														<span>42% <span style={{ backgroundColor: '#5AB66F' }}></span></span>
+														<span>
+															42% <span style={{ backgroundColor: '#5AB66F' }} />
+														</span>
 													</li>
 													<li>
 														<label>End Usage:</label>
-														<span>59% <span style={{ backgroundColor: '#E08600' }}></span></span>
+														<span>
+															59% <span style={{ backgroundColor: '#E08600' }} />
+														</span>
 													</li>
 												</ul>
 											</div>
 										</div>
-									</div>
-								</div>
+									</div> */}
+								{/* </div> */}
 							</div>
 						</div>
 					</div>
