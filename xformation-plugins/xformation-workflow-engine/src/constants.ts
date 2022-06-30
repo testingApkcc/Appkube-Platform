@@ -11,6 +11,7 @@ export enum ROUTES {
   MatrixView = 'matrixView',
   CreateNewUsecase = 'create-new-usecase',
   ProjectOverView = 'project-overview',
+  AssetOverView = 'asset-overview',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';

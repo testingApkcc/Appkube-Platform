@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import rfpImg from '../../img/rfp-img.png';
 import resourcesUserImg1 from '../../img/dashboard/resources-user-img1.png';
+import resourcesUserImg2 from '../../img/dashboard/resources-user-img2.png';
+import resourcesUserImg3 from '../../img/dashboard/resources-user-img3.png';
+import resourcesUserImg4 from '../../img/dashboard/resources-user-img4.png';
+import resourcesUserImg5 from '../../img/dashboard/resources-user-img5.png';
 import resourcesUserImg from '../../img/resources-user-img.png';
 // import DateFormat from './DateFormat';
 import headerIcon from '../../img/header-icon.png';
@@ -110,13 +114,23 @@ export class Dashboard extends React.Component<any, any> {
 					product: "Project - Xformation",
 				},
 				{
-					profile: resourcesUserImg1,
+					profile: resourcesUserImg2,
 					name: "Angela Moss",
 					product: "Project - Xformation",
 
 				},
 				{
-					profile: resourcesUserImg1,
+					profile: resourcesUserImg3,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg4,
+					name: "Angela Moss",
+					product: "Project - Xformation",
+				},
+				{
+					profile: resourcesUserImg5,
 					name: "Angela Moss",
 					product: "Project - Xformation",
 				},
@@ -126,31 +140,85 @@ export class Dashboard extends React.Component<any, any> {
 					product: "Project - Xformation",
 				},
 				{
-					profile: resourcesUserImg1,
+					profile: resourcesUserImg2,
 					name: "Angela Moss",
 					product: "Project - Xformation",
 				},
 				{
-					profile: resourcesUserImg1,
+					profile: resourcesUserImg3,
 					name: "Angela Moss",
 					product: "Project - Xformation",
 				},
 				{
-					profile: resourcesUserImg1,
+					profile: resourcesUserImg4,
 					name: "Angela Moss",
 					product: "Project - Xformation",
 				},
 				{
-					profile: resourcesUserImg1,
-					name: "Angela Moss",
-					product: "Project - Xformation",
-				},
-				{
-					profile: resourcesUserImg1,
+					profile: resourcesUserImg5,
 					name: "Angela Moss",
 					product: "Project - Xformation",
 				}
-			]
+			],
+			projeuctListData: [
+				{
+					image: headerIcon,
+					isStar: true,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: true,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				}
+			],
+			activeIndex: 0,
 		};
 		this.breadCrumbs = [
 			{
@@ -182,6 +250,35 @@ export class Dashboard extends React.Component<any, any> {
 						<span>
 							<i className="fa fa-plus" />
 						</span>
+					</div>
+				</div>
+			)
+		}
+		return retData;
+	}
+	displayProjeuctListData = () => {
+		const { projeuctListData, activeIndex } = this.state;
+		let retData: any = [];
+		for (let i = 0; i < projeuctListData.length; i++) {
+			let row = projeuctListData[i]
+			retData.push(
+				<div className={i == activeIndex ? "project active" : "project"} key={row.name} onClick={() => { this.setState({ activeIndex: i }) }}>
+					<div className={row.isStar ? "star-box active" : "star-box"}>
+						<span>
+							<i className="fa fa-star" />
+						</span>
+					</div>
+					<div className="icon">
+						<img src={row.image} alt="" />
+					</div>
+					<div className="content">
+						<Link to="/a/xformation-workflow-engine/project-wise">
+							<h4>{row.name}</h4>
+						</Link>
+						<span>
+							{row.title} <i className="fa fa-circle" /> {row.time}
+						</span>
+						<p>{row.text}</p>
 					</div>
 				</div>
 			)
@@ -367,7 +464,8 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="project-list-content">
 										<div className="projects">
-											<div className="project active">
+											{this.displayProjeuctListData()}
+											{/* <div className="project active">
 												<div className="star-box active">
 													<span>
 														<i className="fa fa-star" />
@@ -500,7 +598,7 @@ export class Dashboard extends React.Component<any, any> {
 														and scrambled it to make a type specimen book.
 													</p>
 												</div>
-											</div>
+											</div> */}
 										</div>
 									</div>
 								</div>
@@ -697,7 +795,7 @@ export class Dashboard extends React.Component<any, any> {
 								<div className="resource-box">
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -706,7 +804,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -715,7 +813,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -724,7 +822,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg4} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -733,7 +831,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg5} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -742,7 +840,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -751,7 +849,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -760,84 +858,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -851,7 +872,7 @@ export class Dashboard extends React.Component<any, any> {
 								<div className="resource-box">
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -860,7 +881,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -869,7 +890,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -878,7 +899,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg4} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -887,7 +908,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg5} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -896,7 +917,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -905,7 +926,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -914,84 +935,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1005,7 +949,7 @@ export class Dashboard extends React.Component<any, any> {
 								<div className="resource-box">
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1014,7 +958,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1023,7 +967,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1032,7 +976,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg4} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1041,7 +985,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg5} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1050,7 +994,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1059,7 +1003,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1068,7 +1012,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1082,7 +1026,7 @@ export class Dashboard extends React.Component<any, any> {
 								<div className="resource-box">
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1091,7 +1035,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1100,7 +1044,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1109,7 +1053,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg4} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1118,7 +1062,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg5} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1127,7 +1071,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1136,7 +1080,7 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg2} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
@@ -1145,7 +1089,161 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="resource">
 										<div className="image">
-											<img src={resourcesUserImg} alt="" />
+											<img src={resourcesUserImg3} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="allocation-box">
+								<h3>Xformation</h3>
+								<div className="resource-box">
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg1} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg2} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg3} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg4} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg5} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg1} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg2} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg3} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="allocation-box">
+								<h3>Xformation</h3>
+								<div className="resource-box">
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg4} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg5} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg1} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg2} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg3} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg4} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg5} alt="" />
+										</div>
+										<div className="content">
+											<h4>Angela Moss</h4>
+											<p>Employee</p>
+										</div>
+									</div>
+									<div className="resource">
+										<div className="image">
+											<img src={resourcesUserImg1} alt="" />
 										</div>
 										<div className="content">
 											<h4>Angela Moss</h4>
