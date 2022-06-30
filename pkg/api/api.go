@@ -285,6 +285,7 @@ func (hs *HTTPServer) registerRoutes() {
 			datasourceRoute.Get("/:id", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceById))
 			datasourceRoute.Get("/uid/:uid", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByUID))
 			datasourceRoute.Get("/name/:name", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByName))
+			datasourceRoute.Get("/master-datasource/:key", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetMasterDataSourcePlugins))
 		})
 
 		apiRoute.Get("/datasources/id/:name", authorize(reqSignedIn, ac.EvalPermission(ActionDatasourcesIDRead, ScopeDatasourceName)), routing.Wrap(hs.GetDataSourceIdByName))
@@ -296,6 +297,7 @@ func (hs *HTTPServer) registerRoutes() {
 		apiRoute.Any("/plugins/:pluginId/resources", hs.CallResource)
 		apiRoute.Any("/plugins/:pluginId/resources/*", hs.CallResource)
 		apiRoute.Get("/plugins/errors", routing.Wrap(hs.GetPluginErrorsList))
+		apiRoute.Get("/plugins/filter-datasource/:key", routing.Wrap(hs.FilterDatasourcePlugins))
 
 		apiRoute.Group("/plugins", func(pluginRoute routing.RouteRegister) {
 			pluginRoute.Post("/:pluginId/install", routing.Wrap(hs.InstallPlugin))

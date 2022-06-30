@@ -692,3 +692,33 @@ func (s *callResourceResponseStream) Close() error {
 	s.closed = true
 	return nil
 }
+
+func (hs *HTTPServer) FilterDatasourcePlugins(c *models.ReqContext) response.Response {
+	datasourceType := web.Params(c.Req)[":key"]
+	extResp := hs.GetPluginList(c)
+
+	itemString := string(extResp.Body())
+	var dsInfo []map[string]interface{}
+	errItem := json.Unmarshal([]byte(itemString), &dsInfo)
+	if errItem != nil {
+		return response.Error(401, "Unmarshalling of datasource plugins array failed", errItem)
+	}
+
+	var selectedItems []interface{}
+	for _, v := range dsInfo {
+		data, _ := json.Marshal(v)
+		itemString := string(data)
+		var itemInfo = make(map[string]interface{})
+		errItem := json.Unmarshal([]byte(itemString), &itemInfo)
+		if errItem != nil {
+			hs.log.Error("Unmarshalling of datasource plugin to json failed", errItem)
+		}
+
+		if strings.EqualFold(itemInfo["type"].(string), "datasource") &&
+			strings.Contains(strings.ToLower(datasourceType), strings.ToLower(itemInfo["id"].(string))) {
+			selectedItems = append(selectedItems, itemInfo)
+		}
+	}
+
+	return response.JSON(200, selectedItems)
+}

@@ -5,9 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"sort"
 	"strconv"
+	"strings"
 
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	"github.com/grafana/grafana/pkg/api/datasource"
@@ -584,4 +586,42 @@ func (hs *HTTPServer) filterDatasourcesByQueryPermission(ctx context.Context, us
 	}
 
 	return query.Result, nil
+}
+
+func (hs *HTTPServer) GetMasterDataSourcePlugins(c *models.ReqContext) response.Response {
+	datasourceType := web.Params(c.Req)[":key"]
+	extResp, err := externalServiceClient.Get("https://grafana.com/api/plugins?enabled=1&type=datasource")
+	if err != nil {
+		return response.Error(500, "Error in getting master datasource plugins", err)
+	}
+
+	defer extResp.Body.Close()
+	bodyBytes, err := ioutil.ReadAll(extResp.Body)
+	if err != nil {
+		return response.Error(401, "Invalid master datasource plugin response from grafana.com", err)
+	}
+	bodyString := string(bodyBytes)
+	var dsInfo = make(map[string]interface{})
+	errw := json.Unmarshal([]byte(bodyString), &dsInfo)
+	if errw != nil {
+		return response.Error(401, "Master datasource response unmarshalling to JSON failed", errw)
+	}
+	items := dsInfo["items"]
+	var selectedItems []interface{}
+	for _, v := range items.([]interface{}) {
+		data, _ := json.Marshal(v)
+		itemString := string(data)
+		var itemInfo = make(map[string]interface{})
+		errItem := json.Unmarshal([]byte(itemString), &itemInfo)
+		if errItem != nil {
+			return response.Error(401, "datasource unmarshalling to JSON failed", errItem)
+		}
+
+		if strings.Contains(strings.ToLower(datasourceType), strings.ToLower(itemInfo["slug"].(string))) {
+			selectedItems = append(selectedItems, itemInfo)
+		}
+
+	}
+	dsInfo["items"] = selectedItems
+	return response.JSON(200, dsInfo["items"])
 }
