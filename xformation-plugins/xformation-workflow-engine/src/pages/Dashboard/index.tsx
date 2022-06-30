@@ -218,6 +218,183 @@ export class Dashboard extends React.Component<any, any> {
 					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
 				}
 			],
+			resourceAllocation: [
+				{
+					title: 'Xformation',
+					userList: [
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg2,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg3,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg4,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg5,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+					]
+				},
+				{
+					title: 'Xformation',
+					userList: [
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg2,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg3,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg4,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg5,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+					]
+				},
+				{
+					title: 'Xformation',
+					userList: [
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg2,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg3,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg4,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg5,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+					]
+				},
+				{
+					title: 'Xformation',
+					userList: [
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg2,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg3,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg4,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg5,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+					]
+				},
+				{
+					title: 'Xformation',
+					userList: [
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg2,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg3,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg4,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg5,
+						},
+						{
+							name: 'Angela Moss',
+							designation: 'Employee',
+							image: resourcesUserImg1,
+						},
+					]
+				}
+			],
 			activeIndex: 0,
 		};
 		this.breadCrumbs = [
@@ -282,6 +459,37 @@ export class Dashboard extends React.Component<any, any> {
 					</div>
 				</div>
 			)
+		}
+		return retData;
+	}
+
+	displayResouceAllocation = () => {
+		const { resourceAllocation } = this.state;
+		let retData = [];
+		if (resourceAllocation && resourceAllocation.length > 0) {
+			for (let i = 0; i < resourceAllocation.length; i++) {
+				let rowData = resourceAllocation[i];
+				retData.push(
+					<div className="allocation-box">
+						<h3>{rowData.title}</h3>
+						<div className="resource-box">
+							{rowData && rowData.userList && rowData.userList.map((val: any, index: any) => {
+								return (
+									<div className="resource">
+										<div className="image">
+											<img src={val.image} alt="" />
+										</div>
+										<div className="content">
+											<h4>{val.name}</h4>
+											<p>{val.designation}</p>
+										</div>
+									</div>
+								)
+							})}
+						</div>
+					</div>
+				)
+			}
 		}
 		return retData;
 	}
@@ -465,140 +673,6 @@ export class Dashboard extends React.Component<any, any> {
 									<div className="project-list-content">
 										<div className="projects">
 											{this.displayProjeuctListData()}
-											{/* <div className="project active">
-												<div className="star-box active">
-													<span>
-														<i className="fa fa-star" />
-													</span>
-												</div>
-												<div className="icon">
-													<img src={headerIcon} alt="" />
-												</div>
-												<div className="content">
-													<Link to="/a/xformation-workflow-engine/project-wise">
-														<h4>Xformation Platform</h4>
-													</Link>
-													<span>
-														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-													</span>
-													<p>
-														Lorem Ipsum is simply dummy text of the printing and typesetting
-														industry. Lorem Ipsum has been the industry's standard dummy text
-														ever since the 1500s, when an unknown printer took a galley of type
-														and scrambled it to make a type specimen book.
-													</p>
-												</div>
-											</div>
-											<div className="project">
-												<div className="star-box">
-													<span>
-														<i className="fa fa-star" />
-													</span>
-												</div>
-												<div className="icon">
-													<img src={headerIcon} alt="" />
-												</div>
-												<div className="content">
-													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-													<span>
-														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-													</span>
-													<p>
-														Lorem Ipsum is simply dummy text of the printing and typesetting
-														industry. Lorem Ipsum has been the industry's standard dummy text
-														ever since the 1500s, when an unknown printer took a galley of type
-														and scrambled it to make a type specimen book.
-													</p>
-												</div>
-											</div>
-											<div className="project">
-												<div className="star-box">
-													<span>
-														<i className="fa fa-star" />
-													</span>
-												</div>
-												<div className="icon">
-													<img src={headerIcon} alt="" />
-												</div>
-												<div className="content">
-													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-													<span>
-														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-													</span>
-													<p>
-														Lorem Ipsum is simply dummy text of the printing and typesetting
-														industry. Lorem Ipsum has been the industry's standard dummy text
-														ever since the 1500s, when an unknown printer took a galley of type
-														and scrambled it to make a type specimen book.
-													</p>
-												</div>
-											</div>
-											<div className="project">
-												<div className="star-box">
-													<span>
-														<i className="fa fa-star" />
-													</span>
-												</div>
-												<div className="icon">
-													<img src={headerIcon} alt="" />
-												</div>
-												<div className="content">
-													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-													<span>
-														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-													</span>
-													<p>
-														Lorem Ipsum is simply dummy text of the printing and typesetting
-														industry. Lorem Ipsum has been the industry's standard dummy text
-														ever since the 1500s, when an unknown printer took a galley of type
-														and scrambled it to make a type specimen book.
-													</p>
-												</div>
-											</div>
-											<div className="project">
-												<div className="star-box">
-													<span>
-														<i className="fa fa-star" />
-													</span>
-												</div>
-												<div className="icon">
-													<img src={headerIcon} alt="" />
-												</div>
-												<div className="content">
-													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-													<span>
-														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-													</span>
-													<p>
-														Lorem Ipsum is simply dummy text of the printing and typesetting
-														industry. Lorem Ipsum has been the industry's standard dummy text
-														ever since the 1500s, when an unknown printer took a galley of type
-														and scrambled it to make a type specimen book.
-													</p>
-												</div>
-											</div>
-											<div className="project">
-												<div className="star-box">
-													<span>
-														<i className="fa fa-star" />
-													</span>
-												</div>
-												<div className="icon">
-													<img src={headerIcon} alt="" />
-												</div>
-												<div className="content">
-													<Link to="/a/xformation-workflow-engine/project-wise"><h4>Xformation Platform</h4></Link>
-													<span>
-														Last updated by Siddhesh D <i className="fa fa-circle" /> 24 min ago
-													</span>
-													<p>
-														Lorem Ipsum is simply dummy text of the printing and typesetting
-														industry. Lorem Ipsum has been the industry's standard dummy text
-														ever since the 1500s, when an unknown printer took a galley of type
-														and scrambled it to make a type specimen book.
-													</p>
-												</div>
-											</div> */}
 										</div>
 									</div>
 								</div>
@@ -790,468 +864,7 @@ export class Dashboard extends React.Component<any, any> {
 							<h5>Project Wise Resource Allocation</h5>
 						</div>
 						<div className="resource-allocation">
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg4} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg5} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg4} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg5} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg4} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg5} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg4} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg5} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg4} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg5} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="allocation-box">
-								<h3>Xformation</h3>
-								<div className="resource-box">
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg4} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg5} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg2} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg3} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg4} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg5} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-									<div className="resource">
-										<div className="image">
-											<img src={resourcesUserImg1} alt="" />
-										</div>
-										<div className="content">
-											<h4>Angela Moss</h4>
-											<p>Employee</p>
-										</div>
-									</div>
-								</div>
-							</div>
+							{this.displayResouceAllocation()}
 						</div>
 					</div>
 					<div className="project-overview-section">
