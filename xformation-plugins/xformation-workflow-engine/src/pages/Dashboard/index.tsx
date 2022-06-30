@@ -159,7 +159,66 @@ export class Dashboard extends React.Component<any, any> {
 					name: "Angela Moss",
 					product: "Project - Xformation",
 				}
-			]
+			],
+			projeuctListData: [
+				{
+					image: headerIcon,
+					isStar: true,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: true,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				},
+				{
+					image: headerIcon,
+					isStar: false,
+					name: "Procurement Solution",
+					title: "Last updated by Siddhesh D",
+					time: "24 min ago",
+					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+				}
+			],
+			activeIndex: 0,
 		};
 		this.breadCrumbs = [
 			{
@@ -191,6 +250,35 @@ export class Dashboard extends React.Component<any, any> {
 						<span>
 							<i className="fa fa-plus" />
 						</span>
+					</div>
+				</div>
+			)
+		}
+		return retData;
+	}
+	displayProjeuctListData = () => {
+		const { projeuctListData, activeIndex } = this.state;
+		let retData: any = [];
+		for (let i = 0; i < projeuctListData.length; i++) {
+			let row = projeuctListData[i]
+			retData.push(
+				<div className={i == activeIndex ? "project active" : "project"} key={row.name} onClick={() => { this.setState({ activeIndex: i }) }}>
+					<div className={row.isStar ? "star-box active" : "star-box"}>
+						<span>
+							<i className="fa fa-star" />
+						</span>
+					</div>
+					<div className="icon">
+						<img src={row.image} alt="" />
+					</div>
+					<div className="content">
+						<Link to="/a/xformation-workflow-engine/project-wise">
+							<h4>{row.name}</h4>
+						</Link>
+						<span>
+							{row.title} <i className="fa fa-circle" /> {row.time}
+						</span>
+						<p>{row.text}</p>
 					</div>
 				</div>
 			)
@@ -376,7 +464,8 @@ export class Dashboard extends React.Component<any, any> {
 									</div>
 									<div className="project-list-content">
 										<div className="projects">
-											<div className="project active">
+											{this.displayProjeuctListData()}
+											{/* <div className="project active">
 												<div className="star-box active">
 													<span>
 														<i className="fa fa-star" />
@@ -509,7 +598,7 @@ export class Dashboard extends React.Component<any, any> {
 														and scrambled it to make a type specimen book.
 													</p>
 												</div>
-											</div>
+											</div> */}
 										</div>
 									</div>
 								</div>
