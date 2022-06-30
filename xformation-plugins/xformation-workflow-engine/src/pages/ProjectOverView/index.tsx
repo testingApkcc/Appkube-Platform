@@ -707,7 +707,9 @@ export class ProjectOverView extends React.Component<any, any> {
                     </Link>
                   </div>
                   <div className="image">
-                    <img src={downloadIcon} alt="" />
+                    <Link to="/a/xformation-workflow-engine/asset-overview">
+                      <img src={downloadIcon} alt="" />
+                    </Link>
                   </div>
                   <div className="fliter-search">
                     <div className="fliter-box">
