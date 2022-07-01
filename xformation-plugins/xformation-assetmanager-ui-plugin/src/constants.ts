@@ -15,6 +15,7 @@ export enum ROUTES {
   ProductWiseServicesSla = 'product-wise-services-sla',
   AddDatasource = 'add-data-source',
   AddDatasourceCredential = 'add-datasource-credential',
+  ExploreDataSourceDetail = 'explore-datasource',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';

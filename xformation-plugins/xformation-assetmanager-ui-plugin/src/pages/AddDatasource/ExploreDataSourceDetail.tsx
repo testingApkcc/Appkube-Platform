@@ -8,7 +8,7 @@ import { CommonService } from '../_common/common';
 // import { RestService } from '../_service/RestService';
 import { PLUGIN_BASE_URL } from '../../constants';
 
-export class AddDatasource extends React.Component<any, any> {
+export class ExploreDataSourceDetail extends React.Component<any, any> {
 	breadCrumbs: any;
 	constructor(props: any) {
 		super(props);
@@ -93,7 +93,6 @@ export class AddDatasource extends React.Component<any, any> {
 	};
 
 	render() {
-		const { environment, account } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -119,51 +118,23 @@ export class AddDatasource extends React.Component<any, any> {
 							<div className="heading">
 								<h4>Add inputs</h4>
 							</div>
-							<div className="account-details-heading">
-								<h5>Account Details</h5>
-							</div>
-							<div className="environgment-details">
-								<div className="form-group description-content">
-									<label htmlFor="description">Select Environment</label>
-									<select
-										className="input-group-text"
-										name="environment"
-										value={environment}
-										onChange={this.onChangeDataSource}
-									>
-										<option key="1" value="aws">
-											AWS
-										</option>
-										<option key="2" value="Cloud">
-											Cloud
-										</option>
-									</select>
-								</div>
-								<div className="form-group description-content">
-									<label htmlFor="description">Select Account</label>
-									<select
-										className="input-group-text"
-										name="account"
-										value={account}
-										onChange={this.onChangeDataSource}
-									>
-										<option key="1" value="567373484">
-											AWS 567373484
-										</option>
-										<option key="2" value="237373414">
-											AWS 237373414
-										</option>
-									</select>
-								</div>
-							</div>
-							<div className="services-heading">
-								<span>
-									<img src={images.awsLogo} alt="" />
-								</span>
-								<h5>Account Details</h5>
-							</div>
 							<div className="Source-boxs">
-								<div className="row">{this.displayDataSource()}</div>
+								<div className="row">
+									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										{/* <Link to=""> */}
+										<div className="source-box">
+											<div className="images">
+												<img src={images.awsLogo} alt="" />
+											</div>
+											<div className="Source-content">
+												<label>AWS-PullMetric-Api</label>
+												<span>CloudWatch</span>
+												<p>pull AWS metrics with cloud api</p>
+											</div>
+										</div>
+										{/* </Link> */}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
