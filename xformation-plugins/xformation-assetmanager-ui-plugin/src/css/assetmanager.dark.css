@@ -1017,6 +1017,47 @@ a:hover {
   padding: 10px 15px;
   text-align: center;
 }
+.environments-page-container .environments-table-container .environments-table .table td .action-edit {
+  display: block;
+  position: relative;
+}
+.environments-page-container
+  .environments-table-container
+  .environments-table
+  .table
+  td
+  .action-edit
+  .asset-white-button {
+  padding: 0;
+  background: transparent;
+}
+.environments-page-container
+  .environments-table-container
+  .environments-table
+  .table
+  td
+  .action-edit
+  .asset-white-button
+  i {
+  color: #3b4859 !important;
+}
+.environments-page-container
+  .environments-table-container
+  .environments-table
+  .table
+  td
+  .action-edit
+  .open-create-menu {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #8392a7;
+  width: 150px;
+  z-index: 10;
+  top: 16px;
+  right: -15px;
+  padding: 10px 0 5px 0;
+  text-align: left;
+}
 .environments-page-container .environments-table-container .environments-table .table td:nth-child(1) {
   text-align: left;
   width: 20%;

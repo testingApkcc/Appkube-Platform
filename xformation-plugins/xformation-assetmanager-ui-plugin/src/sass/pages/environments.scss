@@ -72,7 +72,7 @@
 
 
   .environments-table-container {
-    
+
 
     .recent-fliters-container {
       padding-top: 5px;
@@ -285,6 +285,32 @@
           padding: 10px 15px;
           text-align: center;
 
+          .action-edit {
+            display: block;
+            position: relative;
+
+            .asset-white-button {
+              padding: 0;
+              background: transparent;
+
+              i {
+                color: #3b4859 !important;
+              }
+            }
+
+            .open-create-menu {
+              position: absolute;
+              background-color: #ffffff;
+              border: 1px solid #8392A7;
+              width: 150px;
+              z-index: 10;
+              top: 16px;
+              right: -15px;
+              padding: 10px 0 5px 0;
+              text-align: left;
+            }
+          }
+
           &:nth-child(1) {
             text-align: left;
             width: 20%;
@@ -356,6 +382,8 @@
           }
         }
       }
+
+
     }
   }
 }
@@ -369,7 +397,7 @@
     }
 
     .environments-table-container {
-      
+
 
       .environments-table {
         overflow: hidden;
@@ -392,7 +420,7 @@
         }
       }
 
-      
+
 
     }
   }

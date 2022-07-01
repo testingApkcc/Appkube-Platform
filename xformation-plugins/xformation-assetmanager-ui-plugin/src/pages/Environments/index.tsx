@@ -164,6 +164,13 @@ export class Environments extends React.Component<any, any> {
 		this.EditEnviornmentRef = React.createRef();
 		this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
 	}
+	handleMenuToggle = (key: any) => {
+		const { accountList } = this.state;
+		accountList[key].showMenu = !accountList[key].showMenu;
+		this.setState({
+			accountList
+		});
+	};
 
 	displaySelectedTags = () => {
 		const { optionJsonData } = this.state;
@@ -370,13 +377,26 @@ export class Environments extends React.Component<any, any> {
 							{/* <div className={row.status === 'ACTIVE' ? 'status enable' : 'status disable'}></div> */}
 						</td>
 						<td>
-							<div className="d-block text-center">
-								<button className="asset-white-button min-width-inherit m-r-0">
+							<div className="d-block text-center action-edit">
+								{row.showMenu &&
+									<>
+										<div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(i) }}></div>
+										<div className="text-center open-create-menu">
+											<a>Add New Product</a>
+											<a>Add Cluster</a>
+											<a>Add Cloud Managed Services</a>
+											<a>Add Gateway Services</a>
+										</div>
+									</>
+								}
+
+								<button className="asset-white-button min-width-inherit m-r-0" onClick={(e) => { this.handleMenuToggle(i) }}>
 									{/* <Rbac parentName={config.PARENT_NAME} childName="library-index-addfolderbtn"> */}
 									{awsRegionList.length > 0 && (
 										<Action detail={row} regionList={awsRegionList} {...this.props} />
 									)}
 									{/* </Rbac>                                   */}
+									<i className="fa fa-ellipsis-h"></i>
 								</button>
 							</div>
 						</td>
