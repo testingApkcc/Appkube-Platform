@@ -2,7 +2,7 @@ import * as React from 'react';
 // import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 // import { configFun } from '../../config';
-// import { images } from '../../img';
+import { images } from '../../img';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 // import { RestService } from '../_service/RestService';
 // import { PLUGIN_BASE_URL } from '../../constants';
@@ -58,23 +58,97 @@ export class AddDatasource extends React.Component<any, any> {
 		if (sourceList && sourceList.length > 0) {
 			for (let i = 0; i < sourceList.length; i++) {
 				retData.push(
-					<div>
-						
+					<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div className="source-box">
+							<div className="images"><img src={images.awsLogo} alt="" /></div>
+							<div className="Source-content">
+								<label>AWS-PullMetrice-Api</label>
+								<span>CloudWatch</span>
+								<p>Pull AWS metrics with Cloud API</p>
+							</div>
+						</div>
 					</div>
 				)
 			}
 		}
+		return retData;
+	};
+	onChangeDataSource = (e: any) => {
+		const { name, value } = e.target;
+		this.setState({
+			[name]: value
+		});
 	};
 
 	render() {
 		return (
-			<div className="asset-container">
-				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PERFORMANCE MANAGEMENT" />
-				<div className="environments-page-container">
-					<div className="common-container">
-						<div className="row">
-							<div className="col-lg-9 col-md-9 col-sm-12">
-								<div className="asset-heading">Asset Management</div>
+			<div className="add-data-source-container">
+				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
+				<div className="add-data-source-page-container">
+					<div className="data-source-section">
+						<div className="source-head">
+							<h3>inputs</h3>
+							<div className="d-flex">
+								<div className="form-group search-control m-b-0">
+									<button className="btn btn-search">
+										<i className="fa fa-search" />
+									</button>
+									<input type="text" className="input-group-text" placeholder="Search" />
+								</div>
+								<div className='back-btn'>
+									<button type="button" className="btn btn-link"><i className="far fa-arrow-alt-circle-left"></i>Back</button>
+								</div>
+							</div>
+						</div>
+						<div className="source-content">
+							<div className="heading"><h4>Add inputs</h4></div>
+							<div className="account-details-heading">
+								<h5>Account Details</h5>
+							</div>
+							<div className="environgment-details">
+								<div className="form-group description-content">
+									<label htmlFor="description">Select Environment</label>
+									<select
+										className="input-group-text"
+										name="environment"
+										value=""
+										onChange={this.onChangeDataSource}
+									>
+										<option key="1" value="aws">
+											AWS
+										</option>
+										<option key="2" value="Cloud">
+											Cloud
+										</option>
+									</select>
+								</div>
+								<div className="form-group description-content">
+									<label htmlFor="description">Select Account</label>
+									<select
+										className="input-group-text"
+										name="account"
+										value=""
+										onChange={this.onChangeDataSource}
+									>
+										<option key="1" value="567373484">
+											AWS 567373484
+										</option>
+										<option key="2" value="237373414">
+											AWS 237373414
+										</option>
+									</select>
+								</div>
+							</div>
+							<div className="services-heading">
+								<span>
+									<img src={images.awsLogo} alt="" />
+								</span>
+								<h5>Account Details</h5>
+							</div>
+							<div className="Source-boxs">
+								<div className="row">
+									{this.displayDataSource()}
+								</div>
 							</div>
 						</div>
 					</div>

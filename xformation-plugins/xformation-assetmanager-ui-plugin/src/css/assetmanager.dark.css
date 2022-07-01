@@ -5180,6 +5180,267 @@ a:hover {
   margin-left: 5px;
 }
 
+.add-data-source-container {
+  display: block;
+  width: 100%;
+}
+.add-data-source-container .add-data-source-page-container {
+  padding: 10px;
+  background: #f9fafc;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section {
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px 10px;
+  border-bottom: 2px solid #f7f8f7;
+  margin: 0 -15px;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-head h3 {
+  color: #3b4859;
+  font-weight: 500;
+  margin: 0;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-head .search-control {
+  position: relative;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-head
+  .search-control
+  .input-group-text {
+  max-width: 100%;
+  text-align: left;
+  padding-right: 15px;
+  padding-left: 30px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  background-color: #ffffff;
+  border-radius: 4px;
+  color: #8998ac;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-head
+  .search-control
+  .btn-search {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  color: #8998ac;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-head .back-btn {
+  margin-left: 15px;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-head .back-btn .btn-link {
+  color: #3b4859;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-head .back-btn .btn-link i {
+  margin-right: 8px;
+  font-size: 18px;
+  color: #57a4ff;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .heading {
+  padding: 15px 15px 20px 15px;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .heading h4 {
+  color: #3b4859;
+  font-weight: 500;
+  margin: 0;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .account-details-heading {
+  background: #d9e4f2;
+  height: 40px;
+  padding: 10px 15px;
+  border-radius: 10px 10px 0 0px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .account-details-heading
+  h5 {
+  color: #3b4859;
+  font-weight: 500;
+  margin: 0;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .environgment-details {
+  margin-top: 25px;
+  border-bottom: 1px solid #d1cdcd;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .environgment-details
+  .description-content {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .environgment-details
+  .description-content
+  label {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #3b4859;
+  margin: 0;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .environgment-details
+  .description-content
+  .input-group-text {
+  width: 300px;
+  height: 38px;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  text-align: left;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .services-heading {
+  background: #f8f9fb;
+  height: 40px;
+  padding: 10px 15px;
+  border-radius: 10px 10px 0 0px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 25px;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .services-heading span {
+  display: inline-block;
+  margin-right: 15px;
+  width: 40px;
+  height: 40px;
+  padding: 0 3px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: top;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .services-heading
+  span
+  img {
+  max-width: 100%;
+  height: auto;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .services-heading h5 {
+  color: #3b4859;
+  font-weight: 500;
+  margin: 0;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .Source-boxs {
+  padding: 25px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .Source-boxs
+  .source-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 15px 10px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .Source-boxs
+  .source-box
+  .Source-content {
+  margin-left: 10px;
+  width: 100%;
+  max-width: 100%;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .Source-boxs
+  .source-box
+  .Source-content
+  label {
+  margin-bottom: 10px;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #3b4859;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .Source-boxs
+  .source-box
+  .Source-content
+  span {
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #7d7d7d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .Source-boxs
+  .source-box
+  .Source-content
+  p {
+  margin: 10px 0 0 0;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #878787;
+}
+
 /*************************** Wizard ********************/
 .wizard-container {
   margin-right: 20px;
