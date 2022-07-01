@@ -14,6 +14,7 @@ export enum ROUTES {
   StorageViewDetails = 'view-storage-details',
   ProductWiseServicesSla = 'product-wise-services-sla',
   AddDatasource = 'add-data-source',
+  AddDatasourceCredential = 'add-datasource-credential',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
