@@ -69,7 +69,7 @@ export class AddDatasource extends React.Component<any, any> {
 								<div className="images">
 									<img src={images.awsLogo} alt="" />
 								</div>
-								<div className="Source-content">
+								<div className="source-content">
 									<label>{sourceList[i].name}</label>
 									<span>{sourceList[i].cloud}</span>
 									<p>{sourceList[i].description}</p>
@@ -158,8 +158,10 @@ export class AddDatasource extends React.Component<any, any> {
 								</span>
 								<h5>Account Details</h5>
 							</div>
-							<div className="Source-boxs">
-								<div className="row">{this.displayDataSource()}</div>
+							<div className="source-boxs">
+								<div className="row">
+									{this.displayDataSource()}
+								</div>
 							</div>
 						</div>
 					</div>

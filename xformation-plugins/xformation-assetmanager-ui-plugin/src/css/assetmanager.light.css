@@ -5283,7 +5283,18 @@ a:hover {
 }
 .add-data-source-container .add-data-source-page-container .data-source-section .source-content .environgment-details {
   margin-top: 25px;
+  padding-bottom: 15px;
   border-bottom: 1px solid #d1cdcd;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .environgment-details
+  h5 {
+  color: #3b4859;
+  font-weight: 500;
+  margin: 0 0 25px 0;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -5364,14 +5375,14 @@ a:hover {
   font-weight: 500;
   margin: 0;
 }
-.add-data-source-container .add-data-source-page-container .data-source-section .source-content .Source-boxs {
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .source-boxs {
   padding: 25px;
 }
 .add-data-source-container
   .add-data-source-page-container
   .data-source-section
   .source-content
-  .Source-boxs
+  .source-boxs
   .source-box {
   display: flex;
   align-items: center;
@@ -5383,9 +5394,9 @@ a:hover {
   .add-data-source-page-container
   .data-source-section
   .source-content
-  .Source-boxs
+  .source-boxs
   .source-box
-  .Source-content {
+  .source-content {
   margin-left: 10px;
   width: 100%;
   max-width: 100%;
@@ -5394,11 +5405,11 @@ a:hover {
   .add-data-source-page-container
   .data-source-section
   .source-content
-  .Source-boxs
+  .source-boxs
   .source-box
-  .Source-content
+  .source-content
   label {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   display: block;
   font-size: 14px;
   line-height: 20px;
@@ -5412,9 +5423,9 @@ a:hover {
   .add-data-source-page-container
   .data-source-section
   .source-content
-  .Source-boxs
+  .source-boxs
   .source-box
-  .Source-content
+  .source-content
   span {
   display: block;
   font-size: 12px;
@@ -5429,16 +5440,131 @@ a:hover {
   .add-data-source-page-container
   .data-source-section
   .source-content
-  .Source-boxs
+  .source-boxs
   .source-box
-  .Source-content
+  .source-content
   p {
-  margin: 10px 0 0 0;
+  margin: 8px 0 0 0;
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #878787;
+}
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .source-details {
+  margin-top: 30px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box {
+  padding: 15px 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .source-detail-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #d1cdcd;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .source-detail-content
+  .source-content {
+  margin-left: 10px;
+  width: 100%;
+  max-width: 100%;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .source-detail-content
+  .source-content
+  label {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #3b4859;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .source-detail-content
+  .source-content
+  span {
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #7d7d7d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .source-detail-content
+  .source-content
+  p {
+  margin: 8px 0 0 0;
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #878787;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .source-massage-content
+  span {
   display: block;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: #878787;
+  color: #3b4859;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .source-massage-content
+  .asset-blue-button {
+  margin-top: 25px;
 }
 
 /*************************** Wizard ********************/
