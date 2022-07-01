@@ -13,6 +13,7 @@ export enum ROUTES {
   DepartmentWiseCharts = 'department-wise-charts',
   StorageViewDetails = 'view-storage-details',
   ProductWiseServicesSla = 'product-wise-services-sla',
+  AddDatasource = 'add-data-source',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
