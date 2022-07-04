@@ -1,11 +1,11 @@
 import * as React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 // import { configFun } from '../../config';
 import { images } from '../../img';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 // import { RestService } from '../_service/RestService';
-// import { PLUGIN_BASE_URL } from '../../constants';
+import { PLUGIN_BASE_URL } from '../../constants';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 
 export class AddDatasourceCredential extends React.Component<any, any> {
@@ -168,9 +168,11 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 														<button className="asset-blue-button" onClick={this.toggle}>
 															Back
 														</button>
-														<button className="asset-blue-button" onClick={this.toggle}>
-															Explore
-														</button>
+														<Link to={`${PLUGIN_BASE_URL}/explore-datasource`}>
+															<button className="asset-blue-button">
+																Explore
+															</button>
+														</Link>
 														<button className="asset-blue-button" onClick={this.toggle}>
 															Save &#38; Test
 														</button>
