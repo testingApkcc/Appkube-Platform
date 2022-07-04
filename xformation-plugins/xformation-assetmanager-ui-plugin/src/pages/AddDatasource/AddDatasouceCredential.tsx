@@ -194,20 +194,23 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 						style={{
 							height: 'calc(60vh - 50px)',
 							overflowY: 'auto',
+							display: 'grid',
 							overflowX: 'hidden'
-						}}
-					><div className="syneckit-content">
+						}}>
+						<div className="syneckit-content">
 							<div className="heading">
-								<p>Showing Credentials for Account &#8758;<span>AWS (657907747545)</span></p>
+								<p>Showing Credentials for Account &#8758; <span>AWS (657907747545)</span></p>
 							</div>
-							<div className="form-group">
+							<div className="form-group credentials-text">
 								<input type="checkbox" />
 								<span>Credentials</span>
 							</div>
 						</div>
-						<button className="asset-blue-button" onClick={this.addDataSourceCred}>
-							Proceed
-						</button>
+						<div className="modal-submit-button">
+							<button className="asset-blue-button" onClick={this.addDataSourceCred}>
+								Proceed
+							</button>
+						</div>
 					</ModalBody>
 				</Modal>
 			</div>
