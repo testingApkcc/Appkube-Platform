@@ -5389,6 +5389,7 @@ a:hover {
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 15px 10px;
+  cursor: pointer;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -5418,6 +5419,7 @@ a:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 .add-data-source-container
   .add-data-source-page-container

@@ -177,6 +177,7 @@
                         justify-content: center;
                         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                         padding: 15px 10px;
+                        cursor: pointer;
 
                         .source-content {
                             margin-left: 10px;
@@ -193,6 +194,7 @@
                                 white-space: nowrap;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
+                                cursor: pointer;
                             }
 
                             span {
