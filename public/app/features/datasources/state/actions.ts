@@ -221,10 +221,11 @@ export function addDataSource(plugin: DataSourcePluginMeta): ThunkResult<void> {
   };
 }
 
-export function loadDataSourcePlugins(): ThunkResult<void> {
+export function loadDataSourcePlugins(url: string): ThunkResult<void> {
   return async (dispatch) => {
     dispatch(dataSourcePluginsLoad());
-    const plugins = await getBackendSrv().get('/api/plugins', { enabled: 1, type: 'datasource' });
+    // const plugins = await getBackendSrv().get('/api/plugins', { enabled: 1, type: 'datasource' });
+    const plugins = await getBackendSrv().get(url);
     const categories = buildCategories(plugins);
     dispatch(dataSourcePluginsLoaded({ plugins, categories }));
   };

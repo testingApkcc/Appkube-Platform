@@ -11,6 +11,7 @@ import { addDataSource, loadDataSourcePlugins } from './state/actions';
 import { getDataSourcePlugins } from './state/selectors';
 import { setDataSourceTypeSearchQuery } from './state/reducers';
 import { PluginsErrorsInfo } from '../plugins/components/PluginsErrorsInfo';
+import { config } from '../config';
 
 function mapStateToProps(state: StoreState) {
   return {
@@ -32,11 +33,10 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type Props = ConnectedProps<typeof connector>;
 
-const RENDERED_CATEGORY = ['cloud'];
-const RENDERED_PLUGINS = ['cloudwatch', 'grafana-azure-monitor-datasource'];
 class NewDataSourcePage extends PureComponent<Props> {
   componentDidMount() {
-    this.props.loadDataSourcePlugins();
+    const url = `${config.GET_DATASOURCE_LIST}/key=cloudwatCH,TESTDATA,grafana-azure-monitor-datasource`;
+    this.props.loadDataSourcePlugins(url);
   }
 
   onDataSourceTypeClicked = (plugin: DataSourcePluginMeta) => {
@@ -61,19 +61,13 @@ class NewDataSourcePage extends PureComponent<Props> {
           }
         `}
         getItemKey={(item) => item.id.toString()}
-        renderItem={(item) => {
-          if (RENDERED_PLUGINS.indexOf(item.id) !== -1) {
-            return (
-              <DataSourceTypeCard
-                plugin={item}
-                onClick={() => this.onDataSourceTypeClicked(item)}
-                onLearnMoreClick={this.onLearnMoreClick}
-              />
-            );
-          } else {
-            return <></>;
-          }
-        }}
+        renderItem={(item) => (
+          <DataSourceTypeCard
+            plugin={item}
+            onClick={() => this.onDataSourceTypeClicked(item)}
+            onLearnMoreClick={this.onLearnMoreClick}
+          />
+        )}
         aria-labelledby={id}
       />
     );
@@ -88,20 +82,14 @@ class NewDataSourcePage extends PureComponent<Props> {
 
     return (
       <>
-        {categories.map((category) => {
-          if (RENDERED_CATEGORY.indexOf(category.id) !== -1) {
-            return (
-              <div className="add-data-source-category" key={category.id}>
-                <div className="add-data-source-category__header" id={category.id}>
-                  {category.title}
-                </div>
-                {this.renderPlugins(category.plugins, category.id)}
-              </div>
-            );
-          } else {
-            return <></>;
-          }
-        })}
+        {categories.map((category) => (
+          <div className="add-data-source-category" key={category.id}>
+            <div className="add-data-source-category__header" id={category.id}>
+              {category.title}
+            </div>
+            {this.renderPlugins(category.plugins, category.id)}
+          </div>
+        ))}
         <div className="add-data-source-more">
           <LinkButton
             variant="secondary"
