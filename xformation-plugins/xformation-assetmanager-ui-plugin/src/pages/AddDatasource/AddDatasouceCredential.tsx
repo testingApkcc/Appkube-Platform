@@ -166,13 +166,13 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 												{addCredForm && (
 													<React.Fragment>
 														<button className="asset-blue-button" onClick={this.toggle}>
-															Add Credential
+															Back
 														</button>
 														<button className="asset-blue-button" onClick={this.toggle}>
-															Add Credential
+															Explore
 														</button>
 														<button className="asset-blue-button" onClick={this.toggle}>
-															Add Credential
+															Save &#38; Test
 														</button>
 													</React.Fragment>
 												)}
