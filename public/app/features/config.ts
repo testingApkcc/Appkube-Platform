@@ -2,6 +2,7 @@ const securitySrvUrl = `http://100.64.107.25:8094/`;
 const alertSrvUrl = `http://100.64.107.25:5055`;
 const catalogSrvUrl = `http://100.64.107.25:5050/api/`;
 const previewUrl = 'http://44.205.102.3:5057/api';
+const dataSourceURL = '/';
 
 export const config = {
   UPDATE_ORGANIZATION: securitySrvUrl + `security/users/updateOrganization`,
@@ -23,6 +24,7 @@ export const config = {
   basePath: '',
   PREVIEW_DASHBOARDS_URL: `${previewUrl}/dashboard/preview`,
   DELETE_DASHBOARD: `${previewUrl}/dashboard/view-json`,
+  GET_DATASOURCE_LIST: `${dataSourceURL}api/plugins/filter-datasource`,
 };
 
 export const appconfig = {
