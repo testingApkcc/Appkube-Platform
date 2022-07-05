@@ -233,7 +233,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 															<React.Fragment>
 																{accountdata.datasources.map((list: any, index: any) => {
 																	return (
-																		<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+																		<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 																			<Link
 																				to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${list.name}&&accountId=${accountId}`}
 																			>
