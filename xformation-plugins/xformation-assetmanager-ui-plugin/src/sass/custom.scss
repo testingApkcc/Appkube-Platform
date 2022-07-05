@@ -6,12 +6,16 @@ a {
   }
 }
 
-.custom-scrollbar--page{
+.custom-scrollbar--page {
   overflow: inherit !important;
 }
 
 .float-right {
   float: right;
+}
+
+.justify-content-end {
+  justify-content: end;
 }
 
 .v-a-top {
@@ -351,13 +355,14 @@ a {
     display: block;
     padding: 0px 10px 5px !important;
     margin-left: 0 !important;
-    &:hover{
+
+    &:hover {
       color: #3B7CFF !important;
     }
   }
 }
 
-.open-create-menu-close{
+.open-create-menu-close {
   position: fixed;
   left: 0;
   top: 0;

@@ -220,44 +220,46 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 								row.accountIdList.map((accountdata: any, i: any) => {
 									return (
 										<React.Fragment>
-											<div>
+											<div className="account-specific-content">
 												<span>{row.cloud} Account specific input source</span>
-												<p>Account: {accountdata.accountID}</p>
+												<div className="specific-heading">
+													<p>Account &#8758; <span>{accountdata.accountID}</span></p>
+												</div>
 											</div>
-											{accountdata.datasources &&
-											accountdata.datasources.length > 0 && (
-												<React.Fragment>
-													{accountdata.datasources.map((list: any, index: any) => {
-														return (
-															<div className="source-boxs">
-																<div className="row">
-																	<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
-																		<Link
-																			to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${list.name}&&accountId=${accountId}`}
-																		>
-																			<div className="source-box">
-																				<div className="images">
-																					<img src={images.awsLogo} alt="" />
+											<div className="source-boxs">
+												<div className="row">
+													{accountdata.datasources &&
+														accountdata.datasources.length > 0 && (
+															<React.Fragment>
+																{accountdata.datasources.map((list: any, index: any) => {
+																	return (
+																		<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+																			<Link
+																				to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${list.name}&&accountId=${accountId}`}
+																			>
+																				<div className="source-box">
+																					<div className="images">
+																						<img src={images.awsLogo} alt="" />
+																					</div>
+																					<div className="source-content">
+																						<label>{list.name}</label>
+																						<span>{list.cloud}</span>
+																						<p>{list.description}</p>
+																					</div>
 																				</div>
-																				<div className="source-content">
-																					<label>{list.name}</label>
-																					<span>{list.cloud}</span>
-																					<p>{list.description}</p>
-																				</div>
-																			</div>
-																		</Link>
-																	</div>
-																</div>
-															</div>
-														);
-													})}
-												</React.Fragment>
-											)}
+																			</Link>
+																		</div>
+																	);
+																})}
+															</React.Fragment>
+														)}
+												</div>
+											</div>
 										</React.Fragment>
 									);
 								})}
 						</div>
-					</div>
+					</div >
 				);
 			}
 		}
@@ -280,62 +282,66 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 					<div className="data-source-section">
 						<div className="source-head">
 							<h3>inputs</h3>
-							<div className="d-flex">
-								<div className="form-group search-control m-b-0">
-									<button className="btn btn-search">
-										<i className="fa fa-search" />
-									</button>
-									<input type="text" className="input-group-text" placeholder="Search" />
-								</div>
-								<div className="back-btn">
-									<button type="button" className="btn btn-link">
-										<i className="far fa-arrow-alt-circle-left" />Back
-									</button>
-								</div>
-							</div>
 						</div>
 						<div className="source-content">
-							{/* <div className="heading">
-								<h4>Add inputs</h4>
-							</div> */}
-							<div className="account-details-heading">
-								<h5>Account Details</h5>
-							</div>
-							<div className="environgment-details">
-								<div className="form-group description-content">
-									<label htmlFor="description">Select Environment</label>
-									<select
-										className="input-group-text"
-										name="environment"
-										value={environment}
-										onChange={this.onChangeDataSource}
-									>
-										<option key="1" value="aws">
-											AWS
-										</option>
-										<option key="2" value="Cloud">
-											Cloud
-										</option>
-									</select>
+							<div className="add-input-content">
+								<div className="row justify-content-end">
+									<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+										<div className="form-group">
+											<select
+												className="input-group-text"
+												name="environment"
+												value={environment}
+												onChange={this.onChangeDataSource}
+											>
+												<option key="1" value="aws">
+													Select Environment
+												</option>
+												<option key="2" value="Cloud">
+													Cloud
+												</option>
+											</select>
+										</div>
+									</div>
+									<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+										<div className="form-group">
+											<select
+												className="input-group-text"
+												name="account"
+												value={account}
+												onChange={this.onChangeDataSource}
+											>
+												<option key="1" value="567373484">
+													Select Account
+												</option>
+												<option key="2" value="237373414">
+													Cloud
+												</option>
+											</select>
+										</div>
+									</div>
+									<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+										<div className="form-group">
+											<div className="right-search-bar">
+												<div className="form-group search-control m-b-0">
+													<i className="fa fa-search" />
+													<input type="text" className="input-group-text" placeholder="Search" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+										<div className="back-btn">
+											<button type="button" className="asset-blue-button">
+												Add input
+											</button>
+										</div>
+									</div>
 								</div>
-								<div className="form-group description-content">
-									<label htmlFor="description">Select Account</label>
-									<select
-										className="input-group-text"
-										name="account"
-										value={account}
-										onChange={this.onChangeDataSource}
-									>
-										<option key="1" value="567373484">
-											AWS 567373484
-										</option>
-										<option key="2" value="237373414">
-											AWS 237373414
-										</option>
-									</select>
-								</div>
 							</div>
-							<div className="">{this.displayDataSource()}</div>
+							<div className="specific-input-content">
+								{this.displayDataSource()}
+							</div>
 						</div>
 					</div>
 				</div>
