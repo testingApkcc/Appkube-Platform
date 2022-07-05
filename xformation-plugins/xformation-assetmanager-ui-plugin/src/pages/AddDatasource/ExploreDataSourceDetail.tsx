@@ -83,13 +83,13 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 												<div className="explore-content">
 													<div className="explore-head">
 														<div className="row">
-															<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div className="col-xl-6 col-lg-5 col-md-12 col-sm-12 col-xs-12">
 																<div className="explore-head-left">
 																	<label>Query Name</label>
 																	<input type="text" className="form-control" />
 																</div>
 															</div>
-															<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div className="col-xl-6 col-lg-7 col-md-12 col-sm-12 col-xs-12">
 																<div className="explore-head-right">
 																	<ul>
 																		<li>
@@ -163,10 +163,10 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 													</div>
 													<div className="region-head">
 														<div className="row d-flex align-items-center justify-content-start">
-															<div className="col-xl-1 col-lg-3 col-md-4 col-sm-12 col-xs-12">
+															<div className="col-xl-1 col-lg-2 col-md-2 col-sm-6 col-xs-12">
 																<label>Region &#8758;</label>
 															</div>
-															<div className="col-xl-2 col-lg-3 col-md-4 col-sm-12 col-xs-12">
+															<div className="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-xs-12">
 																<div className="time-content">
 																	<select
 																		className="input-group-text"
@@ -186,7 +186,7 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 																	</select>
 																</div>
 															</div>
-															<div className="col-xl-2 col-lg-3 col-md-4 col-sm-12 col-xs-12">
+															<div className="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-xs-12">
 																<div className="time-content">
 																	<select
 																		className="input-group-text"
@@ -206,7 +206,7 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 																	</select>
 																</div>
 															</div>
-															<div className="col-xl-2 col-lg-3 col-md-4 col-sm-12 col-xs-12">
+															<div className="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-xs-12">
 																<div className="time-content">
 																	<select
 																		className="input-group-text"

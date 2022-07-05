@@ -6118,6 +6118,32 @@ a:hover {
     .source-content {
     width: 62%;
   }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-left
+    .form-control {
+    display: inline-block;
+    width: 215px;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -6140,6 +6166,33 @@ a:hover {
     .description-content
     .input-group-text {
     width: 400px;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-left
+    .form-control {
+    display: inline-block;
+    width: 85%;
   }
 }
 
@@ -6200,6 +6253,113 @@ a:hover {
     .source-content {
     width: 78%;
   }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .source-massage-content
+    .asset-blue-button {
+    min-width: 115px;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-left
+    .form-control {
+    width: 70%;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-right
+    ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-right
+    ul
+    li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 0;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-right
+    ul
+    li:first-child {
+    margin-left: 0;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-right
+    ul
+    li
+    .time-content
+    .input-group-text {
+    width: 130px;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-details
+    .source-box
+    .explore-content
+    .explore-head
+    .explore-head-right
+    ul
+    li
+    .asset-blue-button {
+    min-width: 120px;
+  }
 }
 
 @media only screen and (max-width: 540px) {
@@ -6217,7 +6377,7 @@ a:hover {
     .right-search-bar
     .search-control
     .input-group-text {
-    width: 150px;
+    width: 300px;
   }
   .add-data-source-container
     .add-data-source-page-container
