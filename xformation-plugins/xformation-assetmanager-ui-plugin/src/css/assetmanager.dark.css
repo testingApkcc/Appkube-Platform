@@ -6027,6 +6027,111 @@ a:hover {
   .source-content
   .source-details
   .source-box
+  .explore-content
+  .dimension-heading
+  .switch {
+  line-height: 1.5px;
+  display: inline-block;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .dimension-heading
+  .switch
+  input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .dimension-heading
+  .switch
+  label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 60px;
+  height: 25px;
+  background: #e5e5e5;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .dimension-heading
+  .switch
+  label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .dimension-heading
+  .switch
+  label:active
+  :after {
+  width: 130px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .dimension-heading
+  .switch
+  input:checked
+  + label {
+  background: #3b7cff;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .dimension-heading
+  .switch
+  input:checked
+  + label:after {
+  left: calc(100% - 3px);
+  transform: translateX(-100%);
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
   .explore-buttons {
   margin-top: 20px;
 }

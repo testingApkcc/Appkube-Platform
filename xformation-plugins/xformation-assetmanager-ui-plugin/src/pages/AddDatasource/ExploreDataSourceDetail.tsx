@@ -300,14 +300,11 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 															Match exact &#8722; <span>optional</span>
 															<i className="fal fa-exclamation-circle" />
 														</label>
-														<div className="checkbox switcher">
-															<label>
-																<input type="checkbox" id="test1" value="" checked />
-																<span>
-																	<small />
-																</span>
-															</label>
+														<div className="switch">
+															<input type="checkbox" id="switch" />
+															<label htmlFor="switch">Switch</label>
 														</div>
+
 													</div>
 													<div className="environgment-details metrics-name">
 														<div className="row">
