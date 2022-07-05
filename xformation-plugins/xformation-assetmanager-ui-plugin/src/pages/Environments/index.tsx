@@ -382,7 +382,7 @@ export class Environments extends React.Component<any, any> {
 									<>
 										<div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(i) }}></div>
 										<div className="text-center open-create-menu">
-											<a href={`${PLUGIN_BASE_URL}/add-data-source?accountId=${row.accountId}&&cloudName=${row.cloud.name}`}>Add New Product</a>
+											<a href={(row.accountId && row.cloud.name) ? `${PLUGIN_BASE_URL}/add-data-source-product?accountId=${row.accountId}&&cloudName=${row.cloud.name}` : `${PLUGIN_BASE_URL}/add-data-source-product`}>Add New Product</a>
 											<a>Add Cluster</a>
 											<a>Add Cloud Managed Services</a>
 											<a>Add Gateway Services</a>
@@ -404,7 +404,6 @@ export class Environments extends React.Component<any, any> {
 				);
 			}
 		}
-
 		return retData;
 	}
 

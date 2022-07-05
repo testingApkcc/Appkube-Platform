@@ -79,6 +79,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     SEARCH_INPUT: `${assetSrvUrl}/searchInput`,
 
     GET_AWS_REGIONS: `${assetSrvUrl}/getAwsRegions`,
+    GET_ALL_DATASOURCE: `${assetSrvUrl}/datasources`,
     // PREVIEW_DASHBOARDS_URL: `${mainApplicationBaseUrl}/dashboards/previewDashboard`,
   };
 };
