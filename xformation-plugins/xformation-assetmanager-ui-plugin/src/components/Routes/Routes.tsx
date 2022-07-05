@@ -12,6 +12,7 @@ import { StorageViewDetails } from '../../pages/StorageViewDetails';
 import { AddDatasource } from '../../pages/AddDatasource';
 import { AddDatasourceCredential } from '../../pages/AddDatasource/AddDatasouceCredential';
 import { ExploreDataSourceDetail } from '../../pages/AddDatasource/ExploreDataSourceDetail';
+import { AddDatasourceProduct } from '../../pages/AddDatasource/AddDatasourceProduct';
 import { useNavigation, prefixRoute } from '../../utils/utils.routing';
 import { usePluginMeta } from 'utils/utils.plugin';
 import { ROUTES } from '../../constants';
@@ -80,7 +81,16 @@ export const Routes = () => {
 				path={prefixRoute(ROUTES.AddDatasourceCredential)}
 				component={(props: any) => <AddDatasourceCredential {...props} meta={meta} />}
 			/>
-			<Route exact path={prefixRoute(ROUTES.ExploreDataSourceDetail)} component={(props:any)=> <ExploreDataSourceDetail {...props} meta={meta}/>}/>
+			<Route
+				exact
+				path={prefixRoute(ROUTES.ExploreDataSourceDetail)}
+				component={(props: any) => <ExploreDataSourceDetail {...props} meta={meta} />}
+			/>
+			<Route
+				exact
+				path={prefixRoute(ROUTES.AddDatasourceProduct)}
+				component={(props: any) => <AddDatasourceProduct {...props} meta={meta} />}
+			/>
 		</Switch>
 	);
 };

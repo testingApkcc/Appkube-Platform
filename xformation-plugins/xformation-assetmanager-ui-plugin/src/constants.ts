@@ -16,6 +16,7 @@ export enum ROUTES {
   AddDatasource = 'add-data-source',
   AddDatasourceCredential = 'add-datasource-credential',
   ExploreDataSourceDetail = 'explore-datasource',
+  AddDatasourceProduct = 'add-data-source-product',
 }
 
 export const NAVIGATION_TITLE = 'Basic App Plugin';
