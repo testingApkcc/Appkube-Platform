@@ -25,45 +25,51 @@
                     margin: 0;
                 }
 
-                .search-control {
-                    position: relative;
+                .right-search-bar {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
 
-                    .input-group-text {
-                        max-width: 100%;
-                        text-align: left;
-                        padding-right: 15px;
-                        padding-left: 30px;
-                        width: 280px;
-                        border: 1px solid #ced4da;
-                        background-color: #ffffff;
-                        border-radius: 4px;
-                        color: #8998ac;
+                    .search-control {
+                        position: relative;
+
+                        .input-group-text {
+                            max-width: 100%;
+                            text-align: left;
+                            padding-right: 15px;
+                            padding-left: 30px;
+                            width: 280px;
+                            border: 1px solid #ced4da;
+                            background-color: #ffffff;
+                            border-radius: 4px;
+                            color: #8998ac;
+                        }
+
+                        .btn-search {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            z-index: 1;
+                            cursor: pointer;
+                            border: none;
+                            background-color: transparent;
+                            width: 32px;
+                            height: 32px;
+                            color: #8998AC;
+                        }
                     }
 
-                    .btn-search {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        z-index: 1;
-                        cursor: pointer;
-                        border: none;
-                        background-color: transparent;
-                        width: 32px;
-                        height: 32px;
-                        color: #8998AC;
-                    }
-                }
+                    .back-btn {
+                        margin-left: 15px;
 
-                .back-btn {
-                    margin-left: 15px;
+                        .btn-link {
+                            color: #3b4859;
 
-                    .btn-link {
-                        color: #3b4859;
-
-                        i {
-                            margin-right: 8px;
-                            font-size: 18px;
-                            color: #57a4ff;
+                            i {
+                                margin-right: 8px;
+                                font-size: 18px;
+                                color: #57a4ff;
+                            }
                         }
                     }
                 }
@@ -174,7 +180,7 @@
                     .source-box {
                         display: flex;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: start;
                         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                         padding: 15px 10px;
                         cursor: pointer;
@@ -565,6 +571,134 @@
                 display: flex;
                 align-items: end;
                 justify-content: end;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .add-data-source-container {
+        .add-data-source-page-container {
+            .data-source-section {
+                .source-content {
+                    .source-boxs {
+                        .source-box {
+                            margin-bottom: 20px;
+                            min-height: 117px;
+
+                            .source-content {
+                                width: 62%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .add-data-source-container {
+        .add-data-source-page-container {
+            .data-source-section {
+                .source-content {
+                    .environgment-details {
+                        .description-content {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .input-group-text {
+                                width: 400px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .add-data-source-container {
+        .add-data-source-page-container {
+            .data-source-section {
+                .source-head {
+                    .right-search-bar {
+                        .search-control {
+                            .input-group-text {
+                                width: 250px;
+                            }
+                        }
+
+                        .back-btn {
+                            .btn-link {
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+
+                .source-content {
+                    .environgment-details {
+                        .description-content {
+                            width: 100%;
+                            display: block;
+
+                            label {
+                                margin-bottom: 10px;
+                            }
+
+                            .input-group-text {
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                    .source-boxs {
+                        padding: 25px 0;
+
+                        .source-content {
+                            width: 78%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .add-data-source-container {
+        .add-data-source-page-container {
+            .data-source-section {
+                .source-head {
+                    display: block;
+                    padding: 0 15px 10px;
+
+                    .right-search-bar {
+                        margin-top: 15px;
+
+                        .search-control {
+                            .input-group-text {
+                                width: 150px;
+                            }
+                        }
+
+                        .back-btn {
+                            .btn-link {
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+
+                .source-content {
+                    .heading {
+                        padding: 15px 0 15px 0;
+                    }
+                }
             }
         }
     }

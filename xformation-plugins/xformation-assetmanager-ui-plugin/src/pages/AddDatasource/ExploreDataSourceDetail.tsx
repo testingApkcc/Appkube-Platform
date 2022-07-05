@@ -47,7 +47,7 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 					<div className="data-source-section">
 						<div className="source-head">
 							<h3>inputs</h3>
-							<div className="d-flex">
+							<div className="right-search-bar">
 								<div className="form-group search-control m-b-0">
 									<button className="btn btn-search">
 										<i className="fa fa-search" />
