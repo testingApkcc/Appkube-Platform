@@ -62,7 +62,7 @@ export class AddDatasource extends React.Component<any, any> {
 		if (sourceList && sourceList.length > 0) {
 			for (let i = 0; i < sourceList.length; i++) {
 				retData.push(
-					<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-md-n5">
 						<Link
 							to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${sourceList[i]
 								.name}&&accountId=${accountId}`}
@@ -101,7 +101,7 @@ export class AddDatasource extends React.Component<any, any> {
 					<div className="data-source-section">
 						<div className="source-head">
 							<h3>inputs</h3>
-							<div className="d-flex">
+							<div className="right-search-bar">
 								<div className="form-group search-control m-b-0">
 									<button className="btn btn-search">
 										<i className="fa fa-search" />
