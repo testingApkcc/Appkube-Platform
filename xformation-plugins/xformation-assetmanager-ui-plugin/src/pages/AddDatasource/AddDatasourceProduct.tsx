@@ -177,14 +177,27 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 	getAccountList = async () => {
 		try {
 			await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
-				this.setState({
-					accountList: response
-				});
+				this.manipulateData(response);
+				// this.setState({
+				// 	accountList: response
+				// });
 				console.log('Loading Asstes : ', response);
 			});
 		} catch (err) {
 			console.log('Loading Asstes failed. Error: ', err);
 		}
+	};
+
+	manipulateData = (data: any) => {
+		// let datasource: any = [];
+		let dataobj: any = {};
+		if (data && data.length > 0) {
+			for (let i = 0; i < data.length; i++) {
+				dataobj[data[i].typeName] = dataobj[data[i].typeName] || [];
+				dataobj[data[i].typeName].push(data[i]);
+			}
+		}
+		console.log(dataobj);
 	};
 
 	displayDataSource = () => {
