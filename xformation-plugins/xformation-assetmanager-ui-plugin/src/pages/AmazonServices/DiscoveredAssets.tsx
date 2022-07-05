@@ -61,18 +61,18 @@ export class DiscoveredAssets extends React.Component<any, any>{
   }
 
   componentDidMount() {
-    this.getServicesData();
     const queryPrm = new URLSearchParams(this.props.location.search);
     const accountId = queryPrm.get("accountId");
+    this.getServicesData(accountId);
     this.setState({
       accountId
     });
   }
 
-  getServicesData = async () => {
+  getServicesData = async (accountId: any) => {
     try {
       await RestService.getData(
-        `${this.config.GET_SERVICES_DATA}`,
+        `${this.config.GET_FILTERED_SERVICES_DATA}?associatedLandingZone=${accountId}`,
         null,
         null
       ).then((response: any) => {

@@ -10,6 +10,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GET_DEPARTMENTWISE_PRODUCT: `${assetSrvUrl}/department-wise-analytics/search?orgId=78`,
     GET_PRODUCT_DATA: `${assetSrvUrl}/department-wise-analytics/get-data`,
     GET_SERVICES_DATA: `${assetSrvUrl}/service-detail/search`,
+    GET_FILTERED_SERVICES_DATA: `${assetSrvUrl}/service-detail/search-with-filter`,
     PREVIEW_DASHBOARDS_URL: `${assetSrvUrl}/dashboard/preview`,
 
     ADD_Organization: `${assetSrvUrl}/addEnvironment`,
