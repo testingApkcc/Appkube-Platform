@@ -1,20 +1,28 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
-// import { configFun } from '../../config';
-import { images } from '../../img';
+import { configFun } from '../../config';
+// import { images } from '../../img';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
-// import { RestService } from '../_service/RestService';
+import { RestService } from '../_service/RestService';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { CommonService } from '../_common/common';
 
 export class AddDatasourceCredential extends React.Component<any, any> {
 	breadCrumbs: any;
+	config: any;
 	constructor(props: any) {
 		super(props);
+		let accountId = CommonService.getParameterByName('accountId', window.location.href);
+		let serverName = CommonService.getParameterByName('sourceName', window.location.href);
 		this.state = {
 			addCredForm: false,
-			addcredpopup: false
+			addcredpopup: false,
+			datasourceData: {},
+			environmentList: [],
+			environment: serverName,
+			account: accountId
 		};
 		this.breadCrumbs = [
 			{
@@ -26,9 +34,47 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
+		this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
 	}
 
-	componentDidMount() { }
+	async componentDidMount() {
+		await this.getAccountList();
+	}
+
+	getAccountList = async () => {
+		try {
+			await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
+				this.manipulateData(response);
+				console.log('Loading Asstes : ', response);
+			});
+		} catch (err) {
+			console.log('Loading Asstes failed. Error: ', err);
+		}
+	};
+
+	manipulateData = (data: any) => {
+		let { environmentList } = this.state;
+		let dataobj: any = {};
+		let accountId = CommonService.getParameterByName('accountId', window.location.href);
+		if (data && data.length > 0) {
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].uid === accountId) {
+					dataobj = data[i];
+				}
+				if (environmentList && environmentList.length > 0) {
+					if (environmentList.indexOf(data[i].typeName) === -1) {
+						environmentList.push(data[i].typeName);
+					}
+				} else {
+					environmentList.push(data[i].typeName);
+				}
+			}
+		}
+		this.setState({
+			datasourceData: dataobj,
+			environmentList
+		});
+	};
 
 	toggle = () => {
 		const { addcredpopup } = this.state;
@@ -47,12 +93,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	addDataSourceCred = () => {
 		this.setState({
 			addCredForm: true,
-			addcredpopup: false,
+			addcredpopup: false
 		});
 	};
 
 	render() {
-		const { addcredpopup, addCredForm } = this.state;
+		const { addcredpopup, addCredForm, datasourceData, environmentList, environment, account } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGER" />
@@ -68,9 +114,13 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 									<input type="text" className="input-group-text" placeholder="Search" />
 								</div>
 								<div className="back-btn">
-									<button type="button" className="btn btn-link">
+									<Link
+										to={`${PLUGIN_BASE_URL}/add-data-source?accountId=${account}&&cloudName=${environment}`}
+										type="button"
+										className="btn btn-link"
+									>
 										<i className="far fa-arrow-alt-circle-left" />Back
-									</button>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -87,15 +137,18 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 									<select
 										className="input-group-text"
 										name="environment"
-										value=""
-										onChange={this.onChangeDataSource}
+										value={environment}
+										// onChange={this.onChangeDataSource}
 									>
-										<option key="1" value="aws">
-											AWS
-										</option>
-										<option key="2" value="Cloud">
-											Cloud
-										</option>
+										{environmentList &&
+											environmentList.length > 0 &&
+											environmentList.map((val: any, index: any) => {
+												return (
+													<option key={index} value={val}>
+														{val}
+													</option>
+												);
+											})}
 									</select>
 								</div>
 								<div className="form-group description-content">
@@ -104,7 +157,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 										className="input-group-text"
 										name="account"
 										value=""
-										onChange={this.onChangeDataSource}
+										// onChange={this.onChangeDataSource}
 									>
 										<option key="1" value="567373484">
 											AWS 567373484
@@ -119,18 +172,24 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								<div className="row">
 									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 										<div className="source-box">
-											<div className="source-detail-content">
-												<div className="images">
-													<img src={images.awsLogo} alt="" />
+											{datasourceData && (
+												<div className="source-detail-content">
+													<div className="images">
+														<img src={datasourceData.typeLogoUrl} height="50px" width="50px" alt="" />
+													</div>
+													<div className="source-content">
+														<label>{datasourceData.name}</label>
+														<span>{datasourceData.type}</span>
+														<p>Pull aes metrix with cloud API</p>
+													</div>
 												</div>
-												<div className="source-content">
-													<label>AWS-pullMetric-Api</label>
-													<span>cloud watch</span>
-													<p>Pull aes metrix with cloud API</p>
-												</div>
-											</div>
+											)}
 											<div className="source-massage-content">
-												{!addCredForm && <span>Please click on the button to add credential using vault</span>}
+												{!addCredForm && (
+													<span>
+														Please click on the button to add credential using vault
+													</span>
+												)}
 												{!addCredForm && (
 													<button className="asset-blue-button" onClick={this.toggle}>
 														Add Credential
@@ -169,9 +228,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 															Back
 														</button>
 														<Link to={`${PLUGIN_BASE_URL}/explore-datasource`}>
-															<button className="asset-blue-button">
-																Explore
-															</button>
+															<button className="asset-blue-button">Explore</button>
 														</Link>
 														<button className="asset-blue-button" onClick={this.toggle}>
 															Save &#38; Test
@@ -198,10 +255,13 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 							overflowY: 'auto',
 							display: 'grid',
 							overflowX: 'hidden'
-						}}>
+						}}
+					>
 						<div className="syneckit-content">
 							<div className="heading">
-								<p>Showing Credentials for Account &#8758; <span>AWS (657907747545)</span></p>
+								<p>
+									Showing Credentials for Account &#8758; <span>AWS (657907747545)</span>
+								</p>
 							</div>
 							<div className="form-group credentials-text">
 								<input type="checkbox" />

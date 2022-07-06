@@ -18,16 +18,7 @@ export class AddDatasource extends React.Component<any, any> {
 		this.state = {
 			environment: serverName,
 			account: accountId,
-			sourceList: [
-				// { name: 'AWS-PullMetric-API', cloud: 'Cloud Watch', description: 'pull aws metrics with cloud api' },
-				// { name: 'AWS-PullLogs-API', cloud: 'Cloud Watch', description: 'pull aws Logs with cloud api' },
-				// {
-				// 	name: 'AWS-StoreTrace-Local',
-				// 	cloud: 'AWS',
-				// 	description: 'Receive traces and store in local Zipkin DB'
-				// },
-				// { name: 'AWS-PullLogs-Local', cloud: 'AWS', description: 'Receive AWS Logs and store in Local ES' }
-			],
+			sourceList: [],
 			environmentList: []
 		};
 		this.breadCrumbs = [
@@ -63,7 +54,6 @@ export class AddDatasource extends React.Component<any, any> {
 		let dataobj: any = [];
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				// dataobj[data[i].typeName] = dataobj[data[i].typeName] || [];
 				dataobj.push(data[i]);
 				if (environmentList && environmentList.length > 0) {
 					if (environmentList.indexOf(data[i].typeName) === -1) {
@@ -84,7 +74,7 @@ export class AddDatasource extends React.Component<any, any> {
 		let retData = [];
 		const { sourceList, environment } = this.state;
 		console.log(sourceList);
-		let accountId = CommonService.getParameterByName('accountId', window.location.href);
+		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList && sourceList.length > 0) {
 			for (let i = 0; i < sourceList.length; i++) {
 				if (sourceList[i].typeName === environment) {
@@ -92,7 +82,7 @@ export class AddDatasource extends React.Component<any, any> {
 						<div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-md-n5">
 							<Link
 								to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${sourceList[i]
-									.name}&&accountId=${accountId}`}
+									.name}&&accountId=${sourceList[i].uid}`}
 							>
 								<div className="source-box">
 									<div className="images">
