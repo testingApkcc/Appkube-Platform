@@ -232,7 +232,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 									{sourceList[source] &&
 										sourceList[source].map((accountdata: any, i: any) => {
 											return (
-												<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+												<div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
 													<Link
 														to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${accountdata.name}&&accountId=${accountId}`}
 													>
@@ -243,7 +243,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 															<div className="source-content">
 																<label>{accountdata.name}</label>
 																<span>{accountdata.type}</span>
-																{/* <p>{}</p> */}
+																<p>Receive traces and store in local Zipkin DB</p>
 															</div>
 														</div>
 													</Link>

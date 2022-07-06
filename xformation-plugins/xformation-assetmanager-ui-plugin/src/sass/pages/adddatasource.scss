@@ -279,7 +279,7 @@
 
                         .source-content {
                             margin-left: 10px;
-                            width: 100%;
+                            width: 75%;
                             max-width: 100%;
 
                             label {
@@ -304,6 +304,7 @@
                                 white-space: nowrap;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
+
                             }
 
                             p {
@@ -737,7 +738,7 @@
                             min-height: 117px;
 
                             .source-content {
-                                width: 62%;
+                                width: 75%;
                             }
                         }
                     }
@@ -785,6 +786,17 @@
         .add-data-source-page-container {
             .data-source-section {
                 .source-content {
+                    .source-boxs {
+                        .source-box {
+                            margin-bottom: 20px;
+                            min-height: 117px;
+
+                            .source-content {
+                                width: 75%;
+                            }
+                        }
+                    }
+
                     .environgment-details {
                         .description-content {
                             width: 100%;

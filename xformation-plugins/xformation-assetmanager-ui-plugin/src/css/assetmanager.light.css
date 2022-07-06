@@ -5575,7 +5575,7 @@ a:hover {
   .source-box
   .source-content {
   margin-left: 10px;
-  width: 100%;
+  width: 75%;
   max-width: 100%;
 }
 .add-data-source-container
@@ -6368,7 +6368,7 @@ a:hover {
     .source-boxs
     .source-box
     .source-content {
-    width: 62%;
+    width: 75%;
   }
   .add-data-source-container
     .add-data-source-page-container
@@ -6417,6 +6417,24 @@ a:hover {
 }
 
 @media only screen and (max-width: 991px) {
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-box {
+    margin-bottom: 20px;
+    min-height: 117px;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-box
+    .source-content {
+    width: 75%;
+  }
   .add-data-source-container
     .add-data-source-page-container
     .data-source-section
