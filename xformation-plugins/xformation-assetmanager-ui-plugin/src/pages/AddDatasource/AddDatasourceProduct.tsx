@@ -16,146 +16,147 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 		this.state = {
 			environment: '',
 			account: '',
-			sourceList: [
-				{
-					cloud: 'AWS',
-					icon: '',
-					accountIdList: [
-						{
-							accountID: '6478462154795',
-							datasources: [
-								{
-									name: 'AWS-PullMetric-API',
-									cloud: 'Cloud Watch',
-									description: 'pull aws metrics with cloud api',
-									icon: ''
-								},
-								{
-									name: 'AWS-PullLogs-API',
-									cloud: 'Cloud Watch',
-									description: 'pull aws Logs with cloud api',
-									icon: ''
-								},
-								{
-									name: 'AWS-StoreTrace-Local',
-									cloud: 'AWS',
-									description: 'Receive traces and store in local Zipkin DB',
-									icon: ''
-								}
-							]
-						},
-						{
-							accountID: '6478462154795',
-							datasources: [
-								{
-									name: 'AWS-StoreTrace-Local',
-									cloud: 'AWS',
-									description: 'Receive traces and store in local Zipkin DB',
-									icon: ''
-								},
-								{
-									name: 'AWS-PullLogs-Local',
-									cloud: 'AWS',
-									description: 'Receive AWS Logs and store in Local ES',
-									icon: ''
-								}
-							]
-						}
-					]
-				},
-				{
-					cloud: 'AZURE',
-					icon: '',
-					accountIdList: [
-						{
-							accountID: '6478462154795',
-							datasources: [
-								{
-									name: 'AWS-PullMetric-API',
-									cloud: 'Cloud Watch',
-									description: 'pull aws metrics with cloud api',
-									icon: ''
-								},
-								{
-									name: 'AWS-PullLogs-API',
-									cloud: 'Cloud Watch',
-									description: 'pull aws Logs with cloud api',
-									icon: ''
-								},
-								{
-									name: 'AWS-StoreTrace-Local',
-									cloud: 'AWS',
-									description: 'Receive traces and store in local Zipkin DB',
-									icon: ''
-								}
-							]
-						},
-						{
-							accountID: '6478462154795',
-							datasources: [
-								{
-									name: 'AWS-StoreTrace-Local',
-									cloud: 'AWS',
-									description: 'Receive traces and store in local Zipkin DB',
-									icon: ''
-								},
-								{
-									name: 'AWS-PullLogs-Local',
-									cloud: 'AWS',
-									description: 'Receive AWS Logs and store in Local ES',
-									icon: ''
-								}
-							]
-						}
-					]
-				},
-				{
-					cloud: 'Google Cloud Plateform',
-					icon: '',
-					accountIdList: [
-						{
-							accountID: '6478462154795',
-							datasources: [
-								{
-									name: 'AWS-PullMetric-API',
-									cloud: 'Cloud Watch',
-									description: 'pull aws metrics with cloud api',
-									icon: ''
-								},
-								{
-									name: 'AWS-PullLogs-API',
-									cloud: 'Cloud Watch',
-									description: 'pull aws Logs with cloud api',
-									icon: ''
-								},
-								{
-									name: 'AWS-StoreTrace-Local',
-									cloud: 'AWS',
-									description: 'Receive traces and store in local Zipkin DB',
-									icon: ''
-								}
-							]
-						},
-						{
-							accountID: '6478462154795',
-							datasources: [
-								{
-									name: 'AWS-StoreTrace-Local',
-									cloud: 'AWS',
-									description: 'Receive traces and store in local Zipkin DB',
-									icon: ''
-								},
-								{
-									name: 'AWS-PullLogs-Local',
-									cloud: 'AWS',
-									description: 'Receive AWS Logs and store in Local ES',
-									icon: ''
-								}
-							]
-						}
-					]
-				}
-			]
+			// sourceList: [
+			// 	{
+			// 		cloud: 'AWS',
+			// 		icon: '',
+			// 		accountIdList: [
+			// 			{
+			// 				accountID: '6478462154795',
+			// 				datasources: [
+			// 					{
+			// 						name: 'AWS-PullMetric-API',
+			// 						cloud: 'Cloud Watch',
+			// 						description: 'pull aws metrics with cloud api',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-PullLogs-API',
+			// 						cloud: 'Cloud Watch',
+			// 						description: 'pull aws Logs with cloud api',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-StoreTrace-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive traces and store in local Zipkin DB',
+			// 						icon: ''
+			// 					}
+			// 				]
+			// 			},
+			// 			{
+			// 				accountID: '6478462154795',
+			// 				datasources: [
+			// 					{
+			// 						name: 'AWS-StoreTrace-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive traces and store in local Zipkin DB',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-PullLogs-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive AWS Logs and store in Local ES',
+			// 						icon: ''
+			// 					}
+			// 				]
+			// 			}
+			// 		]
+			// 	},
+			// 	{
+			// 		cloud: 'AZURE',
+			// 		icon: '',
+			// 		accountIdList: [
+			// 			{
+			// 				accountID: '6478462154795',
+			// 				datasources: [
+			// 					{
+			// 						name: 'AWS-PullMetric-API',
+			// 						cloud: 'Cloud Watch',
+			// 						description: 'pull aws metrics with cloud api',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-PullLogs-API',
+			// 						cloud: 'Cloud Watch',
+			// 						description: 'pull aws Logs with cloud api',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-StoreTrace-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive traces and store in local Zipkin DB',
+			// 						icon: ''
+			// 					}
+			// 				]
+			// 			},
+			// 			{
+			// 				accountID: '6478462154795',
+			// 				datasources: [
+			// 					{
+			// 						name: 'AWS-StoreTrace-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive traces and store in local Zipkin DB',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-PullLogs-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive AWS Logs and store in Local ES',
+			// 						icon: ''
+			// 					}
+			// 				]
+			// 			}
+			// 		]
+			// 	},
+			// 	{
+			// 		cloud: 'Google Cloud Plateform',
+			// 		icon: '',
+			// 		accountIdList: [
+			// 			{
+			// 				accountID: '6478462154795',
+			// 				datasources: [
+			// 					{
+			// 						name: 'AWS-PullMetric-API',
+			// 						cloud: 'Cloud Watch',
+			// 						description: 'pull aws metrics with cloud api',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-PullLogs-API',
+			// 						cloud: 'Cloud Watch',
+			// 						description: 'pull aws Logs with cloud api',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-StoreTrace-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive traces and store in local Zipkin DB',
+			// 						icon: ''
+			// 					}
+			// 				]
+			// 			},
+			// 			{
+			// 				accountID: '6478462154795',
+			// 				datasources: [
+			// 					{
+			// 						name: 'AWS-StoreTrace-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive traces and store in local Zipkin DB',
+			// 						icon: ''
+			// 					},
+			// 					{
+			// 						name: 'AWS-PullLogs-Local',
+			// 						cloud: 'AWS',
+			// 						description: 'Receive AWS Logs and store in Local ES',
+			// 						icon: ''
+			// 					}
+			// 				]
+			// 			}
+			// 		]
+			// 	}
+			// ]
+			sourceList: {}
 		};
 		this.breadCrumbs = [
 			{
@@ -197,16 +198,17 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 				dataobj[data[i].typeName].push(data[i]);
 			}
 		}
-		console.log(dataobj);
+		this.setState({
+			sourceList: dataobj
+		});
 	};
 
 	displayDataSource = () => {
-		let retData = [];
+		let retData: any = [];
 		const { sourceList } = this.state;
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		if (sourceList && sourceList.length > 0) {
-			for (let i = 0; i < sourceList.length; i++) {
-				let row = sourceList[i];
+		if (sourceList) {
+			Object.keys(sourceList).map((source, indexedDB) => {
 				retData.push(
 					<div className="row">
 						<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -214,54 +216,46 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 								<span>
 									<img src={images.awsLogo} alt="" />
 								</span>
-								<h5>{row.cloud}</h5>
+								<h5>{source}</h5>
 							</div>
-							{row.accountIdList &&
-								row.accountIdList.map((accountdata: any, i: any) => {
-									return (
-										<React.Fragment>
-											<div className="account-specific-content">
-												<span>{row.cloud} Account specific input source</span>
-												<div className="specific-heading">
-													<p>Account &#8758; <span>{accountdata.accountID}</span></p>
+							<div className="account-specific-content">
+								<span>{source} Account specific input source</span>
+								<div className="specific-heading">
+									<p>
+										Account &#8758;
+										{/* <span>{accountdata.uid}</span> */}
+									</p>
+								</div>
+							</div>
+							<div className="source-boxs">
+								<div className="row">
+									{sourceList[source] &&
+										sourceList[source].map((accountdata: any, i: any) => {
+											return (
+												<div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+													<Link
+														to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${accountdata.name}&&accountId=${accountId}`}
+													>
+														<div className="source-box">
+															<div className="images">
+																<img src={accountdata.typeLogoUrl} height="50px" width="50px" alt="" />
+															</div>
+															<div className="source-content">
+																<label>{accountdata.name}</label>
+																<span>{accountdata.type}</span>
+																<p>Receive traces and store in local Zipkin DB</p>
+															</div>
+														</div>
+													</Link>
 												</div>
-											</div>
-											<div className="source-boxs">
-												<div className="row">
-													{accountdata.datasources &&
-														accountdata.datasources.length > 0 && (
-															<React.Fragment>
-																{accountdata.datasources.map((list: any, index: any) => {
-																	return (
-																		<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-																			<Link
-																				to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${list.name}&&accountId=${accountId}`}
-																			>
-																				<div className="source-box">
-																					<div className="images">
-																						<img src={images.awsLogo} alt="" />
-																					</div>
-																					<div className="source-content">
-																						<label>{list.name}</label>
-																						<span>{list.cloud}</span>
-																						<p>{list.description}</p>
-																					</div>
-																				</div>
-																			</Link>
-																		</div>
-																	);
-																})}
-															</React.Fragment>
-														)}
-												</div>
-											</div>
-										</React.Fragment>
-									);
-								})}
+											);
+										})}
+								</div>
+							</div>
 						</div>
-					</div >
+					</div>
 				);
-			}
+			});
 		}
 		return retData;
 	};
@@ -325,7 +319,11 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 											<div className="right-search-bar">
 												<div className="form-group search-control m-b-0">
 													<i className="fa fa-search" />
-													<input type="text" className="input-group-text" placeholder="Search" />
+													<input
+														type="text"
+														className="input-group-text"
+														placeholder="Search"
+													/>
 												</div>
 											</div>
 										</div>
@@ -339,9 +337,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="specific-input-content">
-								{this.displayDataSource()}
-							</div>
+							<div className="specific-input-content">{this.displayDataSource()}</div>
 						</div>
 					</div>
 				</div>
