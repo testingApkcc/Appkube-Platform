@@ -221,7 +221,7 @@ exports[`no enzyme tests`] = {
     "public/app/features/datasources/DataSourcesListPage.test.tsx:1470540840": [
       [1, 19, 13, "RegExp match", "2409514259"]
     ],
-    "public/app/features/datasources/settings/BasicSettings.test.tsx:3867031406": [
+    "public/app/features/datasources/settings/BasicSettings.test.tsx:2745039654": [
       [1, 19, 13, "RegExp match", "2409514259"]
     ],
     "public/app/features/datasources/settings/ButtonRow.test.tsx:1546608090": [

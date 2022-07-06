@@ -25,7 +25,7 @@ import { DataSourceSettings, urlUtil } from '@grafana/data';
 import { Alert, Button } from '@grafana/ui';
 import { getDataSourceLoadingNav, buildNavModel, getDataSourceNav } from '../state/navModel';
 import { PluginStateInfo } from 'app/features/plugins/components/PluginStateInfo';
-import { dataSourceLoaded, setDataSourceName, setIsDefault } from '../state/reducers';
+import { dataSourceLoaded, setDataSourceName, setIsDefault, setDataSourceAccountID } from '../state/reducers';
 import { selectors } from '@grafana/e2e-selectors';
 import { CloudInfoBox } from './CloudInfoBox';
 import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
@@ -69,6 +69,7 @@ const mapDispatchToProps = {
   deleteDataSource,
   loadDataSource,
   setDataSourceName,
+  setDataSourceAccountID,
   updateDataSource,
   setIsDefault,
   dataSourceLoaded,
@@ -230,7 +231,15 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
   }
 
   renderSettings() {
-    const { dataSourceMeta, setDataSourceName, setIsDefault, dataSource, plugin, testingStatus } = this.props;
+    const {
+      dataSourceMeta,
+      setDataSourceName,
+      setIsDefault,
+      dataSource,
+      plugin,
+      testingStatus,
+      setDataSourceAccountID,
+    } = this.props;
     const canWriteDataSource = contextSrv.hasPermissionInMetadata(AccessControlAction.DataSourcesWrite, dataSource);
     const canDeleteDataSource = contextSrv.hasPermissionInMetadata(AccessControlAction.DataSourcesDelete, dataSource);
 
@@ -254,6 +263,8 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
           isDefault={dataSource.isDefault}
           onDefaultChange={(state) => setIsDefault(state)}
           onNameChange={(name) => setDataSourceName(name)}
+          accountID={dataSource.accountID ? dataSource.accountID : ''}
+          onAccountIDChange={(accountID) => setDataSourceAccountID(accountID)}
         />
 
         {plugin && (

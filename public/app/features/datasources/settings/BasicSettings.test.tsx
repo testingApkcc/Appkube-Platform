@@ -8,6 +8,8 @@ const setup = () => {
     isDefault: false,
     onDefaultChange: jest.fn(),
     onNameChange: jest.fn(),
+    accountID: '1212',
+    onAccountIDChange: jest.fn(),
   };
 
   return shallow(<BasicSettings {...props} />);

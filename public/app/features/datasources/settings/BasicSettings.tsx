@@ -9,9 +9,18 @@ export interface Props {
   isDefault: boolean;
   onNameChange: (name: string) => void;
   onDefaultChange: (value: boolean) => void;
+  accountID: string;
+  onAccountIDChange: (accountID: string) => void;
 }
 
-const BasicSettings: FC<Props> = ({ dataSourceName, isDefault, onDefaultChange, onNameChange }) => {
+const BasicSettings: FC<Props> = ({
+  dataSourceName,
+  isDefault,
+  onDefaultChange,
+  onNameChange,
+  accountID,
+  onAccountIDChange,
+}) => {
   return (
     <div className="gf-form-group" aria-label="Datasource settings page basic settings">
       <div className="gf-form-inline">
@@ -42,6 +51,19 @@ const BasicSettings: FC<Props> = ({ dataSourceName, isDefault, onDefaultChange, 
             onDefaultChange(event.target.checked);
           }}
         />
+      </div>
+      <div className="gf-form-inline">
+        <div className="gf-form max-width-30" style={{ marginRight: '3px' }}>
+          <InlineFormLabel tooltip={'AccountID'}>Account ID</InlineFormLabel>
+          <Input
+            className="gf-form-input max-width-23"
+            type="text"
+            value={accountID}
+            placeholder="Account ID"
+            onChange={(event) => onAccountIDChange(event.target.value)}
+            required
+          />
+        </div>
       </div>
     </div>
   );

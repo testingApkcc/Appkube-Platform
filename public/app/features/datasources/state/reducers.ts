@@ -30,6 +30,7 @@ export const setDataSourcesSearchQuery = createAction<string>('dataSources/setDa
 export const setDataSourcesLayoutMode = createAction<LayoutMode>('dataSources/setDataSourcesLayoutMode');
 export const setDataSourceTypeSearchQuery = createAction<string>('dataSources/setDataSourceTypeSearchQuery');
 export const setDataSourceName = createAction<string>('dataSources/setDataSourceName');
+export const setDataSourceAccountID = createAction<string>('dataSources/setDataSourceAccountID');
 export const setIsDefault = createAction<boolean>('dataSources/setIsDefault');
 
 // Redux Toolkit uses ImmerJs as part of their solution to ensure that state objects are not mutated.
@@ -82,6 +83,10 @@ export const dataSourcesReducer = (state: DataSourcesState = initialState, actio
 
   if (setDataSourceName.match(action)) {
     return { ...state, dataSource: { ...state.dataSource, name: action.payload } };
+  }
+
+  if (setDataSourceAccountID.match(action)) {
+    return { ...state, dataSource: { ...state.dataSource, accountID: action.payload } };
   }
 
   if (setIsDefault.match(action)) {
