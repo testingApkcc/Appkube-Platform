@@ -1,12 +1,12 @@
 import * as React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { configFun } from '../../config';
-// import { images } from '../../img';
-// import { CommonService } from '../_common/common';
+import { images } from '../../img';
+import { CommonService } from '../_common/common';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { RestService } from '../_service/RestService';
-// import { PLUGIN_BASE_URL } from '../../constants';
+import { PLUGIN_BASE_URL } from '../../constants';
 
 export class AddDatasourceProduct extends React.Component<any, any> {
 	breadCrumbs: any;
@@ -156,7 +156,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 			// 		]
 			// 	}
 			// ]
-            sourceList:{}
+			sourceList: {}
 		};
 		this.breadCrumbs = [
 			{
@@ -198,77 +198,66 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 				dataobj[data[i].typeName].push(data[i]);
 			}
 		}
-		console.log(dataobj);
-        this.setState({
-            sourceList:dataobj,
-        })
+		this.setState({
+			sourceList: dataobj
+		});
 	};
 
 	displayDataSource = () => {
-        return null;
-		// let retData = [];
-		// const { sourceList } = this.state;
-		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		// if (sourceList && sourceList.length > 0) {
-		// 	for (let i = 0; i < sourceList.length; i++) {
-		// 		let row = sourceList[i];
-		// 		retData.push(
-		// 			<div className="row">
-		// 				<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		// 					<div className="services-heading">
-		// 						<span>
-		// 							<img src={images.awsLogo} alt="" />
-		// 						</span>
-		// 						<h5>{row.cloud}</h5>
-		// 					</div>
-		// 					{row.accountIdList &&
-		// 						row.accountIdList.map((accountdata: any, i: any) => {
-		// 							return (
-		// 								<React.Fragment>
-		// 									<div className="account-specific-content">
-		// 										<span>{row.cloud} Account specific input source</span>
-		// 										<div className="specific-heading">
-		// 											<p>Account &#8758; <span>{accountdata.accountID}</span></p>
-		// 										</div>
-		// 									</div>
-		// 									<div className="source-boxs">
-		// 										<div className="row">
-		// 											{accountdata.datasources &&
-		// 												accountdata.datasources.length > 0 && (
-		// 													<React.Fragment>
-		// 														{accountdata.datasources.map((list: any, index: any) => {
-																		<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		// 																<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		// 																	<Link
-		// 																		to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${list.name}&&accountId=${accountId}`}
-		// 																	>
-		// 																		<div className="source-box">
-		// 																			<div className="images">
-		// 																				<img src={images.awsLogo} alt="" />
-		// 																			</div>
-		// 																			<div className="source-content">
-		// 																				<label>{list.name}</label>
-		// 																				<span>{list.cloud}</span>
-		// 																				<p>{list.description}</p>
-		// 																			</div>
-		// 																		</div>
-		// 																	</Link>
-		// 																</div>
-		// 															);
-		// 														})}
-		// 													</React.Fragment>
-		// 												)}
-		// 										</div>
-		// 									</div>
-		// 								</React.Fragment>
-		// 							);
-		// 						})}
-		// 				</div>
-		// 			</div >
-		// 		);
-		// 	}
-		// }
-		// return retData;
+		let retData: any = [];
+		const { sourceList } = this.state;
+		let accountId = CommonService.getParameterByName('accountId', window.location.href);
+		if (sourceList) {
+			Object.keys(sourceList).map((source, indexedDB) => {
+				retData.push(
+					<div className="row">
+						<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div className="services-heading">
+								<span>
+									<img src={images.awsLogo} alt="" />
+								</span>
+								<h5>{source}</h5>
+							</div>
+							<div className="account-specific-content">
+								<span>{source} Account specific input source</span>
+								<div className="specific-heading">
+									<p>
+										Account &#8758;
+										{/* <span>{accountdata.uid}</span> */}
+									</p>
+								</div>
+							</div>
+							<div className="source-boxs">
+								<div className="row">
+									{sourceList[source] &&
+										sourceList[source].map((accountdata: any, i: any) => {
+											return (
+												<div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+													<Link
+														to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${accountdata.name}&&accountId=${accountId}`}
+													>
+														<div className="source-box">
+															<div className="images">
+																<img src={accountdata.typeLogoUrl} height="50px" width="50px" alt="" />
+															</div>
+															<div className="source-content">
+																<label>{accountdata.name}</label>
+																<span>{accountdata.type}</span>
+																{/* <p>{}</p> */}
+															</div>
+														</div>
+													</Link>
+												</div>
+											);
+										})}
+								</div>
+							</div>
+						</div>
+					</div>
+				);
+			});
+		}
+		return retData;
 	};
 
 	onChangeDataSource = (e: any) => {
@@ -330,7 +319,11 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 											<div className="right-search-bar">
 												<div className="form-group search-control m-b-0">
 													<i className="fa fa-search" />
-													<input type="text" className="input-group-text" placeholder="Search" />
+													<input
+														type="text"
+														className="input-group-text"
+														placeholder="Search"
+													/>
 												</div>
 											</div>
 										</div>
@@ -344,9 +337,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="specific-input-content">
-								{this.displayDataSource()}
-							</div>
+							<div className="specific-input-content">{this.displayDataSource()}</div>
 						</div>
 					</div>
 				</div>
