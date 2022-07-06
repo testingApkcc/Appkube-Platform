@@ -6374,6 +6374,24 @@ a:hover {
     .add-data-source-page-container
     .data-source-section
     .source-content
+    .add-input-content
+    .input-group-text {
+    width: 100%;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .add-input-content
+    .right-search-bar
+    .search-control
+    .input-group-text {
+    width: 100%;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
     .source-details
     .source-box
     .explore-content
