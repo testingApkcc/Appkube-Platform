@@ -44,14 +44,6 @@ export const ConfigEditor: FC<Props> = (props: Props) => {
             onChange={onUpdateDatasourceJsonDataOption(props, 'customMetricsNamespaces')}
           />
         </InlineField>
-        <InlineField label="Account ID" labelWidth={28} tooltip="Account ID">
-          <Input
-            width={60}
-            placeholder="2332132"
-            value={options.jsonData.accountID || ''}
-            onChange={onUpdateDatasourceJsonDataOption(props, 'accountID')}
-          />
-        </InlineField>
       </ConnectionConfig>
 
       <h3 className="page-heading">CloudWatch Logs</h3>

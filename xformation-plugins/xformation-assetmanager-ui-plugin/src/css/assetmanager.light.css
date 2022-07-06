@@ -5554,6 +5554,12 @@ a:hover {
 .add-data-source-container .add-data-source-page-container .data-source-section .source-content .source-boxs {
   padding: 25px;
 }
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content .source-boxs span {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #3b4859;
+}
 .add-data-source-container
   .add-data-source-page-container
   .data-source-section
