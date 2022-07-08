@@ -60,6 +60,44 @@ func (ss *SQLStore) GetDataSources(ctx context.Context, query *models.GetDataSou
 	})
 }
 
+//  ------Manoj.  custom changes for appcube plateform ------
+func (ss *SQLStore) GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {
+	metrics.MDBDataSourceQueryByID.Inc()
+
+	return ss.WithDbSession(ctx, func(sess *DBSession) error {
+		return ss.getDataSourceByAccountIdOrCloudType(ctx, query, sess)
+	})
+}
+
+func (ss *SQLStore) getDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType, sess *DBSession) error {
+	if len(query.AccountId) == 0 && len(query.CloudType) == 0 {
+		return models.ErrDataSourceIdentifierNotSet
+	}
+	// var datasource = &models.DataSource{Name: query.Name, OrgId: query.OrgId, Id: query.Id, Uid: query.Uid}
+	var datasource = &models.DataSource{}
+
+	if len(query.AccountId) != 0 {
+		datasource.AccountId = query.AccountId
+	}
+	if len(query.CloudType) != 0 {
+		datasource.CloudType = query.CloudType
+	}
+	has, err := sess.Get(datasource)
+
+	if err != nil {
+		sqlog.Error("Failed getting data source with account id or cloud type")
+		return err
+	} else if !has {
+		return models.ErrDataSourceNotFound
+	}
+
+	query.Result = datasource
+
+	return nil
+}
+
+//  ------Manoj.  custom changes for appcube plateform ------
+
 // GetDataSourcesByType returns all datasources for a given type or an error if the specified type is an empty string
 func (ss *SQLStore) GetDataSourcesByType(ctx context.Context, query *models.GetDataSourcesByTypeQuery) error {
 	if query.Type == "" {
@@ -173,6 +211,7 @@ func (ss *SQLStore) AddDataSource(ctx context.Context, cmd *models.AddDataSource
 			//  ------Manoj.  custom changes for appcube plateform ------
 			AccountId: cmd.AccountId,
 			TenantId:  cmd.TenantId,
+			CloudType: cmd.CloudType,
 			// ------Manoj.  custom changes for appcube plateform ------
 		}
 
@@ -237,6 +276,12 @@ func (ss *SQLStore) UpdateDataSource(ctx context.Context, cmd *models.UpdateData
 			ReadOnly:          cmd.ReadOnly,
 			Version:           cmd.Version + 1,
 			Uid:               cmd.Uid,
+			//  ------Manoj.  custom changes for appcube plateform ------
+			AccountId: cmd.AccountId,
+			TenantId:  cmd.TenantId,
+			CloudType: cmd.CloudType,
+			// ------Manoj.  custom changes for appcube plateform ------
+
 		}
 
 		sess.UseBool("is_default")
@@ -291,3 +336,46 @@ func generateNewDatasourceUid(sess *DBSession, orgId int64) (string, error) {
 
 	return "", models.ErrDataSourceFailedGenerateUniqueUid
 }
+
+//  ------Manoj.  custom changes for appcube plateform ------
+// func (ss *SQLStore) getDataSourceByAccountId(ctx context.Context, query *models.GetDataSourceQuery, sess *DBSession) error {
+// 	if len(query.AccountId) == 0 {
+// 		return models.ErrDataSourceIdentifierNotSet
+// 	}
+
+// 	datasource := &models.DataSource{AccountId: query.AccountId}
+// 	has, err := sess.Get(datasource)
+
+// 	if err != nil {
+// 		sqlog.Error("Failed getting data source", "err", err, "accountID", query.AccountId)
+// 		return err
+// 	} else if !has {
+// 		return models.ErrDataSourceNotFound
+// 	}
+
+// 	query.Result = datasource
+
+// 	return nil
+// }
+
+// func (ss *SQLStore) getDataSourceByCloudType(ctx context.Context, query *models.GetDataSourceQuery, sess *DBSession) error {
+// 	if len(query.CloudType) == 0 {
+// 		return models.ErrDataSourceIdentifierNotSet
+// 	}
+
+// 	datasource := &models.DataSource{Cloud: query.AccountId}
+// 	has, err := sess.Get(datasource)
+
+// 	if err != nil {
+// 		sqlog.Error("Failed getting data source", "err", err, "accountID", query.AccountId)
+// 		return err
+// 	} else if !has {
+// 		return models.ErrDataSourceNotFound
+// 	}
+
+// 	query.Result = datasource
+
+// 	return nil
+// }
+
+//  ------Manoj.  custom changes for appcube plateform ------

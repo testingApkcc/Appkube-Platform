@@ -14,6 +14,10 @@ type DataSourceService interface {
 	// GetDataSource gets a datasource.
 	GetDataSource(ctx context.Context, query *models.GetDataSourceQuery) error
 
+	//  ------Manoj.  custom changes for appcube plateform ------
+	GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error
+	//  ------Manoj.  custom changes for appcube plateform ------
+
 	// GetDataSources gets datasources.
 	GetDataSources(ctx context.Context, query *models.GetDataSourcesQuery) error
 

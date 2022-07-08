@@ -75,6 +75,9 @@ func ProvideService(
 	s.Bus.AddHandler(s.GetDataSources)
 	s.Bus.AddHandler(s.GetDataSourcesByType)
 	s.Bus.AddHandler(s.GetDataSource)
+	//  ------Manoj.  custom changes for appcube plateform ------
+	s.Bus.AddHandler(s.GetDataSourceByAccountIdOrCloudType)
+	//  ------Manoj.  custom changes for appcube plateform ------
 	s.Bus.AddHandler(s.AddDataSource)
 	s.Bus.AddHandler(s.DeleteDataSource)
 	s.Bus.AddHandler(s.UpdateDataSource)
@@ -124,6 +127,13 @@ func (s *Service) GetDataSource(ctx context.Context, query *models.GetDataSource
 func (s *Service) GetDataSources(ctx context.Context, query *models.GetDataSourcesQuery) error {
 	return s.SQLStore.GetDataSources(ctx, query)
 }
+
+//  ------Manoj.  custom changes for appcube plateform ------
+func (s *Service) GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {
+	return s.SQLStore.GetDataSourceByAccountIdOrCloudType(ctx, query)
+}
+
+//  ------Manoj.  custom changes for appcube plateform ------
 
 func (s *Service) GetDataSourcesByType(ctx context.Context, query *models.GetDataSourcesByTypeQuery) error {
 	return s.SQLStore.GetDataSourcesByType(ctx, query)
