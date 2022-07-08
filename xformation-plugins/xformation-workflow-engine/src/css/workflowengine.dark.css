@@ -5089,6 +5089,18 @@
   table
   tbody
   tr
+  .user-name
+  .add-stage-name {
+  padding-bottom: 0;
+  margin-right: 10px;
+}
+.create-new-usecase
+  .add-workflow-list
+  .requirement-details
+  .requirement-inner-content
+  table
+  tbody
+  tr
   .start-date
   .form-control {
   width: 95%;

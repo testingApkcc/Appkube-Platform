@@ -368,6 +368,11 @@
                                 overflow: hidden;
                                 text-overflow: ellipsis;
                                 margin-bottom: 10px;
+
+                                .add-stage-name {
+                                    padding-bottom: 0;
+                                    margin-right: 10px;
+                                }
                             }
 
                             .start-date {
