@@ -67,8 +67,9 @@ type DataSource struct {
 	Updated time.Time `json:"updated"`
 
 	//  ------Manoj.  custom changes for appcube plateform ------
-	AccountId string
-	TenantId  string
+	AccountId string `json:"accountID"`
+	TenantId  string `json:"tenantID"`
+	CloudType string `json:"cloudType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 }
 
@@ -98,8 +99,9 @@ type AddDataSourceCommand struct {
 	EncryptedSecureJsonData map[string][]byte `json:"-"`
 
 	// ------Manoj.  custom changes for appcube plateform ------
-	AccountId string
-	TenantId  string
+	AccountId string `json:"accountID"`
+	TenantId  string `json:"tenantID"`
+	CloudType string `json:"cloudType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 
 	Result *DataSource `json:"-"`
@@ -130,8 +132,9 @@ type UpdateDataSourceCommand struct {
 	EncryptedSecureJsonData map[string][]byte `json:"-"`
 
 	// ------Manoj.  custom changes for appcube plateform ------
-	AccountId string
-	TenantId  string
+	AccountId string `json:"accountID"`
+	TenantId  string `json:"tenantID"`
+	CloudType string `json:"cloudType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 
 	Result *DataSource `json:"-"`
@@ -179,6 +182,9 @@ type GetDataSourceQuery struct {
 
 	OrgId int64
 
+	// AccountId string // ------Manoj.  custom changes for appcube plateform ------
+	// CloudType string // ------Manoj.  custom changes for appcube plateform ------
+
 	Result *DataSource
 }
 
@@ -216,8 +222,16 @@ type DatasourcesPermissionFilterQuery struct {
 // ------Manoj.  custom changes for appcube plateform ------
 type UpdateAccountTenantInfoDataSourceCommand struct {
 	Uid       string `json:"uid"`
-	AccountId string `json:"accountId"`
-	TenantId  string `json:"tenantId"`
+	AccountId string `json:"accountID"`
+	TenantId  string `json:"tenantID"`
+	CloudType string `json:"cloudType"`
+	Result    *DataSource
+}
+
+type GetDataSourceQueryByAccountIdOrCloudType struct {
+	AccountId string // ------Manoj.  custom changes for appcube plateform ------
+	CloudType string // ------Manoj.  custom changes for appcube plateform ------
+	OrgId     int64
 	Result    *DataSource
 }
 

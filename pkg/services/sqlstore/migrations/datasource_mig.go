@@ -148,6 +148,11 @@ func addDataSourceMigration(mg *Migrator) {
 	mg.AddMigration("Add account_id column", NewAddColumnMigration(tableV2, &Column{
 		Name: "account_id", Type: DB_NVarchar, Length: 255, Nullable: true,
 	}))
+
+	mg.AddMigration("Add cloud_type column", NewAddColumnMigration(tableV2, &Column{
+		Name: "cloud_type", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+
 	// end AssetManager changes
 	// ------Manoj.  custom changes for appcube plateform ------
 

@@ -625,3 +625,119 @@ func (hs *HTTPServer) GetMasterDataSourcePlugins(c *models.ReqContext) response.
 	dsInfo["items"] = selectedItems
 	return response.JSON(200, dsInfo["items"])
 }
+
+//  ------Manoj.  custom changes for appcube plateform ------
+// GET /api/datasources/accountid/:accountID
+func (hs *HTTPServer) GetDataSourceByAccountId(c *models.ReqContext) response.Response {
+	ds, err := hs.getRawDataSourceByAccountId(c.Req.Context(), web.Params(c.Req)[":accountID"])
+
+	if err != nil {
+		if errors.Is(err, models.ErrDataSourceNotFound) {
+			return response.Error(http.StatusNotFound, "Data source not found", nil)
+		}
+		return response.Error(http.StatusInternalServerError, "Failed to query datasource", err)
+	}
+
+	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, []*models.DataSource{ds})
+	if err != nil || len(filtered) != 1 {
+		return response.Error(404, "Data source not found", err)
+	}
+
+	dto := convertModelToDtos(filtered[0])
+
+	// Add accesscontrol metadata
+	dto.AccessControl = hs.getAccessControlMetadata(c, "datasources", dto.Id)
+
+	return response.JSON(200, &dto)
+}
+
+func (hs *HTTPServer) getRawDataSourceByAccountId(ctx context.Context, accountID string) (*models.DataSource, error) {
+
+	query := models.GetDataSourceQueryByAccountIdOrCloudType{
+		AccountId: accountID,
+		OrgId:     1,
+	}
+
+	if err := hs.DataSourcesService.GetDataSourceByAccountIdOrCloudType(ctx, &query); err != nil {
+		return nil, err
+	}
+
+	return query.Result, nil
+}
+
+// GET /api/datasources/cloudType/:cloud
+func (hs *HTTPServer) GetDataSourceByCloudType(c *models.ReqContext) response.Response {
+	ds, err := hs.getRawDataSourceByCloudType(c.Req.Context(), web.Params(c.Req)[":cloud"])
+
+	if err != nil {
+		if errors.Is(err, models.ErrDataSourceNotFound) {
+			return response.Error(http.StatusNotFound, "Data source not found", nil)
+		}
+		return response.Error(http.StatusInternalServerError, "Failed to query datasource", err)
+	}
+
+	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, []*models.DataSource{ds})
+	if err != nil || len(filtered) != 1 {
+		return response.Error(404, "Data source not found", err)
+	}
+
+	dto := convertModelToDtos(filtered[0])
+
+	// Add accesscontrol metadata
+	dto.AccessControl = hs.getAccessControlMetadata(c, "datasources", dto.Id)
+
+	return response.JSON(200, &dto)
+}
+
+func (hs *HTTPServer) getRawDataSourceByCloudType(ctx context.Context, cloudType string) (*models.DataSource, error) {
+	query := models.GetDataSourceQueryByAccountIdOrCloudType{
+		CloudType: cloudType,
+		OrgId:     1,
+	}
+
+	if err := hs.DataSourcesService.GetDataSourceByAccountIdOrCloudType(ctx, &query); err != nil {
+		return nil, err
+	}
+
+	return query.Result, nil
+}
+
+// GET /api/datasources/accountid/:accountID/cloudType/:cloud
+func (hs *HTTPServer) GetDataSourceByAccountIdAndCloudType(c *models.ReqContext) response.Response {
+	ds, err := hs.getRawDataSourceByAccountIdAndCloudType(c.Req.Context(), web.Params(c.Req)[":accountID"], web.Params(c.Req)[":cloud"])
+
+	if err != nil {
+		if errors.Is(err, models.ErrDataSourceNotFound) {
+			return response.Error(http.StatusNotFound, "Data source not found", nil)
+		}
+		return response.Error(http.StatusInternalServerError, "Failed to query datasource", err)
+	}
+
+	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, []*models.DataSource{ds})
+	if err != nil || len(filtered) != 1 {
+		return response.Error(404, "Data source not found", err)
+	}
+
+	dto := convertModelToDtos(filtered[0])
+
+	// Add accesscontrol metadata
+	dto.AccessControl = hs.getAccessControlMetadata(c, "datasources", dto.Id)
+
+	return response.JSON(200, &dto)
+}
+
+func (hs *HTTPServer) getRawDataSourceByAccountIdAndCloudType(ctx context.Context, accountId string, cloudType string) (*models.DataSource, error) {
+	query := models.GetDataSourceQueryByAccountIdOrCloudType{
+		AccountId: accountId,
+		CloudType: cloudType,
+		OrgId:     1,
+	}
+
+	if err := hs.DataSourcesService.GetDataSourceByAccountIdOrCloudType(ctx, &query); err != nil {
+		return nil, err
+	}
+
+	return query.Result, nil
+}
+
+//  ------Manoj.  custom changes for appcube plateform ------

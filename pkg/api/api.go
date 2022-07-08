@@ -285,7 +285,12 @@ func (hs *HTTPServer) registerRoutes() {
 			datasourceRoute.Get("/:id", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceById))
 			datasourceRoute.Get("/uid/:uid", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByUID))
 			datasourceRoute.Get("/name/:name", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByName))
+			//  ------Manoj.  custom changes for appcube plateform ------
 			datasourceRoute.Get("/master-datasource/:key", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetMasterDataSourcePlugins))
+			datasourceRoute.Get("/accountid/:accountID", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByAccountId))
+			datasourceRoute.Get("/cloudType/:cloud", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByCloudType))
+			datasourceRoute.Get("/accountid/:accountID/cloudType/:cloud", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByAccountIdAndCloudType))
+			//  ------Manoj.  custom changes for appcube plateform ------
 		})
 
 		apiRoute.Get("/datasources/id/:name", authorize(reqSignedIn, ac.EvalPermission(ActionDatasourcesIDRead, ScopeDatasourceName)), routing.Wrap(hs.GetDataSourceIdByName))
@@ -297,8 +302,9 @@ func (hs *HTTPServer) registerRoutes() {
 		apiRoute.Any("/plugins/:pluginId/resources", hs.CallResource)
 		apiRoute.Any("/plugins/:pluginId/resources/*", hs.CallResource)
 		apiRoute.Get("/plugins/errors", routing.Wrap(hs.GetPluginErrorsList))
+		//  ------Manoj.  custom changes for appcube plateform ------
 		apiRoute.Get("/plugins/filter-datasource/:key", routing.Wrap(hs.FilterDatasourcePlugins))
-
+		//  ------Manoj.  custom changes for appcube plateform ------
 		apiRoute.Group("/plugins", func(pluginRoute routing.RouteRegister) {
 			pluginRoute.Post("/:pluginId/install", routing.Wrap(hs.InstallPlugin))
 			pluginRoute.Post("/:pluginId/uninstall", routing.Wrap(hs.UninstallPlugin))
