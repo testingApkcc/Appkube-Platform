@@ -6,7 +6,7 @@ import resourcesUserImg2 from '../../img/dashboard/resources-user-img2.png';
 import resourcesUserImg3 from '../../img/dashboard/resources-user-img3.png';
 import resourcesUserImg4 from '../../img/dashboard/resources-user-img4.png';
 import resourcesUserImg5 from '../../img/dashboard/resources-user-img5.png';
-import resourcesUserImg from '../../img/resources-user-img.png';
+// import resourcesUserImg from '../../img/resources-user-img.png';
 // import DateFormat from './DateFormat';
 import headerIcon from '../../img/header-icon.png';
 import { Doughnut, Bar } from 'react-chartjs-2';
