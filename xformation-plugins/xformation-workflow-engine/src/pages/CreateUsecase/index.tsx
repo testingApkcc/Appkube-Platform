@@ -91,7 +91,7 @@ export class CreateUsecase extends React.Component<any, any> {
 			...stages[index],
 			[name]: value
 		};
-		stages({ stages: JSON.parse(JSON.stringify(stages)) });
+		this.setState({ stages: JSON.parse(JSON.stringify(stages)) });
 	};
 
 	addDetails = (index: any) => {
@@ -192,10 +192,10 @@ export class CreateUsecase extends React.Component<any, any> {
 		// }
 	};
 
-	addMoreworkflowStage = () => {
-		let { stages } = this.state;
-		this.setState({ stages: [ ...stages, { name: '', description: '', assignedTo: '' } ] });
-	};
+	// addMoreworkflowStage = () => {
+	// 	let { stages } = this.state;
+	// 	this.setState({ stages: [ ...stages, { name: '', description: '', assignedTo: '' } ] });
+	// };
 
 	handleSubStageName = (index: any, e: any) => {
 		const { activeIndex, stages } = this.state;
