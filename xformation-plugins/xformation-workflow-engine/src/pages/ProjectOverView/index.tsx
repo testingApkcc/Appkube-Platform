@@ -728,7 +728,7 @@ export class ProjectOverView extends React.Component<any, any> {
                       />
                     </div>
                   </div>
-                  <button className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</button>
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${4}`} className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
                 </div>
               </div>
             </div>

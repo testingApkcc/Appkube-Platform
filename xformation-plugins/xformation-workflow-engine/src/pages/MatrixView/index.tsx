@@ -1,6 +1,7 @@
 import * as React from 'react';
 import newUsecase from '../../img/new-usecase.png';
 import designSpecsImg from '../../img/design-specs-img.png';
+import { Link } from 'react-router-dom';
 
 export class MatrixView extends React.Component<any, any> {
     constructor(props: any) {
@@ -35,7 +36,7 @@ export class MatrixView extends React.Component<any, any> {
                                         <div className="input-group searchbar">
                                             <input type="text" className="form-control" placeholder="Search for..." />
                                         </div>
-                                        <button className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</button>
+                                        <Link to="/a/xformation-workflow-engine/procurement-detail/1" className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
                                     </div>
                                 </div>
                             </div>
