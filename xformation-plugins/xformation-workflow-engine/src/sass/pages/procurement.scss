@@ -727,7 +727,7 @@
                                 tr {
 
                                     td {
-                                        padding: 10px 15px;
+                                        padding: 12px 15px;
                                         font-size: 14px;
                                         line-height: 20px;
                                         color: #525252;
@@ -738,17 +738,33 @@
                                             font-weight: 600;
                                             color: #525252;
                                         }
+
+                                        span {
+                                            padding-left: 15px;
+                                        }
+                                    }
+
+                                }
+
+                                .workflow-inner-table-head {
+                                    background: #b1c9f8;
+                                }
+
+                                .workflow-inner-table {
+                                    td {
+                                        padding: 8px 15px;
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        color: #525252;
                                     }
 
                                     &:nth-child(odd) {
-                                        background: #B1C9F8;
+                                        background: #ebf1fd;
                                     }
 
                                     &:nth-child(even) {
                                         background: #ffffff;
                                     }
-
-
                                 }
                             }
                         }

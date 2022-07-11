@@ -4117,7 +4117,7 @@
   tbody
   tr
   td {
-  padding: 10px 15px;
+  padding: 12px 15px;
   font-size: 14px;
   line-height: 20px;
   color: #525252;
@@ -4146,7 +4146,20 @@
   .workflow-view-table
   .table
   tbody
-  tr:nth-child(odd) {
+  tr
+  td
+  span {
+  padding-left: 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  .workflow-inner-table-head {
   background: #b1c9f8;
 }
 .owrkflow-procument-container
@@ -4157,7 +4170,33 @@
   .workflow-view-table
   .table
   tbody
-  tr:nth-child(even) {
+  .workflow-inner-table
+  td {
+  padding: 8px 15px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #525252;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  .workflow-inner-table:nth-child(odd) {
+  background: #ebf1fd;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  .workflow-inner-table:nth-child(even) {
   background: #ffffff;
 }
 .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-requirement {

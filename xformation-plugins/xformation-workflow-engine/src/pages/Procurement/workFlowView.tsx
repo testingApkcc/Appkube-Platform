@@ -633,8 +633,8 @@ export class WorkFlowView extends React.Component<any, any> {
 					for (let j = 0; j < stage.stepList.length; j++) {
 						let step = stage.stepList[j];
 						stepJSXList.push(
-							<tr>
-								<td>{step.name}</td>
+							<tr className="workflow-inner-table">
+								<td><span>{step.name}</span></td>
 								<td>{step.assignTo}</td>
 								<td>{step.startDate}</td>
 								<td>{step.startDeviation}</td>
@@ -646,7 +646,7 @@ export class WorkFlowView extends React.Component<any, any> {
 				}
 				retData.push(
 					<>
-						<tr>
+						<tr className="workflow-inner-table-head">
 							<td colSpan={6}><strong>{stage.name}</strong></td>
 						</tr>
 						{stepJSXList}

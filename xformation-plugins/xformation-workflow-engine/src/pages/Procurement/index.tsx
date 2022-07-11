@@ -55,6 +55,7 @@ export class ProcurementDetail extends React.Component<any, any> {
               <div className="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-xs-12">
                 <div className="heading-content-right">
                   <Link to="/a/xformation-workflow-engine/project-overview" className="btn-primary pro-overview-btn">Project Overview</Link>
+                  <button className="btn-primary pro-overview-btn">Back</button>
                 </div>
               </div>
             </div>
