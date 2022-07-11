@@ -24,13 +24,13 @@ export class MatrixView extends React.Component<any, any> {
                     <div className="matrix-view-content">
                         <div className="matrix-view-head">
                             <div className="row d-flex justify-content-center align-items-center h-100">
-                                <div className="col-xl-7 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                <div className="col-xl-7 col-lg-6 col-md-5 col-sm-12 col-xs-12">
                                     <div className="head-left">
                                         <img src={newUsecase} alt="" />
                                         <h5> Send RFQ &#62; Requirements</h5>
                                     </div>
                                 </div>
-                                <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div className="col-xl-5 col-lg-6 col-md-7 col-sm-12 col-xs-12">
                                     <div className="head-right">
                                         <div className="input-group searchbar">
                                             <input type="text" className="form-control" placeholder="Search for..." />

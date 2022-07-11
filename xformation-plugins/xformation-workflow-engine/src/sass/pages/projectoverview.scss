@@ -638,18 +638,32 @@
     }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1280px) {
     .project-over-view-container {
         .project-over-view-section {
             .fliter-container {
                 .fliter-right-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: end;
+
+                    .plus-icon {
+                        margin-right: 20px;
+                    }
+
+                    .image {
+                        margin-right: 20px;
+                    }
+
                     .fliter-search {
+                        margin-right: 20px;
+
                         .fliter-box {
-                            width: 200px;
+                            width: 165px;
                         }
 
                         .fliter-search-box {
-                            width: 200px;
+                            width: 165px;
                         }
                     }
                 }
@@ -696,6 +710,54 @@
                                     width: 225px;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+
+            .fliter-container {
+                .fliter-right-content {
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: space-between !important;
+                    margin-top: 15px;
+                    width: 100%;
+
+                    .fliter-search {
+                        margin-right: 20px;
+
+                        .fliter-box {
+                            width: 205px;
+                        }
+
+                        .fliter-search-box {
+                            width: 205px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .project-over-view-container {
+        .project-over-view-section {
+            .fliter-container {
+                .fliter-right-content {
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: space-between !important;
+                    margin-top: 15px;
+                    width: 100%;
+
+                    .fliter-search {
+                        .fliter-box {
+                            width: 90px;
+                        }
+
+                        .fliter-search-box {
+                            width: 90px;
                         }
                     }
                 }

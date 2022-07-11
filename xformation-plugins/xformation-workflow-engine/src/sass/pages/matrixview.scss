@@ -203,3 +203,39 @@
         }
     }
 }
+
+@media only screen and (max-width: 991px) {
+    .matrix-view-container {
+        .matrix-view-section {
+            .matrix-view-content {
+                .matrix-view-head {
+                    .head-right {
+                        .searchbar {
+                            width: 70%;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .matrix-view-container {
+        .matrix-view-section {
+            .matrix-view-content {
+                .matrix-view-head {
+                    .head-right {
+                        margin-top: 20px;
+
+                        .searchbar {
+                            width: 70%;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
