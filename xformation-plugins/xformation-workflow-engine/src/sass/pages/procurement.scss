@@ -754,7 +754,18 @@
                                 }
 
                                 .workflow-inner-table-head {
-                                    background: #b1c9f8;
+                                    td {
+                                        padding: 0;
+
+                                        strong {
+                                            display: block;
+                                            width: 100%;
+                                            background: #b1c9f8;
+                                            margin-top: 15px;
+                                            margin-bottom: 15px;
+                                            padding: 12px 15px;
+                                        }
+                                    }
                                 }
 
                                 .workflow-inner-table {

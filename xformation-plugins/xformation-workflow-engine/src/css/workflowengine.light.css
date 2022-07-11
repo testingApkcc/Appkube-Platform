@@ -4170,8 +4170,27 @@
   .workflow-view-table
   .table
   tbody
-  .workflow-inner-table-head {
+  .workflow-inner-table-head
+  td {
+  padding: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  .workflow-inner-table-head
+  td
+  strong {
+  display: block;
+  width: 100%;
   background: #b1c9f8;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 12px 15px;
 }
 .owrkflow-procument-container
   .procument-page-container
