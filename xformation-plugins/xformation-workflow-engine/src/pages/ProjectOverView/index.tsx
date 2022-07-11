@@ -648,7 +648,7 @@ export class ProjectOverView extends React.Component<any, any> {
             let step = stage.stepList[j];
             stepJSXList.push(
               <tr className='table-inner-content'>
-                <td>{step.name}</td>
+                <td><span>{step.name}</span></td>
                 <td>{step.assignTo}</td>
                 <td>{step.startDate}</td>
                 <td>{step.startDeviation}</td>
@@ -660,8 +660,8 @@ export class ProjectOverView extends React.Component<any, any> {
         }
         retData.push(
           <>
-            <tr>
-              <th colSpan={6}><strong>{stage.name}</strong></th>
+            <tr className="workflow-inner-table-head">
+              <td colSpan={6}><strong>{stage.name}</strong></td>
             </tr>
             {stepJSXList}
           </>

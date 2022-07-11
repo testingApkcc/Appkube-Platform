@@ -535,29 +535,33 @@
                             }
 
                             tbody {
-                                tr {
-
-                                    th {
-                                        padding: 10px 15px;
+                                .workflow-inner-table-head {
+                                    td {
+                                        padding: 0;
 
                                         strong {
-                                            font-size: 16px;
-                                            line-height: 20px;
-                                            font-weight: 600;
-                                            color: #525252;
+                                            display: block;
+                                            width: 100%;
+                                            margin-top: 15px;
+                                            margin-bottom: 15px;
+                                            padding: 10px 15px;
                                         }
                                     }
                                 }
 
                                 .table-inner-content {
                                     td {
-                                        padding: 10px 22px;
+                                        padding: 10px 15px;
                                         font-size: 14px;
                                         line-height: 20px;
                                         color: #525252;
                                         white-space: nowrap;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
+
+                                        span {
+                                            padding-left: 15px;
+                                        }
                                     }
 
                                     &:nth-child(odd) {

@@ -4170,8 +4170,27 @@
   .workflow-view-table
   .table
   tbody
-  .workflow-inner-table-head {
+  .workflow-inner-table-head
+  td {
+  padding: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  .workflow-inner-table-head
+  td
+  strong {
+  display: block;
+  width: 100%;
   background: #b1c9f8;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 12px 15px;
 }
 .owrkflow-procument-container
   .procument-page-container
@@ -6396,9 +6415,9 @@
   .workflow-view-table
   .table
   tbody
-  tr
-  th {
-  padding: 10px 15px;
+  .workflow-inner-table-head
+  td {
+  padding: 0;
 }
 .project-over-view-container
   .project-over-view-section
@@ -6408,13 +6427,14 @@
   .workflow-view-table
   .table
   tbody
-  tr
-  th
+  .workflow-inner-table-head
+  td
   strong {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 600;
-  color: #525252;
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px 15px;
 }
 .project-over-view-container
   .project-over-view-section
@@ -6426,13 +6446,26 @@
   tbody
   .table-inner-content
   td {
-  padding: 10px 22px;
+  padding: 10px 15px;
   font-size: 14px;
   line-height: 20px;
   color: #525252;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-view-table-section
+  .workflow-view-table
+  .table
+  tbody
+  .table-inner-content
+  td
+  span {
+  padding-left: 15px;
 }
 .project-over-view-container
   .project-over-view-section
