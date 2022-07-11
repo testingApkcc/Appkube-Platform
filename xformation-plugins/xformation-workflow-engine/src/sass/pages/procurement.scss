@@ -38,6 +38,9 @@
 
             .heading-content-right {
                 text-align: right;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
 
                 .pro-overview-btn {
                     background: #3B7CFF;
@@ -49,6 +52,10 @@
                     line-height: 20px;
                     border-radius: 3px;
                     box-shadow: 0px 2px 2px #8392A71A;
+
+                    i {
+                        margin-right: 5px;
+                    }
                 }
             }
         }

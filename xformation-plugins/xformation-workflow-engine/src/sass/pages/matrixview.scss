@@ -35,8 +35,12 @@
                 }
 
                 .head-right {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
                     .searchbar {
-                        width: 100%;
+                        width: 75%;
                         display: block;
 
                         .form-control {
@@ -48,6 +52,22 @@
                             border: 1px solid #A9B9C6;
                             height: 35px;
                             padding: 8px 20px;
+                        }
+                    }
+
+                    .pro-overview-btn {
+                        background: #3B7CFF;
+                        color: #F9FAFC;
+                        border: none;
+                        padding: 6px 15px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 20px;
+                        border-radius: 3px;
+                        box-shadow: 0px 2px 2px #8392A71A;
+
+                        i {
+                            margin-right: 5px;
                         }
                     }
                 }

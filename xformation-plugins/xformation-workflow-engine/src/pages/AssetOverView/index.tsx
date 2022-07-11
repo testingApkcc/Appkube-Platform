@@ -266,10 +266,10 @@ export class AssetOverView extends React.Component<any, any> {
                 <div className="asset-over-view-section">
                     <div className="fliter-container">
                         <div className="row">
-                            <div className="col-xl-6 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div className="heading">All Usecases</div>
                             </div>
-                            <div className="col-xl-6 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                            <div className="col-xl-7 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                 <div className="fliter-right-content">
                                     <div className="plus-icon col-12">
                                         <Link to="/a/xformation-workflow-engine/create-new-usecase">
@@ -298,6 +298,7 @@ export class AssetOverView extends React.Component<any, any> {
                                             />
                                         </div>
                                     </div>
+                                    <button className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</button>
                                 </div>
                             </div>
                         </div>
