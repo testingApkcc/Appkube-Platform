@@ -21,11 +21,11 @@ export class Dashboard extends React.Component<any, any> {
 		super(props);
 		this.state = {
 			workflowStatistics: {
-				labels: ['Completed', 'Pending', 'In Progress', 'Un Assigned'],
+				labels: [ 'Completed', 'Pending', 'In Progress', 'Un Assigned' ],
 				datasets: [
 					{
-						data: [27, 38, 15, 20],
-						backgroundColor: ['#71A7FE', '#FF4A55', '#FFD55E', '#70DEAE']
+						data: [ 27, 38, 15, 20 ],
+						backgroundColor: [ '#71A7FE', '#FF4A55', '#FFD55E', '#70DEAE' ]
 					}
 				]
 			},
@@ -54,17 +54,17 @@ export class Dashboard extends React.Component<any, any> {
 			},
 			overViewData: {
 				total: null,
-				labels: ['Procurement', 'HRMS', 'EMS', 'Xformation', 'SPM', 'xfo'],
+				labels: [ 'Procurement', 'HRMS', 'EMS', 'Xformation', 'SPM', 'xfo' ],
 				datasets: [
 					{
-						data: [85, 90, 80, 40, 60, 75],
+						data: [ 85, 90, 80, 40, 60, 75 ],
 						lineTension: 0.2,
-						backgroundColor: ['#71EAFF']
+						backgroundColor: [ '#71EAFF' ]
 					},
 					{
-						data: [100, 95, 100, 70, 80, 100],
+						data: [ 100, 95, 100, 70, 80, 100 ],
 						lineTension: 0.2,
-						backgroundColor: ['#71A7FE']
+						backgroundColor: [ '#71A7FE' ]
 					}
 				]
 			},
@@ -110,112 +110,125 @@ export class Dashboard extends React.Component<any, any> {
 			resourcesData: [
 				{
 					profile: resourcesUserImg1,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg2,
-					name: "Angela Moss",
-					product: "Project - Xformation",
-
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg3,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg4,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg5,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg1,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg2,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg3,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg4,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				},
 				{
 					profile: resourcesUserImg5,
-					name: "Angela Moss",
-					product: "Project - Xformation",
+					name: 'Angela Moss',
+					product: 'Project - Xformation'
 				}
 			],
 			projeuctListData: [
 				{
 					image: headerIcon,
 					isStar: true,
-					name: "Procurement Solution",
-					title: "Last updated by Siddhesh D",
-					time: "24 min ago",
-					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+					name: 'Procurement Solution',
+					title: 'Last updated by Siddhesh D',
+					time: '24 min ago',
+					text:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
+					status: 'inprogress'
 				},
 				{
 					image: headerIcon,
 					isStar: false,
-					name: "Procurement Solution",
-					title: "Last updated by Siddhesh D",
-					time: "24 min ago",
-					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+					name: 'Procurement Solution',
+					title: 'Last updated by Siddhesh D',
+					time: '24 min ago',
+					text:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
+					status: 'inprogress'
 				},
 				{
 					image: headerIcon,
 					isStar: true,
-					name: "Procurement Solution",
-					title: "Last updated by Siddhesh D",
-					time: "24 min ago",
-					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+					name: 'Procurement Solution',
+					title: 'Last updated by Siddhesh D',
+					time: '24 min ago',
+					text:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
+					status: 'inprogress'
 				},
 				{
 					image: headerIcon,
 					isStar: false,
-					name: "Procurement Solution",
-					title: "Last updated by Siddhesh D",
-					time: "24 min ago",
-					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+					name: 'Procurement Solution',
+					title: 'Last updated by Siddhesh D',
+					time: '24 min ago',
+					text:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
+					status: 'inprogress'
 				},
 				{
 					image: headerIcon,
 					isStar: false,
-					name: "Procurement Solution",
-					title: "Last updated by Siddhesh D",
-					time: "24 min ago",
-					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+					name: 'Procurement Solution',
+					title: 'Last updated by Siddhesh D',
+					time: '24 min ago',
+					text:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
+					status: 'complete'
 				},
 				{
 					image: headerIcon,
 					isStar: false,
-					name: "Procurement Solution",
-					title: "Last updated by Siddhesh D",
-					time: "24 min ago",
-					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+					name: 'Procurement Solution',
+					title: 'Last updated by Siddhesh D',
+					time: '24 min ago',
+					text:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
+					status: 'complete'
 				},
 				{
 					image: headerIcon,
 					isStar: false,
-					name: "Procurement Solution",
-					title: "Last updated by Siddhesh D",
-					time: "24 min ago",
-					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...",
+					name: 'Procurement Solution',
+					title: 'Last updated by Siddhesh D',
+					time: '24 min ago',
+					text:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
+					status: 'complete'
 				}
 			],
 			resourceAllocation: [
@@ -225,33 +238,33 @@ export class Dashboard extends React.Component<any, any> {
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
+							image: resourcesUserImg1
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg2,
+							image: resourcesUserImg2
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg3,
+							image: resourcesUserImg3
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg4,
+							image: resourcesUserImg4
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg5,
+							image: resourcesUserImg5
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
-						},
+							image: resourcesUserImg1
+						}
 					]
 				},
 				{
@@ -260,33 +273,33 @@ export class Dashboard extends React.Component<any, any> {
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
+							image: resourcesUserImg1
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg2,
+							image: resourcesUserImg2
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg3,
+							image: resourcesUserImg3
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg4,
+							image: resourcesUserImg4
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg5,
+							image: resourcesUserImg5
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
-						},
+							image: resourcesUserImg1
+						}
 					]
 				},
 				{
@@ -295,33 +308,33 @@ export class Dashboard extends React.Component<any, any> {
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
+							image: resourcesUserImg1
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg2,
+							image: resourcesUserImg2
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg3,
+							image: resourcesUserImg3
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg4,
+							image: resourcesUserImg4
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg5,
+							image: resourcesUserImg5
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
-						},
+							image: resourcesUserImg1
+						}
 					]
 				},
 				{
@@ -330,33 +343,33 @@ export class Dashboard extends React.Component<any, any> {
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
+							image: resourcesUserImg1
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg2,
+							image: resourcesUserImg2
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg3,
+							image: resourcesUserImg3
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg4,
+							image: resourcesUserImg4
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg5,
+							image: resourcesUserImg5
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
-						},
+							image: resourcesUserImg1
+						}
 					]
 				},
 				{
@@ -365,37 +378,38 @@ export class Dashboard extends React.Component<any, any> {
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
+							image: resourcesUserImg1
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg2,
+							image: resourcesUserImg2
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg3,
+							image: resourcesUserImg3
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg4,
+							image: resourcesUserImg4
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg5,
+							image: resourcesUserImg5
 						},
 						{
 							name: 'Angela Moss',
 							designation: 'Employee',
-							image: resourcesUserImg1,
-						},
+							image: resourcesUserImg1
+						}
 					]
 				}
 			],
 			activeIndex: 0,
+			status: 'all'
 		};
 		this.breadCrumbs = [
 			{
@@ -408,60 +422,71 @@ export class Dashboard extends React.Component<any, any> {
 			}
 		];
 	}
+
 	displayResourcesData = () => {
 		const { resourcesData } = this.state;
 		let retData: any = [];
 		for (let i = 0; i < resourcesData.length; i++) {
-			let row = resourcesData[i]
+			let row = resourcesData[i];
 			retData.push(
 				<div className="resource" key={row.name}>
 					<Link className="content" to="ResourceWiseViewAllTasks/10">
 						<div className="image">
 							<img src={row.profile} alt="" />
 						</div>
-						<div className="user-name" >
+						<div className="user-name">
 							<h3>{row.name}</h3>
 							<p>{row.product}</p>
-						</div></Link>
+						</div>
+					</Link>
 					<div className="plus-icon">
 						<span>
 							<i className="fa fa-plus" />
 						</span>
 					</div>
 				</div>
-			)
+			);
 		}
 		return retData;
-	}
+	};
+
 	displayProjeuctListData = () => {
-		const { projeuctListData, activeIndex } = this.state;
+		const { projeuctListData, activeIndex, status } = this.state;
 		let retData: any = [];
 		for (let i = 0; i < projeuctListData.length; i++) {
-			let row = projeuctListData[i]
-			retData.push(
-				<div className={i == activeIndex ? "project active" : "project"} key={row.name} onClick={() => { this.setState({ activeIndex: i }) }}>
-					<div className={row.isStar ? "star-box active" : "star-box"}>
-						<span>
-							<i className="fa fa-star" />
-						</span>
+			let row = projeuctListData[i];
+			if (status == row.status || status == 'all') {
+				retData.push(
+					<div
+						className={i == activeIndex ? 'project active' : 'project'}
+						key={row.name}
+						onClick={() => {
+							this.setState({ activeIndex: i });
+						}}
+					>
+						<div className={row.isStar ? 'star-box active' : 'star-box'}>
+							<span>
+								<i className="fa fa-star" />
+							</span>
+						</div>
+						<div className="icon">
+							<img src={row.image} alt="" />
+						</div>
+						<div className="content">
+							<Link to="/a/xformation-workflow-engine/project-wise">
+								<h4>{row.name}</h4>
+							</Link>
+							<span>
+								{row.title} <i className="fa fa-circle" /> {row.time}
+							</span>
+							<p>{row.text}</p>
+						</div>
 					</div>
-					<div className="icon">
-						<img src={row.image} alt="" />
-					</div>
-					<div className="content">
-						<Link to="/a/xformation-workflow-engine/project-wise">
-							<h4>{row.name}</h4>
-						</Link>
-						<span>
-							{row.title} <i className="fa fa-circle" /> {row.time}
-						</span>
-						<p>{row.text}</p>
-					</div>
-				</div>
-			)
+				);
+			}
 		}
 		return retData;
-	}
+	};
 
 	displayResouceAllocation = () => {
 		const { resourceAllocation } = this.state;
@@ -473,26 +498,34 @@ export class Dashboard extends React.Component<any, any> {
 					<div className="allocation-box">
 						<h3>{rowData.title}</h3>
 						<div className="resource-box">
-							{rowData && rowData.userList && rowData.userList.map((val: any, index: any) => {
-								return (
-									<div className="resource">
-										<div className="image">
-											<img src={val.image} alt="" />
+							{rowData &&
+								rowData.userList &&
+								rowData.userList.map((val: any, index: any) => {
+									return (
+										<div className="resource">
+											<div className="image">
+												<img src={val.image} alt="" />
+											</div>
+											<div className="content">
+												<h4>{val.name}</h4>
+												<p>{val.designation}</p>
+											</div>
 										</div>
-										<div className="content">
-											<h4>{val.name}</h4>
-											<p>{val.designation}</p>
-										</div>
-									</div>
-								)
-							})}
+									);
+								})}
 						</div>
 					</div>
-				)
+				);
 			}
 		}
 		return retData;
-	}
+	};
+
+	displayProjectStatus = (type: any) => {
+		this.setState({
+			status: type
+		});
+	};
 
 	render() {
 		return (
@@ -534,9 +567,7 @@ export class Dashboard extends React.Component<any, any> {
 								</div>
 							</div>
 							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-sx-12">
-								<div className="calender">
-									{/* <DateFormat className="d-block" /> */}
-								</div>
+								<div className="calender">{/* <DateFormat className="d-block" /> */}</div>
 							</div>
 						</div>
 					</div>
@@ -663,17 +694,30 @@ export class Dashboard extends React.Component<any, any> {
 											</div>
 											<div className="col-xl-6 col-lg-8 col-md-8 col-sm-12 col-xs-12">
 												<ul className="tabs">
-													<li className="active">All Projects</li>
-													<li>Completed</li>
-													<li>In Progress</li>
+													<li
+														className={this.state.status == 'all' ? 'active' : ''}
+														onClick={() => this.displayProjectStatus('all')}
+													>
+														All Projects
+													</li>
+													<li
+														className={this.state.status == 'complete' ? 'active' : ''}
+														onClick={() => this.displayProjectStatus('complete')}
+													>
+														Completed
+													</li>
+													<li
+														className={this.state.status == 'inprogress' ? 'active' : ''}
+														onClick={() => this.displayProjectStatus('inprogress')}
+													>
+														In Progress
+													</li>
 												</ul>
 											</div>
 										</div>
 									</div>
 									<div className="project-list-content">
-										<div className="projects">
-											{this.displayProjeuctListData()}
-										</div>
+										<div className="projects">{this.displayProjeuctListData()}</div>
 									</div>
 								</div>
 							</div>
@@ -683,9 +727,7 @@ export class Dashboard extends React.Component<any, any> {
 										<h5>Resources</h5>
 										<p>All Resources</p>
 									</div>
-									<div className="resources">
-										{this.displayResourcesData()}
-									</div>
+									<div className="resources">{this.displayResourcesData()}</div>
 								</div>
 							</div>
 						</div>
@@ -863,9 +905,7 @@ export class Dashboard extends React.Component<any, any> {
 						<div className="heading">
 							<h5>Project Wise Resource Allocation</h5>
 						</div>
-						<div className="resource-allocation">
-							{this.displayResouceAllocation()}
-						</div>
+						<div className="resource-allocation">{this.displayResouceAllocation()}</div>
 					</div>
 					<div className="project-overview-section">
 						<div className="heading">
