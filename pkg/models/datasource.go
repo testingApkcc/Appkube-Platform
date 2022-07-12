@@ -233,6 +233,7 @@ type GetDataSourceQueryByAccountIdOrCloudType struct {
 	CloudType string // ------Manoj.  custom changes for appcube plateform ------
 	OrgId     int64
 	Result    *DataSource
+	Res       []*DataSource
 }
 
 // ------Manoj.  custom changes for appcube plateform ------

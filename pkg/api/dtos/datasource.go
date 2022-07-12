@@ -30,6 +30,11 @@ type DataSource struct {
 	Version           int                    `json:"version"`
 	ReadOnly          bool                   `json:"readOnly"`
 	AccessControl     accesscontrol.Metadata `json:"accessControl,omitempty"`
+	//  ------Manoj.  custom changes for appcube plateform ------
+	AccountId string `json:"accountID"`
+	TenantId  string `json:"tenantID"`
+	CloudType string `json:"cloudType"`
+	// ------Manoj.  custom changes for appcube plateform ------
 }
 
 type DataSourceListItemDTO struct {
@@ -49,6 +54,11 @@ type DataSourceListItemDTO struct {
 	IsDefault   bool             `json:"isDefault"`
 	JsonData    *simplejson.Json `json:"jsonData,omitempty"`
 	ReadOnly    bool             `json:"readOnly"`
+	//  ------Manoj.  custom changes for appcube plateform ------
+	AccountId string `json:"accountID"`
+	TenantId  string `json:"tenantID"`
+	CloudType string `json:"cloudType"`
+	// ------Manoj.  custom changes for appcube plateform ------
 }
 
 type DataSourceList []DataSourceListItemDTO

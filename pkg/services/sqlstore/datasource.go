@@ -62,18 +62,13 @@ func (ss *SQLStore) GetDataSources(ctx context.Context, query *models.GetDataSou
 
 //  ------Manoj.  custom changes for appcube plateform ------
 func (ss *SQLStore) GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {
-	metrics.MDBDataSourceQueryByID.Inc()
-
-	return ss.WithDbSession(ctx, func(sess *DBSession) error {
-		return ss.getDataSourceByAccountIdOrCloudType(ctx, query, sess)
-	})
+	return ss.getDataSourceListByAccountIdOrCloudType(ctx, query)
 }
 
 func (ss *SQLStore) getDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType, sess *DBSession) error {
 	if len(query.AccountId) == 0 && len(query.CloudType) == 0 {
 		return models.ErrDataSourceIdentifierNotSet
 	}
-	// var datasource = &models.DataSource{Name: query.Name, OrgId: query.OrgId, Id: query.Id, Uid: query.Uid}
 	var datasource = &models.DataSource{}
 
 	if len(query.AccountId) != 0 {
@@ -94,6 +89,25 @@ func (ss *SQLStore) getDataSourceByAccountIdOrCloudType(ctx context.Context, que
 	query.Result = datasource
 
 	return nil
+}
+
+func (ss *SQLStore) getDataSourceListByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {
+	var sess *xorm.Session
+	if len(query.AccountId) == 0 && len(query.CloudType) == 0 {
+		return models.ErrDataSourceIdentifierNotSet
+	}
+
+	return ss.WithDbSession(ctx, func(dbSess *DBSession) error {
+		if len(query.AccountId) != 0 && len(query.CloudType) == 0 {
+			sess = dbSess.Where("account_id=?", query.AccountId).Asc("name")
+		} else if len(query.AccountId) == 0 && len(query.CloudType) != 0 {
+			sess = dbSess.Where("cloud_type=?", query.CloudType).Asc("name")
+		} else {
+			sess = dbSess.Where("cloud_type=?", query.CloudType).And("account_id=?", query.AccountId).Asc("name")
+		}
+		query.Res = make([]*models.DataSource, 0)
+		return sess.Find(&query.Res)
+	})
 }
 
 //  ------Manoj.  custom changes for appcube plateform ------

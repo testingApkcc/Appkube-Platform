@@ -629,115 +629,80 @@ func (hs *HTTPServer) GetMasterDataSourcePlugins(c *models.ReqContext) response.
 //  ------Manoj.  custom changes for appcube plateform ------
 // GET /api/datasources/accountid/:accountID
 func (hs *HTTPServer) GetDataSourceByAccountId(c *models.ReqContext) response.Response {
-	ds, err := hs.getRawDataSourceByAccountId(c.Req.Context(), web.Params(c.Req)[":accountID"])
-
-	if err != nil {
-		if errors.Is(err, models.ErrDataSourceNotFound) {
-			return response.Error(http.StatusNotFound, "Data source not found", nil)
-		}
-		return response.Error(http.StatusInternalServerError, "Failed to query datasource", err)
-	}
-
-	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, []*models.DataSource{ds})
-	if err != nil || len(filtered) != 1 {
-		return response.Error(404, "Data source not found", err)
-	}
-
-	dto := convertModelToDtos(filtered[0])
-
-	// Add accesscontrol metadata
-	dto.AccessControl = hs.getAccessControlMetadata(c, "datasources", dto.Id)
-
-	return response.JSON(200, &dto)
-}
-
-func (hs *HTTPServer) getRawDataSourceByAccountId(ctx context.Context, accountID string) (*models.DataSource, error) {
-
 	query := models.GetDataSourceQueryByAccountIdOrCloudType{
-		AccountId: accountID,
+		AccountId: web.Params(c.Req)[":accountID"],
 		OrgId:     1,
 	}
-
-	if err := hs.DataSourcesService.GetDataSourceByAccountIdOrCloudType(ctx, &query); err != nil {
-		return nil, err
-	}
-
-	return query.Result, nil
+	return hs.BuildDatasourceList(&query, c, "Datasource query by account id failed")
 }
 
 // GET /api/datasources/cloudType/:cloud
 func (hs *HTTPServer) GetDataSourceByCloudType(c *models.ReqContext) response.Response {
-	ds, err := hs.getRawDataSourceByCloudType(c.Req.Context(), web.Params(c.Req)[":cloud"])
-
-	if err != nil {
-		if errors.Is(err, models.ErrDataSourceNotFound) {
-			return response.Error(http.StatusNotFound, "Data source not found", nil)
-		}
-		return response.Error(http.StatusInternalServerError, "Failed to query datasource", err)
-	}
-
-	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, []*models.DataSource{ds})
-	if err != nil || len(filtered) != 1 {
-		return response.Error(404, "Data source not found", err)
-	}
-
-	dto := convertModelToDtos(filtered[0])
-
-	// Add accesscontrol metadata
-	dto.AccessControl = hs.getAccessControlMetadata(c, "datasources", dto.Id)
-
-	return response.JSON(200, &dto)
-}
-
-func (hs *HTTPServer) getRawDataSourceByCloudType(ctx context.Context, cloudType string) (*models.DataSource, error) {
 	query := models.GetDataSourceQueryByAccountIdOrCloudType{
-		CloudType: cloudType,
+		CloudType: web.Params(c.Req)[":cloud"],
 		OrgId:     1,
 	}
-
-	if err := hs.DataSourcesService.GetDataSourceByAccountIdOrCloudType(ctx, &query); err != nil {
-		return nil, err
-	}
-
-	return query.Result, nil
+	return hs.BuildDatasourceList(&query, c, "Datasource query by cloud type failed")
 }
 
 // GET /api/datasources/accountid/:accountID/cloudType/:cloud
 func (hs *HTTPServer) GetDataSourceByAccountIdAndCloudType(c *models.ReqContext) response.Response {
-	ds, err := hs.getRawDataSourceByAccountIdAndCloudType(c.Req.Context(), web.Params(c.Req)[":accountID"], web.Params(c.Req)[":cloud"])
-
-	if err != nil {
-		if errors.Is(err, models.ErrDataSourceNotFound) {
-			return response.Error(http.StatusNotFound, "Data source not found", nil)
-		}
-		return response.Error(http.StatusInternalServerError, "Failed to query datasource", err)
-	}
-
-	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, []*models.DataSource{ds})
-	if err != nil || len(filtered) != 1 {
-		return response.Error(404, "Data source not found", err)
-	}
-
-	dto := convertModelToDtos(filtered[0])
-
-	// Add accesscontrol metadata
-	dto.AccessControl = hs.getAccessControlMetadata(c, "datasources", dto.Id)
-
-	return response.JSON(200, &dto)
-}
-
-func (hs *HTTPServer) getRawDataSourceByAccountIdAndCloudType(ctx context.Context, accountId string, cloudType string) (*models.DataSource, error) {
 	query := models.GetDataSourceQueryByAccountIdOrCloudType{
-		AccountId: accountId,
-		CloudType: cloudType,
+		AccountId: web.Params(c.Req)[":accountID"],
+		CloudType: web.Params(c.Req)[":cloud"],
 		OrgId:     1,
 	}
+	return hs.BuildDatasourceList(&query, c, "Datasource query by account id and cloud type failed")
+}
 
-	if err := hs.DataSourcesService.GetDataSourceByAccountIdOrCloudType(ctx, &query); err != nil {
-		return nil, err
+func (hs *HTTPServer) BuildDatasourceList(query *models.GetDataSourceQueryByAccountIdOrCloudType, c *models.ReqContext, errMsg string) response.Response {
+
+	if err := hs.DataSourcesService.GetDataSourceByAccountIdOrCloudType(c.Req.Context(), query); err != nil {
+		return response.Error(500, errMsg, err)
 	}
 
-	return query.Result, nil
+	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, query.Res)
+	if err != nil {
+		return response.Error(500, "Datasource filtering failed. "+errMsg, err)
+	}
+
+	result := make(dtos.DataSourceList, 0)
+	for _, ds := range filtered {
+		dsItem := dtos.DataSourceListItemDTO{
+			OrgId:     ds.OrgId,
+			Id:        ds.Id,
+			UID:       ds.Uid,
+			Name:      ds.Name,
+			Url:       ds.Url,
+			Type:      ds.Type,
+			TypeName:  ds.Type,
+			Access:    ds.Access,
+			Password:  ds.Password,
+			Database:  ds.Database,
+			User:      ds.User,
+			BasicAuth: ds.BasicAuth,
+			IsDefault: ds.IsDefault,
+			JsonData:  ds.JsonData,
+			ReadOnly:  ds.ReadOnly,
+			AccountId: ds.AccountId,
+			CloudType: ds.CloudType,
+			TenantId:  ds.TenantId,
+		}
+
+		if plugin, exists := hs.pluginStore.Plugin(c.Req.Context(), ds.Type); exists {
+			dsItem.TypeLogoUrl = plugin.Info.Logos.Small
+			dsItem.TypeName = plugin.Name
+		} else {
+			dsItem.TypeLogoUrl = "public/img/icn-datasource.svg"
+		}
+
+		result = append(result, dsItem)
+	}
+
+	sort.Sort(result)
+
+	return response.JSON(200, &result)
+
 }
 
 //  ------Manoj.  custom changes for appcube plateform ------
