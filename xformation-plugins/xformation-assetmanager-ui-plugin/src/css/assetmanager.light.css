@@ -4846,6 +4846,9 @@ a:hover {
   border-radius: 10px;
   box-shadow: 0px 1px 4px #00000029;
 }
+.services-sla-container .services-sla-boxs .services-sla-inner .services-sla-box.active {
+  border: 3px solid rgba(38, 128, 235, 0.8);
+}
 .services-sla-container .services-sla-boxs .services-sla-inner .services-sla-box .heading {
   display: flex;
   width: 100%;

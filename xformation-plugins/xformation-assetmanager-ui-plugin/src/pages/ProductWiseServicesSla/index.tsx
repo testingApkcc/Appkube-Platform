@@ -20,7 +20,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				datasets: [
 					{
 						data: [],
-						backgroundColor: [ '#5AB66F', '#E08600', '#DC3F1F', '#DC3F1F', '#E08600' ]
+						backgroundColor: ['#5AB66F', '#E08600', '#DC3F1F', '#DC3F1F', '#E08600']
 					}
 				]
 			},
@@ -171,7 +171,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	displayServiceSLA = () => {
-		let { tableData, serviceType, auctionchartData } = this.state;
+		let { tableData, serviceType, auctionchartData, productName } = this.state;
 		let retData: any = [];
 		let labels: any = [];
 		if (tableData) {
@@ -248,7 +248,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				chartticksdata = [];
 				retData.push(
 					<div
-						className="services-sla-box"
+						className={key == productName ? "services-sla-box active" : "services-sla-box"}
 						onClick={() => {
 							this.setState({ productName: key });
 						}}
@@ -294,7 +294,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 										scales: {
 											x: {
 												ticks: {
-													maxRotation: 0,
+													// maxRotation: 0,
 													maxTicksLimit: 5
 												}
 											}
@@ -492,30 +492,30 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 						<div className="services-heading">Product Wise Services SLA</div>
 						{!tableData ||
 							(tableData &&
-							Object.keys(tableData).length === 0 && <div className="services-sla-boxs">Loading...</div>)}
+								Object.keys(tableData).length === 0 && <div className="services-sla-boxs">Loading...</div>)}
 						{tableData &&
-						Object.keys(tableData).length > 0 && (
-							<div className="services-sla-boxs">
-								<div className="services-sla-inner">{this.displayServiceSLA()}</div>
-							</div>
-						)}
+							Object.keys(tableData).length > 0 && (
+								<div className="services-sla-boxs">
+									<div className="services-sla-inner">{this.displayServiceSLA()}</div>
+								</div>
+							)}
 					</div>
 					<div className="common-container border-bottom-0">
 						<div className="services-heading">{productName}</div>
 						{!tableData ||
 							(tableData &&
-							Object.keys(tableData).length === 0 && <div className="services-tabs">Loading...</div>)}
+								Object.keys(tableData).length === 0 && <div className="services-tabs">Loading...</div>)}
 						{tableData &&
-						Object.keys(tableData).length > 0 && (
-							<div className="services-tabs">
-								<ul className="tabs">{this.displayEnvServices()}</ul>
-								<div className="services-contents active">
-									<div className="environment-services">
-										<div className="services-boxes">{this.displayServiceData()}</div>
+							Object.keys(tableData).length > 0 && (
+								<div className="services-tabs">
+									<ul className="tabs">{this.displayEnvServices()}</ul>
+									<div className="services-contents active">
+										<div className="environment-services">
+											<div className="services-boxes">{this.displayServiceData()}</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						)}
+							)}
 					</div>
 				</div>
 			</div>

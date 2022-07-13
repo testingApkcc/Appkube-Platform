@@ -52,6 +52,10 @@
                 border-radius: 10px;
                 box-shadow: 0px 1px 4px #00000029;
 
+                &.active {
+                    border: 3px solid rgba(38, 128, 235, 0.8);
+                }
+
                 .heading {
                     display: flex;
                     width: 100%;
@@ -195,7 +199,8 @@
             box-shadow: 3px 3px 6px rgba(190, 190, 190, 0.1);
             border: 0.5px solid rgba(112, 112, 112, 0.1);
             border-radius: 5px 5px 0px 0px;
-            &.active{
+
+            &.active {
                 display: block;
             }
 
@@ -311,7 +316,7 @@
                                 text-align: center;
                             }
 
-                            .quality-score-text{
+                            .quality-score-text {
                                 display: block;
                                 width: 100%;
                                 font-size: 11px;
@@ -346,7 +351,8 @@
                                         display: inline-block;
                                         width: 30%;
                                         text-align: right;
-                                        span{
+
+                                        span {
                                             display: inline-block;
                                             width: 10px;
                                             height: 10px;
