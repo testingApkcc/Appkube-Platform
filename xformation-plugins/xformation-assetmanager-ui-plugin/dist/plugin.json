@@ -14,7 +14,7 @@
     },
     "screenshots": [],
     "version": "1.0.0",
-    "updated": "2022-06-21"
+    "updated": "2022-07-11"
   },
   "includes": [
     {
@@ -80,6 +80,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/xformation-assetmanager-ui-plugin?path=view-storage-details"
+    },
+    {
+      "type": "page",
+      "name": "ProductWiseServicesSla",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-assetmanager-ui-plugin?path=product-wise-services-sla"
     }
   ],
   "dependencies": {

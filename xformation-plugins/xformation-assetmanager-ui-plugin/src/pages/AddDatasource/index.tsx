@@ -14,9 +14,9 @@ export class AddDatasource extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		let serverName = CommonService.getParameterByName('cloudName', window.location.href);
+		// let serverName = CommonService.getParameterByName('cloudName', window.location.href);
 		this.state = {
-			environment: serverName,
+			environment: '',
 			account: accountId,
 			sourceList: [],
 			environmentList: []
@@ -65,7 +65,7 @@ export class AddDatasource extends React.Component<any, any> {
 			}
 		}
 		this.setState({
-			sourceList: dataobj,
+			sourceList: data,
 			environmentList
 		});
 	};
@@ -77,7 +77,7 @@ export class AddDatasource extends React.Component<any, any> {
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList && sourceList.length > 0) {
 			for (let i = 0; i < sourceList.length; i++) {
-				if (sourceList[i].typeName === environment) {
+				if (sourceList[i].typeName === environment || environment === "") {
 					retData.push(
 						<div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-md-n5">
 							<Link
@@ -156,6 +156,9 @@ export class AddDatasource extends React.Component<any, any> {
 										value={environment}
 										onChange={this.onChangeDataSource}
 									>
+										<option key={-1} value={""}>
+											Select Datasource
+										</option>
 										{environmentList &&
 											environmentList.length > 0 &&
 											environmentList.map((val: any, index: any) => {
