@@ -244,9 +244,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 					}
 				});
 				chart[key].labels = labels;
-				console.log(chartticksdata)
 				chart[key].datasets[0].data = chartticksdata;
-				console.log(chart)
 				chartticksdata = [];
 				retData.push(
 					<div
@@ -275,6 +273,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 								<Bar
 									data={chart[key]}
 									height={200}
+									width={350}
 									ref={React.createRef()}
 									options={{
 										responsive: false,
@@ -289,6 +288,14 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												color: '#202020',
 												font: {
 													size: 18
+												}
+											}
+										},
+										scales: {
+											x: {
+												ticks: {
+													maxRotation: 0,
+													maxTicksLimit: 5
 												}
 											}
 										}
@@ -352,11 +359,11 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 						Object.keys(tableData[key][service]).map((serviceName, j) => {
 							servicesJSX = [];
 							Object.keys(tableData[key][service][serviceName]).map((servicetype) => {
+								let servicearry = tableData[key][service][serviceName][servicetype]['services'];
 								if (
 									tableData[key][service][serviceName][servicetype]['services'] &&
 									tableData[key][service][serviceName][servicetype]['services'].length > 0
 								) {
-									let servicearry = tableData[key][service][serviceName][servicetype]['services'];
 									serviceByType['performance'] = serviceByType['performance'] || 0;
 									serviceByType['availability'] = serviceByType['availability'] || 0;
 									serviceByType['security'] = serviceByType['security'] || 0;
@@ -375,46 +382,62 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											serviceByType['End Usage'] + servicearry[i].userExperiance['score'];
 									}
 								}
-
 								servicesJSX.push(
 									<div className="service-box">
 										<div className="heading">{servicetype}</div>
 										<div className="contents">
-											<div className="total-cost-text">Total Cost : $80</div>
-											<div className="quality-score-text">Quality Score : 80%</div>
+											<div className="total-cost-text">
+												Total Cost : $
+												{serviceByType['performance'] +
+													serviceByType['availability'] +
+													serviceByType['security'] +
+													serviceByType['Reliabillity'] +
+													serviceByType['End Usage']}
+											</div>
+											<div className="quality-score-text">
+												Quality Score :{' '}
+												{(serviceByType['performance'] +
+													serviceByType['availability'] +
+													serviceByType['security'] +
+													serviceByType['Reliabillity'] +
+													serviceByType['End Usage']) /
+													5}%
+											</div>
 											<ul>
 												<li>
 													<label>Performance:</label>
 													<span>
-														{serviceByType['performance']}%{' '}
+														{Math.round(serviceByType['performance'] / servicearry.length)}%{' '}
 														<span style={{ backgroundColor: '#5AB66F' }} />
 													</span>
 												</li>
 												<li>
 													<label>Availability:</label>
 													<span>
-														{serviceByType['availability']}%{' '}
-														<span style={{ backgroundColor: '#E08600' }} />
+														{Math.round(
+															serviceByType['availability'] / servicearry.length
+														)}% <span style={{ backgroundColor: '#E08600' }} />
 													</span>
 												</li>
 												<li>
 													<label>Reliability:</label>
 													<span>
-														{serviceByType['Reliabillity']}%{' '}
-														<span style={{ backgroundColor: '#DC3F1F' }} />
+														{Math.round(
+															serviceByType['Reliabillity'] / servicearry.length
+														)}% <span style={{ backgroundColor: '#DC3F1F' }} />
 													</span>
 												</li>
 												<li>
 													<label>Security:</label>
 													<span>
-														{serviceByType['security']}%{' '}
+														{Math.round(serviceByType['security'] / servicearry.length)}%{' '}
 														<span style={{ backgroundColor: '#5AB66F' }} />
 													</span>
 												</li>
 												<li>
 													<label>End Usage:</label>
 													<span>
-														{serviceByType['End Usage']}%{' '}
+														{Math.round(serviceByType['End Usage'] / servicearry.length)}%{' '}
 														<span style={{ backgroundColor: '#E08600' }} />
 													</span>
 												</li>
@@ -431,9 +454,9 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 												<h3>{serviceName}</h3>
 											</div>
 											<div className="col-md-5">
-												<div className="show-more">
+												{/* <div className="show-more">
 													Show More <i className="fa fa-chevron-down" />
-												</div>
+												</div> */}
 												<div className="form-group search-control m-b-0">
 													<button className="btn btn-search">
 														<i className="fa fa-search" />
@@ -459,587 +482,40 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	render() {
+		const { productName, tableData } = this.state;
+		console.log(tableData);
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="services-sla-container">
 					<div className="common-container border-bottom-0">
 						<div className="services-heading">Product Wise Services SLA</div>
-						<div className="services-sla-boxs">
-							<div className="services-sla-inner">{this.displayServiceSLA()}</div>
-						</div>
+						{!tableData ||
+							(tableData &&
+							Object.keys(tableData).length === 0 && <div className="services-sla-boxs">Loading...</div>)}
+						{tableData &&
+						Object.keys(tableData).length > 0 && (
+							<div className="services-sla-boxs">
+								<div className="services-sla-inner">{this.displayServiceSLA()}</div>
+							</div>
+						)}
 					</div>
 					<div className="common-container border-bottom-0">
-						<div className="services-heading">EMS - Environment wise SLA</div>
-						<div className="services-tabs">
-							<ul className="tabs">{this.displayEnvServices()}</ul>
-							<div className="services-contents active">
-								<div className="environment-services">
-									<div className="services-boxes">
-										{this.displayServiceData()}
-										{/* <div className="service-box">
-											<div className="heading">API Gateway</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">Load Balancer</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">CDN</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">Firewall</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">Firewall</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div> */}
+						<div className="services-heading">{productName}</div>
+						{!tableData ||
+							(tableData &&
+							Object.keys(tableData).length === 0 && <div className="services-tabs">Loading...</div>)}
+						{tableData &&
+						Object.keys(tableData).length > 0 && (
+							<div className="services-tabs">
+								<ul className="tabs">{this.displayEnvServices()}</ul>
+								<div className="services-contents active">
+									<div className="environment-services">
+										<div className="services-boxes">{this.displayServiceData()}</div>
 									</div>
 								</div>
-								{/* <div className="environment-services">
-									<div className="heading">
-										<div className="row">
-											<div className="col-md-7">
-												<h3>Business Services</h3>
-											</div>
-											<div className="col-md-5">
-												<div className="show-more">
-													Show More <i className="fa fa-chevron-down" />
-												</div>
-												<div className="form-group search-control m-b-0">
-													<button className="btn btn-search">
-														<i className="fa fa-search" />
-													</button>
-													<input
-														type="text"
-														className="input-group-text"
-														placeholder="Search"
-													/>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="services-boxes">
-										<div className="service-box">
-											<div className="heading">API Gateway</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">Load Balancer</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">CDN</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">Firewall</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="environment-services">
-									<div className="heading">
-										<div className="row">
-											<div className="col-md-7">
-												<h3>Common Services</h3>
-											</div>
-											<div className="col-md-5">
-												<div className="show-more">
-													Show More <i className="fa fa-chevron-down" />
-												</div>
-												<div className="form-group search-control m-b-0">
-													<button className="btn btn-search">
-														<i className="fa fa-search" />
-													</button>
-													<input
-														type="text"
-														className="input-group-text"
-														placeholder="Search"
-													/>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="services-boxes">
-										<div className="service-box">
-											<div className="heading">API Gateway</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">Load Balancer</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">CDN</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="service-box">
-											<div className="heading">Firewall</div>
-											<div className="contents">
-												<div className="total-cost-text">Total Cost : $80</div>
-												<div className="quality-score-text">Quality Score : 80%</div>
-												<ul>
-													<li>
-														<label>Performance:</label>
-														<span>
-															97% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Availability:</label>
-														<span>
-															77% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-													<li>
-														<label>Reliability:</label>
-														<span>
-															39% <span style={{ backgroundColor: '#DC3F1F' }} />
-														</span>
-													</li>
-													<li>
-														<label>Security:</label>
-														<span>
-															42% <span style={{ backgroundColor: '#5AB66F' }} />
-														</span>
-													</li>
-													<li>
-														<label>End Usage:</label>
-														<span>
-															59% <span style={{ backgroundColor: '#E08600' }} />
-														</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div> */}
-								{/* </div> */}
 							</div>
-						</div>
+						)}
 					</div>
 				</div>
 			</div>
