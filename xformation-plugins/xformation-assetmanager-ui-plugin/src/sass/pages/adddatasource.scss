@@ -873,7 +873,9 @@
                     }
 
                     .source-boxs {
+                        display: flex;
                         padding: 25px;
+
 
                         .source-box {
                             display: flex;
@@ -882,8 +884,10 @@
                             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                             padding: 15px 10px;
                             cursor: pointer;
-                            min-height: 100px;
+                            min-height: 120px;
                             margin-bottom: 30px;
+                            width: 280px;
+                            margin-right: 25px;
 
                             .source-content {
                                 margin-left: 10px;

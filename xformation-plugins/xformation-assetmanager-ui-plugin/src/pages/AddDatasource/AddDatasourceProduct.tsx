@@ -101,33 +101,30 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 								</div>
 							</div>
 							<div className="source-boxs">
-								<div className="row">
-									{sourceList[source] &&
-										sourceList[source].map((accountdata: any, i: any) => {
-											return (
-												<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
-													<div className="source-box">
-														<div className="images">
-															<img
-																src={accountdata.typeLogoUrl}
-																height="50px"
-																width="50px"
-																alt=""
-															/>
-														</div>
-														<div className="source-content">
-															<label>{accountdata.name}</label>
-															<span>{accountdata.typeName}</span>
-															<p>Pull AWS matrics with cloud API</p>
-															{/* {Object.keys(accountdata.jsonData).length > 0 && (
+								{sourceList[source] &&
+									sourceList[source].map((accountdata: any, i: any) => {
+										return (
+
+											<div className="source-box">
+												<div className="images">
+													<img
+														src={accountdata.typeLogoUrl}
+														height="50px"
+														width="50px"
+														alt=""
+													/>
+												</div>
+												<div className="source-content">
+													<label>{accountdata.name}</label>
+													<span>{accountdata.typeName}</span>
+													<p>Pull AWS matrics with cloud API</p>
+													{/* {Object.keys(accountdata.jsonData).length > 0 && (
 															<span> | {accountdata.jsonData.authType}</span>
 														)} */}
-														</div>
-													</div>
 												</div>
-											);
-										})}
-								</div>
+											</div>
+										);
+									})}
 							</div>
 						</React.Fragment>
 					);
