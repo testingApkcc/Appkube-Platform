@@ -228,7 +228,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
           isImplemented: true,
         },
         {
-          link: '/a/xformation-assetmanager-ui-plugin/add-data-source-inputs',
+          link: '/a/xformation-assetmanager-ui-plugin/add-data-source-product',
           text: 'All Services',
           childName: 'assets',
           isImplemented: true,

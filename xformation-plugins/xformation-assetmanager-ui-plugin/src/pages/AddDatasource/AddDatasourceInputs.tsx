@@ -71,7 +71,6 @@ export class AddDatasourceInputs extends React.Component<any, any> {
 	displayDataSource = () => {
 		let retData: any = [];
 		const { sourceList } = this.state;
-		console.log(sourceList);
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
