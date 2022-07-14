@@ -14,9 +14,9 @@ export class AddDatasource extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		let serverName = CommonService.getParameterByName('cloudName', window.location.href);
+		// let serverName = CommonService.getParameterByName('cloudName', window.location.href);
 		this.state = {
-			environment: serverName,
+			environment: '',
 			account: accountId,
 			sourceList: [],
 			environmentList: []
@@ -40,7 +40,11 @@ export class AddDatasource extends React.Component<any, any> {
 
 	getAccountList = async () => {
 		try {
-			await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
+			await RestService.getData(
+				'http://localhost:3000/api/plugins/filter-datasource/key=cloudwatCH,TESTDATA,grafana-azure-monitor-datasource',
+				null,
+				null
+			).then((response: any) => {
 				this.manipulateData(response);
 				console.log('Loading Asstes : ', response);
 			});
@@ -51,54 +55,78 @@ export class AddDatasource extends React.Component<any, any> {
 
 	manipulateData = (data: any) => {
 		let { environmentList } = this.state;
-		let dataobj: any = [];
+		let dataobj: any = {};
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				dataobj.push(data[i]);
+				// dataobj.push(data[i]);
+				dataobj[data[i].category] = dataobj[data[i].category] || [];
+				dataobj[data[i].category].push(data[i]);
 				if (environmentList && environmentList.length > 0) {
-					if (environmentList.indexOf(data[i].typeName) === -1) {
-						environmentList.push(data[i].typeName);
+					if (environmentList.indexOf(data[i].category) === -1) {
+						environmentList.push(data[i].category);
 					}
 				} else {
-					environmentList.push(data[i].typeName);
+					environmentList.push(data[i].category);
 				}
 			}
 		}
 		this.setState({
-			sourceList: data,
+			sourceList: dataobj,
 			environmentList
 		});
 	};
 
 	displayDataSource = () => {
-		let retData = [];
+		let retData: any = [];
 		const { sourceList, environment } = this.state;
-		console.log(sourceList);
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		if (sourceList && sourceList.length > 0) {
-			for (let i = 0; i < sourceList.length; i++) {
-				if (sourceList[i].typeName === environment || environment === '') {
+		if (sourceList) {
+			Object.keys(sourceList).map((source, indexedDB) => {
+				if (source == environment || environment === '') {
 					retData.push(
-						<div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-md-n5">
-							<Link
-								to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${sourceList[i]
-									.name}&&accountId=${sourceList[i].uid}`}
-							>
-								<div className="source-box">
-									<div className="images">
-										<img src={sourceList[i].typeLogoUrl} height="50px" width="50px" alt="" />
-									</div>
-									<div className="source-content">
-										<label>{sourceList[i].name}</label>
-										<span>{sourceList[i].type}</span>
-										<p>Receive traces and store in local Zipkin DB</p>
+						<div className="row">
+							<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div className="services-heading">
+									<span>
+										<img src={images.awsLogo} alt="" />
+									</span>
+									<h5>{source ? source : 'Others'}</h5>
+								</div>
+								<div className="source-boxs">
+									<div className="row">
+										{sourceList[source] &&
+											sourceList[source].map((accountdata: any, i: any) => {
+												return (
+													<div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-md-n5">
+														<Link
+															to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${accountdata.name}&&accountId=${accountdata.id}`}
+														>
+															<div className="source-box">
+																<div className="images">
+																	<img
+																		src={accountdata.info.logos.small}
+																		height="50px"
+																		width="50px"
+																		alt=""
+																	/>
+																</div>
+																<div className="source-content">
+																	<label>{accountdata.name}</label>
+																	<span>{accountdata.type}</span>
+																	<p>{accountdata.info.description}</p>
+																</div>
+															</div>
+														</Link>
+													</div>
+												);
+											})}
 									</div>
 								</div>
-							</Link>
+							</div>
 						</div>
 					);
 				}
-			}
+			});
 		}
 		if (retData && retData.length == 0) {
 			retData.push(
@@ -119,7 +147,6 @@ export class AddDatasource extends React.Component<any, any> {
 
 	render() {
 		const { environment, account, environmentList } = this.state;
-		console.log(environment);
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -142,7 +169,7 @@ export class AddDatasource extends React.Component<any, any> {
 							</div>
 						</div>
 						<div className="source-content">
-							<div className="heading">
+							{/* <div className="heading">
 								<Link
 									to={`${PLUGIN_BASE_URL}/add-data-source-product?accountId=${account}&&cloudName=${environment}`}
 									type="button"
@@ -150,7 +177,7 @@ export class AddDatasource extends React.Component<any, any> {
 								>
 									Add input
 								</Link>
-							</div>
+							</div> */}
 							<div className="account-details-heading">
 								<h5>Account Details</h5>
 							</div>
@@ -194,12 +221,12 @@ export class AddDatasource extends React.Component<any, any> {
 									</select>
 								</div>
 							</div>
-							<div className="services-heading">
+							{/* <div className="services-heading">
 								<span>
 									<img src={images.awsLogo} alt="" />
 								</span>
 								<h5>Account Details</h5>
-							</div>
+							</div> */}
 							<div className="source-boxs">
 								<div className="row">{this.displayDataSource()}</div>
 							</div>

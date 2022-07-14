@@ -43,7 +43,11 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 
 	getAccountList = async () => {
 		try {
-			await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
+			await RestService.getData(
+				'http://localhost:3000/api/plugins/filter-datasource/key=cloudwatCH,TESTDATA,grafana-azure-monitor-datasource',
+				null,
+				null
+			).then((response: any) => {
 				this.manipulateData(response);
 				console.log('Loading Asstes : ', response);
 			});
@@ -58,15 +62,15 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				if (data[i].uid === accountId) {
+				if (data[i].id == accountId) {
 					dataobj = data[i];
 				}
 				if (environmentList && environmentList.length > 0) {
-					if (environmentList.indexOf(data[i].typeName) === -1) {
-						environmentList.push(data[i].typeName);
+					if (environmentList.indexOf(data[i].category) === -1) {
+						environmentList.push(data[i].category);
 					}
 				} else {
-					environmentList.push(data[i].typeName);
+					environmentList.push(data[i].category);
 				}
 			}
 		}
@@ -174,13 +178,22 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 										<div className="source-box">
 											{datasourceData && (
 												<div className="source-detail-content">
-													<div className="images">
-														<img src={datasourceData.typeLogoUrl} height="50px" width="50px" alt="" />
-													</div>
+													{datasourceData.info && (
+														<div className="images">
+															<img
+																src={datasourceData.info.logos.small}
+																height="50px"
+																width="50px"
+																alt=""
+															/>
+														</div>
+													)}
 													<div className="source-content">
 														<label>{datasourceData.name}</label>
 														<span>{datasourceData.type}</span>
-														<p>Pull aes metrix with cloud API</p>
+														{datasourceData.info && (
+															<p>{datasourceData.info.description}</p>
+														)}
 													</div>
 												</div>
 											)}
