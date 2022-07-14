@@ -84,44 +84,38 @@ export class AddDatasource extends React.Component<any, any> {
 			Object.keys(sourceList).map((source, indexedDB) => {
 				if (source == environment || environment === '') {
 					retData.push(
-						<div className="row">
-							<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div className="services-heading">
-									<span>
-										<img src={images.awsLogo} alt="" />
-									</span>
-									<h5>{source ? source : 'Others'}</h5>
-								</div>
-								<div className="source-boxs">
-									<div className="row">
-										{sourceList[source] &&
-											sourceList[source].map((accountdata: any, i: any) => {
-												return (
-													<div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-md-n5">
-														<Link
-															to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${accountdata.name}&&accountId=${accountdata.id}`}
-														>
-															<div className="source-box">
-																<div className="images">
-																	<img
-																		src={accountdata.info.logos.small}
-																		height="50px"
-																		width="50px"
-																		alt=""
-																	/>
-																</div>
-																<div className="source-content">
-																	<label>{accountdata.name}</label>
-																	<span>{accountdata.type}</span>
-																	<p>{accountdata.info.description}</p>
-																</div>
-															</div>
-														</Link>
+						<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div className="services-heading">
+								<span>
+									<img src={images.awsLogo} alt="" />
+								</span>
+								<h5>{source ? source : 'Others'}</h5>
+							</div>
+							<div className="source-inner-box">
+								{sourceList[source] &&
+									sourceList[source].map((accountdata: any, i: any) => {
+										return (
+											<Link
+												to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${accountdata.name}&&accountId=${accountdata.id}`}
+											>
+												<div className="source-box">
+													<div className="images">
+														<img
+															src={accountdata.info.logos.small}
+															height="50px"
+															width="50px"
+															alt=""
+														/>
 													</div>
-												);
-											})}
-									</div>
-								</div>
+													<div className="source-content">
+														<label>{accountdata.name}</label>
+														<span>{accountdata.type}</span>
+														<p>{accountdata.info.description}</p>
+													</div>
+												</div>
+											</Link>
+										);
+									})}
 							</div>
 						</div>
 					);
@@ -178,6 +172,9 @@ export class AddDatasource extends React.Component<any, any> {
 									Add input
 								</Link>
 							</div> */}
+							<div className="heading">
+								<h4>Input</h4>
+							</div>
 							<div className="account-details-heading">
 								<h5>Account Details</h5>
 							</div>
@@ -228,7 +225,9 @@ export class AddDatasource extends React.Component<any, any> {
 								<h5>Account Details</h5>
 							</div> */}
 							<div className="source-boxs">
-								<div className="row">{this.displayDataSource()}</div>
+								<div className="row">
+									{this.displayDataSource()}
+								</div>
 							</div>
 						</div>
 					</div>
