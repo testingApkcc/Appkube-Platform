@@ -14,9 +14,9 @@ export class AddDatasource extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		// let serverName = CommonService.getParameterByName('cloudName', window.location.href);
+		let serverName = CommonService.getParameterByName('cloudName', window.location.href);
 		this.state = {
-			environment: '',
+			environment: serverName,
 			account: accountId,
 			sourceList: [],
 			environmentList: []
@@ -77,7 +77,7 @@ export class AddDatasource extends React.Component<any, any> {
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList && sourceList.length > 0) {
 			for (let i = 0; i < sourceList.length; i++) {
-				if (sourceList[i].typeName === environment || environment === "") {
+				if (sourceList[i].typeName === environment || environment === '') {
 					retData.push(
 						<div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-md-n5">
 							<Link
@@ -119,6 +119,7 @@ export class AddDatasource extends React.Component<any, any> {
 
 	render() {
 		const { environment, account, environmentList } = this.state;
+		console.log(environment);
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -142,7 +143,13 @@ export class AddDatasource extends React.Component<any, any> {
 						</div>
 						<div className="source-content">
 							<div className="heading">
-								<h4>Add inputs</h4>
+								<Link
+									to={`${PLUGIN_BASE_URL}/add-data-source-product?accountId=${account}&&cloudName=${environment}`}
+									type="button"
+									className="asset-blue-button"
+								>
+									Add input
+								</Link>
 							</div>
 							<div className="account-details-heading">
 								<h5>Account Details</h5>
@@ -156,7 +163,7 @@ export class AddDatasource extends React.Component<any, any> {
 										value={environment}
 										onChange={this.onChangeDataSource}
 									>
-										<option key={-1} value={""}>
+										<option key={-1} value={''}>
 											Select Datasource
 										</option>
 										{environmentList &&
