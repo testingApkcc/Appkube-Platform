@@ -16,7 +16,8 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 		this.state = {
 			environment: '',
 			account: '',
-			sourceList: []
+			sourceList: [],
+			environmentList: []
 		};
 		this.breadCrumbs = [
 			{
@@ -38,10 +39,10 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 	getAccountList = async () => {
 		try {
 			await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
-				this.setState({
-					sourceList: response
-				});
-				// this.manipulateData(response);
+				// this.setState({
+				// 	sourceList: response
+				// });
+				this.manipulateData(response);
 				console.log('Loading Asstes : ', response);
 			});
 		} catch (err) {
@@ -50,45 +51,88 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 	};
 
 	manipulateData = (data: any) => {
+		let { environmentList } = this.state;
 		// let datasource: any = [];
 		let dataobj: any = {};
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
 				dataobj[data[i].typeName] = dataobj[data[i].typeName] || [];
 				dataobj[data[i].typeName].push(data[i]);
+				if (environmentList && environmentList.length > 0) {
+					if (environmentList.indexOf(data[i].typeName) === -1) {
+						environmentList.push(data[i].typeName);
+					}
+				} else {
+					environmentList.push(data[i].typeName);
+				}
 			}
 		}
 		this.setState({
-			sourceList: dataobj
+			sourceList: dataobj,
+			environmentList
 		});
 	};
 
 	displayDataSource = () => {
 		let retData: any = [];
-		const { sourceList } = this.state;
+		const { sourceList, environment } = this.state;
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		if (sourceList && sourceList.length > 0) {
-			for (let i = 0; i < sourceList.length; i++) {
-				let source = sourceList[i];
-				retData.push(
-
-					<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
-						<div className="source-box">
-							<div className="images">
-								<img src={source.typeLogoUrl} height="50px" width="50px" alt="" />
+		if (sourceList) {
+			Object.keys(sourceList).map((source, indexedDB) => {
+				if (source == environment || environment === '') {
+					retData.push(
+						<React.Fragment>
+							<div className="account-details-heading">
+								<span>
+									<img src={images.awsLogo} alt="" />
+								</span>
+								<h5>{source}</h5>
 							</div>
-							<div className="source-content">
-								<label>{source.name}</label>
-								<span>{source.typeName}</span>
-								{Object.keys(source.jsonData).length > 0 && (
-									<span> | {source.jsonData.authType}</span>
-								)}
+							<div className="row">
+								<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<p className="account-input-heading">{source} Account specific Input sources</p>
+								</div>
+								<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div className="services-heading">
+										<p>
+											Account &#8282; <span>{source} (657907747545)</span>
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-
-				);
-			}
+							<div className="source-boxs">
+								<div className="row">
+									{sourceList[source] &&
+										sourceList[source].map((accountdata: any, i: any) => {
+											return (
+												<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+													<div className="source-box">
+														<div className="images">
+															<img
+																src={accountdata.typeLogoUrl}
+																height="50px"
+																width="50px"
+																alt=""
+															/>
+														</div>
+														<div className="source-content">
+															<label>{accountdata.name}</label>
+															<span>{accountdata.typeName}</span>
+															<p>Pull AWS matrics with cloud API</p>
+															{/* {Object.keys(accountdata.jsonData).length > 0 && (
+															<span> | {accountdata.jsonData.authType}</span>
+														)} */}
+														</div>
+													</div>
+												</div>
+											);
+										})}
+								</div>
+							</div>
+						</React.Fragment>
+					);
+				}
+			});
 		}
 		return retData;
 	};
@@ -107,6 +151,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 	};
 
 	render() {
+		const { environmentList, environment, account } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -123,15 +168,21 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 											<select
 												className="input-group-text"
 												name="environment"
-												value=""
-												onChange={this.handleStateChange}
+												value={environment}
+												onChange={this.onChangeDataSource}
 											>
-												<option key="1" value="aws">
-													Select
+												<option key={-1} value={''}>
+													Select Environment
 												</option>
-												<option key="2" value="Cloud">
-													1
-												</option>
+												{environmentList &&
+													environmentList.length > 0 &&
+													environmentList.map((val: any, index: any) => {
+														return (
+															<option key={index} value={val}>
+																{val}
+															</option>
+														);
+													})}
 											</select>
 										</div>
 									</div>
@@ -139,15 +190,21 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 										<div className="form-group description-content">
 											<select
 												className="input-group-text"
-												name="environment"
-												value=""
-												onChange={this.handleStateChange}
+												name="account"
+												value={account}
+												onChange={this.onChangeDataSource}
 											>
-												<option key="1" value="aws">
-													Select
+												<option key={-1} value={''}>
+													Select Account
 												</option>
-												<option key="2" value="Cloud">
-													1
+												<option key="1" value="567373484">
+													AWS 567373484
+												</option>
+												<option key="2" value="237373414">
+													AWS 237373414
+												</option>
+												<option key="3" value="562573484">
+													AWS 562573484
 												</option>
 											</select>
 										</div>
@@ -179,25 +236,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="specific-input-inner-content">
-								<div className="account-details-heading">
-									<span><img src={images.awsLogo} alt="" /></span>
-									<h5>AWS</h5>
-								</div>
-								<div className="row">
-									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<p className="account-input-heading">AWS Account specific Input sources</p>
-									</div>
-									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div className="services-heading"><p>Account &#8282; <span>AWS (657907747545)</span></p></div>
-									</div>
-								</div>
-								<div className="source-boxs">
-									<div className="row">
-										{this.displayDataSource()}
-									</div>
-								</div>
-							</div>
+							<div className="specific-input-inner-content">{this.displayDataSource()}</div>
 						</div>
 					</div>
 				</div>
