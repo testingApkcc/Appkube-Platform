@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { configFun } from '../../config';
-// import { images } from '../../img';
+import { images } from '../../img';
 // import { CommonService } from '../_common/common';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { RestService } from '../_service/RestService';
@@ -71,22 +71,22 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 			for (let i = 0; i < sourceList.length; i++) {
 				let source = sourceList[i];
 				retData.push(
-					<div className="source-boxs">
-						<div className="row">
-							<div className="source-box">
-								<div className="images">
-									<img src={source.typeLogoUrl} height="50px" width="50px" alt="" />
-								</div>
-								<div className="source-content">
-									<label>{source.name}</label>
-									<span>{source.typeName}</span>
-									{Object.keys(source.jsonData).length > 0 && (
-										<span> | {source.jsonData.authType}</span>
-									)}
-								</div>
+
+					<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+						<div className="source-box">
+							<div className="images">
+								<img src={source.typeLogoUrl} height="50px" width="50px" alt="" />
+							</div>
+							<div className="source-content">
+								<label>{source.name}</label>
+								<span>{source.typeName}</span>
+								{Object.keys(source.jsonData).length > 0 && (
+									<span> | {source.jsonData.authType}</span>
+								)}
 							</div>
 						</div>
 					</div>
+
 				);
 			}
 		}
@@ -99,20 +99,60 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 			[name]: value
 		});
 	};
+	handleStateChange = (e: any) => {
+		const { name, value } = e.target;
+		this.setState({
+			[name]: value
+		});
+	};
 
 	render() {
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="add-data-source-page-container">
-					<div className="data-source-section">
+					<div className="data-source-product">
 						<div className="source-head">
 							<h3>inputs</h3>
 						</div>
 						<div className="source-content">
 							<div className="add-input-content">
 								<div className="row justify-content-end">
-									<div className="col-xl-9 col-lg-9 col-md-9 col-sm-6 col-xs-12">
+									<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+										<div className="form-group description-content">
+											<select
+												className="input-group-text"
+												name="environment"
+												value=""
+												onChange={this.handleStateChange}
+											>
+												<option key="1" value="aws">
+													Select
+												</option>
+												<option key="2" value="Cloud">
+													1
+												</option>
+											</select>
+										</div>
+									</div>
+									<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+										<div className="form-group description-content">
+											<select
+												className="input-group-text"
+												name="environment"
+												value=""
+												onChange={this.handleStateChange}
+											>
+												<option key="1" value="aws">
+													Select
+												</option>
+												<option key="2" value="Cloud">
+													1
+												</option>
+											</select>
+										</div>
+									</div>
+									<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
 										<div className="form-group">
 											<div className="right-search-bar">
 												<div className="form-group search-control m-b-0">
@@ -126,10 +166,10 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 											</div>
 										</div>
 									</div>
-									<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+									<div className="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-xs-12">
 										<div className="back-btn">
 											<Link
-												to={`${PLUGIN_BASE_URL}/add-data-source-inputs`}
+												to={`${PLUGIN_BASE_URL}/add-data-source?accountId=567373484&&cloudName=AWS`}
 												type="button"
 												className="asset-blue-button"
 											>
@@ -139,7 +179,25 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="specific-input-content">{this.displayDataSource()}</div>
+							<div className="specific-input-inner-content">
+								<div className="account-details-heading">
+									<span><img src={images.awsLogo} alt="" /></span>
+									<h5>AWS</h5>
+								</div>
+								<div className="row">
+									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<p className="account-input-heading">AWS Account specific Input sources</p>
+									</div>
+									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div className="services-heading"><p>Account &#8282; <span>AWS (657907747545)</span></p></div>
+									</div>
+								</div>
+								<div className="source-boxs">
+									<div className="row">
+										{this.displayDataSource()}
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
