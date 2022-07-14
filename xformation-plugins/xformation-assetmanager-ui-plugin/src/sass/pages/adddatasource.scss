@@ -3,13 +3,13 @@
     width: 100%;
 
     .add-data-source-page-container {
-        padding: 0 15px;
-        background: #fff;
+        padding: 10px;
+        background: #f9fafc;
 
         .data-source-section {
-            // background: #f9fafc;
-            // padding: 0px 15px 45px;
-            // border-radius: 10px;
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: 10px;
 
             .source-head {
                 display: flex;
@@ -76,10 +76,6 @@
             }
 
             .source-content {
-                width: 90%;
-                padding: 24px;
-                border: 1px solid rgba(36, 41, 46, 0.12);
-
                 .heading {
                     padding: 15px 15px 20px 15px;
 
@@ -146,10 +142,8 @@
                 }
 
                 .add-input-content {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    margin-bottom: 15px;
+                    display: block;
+                    margin-top: 20px;
 
                     .input-group-text {
                         width: 300px;
@@ -167,8 +161,6 @@
                     }
 
                     .right-search-bar {
-                        width: 100%;
-
                         .search-control {
                             position: relative;
 
@@ -177,7 +169,7 @@
                                 text-align: left;
                                 padding-right: 15px;
                                 padding-left: 30px;
-                                width: 98%;
+                                width: 280px;
                                 border: 1px solid #ced4da;
                                 background-color: #ffffff;
                                 border-radius: 4px;
@@ -195,17 +187,6 @@
                             }
                         }
 
-                    }
-
-                    .back-btn {
-                        .asset-blue-button {
-                            margin: 0;
-                            background: #3871DC;
-
-                            &:hover {
-                                background: rgb(44, 90, 176) !important;
-                            }
-                        }
                     }
                 }
 
@@ -286,7 +267,7 @@
                 }
 
                 .source-boxs {
-                    // padding: 25px;
+                    padding: 25px;
 
                     span {
                         font-size: 16px;
@@ -299,19 +280,14 @@
                         display: flex;
                         align-items: center;
                         justify-content: start;
-                        // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                        background: #F4F5F5;
-                        padding: 15px;
+                        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                        padding: 15px 10px;
                         cursor: pointer;
-                        margin-bottom: 10px;
 
-                        &:hover {
-                            background: rgb(236, 237, 237);
-                        }
-
-                        .source-text {
-                            width: 90%;
+                        .source-content {
                             margin-left: 10px;
+                            width: 75%;
+                            max-width: 100%;
 
                             label {
                                 margin-bottom: 5px;
@@ -327,7 +303,7 @@
                             }
 
                             span {
-                                display: inline-block;
+                                display: block;
                                 font-size: 12px;
                                 line-height: 18px;
                                 font-weight: 400;
@@ -339,7 +315,7 @@
                             }
 
                             p {
-                                margin: 5px 0 0 0;
+                                margin: 8px 0 0 0;
                                 display: block;
                                 font-size: 12px;
                                 line-height: 18px;
