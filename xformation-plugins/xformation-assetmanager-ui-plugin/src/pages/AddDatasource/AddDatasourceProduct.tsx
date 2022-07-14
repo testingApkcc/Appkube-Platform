@@ -73,16 +73,18 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 				retData.push(
 					<div className="source-boxs">
 						<div className="row">
-							<div className="source-box">
-								<div className="images">
-									<img src={source.typeLogoUrl} height="50px" width="50px" alt="" />
-								</div>
-								<div className="source-content">
-									<label>{source.name}</label>
-									<span>{source.typeName}</span>
-									{Object.keys(source.jsonData).length > 0 && (
-										<span> | {source.jsonData.authType}</span>
-									)}
+							<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div className="source-box">
+									<div className="images">
+										<img src={source.typeLogoUrl} height="50px" width="50px" alt="" />
+									</div>
+									<div className="source-text">
+										<label>{source.name}</label>
+										<span>{source.typeName}</span>
+										{Object.keys(source.jsonData).length > 0 && (
+											<span> | {source.jsonData.authType}</span>
+										)}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -106,25 +108,33 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="add-data-source-page-container">
 					<div className="data-source-section">
-						<div className="source-head">
+						{/* <div className="source-head">
 							<h3>inputs</h3>
-						</div>
+						</div> */}
 						<div className="source-content">
 							<div className="add-input-content">
-								<div className="row justify-content-end">
+								<div className="right-search-bar">
+									<div className="form-group search-control m-b-0">
+										<i className="fa fa-search" />
+										<input
+											type="text"
+											className="input-group-text"
+											placeholder="Search"
+										/>
+									</div>
+								</div>
+								<div className="back-btn">
+									<Link
+										to={`${PLUGIN_BASE_URL}/add-data-source-inputs`}
+										type="button"
+										className="asset-blue-button"
+									>
+										Add input
+									</Link>
+								</div>
+								{/* <div className="row justify-content-end">
 									<div className="col-xl-9 col-lg-9 col-md-9 col-sm-6 col-xs-12">
-										<div className="form-group">
-											<div className="right-search-bar">
-												<div className="form-group search-control m-b-0">
-													<i className="fa fa-search" />
-													<input
-														type="text"
-														className="input-group-text"
-														placeholder="Search"
-													/>
-												</div>
-											</div>
-										</div>
+
 									</div>
 									<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-xs-12">
 										<div className="back-btn">
@@ -137,7 +147,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 											</Link>
 										</div>
 									</div>
-								</div>
+								</div> */}
 							</div>
 							<div className="specific-input-content">{this.displayDataSource()}</div>
 						</div>

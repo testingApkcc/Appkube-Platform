@@ -5192,13 +5192,8 @@ a:hover {
   width: 100%;
 }
 .add-data-source-container .add-data-source-page-container {
-  padding: 10px;
-  background: #f9fafc;
-}
-.add-data-source-container .add-data-source-page-container .data-source-section {
+  padding: 0 15px;
   background: #fff;
-  padding: 10px 15px;
-  border-radius: 10px;
 }
 .add-data-source-container .add-data-source-page-container .data-source-section .source-head {
   display: flex;
@@ -5290,6 +5285,11 @@ a:hover {
   font-size: 18px;
   color: #57a4ff;
 }
+.add-data-source-container .add-data-source-page-container .data-source-section .source-content {
+  width: 90%;
+  padding: 24px;
+  border: 1px solid rgba(36, 41, 46, 0.12);
+}
 .add-data-source-container .add-data-source-page-container .data-source-section .source-content .heading {
   padding: 15px 15px 20px 15px;
 }
@@ -5378,8 +5378,10 @@ a:hover {
   border-radius: 0.25rem;
 }
 .add-data-source-container .add-data-source-page-container .data-source-section .source-content .add-input-content {
-  display: block;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -5405,6 +5407,14 @@ a:hover {
   .data-source-section
   .source-content
   .add-input-content
+  .right-search-bar {
+  width: 100%;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .add-input-content
   .right-search-bar
   .search-control {
   position: relative;
@@ -5421,7 +5431,7 @@ a:hover {
   text-align: left;
   padding-right: 15px;
   padding-left: 30px;
-  width: 280px;
+  width: 98%;
   border: 1px solid #ced4da;
   background-color: #ffffff;
   border-radius: 4px;
@@ -5442,6 +5452,25 @@ a:hover {
   border: none;
   background-color: transparent;
   color: #8998ac;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .add-input-content
+  .back-btn
+  .asset-blue-button {
+  margin: 0;
+  background: #3871dc;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .add-input-content
+  .back-btn
+  .asset-blue-button:hover {
+  background: #2c5ab0 !important;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -5554,9 +5583,6 @@ a:hover {
   font-weight: 500;
   margin: 0;
 }
-.add-data-source-container .add-data-source-page-container .data-source-section .source-content .source-boxs {
-  padding: 25px;
-}
 .add-data-source-container .add-data-source-page-container .data-source-section .source-content .source-boxs span {
   font-size: 16px;
   line-height: 20px;
@@ -5572,9 +5598,18 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: start;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  padding: 15px 10px;
+  background: #f4f5f5;
+  padding: 15px;
   cursor: pointer;
+  margin-bottom: 10px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-boxs
+  .source-box:hover {
+  background: #eceded;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -5582,10 +5617,9 @@ a:hover {
   .source-content
   .source-boxs
   .source-box
-  .source-content {
+  .source-text {
+  width: 90%;
   margin-left: 10px;
-  width: 75%;
-  max-width: 100%;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -5593,7 +5627,7 @@ a:hover {
   .source-content
   .source-boxs
   .source-box
-  .source-content
+  .source-text
   label {
   margin-bottom: 5px;
   display: block;
@@ -5612,9 +5646,9 @@ a:hover {
   .source-content
   .source-boxs
   .source-box
-  .source-content
+  .source-text
   span {
-  display: block;
+  display: inline-block;
   font-size: 12px;
   line-height: 18px;
   font-weight: 400;
@@ -5629,9 +5663,9 @@ a:hover {
   .source-content
   .source-boxs
   .source-box
-  .source-content
+  .source-text
   p {
-  margin: 8px 0 0 0;
+  margin: 5px 0 0 0;
   display: block;
   font-size: 12px;
   line-height: 18px;

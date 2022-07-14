@@ -71,6 +71,7 @@ export class AddDatasourceInputs extends React.Component<any, any> {
 	displayDataSource = () => {
 		let retData: any = [];
 		const { sourceList } = this.state;
+		console.log(sourceList);
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
@@ -146,28 +147,23 @@ export class AddDatasourceInputs extends React.Component<any, any> {
 					<div className="data-source-section">
 						<div className="source-content">
 							<div className="add-input-content">
-								<div className="row justify-content-end">
-									<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
-										<div className="form-group">
-											<div className="right-search-bar">
-												<div className="form-group search-control m-b-0">
-													<i className="fa fa-search" />
-													<input
-														type="text"
-														className="input-group-text"
-														placeholder="Search"
-													/>
-												</div>
-											</div>
+								<div className="form-group">
+									<div className="right-search-bar">
+										<div className="form-group search-control m-b-0">
+											<i className="fa fa-search" />
+											<input
+												type="text"
+												className="input-group-text"
+												placeholder="Search"
+											/>
 										</div>
 									</div>
-									<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-xs-12">
-										<div className="back-btn">
-											<button type="button" className="asset-blue-button">
-												Cancel
-											</button>
-										</div>
-									</div>
+								</div>
+								<div className="back-btn">
+									<button type="button" className="btn btn-outline-secondary btn-link">Cancel</button>
+									{/* <button type="button" className="asset-blue-button">
+										Cancel
+									</button> */}
 								</div>
 							</div>
 							<div className="specific-input-content">{this.displayDataSource()}</div>
