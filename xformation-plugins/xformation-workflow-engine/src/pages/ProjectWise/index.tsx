@@ -7,9 +7,8 @@ import 'react-circular-progressbar/dist/styles.css';
 // import SimpleBar from 'simplebar-react';
 import { Link } from 'react-router-dom';
 import 'simplebar/dist/simplebar.min.css';
-import { configFun } from '../../config';
+import { AwsHelper } from '../AwsHelpers';
 
-let AWS = require('aws-sdk');
 
 export class ProjectWise extends React.Component<any, any> {
 	breadCrumbs: any;
@@ -20,6 +19,7 @@ export class ProjectWise extends React.Component<any, any> {
 	credentials: any;
 	config: any;
 	dynamoDB: any;
+	awsHelper: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -41,32 +41,16 @@ export class ProjectWise extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
-		this.config = configFun(props.meta.jsonData.accessKey, props.meta.jsonData.secretKey, props.meta.jsonData.region);
-		this.credentials = {
-			region: this.config.REGION,
-			accessKeyId: this.config.ACCESS_KEY_ID,
-			secretAccessKey: this.config.SECRET_KEY
-		};
-		this.dynamoDB = new AWS.DynamoDB(this.credentials);
+		this.awsHelper = new AwsHelper({meta: props.meta});
 	}
 
 	componentDidMount() {
-		this.getUsecaseList();
+		this.awsHelper.getUsecaseList((useCaseList: any)=>{
+			this.setState({
+				useCaseList,
+			});
+		}, ()=>{});
 	}
-
-	getUsecaseList = () => {
-		var params = {
-			TableName: "usecase_arn"
-		};
-		this.dynamoDB.scan(params, (err: any, data: any) => {
-			if (err) console.log(err, err.stack); // an error occurred
-			else {
-				this.setState({
-					useCaseList: data.Items,
-				});
-			}
-		});
-	};
 
 	searchUseCase = (e: any) => {
 		const { value, name } = e.target;
