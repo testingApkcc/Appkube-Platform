@@ -7,7 +7,7 @@ import 'react-circular-progressbar/dist/styles.css';
 // import SimpleBar from 'simplebar-react';
 import { Link } from 'react-router-dom';
 import 'simplebar/dist/simplebar.min.css';
-import { config } from '../../config';
+import { configFun } from '../../config';
 
 let AWS = require('aws-sdk');
 
@@ -17,11 +17,8 @@ export class ProjectWise extends React.Component<any, any> {
 	newStreamRef: any;
 	manageOutputRef: any;
 	allEventRef: any;
-	credentials: any = {
-		region: config.REGION,
-		accessKeyId: config.ACCESS_KEY_ID,
-		secretAccessKey: config.SECRET_KEY
-	}
+	credentials: any;
+	config: any;
 	dynamoDB: any;
 	constructor(props: any) {
 		super(props);
@@ -44,6 +41,12 @@ export class ProjectWise extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
+		this.config = configFun(props.meta.jsonData.accessKey, props.meta.jsonData.secretKey, props.meta.jsonData.region);
+		this.credentials = {
+			region: this.config.REGION,
+			accessKeyId: this.config.ACCESS_KEY_ID,
+			secretAccessKey: this.config.SECRET_KEY
+		};
 		this.dynamoDB = new AWS.DynamoDB(this.credentials);
 	}
 
