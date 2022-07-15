@@ -19,7 +19,416 @@ export class AddDatasource extends React.Component<any, any> {
 			environment: '',
 			account: accountId,
 			sourceList: [],
-			environmentList: []
+			environmentList: [],
+			dummyJson: [
+				{
+					id: 1,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/cloudwatch/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '*', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'cloudwatch',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Pull AWS metrics with Cloud API',
+							links: null,
+							logos: {
+								large: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png',
+								small: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png'
+							},
+							screenshots: null,
+							updated: '',
+							version: ''
+						},
+						latestVersion: '',
+						name: 'AWS-PullMetric-Api',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'aws'
+				},
+				{
+					id: 2,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/cloudwatch/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '*', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'cloudwatch',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Pull AWS Logs with Cloud API',
+							links: null,
+							logos: {
+								large: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png',
+								small: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png'
+							},
+							screenshots: null,
+							updated: '',
+							version: ''
+						},
+						latestVersion: '',
+						name: 'AWS-PullLogs-Api',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'aws'
+				},
+				{
+					id: 3,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/cloudwatch/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '*', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'cloudwatch',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Receive AWS Logs and Store in Local ES',
+							links: null,
+							logos: {
+								large: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png',
+								small: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png'
+							},
+							screenshots: null,
+							updated: '',
+							version: ''
+						},
+						latestVersion: '',
+						name: 'AWS-PullLogs-Local',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'aws'
+				},
+				{
+					id: 4,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/cloudwatch/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '*', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'cloudwatch',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Receive Traces and Store in Local Zipkin DB',
+							links: null,
+							logos: {
+								large: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png',
+								small: 'public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png'
+							},
+							screenshots: null,
+							updated: '',
+							version: ''
+						},
+						latestVersion: '',
+						name: 'AWS-StoreTrace-Local',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'aws'
+				},
+				{
+					id: 5,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/grafana-azure-monitor-datasource/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '5.2.x', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'grafana-azure-monitor-datasource',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Pull Azure metrics with Cloud API',
+							links: [
+								{ name: 'Learn more', url: 'https://github.com/grafana/azure-monitor-datasource' },
+								{
+									name: 'Apache License',
+									url: 'https://github.com/grafana/azure-monitor-datasource/blob/master/LICENSE'
+								}
+							],
+							logos: {
+								large: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg',
+								small: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg'
+							},
+							screenshots: [
+								{
+									name: 'Azure Contoso Loans',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/contoso_loans_grafana_dashboard.png'
+								},
+								{
+									name: 'Azure Monitor Network',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_network.png'
+								},
+								{
+									name: 'Azure Monitor CPU',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_cpu.png'
+								}
+							],
+							updated: '2018-12-06',
+							version: '0.3.0'
+						},
+						latestVersion: '',
+						name: 'Azure-PullMetric-Api',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'azure'
+				},
+				{
+					id: 6,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/grafana-azure-monitor-datasource/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '5.2.x', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'grafana-azure-monitor-datasource',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Pull Azure Logs with Cloud API',
+							links: [
+								{ name: 'Learn more', url: 'https://github.com/grafana/azure-monitor-datasource' },
+								{
+									name: 'Apache License',
+									url: 'https://github.com/grafana/azure-monitor-datasource/blob/master/LICENSE'
+								}
+							],
+							logos: {
+								large: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg',
+								small: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg'
+							},
+							screenshots: [
+								{
+									name: 'Azure Contoso Loans',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/contoso_loans_grafana_dashboard.png'
+								},
+								{
+									name: 'Azure Monitor Network',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_network.png'
+								},
+								{
+									name: 'Azure Monitor CPU',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_cpu.png'
+								}
+							],
+							updated: '2018-12-06',
+							version: '0.3.0'
+						},
+						latestVersion: '',
+						name: 'Azure-PullLogs-Api',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'azure'
+				},
+				{
+					id: 7,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/grafana-azure-monitor-datasource/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '5.2.x', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'grafana-azure-monitor-datasource',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Receive Azure Logs and Store in Local ES',
+							links: [
+								{ name: 'Learn more', url: 'https://github.com/grafana/azure-monitor-datasource' },
+								{
+									name: 'Apache License',
+									url: 'https://github.com/grafana/azure-monitor-datasource/blob/master/LICENSE'
+								}
+							],
+							logos: {
+								large: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg',
+								small: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg'
+							},
+							screenshots: [
+								{
+									name: 'Azure Contoso Loans',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/contoso_loans_grafana_dashboard.png'
+								},
+								{
+									name: 'Azure Monitor Network',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_network.png'
+								},
+								{
+									name: 'Azure Monitor CPU',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_cpu.png'
+								}
+							],
+							updated: '2018-12-06',
+							version: '0.3.0'
+						},
+						latestVersion: '',
+						name: 'Azure-PullLogs-Local',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'azure'
+				},
+				{
+					id: 8,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/grafana-azure-monitor-datasource/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '5.2.x', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'grafana-azure-monitor-datasource',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Receive Traces and Store in Local Zipkin DB',
+							links: [
+								{ name: 'Learn more', url: 'https://github.com/grafana/azure-monitor-datasource' },
+								{
+									name: 'Apache License',
+									url: 'https://github.com/grafana/azure-monitor-datasource/blob/master/LICENSE'
+								}
+							],
+							logos: {
+								large: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg',
+								small: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg'
+							},
+							screenshots: [
+								{
+									name: 'Azure Contoso Loans',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/contoso_loans_grafana_dashboard.png'
+								},
+								{
+									name: 'Azure Monitor Network',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_network.png'
+								},
+								{
+									name: 'Azure Monitor CPU',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_cpu.png'
+								}
+							],
+							updated: '2018-12-06',
+							version: '0.3.0'
+						},
+						latestVersion: '',
+						name: 'Azure-StoreTrace-Local',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'azure'
+				},
+				{
+					id: 9,
+					jsonData: {
+						category: 'cloud',
+						defaultNavUrl: '/plugins/grafana-azure-monitor-datasource/',
+						dependencies: { grafanaDependency: '', grafanaVersion: '5.2.x', plugins: [] },
+						enabled: true,
+						hasUpdate: false,
+						id: 'grafana-azure-monitor-datasource',
+						info: {
+							author: { name: 'Grafana Labs', url: 'https://grafana.com' },
+							build: {},
+							description: 'Azure Active Directory Operations',
+							links: [
+								{ name: 'Learn more', url: 'https://github.com/grafana/azure-monitor-datasource' },
+								{
+									name: 'Apache License',
+									url: 'https://github.com/grafana/azure-monitor-datasource/blob/master/LICENSE'
+								}
+							],
+							logos: {
+								large: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg',
+								small: 'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/logo.jpg'
+							},
+							screenshots: [
+								{
+									name: 'Azure Contoso Loans',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/contoso_loans_grafana_dashboard.png'
+								},
+								{
+									name: 'Azure Monitor Network',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_network.png'
+								},
+								{
+									name: 'Azure Monitor CPU',
+									path:
+										'public/app/plugins/datasource/grafana-azure-monitor-datasource/img/azure_monitor_cpu.png'
+								}
+							],
+							updated: '2018-12-06',
+							version: '0.3.0'
+						},
+						latestVersion: '',
+						name: 'Azure Active Directory - Overview',
+						pinned: false,
+						signature: 'internal',
+						signatureOrg: '',
+						signatureType: '',
+						state: '',
+						type: 'datasource'
+					},
+					cloudType: 'azure'
+				}
+			]
 		};
 		this.breadCrumbs = [
 			{
@@ -35,16 +444,34 @@ export class AddDatasource extends React.Component<any, any> {
 	}
 
 	async componentDidMount() {
-		await this.getAccountList();
+		// await this.getAccountList();
+		const { dummyJson,environmentList } = this.state;
+		let dataobj: any = {};
+		if (dummyJson && dummyJson.length > 0) {
+			for (let i = 0; i < dummyJson.length; i++) {
+				let data = dummyJson[i];
+				if(data.cloudType){
+					dataobj[data.cloudType] = dataobj[data.cloudType] || [];
+					dataobj[data.cloudType].push(data.jsonData);
+					if (environmentList && environmentList.length > 0) {
+						if (environmentList.indexOf(data.cloudType) === -1) {
+							environmentList.push(data.cloudType);
+						}
+					} else {
+						environmentList.push(data.cloudType);
+					}
+				}
+			}
+		}
+		this.setState({
+			sourceList: dataobj,
+			environmentList
+		});
 	}
 
 	getAccountList = async () => {
 		try {
-			await RestService.getData(
-				'http://localhost:3000/api/plugins/filter-datasource/key=cloudwatCH,TESTDATA,grafana-azure-monitor-datasource',
-				null,
-				null
-			).then((response: any) => {
+			await RestService.getData(this.config.GET_MASTER_DATASOURCE, null, null).then((response: any) => {
 				this.manipulateData(response);
 				console.log('Loading Asstes : ', response);
 			});
@@ -225,9 +652,7 @@ export class AddDatasource extends React.Component<any, any> {
 								<h5>Account Details</h5>
 							</div> */}
 							<div className="source-boxs">
-								<div className="row">
-									{this.displayDataSource()}
-								</div>
+								<div className="row">{this.displayDataSource()}</div>
 							</div>
 						</div>
 					</div>

@@ -43,11 +43,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 
 	getAccountList = async () => {
 		try {
-			await RestService.getData(
-				'http://localhost:3000/api/plugins/filter-datasource/key=cloudwatCH,TESTDATA,grafana-azure-monitor-datasource',
-				null,
-				null
-			).then((response: any) => {
+			await RestService.getData(this.config.GET_MASTER_DATASOURCE, null, null).then((response: any) => {
 				this.manipulateData(response);
 				console.log('Loading Asstes : ', response);
 			});
