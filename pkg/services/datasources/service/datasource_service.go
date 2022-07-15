@@ -77,6 +77,8 @@ func ProvideService(
 	s.Bus.AddHandler(s.GetDataSource)
 	//  ------Manoj.  custom changes for appcube plateform ------
 	s.Bus.AddHandler(s.GetDataSourceByAccountIdOrCloudType)
+	s.Bus.AddHandler(s.GetDataSourceMaster)
+	s.Bus.AddHandler(s.AddDataSourceMaster)
 	//  ------Manoj.  custom changes for appcube plateform ------
 	s.Bus.AddHandler(s.AddDataSource)
 	s.Bus.AddHandler(s.DeleteDataSource)
@@ -131,6 +133,35 @@ func (s *Service) GetDataSources(ctx context.Context, query *models.GetDataSourc
 //  ------Manoj.  custom changes for appcube plateform ------
 func (s *Service) GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {
 	return s.SQLStore.GetDataSourceByAccountIdOrCloudType(ctx, query)
+}
+func (s *Service) GetDataSourceMaster(ctx context.Context, query *models.GetAllDataSourceMasterQuery) error {
+	return s.SQLStore.GetDataSourceMaster(ctx, query)
+}
+
+func (s *Service) AddDataSourceMaster(ctx context.Context, cmd *models.AddDataSourceMasterCommand) error {
+	// var err error
+	// cmd.EncryptedSecureJsonData, err = s.SecretsService.EncryptJsonData(ctx, cmd.SecureJsonData, secrets.WithoutScope())
+	// if err != nil {
+	// 	return err
+	// }
+
+	if err := s.SQLStore.AddDataSourceMaster(ctx, cmd); err != nil {
+		return err
+	}
+
+	if s.features.IsEnabled(featuremgmt.FlagAccesscontrol) {
+		if _, err := s.permissionsService.SetPermissions(ctx, 1, strconv.FormatInt(cmd.Result.Id, 10), accesscontrol.SetResourcePermissionCommand{
+			BuiltinRole: "Viewer",
+			Permission:  "Query",
+		}, accesscontrol.SetResourcePermissionCommand{
+			BuiltinRole: "Editor",
+			Permission:  "Query",
+		}); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 //  ------Manoj.  custom changes for appcube plateform ------

@@ -756,7 +756,7 @@
                                 text-align: left;
                                 padding-right: 15px;
                                 padding-left: 30px;
-                                width: 280px;
+                                width: 100%;
                                 border: 1px solid #ced4da;
                                 background-color: #ffffff;
                                 border-radius: 4px;
@@ -832,12 +832,16 @@
                         display: flex;
                         align-items: center;
                         justify-content: start;
+                        width: 100%;
 
                         p {
                             font-size: 16px;
                             line-height: 40px;
                             font-weight: 500;
                             margin: 0;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
 
                             span {
                                 padding: 0;
@@ -888,6 +892,10 @@
                             margin-bottom: 30px;
                             width: 280px;
                             margin-right: 25px;
+
+                            &:last-child {
+                                margin-right: 0;
+                            }
 
                             .source-content {
                                 margin-left: 10px;
@@ -1104,7 +1112,7 @@
 
                                         .form-control {
                                             display: inline-block;
-                                            width: 85%;
+                                            width: 80%;
                                         }
                                     }
                                 }
@@ -1155,6 +1163,18 @@
 
                     .source-boxs {
                         padding: 25px 0;
+
+                        .source-inner-box {
+                            display: block;
+
+                            .source-box {
+                                width: 100%;
+
+                                .source-content {
+                                    width: 90%;
+                                }
+                            }
+                        }
 
                         .source-content {
                             width: 78%;
@@ -1210,6 +1230,22 @@
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+            .data-source-product {
+                .source-content {
+                    .specific-input-inner-content {
+                        .source-boxs {
+                            display: block;
+
+                            .source-box {
+                                width: 100%;
                             }
                         }
                     }

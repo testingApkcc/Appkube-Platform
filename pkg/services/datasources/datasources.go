@@ -16,6 +16,8 @@ type DataSourceService interface {
 
 	//  ------Manoj.  custom changes for appcube plateform ------
 	GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error
+	GetDataSourceMaster(ctx context.Context, query *models.GetAllDataSourceMasterQuery) error
+	AddDataSourceMaster(ctx context.Context, cmd *models.AddDataSourceMasterCommand) error
 	//  ------Manoj.  custom changes for appcube plateform ------
 
 	// GetDataSources gets datasources.

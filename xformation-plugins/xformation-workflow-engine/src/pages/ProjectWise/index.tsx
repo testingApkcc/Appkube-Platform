@@ -7,6 +7,9 @@ import 'react-circular-progressbar/dist/styles.css';
 // import SimpleBar from 'simplebar-react';
 import { Link } from 'react-router-dom';
 import 'simplebar/dist/simplebar.min.css';
+import { configFun } from '../../config';
+
+let AWS = require('aws-sdk');
 
 export class ProjectWise extends React.Component<any, any> {
 	breadCrumbs: any;
@@ -14,6 +17,9 @@ export class ProjectWise extends React.Component<any, any> {
 	newStreamRef: any;
 	manageOutputRef: any;
 	allEventRef: any;
+	credentials: any;
+	config: any;
+	dynamoDB: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -22,80 +28,8 @@ export class ProjectWise extends React.Component<any, any> {
 			streamTableData: [],
 			indexSets: [],
 			useCaseList: [
-				{
-					name: 'Usecase 1',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 80,
-					cdTest: 0,
-					release: 0,
-					publish: 0
-				},
-				{
-					name: 'Usecase 2',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 92,
-					cdTest: 70,
-					release: 0,
-					publish: 0
-				},
-				{
-					name: 'Usecase 3',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 80,
-					cdTest: 60,
-					release: 0,
-					publish: 0
-				},
-				{
-					name: 'Usecase 4',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 97,
-					cdTest: 92,
-					release: 90,
-					publish: 80
-				},
-				{
-					name: 'Usecase 5',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 93,
-					cdTest: 96,
-					release: 97,
-					publish: 90
-				},
-				{
-					name: 'Usecase 6',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 90,
-					cdTest: 96,
-					release: 70,
-					publish: 0
-				},
-				{
-					name: 'Usecase 7',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 80,
-					cdTest: 0,
-					release: 0,
-					publish: 0
-				},
-				{
-					name: 'Usecase 8',
-					requirements: 90,
-					mockdevlopment: 95,
-					actualDevlopment: 99,
-					cdTest: 100,
-					release: 95,
-					publish: 90
-				}
 			],
-			searchKey: ''
+			searchKey: '',
 		};
 		this.breadCrumbs = [
 			{
@@ -107,7 +41,32 @@ export class ProjectWise extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
+		this.config = configFun(props.meta.jsonData.accessKey, props.meta.jsonData.secretKey, props.meta.jsonData.region);
+		this.credentials = {
+			region: this.config.REGION,
+			accessKeyId: this.config.ACCESS_KEY_ID,
+			secretAccessKey: this.config.SECRET_KEY
+		};
+		this.dynamoDB = new AWS.DynamoDB(this.credentials);
 	}
+
+	componentDidMount() {
+		this.getUsecaseList();
+	}
+
+	getUsecaseList = () => {
+		var params = {
+			TableName: "usecase_arn"
+		};
+		this.dynamoDB.scan(params, (err: any, data: any) => {
+			if (err) console.log(err, err.stack); // an error occurred
+			else {
+				this.setState({
+					useCaseList: data.Items,
+				});
+			}
+		});
+	};
 
 	searchUseCase = (e: any) => {
 		const { value, name } = e.target;
@@ -212,106 +171,38 @@ export class ProjectWise extends React.Component<any, any> {
 								</div>
 								<div className="tbody">
 									{useCaseList &&
-										useCaseList.map((val: any, index: any) => {
-											if (!val.isHide) {
-												return (
-													<div className="tr" key={`usecase-${index}`}>
-														<div className="td">
-															<Link
-																to={`/a/xformation-workflow-engine/procurement-detail/${index}`}
-															>
-																{val.name}
-															</Link>
-														</div>
-														<div className="td">
-															{val.requirements > 0 && (
-																<i
-																	className={
-																		val.requirements >= 90 ? (
-																			'fa fa-check green'
-																		) : (
-																			'fa fa-check orange'
-																		)
-																	}
-																	aria-hidden="true"
-																/>
-															)}
-														</div>
-														<div className="td">
-															{val.mockdevlopment > 0 && (
-																<i
-																	className={
-																		val.mockdevlopment >= 90 ? (
-																			'fa fa-check green'
-																		) : (
-																			'fa fa-check orange'
-																		)
-																	}
-																	aria-hidden="true"
-																/>
-															)}
-														</div>
-														<div className="td">
-															{val.actualDevlopment > 0 && (
-																<i
-																	className={
-																		val.actualDevlopment >= 90 ? (
-																			'fa fa-check green'
-																		) : (
-																			'fa fa-check orange'
-																		)
-																	}
-																	aria-hidden="true"
-																/>
-															)}
-														</div>
-														<div className="td">
-															{val.cdTest > 0 && (
-																<i
-																	className={
-																		val.cdTest >= 90 ? (
-																			'fa fa-check green'
-																		) : (
-																			'fa fa-check orange'
-																		)
-																	}
-																	aria-hidden="true"
-																/>
-															)}
-														</div>
-														<div className="td">
-															{val.release > 0 && (
-																<i
-																	className={
-																		val.release >= 90 ? (
-																			'fa fa-check green'
-																		) : (
-																			'fa fa-check orange'
-																		)
-																	}
-																	aria-hidden="true"
-																/>
-															)}
-														</div>
-														<div className="td">
-															{val.publish > 0 && (
-																<i
-																	className={
-																		val.publish >= 90 ? (
-																			'fa fa-check green'
-																		) : (
-																			'fa fa-check orange'
-																		)
-																	}
-																	aria-hidden="true"
-																/>
-															)}
-														</div>
+										useCaseList.map((useCase: any, index: any) => {
+											return (
+												<div className="tr" key={`usecase-${index}`}>
+													<div className="td">
+														<Link
+															to={`/a/xformation-workflow-engine/procurement-detail/${index}`}
+														>
+															{useCase.usecaseName.S}
+														</Link>
 													</div>
-												);
-											} else {
-												return null;
-											}
+													<div className="td">
+														<i
+															className=
+															'fa fa-check green'
+														/>
+													</div>
+													<div className="td">
+														<i
+															className=
+															'fa fa-check orange'
+														/>
+													</div>
+													<div className="td">
+													</div>
+													<div className="td">
+													</div>
+													<div className="td">
+													</div>
+													<div className="td">
+													</div>
+												</div>
+											);
 										})}
 								</div>
 							</div>

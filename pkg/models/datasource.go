@@ -229,11 +229,51 @@ type UpdateAccountTenantInfoDataSourceCommand struct {
 }
 
 type GetDataSourceQueryByAccountIdOrCloudType struct {
-	AccountId string // ------Manoj.  custom changes for appcube plateform ------
-	CloudType string // ------Manoj.  custom changes for appcube plateform ------
+	AccountId string
+	CloudType string
 	OrgId     int64
 	Result    *DataSource
 	Res       []*DataSource
+}
+
+type DataSourceMaster struct {
+	Id        int64            `json:"id"`
+	JsonData  *simplejson.Json `json:"jsonData"`
+	CloudType string           `json:"cloudType"`
+}
+
+type AddDataSourceMasterCommand struct {
+	JsonData  *simplejson.Json  `json:"jsonData"`
+	CloudType string            `json:"cloudType"`
+	Result    *DataSourceMaster `json:"-"`
+}
+
+type UpdateDataSourceMasterCommand struct {
+	JsonData  *simplejson.Json  `json:"jsonData"`
+	CloudType string            `json:"cloudType"`
+	Result    *DataSourceMaster `json:"-"`
+}
+
+type DeleteDataSourceMasterCommand struct {
+	ID                           int64
+	DeletedDatasourceMasterCount int64
+}
+
+type GetAllDataSourceMasterQuery struct {
+	Id        int64
+	CloudType string
+	Result    []*DataSourceMaster
+}
+
+type GetDataSourceMasterQuery struct {
+	CloudType string
+	Result    []*DataSourceMaster
+}
+
+type DatasourceMasterPermissionFilterQuery struct {
+	User        *SignedInUser
+	Datasources []*DataSourceMaster
+	Result      []*DataSourceMaster
 }
 
 // ------Manoj.  custom changes for appcube plateform ------

@@ -8,6 +8,9 @@ import { SecretInput } from '../SecretInput';
 export type JsonData = {
   apiUrl?: string;
   isApiKeySet?: boolean;
+  accessKey?: string;
+  secretKey?: string;
+  region?: string;
 };
 
 type State = {
@@ -19,9 +22,12 @@ type State = {
   isApiKeySet: boolean;
   // An secret key for our custom API.
   apiKey: string;
+  accessKey: string;
+  secretKey: string;
+  region: string;
 };
 
-interface Props extends PluginConfigPageProps<AppPluginMeta<JsonData>> {}
+interface Props extends PluginConfigPageProps<AppPluginMeta<JsonData>> { }
 
 export const AppConfig = ({ plugin }: Props) => {
   const s = useStyles2(getStyles);
@@ -30,6 +36,9 @@ export const AppConfig = ({ plugin }: Props) => {
     apiUrl: jsonData?.apiUrl || '',
     apiKey: '',
     isApiKeySet: Boolean(jsonData?.isApiKeySet),
+    accessKey: jsonData?.accessKey || '',
+    secretKey: jsonData?.secretKey || '',
+    region: jsonData?.region || '',
   });
 
   const onResetApiKey = () =>
@@ -50,6 +59,27 @@ export const AppConfig = ({ plugin }: Props) => {
     setState({
       ...state,
       apiUrl: event.target.value.trim(),
+    });
+  };
+
+  const onChangeAccessKey = (event: ChangeEvent<HTMLInputElement>) => {
+    setState({
+      ...state,
+      accessKey: event.target.value.trim(),
+    });
+  };
+
+  const onChangeSecretKey = (event: ChangeEvent<HTMLInputElement>) => {
+    setState({
+      ...state,
+      secretKey: event.target.value.trim(),
+    });
+  };
+
+  const onChangeRegion = (event: ChangeEvent<HTMLInputElement>) => {
+    setState({
+      ...state,
+      region: event.target.value.trim(),
     });
   };
 
@@ -126,6 +156,39 @@ export const AppConfig = ({ plugin }: Props) => {
           />
         </Field>
 
+        <Field label="Access key" description="" className={s.marginTop}>
+          <Input
+            width={60}
+            id="access-key"
+            data-testid="access-key"
+            label={`Access key`}
+            value={state?.accessKey}
+            onChange={onChangeAccessKey}
+          />
+        </Field>
+
+        <Field label="Secret key" description="" className={s.marginTop}>
+          <Input
+            width={60}
+            id="secret-key"
+            data-testid="secret-key"
+            label={`Secret key`}
+            value={state?.secretKey}
+            onChange={onChangeSecretKey}
+          />
+        </Field>
+
+        <Field label="Region" description="" className={s.marginTop}>
+          <Input
+            width={60}
+            id="region"
+            data-testid="region"
+            label={`Region`}
+            value={state?.region}
+            onChange={onChangeRegion}
+          />
+        </Field>
+
         <div className={s.marginTop}>
           <Button
             type="submit"
@@ -136,17 +199,20 @@ export const AppConfig = ({ plugin }: Props) => {
                 jsonData: {
                   apiUrl: state.apiUrl,
                   isApiKeySet: true,
+                  accessKey: state.accessKey,
+                  secretKey: state.secretKey,
+                  region: state.region,
                 },
                 // This cannot be queried later by the frontend.
                 // We don't want to override it in case it was set previously and left untouched now.
                 secureJsonData: state.isApiKeySet
                   ? undefined
                   : {
-                      apiKey: state.apiKey,
-                    },
+                    apiKey: state.apiKey,
+                  },
               })
             }
-            disabled={Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey))}
+            disabled={Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey) || !state.accessKey || !state.secretKey || !state.region)}
           >
             Save API settings
           </Button>

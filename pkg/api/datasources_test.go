@@ -47,7 +47,7 @@ func TestDataSourcesProxy_userLoggedIn(t *testing.T) {
 			DataSourcesService: &dataSourcesServiceMock{
 				expectedDatasources: ds,
 			},
-			DatasourcePermissionsService: mockDatasourcePermissionService,
+			// DatasourcePermissionsService: mockDatasourcePermissionService,
 		}
 		sc.handlerFunc = hs.GetDataSources
 		sc.fakeReq("GET", "/api/datasources").exec()
@@ -510,7 +510,7 @@ func TestAPI_Datasources_AccessControl(t *testing.T) {
 				dsPermissionService.dsResult = nil
 			}
 			hs.DataSourcesService = dsServiceMock
-			hs.DatasourcePermissionsService = dsPermissionService
+			// hs.DatasourcePermissionsService = dsPermissionService
 
 			// Create a middleware to pretend user is logged in
 			pretendSignInMiddleware := func(c *models.ReqContext) {

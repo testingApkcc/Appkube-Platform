@@ -6447,7 +6447,7 @@ a:hover {
   text-align: left;
   padding-right: 15px;
   padding-left: 30px;
-  width: 280px;
+  width: 100%;
   border: 1px solid #ced4da;
   background-color: #ffffff;
   border-radius: 4px;
@@ -6555,6 +6555,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: start;
+  width: 100%;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -6567,6 +6568,9 @@ a:hover {
   line-height: 40px;
   font-weight: 500;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -6652,6 +6656,15 @@ a:hover {
   margin-bottom: 30px;
   width: 280px;
   margin-right: 25px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-product
+  .source-content
+  .specific-input-inner-content
+  .source-boxs
+  .source-box:last-child {
+  margin-right: 0;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -6906,7 +6919,7 @@ a:hover {
     .explore-head-left
     .form-control {
     display: inline-block;
-    width: 85%;
+    width: 80%;
   }
 }
 
@@ -6958,6 +6971,33 @@ a:hover {
   }
   .add-data-source-container .add-data-source-page-container .data-source-section .source-content .source-boxs {
     padding: 25px 0;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-inner-box {
+    display: block;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-inner-box
+    .source-box {
+    width: 100%;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-inner-box
+    .source-box
+    .source-content {
+    width: 90%;
   }
   .add-data-source-container
     .add-data-source-page-container
@@ -7073,6 +7113,23 @@ a:hover {
     li
     .asset-blue-button {
     min-width: 120px;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-product
+    .source-content
+    .specific-input-inner-content
+    .source-boxs {
+    display: block;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-product
+    .source-content
+    .specific-input-inner-content
+    .source-boxs
+    .source-box {
+    width: 100%;
   }
 }
 
