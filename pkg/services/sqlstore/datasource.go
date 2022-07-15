@@ -110,6 +110,70 @@ func (ss *SQLStore) getDataSourceListByAccountIdOrCloudType(ctx context.Context,
 	})
 }
 
+func (ss *SQLStore) GetDataSourceMaster(ctx context.Context, query *models.GetAllDataSourceMasterQuery) error {
+	var sess *xorm.Session
+	return ss.WithDbSession(ctx, func(dbSess *DBSession) error {
+		// 	if len(query.CloudType) != 0 && query.Id <= 0 {
+		// 		sess = dbSess.Where("select * from data_source_master where cloud_type=?", query.CloudType)
+		// 	} else if len(query.CloudType) == 0 && query.Id > 0 {
+		// 		sess = dbSess.Where("select * from data_source_master where id=?", query.Id)
+		// 	} else if len(query.CloudType) != 0 && query.Id > 0 {
+		// 		sess = dbSess.Where("select * from data_source_master where id=? and cloud_type=?", query.Id, query.CloudType)
+		// 	} else {
+		sess = dbSess.SQL("select * from data_source_master")
+		// }
+
+		query.Result = make([]*models.DataSourceMaster, 0)
+		return sess.Find(&query.Result)
+	})
+}
+
+func (ss *SQLStore) AddDataSourceMaster(ctx context.Context, cmd *models.AddDataSourceMasterCommand) error {
+	return ss.WithTransactionalDbSession(ctx, func(sess *DBSession) error {
+		// existing := models.DataSource{OrgId: cmd.OrgId, Name: cmd.Name}
+		// has, _ := sess.Get(&existing)
+
+		// if has {
+		// 	return models.ErrDataSourceNameExists
+		// }
+
+		// if cmd.JsonData == nil {
+		// 	// return
+		// }
+
+		// if cmd.Uid == "" {
+		// 	uid, err := generateNewDatasourceUid(sess, cmd.OrgId)
+		// 	if err != nil {
+		// 		return errutil.Wrapf(err, "Failed to generate UID for datasource %q", cmd.Name)
+		// 	}
+		// 	cmd.Uid = uid
+		// }
+
+		ds := &models.DataSourceMaster{
+			JsonData:  cmd.JsonData,
+			CloudType: cmd.CloudType,
+		}
+
+		if _, err := sess.Insert(ds); err != nil {
+			// if dialect.IsUniqueConstraintViolation(err) && strings.Contains(strings.ToLower(dialect.ErrorMessage(err)), "uid") {
+			// 	return models.ErrDataSourceUidExists
+			// }
+			return err
+		}
+		// if err := updateIsDefaultFlag(ds, sess); err != nil {
+		// 	return err
+		// }
+
+		cmd.Result = ds
+
+		sess.publishAfterCommit(&events.DataSourceCreated{
+			Timestamp: time.Now(),
+			ID:        ds.Id,
+		})
+		return nil
+	})
+}
+
 //  ------Manoj.  custom changes for appcube plateform ------
 
 // GetDataSourcesByType returns all datasources for a given type or an error if the specified type is an empty string

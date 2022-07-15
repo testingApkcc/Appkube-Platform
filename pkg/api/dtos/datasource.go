@@ -74,3 +74,14 @@ func (slice DataSourceList) Less(i, j int) bool {
 func (slice DataSourceList) Swap(i, j int) {
 	slice[i], slice[j] = slice[j], slice[i]
 }
+
+// ------Manoj.  custom changes for appcube plateform ------
+type DataSourceMasterListItemDTO struct {
+	Id        int64            `json:"id"`
+	JsonData  *simplejson.Json `json:"jsonData,omitempty"`
+	CloudType string           `json:"cloudType"`
+}
+
+type DataSourceMasterList []DataSourceMasterListItemDTO
+
+// ------Manoj.  custom changes for appcube plateform ------
