@@ -705,4 +705,83 @@ func (hs *HTTPServer) BuildDatasourceList(query *models.GetDataSourceQueryByAcco
 
 }
 
+func (hs *HTTPServer) GetDataSourceMaster(c *models.ReqContext) response.Response {
+	query := models.GetAllDataSourceMasterQuery{
+		// Id: 1,
+		// CloudType: web.Params(c.Req)[":cloud"],
+	}
+
+	if err := hs.DataSourcesService.GetDataSourceMaster(c.Req.Context(), &query); err != nil {
+		return response.Error(500, "Failed to query datasource master", err)
+	}
+
+	filtered, err := hs.filterDatasourceMasterByQueryPermission(c.Req.Context(), c.SignedInUser, query.Result)
+	if err != nil {
+		return response.Error(500, "Failed to query datasource master", err)
+	}
+
+	result := make(dtos.DataSourceMasterList, 0)
+	for _, ds := range filtered {
+		dsItem := dtos.DataSourceMasterListItemDTO{
+			Id:        ds.Id,
+			JsonData:  ds.JsonData,
+			CloudType: ds.CloudType,
+		}
+
+		result = append(result, dsItem)
+	}
+
+	// sort.Sort(result)
+
+	return response.JSON(200, &result)
+}
+
+func (hs *HTTPServer) filterDatasourceMasterByQueryPermission(ctx context.Context, user *models.SignedInUser, datasourceMaster []*models.DataSourceMaster) ([]*models.DataSourceMaster, error) {
+	query := models.DatasourceMasterPermissionFilterQuery{
+		User:        user,
+		Datasources: datasourceMaster,
+	}
+	query.Result = datasourceMaster
+
+	if err := hs.DatasourcePermissionsService.FilterDatasourceMasterBasedOnQueryPermissions(ctx, &query); err != nil {
+		if !errors.Is(err, bus.ErrHandlerNotFound) {
+			return nil, err
+		}
+		return datasourceMaster, nil
+	}
+
+	return query.Result, nil
+}
+
+func (hs *HTTPServer) AddDataSourceMaster(c *models.ReqContext) response.Response {
+	cmd := models.AddDataSourceMasterCommand{}
+	if err := web.Bind(c.Req, &cmd); err != nil {
+		return response.Error(http.StatusBadRequest, "bad request data", err)
+	}
+
+	// if len(cmd.CloudType) == 0 {
+	// 	return response.Error(http.StatusBadRequest, "bad request data", err)
+	// }
+
+	if err := hs.DataSourcesService.AddDataSourceMaster(c.Req.Context(), &cmd); err != nil {
+		return response.Error(500, "Failed to add datasource master", err)
+	}
+
+	ds := convertModelToDtosMaster(cmd.Result)
+	return response.JSON(200, util.DynMap{
+		"message":           "Datasource master added",
+		"id":                cmd.Result.Id,
+		"master-datasource": ds,
+	})
+}
+
+func convertModelToDtosMaster(ds *models.DataSourceMaster) dtos.DataSource {
+	dto := dtos.DataSource{
+		Id:       ds.Id,
+		JsonData: ds.JsonData,
+	}
+
+	return dto
+}
+
 //  ------Manoj.  custom changes for appcube plateform ------
