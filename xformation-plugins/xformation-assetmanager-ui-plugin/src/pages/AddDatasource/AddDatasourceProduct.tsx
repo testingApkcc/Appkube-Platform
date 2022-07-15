@@ -220,7 +220,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 											</div>
 										</div>
 									</div>
-									<div className="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-xs-12">
+									<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-xs-12">
 										<div className="back-btn">
 											<Link
 												to={`${PLUGIN_BASE_URL}/add-data-source?accountId=567373484&&cloudName=AWS`}
