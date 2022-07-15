@@ -96,7 +96,9 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
 
   onSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
+    let cloudtype: any = this.props.history.location.pathname;
+    cloudtype = cloudtype.split('/').pop();
+    this.props.dataSource['cloudType'] = cloudtype;
     await this.props.updateDataSource({ ...this.props.dataSource });
 
     this.testDataSource();

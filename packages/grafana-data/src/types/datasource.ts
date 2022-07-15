@@ -534,6 +534,7 @@ export interface DataSourceJsonData {
   profile?: string;
   manageAlerts?: boolean;
   alertmanagerUid?: string;
+  cloudType?: string;
 }
 
 /**
@@ -565,6 +566,7 @@ export interface DataSourceSettings<T extends DataSourceJsonData = DataSourceJso
   withCredentials: boolean;
   version?: number;
   accountID?: string;
+  cloudType?: string;
 }
 
 /**

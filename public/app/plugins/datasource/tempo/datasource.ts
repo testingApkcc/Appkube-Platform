@@ -45,6 +45,7 @@ export interface TempoJsonData extends DataSourceJsonData {
     hide?: boolean;
   };
   nodeGraph?: NodeGraphOptions;
+  cloudType?: string;
 }
 
 export interface TempoQuery extends DataQuery {
@@ -82,6 +83,7 @@ export class TempoDatasource extends DataSourceWithBackend<TempoQuery, TempoJson
   };
   nodeGraph?: NodeGraphOptions;
   uploadedJson?: string | ArrayBuffer | null = null;
+  type: any;
 
   constructor(private instanceSettings: DataSourceInstanceSettings<TempoJsonData>) {
     super(instanceSettings);

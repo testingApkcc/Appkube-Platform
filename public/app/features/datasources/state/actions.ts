@@ -190,7 +190,7 @@ export async function getDataSourceUsingUidOrId(uid: string | number): Promise<D
     // the url in that case. And react router has no way to unmount remount a
     // route
     if (response.ok && response.data.id.toString() === uid) {
-      window.location.href = locationUtil.assureBaseUrl(`/datasources/edit/${response.data.uid}`);
+      window.location.href = locationUtil.assureBaseUrl(`/datasources/edit/${response.data.uid}/${response.data.type}`);
       return {} as DataSourceSettings; // avoids flashing an error
     }
   }
@@ -217,7 +217,7 @@ export function addDataSource(plugin: DataSourcePluginMeta): ThunkResult<void> {
 
     const result = await getBackendSrv().post('/api/datasources', newInstance);
     await getDatasourceSrv().reload();
-    locationService.push(`/datasources/edit/${result.datasource.uid}`);
+    locationService.push(`/datasources/edit/${result.datasource.uid}/${result.datasource.type}`);
   };
 }
 

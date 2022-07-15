@@ -60,8 +60,8 @@ class NewDataSourcePage extends PureComponent<Props> {
             margin-bottom: 2px;
           }
         `}
-        getItemKey={(item) => item.id.toString()}
-        renderItem={(item) => (
+        getItemKey={(item: any) => item.id.toString()}
+        renderItem={(item: any) => (
           <DataSourceTypeCard
             plugin={item}
             onClick={() => this.onDataSourceTypeClicked(item)}
@@ -106,7 +106,6 @@ class NewDataSourcePage extends PureComponent<Props> {
 
   render() {
     const { navModel, isLoading, searchQuery, plugins } = this.props;
-
     return (
       <Page navModel={navModel}>
         <Page.Contents isLoading={isLoading}>
@@ -134,7 +133,7 @@ interface DataSourceTypeCardProps {
   onLearnMoreClick: (evt: React.SyntheticEvent<HTMLElement>) => void;
 }
 
-const DataSourceTypeCard: FC<DataSourceTypeCardProps> = (props) => {
+const DataSourceTypeCard: FC<DataSourceTypeCardProps> = (props: any) => {
   const { plugin, onLearnMoreClick } = props;
   const isPhantom = plugin.module === 'phantom';
   const onClick = !isPhantom && !plugin.unlicensed ? props.onClick : () => {};
