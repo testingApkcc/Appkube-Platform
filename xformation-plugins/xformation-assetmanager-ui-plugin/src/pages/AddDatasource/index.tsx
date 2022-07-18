@@ -445,12 +445,12 @@ export class AddDatasource extends React.Component<any, any> {
 
 	async componentDidMount() {
 		// await this.getAccountList();
-		const { dummyJson,environmentList } = this.state;
+		const { dummyJson, environmentList } = this.state;
 		let dataobj: any = {};
 		if (dummyJson && dummyJson.length > 0) {
 			for (let i = 0; i < dummyJson.length; i++) {
 				let data = dummyJson[i];
-				if(data.cloudType){
+				if (data.cloudType) {
 					dataobj[data.cloudType] = dataobj[data.cloudType] || [];
 					dataobj[data.cloudType].push(data.jsonData);
 					if (environmentList && environmentList.length > 0) {
@@ -511,7 +511,7 @@ export class AddDatasource extends React.Component<any, any> {
 			Object.keys(sourceList).map((source, indexedDB) => {
 				if (source == environment || environment === '') {
 					retData.push(
-						<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<>
 							<div className="services-heading">
 								<span>
 									<img src={images.awsLogo} alt="" />
@@ -544,14 +544,14 @@ export class AddDatasource extends React.Component<any, any> {
 										);
 									})}
 							</div>
-						</div>
+						</>
 					);
 				}
 			});
 		}
 		if (retData && retData.length == 0) {
 			retData.push(
-				<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div className="d-flex">
 					<span>Data source not found, select other account.</span>
 				</div>
 			);
@@ -652,7 +652,7 @@ export class AddDatasource extends React.Component<any, any> {
 								<h5>Account Details</h5>
 							</div> */}
 							<div className="source-boxs">
-								<div className="row">{this.displayDataSource()}</div>
+								{this.displayDataSource()}
 							</div>
 						</div>
 					</div>

@@ -5563,6 +5563,7 @@ a:hover {
   .source-inner-box {
   padding: 20px;
   display: flex;
+  flex-wrap: wrap;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -5577,9 +5578,10 @@ a:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 15px 10px;
   cursor: pointer;
-  width: 280px;
+  width: 275px;
   min-height: 120px;
-  margin-right: 25px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -6638,6 +6640,7 @@ a:hover {
   .source-boxs {
   display: flex;
   padding: 25px;
+  flex-wrap: wrap;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -6653,9 +6656,9 @@ a:hover {
   padding: 15px 10px;
   cursor: pointer;
   min-height: 120px;
-  margin-bottom: 30px;
-  width: 280px;
-  margin-right: 25px;
+  margin-bottom: 20px;
+  width: 275px;
+  margin-right: 20px;
 }
 .add-data-source-container
   .add-data-source-page-container
