@@ -55,6 +55,8 @@ func (hs *HTTPServer) GetDataSources(c *models.ReqContext) response.Response {
 			IsDefault: ds.IsDefault,
 			JsonData:  ds.JsonData,
 			ReadOnly:  ds.ReadOnly,
+			AccountId: ds.AccountId,
+			CloudType: ds.CloudType,
 		}
 
 		if plugin, exists := hs.pluginStore.Plugin(c.Req.Context(), ds.Type); exists {
