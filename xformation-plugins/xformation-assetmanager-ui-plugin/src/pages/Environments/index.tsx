@@ -146,7 +146,7 @@ export class Environments extends React.Component<any, any> {
 									<>
 										<div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(env, accountIndex) }}></div>
 										<div className="text-center open-create-menu">
-											<a href={`${PLUGIN_BASE_URL}/add-data-source?accountId=${account.accountId}&cloudName=${account.cloud.name}`}>Add New Product</a>
+											<a href={`${PLUGIN_BASE_URL}/add-data-source?accountId=${account.accountId}&cloudName=${account.cloud.name}`}>Add New Input</a>
 											<a>Add Cluster</a>
 											<a>Add Cloud Managed Services</a>
 											<a>Add Gateway Services</a>
