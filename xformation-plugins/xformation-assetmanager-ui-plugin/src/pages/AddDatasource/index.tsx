@@ -14,10 +14,10 @@ export class AddDatasource extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
-		// let serverName = CommonService.getParameterByName('cloudName', window.location.href);
+		let serverName = CommonService.getParameterByName('cloudName', window.location.href);
 		this.state = {
-			environment: '',
-			account: accountId,
+			environment: serverName ? serverName?.toLowerCase() : '',
+			account: accountId ? accountId : '',
 			sourceList: [],
 			environmentList: [],
 			dummyJson: [
@@ -511,7 +511,7 @@ export class AddDatasource extends React.Component<any, any> {
 			Object.keys(sourceList).map((source, indexedDB) => {
 				if (source == environment || environment === '') {
 					retData.push(
-						<>
+						<React.Fragment>
 							<div className="services-heading">
 								<span>
 									<img src={images.awsLogo} alt="" />
@@ -544,7 +544,7 @@ export class AddDatasource extends React.Component<any, any> {
 										);
 									})}
 							</div>
-						</>
+						</React.Fragment>
 					);
 				}
 			});
@@ -583,9 +583,13 @@ export class AddDatasource extends React.Component<any, any> {
 									<input type="text" className="input-group-text" placeholder="Search" />
 								</div>
 								<div className="back-btn">
-									<button type="button" className="btn btn-link">
+									<Link
+										to="/a/xformation-assetmanager-ui-plugin/environments"
+										type="button"
+										className="btn btn-link"
+									>
 										<i className="far fa-arrow-alt-circle-left" />Back
-									</button>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -605,7 +609,7 @@ export class AddDatasource extends React.Component<any, any> {
 							<div className="account-details-heading">
 								<h5>Account Details</h5>
 							</div>
-							<div className="environgment-details">
+							{environment == '' && account == '' && <div className="environgment-details">
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Environment</label>
 									<select
@@ -645,15 +649,14 @@ export class AddDatasource extends React.Component<any, any> {
 									</select>
 								</div>
 							</div>
+							}
 							{/* <div className="services-heading">
 								<span>
 									<img src={images.awsLogo} alt="" />
 								</span>
 								<h5>Account Details</h5>
 							</div> */}
-							<div className="source-boxs">
-								{this.displayDataSource()}
-							</div>
+							<div className="source-boxs">{this.displayDataSource()}</div>
 						</div>
 					</div>
 				</div>

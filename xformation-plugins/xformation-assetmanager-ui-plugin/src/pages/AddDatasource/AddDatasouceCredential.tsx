@@ -98,7 +98,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	};
 
 	render() {
-		const { addcredpopup, addCredForm, datasourceData, environmentList, environment, account } = this.state;
+		const { addcredpopup, addCredForm, datasourceData, environment, account } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGER" />
@@ -134,7 +134,8 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 							<div className="environgment-details">
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Environment</label>
-									<select
+									<input readOnly value={environment} />
+									{/* <select
 										className="input-group-text"
 										name="environment"
 										value={environment}
@@ -149,11 +150,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 													</option>
 												);
 											})}
-									</select>
+									</select> */}
 								</div>
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Account</label>
-									<select
+									<input readOnly value={account} />
+									{/* <select
 										className="input-group-text"
 										name="account"
 										value=""
@@ -165,7 +167,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 										<option key="2" value="237373414">
 											AWS 237373414
 										</option>
-									</select>
+									</select> */}
 								</div>
 							</div>
 							<div className="source-details">

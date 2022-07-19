@@ -6799,15 +6799,18 @@ a:hover {
     .data-source-section
     .source-content
     .source-boxs
+    .source-inner-box
     .source-box {
-    margin-bottom: 20px;
+    width: 270px;
     min-height: 117px;
+    margin-bottom: 20px;
   }
   .add-data-source-container
     .add-data-source-page-container
     .data-source-section
     .source-content
     .source-boxs
+    .source-inner-box
     .source-box
     .source-content {
     width: 75%;
@@ -6856,6 +6859,17 @@ a:hover {
     display: inline-block;
     width: 215px;
   }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .environgment-details
+    .description-content {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -6864,15 +6878,18 @@ a:hover {
     .data-source-section
     .source-content
     .source-boxs
+    .source-inner-box
     .source-box {
-    margin-bottom: 20px;
+    width: 248px;
     min-height: 117px;
+    margin-bottom: 20px;
   }
   .add-data-source-container
     .add-data-source-page-container
     .data-source-section
     .source-content
     .source-boxs
+    .source-inner-box
     .source-box
     .source-content {
     width: 75%;
@@ -6923,6 +6940,15 @@ a:hover {
     .form-control {
     display: inline-block;
     width: 80%;
+  }
+  .add-data-source-container
+    .add-data-source-page-container
+    .data-source-product
+    .source-content
+    .specific-input-inner-content
+    .source-boxs
+    .source-box {
+    width: 250px;
   }
 }
 

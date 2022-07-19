@@ -17,7 +17,8 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 			environment: '',
 			account: '',
 			sourceList: [],
-			environmentList: []
+			environmentList: [],
+			accountList: []
 		};
 		this.breadCrumbs = [
 			{
@@ -51,7 +52,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 	};
 
 	manipulateData = (data: any) => {
-		let { environmentList } = this.state;
+		let { environmentList, accountList } = this.state;
 		// let datasource: any = [];
 		let dataobj: any = {};
 		if (data && data.length > 0) {
@@ -65,11 +66,20 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 				} else {
 					environmentList.push(data[i].typeName);
 				}
+
+				if (accountList && accountList.length > 0) {
+					if (accountList.indexOf(data[i].accountID) === -1) {
+						accountList.push(data[i].accountID);
+					} else {
+						accountList.push(data[i].accountID);
+					}
+				}
 			}
 		}
 		this.setState({
 			sourceList: dataobj,
-			environmentList
+			environmentList,
+			accountList
 		});
 	};
 
@@ -104,7 +114,6 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 								{sourceList[source] &&
 									sourceList[source].map((accountdata: any, i: any) => {
 										return (
-
 											<div className="source-box">
 												<div className="images">
 													<img
@@ -148,7 +157,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 	};
 
 	render() {
-		const { environmentList, environment, account } = this.state;
+		const { environmentList, environment, account, accountList } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -194,15 +203,15 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 												<option key={-1} value={''}>
 													Select Account
 												</option>
-												<option key="1" value="567373484">
-													AWS 567373484
-												</option>
-												<option key="2" value="237373414">
-													AWS 237373414
-												</option>
-												<option key="3" value="562573484">
-													AWS 562573484
-												</option>
+												{accountList &&
+													accountList.length > 0 &&
+													accountList.map((val: any, index: any) => {
+														return (
+															<option key={index} value={val}>
+																{val}
+															</option>
+														);
+													})}
 											</select>
 										</div>
 									</div>
@@ -223,7 +232,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 									<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-xs-12">
 										<div className="back-btn">
 											<Link
-												to={`${PLUGIN_BASE_URL}/add-data-source?accountId=567373484&&cloudName=AWS`}
+												to={`${PLUGIN_BASE_URL}/add-data-source`}
 												type="button"
 												className="asset-blue-button"
 											>
