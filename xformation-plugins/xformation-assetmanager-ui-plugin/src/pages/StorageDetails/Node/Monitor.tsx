@@ -42,7 +42,7 @@ export class Monitor extends React.Component<any, any>{
         this.steps = [
             {
                 name: "Verify Inputs",
-                component: () => <VerifyInputs ref={this.verifyInputsRef} apiKey={props.apiKey}/>
+                component: () => <VerifyInputs ref={this.verifyInputsRef} apiKey={props.apiKey} {...props}/>
             },
             {
                 name: "Enable Dashboard",

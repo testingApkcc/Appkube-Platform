@@ -64,7 +64,7 @@ export class AmazonServices extends React.Component<any, any> {
       },
       {
         name: "Inputs",
-        component: <Inputs />,
+        component: <Inputs {...props}/>,
       },
     ];
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
