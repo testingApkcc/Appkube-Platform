@@ -65,13 +65,14 @@ export class VerifyInputs extends React.Component<any, any> {
   displayTable = () => {
     const retData: any = [];
     const { dashboardData } = this.state;
-    const { apiKey } = this.props;
+    const { apiKey, serviceData } = this.props;
     dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
       const { dashboards } = dataSource;
       const dashboardJSX: any = [];
       if (dashboards) {
+        const associatedCloudElementType = serviceData.associatedCloudElementType? serviceData.associatedCloudElementType.toLowerCase() : '';
         dashboards.forEach((dashboard: any, dashboardIndex: any) => {
-          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase()) {
+          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() && associatedCloudElementType === dashboard.associatedCloudElementType.toLowerCase()) {
             dashboardJSX.push(
               <tbody key={`${dataSourceIndex}-${dashboardIndex}-datasource`}>
                 <tr>
