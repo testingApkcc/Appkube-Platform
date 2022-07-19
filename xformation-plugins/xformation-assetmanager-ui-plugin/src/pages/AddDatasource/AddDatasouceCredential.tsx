@@ -55,18 +55,20 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	manipulateData = (data: any) => {
 		let { environmentList } = this.state;
 		let dataobj: any = {};
-		let accountId = CommonService.getParameterByName('accountId', window.location.href);
+		// let cloudName = CommonService.getParameterByName('sourceName', window.location.href);
+		let accountId = CommonService.getParameterByName('Id', window.location.href);
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
+				let datasource= data[i]
 				if (data[i].id == accountId) {
-					dataobj = data[i];
+					dataobj = data[i].jsonData;
 				}
 				if (environmentList && environmentList.length > 0) {
-					if (environmentList.indexOf(data[i].category) === -1) {
-						environmentList.push(data[i].category);
+					if (environmentList.indexOf(datasource.cloudType) === -1) {
+						environmentList.push(datasource.cloudType);
 					}
 				} else {
-					environmentList.push(data[i].category);
+					environmentList.push(datasource.cloudType);
 				}
 			}
 		}
@@ -107,12 +109,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 						<div className="source-head">
 							<h3>inputs</h3>
 							<div className="right-search-bar">
-								<div className="form-group search-control m-b-0">
+								{/* <div className="form-group search-control m-b-0">
 									<button className="btn btn-search">
 										<i className="fa fa-search" />
 									</button>
 									<input type="text" className="input-group-text" placeholder="Search" />
-								</div>
+								</div> */}
 								<div className="back-btn">
 									<Link
 										to={`${PLUGIN_BASE_URL}/add-data-source?accountId=${account}&&cloudName=${environment}`}

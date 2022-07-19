@@ -53,12 +53,12 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 
 	manipulateData = (data: any) => {
 		let { environmentList, accountList } = this.state;
-		// let datasource: any = [];
 		let dataobj: any = {};
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				dataobj[data[i].typeName] = dataobj[data[i].typeName] || [];
-				dataobj[data[i].typeName].push(data[i]);
+				dataobj[data[i].typeName] = dataobj[data[i].typeName] || {};
+				dataobj[data[i].typeName][data[i].accountID] = dataobj[data[i].typeName][data[i].accountID] || [];
+				dataobj[data[i].typeName][data[i].accountID].push(data[i]);
 				if (environmentList && environmentList.length > 0) {
 					if (environmentList.indexOf(data[i].typeName) === -1) {
 						environmentList.push(data[i].typeName);
@@ -73,6 +73,8 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 					} else {
 						accountList.push(data[i].accountID);
 					}
+				} else {
+					accountList.push(data[i].accountID);
 				}
 			}
 		}
@@ -85,7 +87,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 
 	displayDataSource = () => {
 		let retData: any = [];
-		const { sourceList, environment } = this.state;
+		const { sourceList, environment, account } = this.state;
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
@@ -102,43 +104,62 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 								<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<p className="account-input-heading">{source} Account specific Input sources</p>
 								</div>
-								<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div className="services-heading">
-										<p>
-											Account &#8282; <span>{source} (657907747545)</span>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div className="source-boxs">
-								{sourceList[source] &&
-									sourceList[source].map((accountdata: any, i: any) => {
+								{Object.keys(sourceList[source]).map((datasource, i) => {
+									if (account == '' || account == datasource) {
 										return (
-											<div className="source-box">
-												<div className="images">
-													<img
-														src={accountdata.typeLogoUrl}
-														height="50px"
-														width="50px"
-														alt=""
-													/>
+											<React.Fragment>
+												<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div className="services-heading">
+														<p>
+															Account &#8282;{' '}
+															<span>
+																{source} {datasource}
+															</span>
+														</p>
+													</div>
 												</div>
-												<div className="source-content">
-													<label>{accountdata.name}</label>
-													<span>{accountdata.typeName}</span>
-													<p>Pull AWS matrics with cloud API</p>
-													{/* {Object.keys(accountdata.jsonData).length > 0 && (
-															<span> | {accountdata.jsonData.authType}</span>
-														)} */}
+												<div className="source-boxs">
+													{sourceList[source][datasource] &&
+														sourceList[source][
+															datasource
+														].map((accountdata: any, i: any) => {
+															if (accountdata.accountID == account || account == '') {
+																return (
+																	<div className="source-box">
+																		<div className="images">
+																			<img
+																				src={accountdata.typeLogoUrl}
+																				height="50px"
+																				width="50px"
+																				alt=""
+																			/>
+																		</div>
+																		<div className="source-content">
+																			<label>{accountdata.name}</label>
+																			<span>{accountdata.typeName}</span>
+																			<p>Pull AWS matrics with cloud API</p>
+																		</div>
+																	</div>
+																);
+															} else {
+																return;
+															}
+														})}
 												</div>
-											</div>
+											</React.Fragment>
 										);
-									})}
+									} else {
+										return;
+									}
+								})}
 							</div>
 						</React.Fragment>
 					);
 				}
 			});
+		}
+		if (retData.length == 0) {
+			retData.push(<div>Selected Account Not found</div>);
 		}
 		return retData;
 	};
