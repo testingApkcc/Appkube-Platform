@@ -38,6 +38,7 @@ export class Applications extends React.Component<any, any> {
                 },
             ],
             accountId: '',
+            cloudName: '',
         };
         this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
@@ -45,8 +46,10 @@ export class Applications extends React.Component<any, any> {
     componentDidMount() {
         const queryPrm = new URLSearchParams(this.props.location.search);
         const accountId = queryPrm.get("accountId");
+        const cloudName = queryPrm.get("cloudName");
         this.setState({
-            accountId
+            accountId,
+            cloudName
         });
         // let departmentList = localStorage.getItem('applicationData');
         // let department: any;
@@ -224,12 +227,12 @@ export class Applications extends React.Component<any, any> {
     }
 
     render() {
-        const { product, displayJsonData } = this.state;
+        const { product, displayJsonData, accountId, cloudName } = this.state;
         return (
             <div className="department-wise-container">
                 {
                     product ?
-                        <ProductWiseServices product={product} displayJsonData={displayJsonData} type="department" /> :
+                        <ProductWiseServices product={product} displayJsonData={displayJsonData} type="department" cloudName={cloudName} accountId={accountId} /> :
                         <></>
                 }
             </div>
