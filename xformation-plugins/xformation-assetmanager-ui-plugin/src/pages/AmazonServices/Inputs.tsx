@@ -16,13 +16,13 @@ export class Inputs extends React.Component<any, any>{
     componentDidMount() {
         const queryPrm = new URLSearchParams(this.props.location.search);
         const accountId = queryPrm.get("accountId");
-        this.getServicesData(accountId);
+        this.getDataSourceInstances(accountId);
         this.setState({
             accountId
         });
     }
 
-    getServicesData = (accountId: any) => {
+    getDataSourceInstances = (accountId: any) => {
         try {
             RestService.getData(`${this.config.GET_ALL_DATASOURCE}/accountid/${accountId}`, null, null).then((response: any) => {
                 // this.setState({
