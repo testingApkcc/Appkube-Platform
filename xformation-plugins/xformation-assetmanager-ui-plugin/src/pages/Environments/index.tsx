@@ -361,7 +361,6 @@ export class Environments extends React.Component<any, any> {
 		for (let i = 0; i < accountList.length; i++) {
 			let row = accountList[i];
 			if (row.cloud.name.toLowerCase() === 'AWS'.toLowerCase()) {
-				// console.log("AWS data : ", row);
 				retData.push(
 					<tr key={i}>
 						<td>
@@ -382,7 +381,7 @@ export class Environments extends React.Component<any, any> {
 									<>
 										<div className="open-create-menu-close" onClick={(e) => { this.handleMenuToggle(i) }}></div>
 										<div className="text-center open-create-menu">
-											<a href={`${PLUGIN_BASE_URL}/add-data-source?accountId=${row.accountId}&&cloudName=${row.cloud.name}`}>Add New Product</a>
+											<a href={`${PLUGIN_BASE_URL}/add-data-source?accountId=${row.accountId}&&cloudName=${row.cloud.name}`}>Add New Inputs</a>
 											<a>Add Cluster</a>
 											<a>Add Cloud Managed Services</a>
 											<a>Add Gateway Services</a>

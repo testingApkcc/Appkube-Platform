@@ -229,9 +229,23 @@ export class CustomSideMenu extends PureComponent<any, any> {
         },
         {
           link: '/a/xformation-assetmanager-ui-plugin/add-data-source-product',
-          text: 'All Services',
+          text: 'All Inputs',
           childName: 'assets',
           isImplemented: true,
+          subMenu: [
+            {
+              link: '/a/xformation-assetmanager-ui-plugin/add-data-source',
+              text: 'All Inputs',
+              childName: 'assets',
+              isImplemented: true,
+            },
+            {
+              link: '/a/xformation-assetmanager-ui-plugin/add-datasource-credential',
+              text: 'All Inputs',
+              childName: 'assets',
+              isImplemented: true,
+            },
+          ],
         },
         // {
         //   link: '/a/xformation-assetmanager-ui-plugin/storage-details',

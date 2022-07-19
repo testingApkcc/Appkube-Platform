@@ -35,7 +35,8 @@ type Props = ConnectedProps<typeof connector>;
 
 class NewDataSourcePage extends PureComponent<Props> {
   componentDidMount() {
-    const url = `${config.GET_DATASOURCE_LIST}/key=cloudwatCH,TESTDATA,grafana-azure-monitor-datasource`;
+    // const url = `${config.GET_MASTER_DATASOURCE_LIST}/key=cloudwatCH,TESTDATA,grafana-azure-monitor-datasource`;
+    const url = `${config.GET_MASTER_DATASOURCE_LIST}`;
     this.props.loadDataSourcePlugins(url);
   }
 

@@ -25,6 +25,7 @@ export const config = {
   PREVIEW_DASHBOARDS_URL: `${previewUrl}/dashboard/preview`,
   DELETE_DASHBOARD: `${previewUrl}/dashboard/view-json`,
   GET_DATASOURCE_LIST: `${dataSourceURL}api/plugins/filter-datasource`,
+  GET_MASTER_DATASOURCE_LIST: `/api/datasources/master-datasources`,
 };
 
 export const appconfig = {
