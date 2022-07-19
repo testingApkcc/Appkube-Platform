@@ -1,12 +1,63 @@
 import * as React from 'react';
+import { RestService } from '../_service/RestService';
+import { configFun } from '../../config';
 
 export class Inputs extends React.Component<any, any>{
     CreateNewOURef: any;
+    config: any;
     constructor(props: any) {
         super(props);
         this.state = {
+            inputList: [],
         };
+        this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
     }
+
+    componentDidMount() {
+        const queryPrm = new URLSearchParams(this.props.location.search);
+        const accountId = queryPrm.get("accountId");
+        this.getServicesData(accountId);
+        this.setState({
+            accountId
+        });
+    }
+
+    getServicesData = (accountId: any) => {
+        try {
+            RestService.getData(`${this.config.GET_ALL_DATASOURCE}/accountid/${accountId}`, null, null).then((response: any) => {
+                // this.setState({
+                //     inputList: [{ "id": 37, "uid": "q0bJZTnnz", "orgId": 1, "name": "www", "type": "cloudwatch", "typeName": "CloudWatch", "typeLogoUrl": "public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png", "access": "proxy", "url": "", "password": "", "user": "", "database": "", "basicAuth": false, "isDefault": false, "jsonData": { "authType": "keys", "defaultRegion": "us-gov-east-1" }, "readOnly": false, "accountID": "9876", "tenantID": "78", "cloudType": "" }]
+                // });
+                this.setState({
+                    inputList: response,
+                });
+                console.log(this);
+            });
+        } catch (err) {
+            console.log('Loading Asstes failed. Error: ', err);
+        }
+    };
+
+    renderInputs = () => {
+        const { inputList } = this.state;
+        let retData = inputList.map((input: any) => {
+            return (
+                <tr key={`input-${input.id}`}>
+                    <td>{input.name}</td>
+                    <td>{input.typeName}</td>
+                    <td>{input.type}</td>
+                    <td>0</td>
+                    <td>Active</td>
+                </tr>
+            );
+        });
+        if (retData.length === 0) {
+            retData = <tr>
+                <td colSpan={5}>There are no inputs available</td>
+            </tr>;
+        }
+        return retData;
+    };
 
     render() {
         return (
@@ -47,20 +98,7 @@ export class Inputs extends React.Component<any, any>{
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>Grafana</td>
-                                <td>KPI</td>
-                                <td>5</td>
-                                <td>Active</td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>Grafana</td>
-                                <td>KPI</td>
-                                <td>5</td>
-                                <td>Active</td>
-                            </tr>
+                            {this.renderInputs()}
                         </tbody>
                     </table>
                 </div>
