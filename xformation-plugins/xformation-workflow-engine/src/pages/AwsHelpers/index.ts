@@ -17,6 +17,20 @@ export class AwsHelper {
     this.stepFunctions = new StepFunctions(this.credentials);
   }
 
+  gettingMachineDef = (machineArn: any, onDone: any, onError: any) => {
+    const params = {
+      stateMachineArn: machineArn,
+    };
+    this.stepFunctions.describeStateMachine(params, function (err: any, data: any) {
+      if (err) {
+        console.log(err, err.stack); // an error occurred
+        onError(err);
+      } else {
+        onDone(JSON.parse(data.definition).States);
+      }
+    });
+  };
+
   getUsecaseList = (onDone: any, onError: any) => {
     var params = {
       TableName: 'usecase_arn',

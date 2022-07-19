@@ -6,12 +6,14 @@ import 'simplebar/dist/simplebar.min.css';
 import { Link } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import { AwsHelper } from '../AwsHelpers';
 
 export class OverView extends React.Component<any, any> {
 	createStreamRef: any;
 	newStreamRef: any;
 	manageOutputRef: any;
 	allEventRef: any;
+	awsHelper: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -19,18 +21,41 @@ export class OverView extends React.Component<any, any> {
 			openCreateMenu: false,
 			streamTableData: [],
 			indexSets: [],
+			useCase: {}
 		};
+		this.awsHelper = new AwsHelper({ meta: props.meta });
+	}
 
+	componentDidMount() {
+		this.awsHelper.getUsecaseList((useCaseList: any) => {
+			useCaseList.forEach((useCase: any) => {
+				if (useCase.usecaseName.S === this.props.id) {
+					this.awsHelper.getExecutionHistory(
+						useCase.executionArn.S,
+						(items: any) => {
+							this.setState({
+								useCase: {
+									...useCase,
+									steps: items
+								}
+							});
+						},
+						(err: any) => { console.log(err) }
+					);
+				}
+			});
+		}, () => { });
 	}
 
 	render() {
+		const { useCase } = this.state;
 		return (
 			<>
 				<div className="project-wise-status">
 					<div className="project-wise-table">
 						<div className="table">
 							<div className="thead">
-								<div className="th">Usecase </div>
+								<div className="th">Usecase</div>
 								<div className="th">Requirements</div>
 								<div className="th">Mock Development</div>
 								<div className="th">Actual Development</div>
@@ -40,7 +65,7 @@ export class OverView extends React.Component<any, any> {
 							</div>
 							<div className="tbody">
 								<div className="tr">
-									<div className="td">Usecase 1</div>
+									<div className="td">{useCase.usecaseName ? useCase.usecaseName.S : ''}</div>
 									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
 									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
 									<div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>

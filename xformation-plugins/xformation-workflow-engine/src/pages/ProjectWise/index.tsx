@@ -9,6 +9,11 @@ import { Link } from 'react-router-dom';
 import 'simplebar/dist/simplebar.min.css';
 import { AwsHelper } from '../AwsHelpers';
 
+// const stepsData = {
+// 	'requirement': {},
+// 	'mock_development': {},
+// 	'actual_development': {},
+// };
 
 export class ProjectWise extends React.Component<any, any> {
 	breadCrumbs: any;
@@ -30,6 +35,8 @@ export class ProjectWise extends React.Component<any, any> {
 			useCaseList: [
 			],
 			searchKey: '',
+			machineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
+			steps: [],
 		};
 		this.breadCrumbs = [
 			{
@@ -41,16 +48,42 @@ export class ProjectWise extends React.Component<any, any> {
 				isCurrentPage: true
 			}
 		];
-		this.awsHelper = new AwsHelper({meta: props.meta});
+		this.awsHelper = new AwsHelper({ meta: props.meta });
 	}
 
 	componentDidMount() {
-		this.awsHelper.getUsecaseList((useCaseList: any)=>{
-			this.setState({
-				useCaseList,
+		this.awsHelper.getUsecaseList((useCaseList: any) => {
+			useCaseList.forEach((useCase: any) => {
+				this.awsHelper.getExecutionHistory(
+					useCase.executionArn.S,
+					(items: any) => {
+						const useCases = this.state.useCaseList;
+						useCases.push({
+							...useCase,
+							steps: items
+						});
+						this.setState({
+							useCaseList: useCases
+						});
+					},
+					(err: any) => { console.log(err) }
+				);
 			});
-		}, ()=>{});
+		}, () => { });
+		this.awsHelper.gettingMachineDef(
+			this.state.machineArn,
+			(states: any) => {
+				console.log(states);
+			},
+			(err: any) => {
+				console.log(err);
+			}
+		);
 	}
+
+	manipulateSteps = (steps: any) => {
+
+	};
 
 	searchUseCase = (e: any) => {
 		const { value, name } = e.target;
@@ -160,7 +193,7 @@ export class ProjectWise extends React.Component<any, any> {
 												<div className="tr" key={`usecase-${index}`}>
 													<div className="td">
 														<Link
-															to={`/a/xformation-workflow-engine/procurement-detail/${index}`}
+															to={`/a/xformation-workflow-engine/procurement-detail/${useCase.usecaseName.S}`}
 														>
 															{useCase.usecaseName.S}
 														</Link>

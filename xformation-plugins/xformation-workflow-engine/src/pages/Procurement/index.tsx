@@ -27,7 +27,7 @@ export class ProcurementDetail extends React.Component<any, any> {
       },
     ];
     this.stepper = [
-      { title: "Over View", key: 0, component: <OverView id={this.props.match.params.id} /> },
+      { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.props.match.params.id} /> },
       { title: "Workflow View", key: 1, component: <WorkFlowView id={this.props.match.params.id} /> },
       { title: "Asset View", key: 2, component: <AssetView id={this.props.match.params.id} /> }
     ]
