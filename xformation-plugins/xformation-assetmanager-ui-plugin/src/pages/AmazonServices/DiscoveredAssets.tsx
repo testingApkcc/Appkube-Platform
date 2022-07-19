@@ -734,7 +734,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       serviceScore: avgScore.toFixed(2),
       associatedProduct: service.associatedProduct,
       asscociatedEnv: service.associatedEnv,
-      associatedCloudElementType: service.associatedGlobalServiceLocation || service.associatedManagedCloudServiceLocation
+      associatedCloudElementType: service.associatedCloudElement
     });
     localStorage.setItem('added-services', JSON.stringify(serviceData));
   };

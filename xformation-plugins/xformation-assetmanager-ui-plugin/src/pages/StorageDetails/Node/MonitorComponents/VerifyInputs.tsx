@@ -1,15 +1,44 @@
 import * as React from 'react';
-// import { v4 } from 'uuid';
+import { RestService } from '../../../_service/RestService';
+import { configFun } from '../../../../config';
 
 export class VerifyInputs extends React.Component<any, any> {
+  config: any;
   constructor(props: any) {
     super(props);
     this.state = {
       inputName: this.props.inputName,
       configureInputs: false,
       dashboardData: [],
+      dataSourceTypes: [],
     };
+    this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
+
+  componentDidMount() {
+    const queryPrm = new URLSearchParams(this.props.location.search);
+    const accountId = queryPrm.get("accountId");
+    this.getDataSourceInstances(accountId);
+    this.setState({
+      accountId
+    });
+  }
+
+  getDataSourceInstances = (accountId: any) => {
+    try {
+      RestService.getData(`${this.config.GET_ALL_DATASOURCE}/accountid/${accountId}`, null, null).then((response: any) => {
+        // this.setState({
+        //     inputList: [{ "id": 37, "uid": "q0bJZTnnz", "orgId": 1, "name": "www", "type": "cloudwatch", "typeName": "CloudWatch", "typeLogoUrl": "public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png", "access": "proxy", "url": "", "password": "", "user": "", "database": "", "basicAuth": false, "isDefault": false, "jsonData": { "authType": "keys", "defaultRegion": "us-gov-east-1" }, "readOnly": false, "accountID": "9876", "tenantID": "78", "cloudType": "" }]
+        // });
+        const dataSourceTypes = response.map((res: any) => res.cloudType);
+        this.setState({
+          dataSourceTypes: dataSourceTypes,
+        });
+      });
+    } catch (err) {
+      console.log('Loading Asstes failed. Error: ', err);
+    }
+  };
 
   configureInputs = async () => {
     this.setState({
@@ -64,15 +93,15 @@ export class VerifyInputs extends React.Component<any, any> {
 
   displayTable = () => {
     const retData: any = [];
-    const { dashboardData } = this.state;
+    const { dashboardData, dataSourceTypes } = this.state;
     const { apiKey, serviceData } = this.props;
     dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
       const { dashboards } = dataSource;
       const dashboardJSX: any = [];
       if (dashboards) {
-        const associatedCloudElementType = serviceData.associatedCloudElementType? serviceData.associatedCloudElementType.toLowerCase() : '';
+        const associatedCloudElementType = serviceData.associatedCloudElementType ? serviceData.associatedCloudElementType.toLowerCase() : '';
         dashboards.forEach((dashboard: any, dashboardIndex: any) => {
-          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() && associatedCloudElementType === dashboard.associatedCloudElementType.toLowerCase()) {
+          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() && associatedCloudElementType === dashboard.associatedCloudElementType.toLowerCase() && dataSourceTypes.indexOf(dashboard.associatedDataSourceType) !== -1) {
             dashboardJSX.push(
               <tbody key={`${dataSourceIndex}-${dashboardIndex}-datasource`}>
                 <tr>

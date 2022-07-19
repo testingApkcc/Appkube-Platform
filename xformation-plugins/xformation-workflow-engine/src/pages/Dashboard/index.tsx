@@ -7,7 +7,7 @@ import resourcesUserImg3 from '../../img/dashboard/resources-user-img3.png';
 import resourcesUserImg4 from '../../img/dashboard/resources-user-img4.png';
 import resourcesUserImg5 from '../../img/dashboard/resources-user-img5.png';
 // import resourcesUserImg from '../../img/resources-user-img.png';
-// import DateFormat from './DateFormat';
+import DateFormat from './DateFormat';
 import headerIcon from '../../img/header-icon.png';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -21,11 +21,11 @@ export class Dashboard extends React.Component<any, any> {
 		super(props);
 		this.state = {
 			workflowStatistics: {
-				labels: [ 'Completed', 'Pending', 'In Progress', 'Un Assigned' ],
+				labels: ['Completed', 'Pending', 'In Progress', 'Un Assigned'],
 				datasets: [
 					{
-						data: [ 27, 38, 15, 20 ],
-						backgroundColor: [ '#71A7FE', '#FF4A55', '#FFD55E', '#70DEAE' ]
+						data: [27, 38, 15, 20],
+						backgroundColor: ['#71A7FE', '#FF4A55', '#FFD55E', '#70DEAE']
 					}
 				]
 			},
@@ -54,17 +54,17 @@ export class Dashboard extends React.Component<any, any> {
 			},
 			overViewData: {
 				total: null,
-				labels: [ 'Procurement', 'HRMS', 'EMS', 'Xformation', 'SPM', 'xfo' ],
+				labels: ['Procurement', 'HRMS', 'EMS', 'Xformation', 'SPM', 'xfo'],
 				datasets: [
 					{
-						data: [ 85, 90, 80, 40, 60, 75 ],
+						data: [85, 90, 80, 40, 60, 75],
 						lineTension: 0.2,
-						backgroundColor: [ '#71EAFF' ]
+						backgroundColor: ['#71EAFF']
 					},
 					{
-						data: [ 100, 95, 100, 70, 80, 100 ],
+						data: [100, 95, 100, 70, 80, 100],
 						lineTension: 0.2,
-						backgroundColor: [ '#71A7FE' ]
+						backgroundColor: ['#71A7FE']
 					}
 				]
 			},
@@ -560,14 +560,14 @@ export class Dashboard extends React.Component<any, any> {
 					</div>
 					<div className="dashbord-top-section">
 						<div className="row">
-							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<div className="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-xs-12">
 								<div className="heading">
 									<h3>{'Dashboard'}</h3>
 									<span>Lorem ipsum dolor sit amet</span>
 								</div>
 							</div>
-							<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-sx-12">
-								<div className="calender">{/* <DateFormat className="d-block" /> */}</div>
+							<div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-sx-12">
+								<div className="calender"><DateFormat /></div>
 							</div>
 						</div>
 					</div>
