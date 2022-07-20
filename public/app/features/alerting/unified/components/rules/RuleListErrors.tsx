@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { DataSourceInstanceSettings, GrafanaTheme2 } from '@grafana/data';
+import { GrafanaTheme2 } from '@grafana/data';
 import { Alert, Button, Tooltip, useStyles2 } from '@grafana/ui';
 import { SerializedError } from '@reduxjs/toolkit';
 import pluralize from 'pluralize';
@@ -18,16 +18,13 @@ export function RuleListErrors(): ReactElement {
 
   const errors = useMemo((): JSX.Element[] => {
     const [promRequestErrors, rulerRequestErrors] = [promRuleRequests, rulerRuleRequests].map((requests) =>
-      getRulesDataSources().reduce<Array<{ error: SerializedError; dataSource: DataSourceInstanceSettings }>>(
-        (result, dataSource) => {
-          const error = requests[dataSource.name]?.error;
-          if (requests[dataSource.name] && error && !isRulerNotSupportedResponse(requests[dataSource.name])) {
-            return [...result, { dataSource, error }];
-          }
-          return result;
-        },
-        []
-      )
+      getRulesDataSources().reduce<Array<{ error: SerializedError; dataSource: any }>>((result, dataSource) => {
+        const error = requests[dataSource.name]?.error;
+        if (requests[dataSource.name] && error && !isRulerNotSupportedResponse(requests[dataSource.name])) {
+          return [...result, { dataSource, error }];
+        }
+        return result;
+      }, [])
     );
     const grafanaPromError = promRuleRequests[GRAFANA_RULES_SOURCE_NAME]?.error;
     const grafanaRulerError = rulerRuleRequests[GRAFANA_RULES_SOURCE_NAME]?.error;
@@ -44,8 +41,11 @@ export function RuleListErrors(): ReactElement {
     promRequestErrors.forEach(({ dataSource, error }) =>
       result.push(
         <>
-          Failed to load rules state from <a href={`datasources/edit/${dataSource.uid}`}>{dataSource.name}</a>:{' '}
-          {error.message || 'Unknown error.'}
+          Failed to load rules state from
+          <a href={`datasources/edit/${dataSource.uid}/${dataSource.cloudType}/${dataSource.inputType}`}>
+            {dataSource.name}
+          </a>
+          :{error.message || 'Unknown error.'}
         </>
       )
     );
@@ -53,8 +53,11 @@ export function RuleListErrors(): ReactElement {
     rulerRequestErrors.forEach(({ dataSource, error }) =>
       result.push(
         <>
-          Failed to load rules config from <a href={`datasources/edit/${dataSource.uid}`}>{dataSource.name}</a>:{' '}
-          {error.message || 'Unknown error.'}
+          Failed to load rules config from
+          <a href={`datasources/edit/${dataSource.uid}/${dataSource.cloudType}/${dataSource.inputType}`}>
+            {dataSource.name}
+          </a>
+          :{error.message || 'Unknown error.'}
         </>
       )
     );

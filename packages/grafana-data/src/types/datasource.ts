@@ -567,6 +567,7 @@ export interface DataSourceSettings<T extends DataSourceJsonData = DataSourceJso
   version?: number;
   accountID?: string;
   cloudType?: string;
+  inputType?: string;
 }
 
 /**

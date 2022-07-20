@@ -190,7 +190,9 @@ export async function getDataSourceUsingUidOrId(uid: string | number): Promise<D
     // the url in that case. And react router has no way to unmount remount a
     // route
     if (response.ok && response.data.id.toString() === uid) {
-      window.location.href = locationUtil.assureBaseUrl(`/datasources/edit/${response.data.uid}/${response.data.type}`);
+      window.location.href = locationUtil.assureBaseUrl(`
+        /datasources/edit/${response.data.uid}/${response.data.cloudType}/${response.data.inputType}
+      `);
       return {} as DataSourceSettings; // avoids flashing an error
     }
   }
@@ -198,7 +200,7 @@ export async function getDataSourceUsingUidOrId(uid: string | number): Promise<D
   throw Error('Could not find data source');
 }
 
-export function addDataSource(plugin: DataSourcePluginMeta): ThunkResult<void> {
+export function addDataSource(plugin: any): ThunkResult<void> {
   return async (dispatch, getStore) => {
     await dispatch(loadDataSources());
 
@@ -209,6 +211,8 @@ export function addDataSource(plugin: DataSourcePluginMeta): ThunkResult<void> {
       type: plugin.id,
       access: 'proxy',
       isDefault: dataSources.length === 0,
+      cloudType: plugin.cloudType,
+      inputType: plugin.name,
     };
 
     if (nameExits(dataSources, newInstance.name)) {
@@ -217,7 +221,7 @@ export function addDataSource(plugin: DataSourcePluginMeta): ThunkResult<void> {
 
     const result = await getBackendSrv().post('/api/datasources', newInstance);
     await getDatasourceSrv().reload();
-    locationService.push(`/datasources/edit/${result.datasource.uid}/${result.datasource.type}`);
+    locationService.push(`/datasources/edit/${result.datasource.uid}/${plugin.cloudType}/${plugin.name}`);
   };
 }
 
@@ -230,10 +234,12 @@ export function loadDataSourcePlugins(url: string): ThunkResult<void> {
     if (dummyData && dummyData.length > 0) {
       for (let i = 0; i < dummyData.length; i++) {
         let data = dummyData[i];
-        plugins.push(data.jsonData);
+        plugins.push({
+          ...data.jsonData,
+          cloudType: data.cloudType,
+        });
       }
     }
-    console.log(plugins);
     const categories = buildCategories(plugins);
     dispatch(dataSourcePluginsLoaded({ plugins, categories }));
   };
