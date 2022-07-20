@@ -59,7 +59,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		let accountId = CommonService.getParameterByName('Id', window.location.href);
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				let datasource= data[i]
+				let datasource = data[i]
 				if (data[i].id == accountId) {
 					dataobj = data[i].jsonData;
 				}
@@ -136,7 +136,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 							<div className="environgment-details">
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Environment</label>
-									<input readOnly value={environment} />
+									<input className='input-group-text' readOnly value={environment} />
 									{/* <select
 										className="input-group-text"
 										name="environment"
@@ -156,7 +156,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								</div>
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Account</label>
-									<input readOnly value={account} />
+									<input className='input-group-text' readOnly value={account} />
 									{/* <select
 										className="input-group-text"
 										name="account"
