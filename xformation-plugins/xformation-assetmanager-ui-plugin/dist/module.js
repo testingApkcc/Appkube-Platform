@@ -24848,18 +24848,12 @@ object-assign
                   // This is not ideal, however unfortunately currently there is no supported way for updating the plugin state.
 
                   _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__.locationService.reload();
-                  return [
-                    3, /*break*/
-                    3,
-                  ];
+                  return [3 /*break*/, 3];
 
                 case 2:
                   e_1 = _a.sent();
                   console.error('Error while updating the plugin', e_1);
-                  return [
-                    3, /*break*/
-                    3,
-                  ];
+                  return [3 /*break*/, 3];
 
                 case 3:
                   return [
@@ -25220,11 +25214,7 @@ object-assign
                       _a.trys.push([0, 3, , 4]);
 
                       usr = localStorage.getItem('userInfo');
-                      if (!(usr !== null))
-                        return [
-                          3, /*break*/
-                          2,
-                        ];
+                      if (!(usr !== null)) return [3 /*break*/, 2];
                       user = JSON.parse(usr);
                       return [
                         4,
@@ -25246,18 +25236,12 @@ object-assign
                       _a.label = 2;
 
                     case 2:
-                      return [
-                        3, /*break*/
-                        4,
-                      ];
+                      return [3 /*break*/, 4];
 
                     case 3:
                       err_1 = _a.sent();
                       console.log('Error: ', err_1);
-                      return [
-                        3, /*break*/
-                        4,
-                      ];
+                      return [3 /*break*/, 4];
 
                     case 4:
                       return [
@@ -27942,18 +27926,12 @@ object-assign
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading accounts failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -29515,18 +29493,12 @@ object-assign
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading accounts failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -31849,18 +31821,12 @@ object-assign
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading Asstes failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -35618,18 +35584,12 @@ object-assign
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading accounts failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -37157,18 +37117,12 @@ and limitations under the License.
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading accounts failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -37566,18 +37520,12 @@ and limitations under the License.
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading accounts failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -40282,18 +40230,12 @@ and limitations under the License.
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading Asstes failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -40882,18 +40824,12 @@ and limitations under the License.
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading Asstes failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -42333,18 +42269,12 @@ and limitations under the License.
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading Asstes failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
@@ -42899,18 +42829,12 @@ and limitations under the License.
                       case 1:
                         _a.sent();
 
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 2:
                         err_1 = _a.sent();
                         console.log('Loading Asstes failed. Error: ', err_1);
-                        return [
-                          3, /*break*/
-                          3,
-                        ];
+                        return [3 /*break*/, 3];
 
                       case 3:
                         return [
