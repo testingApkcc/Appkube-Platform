@@ -55,6 +55,8 @@ export class Node extends React.Component<any, any> {
       dashboardData: [],
       viewJson: {},
       collapseInfo: false,
+      dataSourceInstances: [],
+      cloudDashboards: [],
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
@@ -77,7 +79,8 @@ export class Node extends React.Component<any, any> {
         cloudName: cloudName ? cloudName.toLowerCase() : ""
       });
     }
-    this.getCategories();
+    this.getCatalogues();
+    this.getDataSourceInstances(accountId);
     this.getAddedDashboards();
   }
 
@@ -94,15 +97,21 @@ export class Node extends React.Component<any, any> {
     return retData;
   };
 
-  getCategories = () => {
+  getCatalogues = () => {
     try {
       RestService.getData(`${this.config.SEARCH_CONFIG_DASHBOARD}`, null, null).then(
         (response: any) => {
-          const { cloudDashBoards, dataSources } = response.details.ops;
-          const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
+          const { cloudDashBoards } = response.details.ops;
+          // const dashboardData = this.manipulateCatalogueData(dataSources, cloudDashBoards);
           this.setState({
-            dashboardData,
+            cloudDashBoards,
           });
+          if(this.state.dataSourceInstances.length > 0){
+            const dashboardData = this.manipulateCatalogueData(this.state.dataSourceInstances, cloudDashBoards);
+            this.setState({
+              dashboardData,
+            });
+          }
         }, (error: any) => {
           console.log("Performance. Search input config failed. Error: ", error);
         });
@@ -111,12 +120,30 @@ export class Node extends React.Component<any, any> {
     }
   }
 
+  getDataSourceInstances = (accountId: any) => {
+    try {
+      RestService.getData(`${this.config.GET_ALL_DATASOURCE}/accountid/${accountId}`, null, null).then((response: any) => {
+        this.setState({
+          dataSourceInstances: response,
+        });
+        if(this.state.cloudDashBoards.length > 0){
+          const dashboardData = this.manipulateCatalogueData(response, this.state.cloudDashBoards);
+          this.setState({
+            dashboardData,
+          });
+        }
+      });
+    } catch (err) {
+      console.log('Loading Asstes failed. Error: ', err);
+    }
+  };
+
   manipulateCatalogueData = (dataSources: any, dashboards: any) => {
     const { cloudName } = this.state;
     const retData: any = [];
     dataSources.forEach((dataSource: any) => {
-      const name = dataSource.name;
-      if (cloudName === dataSource.associatedCloud.toLowerCase()) {
+      const name = dataSource.inputType;
+      if (cloudName === dataSource.cloudType.toLowerCase()) {
         dashboards.forEach((dashboard: any) => {
           if (name === dashboard.associatedDataSourceType) {
             dataSource.isDashboardAdded = true;

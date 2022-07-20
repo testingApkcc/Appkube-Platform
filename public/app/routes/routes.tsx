@@ -213,7 +213,7 @@ export function getAppRoutes(): RouteDescriptor[] {
       ),
     },
     {
-      path: '/datasources/edit/:uid/:type',
+      path: '/datasources/edit/:uid/:cloudType/:inputType',
       component: SafeDynamicImport(
         () =>
           import(

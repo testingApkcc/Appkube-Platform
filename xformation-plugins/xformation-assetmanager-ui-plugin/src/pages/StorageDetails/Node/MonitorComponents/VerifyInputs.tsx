@@ -96,7 +96,7 @@ export class VerifyInputs extends React.Component<any, any> {
   };
 
   displayTable = () => {
-    const retData: any = [];
+    let retData: any = [];
     const { dashboardData, cloudName } = this.state;
     const { apiKey, serviceData } = this.props;
     dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
@@ -152,6 +152,15 @@ export class VerifyInputs extends React.Component<any, any> {
         </table>
       );
     });
+    if(retData.length === 0){
+      retData = <table className="table-tbody first-table" width="100%">
+          <tr>
+            <td style={{ paddingLeft: "0", paddingRight: "0", textAlign: "center" }}>
+              There is no dashboard available.
+            </td>
+          </tr>
+        </table>
+    }
     return retData;
   };
 

@@ -84,6 +84,7 @@ export class TempoDatasource extends DataSourceWithBackend<TempoQuery, TempoJson
   nodeGraph?: NodeGraphOptions;
   uploadedJson?: string | ArrayBuffer | null = null;
   type: any;
+  cloudType?: any;
 
   constructor(private instanceSettings: DataSourceInstanceSettings<TempoJsonData>) {
     super(instanceSettings);

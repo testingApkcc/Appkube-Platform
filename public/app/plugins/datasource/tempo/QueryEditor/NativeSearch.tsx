@@ -18,14 +18,14 @@ import { Node } from 'slate';
 import { css } from '@emotion/css';
 import { GrafanaTheme2, isValidGoDuration, SelectableValue } from '@grafana/data';
 import TempoLanguageProvider from '../language_provider';
-import { TempoDatasource, TempoQuery } from '../datasource';
+import { TempoQuery } from '../datasource';
 import { debounce } from 'lodash';
 import { dispatch } from 'app/store/store';
 import { notifyApp } from 'app/core/actions';
 import { createErrorNotification } from 'app/core/copy/appNotification';
 
 interface Props {
-  datasource: TempoDatasource;
+  datasource: any;
   query: TempoQuery;
   onChange: (value: TempoQuery) => void;
   onBlur?: () => void;
@@ -288,7 +288,9 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
         <Alert title="Unable to connect to Tempo search" severity="info" className={styles.alert}>
           Please ensure that Tempo is configured with search enabled. If you would like to hide this tab, you can
           configure it in the
-          <a href={`/datasources/edit/${datasource.uid}/${datasource.type}`}>datasource settings</a>
+          <a href={`/datasources/edit/${datasource.uid}/${datasource.cloudType}/${datasource.inputType}`}>
+            datasource settings
+          </a>
         </Alert>
       ) : null}
     </>
