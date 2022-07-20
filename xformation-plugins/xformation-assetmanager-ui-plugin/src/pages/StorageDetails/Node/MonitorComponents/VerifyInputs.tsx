@@ -11,6 +11,8 @@ export class VerifyInputs extends React.Component<any, any> {
       configureInputs: false,
       dashboardData: [],
       dataSourceTypes: [],
+      accountId: "",
+      cloudName: "",
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
@@ -18,9 +20,11 @@ export class VerifyInputs extends React.Component<any, any> {
   componentDidMount() {
     const queryPrm = new URLSearchParams(this.props.location.search);
     const accountId = queryPrm.get("accountId");
-    this.getDataSourceInstances(accountId);
+    const cloudName = queryPrm.get("cloudName");
+    // this.getDataSourceInstances(accountId);
     this.setState({
-      accountId
+      accountId,
+      cloudName: cloudName ? cloudName.toLowerCase() : "",
     });
   }
 
@@ -93,7 +97,7 @@ export class VerifyInputs extends React.Component<any, any> {
 
   displayTable = () => {
     const retData: any = [];
-    const { dashboardData, dataSourceTypes } = this.state;
+    const { dashboardData, cloudName } = this.state;
     const { apiKey, serviceData } = this.props;
     dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
       const { dashboards } = dataSource;
@@ -101,7 +105,7 @@ export class VerifyInputs extends React.Component<any, any> {
       if (dashboards) {
         const associatedCloudElementType = serviceData.associatedCloudElementType ? serviceData.associatedCloudElementType.toLowerCase() : '';
         dashboards.forEach((dashboard: any, dashboardIndex: any) => {
-          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() && associatedCloudElementType === dashboard.associatedCloudElementType.toLowerCase() && dataSourceTypes.indexOf(dashboard.associatedDataSourceType) !== -1) {
+          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() && associatedCloudElementType === dashboard.associatedCloudElementType.toLowerCase() && cloudName === dashboard.associatedCloud.toLowerCase()) {
             dashboardJSX.push(
               <tbody key={`${dataSourceIndex}-${dashboardIndex}-datasource`}>
                 <tr>

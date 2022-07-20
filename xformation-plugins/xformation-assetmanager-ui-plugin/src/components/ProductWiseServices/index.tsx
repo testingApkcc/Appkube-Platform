@@ -125,6 +125,8 @@ export class ProductWiseServices extends React.Component<any, any> {
                         product={val}
                         hostingType={hostingType}
                         filters={filters}
+                        accountId={this.props.accountId}
+                        cloudName={this.props.cloudName}
                       />
                     }
                   </div>

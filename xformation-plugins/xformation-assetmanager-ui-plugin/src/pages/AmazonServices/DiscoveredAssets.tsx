@@ -34,6 +34,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       servicesLength: {},
       activeNode: '',
       accountId: '',
+      cloudName: '',
       filterData: [{
         name: 'Product Enclave',
         key: 'nodes',
@@ -63,9 +64,11 @@ export class DiscoveredAssets extends React.Component<any, any>{
   componentDidMount() {
     const queryPrm = new URLSearchParams(this.props.location.search);
     const accountId = queryPrm.get("accountId");
+    const cloudName = queryPrm.get("cloudName");
     this.getServicesData(accountId);
     this.setState({
-      accountId
+      accountId,
+      cloudName
     });
   }
 
@@ -668,12 +671,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
 
   renderDirectServices = (list: any) => {
     let retData = [];
-    const { accountId } = this.state;
+    const { accountId, cloudName } = this.state;
     if (list) {
       retData = list.map((service: any) => {
         return (
           <div className="tbody">
-            <div className="service-name" style={{ paddingLeft: '60px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}`}>{service.name} {service.associatedGlobalServiceLocation ? `(${service.associatedGlobalServiceLocation})` : ''}</Link></div>
+            <div className="service-name" style={{ paddingLeft: '60px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`}>{service.name} {service.associatedGlobalServiceLocation ? `(${service.associatedGlobalServiceLocation})` : ''}</Link></div>
             <div className="performance">
               <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
                 <i className="fa fa-check"></i>
