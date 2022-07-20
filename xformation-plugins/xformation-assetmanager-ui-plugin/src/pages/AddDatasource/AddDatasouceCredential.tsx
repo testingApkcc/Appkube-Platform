@@ -22,7 +22,8 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			datasourceData: {},
 			environmentList: [],
 			environment: serverName,
-			account: accountId
+			account: accountId,
+			credentialList: []
 		};
 		this.breadCrumbs = [
 			{
@@ -39,6 +40,18 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 
 	async componentDidMount() {
 		await this.getAccountList();
+		RestService.getData(
+			`http://34.199.12.114:5057/api/credential/${this.state.account}`,
+			null,
+			null
+		).then((response: any) => {
+			let creadList = JSON.parse(atob(response.secureCreds));
+			if (creadList.credentials && creadList.credentials.length > 0) {
+				this.setState({
+					credentialList: creadList.credentials
+				});
+			}
+		});
 	}
 
 	getAccountList = async () => {
@@ -59,7 +72,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		let accountId = CommonService.getParameterByName('Id', window.location.href);
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				let datasource = data[i]
+				let datasource = data[i];
 				if (data[i].id == accountId) {
 					dataobj = data[i].jsonData;
 				}
@@ -99,8 +112,19 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		});
 	};
 
+	setCred = (e: any) => {
+		const { credentialList } = this.state;
+		const { checked } = e.target;
+		if (credentialList && credentialList.legth > 0) {
+			credentialList['isChecked'] = checked;
+		}
+		this.setState({
+			credentialList
+		})
+	};
+
 	render() {
-		const { addcredpopup, addCredForm, datasourceData, environment, account } = this.state;
+		const { addcredpopup, addCredForm, datasourceData, environment, account, credentialList } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGER" />
@@ -136,7 +160,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 							<div className="environgment-details">
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Environment</label>
-									<input className='input-group-text' readOnly value={environment} />
+									<input className="input-group-text" readOnly value={environment} />
 									{/* <select
 										className="input-group-text"
 										name="environment"
@@ -156,7 +180,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								</div>
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Account</label>
-									<input className='input-group-text' readOnly value={account} />
+									<input className="input-group-text" readOnly value={account} />
 									{/* <select
 										className="input-group-text"
 										name="account"
@@ -276,10 +300,16 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 									Showing Credentials for Account &#8758; <span>AWS (657907747545)</span>
 								</p>
 							</div>
-							<div className="form-group credentials-text">
-								<input type="checkbox" />
-								<span>Credentials</span>
-							</div>
+							{credentialList &&
+								credentialList.length > 0 &&
+								credentialList.map((cred: any, i: any) => {
+									return (
+										<div className="form-group credentials-text">
+											<input type="checkbox" onChange={this.setCred} />
+											<span>{cred.accessKey}</span>
+										</div>
+									);
+								})}
 						</div>
 						<div className="modal-submit-button">
 							<button className="asset-blue-button" onClick={this.addDataSourceCred}>

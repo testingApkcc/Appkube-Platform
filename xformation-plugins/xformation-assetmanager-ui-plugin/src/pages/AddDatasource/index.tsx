@@ -47,8 +47,6 @@ export class AddDatasource extends React.Component<any, any> {
 					if (accountList && accountList.length > 0) {
 						if (accountList.indexOf(response[i].accountID) === -1) {
 							accountList.push(response[i].accountID);
-						} else {
-							accountList.push(response[i].accountID);
 						}
 					} else {
 						accountList.push(response[i].accountID);
@@ -104,7 +102,6 @@ export class AddDatasource extends React.Component<any, any> {
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
-				console.log(sourceList[source]);
 				if ((source == environment || environment === '') && !sourceList[source]['isHide']) {
 					retData.push(
 						<React.Fragment>
@@ -211,6 +208,8 @@ export class AddDatasource extends React.Component<any, any> {
 				}
 				if (count == sourceList[source].length) {
 					sourceList[source]['isHide'] = true;
+				} else {
+					sourceList[source]['isHide'] = false;
 				}
 			}
 		})

@@ -18,7 +18,8 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 			account: '',
 			sourceList: [],
 			environmentList: [],
-			accountList: []
+			accountList: [],
+			searchkey: ''
 		};
 		this.breadCrumbs = [
 			{
@@ -70,8 +71,6 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 				if (accountList && accountList.length > 0) {
 					if (accountList.indexOf(data[i].accountID) === -1) {
 						accountList.push(data[i].accountID);
-					} else {
-						accountList.push(data[i].accountID);
 					}
 				} else {
 					accountList.push(data[i].accountID);
@@ -91,7 +90,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
-				if (source == environment || environment === '') {
+				if ((source == environment || environment === '') && !sourceList[source]['isHide']) {
 					retData.push(
 						<React.Fragment>
 							<div className="account-details-heading">
@@ -105,7 +104,10 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 									<p className="account-input-heading">{source} Account specific Input sources</p>
 								</div>
 								{Object.keys(sourceList[source]).map((datasource, i) => {
-									if (account == '' || account == datasource) {
+									if (
+										(account == '' || account == datasource) &&
+										!sourceList[source][datasource]['isHide']
+									) {
 										return (
 											<React.Fragment>
 												<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -123,7 +125,10 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 														sourceList[source][
 															datasource
 														].map((accountdata: any, i: any) => {
-															if (accountdata.accountID == account || account == '') {
+															if (
+																(accountdata.accountID == account || account == '') &&
+																!accountdata.isHide
+															) {
 																return (
 																	<div className="source-box">
 																		<div className="images">
@@ -177,8 +182,46 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 		});
 	};
 
+	handleSearchChange = (e: any) => {
+		const { sourceList } = this.state;
+		const { name, value } = e.target;
+		this.setState({
+			[name]: value
+		});
+		Object.keys(sourceList).map((source, indexedDB) => {
+			{
+				sourceList[source] &&
+					Object.keys(sourceList[source]).map((datasource, i) => {
+						sourceList[source][datasource].map((accountdata: any, i: any) => {
+							if (accountdata.name.toLowerCase().indexOf(value) === -1) {
+								sourceList[source][datasource][i].isHide = true;
+							} else {
+								sourceList[source][datasource][i].isHide = false;
+							}
+						});
+						let count = 0;
+						for (let j = 0; j < sourceList[source][datasource].length; j++) {
+							if (sourceList[source][datasource][j].isHide == true) {
+								count++;
+							}
+						}
+						if (count == sourceList[source][datasource].length) {
+							sourceList[source][datasource]['isHide'] = true;
+							// sourceList[source]['isHide'] = true;
+						} else {
+							sourceList[source][datasource]['isHide'] = false;
+							// sourceList[source]['isHide'] = false;
+						}
+					});
+			}
+		});
+		this.setState({
+			sourceList
+		});
+	};
+
 	render() {
-		const { environmentList, environment, account, accountList } = this.state;
+		const { environmentList, environment, account, accountList, searchkey } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -245,6 +288,9 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 														type="text"
 														className="input-group-text"
 														placeholder="Search"
+														name="searchkey"
+														value={searchkey}
+														onChange={this.handleSearchChange}
 													/>
 												</div>
 											</div>
