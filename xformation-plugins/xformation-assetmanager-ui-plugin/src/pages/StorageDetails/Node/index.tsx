@@ -14,6 +14,7 @@ export class Node extends React.Component<any, any> {
       currentStep: 0,
       accountId: '',
       serviceData: props.serviceData,
+      cloudName: '',
       steps: [
         {
           name: "Performance",
@@ -69,9 +70,11 @@ export class Node extends React.Component<any, any> {
 
   componentDidMount() {
     const accountId = CommonService.getParameterByName("accountId", window.location.href);
+    const cloudName = CommonService.getParameterByName("cloudName", window.location.href);
     if (accountId) {
       this.setState({
-        accountId
+        accountId,
+        cloudName: cloudName ? cloudName.toLowerCase() : ""
       });
     }
     this.getCategories();
@@ -109,19 +112,24 @@ export class Node extends React.Component<any, any> {
   }
 
   manipulateCatalogueData = (dataSources: any, dashboards: any) => {
+    const { cloudName } = this.state;
+    const retData = [];
     dataSources.forEach((dataSource: any) => {
       const name = dataSource.name;
-      dashboards.forEach((dashboard: any) => {
-        if (name === dashboard.associatedDataSourceType) {
-          dataSource.isDashboardAdded = true;
-          dataSource.dashboards = dataSource.dashboards || [];
-          dataSource.dashboards.push(dashboard);
-        }
-      });
+      if (cloudName === dataSource.associatedCloud.toLowerCase()) {
+        dashboards.forEach((dashboard: any) => {
+          if (name === dashboard.associatedDataSourceType) {
+            dataSource.isDashboardAdded = true;
+            dataSource.dashboards = dataSource.dashboards || [];
+            dataSource.dashboards.push(dashboard);
+          }
+        });
+        retData.push(dataSource);
+      }
     });
     // const retData = dataSources.filter((source: any) => source.isDashboardAdded);
     // return retData;
-    return dataSources
+    return retData
   };
 
   getAddedDashboards = () => {

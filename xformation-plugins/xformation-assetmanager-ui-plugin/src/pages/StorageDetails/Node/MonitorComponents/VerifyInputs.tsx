@@ -24,7 +24,7 @@ export class VerifyInputs extends React.Component<any, any> {
     // this.getDataSourceInstances(accountId);
     this.setState({
       accountId,
-      cloudName
+      cloudName: cloudName ? cloudName.toLowerCase() : "",
     });
   }
 
@@ -105,7 +105,7 @@ export class VerifyInputs extends React.Component<any, any> {
       if (dashboards) {
         const associatedCloudElementType = serviceData.associatedCloudElementType ? serviceData.associatedCloudElementType.toLowerCase() : '';
         dashboards.forEach((dashboard: any, dashboardIndex: any) => {
-          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() && associatedCloudElementType === dashboard.associatedCloudElementType.toLowerCase() && cloudName === dashboard.associatedCloud) {
+          if (dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() && associatedCloudElementType === dashboard.associatedCloudElementType.toLowerCase() && cloudName === dashboard.associatedCloud.toLowerCase()) {
             dashboardJSX.push(
               <tbody key={`${dataSourceIndex}-${dashboardIndex}-datasource`}>
                 <tr>
