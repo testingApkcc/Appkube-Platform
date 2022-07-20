@@ -21,6 +21,8 @@ export class AddDatasource extends React.Component<any, any> {
 			sourceList: [],
 			environmentList: [],
 			accountList: [],
+			accountFromUrl: accountId ? accountId : '',
+			environmentFromUrl: serverName ? serverName?.toLowerCase() : '',
 		};
 		this.breadCrumbs = [
 			{
@@ -101,7 +103,7 @@ export class AddDatasource extends React.Component<any, any> {
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
-				if (source == environment || environment === '' ) {
+				if (source == environment || environment === '') {
 					retData.push(
 						<React.Fragment>
 							<div className="services-heading">
@@ -137,21 +139,21 @@ export class AddDatasource extends React.Component<any, any> {
 													</Link>
 													:
 													// <button>
-														<div className="source-box">
-															<div className="images">
-																<img
-																	src={accountdata.info.logos.small}
-																	height="50px"
-																	width="50px"
-																	alt=""
-																/>
-															</div>
-															<div className="source-content">
-																<label>{accountdata.name}</label>
-																<span>{accountdata.type}</span>
-																<p>{accountdata.info.description}</p>
-															</div>
+													<div className="source-box">
+														<div className="images">
+															<img
+																src={accountdata.info.logos.small}
+																height="50px"
+																width="50px"
+																alt=""
+															/>
 														</div>
+														<div className="source-content">
+															<label>{accountdata.name}</label>
+															<span>{accountdata.type}</span>
+															<p>{accountdata.info.description}</p>
+														</div>
+													</div>
 													// </button>
 												}
 											</React.Fragment>
@@ -181,7 +183,7 @@ export class AddDatasource extends React.Component<any, any> {
 	};
 
 	render() {
-		const { environment, account, environmentList, accountList } = this.state;
+		const { environment, account, environmentList, accountList, environmentFromUrl, accountFromUrl } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -223,7 +225,6 @@ export class AddDatasource extends React.Component<any, any> {
 							<div className="account-details-heading">
 								<h5>Account Details</h5>
 							</div>
-							{/* {environment == '' && account == '' &&  */}
 							<div className="environgment-details">
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Environment</label>
@@ -232,6 +233,7 @@ export class AddDatasource extends React.Component<any, any> {
 										name="environment"
 										value={environment}
 										onChange={this.onChangeDataSource}
+										disabled={accountFromUrl && environmentFromUrl}
 									>
 										<option key={-1} value={''}>
 											Select Datasource
@@ -254,6 +256,7 @@ export class AddDatasource extends React.Component<any, any> {
 										name="account"
 										value={account}
 										onChange={this.onChangeDataSource}
+										disabled={accountFromUrl && environmentFromUrl}
 									>
 										<option key={-1} value={''}>
 											Select Account
@@ -270,7 +273,6 @@ export class AddDatasource extends React.Component<any, any> {
 									</select>
 								</div>
 							</div>
-							{/* } */}
 							{/* <div className="services-heading">
 								<span>
 									<img src={images.awsLogo} alt="" />
