@@ -22,6 +22,8 @@ export class AddDatasource extends React.Component<any, any> {
 			environmentList: [],
 			accountList: [],
 			searchkey: '',
+			accountFromUrl: accountId ? accountId : '',
+			environmentFromUrl: serverName ? serverName?.toLowerCase() : '',
 		};
 		this.breadCrumbs = [
 			{
@@ -103,7 +105,7 @@ export class AddDatasource extends React.Component<any, any> {
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
 				console.log(sourceList[source]);
-				if ((source == environment || environment === '') ) {
+				if ((source == environment || environment === '') && !sourceList[source]['isHide']) {
 					retData.push(
 						<React.Fragment>
 							<div className="services-heading">
@@ -218,7 +220,7 @@ export class AddDatasource extends React.Component<any, any> {
 	}
 
 	render() {
-		const { environment, account, environmentList, accountList, searchkey } = this.state;
+		const { environment, account, environmentList, accountList, searchkey, accountFromUrl, environmentFromUrl } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -269,6 +271,7 @@ export class AddDatasource extends React.Component<any, any> {
 										name="environment"
 										value={environment}
 										onChange={this.onChangeDataSource}
+										disabled={accountFromUrl && environmentFromUrl}
 									>
 										<option key={-1} value={''}>
 											Select Datasource
@@ -291,6 +294,7 @@ export class AddDatasource extends React.Component<any, any> {
 										name="account"
 										value={account}
 										onChange={this.onChangeDataSource}
+										disabled={accountFromUrl && environmentFromUrl}
 									>
 										<option key={-1} value={''}>
 											Select Account

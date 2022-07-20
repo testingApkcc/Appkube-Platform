@@ -354,6 +354,7 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   renderTags = (tagList: any) => {
+    const { accountId, cloudName } = this.props;
     const { viewMapping } = this.state;
     const retData: any = [];
     const renderIndex = ['App', 'Data', 'Network', 'Other'];
@@ -369,7 +370,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                   return (
                     <div className='tbody'>
                       <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>
-                        <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link>
+                        <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link>
                       </span></div>
                       <div className='td'>
                         <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >

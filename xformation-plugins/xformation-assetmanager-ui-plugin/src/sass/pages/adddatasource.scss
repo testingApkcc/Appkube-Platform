@@ -1154,59 +1154,51 @@
             }
         }
     }
-
-
-
-    // .menu_state_4 {
-    //     .add-data-source-container {
-    //         .add-data-source-page-container {
-    //             .data-source-section {
-    //                 .source-content {
-    //                     .source-boxs {
-    //                         .source-inner-box {
-    //                             .source-box {
-    //                                 width: 100%;
-    //                                 min-height: 117px;
-    //                                 margin-bottom: 20px;
-
-    //                                 .source-content {
-    //                                     width: 75%;
-    //                                 }
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-    // .menu_state_8 {
-    //     .add-data-source-container {
-    //         .add-data-source-page-container {
-    //             .data-source-section {
-    //                 .source-content {
-    //                     .source-boxs {
-    //                         .source-inner-box {
-    //                             .source-box {
-    //                                 width: 248px;
-    //                                 min-height: 117px;
-    //                                 margin-bottom: 20px;
-
-    //                                 .source-content {
-    //                                     width: 75%;
-    //                                 }
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
 }
 
+@media only screen and (max-width: 910px)and (min-width: 768px) {
+    .menu_state_4 {
+        .add-data-source-container {
+            .add-data-source-page-container {
+                .data-source-product {
+                    .source-content {
+                        .specific-input-inner-content {
+                            .source-boxs {
+                                display: block;
+                                width: 100%;
+
+                                .source-box {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .menu_state_8 {
+        .add-data-source-container {
+            .add-data-source-page-container {
+                .data-source-product {
+                    .source-content {
+                        .specific-input-inner-content {
+                            .source-boxs {
+                                display: flex;
+                                width: 100%;
+
+                                .source-box {
+                                    width: 250px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @media only screen and (max-width: 767px) {
     .add-data-source-container {
@@ -1325,6 +1317,7 @@
                 .source-content {
                     .specific-input-inner-content {
                         .source-boxs {
+                            width: 100%;
                             display: block;
 
                             .source-box {
