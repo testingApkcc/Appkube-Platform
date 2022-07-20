@@ -21,6 +21,7 @@ export class AddDatasource extends React.Component<any, any> {
 			sourceList: [],
 			environmentList: [],
 			accountList: [],
+			searchkey: '',
 		};
 		this.breadCrumbs = [
 			{
@@ -101,7 +102,8 @@ export class AddDatasource extends React.Component<any, any> {
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
-				if (source == environment || environment === '' ) {
+				console.log(sourceList[source]);
+				if ((source == environment || environment === '') ) {
 					retData.push(
 						<React.Fragment>
 							<div className="services-heading">
@@ -113,12 +115,31 @@ export class AddDatasource extends React.Component<any, any> {
 							<div className="source-inner-box">
 								{sourceList[source] &&
 									sourceList[source].map((accountdata: any, i: any) => {
-										return (
-											<React.Fragment>
-												{account && environment ?
-													<Link
-														to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${environment}&&accountId=${account}&&Id=${accountdata.uniqId}`}
-													>
+										if (!accountdata.isHide) {
+											return (
+												<React.Fragment>
+													{account && environment ?
+														<Link
+															to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${environment}&&accountId=${account}&&Id=${accountdata.uniqId}`}
+														>
+															<div className="source-box">
+																<div className="images">
+																	<img
+																		src={accountdata.info.logos.small}
+																		height="50px"
+																		width="50px"
+																		alt=""
+																	/>
+																</div>
+																<div className="source-content">
+																	<label>{accountdata.name}</label>
+																	<span>{accountdata.type}</span>
+																	<p>{accountdata.info.description}</p>
+																</div>
+															</div>
+														</Link>
+														:
+														// <button>
 														<div className="source-box">
 															<div className="images">
 																<img
@@ -134,28 +155,12 @@ export class AddDatasource extends React.Component<any, any> {
 																<p>{accountdata.info.description}</p>
 															</div>
 														</div>
-													</Link>
-													:
-													// <button>
-														<div className="source-box">
-															<div className="images">
-																<img
-																	src={accountdata.info.logos.small}
-																	height="50px"
-																	width="50px"
-																	alt=""
-																/>
-															</div>
-															<div className="source-content">
-																<label>{accountdata.name}</label>
-																<span>{accountdata.type}</span>
-																<p>{accountdata.info.description}</p>
-															</div>
-														</div>
-													// </button>
-												}
-											</React.Fragment>
-										);
+														// </button>
+													}
+												</React.Fragment>
+											);
+										}
+										return
 									})}
 							</div>
 						</React.Fragment>
@@ -180,8 +185,40 @@ export class AddDatasource extends React.Component<any, any> {
 		});
 	};
 
+	handleStateChange = (e: any) => {
+		const { sourceList } = this.state;
+		const { name, value } = e.target;
+		this.setState({
+			[name]: value,
+		});
+		Object.keys(sourceList).map((source, indexedDB) => {
+			{
+				sourceList[source] &&
+					sourceList[source].map((accountdata: any, i: any) => {
+						if (accountdata.name.toLowerCase().indexOf(value) === -1) {
+							sourceList[source][i].isHide = true;
+						} else {
+							sourceList[source][i].isHide = false;
+						}
+					});
+				let count = 0;
+				for (let j = 0; j < sourceList[source].length; j++) {
+					if (sourceList[source][j].isHide == true) {
+						count++;
+					}
+				}
+				if (count == sourceList[source].length) {
+					sourceList[source]['isHide'] = true;
+				}
+			}
+		})
+		this.setState({
+			sourceList
+		})
+	}
+
 	render() {
-		const { environment, account, environmentList, accountList } = this.state;
+		const { environment, account, environmentList, accountList, searchkey } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -194,7 +231,7 @@ export class AddDatasource extends React.Component<any, any> {
 									<button className="btn btn-search">
 										<i className="fa fa-search" />
 									</button>
-									<input type="text" className="input-group-text" placeholder="Search" />
+									<input type="text" name="searchkey" value={searchkey} className="input-group-text" placeholder="Search" onChange={this.handleStateChange} />
 								</div>
 								<div className="back-btn">
 									<Link
