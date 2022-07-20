@@ -6801,7 +6801,7 @@ a:hover {
     .source-boxs
     .source-inner-box
     .source-box {
-    width: 270px;
+    width: 260px;
     min-height: 117px;
     margin-bottom: 20px;
   }
@@ -6865,7 +6865,7 @@ a:hover {
     .source-content
     .environgment-details
     .description-content {
-    width: 80%;
+    width: 75%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6912,7 +6912,7 @@ a:hover {
     .environgment-details
     .description-content
     .input-group-text {
-    width: 400px;
+    width: 230px;
   }
   .add-data-source-container
     .add-data-source-page-container
@@ -6992,6 +6992,49 @@ a:hover {
     .source-boxs
     .source-box {
     width: 250px;
+  }
+}
+
+@media only screen and (max-width: 946px) and (min-width: 768px) {
+  .menu_state_4
+    .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-inner-box {
+    display: block;
+    width: 100%;
+  }
+  .menu_state_4
+    .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-inner-box
+    .source-box {
+    width: 100%;
+  }
+  .menu_state_8
+    .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-inner-box {
+    display: flex;
+    width: 100%;
+  }
+  .menu_state_8
+    .add-data-source-container
+    .add-data-source-page-container
+    .data-source-section
+    .source-content
+    .source-boxs
+    .source-inner-box
+    .source-box {
+    width: 244px;
   }
 }
 

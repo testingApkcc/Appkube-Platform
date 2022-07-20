@@ -21,6 +21,7 @@ export class AddDatasource extends React.Component<any, any> {
 			sourceList: [],
 			environmentList: [],
 			accountList: [],
+			searchkey: '',
 			accountFromUrl: accountId ? accountId : '',
 			environmentFromUrl: serverName ? serverName?.toLowerCase() : '',
 		};
@@ -45,8 +46,6 @@ export class AddDatasource extends React.Component<any, any> {
 				for (let i = 0; i < response.length; i++) {
 					if (accountList && accountList.length > 0) {
 						if (accountList.indexOf(response[i].accountID) === -1) {
-							accountList.push(response[i].accountID);
-						} else {
 							accountList.push(response[i].accountID);
 						}
 					} else {
@@ -103,7 +102,7 @@ export class AddDatasource extends React.Component<any, any> {
 		// let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (sourceList) {
 			Object.keys(sourceList).map((source, indexedDB) => {
-				if (source == environment || environment === '') {
+				if ((source == environment || environment === '') && !sourceList[source]['isHide']) {
 					retData.push(
 						<React.Fragment>
 							<div className="services-heading">
@@ -115,12 +114,31 @@ export class AddDatasource extends React.Component<any, any> {
 							<div className="source-inner-box">
 								{sourceList[source] &&
 									sourceList[source].map((accountdata: any, i: any) => {
-										return (
-											<React.Fragment>
-												{account && environment ?
-													<Link
-														to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${environment}&&accountId=${account}&&Id=${accountdata.uniqId}`}
-													>
+										if (!accountdata.isHide) {
+											return (
+												<React.Fragment>
+													{account && environment ?
+														<Link
+															to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${environment}&&accountId=${account}&&Id=${accountdata.uniqId}`}
+														>
+															<div className="source-box">
+																<div className="images">
+																	<img
+																		src={accountdata.info.logos.small}
+																		height="50px"
+																		width="50px"
+																		alt=""
+																	/>
+																</div>
+																<div className="source-content">
+																	<label>{accountdata.name}</label>
+																	<span>{accountdata.type}</span>
+																	<p>{accountdata.info.description}</p>
+																</div>
+															</div>
+														</Link>
+														:
+														// <button>
 														<div className="source-box">
 															<div className="images">
 																<img
@@ -136,28 +154,12 @@ export class AddDatasource extends React.Component<any, any> {
 																<p>{accountdata.info.description}</p>
 															</div>
 														</div>
-													</Link>
-													:
-													// <button>
-													<div className="source-box">
-														<div className="images">
-															<img
-																src={accountdata.info.logos.small}
-																height="50px"
-																width="50px"
-																alt=""
-															/>
-														</div>
-														<div className="source-content">
-															<label>{accountdata.name}</label>
-															<span>{accountdata.type}</span>
-															<p>{accountdata.info.description}</p>
-														</div>
-													</div>
-													// </button>
-												}
-											</React.Fragment>
-										);
+														// </button>
+													}
+												</React.Fragment>
+											);
+										}
+										return
 									})}
 							</div>
 						</React.Fragment>
@@ -182,8 +184,42 @@ export class AddDatasource extends React.Component<any, any> {
 		});
 	};
 
+	handleStateChange = (e: any) => {
+		const { sourceList } = this.state;
+		const { name, value } = e.target;
+		this.setState({
+			[name]: value,
+		});
+		Object.keys(sourceList).map((source, indexedDB) => {
+			{
+				sourceList[source] &&
+					sourceList[source].map((accountdata: any, i: any) => {
+						if (accountdata.name.toLowerCase().indexOf(value) === -1) {
+							sourceList[source][i].isHide = true;
+						} else {
+							sourceList[source][i].isHide = false;
+						}
+					});
+				let count = 0;
+				for (let j = 0; j < sourceList[source].length; j++) {
+					if (sourceList[source][j].isHide == true) {
+						count++;
+					}
+				}
+				if (count == sourceList[source].length) {
+					sourceList[source]['isHide'] = true;
+				} else {
+					sourceList[source]['isHide'] = false;
+				}
+			}
+		})
+		this.setState({
+			sourceList
+		})
+	}
+
 	render() {
-		const { environment, account, environmentList, accountList, environmentFromUrl, accountFromUrl } = this.state;
+		const { environment, account, environmentList, accountList, searchkey, accountFromUrl, environmentFromUrl } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -196,7 +232,7 @@ export class AddDatasource extends React.Component<any, any> {
 									<button className="btn btn-search">
 										<i className="fa fa-search" />
 									</button>
-									<input type="text" className="input-group-text" placeholder="Search" />
+									<input type="text" name="searchkey" value={searchkey} className="input-group-text" placeholder="Search" onChange={this.handleStateChange} />
 								</div>
 								<div className="back-btn">
 									<Link
@@ -225,6 +261,7 @@ export class AddDatasource extends React.Component<any, any> {
 							<div className="account-details-heading">
 								<h5>Account Details</h5>
 							</div>
+							{/* {environment == '' && account == '' &&  */}
 							<div className="environgment-details">
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Environment</label>
@@ -273,6 +310,7 @@ export class AddDatasource extends React.Component<any, any> {
 									</select>
 								</div>
 							</div>
+							{/* } */}
 							{/* <div className="services-heading">
 								<span>
 									<img src={images.awsLogo} alt="" />
