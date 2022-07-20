@@ -5931,6 +5931,7 @@ a:hover {
   list-style: none;
   display: inline-block;
   margin-left: 15px;
+  position: relative;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -6056,6 +6057,95 @@ a:hover {
   font-weight: 600;
   color: #3b4859;
   padding: 0;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .explore-head
+  .explore-head-right
+  ul
+  li
+  .menu-list {
+  position: absolute;
+  top: 32px;
+  padding: 10px 15px;
+  z-index: 1;
+  right: 0;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .explore-head
+  .explore-head-right
+  ul
+  li
+  .menu-list
+  ul {
+  display: block;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .explore-head
+  .explore-head-right
+  ul
+  li
+  .menu-list
+  ul
+  li {
+  display: block;
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .explore-head
+  .explore-head-right
+  ul
+  li
+  .menu-list
+  ul
+  li:last-child {
+  margin-bottom: 0;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .explore-head
+  .explore-head-right
+  ul
+  li
+  .menu-list
+  ul
+  li
+  i {
+  display: inline;
+  margin-right: 8px;
 }
 .add-data-source-container
   .add-data-source-page-container

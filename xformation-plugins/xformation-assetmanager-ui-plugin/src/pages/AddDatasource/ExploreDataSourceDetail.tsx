@@ -14,7 +14,8 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 		super(props);
 		this.state = {
 			queryName: '',
-			account: ''
+			account: '',
+			showMenu: false,
 		};
 		this.breadCrumbs = [
 			{
@@ -38,6 +39,11 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 			[name]: value
 		});
 	};
+	toggleMenu = () => {
+		this.setState({
+			showMenu: !this.state.showMenu
+		})
+	}
 
 	render() {
 		return (
@@ -149,12 +155,20 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 																			</button>
 																		</li>
 																		<li>
-																			<button
-																				type="button"
-																				className="btn btn-link list-btn"
-																			>
+																			<button type="button" onClick={this.toggleMenu}
+																				className="btn btn-link list-btn">
 																				<i className="fas fa-bars" />
 																			</button>
+																			{this.state.showMenu == true && <div className="menu-list">
+																				<ul>
+																					<li><i className="fal fa-exclamation-circle"></i>Helpe</li>
+																					<li><i className="fas fa-clone"></i>Duplicate</li>
+																					<li><i className="far fa-eye"></i>Disable</li>
+																					<li><i className="fas fa-trash-alt"></i>Delete</li>
+																					<li><i className="fas fa-list-ul"></i>Move</li>
+																				</ul>
+																			</div>
+																			}
 																		</li>
 																	</ul>
 																</div>

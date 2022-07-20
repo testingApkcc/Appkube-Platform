@@ -485,6 +485,7 @@
                                             list-style: none;
                                             display: inline-block;
                                             margin-left: 15px;
+                                            position: relative;
 
                                             .time-content {
                                                 position: relative;
@@ -536,6 +537,38 @@
                                                 font-weight: 600;
                                                 color: #3b4859;
                                                 padding: 0;
+
+                                            }
+
+                                            .menu-list {
+                                                position: absolute;
+                                                top: 32px;
+                                                padding: 10px 15px;
+                                                z-index: 1;
+                                                right: 0;
+                                                background: #ffffff;
+                                                box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+
+                                                ul {
+                                                    display: block;
+
+                                                    li {
+                                                        display: block;
+                                                        margin: 0 0 8px 0;
+                                                        font-size: 12px;
+                                                        line-height: 16px;
+                                                        color: #000;
+
+                                                        &:last-child {
+                                                            margin-bottom: 0;
+                                                        }
+
+                                                        i {
+                                                            display: inline;
+                                                            margin-right: 8px;
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
