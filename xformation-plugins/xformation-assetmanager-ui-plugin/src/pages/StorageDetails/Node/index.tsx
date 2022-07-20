@@ -113,7 +113,7 @@ export class Node extends React.Component<any, any> {
 
   manipulateCatalogueData = (dataSources: any, dashboards: any) => {
     const { cloudName } = this.state;
-    const retData = [];
+    const retData: any = [];
     dataSources.forEach((dataSource: any) => {
       const name = dataSource.name;
       if (cloudName === dataSource.associatedCloud.toLowerCase()) {
