@@ -304,8 +304,8 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								credentialList.length > 0 &&
 								credentialList.map((cred: any, i: any) => {
 									return (
-										<div className="form-group credentials-text">
-											<input type="checkbox" onChange={this.setCred} />
+										<div className="form-group form-check credentials-text">
+											<input type="radio" value={cred.accessKey} name="credentials" onChange={this.setCred} />
 											<span>{cred.accessKey}</span>
 										</div>
 									);
