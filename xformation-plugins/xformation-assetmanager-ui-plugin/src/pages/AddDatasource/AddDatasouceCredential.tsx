@@ -23,7 +23,8 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			environmentList: [],
 			environment: serverName,
 			account: accountId,
-			credentialList: []
+			credentialList: [],
+			credentialData: {},
 		};
 		this.breadCrumbs = [
 			{
@@ -112,19 +113,15 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		});
 	};
 
-	setCred = (e: any) => {
-		const { credentialList } = this.state;
-		const { checked } = e.target;
-		if (credentialList && credentialList.legth > 0) {
-			credentialList['isChecked'] = checked;
-		}
+	setCred = (e: any, credential: any) => {
+		console.log(credential)
 		this.setState({
-			credentialList
+			credentialData: credential
 		})
 	};
 
 	render() {
-		const { addcredpopup, addCredForm, datasourceData, environment, account, credentialList } = this.state;
+		const { addcredpopup, addCredForm, datasourceData, environment, account, credentialList, credentialData } = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGER" />
@@ -238,10 +235,11 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 														<div className="form-group description-content">
 															<label htmlFor="description">Access Key Id</label>
 															<input
-																type="text"
+																type="password"
 																className="input-group-text"
 																name="accesskey"
-																value=""
+																value={credentialData.accessKey}
+																readOnly
 																placeholder="configured"
 																onChange={this.onChangeDataSource}
 															/>
@@ -249,10 +247,11 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 														<div className="form-group description-content">
 															<label htmlFor="description">Secret Key Id</label>
 															<input
-																type="text"
+																type="password"
 																className="input-group-text"
 																name="secretkey"
-																value=""
+																value={credentialData.secretKey}
+																readOnly
 																placeholder="configured"
 																onChange={this.onChangeDataSource}
 															/>
@@ -305,7 +304,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								credentialList.map((cred: any, i: any) => {
 									return (
 										<div className="form-group form-check credentials-text">
-											<input type="radio" value={cred.accessKey} name="credentials" onChange={this.setCred} />
+											<input type="radio" value={cred.accessKey} name="credentials" onChange={(e) => this.setCred(e, cred)} />
 											<span>{cred.accessKey}</span>
 										</div>
 									);
