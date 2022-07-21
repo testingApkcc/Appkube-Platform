@@ -7,6 +7,7 @@ import { CommonService } from '../_common/common';
 // import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { RestService } from '../_service/RestService';
 import { PLUGIN_BASE_URL } from '../../constants';
+import AlertMessage from '../../components/AlertMessage';
 
 export class AddDatasource extends React.Component<any, any> {
 	breadCrumbs: any;
@@ -24,6 +25,9 @@ export class AddDatasource extends React.Component<any, any> {
 			searchkey: '',
 			accountFromUrl: accountId ? accountId : '',
 			environmentFromUrl: serverName ? serverName?.toLowerCase() : '',
+			isAlertOpen: false,
+            severity: null,
+            message: null,
 		};
 		this.breadCrumbs = [
 			{
@@ -139,7 +143,7 @@ export class AddDatasource extends React.Component<any, any> {
 														</Link>
 														:
 														// <button>
-														<div className="source-box">
+														<div className="source-box" onClick={()=>this.toggleAlert("Please select account and environment", "warning", true)}>
 															<div className="images">
 																<img
 																	src={accountdata.info.logos.small}
@@ -218,10 +222,27 @@ export class AddDatasource extends React.Component<any, any> {
 		})
 	}
 
+	toggleAlert = (message: any, severity: any, isAlertOpen: any) => {
+		this.setState({
+			isAlertOpen,
+			message,
+			severity,
+		});
+	};
+
+	handleCloseAlert = () => {
+        this.setState({
+            isAlertOpen: false,
+            message: '',
+            severity: '',
+        });
+    }
+
 	render() {
-		const { environment, account, environmentList, accountList, searchkey, accountFromUrl, environmentFromUrl } = this.state;
+		const { environment, account, environmentList, accountList, searchkey, accountFromUrl, environmentFromUrl, isAlertOpen, severity, message } = this.state;
 		return (
 			<div className="add-data-source-container">
+				<AlertMessage handleCloseAlert={this.handleCloseAlert} open={isAlertOpen} severity={severity} msg={message}></AlertMessage>
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="add-data-source-page-container">
 					<div className="data-source-section">
