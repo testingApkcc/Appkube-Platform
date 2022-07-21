@@ -138,7 +138,7 @@ export class VerifyInputs extends React.Component<any, any> {
                     <a>{dataSource.name}</a>
                   </td>
                   <td>
-                    <a>{dataSource.type}</a>
+                    <a>{dataSource.inputType}</a>
                   </td>
                   <td>
                     <table className="table-inner" width="100%">
