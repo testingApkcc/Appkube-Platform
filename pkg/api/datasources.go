@@ -693,6 +693,7 @@ func (hs *HTTPServer) BuildDatasourceList(query *models.GetDataSourceQueryByAcco
 			AccountId: ds.AccountId,
 			CloudType: ds.CloudType,
 			TenantId:  ds.TenantId,
+			InputType: ds.InputType,
 		}
 
 		if plugin, exists := hs.pluginStore.Plugin(c.Req.Context(), ds.Type); exists {
