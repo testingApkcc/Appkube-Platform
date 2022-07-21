@@ -44,8 +44,8 @@ export class Inputs extends React.Component<any, any>{
             return (
                 <tr key={`input-${input.id}`}>
                     <td>{input.name}</td>
-                    <td>{input.typeName}</td>
-                    <td>{input.type}</td>
+                    <td>{input.cloudType}</td>
+                    <td>{input.inputType}</td>
                     <td>0</td>
                     <td>Active</td>
                 </tr>
