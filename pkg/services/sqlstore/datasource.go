@@ -290,6 +290,7 @@ func (ss *SQLStore) AddDataSource(ctx context.Context, cmd *models.AddDataSource
 			AccountId: cmd.AccountId,
 			TenantId:  cmd.TenantId,
 			CloudType: cmd.CloudType,
+			InputType: cmd.InputType,
 			// ------Manoj.  custom changes for appcube plateform ------
 		}
 
@@ -358,6 +359,7 @@ func (ss *SQLStore) UpdateDataSource(ctx context.Context, cmd *models.UpdateData
 			AccountId: cmd.AccountId,
 			TenantId:  cmd.TenantId,
 			CloudType: cmd.CloudType,
+			InputType: cmd.InputType,
 			// ------Manoj.  custom changes for appcube plateform ------
 
 		}

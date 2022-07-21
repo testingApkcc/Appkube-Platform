@@ -57,6 +57,7 @@ func (hs *HTTPServer) GetDataSources(c *models.ReqContext) response.Response {
 			ReadOnly:  ds.ReadOnly,
 			AccountId: ds.AccountId,
 			CloudType: ds.CloudType,
+			InputType: ds.InputType,
 		}
 
 		if plugin, exists := hs.pluginStore.Plugin(c.Req.Context(), ds.Type); exists {
@@ -480,6 +481,9 @@ func convertModelToDtos(ds *models.DataSource) dtos.DataSource {
 		SecureJsonFields:  map[string]bool{},
 		Version:           ds.Version,
 		ReadOnly:          ds.ReadOnly,
+		AccountId:         ds.AccountId,
+		CloudType:         ds.CloudType,
+		InputType:         ds.InputType,
 	}
 
 	for k, v := range ds.SecureJsonData {

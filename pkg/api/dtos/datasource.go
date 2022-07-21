@@ -34,6 +34,7 @@ type DataSource struct {
 	AccountId string `json:"accountID"`
 	TenantId  string `json:"tenantID"`
 	CloudType string `json:"cloudType"`
+	InputType string `json:"inputType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 }
 
@@ -58,6 +59,7 @@ type DataSourceListItemDTO struct {
 	AccountId string `json:"accountID"`
 	TenantId  string `json:"tenantID"`
 	CloudType string `json:"cloudType"`
+	InputType string `json:"inputType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 }
 

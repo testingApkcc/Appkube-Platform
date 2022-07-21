@@ -153,6 +153,10 @@ func addDataSourceMigration(mg *Migrator) {
 		Name: "cloud_type", Type: DB_NVarchar, Length: 255, Nullable: true,
 	}))
 
+	mg.AddMigration("Add input_type column", NewAddColumnMigration(tableV2, &Column{
+		Name: "input_type", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
+
 	// end AssetManager changes
 	// ------Manoj.  custom changes for appcube plateform ------
 

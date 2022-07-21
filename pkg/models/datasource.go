@@ -70,6 +70,7 @@ type DataSource struct {
 	AccountId string `json:"accountID"`
 	TenantId  string `json:"tenantID"`
 	CloudType string `json:"cloudType"`
+	InputType string `json:"inputType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 }
 
@@ -102,6 +103,7 @@ type AddDataSourceCommand struct {
 	AccountId string `json:"accountID"`
 	TenantId  string `json:"tenantID"`
 	CloudType string `json:"cloudType"`
+	InputType string `json:"inputType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 
 	Result *DataSource `json:"-"`
@@ -135,6 +137,7 @@ type UpdateDataSourceCommand struct {
 	AccountId string `json:"accountID"`
 	TenantId  string `json:"tenantID"`
 	CloudType string `json:"cloudType"`
+	InputType string `json:"inputType"`
 	// ------Manoj.  custom changes for appcube plateform ------
 
 	Result *DataSource `json:"-"`
@@ -225,6 +228,7 @@ type UpdateAccountTenantInfoDataSourceCommand struct {
 	AccountId string `json:"accountID"`
 	TenantId  string `json:"tenantID"`
 	CloudType string `json:"cloudType"`
+	InputType string `json:"inputType"`
 	Result    *DataSource
 }
 
