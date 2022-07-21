@@ -57,15 +57,15 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 		let dataobj: any = {};
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				dataobj[data[i].typeName] = dataobj[data[i].typeName] || {};
-				dataobj[data[i].typeName][data[i].accountID] = dataobj[data[i].typeName][data[i].accountID] || [];
-				dataobj[data[i].typeName][data[i].accountID].push(data[i]);
+				dataobj[data[i].cloudType] = dataobj[data[i].cloudType] || {};
+				dataobj[data[i].cloudType][data[i].accountID] = dataobj[data[i].cloudType][data[i].accountID] || [];
+				dataobj[data[i].cloudType][data[i].accountID].push(data[i]);
 				if (environmentList && environmentList.length > 0) {
-					if (environmentList.indexOf(data[i].typeName) === -1) {
-						environmentList.push(data[i].typeName);
+					if (environmentList.indexOf(data[i].cloudType) === -1) {
+						environmentList.push(data[i].cloudType);
 					}
 				} else {
-					environmentList.push(data[i].typeName);
+					environmentList.push(data[i].cloudType);
 				}
 
 				if (accountList && accountList.length > 0) {
@@ -141,7 +141,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 																		</div>
 																		<div className="source-content">
 																			<label>{accountdata.name}</label>
-																			<span>{accountdata.typeName}</span>
+																			<span>{accountdata.cloudType}</span>
 																			<p>Pull AWS matrics with cloud API</p>
 																		</div>
 																	</div>
