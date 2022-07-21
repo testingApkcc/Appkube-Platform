@@ -41,11 +41,8 @@ export function RuleListErrors(): ReactElement {
     promRequestErrors.forEach(({ dataSource, error }) =>
       result.push(
         <>
-          Failed to load rules state from
-          <a href={`datasources/edit/${dataSource.uid}/${dataSource.cloudType}/${dataSource.inputType}`}>
-            {dataSource.name}
-          </a>
-          :{error.message || 'Unknown error.'}
+          Failed to load rules state from <a href={`datasources/edit/${dataSource.uid}`}>{dataSource.name}</a>:{' '}
+          {error.message || 'Unknown error.'}
         </>
       )
     );
@@ -53,11 +50,8 @@ export function RuleListErrors(): ReactElement {
     rulerRequestErrors.forEach(({ dataSource, error }) =>
       result.push(
         <>
-          Failed to load rules config from
-          <a href={`datasources/edit/${dataSource.uid}/${dataSource.cloudType}/${dataSource.inputType}`}>
-            {dataSource.name}
-          </a>
-          :{error.message || 'Unknown error.'}
+          Failed to load rules config from <a href={`datasources/edit/${dataSource.uid}`}>{dataSource.name}</a>:{' '}
+          {error.message || 'Unknown error.'}
         </>
       )
     );

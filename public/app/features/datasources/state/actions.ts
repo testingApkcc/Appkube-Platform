@@ -191,8 +191,7 @@ export async function getDataSourceUsingUidOrId(uid: string | number): Promise<D
     // route
     if (response.ok && response.data.id.toString() === uid) {
       window.location.href = locationUtil.assureBaseUrl(`
-        /datasources/edit/${response.data.uid}/${response.data.cloudType}/${response.data.inputType}
-      `);
+        /datasources/edit/${response.data.uid}`);
       return {} as DataSourceSettings; // avoids flashing an error
     }
   }
@@ -221,7 +220,7 @@ export function addDataSource(plugin: any): ThunkResult<void> {
 
     const result = await getBackendSrv().post('/api/datasources', newInstance);
     await getDatasourceSrv().reload();
-    locationService.push(`/datasources/edit/${result.datasource.uid}/${plugin.cloudType}/${plugin.name}`);
+    locationService.push(`/datasources/edit/${result.datasource.uid}`);
   };
 }
 

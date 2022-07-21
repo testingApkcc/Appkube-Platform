@@ -24,7 +24,7 @@ export function buildNavModel(dataSource: DataSourceSettings, plugin: GenericDat
         icon: 'sliders-v-alt',
         id: `datasource-settings-${dataSource.uid}`,
         text: 'Settings',
-        url: `datasources/edit/${dataSource.uid}/${dataSource.cloudType}/${dataSource.inputType}`,
+        url: `datasources/edit/${dataSource.uid}`,
       },
     ],
   };
@@ -35,7 +35,7 @@ export function buildNavModel(dataSource: DataSourceSettings, plugin: GenericDat
         active: false,
         text: page.title,
         icon: page.icon,
-        url: `datasources/edit/${dataSource.uid}/${dataSource.cloudType}/${dataSource.inputType}/?page=${page.id}`,
+        url: `datasources/edit/${dataSource.uid}/?page=${page.id}`,
         id: `datasource-page-${page.id}`,
       });
     }
