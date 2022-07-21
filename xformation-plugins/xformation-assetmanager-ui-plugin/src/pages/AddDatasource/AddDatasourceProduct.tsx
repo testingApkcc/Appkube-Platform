@@ -130,6 +130,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 																!accountdata.isHide
 															) {
 																return (
+																	<Link to={`/datasources/edit/${accountdata.uid}`}>
 																	<div className="source-box">
 																		<div className="images">
 																			<img
@@ -145,6 +146,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 																			<p>Pull AWS matrics with cloud API</p>
 																		</div>
 																	</div>
+																	</Link>
 																);
 															} else {
 																return;
