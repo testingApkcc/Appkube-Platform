@@ -24,7 +24,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			environment: serverName,
 			account: accountId,
 			credentialList: [],
-			credentialData: {},
+			credentialData: {}
 		};
 		this.breadCrumbs = [
 			{
@@ -69,6 +69,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	manipulateData = (data: any) => {
 		let { environmentList } = this.state;
 		let dataobj: any = {};
+		let type = '';
 		// let cloudName = CommonService.getParameterByName('sourceName', window.location.href);
 		let accountId = CommonService.getParameterByName('Id', window.location.href);
 		if (data && data.length > 0) {
@@ -76,6 +77,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				let datasource = data[i];
 				if (data[i].id == accountId) {
 					dataobj = data[i].jsonData;
+					type = data[i].cloudType;
 				}
 				if (environmentList && environmentList.length > 0) {
 					if (environmentList.indexOf(datasource.cloudType) === -1) {
@@ -85,6 +87,18 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 					environmentList.push(datasource.cloudType);
 				}
 			}
+		}
+		if (dataobj) {
+			let newInstance = {
+				inputType: dataobj.name,
+				type: dataobj.id,
+				access: 'proxy',
+				isDefault: false,
+				cloudType: type,
+				name: dataobj.name + '-' + Math.floor(Math.random() * 9)
+			};
+			console.log(newInstance);
+			RestService.add('/api/datasources', newInstance);
 		}
 		this.setState({
 			datasourceData: dataobj,
@@ -114,14 +128,22 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	};
 
 	setCred = (e: any, credential: any) => {
-		console.log(credential)
+		console.log(credential);
 		this.setState({
 			credentialData: credential
-		})
+		});
 	};
 
 	render() {
-		const { addcredpopup, addCredForm, datasourceData, environment, account, credentialList, credentialData } = this.state;
+		const {
+			addcredpopup,
+			addCredForm,
+			datasourceData,
+			environment,
+			account,
+			credentialList,
+			credentialData
+		} = this.state;
 		return (
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGER" />
@@ -304,7 +326,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								credentialList.map((cred: any, i: any) => {
 									return (
 										<div className="form-group form-check credentials-text">
-											<input type="radio" value={cred.accessKey} name="credentials" onChange={(e) => this.setCred(e, cred)} />
+											<input
+												type="radio"
+												value={cred.accessKey}
+												name="credentials"
+												onChange={(e) => this.setCred(e, cred)}
+											/>
 											<span>{cred.accessKey}</span>
 										</div>
 									);
