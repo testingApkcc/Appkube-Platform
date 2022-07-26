@@ -24,7 +24,9 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			environment: serverName,
 			account: accountId,
 			credentialList: [],
-			credentialData: {}
+			credentialData: {},
+			id: '',
+			addedDatasourceResponse: {}
 		};
 		this.breadCrumbs = [
 			{
@@ -97,8 +99,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				cloudType: type,
 				name: dataobj.name + '-' + Math.floor(Math.random() * 9)
 			};
-			console.log(newInstance);
-			RestService.add('/api/datasources', newInstance);
+			RestService.add('/api/datasources', newInstance).then((response) => {
+				this.setState({
+					id: response.id,
+					addedDatasourceResponse: response
+				})
+			});
 		}
 		this.setState({
 			datasourceData: dataobj,
@@ -121,10 +127,39 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	};
 
 	addDataSourceCred = () => {
+		const { account, datasourceData, environment, addedDatasourceResponse } = this.state;
 		this.setState({
 			addCredForm: true,
 			addcredpopup: false
 		});
+		if (addedDatasourceResponse) {
+			let dataSource = {
+				access: 'proxy',
+				accountID: account,
+				basicAuth: false,
+				basicAuthPassword: '',
+				basicAuthUser: '',
+				cloudType: environment,
+				database: '',
+				id: addedDatasourceResponse.id,
+				isDefault: false,
+				jsonData: {},
+				name: addedDatasourceResponse.name,
+				orgId: 1,
+				password: '',
+				readOnly: false,
+				secureJsonFields: {},
+				tenantID: '',
+				type: datasourceData.id,
+				typeLogoUrl: '',
+				uid: addedDatasourceResponse.datasource.uid,
+				url: '',
+				user: '',
+				version: 2,
+				withCredentials: false
+			};
+			RestService.put(`/api/datasources/${addedDatasourceResponse.id}`, dataSource);
+		}
 	};
 
 	setCred = (e: any, credential: any) => {
