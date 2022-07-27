@@ -123,7 +123,7 @@ export class AddDatasource extends React.Component<any, any> {
 												<React.Fragment>
 													{account && environment ?
 														<Link
-															to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${environment}&&accountId=${account}&&Id=${accountdata.uniqId}`}
+															to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${environment}&&accountId=${account}&&Id=${accountdata.name}`}
 														>
 															<div className="source-box">
 																<div className="images">

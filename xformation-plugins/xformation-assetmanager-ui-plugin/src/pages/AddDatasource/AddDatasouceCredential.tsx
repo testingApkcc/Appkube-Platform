@@ -16,6 +16,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		super(props);
 		let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		let serverName = CommonService.getParameterByName('sourceName', window.location.href);
+		let uid = CommonService.getParameterByName('uId', window.location.href);
 		this.state = {
 			addCredForm: false,
 			addcredpopup: false,
@@ -25,8 +26,8 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			account: accountId,
 			credentialList: [],
 			credentialData: {},
-			id: '',
-			addedDatasourceResponse: {}
+			addedDatasourceResponse: {},
+			uId: uid
 		};
 		this.breadCrumbs = [
 			{
@@ -69,7 +70,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	};
 
 	manipulateData = (data: any) => {
-		let { environmentList } = this.state;
+		let { environmentList, uId } = this.state;
 		let dataobj: any = {};
 		let type = '';
 		// let cloudName = CommonService.getParameterByName('sourceName', window.location.href);
@@ -77,7 +78,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
 				let datasource = data[i];
-				if (data[i].id == accountId) {
+				if (data[i].jsonData.name == accountId) {
 					dataobj = data[i].jsonData;
 					type = data[i].cloudType;
 				}
@@ -90,7 +91,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				}
 			}
 		}
-		if (dataobj) {
+		if (dataobj && !uId) {
 			let newInstance = {
 				inputType: dataobj.name,
 				type: dataobj.id,
@@ -101,9 +102,15 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			};
 			RestService.add('/api/datasources', newInstance).then((response) => {
 				this.setState({
-					id: response.id,
+					uId:  response.datasource.uid,
+					addedDatasourceResponse: response.datasource
+				});
+			});
+		} else {
+			RestService.getDashboardList(`http://localhost:3000/api/datasources/uid/${uId}`).then((response) => {
+				this.setState({
 					addedDatasourceResponse: response
-				})
+				});
 			});
 		}
 		this.setState({
@@ -127,12 +134,21 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	};
 
 	addDataSourceCred = () => {
-		const { account, datasourceData, environment, addedDatasourceResponse } = this.state;
 		this.setState({
 			addCredForm: true,
 			addcredpopup: false
 		});
-		if (addedDatasourceResponse) {
+	};
+
+	setCred = (e: any, credential: any) => {
+		this.setState({
+			credentialData: credential
+		});
+	};
+
+	editDataSource = () => {
+		const { account, environment, addedDatasourceResponse, uId } = this.state;
+		if (addedDatasourceResponse && uId && uId != '') {
 			let dataSource = {
 				access: 'proxy',
 				accountID: account,
@@ -150,9 +166,9 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				readOnly: false,
 				secureJsonFields: {},
 				tenantID: '',
-				type: datasourceData.id,
+				type: addedDatasourceResponse.type,
 				typeLogoUrl: '',
-				uid: addedDatasourceResponse.datasource.uid,
+				uid: uId,
 				url: '',
 				user: '',
 				version: 2,
@@ -160,13 +176,6 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			};
 			RestService.put(`/api/datasources/${addedDatasourceResponse.id}`, dataSource);
 		}
-	};
-
-	setCred = (e: any, credential: any) => {
-		console.log(credential);
-		this.setState({
-			credentialData: credential
-		});
 	};
 
 	render() {
@@ -323,7 +332,10 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 														<Link to={`${PLUGIN_BASE_URL}/explore-datasource`}>
 															<button className="asset-blue-button">Explore</button>
 														</Link>
-														<button className="asset-blue-button" onClick={this.toggle}>
+														<button
+															className="asset-blue-button"
+															onClick={this.editDataSource}
+														>
 															Save &#38; Test
 														</button>
 													</React.Fragment>
