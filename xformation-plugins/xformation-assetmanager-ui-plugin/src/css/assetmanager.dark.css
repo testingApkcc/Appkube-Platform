@@ -5302,6 +5302,61 @@ a:hover {
   .add-data-source-page-container
   .data-source-section
   .source-content
+  .heading
+  .add-inputs-content {
+  margin-top: 15px;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .heading
+  .add-inputs-content
+  .description-content {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .heading
+  .add-inputs-content
+  .description-content
+  label {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #3b4859;
+  margin: 0;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .heading
+  .add-inputs-content
+  .description-content
+  .input-group-text {
+  width: 300px;
+  height: 38px;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  text-align: left;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
   .account-details-heading {
   margin-top: 20px;
   background: #d9e4f2;
@@ -6109,9 +6164,6 @@ a:hover {
   li {
   display: block;
   margin: 0 0 8px 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: #000;
 }
 .add-data-source-container
   .add-data-source-page-container
@@ -6143,6 +6195,43 @@ a:hover {
   .menu-list
   ul
   li
+  a {
+  font-size: 12px;
+  line-height: 16px;
+  color: #000;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .explore-head
+  .explore-head-right
+  ul
+  li
+  .menu-list
+  ul
+  li
+  a:hover {
+  color: #0f5efd;
+}
+.add-data-source-container
+  .add-data-source-page-container
+  .data-source-section
+  .source-content
+  .source-details
+  .source-box
+  .explore-content
+  .explore-head
+  .explore-head-right
+  ul
+  li
+  .menu-list
+  ul
+  li
+  a
   i {
   display: inline;
   margin-right: 8px;

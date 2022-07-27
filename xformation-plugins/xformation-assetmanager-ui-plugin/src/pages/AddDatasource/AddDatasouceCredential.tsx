@@ -280,14 +280,16 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 						<div className="source-content">
 							<div className="heading">
 								<h4>Add inputs</h4>
-								<div className="">
-									<label htmlFor="Name">Name</label>
-									<input
-										className="input-group-text"
-										name="name"
-										value={addedDatasourceResponse.name}
-										onChange={this.handleStateChange}
-									/>
+								<div className="add-inputs-content">
+									<div className="form-group description-content">
+										<label htmlFor="Name">Name</label>
+										<input
+											className="input-group-text"
+											name="name"
+											value={addedDatasourceResponse.name}
+											onChange={this.handleStateChange}
+										/>
+									</div>
 								</div>
 							</div>
 							<div className="account-details-heading">

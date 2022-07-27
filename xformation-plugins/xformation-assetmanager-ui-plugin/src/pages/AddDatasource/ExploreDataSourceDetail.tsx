@@ -161,11 +161,11 @@ export class ExploreDataSourceDetail extends React.Component<any, any> {
 																			</button>
 																			{this.state.showMenu == true && <div className="menu-list">
 																				<ul>
-																					<li><i className="fal fa-exclamation-circle"></i>Helpe</li>
-																					<li><i className="fas fa-clone"></i>Duplicate</li>
-																					<li><i className="far fa-eye"></i>Disable</li>
-																					<li><i className="fas fa-trash-alt"></i>Delete</li>
-																					<li><i className="fas fa-list-ul"></i>Move</li>
+																					<li><a href="#"><i className="fal fa-exclamation-circle"></i>Helpe</a></li>
+																					<li><a href="#"><i className="fas fa-clone"></i>Duplicate</a></li>
+																					<li><a href="#"><i className="far fa-eye"></i>Disable</a></li>
+																					<li><a href="#"><i className="fas fa-trash-alt"></i>Delete</a></li>
+																					<li><a href="#"><i className="fas fa-th-large"></i>Move</a></li>
 																				</ul>
 																			</div>
 																			}
