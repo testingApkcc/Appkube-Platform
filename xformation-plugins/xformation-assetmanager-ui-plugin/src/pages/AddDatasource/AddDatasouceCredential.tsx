@@ -8,6 +8,8 @@ import { RestService } from '../_service/RestService';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { CommonService } from '../_common/common';
+import AlertMessage from '../Components/AlertMessage';
+import { getLocationSrv } from '@grafana/runtime';
 
 export class AddDatasourceCredential extends React.Component<any, any> {
 	breadCrumbs: any;
@@ -27,7 +29,10 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			credentialList: [],
 			credentialData: {},
 			addedDatasourceResponse: {},
-			uId: uid
+			uId: uid,
+			isAlertOpen: false,
+			message: '',
+			severity: ''
 		};
 		this.breadCrumbs = [
 			{
@@ -92,19 +97,33 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			}
 		}
 		if (dataobj && !uId) {
+			var result = '';
+			var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			var charactersLength = characters.length;
+			for (var i = 0; i < 5; i++) {
+				result += characters.charAt(Math.floor(Math.random() * charactersLength));
+			}
 			let newInstance = {
 				inputType: dataobj.name,
 				type: dataobj.id,
 				access: 'proxy',
 				isDefault: false,
 				cloudType: type,
-				name: dataobj.name + '-' + Math.floor(Math.random() * 9)
+				name: dataobj.name + '-' + result
 			};
 			RestService.add('/api/datasources', newInstance).then((response) => {
-				this.setState({
-					uId:  response.datasource.uid,
-					addedDatasourceResponse: response.datasource
-				});
+				if (response && response.datasource) {
+					this.setState({
+						uId: response.datasource.uid,
+						addedDatasourceResponse: response.datasource
+					});
+				} else if (response && !response.datasource) {
+					this.setState({
+						isAlertOpen: true,
+						message: response.message,
+						severity: 'error'
+					});
+				}
 			});
 		} else {
 			RestService.getDashboardList(`http://localhost:3000/api/datasources/uid/${uId}`).then((response) => {
@@ -174,8 +193,29 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				version: 2,
 				withCredentials: false
 			};
-			RestService.put(`/api/datasources/${addedDatasourceResponse.id}`, dataSource);
+			RestService.put(`/api/datasources/${addedDatasourceResponse.id}`, dataSource).then((response) => {
+				if (response) {
+					this.setState({
+						isAlertOpen: true,
+						message: response.message,
+						severity: 'success'
+					});
+					setTimeout(() => {
+						getLocationSrv().update({
+							path: `/a/xformation-assetmanager-ui-plugin/add-data-source-product`
+						});
+					}, 5000);
+				}
+			});
 		}
+	};
+
+	handleCloseAlert = (e: any) => {
+		this.setState({
+			isAlertOpen: false,
+			message: '',
+			severity: ''
+		});
 	};
 
 	render() {
@@ -186,7 +226,10 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			environment,
 			account,
 			credentialList,
-			credentialData
+			credentialData,
+			isAlertOpen,
+			message,
+			severity
 		} = this.state;
 		return (
 			<div className="add-data-source-container">
@@ -391,6 +434,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 						</div>
 					</ModalBody>
 				</Modal>
+				<AlertMessage
+					handleCloseAlert={this.handleCloseAlert}
+					open={isAlertOpen}
+					severity={severity}
+					msg={message}
+				/>
 			</div>
 		);
 	}
