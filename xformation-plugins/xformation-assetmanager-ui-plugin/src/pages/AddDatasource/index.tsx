@@ -26,8 +26,8 @@ export class AddDatasource extends React.Component<any, any> {
 			accountFromUrl: accountId ? accountId : '',
 			environmentFromUrl: serverName ? serverName?.toLowerCase() : '',
 			isAlertOpen: false,
-            severity: null,
-            message: null,
+			severity: null,
+			message: null,
 		};
 		this.breadCrumbs = [
 			{
@@ -48,12 +48,14 @@ export class AddDatasource extends React.Component<any, any> {
 		await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
 			if (response && response.length > 0) {
 				for (let i = 0; i < response.length; i++) {
-					if (accountList && accountList.length > 0) {
-						if (accountList.indexOf(response[i].accountID) === -1) {
+					if (response[i].accountID && response[i].accountID != '') {
+						if (accountList && accountList.length > 0) {
+							if (accountList.indexOf(response[i].accountID) === -1) {
+								accountList.push(response[i].accountID);
+							}
+						} else {
 							accountList.push(response[i].accountID);
 						}
-					} else {
-						accountList.push(response[i].accountID);
 					}
 				}
 				this.setState({
@@ -80,17 +82,15 @@ export class AddDatasource extends React.Component<any, any> {
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
 				let datasource = data[i];
-				if (datasource.cloudType) {
-					dataobj[datasource.cloudType] = dataobj[datasource.cloudType] || [];
-					datasource.jsonData['uniqId'] = datasource.id;
-					dataobj[datasource.cloudType].push(datasource.jsonData);
-					if (environmentList && environmentList.length > 0) {
-						if (environmentList.indexOf(datasource.cloudType) === -1) {
-							environmentList.push(datasource.cloudType);
-						}
-					} else {
+				dataobj[datasource.cloudType] = dataobj[datasource.cloudType] || [];
+				datasource.jsonData['uniqId'] = datasource.id;
+				dataobj[datasource.cloudType].push(datasource.jsonData);
+				if (environmentList && environmentList.length > 0) {
+					if (environmentList.indexOf(datasource.cloudType) === -1) {
 						environmentList.push(datasource.cloudType);
 					}
+				} else {
+					environmentList.push(datasource.cloudType);
 				}
 			}
 		}
@@ -143,7 +143,7 @@ export class AddDatasource extends React.Component<any, any> {
 														</Link>
 														:
 														// <button>
-														<div className="source-box" onClick={()=>this.toggleAlert("Please select account and environment", "warning", true)}>
+														<div className="source-box" onClick={() => this.toggleAlert("Please select account and environment", "warning", true)}>
 															<div className="images">
 																<img
 																	src={accountdata.info.logos.small}
@@ -231,12 +231,12 @@ export class AddDatasource extends React.Component<any, any> {
 	};
 
 	handleCloseAlert = () => {
-        this.setState({
-            isAlertOpen: false,
-            message: '',
-            severity: '',
-        });
-    }
+		this.setState({
+			isAlertOpen: false,
+			message: '',
+			severity: '',
+		});
+	}
 
 	render() {
 		const { environment, account, environmentList, accountList, searchkey, accountFromUrl, environmentFromUrl, isAlertOpen, severity, message } = this.state;

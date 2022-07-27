@@ -68,16 +68,17 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 					environmentList.push(data[i].cloudType);
 				}
 
-				if (accountList && accountList.length > 0) {
-					if (accountList.indexOf(data[i].accountID) === -1) {
+				if (data[i].accountID && data[i].accountID != '') {
+					if (accountList && accountList.length > 0) {
+						if (accountList.indexOf(data[i].accountID) === -1) {
+							accountList.push(data[i].accountID);
+						}
+					} else {
 						accountList.push(data[i].accountID);
 					}
-				} else {
-					accountList.push(data[i].accountID);
 				}
 			}
 		}
-		console.log(dataobj);
 		this.setState({
 			sourceList: dataobj,
 			environmentList,
@@ -131,7 +132,9 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 																!accountdata.isHide
 															) {
 																return (
-																	<Link to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${source}&&accountId=${accountdata.accountID}&&Id=${accountdata.inputType}&&uId=${accountdata.uid}`}>
+																	<Link
+																		to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${source}&&accountId=${accountdata.accountID}&&Id=${accountdata.inputType}&&uId=${accountdata.uid}`}
+																	>
 																		<div className="source-box">
 																			<div className="images">
 																				<img

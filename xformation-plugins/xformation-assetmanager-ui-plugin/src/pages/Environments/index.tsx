@@ -97,8 +97,8 @@ export class Environments extends React.Component<any, any> {
 	};
 
 
-	async componentDidMount() {
-		await this.getAccountList();
+	componentDidMount() {
+		this.getAccountList();
 	}
 
 	getAccountList = async () => {

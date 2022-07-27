@@ -57,7 +57,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			let creadList = JSON.parse(atob(response.secureCreds));
 			if (creadList.credentials && creadList.credentials.length > 0) {
 				this.setState({
-					credentialList: creadList.credentials
+					credentialList: creadList
 				});
 			}
 		});
@@ -116,6 +116,11 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 					this.setState({
 						uId: response.datasource.uid,
 						addedDatasourceResponse: response.datasource
+					});
+					this.setState({
+						isAlertOpen: true,
+						message: response.message,
+						severity: 'success'
 					});
 				} else if (response && !response.datasource) {
 					this.setState({
@@ -178,6 +183,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				database: '',
 				id: addedDatasourceResponse.id,
 				isDefault: false,
+				inputType: addedDatasourceResponse.inputType,
 				jsonData: {},
 				name: addedDatasourceResponse.name,
 				orgId: 1,
@@ -194,7 +200,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				withCredentials: false
 			};
 			RestService.put(`/api/datasources/${addedDatasourceResponse.id}`, dataSource).then((response) => {
-				if (response) {
+				if (response && response.datasource) {
 					this.setState({
 						isAlertOpen: true,
 						message: response.message,
@@ -205,6 +211,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 							path: `/a/xformation-assetmanager-ui-plugin/add-data-source-product`
 						});
 					}, 5000);
+				} else {
+					this.setState({
+						isAlertOpen: true,
+						message: response.message,
+						severity: 'error'
+					});
 				}
 			});
 		}
@@ -215,6 +227,14 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			isAlertOpen: false,
 			message: '',
 			severity: ''
+		});
+	};
+
+	handleStateChange = (e: any) => {
+		const { addedDatasourceResponse } = this.state;
+		addedDatasourceResponse['name'] = e.target.value;
+		this.setState({
+			addedDatasourceResponse
 		});
 	};
 
@@ -229,7 +249,8 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			credentialData,
 			isAlertOpen,
 			message,
-			severity
+			severity,
+			addedDatasourceResponse
 		} = this.state;
 		return (
 			<div className="add-data-source-container">
@@ -259,6 +280,15 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 						<div className="source-content">
 							<div className="heading">
 								<h4>Add inputs</h4>
+								<div className="">
+									<label htmlFor="Name">Name</label>
+									<input
+										className="input-group-text"
+										name="name"
+										value={addedDatasourceResponse.name}
+										onChange={this.handleStateChange}
+									/>
+								</div>
 							</div>
 							<div className="account-details-heading">
 								<h5>Account Details</h5>
@@ -267,39 +297,10 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Environment</label>
 									<input className="input-group-text" readOnly value={environment} />
-									{/* <select
-										className="input-group-text"
-										name="environment"
-										value={environment}
-										// onChange={this.onChangeDataSource}
-									>
-										{environmentList &&
-											environmentList.length > 0 &&
-											environmentList.map((val: any, index: any) => {
-												return (
-													<option key={index} value={val}>
-														{val}
-													</option>
-												);
-											})}
-									</select> */}
 								</div>
 								<div className="form-group description-content">
 									<label htmlFor="description">Select Account</label>
 									<input className="input-group-text" readOnly value={account} />
-									{/* <select
-										className="input-group-text"
-										name="account"
-										value=""
-										// onChange={this.onChangeDataSource}
-									>
-										<option key="1" value="567373484">
-											AWS 567373484
-										</option>
-										<option key="2" value="237373414">
-											AWS 237373414
-										</option>
-									</select> */}
 								</div>
 							</div>
 							<div className="source-details">
@@ -342,18 +343,17 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 													<div className="environgment-details">
 														<h5>Connection Detail</h5>
 														<div className="form-group description-content">
-															<label htmlFor="description">Access Key Id</label>
+															<label htmlFor="description">vault Key Id</label>
 															<input
-																type="password"
+																type="text"
 																className="input-group-text"
 																name="accesskey"
-																value={credentialData.accessKey}
+																value={credentialData.vaultId}
 																readOnly
-																placeholder="configured"
 																onChange={this.onChangeDataSource}
 															/>
 														</div>
-														<div className="form-group description-content">
+														{/* <div className="form-group description-content">
 															<label htmlFor="description">Secret Key Id</label>
 															<input
 																type="password"
@@ -364,7 +364,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 																placeholder="configured"
 																onChange={this.onChangeDataSource}
 															/>
-														</div>
+														</div> */}
 													</div>
 												)}
 												{addCredForm && (
@@ -412,15 +412,16 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								</p>
 							</div>
 							{credentialList &&
-								credentialList.length > 0 &&
-								credentialList.map((cred: any, i: any) => {
+								credentialList.credentials &&
+								credentialList.credentials.length > 0 &&
+								credentialList.credentials.map((cred: any, i: any) => {
 									return (
 										<div className="form-group form-check credentials-text">
 											<input
 												type="radio"
 												value={cred.accessKey}
 												name="credentials"
-												onChange={(e) => this.setCred(e, cred)}
+												onChange={(e) => this.setCred(e, credentialList)}
 											/>
 											<span>{cred.accessKey}</span>
 										</div>
