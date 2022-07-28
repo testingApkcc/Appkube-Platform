@@ -56,7 +56,7 @@ export class Node extends React.Component<any, any> {
       viewJson: {},
       collapseInfo: false,
       dataSourceInstances: [],
-      cloudDashboards: [],
+      cloudDashBoards: [], 
     };
     this.config = configFun(props.meta.jsonData.apiUrl, props.meta.jsonData.mainProductUrl);
   }
@@ -245,6 +245,12 @@ export class Node extends React.Component<any, any> {
                   <div className="services-text">
                     <label>Associated Product</label>
                     <span>{serviceData.associatedProduct}</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
+                    <label>Associated Element</label>
+                    <span>{serviceData.associatedCloudElementType}</span>
                   </div>
                 </div>
                 <div className="col-md-6">
