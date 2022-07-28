@@ -133,7 +133,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 															) {
 																return (
 																	<Link
-																		to={`${PLUGIN_BASE_URL}/add-datasource-credential?sourceName=${source}&&accountId=${accountdata.accountID}&&Id=${accountdata.inputType}&&uId=${accountdata.uid}`}
+																		to={`/datasources/edit/${accountdata.uid}`}
 																	>
 																		<div className="source-box">
 																			<div className="images">
@@ -181,6 +181,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 			[name]: value
 		});
 	};
+
 	handleStateChange = (e: any) => {
 		const { name, value } = e.target;
 		this.setState({

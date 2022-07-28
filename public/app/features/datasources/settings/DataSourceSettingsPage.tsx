@@ -22,7 +22,7 @@ import { getNavModel } from 'app/core/selectors/navModel';
 // Types
 import { StoreState, AccessControlAction } from 'app/types/';
 import { DataSourceSettings, urlUtil } from '@grafana/data';
-import { Alert, Button } from '@grafana/ui';
+import { Alert, Button, LegacyForms, Label } from '@grafana/ui';
 import { getDataSourceLoadingNav, buildNavModel, getDataSourceNav } from '../state/navModel';
 import { PluginStateInfo } from 'app/features/plugins/components/PluginStateInfo';
 import { dataSourceLoaded, setDataSourceName, setIsDefault, setDataSourceAccountID } from '../state/reducers';
@@ -32,8 +32,14 @@ import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
 import { connect, ConnectedProps } from 'react-redux';
 import { cleanUpAction } from 'app/core/actions/cleanUp';
 import { ShowConfirmModalEvent } from '../../../types/events';
+import { getBackendSrv } from 'app/core/services/backend_srv';
 
-export interface OwnProps extends GrafanaRouteComponentProps<{ uid: string }> {}
+const { Input } = LegacyForms;
+
+export interface OwnProps extends GrafanaRouteComponentProps<{ uid: string }> {
+  match: any;
+  location: any;
+}
 
 function mapStateToProps(state: StoreState, props: OwnProps) {
   const dataSourceId = props.match.params.uid;
@@ -41,7 +47,6 @@ function mapStateToProps(state: StoreState, props: OwnProps) {
   const dataSource = getDataSource(state.dataSources, dataSourceId);
   const { plugin, loadError, loading, testingStatus } = state.dataSourceSettings;
   const page = params.get('page');
-
   const nav = plugin
     ? getDataSourceNav(buildNavModel(dataSource, plugin), page || 'settings')
     : getDataSourceLoadingNav('settings');
@@ -83,10 +88,43 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 export type Props = OwnProps & ConnectedProps<typeof connector>;
 
 export class DataSourceSettingsPage extends PureComponent<Props> {
+  state = {
+    credentialData: {
+      accountId: '',
+      cloudType: '',
+      credentials: [],
+      vaultId: '',
+    },
+  };
   componentDidMount() {
     const { initDataSourceSettings, dataSourceId } = this.props;
     initDataSourceSettings(dataSourceId);
   }
+
+  componentDidUpdate(prevProps: any) {
+    let { dataSource } = this.props;
+    if (Object.keys(dataSource).length > 0 && dataSource.accountID !== prevProps.dataSource.accountID) {
+      this.getCredentialData();
+    }
+  }
+
+  getCredentialData = async () => {
+    let { dataSource } = this.props;
+    if (dataSource && Object.keys(dataSource).length > 0 && dataSource.accountID) {
+      await getBackendSrv()
+        .get(`http://34.199.12.114:5057/api/credential/${dataSource.accountID}`)
+        .then((response: any) => {
+          return JSON.parse(atob(response.secureCreds));
+        })
+        .then((data: any) => {
+          if (data.credentials && data.credentials.length > 0) {
+            this.setState({
+              credentialData: data,
+            });
+          }
+        });
+    }
+  };
 
   componentWillUnmount() {
     this.props.cleanUpAction({
@@ -238,6 +276,7 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
       testingStatus,
       setDataSourceAccountID,
     } = this.props;
+    const { credentialData } = this.state;
     const canWriteDataSource = contextSrv.hasPermissionInMetadata(AccessControlAction.DataSourcesWrite, dataSource);
     const canDeleteDataSource = contextSrv.hasPermissionInMetadata(AccessControlAction.DataSourcesDelete, dataSource);
 
@@ -265,13 +304,30 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
           onAccountIDChange={(accountID) => setDataSourceAccountID(accountID)}
         />
 
-        {plugin && (
+        {plugin && (!dataSource.accountID || dataSource.accountID === '') && (
           <PluginSettings
             plugin={plugin}
             dataSource={dataSource}
             dataSourceMeta={dataSourceMeta}
             onModelChange={this.onModelChange}
           />
+        )}
+
+        {dataSource && dataSource.accountID && credentialData && Object.keys(credentialData).length > 0 && (
+          <div className="gf-form max-width-30" style={{ marginRight: '3px' }}>
+            <Label htmlFor="VoultId" className="gf-form-label width-10">
+              Voult Id
+            </Label>
+            <Input
+              className="gf-form-input max-width-23"
+              type="text"
+              value={credentialData.vaultId}
+              placeholder="Name"
+              onChange={(event: any) => {}}
+              readOnly
+              aria-label={selectors.pages.DataSource.name}
+            />
+          </div>
         )}
 
         {testingStatus?.message && (
