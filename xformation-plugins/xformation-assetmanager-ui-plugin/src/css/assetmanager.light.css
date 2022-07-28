@@ -6845,15 +6845,6 @@ a:hover {
   .source-content
   .specific-input-inner-content
   .source-boxs
-  .source-box:last-child {
-  margin-right: 0;
-}
-.add-data-source-container
-  .add-data-source-page-container
-  .data-source-product
-  .source-content
-  .specific-input-inner-content
-  .source-boxs
   .source-box
   .source-content {
   margin-left: 10px;
