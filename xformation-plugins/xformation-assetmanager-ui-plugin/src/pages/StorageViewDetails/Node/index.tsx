@@ -214,6 +214,12 @@ export class Node extends React.Component<any, any> {
                 </div>
                 <div className="col-md-6">
                   <div className="services-text">
+                    <label>Associated Element</label>
+                    <span>{serviceData.associatedCloudElementType}</span>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="services-text">
                     <label>Added At</label>
                     <span>Feb 01, 2021 21:30</span>
                   </div>

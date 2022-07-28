@@ -11,6 +11,7 @@ export class StorageDetails extends React.Component<any, any> {
 	constructor(props: any) {
 		let serviceData: any = localStorage.getItem('added-services');
 		const accountId = CommonService.getParameterByName('accountId', window.location.href);
+		const cloudName = CommonService.getParameterByName('cloudName', window.location.href);
 		if (serviceData) {
 			serviceData = JSON.parse(serviceData);
 		} else {
@@ -23,7 +24,8 @@ export class StorageDetails extends React.Component<any, any> {
 			openView: false,
 			viewName: '',
 			isSubmitted: false,
-			accountId: accountId
+			accountId: accountId,
+			cloudName: cloudName
 		};
 		this.breadCrumbs = [
 			{
@@ -142,6 +144,7 @@ export class StorageDetails extends React.Component<any, any> {
 	render() {
 		const { activeTab, serviceDetails, openView, viewName, isSubmitted } = this.state;
 		const accountId = CommonService.getParameterByName('accountId', window.location.href);
+		const cloudName = CommonService.getParameterByName('cloudName', window.location.href);
 		const errorData = this.validate(isSubmitted);
 		return (
 			<div className="asset-container">
@@ -155,7 +158,7 @@ export class StorageDetails extends React.Component<any, any> {
 							<div className="col-lg-3 col-md-3 col-sm-12">
 								<div className="float-right common-right-btn">
 									<Link
-										to={`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`}
+										to={`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}&cloudName=${cloudName}`}
 										className="asset-white-button min-width-inherit m-r-0"
 									>
 										<i className="fa fa-arrow-circle-left" />&nbsp;&nbsp; Back
