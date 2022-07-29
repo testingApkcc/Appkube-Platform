@@ -31,6 +31,24 @@ export class AwsHelper {
     });
   };
 
+  usecaseInputToDynamoDb(useCaseName: any, stepInput: any) {
+    var paramsForDb = {
+      TableName: 'usecase_input',
+      Item: {
+        usecaseName: { S: useCaseName },
+        stepInput: { S: stepInput },
+      },
+    };
+    console.log(paramsForDb);
+    this.dynamoDB.putItem(paramsForDb, function (err: any, data: any) {
+      if (err) {
+        console.error('Unable to write data: ', JSON.stringify(err, null, 2));
+      } else {
+        console.log('Put Input succeeded');
+      }
+    });
+  }
+
   getUsecaseList = (onDone: any, onError: any) => {
     var params = {
       TableName: 'usecase_arn',

@@ -1,17 +1,19 @@
 // import { values } from 'lodash';
 import * as React from 'react';
 import downloadIcon from '../../img/projectoverview/download-icon.png';
-import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
-import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
-import overviewMenu3 from '../../img/projectoverview/overview-menu3.png';
-import overviewMenu4 from '../../img/projectoverview/overview-menu4.png';
-import overviewMenu5 from '../../img/projectoverview/overview-menu5.png';
-import overviewMenu6 from '../../img/projectoverview/overview-menu6.png';
-import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
+// import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
+// import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
+// import overviewMenu3 from '../../img/projectoverview/overview-menu3.png';
+// import overviewMenu4 from '../../img/projectoverview/overview-menu4.png';
+// import overviewMenu5 from '../../img/projectoverview/overview-menu5.png';
+// import overviewMenu6 from '../../img/projectoverview/overview-menu6.png';
+// import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
 import { Link } from 'react-router-dom';
+import { AwsHelper } from '../AwsHelpers';
 
 export class CreateUsecase extends React.Component<any, any> {
 	id: any;
+	awsHelper: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -24,22 +26,41 @@ export class CreateUsecase extends React.Component<any, any> {
 				{ name: 'Stage / Release', description: '', assignedTo: '', details: [] },
 				{ name: 'Publish/Operate', description: '', assignedTo: '', details: [] }
 			],
-			usecase: { name: '' },
+			usecase: { name: '', description: '', assignTo: '' },
 			isSubmitted: false,
 			subStageName: '',
 			activeIndex: -1,
-			useCaseList: [
-				{ name: 'New Usecase', id: '1', img: overviewMenu1 },
-				{ name: 'Receive RFQ', id: '2', img: overviewMenu2 },
-				{ name: 'Kanban', id: '3', img: overviewMenu3 },
-				{ name: 'Setup Committee', id: '4', img: overviewMenu4 },
-				{ name: 'Approval Requisation', id: '5', img: overviewMenu5 },
-				{ name: 'Approved Requisation', id: '6', img: overviewMenu6 },
-				{ name: 'New RFQ', id: '7', img: overviewMenu7 },
-				{ name: 'Conditional Approval', id: '8', img: overviewMenu1 }
-			]
+			machineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
+			useCaseList: []
 		};
 		this.id = 10;
+		this.awsHelper = new AwsHelper({ meta: props.meta });
+	}
+
+	componentDidMount() {
+		this.awsHelper.getUsecaseList(
+			(useCaseList: any) => {
+				useCaseList.forEach((useCase: any) => {
+					this.awsHelper.getExecutionHistory(
+						useCase.executionArn.S,
+						(items: any) => {
+							const useCases = this.state.useCaseList;
+							useCases.push({
+								...useCase,
+								steps: items
+							});
+							this.setState({
+								useCaseList: useCases
+							});
+						},
+						(err: any) => {
+							console.log(err);
+						}
+					);
+				});
+			},
+			() => { }
+		);
 	}
 
 	// const { id } = useParams();
@@ -96,7 +117,7 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	addDetails = (index: any) => {
-		let { activeIndex, subStageName, stages } = this.state;
+		let { activeIndex, stages } = this.state;
 		// if (index === activeIndex) {
 		// 	activeIndex = -1;
 		// } else {
@@ -115,7 +136,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		//     stages[activeIndex].details.push(obj);
 		//   }
 		// } else {
-		let obj = { name: subStageName, ...JSON.parse(JSON.stringify(this.state.subStageDetails)) };
+		let obj = { ...JSON.parse(JSON.stringify(this.state.subStageDetails)) };
 		if (stages[activeIndex].details && stages[activeIndex].details.length < 5) {
 			stages[activeIndex].details.push(obj);
 		}
@@ -175,16 +196,23 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	submitWorkflow = () => {
-		// const { usecase, stages } = this.state;
+		const { usecase, stages } = this.state;
 		this.setState({ isSubmitted: true });
 
 		// const errorData = this.validateForm(true);
 		// if (errorData.isValid) {
-		//   let sendData = {
-		//     ...usecase,
-		//     stages,
-		//     id: this.id
-		//   }
+		// let sendData = {
+		// 	...usecase,
+		// 	s: JSON.stringify(stages),
+		// }
+		// let jsonData = {
+		// 	usecaseName: { s: usecase.name },
+		// 	Item: { stepInput: sendData }
+		// }
+		// console.log(jsonData);
+
+		this.awsHelper.usecaseInputToDynamoDb(usecase.name,JSON.stringify(stages));
+		
 		//   if (this.id && this.id !== '') {
 		//     // this.props.dispatch(WorkflowAction.editWorkflow(sendData));
 		//   } else {
@@ -202,7 +230,6 @@ export class CreateUsecase extends React.Component<any, any> {
 		const { activeIndex, stages } = this.state;
 		const { name, value } = e.target;
 		stages[activeIndex].details[index][name] = value;
-		console.log(stages[activeIndex].details[index]);
 		this.setState({ stages });
 	};
 
@@ -224,13 +251,16 @@ export class CreateUsecase extends React.Component<any, any> {
 		const { useCaseList } = this.state;
 		let retData = [];
 		if (useCaseList && useCaseList.length > 0) {
+			retData.push(
+				<li className="active">
+					<span>New Usecase</span>
+				</li>
+			);
 			for (let i = 0; i < useCaseList.length; i++) {
+				let useCase = useCaseList[i];
 				retData.push(
-					<li className={i == 0 ? 'active' : ''}>
-						{/* <Link to="/"> */}
-						<img src={useCaseList[i].img} alt="" />
-						<span>{useCaseList[i].name}</span>
-						{/* </Link> */}
+					<li className={i + 1 == 0 ? 'active' : ''} key={`usecase-${i}`}>
+						<span>{useCase.usecaseName.S}</span>
 					</li>
 				);
 			}
@@ -240,7 +270,7 @@ export class CreateUsecase extends React.Component<any, any> {
 
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
-		const { stages, activeIndex } = this.state;
+		const { stages, activeIndex, usecase } = this.state;
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">
@@ -297,7 +327,9 @@ export class CreateUsecase extends React.Component<any, any> {
 											className="form-control name-usecase"
 											type="text"
 											name="name"
+											value={usecase.name}
 											placeholder="name of usecase"
+											onChange={(e: any) => this.handleStateChange(e)}
 										/>
 									</div>
 									{errorData && errorData.name && <span>{errorData.name.message}</span>}
@@ -307,7 +339,9 @@ export class CreateUsecase extends React.Component<any, any> {
 											className="form-control"
 											rows={3}
 											name="description"
+											value={usecase.description}
 											placeholder="name of usecase"
+											onChange={(e: any) => this.handleStateChange(e)}
 										/>
 									</div>
 									{errorData && errorData.description && <span>{errorData.description.message}</span>}
@@ -317,6 +351,7 @@ export class CreateUsecase extends React.Component<any, any> {
 											name="assignTo"
 											className="assign"
 											onChange={(e: any) => this.handleStateChange(e)}
+											value={usecase.assignTo}
 										>
 											<option value="">--select--</option>
 											<option value="1">abc</option>.
@@ -330,12 +365,12 @@ export class CreateUsecase extends React.Component<any, any> {
 									<h4>Workflow Stage Detail</h4>
 								</div>
 								{errorData &&
-								errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
+									errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
 								{stages &&
 									stages.length > 0 &&
 									stages.map((val: any, i: any) => {
 										return (
-											<div className="add-workflow-list">
+											<div className="add-workflow-list" key={`stage-${i}`}>
 												<span>{i + 1}</span>
 												<div className="workflow-type">
 													<input
@@ -384,145 +419,145 @@ export class CreateUsecase extends React.Component<any, any> {
 													<div className="requirement-details">
 														<div className="requirement-inner-content">
 															{val.details &&
-															val.details.length > 0 && (
-																<h4 className="heading">
-																	Requirement Sub-Stage details
-																</h4>
-															)}
+																val.details.length > 0 && (
+																	<h4 className="heading">
+																		Requirement Sub-Stage details
+																	</h4>
+																)}
 															{val.details &&
-															val.details.length > 0 && (
-																<table>
-																	<thead>
-																		<tr>
-																			<th />
-																			<th>Assign to</th>
-																			<th>Start Date</th>
-																			<th>End Date</th>
-																			<th>Comments</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		{val.details.map(
-																			(
-																				{
-																					name,
-																					assignto,
-																					startDate,
-																					endDate,
-																					comments
-																				}: any,
-																				index: any
-																			) => (
-																				<tr>
-																					<td className="user-name">
-																						<div className="add-stage-name">
-																							<input
-																								type="text"
-																								className="form-control"
-																								name="subStageName"
-																								value={
-																									stages[activeIndex]
-																										.details[index]
-																										.subStageName
-																								}
+																val.details.length > 0 && (
+																	<table>
+																		<thead>
+																			<tr>
+																				<th />
+																				<th>Assign to</th>
+																				<th>Start Date</th>
+																				<th>End Date</th>
+																				<th>Comments</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			{val.details.map(
+																				(
+																					{
+																						name,
+																						assignto,
+																						startDate,
+																						endDate,
+																						comments
+																					}: any,
+																					index: any
+																				) => (
+																					<tr key={`stageDetail-${i}-${index}`}>
+																						<td className="user-name">
+																							<div className="add-stage-name">
+																								<input
+																									type="text"
+																									className="form-control"
+																									name="subStageName"
+																									value={
+																										stages[activeIndex]
+																											.details[index]
+																											.subStageName
+																									}
+																									onChange={(e) =>
+																										this.handleSubStageName(
+																											index,
+																											e
+																										)}
+																								/>
+																							</div>
+																						</td>
+																						<td>
+																							<select
+																								name="assignto"
+																								id="assignto"
 																								onChange={(e) =>
-																									this.handleSubStageName(
-																										index,
-																										e
+																									this.handleSubStageData(
+																										e,
+																										i,
+																										index
+																									)}
+																							>
+																								<option value="">
+																									--select--
+																								</option>
+																								<option value="1">
+																									abc
+																								</option>
+																								<option value="2">
+																									def
+																								</option>
+																								<option value="3">
+																									xyz
+																								</option>
+																							</select>
+																						</td>
+																						<td className="start-date">
+																							<input
+																								type="date"
+																								className="form-control"
+																								name="startDate"
+																								value={startDate}
+																								placeholder="Select"
+																								onChange={(e) =>
+																									this.handleSubStageData(
+																										e,
+																										i,
+																										index
 																									)}
 																							/>
-																						</div>
-																					</td>
-																					<td>
-																						<select
-																							name="assignto"
-																							id="assignto"
-																							onChange={(e) =>
-																								this.handleSubStageData(
-																									e,
+																						</td>
+																						<td className="start-date end-date">
+																							<input
+																								type="date"
+																								className="form-control"
+																								name="endDate"
+																								placeholder="Select"
+																								onChange={(e) =>
+																									this.handleSubStageData(
+																										e,
+																										i,
+																										index
+																									)}
+																								value={endDate}
+																							/>
+																						</td>
+																						<td className="comment-box">
+																							<input
+																								type="comments"
+																								className="form-control"
+																								name="comments"
+																								placeholder="Select"
+																								onChange={(e) =>
+																									this.handleSubStageData(
+																										e,
+																										i,
+																										index
+																									)}
+																								value={comments}
+																							/>
+																						</td>
+																						<td
+																							className="remove-btn"
+																							onClick={() => {
+																								this.removeSubString(
 																									i,
 																									index
-																								)}
+																								);
+																							}}
 																						>
-																							<option value="">
-																								--select--
-																							</option>
-																							<option value="1">
-																								abc
-																							</option>
-																							<option value="2">
-																								def
-																							</option>
-																							<option value="3">
-																								xyz
-																							</option>
-																						</select>
-																					</td>
-																					<td className="start-date">
-																						<input
-																							type="date"
-																							className="form-control"
-																							name="startDate"
-																							value={startDate}
-																							placeholder="Select"
-																							onChange={(e) =>
-																								this.handleSubStageData(
-																									e,
-																									i,
-																									index
-																								)}
-																						/>
-																					</td>
-																					<td className="start-date end-date">
-																						<input
-																							type="date"
-																							className="form-control"
-																							name="endDate"
-																							placeholder="Select"
-																							onChange={(e) =>
-																								this.handleSubStageData(
-																									e,
-																									i,
-																									index
-																								)}
-																							value={endDate}
-																						/>
-																					</td>
-																					<td className="comment-box">
-																						<input
-																							type="comments"
-																							className="form-control"
-																							name="comments"
-																							placeholder="Select"
-																							onChange={(e) =>
-																								this.handleSubStageData(
-																									e,
-																									i,
-																									index
-																								)}
-																							value={comments}
-																						/>
-																					</td>
-																					<td
-																						className="remove-btn"
-																						onClick={() => {
-																							this.removeSubString(
-																								i,
-																								index
-																							);
-																						}}
-																					>
-																						<i
-																							className="fa fa-times"
-																							aria-hidden="true"
-																						/>
-																					</td>
-																				</tr>
-																			)
-																		)}
-																	</tbody>
-																</table>
-															)}
+																							<i
+																								className="fa fa-times"
+																								aria-hidden="true"
+																							/>
+																						</td>
+																					</tr>
+																				)
+																			)}
+																		</tbody>
+																	</table>
+																)}
 														</div>
 													</div>
 												)}
@@ -530,13 +565,13 @@ export class CreateUsecase extends React.Component<any, any> {
 										);
 									})}
 								{stages &&
-								stages.length > 0 && (
-									<div className="basic-details-btn">
-										<button className="btn btn-primary" onClick={this.submitWorkflow}>
-											Save
-										</button>
-									</div>
-								)}
+									stages.length > 0 && (
+										<div className="basic-details-btn">
+											<button className="btn btn-primary" onClick={this.submitWorkflow}>
+												Save
+											</button>
+										</div>
+									)}
 							</div>
 						</div>
 					</div>
