@@ -55,8 +55,8 @@ export class AwsHelper {
     };
     this.dynamoDB.scan(params, function (err: any, data: any) {
       if (err) console.log(err, err.stack);
-      // an error occurred
       else {
+        // an error occurred
         console.log('Got usecase inputlist', data.Items);
 
         data.Items.forEach((e: any) => {
@@ -97,4 +97,34 @@ export class AwsHelper {
       } // successful response
     });
   };
+
+  executeStateMachine(params: any, onDone: any) {
+    const useCaseName = params.usecaseName;
+    delete params.usecaseName;
+    this.stepFunctions.startExecution(params, (err: any, data: any) => {
+      if (err) {
+        console.log(err);
+        // const response = {
+        // 	statusCode: 500,
+        // 	body: JSON.stringify({
+        // 		message: 'There was an error'
+        // 	})
+        // };
+      } else {
+        console.log(data);
+        // usecaseArnToDynamoDb(data.executionArn);
+        this.usecaseInputToDynamoDb(useCaseName, params.input);
+        if (data) {
+          onDone(data);
+        }
+        // const response = {
+        // 	statusCode: 200,
+        // 	body: JSON.stringify({
+        // 		message: 'Step function worked'
+        // 	})
+        // };
+        // gettingExecutionHistory(data.executionArn);
+      }
+    });
+  }
 }
