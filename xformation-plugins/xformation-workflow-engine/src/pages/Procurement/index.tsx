@@ -48,7 +48,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.setState({ activeTab: key });
   }
   render() {
-    const { activeTab, useCase } = this.state;
+    const { activeTab, useCase, useCaseName } = this.state;
     console.log(useCase)
     return (
       <div className="owrkflow-procument-container">
@@ -67,7 +67,7 @@ export class ProcurementDetail extends React.Component<any, any> {
               </div>
               <div className="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                 <div className="heading-content-right">
-                  <Link to="/a/xformation-workflow-engine/project-overview" className="btn-primary pro-overview-btn">Project Overview</Link>
+                  <Link to={`/a/xformation-workflow-engine/project-overview/${useCaseName}`} className="btn-primary pro-overview-btn">Project Overview</Link>
                   <Link to="/a/xformation-workflow-engine/project-wise" className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
                 </div>
               </div>

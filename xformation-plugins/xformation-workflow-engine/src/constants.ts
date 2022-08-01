@@ -10,7 +10,7 @@ export enum ROUTES {
   ProcurementDetail = 'procurement-detail/:id',
   MatrixView = 'matrixView',
   CreateNewUsecase = 'create-new-usecase',
-  ProjectOverView = 'project-overview',
+  ProjectOverView = 'project-overview/:id',
   AssetOverView = 'asset-overview',
 }
 
