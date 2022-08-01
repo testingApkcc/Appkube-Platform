@@ -18,6 +18,7 @@ export class ProjectOverView extends React.Component<any, any> {
         description: 'Recusandae libero eveniet ducimus.',
         assignTo: 'string',
         id: 3,
+        useCaseName: '',
         stages: [
           {
             checkList: [
@@ -470,7 +471,9 @@ export class ProjectOverView extends React.Component<any, any> {
       ]
     };
   }
-
+componentDidMount(){
+  this.setState({useCaseName:this.props.match.params.id})
+}
   displayUsecase = () => {
     const { usecaseData, activeStage } = this.state;
     let retData = [];
@@ -690,7 +693,7 @@ export class ProjectOverView extends React.Component<any, any> {
   }
 
   render() {
-    const { usecaseData, activeStage } = this.state;
+    const { usecaseData, activeStage, useCaseName} = this.state;
     return (
       <div className="project-over-view-container">
         <div className="project-over-view-section">
@@ -728,7 +731,7 @@ export class ProjectOverView extends React.Component<any, any> {
                       />
                     </div>
                   </div>
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${4}`} className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
+                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${useCaseName}`} className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
                 </div>
               </div>
             </div>
