@@ -30,7 +30,7 @@ export class AwsHelper {
       }
     });
   };
-
+  // second table name =usecase_arn
   usecaseInputToDynamoDb(useCaseName: any, stepInput: any) {
     var paramsForDb = {
       TableName: 'usecase_input',
@@ -49,7 +49,7 @@ export class AwsHelper {
     });
   }
 
-  getUsecaseInputData(useCaseName: any, onDone: any) {
+  getUsecaseInputData(useCaseName: any, onDone: any, onError: any) {
     var params = {
       TableName: 'usecase_input',
     };
@@ -58,10 +58,11 @@ export class AwsHelper {
       // an error occurred
       else {
         console.log('Got usecase inputlist', data.Items);
-
         data.Items.forEach((e: any) => {
           if (e.usecaseName.S === useCaseName) {
             onDone(e);
+          } else {
+            onError(e.err);
           }
         });
       }
@@ -70,9 +71,10 @@ export class AwsHelper {
 
   getUsecaseList = (onDone: any, onError: any) => {
     var params = {
-      TableName: 'usecase_arn',
+      TableName: 'usecase_input',
     };
     this.dynamoDB.scan(params, (err: any, data: any) => {
+      console.log(data);
       if (err) {
         onError(err);
       } else {
