@@ -10,6 +10,7 @@ import downloadIcon from '../../img/projectoverview/download-icon.png';
 // import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
 import { Link } from 'react-router-dom';
 import { AwsHelper } from '../AwsHelpers';
+import { getLocationSrv } from '@grafana/runtime';
 
 export class CreateUsecase extends React.Component<any, any> {
 	id: any;
@@ -59,7 +60,7 @@ export class CreateUsecase extends React.Component<any, any> {
 					);
 				});
 			},
-			() => { }
+			() => {}
 		);
 	}
 
@@ -198,33 +199,19 @@ export class CreateUsecase extends React.Component<any, any> {
 	submitWorkflow = () => {
 		const { usecase, stages } = this.state;
 		this.setState({ isSubmitted: true });
-
-		// const errorData = this.validateForm(true);
-		// if (errorData.isValid) {
-		// let sendData = {
-		// 	...usecase,
-		// 	s: JSON.stringify(stages),
-		// }
-		// let jsonData = {
-		// 	usecaseName: { s: usecase.name },
-		// 	Item: { stepInput: sendData }
-		// }
-		// console.log(jsonData);
-
-		this.awsHelper.usecaseInputToDynamoDb(usecase.name,JSON.stringify(stages));
-		
-		//   if (this.id && this.id !== '') {
-		//     // this.props.dispatch(WorkflowAction.editWorkflow(sendData));
-		//   } else {
-		//     // this.props.dispatch(WorkflowAction.createNewWorkflow(sendData));
-		//   }
-		// }
+		let params = {
+			stateMachineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
+			input: JSON.stringify(stages),
+			usecaseName: usecase.name
+		};
+		this.awsHelper.executeStateMachine(params, (res: any) => {
+			if(res){
+				getLocationSrv().update({
+					path: `/a/xformation-workflow-engine/project-wise`
+				});
+			}
+		});
 	};
-
-	// addMoreworkflowStage = () => {
-	// 	let { stages } = this.state;
-	// 	this.setState({ stages: [ ...stages, { name: '', description: '', assignedTo: '' } ] });
-	// };
 
 	handleSubStageName = (index: any, e: any) => {
 		const { activeIndex, stages } = this.state;
@@ -365,7 +352,7 @@ export class CreateUsecase extends React.Component<any, any> {
 									<h4>Workflow Stage Detail</h4>
 								</div>
 								{errorData &&
-									errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
+								errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
 								{stages &&
 									stages.length > 0 &&
 									stages.map((val: any, i: any) => {
@@ -419,145 +406,145 @@ export class CreateUsecase extends React.Component<any, any> {
 													<div className="requirement-details">
 														<div className="requirement-inner-content">
 															{val.details &&
-																val.details.length > 0 && (
-																	<h4 className="heading">
-																		Requirement Sub-Stage details
-																	</h4>
-																)}
+															val.details.length > 0 && (
+																<h4 className="heading">
+																	Requirement Sub-Stage details
+																</h4>
+															)}
 															{val.details &&
-																val.details.length > 0 && (
-																	<table>
-																		<thead>
-																			<tr>
-																				<th />
-																				<th>Assign to</th>
-																				<th>Start Date</th>
-																				<th>End Date</th>
-																				<th>Comments</th>
-																			</tr>
-																		</thead>
-																		<tbody>
-																			{val.details.map(
-																				(
-																					{
-																						name,
-																						assignto,
-																						startDate,
-																						endDate,
-																						comments
-																					}: any,
-																					index: any
-																				) => (
-																					<tr key={`stageDetail-${i}-${index}`}>
-																						<td className="user-name">
-																							<div className="add-stage-name">
-																								<input
-																									type="text"
-																									className="form-control"
-																									name="subStageName"
-																									value={
-																										stages[activeIndex]
-																											.details[index]
-																											.subStageName
-																									}
-																									onChange={(e) =>
-																										this.handleSubStageName(
-																											index,
-																											e
-																										)}
-																								/>
-																							</div>
-																						</td>
-																						<td>
-																							<select
-																								name="assignto"
-																								id="assignto"
-																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
-																									)}
-																							>
-																								<option value="">
-																									--select--
-																								</option>
-																								<option value="1">
-																									abc
-																								</option>
-																								<option value="2">
-																									def
-																								</option>
-																								<option value="3">
-																									xyz
-																								</option>
-																							</select>
-																						</td>
-																						<td className="start-date">
+															val.details.length > 0 && (
+																<table>
+																	<thead>
+																		<tr>
+																			<th />
+																			<th>Assign to</th>
+																			<th>Start Date</th>
+																			<th>End Date</th>
+																			<th>Comments</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		{val.details.map(
+																			(
+																				{
+																					name,
+																					assignto,
+																					startDate,
+																					endDate,
+																					comments
+																				}: any,
+																				index: any
+																			) => (
+																				<tr key={`stageDetail-${i}-${index}`}>
+																					<td className="user-name">
+																						<div className="add-stage-name">
 																							<input
-																								type="date"
+																								type="text"
 																								className="form-control"
-																								name="startDate"
-																								value={startDate}
-																								placeholder="Select"
+																								name="subStageName"
+																								value={
+																									stages[activeIndex]
+																										.details[index]
+																										.subStageName
+																								}
 																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
+																									this.handleSubStageName(
+																										index,
+																										e
 																									)}
 																							/>
-																						</td>
-																						<td className="start-date end-date">
-																							<input
-																								type="date"
-																								className="form-control"
-																								name="endDate"
-																								placeholder="Select"
-																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
-																									)}
-																								value={endDate}
-																							/>
-																						</td>
-																						<td className="comment-box">
-																							<input
-																								type="comments"
-																								className="form-control"
-																								name="comments"
-																								placeholder="Select"
-																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
-																									)}
-																								value={comments}
-																							/>
-																						</td>
-																						<td
-																							className="remove-btn"
-																							onClick={() => {
-																								this.removeSubString(
+																						</div>
+																					</td>
+																					<td>
+																						<select
+																							name="assignto"
+																							id="assignto"
+																							onChange={(e) =>
+																								this.handleSubStageData(
+																									e,
 																									i,
 																									index
-																								);
-																							}}
+																								)}
 																						>
-																							<i
-																								className="fa fa-times"
-																								aria-hidden="true"
-																							/>
-																						</td>
-																					</tr>
-																				)
-																			)}
-																		</tbody>
-																	</table>
-																)}
+																							<option value="">
+																								--select--
+																							</option>
+																							<option value="1">
+																								abc
+																							</option>
+																							<option value="2">
+																								def
+																							</option>
+																							<option value="3">
+																								xyz
+																							</option>
+																						</select>
+																					</td>
+																					<td className="start-date">
+																						<input
+																							type="date"
+																							className="form-control"
+																							name="startDate"
+																							value={startDate}
+																							placeholder="Select"
+																							onChange={(e) =>
+																								this.handleSubStageData(
+																									e,
+																									i,
+																									index
+																								)}
+																						/>
+																					</td>
+																					<td className="start-date end-date">
+																						<input
+																							type="date"
+																							className="form-control"
+																							name="endDate"
+																							placeholder="Select"
+																							onChange={(e) =>
+																								this.handleSubStageData(
+																									e,
+																									i,
+																									index
+																								)}
+																							value={endDate}
+																						/>
+																					</td>
+																					<td className="comment-box">
+																						<input
+																							type="comments"
+																							className="form-control"
+																							name="comments"
+																							placeholder="Select"
+																							onChange={(e) =>
+																								this.handleSubStageData(
+																									e,
+																									i,
+																									index
+																								)}
+																							value={comments}
+																						/>
+																					</td>
+																					<td
+																						className="remove-btn"
+																						onClick={() => {
+																							this.removeSubString(
+																								i,
+																								index
+																							);
+																						}}
+																					>
+																						<i
+																							className="fa fa-times"
+																							aria-hidden="true"
+																						/>
+																					</td>
+																				</tr>
+																			)
+																		)}
+																	</tbody>
+																</table>
+															)}
 														</div>
 													</div>
 												)}
@@ -565,13 +552,13 @@ export class CreateUsecase extends React.Component<any, any> {
 										);
 									})}
 								{stages &&
-									stages.length > 0 && (
-										<div className="basic-details-btn">
-											<button className="btn btn-primary" onClick={this.submitWorkflow}>
-												Save
-											</button>
-										</div>
-									)}
+								stages.length > 0 && (
+									<div className="basic-details-btn">
+										<button className="btn btn-primary" onClick={this.submitWorkflow}>
+											Save
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
