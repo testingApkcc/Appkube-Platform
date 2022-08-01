@@ -10,6 +10,7 @@ export class AssetView extends React.Component<any, any> {
 				description: 'Recusandae libero eveniet ducimus.',
 				assignTo: 'string',
 				id: 3,
+				useCase:{},
 				stages: [
 					{
 						checkList: [
@@ -176,6 +177,13 @@ export class AssetView extends React.Component<any, any> {
 				]
 			}
 		};
+	}
+
+	setUseCaseData = (data: any) => {
+		console.log(JSON.parse(data.stepInput.S));
+		this.setState({
+			useCase: data
+		})
 	}
 
 	displayUsecaseList = () => {

@@ -26,25 +26,11 @@ export class OverView extends React.Component<any, any> {
 		this.awsHelper = new AwsHelper({ meta: props.meta });
 	}
 
-	componentDidMount() {
-		this.awsHelper.getUsecaseList((useCaseList: any) => {
-			useCaseList.forEach((useCase: any) => {
-				if (useCase.usecaseName.S === this.props.id) {
-					this.awsHelper.getExecutionHistory(
-						useCase.executionArn.S,
-						(items: any) => {
-							this.setState({
-								useCase: {
-									...useCase,
-									steps: items
-								}
-							});
-						},
-						(err: any) => { console.log(err) }
-					);
-				}
-			});
-		}, () => { });
+	setUseCaseData = (data: any) => {
+		console.log(JSON.parse(data.stepInput.S));
+		this.setState({
+			useCase: data
+		})
 	}
 
 	render() {
@@ -65,7 +51,7 @@ export class OverView extends React.Component<any, any> {
 							</div>
 							<div className="tbody">
 								<div className="tr">
-									<div className="td">{useCase.usecaseName ? useCase.usecaseName.S : ''}</div>
+									<div className="td">{useCase?.usecaseName ? useCase.usecaseName.S : ''}</div>
 									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
 									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
 									<div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>

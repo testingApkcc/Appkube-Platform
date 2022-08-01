@@ -449,10 +449,17 @@ export class WorkFlowView extends React.Component<any, any> {
 						}
 					]
 				}
-			]
+			],
+			useCase:{},
 		};
 	}
 
+	setUseCaseData = (data: any) => {
+		console.log(data);
+		this.setState({
+			useCase: data
+		})
+	}
 	displayUsecase = () => {
 		const { usecaseData, activeStage } = this.state;
 		let retData = [];

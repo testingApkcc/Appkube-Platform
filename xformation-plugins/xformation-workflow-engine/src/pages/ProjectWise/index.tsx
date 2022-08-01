@@ -55,12 +55,13 @@ export class ProjectWise extends React.Component<any, any> {
 		this.awsHelper.getUsecaseList((useCaseList: any) => {
 			useCaseList.forEach((useCase: any) => {
 				this.awsHelper.getExecutionHistory(
-					useCase.executionArn.S,
+					 "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
 					(items: any) => {
 						const useCases = this.state.useCaseList;
 						useCases.push({
 							...useCase,
-							steps: items
+							steps: items,
+							executionArn:{S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab"}
 						});
 						this.setState({
 							useCaseList: useCases
