@@ -49,6 +49,25 @@ export class AwsHelper {
     });
   }
 
+  getUsecaseInputData(useCaseName: any, onDone: any) {
+    var params = {
+      TableName: 'usecase_input',
+    };
+    this.dynamoDB.scan(params, function (err: any, data: any) {
+      if (err) console.log(err, err.stack);
+      // an error occurred
+      else {
+        console.log('Got usecase inputlist', data.Items);
+
+        data.Items.forEach((e: any) => {
+          if (e.usecaseName.S === useCaseName) {
+            onDone(e);
+          }
+        });
+      }
+    });
+  }
+
   getUsecaseList = (onDone: any, onError: any) => {
     var params = {
       TableName: 'usecase_arn',

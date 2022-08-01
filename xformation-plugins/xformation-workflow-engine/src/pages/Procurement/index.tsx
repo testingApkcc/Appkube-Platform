@@ -7,14 +7,17 @@ import headerIcon from '../../img/header-icon.png';
 import 'react-circular-progressbar/dist/styles.css';
 import 'simplebar/dist/simplebar.min.css';
 import { Link } from 'react-router-dom';
-
+import { AwsHelper } from '../AwsHelpers';
 export class ProcurementDetail extends React.Component<any, any> {
   breadCrumbs: any;
   stepper: any;
+  awsHelper: any;
   constructor(props: any) {
     super(props);
     this.state = {
       activeTab: 0,
+      useCaseName: this.props.match.params.id,
+      useCase: {}
     };
     this.breadCrumbs = [
       {
@@ -27,16 +30,26 @@ export class ProcurementDetail extends React.Component<any, any> {
       },
     ];
     this.stepper = [
-      { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.props.match.params.id} /> },
-      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.props.match.params.id} /> },
-      { title: "Asset View", key: 2, component: <AssetView id={this.props.match.params.id} /> }
+      { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.state.useCaseName} /> },
+      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} /> },
+      { title: "Asset View", key: 2, component: <AssetView id={this.state.useCaseName} /> }
     ]
+    this.awsHelper = new AwsHelper({ meta: props.meta });
   }
+
+  async componentDidMount() {
+    const { useCaseName } = this.state;
+    this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
+      this.setState({ useCase: useCases })
+    })
+  }
+
   activeTab = (key: any) => {
     this.setState({ activeTab: key });
   }
   render() {
-    const { activeTab } = this.state;
+    const { activeTab, useCase } = this.state;
+    console.log(useCase)
     return (
       <div className="owrkflow-procument-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="Usecase 1" />
