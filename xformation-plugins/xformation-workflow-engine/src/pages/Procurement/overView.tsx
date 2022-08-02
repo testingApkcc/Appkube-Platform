@@ -36,35 +36,36 @@ export class OverView extends React.Component<any, any> {
 		}
 	}
 
-	checkValuesValidation = (value: any,  name:any, index:any,) => {
-		let retData:any=[]
-		let valuesPresent:any=0
-	if (value.length<=0){
-		return(<></>)
-	}else if(value.length>0){
-		for(let i=0; i<value.length; i++){
-			let obj=value[i]
-			let res:any=0
-		for (const objKey of Object.keys(obj)){
-			
-			if (value[objKey]!== ""){
-				res++
+	checkValuesValidation = (value: any) => {
+		let valuesPresent: any = 0
+		if (value.length <= 0) {
+			return (<></>)
+		} else if (value.length > 0) {
+			for (let i = 0; i < value.length; i++) {
+				let obj = value[i]
+				let res: any = 0
+				for (const objKey of Object.keys(obj)) {
+
+					if (obj[objKey]) {
+						res++
+					}
+
+				}
+				if (Object.keys(obj).length === res) {
+					valuesPresent++
+				}
 			}
 		}
-		if (Object.keys(obj).length=== res){
-			valuesPresent++
+		if (valuesPresent === value.length) {
+			return (<i className="fa fa-check green" aria-hidden="true" />)
 		}
+		else {
+			return (<i className="fa fa-check orange" aria-hidden="true" />)
 		}
-	}
-	if (valuesPresent=== values.length){
-		return(<i className="fa fa-check green" aria-hidden="true"/>)
-	}
-	else{
-		return(<i className="fa fa-check orange" aria-hidden="true"/>)
-	}
 	}
 	render() {
 		const { useCase } = this.state;
+		console.log(useCase)
 		return (
 			<>
 				<div className="project-wise-status">
@@ -82,7 +83,7 @@ export class OverView extends React.Component<any, any> {
 									<div className="td">{useCase?.usecaseName ? useCase.usecaseName.S : ''}</div>
 									{useCase?.stepInput?.S && useCase.stepInput.S.length > 0 &&
 										useCase.stepInput.S.map(({ name, details }: any, index: any) =>
-											(<div className="td">{this.checkValuesValidation(details, name, index)}</div>))}
+											(<div className="td" key={`${name}${index}`}>{this.checkValuesValidation(details)}</div>))}
 								</div>
 							</div>
 						</div>
