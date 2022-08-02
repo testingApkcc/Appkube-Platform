@@ -450,51 +450,104 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				}
 			],
-			useCase:{},
-			usecaseData: []
+			useCase: {},
+			usecaseData: [],
+			workflowCheckList: [
+				{ label: 'string', id: 3 },
+				{ label: 'string', id: 10 },
+				{ label: 'string', id: 6 },
+				{ label: 'string', id: 6 },
+				{ label: 'string', id: 1 }
+			]
 		};
 	}
 
 	setUseCaseData = (data: any) => {
+		const { workflowCheckList } = this.state;
 		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.length > 0) {
+			for (let i = 0; i < data.stepInput.S.length; i++) {
+				data.stepInput.S[i]['checkList'] = workflowCheckList;
+			}
 			this.setState({
 				useCase: data,
 				usecaseData: data.stepInput.S
 			});
 		}
 	}
+	
 	displayUsecase = () => {
 		const { usecaseData, activeStage } = this.state;
 		let retData = [];
-		if (usecaseData && usecaseData.stages) {
-			const workflowDetail = usecaseData.stages[activeStage];
-			if (workflowDetail && workflowDetail.steps && workflowDetail.steps.length > 0) {
-				for (let i = 0; i < workflowDetail.steps.length; i++) {
-					let row = workflowDetail.steps[i];
-					retData.push(
-						<div key={`${i}-usecase`} className="api-code">
+		if (usecaseData && usecaseData.length > 0) {
+			const workflowDetail = usecaseData[activeStage];
+			if (workflowDetail) {
+				// for (let i = 0; i < workflowDetail.steps.length; i++) {
+				// 	let row = workflowDetail.steps[i];
+				retData.push(
+					<React.Fragment>
+						<div key='usecase-1`' className="api-code">
 							<div className="heading">
-								<h5>{row.label}</h5>
+								<h5>OPS Readlines</h5>
 								<i className="fa fa-angle-down" aria-hidden="true"></i>
 							</div>
 							<div className="api-content">
-								<label>Github Link:</label>
+								<label>Pipeline Link:</label>
 								<input
 									type="text"
-									name="link"
-									value={row.link}
-									onChange={(e) => this.handleStateChange(e, i)}
+									name="pipelink"
+									onChange={(e) => this.handleStateChange(e)}
 								/>
 								<button
-									onClick={() => this.updateStep(row)}
+									onClick={() => this.updateStep(workflowDetail)}
 									className="btn btn-primary code-update-btn"
 								>
 									Update
 								</button>
 							</div>
 						</div>
-					);
-				}
+						<div key='usecase-2' className="api-code">
+							<div className="heading">
+								<h5>Release Note</h5>
+								<i className="fa fa-angle-down" aria-hidden="true"></i>
+							</div>
+							<div className="api-content">
+								<label>Release Note Link:</label>
+								<input
+									type="text"
+									name="releasenote"
+									onChange={(e) => this.handleStateChange(e)}
+								/>
+								<button
+									onClick={() => this.updateStep(workflowDetail)}
+									className="btn btn-primary code-update-btn"
+								>
+									Update
+								</button>
+							</div>
+						</div>
+						<div key='usecase-3' className="api-code">
+							<div className="heading">
+								<h5>OPS Central</h5>
+								<i className="fa fa-angle-down" aria-hidden="true"></i>
+							</div>
+							<div className="api-content">
+								<label>Ops Central Link:</label>
+								<input
+									type="text"
+									name="opscentral"
+									onChange={(e) => this.handleStateChange(e)}
+								/>
+								<button
+									onClick={() => this.updateStep(workflowDetail)}
+									className="btn btn-primary code-update-btn"
+								>
+									Update
+								</button>
+							</div>
+						</div>
+					</React.Fragment>
+				);
+				// }
 			}
 		}
 		return retData;
@@ -503,8 +556,8 @@ export class WorkFlowView extends React.Component<any, any> {
 	displayCheckList = () => {
 		const { usecaseData, activeStage } = this.state;
 		let retData = [];
-		if (usecaseData && usecaseData.stages) {
-			const workflowDetail: any = usecaseData.stages[activeStage];
+		if (usecaseData && usecaseData.length > 0) {
+			const workflowDetail: any = usecaseData[activeStage];
 			if (workflowDetail && workflowDetail.checkList && workflowDetail.checkList.length > 0) {
 				for (let i = 0; i < workflowDetail.checkList.length; i++) {
 					let row = workflowDetail.checkList[i];
@@ -569,23 +622,23 @@ export class WorkFlowView extends React.Component<any, any> {
 		}
 	};
 
-	handleStateChange = (event: any, index: any) => {
-		const { usecaseData, activeStage } = this.state;
-		const { name, value } = event.target;
-		const workflowDetail: any = usecaseData.stages[activeStage];
-		if (workflowDetail.steps) {
-			workflowDetail.steps[index][name] = value;
-		}
-		this.setState({
-			usecaseData: JSON.parse(JSON.stringify(usecaseData))
-		});
+	handleStateChange = (event: any) => {
+		// const { usecaseData, activeStage } = this.state;
+		// const { name, value } = event.target;
+		// const workflowDetail: any = usecaseData.stages[activeStage];
+		// if (workflowDetail.steps) {
+		// 	workflowDetail.steps[index][name] = value;
+		// }
+		// this.setState({
+		// 	usecaseData: JSON.parse(JSON.stringify(usecaseData))
+		// });
 	};
 
 	handleStateChangeCheckList = (e: any, index: any) => {
 		const { checked } = e.target;
 		const { usecaseData, activeStage } = this.state;
 		let count = 0;
-		const workflowDetail: any = usecaseData.stages[activeStage];
+		const workflowDetail: any = usecaseData[activeStage];
 		if (workflowDetail.checkList) {
 			workflowDetail.checkList[index]['isChecked'] = checked;
 			for (let i = 0; i < workflowDetail.checkList.length; i++) {
@@ -595,11 +648,11 @@ export class WorkFlowView extends React.Component<any, any> {
 			}
 		}
 		if (count == workflowDetail.checkList.length) {
-			usecaseData.stages[activeStage]['status'] = 'completed';
+			usecaseData[activeStage]['status'] = 'completed';
 		} else if (count < workflowDetail.checkList.length) {
-			usecaseData.stages[activeStage]['status'] = 'inprogress';
+			usecaseData[activeStage]['status'] = 'inprogress';
 		} else if (count == 0) {
-			usecaseData.stages[activeStage]['status'] = '';
+			usecaseData[activeStage]['status'] = '';
 		}
 		this.setState({
 			usecaseData
@@ -617,13 +670,13 @@ export class WorkFlowView extends React.Component<any, any> {
 	moveToNextPage = (type: any) => {
 		const { usecaseData, activeStage } = this.state;
 		if (type == 'next') {
-			if (usecaseData && usecaseData.length>0) {
+			if (usecaseData && usecaseData.length > 0) {
 				this.setState({
 					activeStage: activeStage + 1
 				});
 			}
 		} else {
-			if (usecaseData && usecaseData.length>0) {
+			if (usecaseData && usecaseData.length > 0) {
 				let index = activeStage - 1;
 				this.setState({
 					activeStage: index
@@ -633,23 +686,25 @@ export class WorkFlowView extends React.Component<any, any> {
 	};
 
 	displayStageList = () => {
+		const { usecaseData } = this.state;
 		let retData = [];
-		const { stageList } = this.state;
-		if (stageList && stageList.length > 0) {
-			for (let i = 0; i < stageList.length; i++) {
+		// let stageList = usecaseData;
+		if (usecaseData && usecaseData.length > 0) {
+			console.log(usecaseData)
+			for (let i = 0; i < usecaseData.length; i++) {
 				let stepJSXList = [];
-				let stage = stageList[i];
-				if (stage && stage.stepList && stage.stepList.length > 0) {
-					for (let j = 0; j < stage.stepList.length; j++) {
-						let step = stage.stepList[j];
+				let stage = usecaseData[i];
+				if (stage && stage.details && stage.details.length > 0) {
+					for (let j = 0; j < stage.details.length; j++) {
+						let step = stage.details[j];
 						stepJSXList.push(
 							<tr className="workflow-inner-table">
-								<td><span>{step.name}</span></td>
-								<td>{step.assignTo}</td>
+								<td><span>{step.subStageName}</span></td>
+								<td>{step.assignto}</td>
 								<td>{step.startDate}</td>
-								<td>{step.startDeviation}</td>
+								<td>1</td>
 								<td>{step.endDate}</td>
-								<td>{step.endDeviation}</td>
+								<td>0</td>
 							</tr>
 						);
 					}

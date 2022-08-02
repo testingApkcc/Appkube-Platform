@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { AwsHelper } from '../AwsHelpers';
-import { values } from 'lodash';
 
 export class OverView extends React.Component<any, any> {
 	createStreamRef: any;
@@ -38,8 +37,9 @@ export class OverView extends React.Component<any, any> {
 
 	checkValuesValidation = (value: any) => {
 		let valuesPresent: any = 0
+		let retdata:any;
 		if (value.length <= 0) {
-			return (<></>)
+			retdata=<React.Fragment />
 		} else if (value.length > 0) {
 			for (let i = 0; i < value.length; i++) {
 				let obj = value[i]
@@ -57,12 +57,14 @@ export class OverView extends React.Component<any, any> {
 			}
 		}
 		if (valuesPresent === value.length) {
-			return (<i className="fa fa-check green" aria-hidden="true" />)
+			retdata=<i className="fa fa-check green" aria-hidden="true" ></i>
 		}
 		else {
-			return (<i className="fa fa-check orange" aria-hidden="true" />)
+			retdata=<i className="fa fa-check orange" aria-hidden="true" ></i>
 		}
+		return retdata;
 	}
+
 	render() {
 		const { useCase } = this.state;
 		console.log(useCase)
