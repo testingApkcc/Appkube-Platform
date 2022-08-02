@@ -466,7 +466,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		const { workflowCheckList } = this.state;
 		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.length > 0) {
 			for (let i = 0; i < data.stepInput.S.length; i++) {
-				data.stepInput.S[i]['checkList'] = workflowCheckList;
+				data.stepInput.S[i]['checkList'] = JSON.parse(JSON.stringify(workflowCheckList))
 			}
 			this.setState({
 				useCase: data,
@@ -562,7 +562,7 @@ export class WorkFlowView extends React.Component<any, any> {
 				for (let i = 0; i < workflowDetail.checkList.length; i++) {
 					let row = workflowDetail.checkList[i];
 					retData.push(
-						<div key={i + 'checkbox'} className="requirement-data">
+						<div key={`${i}checkbox${activeStage}`} className="requirement-data">
 							<input
 								type="checkbox"
 								checked={row.isChecked}
