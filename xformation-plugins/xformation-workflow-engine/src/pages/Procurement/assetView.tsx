@@ -192,7 +192,6 @@ export class AssetView extends React.Component<any, any> {
 
 	displayUsecaseList = () => {
 		const { usecaseList } = this.state;
-		console.log(usecaseList);
 		let retData = [];
 		if (usecaseList && usecaseList.length > 0) {
 			for (let i = 0; i < usecaseList.length; i++) {
