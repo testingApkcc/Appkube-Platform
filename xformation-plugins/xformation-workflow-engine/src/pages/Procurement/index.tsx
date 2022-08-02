@@ -13,8 +13,8 @@ export class ProcurementDetail extends React.Component<any, any> {
   stepper: any;
   awsHelper: any;
   overViewRef: any;
-  workFlowRef:any;
-  assetViewRef:any;
+  workFlowRef: any;
+  assetViewRef: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -37,9 +37,9 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.workFlowRef = React.createRef();
     this.assetViewRef = React.createRef();
     this.stepper = [
-      { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.state.useCaseName} key={1}ref={this.overViewRef} /> },
+      { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.state.useCaseName} key={1} ref={this.overViewRef} /> },
       { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} /> },
-      { title: "Asset View", key: 2, component: <AssetView id={this.state.useCaseName}key={3} ref={this.assetViewRef} /> }
+      { title: "Asset View", key: 2, component: <AssetView id={this.state.useCaseName} key={3} ref={this.assetViewRef} /> }
     ]
   }
 
@@ -52,17 +52,18 @@ export class ProcurementDetail extends React.Component<any, any> {
     }, (err: any) => { if (err) { console.log(err) } })
   }
 
-  componentDidUpdate(){
-    const {useCase}=this.state;
-    if (this.overViewRef.current) {
-      this.overViewRef.current.setUseCaseData(useCase);
-    }
-    if (this.workFlowRef.current){
-      this.workFlowRef.current.setUseCaseData(useCase);
-    }
-    if (this.assetViewRef.current){
-      this.assetViewRef.current.setUseCaseData(useCase);
-
+  componentDidUpdate() {
+    const { useCase } = this.state;
+    if (useCase) {
+      if (this.overViewRef.current) {
+        this.overViewRef.current.setUseCaseData(useCase);
+      }
+      if (this.workFlowRef.current) {
+        this.workFlowRef.current.setUseCaseData(useCase);
+      }
+      if (this.assetViewRef.current) {
+        this.assetViewRef.current.setUseCaseData(useCase);
+      }
     }
   }
   activeTab = (key: any) => {

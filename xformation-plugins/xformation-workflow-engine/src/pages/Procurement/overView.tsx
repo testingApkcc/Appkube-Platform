@@ -27,12 +27,23 @@ export class OverView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		console.log(JSON.parse(data.stepInput.S));
-		this.setState({
-			useCase: data
-		})
+		if (data && data.stepInput && data.stepInput.S && typeof data.stepInput.S === 'object') {
+			console.log(typeof JSON.parse(data.stepInput.S));
+			data.stepInput.S = JSON.parse(data.stepInput.S)
+			this.setState({
+				useCase: data
+			})
+		}
 	}
 
+	checkValuesValidation = (value: any) => {
+		if (value?.length){
+			console.log(value)
+
+		}
+		return null
+
+	}
 	render() {
 		const { useCase } = this.state;
 		return (
@@ -42,16 +53,17 @@ export class OverView extends React.Component<any, any> {
 						<div className="table">
 							<div className="thead">
 								<div className="th">Usecase</div>
-								<div className="th">Requirements</div>
-								<div className="th">Mock Development</div>
-								<div className="th">Actual Development</div>
-								<div className="th">CI/CD Test</div>
-								<div className="th">Staging/Release</div>
-								<div className="th last">Publish/Operate</div>
+								{useCase?.stepInput?.S && useCase.stepInput.S.length > 0 &&
+									useCase.stepInput.S.map(({ name }: any, index: any) =>
+										(<div className="th" key={`${name}${index}`}>{name}</div>))}
+
 							</div>
 							<div className="tbody">
 								<div className="tr">
 									<div className="td">{useCase?.usecaseName ? useCase.usecaseName.S : ''}</div>
+									{useCase?.stepInput?.S && useCase.stepInput.S.length > 0 &&
+										useCase.stepInput.S.map(({ name, details }: any, index: any) =>
+											(<div className="th" key={`${name}${index}`}>{this.checkValuesValidation(details)}</div>))}
 									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
 									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
 									<div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
