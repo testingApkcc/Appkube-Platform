@@ -181,7 +181,6 @@ export class AssetView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		console.log(typeof data.stepInput.S);
 		if (data && data.stepInput && data.stepInput.S && typeof data.stepInput.S === 'object') {
 			data.stepInput.S = JSON.parse(data.stepInput.S)
 			this.setState({
@@ -192,7 +191,6 @@ export class AssetView extends React.Component<any, any> {
 
 	displayUsecaseList = () => {
 		const { usecaseList, useCase } = this.state;
-		console.log(useCase);
 		let retData = [];
 		if (usecaseList && usecaseList.stages && usecaseList.stages.length > 0) {
 			for (let i = 0; i < usecaseList.stages.length; i++) {

@@ -455,7 +455,6 @@ export class WorkFlowView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		console.log(data);
 		this.setState({
 			useCase: data
 		})

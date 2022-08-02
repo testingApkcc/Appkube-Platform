@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { AwsHelper } from '../AwsHelpers';
+import { values } from 'lodash';
 
 export class OverView extends React.Component<any, any> {
 	createStreamRef: any;
@@ -35,10 +36,32 @@ export class OverView extends React.Component<any, any> {
 		}
 	}
 
-	checkValuesValidation = (value: any) => {
-		console.log(value)
-		return null
-
+	checkValuesValidation = (value: any,  name:any, index:any,) => {
+		let retData:any=[]
+		let valuesPresent:any=0
+	if (value.length<=0){
+		return(<></>)
+	}else if(value.length>0){
+		for(let i=0; i<value.length; i++){
+			let obj=value[i]
+			let res:any=0
+		for (const objKey of Object.keys(obj)){
+			
+			if (value[objKey]!== ""){
+				res++
+			}
+		}
+		if (Object.keys(obj).length=== res){
+			valuesPresent++
+		}
+		}
+	}
+	if (valuesPresent=== values.length){
+		return(<i className="fa fa-check green" aria-hidden="true"/>)
+	}
+	else{
+		return(<i className="fa fa-check orange" aria-hidden="true"/>)
+	}
 	}
 	render() {
 		const { useCase } = this.state;
@@ -59,13 +82,7 @@ export class OverView extends React.Component<any, any> {
 									<div className="td">{useCase?.usecaseName ? useCase.usecaseName.S : ''}</div>
 									{useCase?.stepInput?.S && useCase.stepInput.S.length > 0 &&
 										useCase.stepInput.S.map(({ name, details }: any, index: any) =>
-											(<div className="th" key={`${name}${index}`}>{this.checkValuesValidation(details)}</div>))}
-									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
-									<div className="td"><i className="fa fa-check green" aria-hidden="true"></i></div>
-									<div className="td"><i className="fa fa-check orange" aria-hidden="true"></i></div>
-									<div className="td"></div>
-									<div className="td"></div>
-									<div className="td"></div>
+											(<div className="td">{this.checkValuesValidation(details, name, index)}</div>))}
 								</div>
 							</div>
 						</div>
