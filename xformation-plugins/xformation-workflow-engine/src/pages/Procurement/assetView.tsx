@@ -10,7 +10,7 @@ export class AssetView extends React.Component<any, any> {
 				description: 'Recusandae libero eveniet ducimus.',
 				assignTo: 'string',
 				id: 3,
-				useCase:{},
+				useCase: {},
 				stages: [
 					{
 						checkList: [
@@ -175,19 +175,24 @@ export class AssetView extends React.Component<any, any> {
 						status: 'string'
 					}
 				]
-			}
+			},
+			useCase: {},
 		};
 	}
 
 	setUseCaseData = (data: any) => {
-		console.log(JSON.parse(data.stepInput.S));
-		this.setState({
-			useCase: data
-		})
-	}
+		console.log(typeof data.stepInput.S);
+		if (data && data.stepInput && data.stepInput.S && typeof data.stepInput.S === 'object') {
+			data.stepInput.S = JSON.parse(data.stepInput.S)
+			this.setState({
+				useCase: data
+			})
+		}
+	};
 
 	displayUsecaseList = () => {
-		const { usecaseList } = this.state;
+		const { usecaseList, useCase } = this.state;
+		console.log(useCase);
 		let retData = [];
 		if (usecaseList && usecaseList.stages && usecaseList.stages.length > 0) {
 			for (let i = 0; i < usecaseList.stages.length; i++) {
