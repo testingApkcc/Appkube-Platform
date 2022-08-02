@@ -27,8 +27,7 @@ export class OverView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		if (data && data.stepInput && data.stepInput.S && typeof data.stepInput.S === 'object') {
-			console.log(typeof JSON.parse(data.stepInput.S));
+		if (data && data.stepInput && data.stepInput.S && typeof JSON.parse(data.stepInput.S) === 'object') {
 			data.stepInput.S = JSON.parse(data.stepInput.S)
 			this.setState({
 				useCase: data
@@ -37,10 +36,7 @@ export class OverView extends React.Component<any, any> {
 	}
 
 	checkValuesValidation = (value: any) => {
-		if (value?.length){
-			console.log(value)
-
-		}
+		console.log(value)
 		return null
 
 	}
