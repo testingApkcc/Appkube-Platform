@@ -39,7 +39,7 @@ export class AwsHelper {
         stepInput: { S: stepInput },
       },
     };
-    console.log(paramsForDb);
+
     this.dynamoDB.putItem(paramsForDb, function (err: any, data: any) {
       if (err) {
         console.error('Unable to write data: ', JSON.stringify(err, null, 2));

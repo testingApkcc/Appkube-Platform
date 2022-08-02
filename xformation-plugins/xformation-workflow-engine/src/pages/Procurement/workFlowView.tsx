@@ -1,7 +1,9 @@
 import * as React from 'react';
+// import { AwsHelper } from '../AwsHelpers';
 // import { Link } from 'react-router-dom';
 
 export class WorkFlowView extends React.Component<any, any> {
+	awsHelper: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -460,6 +462,7 @@ export class WorkFlowView extends React.Component<any, any> {
 				{ label: 'string', id: 1 }
 			]
 		};
+		// this.awsHelper = new AwsHelper({ meta: props.meta });
 	}
 
 	setUseCaseData = (data: any) => {
@@ -474,7 +477,7 @@ export class WorkFlowView extends React.Component<any, any> {
 			});
 		}
 	}
-	
+
 	displayUsecase = () => {
 		const { usecaseData, activeStage } = this.state;
 		let retData = [];
@@ -498,7 +501,7 @@ export class WorkFlowView extends React.Component<any, any> {
 									onChange={(e) => this.handleStateChange(e)}
 								/>
 								<button
-									onClick={() => this.updateStep(workflowDetail)}
+									onClick={this.updateStep}
 									className="btn btn-primary code-update-btn"
 								>
 									Update
@@ -518,7 +521,7 @@ export class WorkFlowView extends React.Component<any, any> {
 									onChange={(e) => this.handleStateChange(e)}
 								/>
 								<button
-									onClick={() => this.updateStep(workflowDetail)}
+									onClick={this.updateStep}
 									className="btn btn-primary code-update-btn"
 								>
 									Update
@@ -538,7 +541,7 @@ export class WorkFlowView extends React.Component<any, any> {
 									onChange={(e) => this.handleStateChange(e)}
 								/>
 								<button
-									onClick={() => this.updateStep(workflowDetail)}
+									onClick={this.updateStep}
 									className="btn btn-primary code-update-btn"
 								>
 									Update
@@ -623,15 +626,12 @@ export class WorkFlowView extends React.Component<any, any> {
 	};
 
 	handleStateChange = (event: any) => {
-		// const { usecaseData, activeStage } = this.state;
-		// const { name, value } = event.target;
-		// const workflowDetail: any = usecaseData.stages[activeStage];
-		// if (workflowDetail.steps) {
-		// 	workflowDetail.steps[index][name] = value;
-		// }
-		// this.setState({
-		// 	usecaseData: JSON.parse(JSON.stringify(usecaseData))
-		// });
+		const { useCase } = this.state;
+		const { name, value } = event.target;
+		useCase.stepInput[name] = value;
+		this.setState({
+			useCase
+		});
 	};
 
 	handleStateChangeCheckList = (e: any, index: any) => {
@@ -659,13 +659,16 @@ export class WorkFlowView extends React.Component<any, any> {
 		});
 	};
 
-	updateStep = (updatedStep: any) => {
-		// props.dispatch(WorkflowAction.updateWorkflowStep({ id: Id, step: updatedStep }));
+	updateStep = () => {
+		const { useCase } = this.state;
+		let stepInput = {
+			...useCase.stepInput.S,
+			...useCase.stepInput.releasenote,
+			...useCase.stepInput.pipelink,
+			...useCase.stepInput.opscentra
+		}
+		this.props.updateWorkflowInput(useCase.usecaseName.S, JSON.stringify(stepInput))
 	};
-
-	// const updateStage = () => {
-	// 	// props.dispatch(WorkflowAction.updateWorkflowStage({ id: Id, stage: usecaseData }));
-	// };
 
 	moveToNextPage = (type: any) => {
 		const { usecaseData, activeStage } = this.state;
@@ -690,7 +693,6 @@ export class WorkFlowView extends React.Component<any, any> {
 		let retData = [];
 		// let stageList = usecaseData;
 		if (usecaseData && usecaseData.length > 0) {
-			console.log(usecaseData)
 			for (let i = 0; i < usecaseData.length; i++) {
 				let stepJSXList = [];
 				let stage = usecaseData[i];

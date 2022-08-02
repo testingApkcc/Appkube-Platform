@@ -38,7 +38,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.assetViewRef = React.createRef();
     this.stepper = [
       { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.state.useCaseName} key={1} ref={this.overViewRef} /> },
-      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} /> },
+      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} updateWorkflowInput={this.updateWorkflowInput} /> },
       { title: "Asset View", key: 2, component: <AssetView id={this.state.useCaseName} key={3} ref={this.assetViewRef} /> }
     ]
   }
@@ -70,8 +70,12 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.setState({ activeTab: key });
   }
 
+  updateWorkflowInput = (usecaseName: any, setInputs: any) => {
+    this.awsHelper.usecaseInputToDynamoDb(usecaseName, setInputs);
+  }
+
   render() {
-    const { activeTab, useCase, useCaseName} = this.state;
+    const { activeTab, useCase, useCaseName } = this.state;
     return (
       <div className="owrkflow-procument-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="Usecase 1" />
