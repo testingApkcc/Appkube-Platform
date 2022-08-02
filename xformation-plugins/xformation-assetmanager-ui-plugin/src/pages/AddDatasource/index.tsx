@@ -294,7 +294,7 @@ export class AddDatasource extends React.Component<any, any> {
 										disabled={accountFromUrl && environmentFromUrl}
 									>
 										<option key={-1} value={''}>
-											Select Datasource
+											Select Environment
 										</option>
 										{environmentList &&
 											environmentList.length > 0 &&
