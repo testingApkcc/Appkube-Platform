@@ -15,6 +15,7 @@ import { getLocationSrv } from '@grafana/runtime';
 export class CreateUsecase extends React.Component<any, any> {
 	id: any;
 	awsHelper: any;
+	replaceKeyInXml: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -47,27 +48,25 @@ export class CreateUsecase extends React.Component<any, any> {
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Create Screen Design',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Updating Usecase in Netlifi',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						}
-					],
-					links: [
-						{ name: 'Ops Readiness', link: '' },
-						{ name: 'Release Note', link: '' },
-						{ name: 'Ops Central', link: '' },
 					]
 				},
 				{
@@ -82,21 +81,17 @@ export class CreateUsecase extends React.Component<any, any> {
 						{ label: 'string', id: 1 }
 					],
 					details: [
-						{ subStageName: 'Create API Spec', assignto: '', startDate: '', endDate: '', comments: '' },
-						{ subStageName: 'Create Postman Test', assignto: '', startDate: '', endDate: '', comments: '' },
+						{ subStageName: 'Create API Spec', assignto: '', startDate: '', endDate: '', comments:'',data: [{ link: "",label: "Github link"}] },
+						{ subStageName: 'Create Postman Test', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  },
 						{
 							subStageName: 'Create UI Screen with Mock API',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
-						{ subStageName: 'Create Test API', assignto: '', startDate: '', endDate: '', comments: '' }
-					],
-					links: [
-						{ name: 'Ops Readiness', link: '' },
-						{ name: 'Release Note', link: '' },
-						{ name: 'Ops Central', link: '' },
+						{ subStageName: 'Create Test API', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  }
 					]
 				},
 				{
@@ -116,63 +111,64 @@ export class CreateUsecase extends React.Component<any, any> {
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'API Source Code in GitHub',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Populate Test data in GitHub',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Junit5 Test in GitHub',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Cucumber BDD tests in GitHub',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
-						{ subStageName: 'Gatling Performance', assignto: '', startDate: '', endDate: '', comments: '' },
+						{ subStageName: 'Gatling Performance', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  },
 						{
 							subStageName: 'Code Review with Tech Lead',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Actual UI-API Integration',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Branch Merge after Review',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', data: [{ link: "",label: "Github link"}] 
 						}
-					],
-					links: [
-						{ name: 'Ops Readiness', link: '' },
-						{ name: 'Release Note', link: '' },
-						{ name: 'Ops Central', link: '' },
 					]
 				},
 				{
@@ -192,42 +188,42 @@ export class CreateUsecase extends React.Component<any, any> {
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Create Kubernetes Operator',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', 
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Link API with GitHub and Netlifi',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', 
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Upload Test results in S3 Website',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Upload Test env URL in Netlifi site',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '',
+							data: [{ link: "",label: "Github link"}] 
 						},
-						{ subStageName: 'Stage after review', assignto: '', startDate: '', endDate: '', comments: '' }
-					],
-					links: [
-						{ name: 'Ops Readiness', link: '' },
-						{ name: 'Release Note', link: '' },
-						{ name: 'Ops Central', link: '' },
+						{ subStageName: 'Stage after review', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  }
 					]
 				},
 				{
@@ -247,29 +243,24 @@ export class CreateUsecase extends React.Component<any, any> {
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', data: [{ link: "",label: "Github link"}] 
 						},
-						{ subStageName: 'Promote to Prod', assignto: '', startDate: '', endDate: '', comments: '' },
+						{ subStageName: 'Promote to Prod', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  },
 						{
 							subStageName: 'API Security Test in Prod',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', data: [{ link: "",label: "Github link"}] 
 						},
 						{
 							subStageName: 'Create/Update Release Note',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', data: [{ link: "",label: "Github link"}] 
 						}
 					],
-					links: [
-						{ name: 'Ops Readiness', link: '' },
-						{ name: 'Release Note', link: '' },
-						{ name: 'Ops Central', link: '' },
-					]
 				},
 				{
 					name: 'Publish/Operate',
@@ -288,15 +279,11 @@ export class CreateUsecase extends React.Component<any, any> {
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: ''
+							comments: '', data: [{ link: "",label: "Github link"}] 
 						},
-						{ subStageName: 'Release Note', assignto: '', startDate: '', endDate: '', comments: '' }
+						{ subStageName: 'Release Note', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  }
 					],
-					links: [
-						{ name: 'Ops Readiness', link: '' },
-						{ name: 'Release Note', link: '' },
-						{ name: 'Ops Central', link: '' },
-					],
+					
 				}
 			],
 			usecase: {
@@ -312,6 +299,24 @@ export class CreateUsecase extends React.Component<any, any> {
 		};
 		this.id = 10;
 		this.awsHelper = new AwsHelper({ meta: props.meta });
+		this.replaceKeyInXml = {
+			name: "Name",
+			description: "Description",
+			assignedTo:"Assigned-To",
+			details: "Details",
+			subStageName:"Sub-Stage-Name",
+			id:"Id",
+			stage:"Stage",
+			startDate:"Start-Date",
+			endDate:"End-Date",
+			comments:"Comments",
+			workflowCheckList:"Workflow-CheckList",
+			links:"Links",
+			link:"Link",
+			label:"Label",
+			assignto:"Assign-To",
+			data:"Data"
+		}
 	}
 
 	componentDidMount() {
@@ -340,6 +345,32 @@ export class CreateUsecase extends React.Component<any, any> {
 			},
 			() => { }
 		);
+	}
+
+	OBJtoXML(obj: any) {
+		var xml=""
+		
+		for (var prop in obj) {
+			
+			xml +=  obj[prop] instanceof Array ? '' : obj[prop] ? "<" + this.replaceKeyInXml[prop] + ">":"" ;
+			if (obj[prop] instanceof Array) {
+				for (var array in obj[prop]) {
+					xml +=obj[prop][array] ? "<" + this.replaceKeyInXml[prop] + ">":"";
+					xml += this.OBJtoXML(new Object(obj[prop][array]));
+					xml += obj[prop][array] ? "</" + this.replaceKeyInXml[prop] + ">" :"";
+				}
+			} else if (typeof obj[prop] == "object") {
+				xml += this.OBJtoXML(new Object(obj[prop]));
+			} else {
+				xml += obj[prop];
+			}
+			xml += obj[prop] instanceof Array ? '' : obj[prop] ? "</" + this.replaceKeyInXml[prop] + ">":"";
+			
+		
+		}
+		var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
+		
+		return xml
 	}
 
 	handleStateChange = (e: any) => {
@@ -445,7 +476,10 @@ export class CreateUsecase extends React.Component<any, any> {
 			input: JSON.stringify(stages),
 			usecaseName: usecase.name
 		};
-		console.log(params)
+		let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>'
+		dataForXlm+=this.maniupulateDataForXml(stages)
+		dataForXlm +="</Note>"
+		// console.log(dataForXlm);
 		this.awsHelper.executeStateMachine(params, (res: any) => {
 			if (res) {
 				getLocationSrv().update({
@@ -455,6 +489,14 @@ export class CreateUsecase extends React.Component<any, any> {
 		});
 	};
 
+	maniupulateDataForXml=(stages:any)=>{
+		let Xmldata:any="";
+		for (let i=0; i<stages.length; i++){
+			let stage={stage:stages[i]}
+			Xmldata+=this.OBJtoXML(stage)
+		}
+		return Xmldata;
+	}
 	handleSubStageName = (index: any, e: any) => {
 		const { activeIndex, stages } = this.state;
 		const { name, value } = e.target;
