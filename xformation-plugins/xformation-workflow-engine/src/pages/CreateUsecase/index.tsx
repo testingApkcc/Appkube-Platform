@@ -28,7 +28,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{ name: 'Oliver', id: '5' },
 				{ name: 'Harry', id: '6' },
 				{ name: 'George', id: '7' },
-				{ name: 'Jack', id: '8' },
+				{ name: 'Jack', id: '8' }
 			],
 			stages: [
 				{
@@ -39,8 +39,15 @@ export class CreateUsecase extends React.Component<any, any> {
 						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
 						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
-						{ label: 'The code has adequate build / test instructions to run mock server and review UI', id: 6 },
-						{ label: 'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix', id: 1 }
+						{
+							label: 'The code has adequate build / test instructions to run mock server and review UI',
+							id: 6
+						},
+						{
+							label:
+								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
+							id: 1
+						}
 					],
 					details: [
 						{
@@ -49,7 +56,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Create Screen Design',
@@ -57,7 +64,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Updating Usecase in Netlifi',
@@ -65,7 +72,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						}
 					]
 				},
@@ -81,17 +88,38 @@ export class CreateUsecase extends React.Component<any, any> {
 						{ label: 'string', id: 1 }
 					],
 					details: [
-						{ subStageName: 'Create API Spec', assignto: '', startDate: '', endDate: '', comments:'',data: [{ link: "",label: "Github link"}] },
-						{ subStageName: 'Create Postman Test', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  },
+						{
+							subStageName: 'Create API Spec',
+							assignto: '',
+							startDate: '',
+							endDate: '',
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
+						},
+						{
+							subStageName: 'Create Postman Test',
+							assignto: '',
+							startDate: '',
+							endDate: '',
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
+						},
 						{
 							subStageName: 'Create UI Screen with Mock API',
 							assignto: '',
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
-						{ subStageName: 'Create Test API', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  }
+						{
+							subStageName: 'Create Test API',
+							assignto: '',
+							startDate: '',
+							endDate: '',
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
+						}
 					]
 				},
 				{
@@ -102,8 +130,15 @@ export class CreateUsecase extends React.Component<any, any> {
 						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
 						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
-						{ label: 'The code has adequate build / test instructions to run mock server and review UI', id: 6 },
-						{ label: 'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix', id: 1 }
+						{
+							label: 'The code has adequate build / test instructions to run mock server and review UI',
+							id: 6
+						},
+						{
+							label:
+								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
+							id: 1
+						}
 					],
 					details: [
 						{
@@ -112,7 +147,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'API Source Code in GitHub',
@@ -120,7 +155,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Populate Test data in GitHub',
@@ -128,7 +163,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Junit5 Test in GitHub',
@@ -136,7 +171,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Cucumber BDD tests in GitHub',
@@ -144,30 +179,39 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
-						{ subStageName: 'Gatling Performance', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  },
+						{
+							subStageName: 'Gatling Performance',
+							assignto: '',
+							startDate: '',
+							endDate: '',
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
+						},
 						{
 							subStageName: 'Code Review with Tech Lead',
 							assignto: '',
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Actual UI-API Integration',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Branch Merge after Review',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						}
 					]
 				},
@@ -179,8 +223,15 @@ export class CreateUsecase extends React.Component<any, any> {
 						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
 						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
-						{ label: 'The code has adequate build / test instructions to run mock server and review UI', id: 6 },
-						{ label: 'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix', id: 1 }
+						{
+							label: 'The code has adequate build / test instructions to run mock server and review UI',
+							id: 6
+						},
+						{
+							label:
+								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
+							id: 1
+						}
 					],
 					details: [
 						{
@@ -189,23 +240,23 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Create Kubernetes Operator',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', 
-							data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Link API with GitHub and Netlifi',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', 
-							data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Upload Test results in S3 Website',
@@ -213,7 +264,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Upload Test env URL in Netlifi site',
@@ -221,9 +272,16 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [{ link: "",label: "Github link"}] 
+							data: [ { link: '', label: 'Github link' } ]
 						},
-						{ subStageName: 'Stage after review', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  }
+						{
+							subStageName: 'Stage after review',
+							assignto: '',
+							startDate: '',
+							endDate: '',
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
+						}
 					]
 				},
 				{
@@ -234,8 +292,15 @@ export class CreateUsecase extends React.Component<any, any> {
 						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
 						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
-						{ label: 'The code has adequate build / test instructions to run mock server and review UI', id: 6 },
-						{ label: 'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix', id: 1 }
+						{
+							label: 'The code has adequate build / test instructions to run mock server and review UI',
+							id: 6
+						},
+						{
+							label:
+								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
+							id: 1
+						}
 					],
 					details: [
 						{
@@ -243,24 +308,34 @@ export class CreateUsecase extends React.Component<any, any> {
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						},
-						{ subStageName: 'Promote to Prod', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  },
+						{
+							subStageName: 'Promote to Prod',
+							assignto: '',
+							startDate: '',
+							endDate: '',
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
+						},
 						{
 							subStageName: 'API Security Test in Prod',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						},
 						{
 							subStageName: 'Create/Update Release Note',
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						}
-					],
+					]
 				},
 				{
 					name: 'Publish/Operate',
@@ -270,8 +345,15 @@ export class CreateUsecase extends React.Component<any, any> {
 						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
 						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
-						{ label: 'The code has adequate build / test instructions to run mock server and review UI', id: 6 },
-						{ label: 'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix', id: 1 }
+						{
+							label: 'The code has adequate build / test instructions to run mock server and review UI',
+							id: 6
+						},
+						{
+							label:
+								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
+							id: 1
+						}
 					],
 					details: [
 						{
@@ -279,17 +361,24 @@ export class CreateUsecase extends React.Component<any, any> {
 							assignto: '',
 							startDate: '',
 							endDate: '',
-							comments: '', data: [{ link: "",label: "Github link"}] 
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
 						},
-						{ subStageName: 'Release Note', assignto: '', startDate: '', endDate: '', comments: '', data: [{ link: "",label: "Github link"}]  }
-					],
-					
+						{
+							subStageName: 'Release Note',
+							assignto: '',
+							startDate: '',
+							endDate: '',
+							comments: '',
+							data: [ { link: '', label: 'Github link' } ]
+						}
+					]
 				}
 			],
 			usecase: {
 				name: '',
 				description: '',
-				assignTo: '',
+				assignTo: ''
 			},
 			isSubmitted: false,
 			subStageName: '',
@@ -300,32 +389,32 @@ export class CreateUsecase extends React.Component<any, any> {
 		this.id = 10;
 		this.awsHelper = new AwsHelper({ meta: props.meta });
 		this.replaceKeyInXml = {
-			name: "Name",
-			description: "Description",
-			assignedTo:"Assigned-To",
-			details: "Details",
-			subStageName:"Sub-Stage-Name",
-			id:"Id",
-			stage:"Stage",
-			startDate:"Start-Date",
-			endDate:"End-Date",
-			comments:"Comments",
-			workflowCheckList:"Workflow-CheckList",
-			links:"Links",
-			link:"Link",
-			label:"Label",
-			assignto:"Assign-To",
-			data:"Data"
-		}
+			name: 'Name',
+			description: 'Description',
+			assignedTo: 'Assigned-To',
+			details: 'Details',
+			subStageName: 'Sub-Stage-Name',
+			id: 'Id',
+			stage: 'Stage',
+			startDate: 'Start-Date',
+			endDate: 'End-Date',
+			comments: 'Comments',
+			workflowCheckList: 'Workflow-CheckList',
+			links: 'Links',
+			link: 'Link',
+			label: 'Label',
+			assignto: 'Assign-To',
+			data: 'Data'
+		};
 	}
 
 	componentDidMount() {
 		this.awsHelper.getUsecaseList(
 			(useCaseList: any) => {
 				useCaseList.forEach((useCase: any) => {
-					if (useCase && useCase.executionArn) {
+					if (useCase) {
 						this.awsHelper.getExecutionHistory(
-							useCase.executionArn.S,
+							'arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab',
 							(items: any) => {
 								const useCases = this.state.useCaseList;
 								useCases.push({
@@ -343,34 +432,31 @@ export class CreateUsecase extends React.Component<any, any> {
 					}
 				});
 			},
-			() => { }
+			() => {}
 		);
 	}
 
 	OBJtoXML(obj: any) {
-		var xml=""
-		
+		var xml = '';
+
 		for (var prop in obj) {
-			
-			xml +=  obj[prop] instanceof Array ? '' : obj[prop] ? "<" + this.replaceKeyInXml[prop] + ">":"" ;
+			xml += obj[prop] instanceof Array ? '' : obj[prop] ? '<' + this.replaceKeyInXml[prop] + '>' : '';
 			if (obj[prop] instanceof Array) {
 				for (var array in obj[prop]) {
-					xml +=obj[prop][array] ? "<" + this.replaceKeyInXml[prop] + ">":"";
+					xml += obj[prop][array] ? '<' + this.replaceKeyInXml[prop] + '>' : '';
 					xml += this.OBJtoXML(new Object(obj[prop][array]));
-					xml += obj[prop][array] ? "</" + this.replaceKeyInXml[prop] + ">" :"";
+					xml += obj[prop][array] ? '</' + this.replaceKeyInXml[prop] + '>' : '';
 				}
-			} else if (typeof obj[prop] == "object") {
+			} else if (typeof obj[prop] == 'object') {
 				xml += this.OBJtoXML(new Object(obj[prop]));
 			} else {
 				xml += obj[prop];
 			}
-			xml += obj[prop] instanceof Array ? '' : obj[prop] ? "</" + this.replaceKeyInXml[prop] + ">":"";
-			
-		
+			xml += obj[prop] instanceof Array ? '' : obj[prop] ? '</' + this.replaceKeyInXml[prop] + '>' : '';
 		}
 		var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
-		
-		return xml
+
+		return xml;
 	}
 
 	handleStateChange = (e: any) => {
@@ -476,9 +562,9 @@ export class CreateUsecase extends React.Component<any, any> {
 			input: JSON.stringify(stages),
 			usecaseName: usecase.name
 		};
-		let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>'
-		dataForXlm+=this.maniupulateDataForXml(stages)
-		dataForXlm +="</Note>"
+		let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>';
+		dataForXlm += this.maniupulateDataForXml(stages);
+		dataForXlm += '</Note>';
 		// console.log(dataForXlm);
 		this.awsHelper.executeStateMachine(params, (res: any) => {
 			if (res) {
@@ -489,14 +575,14 @@ export class CreateUsecase extends React.Component<any, any> {
 		});
 	};
 
-	maniupulateDataForXml=(stages:any)=>{
-		let Xmldata:any="";
-		for (let i=0; i<stages.length; i++){
-			let stage={stage:stages[i]}
-			Xmldata+=this.OBJtoXML(stage)
+	maniupulateDataForXml = (stages: any) => {
+		let Xmldata: any = '';
+		for (let i = 0; i < stages.length; i++) {
+			let stage = { stage: stages[i] };
+			Xmldata += this.OBJtoXML(stage);
 		}
 		return Xmldata;
-	}
+	};
 	handleSubStageName = (index: any, e: any) => {
 		const { activeIndex, stages } = this.state;
 		const { name, value } = e.target;
@@ -520,6 +606,7 @@ export class CreateUsecase extends React.Component<any, any> {
 
 	displayUseCaseList = () => {
 		const { useCaseList } = this.state;
+		console.log(useCaseList);
 		let retData = [];
 		if (useCaseList && useCaseList.length > 0) {
 			retData.push(
@@ -625,11 +712,11 @@ export class CreateUsecase extends React.Component<any, any> {
 											value={usecase.assignTo}
 										>
 											<option value="">--select--</option>
-											{userList && userList.length > 0 && userList.map((users: any, j: any) => {
-												return (
-													<option value={users.id}>{users.name}</option>
-												)
-											})}
+											{userList &&
+												userList.length > 0 &&
+												userList.map((users: any, j: any) => {
+													return <option value={users.id}>{users.name}</option>;
+												})}
 										</select>
 									</div>
 									{errorData && errorData.assignTo && <span>{errorData.assignTo.message}</span>}
@@ -638,7 +725,7 @@ export class CreateUsecase extends React.Component<any, any> {
 									<h4>Workflow Stage Detail</h4>
 								</div>
 								{errorData &&
-									errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
+								errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
 								{stages &&
 									stages.length > 0 &&
 									stages.map((val: any, i: any) => {
@@ -666,11 +753,13 @@ export class CreateUsecase extends React.Component<any, any> {
 															onChange={(e) => this.handleStageDetail(e, i)}
 														>
 															<option value="">--select--</option>
-															{userList && userList.length > 0 && userList.map((users: any, j: any) => {
-																return (
-																	<option value={users.id}>{users.name}</option>
-																)
-															})}
+															{userList &&
+																userList.length > 0 &&
+																userList.map((users: any, j: any) => {
+																	return (
+																		<option value={users.id}>{users.name}</option>
+																	);
+																})}
 														</select>
 													</div>
 													<div className="description">
@@ -695,124 +784,128 @@ export class CreateUsecase extends React.Component<any, any> {
 													<div className="requirement-details">
 														<div className="requirement-inner-content">
 															{val.details &&
-																val.details.length > 0 && (
-																	<h4 className="heading">
-																		Requirement Sub-Stage details
-																	</h4>
-																)}
+															val.details.length > 0 && (
+																<h4 className="heading">
+																	Requirement Sub-Stage details
+																</h4>
+															)}
 															{val.details &&
-																val.details.length > 0 && (
-																	<table>
-																		<thead>
-																			<tr>
-																				<th />
-																				<th>Assign to</th>
-																				<th>Start Date</th>
-																				<th>End Date</th>
-																				<th>Comments</th>
-																			</tr>
-																		</thead>
-																		<tbody>
-																			{val.details.map(
-																				(
-																					{
-																						// name,
-																						assignto,
-																						startDate,
-																						endDate,
-																						comments
-																					}: any,
-																					index: any
-																				) => (
-																					<tr key={`stageDetail-${i}-${index}`}>
-																						<td className="user-name">
-																							<div className="add-stage-name">
-																								<input
-																									type="text"
-																									className="form-control"
-																									name="subStageName"
-																									readOnly
-																									value={
-																										stages[activeIndex]
-																											.details[index]
-																											.subStageName
-																									}
-																									onChange={(e) =>
-																										this.handleSubStageName(
-																											index,
-																											e
-																										)}
-																								/>
-																							</div>
-																						</td>
-																						<td>
-																							<select
-																								name="assignto"
-																								id="assignto"
-																								value={assignto}
-																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
-																									)}
-																							>
-																								<option value="">
-																									--select--
-																								</option>
-																								{userList && userList.length > 0 && userList.map((users: any, j: any) => {
+															val.details.length > 0 && (
+																<table>
+																	<thead>
+																		<tr>
+																			<th />
+																			<th>Assign to</th>
+																			<th>Start Date</th>
+																			<th>End Date</th>
+																			<th>Comments</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		{val.details.map(({ // name,
+																			assignto, startDate, endDate, comments }: any, index: any) => (
+																			<tr key={`stageDetail-${i}-${index}`}>
+																				<td className="user-name">
+																					<div className="add-stage-name">
+																						<input
+																							type="text"
+																							className="form-control"
+																							name="subStageName"
+																							readOnly
+																							value={
+																								stages[activeIndex]
+																									.details[index]
+																									.subStageName
+																							}
+																							onChange={(e) =>
+																								this.handleSubStageName(
+																									index,
+																									e
+																								)}
+																						/>
+																					</div>
+																				</td>
+																				<td>
+																					<select
+																						name="assignto"
+																						id="assignto"
+																						value={assignto}
+																						onChange={(e) =>
+																							this.handleSubStageData(
+																								e,
+																								i,
+																								index
+																							)}
+																					>
+																						<option value="">
+																							--select--
+																						</option>
+																						{userList &&
+																							userList.length > 0 &&
+																							userList.map(
+																								(
+																									users: any,
+																									j: any
+																								) => {
 																									return (
-																										<option value={users.id}>{users.name}</option>
-																									)
-																								})}
-																							</select>
-																						</td>
-																						<td className="start-date">
-																							<input
-																								type="date"
-																								className="form-control"
-																								name="startDate"
-																								value={startDate}
-																								placeholder="Select"
-																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
-																									)}
-																							/>
-																						</td>
-																						<td className="start-date end-date">
-																							<input
-																								type="date"
-																								className="form-control"
-																								name="endDate"
-																								placeholder="Select"
-																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
-																									)}
-																								value={endDate}
-																							/>
-																						</td>
-																						<td className="comment-box">
-																							<input
-																								type="comments"
-																								className="form-control"
-																								name="comments"
-																								placeholder="Select"
-																								onChange={(e) =>
-																									this.handleSubStageData(
-																										e,
-																										i,
-																										index
-																									)}
-																								value={comments}
-																							/>
-																						</td>
-																						{/* <td
+																										<option
+																											value={
+																												users.id
+																											}
+																										>
+																											{users.name}
+																										</option>
+																									);
+																								}
+																							)}
+																					</select>
+																				</td>
+																				<td className="start-date">
+																					<input
+																						type="date"
+																						className="form-control"
+																						name="startDate"
+																						value={startDate}
+																						placeholder="Select"
+																						onChange={(e) =>
+																							this.handleSubStageData(
+																								e,
+																								i,
+																								index
+																							)}
+																					/>
+																				</td>
+																				<td className="start-date end-date">
+																					<input
+																						type="date"
+																						className="form-control"
+																						name="endDate"
+																						placeholder="Select"
+																						onChange={(e) =>
+																							this.handleSubStageData(
+																								e,
+																								i,
+																								index
+																							)}
+																						value={endDate}
+																					/>
+																				</td>
+																				<td className="comment-box">
+																					<input
+																						type="comments"
+																						className="form-control"
+																						name="comments"
+																						placeholder="Select"
+																						onChange={(e) =>
+																							this.handleSubStageData(
+																								e,
+																								i,
+																								index
+																							)}
+																						value={comments}
+																					/>
+																				</td>
+																				{/* <td
 																							className="remove-btn"
 																							onClick={() => {
 																								this.removeSubString(
@@ -826,12 +919,11 @@ export class CreateUsecase extends React.Component<any, any> {
 																								aria-hidden="true"
 																							/>
 																						</td> */}
-																					</tr>
-																				)
-																			)}
-																		</tbody>
-																	</table>
-																)}
+																			</tr>
+																		))}
+																	</tbody>
+																</table>
+															)}
 														</div>
 													</div>
 												)}
@@ -839,13 +931,13 @@ export class CreateUsecase extends React.Component<any, any> {
 										);
 									})}
 								{stages &&
-									stages.length > 0 && (
-										<div className="basic-details-btn">
-											<button className="btn btn-primary" onClick={this.submitWorkflow}>
-												Save
-											</button>
-										</div>
-									)}
+								stages.length > 0 && (
+									<div className="basic-details-btn">
+										<button className="btn btn-primary" onClick={this.submitWorkflow}>
+											Save
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

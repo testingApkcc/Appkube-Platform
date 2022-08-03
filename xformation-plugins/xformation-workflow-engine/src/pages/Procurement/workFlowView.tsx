@@ -454,23 +454,17 @@ export class WorkFlowView extends React.Component<any, any> {
 			],
 			useCase: {},
 			usecaseData: [],
-			workflowCheckList: [
-				{ label: 'string', id: 3 },
-				{ label: 'string', id: 10 },
-				{ label: 'string', id: 6 },
-				{ label: 'string', id: 6 },
-				{ label: 'string', id: 1 }
-			]
 		};
 		// this.awsHelper = new AwsHelper({ meta: props.meta });
 	}
 
 	setUseCaseData = (data: any) => {
-		const { workflowCheckList } = this.state;
+		// const { workflowCheckList } = this.state;
 		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.length > 0) {
-			for (let i = 0; i < data.stepInput.S.length; i++) {
-				data.stepInput.S[i]['checkList'] = JSON.parse(JSON.stringify(workflowCheckList))
-			}
+			console.log(data.stepInput.S);
+			// for (let i = 0; i < data.stepInput.S.length; i++) {
+			// 	data.stepInput.S[i]['checkList'] = JSON.parse(JSON.stringify(workflowCheckList))
+			// }
 			this.setState({
 				useCase: data,
 				usecaseData: data.stepInput.S
@@ -560,10 +554,11 @@ export class WorkFlowView extends React.Component<any, any> {
 		const { usecaseData, activeStage } = this.state;
 		let retData = [];
 		if (usecaseData && usecaseData.length > 0) {
-			const workflowDetail: any = usecaseData[activeStage];
-			if (workflowDetail && workflowDetail.checkList && workflowDetail.checkList.length > 0) {
-				for (let i = 0; i < workflowDetail.checkList.length; i++) {
-					let row = workflowDetail.checkList[i];
+			console.log(usecaseData[activeStage]);
+			const workflowDetail: any = usecaseData[activeStage].workflowCheckList;
+			if (workflowDetail &&  workflowDetail.length > 0) {
+				for (let i = 0; i < workflowDetail.length; i++) {
+					let row = workflowDetail[i];
 					retData.push(
 						<div key={`${i}checkbox${activeStage}`} className="requirement-data">
 							<input
