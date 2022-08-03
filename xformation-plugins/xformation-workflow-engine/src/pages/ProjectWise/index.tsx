@@ -74,7 +74,7 @@ export class ProjectWise extends React.Component<any, any> {
 		this.awsHelper.gettingMachineDef(
 			this.state.machineArn,
 			(states: any) => {
-				console.log(states);
+				// console.log(states);
 			},
 			(err: any) => {
 				console.log(err);
