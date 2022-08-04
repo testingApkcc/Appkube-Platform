@@ -11,6 +11,7 @@ import downloadIcon from '../../img/projectoverview/download-icon.png';
 import { Link } from 'react-router-dom';
 import { AwsHelper } from '../AwsHelpers';
 import { getLocationSrv } from '@grafana/runtime';
+import AlertMessage from '../../components/AlertMessage';
 
 export class CreateUsecase extends React.Component<any, any> {
 	id: any;
@@ -19,6 +20,9 @@ export class CreateUsecase extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		this.state = {
+			isAlertOpen: false,
+			message: '',
+			severity: '',
 			subStageDetails: { subStageName: '', assignto: '', startDate: '', endDate: '', comments: '' },
 			userList: [
 				{ name: 'John', id: '1' },
@@ -30,23 +34,26 @@ export class CreateUsecase extends React.Component<any, any> {
 				{ name: 'George', id: '7' },
 				{ name: 'Jack', id: '8' }
 			],
-			stages: [
+			stages: [],
+			createStages:[
 				{
 					name: 'Requirements',
 					description: '',
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
-							id: 6
+							id: 6,
+							checked: true
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
-							id: 1
+							id: 1,
+							checked: true
 						}
 					],
 					details: [
@@ -56,7 +63,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Create Screen Design',
@@ -64,7 +71,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Updating Usecase in Netlifi',
@@ -72,7 +79,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						}
 					]
 				},
@@ -81,11 +88,20 @@ export class CreateUsecase extends React.Component<any, any> {
 					description: '',
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'string', id: 3 },
-						{ label: 'string', id: 10 },
-						{ label: 'string', id: 6 },
-						{ label: 'string', id: 6 },
-						{ label: 'string', id: 1 }
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
+						{
+							label: 'The code has adequate build / test instructions to run mock server and review UI',
+							id: 6,
+							checked: true
+						},
+						{
+							label:
+								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
+							id: 1,
+							checked: true
+						}
 					],
 					details: [
 						{
@@ -94,7 +110,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Create Postman Test',
@@ -102,7 +118,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Create UI Screen with Mock API',
@@ -110,7 +126,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Create Test API',
@@ -118,7 +134,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						}
 					]
 				},
@@ -127,17 +143,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					description: '',
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
-							id: 6
+							id: 6,
+							checked: true
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
-							id: 1
+							id: 1,
+							checked: true
 						}
 					],
 					details: [
@@ -147,7 +165,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'API Source Code in GitHub',
@@ -155,7 +173,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Populate Test data in GitHub',
@@ -163,7 +181,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Junit5 Test in GitHub',
@@ -171,7 +189,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Cucumber BDD tests in GitHub',
@@ -179,7 +197,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Gatling Performance',
@@ -187,7 +205,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Code Review with Tech Lead',
@@ -195,7 +213,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Actual UI-API Integration',
@@ -203,7 +221,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Branch Merge after Review',
@@ -211,7 +229,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						}
 					]
 				},
@@ -220,17 +238,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					description: '',
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
-							id: 6
+							id: 6,
+							checked: true
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
-							id: 1
+							id: 1,
+							checked: true
 						}
 					],
 					details: [
@@ -240,7 +260,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Create Kubernetes Operator',
@@ -248,7 +268,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Link API with GitHub and Netlifi',
@@ -256,7 +276,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Upload Test results in S3 Website',
@@ -264,7 +284,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Upload Test env URL in Netlifi site',
@@ -272,7 +292,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Stage after review',
@@ -280,7 +300,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						}
 					]
 				},
@@ -289,17 +309,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					description: '',
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
-							id: 6
+							id: 6,
+							checked: true
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
-							id: 1
+							id: 1,
+							checked: true
 						}
 					],
 					details: [
@@ -309,7 +331,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Promote to Prod',
@@ -317,7 +339,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'API Security Test in Prod',
@@ -325,7 +347,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Create/Update Release Note',
@@ -333,7 +355,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						}
 					]
 				},
@@ -342,17 +364,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					description: '',
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3 },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10 },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6 },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
-							id: 6
+							id: 6,
+							checked: true
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
-							id: 1
+							id: 1,
+							checked: true
 						}
 					],
 					details: [
@@ -362,7 +386,7 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						},
 						{
 							subStageName: 'Release Note',
@@ -370,19 +394,20 @@ export class CreateUsecase extends React.Component<any, any> {
 							startDate: '',
 							endDate: '',
 							comments: '',
-							data: [ { link: '', label: 'Github link' } ]
+							data: [{ link: '', label: 'Github link' }]
 						}
 					]
 				}
 			],
-			usecase: {
+			usecase: {},
+			createUsecase:{
 				name: '',
 				description: '',
 				assignTo: ''
 			},
 			isSubmitted: false,
 			subStageName: '',
-			activeIndex: 0,
+			activeIndex: -1,
 			machineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
 			useCaseList: []
 		};
@@ -409,6 +434,7 @@ export class CreateUsecase extends React.Component<any, any> {
 	}
 
 	componentDidMount() {
+		this.resetState();
 		this.awsHelper.getUsecaseList(
 			(useCaseList: any) => {
 				useCaseList.forEach((useCase: any) => {
@@ -432,10 +458,15 @@ export class CreateUsecase extends React.Component<any, any> {
 					}
 				});
 			},
-			() => {}
+			() => { }
 		);
 	}
 
+	resetState=()=>{
+		const {createStages, createUsecase}=this.state
+		this.setState({activeIndex:-1 ,stages:JSON.parse(JSON.stringify(createStages)),usecase:JSON.parse(JSON.stringify(createUsecase)) })
+	}
+	
 	OBJtoXML(obj: any) {
 		var xml = '';
 
@@ -555,8 +586,9 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	submitWorkflow = () => {
-		const { usecase, stages } = this.state;
+		const { usecase, stages, activeIndex, useCaseList } = this.state;
 		this.setState({ isSubmitted: true });
+		if (activeIndex=== -1){
 		let params = {
 			stateMachineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
 			input: JSON.stringify(stages),
@@ -566,7 +598,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		// dataForXlm += this.maniupulateDataForXml(stages);
 		// dataForXlm += '</Note>';
 		// console.log(dataForXlm);
-		
+
 		this.awsHelper.executeStateMachine(params, (res: any) => {
 			if (res) {
 				getLocationSrv().update({
@@ -574,8 +606,26 @@ export class CreateUsecase extends React.Component<any, any> {
 				});
 			}
 		});
+	}
+	else {
+		let setInputs = stages
+		let usecaseName = useCaseList[activeIndex].usecaseName.S
+		console.log(setInputs, usecaseName)
+		this.awsHelper.usecaseInputToDynamoDb(usecaseName, JSON.stringify(setInputs), (res:any)=>{
+			this.setState( { isAlertOpen: true,
+				message: res,
+				severity: 'succsess'})
+		} );
+	}
 	};
 
+	handleCloseAlert = () => {
+		this.setState({
+		  isAlertOpen: false,
+		  message: '',
+		  severity: ''
+		})
+	  }
 	maniupulateDataForXml = (stages: any) => {
 		let Xmldata: any = '';
 		for (let i = 0; i < stages.length; i++) {
@@ -606,19 +656,18 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	displayUseCaseList = () => {
-		const { useCaseList } = this.state;
-		console.log(useCaseList);
+		const { useCaseList, activeIndex } = this.state;
 		let retData = [];
 		if (useCaseList && useCaseList.length > 0) {
 			retData.push(
-				<li className="active">
+				<li className={activeIndex == -1 ? "active" : ""} key="-1" onClick={()=>{this.handleSelectUseCase(-1)}}>
 					<span>New Usecase</span>
 				</li>
 			);
 			for (let i = 0; i < useCaseList.length; i++) {
 				let useCase = useCaseList[i];
 				retData.push(
-					<li className={i + 1 == 0 ? 'active' : ''} key={`usecase-${i}`}>
+					<li className={i === activeIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
 						<span>{useCase.usecaseName.S}</span>
 					</li>
 				);
@@ -626,10 +675,30 @@ export class CreateUsecase extends React.Component<any, any> {
 		}
 		return retData;
 	};
+	validateJsonData(str: any) {
+		try {
+		  JSON.parse(str);
+		} catch (e) {
+		  return false;
+		}
+		return true;
+	  }
 
+	handleSelectUseCase = ( index: any) => {
+		let {  usecase } = this.state
+		const {useCaseList}= this.state
+		if ( index>=0){
+		if (useCaseList[index].stepInput &&  this.validateJsonData(useCaseList[index].stepInput.S)){	
+		usecase.name= useCaseList[index].usecaseName.S
+		this.setState({ activeIndex: index, stages: JSON.parse(useCaseList[index].stepInput.S), usecase })
+	}
+}else if(index=== -1) {
+		this.resetState()
+	}
+	}
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
-		const { stages, activeIndex, usecase, userList } = this.state;
+		const { stages, activeIndex, usecase, userList, isAlertOpen, message, severity, } = this.state;
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">
@@ -661,7 +730,7 @@ export class CreateUsecase extends React.Component<any, any> {
 										</div>
 									</div>
 									<Link
-										to="/a/xformation-workflow-engine/project-overview"
+										to="/a/xformation-workflow-engine/project-wise"
 										className="btn-primary pro-overview-btn"
 									>
 										<i className="fas fa-chevron-left" /> Back
@@ -726,7 +795,7 @@ export class CreateUsecase extends React.Component<any, any> {
 									<h4>Workflow Stage Detail</h4>
 								</div>
 								{errorData &&
-								errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
+									errorData.stageDetail && <span className="error">{errorData.stageDetail.message}</span>}
 								{stages &&
 									stages.length > 0 &&
 									stages.map((val: any, i: any) => {
@@ -785,128 +854,128 @@ export class CreateUsecase extends React.Component<any, any> {
 													<div className="requirement-details">
 														<div className="requirement-inner-content">
 															{val.details &&
-															val.details.length > 0 && (
-																<h4 className="heading">
-																	Requirement Sub-Stage details
-																</h4>
-															)}
+																val.details.length > 0 && (
+																	<h4 className="heading">
+																		Requirement Sub-Stage details
+																	</h4>
+																)}
 															{val.details &&
-															val.details.length > 0 && (
-																<table>
-																	<thead>
-																		<tr>
-																			<th />
-																			<th>Assign to</th>
-																			<th>Start Date</th>
-																			<th>End Date</th>
-																			<th>Comments</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		{val.details.map(({ // name,
-																			assignto, startDate, endDate, comments }: any, index: any) => (
-																			<tr key={`stageDetail-${i}-${index}`}>
-																				<td className="user-name">
-																					<div className="add-stage-name">
-																						<input
-																							type="text"
-																							className="form-control"
-																							name="subStageName"
-																							readOnly
-																							value={
-																								stages[activeIndex]
-																									.details[index]
-																									.subStageName
-																							}
+																val.details.length > 0 && (
+																	<table>
+																		<thead>
+																			<tr>
+																				<th />
+																				<th>Assign to</th>
+																				<th>Start Date</th>
+																				<th>End Date</th>
+																				<th>Comments</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			{val.details.map(({ // name,
+																				assignto, startDate, endDate, comments }: any, index: any) => (
+																				<tr key={`stageDetail-${i}-${index}`}>
+																					<td className="user-name">
+																						<div className="add-stage-name">
+																							<input
+																								type="text"
+																								className="form-control"
+																								name="subStageName"
+																								readOnly
+																								value={
+																									stages[activeIndex]
+																										.details[index]
+																										.subStageName
+																								}
+																								onChange={(e) =>
+																									this.handleSubStageName(
+																										index,
+																										e
+																									)}
+																							/>
+																						</div>
+																					</td>
+																					<td>
+																						<select
+																							name="assignto"
+																							id="assignto"
+																							value={assignto}
 																							onChange={(e) =>
-																								this.handleSubStageName(
-																									index,
-																									e
+																								this.handleSubStageData(
+																									e,
+																									i,
+																									index
+																								)}
+																						>
+																							<option value="">
+																								--select--
+																							</option>
+																							{userList &&
+																								userList.length > 0 &&
+																								userList.map(
+																									(
+																										users: any,
+																										j: any
+																									) => {
+																										return (
+																											<option
+																												value={
+																													users.id
+																												}
+																											>
+																												{users.name}
+																											</option>
+																										);
+																									}
+																								)}
+																						</select>
+																					</td>
+																					<td className="start-date">
+																						<input
+																							type="date"
+																							className="form-control"
+																							name="startDate"
+																							value={startDate}
+																							placeholder="Select"
+																							onChange={(e) =>
+																								this.handleSubStageData(
+																									e,
+																									i,
+																									index
 																								)}
 																						/>
-																					</div>
-																				</td>
-																				<td>
-																					<select
-																						name="assignto"
-																						id="assignto"
-																						value={assignto}
-																						onChange={(e) =>
-																							this.handleSubStageData(
-																								e,
-																								i,
-																								index
-																							)}
-																					>
-																						<option value="">
-																							--select--
-																						</option>
-																						{userList &&
-																							userList.length > 0 &&
-																							userList.map(
-																								(
-																									users: any,
-																									j: any
-																								) => {
-																									return (
-																										<option
-																											value={
-																												users.id
-																											}
-																										>
-																											{users.name}
-																										</option>
-																									);
-																								}
-																							)}
-																					</select>
-																				</td>
-																				<td className="start-date">
-																					<input
-																						type="date"
-																						className="form-control"
-																						name="startDate"
-																						value={startDate}
-																						placeholder="Select"
-																						onChange={(e) =>
-																							this.handleSubStageData(
-																								e,
-																								i,
-																								index
-																							)}
-																					/>
-																				</td>
-																				<td className="start-date end-date">
-																					<input
-																						type="date"
-																						className="form-control"
-																						name="endDate"
-																						placeholder="Select"
-																						onChange={(e) =>
-																							this.handleSubStageData(
-																								e,
-																								i,
-																								index
-																							)}
-																						value={endDate}
-																					/>
-																				</td>
-																				<td className="comment-box">
-																					<input
-																						type="comments"
-																						className="form-control"
-																						name="comments"
-																						placeholder="Select"
-																						onChange={(e) =>
-																							this.handleSubStageData(
-																								e,
-																								i,
-																								index
-																							)}
-																						value={comments}
-																					/>
-																				</td>
-																				{/* <td
+																					</td>
+																					<td className="start-date end-date">
+																						<input
+																							type="date"
+																							className="form-control"
+																							name="endDate"
+																							placeholder="Select"
+																							onChange={(e) =>
+																								this.handleSubStageData(
+																									e,
+																									i,
+																									index
+																								)}
+																							value={endDate}
+																						/>
+																					</td>
+																					<td className="comment-box">
+																						<input
+																							type="comments"
+																							className="form-control"
+																							name="comments"
+																							placeholder="Select"
+																							onChange={(e) =>
+																								this.handleSubStageData(
+																									e,
+																									i,
+																									index
+																								)}
+																							value={comments}
+																						/>
+																					</td>
+																					{/* <td
 																							className="remove-btn"
 																							onClick={() => {
 																								this.removeSubString(
@@ -920,11 +989,11 @@ export class CreateUsecase extends React.Component<any, any> {
 																								aria-hidden="true"
 																							/>
 																						</td> */}
-																			</tr>
-																		))}
-																	</tbody>
-																</table>
-															)}
+																				</tr>
+																			))}
+																		</tbody>
+																	</table>
+																)}
 														</div>
 													</div>
 												)}
@@ -932,17 +1001,23 @@ export class CreateUsecase extends React.Component<any, any> {
 										);
 									})}
 								{stages &&
-								stages.length > 0 && (
-									<div className="basic-details-btn">
-										<button className="btn btn-primary" onClick={this.submitWorkflow}>
-											Save
-										</button>
-									</div>
-								)}
+									stages.length > 0 && (
+										<div className="basic-details-btn">
+											<button className="btn btn-primary" onClick={this.submitWorkflow}>
+												Save
+											</button>
+										</div>
+									)}
 							</div>
 						</div>
 					</div>
 				</div>
+				<AlertMessage
+          handleCloseAlert={this.handleCloseAlert}
+          open={isAlertOpen}
+          severity={severity}
+          msg={message}
+        />
 			</div>
 		);
 	}

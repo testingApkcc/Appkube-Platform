@@ -55,13 +55,13 @@ export class ProjectWise extends React.Component<any, any> {
 		this.awsHelper.getUsecaseList((useCaseList: any) => {
 			useCaseList.forEach((useCase: any) => {
 				this.awsHelper.getExecutionHistory(
-					 "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
+					"arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
 					(items: any) => {
 						const useCases = this.state.useCaseList;
 						useCases.push({
 							...useCase,
 							steps: items,
-							executionArn:{S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab"}
+							executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
 						});
 						this.setState({
 							useCaseList: useCases
@@ -110,6 +110,26 @@ export class ProjectWise extends React.Component<any, any> {
 		});
 	};
 
+	checkStatusOfWorkflow=(data:any)=>{
+		let count=0
+	if(data && data && data.length>0){
+		for (const usecase of data) {
+			if(usecase.checked=== true){
+				count++;
+			}
+		}
+		if(count== data.length){
+			return 'fa fa-check green';
+		}else if(count===0){
+			return "";
+		}else{
+			return 'fa fa-check orange';
+		}
+	}
+	return ""
+
+	}
+
 	render() {
 		const { useCaseList, searchKey } = this.state;
 		return (
@@ -118,7 +138,7 @@ export class ProjectWise extends React.Component<any, any> {
 				<div className="project-wise-page-container">
 					<div className="project-wise-page-heading">
 						<div className="row">
-							<div className="col-lx-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+							<div className="col-lx-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
 								<div className="heading-content-left">
 									<div className="heading-icon">
 										<img src={headerIcon} alt="" />
@@ -134,7 +154,13 @@ export class ProjectWise extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-lx-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div className="col-lx-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+								<div className="heading-content-right">
+									<Link to={`/a/xformation-workflow-engine/create-new-usecase`}
+										className="btn-primary pro-overview-btn">Create Usecase</Link>
+								</div>
+							</div>
+							<div className="col-lx-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div className="heading-content-right">
 									<span>
 										<Link to="/a/xformation-workflow-engine/dashboard">
@@ -190,6 +216,7 @@ export class ProjectWise extends React.Component<any, any> {
 								<div className="tbody">
 									{useCaseList &&
 										useCaseList.map((useCase: any, index: any) => {
+											let checkList=JSON.parse(useCase.stepInput.S)
 											return (
 												<div className="tr" key={`usecase-${index}`}>
 													<div className="td">
@@ -199,26 +226,15 @@ export class ProjectWise extends React.Component<any, any> {
 															{useCase.usecaseName.S}
 														</Link>
 													</div>
-													<div className="td">
+													{checkList.length>0 ?
+													checkList.map((list:any, index:any)=>{
+											let statusclass = this.checkStatusOfWorkflow(list.workflowCheckList);
+											return(
+													<div className="td" key={index}>
 														<i
-															className=
-															'fa fa-check green'
+															className={statusclass}
 														/>
-													</div>
-													<div className="td">
-														<i
-															className=
-															'fa fa-check orange'
-														/>
-													</div>
-													<div className="td">
-													</div>
-													<div className="td">
-													</div>
-													<div className="td">
-													</div>
-													<div className="td">
-													</div>
+													</div>)}) :<React.Fragment></React.Fragment>}
 												</div>
 											);
 										})}
