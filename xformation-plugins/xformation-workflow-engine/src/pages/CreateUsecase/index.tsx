@@ -35,7 +35,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{ name: 'Jack', id: '8' }
 			],
 			stages: [],
-			createStages:[
+			createStages: [
 				{
 					name: 'Requirements',
 					description: '',
@@ -400,7 +400,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				}
 			],
 			usecase: {},
-			createUsecase:{
+			createUsecase: {
 				name: '',
 				description: '',
 				assignTo: ''
@@ -462,11 +462,11 @@ export class CreateUsecase extends React.Component<any, any> {
 		);
 	}
 
-	resetState=()=>{
-		const {createStages, createUsecase}=this.state
-		this.setState({activeIndex:-1 ,stages:JSON.parse(JSON.stringify(createStages)),usecase:JSON.parse(JSON.stringify(createUsecase)) })
+	resetState = () => {
+		const { createStages, createUsecase } = this.state
+		this.setState({ activeIndex: -1, stages: JSON.parse(JSON.stringify(createStages)), usecase: JSON.parse(JSON.stringify(createUsecase)) })
 	}
-	
+
 	OBJtoXML(obj: any) {
 		var xml = '';
 
@@ -508,28 +508,7 @@ export class CreateUsecase extends React.Component<any, any> {
 
 	addDetails = (index: any) => {
 		let { activeIndex } = this.state;
-		// if (index === activeIndex) {
-		// 	activeIndex = -1;
-		// } else {
 		activeIndex = index;
-		// }
-		// if (subStageName) {
-		// if (stages[activeIndex].details.length > 0) {
-		//   let existName = -1;
-		//   for (let i = 0; i < stages[activeIndex].details.length; i++) {
-		//     if (stages[activeIndex].details[i].name === subStageName) {
-		//       existName = 1;
-		//     }
-		//   }
-		//   if (existName === -1) {
-		//     let obj = { name: subStageName, ...JSON.parse(JSON.stringify(this.state.subStageDetails)) };
-		//     stages[activeIndex].details.push(obj);
-		//   }
-		// } else {
-		// let obj = { ...JSON.parse(JSON.stringify(this.state.subStageDetails)) };
-		// if (stages[activeIndex].details && stages[activeIndex].details.length < 5) {
-		// stages[activeIndex].details.push(obj);
-		// }
 		this.setState({ activeIndex });
 	};
 
@@ -586,46 +565,50 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	submitWorkflow = () => {
-		const { usecase, stages, activeIndex } = this.state;
+		const { usecase, stages, activeIndex, useCaseList } = this.state;
 		this.setState({ isSubmitted: true });
-		if (activeIndex=== -1){
-		let params = {
-			stateMachineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
-			input: JSON.stringify(stages),
-			usecaseName: usecase.name
-		};
-		// let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>';
-		// dataForXlm += this.maniupulateDataForXml(stages);
-		// dataForXlm += '</Note>';
-		// console.log(dataForXlm);
-
-		this.awsHelper.executeStateMachine(params, (res: any) => {
-			if (res) {
-				getLocationSrv().update({
-					path: `/a/xformation-workflow-engine/project-wise`
-				});
+		if (activeIndex === -1) {
+			let usecaseJson = {
+				...usecase,
+				stages: stages
 			}
-		});
-	}
-	else {
-		let setInputs = stages
-		let usecaseName = usecase.name;
-		console.log(setInputs, usecaseName)
-		this.awsHelper.usecaseInputToDynamoDb(usecaseName, JSON.stringify(setInputs), (res:any)=>{
-			this.setState( { isAlertOpen: true,
-				message: res,
-				severity: 'succsess'})
-		} );
-	}
+			let params = {
+				stateMachineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
+				input: JSON.stringify(usecaseJson),
+				usecaseName: usecase.name
+			};
+			// let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>';
+			// dataForXlm += this.maniupulateDataForXml(usecaseJson);
+			// dataForXlm += '</Note>';
+
+			this.awsHelper.executeStateMachine(params, (res: any) => {
+				if (res) {
+					getLocationSrv().update({
+						path: `/a/xformation-workflow-engine/project-wise`
+					});
+				}
+			});
+		}
+		else {
+			let setInputs = stages
+			let usecaseName = useCaseList[activeIndex].usecaseName.S;
+			this.awsHelper.usecaseInputToDynamoDb(usecaseName, JSON.stringify(setInputs), (res: any) => {
+				this.setState({
+					isAlertOpen: true,
+					message: res,
+					severity: 'succsess'
+				})
+			});
+		}
 	};
 
 	handleCloseAlert = () => {
 		this.setState({
-		  isAlertOpen: false,
-		  message: '',
-		  severity: ''
+			isAlertOpen: false,
+			message: '',
+			severity: ''
 		})
-	  }
+	}
 	maniupulateDataForXml = (stages: any) => {
 		let Xmldata: any = '';
 		for (let i = 0; i < stages.length; i++) {
@@ -660,7 +643,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		let retData = [];
 		if (useCaseList && useCaseList.length > 0) {
 			retData.push(
-				<li className={activeIndex == -1 ? "active" : ""} key="-1" onClick={()=>{this.handleSelectUseCase(-1)}}>
+				<li className={activeIndex == -1 ? "active" : ""} key="-1" onClick={() => { this.handleSelectUseCase(-1) }}>
 					<span>New Usecase</span>
 				</li>
 			);
@@ -677,24 +660,24 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 	validateJsonData(str: any) {
 		try {
-		  JSON.parse(str);
+			JSON.parse(str);
 		} catch (e) {
-		  return false;
+			return false;
 		}
 		return true;
-	  }
+	}
 
-	handleSelectUseCase = ( index: any) => {
-		let {  usecase } = this.state
-		const {useCaseList}= this.state
-		if ( index>=0){
-		if (useCaseList[index].stepInput &&  this.validateJsonData(useCaseList[index].stepInput.S)){	
-		usecase.name= useCaseList[index].usecaseName.S
-		this.setState({ activeIndex: index, stages: JSON.parse(useCaseList[index].stepInput.S), usecase })
-	}
-}else if(index=== -1) {
-		this.resetState()
-	}
+	handleSelectUseCase = (index: any) => {
+		let { usecase } = this.state
+		const { useCaseList } = this.state
+		if (index >= 0) {
+			if (useCaseList[index].stepInput && this.validateJsonData(useCaseList[index].stepInput.S)) {
+				usecase.name = useCaseList[index].usecaseName.S
+				this.setState({ activeIndex: index, stages: JSON.parse(useCaseList[index].stepInput.S), usecase })
+			}
+		} else if (index === -1) {
+			this.resetState()
+		}
 	}
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
@@ -1013,11 +996,11 @@ export class CreateUsecase extends React.Component<any, any> {
 					</div>
 				</div>
 				<AlertMessage
-          handleCloseAlert={this.handleCloseAlert}
-          open={isAlertOpen}
-          severity={severity}
-          msg={message}
-        />
+					handleCloseAlert={this.handleCloseAlert}
+					open={isAlertOpen}
+					severity={severity}
+					msg={message}
+				/>
 			</div>
 		);
 	}
