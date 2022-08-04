@@ -562,9 +562,9 @@ export class CreateUsecase extends React.Component<any, any> {
 			input: JSON.stringify(stages),
 			usecaseName: usecase.name
 		};
-		let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>';
-		dataForXlm += this.maniupulateDataForXml(stages);
-		dataForXlm += '</Note>';
+		// let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>';
+		// dataForXlm += this.maniupulateDataForXml(stages);
+		// dataForXlm += '</Note>';
 		// console.log(dataForXlm);
 		this.awsHelper.executeStateMachine(params, (res: any) => {
 			if (res) {
