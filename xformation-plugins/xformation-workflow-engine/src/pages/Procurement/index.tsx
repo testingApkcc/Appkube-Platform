@@ -8,6 +8,8 @@ import 'react-circular-progressbar/dist/styles.css';
 import 'simplebar/dist/simplebar.min.css';
 import { Link } from 'react-router-dom';
 import { AwsHelper } from '../AwsHelpers';
+import AlertMessage from '../../components/AlertMessage';
+
 export class ProcurementDetail extends React.Component<any, any> {
   breadCrumbs: any;
   stepper: any;
@@ -20,7 +22,10 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.state = {
       activeTab: 0,
       useCaseName: this.props.match.params.id,
-      useCase: {}
+      useCase: {},
+      isAlertOpen: false,
+      message: '',
+      severity: ''
     };
     this.breadCrumbs = [
       {
@@ -60,6 +65,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     }
     return true;
   }
+
   componentDidUpdate() {
     const { useCase } = this.state;
     if (useCase) {
@@ -77,6 +83,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     }
 
   }
+
   activeTab = (key: any) => {
     this.setState({ activeTab: key });
   }
@@ -92,12 +99,27 @@ export class ProcurementDetail extends React.Component<any, any> {
       this.assetViewRef.current.setUseCaseData(data);
     }
   }
+
   updateWorkflowInput = (usecaseName: any, setInputs: any) => {
-    this.awsHelper.usecaseInputToDynamoDb(usecaseName, setInputs);
+    this.awsHelper.usecaseInputToDynamoDb(usecaseName, setInputs, (res: any) => {
+      this.setState({
+        isAlertOpen: true,
+        message: res,
+        severity: 'succsess'
+      })
+    });
+  }
+
+  handleCloseAlert = () => {
+    this.setState({
+      isAlertOpen: false,
+      message: '',
+      severity: ''
+    })
   }
 
   render() {
-    const { activeTab, useCase, useCaseName } = this.state;
+    const { activeTab, useCase, useCaseName, isAlertOpen, severity, message } = this.state;
     return (
       <div className="owrkflow-procument-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="Usecase 1" />
@@ -146,6 +168,12 @@ export class ProcurementDetail extends React.Component<any, any> {
             }
           </div>
         </div>
+        <AlertMessage
+          handleCloseAlert={this.handleCloseAlert}
+          open={isAlertOpen}
+          severity={severity}
+          msg={message}
+        />
       </div>
     );
   }

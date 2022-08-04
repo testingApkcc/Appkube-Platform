@@ -1,6 +1,7 @@
 import { configFun } from '../../config';
 const AWS = require('aws-sdk');
 const StepFunctions = require('aws-sdk/clients/stepfunctions');
+
 export class AwsHelper {
   config: any;
   credentials: any;
@@ -31,7 +32,7 @@ export class AwsHelper {
     });
   };
   // second table name =usecase_arn
-  usecaseInputToDynamoDb(useCaseName: any, stepInput: any) {
+  usecaseInputToDynamoDb(useCaseName: any, stepInput: any, onDone: any) {
     var paramsForDb = {
       TableName: 'usecase_input',
       Item: {
@@ -45,6 +46,7 @@ export class AwsHelper {
         console.error('Unable to write data: ', JSON.stringify(err, null, 2));
       } else {
         console.log('Put Input succeeded');
+        onDone('Workflow Updated Successfully');
       }
     });
   }
@@ -115,7 +117,9 @@ export class AwsHelper {
       } else {
         console.log(data);
         // usecaseArnToDynamoDb(data.executionArn);
-        this.usecaseInputToDynamoDb(useCaseName, params.input);
+        this.usecaseInputToDynamoDb(useCaseName, params.input, (data: any) => {
+          console.log(data);
+        });
         if (data) {
           onDone(data);
         }

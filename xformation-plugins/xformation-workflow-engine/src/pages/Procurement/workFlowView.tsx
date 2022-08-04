@@ -288,7 +288,7 @@ export class WorkFlowView extends React.Component<any, any> {
 					let details = workflowDetail.details[i];
 					retData.push(
 						<React.Fragment>
-							<div key={`usecase-${i}`} className="api-code">
+							<div key={`usecase-${i}-${activeStage}`} className="api-code">
 								<div className="heading">
 									<h5>{details.subStageName}</h5>
 									<i className="fa fa-angle-down" aria-hidden="true"></i>
@@ -300,6 +300,7 @@ export class WorkFlowView extends React.Component<any, any> {
 											<input
 												type="text"
 												name="link"
+												value={link.link}
 												onChange={(e) => this.handleStateChange(e, i, index)}
 											/>
 											<button
@@ -426,6 +427,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		this.setState({
 			usecaseData
 		});
+		this.updateStep();
 	};
 
 	updateStep = () => {
