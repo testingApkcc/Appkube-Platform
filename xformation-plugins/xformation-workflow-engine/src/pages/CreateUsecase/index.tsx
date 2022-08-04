@@ -609,7 +609,7 @@ export class CreateUsecase extends React.Component<any, any> {
 	}
 	else {
 		let setInputs = stages
-		let usecaseName = useCaseList[activeIndex].usecaseName.S
+		let usecaseName = usecase.name;
 		console.log(setInputs, usecaseName)
 		this.awsHelper.usecaseInputToDynamoDb(usecaseName, JSON.stringify(setInputs), (res:any)=>{
 			this.setState( { isAlertOpen: true,
