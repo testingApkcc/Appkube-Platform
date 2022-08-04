@@ -565,7 +565,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>';
 		dataForXlm += this.maniupulateDataForXml(stages);
 		dataForXlm += '</Note>';
-		// console.log(dataForXlm);
+		console.log(dataForXlm);
 		this.awsHelper.executeStateMachine(params, (res: any) => {
 			if (res) {
 				getLocationSrv().update({

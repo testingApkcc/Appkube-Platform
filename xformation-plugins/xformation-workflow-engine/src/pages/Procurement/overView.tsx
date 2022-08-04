@@ -27,8 +27,7 @@ export class OverView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		if (data && data.stepInput && data.stepInput.S && typeof JSON.parse(data.stepInput.S) === 'object') {
-			data.stepInput.S = JSON.parse(data.stepInput.S)
+		if (data && data.stepInput && data.stepInput.S) {
 			this.setState({
 				useCase: data
 			})
@@ -67,7 +66,6 @@ export class OverView extends React.Component<any, any> {
 
 	render() {
 		const { useCase } = this.state;
-		console.log(useCase)
 		return (
 			<>
 				<div className="project-wise-status">

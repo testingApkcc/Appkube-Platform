@@ -52,24 +52,46 @@ export class ProcurementDetail extends React.Component<any, any> {
     }, (err: any) => { if (err) { console.log(err) } })
   }
 
+  IsJsonString(str: any) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
   componentDidUpdate() {
     const { useCase } = this.state;
     if (useCase) {
-      if (this.overViewRef.current) {
-        this.overViewRef.current.setUseCaseData(useCase);
+      let data = { ...useCase }
+      if (this.IsJsonString(useCase.stepInput.S) === true) {
+        data.stepInput.S = JSON.parse(data.stepInput.S);
+        this.passValuesToChildWithRef(data)
       }
-      if (this.workFlowRef.current) {
-        this.workFlowRef.current.setUseCaseData(useCase);
+      else if (typeof useCase.stepInput.S === "object" && useCase.stepInput.S.length > 0) {
+        this.passValuesToChildWithRef(data)
       }
-      if (this.assetViewRef.current) {
-        this.assetViewRef.current.setUseCaseData(useCase);
+      else {
+        this.props.history.push('/a/xformation-workflow-engine/dashboard')
       }
     }
+
   }
   activeTab = (key: any) => {
     this.setState({ activeTab: key });
   }
 
+  passValuesToChildWithRef = (data: any) => {
+    if (this.overViewRef.current) {
+      this.overViewRef.current.setUseCaseData(data);
+    }
+    if (this.workFlowRef.current) {
+      this.workFlowRef.current.setUseCaseData(data);
+    }
+    if (this.assetViewRef.current) {
+      this.assetViewRef.current.setUseCaseData(data);
+    }
+  }
   updateWorkflowInput = (usecaseName: any, setInputs: any) => {
     this.awsHelper.usecaseInputToDynamoDb(usecaseName, setInputs);
   }
