@@ -586,7 +586,7 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	submitWorkflow = () => {
-		const { usecase, stages, activeIndex, useCaseList } = this.state;
+		const { usecase, stages, activeIndex } = this.state;
 		this.setState({ isSubmitted: true });
 		if (activeIndex=== -1){
 		let params = {

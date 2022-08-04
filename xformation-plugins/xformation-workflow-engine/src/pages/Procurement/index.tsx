@@ -98,7 +98,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     if (this.assetViewRef.current) {
       this.assetViewRef.current.setUseCaseData(data);
     }
-  }
+  } 
 
   updateWorkflowInput = (usecaseName: any, setInputs: any) => {
     this.awsHelper.usecaseInputToDynamoDb(usecaseName, setInputs, (res: any) => {
