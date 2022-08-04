@@ -407,7 +407,8 @@ export class CreateUsecase extends React.Component<any, any> {
 			},
 			isSubmitted: false,
 			subStageName: '',
-			activeIndex: -1,
+			activeIndex: 0,
+			activeUsecaseIndex: -1,
 			machineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
 			useCaseList: []
 		};
@@ -464,7 +465,7 @@ export class CreateUsecase extends React.Component<any, any> {
 
 	resetState = () => {
 		const { createStages, createUsecase } = this.state
-		this.setState({ activeIndex: -1, stages: JSON.parse(JSON.stringify(createStages)), usecase: JSON.parse(JSON.stringify(createUsecase)) })
+		this.setState({ activeUsecaseIndex: -1, stages: JSON.parse(JSON.stringify(createStages)), usecase: JSON.parse(JSON.stringify(createUsecase)) })
 	}
 
 	OBJtoXML(obj: any) {
@@ -565,9 +566,9 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	submitWorkflow = () => {
-		const { usecase, stages, activeIndex, useCaseList } = this.state;
+		const { usecase, stages, activeUsecaseIndex, useCaseList } = this.state;
 		this.setState({ isSubmitted: true });
-		if (activeIndex === -1) {
+		if (activeUsecaseIndex === -1) {
 			let usecaseJson = {
 				...usecase,
 				stages: stages
@@ -591,7 +592,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		}
 		else {
 			let setInputs = stages
-			let usecaseName = useCaseList[activeIndex].usecaseName.S;
+			let usecaseName = useCaseList[activeUsecaseIndex].usecaseName.S;
 			this.awsHelper.usecaseInputToDynamoDb(usecaseName, JSON.stringify(setInputs), (res: any) => {
 				this.setState({
 					isAlertOpen: true,
@@ -617,6 +618,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		}
 		return Xmldata;
 	};
+
 	handleSubStageName = (index: any, e: any) => {
 		const { activeIndex, stages } = this.state;
 		const { name, value } = e.target;
@@ -639,18 +641,18 @@ export class CreateUsecase extends React.Component<any, any> {
 	};
 
 	displayUseCaseList = () => {
-		const { useCaseList, activeIndex } = this.state;
+		const { useCaseList, activeUsecaseIndex } = this.state;
 		let retData = [];
 		if (useCaseList && useCaseList.length > 0) {
 			retData.push(
-				<li className={activeIndex == -1 ? "active" : ""} key="-1" onClick={() => { this.handleSelectUseCase(-1) }}>
+				<li className={activeUsecaseIndex == -1 ? "active" : ""} key="-1" onClick={() => { this.handleSelectUseCase(-1) }}>
 					<span>New Usecase</span>
 				</li>
 			);
 			for (let i = 0; i < useCaseList.length; i++) {
 				let useCase = useCaseList[i];
 				retData.push(
-					<li className={i === activeIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
+					<li className={i === activeUsecaseIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
 						<span>{useCase.usecaseName.S}</span>
 					</li>
 				);
@@ -658,6 +660,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		}
 		return retData;
 	};
+
 	validateJsonData(str: any) {
 		try {
 			JSON.parse(str);
@@ -673,7 +676,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		if (index >= 0) {
 			if (useCaseList[index].stepInput && this.validateJsonData(useCaseList[index].stepInput.S)) {
 				usecase.name = useCaseList[index].usecaseName.S
-				this.setState({ activeIndex: index, stages: JSON.parse(useCaseList[index].stepInput.S), usecase })
+				this.setState({ activeUsecaseIndex: index, stages: JSON.parse(useCaseList[index].stepInput.S), usecase })
 			}
 		} else if (index === -1) {
 			this.resetState()
