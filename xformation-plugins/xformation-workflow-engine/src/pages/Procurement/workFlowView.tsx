@@ -1,3 +1,4 @@
+import { forIn } from 'lodash';
 import * as React from 'react';
 // import { AwsHelper } from '../AwsHelpers';
 // import { Link } from 'react-router-dom';
@@ -470,7 +471,7 @@ export class WorkFlowView extends React.Component<any, any> {
 	};
 
 	displayStageList = () => {
-		const { usecaseData } = this.state;
+		const { usecaseData, userList } = this.state;
 		let retData = [];
 		// let stageList = usecaseData;
 		if (usecaseData && usecaseData.length > 0) {
@@ -480,10 +481,16 @@ export class WorkFlowView extends React.Component<any, any> {
 				if (stage && stage.details && stage.details.length > 0) {
 					for (let j = 0; j < stage.details.length; j++) {
 						let step = stage.details[j];
+						let userName = '';
+						for (const users of userList) {
+							if (users.id == step.assignto) {
+								userName = users.name;
+							}
+						}
 						stepJSXList.push(
 							<tr className="workflow-inner-table">
 								<td><span>{step.subStageName}</span></td>
-								<td>{step.assignto}</td>
+								<td>{userName}</td>
 								<td>{step.startDate}</td>
 								<td>1</td>
 								<td>{step.endDate}</td>
