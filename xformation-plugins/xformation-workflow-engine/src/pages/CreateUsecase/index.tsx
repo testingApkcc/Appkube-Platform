@@ -410,7 +410,8 @@ export class CreateUsecase extends React.Component<any, any> {
 			activeIndex: 0,
 			activeUsecaseIndex: -1,
 			machineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
-			useCaseList: []
+			useCaseList: [],
+			editUsecase: {}
 		};
 		this.id = 10;
 		this.awsHelper = new AwsHelper({ meta: props.meta });
@@ -464,7 +465,7 @@ export class CreateUsecase extends React.Component<any, any> {
 	}
 
 	resetState = () => {
-		const { createStages, createUsecase } = this.state
+		const { createStages, createUsecase, useCaseList } = this.state;
 		this.setState({ activeUsecaseIndex: -1, stages: JSON.parse(JSON.stringify(createStages)), usecase: JSON.parse(JSON.stringify(createUsecase)) })
 	}
 
@@ -591,8 +592,14 @@ export class CreateUsecase extends React.Component<any, any> {
 			});
 		}
 		else {
-			let setInputs = stages
-			let usecaseName = useCaseList[activeUsecaseIndex].usecaseName.S;
+
+			let usecaseName = useCaseList[activeUsecaseIndex].usecaseName.S
+			let setInputs = {
+				name: usecase.name,
+				description: usecase.description,
+				assignTo: usecase.assignTo,
+				stages: stages
+			}
 			this.awsHelper.usecaseInputToDynamoDb(usecaseName, JSON.stringify(setInputs), (res: any) => {
 				this.setState({
 					isAlertOpen: true,
@@ -643,19 +650,19 @@ export class CreateUsecase extends React.Component<any, any> {
 	displayUseCaseList = () => {
 		const { useCaseList, activeUsecaseIndex } = this.state;
 		let retData = [];
+		retData.push(<li className={activeUsecaseIndex == -1 ? "active" : ""} key="-1" onClick={() => { this.handleSelectUseCase(-1) }}>
+			<span>New Usecase</span>
+		</li>)
 		if (useCaseList && useCaseList.length > 0) {
-			retData.push(
-				<li className={activeUsecaseIndex == -1 ? "active" : ""} key="-1" onClick={() => { this.handleSelectUseCase(-1) }}>
-					<span>New Usecase</span>
-				</li>
-			);
 			for (let i = 0; i < useCaseList.length; i++) {
-				let useCase = useCaseList[i];
-				retData.push(
-					<li className={i === activeUsecaseIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
-						<span>{useCase.usecaseName.S}</span>
-					</li>
-				);
+				let useCase = { ...useCaseList[i] };
+				if (useCase.stepInput.S.indexOf("stages") !== -1) {
+					retData.push(
+						<li className={i === activeUsecaseIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
+							<span>{useCase.usecaseName.S}</span>
+						</li>
+					);
+				}
 			}
 		}
 		return retData;
@@ -675,16 +682,18 @@ export class CreateUsecase extends React.Component<any, any> {
 		const { useCaseList } = this.state
 		if (index >= 0) {
 			if (useCaseList[index].stepInput && this.validateJsonData(useCaseList[index].stepInput.S)) {
-				usecase.name = useCaseList[index].usecaseName.S
-				this.setState({ activeUsecaseIndex: index, stages: JSON.parse(useCaseList[index].stepInput.S), usecase })
+				let parseUserData= JSON.parse(useCaseList[index].stepInput.S)
+				usecase.name = parseUserData.name
+				this.setState({ activeUsecaseIndex: index, stages:parseUserData.stages, usecase })
 			}
 		} else if (index === -1) {
 			this.resetState()
 		}
 	}
+
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
-		const { stages, activeIndex, usecase, userList, isAlertOpen, message, severity, } = this.state;
+		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity, } = this.state;
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">
@@ -737,14 +746,14 @@ export class CreateUsecase extends React.Component<any, any> {
 									<h4>Basic Details</h4>
 									<div className="input-group">
 										<label>Usecase Name</label>
-										<input
-											className="form-control name-usecase"
-											type="text"
-											name="name"
-											value={usecase.name}
-											placeholder="name of usecase"
-											onChange={(e: any) => this.handleStateChange(e)}
-										/>
+											<input
+												className="form-control name-usecase"
+												type="text"
+												name="name"
+												value={usecase.name}
+												placeholder="name of usecase"
+												onChange={(e: any) => this.handleStateChange(e)}
+											/>
 									</div>
 									{errorData && errorData.name && <span>{errorData.name.message}</span>}
 									<div className="input-group">
