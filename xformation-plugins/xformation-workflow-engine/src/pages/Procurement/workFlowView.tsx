@@ -280,10 +280,10 @@ export class WorkFlowView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.length > 0) {
+		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length > 0) {
 			this.setState({
 				useCase: data,
-				usecaseData: data.stepInput.S
+				usecaseData: data.stepInput.S.stages
 			});
 		}
 	}
@@ -442,7 +442,13 @@ export class WorkFlowView extends React.Component<any, any> {
 
 	updateStep = () => {
 		const { useCase, usecaseData } = this.state;
-		this.props.updateWorkflowInput(useCase.usecaseName.S, JSON.stringify(usecaseData))
+		let useCases = {
+			name: useCase.stepInput.S.name,
+			description: useCase.stepInput.S.description,
+			assignTo: useCase.stepInput.S.assignTo,
+			stages: usecaseData
+		}
+		this.props.updateWorkflowInput(useCase.usecaseName.S, JSON.stringify(useCases))
 	};
 
 	moveToNextPage = (type: any) => {
