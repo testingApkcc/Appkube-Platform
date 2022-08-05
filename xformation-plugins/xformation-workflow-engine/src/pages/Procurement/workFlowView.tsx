@@ -367,6 +367,21 @@ export class WorkFlowView extends React.Component<any, any> {
 		if (usecaseData && usecaseData && usecaseData.length > 0) {
 			for (let i = 0; i < usecaseData.length; i++) {
 				let row = usecaseData[i];
+				let count =0;
+				if (row && row.workflowCheckList) {
+					for (let i = 0; i < row.workflowCheckList.length; i++) {
+						if (row.workflowCheckList[i].checked) {
+							count++;
+						}
+					}
+				}
+				if (count == row.workflowCheckList.length) {
+					row['status'] = 'completed';
+				} else if (count < row.workflowCheckList.length) {
+					row['status'] = 'inprogress';
+				} else if (count == 0) {
+					row['status'] = '';
+				}
 				retData.push(
 					<li
 						onClick={() => this.getUsecaseStageData(row, i)}
