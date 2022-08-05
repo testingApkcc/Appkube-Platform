@@ -74,7 +74,7 @@ export class ProcurementDetail extends React.Component<any, any> {
         data.stepInput.S = JSON.parse(data.stepInput.S);
         this.passValuesToChildWithRef(data)
       }
-      else if (typeof useCase.stepInput.S === "object" && useCase.stepInput.S.length > 0) {
+      else if (typeof useCase.stepInput.S === "object" && useCase.stepInput.S.stages.length > 0) {
         this.passValuesToChildWithRef(data)
       }
       else {
