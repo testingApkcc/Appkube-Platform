@@ -112,21 +112,25 @@ export class ProjectWise extends React.Component<any, any> {
 
 	checkStatusOfWorkflow=(data:any)=>{
 		let count=0
+		let retData=' '
 	if(data && data && data.length>0){
 		for (const usecase of data) {
-			if(usecase.checked=== true){
+			if(usecase.checked && usecase.checked=== true){
 				count++;
+			}
+			else{
+				retData= " "
 			}
 		}
 		if(count== data.length){
-			return 'fa fa-check green';
+			retData= 'fa fa-check green';
 		}else if(count===0){
-			return "";
+			retData= "";
 		}else{
-			return 'fa fa-check orange';
+			retData='fa fa-check orange';
 		}
 	}
-	return ""
+	return retData;
 
 	}
 
@@ -226,9 +230,9 @@ export class ProjectWise extends React.Component<any, any> {
 															{useCase.usecaseName.S}
 														</Link>
 													</div>
-													{checkList.length>0 ?
-													checkList.map((list:any, index:any)=>{
-											let statusclass = this.checkStatusOfWorkflow(list.workflowCheckList);
+													{checkList.stages && checkList.stages.length>0 ?
+													checkList.stages.map((list:any, index:any)=>{
+											let statusclass = list.workflowCheckList?this.checkStatusOfWorkflow(list.workflowCheckList):this.checkStatusOfWorkflow(list.workflowCheckList);
 											return(
 													<div className="td" key={index}>
 														<i

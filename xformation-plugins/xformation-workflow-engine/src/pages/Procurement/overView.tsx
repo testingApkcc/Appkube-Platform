@@ -73,16 +73,16 @@ export class OverView extends React.Component<any, any> {
 						<div className="table">
 							<div className="thead">
 								<div className="th">Usecase</div>
-								{useCase?.stepInput?.S && useCase.stepInput.S.length > 0 &&
-									useCase.stepInput.S.map(({ name }: any, index: any) =>
+								{useCase?.stepInput?.S?.stages && useCase.stepInput.S.stages.length > 0 &&
+									useCase.stepInput.S.stages.map(({ name }: any, index: any) =>
 										(<div className="th" key={`${name}${index}`}>{name}</div>))}
 
 							</div>
 							<div className="tbody">
 								<div className="tr">
 									<div className="td">{useCase?.usecaseName ? useCase.usecaseName.S : ''}</div>
-									{useCase?.stepInput?.S && useCase.stepInput.S.length > 0 &&
-										useCase.stepInput.S.map(({ name, details }: any, index: any) =>
+									{useCase?.stepInput?.S?.stages && useCase.stepInput.S.stages.length > 0 &&
+										useCase.stepInput.S.stages.map(({ name, details }: any, index: any) =>
 											(<div className="td" key={`${name}${index}`}>{this.checkValuesValidation(details)}</div>))}
 								</div>
 							</div>
