@@ -693,7 +693,7 @@ componentDidMount(){
   }
 
   render() {
-    const { usecaseData, activeStage, useCaseName} = this.state;
+    const { usecaseData, activeStage} = this.state;
     return (
       <div className="project-over-view-container">
         <div className="project-over-view-section">
@@ -731,7 +731,7 @@ componentDidMount(){
                       />
                     </div>
                   </div>
-                  <Link to={`/a/xformation-workflow-engine/procurement-detail/${useCaseName}`} className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
+                  <Link to={`/a/xformation-workflow-engine/project-wise`} className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
                 </div>
               </div>
             </div>

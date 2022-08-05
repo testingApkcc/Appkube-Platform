@@ -465,7 +465,7 @@ export class CreateUsecase extends React.Component<any, any> {
 	}
 
 	resetState = () => {
-		const { createStages, createUsecase, useCaseList } = this.state;
+		const { createStages, createUsecase } = this.state;
 		this.setState({ activeUsecaseIndex: -1, stages: JSON.parse(JSON.stringify(createStages)), usecase: JSON.parse(JSON.stringify(createUsecase)) })
 	}
 
@@ -604,7 +604,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				this.setState({
 					isAlertOpen: true,
 					message: res,
-					severity: 'succsess'
+					severity: 'success'
 				})
 			});
 		}
