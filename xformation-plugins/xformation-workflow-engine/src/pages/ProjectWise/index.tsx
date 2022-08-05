@@ -110,27 +110,27 @@ export class ProjectWise extends React.Component<any, any> {
 		});
 	};
 
-	checkStatusOfWorkflow=(data:any)=>{
-		let count=0
-		let retData=' '
-	if(data && data && data.length>0){
-		for (const usecase of data) {
-			if(usecase.checked && usecase.checked=== true){
-				count++;
+	checkStatusOfWorkflow = (data: any) => {
+		let count = 0
+		let retData = ' '
+		if (data && data && data.length > 0) {
+			for (const usecase of data) {
+				if (usecase.checked && usecase.checked === true) {
+					count++;
+				}
+				else {
+					retData = " "
+				}
 			}
-			else{
-				retData= " "
+			if (count == data.length) {
+				retData = 'fa fa-check green';
+			} else if (count === 0) {
+				retData = "";
+			} else {
+				retData = 'fa fa-check orange';
 			}
 		}
-		if(count== data.length){
-			retData= 'fa fa-check green';
-		}else if(count===0){
-			retData= "";
-		}else{
-			retData='fa fa-check orange';
-		}
-	}
-	return retData;
+		return retData;
 
 	}
 
@@ -220,7 +220,8 @@ export class ProjectWise extends React.Component<any, any> {
 								<div className="tbody">
 									{useCaseList &&
 										useCaseList.map((useCase: any, index: any) => {
-											let checkList=JSON.parse(useCase.stepInput.S)
+											let checkList = JSON.parse(useCase.stepInput.S)
+												if ( checkList.stages && checkList.stages.length > 0){
 											return (
 												<div className="tr" key={`usecase-${index}`}>
 													<div className="td">
@@ -230,17 +231,21 @@ export class ProjectWise extends React.Component<any, any> {
 															{useCase.usecaseName.S}
 														</Link>
 													</div>
-													{checkList.stages && checkList.stages.length>0 ?
-													checkList.stages.map((list:any, index:any)=>{
-											let statusclass = list.workflowCheckList?this.checkStatusOfWorkflow(list.workflowCheckList):this.checkStatusOfWorkflow(list.workflowCheckList);
-											return(
-													<div className="td" key={index}>
-														<i
-															className={statusclass}
-														/>
-													</div>)}) :<React.Fragment></React.Fragment>}
+													{checkList.stages && checkList.stages.length > 0 ?
+														checkList.stages.map((list: any, index: any) => {
+															let statusclass = list.workflowCheckList ? this.checkStatusOfWorkflow(list.workflowCheckList) : this.checkStatusOfWorkflow(list.workflowCheckList);
+															return (
+																<div className="td" key={index}>
+																	<i
+																		className={statusclass}
+																	/>
+																</div>)
+														}) : <React.Fragment></React.Fragment>}
 												</div>
-											);
+											)
+										}else{
+												return<React.Fragment></React.Fragment>
+											}
 										})}
 								</div>
 							</div>
