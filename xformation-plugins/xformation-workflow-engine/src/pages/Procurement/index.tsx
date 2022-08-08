@@ -105,7 +105,7 @@ export class ProcurementDetail extends React.Component<any, any> {
       this.setState({
         isAlertOpen: true,
         message: res,
-        severity: 'succsess'
+        severity: 'success'
       })
     });
   }
@@ -119,7 +119,7 @@ export class ProcurementDetail extends React.Component<any, any> {
   }
 
   render() {
-    const { activeTab, useCase, useCaseName, isAlertOpen, severity, message } = this.state;
+    const { activeTab, useCase, isAlertOpen, severity, message } = this.state;
     return (
       <div className="owrkflow-procument-container">
         <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="Usecase 1" />
@@ -137,7 +137,7 @@ export class ProcurementDetail extends React.Component<any, any> {
               </div>
               <div className="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                 <div className="heading-content-right">
-                  <Link to={`/a/xformation-workflow-engine/project-overview/${useCaseName}`} className="btn-primary pro-overview-btn">Project Overview</Link>
+                  <Link to={`/a/xformation-workflow-engine/project-overview`} className="btn-primary pro-overview-btn">Project Overview</Link>
                   <Link to="/a/xformation-workflow-engine/project-wise" className="btn-primary pro-overview-btn"><i className="fas fa-chevron-left"></i> Back</Link>
                 </div>
               </div>
