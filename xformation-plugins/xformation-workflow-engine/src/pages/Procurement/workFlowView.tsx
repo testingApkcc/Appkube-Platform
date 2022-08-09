@@ -12,6 +12,7 @@ export class WorkFlowView extends React.Component<any, any> {
 			activeStage: 0,
 			stageList: [
 				{
+					index: 0,
 					name: 'Requirements',
 					stepList: [
 						{
@@ -41,6 +42,7 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
+					index: 1,
 					name: 'Mock Development',
 					stepList: [
 						{
@@ -78,6 +80,7 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
+					index: 2,
 					name: 'Actual Development',
 					stepList: [
 						{
@@ -155,6 +158,7 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
+					index: 3,
 					name: 'CI/CD Test',
 					stepList: [
 						{
@@ -208,6 +212,7 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
+					index: 4,
 					name: 'Stage Release',
 					stepList: [
 						{
@@ -245,6 +250,7 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
+					index: 5,
 					name: 'Publish and Operate',
 					stepList: [
 						{
