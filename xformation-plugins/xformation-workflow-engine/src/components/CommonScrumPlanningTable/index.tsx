@@ -25,10 +25,10 @@ class CommanPlanningTable extends React.Component<any, any>{
                         (stage: any, index: any) => {
                             return (
                                 <React.Fragment>
-                                <tr className="workflow-inner-table-head">
-                                    <td colSpan={6} key={index}>
-                                        <strong>{stage.name}</strong>
-                                    </td>
+                                    <tr className="workflow-inner-table-head">
+                                        <td colSpan={6} key={index}>
+                                            <strong>{stage.name}</strong>
+                                        </td>
                                     </tr>
                                     {
                                         stage && stage.details ? stage.details.map((step: any, index: any) => {

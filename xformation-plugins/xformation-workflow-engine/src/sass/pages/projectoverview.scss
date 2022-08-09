@@ -517,6 +517,10 @@
 
                     .workflow-view-table {
                         margin-top: 8px;
+                        display: flex;
+                        display: -webkit-box;
+                        overflow: hidden;
+                        overflow-x: auto;
 
                         .table {
                             width: 100%;
@@ -545,11 +549,12 @@
                                             margin-top: 15px;
                                             margin-bottom: 15px;
                                             padding: 10px 15px;
+                                            background: #b1c9f8;
                                         }
                                     }
                                 }
 
-                                .table-inner-content {
+                                .workflow-inner-table {
                                     td {
                                         padding: 10px 15px;
                                         font-size: 14px;
