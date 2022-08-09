@@ -142,7 +142,7 @@ export class ProjectWise extends React.Component<any, any> {
 				<div className="project-wise-page-container">
 					<div className="project-wise-page-heading">
 						<div className="row">
-							<div className="col-lx-8 col-lg-8 col-md-7 col-sm-7 col-xs-8">
+							<div className="col-lx-8 col-lg-8 col-md-7 col-sm-7 col-xs-12">
 								<div className="heading-content-left">
 									<div className="heading-icon">
 										<img src={headerIcon} alt="" />
@@ -158,7 +158,7 @@ export class ProjectWise extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-lx-4 col-lg-4 col-md-5 col-sm-5 col-xs-4">
+							<div className="col-lx-4 col-lg-4 col-md-5 col-sm-5 col-xs-12">
 								<div className="heading-content-right">
 									<Link to={`/a/xformation-workflow-engine/create-new-usecase`}
 										className="btn-primary pro-overview-btn">Create Usecase</Link>
