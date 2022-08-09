@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import downloadIcon from '../../img/projectoverview/download-icon.png';
 import LinkData from '../../components/CommonLinksData'
-import CommanCheckList from'../../components/CommonCheckList';
+import CommanCheckList from '../../components/CommonCheckList';
 import CommanPlanningTable from '../../components/CommonScrumPlanningTable'
 // import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
 // import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
@@ -18,7 +18,7 @@ export class ProjectOverView extends React.Component<any, any> {
     super(props);
     this.state = {
       usecaseData: {},
-     activeStage: 0,
+      activeStage: 0,
       stageList: [],
       activeUseCaseIndex: 0,
       useCaseList: [],
@@ -32,7 +32,7 @@ export class ProjectOverView extends React.Component<any, any> {
         { name: 'George', id: '7' },
         { name: 'Jack', id: '8' }
       ],
-     
+
     };
     this.awsHelper = new AwsHelper({ meta: props.meta });
   }
@@ -53,7 +53,7 @@ export class ProjectOverView extends React.Component<any, any> {
               });
               this.setState({
                 useCaseList: useCases,
-                usecaseData:useCases[this.state.activeUseCaseIndex].stepInput.S.stages
+                usecaseData: useCases[this.state.activeUseCaseIndex].stepInput.S.stages
               });
             },
             (err: any) => { console.log(err) }
@@ -166,13 +166,13 @@ export class ProjectOverView extends React.Component<any, any> {
   moveToNextPage = (type: any) => {
     const { usecaseData, activeStage } = this.state;
     if (type == 'next') {
-      if (usecaseData && usecaseData.length>0) {
+      if (usecaseData && usecaseData.length > 0) {
         this.setState({
           activeStage: activeStage + 1
         });
       }
     } else {
-      if (usecaseData && usecaseData.length>0) {
+      if (usecaseData && usecaseData.length > 0) {
         let index = activeStage - 1;
         this.setState({
           activeStage: index
@@ -186,13 +186,13 @@ export class ProjectOverView extends React.Component<any, any> {
     let retData = [];
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
-          retData.push(
-            <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
-              {/* <Link to="/"> */}
-              <span>{useCaseList[i].usecaseName.S}</span>
-              {/* </Link> */}
-            </li>
-          )
+        retData.push(
+          <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
+            {/* <Link to="/"> */}
+            <span>{useCaseList[i].usecaseName.S}</span>
+            {/* </Link> */}
+          </li>
+        )
       }
     }
     return retData;
@@ -205,7 +205,7 @@ export class ProjectOverView extends React.Component<any, any> {
       data = data.stepInput.S;
       this.setState({ usecaseData: data.stages })
     }
-    this.setState({ activeUseCaseIndex: index, activeStage:0 })
+    this.setState({ activeUseCaseIndex: index, activeStage: 0 })
 
   }
   render() {
@@ -285,7 +285,7 @@ export class ProjectOverView extends React.Component<any, any> {
                         <th>Deviation</th>
                       </tr>
                     </thead>
-                    {usecaseData && usecaseData.length>0 && activeStage ===0 ? <tbody><CommanPlanningTable usecaseData={usecaseData} userList={userList}/></tbody>:<React.Fragment></React.Fragment>} 
+                    {usecaseData && usecaseData.length > 0 && activeStage === 0 ? <tbody><CommanPlanningTable usecaseData={usecaseData} userList={userList} /></tbody> : <React.Fragment></React.Fragment>}
                   </table>
                 </div>
               </div>
@@ -294,8 +294,8 @@ export class ProjectOverView extends React.Component<any, any> {
                   <h5>Checklist for Requirements</h5>
                 </div>
                 <React.Fragment>
-						<CommanCheckList usecaseData={usecaseData} activeStage={activeStage} handleStateChangeCheckList={this.handleStateChangeCheckList} disabledEditForm={true}/>
-					</React.Fragment>
+                  <CommanCheckList usecaseData={usecaseData} activeStage={activeStage} handleStateChangeCheckList={this.handleStateChangeCheckList} disabledEditForm={true} />
+                </React.Fragment>
               </div>
               <div className="workflow-buttons">
                 <button
@@ -307,15 +307,15 @@ export class ProjectOverView extends React.Component<any, any> {
                   Previous
                 </button>
                 {usecaseData && (
-                    <button
-                      type="button"
-                      disabled={activeStage == usecaseData.length - 1}
-                      className="btn btn-primary previous-btn next-btn"
-                      onClick={() => this.moveToNextPage('next')}
-                    >
-                      Next
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    disabled={activeStage == usecaseData.length - 1}
+                    className="btn btn-primary previous-btn next-btn"
+                    onClick={() => this.moveToNextPage('next')}
+                  >
+                    Next
+                  </button>
+                )}
               </div>
             </div>
           </div>

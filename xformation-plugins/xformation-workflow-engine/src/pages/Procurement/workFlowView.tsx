@@ -302,7 +302,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		if (usecaseData && usecaseData && usecaseData.length > 0) {
 			for (let i = 0; i < usecaseData.length; i++) {
 				let row = usecaseData[i];
-				let count =0;
+				let count = 0;
 				if (row && row.workflowCheckList) {
 					for (let i = 0; i < row.workflowCheckList.length; i++) {
 						if (row.workflowCheckList[i].checked) {
@@ -472,37 +472,37 @@ export class WorkFlowView extends React.Component<any, any> {
 				</Link> */}
 				</div>
 				<div className="workflow-data">
-				 <LinkData props={{handleStateChange:this.handleStateChange, usecaseData, updateStep:this.updateStep, editLink:false, activeStage,...this.props}} />
+					<LinkData props={{ handleStateChange: this.handleStateChange, usecaseData, updateStep: this.updateStep, editLink: false, activeStage, ...this.props }} />
 				</div>
-				{activeStage == 0 && <div className="workflow-view-table-section">
-					<div className="heading">
-						<h5></h5>
-						<i className="fa fa-angle-down" aria-hidden="true"></i>
+				{activeStage == 0 &&
+					<div className="workflow-view-table-section">
+						<div className='heading'>
+							<h5>SCRUM Planning</h5>
+							<i className="fa fa-angle-down" aria-hidden="true"></i>
+						</div>
+						<div className="workflow-view-table">
+							<table className="table">
+								<thead >
+									<tr>
+										<th>Stages</th>
+										<th>Assigned to</th>
+										<th>Start Date</th>
+										<th>Deviation</th>
+										<th>End Date</th>
+										<th>Deviation</th>
+									</tr>
+								</thead>
+								{usecaseData && usecaseData.length > 0 && activeStage === 0 ? <tbody><CommanPlanningTable usecaseData={usecaseData} userList={userList} /></tbody> : <React.Fragment></React.Fragment>}
+							</table>
+						</div>
 					</div>
-					<div className="workflow-view-table">
-						<table className="table">
-							<thead>
-								<tr>
-									<th>Stages</th>
-									<th>Assigned to</th>
-									<th>Start Date</th>
-									<th>Deviation</th>
-									<th>End Date</th>
-									<th>Deviation</th>
-								</tr>
-							</thead>
-							{/* <tbody>{this.displayStageList()}</tbody> */}
-							<tbody><CommanPlanningTable usecaseData={usecaseData} userList={userList}/></tbody> 
-						</table>
-					</div>
-				</div>
 				}
 				<div className="workflow-requirement">
 					<div className="heading">
 						<h5>Checklist for Requirements</h5>
 					</div>
 					<React.Fragment>
-						<CommanCheckList usecaseData={usecaseData} activeStage={activeStage} disabledEditForm={false} handleStateChangeCheckList={this.handleStateChangeCheckList}/>
+						<CommanCheckList usecaseData={usecaseData} activeStage={activeStage} disabledEditForm={false} handleStateChangeCheckList={this.handleStateChangeCheckList} />
 					</React.Fragment>
 				</div>
 				<div className="d-flex justify-content-end workflow-buttons">
