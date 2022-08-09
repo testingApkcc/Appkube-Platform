@@ -1,9 +1,9 @@
 import * as React from 'react';
 // import { AwsHelper } from '../AwsHelpers';
 // import { Link } from 'react-router-dom';
-import LinkData from '../../components/LinksData';
-import CommanCheckList from 'components/CommanCheckList';
-import CommanPlanningTable from '../../components/CommanScrumPlanningTable'
+import LinkData from '../../components/CommonLinksData';
+import CommanCheckList from 'components/CommonCheckList';
+import CommanPlanningTable from '../../components/CommonScrumPlanningTable'
 export class WorkFlowView extends React.Component<any, any> {
 	awsHelper: any;
 	constructor(props: any) {
@@ -12,7 +12,6 @@ export class WorkFlowView extends React.Component<any, any> {
 			activeStage: 0,
 			stageList: [
 				{
-					index: 0,
 					name: 'Requirements',
 					stepList: [
 						{
@@ -42,7 +41,6 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
-					index: 1,
 					name: 'Mock Development',
 					stepList: [
 						{
@@ -80,7 +78,6 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
-					index: 2,
 					name: 'Actual Development',
 					stepList: [
 						{
@@ -158,7 +155,6 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
-					index: 3,
 					name: 'CI/CD Test',
 					stepList: [
 						{
@@ -212,7 +208,6 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
-					index: 4,
 					name: 'Stage Release',
 					stepList: [
 						{
@@ -250,7 +245,6 @@ export class WorkFlowView extends React.Component<any, any> {
 					]
 				},
 				{
-					index: 5,
 					name: 'Publish and Operate',
 					stepList: [
 						{
