@@ -1,7 +1,9 @@
 import * as React from 'react';
 // import { AwsHelper } from '../AwsHelpers';
 // import { Link } from 'react-router-dom';
-
+import LinkData from '../../components/LinksData';
+import CommanCheckList from 'components/CommanCheckList';
+import CommanPlanningTable from '../../components/CommanScrumPlanningTable'
 export class WorkFlowView extends React.Component<any, any> {
 	awsHelper: any;
 	constructor(props: any) {
@@ -288,73 +290,6 @@ export class WorkFlowView extends React.Component<any, any> {
 		}
 	}
 
-	displayUsecase = () => {
-		const { usecaseData, activeStage } = this.state;
-		let retData = [];
-		if (usecaseData && usecaseData.length > 0) {
-			const workflowDetail = usecaseData[activeStage];
-			if (workflowDetail && workflowDetail.details) {
-				for (let i = 0; i < workflowDetail.details.length; i++) {
-					let details = workflowDetail.details[i];
-					retData.push(
-						<React.Fragment>
-							<div key={`usecase-${i}-${activeStage}`} className="api-code">
-								<div className="heading">
-									<h5>{details.subStageName}</h5>
-									<i className="fa fa-angle-down" aria-hidden="true"></i>
-								</div>
-								{details.data && details.data.length > 0 && details.data.map((link: any, index: any) => {
-									return (
-										<div className="api-content">
-											<label>{link.label}:</label>
-											<input
-												type="text"
-												name="link"
-												value={link.link}
-												onChange={(e) => this.handleStateChange(e, i, index)}
-											/>
-											<button
-												onClick={this.updateStep}
-												className="btn btn-primary code-update-btn"
-											>
-												Update
-											</button>
-										</div>
-									)
-								})}
-							</div>
-						</React.Fragment>
-					);
-				}
-			}
-		}
-		return retData;
-	};
-
-	displayCheckList = () => {
-		const { usecaseData, activeStage } = this.state;
-		let retData = [];
-		if (usecaseData && usecaseData.length > 0) {
-			const workflowDetail: any = usecaseData[activeStage].workflowCheckList;
-			if (workflowDetail && workflowDetail.length > 0) {
-				for (let i = 0; i < workflowDetail.length; i++) {
-					let row = workflowDetail[i];
-					retData.push(
-						<div key={`${i}checkbox${activeStage}`} className="requirement-data">
-							<input
-								type="checkbox"
-								checked={row.checked}
-								onChange={(e) => this.handleStateChangeCheckList(e, i)}
-							/>
-							<span>{row.label}</span>
-						</div>
-					);
-				}
-			}
-		}
-		return retData;
-	};
-
 	getUsecaseStageData = (data: any, index: any) => {
 		this.setState({
 			activeStage: index
@@ -487,7 +422,6 @@ export class WorkFlowView extends React.Component<any, any> {
 	displayStageList = () => {
 		const { usecaseData, userList } = this.state;
 		let retData = [];
-		// let stageList = usecaseData;
 		if (usecaseData && usecaseData.length > 0) {
 			for (let i = 0; i < usecaseData.length; i++) {
 				let stepJSXList = [];
@@ -527,7 +461,8 @@ export class WorkFlowView extends React.Component<any, any> {
 	};
 
 	render() {
-		const { usecaseData, activeStage } = this.state;
+		const { usecaseData, activeStage, userList } = this.state;
+		console.log(usecaseData)
 		return (
 			<div className="workflow-content">
 				<div className="workflow-stage">
@@ -536,7 +471,9 @@ export class WorkFlowView extends React.Component<any, any> {
 					<img src={editIcon} alt="" />&nbsp; Edit
 				</Link> */}
 				</div>
-				<div className="workflow-data">{this.displayUsecase()}</div>
+				<div className="workflow-data">
+				 <LinkData props={{handleStateChange:this.handleStateChange, usecaseData, updateStep:this.updateStep, editLink:false, activeStage,...this.props}} />
+				</div>
 				{activeStage == 0 && <div className="workflow-view-table-section">
 					<div className="heading">
 						<h5></h5>
@@ -554,7 +491,8 @@ export class WorkFlowView extends React.Component<any, any> {
 									<th>Deviation</th>
 								</tr>
 							</thead>
-							<tbody>{this.displayStageList()}</tbody>
+							{/* <tbody>{this.displayStageList()}</tbody> */}
+							<tbody><CommanPlanningTable usecaseData={usecaseData} userList={userList}/></tbody> 
 						</table>
 					</div>
 				</div>
@@ -563,7 +501,9 @@ export class WorkFlowView extends React.Component<any, any> {
 					<div className="heading">
 						<h5>Checklist for Requirements</h5>
 					</div>
-					{this.displayCheckList()}
+					<React.Fragment>
+						<CommanCheckList usecaseData={usecaseData} activeStage={activeStage} disabledEditForm={false} handleStateChangeCheckList={this.handleStateChangeCheckList}/>
+					</React.Fragment>
 				</div>
 				<div className="d-flex justify-content-end workflow-buttons">
 					<button
