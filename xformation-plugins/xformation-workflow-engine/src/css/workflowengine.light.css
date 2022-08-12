@@ -5560,6 +5560,7 @@
   height: 60px;
   padding: 15px;
   margin-right: 15px;
+  cursor: pointer;
 }
 .project-over-view-container
   .project-over-view-section
@@ -6980,6 +6981,7 @@
   height: 60px;
   padding: 15px;
   margin-right: 15px;
+  cursor: pointer;
 }
 .asset-over-view-container
   .asset-over-view-section
