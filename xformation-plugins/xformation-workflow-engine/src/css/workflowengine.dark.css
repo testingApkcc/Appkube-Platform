@@ -6263,7 +6263,7 @@
   .project-over-view-right-content
   .workflow-stage
   ul
-  .inprosseg::before {
+  .inprogress::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -6278,7 +6278,7 @@
   .project-over-view-right-content
   .workflow-stage
   ul
-  .inprosseg
+  .inprogress
   span {
   display: inline-block;
   width: 32px;
