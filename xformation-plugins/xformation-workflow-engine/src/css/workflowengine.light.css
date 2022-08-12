@@ -3961,7 +3961,7 @@
   .workflow-content
   .workflow-stage
   ul
-  .inprosseg::before {
+  .inprogress::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -3976,7 +3976,7 @@
   .workflow-content
   .workflow-stage
   ul
-  .inprosseg
+  .inprogress
   span {
   display: inline-block;
   width: 32px;
@@ -4520,6 +4520,7 @@
   border-radius: 5px;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   border-top: 5px solid #79bcff;
+  min-height: 200px;
 }
 .receive-rfq-content .receive-rfq-box .receive-number {
   position: absolute;
@@ -4567,7 +4568,7 @@
 .receive-rfq-content .receive-rfq-box ul li.active {
   background-image: url(../img/check-icon1.png);
 }
-.receive-rfq-content .receive-rfq-box ul li.inprosseg {
+.receive-rfq-content .receive-rfq-box ul li.inprogress {
   background-image: url(../img/check-icon2.png);
 }
 .receive-rfq-content .receive-rfq-box::after {
@@ -4583,7 +4584,7 @@
 .receive-rfq-content .receive-rfq-box.active {
   border-top: 5px solid #398038;
 }
-.receive-rfq-content .receive-rfq-box.inprosseg {
+.receive-rfq-content .receive-rfq-box.inprogress {
   border-top: 5px solid #ff5400;
 }
 
