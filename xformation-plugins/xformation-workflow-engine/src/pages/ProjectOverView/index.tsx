@@ -38,6 +38,7 @@ export class ProjectOverView extends React.Component<any, any> {
             "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
             (items: any) => {
               const useCases = this.state.useCaseList;
+              if (useCase.stepInput.S.stages.length>0){
               useCases.push({
                 ...useCase,
                 steps: items,
@@ -49,6 +50,7 @@ export class ProjectOverView extends React.Component<any, any> {
                 usecaseData: useCases[this.state.activeUseCaseIndex]
 
               });
+            }
             },
             (err: any) => { console.log(err) }
           );

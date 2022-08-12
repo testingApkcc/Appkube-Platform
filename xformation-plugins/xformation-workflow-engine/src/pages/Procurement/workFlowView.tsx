@@ -282,8 +282,6 @@ export class WorkFlowView extends React.Component<any, any> {
 
 	setUseCaseData = (data: any) => {
 		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length > 0) {
-			
-			console.log(data,'data');
 			this.setState({
 				useCase: data,
 				usecaseData: data
@@ -293,22 +291,18 @@ export class WorkFlowView extends React.Component<any, any> {
 
 	updateStep = (usecaseData:any) => {
 		let {useCase}=this.state;
-		console.log(useCase.usecaseName.S)
-		
 		let useCases = {
 			name: usecaseData.stepInput.S.name,
 			description: usecaseData.stepInput.S.description,
 			assignTo: usecaseData.stepInput.S.assignTo,
 			stages: usecaseData.stepInput.S.stages
 		}
-		console.log( useCase)
 		this.props.updateWorkflowInput(useCase.usecaseName.S , JSON.stringify(useCases))
 	};
 
 	
 	render() {
 		const { usecaseData, } = this.state;
-		console.log(usecaseData)
 		return (<React.Fragment>
 			<div className="workflow-content">
 				<WorkFlow usecaseData={usecaseData}  editFormData={false} updateStep={this.updateStep} />

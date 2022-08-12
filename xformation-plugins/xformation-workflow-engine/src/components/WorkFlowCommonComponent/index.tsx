@@ -55,7 +55,6 @@ class WorkFlow extends React.Component<any, any> {
             let status = 0;
             let workflowCheckList = row.workflowCheckList
             for (let value of workflowCheckList) {
-              console.log(value)
               if (value.checked) {
                 status++
               }
