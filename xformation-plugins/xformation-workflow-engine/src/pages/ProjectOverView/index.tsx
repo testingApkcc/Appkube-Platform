@@ -51,7 +51,9 @@ export class ProjectOverView extends React.Component<any, any> {
               });
               this.setState({
                 useCaseList: useCases,
+
                 usecaseData: useCases[this.state.activeUseCaseIndex]
+
               });
             },
             (err: any) => { console.log(err) }

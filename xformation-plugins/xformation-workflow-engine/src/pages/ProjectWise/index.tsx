@@ -142,7 +142,7 @@ export class ProjectWise extends React.Component<any, any> {
 				<div className="project-wise-page-container">
 					<div className="project-wise-page-heading">
 						<div className="row">
-							<div className="col-lx-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+							<div className="col-lx-8 col-lg-8 col-md-7 col-sm-7 col-xs-12">
 								<div className="heading-content-left">
 									<div className="heading-icon">
 										<img src={headerIcon} alt="" />
@@ -158,14 +158,10 @@ export class ProjectWise extends React.Component<any, any> {
 									</div>
 								</div>
 							</div>
-							<div className="col-lx-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<div className="col-lx-4 col-lg-4 col-md-5 col-sm-5 col-xs-12">
 								<div className="heading-content-right">
 									<Link to={`/a/xformation-workflow-engine/create-new-usecase`}
 										className="btn-primary pro-overview-btn">Create Usecase</Link>
-								</div>
-							</div>
-							<div className="col-lx-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<div className="heading-content-right">
 									<span>
 										<Link to="/a/xformation-workflow-engine/dashboard">
 											<i className="fa fa-times" aria-hidden="true" />
@@ -221,30 +217,30 @@ export class ProjectWise extends React.Component<any, any> {
 									{useCaseList &&
 										useCaseList.map((useCase: any, index: any) => {
 											let checkList = JSON.parse(useCase.stepInput.S)
-												if ( checkList.stages && checkList.stages.length > 0){
-											return (
-												<div className="tr" key={`usecase-${index}`}>
-													<div className="td">
-														<Link
-															to={`/a/xformation-workflow-engine/procurement-detail/${useCase.usecaseName.S}`}
-														>
-															{useCase.usecaseName.S}
-														</Link>
+											if (checkList.stages && checkList.stages.length > 0) {
+												return (
+													<div className="tr" key={`usecase-${index}`}>
+														<div className="td">
+															<Link
+																to={`/a/xformation-workflow-engine/procurement-detail/${useCase.usecaseName.S}`}
+															>
+																{useCase.usecaseName.S}
+															</Link>
+														</div>
+														{checkList.stages && checkList.stages.length > 0 ?
+															checkList.stages.map((list: any, index: any) => {
+																let statusclass = list.workflowCheckList ? this.checkStatusOfWorkflow(list.workflowCheckList) : this.checkStatusOfWorkflow(list.workflowCheckList);
+																return (
+																	<div className="td" key={index}>
+																		<i
+																			className={statusclass}
+																		/>
+																	</div>)
+															}) : <React.Fragment></React.Fragment>}
 													</div>
-													{checkList.stages && checkList.stages.length > 0 ?
-														checkList.stages.map((list: any, index: any) => {
-															let statusclass = list.workflowCheckList ? this.checkStatusOfWorkflow(list.workflowCheckList) : this.checkStatusOfWorkflow(list.workflowCheckList);
-															return (
-																<div className="td" key={index}>
-																	<i
-																		className={statusclass}
-																	/>
-																</div>)
-														}) : <React.Fragment></React.Fragment>}
-												</div>
-											)
-										}else{
-												return<React.Fragment></React.Fragment>
+												)
+											} else {
+												return <React.Fragment></React.Fragment>
 											}
 										})}
 								</div>

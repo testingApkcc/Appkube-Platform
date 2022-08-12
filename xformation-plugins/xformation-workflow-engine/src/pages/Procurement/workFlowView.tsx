@@ -297,6 +297,7 @@ export class WorkFlowView extends React.Component<any, any> {
 	// 	});
 	// };
 
+
 	// displayWorkflowStage = () => {
 	// 	const { usecaseData, activeStage } = this.state;
 	// 	let retData = [];
@@ -341,6 +342,7 @@ export class WorkFlowView extends React.Component<any, any> {
 	// 	}
 	// 	return retData;
 	// };
+
 
 	// handleStageChange = (e: any, index: any) => {
 	// 	const { usecaseData } = this.state;
@@ -470,6 +472,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		return (<React.Fragment>
 			<div className="workflow-content">
 				<WorkFlow usecaseData={usecaseData}  editFormData={false} updateStep={this.updateStep} />
+
 			</div>
 		</React.Fragment>
 		);

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import SimpleBar from 'simplebar-react';
 
 export class AssetView extends React.Component<any, any> {
 	constructor(props: any) {
@@ -177,13 +178,13 @@ export class AssetView extends React.Component<any, any> {
 			// 	]
 			// },
 			useCase: {},
-			usecaseList:[],
+			usecaseList: [],
 		};
 	}
 
 	setUseCaseData = (data: any) => {
 		console.log(data)
-		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length>0 ) {
+		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length > 0) {
 			this.setState({
 				useCase: data,
 				usecaseList: data.stepInput.S.stages
@@ -215,7 +216,9 @@ export class AssetView extends React.Component<any, any> {
 							<div className="heading">
 								<h5>{row.name}</h5>
 							</div>
-							<ul>{this.displaySteps(row.details)}</ul>
+							<SimpleBar style={{ maxHeight: 145 }}>
+								<ul>{this.displaySteps(row.details)}</ul>
+							</SimpleBar>
 						</div>
 					</div>
 				);
