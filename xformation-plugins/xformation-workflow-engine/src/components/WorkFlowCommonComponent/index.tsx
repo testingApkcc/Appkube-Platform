@@ -95,15 +95,20 @@ class WorkFlow extends React.Component<any, any> {
   };
 
   handleStageChange = (e: any, index: any) => {
+    const{editFormData}=this.props
+    if (!editFormData){
     const { usecaseData } = this.state;
     const { name, value } = e.target;
     let stages: any = usecaseData.stages;
     if (usecaseData.stages) {
       stages[index][name] = value;
     }
+  }
   };
 
   handleStateChange = (event: any, index: any) => {
+    const{editFormData}=this.props
+    if (!editFormData){
     const { usecaseData, activeStage } = this.state;
     const { name, value } = event.target;
     const workflowDetail: any = usecaseData.stepInput.S.stages[activeStage];
@@ -113,9 +118,12 @@ class WorkFlow extends React.Component<any, any> {
     this.setState({
       usecaseData: usecaseData
     });
+  }
   };
 
   handleStateChangeCheckList = (e: any, index: any) => {
+    const{editFormData}=this.props
+    if (!editFormData){
     const { checked } = e.target;
     const { usecaseData, activeStage } = this.state;
     let count = 0;
@@ -139,6 +147,7 @@ class WorkFlow extends React.Component<any, any> {
       usecaseData
     });
     this.updateForm(usecaseData)
+  }
   };
 
   updateForm = (data: any) => {
