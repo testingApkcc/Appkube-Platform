@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import downloadIcon from '../../img/projectoverview/download-icon.png';
 import WorkFlow from '../../components/WorkFlowCommonComponent'
-
+import ErrorBoundary from '../../components/ErrorBoundary/index'
 import { AwsHelper } from '../AwsHelpers';
 export class ProjectOverView extends React.Component<any, any> {
   awsHelper: any
@@ -13,6 +13,7 @@ export class ProjectOverView extends React.Component<any, any> {
       activeStage: 0,
       stageList: [],
       activeUseCaseIndex: 0,
+      disabledNavList:false,
       useCaseList: [],
       userList: [
         { name: 'John', id: '1' },
@@ -38,7 +39,7 @@ export class ProjectOverView extends React.Component<any, any> {
             "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
             (items: any) => {
               const useCases = this.state.useCaseList;
-              if (useCase.stepInput.S.stages.length>0){
+              // if (useCase.stepInput.S.stages.length>0){
               useCases.push({
                 ...useCase,
                 steps: items,
@@ -50,7 +51,7 @@ export class ProjectOverView extends React.Component<any, any> {
                 usecaseData: useCases[this.state.activeUseCaseIndex]
 
               });
-            }
+            // }
             },
             (err: any) => { console.log(err) }
           );
@@ -69,6 +70,9 @@ export class ProjectOverView extends React.Component<any, any> {
 
   }
 
+  toggleDisabledNavList=()=>{
+    this.setState({disabledNavList:!this.state.disabledNavList})
+  }
  
   displayUseCaseList = () => {
     const { useCaseList, activeUseCaseIndex } = this.state;
@@ -76,7 +80,7 @@ export class ProjectOverView extends React.Component<any, any> {
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
-          <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
+          <li className={i == activeUseCaseIndex ? "active" : ''}  onClick={() => !this.state.disabledNavList ? this.setUseCaseData(i):""}>
             {/* <Link to="/"> */}
             <span>{useCaseList[i].usecaseName.S}</span>
             {/* </Link> */}
@@ -97,7 +101,7 @@ export class ProjectOverView extends React.Component<any, any> {
 
   }
   render() {
-    // const { usecaseData, activeStage, userList } = this.state;
+    const { useCaseList} = this.state;
     return (
       <div className="project-over-view-container">
         <div className="project-over-view-section">
@@ -149,7 +153,9 @@ export class ProjectOverView extends React.Component<any, any> {
               </div>
             </div>
             {
-              <WorkFlow usecaseData={this.state.usecaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData ={true}/>
+              <ErrorBoundary usecaseData={this.state.usecaseData}useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
+              <WorkFlow usecaseData={this.state.usecaseData} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData ={true}/>
+           </ErrorBoundary>
             }
           
           </div>
