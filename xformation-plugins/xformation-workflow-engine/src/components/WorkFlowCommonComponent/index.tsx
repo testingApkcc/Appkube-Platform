@@ -67,7 +67,7 @@ class WorkFlow extends React.Component<any, any> {
               return "inprogress"
             }
           }
-          return ""
+          return "inprogress"
         }
         retData.push(
           <li
