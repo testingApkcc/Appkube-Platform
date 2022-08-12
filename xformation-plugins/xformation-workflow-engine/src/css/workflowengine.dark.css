@@ -7350,6 +7350,42 @@
   }
 }
 
+.project-over-view-right-content .errorboundary-content {
+  display: flex;
+  min-height: 500px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.project-over-view-right-content .errorboundary-content .error-image {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+.project-over-view-right-content .errorboundary-content .relode-btn {
+  text-align: right;
+  justify-content: flex-end;
+  display: flex;
+  width: 100%;
+}
+.project-over-view-right-content .errorboundary-content .relode-btn .use-case-btn {
+  background: #3b7cff;
+  color: #f9fafc;
+  border: none;
+  padding: 6px 15px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 3px;
+  box-shadow: 0px 2px 2px #8392a71a;
+}
+.project-over-view-right-content .errorboundary-content .relode-btn .use-case-btn .arrow-left {
+  margin-right: 5px;
+}
+.project-over-view-right-content .errorboundary-content .relode-btn .use-case-btn .arrow-right {
+  margin-left: 5px;
+}
+
 .rc-backdrop {
   position: fixed;
   top: 0;
