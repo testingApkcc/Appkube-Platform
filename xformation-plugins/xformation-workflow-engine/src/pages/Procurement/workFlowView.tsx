@@ -1,9 +1,8 @@
 import * as React from 'react';
+// import { threadId } from 'worker_threads';
 // import { AwsHelper } from '../AwsHelpers';
 // import { Link } from 'react-router-dom';
-import LinkData from '../../components/CommonLinksData';
-import CommanCheckList from 'components/CommonCheckList';
-import CommanPlanningTable from '../../components/CommonScrumPlanningTable'
+import WorkFlow from '../../components/WorkFlowCommonComponent'
 export class WorkFlowView extends React.Component<any, any> {
 	awsHelper: any;
 	constructor(props: any) {
@@ -267,7 +266,7 @@ export class WorkFlowView extends React.Component<any, any> {
 				}
 			],
 			useCase: {},
-			usecaseData: [],
+			usecaseData: {},
 			userList: [
 				{ name: 'John', id: '1' },
 				{ name: 'Smith', id: '2' },
@@ -283,250 +282,196 @@ export class WorkFlowView extends React.Component<any, any> {
 
 	setUseCaseData = (data: any) => {
 		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length > 0) {
+			
+			console.log(data,'data');
 			this.setState({
 				useCase: data,
-				usecaseData: data.stepInput.S.stages
+				usecaseData: data
 			});
 		}
 	}
 
-	getUsecaseStageData = (data: any, index: any) => {
-		this.setState({
-			activeStage: index
-		});
-	};
+	// getUsecaseStageData = (data: any, index: any) => {
+	// 	this.setState({
+	// 		activeStage: index
+	// 	});
+	// };
 
-	displayWorkflowStage = () => {
-		const { usecaseData, activeStage } = this.state;
-		let retData = [];
-		if (usecaseData && usecaseData && usecaseData.length > 0) {
-			for (let i = 0; i < usecaseData.length; i++) {
-				let row = usecaseData[i];
-				let count =0;
-				if (row && row.workflowCheckList) {
-					for (let i = 0; i < row.workflowCheckList.length; i++) {
-						if (row.workflowCheckList[i].checked) {
-							count++;
-						}
-					}
-				}
-				if (count == row.workflowCheckList.length) {
-					row['status'] = 'completed';
-				} else if (count < row.workflowCheckList.length) {
-					row['status'] = 'inprogress';
-				} else if (count == 0) {
-					row['status'] = '';
-				}
-				retData.push(
-					<li
-						onClick={() => this.getUsecaseStageData(row, i)}
-						className={
-							row.status == 'completed' ? 'completed' : row.status == 'inprogress' ? 'inprosseg' : ''
-						}
-					>
-						<span>{i + 1}</span>
-						<div className={i == activeStage ? 'active form-control' : 'form-control'}>
-							<input
-								type="text"
-								value={row.name}
-								name="name"
-								onChange={(e) => this.handleStageChange(e, i)}
-								readOnly
-							/>
-						</div>
-					</li>
-				);
-			}
-		}
-		return retData;
-	};
+	// displayWorkflowStage = () => {
+	// 	const { usecaseData, activeStage } = this.state;
+	// 	let retData = [];
+	// 	if (usecaseData && usecaseData && usecaseData.length > 0) {
+	// 		for (let i = 0; i < usecaseData.length; i++) {
+	// 			let row = usecaseData[i];
+	// 			let count =0;
+	// 			if (row && row.workflowCheckList) {
+	// 				for (let i = 0; i < row.workflowCheckList.length; i++) {
+	// 					if (row.workflowCheckList[i].checked) {
+	// 						count++;
+	// 					}
+	// 				}
+	// 			}
+	// 			if (count == row.workflowCheckList.length) {
+	// 				row['status'] = 'completed';
+	// 			} else if (count < row.workflowCheckList.length) {
+	// 				row['status'] = 'inprogress';
+	// 			} else if (count == 0) {
+	// 				row['status'] = '';
+	// 			}
+	// 			retData.push(
+	// 				<li
+	// 					onClick={() => this.getUsecaseStageData(row, i)}
+	// 					className={
+	// 						row.status == 'completed' ? 'completed' : row.status == 'inprogress' ? 'inprosseg' : ''
+	// 					}
+	// 				>
+	// 					<span>{i + 1}</span>
+	// 					<div className={i == activeStage ? 'active form-control' : 'form-control'}>
+	// 						<input
+	// 							type="text"
+	// 							value={row.name}
+	// 							name="name"
+	// 							onChange={(e) => this.handleStageChange(e, i)}
+	// 							readOnly
+	// 						/>
+	// 					</div>
+	// 				</li>
+	// 			);
+	// 		}
+	// 	}
+	// 	return retData;
+	// };
 
-	handleStageChange = (e: any, index: any) => {
-		const { usecaseData } = this.state;
-		const { name, value } = e.target;
-		let stages: any = usecaseData.stages;
-		if (usecaseData.stages) {
-			stages[index][name] = value;
-		}
-	};
+	// handleStageChange = (e: any, index: any) => {
+	// 	const { usecaseData } = this.state;
+	// 	const { name, value } = e.target;
+	// 	let stages: any = usecaseData.stages;
+	// 	if (usecaseData.stages) {
+	// 		stages[index][name] = value;
+	// 	}
+	// };
 
-	handleStateChange = (event: any, parentIndex: any, childIndex: any) => {
-		const { usecaseData, activeStage } = this.state;
-		const { name, value } = event.target;
-		const workflowDetail = usecaseData[activeStage];
-		if (workflowDetail && workflowDetail.details) {
-			if (workflowDetail.details[parentIndex].data && workflowDetail.details[parentIndex].data.length > 0) {
-				workflowDetail.details[parentIndex].data[childIndex][name] = value;
-			}
-		}
-		this.setState({
-			usecaseData
-		});
-	};
+	// handleStateChange = (event: any, parentIndex: any, childIndex: any) => {
+	// 	const { usecaseData, activeStage } = this.state;
+	// 	const { name, value } = event.target;
+	// 	const workflowDetail = usecaseData[activeStage];
+	// 	if (workflowDetail && workflowDetail.details) {
+	// 		if (workflowDetail.details[parentIndex].data && workflowDetail.details[parentIndex].data.length > 0) {
+	// 			workflowDetail.details[parentIndex].data[childIndex][name] = value;
+	// 		}
+	// 	}
+	// 	this.setState({
+	// 		usecaseData
+	// 	});
+	// };
 
-	handleStateChangeCheckList = (e: any, index: any) => {
-		const { checked } = e.target;
-		const { usecaseData, activeStage } = this.state;
-		let count = 0;
-		const workflowDetail: any = usecaseData[activeStage];
-		if (workflowDetail.workflowCheckList) {
-			workflowDetail.workflowCheckList[index]['checked'] = checked;
-			for (let i = 0; i < workflowDetail.workflowCheckList.length; i++) {
-				if (workflowDetail.workflowCheckList[i].checked) {
-					count++;
-				}
-			}
-		}
-		if (count == workflowDetail.workflowCheckList.length) {
-			usecaseData[activeStage]['status'] = 'completed';
-		} else if (count < workflowDetail.workflowCheckList.length) {
-			usecaseData[activeStage]['status'] = 'inprogress';
-		} else if (count == 0) {
-			usecaseData[activeStage]['status'] = '';
-		}
-		this.setState({
-			usecaseData
-		});
-		this.updateStep();
-	};
+	// handleStateChangeCheckList = (e: any, index: any) => {
+	// 	const { checked } = e.target;
+	// 	const { usecaseData, activeStage } = this.state;
+	// 	let count = 0;
+	// 	const workflowDetail: any = usecaseData[activeStage];
+	// 	if (workflowDetail.workflowCheckList) {
+	// 		workflowDetail.workflowCheckList[index]['checked'] = checked;
+	// 		for (let i = 0; i < workflowDetail.workflowCheckList.length; i++) {
+	// 			if (workflowDetail.workflowCheckList[i].checked) {
+	// 				count++;
+	// 			}
+	// 		}
+	// 	}
+	// 	if (count == workflowDetail.workflowCheckList.length) {
+	// 		usecaseData[activeStage]['status'] = 'completed';
+	// 	} else if (count < workflowDetail.workflowCheckList.length) {
+	// 		usecaseData[activeStage]['status'] = 'inprogress';
+	// 	} else if (count == 0) {
+	// 		usecaseData[activeStage]['status'] = '';
+	// 	}
+	// 	this.setState({
+	// 		usecaseData
+	// 	});
+	// 	this.updateStep();
+	// };
 
-	updateStep = () => {
-		const { useCase, usecaseData } = this.state;
+	updateStep = (usecaseData:any) => {
+		let {useCase}=this.state;
+		console.log(useCase.usecaseName.S)
+		
 		let useCases = {
-			name: useCase.stepInput.S.name,
-			description: useCase.stepInput.S.description,
-			assignTo: useCase.stepInput.S.assignTo,
-			stages: usecaseData
+			name: usecaseData.stepInput.S.name,
+			description: usecaseData.stepInput.S.description,
+			assignTo: usecaseData.stepInput.S.assignTo,
+			stages: usecaseData.stepInput.S.stages
 		}
-		this.props.updateWorkflowInput(useCase.usecaseName.S, JSON.stringify(useCases))
+		console.log( useCase)
+		this.props.updateWorkflowInput(useCase.usecaseName.S , JSON.stringify(useCases))
 	};
 
-	moveToNextPage = (type: any) => {
-		const { usecaseData, activeStage } = this.state;
-		if (type == 'next') {
-			if (usecaseData && usecaseData.length > 0) {
-				this.setState({
-					activeStage: activeStage + 1
-				});
-			}
-		} else {
-			if (usecaseData && usecaseData.length > 0) {
-				let index = activeStage - 1;
-				this.setState({
-					activeStage: index
-				});
-			}
-		}
-	};
+	// moveToNextPage = (type: any) => {
+	// 	const { usecaseData, activeStage } = this.state;
+	// 	if (type == 'next') {
+	// 		if (usecaseData && usecaseData.length > 0) {
+	// 			this.setState({
+	// 				activeStage: activeStage + 1
+	// 			});
+	// 		}
+	// 	} else {
+	// 		if (usecaseData && usecaseData.length > 0) {
+	// 			let index = activeStage - 1;
+	// 			this.setState({
+	// 				activeStage: index
+	// 			});
+	// 		}
+	// 	}
+	// };
 
-	displayStageList = () => {
-		const { usecaseData, userList } = this.state;
-		let retData = [];
-		if (usecaseData && usecaseData.length > 0) {
-			for (let i = 0; i < usecaseData.length; i++) {
-				let stepJSXList = [];
-				let stage = usecaseData[i];
-				if (stage && stage.details && stage.details.length > 0) {
-					for (let j = 0; j < stage.details.length; j++) {
-						let step = stage.details[j];
-						let userName = '';
-						for (const users of userList) {
-							if (users.id == step.assignto) {
-								userName = users.name;
-							}
-						}
-						stepJSXList.push(
-							<tr className="workflow-inner-table">
-								<td><span>{step.subStageName}</span></td>
-								<td>{userName}</td>
-								<td>{step.startDate}</td>
-								<td>1</td>
-								<td>{step.endDate}</td>
-								<td>0</td>
-							</tr>
-						);
-					}
-				}
-				retData.push(
-					<>
-						<tr className="workflow-inner-table-head">
-							<td colSpan={6}><strong>{stage.name}</strong></td>
-						</tr>
-						{stepJSXList}
-					</>
-				);
-			}
-		}
-		return retData;
-	};
+	// displayStageList = () => {
+	// 	const { usecaseData, userList } = this.state;
+	// 	let retData = [];
+	// 	if (usecaseData && usecaseData.length > 0) {
+	// 		for (let i = 0; i < usecaseData.length; i++) {
+	// 			let stepJSXList = [];
+	// 			let stage = usecaseData[i];
+	// 			if (stage && stage.details && stage.details.length > 0) {
+	// 				for (let j = 0; j < stage.details.length; j++) {
+	// 					let step = stage.details[j];
+	// 					let userName = '';
+	// 					for (const users of userList) {
+	// 						if (users.id == step.assignto) {
+	// 							userName = users.name;
+	// 						}
+	// 					}
+	// 					stepJSXList.push(
+	// 						<tr className="workflow-inner-table">
+	// 							<td><span>{step.subStageName}</span></td>
+	// 							<td>{userName}</td>
+	// 							<td>{step.startDate}</td>
+	// 							<td>1</td>
+	// 							<td>{step.endDate}</td>
+	// 							<td>0</td>
+	// 						</tr>
+	// 					);
+	// 				}
+	// 			}
+	// 			retData.push(
+	// 				<>
+	// 					<tr className="workflow-inner-table-head">
+	// 						<td colSpan={6}><strong>{stage.name}</strong></td>
+	// 					</tr>
+	// 					{stepJSXList}
+	// 				</>
+	// 			);
+	// 		}
+	// 	}
+	// 	return retData;
+	// };
 
 	render() {
-		const { usecaseData, activeStage, userList } = this.state;
+		const { usecaseData, } = this.state;
 		console.log(usecaseData)
-		return (
+		return (<React.Fragment>
 			<div className="workflow-content">
-				<div className="workflow-stage">
-					<ul>{this.displayWorkflowStage()}</ul>
-					{/* <Link to={`/editworkflow/${Id}`} className="btn btn-primary btn-edit">
-					<img src={editIcon} alt="" />&nbsp; Edit
-				</Link> */}
-				</div>
-				<div className="workflow-data">
-				 <LinkData props={{handleStateChange:this.handleStateChange, usecaseData, updateStep:this.updateStep, editLink:false, activeStage,...this.props}} />
-				</div>
-				{activeStage == 0 && <div className="workflow-view-table-section">
-					<div className="heading">
-						<h5></h5>
-						<i className="fa fa-angle-down" aria-hidden="true"></i>
-					</div>
-					<div className="workflow-view-table">
-						<table className="table">
-							<thead>
-								<tr>
-									<th>Stages</th>
-									<th>Assigned to</th>
-									<th>Start Date</th>
-									<th>Deviation</th>
-									<th>End Date</th>
-									<th>Deviation</th>
-								</tr>
-							</thead>
-							{/* <tbody>{this.displayStageList()}</tbody> */}
-							<tbody><CommanPlanningTable usecaseData={usecaseData} userList={userList}/></tbody> 
-						</table>
-					</div>
-				</div>
-				}
-				<div className="workflow-requirement">
-					<div className="heading">
-						<h5>Checklist for Requirements</h5>
-					</div>
-					<React.Fragment>
-						<CommanCheckList usecaseData={usecaseData} activeStage={activeStage} disabledEditForm={false} handleStateChangeCheckList={this.handleStateChangeCheckList}/>
-					</React.Fragment>
-				</div>
-				<div className="d-flex justify-content-end workflow-buttons">
-					<button
-						type="button"
-						disabled={activeStage == 0}
-						className="btn btn-primary"
-						onClick={() => this.moveToNextPage('previous')}
-					>
-						Previous
-					</button>
-					{usecaseData &&
-						usecaseData.length > 0 && (
-							<button
-								type="button"
-								disabled={activeStage == usecaseData.length - 1}
-								className="btn btn-primary"
-								onClick={() => this.moveToNextPage('next')}
-							>
-								Next
-							</button>
-						)}
-				</div>
+				<WorkFlow usecaseData={usecaseData}  editFormData={false} updateStep={this.updateStep} />
 			</div>
+		</React.Fragment>
 		);
 	}
 }

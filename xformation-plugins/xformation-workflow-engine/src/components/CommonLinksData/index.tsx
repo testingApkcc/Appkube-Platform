@@ -8,8 +8,8 @@ export class LinkData extends React.Component<any, any> {
     }
     render() {
         const { props} = this.props
-        const workflowDetail = props.usecaseData[props.activeStage];
-        // console.log(props)
+        const workflowDetail = props.usecaseData?.stepInput?.S?.stages[props.activeStage];
+        console.log( props)
         return (
             <React.Fragment>
                 {workflowDetail?.details.length > 0 ?
@@ -28,14 +28,14 @@ export class LinkData extends React.Component<any, any> {
                                                 <input
                                                     type="text"
                                                     name="link"
-                                                    readOnly={props.editLink}
+                                                    readOnly={props.disabledEditForm}
                                                     value={link.link}
                                                     onChange={(e) => props.handleStateChange(e, indx, index)}
                                                 />
                                                 <button
-                                                    onClick={props.updateStep}
+                                                    onClick={()=>props.updateStep(props.usecaseData)}
                                                     className="btn btn-primary code-update-btn"
-                                                    disabled={props.editLink}
+                                                    disabled={props.disabledEditForm}
                                                 >
                                                     Update
                                                 </button>

@@ -16,12 +16,11 @@ class CommanPlanningTable extends React.Component<any, any>{
         return userName
     }
     render() {
-        const { usecaseData, userList } = this.props;
-        // console.log(usecaseData, userList, "props")
+        const { props } = this.props;
         return (
             <React.Fragment>
-                {
-                    usecaseData && usecaseData.map(
+                {props.usecaseData?.stepInput?.S?.stages&& props.usecaseData.stepInput.S.stages.length>0 ?
+                    props.usecaseData.stepInput.S.stages.map(
                         (stage: any, index: any) => {
                             return (
                                 <React.Fragment>
@@ -32,7 +31,7 @@ class CommanPlanningTable extends React.Component<any, any>{
                                     </tr>
                                     {
                                         stage && stage.details ? stage.details.map((step: any, index: any) => {
-                                            let userName = this.getUserName(userList, step.assignto)
+                                            let userName = this.getUserName(props.userList, step.assignto)
                                             return (
                                                 <tr className="workflow-inner-table">
                                                     <td><span>{step.subStageName}</span></td>
@@ -51,7 +50,7 @@ class CommanPlanningTable extends React.Component<any, any>{
 
                             )
                         }
-                    )
+                    ):<></>
                 }
 
             </React.Fragment>
@@ -61,7 +60,7 @@ class CommanPlanningTable extends React.Component<any, any>{
 
 export default CommanPlanningTable;
 
-// displayStageList = () => {
+
 //     const { usecaseData, userList } = this.state;
 //     let retData = [];
 //     // let stageList = usecaseData;
