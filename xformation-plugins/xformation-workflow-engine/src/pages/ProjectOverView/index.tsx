@@ -15,6 +15,7 @@ export class ProjectOverView extends React.Component<any, any> {
       activeUseCaseIndex: 0,
       disabledNavList:false,
       useCaseList: [],
+      useCaseStagesLength:-1,
       userList: [
         { name: 'John', id: '1' },
         { name: 'Smith', id: '2' },
@@ -73,7 +74,7 @@ export class ProjectOverView extends React.Component<any, any> {
   toggleDisabledNavList=()=>{
     this.setState({disabledNavList:!this.state.disabledNavList})
   }
- 
+
   displayUseCaseList = () => {
     const { useCaseList, activeUseCaseIndex } = this.state;
     let retData = [];
@@ -101,7 +102,7 @@ export class ProjectOverView extends React.Component<any, any> {
 
   }
   render() {
-    const { useCaseList} = this.state;
+    const { useCaseList, useCaseStagesLength} = this.state;
     return (
       <div className="project-over-view-container">
         <div className="project-over-view-section">
@@ -153,7 +154,7 @@ export class ProjectOverView extends React.Component<any, any> {
               </div>
             </div>
             {
-              <ErrorBoundary usecaseData={this.state.usecaseData}useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
+              <ErrorBoundary useCaseStagesLength={useCaseStagesLength} usecaseData={this.state.usecaseData}useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
               <WorkFlow usecaseData={this.state.usecaseData} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData ={true}/>
            </ErrorBoundary>
             }
