@@ -28,6 +28,7 @@ class WorkFlow extends React.Component<any, any> {
       this.setState({
         usecaseData: this.props.usecaseData,
         // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
+        activeStage:this.props.activeStage,
         editformData: this.props.editFormData
       })
     }
@@ -36,7 +37,7 @@ class WorkFlow extends React.Component<any, any> {
     let { activeStage } = this.state;
     activeStage = index
     this.setState({
-      activeStage
+      activeStage:index
     });
   };
 
@@ -211,7 +212,7 @@ class WorkFlow extends React.Component<any, any> {
           {editformData !== "" && <LinkData props={{ handleStateChange: this.handleStateChange, usecaseData, updateStep: this.updateForm, disabledEditForm: editformData, activeStage, ...this.props }} />}
         </div>
 
-        <div className="workflow-view-table-section">
+        { activeStage === 0 ?<div className="workflow-view-table-section">
           <div className='heading'>
             <h5>SCRUM Planning</h5>
             <i className="fa fa-angle-down" aria-hidden="true"></i>
@@ -228,12 +229,12 @@ class WorkFlow extends React.Component<any, any> {
                   <th>Deviation</th>
                 </tr>
               </thead>
-              {usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0 && activeStage !== null || undefined ?
+              {usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0?
                 <tbody><CommanPlanningTable props={{ handleStateChange: this.handleStateChange, usecaseData, disabledEditForm: editformData, userList: userList, activeStage, ...this.props }} />
                 </tbody> : <React.Fragment></React.Fragment>}
             </table>
           </div>
-        </div>
+        </div>:<React.Fragment></React.Fragment>}
         <div className="workflow-requirement">
           <div className="heading">
             <h5>Checklist for Requirements</h5>

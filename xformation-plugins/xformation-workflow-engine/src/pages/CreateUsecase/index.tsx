@@ -415,24 +415,24 @@ export class CreateUsecase extends React.Component<any, any> {
 		};
 		this.id = 10;
 		this.awsHelper = new AwsHelper({ meta: props.meta });
-		this.replaceKeyInXml = {
-			name: 'Name',
-			description: 'Description',
-			assignedTo: 'Assigned-To',
-			details: 'Details',
-			subStageName: 'Sub-Stage-Name',
-			id: 'Id',
-			stage: 'Stage',
-			startDate: 'Start-Date',
-			endDate: 'End-Date',
-			comments: 'Comments',
-			workflowCheckList: 'Workflow-CheckList',
-			links: 'Links',
-			link: 'Link',
-			label: 'Label',
-			assignto: 'Assign-To',
-			data: 'Data'
-		};
+		// this.replaceKeyInXml = {
+		// 	name: 'Name',
+		// 	description: 'Description',
+		// 	assignedTo: 'Assigned-To',
+		// 	details: 'Details',
+		// 	subStageName: 'Sub-Stage-Name',
+		// 	id: 'Id',
+		// 	stage: 'Stage',
+		// 	startDate: 'Start-Date',
+		// 	endDate: 'End-Date',
+		// 	comments: 'Comments',
+		// 	workflowCheckList: 'Workflow-CheckList',
+		// 	links: 'Links',
+		// 	link: 'Link',
+		// 	label: 'Label',
+		// 	assignto: 'Assign-To',
+		// 	data: 'Data'
+		// };
 	}
 
 	componentDidMount() {
@@ -444,6 +444,7 @@ export class CreateUsecase extends React.Component<any, any> {
 						this.awsHelper.getExecutionHistory(
 							'arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab',
 							(items: any) => {
+								if (useCase.stepInput.S){
 								const useCases = this.state.useCaseList;
 								useCases.push({
 									...useCase,
@@ -452,6 +453,7 @@ export class CreateUsecase extends React.Component<any, any> {
 								this.setState({
 									useCaseList: useCases
 								});
+							}
 							},
 							(err: any) => {
 								console.log(err);
