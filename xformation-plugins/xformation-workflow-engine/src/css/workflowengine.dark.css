@@ -7280,7 +7280,23 @@
   .project-over-view-inner-content
   .project-over-view-right-content
   .receive-rfq-content
+  .receive-rfq-box.completed {
+  border-top: 5px solid #398038;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
   .receive-rfq-box.inprosseg {
+  border-top: 5px solid #ff5400;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .receive-rfq-box.inprogress {
   border-top: 5px solid #ff5400;
 }
 

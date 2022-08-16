@@ -347,7 +347,15 @@
                             border-top: 5px solid #398038;
                         }
 
+                        &.completed {
+                            border-top: 5px solid #398038;
+                        }
+
                         &.inprosseg {
+                            border-top: 5px solid #ff5400;
+                        }
+
+                        &.inprogress {
                             border-top: 5px solid #ff5400;
                         }
 
