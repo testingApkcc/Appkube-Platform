@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AwsHelper } from '../AwsHelpers';
 import downloadIcon from '../../img/projectoverview/download-icon.png';
 import { Link } from 'react-router-dom';
-import SimpleBar from 'simplebar-react';
+// import SimpleBar from 'simplebar-react';
 import AssetOverViewReusableComp from '../../components/AssetOverViewCommonComponent'
 // import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
 // import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
@@ -17,7 +17,7 @@ export class AssetOverView extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			useCaseList:[],
+			useCaseList: [],
 			// usecaseList: {
 			// 	name: 'ipsa',
 			// 	description: 'Recusandae libero eveniet ducimus.',
@@ -198,7 +198,7 @@ export class AssetOverView extends React.Component<any, any> {
 			// 	{ name: 'New RFQ', id: '7', img: overviewMenu7 },
 			// 	{ name: 'Conditional Approval', id: '8', img: overviewMenu1 }
 			// ]
-			activeUseCaseIndex:0,
+			activeUseCaseIndex: 0,
 		};
 		this.awsHelper = new AwsHelper({ meta: props.meta });
 	}
@@ -210,22 +210,22 @@ export class AssetOverView extends React.Component<any, any> {
 				this.awsHelper.getExecutionHistory(
 					"arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
 					(items: any) => {
-						if (useCase?.stepInput?.S && useCase.stepInput.S.indexOf("stages")!==-1 ){
-							
-						const useCases = this.state.useCaseList;
-						useCase.stepInput.S=JSON.parse(useCase.stepInput.S)
-						if (useCase.stepInput.S.stages.length>0){
-						useCases.push({
-							...useCase,
-							steps: items,
-							executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
-						})
-					}
-						this.setState({
-							useCaseList: useCases
-						});
-					
-					}
+						if (useCase?.stepInput?.S && useCase.stepInput.S.indexOf("stages") !== -1) {
+
+							const useCases = this.state.useCaseList;
+							useCase.stepInput.S = JSON.parse(useCase.stepInput.S)
+							if (useCase.stepInput.S.stages.length > 0) {
+								useCases.push({
+									...useCase,
+									steps: items,
+									executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
+								})
+							}
+							this.setState({
+								useCaseList: useCases
+							});
+
+						}
 					},
 					(err: any) => { console.log(err) }
 				);
@@ -242,18 +242,18 @@ export class AssetOverView extends React.Component<any, any> {
 		);
 	}
 
-	displaySideMenuList = (useCaseList:any) => {
-		const {activeUseCaseIndex}=this.state;
+	displaySideMenuList = (useCaseList: any) => {
+		const { activeUseCaseIndex } = this.state;
 		let retData = [];
 		if (useCaseList && useCaseList.length > 0) {
 			for (let i = 0; i < useCaseList.length; i++) {
-				let row= useCaseList[i];
-				if (row?.usecaseName?.S){
-				retData.push(
-					<li className={i == activeUseCaseIndex ? 'active' : ''}  onClick={()=>this.setState({activeUseCaseIndex:i})}>
-						<span>{row?.usecaseName?.S}</span>
-					</li>
-				);
+				let row = useCaseList[i];
+				if (row?.usecaseName?.S) {
+					retData.push(
+						<li className={i == activeUseCaseIndex ? 'active' : ''} onClick={() => this.setState({ activeUseCaseIndex: i })}>
+							<span>{row?.usecaseName?.S}</span>
+						</li>
+					);
 				}
 			}
 		}
@@ -261,7 +261,7 @@ export class AssetOverView extends React.Component<any, any> {
 	};
 
 	render() {
-		const {useCaseList }=this.state;
+		const { useCaseList } = this.state;
 		return (
 			<div className="asset-over-view-container">
 				<div className="asset-over-view-section">
@@ -312,7 +312,7 @@ export class AssetOverView extends React.Component<any, any> {
 					<div className="project-over-view-inner-content">
 						<div className="project-over-view-left-content">
 							<div className="sidebar">
-								{useCaseList && useCaseList.length>0 &&<ul>{this.displaySideMenuList(useCaseList)}</ul>}
+								{useCaseList && useCaseList.length > 0 && <ul>{this.displaySideMenuList(useCaseList)}</ul>}
 							</div>
 						</div>
 						<div className="project-over-view-right-content">
@@ -323,7 +323,7 @@ export class AssetOverView extends React.Component<any, any> {
 									<span className="line3" />
 								</div>
 								{useCaseList[this.state.activeUseCaseIndex]?.stepInput?.S?.stages && <div className="row">
-								<AssetOverViewReusableComp usecaseList={useCaseList[this.state.activeUseCaseIndex].stepInput.S.stages}/>
+									<AssetOverViewReusableComp usecaseList={useCaseList[this.state.activeUseCaseIndex].stepInput.S.stages} />
 								</div>}
 							</div>
 						</div>

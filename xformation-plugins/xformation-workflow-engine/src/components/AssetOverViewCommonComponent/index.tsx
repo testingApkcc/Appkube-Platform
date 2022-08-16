@@ -51,7 +51,7 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
                     <div className="col-md-4 col-12">
                         <div
                             className={
-                                `receive-rfq-box ${this.checkValuesValidation(row.workflowCheckList)}`
+                                `receive-rfq-box  ${this.checkValuesValidation(row.workflowCheckList)}`
                             }
                         >
                             <div className="receive-number">{i + 1}</div>

@@ -4522,6 +4522,15 @@
   border-top: 5px solid #79bcff;
   min-height: 200px;
 }
+.receive-rfq-content .receive-rfq-box.active {
+  border-top: 5px solid #398038;
+}
+.receive-rfq-content .receive-rfq-box.completed {
+  border-top: 5px solid #398038;
+}
+.receive-rfq-content .receive-rfq-box.inprogress {
+  border-top: 5px solid #ff5400;
+}
 .receive-rfq-content .receive-rfq-box .receive-number {
   position: absolute;
   left: 0;
@@ -4580,12 +4589,6 @@
   top: 50%;
   width: 60px;
   height: 21px;
-}
-.receive-rfq-content .receive-rfq-box.active {
-  border-top: 5px solid #398038;
-}
-.receive-rfq-content .receive-rfq-box.inprogress {
-  border-top: 5px solid #ff5400;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -7162,6 +7165,38 @@
   .project-over-view-inner-content
   .project-over-view-right-content
   .receive-rfq-content
+  .receive-rfq-box.active {
+  border-top: 5px solid #398038;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .receive-rfq-box.completed {
+  border-top: 5px solid #398038;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .receive-rfq-box.inprosseg {
+  border-top: 5px solid #ff5400;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .receive-rfq-box.inprogress {
+  border-top: 5px solid #ff5400;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
   .receive-rfq-box
   .receive-number {
   position: absolute;
@@ -7266,38 +7301,6 @@
   top: 50%;
   width: 60px;
   height: 21px;
-}
-.asset-over-view-container
-  .asset-over-view-section
-  .project-over-view-inner-content
-  .project-over-view-right-content
-  .receive-rfq-content
-  .receive-rfq-box.active {
-  border-top: 5px solid #398038;
-}
-.asset-over-view-container
-  .asset-over-view-section
-  .project-over-view-inner-content
-  .project-over-view-right-content
-  .receive-rfq-content
-  .receive-rfq-box.completed {
-  border-top: 5px solid #398038;
-}
-.asset-over-view-container
-  .asset-over-view-section
-  .project-over-view-inner-content
-  .project-over-view-right-content
-  .receive-rfq-content
-  .receive-rfq-box.inprosseg {
-  border-top: 5px solid #ff5400;
-}
-.asset-over-view-container
-  .asset-over-view-section
-  .project-over-view-inner-content
-  .project-over-view-right-content
-  .receive-rfq-content
-  .receive-rfq-box.inprogress {
-  border-top: 5px solid #ff5400;
 }
 
 @media only screen and (max-width: 1200px) {
