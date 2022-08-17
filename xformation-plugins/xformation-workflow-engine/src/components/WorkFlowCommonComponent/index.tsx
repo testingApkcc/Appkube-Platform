@@ -209,7 +209,7 @@ class WorkFlow extends React.Component<any, any> {
           {usecaseData && usecaseData.stepInput && usecaseData.stepInput.S && usecaseData.stepInput.S.stages && usecaseData.stepInput.S.stages.length > 0 && <ul>{this.displayWorkflowStage()}</ul>}
         </div>
         <div className="workflow-data">
-          {editformData !== "" && <LinkData props={{ handleStateChange: this.handleStateChange, usecaseData, updateStep: this.updateForm, disabledEditForm: editformData, activeStage, ...this.props }} />}
+        {editformData !== "" && <LinkData disabledEditForm= {editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
         </div>
 
         {activeStage === 0 ? <div className="workflow-view-table-section">
