@@ -444,7 +444,9 @@ export class CreateUsecase extends React.Component<any, any> {
 						this.awsHelper.getExecutionHistory(
 							'arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab',
 							(items: any) => {
-								if (useCase.stepInput.S){
+								if (useCase?.stepInput?.S ){
+									useCase.stepInput.S=JSON.parse(useCase.stepInput.S)
+									if (useCase?.stepInput?.S?.stages?.length>0){
 								const useCases = this.state.useCaseList;
 								useCases.push({
 									...useCase,
@@ -454,6 +456,7 @@ export class CreateUsecase extends React.Component<any, any> {
 									useCaseList: useCases
 								});
 							}
+						}
 							},
 							(err: any) => {
 								console.log(err);
@@ -471,28 +474,28 @@ export class CreateUsecase extends React.Component<any, any> {
 		this.setState({ activeUsecaseIndex: -1, stages: JSON.parse(JSON.stringify(createStages)), usecase: JSON.parse(JSON.stringify(createUsecase)) })
 	}
 
-	OBJtoXML(obj: any) {
-		var xml = '';
+	// OBJtoXML(obj: any) {
+	// 	var xml = '';
 
-		for (var prop in obj) {
-			xml += obj[prop] instanceof Array ? '' : obj[prop] ? '<' + this.replaceKeyInXml[prop] + '>' : '';
-			if (obj[prop] instanceof Array) {
-				for (var array in obj[prop]) {
-					xml += obj[prop][array] ? '<' + this.replaceKeyInXml[prop] + '>' : '';
-					xml += this.OBJtoXML(new Object(obj[prop][array]));
-					xml += obj[prop][array] ? '</' + this.replaceKeyInXml[prop] + '>' : '';
-				}
-			} else if (typeof obj[prop] == 'object') {
-				xml += this.OBJtoXML(new Object(obj[prop]));
-			} else {
-				xml += obj[prop];
-			}
-			xml += obj[prop] instanceof Array ? '' : obj[prop] ? '</' + this.replaceKeyInXml[prop] + '>' : '';
-		}
-		var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
+	// 	for (var prop in obj) {
+	// 		xml += obj[prop] instanceof Array ? '' : obj[prop] ? '<' + this.replaceKeyInXml[prop] + '>' : '';
+	// 		if (obj[prop] instanceof Array) {
+	// 			for (var array in obj[prop]) {
+	// 				xml += obj[prop][array] ? '<' + this.replaceKeyInXml[prop] + '>' : '';
+	// 				xml += this.OBJtoXML(new Object(obj[prop][array]));
+	// 				xml += obj[prop][array] ? '</' + this.replaceKeyInXml[prop] + '>' : '';
+	// 			}
+	// 		} else if (typeof obj[prop] == 'object') {
+	// 			xml += this.OBJtoXML(new Object(obj[prop]));
+	// 		} else {
+	// 			xml += obj[prop];
+	// 		}
+	// 		xml += obj[prop] instanceof Array ? '' : obj[prop] ? '</' + this.replaceKeyInXml[prop] + '>' : '';
+	// 	}
+	// 	var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
 
-		return xml;
-	}
+	// 	return xml;
+	// }
 
 	handleStateChange = (e: any) => {
 		const { name, value } = e.target;
@@ -619,14 +622,14 @@ export class CreateUsecase extends React.Component<any, any> {
 			severity: ''
 		})
 	}
-	maniupulateDataForXml = (stages: any) => {
-		let Xmldata: any = '';
-		for (let i = 0; i < stages.length; i++) {
-			let stage = { stage: stages[i] };
-			Xmldata += this.OBJtoXML(stage);
-		}
-		return Xmldata;
-	};
+	// maniupulateDataForXml = (stages: any) => {
+	// 	let Xmldata: any = '';
+	// 	for (let i = 0; i < stages.length; i++) {
+	// 		let stage = { stage: stages[i] };
+	// 		Xmldata += this.OBJtoXML(stage);
+	// 	}
+	// 	return Xmldata;
+	// };
 
 	handleSubStageName = (index: any, e: any) => {
 		const { activeIndex, stages } = this.state;
@@ -658,33 +661,33 @@ export class CreateUsecase extends React.Component<any, any> {
 		if (useCaseList && useCaseList.length > 0) {
 			for (let i = 0; i < useCaseList.length; i++) {
 				let useCase = { ...useCaseList[i] };
-				if (useCase.stepInput.S.indexOf("stages") !== -1) {
+				// if (useCase.stepInput.S.indexOf("stages") !== -1) {
 					retData.push(
 						<li className={i === activeUsecaseIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
 							<span>{useCase.usecaseName.S}</span>
 						</li>
 					);
-				}
+				// }
 			}
 		}
 		return retData;
 	};
 
-	validateJsonData(str: any) {
-		try {
-			JSON.parse(str);
-		} catch (e) {
-			return false;
-		}
-		return true;
-	}
+	// validateJsonData(str: any) {
+	// 	try {
+	// 		JSON.parse(str);
+	// 	} catch (e) {
+	// 		return false;
+	// 	}
+	// 	return true;
+	// }
 
 	handleSelectUseCase = (index: any) => {
 		let { usecase } = this.state
 		const { useCaseList } = this.state
 		if (index >= 0) {
-			if (useCaseList[index].stepInput && this.validateJsonData(useCaseList[index].stepInput.S)) {
-				let parseUserData= JSON.parse(useCaseList[index].stepInput.S)
+			if (useCaseList[index]?.stepInput ) {
+				let parseUserData= useCaseList[index].stepInput.S
 				usecase.name = parseUserData.name
 				this.setState({ activeUsecaseIndex: index, stages:parseUserData.stages, usecase })
 			}
