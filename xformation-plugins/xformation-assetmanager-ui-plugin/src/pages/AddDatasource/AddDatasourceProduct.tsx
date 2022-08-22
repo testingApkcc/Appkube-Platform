@@ -57,24 +57,26 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 		let dataobj: any = {};
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
-				dataobj[data[i].cloudType] = dataobj[data[i].cloudType] || {};
-				dataobj[data[i].cloudType][data[i].accountID] = dataobj[data[i].cloudType][data[i].accountID] || [];
-				dataobj[data[i].cloudType][data[i].accountID].push(data[i]);
-				if (environmentList && environmentList.length > 0) {
-					if (environmentList.indexOf(data[i].cloudType) === -1) {
-						environmentList.push(data[i].cloudType);
-					}
-				} else {
-					environmentList.push(data[i].cloudType);
-				}
-
-				if (data[i].accountID && data[i].accountID != '') {
-					if (accountList && accountList.length > 0) {
-						if (accountList.indexOf(data[i].accountID) === -1) {
-							accountList.push(data[i].accountID);
+				if (data[i].accountID) {
+					dataobj[data[i].cloudType] = dataobj[data[i].cloudType] || {};
+					dataobj[data[i].cloudType][data[i].accountID] = dataobj[data[i].cloudType][data[i].accountID] || [];
+					dataobj[data[i].cloudType][data[i].accountID].push(data[i]);
+					if (environmentList && environmentList.length > 0) {
+						if (environmentList.indexOf(data[i].cloudType) === -1) {
+							environmentList.push(data[i].cloudType);
 						}
 					} else {
-						accountList.push(data[i].accountID);
+						environmentList.push(data[i].cloudType);
+					}
+
+					if (data[i].accountID && data[i].accountID != '') {
+						if (accountList && accountList.length > 0) {
+							if (accountList.indexOf(data[i].accountID) === -1) {
+								accountList.push(data[i].accountID);
+							}
+						} else {
+							accountList.push(data[i].accountID);
+						}
 					}
 				}
 			}
