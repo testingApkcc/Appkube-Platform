@@ -12,6 +12,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GET_SERVICES_DATA: `${assetSrvUrl}/service-detail/search`,
     GET_FILTERED_SERVICES_DATA: `${assetSrvUrl}/service-detail/search-with-filter`,
     PREVIEW_DASHBOARDS_URL: `${assetSrvUrl}/dashboard/preview`,
+    GET_ACCOUNT_SERVICES_DATA: `${assetSrvUrl}/account-services/search`,
 
     ADD_Organization: `${assetSrvUrl}/addEnvironment`,
     SERVER_ERROR_MESSAGE: 'SERVER_ERROR_MESSAGE',
