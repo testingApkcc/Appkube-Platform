@@ -28,15 +28,16 @@ class WorkFlow extends React.Component<any, any> {
       this.setState({
         usecaseData: this.props.usecaseData,
         // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
+        activeStage: this.props.activeStage,
         editformData: this.props.editFormData
       })
     }
   }
   getUsecaseStageData = (data: any, index: any) => {
-    let { activeStage } = this.state;
-    activeStage = index
+    // let { activeStage } = this.state;
+    // activeStage = index
     this.setState({
-      activeStage
+      activeStage: index
     });
   };
 
@@ -49,7 +50,7 @@ class WorkFlow extends React.Component<any, any> {
         let row = usecaseData.stepInput.S.stages[i];
         let status = (row: any) => {
           if (row.status) {
-          return row.status
+            return row.status
           }
           else if (row.workflowCheckList.length > 0 && !row.status) {
             let status = 0;
@@ -94,59 +95,59 @@ class WorkFlow extends React.Component<any, any> {
   };
 
   handleStageChange = (e: any, index: any) => {
-    const{editFormData}=this.props
-    if (!editFormData){
-    const { usecaseData } = this.state;
-    const { name, value } = e.target;
-    let stages: any = usecaseData.stages;
-    if (usecaseData.stages) {
-      stages[index][name] = value;
+    const { editFormData } = this.props
+    if (!editFormData) {
+      const { usecaseData } = this.state;
+      const { name, value } = e.target;
+      let stages: any = usecaseData.stages;
+      if (usecaseData.stages) {
+        stages[index][name] = value;
+      }
     }
-  }
   };
 
   handleStateChange = (event: any, index: any) => {
-    const{editFormData}=this.props
-    if (!editFormData){
-    const { usecaseData, activeStage } = this.state;
-    const { name, value } = event.target;
-    const workflowDetail: any = usecaseData.stepInput.S.stages[activeStage];
-    if (workflowDetail.details) {
-      workflowDetail.details[index].data[0][name] = value;
+    const { editFormData } = this.props
+    if (!editFormData) {
+      const { usecaseData, activeStage } = this.state;
+      const { name, value } = event.target;
+      const workflowDetail: any = usecaseData.stepInput.S.stages[activeStage];
+      if (workflowDetail.details) {
+        workflowDetail.details[index].data[0][name] = value;
+      }
+      this.setState({
+        usecaseData: usecaseData
+      });
     }
-    this.setState({
-      usecaseData: usecaseData
-    });
-  }
   };
 
   handleStateChangeCheckList = (e: any, index: any) => {
-    const{editFormData}=this.props
-    if (!editFormData){
-    const { checked } = e.target;
-    const { usecaseData, activeStage } = this.state;
-    let count = 0;
-    const workflowDetail: any = usecaseData.stepInput.S.stages[activeStage];
-    if (workflowDetail.workflowCheckList) {
-      workflowDetail.workflowCheckList[index]['checked'] = checked;
-      for (let i = 0; i < workflowDetail.workflowCheckList.length; i++) {
-        if (workflowDetail.workflowCheckList[i].checked) {
-          count++;
+    const { editFormData } = this.props
+    if (!editFormData) {
+      const { checked } = e.target;
+      const { usecaseData, activeStage } = this.state;
+      let count = 0;
+      const workflowDetail: any = usecaseData.stepInput.S.stages[activeStage];
+      if (workflowDetail.workflowCheckList) {
+        workflowDetail.workflowCheckList[index]['checked'] = checked;
+        for (let i = 0; i < workflowDetail.workflowCheckList.length; i++) {
+          if (workflowDetail.workflowCheckList[i].checked) {
+            count++;
+          }
         }
       }
+      if (count == workflowDetail.workflowCheckList.length) {
+        usecaseData.stepInput.S.stages[activeStage]['status'] = 'completed';
+      } else if (count < workflowDetail.workflowCheckList.length) {
+        usecaseData.stepInput.S.stages[activeStage]['status'] = 'inprogress';
+      } else if (count == 0) {
+        usecaseData.stepInput.S.stages[activeStage]['status'] = '';
+      }
+      this.setState({
+        usecaseData
+      });
+      this.updateForm(usecaseData)
     }
-    if (count == workflowDetail.workflowCheckList.length) {
-      usecaseData.stepInput.S.stages[activeStage]['status'] = 'completed';
-    } else if (count < workflowDetail.workflowCheckList.length) {
-      usecaseData.stepInput.S.stages[activeStage]['status'] = 'inprogress';
-    } else if (count == 0) {
-      usecaseData.stepInput.S.stages[activeStage]['status'] = '';
-    }
-    this.setState({
-      usecaseData
-    });
-    this.updateForm(usecaseData)
-  }
   };
 
   updateForm = (data: any) => {
@@ -208,10 +209,10 @@ class WorkFlow extends React.Component<any, any> {
           {usecaseData && usecaseData.stepInput && usecaseData.stepInput.S && usecaseData.stepInput.S.stages && usecaseData.stepInput.S.stages.length > 0 && <ul>{this.displayWorkflowStage()}</ul>}
         </div>
         <div className="workflow-data">
-          {editformData !== "" && <LinkData props={{ handleStateChange: this.handleStateChange, usecaseData, updateStep: this.updateForm, disabledEditForm: editformData, activeStage, ...this.props }} />}
+        {editformData !== "" && <LinkData disabledEditForm= {editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
         </div>
 
-        <div className="workflow-view-table-section">
+        {activeStage === 0 ? <div className="workflow-view-table-section">
           <div className='heading'>
             <h5>SCRUM Planning</h5>
             <i className="fa fa-angle-down" aria-hidden="true"></i>
@@ -228,12 +229,12 @@ class WorkFlow extends React.Component<any, any> {
                   <th>Deviation</th>
                 </tr>
               </thead>
-              {usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0 && activeStage !== null || undefined ?
+              {usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0 ?
                 <tbody><CommanPlanningTable props={{ handleStateChange: this.handleStateChange, usecaseData, disabledEditForm: editformData, userList: userList, activeStage, ...this.props }} />
                 </tbody> : <React.Fragment></React.Fragment>}
             </table>
           </div>
-        </div>
+        </div> : <React.Fragment></React.Fragment>}
         <div className="workflow-requirement">
           <div className="heading">
             <h5>Checklist for Requirements</h5>

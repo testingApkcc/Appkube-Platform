@@ -1,266 +1,268 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { AwsHelper } from '../AwsHelpers';
 import downloadIcon from '../../img/projectoverview/download-icon.png';
-import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
-import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
-import overviewMenu3 from '../../img/projectoverview/overview-menu3.png';
-import overviewMenu4 from '../../img/projectoverview/overview-menu4.png';
-import overviewMenu5 from '../../img/projectoverview/overview-menu5.png';
-import overviewMenu6 from '../../img/projectoverview/overview-menu6.png';
-import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
+import { Link } from 'react-router-dom';
+// import SimpleBar from 'simplebar-react';
+import AssetOverViewReusableComp from '../../components/AssetOverViewCommonComponent'
+// import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
+// import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
+// import overviewMenu3 from '../../img/projectoverview/overview-menu3.png';
+// import overviewMenu4 from '../../img/projectoverview/overview-menu4.png';
+// import overviewMenu5 from '../../img/projectoverview/overview-menu5.png';
+// import overviewMenu6 from '../../img/projectoverview/overview-menu6.png';
+// import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
 
 export class AssetOverView extends React.Component<any, any> {
+	awsHelper: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			usecaseList: {
-				name: 'ipsa',
-				description: 'Recusandae libero eveniet ducimus.',
-				assignTo: 'string',
-				id: 3,
-				stages: [
-					{
-						checkList: [
-							{ label: 'string', id: 3 },
-							{ label: 'string', id: 10 },
-							{ label: 'string', id: 6 },
-							{ label: 'string', id: 6 },
-							{ label: 'string', id: 1 }
-						],
-						steps: [
-							{ label: 'et', description: 'string', link: 'https://waino.org', status: 'string', id: 7 },
-							{ label: 'eum', description: 'string', link: 'https://noemi.org', status: 'string', id: 7 }
-						],
-						name: 'quaerat',
-						assignedTo: 'string',
-						description: 'string',
-						id: 7,
-						status: 'string'
-					},
-					{
-						checkList: [
-							{ label: 'string', id: 6 },
-							{ label: 'string', id: 7 },
-							{ label: 'string', id: 9 },
-							{ label: 'string', id: 8 },
-							{ label: 'string', id: 8 }
-						],
-						steps: [
-							{
-								label: 'dolores',
-								description: 'string',
-								link: 'http://camron.com',
-								status: 'string',
-								id: 9
-							},
-							{
-								label: 'voluptatem',
-								description: 'string',
-								link: 'https://nicholaus.biz',
-								status: 'string',
-								id: 7
-							}
-						],
-						name: 'qui',
-						assignedTo: 'string',
-						description: 'string',
-						id: 8,
-						status: 'string'
-					},
-					{
-						checkList: [
-							{ label: 'string', id: 2 },
-							{ label: 'string', id: 7 },
-							{ label: 'string', id: 4 },
-							{ label: 'string', id: 1 },
-							{ label: 'string', id: 2 }
-						],
-						steps: [
-							{
-								label: 'corporis',
-								description: 'string',
-								link: 'http://hershel.com',
-								status: 'string',
-								id: 6
-							},
-							{
-								label: 'dolorum',
-								description: 'string',
-								link: 'http://elisabeth.net',
-								status: 'string',
-								id: 5
-							}
-						],
-						name: 'omnis',
-						assignedTo: 'string',
-						description: 'string',
-						id: 5,
-						status: 'string'
-					},
-					{
-						checkList: [
-							{ label: 'string', id: 7 },
-							{ label: 'string', id: 6 },
-							{ label: 'string', id: 4 },
-							{ label: 'string', id: 7 },
-							{ label: 'string', id: 4 }
-						],
-						steps: [
-							{
-								label: 'error',
-								description: 'string',
-								link: 'https://triston.us',
-								status: 'string',
-								id: 8
-							},
-							{
-								label: 'aspernatur',
-								description: 'string',
-								link: 'http://blanca.us',
-								status: 'string',
-								id: 2
-							}
-						],
-						name: 'veritatis',
-						assignedTo: 'string',
-						description: 'string',
-						id: 6,
-						status: 'string'
-					},
-					{
-						checkList: [
-							{ label: 'string', id: 5 },
-							{ label: 'string', id: 3 },
-							{ label: 'string', id: 7 },
-							{ label: 'string', id: 10 },
-							{ label: 'string', id: 6 }
-						],
-						steps: [
-							{ label: 'aut', description: 'string', link: 'https://audie.us', status: 'string', id: 1 },
-							{
-								label: 'provident',
-								description: 'string',
-								link: 'http://gavin.biz',
-								status: 'string',
-								id: 3
-							}
-						],
-						name: 'nostrum',
-						assignedTo: 'string',
-						description: 'string',
-						id: 8,
-						status: 'string'
-					},
-					{
-						checkList: [
-							{ label: 'string', id: 5 },
-							{ label: 'string', id: 9 },
-							{ label: 'string', id: 4 },
-							{ label: 'string', id: 8 },
-							{ label: 'string', id: 7 }
-						],
-						steps: [
-							{
-								label: 'qui',
-								description: 'string',
-								link: 'http://candida.us',
-								status: 'string',
-								id: 10
-							},
-							{
-								label: 'in',
-								description: 'string',
-								link: 'https://antonette.info',
-								status: 'string',
-								id: 8
-							}
-						],
-						name: 'non',
-						assignedTo: 'string',
-						description: 'string',
-						id: 4,
-						status: 'string'
-					}
-				]
-			},
-			sideMenuList: [
-				{ name: 'Send RFQ', id: '1', img: overviewMenu1 },
-				{ name: 'Receive RFQ', id: '2', img: overviewMenu2 },
-				{ name: 'Kanban', id: '3', img: overviewMenu3 },
-				{ name: 'Setup Committee', id: '4', img: overviewMenu4 },
-				{ name: 'Approval Requisation', id: '5', img: overviewMenu5 },
-				{ name: 'Approved Requisation', id: '6', img: overviewMenu6 },
-				{ name: 'New RFQ', id: '7', img: overviewMenu7 },
-				{ name: 'Conditional Approval', id: '8', img: overviewMenu1 }
-			]
+			useCaseList:[],
+			// usecaseList: {
+			// 	name: 'ipsa',
+			// 	description: 'Recusandae libero eveniet ducimus.',
+			// 	assignTo: 'string',
+			// 	id: 3,
+			// 	stages: [
+			// 		{
+			// 			checkList: [
+			// 				{ label: 'string', id: 3 },
+			// 				{ label: 'string', id: 10 },
+			// 				{ label: 'string', id: 6 },
+			// 				{ label: 'string', id: 6 },
+			// 				{ label: 'string', id: 1 }
+			// 			],
+			// 			steps: [
+			// 				{ label: 'et', description: 'string', link: 'https://waino.org', status: 'string', id: 7 },
+			// 				{ label: 'eum', description: 'string', link: 'https://noemi.org', status: 'string', id: 7 }
+			// 			],
+			// 			name: 'quaerat',
+			// 			assignedTo: 'string',
+			// 			description: 'string',
+			// 			id: 7,
+			// 			status: 'string'
+			// 		},
+			// 		{
+			// 			checkList: [
+			// 				{ label: 'string', id: 6 },
+			// 				{ label: 'string', id: 7 },
+			// 				{ label: 'string', id: 9 },
+			// 				{ label: 'string', id: 8 },
+			// 				{ label: 'string', id: 8 }
+			// 			],
+			// 			steps: [
+			// 				{
+			// 					label: 'dolores',
+			// 					description: 'string',
+			// 					link: 'http://camron.com',
+			// 					status: 'string',
+			// 					id: 9
+			// 				},
+			// 				{
+			// 					label: 'voluptatem',
+			// 					description: 'string',
+			// 					link: 'https://nicholaus.biz',
+			// 					status: 'string',
+			// 					id: 7
+			// 				}
+			// 			],
+			// 			name: 'qui',
+			// 			assignedTo: 'string',
+			// 			description: 'string',
+			// 			id: 8,
+			// 			status: 'string'
+			// 		},
+			// 		{
+			// 			checkList: [
+			// 				{ label: 'string', id: 2 },
+			// 				{ label: 'string', id: 7 },
+			// 				{ label: 'string', id: 4 },
+			// 				{ label: 'string', id: 1 },
+			// 				{ label: 'string', id: 2 }
+			// 			],
+			// 			steps: [
+			// 				{
+			// 					label: 'corporis',
+			// 					description: 'string',
+			// 					link: 'http://hershel.com',
+			// 					status: 'string',
+			// 					id: 6
+			// 				},
+			// 				{
+			// 					label: 'dolorum',
+			// 					description: 'string',
+			// 					link: 'http://elisabeth.net',
+			// 					status: 'string',
+			// 					id: 5
+			// 				}
+			// 			],
+			// 			name: 'omnis',
+			// 			assignedTo: 'string',
+			// 			description: 'string',
+			// 			id: 5,
+			// 			status: 'string'
+			// 		},
+			// 		{
+			// 			checkList: [
+			// 				{ label: 'string', id: 7 },
+			// 				{ label: 'string', id: 6 },
+			// 				{ label: 'string', id: 4 },
+			// 				{ label: 'string', id: 7 },
+			// 				{ label: 'string', id: 4 }
+			// 			],
+			// 			steps: [
+			// 				{
+			// 					label: 'error',
+			// 					description: 'string',
+			// 					link: 'https://triston.us',
+			// 					status: 'string',
+			// 					id: 8
+			// 				},
+			// 				{
+			// 					label: 'aspernatur',
+			// 					description: 'string',
+			// 					link: 'http://blanca.us',
+			// 					status: 'string',
+			// 					id: 2
+			// 				}
+			// 			],
+			// 			name: 'veritatis',
+			// 			assignedTo: 'string',
+			// 			description: 'string',
+			// 			id: 6,
+			// 			status: 'string'
+			// 		},
+			// 		{
+			// 			checkList: [
+			// 				{ label: 'string', id: 5 },
+			// 				{ label: 'string', id: 3 },
+			// 				{ label: 'string', id: 7 },
+			// 				{ label: 'string', id: 10 },
+			// 				{ label: 'string', id: 6 }
+			// 			],
+			// 			steps: [
+			// 				{ label: 'aut', description: 'string', link: 'https://audie.us', status: 'string', id: 1 },
+			// 				{
+			// 					label: 'provident',
+			// 					description: 'string',
+			// 					link: 'http://gavin.biz',
+			// 					status: 'string',
+			// 					id: 3
+			// 				}
+			// 			],
+			// 			name: 'nostrum',
+			// 			assignedTo: 'string',
+			// 			description: 'string',
+			// 			id: 8,
+			// 			status: 'string'
+			// 		},
+			// 		{
+			// 			checkList: [
+			// 				{ label: 'string', id: 5 },
+			// 				{ label: 'string', id: 9 },
+			// 				{ label: 'string', id: 4 },
+			// 				{ label: 'string', id: 8 },
+			// 				{ label: 'string', id: 7 }
+			// 			],
+			// 			steps: [
+			// 				{
+			// 					label: 'qui',
+			// 					description: 'string',
+			// 					link: 'http://candida.us',
+			// 					status: 'string',
+			// 					id: 10
+			// 				},
+			// 				{
+			// 					label: 'in',
+			// 					description: 'string',
+			// 					link: 'https://antonette.info',
+			// 					status: 'string',
+			// 					id: 8
+			// 				}
+			// 			],
+			// 			name: 'non',
+			// 			assignedTo: 'string',
+			// 			description: 'string',
+			// 			id: 4,
+			// 			status: 'string'
+			// 		}
+			// 	]
+			// },
+			// sideMenuList: [
+			// 	{ name: 'Send RFQ', id: '1', img: overviewMenu1 },
+			// 	{ name: 'Receive RFQ', id: '2', img: overviewMenu2 },
+			// 	{ name: 'Kanban', id: '3', img: overviewMenu3 },
+			// 	{ name: 'Setup Committee', id: '4', img: overviewMenu4 },
+			// 	{ name: 'Approval Requisation', id: '5', img: overviewMenu5 },
+			// 	{ name: 'Approved Requisation', id: '6', img: overviewMenu6 },
+			// 	{ name: 'New RFQ', id: '7', img: overviewMenu7 },
+			// 	{ name: 'Conditional Approval', id: '8', img: overviewMenu1 }
+			// ]
+			activeUseCaseIndex:0,
 		};
+		this.awsHelper = new AwsHelper({ meta: props.meta });
 	}
 
-	displayUsecaseList = () => {
-		const { usecaseList } = this.state;
-		let retData = [];
-		if (usecaseList && usecaseList.stages && usecaseList.stages.length > 0) {
-			for (let i = 0; i < usecaseList.stages.length; i++) {
-				let row = usecaseList.stages[i];
-				retData.push(
-					<div className="col-md-4 col-12">
-						<div
-							className={
-								i == 0 ? (
-									'active receive-rfq-box'
-								) : i == 1 ? (
-									'inprosseg receive-rfq-box'
-								) : (
-									'receive-rfq-box'
-								)
-							}
-						>
-							<div className="receive-number">{i + 1}</div>
-							<div className="heading">
-								<h5>{row.name}</h5>
-							</div>
-							<ul>{this.displaySteps(row.steps)}</ul>
-						</div>
-					</div>
-				);
-			}
-		}
-		return retData;
-	};
 
-	displaySteps = (step: any) => {
-		const retStepData = [];
-		if (step && step.length > 0) {
-			for (let i = 0; i < step.length; i++) {
-				retStepData.push(
-					<Link to="/a/xformation-workflow-engine/matrixView">
-						<li className={step[i].link !== '' ? 'active' : ''}>{step[i].label}</li>
-					</Link>
+	componentDidMount() {
+		this.awsHelper.getUsecaseList((useCaseList: any) => {
+			useCaseList.forEach((useCase: any) => {
+				this.awsHelper.getExecutionHistory(
+					"arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
+					(items: any) => {
+						if (useCase?.stepInput?.S && useCase.stepInput.S.indexOf("stages")!==-1 ){
+							
+						const useCases = this.state.useCaseList;
+						useCase.stepInput.S=JSON.parse(useCase.stepInput.S)
+						if (useCase.stepInput.S.stages.length>0){
+						useCases.push({
+							...useCase,
+							steps: items,
+							executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
+						})
+					}
+						this.setState({
+							useCaseList: useCases
+						});
+					
+					}
+					},
+					(err: any) => { console.log(err) }
 				);
+			});
+		}, () => { });
+		this.awsHelper.gettingMachineDef(
+			this.state.machineArn,
+			(states: any) => {
+				// console.log(states);
+			},
+			(err: any) => {
+				console.log(err);
 			}
-		}
-		return retStepData;
-	};
+		);
+	}
 
-	displaySideMenuList = () => {
-		const { sideMenuList } = this.state;
+	displaySideMenuList = (useCaseList:any) => {
+		const {activeUseCaseIndex}=this.state;
 		let retData = [];
-		if (sideMenuList && sideMenuList.length > 0) {
-			for (let i = 0; i < sideMenuList.length; i++) {
+		if (useCaseList && useCaseList.length > 0) {
+			for (let i = 0; i < useCaseList.length; i++) {
+				let row= useCaseList[i];
+				if (row?.usecaseName?.S){
 				retData.push(
-					<li className={i == 0 ? 'active' : ''}>
-						{/* <Link to="/"> */}
-						<img src={sideMenuList[i].img} alt="" />
-						<span>{sideMenuList[i].name}</span>
-						{/* </Link> */}
+					<li className={i == activeUseCaseIndex ? 'active' : ''}  onClick={()=>this.setState({activeUseCaseIndex:i})}>
+						<span>{row?.usecaseName?.S}</span>
 					</li>
 				);
+				}
 			}
 		}
 		return retData;
 	};
 
 	render() {
+		const {useCaseList }=this.state;
+		console.log(this.props.history,'props')
 		return (
 			<div className="asset-over-view-container">
 				<div className="asset-over-view-section">
@@ -277,7 +279,7 @@ export class AssetOverView extends React.Component<any, any> {
 										</Link>
 									</div>
 									<div className="image">
-										<Link to="/a/xformation-workflow-engine/asset-overview">
+										<Link to="/a/xformation-workflow-engine/project-overview">
 											<img src={downloadIcon} alt="" />
 										</Link>
 									</div>
@@ -311,7 +313,7 @@ export class AssetOverView extends React.Component<any, any> {
 					<div className="project-over-view-inner-content">
 						<div className="project-over-view-left-content">
 							<div className="sidebar">
-								<ul>{this.displaySideMenuList()}</ul>
+								{useCaseList && useCaseList.length>0 &&<ul>{this.displaySideMenuList(useCaseList)}</ul>}
 							</div>
 						</div>
 						<div className="project-over-view-right-content">
@@ -321,7 +323,9 @@ export class AssetOverView extends React.Component<any, any> {
 									<span className="line2" />
 									<span className="line3" />
 								</div>
-								<div className="row">{this.displayUsecaseList()}</div>
+								{useCaseList[this.state.activeUseCaseIndex]?.stepInput?.S?.stages && <div className="row">
+								<AssetOverViewReusableComp usecaseList={useCaseList[this.state.activeUseCaseIndex].stepInput.S.stages}/>
+								</div>}
 							</div>
 						</div>
 					</div>

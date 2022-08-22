@@ -302,10 +302,10 @@ export class WorkFlowView extends React.Component<any, any> {
 
 	
 	render() {
-		const { usecaseData, } = this.state;
+		const { usecaseData, activeStage } = this.state;
 		return (<React.Fragment>
 			<div className="workflow-content">
-				<WorkFlow usecaseData={usecaseData}  editFormData={false} updateStep={this.updateStep} />
+				<WorkFlow usecaseData={usecaseData} activeStage={activeStage} editFormData={false} updateStep={this.updateStep} />
 
 			</div>
 		</React.Fragment>

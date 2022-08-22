@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import SimpleBar from 'simplebar-react';
 
+import AssetOverViewReusableComp from '../../components/AssetOverViewCommonComponent'
 export class AssetView extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
@@ -183,7 +182,6 @@ export class AssetView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		console.log(data)
 		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length > 0) {
 			this.setState({
 				useCase: data,
@@ -191,55 +189,8 @@ export class AssetView extends React.Component<any, any> {
 			});
 		}
 	};
+	
 
-	displayUsecaseList = () => {
-		const { usecaseList } = this.state;
-		console.log(usecaseList, " usecaseList")
-		let retData = [];
-		if (usecaseList && usecaseList.length > 0) {
-			for (let i = 0; i < usecaseList.length; i++) {
-				let row = usecaseList[i];
-				retData.push(
-					<div className="col-md-4 col-12">
-						<div
-							className={
-								i == 0 ? (
-									'active receive-rfq-box'
-								) : i == 1 ? (
-									'inprosseg receive-rfq-box'
-								) : (
-									'receive-rfq-box'
-								)
-							}
-						>
-							<div className="receive-number">{i + 1}</div>
-							<div className="heading">
-								<h5>{row.name}</h5>
-							</div>
-							<SimpleBar style={{ maxHeight: 145 }}>
-								<ul>{this.displaySteps(row.details)}</ul>
-							</SimpleBar>
-						</div>
-					</div>
-				);
-			}
-		}
-		return retData;
-	};
-
-	displaySteps = (step: any) => {
-		const retStepData = [];
-		if (step && step.length > 0) {
-			for (let i = 0; i < step.length; i++) {
-				retStepData.push(
-					<Link to="/a/xformation-workflow-engine/matrixView">
-						<li className={step[i].link !== '' ? 'active' : ''}>{step[i].subStageName}</li>
-					</Link>
-				);
-			}
-		}
-		return retStepData;
-	};
 	render() {
 		return (
 			<div className="receive-rfq-content">
@@ -248,7 +199,7 @@ export class AssetView extends React.Component<any, any> {
 					<span className="line2" />
 					<span className="line3" />
 				</div>
-				<div className="row">{this.displayUsecaseList()}</div>
+				{<div className="row"><AssetOverViewReusableComp usecaseList={this.state.usecaseList}/></div>}
 			</div>
 		);
 	}

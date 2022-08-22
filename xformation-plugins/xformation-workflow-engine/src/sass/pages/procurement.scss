@@ -1023,6 +1023,18 @@
         border-top: 5px solid #79bcff;
         min-height: 200px;
 
+        &.active {
+            border-top: 5px solid #398038;
+        }
+
+        &.completed {
+            border-top: 5px solid #398038;
+        }
+
+        &.inprogress {
+            border-top: 5px solid #ff5400;
+        }
+
         .receive-number {
             position: absolute;
             left: 0;
@@ -1062,7 +1074,7 @@
                 list-style: none;
                 margin-bottom: 15px;
                 color: #3399ff;
-                padding-left: 20px;
+                padding-left: 0;
                 background-repeat: no-repeat;
                 background-position: 0 4px;
                 white-space: nowrap;
@@ -1088,14 +1100,6 @@
             top: 50%;
             width: 60px;
             height: 21px;
-        }
-
-        &.active {
-            border-top: 5px solid #398038;
-        }
-
-        &.inprogress {
-            border-top: 5px solid #ff5400;
         }
 
     }
