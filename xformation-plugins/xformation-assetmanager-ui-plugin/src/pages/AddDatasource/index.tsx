@@ -43,29 +43,21 @@ export class AddDatasource extends React.Component<any, any> {
 	}
 
 	async componentDidMount() {
-		const { accountList } = this.state;
-		await this.getAccountList();
-		await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
+		await this.getMasterDataSource();
+		await RestService.getData(this.config.GET_ALL_ACCOUNT, null, null).then((response: any) => {
 			if (response && response.length > 0) {
-				for (let i = 0; i < response.length; i++) {
-					if (response[i].accountID && response[i].accountID != '') {
-						if (accountList && accountList.length > 0) {
-							if (accountList.indexOf(response[i].accountID) === -1) {
-								accountList.push(response[i].accountID);
-							}
-						} else {
-							accountList.push(response[i].accountID);
-						}
-					}
-				}
+				const accounts: any = [];
+				response.forEach((account: any) => {
+					accounts.push(account.accountId);
+				});
 				this.setState({
-					accountList
-				})
+					accountList: accounts,
+				});
 			}
 		});
 	}
 
-	getAccountList = async () => {
+	getMasterDataSource = async () => {
 		try {
 			await RestService.getData(this.config.GET_MASTER_DATASOURCE, null, null).then((response: any) => {
 				this.manipulateData(response);
