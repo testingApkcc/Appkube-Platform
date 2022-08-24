@@ -2820,7 +2820,7 @@
   line-height: 22px;
   font-weight: 500;
   color: #000000;
-  width: 100%;
+  width: 40%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3999,6 +3999,198 @@
   height: 40px;
   white-space: nowrap;
 }
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .usecase-form {
+  display: block;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px dotted #abd5f9;
+}
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .usecase-form .heading {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #202020;
+  padding-bottom: 30px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .heading
+  .btn-close {
+  float: right;
+  border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #e6f2ff;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group {
+  display: flex;
+  margin-bottom: 15px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .col-form-label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #202020;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .form-control {
+  border: 1px solid #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 3px;
+  width: 100%;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .select-actors {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .form-check-input {
+  border: 1px solid #e0e0e0;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .image {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 2px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .image
+  img {
+  max-height: 40px;
+  max-width: 40px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #202020;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .upload-screenshots {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  margin-bottom: 20px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .upload-screenshots
+  .form-control-file {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .upload-screenshots
+  .btn-upload
+  i {
+  margin-right: 5px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .screenshot {
+  display: block;
+  width: 100%;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .screenshot
+  img {
+  max-width: 100%;
+  height: auto;
+}
 .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-data {
   border-top: 1px dotted #abd5f9;
 }
@@ -4100,6 +4292,16 @@
   .code-update-btn {
   padding: 5px 25px;
   vertical-align: initial;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-data
+  .api-code
+  .api-content
+  .usecase-btn {
+  margin-right: 15px;
 }
 .owrkflow-procument-container
   .procument-page-container
