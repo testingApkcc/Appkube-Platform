@@ -39,6 +39,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Requirements',
 					description: '',
+					index:1,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
@@ -87,6 +88,7 @@ export class CreateUsecase extends React.Component<any, any> {
 					name: 'Mock Development',
 					description: '',
 					assignedTo: '',
+					index:2,
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
@@ -142,6 +144,7 @@ export class CreateUsecase extends React.Component<any, any> {
 					name: 'Actual Development',
 					description: '',
 					assignedTo: '',
+					index:3,
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
@@ -236,6 +239,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'CI/CD/TEST',
 					description: '',
+					index:4,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
@@ -307,6 +311,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Stage / Release',
 					description: '',
+					index:5,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
@@ -362,6 +367,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Publish/Operate',
 					description: '',
+					index:6,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },

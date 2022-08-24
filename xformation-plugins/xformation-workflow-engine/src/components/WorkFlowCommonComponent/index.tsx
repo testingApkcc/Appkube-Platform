@@ -39,6 +39,7 @@ class WorkFlow extends React.Component<any, any> {
     this.setState({
       activeStage: index
     });
+    // this.props.handleactiveStage(index)
   };
 
   displayWorkflowStage = () => {
@@ -151,8 +152,8 @@ class WorkFlow extends React.Component<any, any> {
   };
 
   updateForm = (data: any) => {
-
-    this.props.updateStep(data)
+const {activeStage}=this.state
+    this.props.updateStep(data, activeStage)
   }
 
   moveToNextPage = (type: any) => {
