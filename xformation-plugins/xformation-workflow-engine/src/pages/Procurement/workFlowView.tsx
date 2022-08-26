@@ -9,262 +9,26 @@ export class WorkFlowView extends React.Component<any, any> {
 		super(props);
 		this.state = {
 			activeStage: 0,
-			stageList: [
-				{
-					name: 'Requirements',
-					stepList: [
-						{
-							name: 'Create Usecase Document',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Create Screen Design',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Updating Usecase in Netlifi',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						}
-					]
-				},
-				{
-					name: 'Mock Development',
-					stepList: [
-						{
-							name: 'Create API Spec',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Create Postman Test',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Create UI Screen with Mock API',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Create Test API',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						}
-					]
-				},
-				{
-					name: 'Actual Development',
-					stepList: [
-						{
-							name: 'Data Design GitHub Page',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'API Source Code in GitHub',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Populate Test data in GitHub',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Junit5 Test in GitHub',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Cucumber BDD tests in GitHub',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Gatling Performance',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Code Review with Tech Lead',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Actual UI-API Integration',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Branch Merge after Review',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						}
-					]
-				},
-				{
-					name: 'CI/CD Test',
-					stepList: [
-						{
-							name: 'Create CI/CD Pipeline',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Create Kubernetes Operator',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Link API with GitHub and Netlifi',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Upload Test results in S3 Website',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'Upload Test env URL in Netlifi site',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Stage after review',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						}
-					]
-				},
-				{
-					name: 'Stage Release',
-					stepList: [
-						{
-							name: 'Stage Test and Review',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Promote to Prod',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						},
-						{
-							name: 'API Security Test in Prod',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Create/Update Release Note',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						}
-					]
-				},
-				{
-					name: 'Publish and Operate',
-					stepList: [
-						{
-							name: 'Security & Operation Readiness',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 1,
-							endDate: '01/05/2022',
-							endDeviation: 1
-						},
-						{
-							name: 'Release Note',
-							assignTo: 'Team member',
-							startDate: '01/05/2022',
-							startDeviation: 0,
-							endDate: '01/05/2022',
-							endDeviation: 0
-						}
-					]
-				}
-			],
+			usecaseDevelopment:{
+				specs:[],
+				usecaseName:'',
+				selectActors:[
+				{key:1,name:"Super Admin",isChecked:false},
+				{key:2,name:"Admin", isChecked:false},
+				{key:3,name:"Project Manager", isChecked:false},
+				{key:4,name:"Team Mamber", isChecked:false},
+				{key:5,name:"Vendor", isChecked:false},
+				{key:6,name:"Supplier", isChecked:false},
+				{key:7,name:"Team Member", isChecked:false},
+				{key:8,name:"Stakeholder", isChecked:false}],
+				description:'',
+				tigger:'',
+				preConditions:'',
+				postConditions:'',
+				usecaseFlow:'',
+				prototypeLink:'',
+				
+			},
 			useCase: {},
 			usecaseData: {},
 			userList: [
@@ -281,7 +45,11 @@ export class WorkFlowView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
+		const {usecaseDevelopment}=this.state
 		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length > 0) {
+			if (data.stepInput.S.stages[0] && !data.stepInput.S.stages[0].usecaseDevelopment){
+				data.stepInput.S.stages[0].usecaseDevelopment=usecaseDevelopment
+			}
 			this.setState({
 				useCase: data,
 				usecaseData: data
@@ -312,6 +80,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		const { usecaseData, activeStage } = this.state;
 		return (<React.Fragment>
 			<div className="workflow-content">
+				
 				<WorkFlow usecaseData={usecaseData} activeStage={activeStage} editFormData={false} updateStep={this.updateStep} />
 
 			</div>

@@ -82,7 +82,27 @@ export class CreateUsecase extends React.Component<any, any> {
 							comments: '',
 							data: [{ link: '', label: 'Github link' }]
 						}
-					]
+					],
+					usecaseDevelopment:{
+						specs:[],
+						usecaseName:'',
+						selectActors:[
+						{key:1,name:"Super Admin",isChecked:false},
+						{key:2,name:"Admin", isChecked:false},
+						{key:3,name:"Project Manager", isChecke:false},
+						{key:4,name:"Team Mamber", isChecked:false},
+						{key:5,name:"Vendor", isChecked:false},
+						{key:6,name:"Supplier", isChecked:false},
+						{key:7,name:"Team Member", isChecked:false},
+						{key:8,name:"Stakeholder", isChecked:false}],
+						description:'',
+						tigger:'',
+						preConditions:'',
+						postConditions:'',
+						usecaseFlow:'',
+						prototypeLink:"",
+						
+					},
 				},
 				{
 					name: 'Mock Development',

@@ -5,6 +5,7 @@ import CommanPlanningTable from '../CommonScrumPlanningTable'
 import actorsImg from '../../img/actors-img.png'
 import screenshotImgOne from '../../img/screenshot-img1.png'
 import screenshotImgTwo from '../../img/screenshot-img2.png'
+import { cloneDeep } from 'lodash';
 
 class WorkFlow extends React.Component<any, any> {
   constructor(props: any) {
@@ -24,15 +25,16 @@ class WorkFlow extends React.Component<any, any> {
       ],
       activeUseCaseIndex: 0,
       editformData: '',
+      initalStateUsecaseDevelopment: {},
       createUsecase: false,
       uploadScreenshot: false
     };
   }
-
   componentDidUpdate(prevProps: any, prevState: any) {
     if (this.props.usecaseData !== prevProps.usecaseData) {
+      this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.usecaseData.stepInput.S.stages[0].usecaseDevelopment) })
       this.setState({
-        usecaseData: this.props.usecaseData,
+        usecaseData: cloneDeep(this.props.usecaseData),
         // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
         activeStage: this.props.activeStage,
         editformData: this.props.editFormData
@@ -42,8 +44,15 @@ class WorkFlow extends React.Component<any, any> {
   getUsecaseStageData = (data: any, index: any) => {
     // let { activeStage } = this.state;
     // activeStage = index
+    if (index > 0) {
+      this.setState({
+        createUsecase: false,
+        uploadScreenshot: false
+      })
+    }
     this.setState({
-      activeStage: index
+      activeStage: index,
+
     });
     // this.props.handleactiveStage(index)
   };
@@ -158,7 +167,7 @@ class WorkFlow extends React.Component<any, any> {
   };
 
   updateForm = (data: any) => {
-const {activeStage}=this.state
+    const { activeStage } = this.state
     this.props.updateStep(data, activeStage)
   }
 
@@ -198,8 +207,7 @@ const {activeStage}=this.state
     return retData;
   }
   setUseCaseData = (index: any) => {
-    const { useCaseList } = this.state
-
+    const { useCaseList, } = this.state
     let data = useCaseList[index]
     if (data && data.stepInput && data.stepInput.S) {
       data = data.stepInput.S;
@@ -210,33 +218,62 @@ const {activeStage}=this.state
   }
   createUsecase = () => {
     this.setState({
-			createUsecase: true 
-		});
+      createUsecase: true
+    });
   }
   createUsecaseClose = () => {
+    this.resetInitalStateUsecaseDevelopment()
     this.setState({
-			createUsecase: false 
-		});
+      createUsecase: false
+    });
+  }
+  resetInitalStateUsecaseDevelopment=()=>{
+    const { initalStateUsecaseDevelopment, usecaseData } = this.state
+    usecaseData.stepInput.S.stages[0].usecaseDevelopment = cloneDeep(initalStateUsecaseDevelopment)
+    this.setState({usecaseData,})
   }
   uploadScreenshot = () => {
     this.setState({
-			uploadScreenshot: true
-		});
+      uploadScreenshot: true
+    });
   }
   uploadScreenshotClose = () => {
+    this.resetInitalStateUsecaseDevelopment()
     this.setState({
-			uploadScreenshot: false
-		});
+      uploadScreenshot: false
+    });
+  }
+
+  handleSelectActors = (e: any, index: any | null) => {
+    const { name, checked } = e.target;
+    const { usecaseData } = this.state;
+    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name][index].isChecked = checked
+    this.setState(usecaseData)
+  }
+
+  handleusecaseDevelopmentState = (e: any) => {
+    const { name, value } = e.target;
+    const { usecaseData } = this.state;
+    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name] = value
+    this.setState(usecaseData)
+  }
+  handleSpecsFiles = (e: any) => {
+    const { usecaseData } = this.state;
+    const { name, files } = e.target
+    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name].push( files[0])
+    this.setState(usecaseData)
   }
 
   render() {
-    const { activeStage, usecaseData, userList, editformData, createUsecase, uploadScreenshot } = this.state;
+    const { activeStage, usecaseData, userList, editformData, createUsecase, uploadScreenshot, initalStateUsecaseDevelopment } = this.state;
+    let usecaseDevelopment = usecaseData?.stepInput?.S?.stages[0]?.usecaseDevelopment ? usecaseData.stepInput.S.stages[0].usecaseDevelopment : {}
+
     return (<>
       <div className="project-over-view-right-content">
         <div className="workflow-stage">
           {usecaseData && usecaseData.stepInput && usecaseData.stepInput.S && usecaseData.stepInput.S.stages && usecaseData.stepInput.S.stages.length > 0 && <ul>{this.displayWorkflowStage()}</ul>}
         </div>
-        {createUsecase === true ? 
+        {createUsecase === true ?
           <div className="usecase-form">
             <div className="heading">
               <span>Requirement Sub-Stage details</span>
@@ -246,118 +283,60 @@ const {activeStage}=this.state
             </div>
             <div className="form">
               <div className="form-group row">
-                  <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
+                <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
                 <div className="col-lg-10 col-sm-12">
-                  <input className="form-control" type="text" placeholder="" />
+                  <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName} onChange={(e) => this.handleusecaseDevelopmentState(e)} disabled={editformData} type="text" placeholder="" />
                 </div>
               </div>
               <div className="form-group row">
-              <label className="col-lg-2 col-sm-12 col-form-label">Select Actors</label>
+                <label className="col-lg-2 col-sm-12 col-form-label">Select Actors</label>
                 <div className="col-lg-10 col-sm-12">
                   <div className='row'>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Super Admin</div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Admin</div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck3" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Project Manager</div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck4" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Team Mamber</div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Vendor</div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Supplier</div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck3" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Team Mamber</div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-6">
-                      <div className="select-actors">
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck4" />
-                        <div className="image">
-                          <img src={actorsImg} alt='' />
-                        </div>
-                        <div className="name">Stakeholder</div>
-                      </div>
-                    </div>
+                    {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
+                    {usecaseData?.stepInput?.S?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
+                      usecaseData.stepInput.S.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
+                        <div className="col-lg-3 col-md-4 col-sm-6">
+                          <div className="select-actors">
+                            <input className="form-check-input" key={val.key} name="selectActors"
+                              onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />
+                            <div className="image">
+                              <img src={actorsImg} alt='' />
+                            </div>
+                            <div className="name">{val.name}</div>
+                          </div>
+                        </div>)) : <></>
+                    }
                   </div>
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-lg-2 col-sm-12 col-form-label">Usecase Description</label>
                 <div className="col-lg-10 col-sm-12">
-                  <textarea className="form-control" placeholder="" rows={2} />
+                  <textarea className="form-control" name="description" value={usecaseDevelopment.description} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-lg-2 col-sm-12 col-form-label">Tigger</label>
                 <div className="col-lg-10 col-sm-12">
-                  <input className="form-control" type="text" placeholder="" />
+                  <input className="form-control" name="tigger" value={usecaseDevelopment.tigger} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-lg-2 col-sm-12 col-form-label">Pre-conditions</label>
                 <div className="col-lg-10 col-sm-12">
-                  <input className="form-control" type="text" placeholder="" />
+                  <input className="form-control" name="preConditions" value={usecaseDevelopment.preConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-lg-2 col-sm-12 col-form-label">Post-conditions</label>
                 <div className="col-lg-10 col-sm-12">
-                  <textarea className="form-control" placeholder="" rows={2} />
+                  <textarea className="form-control" name="postConditions" value={usecaseDevelopment.postConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-lg-2 col-sm-12 col-form-label">Usecase Flow</label>
                 <div className="col-lg-10 col-sm-12">
-                  <textarea className="form-control" placeholder="" rows={4} />
+                  <textarea className="form-control" name='usecaseFlow' value={usecaseDevelopment.usecaseFlow} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={4} />
                 </div>
               </div>
               <div className="form-group row">
@@ -381,31 +360,33 @@ const {activeStage}=this.state
             </div>
             <div className="form">
               <div className="form-group row">
-                  <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Prototype Link</label>
+                <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Prototype Link</label>
                 <div className="col-lg-9 col-sm-12">
-                  <input className="form-control" type="text" placeholder="" />
+                  <input className="form-control" name="prototypeLink" value={usecaseDevelopment.prototypeLink} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-sm-12 col-form-label">Usecase Design Screenshots</label>
                 <div className="col-sm-12">
                   <div className="upload-screenshots">
-                    <input type="file" id="file" className="form-control-file" />
+                    <input type="file" id="file" name="specs" onChange={(e) => this.handleSpecsFiles(e)} readOnly={editformData} className="form-control-file" />
                     <button className="btn btn-primary btn-upload" type="button">
                       <i className="fa fa-plus"></i> Add more Screenshots
                     </button>
                   </div>
                   <div className="row">
-                    <div className="col-md-2 col-sm-4">
+                    {usecaseDevelopment && usecaseDevelopment.specs&& usecaseDevelopment.specs.length>0?
+                    usecaseDevelopment.specs.map((value:any, index:any)=>(<div className="col-md-2 col-sm-4">
                       <div className="screenshot">
-                        <img src={screenshotImgOne} alt="" />
+                        <img src={URL.createObjectURL(value)} alt="" />
                       </div>
-                    </div>
-                    <div className="col-md-2 col-sm-4">
+                    </div>)):<></>
+  }
+                    {/* <div className="col-md-2 col-sm-4">
                       <div className="screenshot">
                         <img src={screenshotImgTwo} alt="" />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -416,7 +397,7 @@ const {activeStage}=this.state
         {createUsecase === false && uploadScreenshot === false ?
           <>
             <div className="workflow-data">
-              <div className="api-code">
+              {activeStage === 0 ? <React.Fragment>   <div className="api-code">
                 <div className="heading">
                   <h5>{'Usecase Development'}</h5>
                   <i className="fa fa-angle-down" aria-hidden="true"></i>
@@ -430,20 +411,20 @@ const {activeStage}=this.state
                   </button>
                 </div>
               </div>
-              <div className="api-code">
-                <div className="heading">
-                  <h5>{'Design Specs'}</h5>
-                  <i className="fa fa-angle-down" aria-hidden="true"></i>
-                </div>
-                <div className="api-content">
-                  <button className="btn btn-primary usecase-btn" onClick={() => this.uploadScreenshot()}>
-                    Upload
-                  </button>
-                  <button className="btn btn-primary usecase-btn">
-                    View Details
-                  </button>
-                </div>
-              </div>
+                <div className="api-code">
+                  <div className="heading">
+                    <h5>{'Design Specs'}</h5>
+                    <i className="fa fa-angle-down" aria-hidden="true"></i>
+                  </div>
+                  <div className="api-content">
+                    <button className="btn btn-primary usecase-btn" onClick={() => this.uploadScreenshot()}>
+                      Upload
+                    </button>
+                    <button className="btn btn-primary usecase-btn">
+                      View Details
+                    </button>
+                  </div>
+                </div></React.Fragment> : ""}
               {editformData !== "" && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
             </div>
             {activeStage === 0 ? <div className="workflow-view-table-section">
