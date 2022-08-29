@@ -58,21 +58,23 @@ export class WorkFlowView extends React.Component<any, any> {
 	}
 	
 	updateStep = (usecaseData: any, activeStageIndex: any) => {
-		let {useCase}=this.state;
-		let index = usecaseData.stepInput.S.stages[activeStageIndex].index ?
-		 usecaseData.stepInput.S.stages[activeStageIndex].index : activeStageIndex;
+		// let {useCase}=this.state;
+		// let index = usecaseData.stepInput.S.stages[activeStageIndex].index ?
+		//  usecaseData.stepInput.S.stages[activeStageIndex].index : activeStageIndex;
 
 		usecaseData.stepInput.S.stages[activeStageIndex].index = usecaseData.stepInput.S.stages[activeStageIndex].index ?
 		usecaseData.stepInput.S.stages[activeStageIndex].index : activeStageIndex;
 
-		let useCases = {
-			name: usecaseData.stepInput.S.name,
-			description: usecaseData.stepInput.S.description,
-			index,
-			assignTo: usecaseData.stepInput.S.assignTo,
-			stages: usecaseData.stepInput.S.stages[activeStageIndex]
-		}
-		this.props.updateWorkflowInput(useCase.usecaseName.S , JSON.stringify(useCases))
+		// let useCases = {
+		// 	name: usecaseData.stepInput.S.name,
+		// 	description: usecaseData.stepInput.S.description,
+		// 	index,
+		// 	assignTo: usecaseData.stepInput.S.assignTo,
+		// 	stages: usecaseData.stepInput.S.stages[activeStageIndex]
+		// }
+		let useCases={...usecaseData.stepInput.S.stages[activeStageIndex]}
+		console.log(useCases)
+		// this.props.updateWorkflowInput(useCase.usecaseName.S , JSON.stringify(useCases))
 	};
 
 
