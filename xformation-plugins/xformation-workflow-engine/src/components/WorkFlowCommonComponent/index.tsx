@@ -225,10 +225,10 @@ class WorkFlow extends React.Component<any, any> {
       createUsecase: false
     });
   }
-  resetInitalStateUsecaseDevelopment=()=>{
+  resetInitalStateUsecaseDevelopment = () => {
     const { initalStateUsecaseDevelopment, usecaseData } = this.state
     usecaseData.stepInput.S.stages[0].usecaseDevelopment = cloneDeep(initalStateUsecaseDevelopment)
-    this.setState({usecaseData,})
+    this.setState({ usecaseData, })
   }
   uploadScreenshot = () => {
     this.setState({
@@ -258,7 +258,7 @@ class WorkFlow extends React.Component<any, any> {
   handleSpecsFiles = (e: any) => {
     const { usecaseData } = this.state;
     const { name, files } = e.target
-    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name].push( files[0])
+    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name].push(files[0])
     this.setState(usecaseData)
   }
 
@@ -373,13 +373,13 @@ class WorkFlow extends React.Component<any, any> {
                     </button>
                   </div>
                   <div className="row">
-                    {usecaseDevelopment && usecaseDevelopment.specs&& usecaseDevelopment.specs.length>0?
-                    usecaseDevelopment.specs.map((value:any, index:any)=>(<div className="col-md-2 col-sm-4">
-                      <div className="screenshot">
-                        <img src={URL.createObjectURL(value)} alt="" />
-                      </div>
-                    </div>)):<></>
-  }
+                    {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
+                      usecaseDevelopment.specs.map((value: any, index: any) => (<div className="col-md-2 col-sm-4">
+                        <div className="screenshot">
+                          <img src={URL.createObjectURL(value)} alt="" />
+                        </div>
+                      </div>)) : <></>
+                    }
                     {/* <div className="col-md-2 col-sm-4">
                       <div className="screenshot">
                         <img src={screenshotImgTwo} alt="" />
@@ -423,7 +423,7 @@ class WorkFlow extends React.Component<any, any> {
                     </button>
                   </div>
                 </div></React.Fragment> : ""}
-              {editformData !== "" && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
+              {(editformData !== "" && activeStage !== 0) && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
             </div>
             {activeStage === 0 ? <div className="workflow-view-table-section">
               <div className='heading'>
