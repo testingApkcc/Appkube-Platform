@@ -3,8 +3,6 @@ import LinkData from '../CommonLinksData'
 import CommanCheckList from '../CommonCheckList';
 import CommanPlanningTable from '../CommonScrumPlanningTable'
 import actorsImg from '../../img/actors-img.png'
-import screenshotImgOne from '../../img/screenshot-img1.png'
-import screenshotImgTwo from '../../img/screenshot-img2.png'
 import { cloneDeep } from 'lodash';
 
 class WorkFlow extends React.Component<any, any> {
@@ -265,7 +263,7 @@ class WorkFlow extends React.Component<any, any> {
   }
 
   render() {
-    const { activeStage, usecaseData, userList, editformData, createUsecase, uploadScreenshot, initalStateUsecaseDevelopment } = this.state;
+    const { activeStage, usecaseData, userList, editformData, createUsecase, uploadScreenshot } = this.state;
     let usecaseDevelopment = usecaseData?.stepInput?.S?.stages[0]?.usecaseDevelopment ? usecaseData.stepInput.S.stages[0].usecaseDevelopment : {}
 
     return (<>
