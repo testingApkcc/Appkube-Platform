@@ -72,7 +72,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		// 	assignTo: usecaseData.stepInput.S.assignTo,
 		// 	stages: usecaseData.stepInput.S.stages[activeStageIndex]
 		// }
-		let useCases={...usecaseData.stepInput.S.stages[activeStageIndex]}
+		let useCases={useCaseName: usecaseData.stepInput.S.name,...usecaseData.stepInput.S.stages[activeStageIndex]}
 		console.log(useCases)
 		// this.props.updateWorkflowInput(useCase.usecaseName.S , JSON.stringify(useCases))
 	};
