@@ -27,7 +27,7 @@ export class OverView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		if (data && data.stepInput && data.stepInput.S) {
+		if (data && data.stepinput && data.stepinput) {
 			this.setState({
 				useCase: data
 			})
@@ -73,16 +73,16 @@ export class OverView extends React.Component<any, any> {
 						<div className="table">
 							<div className="thead">
 								<div className="th">Usecase</div>
-								{useCase?.stepInput?.S?.stages && useCase.stepInput.S.stages.length > 0 &&
-									useCase.stepInput.S.stages.map(({ name }: any, index: any) =>
+								{useCase?.stepinput?.stages && useCase.stepinput.stages.length > 0 &&
+									useCase.stepinput.stages.map(({ name }: any, index: any) =>
 										(<div className="th" key={`${name}${index}`}>{name}</div>))}
 
 							</div>
 							<div className="tbody">
 								<div className="tr">
-									<div className="td">{useCase?.usecaseName ? useCase.usecaseName.S : ''}</div>
-									{useCase?.stepInput?.S?.stages && useCase.stepInput.S.stages.length > 0 &&
-										useCase.stepInput.S.stages.map(({ name, details, workflowCheckList}: any, index: any) =>
+									<div className="td">{useCase?.usecasename ? useCase.usecasename : ''}</div>
+									{useCase?.stepinput?.stages && useCase.stepinput.stages.length > 0 &&
+										useCase.stepinput.stages.map(({ name, details, workflowCheckList}: any, index: any) =>
 											(<div className="td" key={`${name}${index}`}>{this.checkValuesValidation(workflowCheckList)}</div>))}
 								</div>
 							</div>

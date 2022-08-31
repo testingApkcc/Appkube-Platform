@@ -9,10 +9,11 @@ this.state={}
 
 render(){
     const { usecaseData, activeStage, handleStateChangeCheckList, disabledEditForm } = this.props;
+    
     return(
         <React.Fragment>
-            {usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length>0 ?
- usecaseData.stepInput.S.stages[activeStage].workflowCheckList.map((row:any,index:any)=><div key={`${index}checkbox${activeStage}`} className="requirement-data">
+            {usecaseData && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length>0 ?
+ usecaseData.stepinput.stages[activeStage].workflowCheckList.map((row:any,index:any)=><div key={`${index}checkbox${activeStage}`} className="requirement-data">
         <input
             type="checkbox"
             checked={row.checked}

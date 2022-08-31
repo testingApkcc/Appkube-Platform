@@ -19,8 +19,8 @@ class CommanPlanningTable extends React.Component<any, any>{
         const { props } = this.props;
         return (
             <React.Fragment>
-                {props.usecaseData?.stepInput?.S?.stages&& props.usecaseData.stepInput.S.stages.length>0?
-                    props.usecaseData.stepInput.S.stages.map(
+                {props.usecaseData?.stepinput?.stages&& props.usecaseData.stepinput.stages.length>0?
+                    props.usecaseData.stepinput.stages.map(
                         (stage: any, index: any) => {
                             return (
                                 <React.Fragment>

@@ -8,8 +8,7 @@ export class LinkData extends React.Component<any, any> {
     }
     render() {
         const { usecaseData, activeStage, disabledEditForm, handleStateChange, updateStep } = this.props
-        const workflowDetail = usecaseData?.stepInput?.S?.stages[activeStage];
-
+        const workflowDetail = usecaseData?.stepinput?.stages[activeStage];
         return (
             <React.Fragment>
                 {workflowDetail?.details.length > 0 ?

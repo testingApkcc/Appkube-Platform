@@ -210,11 +210,10 @@ export class AssetOverView extends React.Component<any, any> {
 				this.awsHelper.getExecutionHistory(
 					"arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
 					(items: any) => {
-						if (useCase?.stepInput?.S && useCase.stepInput.S.indexOf("stages")!==-1 ){
+						if (useCase?.stepinput ){
 							
 						const useCases = this.state.useCaseList;
-						useCase.stepInput.S=JSON.parse(useCase.stepInput.S)
-						if (useCase.stepInput.S.stages.length>0){
+						if (useCase.stepinput.stages.length>0){
 						useCases.push({
 							...useCase,
 							steps: items,
@@ -248,10 +247,10 @@ export class AssetOverView extends React.Component<any, any> {
 		if (useCaseList && useCaseList.length > 0) {
 			for (let i = 0; i < useCaseList.length; i++) {
 				let row= useCaseList[i];
-				if (row?.usecaseName?.S){
+				if (row?.usecasename){
 				retData.push(
 					<li className={i == activeUseCaseIndex ? 'active' : ''}  onClick={()=>this.setState({activeUseCaseIndex:i})}>
-						<span>{row?.usecaseName?.S}</span>
+						<span>{row?.usecasename}</span>
 					</li>
 				);
 				}
@@ -261,8 +260,7 @@ export class AssetOverView extends React.Component<any, any> {
 	};
 
 	render() {
-		const {useCaseList }=this.state;
-		console.log(this.props.history,'props')
+		const {useCaseList}=this.state;
 		return (
 			<div className="asset-over-view-container">
 				<div className="asset-over-view-section">
@@ -323,8 +321,8 @@ export class AssetOverView extends React.Component<any, any> {
 									<span className="line2" />
 									<span className="line3" />
 								</div>
-								{useCaseList[this.state.activeUseCaseIndex]?.stepInput?.S?.stages && <div className="row">
-								<AssetOverViewReusableComp usecaseList={useCaseList[this.state.activeUseCaseIndex].stepInput.S.stages}/>
+								{useCaseList[this.state.activeUseCaseIndex]?.stepinput?.stages && <div className="row">
+								<AssetOverViewReusableComp usecaseList={useCaseList[this.state.activeUseCaseIndex].stepinput.stages}/>
 								</div>}
 							</div>
 						</div>

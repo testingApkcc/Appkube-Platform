@@ -30,7 +30,7 @@ class WorkFlow extends React.Component<any, any> {
   }
   componentDidUpdate(prevProps: any, prevState: any) {
     if (this.props.usecaseData !== prevProps.usecaseData) {
-      this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.usecaseData.stepInput.S.stages[0].usecaseDevelopment) })
+      this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.usecaseData.stepinput.stages[0].usecaseDevelopment) })
       this.setState({
         usecaseData: cloneDeep(this.props.usecaseData),
         // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
@@ -59,9 +59,9 @@ class WorkFlow extends React.Component<any, any> {
     const { activeStage, usecaseData } = this.state;
 
     let retData = [];
-    if (usecaseData && usecaseData.stepInput && usecaseData.stepInput.S && usecaseData.stepInput.S.stages && usecaseData.stepInput.S.stages.length > 0) {
-      for (let i = 0; i < usecaseData.stepInput.S.stages.length; i++) {
-        let row = usecaseData.stepInput.S.stages[i];
+    if ( usecaseData?.stepinput?.stages?.length && usecaseData.stepinput.stages.length > 0) {
+      for (let i = 0; i < usecaseData.stepinput.stages.length; i++) {
+        let row = usecaseData.stepinput.stages[i];
         let status = (row: any) => {
           if (row.status) {
             return row.status
@@ -125,7 +125,7 @@ class WorkFlow extends React.Component<any, any> {
     if (!editFormData) {
       const { usecaseData, activeStage } = this.state;
       const { name, value } = event.target;
-      const workflowDetail: any = usecaseData.stepInput.S.stages[activeStage];
+      const workflowDetail: any = usecaseData.stepinput.stages[activeStage];
       if (workflowDetail.details) {
         workflowDetail.details[index].data[0][name] = value;
       }
@@ -141,7 +141,7 @@ class WorkFlow extends React.Component<any, any> {
       const { checked } = e.target;
       const { usecaseData, activeStage } = this.state;
       let count = 0;
-      const workflowDetail: any = usecaseData.stepInput.S.stages[activeStage];
+      const workflowDetail: any = usecaseData.stepinput.stages[activeStage];
       if (workflowDetail.workflowCheckList) {
         workflowDetail.workflowCheckList[index]['checked'] = checked;
         for (let i = 0; i < workflowDetail.workflowCheckList.length; i++) {
@@ -151,11 +151,11 @@ class WorkFlow extends React.Component<any, any> {
         }
       }
       if (count == workflowDetail.workflowCheckList.length) {
-        usecaseData.stepInput.S.stages[activeStage]['status'] = 'completed';
+        usecaseData.stepinput.stages[activeStage]['status'] = 'completed';
       } else if (count < workflowDetail.workflowCheckList.length) {
-        usecaseData.stepInput.S.stages[activeStage]['status'] = 'inprogress';
+        usecaseData.stepinput.stages[activeStage]['status'] = 'inprogress';
       } else if (count == 0) {
-        usecaseData.stepInput.S.stages[activeStage]['status'] = '';
+        usecaseData.stepinput.stages[activeStage]['status'] = '';
       }
       this.setState({
         usecaseData
@@ -172,14 +172,14 @@ class WorkFlow extends React.Component<any, any> {
   moveToNextPage = (type: any) => {
     const { usecaseData, activeStage } = this.state;
     if (type == 'next') {
-      if (usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0 && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length! > activeStage
+      if (usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0 && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length! > activeStage
       ) {
         this.setState({
           activeStage: activeStage + 1
         });
       }
     } else {
-      if (usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0) {
+      if (usecaseData && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0) {
         let index = activeStage - 1;
         this.setState({
           activeStage: index
@@ -207,8 +207,8 @@ class WorkFlow extends React.Component<any, any> {
   setUseCaseData = (index: any) => {
     const { useCaseList, } = this.state
     let data = useCaseList[index]
-    if (data && data.stepInput && data.stepInput.S) {
-      data = data.stepInput.S;
+    if (data && data.stepinput && data.stepinput.S) {
+      data = data.stepinput.S;
       this.setState({ usecaseData: data.stages })
     }
     this.setState({ activeUseCaseIndex: index })
@@ -227,7 +227,7 @@ class WorkFlow extends React.Component<any, any> {
   }
   resetInitalStateUsecaseDevelopment = () => {
     const { initalStateUsecaseDevelopment, usecaseData } = this.state
-    usecaseData.stepInput.S.stages[0].usecaseDevelopment = cloneDeep(initalStateUsecaseDevelopment)
+    usecaseData.stepinput.stages[0].usecaseDevelopment = cloneDeep(initalStateUsecaseDevelopment)
     this.setState({ usecaseData, })
   }
   uploadScreenshot = () => {
@@ -245,31 +245,31 @@ class WorkFlow extends React.Component<any, any> {
   handleSelectActors = (e: any, index: any | null) => {
     const { name, checked } = e.target;
     const { usecaseData } = this.state;
-    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name][index].isChecked = checked
+    usecaseData.stepinput.stages[0].usecaseDevelopment[name][index].isChecked = checked
     this.setState(usecaseData)
   }
 
   handleusecaseDevelopmentState = (e: any) => {
     const { name, value } = e.target;
     const { usecaseData } = this.state;
-    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name] = value
+    usecaseData.stepinput.stages[0].usecaseDevelopment[name] = value
     this.setState(usecaseData)
   }
   handleSpecsFiles = (e: any) => {
     const { usecaseData } = this.state;
     const { name, files } = e.target
-    usecaseData.stepInput.S.stages[0].usecaseDevelopment[name].push(files[0])
+    usecaseData.stepinput.S.stages[0].usecaseDevelopment[name].push(files[0])
     this.setState(usecaseData)
   }
 
   render() {
     const { activeStage, usecaseData, userList, editformData, createUsecase, uploadScreenshot } = this.state;
-    let usecaseDevelopment = usecaseData?.stepInput?.S?.stages[0]?.usecaseDevelopment ? usecaseData.stepInput.S.stages[0].usecaseDevelopment : {}
+    let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
 
     return (<>
       <div className="project-over-view-right-content">
         <div className="workflow-stage">
-          {usecaseData && usecaseData.stepInput && usecaseData.stepInput.S && usecaseData.stepInput.S.stages && usecaseData.stepInput.S.stages.length > 0 && <ul>{this.displayWorkflowStage()}</ul>}
+          {usecaseData?.stepinput?.stages?.length && usecaseData.stepinput.stages.length > 0 && <ul>{this.displayWorkflowStage()}</ul>}
         </div>
         {createUsecase === true ?
           <div className="usecase-form">
@@ -291,8 +291,8 @@ class WorkFlow extends React.Component<any, any> {
                 <div className="col-lg-10 col-sm-12">
                   <div className='row'>
                     {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
-                    {usecaseData?.stepInput?.S?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
-                      usecaseData.stepInput.S.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
+                    {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
+                      usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
                         <div className="col-lg-3 col-md-4 col-sm-6">
                           <div className="select-actors">
                             <input className="form-check-input" key={val.key} name="selectActors"
@@ -339,7 +339,7 @@ class WorkFlow extends React.Component<any, any> {
               </div>
               <div className="form-group row">
                 <div className="col-sm-12 text-right">
-                  <button className="btn btn-primary save-btn">
+                  <button className="btn btn-primary save-btn" onClick={()=>this.updateForm(usecaseData)}>
                     Save
                   </button>
                 </div>
@@ -423,7 +423,7 @@ class WorkFlow extends React.Component<any, any> {
                     </button>
                   </div>
                 </div></React.Fragment> : ""}
-              {(editformData !== "" && activeStage !== 0) && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
+              {editformData !== ""  && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
             </div>
             {activeStage === 0 ? <div className="workflow-view-table-section">
               <div className='heading'>
@@ -442,7 +442,7 @@ class WorkFlow extends React.Component<any, any> {
                       <th>Deviation</th>
                     </tr>
                   </thead>
-                  {usecaseData && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0 ?
+                  {usecaseData && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0 ?
                     <tbody><CommanPlanningTable props={{ handleStateChange: this.handleStateChange, usecaseData, disabledEditForm: editformData, userList: userList, activeStage, ...this.props }} />
                     </tbody> : <React.Fragment></React.Fragment>}
                 </table>
@@ -452,7 +452,7 @@ class WorkFlow extends React.Component<any, any> {
               <div className="heading">
                 <h5>Checklist for Requirements</h5>
               </div>
-              {editformData !== "" && usecaseData?.stepInput?.S?.stages[activeStage]?.workflowCheckList?.length > 0 ? <React.Fragment>
+              {editformData !== "" && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0 ? <React.Fragment>
                 <CommanCheckList usecaseData={usecaseData}
                   activeStage={activeStage} handleStateChangeCheckList={this.handleStateChangeCheckList}
                   disabledEditForm={editformData} />
@@ -470,7 +470,7 @@ class WorkFlow extends React.Component<any, any> {
               {usecaseData && (
                 <button
                   type="button"
-                  disabled={usecaseData?.stepInput?.S?.stages.length - 1 === activeStage}
+                  disabled={usecaseData?.stepinput?.stages.length - 1 === activeStage}
                   className="btn btn-primary previous-btn next-btn"
                   onClick={() => this.moveToNextPage('next')}
                 >

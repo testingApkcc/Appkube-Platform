@@ -39,7 +39,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Requirements',
 					description: '',
-					index:1,
+					index:0,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
@@ -108,7 +108,7 @@ export class CreateUsecase extends React.Component<any, any> {
 					name: 'Mock Development',
 					description: '',
 					assignedTo: '',
-					index:2,
+					index:1,
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
@@ -164,7 +164,7 @@ export class CreateUsecase extends React.Component<any, any> {
 					name: 'Actual Development',
 					description: '',
 					assignedTo: '',
-					index:3,
+					index:2,
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
@@ -259,7 +259,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'CI/CD/TEST',
 					description: '',
-					index:4,
+					index:3,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
@@ -331,7 +331,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Stage / Release',
 					description: '',
-					index:5,
+					index:4,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
@@ -387,7 +387,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Publish/Operate',
 					description: '',
-					index:6,
+					index:5,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
@@ -470,9 +470,8 @@ export class CreateUsecase extends React.Component<any, any> {
 						this.awsHelper.getExecutionHistory(
 							'arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab',
 							(items: any) => {
-								if (useCase?.stepInput?.S ){
-									useCase.stepInput.S=JSON.parse(useCase.stepInput.S)
-									if (useCase?.stepInput?.S?.stages?.length>0){
+								if (useCase?.stepinput ){
+									if (useCase?.stepinput?.stages?.length>0){
 								const useCases = this.state.useCaseList;
 								useCases.push({
 									...useCase,
@@ -687,10 +686,10 @@ export class CreateUsecase extends React.Component<any, any> {
 		if (useCaseList && useCaseList.length > 0) {
 			for (let i = 0; i < useCaseList.length; i++) {
 				let useCase = { ...useCaseList[i] };
-				// if (useCase.stepInput.S.indexOf("stages") !== -1) {
+				// if (useCase.stepinput.S.indexOf("stages") !== -1) {
 					retData.push(
 						<li className={i === activeUsecaseIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
-							<span>{useCase.usecaseName.S}</span>
+							<span>{useCase.usecasename}</span>
 						</li>
 					);
 				// }
@@ -712,8 +711,8 @@ export class CreateUsecase extends React.Component<any, any> {
 		let { usecase } = this.state
 		const { useCaseList } = this.state
 		if (index >= 0) {
-			if (useCaseList[index]?.stepInput ) {
-				let parseUserData= useCaseList[index].stepInput.S
+			if (useCaseList[index]?.stepinput ) {
+				let parseUserData= useCaseList[index].stepinput
 				usecase.name = parseUserData.name
 				this.setState({ activeUsecaseIndex: index, stages:parseUserData.stages, usecase })
 			}
@@ -724,7 +723,9 @@ export class CreateUsecase extends React.Component<any, any> {
 
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
-		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity, } = this.state;
+		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity, useCaseList } = this.state;
+		console.log(useCaseList)
+
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">

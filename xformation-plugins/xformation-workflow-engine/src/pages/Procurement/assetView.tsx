@@ -182,10 +182,10 @@ export class AssetView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		if (data && data.stepInput && data.stepInput.S && data.stepInput.S.stages && data.stepInput.S.stages.length > 0) {
+		if ( data?.stepinput?.stages?.length && data.stepinput.stages.length > 0) {
 			this.setState({
 				useCase: data,
-				usecaseList: data.stepInput.S.stages
+				usecaseList: data.stepinput.stages
 			});
 		}
 	};

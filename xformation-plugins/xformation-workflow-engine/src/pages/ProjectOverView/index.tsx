@@ -34,14 +34,14 @@ export class ProjectOverView extends React.Component<any, any> {
     this.setState({ useCaseName: this.props.match.params.id })
     this.awsHelper.getUsecaseList((useCaseList: any) => {
       useCaseList.forEach((useCase: any) => {
-        if (useCase && useCase.stepInput && useCase.stepInput.S && useCase.stepInput.S.indexOf("stages") !== -1) {
-          useCase.stepInput.S = JSON.parse(useCase.stepInput.S);
-          if (useCase?.stepInput?.S?.stages?.length>0){
+        if ( useCase?.stepinput ) {
+          useCase.stepinput = useCase.stepinput;
+          if (useCase?.stepinput?.stages?.length>0){
           this.awsHelper.getExecutionHistory(
             "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
             (items: any) => {
               const useCases = this.state.useCaseList;
-              // if (useCase.stepInput.S.stages.length>0){
+              // if (useCase.stepinput.S.stages.length>0){
               useCases.push({
                 ...useCase,
                 steps: items,
@@ -85,7 +85,7 @@ export class ProjectOverView extends React.Component<any, any> {
         retData.push(
           <li className={i == activeUseCaseIndex ? "active" : ''}  onClick={() => !this.state.disabledNavList ? this.setUseCaseData(i):""}>
             {/* <Link to="/"> */}
-            <span>{useCaseList[i].usecaseName.S}</span>
+            <span>{useCaseList[i].usecasename}</span>
             {/* </Link> */}
           </li>
         )
@@ -97,7 +97,7 @@ export class ProjectOverView extends React.Component<any, any> {
     const { useCaseList } = this.state
 
     let data = useCaseList[index]
-    if (data && data.stepInput && data.stepInput.S) {
+    if (data?.stepinput) {
       this.setState({ usecaseData: data })
     }
     this.setState({ activeUseCaseIndex: index, activeStage: 0 })

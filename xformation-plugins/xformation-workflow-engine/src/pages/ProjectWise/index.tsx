@@ -216,15 +216,15 @@ export class ProjectWise extends React.Component<any, any> {
 								<div className="tbody">
 									{useCaseList &&
 										useCaseList.map((useCase: any, index: any) => {
-											let checkList = JSON.parse(useCase.stepInput.S)
+											let checkList = useCase?.stepinput? useCase.stepinput:""
 											if (checkList.stages && checkList.stages.length > 0) {
 												return (
 													<div className="tr" key={`usecase-${index}`}>
 														<div className="td">
 															<Link
-																to={`/a/xformation-workflow-engine/procurement-detail/${useCase.usecaseName.S}`}
+																to={`/a/xformation-workflow-engine/procurement-detail/${useCase.usecasename}`}
 															>
-																{useCase.usecaseName.S}
+																{useCase.usecasename}
 															</Link>
 														</div>
 														{checkList.stages && checkList.stages.length > 0 ?

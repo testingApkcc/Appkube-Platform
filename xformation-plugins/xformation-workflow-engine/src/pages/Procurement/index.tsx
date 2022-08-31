@@ -70,11 +70,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     const { useCase } = this.state;
     if (useCase) {
       let data = { ...useCase }
-      if (this.IsJsonString(useCase.stepInput.S) === true) {
-        data.stepInput.S = JSON.parse(data.stepInput.S);
-        this.passValuesToChildWithRef(data)
-      }
-      else if (typeof useCase.stepInput.S === "object" && useCase.stepInput.S.stages.length > 0) {
+       if ( useCase?.stepinput?.stages && useCase.stepinput.stages.length > 0) {
         this.passValuesToChildWithRef(data)
       }
       else {
@@ -100,14 +96,21 @@ export class ProcurementDetail extends React.Component<any, any> {
     }
   } 
 
-  updateWorkflowInput = (usecaseName: any, setInputs: any) => {
-    this.awsHelper.usecaseInputToDynamoDb(usecaseName, setInputs, (res: any) => {
-      this.setState({
-        isAlertOpen: true,
-        message: res,
-        severity: 'success'
-      })
-    });
+  updateWorkflowInput = ( usecaseData: any) => {
+    let updateUseCaseData={
+      usecaseName: usecaseData.useCaseName,
+      stepinput: usecaseData.stageData    
+    };
+    this.awsHelper.updateStageToDB(updateUseCaseData,(err:any)=>{console.log(err)}, (res:any)=>{
+      console.log(res)
+    } )
+    // this.awsHelper.updateStageToDB( setInputs, (res: any) => {
+    //   this.setState({
+    //     isAlertOpen: true,
+    //     message: res,
+    //     severity: 'success'
+    //   })
+    // });
   }
 
   handleCloseAlert = () => {
