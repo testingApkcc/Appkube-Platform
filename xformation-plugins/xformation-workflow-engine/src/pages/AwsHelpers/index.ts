@@ -242,6 +242,33 @@ export class AwsHelper {
     // });
   }
 
+  updateStageToDB(params: any) {
+    console.log(params);
+
+    if (params.usecaseName == '') {
+      console.log('Please, give an usecase name');
+    } else {
+      let inputForpg = {
+        stepInput: params.stepinput,
+        usecaseName: params.usecaseName,
+      };
+
+      var pgParams1 = {
+        FunctionName: 'stepFunction_with_psql_usecase_input' /* required */,
+        Payload: JSON.stringify(inputForpg),
+      };
+      console.log(pgParams1);
+
+      this.lambda.invoke(pgParams1, function (err: any, data: any) {
+        if (err) console.log(err, err.stack);
+        // an error occurred
+        else console.log('from pg', data); // successful response
+      });
+
+      // getUsecaseInputData();
+    }
+  }
+
   addJsonOnExecution(usecaseName: any, stepInput: any, onDone: any) {
     let inputForpg = {
       stepInput: stepInput,
@@ -261,24 +288,24 @@ export class AwsHelper {
     });
   }
 
-  updateStageToDB(params: any, onError: any, onDone: any) {
-    // let inputForpg = {
-    //   stepInput: JSON.parse(singleStepInput),
-    //   usecaseName: useCaseName
-    // };
-    var pgParams1 = {
-      FunctionName: 'stepFunction_with_psql_usecase_input' /* required */,
-      Payload: JSON.stringify(params),
-    };
+  // updateStageToDB(params: any, onError: any, onDone: any) {
+  //   // let inputForpg = {
+  //   //   stepInput: JSON.parse(singleStepInput),
+  //   //   usecaseName: useCaseName
+  //   // };
+  //   var pgParams1 = {
+  //     FunctionName: 'stepFunction_with_psql_usecase_input' /* required */,
+  //     Payload: JSON.stringify(params),
+  //   };
 
-    this.lambda.invoke(pgParams1, function (err: any, data: any) {
-      if (err) {
-        console.log(err, err.stack); // an error occurred
-        onError(err);
-      } else {
-        console.log(data);
-        onDone && onDone(data);
-      }
-    });
-  }
+  //   this.lambda.invoke(pgParams1, function (err: any, data: any) {
+  //     if (err) {
+  //       console.log(err, err.stack); // an error occurred
+  //       onError(err);
+  //     } else {
+  //       console.log(data);
+  //       onDone && onDone(data);
+  //     }
+  //   });
+  // }
 }

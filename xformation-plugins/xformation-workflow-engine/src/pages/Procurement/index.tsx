@@ -98,13 +98,13 @@ export class ProcurementDetail extends React.Component<any, any> {
 
   updateWorkflowInput = ( usecaseData: any) => {
     let updateUseCaseData={
-      usecaseName: usecaseData.useCaseName,
+      usecaseName: usecaseData.usecaseName,
       stepinput: usecaseData.stageData    
     };
     this.awsHelper.updateStageToDB(updateUseCaseData,(err:any)=>{console.log(err)}, (res:any)=>{
       console.log(res)
     } )
-    // this.awsHelper.updateStageToDB( setInputs, (res: any) => {
+    // this.awsHelper.updateStageToDB( updateUseCaseData, (res: any) => {
     //   this.setState({
     //     isAlertOpen: true,
     //     message: res,
