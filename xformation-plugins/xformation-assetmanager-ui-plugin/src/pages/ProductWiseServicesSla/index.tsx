@@ -26,7 +26,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			},
 			accountId: '',
 			tableData: [],
-			serviceType: 'PROD',
+			environmentType: 'PROD',
 			productName: 'AUCTION'
 		};
 		this.breadCrumbs = [
@@ -67,32 +67,25 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		// let nodeIndex = 1;
 		// let clusterIndex = 1;
 		services.forEach((service: any) => {
-			const { serviceNature, associatedProduct, associatedEnv, serviceType } = service.details;
+			const { serviceNature, associatedProduct, associatedEnv, serviceType } = service.metadata_json;
 			const node = treeData[associatedProduct] || {};
 			const clusterData = node[associatedEnv] || {};
 			const environmentData = clusterData[serviceNature] || {};
-			const assiciatedServiceData = environmentData[serviceType] || {};
-			const productData = assiciatedServiceData[serviceType] || {};
-			const serviceData = assiciatedServiceData[serviceType] || {
+			const assiciatedServiceData = environmentData[serviceType] || {
 				services: []
 			};
-			if (serviceData && serviceData.services) {
-				serviceData.services.push({
-					...service.details
+			if (assiciatedServiceData && assiciatedServiceData.services) {
+				assiciatedServiceData.services.push({
+					...service.metadata_json
 				});
 			}
-			productData[serviceType] = serviceData;
-			// let associatedServiceName = '';
-			// if (serviceNature === 'Business') {
-			// 	associatedServiceName = associatedBusinessService;
-			// } else {
-			// 	associatedServiceName = associatedCommonService;
-			// }
-			environmentData[serviceType] = productData;
+			
+			environmentData[serviceType] = assiciatedServiceData;
 			clusterData[serviceNature] = environmentData;
 			node[associatedEnv] = clusterData;
 			treeData[associatedProduct] = node;
 		});
+		console.log(treeData);
 		this.setState({
 			tableData: treeData,
 			filterData
@@ -171,38 +164,40 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	displayServiceSLA = () => {
-		let { tableData, serviceType, auctionchartData, productName } = this.state;
+		let { tableData, auctionchartData, productName } = this.state;
 		let retData: any = [];
 		let labels: any = [];
 		if (tableData) {
-			Object.keys(tableData).map((key, index) => {
+			const products = Object.keys(tableData);
+			products.map((product, index) => {
 				let appcount = 0;
 				let datacount = 0;
 				let data: any = {};
 				let chartticksdata: any = [];
 				let chart: any = {};
-				chart[key] = chart[key] || {};
-				chart[key] = auctionchartData;
+				chart[product] = chart[product] || {};
+				chart[product] = auctionchartData;
 				let totalCount = 0;
 				let envCount = 0;
-				Object.keys(tableData[key]).map((service, i) => {
+				const environments = Object.keys(tableData[product]);
+				let serviceByType: any = {};
+				environments.map((environment, i) => {
 					envCount = envCount + 1;
-					if (service == serviceType) {
-						let serviceByType: any = {};
-						Object.keys(tableData[key][service]).map((serviceName, j) => {
-							Object.keys(tableData[key][service][serviceName]).map((servicetype) => {
+						const servicesType = tableData[product][environment];
+						Object.keys(servicesType).map((serviceName, j) => {
+							Object.keys(servicesType[serviceName]).map((servicetype) => {
 								if (servicetype === 'Data') {
 									datacount =
-										datacount + tableData[key][service][serviceName][servicetype].services.length;
+										datacount + servicesType[serviceName][servicetype].services.length;
 								} else if (servicetype === 'App') {
 									appcount =
-										appcount + tableData[key][service][serviceName][servicetype].services.length;
+										appcount + servicesType[serviceName][servicetype].services.length;
 								}
 								if (
-									tableData[key][service][serviceName][servicetype]['services'] &&
-									tableData[key][service][serviceName][servicetype]['services'].length > 0
+									servicesType[serviceName][servicetype]['services'] &&
+									servicesType[serviceName][servicetype]['services'].length > 0
 								) {
-									let servicearry = tableData[key][service][serviceName][servicetype]['services'];
+									let servicearry = servicesType[serviceName][servicetype]['services'];
 									serviceByType['performance'] = serviceByType['performance'] || 0;
 									serviceByType['availability'] = serviceByType['availability'] || 0;
 									serviceByType['security'] = serviceByType['security'] || 0;
@@ -220,40 +215,45 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 										serviceByType['End Usage'] =
 											serviceByType['End Usage'] + servicearry[i].userExperiance['score'];
 
-										totalCount = totalCount + parseInt(servicearry[i].stats.totalCostSoFar);
+										// totalCount = totalCount + parseInt(servicearry[i].stats.totalCostSoFar);
 									}
 								}
 							});
 						});
-						for (var val in serviceByType) {
-							data[val] = serviceByType[val] || 0;
-							data[val] = data[val] + serviceByType[val];
-							if (labels && labels.length > 0) {
-								for (let j = 0; j < labels.length; j++) {
-									if (labels.indexOf(val) === -1) {
-										labels.push(val);
-									}
-								}
-							} else {
+				});
+				debugger
+				serviceByType['performance'] = serviceByType['performance'] / (appcount+datacount);
+				serviceByType['availability'] = serviceByType['availability'] / (appcount+datacount);
+				serviceByType['security'] = serviceByType['security'] / (appcount+datacount);
+				serviceByType['Reliabillity'] = serviceByType['Reliabillity'] / (appcount+datacount); 
+				serviceByType['End Usage'] = serviceByType['End Usage'] / (appcount+datacount);
+				for (var val in serviceByType) {
+					data[val] = serviceByType[val] || 0;
+					// data[val] = data[val] + serviceByType[val];
+					if (labels && labels.length > 0) {
+						for (let j = 0; j < labels.length; j++) {
+							if (labels.indexOf(val) === -1) {
 								labels.push(val);
 							}
 						}
-						Object.keys(data).map((ser, ind) => {
-							chartticksdata.push(data[ser]);
-						});
+					} else {
+						labels.push(val);
 					}
+				}
+				Object.keys(data).map((ser, ind) => {
+					chartticksdata.push(data[ser]);
 				});
-				chart[key].labels = labels;
-				chart[key].datasets[0].data = chartticksdata;
+				chart[product].labels = labels;
+				chart[product].datasets[0].data = chartticksdata;
 				chartticksdata = [];
 				retData.push(
 					<div
-						className={key == productName ? "services-sla-box active" : "services-sla-box"}
+						className={product == productName ? "services-sla-box active" : "services-sla-box"}
 						onClick={() => {
-							this.setState({ productName: key });
+							this.setState({ productName: product });
 						}}
 					>
-						<a className="heading">{key}</a>
+						<a className="heading">{product}</a>
 						<div className="contents">
 							<ul>
 								<li>
@@ -271,7 +271,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 							</ul>
 							<div className="production-chart">
 								<Bar
-									data={chart[key]}
+									data={chart[product]}
 									height={200}
 									width={350}
 									ref={React.createRef()}
@@ -312,7 +312,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	displayEnvServices = () => {
-		const { tableData, serviceType, productName } = this.state;
+		const { tableData, environmentType, productName } = this.state;
 		let retData: any = [];
 		let serviceList: any = [];
 		if (tableData) {
@@ -333,9 +333,9 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				for (let i = 0; i < serviceList.length; i++) {
 					retData.push(
 						<li
-							className={serviceType == serviceList[i] ? 'active' : ''}
+							className={environmentType == serviceList[i] ? 'active' : ''}
 							onClick={() => {
-								this.setState({ serviceType: serviceList[i] });
+								this.setState({ environmentType: serviceList[i] });
 							}}
 						>
 							{serviceList[i]}
@@ -348,15 +348,15 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	displayServiceData = () => {
-		const { tableData, serviceType, productName } = this.state;
+		const { tableData, environmentType, productName } = this.state;
 		let retServiceData: any = [];
 		let servicesJSX: any = [];
 		Object.keys(tableData).map((key, index) => {
 			if (key === productName) {
 				Object.keys(tableData[key]).map((service, i) => {
-					if (service == serviceType) {
-						let serviceByType: any = {};
+					if (service == environmentType) {
 						Object.keys(tableData[key][service]).map((serviceName, j) => {
+							let serviceByType: any = {};
 							servicesJSX = [];
 							Object.keys(tableData[key][service][serviceName]).map((servicetype) => {
 								let servicearry = tableData[key][service][serviceName][servicetype]['services'];
@@ -395,13 +395,13 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 													serviceByType['End Usage']}
 											</div>
 											<div className="quality-score-text">
-												Quality Score :{' '}
-												{(serviceByType['performance'] +
-													serviceByType['availability'] +
-													serviceByType['security'] +
-													serviceByType['Reliabillity'] +
-													serviceByType['End Usage']) /
-													5}%
+												Quality Score :
+												{((serviceByType['performance']/servicearry.length +
+													serviceByType['availability']/servicearry.length +
+													serviceByType['security']/servicearry.length +
+													serviceByType['Reliabillity']/servicearry.length +
+													serviceByType['End Usage']/servicearry.length) /5).toFixed(2)
+													}%
 											</div>
 											<ul>
 												<li>
