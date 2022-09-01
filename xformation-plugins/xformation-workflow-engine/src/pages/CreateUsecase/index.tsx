@@ -606,7 +606,7 @@ export class CreateUsecase extends React.Component<any, any> {
 			}
 			let params = {
 				stateMachineArn: 'arn:aws:states:us-east-1:657907747545:stateMachine:send-to-pre-state',
-				input: JSON.stringify(usecaseJson),
+				input: usecaseJson,
 				usecaseName: usecase.name
 			};
 			// let dataForXlm = '<?xml version="1.0" encoding="UTF-8"?><Note>';
@@ -623,7 +623,7 @@ export class CreateUsecase extends React.Component<any, any> {
 		}
 		else {
 
-			let usecaseName = useCaseList[activeUsecaseIndex].usecaseName.S
+			let usecaseName = useCaseList[activeUsecaseIndex].usecaseName
 			let setInputs = {
 				name: usecase.name,
 				description: usecase.description,
@@ -724,8 +724,7 @@ export class CreateUsecase extends React.Component<any, any> {
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
 		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity, useCaseList } = this.state;
-		console.log(useCaseList)
-
+console.log(useCaseList)
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">
