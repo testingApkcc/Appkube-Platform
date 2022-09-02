@@ -59,7 +59,7 @@ class WorkFlow extends React.Component<any, any> {
     const { activeStage, usecaseData } = this.state;
 
     let retData = [];
-    if ( usecaseData?.stepinput?.stages?.length && usecaseData.stepinput.stages.length > 0) {
+    if (usecaseData?.stepinput?.stages?.length && usecaseData.stepinput.stages.length > 0) {
       for (let i = 0; i < usecaseData.stepinput.stages.length; i++) {
         let row = usecaseData.stepinput.stages[i];
         let status = (row: any) => {
@@ -167,6 +167,10 @@ class WorkFlow extends React.Component<any, any> {
   updateForm = (data: any) => {
     const { activeStage } = this.state
     this.props.updateStep(data, activeStage)
+    this.setState({
+      createUsecase: false,
+      uploadScreenshot: false
+    })
   }
 
   moveToNextPage = (type: any) => {
@@ -339,7 +343,7 @@ class WorkFlow extends React.Component<any, any> {
               </div>
               <div className="form-group row">
                 <div className="col-sm-12 text-right">
-                  <button className="btn btn-primary save-btn" onClick={()=>this.updateForm(usecaseData)}>
+                  <button className="btn btn-primary save-btn" onClick={() => this.updateForm(usecaseData)}>
                     Save
                   </button>
                 </div>
@@ -423,7 +427,7 @@ class WorkFlow extends React.Component<any, any> {
                     </button>
                   </div>
                 </div></React.Fragment> : ""}
-              {editformData !== ""  && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
+              {editformData !== "" && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
             </div>
             {activeStage === 0 ? <div className="workflow-view-table-section">
               <div className='heading'>

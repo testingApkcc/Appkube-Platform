@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { AwsHelper } from '../AwsHelpers';
 import AlertMessage from '../../components/AlertMessage';
 
+
 export class ProcurementDetail extends React.Component<any, any> {
   breadCrumbs: any;
   stepper: any;
@@ -102,17 +103,21 @@ export class ProcurementDetail extends React.Component<any, any> {
       stepinput: usecaseData.stageData    
     };
     this.awsHelper.updateStageToDB(updateUseCaseData,(err:any)=>{console.log(err)}, (res:any)=>{
-      console.log(res)
-    } )
-    // this.awsHelper.updateStageToDB( updateUseCaseData, (res: any) => {
-    //   this.setState({
-    //     isAlertOpen: true,
-    //     message: res,
-    //     severity: 'success'
-    //   })
-    // });
+      if (res){
+      this.setState({
+        isAlertOpen: true,
+        message: res.message,
+        severity: 'success'
+      })
+      const { useCaseName } = this.state;
+      this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
+        if (useCases) {
+          this.setState({ useCase: useCases })
+        }
+      }, (err: any) => { if (err) { console.log(err) } })
+    }
+    } ) 
   }
-
   handleCloseAlert = () => {
     this.setState({
       isAlertOpen: false,

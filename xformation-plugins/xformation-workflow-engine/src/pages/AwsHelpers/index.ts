@@ -242,9 +242,7 @@ export class AwsHelper {
     // });
   }
 
-  updateStageToDB(params: any) {
-    console.log(params);
-
+  updateStageToDB(params: any, onError: any, onDone: any) {
     if (params.usecaseName == '') {
       console.log('Please, give an usecase name');
     } else {
@@ -257,12 +255,17 @@ export class AwsHelper {
         FunctionName: 'stepFunction_with_psql_usecase_input' /* required */,
         Payload: JSON.stringify(inputForpg),
       };
-      console.log(pgParams1);
-
       this.lambda.invoke(pgParams1, function (err: any, data: any) {
-        if (err) console.log(err, err.stack);
+        if (err) {
+          onError(err);
+          console.error(err, err.stack);
+        }
         // an error occurred
-        else console.log('from pg', data); // successful response
+        else {
+          data.message = 'Update Usecase Stage Successful';
+          onDone(data);
+          // console.log('from pg', data)
+        } // successful response
       });
 
       // getUsecaseInputData();
@@ -279,9 +282,11 @@ export class AwsHelper {
       Payload: JSON.stringify(inputForpg),
     };
     this.lambda.invoke(pgParams1, function (err: any, data: any) {
+      let message = 'Workflow Created Successfully';
       if (err) {
         console.log(err, err.stack); // an error occurred
       } else {
+        data.message = message;
         console.log('from pg', data); // successful response
         onDone(data);
       }

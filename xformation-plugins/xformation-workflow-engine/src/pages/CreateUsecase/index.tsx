@@ -614,16 +614,23 @@ export class CreateUsecase extends React.Component<any, any> {
 			// dataForXlm += '</Note>';
 
 			this.awsHelper.executeStateMachine(params, (res: any) => {
-				if (res) {
+				if (res && res.message) {
+					this.setState({
+						isAlertOpen: true,
+						message: res.message,
+						severity: 'success'
+					})
+					setTimeout(()=>{
 					getLocationSrv().update({
 						path: `/a/xformation-workflow-engine/project-wise`
-					});
+					});},2000)
+					
 				}
 			});
 		}
 		else {
 
-			let usecaseName = useCaseList[activeUsecaseIndex].usecaseName
+			let usecaseName = useCaseList[activeUsecaseIndex].usecasename
 			let setInputs = {
 				name: usecase.name,
 				description: usecase.description,
