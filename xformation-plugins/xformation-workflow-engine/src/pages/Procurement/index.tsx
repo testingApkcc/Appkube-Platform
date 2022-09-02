@@ -44,7 +44,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.assetViewRef = React.createRef();
     this.stepper = [
       { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.state.useCaseName} key={1} ref={this.overViewRef} /> },
-      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} updateWorkflowInput={this.updateWorkflowInput} /> },
+      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} updateWorkflowInput={this.updateWorkflowInput} updateUsecaseData={this.updateUsecaseData} /> },
       { title: "Asset View", key: 2, component: <AssetView id={this.state.useCaseName} key={3} ref={this.assetViewRef} /> }
     ]
   }
@@ -71,7 +71,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     const { useCase } = this.state;
     if (useCase) {
       let data = { ...useCase }
-       if ( useCase?.stepinput?.stages && useCase.stepinput.stages.length > 0) {
+      if (useCase?.stepinput?.stages && useCase.stepinput.stages.length > 0) {
         this.passValuesToChildWithRef(data)
       }
       else {
@@ -95,28 +95,36 @@ export class ProcurementDetail extends React.Component<any, any> {
     if (this.assetViewRef.current) {
       this.assetViewRef.current.setUseCaseData(data);
     }
-  } 
+  }
 
-  updateWorkflowInput = ( usecaseData: any) => {
-    let updateUseCaseData={
+  updateUsecaseData = (data: any) => {
+    this.setState({
+      useCase: {
+        ...data
+      }
+    });
+  };
+
+  updateWorkflowInput = (usecaseData: any) => {
+    let updateUseCaseData = {
       usecaseName: usecaseData.usecaseName,
-      stepinput: usecaseData.stageData    
+      stepinput: usecaseData.stageData
     };
-    this.awsHelper.updateStageToDB(updateUseCaseData,(err:any)=>{console.log(err)}, (res:any)=>{
-      if (res){
-      this.setState({
-        isAlertOpen: true,
-        message: res.message,
-        severity: 'success'
-      })
-      const { useCaseName } = this.state;
-      this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
-        if (useCases) {
-          this.setState({ useCase: useCases })
-        }
-      }, (err: any) => { if (err) { console.log(err) } })
-    }
-    } ) 
+    this.awsHelper.updateStageToDB(updateUseCaseData, (err: any) => { console.log(err) }, (res: any) => {
+      if (res) {
+        this.setState({
+          isAlertOpen: true,
+          message: res.message,
+          severity: 'success'
+        })
+        // const { useCaseName } = this.state;
+        // this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
+        //   if (useCases) {
+        //     this.setState({ useCase: useCases })
+        //   }
+        // }, (err: any) => { if (err) { console.log(err) } })
+      }
+    })
   }
   handleCloseAlert = () => {
     this.setState({

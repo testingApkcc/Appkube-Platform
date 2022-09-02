@@ -9,27 +9,26 @@ export class WorkFlowView extends React.Component<any, any> {
 		super(props);
 		this.state = {
 			activeStage: 0,
-			usecaseDevelopment:{
-				specs:[],
-				usecaseName:'',
-				selectActors:[
-				{key:1,name:"Super Admin",isChecked:false},
-				{key:2,name:"Admin", isChecked:false},
-				{key:3,name:"Project Manager", isChecked:false},
-				{key:4,name:"Team Mamber", isChecked:false},
-				{key:5,name:"Vendor", isChecked:false},
-				{key:6,name:"Supplier", isChecked:false},
-				{key:7,name:"Team Member", isChecked:false},
-				{key:8,name:"Stakeholder", isChecked:false}],
-				description:'',
-				tigger:'',
-				preConditions:'',
-				postConditions:'',
-				usecaseFlow:'',
-				prototypeLink:'',
-				
+			usecaseDevelopment: {
+				specs: [],
+				usecaseName: '',
+				selectActors: [
+					{ key: 1, name: "Super Admin", isChecked: false },
+					{ key: 2, name: "Admin", isChecked: false },
+					{ key: 3, name: "Project Manager", isChecked: false },
+					{ key: 4, name: "Team Mamber", isChecked: false },
+					{ key: 5, name: "Vendor", isChecked: false },
+					{ key: 6, name: "Supplier", isChecked: false },
+					{ key: 7, name: "Team Member", isChecked: false },
+					{ key: 8, name: "Stakeholder", isChecked: false }],
+				description: '',
+				tigger: '',
+				preConditions: '',
+				postConditions: '',
+				usecaseFlow: '',
+				prototypeLink: '',
+
 			},
-			useCase: {},
 			usecaseData: {},
 			userList: [
 				{ name: 'John', id: '1' },
@@ -45,25 +44,23 @@ export class WorkFlowView extends React.Component<any, any> {
 	}
 
 	setUseCaseData = (data: any) => {
-		const {usecaseDevelopment}=this.state
+		const { usecaseDevelopment } = this.state
 		if (data.stepinput.stages && data.stepinput.stages.length > 0) {
-			if (data.stepinput.stages[0] && !data.stepinput.stages[0].usecaseDevelopment){
-				data.stepinput.stages[0].usecaseDevelopment=usecaseDevelopment
+			if (data.stepinput.stages[0] && !data.stepinput.stages[0].usecaseDevelopment) {
+				data.stepinput.stages[0].usecaseDevelopment = usecaseDevelopment
 			}
 			this.setState({
-				useCase: data,
 				usecaseData: data
 			});
 		}
 	}
-	
+
 	updateStep = (usecaseData: any, activeStageIndex: any) => {
-		// let {useCase}=this.state;
 		// let index = usecaseData.stepinput.S.stages[activeStageIndex].index ?
 		//  usecaseData.stepinput.S.stages[activeStageIndex].index : activeStageIndex;
 
 		usecaseData.stepinput.stages[activeStageIndex].index = usecaseData.stepinput.stages[activeStageIndex].index ?
-		usecaseData.stepinput.stages[activeStageIndex].index : activeStageIndex;
+			usecaseData.stepinput.stages[activeStageIndex].index : activeStageIndex;
 
 		// let useCases = {
 		// 	name: usecaseData.stepinput.S.name,
@@ -72,10 +69,15 @@ export class WorkFlowView extends React.Component<any, any> {
 		// 	assignTo: usecaseData.stepinput.S.assignTo,
 		// 	stages: usecaseData.stepinput.S.stages[activeStageIndex]
 		// }
-		let useCases={
+		let useCases = {
 			usecaseName: usecaseData.stepinput.name,
 			stageData: usecaseData.stepinput.stages[activeStageIndex]
 		};
+
+		this.setState({
+			usecaseData
+		});
+		this.props.updateUsecaseData(usecaseData);
 		this.props.updateWorkflowInput(useCases)
 	};
 
@@ -84,7 +86,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		const { usecaseData, activeStage } = this.state;
 		return (<React.Fragment>
 			<div className="workflow-content">
-				
+
 				<WorkFlow usecaseData={usecaseData} activeStage={activeStage} editFormData={false} updateStep={this.updateStep} />
 
 			</div>
