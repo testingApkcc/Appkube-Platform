@@ -1,3 +1,4 @@
+import { doesNotMatch } from 'assert';
 import { configFun } from '../../config';
 const AWS = require('aws-sdk');
 const StepFunctions = require('aws-sdk/clients/stepfunctions');
@@ -66,12 +67,24 @@ export class AwsHelper {
         // console.log("Got usecase inputlist", data.Payload);
 
         JSON.parse(data.Payload).forEach((e: any) => {
-          if (e.usecasename === useCaseName) {
+          if (e.usecasename) {
+            let usecase = {
+              stepinput: e.stepinput,
+              usecaseName: e.usecasename,
+            };
+            if (usecase.usecaseName == useCaseName) {
+              onDone(usecase);
+            }
+          } else if (e.usecaseName) {
             onDone(e);
-            // ;
           }
-        });
-      } // successful response
+          // if (e.usecasename === useCaseName) {
+          //   onDone(e);
+          //   // ;
+          // }
+          // });
+        }); // successful response
+      }
     });
   }
 
@@ -163,6 +176,7 @@ export class AwsHelper {
   // }
 
   updateUsecaseWholeData(usecaseData: any, onError: any, onDone: any) {
+    console.log(usecaseData);
     let inputForpg = {
       stepInput: usecaseData,
       usecaseName: usecaseData.usecaseName,
@@ -245,7 +259,7 @@ export class AwsHelper {
       if (err) {
         console.log(err, err.stack); // an error occurred
       } else {
-        console.log('from pg', data); // successful response
+        // console.log('from pg', data); // successful response
         onDone();
       }
     });
@@ -271,7 +285,6 @@ export class AwsHelper {
         stepInput: params.stepinput,
         usecaseName: params.usecaseName,
       };
-
       var pgParams1 = {
         FunctionName: 'stepFunction_with_psql_usecase_input' /* required */,
         Payload: JSON.stringify(inputForpg),

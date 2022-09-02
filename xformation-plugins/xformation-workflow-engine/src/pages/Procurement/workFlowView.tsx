@@ -70,7 +70,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		// 	stages: usecaseData.stepinput.S.stages[activeStageIndex]
 		// }
 		let useCases = {
-			usecaseName: usecaseData.stepinput.name,
+			usecaseName: usecaseData.usecaseName,
 			stageData: usecaseData.stepinput.stages[activeStageIndex]
 		};
 

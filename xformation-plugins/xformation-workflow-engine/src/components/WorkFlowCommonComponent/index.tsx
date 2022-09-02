@@ -165,12 +165,14 @@ class WorkFlow extends React.Component<any, any> {
   };
 
   updateForm = (data: any) => {
-    const { activeStage } = this.state
+    const { activeStage , usecaseData} = this.state
     this.props.updateStep(data, activeStage)
     this.setState({
+      initalStateUsecaseDevelopment:usecaseData.stepinput.stages[0].usecaseDevelopment ,
       createUsecase: false,
       uploadScreenshot: false
     })
+    // this.setState(this.props.usecaseData.stepinput.stages[0].usecaseDevelopment)
   }
 
   moveToNextPage = (type: any) => {
