@@ -629,18 +629,19 @@ export class CreateUsecase extends React.Component<any, any> {
 			});
 		}
 		else {
-
-			let usecaseName = useCaseList[activeUsecaseIndex].usecasename
 			let setInputs = {
 				name: usecase.name,
+				usecaseName : useCaseList[activeUsecaseIndex].usecasename,
 				description: usecase.description,
 				assignTo: usecase.assignTo,
 				stages: stages
 			}
-			this.awsHelper.usecaseInputToDynamoDb(usecaseName, JSON.stringify(setInputs), (res: any) => {
+			this.awsHelper.updateUsecaseWholeData(setInputs, () => {
+				
+			}, (res: any) => {
 				this.setState({
 					isAlertOpen: true,
-					message: res,
+					message: res.message,
 					severity: 'success'
 				})
 			});
@@ -731,7 +732,6 @@ export class CreateUsecase extends React.Component<any, any> {
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
 		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity, useCaseList } = this.state;
-console.log(useCaseList)
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">

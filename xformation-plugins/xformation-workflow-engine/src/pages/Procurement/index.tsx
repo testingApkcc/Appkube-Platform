@@ -102,21 +102,22 @@ export class ProcurementDetail extends React.Component<any, any> {
       usecaseName: usecaseData.usecaseName,
       stepinput: usecaseData.stageData    
     };
-    this.awsHelper.updateStageToDB(updateUseCaseData,(err:any)=>{console.log(err)}, (res:any)=>{
-      if (res){
-      this.setState({
-        isAlertOpen: true,
-        message: res.message,
-        severity: 'success'
-      })
-      const { useCaseName } = this.state;
-      this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
-        if (useCases) {
-          this.setState({ useCase: useCases })
-        }
-      }, (err: any) => { if (err) { console.log(err) } })
-    }
-    } ) 
+    console.log(updateUseCaseData)
+    // this.awsHelper.updateStageToDB(updateUseCaseData,(err:any)=>{console.log(err)}, (res:any)=>{
+    //   if (res){
+    //   this.setState({
+    //     isAlertOpen: true,
+    //     message: res.message,
+    //     severity: 'success'
+    //   })
+    //   const { useCaseName } = this.state;
+    //   this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
+    //     if (useCases) {
+    //       this.setState({ useCase: useCases })
+    //     }
+    //   }, (err: any) => { if (err) { console.log(err) } })
+    // }
+    // } ) 
   }
   handleCloseAlert = () => {
     this.setState({
