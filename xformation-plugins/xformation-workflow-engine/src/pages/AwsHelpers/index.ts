@@ -162,6 +162,27 @@ export class AwsHelper {
 
   // }
 
+  updateUsecaseWholeData(usecaseData: any, onError: any, onDone: any) {
+    let inputForpg = {
+      stepInput: usecaseData,
+      usecaseName: usecaseData.usecaseName,
+    };
+
+    var pgParams1 = {
+      FunctionName: 'stepFunction_with_psql_usecase_whole_update' /* required */,
+      Payload: JSON.stringify(inputForpg),
+    };
+    this.lambda.invoke(pgParams1, (err: any, data: any) => {
+      if (err) {
+        onError(err);
+      } // an error occurred
+      else {
+        data.message = 'Update Usecase Success';
+        onDone(data);
+      } // successful response
+    });
+  }
+
   getExecutionHistory = (executionArn: any, onDone: any, onError: any) => {
     this.stepFunctions.getExecutionHistory({ executionArn }, function (err: any, data: any) {
       if (err) {
