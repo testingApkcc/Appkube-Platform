@@ -44,35 +44,25 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.assetViewRef = React.createRef();
     this.stepper = [
       { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.state.useCaseName} key={1} ref={this.overViewRef} /> },
-      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} updateWorkflowInput={this.updateWorkflowInput} updateUsecaseData={this.updateUsecaseData} /> },
+      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} updateWorkflowSingleStage={this.updateWorkflowSingleStage} UpdateUseCaseStages={this.UpdateUseCaseStages} /> },
       { title: "Asset View", key: 2, component: <AssetView id={this.state.useCaseName} key={3} ref={this.assetViewRef} /> }
     ]
   }
 
   async componentDidMount() {
     const { useCaseName } = this.state;
-    this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
-      if (useCases) {
-        this.setState({ useCase: useCases })
+    this.awsHelper.getUsecaseInputData(useCaseName, (getUseCase: any) => {
+      if (getUseCase) {
+        this.setState({ useCase: getUseCase })
       }
     }, (err: any) => { if (err) { console.log(err) } })
-  }
-
-  IsJsonString(str: any) {
-    try {
-      JSON.parse(str);
-    } catch (e) {
-      return false;
-    }
-    return true;
   }
 
   componentDidUpdate() {
     const { useCase } = this.state;
     if (useCase) {
-      let data = { ...useCase }
-      if (useCase?.stepinput?.stages && useCase.stepinput.stages.length > 0) {
-        this.passValuesToChildWithRef(data)
+      if (useCase?.stepinput?.stages?.length > 0) {
+        this.passValuesToChildWithRef(useCase)
       }
       else {
         this.props.history.push('/a/xformation-workflow-engine/dashboard')
@@ -85,19 +75,19 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.setState({ activeTab: key });
   }
 
-  passValuesToChildWithRef = (data: any) => {
+  passValuesToChildWithRef = (selectedUseCase: any) => {
     if (this.overViewRef.current) {
-      this.overViewRef.current.setUseCaseData(data);
+      this.overViewRef.current.setUseCaseData(selectedUseCase);
     }
     if (this.workFlowRef.current) {
-      this.workFlowRef.current.setUseCaseData(data);
+      this.workFlowRef.current.setUseCaseData(selectedUseCase);
     }
     if (this.assetViewRef.current) {
-      this.assetViewRef.current.setUseCaseData(data);
+      this.assetViewRef.current.setUseCaseData(selectedUseCase);
     }
   }
 
-  updateUsecaseData = (data: any) => {
+  UpdateUseCaseStages = (data: any) => {
     this.setState({
       useCase: {
         ...data
@@ -105,24 +95,18 @@ export class ProcurementDetail extends React.Component<any, any> {
     });
   };
 
-  updateWorkflowInput = (usecaseData: any) => {
-    let updateUseCaseData = {
+  updateWorkflowSingleStage = (usecaseData: any) => {
+    let updateUseCaseStage = {
       usecaseName: usecaseData.usecaseName,
       stepinput: usecaseData.stageData
     };
-    this.awsHelper.updateStageToDB(updateUseCaseData, (err: any) => { console.log(err) }, (res: any) => {
+    this.awsHelper.updateStageToDB(updateUseCaseStage, (err: any) => { console.log(err) }, (res: any) => {
       if (res) {
         this.setState({
           isAlertOpen: true,
           message: res.message,
           severity: 'success'
         })
-        // const { useCaseName } = this.state;
-        // this.awsHelper.getUsecaseInputData(useCaseName, (useCases: any) => {
-        //   if (useCases) {
-        //     this.setState({ useCase: useCases })
-        //   }
-        // }, (err: any) => { if (err) { console.log(err) } })
       }
     })
   }

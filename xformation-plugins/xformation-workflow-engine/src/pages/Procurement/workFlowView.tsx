@@ -1,7 +1,4 @@
 import * as React from 'react';
-// import { threadId } from 'worker_threads';
-// import { AwsHelper } from '../AwsHelpers';
-// import { Link } from 'react-router-dom';
 import WorkFlow from '../../components/WorkFlowCommonComponent'
 export class WorkFlowView extends React.Component<any, any> {
 	awsHelper: any;
@@ -29,7 +26,7 @@ export class WorkFlowView extends React.Component<any, any> {
 				prototypeLink: '',
 
 			},
-			usecaseData: {},
+			selectedUseCaseData: {},
 			userList: [
 				{ name: 'John', id: '1' },
 				{ name: 'Smith', id: '2' },
@@ -43,51 +40,40 @@ export class WorkFlowView extends React.Component<any, any> {
 		};
 	}
 
-	setUseCaseData = (data: any) => {
+	setUseCaseData = (entireUseCaseData: any) => {
 		const { usecaseDevelopment } = this.state
-		if (data.stepinput.stages && data.stepinput.stages.length > 0) {
-			if (data.stepinput.stages[0] && !data.stepinput.stages[0].usecaseDevelopment) {
-				data.stepinput.stages[0].usecaseDevelopment = usecaseDevelopment
+		if (entireUseCaseData.stepinput.stages && entireUseCaseData.stepinput.stages.length > 0) {
+			if (entireUseCaseData.stepinput.stages[0] && !entireUseCaseData.stepinput.stages[0].usecaseDevelopment) {
+				entireUseCaseData.stepinput.stages[0].usecaseDevelopment = usecaseDevelopment
 			}
 			this.setState({
-				usecaseData: data
+				selectedUseCaseData: entireUseCaseData
 			});
 		}
 	}
 
-	updateStep = (usecaseData: any, activeStageIndex: any) => {
-		// let index = usecaseData.stepinput.S.stages[activeStageIndex].index ?
-		//  usecaseData.stepinput.S.stages[activeStageIndex].index : activeStageIndex;
-
-		usecaseData.stepinput.stages[activeStageIndex].index = usecaseData.stepinput.stages[activeStageIndex].index ?
-			usecaseData.stepinput.stages[activeStageIndex].index : activeStageIndex;
-
-		// let useCases = {
-		// 	name: usecaseData.stepinput.S.name,
-		// 	description: usecaseData.stepinput.S.description,
-		// 	index,
-		// 	assignTo: usecaseData.stepinput.S.assignTo,
-		// 	stages: usecaseData.stepinput.S.stages[activeStageIndex]
-		// }
-		let useCases = {
-			usecaseName: usecaseData.usecaseName,
-			stageData: usecaseData.stepinput.stages[activeStageIndex]
+	updateStep = (selectedUseCaseData: any, activeStageIndex: any) => {
+		selectedUseCaseData.stepinput.stages[activeStageIndex].index = selectedUseCaseData.stepinput.stages[activeStageIndex].index ?
+			selectedUseCaseData.stepinput.stages[activeStageIndex].index : activeStageIndex;
+		let useCaseStageAndName = {
+			usecaseName: selectedUseCaseData.usecaseName,
+			stageData: selectedUseCaseData.stepinput.stages[activeStageIndex]
 		};
 
 		this.setState({
-			usecaseData
+			selectedUseCaseData
 		});
-		this.props.updateUsecaseData(usecaseData);
-		this.props.updateWorkflowInput(useCases)
+		this.props.UpdateUseCaseStages(selectedUseCaseData);
+		this.props.updateWorkflowSingleStage(useCaseStageAndName)
 	};
 
 
 	render() {
-		const { usecaseData, activeStage } = this.state;
+		const { selectedUseCaseData, activeStage } = this.state;
 		return (<React.Fragment>
 			<div className="workflow-content">
 
-				<WorkFlow usecaseData={usecaseData} activeStage={activeStage} editFormData={false} updateStep={this.updateStep} />
+				<WorkFlow selectedUseCaseData={selectedUseCaseData} activeStage={activeStage} editFormData={false} updateStep={this.updateStep} />
 
 			</div>
 		</React.Fragment>

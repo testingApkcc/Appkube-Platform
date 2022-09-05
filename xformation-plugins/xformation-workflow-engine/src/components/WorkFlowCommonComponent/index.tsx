@@ -29,10 +29,10 @@ class WorkFlow extends React.Component<any, any> {
     };
   }
   componentDidUpdate(prevProps: any, prevState: any) {
-    if (this.props.usecaseData !== prevProps.usecaseData) {
-      this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.usecaseData.stepinput.stages[0].usecaseDevelopment) })
+    if (this.props.selectedUseCaseData !== prevProps.selectedUseCaseData) {
+      this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.selectedUseCaseData.stepinput.stages[0].usecaseDevelopment) })
       this.setState({
-        usecaseData: cloneDeep(this.props.usecaseData),
+        usecaseData: cloneDeep(this.props.selectedUseCaseData),
         // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
         activeStage: this.props.activeStage,
         editformData: this.props.editFormData
