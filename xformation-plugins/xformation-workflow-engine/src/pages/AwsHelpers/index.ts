@@ -1,4 +1,3 @@
-import { doesNotMatch } from 'assert';
 import { configFun } from '../../config';
 const AWS = require('aws-sdk');
 const StepFunctions = require('aws-sdk/clients/stepfunctions');

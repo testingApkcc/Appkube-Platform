@@ -34,7 +34,7 @@ class WorkFlow extends React.Component<any, any> {
       this.setState({
         usecaseData: cloneDeep(this.props.selectedUseCaseData),
         // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
-        activeStage: this.props.activeStage,
+        activeStage: this.state.activeStage ? this.state.activeStage : this.props.activeStage,
         editformData: this.props.editFormData
       })
     }
@@ -165,10 +165,10 @@ class WorkFlow extends React.Component<any, any> {
   };
 
   updateForm = (data: any) => {
-    const { activeStage , usecaseData} = this.state
+    const { activeStage, usecaseData } = this.state
     this.props.updateStep(data, activeStage)
     this.setState({
-      initalStateUsecaseDevelopment:usecaseData.stepinput.stages[0].usecaseDevelopment ,
+      initalStateUsecaseDevelopment: usecaseData.stepinput.stages[0].usecaseDevelopment,
       createUsecase: false,
       uploadScreenshot: false
     })
@@ -299,7 +299,7 @@ class WorkFlow extends React.Component<any, any> {
                     {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
                     {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
                       usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
-                        <div className="col-lg-3 col-md-4 col-sm-6">
+                        <div className="col-lg-4 col-md-4 col-sm-6">
                           <div className="select-actors">
                             <input className="form-check-input" key={val.key} name="selectActors"
                               onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />

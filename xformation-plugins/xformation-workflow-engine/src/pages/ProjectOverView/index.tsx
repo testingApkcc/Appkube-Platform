@@ -13,9 +13,9 @@ export class ProjectOverView extends React.Component<any, any> {
       activeStage: 0,
       stageList: [],
       activeUseCaseIndex: 0,
-      disabledNavList:false,
+      disabledNavList: false,
       useCaseList: [],
-      useCaseStagesLength:-1,
+      useCaseStagesLength: -1,
       userList: [
         { name: 'John', id: '1' },
         { name: 'Smith', id: '2' },
@@ -34,30 +34,30 @@ export class ProjectOverView extends React.Component<any, any> {
     this.setState({ useCaseName: this.props.match.params.id })
     this.awsHelper.getUsecaseList((useCaseList: any) => {
       useCaseList.forEach((useCase: any) => {
-        if ( useCase?.stepinput ) {
+        if (useCase?.stepinput) {
           useCase.stepinput = useCase.stepinput;
-          if (useCase?.stepinput?.stages?.length>0){
-          this.awsHelper.getExecutionHistory(
-            "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
-            (items: any) => {
-              const useCases = this.state.useCaseList;
-              // if (useCase.stepinput.S.stages.length>0){
-              useCases.push({
-                ...useCase,
-                steps: items,
-                executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
-              });
-              this.setState({
-                useCaseList: useCases,
+          if (useCase?.stepinput?.stages?.length > 0) {
+            this.awsHelper.getExecutionHistory(
+              "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
+              (items: any) => {
+                const useCases = this.state.useCaseList;
+                // if (useCase.stepinput.S.stages.length>0){
+                useCases.push({
+                  ...useCase,
+                  steps: items,
+                  executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
+                });
+                this.setState({
+                  useCaseList: useCases,
 
-                usecaseData: useCases[this.state.activeUseCaseIndex]
+                  usecaseData: useCases[this.state.activeUseCaseIndex]
 
-              });
-            // }
-            },
-            (err: any) => { console.log(err) }
-          );
-        }
+                });
+                // }
+              },
+              (err: any) => { console.log(err) }
+            );
+          }
         }
       });
     }, () => { });
@@ -73,8 +73,8 @@ export class ProjectOverView extends React.Component<any, any> {
 
   }
 
-  toggleDisabledNavList=()=>{
-    this.setState({disabledNavList:!this.state.disabledNavList})
+  toggleDisabledNavList = () => {
+    this.setState({ disabledNavList: !this.state.disabledNavList })
   }
 
   displayUseCaseList = () => {
@@ -83,7 +83,7 @@ export class ProjectOverView extends React.Component<any, any> {
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
-          <li className={i == activeUseCaseIndex ? "active" : ''}  onClick={() => !this.state.disabledNavList ? this.setUseCaseData(i):""}>
+          <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => !this.state.disabledNavList ? this.setUseCaseData(i) : ""}>
             {/* <Link to="/"> */}
             <span>{useCaseList[i].usecasename}</span>
             {/* </Link> */}
@@ -104,7 +104,7 @@ export class ProjectOverView extends React.Component<any, any> {
 
   }
   render() {
-    const { useCaseList, useCaseStagesLength, activeStage} = this.state;
+    const { useCaseList, useCaseStagesLength, activeStage } = this.state;
     return (
       <div className="project-over-view-container">
         <div className="project-over-view-section">
@@ -156,11 +156,10 @@ export class ProjectOverView extends React.Component<any, any> {
               </div>
             </div>
             {
-              <ErrorBoundary useCaseStagesLength={useCaseStagesLength} usecaseData={this.state.usecaseData}useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
-              <WorkFlow activeStage={activeStage} usecaseData={this.state.usecaseData} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData ={true}/>
-           </ErrorBoundary>
+              <ErrorBoundary useCaseStagesLength={useCaseStagesLength} usecaseData={this.state.usecaseData} useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
+                <WorkFlow activeStage={activeStage} usecaseData={this.state.usecaseData} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData={true} />
+              </ErrorBoundary>
             }
-          
           </div>
         </div>
       </div>

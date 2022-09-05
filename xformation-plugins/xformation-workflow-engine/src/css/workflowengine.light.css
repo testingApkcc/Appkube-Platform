@@ -6863,6 +6863,207 @@
   .next-btn {
   margin-right: 0;
 }
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form {
+  display: block;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px dotted #abd5f9;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .heading {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #202020;
+  padding-bottom: 30px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .heading
+  .btn-close {
+  float: right;
+  border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #e6f2ff;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group {
+  display: flex;
+  margin-bottom: 15px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .col-form-label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #202020;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .form-control {
+  border: 1px solid #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 3px;
+  width: 100%;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .select-actors {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .form-check-input {
+  border: 1px solid #e0e0e0;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .image {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 2px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .image
+  img {
+  max-height: 40px;
+  max-width: 40px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .select-actors
+  .name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #202020;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .upload-screenshots {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  margin-bottom: 20px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .upload-screenshots
+  .form-control-file {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .upload-screenshots
+  .btn-upload
+  i {
+  margin-right: 5px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .screenshot {
+  display: block;
+  width: 100%;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .usecase-form
+  .form-group
+  .screenshot
+  img {
+  max-width: 100%;
+  height: auto;
+}
 
 @media only screen and (max-width: 1280px) {
   .project-over-view-container .project-over-view-section .fliter-container .fliter-right-content {
