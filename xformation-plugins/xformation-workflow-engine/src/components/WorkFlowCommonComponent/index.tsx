@@ -299,7 +299,7 @@ class WorkFlow extends React.Component<any, any> {
                     {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
                     {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
                       usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
-                        <div className="col-lg-3 col-md-4 col-sm-6">
+                        <div className="col-lg-4 col-md-4 col-sm-6">
                           <div className="select-actors">
                             <input className="form-check-input" key={val.key} name="selectActors"
                               onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />
