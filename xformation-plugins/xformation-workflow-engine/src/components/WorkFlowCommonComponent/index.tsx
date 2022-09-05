@@ -34,7 +34,7 @@ class WorkFlow extends React.Component<any, any> {
       this.setState({
         usecaseData: cloneDeep(this.props.usecaseData),
         // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
-        activeStage: this.props.activeStage,
+        activeStage: this.state.activeStage ? this.state.activeStage : this.props.activeStage,
         editformData: this.props.editFormData
       })
     }
@@ -165,10 +165,10 @@ class WorkFlow extends React.Component<any, any> {
   };
 
   updateForm = (data: any) => {
-    const { activeStage , usecaseData} = this.state
+    const { activeStage, usecaseData } = this.state
     this.props.updateStep(data, activeStage)
     this.setState({
-      initalStateUsecaseDevelopment:usecaseData.stepinput.stages[0].usecaseDevelopment ,
+      initalStateUsecaseDevelopment: usecaseData.stepinput.stages[0].usecaseDevelopment,
       createUsecase: false,
       uploadScreenshot: false
     })
