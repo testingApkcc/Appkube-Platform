@@ -9,7 +9,7 @@ export class ProjectOverView extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      usecaseData: {},
+      selectedUseCaseData: {},
       activeStage: 0,
       stageList: [],
       activeUseCaseIndex: 0,
@@ -50,7 +50,7 @@ export class ProjectOverView extends React.Component<any, any> {
                 this.setState({
                   useCaseList: useCases,
 
-                  usecaseData: useCases[this.state.activeUseCaseIndex]
+                  selectedUseCaseData: useCases[this.state.activeUseCaseIndex]
 
                 });
                 // }
@@ -83,7 +83,7 @@ export class ProjectOverView extends React.Component<any, any> {
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
-          <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => !this.state.disabledNavList ? this.setUseCaseData(i) : ""}>
+          <li className={i == activeUseCaseIndex ? "active" : ''}key={`${i}_usecase_list`} onClick={() => !this.state.disabledNavList ? this.setUseCaseData(i) : ""}>
             {/* <Link to="/"> */}
             <span>{useCaseList[i].usecasename}</span>
             {/* </Link> */}
@@ -98,7 +98,7 @@ export class ProjectOverView extends React.Component<any, any> {
 
     let data = useCaseList[index]
     if (data?.stepinput) {
-      this.setState({ usecaseData: data })
+      this.setState({ selectedUseCaseData: data })
     }
     this.setState({ activeUseCaseIndex: index, activeStage: 0 })
 
@@ -156,8 +156,8 @@ export class ProjectOverView extends React.Component<any, any> {
               </div>
             </div>
             {
-              <ErrorBoundary useCaseStagesLength={useCaseStagesLength} usecaseData={this.state.usecaseData} useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
-                <WorkFlow activeStage={activeStage} usecaseData={this.state.usecaseData} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData={true} />
+              <ErrorBoundary useCaseStagesLength={useCaseStagesLength} selectedUseCaseData={this.state.selectedUseCaseData} useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
+                <WorkFlow activeStage={activeStage} selectedUseCaseData={this.state.selectedUseCaseData} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData={true} />
               </ErrorBoundary>
             }
           </div>

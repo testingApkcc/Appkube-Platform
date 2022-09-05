@@ -82,7 +82,7 @@ export class OverView extends React.Component<any, any> {
 								<div className="tr">
 									<div className="td">{useCase?.usecaseName ? useCase.usecaseName : ''}</div>
 									{useCase?.stepinput?.stages && useCase.stepinput.stages.length > 0 &&
-										useCase.stepinput.stages.map(({ name, details, workflowCheckList}: any, index: any) =>
+										useCase.stepinput.stages.map(({ name, workflowCheckList}: any, index: any) =>
 											(<div className="td" key={`${name}${index}`}>{this.checkValuesValidation(workflowCheckList)}</div>))}
 								</div>
 							</div>

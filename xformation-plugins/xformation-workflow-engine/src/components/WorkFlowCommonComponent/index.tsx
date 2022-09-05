@@ -33,15 +33,12 @@ class WorkFlow extends React.Component<any, any> {
       this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.selectedUseCaseData.stepinput.stages[0].usecaseDevelopment) })
       this.setState({
         usecaseData: cloneDeep(this.props.selectedUseCaseData),
-        // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
         activeStage: this.state.activeStage ? this.state.activeStage : this.props.activeStage,
         editformData: this.props.editFormData
       })
     }
   }
   getUsecaseStageData = (data: any, index: any) => {
-    // let { activeStage } = this.state;
-    // activeStage = index
     if (index > 0) {
       this.setState({
         createUsecase: false,
@@ -52,7 +49,6 @@ class WorkFlow extends React.Component<any, any> {
       activeStage: index,
 
     });
-    // this.props.handleactiveStage(index)
   };
 
   displayWorkflowStage = () => {
@@ -84,6 +80,7 @@ class WorkFlow extends React.Component<any, any> {
           return "inprogress"
         }
         retData.push(
+          <React.Fragment key={`${i}_workflow_checklist_status`}>
           <li
             onClick={() => this.getUsecaseStageData(row, i)}
             className={
@@ -100,7 +97,7 @@ class WorkFlow extends React.Component<any, any> {
                 readOnly
               />
             </div>
-          </li>
+          </li></React.Fragment>
         );
       }
     }
@@ -196,15 +193,17 @@ class WorkFlow extends React.Component<any, any> {
 
   displayUseCaseList = () => {
     const { useCaseList, activeUseCaseIndex } = this.state;
+    console.log(useCaseList)
     let retData = [];
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
+          <React.Fragment key={`${i}_active_usecase`}>
           <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
             {/* <Link to="/"> */}
-            <span>{useCaseList[i].usecaseName.S}</span>
+            <span>{useCaseList[i].usecaseName}</span>
             {/* </Link> */}
-          </li>
+          </li></React.Fragment>
         )
       }
     }
@@ -299,7 +298,7 @@ class WorkFlow extends React.Component<any, any> {
                     {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
                     {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
                       usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
-                        <div className="col-lg-4 col-md-4 col-sm-6">
+                        <div className="col-lg-4 col-md-4 col-sm-6" key={`${index}_select_actor`}>
                           <div className="select-actors">
                             <input className="form-check-input" key={val.key} name="selectActors"
                               onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />
@@ -380,7 +379,8 @@ class WorkFlow extends React.Component<any, any> {
                   </div>
                   <div className="row">
                     {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
-                      usecaseDevelopment.specs.map((value: any, index: any) => (<div className="col-md-2 col-sm-4">
+                      usecaseDevelopment.specs.map((value: any, index: any) => (
+                      <div className="col-md-2 col-sm-4" key={`${index}_usecase_devlopement_specs`}>
                         <div className="screenshot">
                           <img src={URL.createObjectURL(value)} alt="" />
                         </div>

@@ -13,7 +13,9 @@ render(){
     return(
         <React.Fragment>
             {usecaseData && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length>0 ?
- usecaseData.stepinput.stages[activeStage].workflowCheckList.map((row:any,index:any)=><div key={`${index}checkbox${activeStage}`} className="requirement-data">
+ usecaseData.stepinput.stages[activeStage].workflowCheckList.map((row:any,index:any)=>
+ <React.Fragment key={`${index}checkbox${activeStage}`} >
+ <div className="requirement-data">
         <input
             type="checkbox"
             checked={row.checked}
@@ -22,6 +24,7 @@ render(){
         />
         <span>{row.label}</span>
     </div>
+    </React.Fragment >
     ):(<React.Fragment
     ></React.Fragment>)}
     </React.Fragment>
