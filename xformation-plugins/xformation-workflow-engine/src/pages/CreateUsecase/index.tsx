@@ -731,7 +731,7 @@ export class CreateUsecase extends React.Component<any, any> {
 
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
-		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity, useCaseList } = this.state;
+		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity } = this.state;
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">
