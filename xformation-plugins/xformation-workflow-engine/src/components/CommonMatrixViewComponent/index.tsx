@@ -71,11 +71,15 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                     <div className="matrix-view-content">
                         <div className="matrix-view-head">
                             <div className="row d-flex justify-content-center align-items-center h-100">
-                            
+                                <div className="col-xl-5 col-lg-6 col-md-7 col-sm-12 col-xs-12">
+                                    <div className="head-right">
+                                        
+                                        <Button onClick={() => this.props.handleDisplayMatrixView('')} className="btn-primary pro-overview-btn"><i className="fa fa-close"></i> </Button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="tabs">
-                           
                             <div className="tabs-content">
                                 {activeTab === "usecaseDevelopment" &&
                                     <div className="tabs-inner-content">
@@ -102,12 +106,10 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                                         {activeMatrixData.preConditions && <div className="requirements-content">
                                             <h6>Preconditions::</h6>
                                             <p>{activeMatrixData.preConditions}</p>
-                                          
                                         </div>}
                                         {activeMatrixData.postConditions && <div className="requirements-content">
                                             <h6>Post condition:</h6>
                                             <p>{activeMatrixData.postConditions}</p>
-                                            
                                         </div>}
                                         {activeMatrixData.normalFlow && <div className="requirements-content">
                                             <h6>Normal Flow:</h6>
