@@ -4,13 +4,14 @@ import CommanCheckList from '../CommonCheckList';
 import CommanPlanningTable from '../CommonScrumPlanningTable'
 import actorsImg from '../../img/actors-img.png'
 import { cloneDeep } from 'lodash';
-
+import CommonMatrixViewComponent from '../CommonMatrixViewComponent'
 class WorkFlow extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       usecaseData: {},
       activeStage: 0,
+      toggleMatrix: false,
       userList: [
         { name: 'John', id: '1' },
         { name: 'Smith', id: '2' },
@@ -21,6 +22,7 @@ class WorkFlow extends React.Component<any, any> {
         { name: 'George', id: '7' },
         { name: 'Jack', id: '8' }
       ],
+      activeModelName: '',
       activeUseCaseIndex: 0,
       editformData: '',
       initalStateUsecaseDevelopment: {},
@@ -81,23 +83,23 @@ class WorkFlow extends React.Component<any, any> {
         }
         retData.push(
           <React.Fragment key={`${i}_workflow_checklist_status`}>
-          <li
-            onClick={() => this.getUsecaseStageData(row, i)}
-            className={
-              status(row)
-            }
-          >
-            <span>{i + 1}</span>
-            <div className={i == activeStage ? 'active form-control' : 'form-control'}>
-              <input
-                type="text"
-                value={row.name}
-                name="name"
-                onChange={(e) => this.handleStageChange(e, i)}
-                readOnly
-              />
-            </div>
-          </li></React.Fragment>
+            <li
+              onClick={() => this.getUsecaseStageData(row, i)}
+              className={
+                status(row)
+              }
+            >
+              <span>{i + 1}</span>
+              <div className={i == activeStage ? 'active form-control' : 'form-control'}>
+                <input
+                  type="text"
+                  value={row.name}
+                  name="name"
+                  onChange={(e) => this.handleStageChange(e, i)}
+                  readOnly
+                />
+              </div>
+            </li></React.Fragment>
         );
       }
     }
@@ -193,17 +195,16 @@ class WorkFlow extends React.Component<any, any> {
 
   displayUseCaseList = () => {
     const { useCaseList, activeUseCaseIndex } = this.state;
-    console.log(useCaseList)
     let retData = [];
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
           <React.Fragment key={`${i}_active_usecase`}>
-          <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
-            {/* <Link to="/"> */}
-            <span>{useCaseList[i].usecaseName}</span>
-            {/* </Link> */}
-          </li></React.Fragment>
+            <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
+              {/* <Link to="/"> */}
+              <span>{useCaseList[i].usecaseName}</span>
+              {/* </Link> */}
+            </li></React.Fragment>
         )
       }
     }
@@ -266,12 +267,18 @@ class WorkFlow extends React.Component<any, any> {
     usecaseData.stepinput.S.stages[0].usecaseDevelopment[name].push(files[0])
     this.setState(usecaseData)
   }
-
+  handleDisplayMatrixView = (modelName: any | "") => {
+    let { activeModelName, toggleMatrix } = this.state;
+    activeModelName = modelName ? modelName : ''
+    this.setState({
+      toggleMatrix: !toggleMatrix, activeModelName
+    })
+  }
   render() {
-    const { activeStage, usecaseData, userList, editformData, createUsecase, uploadScreenshot } = this.state;
+    const { activeStage, usecaseData, userList, toggleMatrix, activeModelName, editformData, createUsecase, uploadScreenshot } = this.state;
     let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
 
-    return (<>
+    return (<React.Fragment>{!toggleMatrix ?
       <div className="project-over-view-right-content">
         <div className="workflow-stage">
           {usecaseData?.stepinput?.stages?.length && usecaseData.stepinput.stages.length > 0 && <ul>{this.displayWorkflowStage()}</ul>}
@@ -288,7 +295,8 @@ class WorkFlow extends React.Component<any, any> {
               <div className="form-group row">
                 <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
                 <div className="col-lg-10 col-sm-12">
-                  <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName} onChange={(e) => this.handleusecaseDevelopmentState(e)} disabled={editformData} type="text" placeholder="" />
+                  <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName}
+                    onChange={(e) => { this.handleusecaseDevelopmentState(e) }} disabled={editformData} type="text" placeholder="" />
                 </div>
               </div>
               <div className="form-group row">
@@ -380,11 +388,11 @@ class WorkFlow extends React.Component<any, any> {
                   <div className="row">
                     {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
                       usecaseDevelopment.specs.map((value: any, index: any) => (
-                      <div className="col-md-2 col-sm-4" key={`${index}_usecase_devlopement_specs`}>
-                        <div className="screenshot">
-                          <img src={URL.createObjectURL(value)} alt="" />
-                        </div>
-                      </div>)) : <></>
+                        <div className="col-md-2 col-sm-4" key={`${index}_usecase_devlopement_specs`}>
+                          <div className="screenshot">
+                            <img src={URL.createObjectURL(value)} alt="" />
+                          </div>
+                        </div>)) : <></>
                     }
                     {/* <div className="col-md-2 col-sm-4">
                       <div className="screenshot">
@@ -403,14 +411,14 @@ class WorkFlow extends React.Component<any, any> {
             <div className="workflow-data">
               {activeStage === 0 ? <React.Fragment>   <div className="api-code">
                 <div className="heading">
-                  <h5>{'Usecase Development'}</h5>
+                  {/* <h5>{'Usecase Development'}</h5> */}
                   <i className="fa fa-angle-down" aria-hidden="true"></i>
                 </div>
                 <div className="api-content">
                   <button className="btn btn-primary usecase-btn" onClick={() => this.createUsecase()}>
                     Create Usecase
                   </button>
-                  <button className="btn btn-primary usecase-btn">
+                  <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("usecaseDevelopment")}>
                     View Details
                   </button>
                 </div>
@@ -424,7 +432,7 @@ class WorkFlow extends React.Component<any, any> {
                     <button className="btn btn-primary usecase-btn" onClick={() => this.uploadScreenshot()}>
                       Upload
                     </button>
-                    <button className="btn btn-primary usecase-btn">
+                    <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("designSpecs")}>
                       View Details
                     </button>
                   </div>
@@ -488,8 +496,9 @@ class WorkFlow extends React.Component<any, any> {
           : ""
         }
 
-      </div>
-    </>)
+      </div> : <React.Fragment>
+        {usecaseDevelopment && usecaseData ? <CommonMatrixViewComponent activeMatrixData={usecaseDevelopment} usecasename={usecaseData.usecasename ? usecaseData.usecasename : usecaseData.usecaseName} activeModelName={activeModelName} handleDisplayMatrixView={this.handleDisplayMatrixView} /> : <></>}</React.Fragment>}
+    </React.Fragment>)
   }
 }
 export default WorkFlow;
