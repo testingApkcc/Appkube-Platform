@@ -1,5 +1,4 @@
 import * as React from 'react';
-import newUsecase from '../../img/new-usecase.png';
 import designSpecsImg from '../../img/design-specs-img.png';
 import { Button } from '@material-ui/core';
 
