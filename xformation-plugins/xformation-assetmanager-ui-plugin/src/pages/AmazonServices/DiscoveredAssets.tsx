@@ -514,7 +514,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     }
     let avgScore = (service.performance.score + service.availability.score + service.security.score + service.dataProtection.score + service.userExperiance.score) / 5;
     serviceData.push({
-      id: service.id,
+      id: service.dbid,
       name: service.name,
       labelText,
       organizationUnit: service.associatedOU,
