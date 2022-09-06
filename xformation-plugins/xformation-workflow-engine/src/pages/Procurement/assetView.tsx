@@ -5,7 +5,7 @@ export class AssetView extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			// usecaseList: {
+			// usecaseStageList: {
 			// 	name: 'ipsa',
 			// 	description: 'Recusandae libero eveniet ducimus.',
 			// 	assignTo: 'string',
@@ -177,7 +177,7 @@ export class AssetView extends React.Component<any, any> {
 			// 	]
 			// },
 			useCase: {},
-			usecaseList: [],
+			usecaseStageList: [],
 		};
 	}
 
@@ -185,7 +185,7 @@ export class AssetView extends React.Component<any, any> {
 		if ( data?.stepinput?.stages?.length && data.stepinput.stages.length > 0) {
 			this.setState({
 				useCase: data,
-				usecaseList: data.stepinput.stages
+				usecaseStageList: data.stepinput.stages
 			});
 		}
 	};
@@ -199,7 +199,7 @@ export class AssetView extends React.Component<any, any> {
 					<span className="line2" />
 					<span className="line3" />
 				</div>
-				{<div className="row"><AssetOverViewReusableComp usecaseList={this.state.usecaseList}/></div>}
+				{<div className="row"><AssetOverViewReusableComp usecaseStageList={this.state.usecaseStageList}/></div>}
 			</div>
 		);
 	}

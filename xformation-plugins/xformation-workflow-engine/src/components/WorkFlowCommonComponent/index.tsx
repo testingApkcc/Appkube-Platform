@@ -4,13 +4,14 @@ import CommanCheckList from '../CommonCheckList';
 import CommanPlanningTable from '../CommonScrumPlanningTable'
 import actorsImg from '../../img/actors-img.png'
 import { cloneDeep } from 'lodash';
-
+import CommonMatrixViewComponent from '../CommonMatrixViewComponent'
 class WorkFlow extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       usecaseData: {},
       activeStage: 0,
+      toggleMatrix: false,
       userList: [
         { name: 'John', id: '1' },
         { name: 'Smith', id: '2' },
@@ -21,6 +22,7 @@ class WorkFlow extends React.Component<any, any> {
         { name: 'George', id: '7' },
         { name: 'Jack', id: '8' }
       ],
+      activeModelName: '',
       activeUseCaseIndex: 0,
       editformData: '',
       initalStateUsecaseDevelopment: {},
@@ -29,19 +31,16 @@ class WorkFlow extends React.Component<any, any> {
     };
   }
   componentDidUpdate(prevProps: any, prevState: any) {
-    if (this.props.usecaseData !== prevProps.usecaseData) {
-      this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.usecaseData.stepinput.stages[0].usecaseDevelopment) })
+    if (this.props.selectedUseCaseData !== prevProps.selectedUseCaseData) {
+      this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.selectedUseCaseData.stepinput.stages[0].usecaseDevelopment) })
       this.setState({
-        usecaseData: cloneDeep(this.props.usecaseData),
-        // activeUseCaseIndex: this.props.activeUseCaseIndex||0,
+        usecaseData: cloneDeep(this.props.selectedUseCaseData),
         activeStage: this.state.activeStage ? this.state.activeStage : this.props.activeStage,
         editformData: this.props.editFormData
       })
     }
   }
   getUsecaseStageData = (data: any, index: any) => {
-    // let { activeStage } = this.state;
-    // activeStage = index
     if (index > 0) {
       this.setState({
         createUsecase: false,
@@ -52,7 +51,6 @@ class WorkFlow extends React.Component<any, any> {
       activeStage: index,
 
     });
-    // this.props.handleactiveStage(index)
   };
 
   displayWorkflowStage = () => {
@@ -84,23 +82,24 @@ class WorkFlow extends React.Component<any, any> {
           return "inprogress"
         }
         retData.push(
-          <li
-            onClick={() => this.getUsecaseStageData(row, i)}
-            className={
-              status(row)
-            }
-          >
-            <span>{i + 1}</span>
-            <div className={i == activeStage ? 'active form-control' : 'form-control'}>
-              <input
-                type="text"
-                value={row.name}
-                name="name"
-                onChange={(e) => this.handleStageChange(e, i)}
-                readOnly
-              />
-            </div>
-          </li>
+          <React.Fragment key={`${i}_workflow_checklist_status`}>
+            <li
+              onClick={() => this.getUsecaseStageData(row, i)}
+              className={
+                status(row)
+              }
+            >
+              <span>{i + 1}</span>
+              <div className={i == activeStage ? 'active form-control' : 'form-control'}>
+                <input
+                  type="text"
+                  value={row.name}
+                  name="name"
+                  onChange={(e) => this.handleStageChange(e, i)}
+                  readOnly
+                />
+              </div>
+            </li></React.Fragment>
         );
       }
     }
@@ -200,11 +199,12 @@ class WorkFlow extends React.Component<any, any> {
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
-          <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
-            {/* <Link to="/"> */}
-            <span>{useCaseList[i].usecaseName.S}</span>
-            {/* </Link> */}
-          </li>
+          <React.Fragment key={`${i}_active_usecase`}>
+            <li className={i == activeUseCaseIndex ? "active" : ''} onClick={() => this.setUseCaseData(i)}>
+              {/* <Link to="/"> */}
+              <span>{useCaseList[i].usecaseName}</span>
+              {/* </Link> */}
+            </li></React.Fragment>
         )
       }
     }
@@ -267,87 +267,104 @@ class WorkFlow extends React.Component<any, any> {
     usecaseData.stepinput.S.stages[0].usecaseDevelopment[name].push(files[0])
     this.setState(usecaseData)
   }
-
+  handleDisplayMatrixView = (modelName: any | "") => {
+    let { activeModelName, toggleMatrix } = this.state;
+    activeModelName = modelName ? modelName : ''
+    this.setState({
+      toggleMatrix: !toggleMatrix, activeModelName
+    })
+  }
   render() {
-    const { activeStage, usecaseData, userList, editformData, createUsecase, uploadScreenshot } = this.state;
+    const { activeStage, usecaseData, userList, toggleMatrix, activeModelName, editformData, createUsecase, uploadScreenshot } = this.state;
     let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
 
-    return (<>
+    return (<React.Fragment>{!toggleMatrix ?
       <div className="project-over-view-right-content">
         <div className="workflow-stage">
           {usecaseData?.stepinput?.stages?.length && usecaseData.stepinput.stages.length > 0 && <ul>{this.displayWorkflowStage()}</ul>}
         </div>
         {createUsecase === true ?
-          <div className="usecase-form">
-            <div className="heading">
-              <span>Requirement Sub-Stage details</span>
-              <button className="btn btn-close" onClick={() => this.createUsecaseClose()}>
-                <i className="fa fa-close"></i>
-              </button>
-            </div>
-            <div className="form">
-              <div className="form-group row">
-                <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
-                <div className="col-lg-10 col-sm-12">
-                  <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName} onChange={(e) => this.handleusecaseDevelopmentState(e)} disabled={editformData} type="text" placeholder="" />
-                </div>
+          <div className="workflow-inner-data-contant">
+            <div className="usecase-form">
+              <div className="heading">
+                <span>Requirement Sub-Stage details</span>
+                <button className="btn btn-close" onClick={() => this.createUsecaseClose()}>
+                  <i className="fa fa-close"></i>
+                </button>
               </div>
-              <div className="form-group row">
-                <label className="col-lg-2 col-sm-12 col-form-label">Select Actors</label>
-                <div className="col-lg-10 col-sm-12">
-                  <div className='row'>
-                    {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
-                    {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
-                      usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
-                        <div className="col-lg-3 col-md-4 col-sm-6">
-                          <div className="select-actors">
-                            <input className="form-check-input" key={val.key} name="selectActors"
-                              onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />
-                            <div className="image">
-                              <img src={actorsImg} alt='' />
-                            </div>
-                            <div className="name">{val.name}</div>
-                          </div>
-                        </div>)) : <></>
-                    }
+              <div className="form">
+                <div className="form-group row">
+                  <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
+                  <div className="col-lg-10 col-sm-12">
+                    <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName}
+                      onChange={(e) => { this.handleusecaseDevelopmentState(e) }} disabled={editformData} type="text" placeholder="" />
                   </div>
                 </div>
-              </div>
-              <div className="form-group row">
-                <label className="col-lg-2 col-sm-12 col-form-label">Usecase Description</label>
-                <div className="col-lg-10 col-sm-12">
-                  <textarea className="form-control" name="description" value={usecaseDevelopment.description} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
-                </div>
-              </div>
-              <div className="form-group row">
-                <label className="col-lg-2 col-sm-12 col-form-label">Tigger</label>
-                <div className="col-lg-10 col-sm-12">
-                  <input className="form-control" name="tigger" value={usecaseDevelopment.tigger} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
-                </div>
-              </div>
-              <div className="form-group row">
-                <label className="col-lg-2 col-sm-12 col-form-label">Pre-conditions</label>
-                <div className="col-lg-10 col-sm-12">
-                  <input className="form-control" name="preConditions" value={usecaseDevelopment.preConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
-                </div>
-              </div>
-              <div className="form-group row">
-                <label className="col-lg-2 col-sm-12 col-form-label">Post-conditions</label>
-                <div className="col-lg-10 col-sm-12">
-                  <textarea className="form-control" name="postConditions" value={usecaseDevelopment.postConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
-                </div>
-              </div>
-              <div className="form-group row">
-                <label className="col-lg-2 col-sm-12 col-form-label">Usecase Flow</label>
-                <div className="col-lg-10 col-sm-12">
-                  <textarea className="form-control" name='usecaseFlow' value={usecaseDevelopment.usecaseFlow} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={4} />
-                </div>
-              </div>
-              <div className="form-group row">
-                <div className="col-sm-12 text-right">
-                  <button className="btn btn-primary save-btn" onClick={() => this.updateForm(usecaseData)}>
-                    Save
-                  </button>
+                <div className="form">
+                  <div className="form-group row">
+                    <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
+                    <div className="col-lg-10 col-sm-12">
+                      <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName} onChange={(e) => this.handleusecaseDevelopmentState(e)} disabled={editformData} type="text" placeholder="" />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-lg-2 col-sm-12 col-form-label">Select Actors</label>
+                    <div className="col-lg-10 col-sm-12">
+                      <div className='row'>
+                        {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
+                        {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
+                          usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
+                            <div className="col-lg-4 col-md-4 col-sm-6" key={`${index}_select_actor`}>
+                              <div className="select-actors">
+                                <input className="form-check-input" key={val.key} name="selectActors"
+                                  onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />
+                                <div className="image">
+                                  <img src={actorsImg} alt='' />
+                                </div>
+                                <div className="name">{val.name}</div>
+                              </div>
+                            </div>)) : <></>
+                        }
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-lg-2 col-sm-12 col-form-label">Usecase Description</label>
+                    <div className="col-lg-10 col-sm-12">
+                      <textarea className="form-control" name="description" value={usecaseDevelopment.description} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-lg-2 col-sm-12 col-form-label">Tigger</label>
+                    <div className="col-lg-10 col-sm-12">
+                      <input className="form-control" name="tigger" value={usecaseDevelopment.tigger} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-lg-2 col-sm-12 col-form-label">Pre-conditions</label>
+                    <div className="col-lg-10 col-sm-12">
+                      <input className="form-control" name="preConditions" value={usecaseDevelopment.preConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-lg-2 col-sm-12 col-form-label">Post-conditions</label>
+                    <div className="col-lg-10 col-sm-12">
+                      <textarea className="form-control" name="postConditions" value={usecaseDevelopment.postConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-lg-2 col-sm-12 col-form-label">Usecase Flow</label>
+                    <div className="col-lg-10 col-sm-12">
+                      <textarea className="form-control" name='usecaseFlow' value={usecaseDevelopment.usecaseFlow} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={4} />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <div className="col-sm-12 text-right">
+                      <button className="btn btn-primary save-btn" onClick={() => this.updateForm(usecaseData)}>
+                        Save
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -355,36 +372,28 @@ class WorkFlow extends React.Component<any, any> {
           : ""
         }
         {uploadScreenshot ?
-          <div className="usecase-form">
-            <div className="heading">
-              <span>Requirement Sub-Stage details</span>
-              <button className="btn btn-close" onClick={() => this.uploadScreenshotClose()}>
-                <i className="fa fa-close"></i>
-              </button>
-            </div>
-            <div className="form">
-              <div className="form-group row">
-                <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Prototype Link</label>
-                <div className="col-lg-9 col-sm-12">
-                  <input className="form-control" name="prototypeLink" value={usecaseDevelopment.prototypeLink} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
-                </div>
+          <div className="workflow-inner-data-contant">
+            <div className="usecase-form">
+              <div className="heading">
+                <span>Requirement Sub-Stage details</span>
+                <button className="btn btn-close" onClick={() => this.uploadScreenshotClose()}>
+                  <i className="fa fa-close"></i>
+                </button>
               </div>
-              <div className="form-group row">
-                <label className="col-sm-12 col-form-label">Usecase Design Screenshots</label>
-                <div className="col-sm-12">
-                  <div className="upload-screenshots">
-                    <input type="file" id="file" name="specs" onChange={(e) => this.handleSpecsFiles(e)} readOnly={editformData} className="form-control-file" />
-                    <button className="btn btn-primary btn-upload" type="button">
-                      <i className="fa fa-plus"></i> Add more Screenshots
-                    </button>
+              <div className="form">
+                <div className="form-group row">
+                  <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Prototype Link</label>
+                  <div className="col-lg-9 col-sm-12">
+                    <input className="form-control" name="prototypeLink" value={usecaseDevelopment.prototypeLink} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                   </div>
                   <div className="row">
                     {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
-                      usecaseDevelopment.specs.map((value: any, index: any) => (<div className="col-md-2 col-sm-4">
-                        <div className="screenshot">
-                          <img src={URL.createObjectURL(value)} alt="" />
-                        </div>
-                      </div>)) : <></>
+                      usecaseDevelopment.specs.map((value: any, index: any) => (
+                        <div className="col-md-2 col-sm-4" key={`${index}_usecase_devlopement_specs`}>
+                          <div className="screenshot">
+                            <img src={URL.createObjectURL(value)} alt="" />
+                          </div>
+                        </div>)) : <></>
                     }
                     {/* <div className="col-md-2 col-sm-4">
                       <div className="screenshot">
@@ -400,96 +409,113 @@ class WorkFlow extends React.Component<any, any> {
         }
         {createUsecase === false && uploadScreenshot === false ?
           <>
-            <div className="workflow-data">
-              {activeStage === 0 ? <React.Fragment>   <div className="api-code">
-                <div className="heading">
-                  <h5>{'Usecase Development'}</h5>
-                  <i className="fa fa-angle-down" aria-hidden="true"></i>
-                </div>
-                <div className="api-content">
-                  <button className="btn btn-primary usecase-btn" onClick={() => this.createUsecase()}>
-                    Create Usecase
-                  </button>
-                  <button className="btn btn-primary usecase-btn">
-                    View Details
-                  </button>
-                </div>
-              </div>
-                <div className="api-code">
+            <div className="workflow-inner-data-contant">
+              <div className="workflow-data">
+                {activeStage === 0 ? <React.Fragment>   <div className="api-code">
                   <div className="heading">
-                    <h5>{'Design Specs'}</h5>
+                    {/* <h5>{'Usecase Development'}</h5> */}
                     <i className="fa fa-angle-down" aria-hidden="true"></i>
                   </div>
                   <div className="api-content">
-                    <button className="btn btn-primary usecase-btn" onClick={() => this.uploadScreenshot()}>
-                      Upload
+                    <button className="btn btn-primary usecase-btn" onClick={() => this.createUsecase()}>
+                      Create Usecase
                     </button>
-                    <button className="btn btn-primary usecase-btn">
+                    <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("usecaseDevelopment")}>
                       View Details
                     </button>
                   </div>
-                </div></React.Fragment> : ""}
-              {editformData !== "" && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
-            </div>
-            {activeStage === 0 ? <div className="workflow-view-table-section">
-              <div className='heading'>
-                <h5>SCRUM Planning</h5>
-                <i className="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                  <div className="api-code">
+                    <div className="heading">
+                      <h5>{'Usecase Development'}</h5>
+                      <i className="fa fa-angle-down" aria-hidden="true"></i>
+                    </div>
+                    <div className="api-content">
+                      <button className="btn btn-primary usecase-btn" onClick={() => this.createUsecase()}>
+                        Create Usecase
+                      </button>
+                      <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("designSpecs")}>
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                  <div className="api-code">
+                    <div className="heading">
+                      <h5>{'Design Specs'}</h5>
+                      <i className="fa fa-angle-down" aria-hidden="true"></i>
+                    </div>
+                    <div className="api-content">
+                      <button className="btn btn-primary usecase-btn" onClick={() => this.uploadScreenshot()}>
+                        Upload
+                      </button>
+                      <button className="btn btn-primary usecase-btn">
+                        View Details
+                      </button>
+                    </div>
+                  </div></React.Fragment> : ""}
+                {editformData !== "" && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
               </div>
-              <div className="workflow-view-table">
-                <table className="table">
-                  <thead >
-                    <tr>
-                      <th>Stages</th>
-                      <th>Assigned to</th>
-                      <th>Start Date</th>
-                      <th>Deviation</th>
-                      <th>End Date</th>
-                      <th>Deviation</th>
-                    </tr>
-                  </thead>
-                  {usecaseData && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0 ?
-                    <tbody><CommanPlanningTable props={{ handleStateChange: this.handleStateChange, usecaseData, disabledEditForm: editformData, userList: userList, activeStage, ...this.props }} />
-                    </tbody> : <React.Fragment></React.Fragment>}
-                </table>
+              {activeStage === 0 ? <div className="workflow-view-table-section">
+                <div className='heading'>
+                  <h5>SCRUM Planning</h5>
+                  <i className="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div className="workflow-view-table">
+                  <table className="table">
+                    <thead >
+                      <tr>
+                        <th>Stages</th>
+                        <th>Assigned to</th>
+                        <th>Start Date</th>
+                        <th>Deviation</th>
+                        <th>End Date</th>
+                        <th>Deviation</th>
+                      </tr>
+                    </thead>
+                    {usecaseData && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0 ?
+                      <tbody><CommanPlanningTable props={{ handleStateChange: this.handleStateChange, usecaseData, disabledEditForm: editformData, userList: userList, activeStage, ...this.props }} />
+                      </tbody> : <React.Fragment></React.Fragment>}
+                  </table>
+                </div>
+              </div> : <React.Fragment></React.Fragment>}
+              <div className="workflow-requirement">
+                <div className="heading">
+                  <h5>Checklist for Requirements</h5>
+                </div>
+                {editformData !== "" && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0 ? <React.Fragment>
+                  <CommanCheckList usecaseData={usecaseData}
+                    activeStage={activeStage} handleStateChangeCheckList={this.handleStateChangeCheckList}
+                    disabledEditForm={editformData} />
+                </React.Fragment> : <React.Fragment></React.Fragment>}
               </div>
-            </div> : <React.Fragment></React.Fragment>}
-            <div className="workflow-requirement">
-              <div className="heading">
-                <h5>Checklist for Requirements</h5>
-              </div>
-              {editformData !== "" && usecaseData?.stepinput?.stages[activeStage]?.workflowCheckList?.length > 0 ? <React.Fragment>
-                <CommanCheckList usecaseData={usecaseData}
-                  activeStage={activeStage} handleStateChangeCheckList={this.handleStateChangeCheckList}
-                  disabledEditForm={editformData} />
-              </React.Fragment> : <React.Fragment></React.Fragment>}
-            </div>
-            <div className="workflow-buttons">
-              <button
-                type="button"
-                disabled={activeStage == 0}
-                className="btn btn-primary previous-btn"
-                onClick={() => this.moveToNextPage('previous')}
-              >
-                Previous
-              </button>
-              {usecaseData && (
+              <div className="workflow-buttons">
                 <button
                   type="button"
-                  disabled={usecaseData?.stepinput?.stages.length - 1 === activeStage}
-                  className="btn btn-primary previous-btn next-btn"
-                  onClick={() => this.moveToNextPage('next')}
+                  disabled={activeStage == 0}
+                  className="btn btn-primary previous-btn"
+                  onClick={() => this.moveToNextPage('previous')}
                 >
-                  Next
+                  Previous
                 </button>
-              )}
+                {usecaseData && (
+                  <button
+                    type="button"
+                    disabled={usecaseData?.stepinput?.stages.length - 1 === activeStage}
+                    className="btn btn-primary previous-btn next-btn"
+                    onClick={() => this.moveToNextPage('next')}
+                  >
+                    Next
+                  </button>
+                )}
+              </div>
             </div>
           </>
           : ""
         }
 
-      </div>
-    </>)
+      </div> : <React.Fragment>
+        {usecaseDevelopment && usecaseData ? <CommonMatrixViewComponent activeMatrixData={usecaseDevelopment} usecasename={usecaseData.usecasename ? usecaseData.usecasename : usecaseData.usecaseName} activeModelName={activeModelName} handleDisplayMatrixView={this.handleDisplayMatrixView} /> : <></>}</React.Fragment>}
+    </React.Fragment>)
   }
 }
 export default WorkFlow;

@@ -41,14 +41,13 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
         }
         return retdata;
     }
-    displayUsecaseList = (usecaseList: any) => {
-
+    displayUsecaseList = (stageList: any) => {
         let retData = [];
-        if (usecaseList && usecaseList.length > 0) {
-            for (let i = 0; i < usecaseList.length; i++) {
-                let row = usecaseList[i];
+        if (stageList && stageList.length > 0) {
+            for (let i = 0; i < stageList.length; i++) {
+                let row = stageList[i];
                 retData.push(
-                    <div className="col-md-4 col-12">
+                    <div className="col-md-4 col-12" key={`${i}_stage_list`}>
                         <div
                             className={
                                 `receive-rfq-box  ${this.checkValuesValidation(row.workflowCheckList)}`
@@ -74,9 +73,11 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
         if (step && step.length > 0) {
             for (let i = 0; i < step.length; i++) {
                 retStepData.push(
+                    <React.Fragment key={`${i}_workflow_checklist_step`}>
                     <Link to="/a/xformation-workflow-engine/matrixView">
                         <li className={step[i].link !== '' ? 'active' : ''}>{step[i].subStageName}</li>
                     </Link>
+                    </React.Fragment>
                 );
             }
         }
@@ -84,10 +85,10 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
     };
 
     render() {
-        const { usecaseList } = this.props;
+        const { usecaseStageList } = this.props;
         return (
             <React.Fragment>
-                {this.displayUsecaseList(usecaseList)}
+                {this.displayUsecaseList(usecaseStageList)}
             </React.Fragment>
         )
     }

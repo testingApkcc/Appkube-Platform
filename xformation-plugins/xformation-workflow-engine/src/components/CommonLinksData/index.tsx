@@ -14,14 +14,15 @@ export class LinkData extends React.Component<any, any> {
                 {workflowDetail?.details.length > 0 ?
                     workflowDetail.details.map((val: any, indx: any) => {
                         return (
-                            <React.Fragment>
-                                <div key={`usecase-${indx}-${activeStage}`} className="api-code">
+                            <React.Fragment key={`usecase-${indx}-${activeStage}`}>
+                                <div  className="api-code">
                                     <div className="heading">
                                         <h5>{val.subStageName}</h5>
                                         <i className="fa fa-angle-down" aria-hidden="true"></i>
                                     </div>
                                     {val?.data?.length > 0 && val.data.map((link: any, index: any) => {
                                         return (
+                                            <React.Fragment key={`${index}_${link}`}>
                                             <div className="api-content">
                                                 <label>{link.label}:</label>
                                                 <input
@@ -39,6 +40,7 @@ export class LinkData extends React.Component<any, any> {
                                                     Update
                                                 </button>
                                             </div>
+                                            </React.Fragment>
                                         )
                                     })}
                                 </div>

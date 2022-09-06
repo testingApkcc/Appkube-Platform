@@ -5735,6 +5735,9 @@
   margin-top: 15px;
   position: relative;
   z-index: 1;
+  overflow-y: auto;
+  max-height: 600px;
+  margin-right: -8px;
 }
 .project-over-view-container
   .project-over-view-section
@@ -5810,6 +5813,47 @@
   border-radius: 5px;
   margin-left: -1px;
   overflow: hidden;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content {
+  width: 100%;
+  display: block;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head {
+  width: 100%;
+  display: block;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head
+  .head-right {
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 .project-over-view-container
   .project-over-view-section
@@ -6511,6 +6555,15 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant {
+  overflow-y: auto;
+  max-height: 400px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data {
   border-top: 1px dotted #abd5f9;
 }
@@ -6518,6 +6571,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code {
   border: 1px solid #707070;
@@ -6528,6 +6582,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .heading {
@@ -6541,6 +6596,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .heading
@@ -6552,6 +6608,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .heading
@@ -6564,6 +6621,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content {
@@ -6573,6 +6631,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6587,6 +6646,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6601,6 +6661,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6611,6 +6672,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6622,6 +6684,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section {
   border: 1px solid #707070;
   margin-top: 15px;
@@ -6631,6 +6694,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .heading {
   padding: 10px 15px;
@@ -6643,6 +6707,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .heading
   i {
@@ -6654,6 +6719,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table {
   margin-top: 8px;
@@ -6666,6 +6732,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table {
@@ -6676,6 +6743,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6692,6 +6760,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6704,6 +6773,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6722,6 +6792,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6740,6 +6811,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6753,6 +6825,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6764,6 +6837,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6775,6 +6849,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement {
   border: 1px solid #707070;
   margin-top: 15px;
@@ -6785,6 +6860,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .heading {
   background: #b1c9f8;
@@ -6794,6 +6870,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .heading
   h5 {
@@ -6804,6 +6881,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .requirement-data {
   padding: 5px 15px 0 15px;
@@ -6812,6 +6890,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .requirement-data
   input {
@@ -6822,6 +6901,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .requirement-data
   span {
@@ -6835,6 +6915,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-buttons {
   text-align: end;
   margin-top: 20px;
@@ -6843,6 +6924,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-buttons
   .previous-btn {
   margin-right: 15px;
@@ -6859,9 +6941,227 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-buttons
   .next-btn {
   margin-right: 0;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form {
+  display: block;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px dotted #abd5f9;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .heading {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #202020;
+  padding-bottom: 30px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .heading
+  .btn-close {
+  float: right;
+  border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #e6f2ff;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group {
+  display: flex;
+  margin-bottom: 15px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .col-form-label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #202020;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .form-control {
+  border: 1px solid #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 3px;
+  width: 100%;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .select-actors {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .select-actors
+  .form-check-input {
+  border: 1px solid #e0e0e0;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .select-actors
+  .image {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 2px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .select-actors
+  .image
+  img {
+  max-height: 40px;
+  max-width: 40px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .select-actors
+  .name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #202020;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .upload-screenshots {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  margin-bottom: 20px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .upload-screenshots
+  .form-control-file {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .upload-screenshots
+  .btn-upload
+  i {
+  margin-right: 5px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .screenshot {
+  display: block;
+  width: 100%;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .usecase-form
+  .form-group
+  .screenshot
+  img {
+  max-width: 100%;
+  height: auto;
 }
 
 @media only screen and (max-width: 1280px) {

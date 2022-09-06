@@ -322,7 +322,7 @@ export class AssetOverView extends React.Component<any, any> {
 									<span className="line3" />
 								</div>
 								{useCaseList[this.state.activeUseCaseIndex]?.stepinput?.stages && <div className="row">
-								<AssetOverViewReusableComp usecaseList={useCaseList[this.state.activeUseCaseIndex].stepinput.stages}/>
+								<AssetOverViewReusableComp usecaseStageList={useCaseList[this.state.activeUseCaseIndex].stepinput.stages}/>
 								</div>}
 							</div>
 						</div>

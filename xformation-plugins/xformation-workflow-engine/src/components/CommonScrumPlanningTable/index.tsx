@@ -23,7 +23,7 @@ class CommanPlanningTable extends React.Component<any, any>{
                     props.usecaseData.stepinput.stages.map(
                         (stage: any, index: any) => {
                             return (
-                                <React.Fragment>
+                                <React.Fragment key={`${index}_${stage.name}`}>
                                     <tr className="workflow-inner-table-head">
                                         <td colSpan={6} key={index}>
                                             <strong>{stage.name}</strong>
@@ -33,6 +33,7 @@ class CommanPlanningTable extends React.Component<any, any>{
                                         stage && stage.details ? stage.details.map((step: any, index: any) => {
                                             let userName = this.getUserName(props.userList, step.assignto)
                                             return (
+                                                <React.Fragment key={`${index}_workflow_inner_table`}>
                                                 <tr className="workflow-inner-table">
                                                     <td><span>{step.subStageName}</span></td>
                                                     <td>{userName}</td>
@@ -41,6 +42,7 @@ class CommanPlanningTable extends React.Component<any, any>{
                                                     <td>{step.endDate}</td>
                                                     <td>0</td>
                                                 </tr>
+                                                </React.Fragment>
                                             )
                                         }
                                         ) : <></>
@@ -59,45 +61,3 @@ class CommanPlanningTable extends React.Component<any, any>{
 }
 
 export default CommanPlanningTable;
-
-
-//     const { usecaseData, userList } = this.state;
-//     let retData = [];
-//     // let stageList = usecaseData;
-//     if (usecaseData && usecaseData.length > 0) {
-//         for (let i = 0; i < usecaseData.length; i++) {
-//             let stepJSXList = [];
-//             let stage = usecaseData[i];
-//             if (stage && stage.details && stage.details.length > 0) {
-//                 for (let j = 0; j < stage.details.length; j++) {
-//                     let step = stage.details[j];
-//                     let userName = '';
-//                     for (const users of userList) {
-//                         if (users.id == step.assignto) {
-//                             userName = users.name;
-//                         }
-//                     }
-//                     stepJSXList.push(
-//                         <tr className="workflow-inner-table">
-//                             <td><span>{step.subStageName}</span></td>
-//                             <td>{userName}</td>
-//                             <td>{step.startDate}</td>
-//                             <td>1</td>
-//                             <td>{step.endDate}</td>
-//                             <td>0</td>
-//                         </tr>
-//                     );
-//                 }
-//             }
-//             retData.push(
-//                 <>
-//                     <tr className="workflow-inner-table-head">
-//                         <td colSpan={6}><strong>{stage.name}</strong></td>
-//                     </tr>
-//                     {stepJSXList}
-//                 </>
-//             );
-//         }
-//     }
-//     return retData;
-// };
