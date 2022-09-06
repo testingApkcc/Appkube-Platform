@@ -66,17 +66,12 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
         const { activeTab, usecasename, activeMatrixData
         } = this.state;
         return (
-            <div className="matrix-view-container">
+            <div className="matrix-view-container project-over-view-right-content">
                 <div className="matrix-view-section">
                     <div className="matrix-view-content">
                         <div className="matrix-view-head">
-                            <div className="row d-flex justify-content-center align-items-center h-100">
-                                <div className="col-xl-5 col-lg-6 col-md-7 col-sm-12 col-xs-12">
-                                    <div className="head-right">
-                                        
-                                        <Button onClick={() => this.props.handleDisplayMatrixView('')} className="btn-primary pro-overview-btn"><i className="fa fa-close"></i> </Button>
-                                    </div>
-                                </div>
+                            <div className="head-right">
+                                <Button onClick={() => this.props.handleDisplayMatrixView('')} className="btn-primary pro-overview-btn"><i className="fa fa-close"></i> </Button>
                             </div>
                         </div>
                         <div className="tabs">

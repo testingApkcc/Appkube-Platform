@@ -5818,6 +5818,47 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .matrix-view-section {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content {
+  width: 100%;
+  display: block;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head {
+  width: 100%;
+  display: block;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head
+  .head-right {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
   .workflow-stage {
   display: flex;
   width: 100%;
