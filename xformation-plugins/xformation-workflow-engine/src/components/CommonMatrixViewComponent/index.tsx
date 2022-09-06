@@ -71,31 +71,11 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                     <div className="matrix-view-content">
                         <div className="matrix-view-head">
                             <div className="row d-flex justify-content-center align-items-center h-100">
-                                <div className="col-xl-7 col-lg-6 col-md-5 col-sm-12 col-xs-12">
-                                    <div className="head-left">
-                                        <img src={newUsecase} alt="" />
-                                        <h5> Send RFQ &#62; Requirements</h5>
-                                    </div>
-                                </div>
-                                <div className="col-xl-5 col-lg-6 col-md-7 col-sm-12 col-xs-12">
-                                    <div className="head-right">
-                                        <div className="input-group searchbar">
-                                            <input type="text" className="form-control" placeholder="Search for..." />
-                                        </div>
-                                        <Button onClick={() => this.props.handleDisplayMatrixView('')} className="btn-primary pro-overview-btn"><i className="fa fa-close"></i> </Button>
-                                    </div>
-                                </div>
+                            
                             </div>
                         </div>
                         <div className="tabs">
-                            {/* <ul className="tab">
-                                <li className={activeTab === "Usecase" ? 'active' : ""} onClick={() => this.setActiveTab("Usecase")}>
-                                    <span>Usecase Development</span>
-                                </li>
-                                <li className={activeTab === "Design" ? 'active' : ""} onClick={() => this.setActiveTab("Design")}>
-                                    <span>Design Specs</span>
-                                </li>
-                            </ul> */}
+                           
                             <div className="tabs-content">
                                 {activeTab === "usecaseDevelopment" &&
                                     <div className="tabs-inner-content">
@@ -122,21 +102,12 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                                         {activeMatrixData.preConditions && <div className="requirements-content">
                                             <h6>Preconditions::</h6>
                                             <p>{activeMatrixData.preConditions}</p>
-                                            {/* <ul>
-                                                <li>Attendanec is taken manually and not using Bio-metric, or Swipe card.</li>
-                                                <li>Class teacher role is set, and class is allocated to teacher.</li>
-                                                <li>Lecture is assigned to take attendance.</li>
-                                                <li>List of students is enrolled that class and lecture</li>
-                                            </ul> */}
+                                          
                                         </div>}
                                         {activeMatrixData.postConditions && <div className="requirements-content">
                                             <h6>Post condition:</h6>
                                             <p>{activeMatrixData.postConditions}</p>
-                                            {/* <ul>
-                                                <li>Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                            </ul> */}
+                                            
                                         </div>}
                                         {activeMatrixData.normalFlow && <div className="requirements-content">
                                             <h6>Normal Flow:</h6>
