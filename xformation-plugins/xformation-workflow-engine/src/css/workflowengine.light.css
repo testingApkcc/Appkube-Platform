@@ -5735,6 +5735,9 @@
   margin-top: 15px;
   position: relative;
   z-index: 1;
+  overflow-y: auto;
+  max-height: 600px;
+  margin-right: -8px;
 }
 .project-over-view-container
   .project-over-view-section
@@ -6511,6 +6514,15 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant {
+  overflow-y: auto;
+  max-height: 400px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data {
   border-top: 1px dotted #abd5f9;
 }
@@ -6518,6 +6530,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code {
   border: 1px solid #707070;
@@ -6528,6 +6541,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .heading {
@@ -6541,6 +6555,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .heading
@@ -6552,6 +6567,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .heading
@@ -6564,6 +6580,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content {
@@ -6573,6 +6590,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6587,6 +6605,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6601,6 +6620,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6611,6 +6631,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-data
   .api-code
   .api-content
@@ -6622,6 +6643,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section {
   border: 1px solid #707070;
   margin-top: 15px;
@@ -6631,6 +6653,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .heading {
   padding: 10px 15px;
@@ -6643,6 +6666,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .heading
   i {
@@ -6654,6 +6678,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table {
   margin-top: 8px;
@@ -6666,6 +6691,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table {
@@ -6676,6 +6702,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6692,6 +6719,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6704,6 +6732,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6722,6 +6751,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6740,6 +6770,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6753,6 +6784,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6764,6 +6796,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-view-table-section
   .workflow-view-table
   .table
@@ -6775,6 +6808,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement {
   border: 1px solid #707070;
   margin-top: 15px;
@@ -6785,6 +6819,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .heading {
   background: #b1c9f8;
@@ -6794,6 +6829,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .heading
   h5 {
@@ -6804,6 +6840,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .requirement-data {
   padding: 5px 15px 0 15px;
@@ -6812,6 +6849,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .requirement-data
   input {
@@ -6822,6 +6860,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-requirement
   .requirement-data
   span {
@@ -6835,6 +6874,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-buttons {
   text-align: end;
   margin-top: 20px;
@@ -6843,6 +6883,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-buttons
   .previous-btn {
   margin-right: 15px;
@@ -6859,6 +6900,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .workflow-buttons
   .next-btn {
   margin-right: 0;
@@ -6867,6 +6909,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form {
   display: block;
   width: 100%;
@@ -6878,6 +6921,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .heading {
   display: block;
@@ -6892,6 +6936,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .heading
   .btn-close {
@@ -6905,6 +6950,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group {
   display: flex;
@@ -6914,6 +6960,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .col-form-label {
@@ -6926,6 +6973,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .form-control {
@@ -6938,6 +6986,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .select-actors {
@@ -6951,6 +7000,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .select-actors
@@ -6965,6 +7015,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .select-actors
@@ -6983,6 +7034,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .select-actors
@@ -6995,6 +7047,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .select-actors
@@ -7008,6 +7061,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .upload-screenshots {
@@ -7020,6 +7074,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .upload-screenshots
@@ -7036,6 +7091,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .upload-screenshots
@@ -7047,6 +7103,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .screenshot {
@@ -7057,6 +7114,7 @@
   .project-over-view-section
   .project-over-view-inner-content
   .project-over-view-right-content
+  .workflow-inner-data-contant
   .usecase-form
   .form-group
   .screenshot
