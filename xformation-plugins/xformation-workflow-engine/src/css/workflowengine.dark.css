@@ -3376,6 +3376,41 @@
   .workflow-content
   .workflow-stage
   ul
+  li.todo::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  background-color: #2662f0;
+  width: 100%;
+  height: 2px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
+  li.todo
+  span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: #2662f0;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .workflow-stage
+  ul
   li.completed::before {
   content: '';
   position: absolute;
@@ -5140,6 +5175,13 @@
   }
 }
 
+.create-new-usecase {
+  display: block;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 570px;
+  padding-left: 15px;
+}
 .create-new-usecase .basic-details {
   border-bottom: 1px dashed #8392a7;
   margin-bottom: 30px;
@@ -5189,13 +5231,11 @@
 .create-new-usecase .basic-details .menu-dropdown {
   margin-bottom: 30px;
 }
-
 .create-new-usecase .workflow-detail h4 {
   color: #3b4859;
   font-weight: 500;
   margin-bottom: 20px;
 }
-
 .create-new-usecase .workflow-detail .add-workflow-btn {
   margin-top: 15px;
   margin-bottom: 20px;
@@ -5203,7 +5243,6 @@
 .create-new-usecase .workflow-detail .add-workflow-btn:focus {
   box-shadow: none;
 }
-
 .create-new-usecase .add-workflow-list {
   border-left: 2px solid #9ec7fc;
   height: 100%;
@@ -5509,7 +5548,6 @@
   line-height: 25px;
   cursor: pointer;
 }
-
 .create-new-usecase .basic-details-btn {
   text-align: right;
   margin-bottom: 15px;
@@ -5854,6 +5892,26 @@
   display: flex;
   align-items: center;
   justify-content: end;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .tabs {
+  width: 100%;
+  display: block;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .tabs
+  .tabs-content {
+  padding: 20px 25px;
 }
 .project-over-view-container
   .project-over-view-section
@@ -6884,7 +6942,10 @@
   .workflow-inner-data-contant
   .workflow-requirement
   .requirement-data {
-  padding: 5px 15px 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 8px 15px 0 15px;
 }
 .project-over-view-container
   .project-over-view-section
@@ -6905,8 +6966,8 @@
   .workflow-requirement
   .requirement-data
   span {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 18px;
   font-weight: 400;
   color: #3b4859;
   vertical-align: baseline;

@@ -1,4 +1,10 @@
 .create-new-usecase {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 570px;
+    padding-left: 15px;
+
     .basic-details {
         border-bottom: 1px dashed #8392A7;
         margin-bottom: 30px;
@@ -439,6 +445,7 @@
         }
     }
 }
+
 
 @media only screen and (max-width: 991px) {
     .project-over-view-container {
