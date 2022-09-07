@@ -70,7 +70,7 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                     <div className="matrix-view-content">
                         <div className="matrix-view-head">
                             <div className="head-right">
-                                <Button onClick={() => this.props.handleDisplayMatrixView('')} className="btn-primary pro-overview-btn"><i className="fa fa-close"></i> </Button>
+                                <Button onClick={() => this.props.handleDisplayMatrixView()} className="btn-primary pro-overview-btn"><i className="fa fa-close"></i> </Button>
                             </div>
                         </div>
                         <div className="tabs">
@@ -107,38 +107,18 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                                         </div>}
                                         {activeMatrixData.normalFlow && <div className="requirements-content">
                                             <h6>Normal Flow:</h6>
-                                            <ol>
-                                                <li>Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                            </ol>
+  
                                         </div>}
                                         {activeMatrixData.alternateFlow && <div className="requirements-content">
                                             <h6>Alternate Flow:</h6>
                                             <p>9A1: Teacher wrongly marks student as absent or student come tale to school.</p>
-                                            <ol>
-                                                <li>Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                                <li>Class teacher / Admin logs in to Class teacher / Admin logs in to Class teacher / Admin logs in to</li>
-                                            </ol>
+                                           
                                         </div>}
                                     </div>
                                 }
                                 {activeTab === "designSpecs" &&
                                     <div className="tabs-inner-content">
-                                        {activeMatrixData?.prototypeLink && <p><strong>Prototype Link:</strong> <a href={activeMatrixData.prototypeLink} target="_blank" >https://xd.adobe.com/view/a29133fd-8214-4aff-7293-b9a01174de5-d4a0/?fullscreen</a></p>}
+                                        {activeMatrixData?.prototypeLink && <p><strong>Prototype Link:</strong> <a href={activeMatrixData.prototypeLink} target="_blank" >{activeMatrixData.prototypeLink }</a></p>}
                                         {activeMatrixData?.specs?.length > 0 && <div className="design-specs-img"><img src={designSpecsImg} alt="" /></div>}
                                     </div>
                                 }

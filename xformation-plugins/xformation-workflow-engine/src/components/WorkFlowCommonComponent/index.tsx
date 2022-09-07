@@ -280,7 +280,6 @@ class WorkFlow extends React.Component<any, any> {
   }
   render() {
     const { activeStage, usecaseData, userList, toggleMatrix, activeModelName, editformData, createUsecase, uploadScreenshot } = this.state;
-    console.log(usecaseData)
     let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
     return (<React.Fragment>{!toggleMatrix ?
       <div className="project-over-view-right-content">
@@ -296,7 +295,6 @@ class WorkFlow extends React.Component<any, any> {
                   <i className="fa fa-close"></i>
                 </button>
               </div>
-              <div className="form">
                 <div className="form-group row">
                   <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
                   <div className="col-lg-10 col-sm-12">
@@ -371,7 +369,7 @@ class WorkFlow extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
-            </div>
+            
           </div>
           : ""
         }
@@ -435,7 +433,7 @@ class WorkFlow extends React.Component<any, any> {
                       <button className="btn btn-primary usecase-btn" onClick={() => this.createUsecase()}>
                         Create Usecase
                       </button>
-                      <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("designSpecs")}>
+                      <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("usecaseDevelopment")}>
                         View Details
                       </button>
                     </div>
@@ -449,7 +447,7 @@ class WorkFlow extends React.Component<any, any> {
                       <button className="btn btn-primary usecase-btn" onClick={() => this.uploadScreenshot()}>
                         Upload
                       </button>
-                      <button className="btn btn-primary usecase-btn">
+                      <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("designSpecs")} >
                         View Details
                       </button>
                     </div>
