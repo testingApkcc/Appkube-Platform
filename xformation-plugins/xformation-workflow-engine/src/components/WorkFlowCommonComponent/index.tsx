@@ -75,11 +75,14 @@ class WorkFlow extends React.Component<any, any> {
             if (status === row.workflowCheckList.length) {
               return "completed"
             }
-            else {
+            else if (status >0 && status< row.workflowCheckList.length) {
               return "inprogress"
             }
+            else {
+              return"todo"
+            }
           }
-          return "inprogress"
+        
         }
         retData.push(
           <React.Fragment key={`${i}_workflow_checklist_status`}>
@@ -151,10 +154,10 @@ class WorkFlow extends React.Component<any, any> {
       }
       if (count == workflowDetail.workflowCheckList.length) {
         usecaseData.stepinput.stages[activeStage]['status'] = 'completed';
-      } else if (count < workflowDetail.workflowCheckList.length) {
+      } else if (count>0 && count < workflowDetail.workflowCheckList.length) {
         usecaseData.stepinput.stages[activeStage]['status'] = 'inprogress';
       } else if (count == 0) {
-        usecaseData.stepinput.stages[activeStage]['status'] = '';
+        usecaseData.stepinput.stages[activeStage]['status'] = 'todo';
       }
       this.setState({
         usecaseData

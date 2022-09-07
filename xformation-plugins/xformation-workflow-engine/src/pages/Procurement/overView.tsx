@@ -58,8 +58,11 @@ export class OverView extends React.Component<any, any> {
 		if (valuesPresent === value.length) {
 			retdata=<i className="fa fa-check green" aria-hidden="true" ></i>
 		}
-		else {
+		else if( valuesPresent>0 && valuesPresent> value.length){
 			retdata=<i className="fa fa-check orange" aria-hidden="true" ></i>
+		}
+		else{
+			retdata=<i className="fa fa-check blue" aria-hidden="true" ></i>
 		}
 		return retdata;
 	}

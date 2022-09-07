@@ -112,7 +112,7 @@ export class ProjectWise extends React.Component<any, any> {
 
 	checkStatusOfWorkflow = (data: any) => {
 		let count = 0
-		let retData = ' '
+		let retData = ''
 		if (data && data && data.length > 0) {
 			for (const usecase of data) {
 				if (usecase.checked && usecase.checked === true) {
@@ -124,10 +124,10 @@ export class ProjectWise extends React.Component<any, any> {
 			}
 			if (count == data.length) {
 				retData = 'fa fa-check green';
-			} else if (count === 0) {
-				retData = "";
+			} else if (count >0 && count<data.length) {
+				retData = "fa fa-check orange";
 			} else {
-				retData = 'fa fa-check orange';
+				retData = 'fa fa-check blue';
 			}
 		}
 		return retData;
