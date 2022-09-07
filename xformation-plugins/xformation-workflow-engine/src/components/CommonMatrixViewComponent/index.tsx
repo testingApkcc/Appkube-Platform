@@ -61,6 +61,7 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
         }
         return validate
     }
+   
     render() {
         const { activeTab, usecasename, activeMatrixData,
         } = this.state;

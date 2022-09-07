@@ -7,7 +7,7 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            toggleMatrix: false,
+            toggleMatrix: this.props.closeMatrixView?this.props.closeMatrixView: false,
             activeModelName: '',
         }
         this.matrixDataName = [
@@ -15,8 +15,13 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
             "Create Screen Design"
         ]
     }
-
+componentDidUpdate() {
+    if (this.state.toggleMatrix!== this.props.closeMatrixView){
+        this.setState({toggleMatrix: this.props.closeMatrixView})
+    }
+}
     handleDisplayMatrixView = (modelName: any | "") => {
+        this.props.toggleMatrixView()
         let { activeModelName, toggleMatrix } = this.state;
         activeModelName = modelName ? modelName : ''
         this.setState({
@@ -112,7 +117,7 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
                 </React.Fragment> :
                     <CommonMatrixViewComponent activeModelName={activeModelName} usecasename={usecasename}
                         activeMatrixData={usecaseStageList[0].usecaseDevelopment
-                        } handleDisplayMatrixView={this.handleDisplayMatrixView} />
+                        } handleDisplayMatrixView={this.handleDisplayMatrixView } />
                 }
 
             </React.Fragment>

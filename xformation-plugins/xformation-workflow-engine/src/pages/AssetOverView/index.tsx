@@ -2,22 +2,15 @@ import * as React from 'react';
 import { AwsHelper } from '../AwsHelpers';
 import downloadIcon from '../../img/projectoverview/download-icon.png';
 import { Link } from 'react-router-dom';
-// import SimpleBar from 'simplebar-react';
 import AssetOverViewReusableComp from '../../components/AssetOverViewCommonComponent'
-// import overviewMenu1 from '../../img/projectoverview/overview-menu1.png';
-// import overviewMenu2 from '../../img/projectoverview/overview-menu2.png';
-// import overviewMenu3 from '../../img/projectoverview/overview-menu3.png';
-// import overviewMenu4 from '../../img/projectoverview/overview-menu4.png';
-// import overviewMenu5 from '../../img/projectoverview/overview-menu5.png';
-// import overviewMenu6 from '../../img/projectoverview/overview-menu6.png';
-// import overviewMenu7 from '../../img/projectoverview/overview-menu7.png';
+
 
 export class AssetOverView extends React.Component<any, any> {
 	awsHelper: any;
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			useCaseList:[],
+			useCaseList: [],
 			// usecaseList: {
 			// 	name: 'ipsa',
 			// 	description: 'Recusandae libero eveniet ducimus.',
@@ -198,11 +191,14 @@ export class AssetOverView extends React.Component<any, any> {
 			// 	{ name: 'New RFQ', id: '7', img: overviewMenu7 },
 			// 	{ name: 'Conditional Approval', id: '8', img: overviewMenu1 }
 			// ]
-			activeUseCaseIndex:0,
+			closeMatrixView:false,
+			activeUseCaseIndex: 0,
 		};
 		this.awsHelper = new AwsHelper({ meta: props.meta });
 	}
-
+	toggleMatrixView=()=>{
+        this.setState({closeMatrixView:!this.state.closeMatrixView})
+    }
 
 	componentDidMount() {
 		this.awsHelper.getUsecaseList((useCaseList: any) => {
@@ -210,21 +206,21 @@ export class AssetOverView extends React.Component<any, any> {
 				this.awsHelper.getExecutionHistory(
 					"arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab",
 					(items: any) => {
-						if (useCase?.stepinput ){
-							
-						const useCases = this.state.useCaseList;
-						if (useCase.stepinput.stages.length>0){
-						useCases.push({
-							...useCase,
-							steps: items,
-							executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
-						})
-					}
-						this.setState({
-							useCaseList: useCases
-						});
-					
-					}
+						if (useCase?.stepinput) {
+
+							const useCases = this.state.useCaseList;
+							if (useCase.stepinput.stages.length > 0) {
+								useCases.push({
+									...useCase,
+									steps: items,
+									executionArn: { S: "arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab" }
+								})
+							}
+							this.setState({
+								useCaseList: useCases
+							});
+
+						}
 					},
 					(err: any) => { console.log(err) }
 				);
@@ -241,26 +237,25 @@ export class AssetOverView extends React.Component<any, any> {
 		);
 	}
 
-	displaySideMenuList = (useCaseList:any) => {
-		const {activeUseCaseIndex}=this.state;
+	displaySideMenuList = (useCaseList: any) => {
+		const { activeUseCaseIndex } = this.state;
 		let retData = [];
 		if (useCaseList && useCaseList.length > 0) {
 			for (let i = 0; i < useCaseList.length; i++) {
-				let row= useCaseList[i];
-				if (row?.usecasename){
-				retData.push(
-					<li className={i == activeUseCaseIndex ? 'active' : ''}  onClick={()=>this.setState({activeUseCaseIndex:i})}>
-						<span>{row?.usecasename}</span>
-					</li>
-				);
+				let row = useCaseList[i];
+				if (row?.usecasename) {
+					retData.push(
+						<li className={i == activeUseCaseIndex ? 'active' : ''} onClick={() => this.setState({ activeUseCaseIndex: i, closeMatrixView:"" })}>
+							<span>{row?.usecasename}</span>
+						</li>
+					);
 				}
 			}
 		}
 		return retData;
 	};
-
 	render() {
-		const {useCaseList}=this.state;
+		const { useCaseList, closeMatrixView } = this.state;
 		return (
 			<div className="asset-over-view-container">
 				<div className="asset-over-view-section">
@@ -311,18 +306,18 @@ export class AssetOverView extends React.Component<any, any> {
 					<div className="project-over-view-inner-content">
 						<div className="project-over-view-left-content">
 							<div className="sidebar">
-								{useCaseList && useCaseList.length>0 &&<ul>{this.displaySideMenuList(useCaseList)}</ul>}
+								{useCaseList && useCaseList.length > 0 && <ul>{this.displaySideMenuList(useCaseList)}</ul>}
 							</div>
 						</div>
 						<div className="project-over-view-right-content">
 							<div className="receive-rfq-content">
-								<div className="line">
+								{ closeMatrixView && <div className="line">
 									<span className="line1" />
 									<span className="line2" />
 									<span className="line3" />
-								</div>
+								</div>}
 								{useCaseList[this.state.activeUseCaseIndex]?.stepinput?.stages && <div className="row">
-								<AssetOverViewReusableComp usecasename={useCaseList[this.state.activeUseCaseIndex].usecasename} usecaseStageList={useCaseList[this.state.activeUseCaseIndex].stepinput.stages}/>
+									<AssetOverViewReusableComp toggleMatrixView={this.toggleMatrixView} closeMatrixView={closeMatrixView} usecasename={useCaseList[this.state.activeUseCaseIndex].usecasename} usecaseStageList={useCaseList[this.state.activeUseCaseIndex].stepinput.stages} />
 								</div>}
 							</div>
 						</div>
