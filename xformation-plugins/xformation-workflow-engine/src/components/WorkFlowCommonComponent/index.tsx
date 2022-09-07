@@ -32,8 +32,9 @@ class WorkFlow extends React.Component<any, any> {
   }
   componentDidUpdate(prevProps: any, prevState: any) {
     if (this.props.selectedUseCaseData !== prevProps.selectedUseCaseData) {
+
       this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.selectedUseCaseData.stepinput.stages[0].usecaseDevelopment) })
-      this.setState({
+      this.setState({ toggleMatrix: false,
         usecaseData: cloneDeep(this.props.selectedUseCaseData),
         activeStage: this.state.activeStage ? this.state.activeStage : this.props.activeStage,
         editformData: this.props.editFormData
