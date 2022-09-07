@@ -1,13 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
+import CommonMatrixViewComponent from 'components/CommonMatrixViewComponent';
 
 class AssetOverViewReusableComp extends React.Component<any, any>{
+    matrixDataName: any;
     constructor(props: any) {
         super(props)
-        this.state = {}
+        this.state = {
+            toggleMatrix: false,
+            activeModelName: '',
+        }
+        this.matrixDataName = [
+            "Create Usecase Document",
+            "Create Screen Design"
+        ]
     }
 
+    handleDisplayMatrixView = (modelName: any | "") => {
+        let { activeModelName, toggleMatrix } = this.state;
+        activeModelName = modelName ? modelName : ''
+        this.setState({
+            toggleMatrix: !toggleMatrix, activeModelName
+        })
+    }
 
     checkValuesValidation = (value: any) => {
         let valuesPresent: any = 0
@@ -74,9 +89,11 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
             for (let i = 0; i < step.length; i++) {
                 retStepData.push(
                     <React.Fragment key={`${i}_workflow_checklist_step`}>
-                    <Link to="/a/xformation-workflow-engine/matrixView">
-                        <li className={step[i].link !== '' ? 'active' : ''}>{step[i].subStageName}</li>
-                    </Link>
+                        {/* <Link to="/a/xformation-workflow-engine/matrixView"> */}
+                        {this.matrixDataName.includes(step[i].subStageName) ? <li
+                            onClick={() => { this.handleDisplayMatrixView(step[i].subStageName === "Create Usecase Document" ? "usecaseDevelopment" : "designSpecs") }}
+                            className={step[i].link !== '' ? 'active' : ''}>{step[i].subStageName}</li> : <li className={step[i].link !== '' ? 'active' : ''}>{step[i].subStageName}</li>}
+                        {/* </Link> */}
                     </React.Fragment>
                 );
             }
@@ -85,10 +102,19 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
     };
 
     render() {
-        const { usecaseStageList } = this.props;
+        const { usecaseStageList, usecasename } = this.props;
+        const { toggleMatrix, activeModelName } = this.state;
         return (
             <React.Fragment>
-                {this.displayUsecaseList(usecaseStageList)}
+                {!toggleMatrix ? <React.Fragment>
+
+                    {this.displayUsecaseList(usecaseStageList)}
+                </React.Fragment> :
+                    <CommonMatrixViewComponent activeModelName={activeModelName} usecasename={usecasename}
+                        activeMatrixData={usecaseStageList[0].usecaseDevelopment
+                        } handleDisplayMatrixView={this.handleDisplayMatrixView} />
+                }
+
             </React.Fragment>
         )
     }

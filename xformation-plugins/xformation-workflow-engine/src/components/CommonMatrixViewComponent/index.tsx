@@ -62,7 +62,7 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
         return validate
     }
     render() {
-        const { activeTab, usecasename, activeMatrixData
+        const { activeTab, usecasename, activeMatrixData,
         } = this.state;
         return (
             <div className="matrix-view-container project-over-view-right-content">
@@ -77,7 +77,7 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                             <div className="tabs-content">
                                 {activeTab === "usecaseDevelopment" &&
                                     <div className="tabs-inner-content">
-                                        <h5>Use Case Name &#8758; <span>{usecasename}</span></h5>
+                                        {usecasename && <h5>Use Case Name &#8758; <span>{usecasename}</span></h5>}
                                         {
                                             activeMatrixData
                                                 ?.selectActors?.length && activeMatrixData
@@ -107,18 +107,18 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
                                         </div>}
                                         {activeMatrixData.normalFlow && <div className="requirements-content">
                                             <h6>Normal Flow:</h6>
-  
+
                                         </div>}
                                         {activeMatrixData.alternateFlow && <div className="requirements-content">
                                             <h6>Alternate Flow:</h6>
                                             <p>9A1: Teacher wrongly marks student as absent or student come tale to school.</p>
-                                           
+
                                         </div>}
                                     </div>
                                 }
                                 {activeTab === "designSpecs" &&
                                     <div className="tabs-inner-content">
-                                        {activeMatrixData?.prototypeLink && <p><strong>Prototype Link:</strong> <a href={activeMatrixData.prototypeLink} target="_blank" >{activeMatrixData.prototypeLink }</a></p>}
+                                        {activeMatrixData?.prototypeLink && <p><strong>Prototype Link:</strong> <a href={activeMatrixData.prototypeLink} target="_blank" >{activeMatrixData.prototypeLink}</a></p>}
                                         {activeMatrixData?.specs?.length > 0 && <div className="design-specs-img"><img src={designSpecsImg} alt="" /></div>}
                                     </div>
                                 }
