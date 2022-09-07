@@ -311,7 +311,7 @@ export class AssetOverView extends React.Component<any, any> {
 						</div>
 						<div className="project-over-view-right-content">
 							<div className="receive-rfq-content">
-								{ closeMatrixView && <div className="line">
+								{ !closeMatrixView && <div className="line">
 									<span className="line1" />
 									<span className="line2" />
 									<span className="line3" />

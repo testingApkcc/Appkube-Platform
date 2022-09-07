@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import AssetOverViewReusableComp from '../../components/AssetOverViewCommonComponent'
 export class AssetView extends React.Component<any, any> {
 	constructor(props: any) {
@@ -190,7 +189,9 @@ export class AssetView extends React.Component<any, any> {
 		}
 	};
 	
+	toggleMatrixView=()=>{
 
+	}
 	render() {
 		const {useCase}=this.state
 		return (
@@ -200,7 +201,7 @@ export class AssetView extends React.Component<any, any> {
 					<span className="line2" />
 					<span className="line3" />
 				</div>
-				{<div className="row"><AssetOverViewReusableComp usecasename={useCase.usecasename} usecaseStageList={this.state.usecaseStageList}/></div>}
+				{<div className="row"><AssetOverViewReusableComp toggleMatrixView={this.toggleMatrixView} usecasename={useCase.usecaseName} usecaseStageList={this.state.usecaseStageList}/></div>}
 			</div>
 		);
 	}

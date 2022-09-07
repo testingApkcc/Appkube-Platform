@@ -16,9 +16,11 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
         ]
     }
 componentDidUpdate() {
+    if(this.props.closeMatrixView!== undefined){
     if (this.state.toggleMatrix!== this.props.closeMatrixView){
         this.setState({toggleMatrix: this.props.closeMatrixView})
     }
+}
 }
     handleDisplayMatrixView = (modelName: any | "") => {
         this.props.toggleMatrixView()
@@ -116,8 +118,7 @@ componentDidUpdate() {
                     {this.displayUsecaseList(usecaseStageList)}
                 </React.Fragment> :
                     <CommonMatrixViewComponent activeModelName={activeModelName} usecasename={usecasename}
-                        activeMatrixData={usecaseStageList[0].usecaseDevelopment
-                        } handleDisplayMatrixView={this.handleDisplayMatrixView } />
+                        activeMatrixData={usecaseStageList[0].usecaseDevelopment} handleDisplayMatrixView={this.handleDisplayMatrixView } />
                 }
 
             </React.Fragment>
