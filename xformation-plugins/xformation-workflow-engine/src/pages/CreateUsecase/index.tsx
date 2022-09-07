@@ -42,19 +42,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					index:0,
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: false },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
 							id: 6,
-							checked: true
+							checked: false
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
 							id: 1,
-							checked: true
+							checked: false
 						}
 					],
 					details: [
@@ -110,19 +110,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					assignedTo: '',
 					index:1,
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: false },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
 							id: 6,
-							checked: true
+							checked: false
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
 							id: 1,
-							checked: true
+							checked: false
 						}
 					],
 					details: [
@@ -166,19 +166,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					assignedTo: '',
 					index:2,
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: false },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
 							id: 6,
-							checked: true
+							checked: false
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
 							id: 1,
-							checked: true
+							checked: false
 						}
 					],
 					details: [
@@ -262,19 +262,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					index:3,
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: false },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
 							id: 6,
-							checked: true
+							checked: false
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
 							id: 1,
-							checked: true
+							checked: false
 						}
 					],
 					details: [
@@ -334,19 +334,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					index:4,
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: false },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
 							id: 6,
-							checked: true
+							checked: false
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
 							id: 1,
-							checked: true
+							checked: false
 						}
 					],
 					details: [
@@ -390,19 +390,19 @@ export class CreateUsecase extends React.Component<any, any> {
 					index:5,
 					assignedTo: '',
 					workflowCheckList: [
-						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: true },
-						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: true },
-						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: true },
+						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
+						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
+						{ label: 'UI code is available in GitHub that works with Mock API', id: 6, checked: false },
 						{
 							label: 'The code has adequate build / test instructions to run mock server and review UI',
 							id: 6,
-							checked: true
+							checked: false
 						},
 						{
 							label:
 								'Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix',
 							id: 1,
-							checked: true
+							checked: false
 						}
 					],
 					details: [

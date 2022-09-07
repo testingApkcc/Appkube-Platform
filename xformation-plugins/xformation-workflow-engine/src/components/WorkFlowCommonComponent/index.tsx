@@ -411,19 +411,8 @@ class WorkFlow extends React.Component<any, any> {
           <>
             <div className="workflow-inner-data-contant">
               <div className="workflow-data">
-                {activeStage === 0 ? <React.Fragment>   <div className="api-code">
-                  <div className="heading">
-                    {/* <h5>{'Usecase Development'}</h5> */}
-                    <i className="fa fa-angle-down" aria-hidden="true"></i>
-                  </div>
-                  <div className="api-content">
-                    <button className="btn btn-primary usecase-btn" onClick={() => this.createUsecase()}>
-                      Create Usecase
-                    </button>
-                    <button className="btn btn-primary usecase-btn" onClick={() => this.handleDisplayMatrixView("usecaseDevelopment")}>
-                      View Details
-                    </button>
-                  </div>
+                {activeStage === 0 ? <React.Fragment>  
+                   <div className="api-code">
                 </div>
                   <div className="api-code">
                     <div className="heading">
