@@ -697,6 +697,8 @@
 
                     .form-group {
                         display: flex;
+                        align-items: center;
+                        justify-content: center;
                         margin-bottom: 15px;
 
                         .col-form-label {
@@ -987,6 +989,42 @@
                     .btn {
                         margin-left: 15px;
                         background: #3B7CFF;
+                    }
+                }
+
+                .matrix-view-container {
+                    background: transparent;
+
+                    .matrix-view-section {
+                        padding: 0;
+                        background: transparent;
+                        box-shadow: none;
+                        border-radius: 0;
+
+                        .matrix-view-content {
+                            width: 100%;
+                            display: block;
+
+                            .matrix-view-head {
+                                width: 100%;
+                                display: block;
+
+                                .head-right {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: end;
+                                }
+                            }
+
+                            .tabs {
+                                width: 100%;
+                                display: block;
+
+                                .tabs-content {
+                                    padding: 20px 25px;
+                                }
+                            }
+                        }
                     }
                 }
             }

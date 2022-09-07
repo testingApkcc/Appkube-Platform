@@ -4573,6 +4573,76 @@
   margin-left: 15px;
   background: #3b7cff;
 }
+.owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .matrix-view-container {
+  background: transparent;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .matrix-view-container
+  .matrix-view-section {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content {
+  width: 100%;
+  display: block;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head {
+  width: 100%;
+  display: block;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head
+  .head-right {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content
+  .tabs {
+  width: 100%;
+  display: block;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content
+  .tabs
+  .tabs-content {
+  padding: 20px 25px;
+}
 .owrkflow-procument-container .procument-page-container .project-wise-status {
   display: block;
   width: 100%;
@@ -6684,6 +6754,17 @@
   .api-code
   .api-content {
   padding: 30px 15px;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .workflow-inner-data-contant
+  .workflow-data
+  .api-code
+  .api-content
+  .usecase-btn {
+  margin-right: 15px;
 }
 .project-over-view-container
   .project-over-view-section
