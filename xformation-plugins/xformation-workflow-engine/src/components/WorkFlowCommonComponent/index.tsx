@@ -295,81 +295,81 @@ class WorkFlow extends React.Component<any, any> {
                   <i className="fa fa-close"></i>
                 </button>
               </div>
+              <div className="form-group row">
+                <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
+                <div className="col-lg-10 col-sm-12">
+                  <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName}
+                    onChange={(e) => { this.handleusecaseDevelopmentState(e) }} disabled={editformData} type="text" placeholder="" />
+                </div>
+              </div>
+              <div className="form">
                 <div className="form-group row">
                   <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
                   <div className="col-lg-10 col-sm-12">
-                    <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName}
-                      onChange={(e) => { this.handleusecaseDevelopmentState(e) }} disabled={editformData} type="text" placeholder="" />
+                    <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName} onChange={(e) => this.handleusecaseDevelopmentState(e)} disabled={editformData} type="text" placeholder="" />
                   </div>
                 </div>
-                <div className="form">
-                  <div className="form-group row">
-                    <label className="col-lg-2 col-sm-12 col-form-label">Usecase Name</label>
-                    <div className="col-lg-10 col-sm-12">
-                      <input className="form-control" name="usecaseName" value={usecaseDevelopment.usecaseName} onChange={(e) => this.handleusecaseDevelopmentState(e)} disabled={editformData} type="text" placeholder="" />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label className="col-lg-2 col-sm-12 col-form-label">Select Actors</label>
-                    <div className="col-lg-10 col-sm-12">
-                      <div className='row'>
-                        {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
-                        {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
-                          usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
-                            <div className="col-lg-4 col-md-4 col-sm-6" key={`${index}_select_actor`}>
-                              <div className="select-actors">
-                                <input className="form-check-input" key={val.key} name="selectActors"
-                                  onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />
-                                <div className="image">
-                                  <img src={actorsImg} alt='' />
-                                </div>
-                                <div className="name">{val.name}</div>
+                <div className="form-group row">
+                  <label className="col-lg-2 col-sm-12 col-form-label">Select Actors</label>
+                  <div className="col-lg-10 col-sm-12">
+                    <div className='row'>
+                      {/* <div className="col-lg-3 col-md-4 col-sm-6"> */}
+                      {usecaseData?.stepinput?.stages[0]?.usecaseDevelopment?.selectActors.length > 0 ?
+                        usecaseData.stepinput.stages[0].usecaseDevelopment.selectActors.map((val: any, index: any) => (
+                          <div className="col-lg-4 col-md-4 col-sm-6" key={`${index}_select_actor`}>
+                            <div className="select-actors">
+                              <input className="form-check-input" key={val.key} name="selectActors"
+                                onChange={(e) => this.handleSelectActors(e, index)} disabled={editformData} type="checkbox" checked={val.isChecked} id="defaultCheck1" />
+                              <div className="image">
+                                <img src={actorsImg} alt='' />
                               </div>
-                            </div>)) : <></>
-                        }
-                      </div>
+                              <div className="name">{val.name}</div>
+                            </div>
+                          </div>)) : <></>
+                      }
                     </div>
                   </div>
-                  <div className="form-group row">
-                    <label className="col-lg-2 col-sm-12 col-form-label">Usecase Description</label>
-                    <div className="col-lg-10 col-sm-12">
-                      <textarea className="form-control" name="description" value={usecaseDevelopment.description} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
-                    </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-lg-2 col-sm-12 col-form-label">Usecase Description</label>
+                  <div className="col-lg-10 col-sm-12">
+                    <textarea className="form-control" name="description" value={usecaseDevelopment.description} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
                   </div>
-                  <div className="form-group row">
-                    <label className="col-lg-2 col-sm-12 col-form-label">Tigger</label>
-                    <div className="col-lg-10 col-sm-12">
-                      <input className="form-control" name="tigger" value={usecaseDevelopment.tigger} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
-                    </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-lg-2 col-sm-12 col-form-label">Tigger</label>
+                  <div className="col-lg-10 col-sm-12">
+                    <input className="form-control" name="tigger" value={usecaseDevelopment.tigger} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                   </div>
-                  <div className="form-group row">
-                    <label className="col-lg-2 col-sm-12 col-form-label">Pre-conditions</label>
-                    <div className="col-lg-10 col-sm-12">
-                      <input className="form-control" name="preConditions" value={usecaseDevelopment.preConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
-                    </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-lg-2 col-sm-12 col-form-label">Pre-conditions</label>
+                  <div className="col-lg-10 col-sm-12">
+                    <input className="form-control" name="preConditions" value={usecaseDevelopment.preConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                   </div>
-                  <div className="form-group row">
-                    <label className="col-lg-2 col-sm-12 col-form-label">Post-conditions</label>
-                    <div className="col-lg-10 col-sm-12">
-                      <textarea className="form-control" name="postConditions" value={usecaseDevelopment.postConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
-                    </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-lg-2 col-sm-12 col-form-label">Post-conditions</label>
+                  <div className="col-lg-10 col-sm-12">
+                    <textarea className="form-control" name="postConditions" value={usecaseDevelopment.postConditions} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={2} />
                   </div>
-                  <div className="form-group row">
-                    <label className="col-lg-2 col-sm-12 col-form-label">Usecase Flow</label>
-                    <div className="col-lg-10 col-sm-12">
-                      <textarea className="form-control" name='usecaseFlow' value={usecaseDevelopment.usecaseFlow} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={4} />
-                    </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-lg-2 col-sm-12 col-form-label">Usecase Flow</label>
+                  <div className="col-lg-10 col-sm-12">
+                    <textarea className="form-control" name='usecaseFlow' value={usecaseDevelopment.usecaseFlow} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} placeholder="" rows={4} />
                   </div>
-                  <div className="form-group row">
-                    <div className="col-sm-12 text-right">
-                      <button className="btn btn-primary save-btn" onClick={() => this.updateForm(usecaseData)}>
-                        Save
-                      </button>
-                    </div>
+                </div>
+                <div className="form-group row">
+                  <div className="col-sm-12 text-right">
+                    <button className="btn btn-primary save-btn" onClick={() => this.updateForm(usecaseData)}>
+                      Save
+                    </button>
                   </div>
                 </div>
               </div>
-            
+            </div>
+
           </div>
           : ""
         }
@@ -389,11 +389,11 @@ class WorkFlow extends React.Component<any, any> {
                     <input className="form-control" name="prototypeLink" value={usecaseDevelopment.prototypeLink}
                       onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                   </div>
-                  
+
                 </div>
                 <div className="form-group row">
-                  <label className="col-sm-12 col-form-label">Usecase Design Screenshots</label>
-                  <div className="col-sm-12">
+                  <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Screenshots</label>
+                  <div className="col-lg-4 col-sm-12">
                     <div className="upload-screenshots">
                       <input type="file" id="file" name="specs" onChange={(e) => this.handleSpecsFiles(e)} readOnly={editformData} className="form-control-file" />
                       <button className="btn btn-primary btn-upload" type="button">
@@ -401,17 +401,22 @@ class WorkFlow extends React.Component<any, any> {
                       </button>
                     </div>
                   </div>
-                </div>
-                <div className="row">
-                    {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
-                      usecaseDevelopment.specs.map((value: any, index: any) => (
-                        <div className="col-md-2 col-sm-4" key={`${index}_usecase_devlopement_specs`}>
-                          <div className="screenshot">
-                            <img src={URL.createObjectURL(value)} alt="" />
-                          </div>
-                        </div>)) : <></>
-                    }
+                  <div className="col-lg-5 col-sm-12 text-right">
+                    <button className="btn btn-primary btn-upload" type="button">
+                      Save
+                    </button>
                   </div>
+                </div>
+                <div className="form-group row">
+                  {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
+                    usecaseDevelopment.specs.map((value: any, index: any) => (
+                      <div className="col-md-4 col-sm-12" key={`${index}_usecase_devlopement_specs`}>
+                        <div className="screenshot screenshot">
+                          <img src={URL.createObjectURL(value)} alt="" />
+                        </div>
+                      </div>)) : <></>
+                  }
+                </div>
               </div>
             </div>
           </div>
