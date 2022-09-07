@@ -75,14 +75,14 @@ class WorkFlow extends React.Component<any, any> {
             if (status === row.workflowCheckList.length) {
               return "completed"
             }
-            else if (status >0 && status< row.workflowCheckList.length) {
+            else if (status > 0 && status < row.workflowCheckList.length) {
               return "inprogress"
             }
             else {
-              return"todo"
+              return "todo"
             }
           }
-        
+
         }
         retData.push(
           <React.Fragment key={`${i}_workflow_checklist_status`}>
@@ -154,7 +154,7 @@ class WorkFlow extends React.Component<any, any> {
       }
       if (count == workflowDetail.workflowCheckList.length) {
         usecaseData.stepinput.stages[activeStage]['status'] = 'completed';
-      } else if (count>0 && count < workflowDetail.workflowCheckList.length) {
+      } else if (count > 0 && count < workflowDetail.workflowCheckList.length) {
         usecaseData.stepinput.stages[activeStage]['status'] = 'inprogress';
       } else if (count == 0) {
         usecaseData.stepinput.stages[activeStage]['status'] = 'todo';
@@ -267,7 +267,8 @@ class WorkFlow extends React.Component<any, any> {
   handleSpecsFiles = (e: any) => {
     const { usecaseData } = this.state;
     const { name, files } = e.target
-    usecaseData.stepinput.S.stages[0].usecaseDevelopment[name].push(files[0])
+    console.log(name, files)
+    usecaseData.stepinput.stages[0].usecaseDevelopment[name].push(files[0])
     this.setState(usecaseData)
   }
   handleDisplayMatrixView = (modelName: any | "") => {
@@ -279,8 +280,8 @@ class WorkFlow extends React.Component<any, any> {
   }
   render() {
     const { activeStage, usecaseData, userList, toggleMatrix, activeModelName, editformData, createUsecase, uploadScreenshot } = this.state;
+    console.log(usecaseData)
     let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
-
     return (<React.Fragment>{!toggleMatrix ?
       <div className="project-over-view-right-content">
         <div className="workflow-stage">
@@ -387,9 +388,23 @@ class WorkFlow extends React.Component<any, any> {
                 <div className="form-group row">
                   <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Prototype Link</label>
                   <div className="col-lg-9 col-sm-12">
-                    <input className="form-control" name="prototypeLink" value={usecaseDevelopment.prototypeLink} onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
+                    <input className="form-control" name="prototypeLink" value={usecaseDevelopment.prototypeLink}
+                      onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
                   </div>
-                  <div className="row">
+                  
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-12 col-form-label">Usecase Design Screenshots</label>
+                  <div className="col-sm-12">
+                    <div className="upload-screenshots">
+                      <input type="file" id="file" name="specs" onChange={(e) => this.handleSpecsFiles(e)} readOnly={editformData} className="form-control-file" />
+                      <button className="btn btn-primary btn-upload" type="button">
+                        <i className="fa fa-plus"></i> Add more Screenshots
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
                     {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
                       usecaseDevelopment.specs.map((value: any, index: any) => (
                         <div className="col-md-2 col-sm-4" key={`${index}_usecase_devlopement_specs`}>
@@ -398,13 +413,7 @@ class WorkFlow extends React.Component<any, any> {
                           </div>
                         </div>)) : <></>
                     }
-                    {/* <div className="col-md-2 col-sm-4">
-                      <div className="screenshot">
-                        <img src={screenshotImgTwo} alt="" />
-                      </div>
-                    </div> */}
                   </div>
-                </div>
               </div>
             </div>
           </div>
@@ -414,9 +423,9 @@ class WorkFlow extends React.Component<any, any> {
           <>
             <div className="workflow-inner-data-contant">
               <div className="workflow-data">
-                {activeStage === 0 ? <React.Fragment>  
-                   <div className="api-code">
-                </div>
+                {activeStage === 0 ? <React.Fragment>
+                  <div className="api-code">
+                  </div>
                   <div className="api-code">
                     <div className="heading">
                       <h5>{'Usecase Development'}</h5>
@@ -445,7 +454,8 @@ class WorkFlow extends React.Component<any, any> {
                       </button>
                     </div>
                   </div></React.Fragment> : ""}
-                {editformData !== "" && <LinkData disabledEditForm={editformData} handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
+                {editformData !== "" && <LinkData disabledEditForm={editformData}
+                  handleStateChange={this.handleStateChange} updateStep={this.updateForm} usecaseData={usecaseData} activeStage={activeStage} />}
               </div>
               {activeStage === 0 ? <div className="workflow-view-table-section">
                 <div className='heading'>
