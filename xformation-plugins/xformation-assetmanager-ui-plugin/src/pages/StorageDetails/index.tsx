@@ -15,6 +15,7 @@ export class StorageDetails extends React.Component<any, any> {
 		if (serviceData) {
 			serviceData = JSON.parse(serviceData);
 		} else {
+			serviceData = [];
 			props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
 		}
 		super(props);
