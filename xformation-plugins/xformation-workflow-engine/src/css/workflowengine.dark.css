@@ -7653,6 +7653,9 @@
   margin-top: 15px;
   position: relative;
   z-index: 1;
+  overflow-y: auto;
+  max-height: 600px;
+  margin-right: -8px;
 }
 .asset-over-view-container
   .asset-over-view-section
@@ -7896,6 +7899,14 @@
   .project-over-view-inner-content
   .project-over-view-right-content
   .receive-rfq-content
+  .receive-rfq-box.todo {
+  border-top: 5px solid #2662f0;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
   .receive-rfq-box
   .receive-number {
   position: absolute;
@@ -8000,6 +8011,63 @@
   top: 50%;
   width: 60px;
   height: 21px;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .project-over-view-right-content {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .project-over-view-right-content
+  .matrix-view-section {
+  box-shadow: none;
+  background-color: transparent;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content {
+  display: block;
+  width: 100%;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head {
+  padding: 10px 0 10px 0;
+}
+.asset-over-view-container
+  .asset-over-view-section
+  .project-over-view-inner-content
+  .project-over-view-right-content
+  .receive-rfq-content
+  .project-over-view-right-content
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head
+  .head-right {
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 @media only screen and (max-width: 1200px) {

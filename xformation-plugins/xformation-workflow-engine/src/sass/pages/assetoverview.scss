@@ -130,6 +130,9 @@
                     margin-top: 15px;
                     position: relative;
                     z-index: 1;
+                    overflow-y: auto;
+                    max-height: 600px;
+                    margin-right: -8px;
 
                     ul {
                         margin: 0;
@@ -292,6 +295,10 @@
                             border-top: 5px solid #ff5400;
                         }
 
+                        &.todo {
+                            border-top: 5px solid #2662f0;
+                        }
+
                         .receive-number {
                             position: absolute;
                             left: 0;
@@ -359,6 +366,33 @@
                             height: 21px;
                         }
 
+                    }
+
+                    .project-over-view-right-content {
+                        padding: 0;
+                        border: none;
+                        box-shadow: none;
+                        background: transparent;
+
+                        .matrix-view-section {
+                            box-shadow: none;
+                            background-color: transparent;
+
+                            .matrix-view-content {
+                                display: block;
+                                width: 100%;
+
+                                .matrix-view-head {
+                                    padding: 10px 0 10px 0;
+
+                                    .head-right {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: end;
+                                    }
+                                }
+                            }
+                        }
                     }
 
                 }
