@@ -31,6 +31,7 @@ componentDidUpdate(prevProps:any,prevState:any) {
 }
 }
     handleDisplayMatrixView = (modelName: any | "") => {
+        console.log(modelName)
         let { activeModelName, matrixView } = this.state;
         this.props.toggleMatrixView()
         activeModelName = modelName ? modelName : ''
@@ -117,14 +118,14 @@ componentDidUpdate(prevProps:any,prevState:any) {
     };
 
     render() {
-        const {AssetOverViewPropsData}=this.state
+        const {AssetOverViewPropsData, activeModelName}=this.state
         return (
             <React.Fragment>
                 {!AssetOverViewPropsData.matrixView ? <React.Fragment>
 
                     {this.displayUsecaseList(AssetOverViewPropsData.usecaseStageList)}
                 </React.Fragment> :
-                    <CommonMatrixViewComponent activeModelName={AssetOverViewPropsData.activeModelName} usecasename={AssetOverViewPropsData.usecasename}
+                    <CommonMatrixViewComponent activeModelName={activeModelName} usecasename={AssetOverViewPropsData.usecasename}
                         activeMatrixData={AssetOverViewPropsData.usecaseStageList[0].usecaseDevelopment} handleDisplayMatrixView={this.handleDisplayMatrixView } />
                 }
 

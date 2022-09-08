@@ -13,6 +13,7 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
         };
     }
     componentDidMount(): void {
+        console.log(this.props)
         if (this.props.activeMatrixData
         ) {
             const { activeMatrixData
@@ -20,9 +21,7 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
             this.setState({
                 activeTab: activeModelName,
                 activeMatrixData
-                    : activeMatrixData
-                        ? activeMatrixData
-                        : {},
+                    : activeMatrixData,
                 usecasename: usecasename
             })
         }
