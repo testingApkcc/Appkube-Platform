@@ -176,6 +176,7 @@ export class AssetView extends React.Component<any, any> {
 			// 	]
 			// },
 			useCase: {},
+			matrixView:false,
 			usecaseStageList: [],
 		};
 	}
@@ -190,17 +191,17 @@ export class AssetView extends React.Component<any, any> {
 	};
 	
 	toggleMatrixView=()=>{
-
+this.setState({matrixView:!this.state.matrixView})
 	}
 	render() {
-		const {useCase}=this.state
+		const {useCase, matrixView}=this.state
 		return (
 			<div className="receive-rfq-content">
-				<div className="line">
+				{! matrixView && <div className="line">
 					<span className="line1" />
 					<span className="line2" />
 					<span className="line3" />
-				</div>
+				</div>}
 				{<div className="row"><AssetOverViewReusableComp toggleMatrixView={this.toggleMatrixView} usecasename={useCase.usecaseName} usecaseStageList={this.state.usecaseStageList}/></div>}
 			</div>
 		);
