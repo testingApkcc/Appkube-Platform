@@ -55,7 +55,7 @@ componentDidUpdate() {
         if (valuesPresent === value.length) {
             retdata = "completed"
         }
-        else if (valuesPresent < value.length) {
+        else if ( valuesPresent>0  && valuesPresent < value.length) {
             retdata = "inprogress"
         }
         else {
