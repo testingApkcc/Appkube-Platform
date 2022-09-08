@@ -176,34 +176,38 @@ export class AssetView extends React.Component<any, any> {
 			// 	]
 			// },
 			useCase: {},
-			matrixView:false,
+			matrixView: false,
 			usecaseStageList: [],
 		};
 	}
 
 	setUseCaseData = (data: any) => {
-		if ( data?.stepinput?.stages?.length && data.stepinput.stages.length > 0) {
+		if (data?.stepinput?.stages?.length && data.stepinput.stages.length > 0) {
 			this.setState({
 				useCase: data,
 				usecaseStageList: data.stepinput.stages
 			});
 		}
 	};
-	
-	toggleMatrixView=()=>{
-this.setState({matrixView:!this.state.matrixView})
+
+	toggleMatrixView = () => {
+		this.setState({ matrixView: !this.state.matrixView })
 	}
 	render() {
-		const {useCase, matrixView}=this.state
+		const { useCase, matrixView } = this.state
 		return (
-			<div className="receive-rfq-content">
-				{! matrixView && <div className="line">
-					<span className="line1" />
-					<span className="line2" />
-					<span className="line3" />
-				</div>}
-				{<div className="row"><AssetOverViewReusableComp toggleMatrixView={this.toggleMatrixView} usecasename={useCase.usecaseName} usecaseStageList={this.state.usecaseStageList}/></div>}
-			</div>
+			<>
+				<div className={`receive-rfq-content assets-inner-content ${!matrixView ? "" : "matrix-view-content"}`}>
+					{!matrixView && <div className="line">
+						<span className="line1" />
+						<span className="line2" />
+						<span className="line3" />
+					</div>}
+					<div className="row">
+						<AssetOverViewReusableComp toggleMatrixView={this.toggleMatrixView} usecasename={useCase.usecaseName} usecaseStageList={this.state.usecaseStageList} />
+					</div>
+				</div>
+			</>
 		);
 	}
 }

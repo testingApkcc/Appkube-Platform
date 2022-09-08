@@ -4070,6 +4070,8 @@
   .usecase-form
   .form-group {
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 15px;
 }
 .owrkflow-procument-container
@@ -4896,6 +4898,55 @@
   top: 50%;
   width: 60px;
   height: 21px;
+}
+.receive-rfq-content.matrix-view-content {
+  padding-left: 0;
+}
+.receive-rfq-content.matrix-view-content .matrix-view-container {
+  width: 100%;
+  display: block;
+  background: transparent;
+}
+.receive-rfq-content.matrix-view-content .matrix-view-container .matrix-view-section {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+.receive-rfq-content.matrix-view-content .matrix-view-container .matrix-view-section .matrix-view-content {
+  width: 100%;
+  display: block;
+}
+.receive-rfq-content.matrix-view-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head {
+  width: 100%;
+  display: block;
+}
+.receive-rfq-content.matrix-view-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content
+  .matrix-view-head
+  .head-right {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.receive-rfq-content.matrix-view-content .matrix-view-container .matrix-view-section .matrix-view-content .tabs {
+  width: 100%;
+  display: block;
+}
+.receive-rfq-content.matrix-view-content
+  .matrix-view-container
+  .matrix-view-section
+  .matrix-view-content
+  .tabs
+  .tabs-content {
+  width: 100%;
+  display: block;
+  padding: 20px 25px;
 }
 
 @media only screen and (max-width: 1200px) {
