@@ -187,7 +187,8 @@ type Dashboard struct {
 	// TenantId      string
 	// IsCloud       bool
 	// CloudName     string
-	// ElementType   string
+	ServiceId string
+	// Arn          string
 	// FileName      string
 	// InputType     string
 	// ------ custom changes for appcube plateform ------
@@ -305,6 +306,8 @@ func (cmd *SaveDashboardCommand) GetDashboardModel() *Dashboard {
 	dash.PluginId = cmd.PluginId
 	dash.IsFolder = cmd.IsFolder
 	dash.FolderId = cmd.FolderId
+	dash.ServiceId = cmd.ServiceId // ------Manoj.  custom changes for appcube plateform ------
+	// dash.Arn = cmd.Arn        // ------Manoj.  custom changes for appcube plateform ------
 	dash.UpdateSlug()
 	return dash
 }
@@ -383,7 +386,8 @@ type SaveDashboardCommand struct {
 	FolderId     int64            `json:"folderId"`
 	FolderUid    string           `json:"folderUid"`
 	IsFolder     bool             `json:"isFolder"`
-
+	ServiceId    string           `json:"serviceId"`
+	// Arn          string           `json:"arn"`
 	UpdatedAt time.Time
 
 	Result *Dashboard `json:"-"`
