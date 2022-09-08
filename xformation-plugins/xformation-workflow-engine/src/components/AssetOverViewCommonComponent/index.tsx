@@ -7,7 +7,13 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            toggleMatrix: this.props.closeMatrixView?this.props.closeMatrixView: false,
+            AssetOverViewPropsData:{
+                usecaseStageList:[],
+                usecasename:"",
+                matrixView:false
+            },
+
+            matrixView: false,
             activeModelName: '',
         }
         this.matrixDataName = [
@@ -15,19 +21,21 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
             "Create Screen Design"
         ]
     }
-componentDidUpdate() {
-    if(this.props.closeMatrixView!== undefined){
-    if (this.state.toggleMatrix!== this.props.closeMatrixView){
-        this.setState({toggleMatrix: this.props.closeMatrixView})
-    }
+componentDidUpdate(prevProps:any,prevState:any) {
+   const {AssetOverViewPropsData}=this.state
+    if(this.props.AssetOverViewPropsData!== prevProps.AssetOverViewPropsData){
+        Object.keys(this.props.AssetOverViewPropsData).map((key:any,index)=>{
+            AssetOverViewPropsData[key]=this.props.AssetOverViewPropsData[key]?this.props.AssetOverViewPropsData[key]:''
+        })
+ this.setState({AssetOverViewPropsData})   
 }
 }
     handleDisplayMatrixView = (modelName: any | "") => {
+        let { activeModelName, matrixView } = this.state;
         this.props.toggleMatrixView()
-        let { activeModelName, toggleMatrix } = this.state;
         activeModelName = modelName ? modelName : ''
         this.setState({
-            toggleMatrix: !toggleMatrix, activeModelName
+            matrixView: !matrixView, activeModelName
         })
     }
 
@@ -109,16 +117,15 @@ componentDidUpdate() {
     };
 
     render() {
-        const { usecaseStageList, usecasename } = this.props;
-        const { toggleMatrix, activeModelName } = this.state;
+        const {AssetOverViewPropsData}=this.state
         return (
             <React.Fragment>
-                {!toggleMatrix ? <React.Fragment>
+                {!AssetOverViewPropsData.matrixView ? <React.Fragment>
 
-                    {this.displayUsecaseList(usecaseStageList)}
+                    {this.displayUsecaseList(AssetOverViewPropsData.usecaseStageList)}
                 </React.Fragment> :
-                    <CommonMatrixViewComponent activeModelName={activeModelName} usecasename={usecasename}
-                        activeMatrixData={usecaseStageList[0].usecaseDevelopment} handleDisplayMatrixView={this.handleDisplayMatrixView } />
+                    <CommonMatrixViewComponent activeModelName={AssetOverViewPropsData.activeModelName} usecasename={AssetOverViewPropsData.usecasename}
+                        activeMatrixData={AssetOverViewPropsData.usecaseStageList[0].usecaseDevelopment} handleDisplayMatrixView={this.handleDisplayMatrixView } />
                 }
 
             </React.Fragment>

@@ -195,6 +195,11 @@ export class AssetView extends React.Component<any, any> {
 	}
 	render() {
 		const { useCase, matrixView } = this.state
+		let AssetOverViewPropsData={
+			usecasename:useCase.usecaseName,
+			usecaseStageList:this.state.usecaseStageList,
+			matrixView:matrixView,
+		}
 		return (
 			<>
 				<div className={`receive-rfq-content assets-inner-content ${!matrixView ? "" : "matrix-view-content"}`}>
@@ -204,7 +209,7 @@ export class AssetView extends React.Component<any, any> {
 						<span className="line3" />
 					</div>}
 					<div className="row">
-						<AssetOverViewReusableComp toggleMatrixView={this.toggleMatrixView} usecasename={useCase.usecaseName} usecaseStageList={this.state.usecaseStageList} />
+						<AssetOverViewReusableComp AssetOverViewPropsData={{...AssetOverViewPropsData}} 	toggleMatrixView={this.toggleMatrixView} />
 					</div>
 				</div>
 			</>

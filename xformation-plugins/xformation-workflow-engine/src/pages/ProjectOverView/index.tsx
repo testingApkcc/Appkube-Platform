@@ -135,7 +135,7 @@ export class ProjectOverView extends React.Component<any, any> {
                       </select>
                     </div>
                     <div className="fliter-search-box">
-                      <input
+                      < input
                         type={'Search for...'}
                         className="input-group-text"
                         placeholder={'Search for...'}
