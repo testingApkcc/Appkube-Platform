@@ -41,7 +41,9 @@ func AddDefaultResponseHeaders(cfg *setting.Cfg) web.Handler {
 			// 	 addXFrameOptionsDenyHeader(w)
 			// }
 
-			addAllowCORSHeader(w)
+			// below method commeted till cors error get resolved
+			// addAllowCORSHeader(w)
+
 			// ------Manoj.  custom changes for appcube plateform ------
 			addSecurityHeaders(w, cfg)
 		})
@@ -81,8 +83,9 @@ func addXFrameOptionsDenyHeader(w web.ResponseWriter) {
 }
 
 // ------ custom changes for appcube plateform ------
-func addAllowCORSHeader(w web.ResponseWriter) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-}
+// commented till cors will be resolved
+// func addAllowCORSHeader(w web.ResponseWriter) {
+// 	w.Header().Set("Access-Control-Allow-Origin", "*")
+// }
 
 // ------ custom changes for appcube plateform ------
