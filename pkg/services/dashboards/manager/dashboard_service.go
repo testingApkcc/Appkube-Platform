@@ -122,6 +122,8 @@ func (dr *DashboardServiceImpl) BuildSaveDashboardCommand(ctx context.Context, d
 		FolderId:  dash.FolderId,
 		IsFolder:  dash.IsFolder,
 		PluginId:  dash.PluginId,
+		ServiceId: dash.ServiceId,
+		// Arn:          dash.Arn,
 	}
 
 	if !dto.UpdatedAt.IsZero() {

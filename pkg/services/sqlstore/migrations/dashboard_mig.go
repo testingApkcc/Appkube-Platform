@@ -184,10 +184,15 @@ func addDashboardMigration(mg *Migrator) {
 	// mg.AddMigration("Add column file_name in dashboard", NewAddColumnMigration(dashboardV2, &Column{
 	// 	Name: "file_name", Type: DB_NVarchar, Length: 255, Nullable: true,
 	// }))
-	// mg.AddMigration("Add column input_type in dashboard", NewAddColumnMigration(dashboardV2, &Column{
-	// 	Name: "input_type", Type: DB_NVarchar, Length: 255, Nullable: true,
+	// mg.AddMigration("Add column cloud_element in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+	// 	Name: "cloud_element", Type: DB_NVarchar, Length: 255, Nullable: true,
 	// }))
-
+	// mg.AddMigration("Add column arn in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+	// 	Name: "arn", Type: DB_NVarchar, Length: 255, Nullable: true,
+	// }))
+	mg.AddMigration("Add column arn in dashboard", NewAddColumnMigration(dashboardV2, &Column{
+		Name: "service_id", Type: DB_NVarchar, Length: 255, Nullable: true,
+	}))
 	// end AssetManager changes
 	// ------ custom changes for appcube plateform ------
 
