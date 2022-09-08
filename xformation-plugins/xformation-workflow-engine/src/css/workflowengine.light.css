@@ -7654,7 +7654,7 @@
   position: relative;
   z-index: 1;
   overflow-y: auto;
-  max-height: 600px;
+  max-height: 630px;
   margin-right: -8px;
 }
 .asset-over-view-container
