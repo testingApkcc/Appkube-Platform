@@ -4868,6 +4868,7 @@
   margin: 0;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 .receive-rfq-content .receive-rfq-box ul li {
   font-size: 16px;
