@@ -13,7 +13,6 @@ class CommonMatrixViewComponent extends React.Component<any, any> {
         };
     }
     componentDidMount(): void {
-        console.log(this.props)
         if (this.props.activeMatrixData
         ) {
             const { activeMatrixData

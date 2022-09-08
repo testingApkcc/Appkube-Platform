@@ -268,7 +268,6 @@ class WorkFlow extends React.Component<any, any> {
   handleSpecsFiles = (e: any) => {
     const { usecaseData } = this.state;
     const { name, files } = e.target
-    console.log(name, files)
     usecaseData.stepinput.stages[0].usecaseDevelopment[name].push(files[0])
     this.setState(usecaseData)
   }

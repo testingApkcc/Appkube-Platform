@@ -31,7 +31,6 @@ componentDidUpdate(prevProps:any,prevState:any) {
 }
 }
     handleDisplayMatrixView = (modelName: any | "") => {
-        console.log(modelName)
         let { activeModelName, matrixView } = this.state;
         this.props.toggleMatrixView()
         activeModelName = modelName ? modelName : ''
