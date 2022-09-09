@@ -13,13 +13,19 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
                 matrixView:false
             },
 
-            matrixView: false,
             activeModelName: '',
         }
         this.matrixDataName = [
             "Create Usecase Document",
             "Create Screen Design"
         ]
+    }
+    componentDidMount(): void {
+        const {AssetOverViewPropsData}=this.state
+        Object.keys(this.props.AssetOverViewPropsData).map((key:any,index)=>{
+            AssetOverViewPropsData[key]=this.props.AssetOverViewPropsData[key]?this.props.AssetOverViewPropsData[key]:''
+        })
+ this.setState({AssetOverViewPropsData})  
     }
 componentDidUpdate(prevProps:any,prevState:any) {
    const {AssetOverViewPropsData}=this.state

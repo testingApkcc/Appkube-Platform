@@ -4,6 +4,7 @@ import downloadIcon from '../../img/projectoverview/download-icon.png';
 import WorkFlow from '../../components/WorkFlowCommonComponent'
 import ErrorBoundary from '../../components/ErrorBoundary/index'
 import { AwsHelper } from '../AwsHelpers';
+import AssetOverViewReusableComp from '../../components/AssetOverViewCommonComponent/index'
 export class ProjectOverView extends React.Component<any, any> {
   awsHelper: any
   constructor(props: any) {
@@ -16,6 +17,8 @@ export class ProjectOverView extends React.Component<any, any> {
       disabledNavList: false,
       useCaseList: [],
       useCaseStagesLength: -1,
+      toggleAssetView:false,
+      matrixView:false,
       userList: [
         { name: 'John', id: '1' },
         { name: 'Smith', id: '2' },
@@ -83,7 +86,7 @@ export class ProjectOverView extends React.Component<any, any> {
     if (useCaseList && useCaseList.length > 0) {
       for (let i = 0; i < useCaseList.length; i++) {
         retData.push(
-          <li className={i == activeUseCaseIndex ? "active" : ''}key={`${i}_usecase_list`} onClick={() => !this.state.disabledNavList ? this.setUseCaseData(i) : ""}>
+          <li className={i == activeUseCaseIndex ? "active" : ''}key={`${i}_usecase_list`} onClick={() => {!this.state.disabledNavList ? this.setUseCaseData(i) : ""}}>
             {/* <Link to="/"> */}
             <span>{useCaseList[i].usecasename}</span>
             {/* </Link> */}
@@ -98,20 +101,28 @@ export class ProjectOverView extends React.Component<any, any> {
 
     let data = useCaseList[index]
     if (data?.stepinput) {
-      this.setState({ selectedUseCaseData: data })
+      this.setState({ selectedUseCaseData: data, matrixView:false })
     }
-    this.setState({ activeUseCaseIndex: index, activeStage: 0 })
+    this.setState({ activeUseCaseIndex: index, activeStage: 0, matrixView:false})
 
   }
+  toggleMatrixView=()=>{
+    this.setState({matrixView:!this.state.matrixView })
+}
   render() {
-    const { useCaseList, useCaseStagesLength, activeStage } = this.state;
+    const { useCaseList, useCaseStagesLength, activeStage, matrixView, activeUseCaseIndex, toggleAssetView } = this.state;
+    let AssetOverViewPropsData={
+			usecasename:useCaseList[activeUseCaseIndex]?.usecasename?useCaseList[this.state.activeUseCaseIndex].usecasename:'',
+			usecaseStageList:useCaseList[activeUseCaseIndex]?.stepinput?.stages?useCaseList[this.state.activeUseCaseIndex].stepinput.stages:"",
+			matrixView:matrixView
+		}
     return (
       <div className="project-over-view-container">
-        <div className="project-over-view-section">
+   <div className="project-over-view-section">
           <div className="fliter-container">
             <div className="row">
               <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <div className="heading">Procurement Workflow management</div>
+                <div className="heading">{!toggleAssetView?`Procurement Workflow management`:`Asset OverView`}</div>
               </div>
               <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
                 <div className="fliter-right-content">
@@ -121,9 +132,9 @@ export class ProjectOverView extends React.Component<any, any> {
                     </Link>
                   </div>
                   <div className="image">
-                    <Link to="/a/xformation-workflow-engine/asset-overview">
+                    <button onClick={()=>{this.setState({toggleAssetView:!toggleAssetView})}}>
                       <img src={downloadIcon} alt="" />
-                    </Link>
+                    </button>
                   </div>
                   <div className="fliter-search">
                     <div className="fliter-box">
@@ -155,11 +166,26 @@ export class ProjectOverView extends React.Component<any, any> {
                 </ul>
               </div>
             </div>
-            {
+            {!toggleAssetView? 
               <ErrorBoundary useCaseStagesLength={useCaseStagesLength} selectedUseCaseData={this.state.selectedUseCaseData} useCaseListLength={useCaseList.length} toggleDisabledNavList={this.toggleDisabledNavList} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex}>
                 <WorkFlow activeStage={activeStage} selectedUseCaseData={this.state.selectedUseCaseData} setUseCaseData={this.setUseCaseData} activeUseCaseIndex={this.state.activeUseCaseIndex} editFormData={true} />
               </ErrorBoundary>
-            }
+            :
+            <div className="project-over-view-inner-content">
+						<div className="project-over-view-right-content">
+							<div className="receive-rfq-content">
+								{ !matrixView && <div className="line">
+									<span className="line1" />
+									<span className="line2" />
+									<span className="line3" />
+								</div>}
+								{useCaseList[this.state.activeUseCaseIndex]?.stepinput?.stages && <div className="row">
+											<AssetOverViewReusableComp  AssetOverViewPropsData={{...AssetOverViewPropsData}} toggleMatrixView={this.toggleMatrixView}/>
+								</div>}
+							</div>
+						</div>
+					</div>
+  }
           </div>
         </div>
       </div>
