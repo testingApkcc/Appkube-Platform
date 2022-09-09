@@ -168,23 +168,23 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 	}
 
 	componentDidMount() {
-		let departmentList = localStorage.getItem('departmentData');
-		let department: any;
-		if (departmentList) {
-			department = JSON.parse(departmentList);
-			this.manipulateDepartmentWiseProductData(_.cloneDeep(department.organization.departmentList));
-			this.setState({
-				departmentWiseData: department.organization.departmentList
-			});
-			let { graphData } = this.state;
-			graphData = this.setProductGraphData(department.organization.departmentList, graphData);
-			graphData = this.setProductionOthers(department.organization.departmentList, graphData);
-			graphData = this.setServiceCostData(department.organization.departmentList, graphData);
-			this.getFilterData(_.cloneDeep(department.organization.departmentList));
-			this.setState({
-				graphData
-			});
-		}
+		// let departmentList = localStorage.getItem('departmentData');
+		// let department: any;
+		// if (departmentList) {
+		// 	department = JSON.parse(departmentList);
+		// 	this.manipulateDepartmentWiseProductData(_.cloneDeep(department.organization.departmentList));
+		// 	this.setState({
+		// 		departmentWiseData: department.organization.departmentList
+		// 	});
+		// 	let { graphData } = this.state;
+		// 	graphData = this.setProductGraphData(department.organization.departmentList, graphData);
+		// 	graphData = this.setProductionOthers(department.organization.departmentList, graphData);
+		// 	graphData = this.setServiceCostData(department.organization.departmentList, graphData);
+		// 	this.getFilterData(_.cloneDeep(department.organization.departmentList));
+		// 	this.setState({
+		// 		graphData
+		// 	});
+		// }
 		this.getDepartmentData();
 		this.getRandomColor();
 	}
