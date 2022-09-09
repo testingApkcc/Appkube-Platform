@@ -10,7 +10,7 @@ import { useNavigation, prefixRoute } from '../../utils/utils.routing';
 import { ROUTES } from '../../constants';
 import { CreateUsecase } from '../../pages/CreateUsecase';
 import { ProjectOverView } from '../../pages/ProjectOverView';
-import { AssetOverView } from '../../pages/AssetOverView';
+// import { AssetOverView } from '../../pages/AssetOverView';
 
 export const Routes = () => {
 	useNavigation();
@@ -28,7 +28,6 @@ export const Routes = () => {
 			<Route exact path={prefixRoute(ROUTES.MatrixView)} component={(props: any) => <MatrixView {...props} meta={meta} />} />
 			<Route exact path={prefixRoute(ROUTES.CreateNewUsecase)} component={(props: any) => <CreateUsecase {...props} meta={meta} />} />
 			<Route exact path={prefixRoute(ROUTES.ProjectOverView)} component={(props: any) => <ProjectOverView {...props} meta={meta} />} />
-			<Route exact path={prefixRoute(ROUTES.AssetOverView)} component={(props: any) => <AssetOverView {...props} meta={meta} />} />
 		</Switch>
 	);
 };
