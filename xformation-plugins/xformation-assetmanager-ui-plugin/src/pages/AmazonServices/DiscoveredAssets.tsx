@@ -433,7 +433,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
           </div>
         </div>
         {
-          service.app.isOpened ?
+          (service.app && service.app.isOpened) ?
             this.renderDirectServices(envIndex, serviceKey, serviceIndex, 'app', service.app) : <></>
         }
       </div>
@@ -446,7 +446,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
           </div>
         </div>
         {
-          service.data.isOpened ?
+          (service.data && service.data.isOpened) ?
             this.renderDirectServices(envIndex, serviceKey, serviceIndex, 'data', service.data) : <></>
         }
       </div>
