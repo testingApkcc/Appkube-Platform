@@ -34,7 +34,8 @@ class WorkFlow extends React.Component<any, any> {
     if (this.props.selectedUseCaseData !== prevProps.selectedUseCaseData) {
 
       this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.selectedUseCaseData.stepinput.stages[0].usecaseDevelopment) })
-      this.setState({ toggleMatrix: false,
+      this.setState({
+        toggleMatrix: false,
         usecaseData: cloneDeep(this.props.selectedUseCaseData),
         activeStage: this.state.activeStage ? this.state.activeStage : this.props.activeStage,
         editformData: this.props.editFormData
@@ -410,10 +411,11 @@ class WorkFlow extends React.Component<any, any> {
                 <div className="form-group row">
                   {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
                     usecaseDevelopment.specs.map((value: any, index: any) => (
-                      <div className="col-md-4 col-sm-12" key={`${index}_usecase_devlopement_specs`}>
-                        <div className="screenshot screenshot">
+                      <div className="screenshot-box" key={`${index}_usecase_devlopement_specs`}>
+                        <div className="screenshot ">
                           <img src={URL.createObjectURL(value)} alt="" />
                         </div>
+                        <i className="fa fa-close"></i>
                       </div>)) : <></>
                   }
                 </div>

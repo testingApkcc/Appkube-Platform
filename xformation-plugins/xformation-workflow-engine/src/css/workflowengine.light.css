@@ -4071,7 +4071,7 @@
   .form-group {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   margin-bottom: 15px;
 }
 .owrkflow-procument-container
@@ -4213,9 +4213,11 @@
   .workflow-content
   .usecase-form
   .form-group
-  .screenshot {
-  display: block;
-  width: 100%;
+  .screenshot-box {
+  display: flex;
+  position: relative;
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
 .owrkflow-procument-container
   .procument-page-container
@@ -4223,10 +4225,39 @@
   .workflow-content
   .usecase-form
   .form-group
+  .screenshot-box
+  .screenshot {
+  width: 135px;
+  height: 135px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .screenshot-box
   .screenshot
   img {
   max-width: 100%;
-  height: auto;
+  max-height: 120px;
+}
+.owrkflow-procument-container
+  .procument-page-container
+  .tebs-inner-content
+  .workflow-content
+  .usecase-form
+  .form-group
+  .screenshot-box
+  i {
+  position: absolute;
+  right: 2px;
+  top: 2px;
 }
 .owrkflow-procument-container .procument-page-container .tebs-inner-content .workflow-content .workflow-data {
   border-top: 1px dotted #abd5f9;
@@ -5988,7 +6019,7 @@
   .project-over-view-right-content.matrix-view-container {
   border: none;
   background: transparent;
-  padding: 10px;
+  padding: 0;
   box-shadow: none;
 }
 .project-over-view-container
@@ -5996,6 +6027,7 @@
   .project-over-view-inner-content
   .project-over-view-right-content
   .matrix-view-section {
+  padding: 15px;
   background: transparent;
   box-shadow: none;
   border-radius: 0;
