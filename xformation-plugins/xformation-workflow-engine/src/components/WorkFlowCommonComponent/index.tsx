@@ -272,6 +272,13 @@ class WorkFlow extends React.Component<any, any> {
     usecaseData.stepinput.stages[0].usecaseDevelopment[name].push(files[0])
     this.setState(usecaseData)
   }
+
+  handleDeleteImage = (index: number) => {
+    const { usecaseData } = this.state;
+    let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
+    usecaseDevelopment.specs.splice(index, 1);
+    this.setState(usecaseData);
+  }
   handleDisplayMatrixView = (modelName: any | "") => {
     let { activeModelName, toggleMatrix } = this.state;
     activeModelName = modelName ? modelName : ''
@@ -415,8 +422,9 @@ class WorkFlow extends React.Component<any, any> {
                         <div className="screenshot ">
                           <img src={URL.createObjectURL(value)} alt="" />
                         </div>
-                        <i className="fa fa-close"></i>
-                      </div>)) : <></>
+                        <i className="fa fa-close" onClick={() => this.handleDeleteImage(index)}></i>
+                      </div>)
+                    ) : <></>
                   }
                 </div>
               </div>
