@@ -5773,6 +5773,10 @@
   color: #848484;
   background: #b1c9f8;
 }
+.project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .image .project-btn {
+  border: none;
+  background: transparent;
+}
 .project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .fliter-search {
   float: right;
   width: auto;
@@ -5889,6 +5893,7 @@
 }
 .project-over-view-container .project-over-view-section .project-over-view-inner-content {
   display: flex;
+  width: 100%;
 }
 .project-over-view-container
   .project-over-view-section
@@ -5980,9 +5985,17 @@
 .project-over-view-container
   .project-over-view-section
   .project-over-view-inner-content
+  .project-over-view-right-content.matrix-view-container {
+  border: none;
+  background: transparent;
+  padding: 10px;
+  box-shadow: none;
+}
+.project-over-view-container
+  .project-over-view-section
+  .project-over-view-inner-content
   .project-over-view-right-content
   .matrix-view-section {
-  padding: 0;
   background: transparent;
   box-shadow: none;
   border-radius: 0;

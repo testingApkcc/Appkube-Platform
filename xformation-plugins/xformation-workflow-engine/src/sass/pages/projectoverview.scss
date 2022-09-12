@@ -39,6 +39,13 @@
                     }
                 }
 
+                .image {
+                    .project-btn {
+                        border: none;
+                        background: transparent;
+                    }
+                }
+
                 .fliter-search {
                     float: right;
                     width: auto;
@@ -124,6 +131,7 @@
 
         .project-over-view-inner-content {
             display: flex;
+            width: 100%;
 
             .project-over-view-left-content {
                 .sidebar {
@@ -191,8 +199,15 @@
                 margin-left: -1px;
                 overflow: hidden;
 
-                .matrix-view-section {
+                &.matrix-view-container {
+                    border: none;
+                    background: transparent;
                     padding: 0;
+                    box-shadow: none;
+                }
+
+                .matrix-view-section {
+                    padding: 15px;
                     background: transparent;
                     box-shadow: none;
                     border-radius: 0;
