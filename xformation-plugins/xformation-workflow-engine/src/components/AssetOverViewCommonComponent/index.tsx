@@ -7,10 +7,10 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            AssetOverViewPropsData:{
-                usecaseStageList:[],
-                usecasename:"",
-                matrixView:false
+            AssetOverViewPropsData: {
+                usecaseStageList: [],
+                usecasename: "",
+                matrixView: false
             },
 
             activeModelName: '',
@@ -21,21 +21,21 @@ class AssetOverViewReusableComp extends React.Component<any, any>{
         ]
     }
     componentDidMount(): void {
-        const {AssetOverViewPropsData}=this.state
-        Object.keys(this.props.AssetOverViewPropsData).map((key:any,index)=>{
-            AssetOverViewPropsData[key]=this.props.AssetOverViewPropsData[key]?this.props.AssetOverViewPropsData[key]:''
+        const { AssetOverViewPropsData } = this.state
+        Object.keys(this.props.AssetOverViewPropsData).map((key: any, index) => {
+            AssetOverViewPropsData[key] = this.props.AssetOverViewPropsData[key] ? this.props.AssetOverViewPropsData[key] : ''
         })
- this.setState({AssetOverViewPropsData})  
+        this.setState({ AssetOverViewPropsData })
     }
-componentDidUpdate(prevProps:any,prevState:any) {
-   const {AssetOverViewPropsData}=this.state
-    if(this.props.AssetOverViewPropsData!== prevProps.AssetOverViewPropsData){
-        Object.keys(this.props.AssetOverViewPropsData).map((key:any,index)=>{
-            AssetOverViewPropsData[key]=this.props.AssetOverViewPropsData[key]?this.props.AssetOverViewPropsData[key]:''
-        })
- this.setState({AssetOverViewPropsData})   
-}
-}
+    componentDidUpdate(prevProps: any, prevState: any) {
+        const { AssetOverViewPropsData } = this.state
+        if (this.props.AssetOverViewPropsData !== prevProps.AssetOverViewPropsData) {
+            Object.keys(this.props.AssetOverViewPropsData).map((key: any, index) => {
+                AssetOverViewPropsData[key] = this.props.AssetOverViewPropsData[key] ? this.props.AssetOverViewPropsData[key] : ''
+            })
+            this.setState({ AssetOverViewPropsData })
+        }
+    }
     handleDisplayMatrixView = (modelName: any | "") => {
         let { activeModelName, matrixView } = this.state;
         this.props.toggleMatrixView()
@@ -69,7 +69,7 @@ componentDidUpdate(prevProps:any,prevState:any) {
         if (valuesPresent === value.length) {
             retdata = "completed"
         }
-        else if ( valuesPresent>0  && valuesPresent < value.length) {
+        else if (valuesPresent > 0 && valuesPresent < value.length) {
             retdata = "inprogress"
         }
         else {
@@ -83,7 +83,7 @@ componentDidUpdate(prevProps:any,prevState:any) {
             for (let i = 0; i < stageList.length; i++) {
                 let row = stageList[i];
                 retData.push(
-                    <div className="col-md-4 col-12" key={`${i}_stage_list`}>
+                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4" key={`${i}_stage_list`}>
                         <div
                             className={
                                 `receive-rfq-box  ${this.checkValuesValidation(row.workflowCheckList)}`
@@ -123,7 +123,7 @@ componentDidUpdate(prevProps:any,prevState:any) {
     };
 
     render() {
-        const {AssetOverViewPropsData, activeModelName}=this.state
+        const { AssetOverViewPropsData, activeModelName } = this.state
         return (
             <React.Fragment>
                 {!AssetOverViewPropsData.matrixView ? <React.Fragment>
@@ -131,7 +131,7 @@ componentDidUpdate(prevProps:any,prevState:any) {
                     {this.displayUsecaseList(AssetOverViewPropsData.usecaseStageList)}
                 </React.Fragment> :
                     <CommonMatrixViewComponent activeModelName={activeModelName} usecasename={AssetOverViewPropsData.usecasename}
-                        activeMatrixData={AssetOverViewPropsData.usecaseStageList[0].usecaseDevelopment} handleDisplayMatrixView={this.handleDisplayMatrixView } />
+                        activeMatrixData={AssetOverViewPropsData.usecaseStageList[0].usecaseDevelopment} handleDisplayMatrixView={this.handleDisplayMatrixView} />
                 }
 
             </React.Fragment>

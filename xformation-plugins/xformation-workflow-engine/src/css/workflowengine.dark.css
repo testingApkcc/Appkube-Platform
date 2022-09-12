@@ -5020,6 +5020,11 @@
     font-weight: 500;
     line-height: 20px;
   }
+  .owrkflow-procument-container .procument-page-container .tebs-inner-content {
+    width: 950px;
+    overflow: hidden;
+    overflow-x: auto;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -7420,7 +7425,7 @@
     margin-right: 20px;
   }
   .project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .fliter-search {
-    margin-right: 20px;
+    margin-right: 10px;
   }
   .project-over-view-container
     .project-over-view-section
@@ -7438,6 +7443,15 @@
     .fliter-search-box {
     width: 165px;
   }
+  .project-over-view-container .project-over-view-section .project-over-view-inner-content {
+    overflow: hidden;
+  }
+  .project-over-view-container
+    .project-over-view-section
+    .project-over-view-inner-content
+    .project-over-view-right-content {
+    overflow: auto;
+  }
   .project-over-view-container
     .project-over-view-section
     .project-over-view-inner-content
@@ -7454,6 +7468,18 @@
     .workflow-stage
     ul {
     width: 800px;
+  }
+  .project-over-view-container
+    .project-over-view-section
+    .project-over-view-inner-content
+    .project-over-view-right-content
+    .receive-rfq-content {
+    display: block;
+    width: 981px;
+    padding-left: 50px;
+    position: relative;
+    overflow: hidden;
+    overflow-x: auto;
   }
   .project-over-view-container
     .project-over-view-section
@@ -7504,7 +7530,7 @@
     .fliter-right-content
     .fliter-search
     .fliter-box {
-    width: 205px;
+    width: 190px;
   }
   .project-over-view-container
     .project-over-view-section
@@ -7512,7 +7538,7 @@
     .fliter-right-content
     .fliter-search
     .fliter-search-box {
-    width: 205px;
+    width: 190px;
   }
 }
 
@@ -7524,13 +7550,22 @@
     margin-top: 15px;
     width: 100%;
   }
+  .project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .plus-icon {
+    margin-right: 0;
+  }
+  .project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .image {
+    margin-right: 0;
+  }
+  .project-over-view-container .project-over-view-section .fliter-container .fliter-right-content .fliter-search {
+    margin-right: 0;
+  }
   .project-over-view-container
     .project-over-view-section
     .fliter-container
     .fliter-right-content
     .fliter-search
     .fliter-box {
-    width: 90px;
+    width: 120px;
   }
   .project-over-view-container
     .project-over-view-section
@@ -7538,7 +7573,7 @@
     .fliter-right-content
     .fliter-search
     .fliter-search-box {
-    width: 90px;
+    width: 120px;
   }
 }
 

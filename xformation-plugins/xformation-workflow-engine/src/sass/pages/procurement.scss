@@ -1141,7 +1141,6 @@
     position: relative;
 
 
-
     .line {
         position: absolute;
         left: 0;
@@ -1410,6 +1409,15 @@
                     }
                 }
             }
+
+            .tebs-inner-content {
+                width: 950px;
+                overflow: hidden;
+                overflow-x: auto;
+
+                .receive-rfq-content {}
+            }
+
         }
     }
 }
