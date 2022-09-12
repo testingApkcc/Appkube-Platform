@@ -173,7 +173,7 @@ export class ProjectOverView extends React.Component<any, any> {
               :
               <div className="project-over-view-inner-content">
                 <div className="project-over-view-right-content">
-                  <div className="receive-rfq-content">
+                  <div className={`receive-rfq-content ${!matrixView ? "" : "matrix-view-content"}`}>
                     {!matrixView && <div className="line">
                       <span className="line1" />
                       <span className="line2" />
