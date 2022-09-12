@@ -23,6 +23,10 @@
   line-height: 32px;
   font-weight: 600;
   color: #3b4859;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
   float: right;
@@ -1389,9 +1393,11 @@
 }
 
 @media only screen and (max-width: 991px) {
-  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
-    float: left;
-    margin-top: 15px;
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-box {
+    width: 200px;
+  }
+  .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search .fliter-search-box {
+    width: 200px;
   }
   .owrkflow-dashboard-container .dashboard-container .average-section .statistics-graph {
     margin-bottom: 30px;
@@ -1410,6 +1416,7 @@
 @media only screen and (max-width: 767px) {
   .owrkflow-dashboard-container .dashboard-container .fliter-container .heading {
     line-height: 20px;
+    margin-bottom: 15px;
   }
   .owrkflow-dashboard-container .dashboard-container .fliter-container .fliter-search {
     display: block;
