@@ -1,5 +1,6 @@
 import * as React from 'react';
-import WorkFlow from '../../components/WorkFlowCommonComponent'
+import WorkFlow from '../../components/WorkFlowCommonComponent';
+import { ActorList } from '../../commonDS';
 export class WorkFlowView extends React.Component<any, any> {
 	awsHelper: any;
 	constructor(props: any) {
@@ -9,15 +10,7 @@ export class WorkFlowView extends React.Component<any, any> {
 			usecaseDevelopment: {
 				specs: [],
 				usecaseName: '',
-				selectActors: [
-					{ key: 1, name: "Super Admin", isChecked: false },
-					{ key: 2, name: "Admin", isChecked: false },
-					{ key: 3, name: "Project Manager", isChecked: false },
-					{ key: 4, name: "Team Mamber", isChecked: false },
-					{ key: 5, name: "Vendor", isChecked: false },
-					{ key: 6, name: "Supplier", isChecked: false },
-					{ key: 7, name: "Team Member", isChecked: false },
-					{ key: 8, name: "Stakeholder", isChecked: false }],
+				selectActors: ActorList,
 				description: '',
 				tigger: '',
 				preConditions: '',
@@ -73,7 +66,7 @@ export class WorkFlowView extends React.Component<any, any> {
 		return (<React.Fragment>
 			<div className="workflow-content">
 
-				<WorkFlow selectedUseCaseData={selectedUseCaseData} activeStage={activeStage} editFormData={false} updateStep={this.updateStep} meta={this.props.meta}/>
+				<WorkFlow selectedUseCaseData={selectedUseCaseData} activeStage={activeStage} editFormData={false} updateStep={this.updateStep} meta={this.props.meta} />
 
 			</div>
 		</React.Fragment>

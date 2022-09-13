@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { AwsHelper } from '../AwsHelpers';
 import { getLocationSrv } from '@grafana/runtime';
 import AlertMessage from '../../components/AlertMessage';
+import { UsersList, ActorList } from '../../commonDS';
 
 export class CreateUsecase extends React.Component<any, any> {
 	id: any;
@@ -24,22 +25,13 @@ export class CreateUsecase extends React.Component<any, any> {
 			message: '',
 			severity: '',
 			subStageDetails: { subStageName: '', assignto: '', startDate: '', endDate: '', comments: '' },
-			userList: [
-				{ name: 'John', id: '1' },
-				{ name: 'Smith', id: '2' },
-				{ name: 'Rado', id: '3' },
-				{ name: 'Smyten', id: '4' },
-				{ name: 'Oliver', id: '5' },
-				{ name: 'Harry', id: '6' },
-				{ name: 'George', id: '7' },
-				{ name: 'Jack', id: '8' }
-			],
+			userList: UsersList,
 			stages: [],
 			createStages: [
 				{
 					name: 'Requirements',
 					description: '',
-					index:0,
+					index: 0,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
@@ -83,32 +75,24 @@ export class CreateUsecase extends React.Component<any, any> {
 							data: [{ link: '', label: 'Github link' }]
 						}
 					],
-					usecaseDevelopment:{
-						specs:[],
-						usecaseName:'',
-						selectActors:[
-						{key:1,name:"Super Admin",isChecked:false},
-						{key:2,name:"Admin", isChecked:false},
-						{key:3,name:"Project Manager", isChecke:false},
-						{key:4,name:"Team Mamber", isChecked:false},
-						{key:5,name:"Vendor", isChecked:false},
-						{key:6,name:"Supplier", isChecked:false},
-						{key:7,name:"Team Member", isChecked:false},
-						{key:8,name:"Stakeholder", isChecked:false}],
-						description:'',
-						tigger:'',
-						preConditions:'',
-						postConditions:'',
-						usecaseFlow:'',
-						prototypeLink:"",
-						
+					usecaseDevelopment: {
+						specs: [],
+						usecaseName: '',
+						selectActors: ActorList,
+						description: '',
+						tigger: '',
+						preConditions: '',
+						postConditions: '',
+						usecaseFlow: '',
+						prototypeLink: "",
+
 					},
 				},
 				{
 					name: 'Mock Development',
 					description: '',
 					assignedTo: '',
-					index:1,
+					index: 1,
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
@@ -164,7 +148,7 @@ export class CreateUsecase extends React.Component<any, any> {
 					name: 'Actual Development',
 					description: '',
 					assignedTo: '',
-					index:2,
+					index: 2,
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
 						{ label: 'API spec Review meeting is done with UI /API Team', id: 10, checked: false },
@@ -259,7 +243,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'CI/CD/TEST',
 					description: '',
-					index:3,
+					index: 3,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
@@ -331,7 +315,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Stage / Release',
 					description: '',
-					index:4,
+					index: 4,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
@@ -387,7 +371,7 @@ export class CreateUsecase extends React.Component<any, any> {
 				{
 					name: 'Publish/Operate',
 					description: '',
-					index:5,
+					index: 5,
 					assignedTo: '',
 					workflowCheckList: [
 						{ label: 'Finalized API Specification is available in GitHub', id: 3, checked: false },
@@ -470,18 +454,18 @@ export class CreateUsecase extends React.Component<any, any> {
 						this.awsHelper.getExecutionHistory(
 							'arn:aws:states:us-east-1:657907747545:execution:send-to-pre-state:9bc49c92-4016-47a5-8a22-88d353e912ab',
 							(items: any) => {
-								if (useCase?.stepinput ){
-									if (useCase?.stepinput?.stages?.length>0){
-								const useCases = this.state.useCaseList;
-								useCases.push({
-									...useCase,
-									steps: items
-								});
-								this.setState({
-									useCaseList: useCases
-								});
-							}
-						}
+								if (useCase?.stepinput) {
+									if (useCase?.stepinput?.stages?.length > 0) {
+										const useCases = this.state.useCaseList;
+										useCases.push({
+											...useCase,
+											steps: items
+										});
+										this.setState({
+											useCaseList: useCases
+										});
+									}
+								}
 							},
 							(err: any) => {
 								console.log(err);
@@ -620,24 +604,25 @@ export class CreateUsecase extends React.Component<any, any> {
 						message: res.message,
 						severity: 'success'
 					})
-					setTimeout(()=>{
-					getLocationSrv().update({
-						path: `/a/xformation-workflow-engine/project-wise`
-					});},2000)
-					
+					setTimeout(() => {
+						getLocationSrv().update({
+							path: `/a/xformation-workflow-engine/project-wise`
+						});
+					}, 2000)
+
 				}
 			});
 		}
 		else {
 			let setInputs = {
 				name: usecase.name,
-				usecaseName : useCaseList[activeUsecaseIndex].usecasename,
+				usecaseName: useCaseList[activeUsecaseIndex].usecasename,
 				description: usecase.description,
 				assignTo: usecase.assignTo,
 				stages: stages
 			}
 			this.awsHelper.updateUsecaseWholeData(setInputs, () => {
-				
+
 			}, (res: any) => {
 				this.setState({
 					isAlertOpen: true,
@@ -695,11 +680,11 @@ export class CreateUsecase extends React.Component<any, any> {
 			for (let i = 0; i < useCaseList.length; i++) {
 				let useCase = { ...useCaseList[i] };
 				// if (useCase.stepinput.S.indexOf("stages") !== -1) {
-					retData.push(
-						<li className={i === activeUsecaseIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
-							<span>{useCase.usecasename}</span>
-						</li>
-					);
+				retData.push(
+					<li className={i === activeUsecaseIndex ? 'active' : ''} key={`usecase-${i}`} onClick={() => this.handleSelectUseCase(i)}>
+						<span>{useCase.usecasename}</span>
+					</li>
+				);
 				// }
 			}
 		}
@@ -719,10 +704,10 @@ export class CreateUsecase extends React.Component<any, any> {
 		let { usecase } = this.state
 		const { useCaseList } = this.state
 		if (index >= 0) {
-			if (useCaseList[index]?.stepinput ) {
-				let parseUserData= useCaseList[index].stepinput
+			if (useCaseList[index]?.stepinput) {
+				let parseUserData = useCaseList[index].stepinput
 				usecase.name = parseUserData.name
-				this.setState({ activeUsecaseIndex: index, stages:parseUserData.stages, usecase })
+				this.setState({ activeUsecaseIndex: index, stages: parseUserData.stages, usecase })
 			}
 		} else if (index === -1) {
 			this.resetState()
@@ -731,7 +716,7 @@ export class CreateUsecase extends React.Component<any, any> {
 
 	render() {
 		const errorData = this.validateForm(this.state.isSubmitted);
-		const { stages, activeIndex,  usecase, userList, isAlertOpen, message, severity } = this.state;
+		const { stages, activeIndex, usecase, userList, isAlertOpen, message, severity } = this.state;
 		return (
 			<div className="project-over-view-container">
 				<div className="project-over-view-section">
@@ -784,14 +769,14 @@ export class CreateUsecase extends React.Component<any, any> {
 									<h4>Basic Details</h4>
 									<div className="input-group">
 										<label>Usecase Name</label>
-											<input
-												className="form-control name-usecase"
-												type="text"
-												name="name"
-												value={usecase.name}
-												placeholder="name of usecase"
-												onChange={(e: any) => this.handleStateChange(e)}
-											/>
+										<input
+											className="form-control name-usecase"
+											type="text"
+											name="name"
+											value={usecase.name}
+											placeholder="name of usecase"
+											onChange={(e: any) => this.handleStateChange(e)}
+										/>
 									</div>
 									{errorData && errorData.name && <span>{errorData.name.message}</span>}
 									<div className="input-group">
