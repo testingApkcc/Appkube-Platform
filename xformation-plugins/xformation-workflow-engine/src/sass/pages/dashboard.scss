@@ -22,6 +22,10 @@
                 line-height: 32px;
                 font-weight: 600;
                 color: #3b4859;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .fliter-search {
@@ -1198,8 +1202,13 @@
         .dashboard-container {
             .fliter-container {
                 .fliter-search {
-                    float: left;
-                    margin-top: 15px;
+                    .fliter-box {
+                        width: 200px;
+                    }
+
+                    .fliter-search-box {
+                        width: 200px;
+                    }
                 }
             }
 
@@ -1236,6 +1245,7 @@
             .fliter-container {
                 .heading {
                     line-height: 20px;
+                    margin-bottom: 15px;
                 }
 
                 .fliter-search {
@@ -1275,7 +1285,6 @@
         }
     }
 }
-
 
 @media only screen and (max-width: 540px) {
     .owrkflow-dashboard-container {

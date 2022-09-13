@@ -843,7 +843,7 @@
                     }
 
                     .fliter-search {
-                        margin-right: 20px;
+                        margin-right: 10px;
 
                         .fliter-box {
                             width: 165px;
@@ -857,7 +857,11 @@
             }
 
             .project-over-view-inner-content {
+                overflow: hidden;
+
                 .project-over-view-right-content {
+                    overflow: auto;
+
                     .workflow-stage {
                         overflow: hidden;
                         overflow-x: auto;
@@ -866,6 +870,15 @@
                         ul {
                             width: 800px;
                         }
+                    }
+
+                    .receive-rfq-content {
+                        display: block;
+                        width: 981px;
+                        padding-left: 50px;
+                        position: relative;
+                        overflow: hidden;
+                        overflow-x: auto;
                     }
 
                     .workflow-view-table-section {
@@ -914,15 +927,16 @@
                         margin-right: 20px;
 
                         .fliter-box {
-                            width: 205px;
+                            width: 190px;
                         }
 
                         .fliter-search-box {
-                            width: 205px;
+                            width: 190px;
                         }
                     }
                 }
             }
+
         }
     }
 }
@@ -938,13 +952,23 @@
                     margin-top: 15px;
                     width: 100%;
 
+                    .plus-icon {
+                        margin-right: 0;
+                    }
+
+                    .image {
+                        margin-right: 0;
+                    }
+
                     .fliter-search {
+                        margin-right: 0;
+
                         .fliter-box {
-                            width: 90px;
+                            width: 120px;
                         }
 
                         .fliter-search-box {
-                            width: 90px;
+                            width: 120px;
                         }
                     }
                 }

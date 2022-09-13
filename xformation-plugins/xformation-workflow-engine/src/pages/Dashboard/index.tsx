@@ -561,13 +561,13 @@ export class Dashboard extends React.Component<any, any> {
 					</div>
 					<div className="dashbord-top-section">
 						<div className="row">
-							<div className="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+							<div className="col-xl-9 col-lg-8 col-md-7 col-sm-12 col-xs-12">
 								<div className="heading">
 									<h3>{'Dashboard'}</h3>
 									<span>Lorem ipsum dolor sit amet</span>
 								</div>
 							</div>
-							<div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-sx-12">
+							<div className="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-sx-12">
 								<div className="calender"><DateFormat /></div>
 							</div>
 						</div>
