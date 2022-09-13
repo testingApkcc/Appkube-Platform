@@ -44,7 +44,7 @@ export class ProcurementDetail extends React.Component<any, any> {
     this.assetViewRef = React.createRef();
     this.stepper = [
       { title: "Over View", key: 0, component: <OverView meta={props.meta} id={this.state.useCaseName} key={1} ref={this.overViewRef} /> },
-      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} updateWorkflowSingleStage={this.updateWorkflowSingleStage} UpdateUseCaseStages={this.UpdateUseCaseStages} /> },
+      { title: "Workflow View", key: 1, component: <WorkFlowView id={this.state.useCaseName} key={2} ref={this.workFlowRef} updateWorkflowSingleStage={this.updateWorkflowSingleStage} UpdateUseCaseStages={this.UpdateUseCaseStages} meta={props.meta} /> },
       { title: "Asset View", key: 2, component: <AssetView id={this.state.useCaseName} key={3} ref={this.assetViewRef} /> }
     ]
   }

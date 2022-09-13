@@ -1,6 +1,7 @@
 import React from 'react';
 import SimpleBar from 'simplebar-react';
 import CommonMatrixViewComponent from 'components/CommonMatrixViewComponent';
+import { StageStatus } from '../../commonDS';
 
 class AssetOverViewReusableComp extends React.Component<any, any>{
     matrixDataName: any;
@@ -67,13 +68,13 @@ componentDidUpdate(prevProps:any,prevState:any) {
             }
         }
         if (valuesPresent === value.length) {
-            retdata = "completed"
+            retdata = StageStatus.COMPLETED;
         }
         else if ( valuesPresent>0  && valuesPresent < value.length) {
-            retdata = "inprogress"
+            retdata = StageStatus.INPROGRESS;
         }
         else {
-            retdata = "todo"
+            retdata = StageStatus.TODO;
         }
         return retdata;
     }

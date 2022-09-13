@@ -4,7 +4,8 @@ import CommanCheckList from '../CommonCheckList';
 import CommanPlanningTable from '../CommonScrumPlanningTable'
 import actorsImg from '../../img/actors-img.png'
 import { cloneDeep } from 'lodash';
-import CommonMatrixViewComponent from '../CommonMatrixViewComponent'
+import CommonMatrixViewComponent from '../CommonMatrixViewComponent';
+import { UsersList, StageStatus } from '../../commonDS';
 class WorkFlow extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -12,16 +13,7 @@ class WorkFlow extends React.Component<any, any> {
       usecaseData: {},
       activeStage: 0,
       toggleMatrix: false,
-      userList: [
-        { name: 'John', id: '1' },
-        { name: 'Smith', id: '2' },
-        { name: 'Rado', id: '3' },
-        { name: 'Smyten', id: '4' },
-        { name: 'Oliver', id: '5' },
-        { name: 'Harry', id: '6' },
-        { name: 'George', id: '7' },
-        { name: 'Jack', id: '8' }
-      ],
+      userList: UsersList,
       activeModelName: '',
       activeUseCaseIndex: 0,
       editformData: '',
@@ -32,7 +24,6 @@ class WorkFlow extends React.Component<any, any> {
   }
   componentDidUpdate(prevProps: any, prevState: any) {
     if (this.props.selectedUseCaseData !== prevProps.selectedUseCaseData) {
-
       this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.selectedUseCaseData.stepinput.stages[0].usecaseDevelopment) })
       this.setState({
         toggleMatrix: false,
@@ -57,7 +48,6 @@ class WorkFlow extends React.Component<any, any> {
 
   displayWorkflowStage = () => {
     const { activeStage, usecaseData } = this.state;
-
     let retData = [];
     if (usecaseData?.stepinput?.stages?.length && usecaseData.stepinput.stages.length > 0) {
       for (let i = 0; i < usecaseData.stepinput.stages.length; i++) {
@@ -75,13 +65,13 @@ class WorkFlow extends React.Component<any, any> {
               }
             }
             if (status === row.workflowCheckList.length) {
-              return "completed"
+              return StageStatus.COMPLETED;
             }
             else if (status > 0 && status < row.workflowCheckList.length) {
-              return "inprogress"
+              return StageStatus.INPROGRESS;
             }
             else {
-              return "todo"
+              return StageStatus.TODO;
             }
           }
 
@@ -155,11 +145,11 @@ class WorkFlow extends React.Component<any, any> {
         }
       }
       if (count == workflowDetail.workflowCheckList.length) {
-        usecaseData.stepinput.stages[activeStage]['status'] = 'completed';
+        usecaseData.stepinput.stages[activeStage]['status'] = StageStatus.COMPLETED;
       } else if (count > 0 && count < workflowDetail.workflowCheckList.length) {
-        usecaseData.stepinput.stages[activeStage]['status'] = 'inprogress';
+        usecaseData.stepinput.stages[activeStage]['status'] = StageStatus.INPROGRESS;
       } else if (count == 0) {
-        usecaseData.stepinput.stages[activeStage]['status'] = 'todo';
+        usecaseData.stepinput.stages[activeStage]['status'] = StageStatus.TODO;
       }
       this.setState({
         usecaseData

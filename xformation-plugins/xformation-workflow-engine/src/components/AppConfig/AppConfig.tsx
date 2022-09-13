@@ -11,6 +11,9 @@ export type JsonData = {
   accessKey?: string;
   secretKey?: string;
   region?: string;
+  formkiqClientUrl?: string;
+  formkiqUserName?: string;
+  formkiqPassword?: string;
 };
 
 type State = {
@@ -25,6 +28,9 @@ type State = {
   accessKey: string;
   secretKey: string;
   region: string;
+  formkiqClientUrl: string;
+  formkiqUserName: string;
+  formkiqPassword: string;
 };
 
 interface Props extends PluginConfigPageProps<AppPluginMeta<JsonData>> { }
@@ -39,6 +45,9 @@ export const AppConfig = ({ plugin }: Props) => {
     accessKey: jsonData?.accessKey || '',
     secretKey: jsonData?.secretKey || '',
     region: jsonData?.region || '',
+    formkiqClientUrl: jsonData?.formkiqClientUrl || '',
+    formkiqUserName: jsonData?.formkiqUserName || '',
+    formkiqPassword: jsonData?.formkiqPassword || '',
   });
 
   const onResetApiKey = () =>
@@ -80,6 +89,27 @@ export const AppConfig = ({ plugin }: Props) => {
     setState({
       ...state,
       region: event.target.value.trim(),
+    });
+  };
+
+  const onChangeFormkiqUrl = (event: ChangeEvent<HTMLInputElement>) => {
+    setState({
+      ...state,
+      formkiqClientUrl: event.target.value.trim(),
+    });
+  };
+
+  const onChangeFormkiqUserName = (event: ChangeEvent<HTMLInputElement>) => {
+    setState({
+      ...state,
+      formkiqUserName: event.target.value.trim(),
+    });
+  };
+
+  const onChangeFormkiqPassword = (event: ChangeEvent<HTMLInputElement>) => {
+    setState({
+      ...state,
+      formkiqPassword: event.target.value.trim(),
     });
   };
 
@@ -189,6 +219,39 @@ export const AppConfig = ({ plugin }: Props) => {
           />
         </Field>
 
+        <Field label="Formkiq Client URL" description="" className={s.marginTop}>
+          <Input
+            width={60}
+            id="formkiqClientUrl"
+            data-testid="formkiqClientUrl"
+            label={`Formkiq Client URL`}
+            value={state?.formkiqClientUrl}
+            onChange={onChangeFormkiqUrl}
+          />
+        </Field>
+
+        <Field label="Formkiq User Name" description="" className={s.marginTop}>
+          <Input
+            width={60}
+            id="formkiqUserName"
+            data-testid="formkiqUserName"
+            label={`Formkiq User Name`}
+            value={state?.formkiqUserName}
+            onChange={onChangeFormkiqUserName}
+          />
+        </Field>
+
+        <Field label="Formkiq Password" description="" className={s.marginTop}>
+          <Input
+            width={60}
+            id="formkiqPassword"
+            data-testid="formkiqPassword"
+            label={`Formkiq Password`}
+            value={state?.formkiqPassword}
+            onChange={onChangeFormkiqPassword}
+          />
+        </Field>
+
         <div className={s.marginTop}>
           <Button
             type="submit"
@@ -202,6 +265,9 @@ export const AppConfig = ({ plugin }: Props) => {
                   accessKey: state.accessKey,
                   secretKey: state.secretKey,
                   region: state.region,
+                  formkiqClientUrl: state.formkiqClientUrl,
+                  formkiqUserName: state.formkiqUserName,
+                  formkiqPassword: state.formkiqPassword,
                 },
                 // This cannot be queried later by the frontend.
                 // We don't want to override it in case it was set previously and left untouched now.
@@ -212,7 +278,7 @@ export const AppConfig = ({ plugin }: Props) => {
                   },
               })
             }
-            disabled={Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey) || !state.accessKey || !state.secretKey || !state.region)}
+            disabled={Boolean(!state.apiUrl || (!state.isApiKeySet && !state.apiKey) || !state.accessKey || !state.secretKey || !state.region || !state.formkiqClientUrl || !state.formkiqUserName || !state.formkiqPassword)}
           >
             Save API settings
           </Button>

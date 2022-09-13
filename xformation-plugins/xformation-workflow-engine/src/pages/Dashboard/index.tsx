@@ -12,6 +12,7 @@ import headerIcon from '../../img/header-icon.png';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Link } from 'react-router-dom';
+import { StageStatus } from '../../commonDS';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -168,7 +169,7 @@ export class Dashboard extends React.Component<any, any> {
 					time: '24 min ago',
 					text:
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
-					status: 'inprogress'
+					status: StageStatus.INPROGRESS
 				},
 				{
 					image: headerIcon,
@@ -178,7 +179,7 @@ export class Dashboard extends React.Component<any, any> {
 					time: '24 min ago',
 					text:
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
-					status: 'inprogress'
+					status: StageStatus.INPROGRESS
 				},
 				{
 					image: headerIcon,
@@ -188,7 +189,7 @@ export class Dashboard extends React.Component<any, any> {
 					time: '24 min ago',
 					text:
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
-					status: 'inprogress'
+					status: StageStatus.INPROGRESS
 				},
 				{
 					image: headerIcon,
@@ -198,7 +199,7 @@ export class Dashboard extends React.Component<any, any> {
 					time: '24 min ago',
 					text:
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
-					status: 'inprogress'
+					status: StageStatus.INPROGRESS
 				},
 				{
 					image: headerIcon,
@@ -208,7 +209,7 @@ export class Dashboard extends React.Component<any, any> {
 					time: '24 min ago',
 					text:
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
-					status: 'complete'
+					status: StageStatus.COMPLETED
 				},
 				{
 					image: headerIcon,
@@ -218,7 +219,7 @@ export class Dashboard extends React.Component<any, any> {
 					time: '24 min ago',
 					text:
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
-					status: 'complete'
+					status: StageStatus.COMPLETED
 				},
 				{
 					image: headerIcon,
@@ -228,7 +229,7 @@ export class Dashboard extends React.Component<any, any> {
 					time: '24 min ago',
 					text:
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...',
-					status: 'complete'
+					status: StageStatus.COMPLETED
 				}
 			],
 			resourceAllocation: [
@@ -701,14 +702,14 @@ export class Dashboard extends React.Component<any, any> {
 														All Projects
 													</li>
 													<li
-														className={this.state.status == 'complete' ? 'active' : ''}
-														onClick={() => this.displayProjectStatus('complete')}
+														className={this.state.status == StageStatus.COMPLETED ? 'active' : ''}
+														onClick={() => this.displayProjectStatus(StageStatus.COMPLETED)}
 													>
 														Completed
 													</li>
 													<li
-														className={this.state.status == 'inprogress' ? 'active' : ''}
-														onClick={() => this.displayProjectStatus('inprogress')}
+														className={this.state.status == StageStatus.INPROGRESS ? 'active' : ''}
+														onClick={() => this.displayProjectStatus(StageStatus.INPROGRESS)}
 													>
 														In Progress
 													</li>
