@@ -504,7 +504,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
     }
     let existingIndex = -1;
     for (let i = 0; i < serviceData.length; i++) {
-      if (serviceData[i].id === service.id) {
+      if (serviceData[i].id === service.dbid) {
         existingIndex = i;
         break;
       }
