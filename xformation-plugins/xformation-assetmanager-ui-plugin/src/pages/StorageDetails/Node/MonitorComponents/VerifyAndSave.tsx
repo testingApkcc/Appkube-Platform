@@ -98,7 +98,7 @@ export class VerifyAndSave extends React.Component<any, any>{
     }
 
     retriveDashboardJSONData = (dashboards: any) => {
-        const { disableSubmitButton } = this.props;
+        const { disableSubmitButton, serviceData } = this.props;
         const accountId = CommonService.getParameterByName("accountId", window.location.href);
         const dashboardJSON: any = [];
         if (dashboards.length > 0) {
@@ -108,9 +108,10 @@ export class VerifyAndSave extends React.Component<any, any>{
             disableSubmitButton(true);
         }
         for (let i = 0; i < dashboards.length; i++) {
+            const { associatedCloudElementId } = serviceData;
             const { associatedDataSourceType, jsonLocation, associatedCloudElementType, associatedSLAType, associatedCloud, id } = dashboards[i];
-            if (associatedDataSourceType && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud) {
-                const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${associatedDataSourceType}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
+            if (associatedDataSourceType && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud && associatedCloudElementId) {
+                const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${associatedDataSourceType}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}&associatedCloudElementId=${associatedCloudElementId}`;
                 try {
                     RestService.getData(url, null, null).then((res: any) => {
                         disableSubmitButton(false);
