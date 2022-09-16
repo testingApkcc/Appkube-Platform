@@ -21421,6 +21421,8 @@ object-assign
                   window.location.href
                 );
                 var retData = [];
+                var serviceData = _this.props.serviceData;
+                var associatedCloudElementId = serviceData.associatedCloudElementId;
                 dashboardData.forEach(function (dataSource, dataSourceIndex) {
                   if (dataSource.isChecked) {
                     var dashboards = dataSource.dashboards;
@@ -21436,7 +21438,8 @@ object-assign
                                 .concat(dashboard.associatedSLAType, '&jsonLocation=')
                                 .concat(dashboard.jsonLocation, '&associatedCloud=')
                                 .concat(dashboard.associatedCloud, '&accountId=')
-                                .concat(accountId),
+                                .concat(accountId, '&associatedCloudElementId=')
+                                .concat(associatedCloudElementId),
                             })
                           );
                         }
@@ -22458,6 +22461,8 @@ object-assign
                   window.location.href
                 );
                 var retData = [];
+                var serviceData = _this.props.serviceData;
+                var associatedCloudElementId = serviceData.associatedCloudElementId;
                 dashboardData.forEach(function (dataSource, dataSourceIndex) {
                   if (dataSource.isChecked) {
                     var dashboards = dataSource.dashboards;
@@ -22473,7 +22478,8 @@ object-assign
                                 .concat(dashboard.associatedSLAType, '&jsonLocation=')
                                 .concat(dashboard.jsonLocation, '&associatedCloud=')
                                 .concat(dashboard.associatedCloud, '&accountId=')
-                                .concat(accountId),
+                                .concat(accountId, '&associatedCloudElementId=')
+                                .concat(associatedCloudElementId),
                             })
                           );
                         }
@@ -22696,7 +22702,9 @@ object-assign
               };
 
               _this.retriveDashboardJSONData = function (dashboards) {
-                var disableSubmitButton = _this.props.disableSubmitButton;
+                var _a = _this.props,
+                  disableSubmitButton = _a.disableSubmitButton,
+                  serviceData = _a.serviceData;
                 var accountId = _common_common__WEBPACK_IMPORTED_MODULE_3__.CommonService.getParameterByName(
                   'accountId',
                   window.location.href
@@ -22712,30 +22720,32 @@ object-assign
                 }
 
                 var _loop_1 = function (i) {
-                  var _a = dashboards[i],
-                    associatedDataSourceType = _a.associatedDataSourceType,
-                    jsonLocation = _a.jsonLocation,
-                    associatedCloudElementType = _a.associatedCloudElementType,
-                    associatedSLAType = _a.associatedSLAType,
-                    associatedCloud = _a.associatedCloud,
-                    id = _a.id;
+                  var associatedCloudElementId = serviceData.associatedCloudElementId;
+                  var _b = dashboards[i],
+                    associatedDataSourceType = _b.associatedDataSourceType,
+                    jsonLocation = _b.jsonLocation,
+                    associatedCloudElementType = _b.associatedCloudElementType,
+                    associatedSLAType = _b.associatedSLAType,
+                    associatedCloud = _b.associatedCloud,
+                    id = _b.id;
 
                   if (
                     associatedDataSourceType &&
                     jsonLocation &&
                     associatedCloudElementType &&
                     associatedSLAType &&
-                    associatedCloud
+                    associatedCloud &&
+                    associatedCloudElementId
                   ) {
                     var url = ''
                       .concat(_this.config.PREVIEW_DASHBOARDS_URL, '?dataSourceName=')
                       .concat(associatedDataSourceType, '&associatedCloudElementType=')
                       .concat(associatedCloudElementType, '&associatedSLAType=')
                       .concat(associatedSLAType, '&jsonLocation=')
-                      .concat(jsonLocation, '&jsonLocation=')
                       .concat(jsonLocation, '&associatedCloud=')
                       .concat(associatedCloud, '&accountId=')
-                      .concat(accountId);
+                      .concat(accountId, '&associatedCloudElementId=')
+                      .concat(associatedCloudElementId);
 
                     try {
                       _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(url, null, null).then(
@@ -32835,9 +32845,12 @@ object-assign
                   component: function () {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _MonitorComponents__WEBPACK_IMPORTED_MODULE_2__.Preview,
-                      {
-                        ref: _this.previewRef,
-                      }
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)(
+                        {
+                          ref: _this.previewRef,
+                        },
+                        _this.props
+                      )
                     );
                   },
                 },
@@ -38815,9 +38828,12 @@ and limitations under the License.
                   component: function () {
                     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                       _MonitorComponents__WEBPACK_IMPORTED_MODULE_2__.Preview,
-                      {
-                        ref: _this.previewRef,
-                      }
+                      (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)(
+                        {
+                          ref: _this.previewRef,
+                        },
+                        _this.props
+                      )
                     );
                   },
                 },
