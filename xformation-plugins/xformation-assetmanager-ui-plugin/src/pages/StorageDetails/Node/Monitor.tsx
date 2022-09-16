@@ -50,7 +50,7 @@ export class Monitor extends React.Component<any, any>{
             },
             {
                 name: "Preview",
-                component: () => <Preview ref={this.previewRef} />
+                component: () => <Preview ref={this.previewRef} {...this.props}/>
             },
             {
                 name: "Verify and save",

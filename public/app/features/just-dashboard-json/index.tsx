@@ -57,6 +57,7 @@ class JustDashboardJSON extends React.Component<Props, State> {
     const jsonLocation = this.getParameterByName('jsonLocation', window.location.href);
     const associatedCloud = this.getParameterByName('associatedCloud', window.location.href);
     const accountId = this.getParameterByName('accountId', window.location.href);
+    const associatedCloudElementId = this.getParameterByName('associatedCloudElementId', window.location.href);
     if (
       dataSourceName &&
       jsonLocation &&
@@ -65,7 +66,7 @@ class JustDashboardJSON extends React.Component<Props, State> {
       associatedCloud &&
       accountId
     ) {
-      const url = `${config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}`;
+      const url = `${config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${dataSourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}&associatedCloudElementId=${associatedCloudElementId}`;
       backendSrv.get(url).then(
         (res: any) => {
           this.setState({

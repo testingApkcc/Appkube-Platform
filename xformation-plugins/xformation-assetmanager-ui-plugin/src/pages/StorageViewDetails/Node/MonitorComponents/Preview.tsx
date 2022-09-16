@@ -78,6 +78,8 @@ export class Preview extends React.Component<any, any> {
     const { activeDashboard, dashboardData, activeDataSource } = this.state;
     const accountId = CommonService.getParameterByName("accountId", window.location.href);
     const retData: any = [];
+    const { serviceData } = this.props;
+    const { associatedCloudElementId } = serviceData;
     dashboardData.forEach((dataSource: any, dataSourceIndex: any) => {
       if (dataSource.isChecked) {
         const dashboards = dataSource.dashboards;
@@ -87,7 +89,7 @@ export class Preview extends React.Component<any, any> {
               retData.push(
                 <iframe
                   key={v4()}
-                  src={`/jsondashboard?dataSourceName=${dataSource.name}&associatedCloudElementType=${dashboard.associatedCloudElementType}&associatedSLAType=${dashboard.associatedSLAType}&jsonLocation=${dashboard.jsonLocation}&associatedCloud=${dashboard.associatedCloud}&accountId=${accountId}`}
+                  src={`/jsondashboard?dataSourceName=${dataSource.name}&associatedCloudElementType=${dashboard.associatedCloudElementType}&associatedSLAType=${dashboard.associatedSLAType}&jsonLocation=${dashboard.jsonLocation}&associatedCloud=${dashboard.associatedCloud}&accountId=${accountId}&associatedCloudElementId=${associatedCloudElementId}`}
                 ></iframe>
               );
             }
