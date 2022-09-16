@@ -50,7 +50,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	async componentDidMount() {
 		await this.getAccountList();
 		RestService.getData(
-			`http://34.199.12.114:5057/api/credential/${this.state.account}`,
+			`${this.config.GET_ACCOUNT_CREDENTIALS}/${this.state.account}`,
 			null,
 			null
 		).then((response: any) => {
