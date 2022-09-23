@@ -40,7 +40,7 @@ export class AddDatasourceProduct extends React.Component<any, any> {
 
 	getAccountList = async () => {
 		try {
-			await RestService.getData(this.config.GET_ALL_DATASOURCE, null, null).then((response: any) => {
+			await RestService.getData(this.config.GRAFANA_DATASOURCE_API, null, null).then((response: any) => {
 				// this.setState({
 				// 	sourceList: response
 				// });

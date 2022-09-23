@@ -24,7 +24,7 @@ export class Inputs extends React.Component<any, any>{
 
     getDataSourceInstances = (accountId: any) => {
         try {
-            RestService.getData(`${this.config.GET_ALL_DATASOURCE}/accountid/${accountId}`, null, null).then((response: any) => {
+            RestService.getData(`${this.config.GRAFANA_DATASOURCE_API}/accountid/${accountId}`, null, null).then((response: any) => {
                 // this.setState({
                 //     inputList: [{ "id": 37, "uid": "q0bJZTnnz", "orgId": 1, "name": "www", "type": "cloudwatch", "typeName": "CloudWatch", "typeLogoUrl": "public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png", "access": "proxy", "url": "", "password": "", "user": "", "database": "", "basicAuth": false, "isDefault": false, "jsonData": { "authType": "keys", "defaultRegion": "us-gov-east-1" }, "readOnly": false, "accountID": "9876", "tenantID": "78", "cloudType": "" }]
                 // });

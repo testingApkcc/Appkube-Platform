@@ -80,7 +80,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     SEARCH_INPUT: `${assetSrvUrl}/searchInput`,
 
     GET_AWS_REGIONS: `${assetSrvUrl}/getAwsRegions`,
-    GET_ALL_DATASOURCE: `/api/datasources`,
+    GRAFANA_DATASOURCE_API: `/api/datasources`,
     GET_MASTER_DATASOURCE: `/api/datasources/master-datasources`,
 
     GET_ACCOUNT_CREDENTIALS: `${assetSrvUrl}/credential`,

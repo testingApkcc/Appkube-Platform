@@ -111,7 +111,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				cloudType: type,
 				name: dataobj.name + '-' + result
 			};
-			RestService.add('/api/datasources', newInstance).then((response) => {
+			RestService.add(`${this.config.GRAFANA_DATASOURCE_API}`, newInstance).then((response) => {
 				if (response && response.datasource) {
 					this.setState({
 						uId: response.datasource.uid,
