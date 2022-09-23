@@ -9,24 +9,47 @@ import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 export class StorageDetails extends React.Component<any, any> {
 	breadCrumbs: any;
 	constructor(props: any) {
+		let viewId = CommonService.getParameterByName('viewId', window.location.href);
 		let serviceData: any = localStorage.getItem('added-services');
+		let activeViewIndex = -1;
+		let viewName = '';
 		const accountId = CommonService.getParameterByName('accountId', window.location.href);
 		const cloudName = CommonService.getParameterByName('cloudName', window.location.href);
-		if (serviceData) {
-			serviceData = JSON.parse(serviceData);
+		if (viewId) {
+			serviceData = localStorage.getItem('viewData');
+			if (serviceData) {
+				serviceData = JSON.parse(serviceData);
+				for (let i = 0; i < serviceData.length; i++) {
+					if (serviceData[i].id == viewId) {
+						viewName = serviceData[i].viewName;
+						serviceData = serviceData[i].services;
+						activeViewIndex = i;
+						break;
+					}
+				}
+			} else {
+				serviceData = [];
+				props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+			}
 		} else {
-			serviceData = [];
-			props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+			if (serviceData) {
+				serviceData = JSON.parse(serviceData);
+			} else {
+				serviceData = [];
+				props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+			}
 		}
 		super(props);
 		this.state = {
 			activeTab: serviceData.length - 1,
 			serviceDetails: serviceData,
 			openView: false,
-			viewName: '',
+			viewName,
 			isSubmitted: false,
 			accountId: accountId,
-			cloudName: cloudName
+			cloudName: cloudName,
+			activeViewIndex,
+			viewId
 		};
 		this.breadCrumbs = [
 			{
@@ -68,38 +91,67 @@ export class StorageDetails extends React.Component<any, any> {
 
 	removeTab = (index: any, e: any) => {
 		e.stopPropagation();
-		const { serviceDetails, activeTab } = this.state;
+		const { serviceDetails, activeTab, activeViewIndex, accountId } = this.state;
 		if (serviceDetails.length > 1) {
 			serviceDetails.splice(index, 1);
 			this.setState({
 				serviceDetails,
 				activeTab: serviceDetails[activeTab] ? activeTab : serviceDetails.length - 1
 			});
-			localStorage.setItem('added-services', JSON.stringify(serviceDetails));
+			if (activeViewIndex === -1) {
+				localStorage.setItem('added-services', JSON.stringify(serviceDetails));
+			} else {
+				let serviceData: any = localStorage.getItem('viewData');
+				if (serviceData) {
+					serviceData = JSON.parse(serviceData);
+					serviceData[activeViewIndex].services = serviceDetails;
+					localStorage.setItem('viewData', JSON.stringify(serviceData));
+				}
+			}
 		} else {
-			localStorage.setItem('added-services', '');
-			const accountId = CommonService.getParameterByName('accountId', window.location.href);
+			if (activeViewIndex === -1) {
+				localStorage.setItem('added-services', '');
+			} else {
+				let serviceData: any = localStorage.getItem('viewData');
+				if (serviceData) {
+					serviceData = JSON.parse(serviceData);
+					serviceData.splice(activeViewIndex, 1);
+					localStorage.setItem('viewData', JSON.stringify(serviceData));
+				}
+			}
 			this.props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
 		}
 	};
 
 	saveEnvironmentView = () => {
-		const { serviceDetails, viewName, accountId } = this.state;
+		const { serviceDetails, viewName, accountId, activeViewIndex, viewId } = this.state;
 		this.setState({ isSubmitted: true });
 		const errorData = this.validate(true);
 		if (errorData.isValid) {
 			if (serviceDetails && serviceDetails.length > 0) {
 				let data: any = localStorage.getItem('viewData');
-				let viewdata = JSON.parse(data) || [];
-				let result = '';
-				const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-				const charactersLength = characters.length;
-				for (var i = 0; i < 5; i++) {
-					result += characters.charAt(Math.floor(Math.random() * charactersLength));
+				if (activeViewIndex === -1) {
+					const viewdata = data ? JSON.parse(data) : [];
+					let result = '';
+					const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+					const charactersLength = characters.length;
+					for (var i = 0; i < 5; i++) {
+						result += characters.charAt(Math.floor(Math.random() * charactersLength));
+					}
+					viewdata.push({ viewName: viewName, services: serviceDetails, id: result, accountId: accountId });
+					localStorage.setItem('viewData', JSON.stringify(viewdata));
+					this.openViewModal();
+				} else {
+					const viewdata = JSON.parse(data);
+					viewdata[activeViewIndex] = {
+						viewName,
+						services: serviceDetails,
+						accountId,
+						id: viewId
+					};
+					localStorage.setItem('viewData', JSON.stringify(viewdata));
+					this.openViewModal();
 				}
-				viewdata.push({ viewName: viewName, services: serviceDetails, id: result, accountId: accountId });
-				localStorage.setItem('viewData', JSON.stringify(viewdata));
-				this.openViewModal();
 			}
 		}
 	};
@@ -185,7 +237,7 @@ export class StorageDetails extends React.Component<any, any> {
 									{...this.props}
 								/>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

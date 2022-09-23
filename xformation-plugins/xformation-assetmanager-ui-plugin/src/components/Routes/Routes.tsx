@@ -8,7 +8,6 @@ import { StorageDetails } from '../../pages/StorageDetails';
 import { DepartmentWiseProducts } from '../../pages/DepartmentWiseProducts';
 import { DepartmentWiseCharts } from 'pages/DepartmentWiseProducts/departmentChart';
 import { ProductWiseServicesSla } from '../../pages/ProductWiseServicesSla';
-import { StorageViewDetails } from '../../pages/StorageViewDetails';
 import { AddDatasource } from '../../pages/AddDatasource';
 import { AddDatasourceCredential } from '../../pages/AddDatasource/AddDatasouceCredential';
 import { ExploreDataSourceDetail } from '../../pages/AddDatasource/ExploreDataSourceDetail';
@@ -70,7 +69,7 @@ export const Routes = () => {
 			<Route
 				exact
 				path={prefixRoute(ROUTES.StorageViewDetails)}
-				component={(props: any) => <StorageViewDetails {...props} meta={meta} />}
+				component={(props: any) => <StorageDetails {...props} meta={meta} />}
 			/>
 			<Route
 				exact
