@@ -77,6 +77,7 @@ func ProvideService(
 	s.Bus.AddHandler(s.GetDataSource)
 	//  ------Manoj.  custom changes for appcube plateform ------
 	s.Bus.AddHandler(s.GetDataSourceByAccountIdOrCloudType)
+	s.Bus.AddHandler(s.GetDataSourceByAccountIdAndInputType)
 	s.Bus.AddHandler(s.GetDataSourceMaster)
 	s.Bus.AddHandler(s.AddDataSourceMaster)
 	//  ------Manoj.  custom changes for appcube plateform ------
@@ -131,6 +132,9 @@ func (s *Service) GetDataSources(ctx context.Context, query *models.GetDataSourc
 }
 
 //  ------Manoj.  custom changes for appcube plateform ------
+func (s *Service) GetDataSourceByAccountIdAndInputType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdAndInputType) error {
+	return s.SQLStore.GetDataSourceByAccountIdAndInputType(ctx, query)
+}
 func (s *Service) GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {
 	return s.SQLStore.GetDataSourceByAccountIdOrCloudType(ctx, query)
 }

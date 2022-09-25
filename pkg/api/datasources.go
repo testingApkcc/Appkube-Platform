@@ -651,6 +651,67 @@ func (hs *HTTPServer) GetDataSourceByCloudType(c *models.ReqContext) response.Re
 	return hs.BuildDatasourceList(&query, c, "Datasource query by cloud type failed")
 }
 
+// GET /api/datasources/accountid/:accountID/inputType/:inputType
+func (hs *HTTPServer) GetDataSourceByAccountIdAndInputType(c *models.ReqContext) response.Response {
+	query := models.GetDataSourceQueryByAccountIdAndInputType{
+		AccountId: web.Params(c.Req)[":accountID"],
+		InputType: web.Params(c.Req)[":inputType"],
+		OrgId:     1,
+	}
+	return hs.BuildDatasourceListOfAccountIdAndInputType(&query, c, "Datasource query by account id and input type failed")
+}
+
+func (hs *HTTPServer) BuildDatasourceListOfAccountIdAndInputType(query *models.GetDataSourceQueryByAccountIdAndInputType, c *models.ReqContext, errMsg string) response.Response {
+
+	if err := hs.DataSourcesService.GetDataSourceByAccountIdAndInputType(c.Req.Context(), query); err != nil {
+		return response.Error(500, errMsg, err)
+	}
+
+	filtered, err := hs.filterDatasourcesByQueryPermission(c.Req.Context(), c.SignedInUser, query.Res)
+	if err != nil {
+		return response.Error(500, "Datasource filtering with account id and input type failed. "+errMsg, err)
+	}
+
+	result := make(dtos.DataSourceList, 0)
+	for _, ds := range filtered {
+		dsItem := dtos.DataSourceListItemDTO{
+			OrgId:     ds.OrgId,
+			Id:        ds.Id,
+			UID:       ds.Uid,
+			Name:      ds.Name,
+			Url:       ds.Url,
+			Type:      ds.Type,
+			TypeName:  ds.Type,
+			Access:    ds.Access,
+			Password:  ds.Password,
+			Database:  ds.Database,
+			User:      ds.User,
+			BasicAuth: ds.BasicAuth,
+			IsDefault: ds.IsDefault,
+			JsonData:  ds.JsonData,
+			ReadOnly:  ds.ReadOnly,
+			AccountId: ds.AccountId,
+			CloudType: ds.CloudType,
+			TenantId:  ds.TenantId,
+			InputType: ds.InputType,
+		}
+
+		if plugin, exists := hs.pluginStore.Plugin(c.Req.Context(), ds.Type); exists {
+			dsItem.TypeLogoUrl = plugin.Info.Logos.Small
+			dsItem.TypeName = plugin.Name
+		} else {
+			dsItem.TypeLogoUrl = "public/img/icn-datasource.svg"
+		}
+
+		result = append(result, dsItem)
+	}
+
+	sort.Sort(result)
+
+	return response.JSON(200, &result)
+
+}
+
 // GET /api/datasources/accountid/:accountID/cloudType/:cloud
 func (hs *HTTPServer) GetDataSourceByAccountIdAndCloudType(c *models.ReqContext) response.Response {
 	query := models.GetDataSourceQueryByAccountIdOrCloudType{

@@ -61,6 +61,9 @@ func (ss *SQLStore) GetDataSources(ctx context.Context, query *models.GetDataSou
 }
 
 //  ------Manoj.  custom changes for appcube plateform ------
+func (ss *SQLStore) GetDataSourceByAccountIdAndInputType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdAndInputType) error {
+	return ss.getDataSourceListByAccountIdAndInputType(ctx, query)
+}
 func (ss *SQLStore) GetDataSourceByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {
 	return ss.getDataSourceListByAccountIdOrCloudType(ctx, query)
 }
@@ -89,6 +92,23 @@ func (ss *SQLStore) getDataSourceByAccountIdOrCloudType(ctx context.Context, que
 	query.Result = datasource
 
 	return nil
+}
+
+func (ss *SQLStore) getDataSourceListByAccountIdAndInputType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdAndInputType) error {
+	var sess *xorm.Session
+	if len(query.AccountId) == 0 {
+		return models.ErrDataSourceIdentifierNotSet
+	}
+
+	if len(query.InputType) == 0 {
+		return models.ErrDataSourceIdentifierNotSet
+	}
+
+	return ss.WithDbSession(ctx, func(dbSess *DBSession) error {
+		sess = dbSess.Where("input_type=?", query.InputType).And("account_id=?", query.AccountId).Asc("name")
+		query.Res = make([]*models.DataSource, 0)
+		return sess.Find(&query.Res)
+	})
 }
 
 func (ss *SQLStore) getDataSourceListByAccountIdOrCloudType(ctx context.Context, query *models.GetDataSourceQueryByAccountIdOrCloudType) error {

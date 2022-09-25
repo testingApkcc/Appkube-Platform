@@ -289,6 +289,7 @@ func (hs *HTTPServer) registerRoutes() {
 			datasourceRoute.Get("/master-datasource-plugins/:key", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetMasterDataSourcePlugins))
 			datasourceRoute.Get("/accountid/:accountID", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByAccountId))
 			datasourceRoute.Get("/cloudType/:cloud", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByCloudType))
+			datasourceRoute.Get("/accountid/:accountID/inputType/:inputType", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByAccountIdAndInputType))
 			datasourceRoute.Get("/accountid/:accountID/cloudType/:cloud", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByAccountIdAndCloudType))
 			datasourceRoute.Get("/master-datasources", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceMaster))
 			datasourceRoute.Post("/add-master-datasources", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.AddDataSourceMaster))

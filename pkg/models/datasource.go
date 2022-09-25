@@ -232,6 +232,14 @@ type UpdateAccountTenantInfoDataSourceCommand struct {
 	Result    *DataSource
 }
 
+type GetDataSourceQueryByAccountIdAndInputType struct {
+	AccountId string
+	InputType string
+	OrgId     int64
+	Result    *DataSource
+	Res       []*DataSource
+}
+
 type GetDataSourceQueryByAccountIdOrCloudType struct {
 	AccountId string
 	CloudType string
