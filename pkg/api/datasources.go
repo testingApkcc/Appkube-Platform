@@ -260,6 +260,18 @@ func (hs *HTTPServer) AddDataSource(c *models.ReqContext) response.Response {
 		}
 	}
 
+	//  ------Manoj.  custom changes for appcube plateform ------
+	// below code restricts creating duplicate datasource of having same accountId/inputType
+	query := models.GetDataSourceQueryByAccountIdAndInputType{
+		AccountId: cmd.AccountId,
+		InputType: cmd.InputType,
+	}
+	hs.DataSourcesService.GetDataSourceByAccountIdAndInputType(c.Req.Context(), &query)
+	if query.Res != nil && len(query.Res) > 0 {
+		return response.Error(1000, "The given account id and datasource type already exists", nil)
+	}
+	//  ------Manoj.  custom changes for appcube plateform ------
+
 	if err := hs.DataSourcesService.AddDataSource(c.Req.Context(), &cmd); err != nil {
 		if errors.Is(err, models.ErrDataSourceNameExists) || errors.Is(err, models.ErrDataSourceUidExists) {
 			return response.Error(409, err.Error(), err)
