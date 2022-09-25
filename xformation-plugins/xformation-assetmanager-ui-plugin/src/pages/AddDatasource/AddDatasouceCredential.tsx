@@ -32,7 +32,9 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			uId: uid,
 			isAlertOpen: false,
 			message: '',
-			severity: ''
+			severity: '',
+			vaultId: null,
+			vault: {},
 		};
 		this.breadCrumbs = [
 			{
@@ -54,10 +56,12 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			null,
 			null
 		).then((response: any) => {
-			let creadList = JSON.parse(atob(response.secureCreds));
-			if (creadList.credentials && creadList.credentials.length > 0) {
+			
+			// let creadList = JSON.parse(atob(response.secureCreds));
+			// let creadList = JSON.parse(response.credentials);
+			if (response.credentials && response.credentials.length > 0) {
 				this.setState({
-					credentialList: creadList
+					credentialList: response.credentials
 				});
 			}
 		});
@@ -74,16 +78,29 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		}
 	};
 
-	manipulateData = (data: any) => {
+	getVault = async (vaultId: any) => {
+		try {
+			await RestService.getData(`${this.config.VAULT_API}/${vaultId}`, null, null).then((response: any) => {
+				this.setState({
+					vault: response
+				});
+			});
+		} catch (err) {
+			console.log('Loading vault failed. Error: ', err);
+		}
+	};
+
+	manipulateData = async (data: any) => {
 		let { environmentList, uId } = this.state;
 		let dataobj: any = {};
 		let type = '';
 		// let cloudName = CommonService.getParameterByName('sourceName', window.location.href);
-		let accountId = CommonService.getParameterByName('Id', window.location.href);
+		let dsInputType = CommonService.getParameterByName('Id', window.location.href);
+		let accountId = CommonService.getParameterByName('accountId', window.location.href);
 		if (data && data.length > 0) {
 			for (let i = 0; i < data.length; i++) {
 				let datasource = data[i];
-				if (data[i].jsonData.name == accountId) {
+				if (data[i].jsonData.name == dsInputType) {
 					dataobj = data[i].jsonData;
 					type = data[i].cloudType;
 				}
@@ -103,13 +120,15 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			for (var i = 0; i < 5; i++) {
 				result += characters.charAt(Math.floor(Math.random() * charactersLength));
 			}
+			
 			let newInstance = {
 				inputType: dataobj.name,
 				type: dataobj.id,
 				access: 'proxy',
 				isDefault: false,
 				cloudType: type,
-				name: dataobj.name + '-' + result
+				name: dataobj.name + '-' + result,
+				accountId: accountId
 			};
 			RestService.add(`${this.config.GRAFANA_DATASOURCE_API}`, newInstance).then((response) => {
 				if (response && response.datasource) {
@@ -164,14 +183,19 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 		});
 	};
 
-	setCred = (e: any, credential: any) => {
+	setCred = async (e: any, credential: any, v: any) => {
+		await this.getVault(v);
 		this.setState({
-			credentialData: credential
+			credentialData: credential,
+			vaultId: v
 		});
 	};
 
 	editDataSource = () => {
-		const { account, environment, addedDatasourceResponse, uId } = this.state;
+		const { account, environment, addedDatasourceResponse, uId, vault } = this.state;
+		let jsonData = {"authType":"keys","defaultRegion":`${vault.region}`}
+		let secureJson = {"accessKey":`${vault.accessKey}`,"secretKey":`${vault.secretKey}`}	
+		
 		if (addedDatasourceResponse && uId && uId != '') {
 			let dataSource = {
 				access: 'proxy',
@@ -184,12 +208,13 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 				id: addedDatasourceResponse.id,
 				isDefault: false,
 				inputType: addedDatasourceResponse.inputType,
-				jsonData: {},
+				jsonData: jsonData,
 				name: addedDatasourceResponse.name,
 				orgId: 1,
 				password: '',
 				readOnly: false,
 				secureJsonFields: {},
+				secureJsonData: secureJson,
 				tenantID: '',
 				type: addedDatasourceResponse.type,
 				typeLogoUrl: '',
@@ -252,7 +277,9 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 			severity,
 			addedDatasourceResponse
 		} = this.state;
+				
 		return (
+			
 			<div className="add-data-source-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGER" />
 				<div className="add-data-source-page-container">
@@ -410,22 +437,21 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 						<div className="syneckit-content">
 							<div className="heading">
 								<p>
-									Showing Credentials for Account &#8758; <span>AWS (657907747545)</span>
+									Showing Credentials for Account &#8758; <span>{environment.toUpperCase()} ({account})</span>
 								</p>
 							</div>
 							{credentialList &&
-								credentialList.credentials &&
-								credentialList.credentials.length > 0 &&
-								credentialList.credentials.map((cred: any, i: any) => {
+								credentialList.length > 0 &&
+								credentialList.map((cred: any, i: any) => {
 									return (
 										<div className="form-group form-check credentials-text">
 											<input
 												type="radio"
-												value={cred.accessKey}
+												value={cred.vaultId}
 												name="credentials"
-												onChange={(e) => this.setCred(e, credentialList)}
+												onChange={(e) => this.setCred(e, cred, cred.vaultId)}
 											/>
-											<span>{cred.accessKey}</span>
+											<span>{cred.vaultId}</span>
 										</div>
 									);
 								})}

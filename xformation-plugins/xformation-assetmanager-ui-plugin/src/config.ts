@@ -54,7 +54,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     // },
 
     USERID: 'admin',
-    PASSWORD: 'password',
+    PASSWORD: 'admin',
     // GET_ALL_ORGANIZATIONS: `${assetSrvUrl}/getAllOrganizations`,
     ADD_ORGANIZATION_UNIT: `${assetSrvUrl}/addOrganizationUnit`,
     ADD_ACCOUNT: `${assetSrvUrl}/addAccount`,
@@ -83,7 +83,9 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GRAFANA_DATASOURCE_API: `/api/datasources`,
     GET_MASTER_DATASOURCE: `/api/datasources/master-datasources`,
 
-    GET_ACCOUNT_CREDENTIALS: `${assetSrvUrl}/credential`,
+    GET_ACCOUNT_CREDENTIALS: `${assetSrvUrl}/credential/account-id`,
+
+    VAULT_API: `${assetSrvUrl}/vault`,
     // PREVIEW_DASHBOARDS_URL: `${mainApplicationBaseUrl}/dashboards/previewDashboard`,
   };
 };
