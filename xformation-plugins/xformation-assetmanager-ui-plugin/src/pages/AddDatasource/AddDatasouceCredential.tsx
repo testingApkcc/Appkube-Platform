@@ -91,7 +91,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 	};
 
 	manipulateData = async (data: any) => {
-		let { environmentList, uId } = this.state;
+		let { environmentList, uId, environment } = this.state;
 		let dataobj: any = {};
 		let type = '';
 		// let cloudName = CommonService.getParameterByName('sourceName', window.location.href);
@@ -147,10 +147,13 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 						message: response.message,
 						severity: 'error'
 					});
+					setTimeout(()=>{
+						this.props.history.push(`${PLUGIN_BASE_URL}/add-data-source?accountId=${accountId}&cloudName=${environment}`);
+					}, 1000);
 				}
 			});
 		} else {
-			RestService.getDashboardList(`http://localhost:3000/api/datasources/uid/${uId}`).then((response) => {
+			RestService.getDashboardList(`${this.config.GET_DASHBOARD_WITH_UID}/${uId}`).then((response) => {
 				this.setState({
 					addedDatasourceResponse: response
 				});
@@ -295,7 +298,7 @@ export class AddDatasourceCredential extends React.Component<any, any> {
 								</div> */}
 								<div className="back-btn">
 									<Link
-										to={`${PLUGIN_BASE_URL}/add-data-source?accountId=${account}&&cloudName=${environment}`}
+										to={`${PLUGIN_BASE_URL}/add-data-source?accountId=${account}&cloudName=${environment}`}
 										type="button"
 										className="btn btn-link"
 									>
