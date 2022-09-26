@@ -82,6 +82,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     GET_AWS_REGIONS: `${assetSrvUrl}/getAwsRegions`,
     GRAFANA_DATASOURCE_API: `/api/datasources`,
     GET_MASTER_DATASOURCE: `/api/datasources/master-datasources`,
+    GET_DASHBOARD_WITH_UID: `/api/datasources/uid`,
 
     GET_ACCOUNT_CREDENTIALS: `${assetSrvUrl}/credential/account-id`,
 

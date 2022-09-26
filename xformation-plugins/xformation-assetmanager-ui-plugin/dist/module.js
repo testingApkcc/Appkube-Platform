@@ -621,6 +621,7 @@ PERFORMANCE OF THIS SOFTWARE.
             GET_AWS_REGIONS: ''.concat(assetSrvUrl, '/getAwsRegions'),
             GRAFANA_DATASOURCE_API: '/api/datasources',
             GET_MASTER_DATASOURCE: '/api/datasources/master-datasources',
+            GET_DASHBOARD_WITH_UID: '/api/datasources/uid',
             GET_ACCOUNT_CREDENTIALS: ''.concat(assetSrvUrl, '/credential/account-id'),
             VAULT_API: ''.concat(assetSrvUrl, '/vault'), // PREVIEW_DASHBOARDS_URL: `${mainApplicationBaseUrl}/dashboards/previewDashboard`,
           };
@@ -36717,8 +36718,8 @@ and limitations under the License.
                                                 _constants__WEBPACK_IMPORTED_MODULE_7__.PLUGIN_BASE_URL,
                                                 '/add-datasource-credential?sourceName='
                                               )
-                                              .concat(environment, '&&accountId=')
-                                              .concat(account, '&&Id=')
+                                              .concat(environment, '&accountId=')
+                                              .concat(account, '&Id=')
                                               .concat(accountdata.name),
                                           },
                                           react__WEBPACK_IMPORTED_MODULE_0__.createElement(
@@ -37492,6 +37493,7 @@ and limitations under the License.
                   var _a,
                     environmentList,
                     uId,
+                    environment,
                     dataobj,
                     type,
                     dsInputType,
@@ -37507,7 +37509,10 @@ and limitations under the License.
                   var _this = this;
 
                   return (0, tslib__WEBPACK_IMPORTED_MODULE_9__.__generator)(this, function (_b) {
-                    (_a = this.state), (environmentList = _a.environmentList), (uId = _a.uId);
+                    (_a = this.state),
+                      (environmentList = _a.environmentList),
+                      (uId = _a.uId),
+                      (environment = _a.environment);
                     dataobj = {};
                     type = '';
                     dsInputType = _common_common__WEBPACK_IMPORTED_MODULE_6__.CommonService.getParameterByName(
@@ -37577,11 +37582,23 @@ and limitations under the License.
                             message: response.message,
                             severity: 'error',
                           });
+
+                          setTimeout(function () {
+                            _this.props.history.push(
+                              ''
+                                .concat(
+                                  _constants__WEBPACK_IMPORTED_MODULE_5__.PLUGIN_BASE_URL,
+                                  '/add-data-source?accountId='
+                                )
+                                .concat(accountId, '&cloudName=')
+                                .concat(environment)
+                            );
+                          }, 1000);
                         }
                       });
                     } else {
                       _service_RestService__WEBPACK_IMPORTED_MODULE_4__.RestService.getDashboardList(
-                        'http://localhost:3000/api/datasources/uid/'.concat(uId)
+                        ''.concat(this.config.GET_DASHBOARD_WITH_UID, '/').concat(uId)
                       ).then(function (response) {
                         _this.setState({
                           addedDatasourceResponse: response,
@@ -37886,7 +37903,7 @@ and limitations under the License.
                                   _constants__WEBPACK_IMPORTED_MODULE_5__.PLUGIN_BASE_URL,
                                   '/add-data-source?accountId='
                                 )
-                                .concat(account, '&&cloudName=')
+                                .concat(account, '&cloudName=')
                                 .concat(environment),
                               type: 'button',
                               className: 'btn btn-link',
