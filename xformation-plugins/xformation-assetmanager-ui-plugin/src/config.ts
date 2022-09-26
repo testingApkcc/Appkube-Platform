@@ -54,7 +54,7 @@ export const configFun = (configIp: any, mainProductUrl: any) => {
     // },
 
     USERID: 'admin',
-    PASSWORD: 'admin',
+    PASSWORD: 'password',
     // GET_ALL_ORGANIZATIONS: `${assetSrvUrl}/getAllOrganizations`,
     ADD_ORGANIZATION_UNIT: `${assetSrvUrl}/addOrganizationUnit`,
     ADD_ACCOUNT: `${assetSrvUrl}/addAccount`,
