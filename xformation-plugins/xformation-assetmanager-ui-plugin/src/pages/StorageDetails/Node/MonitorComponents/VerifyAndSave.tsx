@@ -32,6 +32,7 @@ export class VerifyAndSave extends React.Component<any, any>{
             if (dataSource.isChecked) {
                 dataSource.dashboards.forEach((dashboard: any) => {
                     if (dashboard.isChecked) {
+                        dashboard.datasourceName = dataSource.name;
                         dashboards.push(dashboard);
                     }
                 });
@@ -109,9 +110,9 @@ export class VerifyAndSave extends React.Component<any, any>{
         }
         for (let i = 0; i < dashboards.length; i++) {
             const { associatedCloudElementId } = serviceData;
-            const { associatedDataSourceType, jsonLocation, associatedCloudElementType, associatedSLAType, associatedCloud, id } = dashboards[i];
-            if (associatedDataSourceType && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud && associatedCloudElementId) {
-                const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${associatedDataSourceType}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}&associatedCloudElementId=${associatedCloudElementId}`;
+            const { jsonLocation, associatedCloudElementType, associatedSLAType, associatedCloud, id, datasourceName } = dashboards[i];
+            if (datasourceName && jsonLocation && associatedCloudElementType && associatedSLAType && associatedCloud && associatedCloudElementId) {
+                const url = `${this.config.PREVIEW_DASHBOARDS_URL}?dataSourceName=${datasourceName}&associatedCloudElementType=${associatedCloudElementType}&associatedSLAType=${associatedSLAType}&jsonLocation=${jsonLocation}&associatedCloud=${associatedCloud}&accountId=${accountId}&associatedCloudElementId=${associatedCloudElementId}`;
                 try {
                     RestService.getData(url, null, null).then((res: any) => {
                         disableSubmitButton(false);
