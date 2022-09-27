@@ -597,7 +597,7 @@ PERFORMANCE OF THIS SOFTWARE.
             //   IsFolder: false,
             // },
             USERID: 'admin',
-            PASSWORD: 'admin',
+            PASSWORD: 'password',
             // GET_ALL_ORGANIZATIONS: `${assetSrvUrl}/getAllOrganizations`,
             ADD_ORGANIZATION_UNIT: ''.concat(assetSrvUrl, '/addOrganizationUnit'),
             ADD_ACCOUNT: ''.concat(assetSrvUrl, '/addAccount'),
