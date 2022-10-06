@@ -4,6 +4,7 @@ import { VerifyInputs, EnableDashboard, Preview, VerifyAndSave } from './Monitor
 import { RestService } from '../../_service/RestService';
 import { configFun } from '../../../config';
 import AlertMessage from '../../Components/AlertMessage';
+import { CommonService } from '../../_common/common';
 
 const VIEW_TYPE = {
     VIEW_DASHBOARDS: 'view_dashboard',
@@ -131,6 +132,7 @@ export class Monitor extends React.Component<any, any>{
         this.setState({
             isLoading: true
         });
+        const accountId = CommonService.getParameterByName("accountId", window.location.href);
         dashbaordJSONArray.forEach((dashboard: any) => {
             const dataJs = {
                 // title: dashboard.title,
@@ -159,7 +161,10 @@ export class Monitor extends React.Component<any, any>{
                         if (!result.message) {
                             responseArray.push({
                                 ...result,
-                                dashboardCatalogueId: dashboard.dashboardCatalogueId
+                                dashboardCatalogueId: dashboard.dashboardCatalogueId,
+                                cloudElement: dashboard.elementType,
+                                accountId: accountId,
+                                cloudElementId: dashboard.cloudElementId
                             });
                             if (responseArray.length === dashbaordJSONArray.length) {
                                 this.sendViewJSON(responseArray);
