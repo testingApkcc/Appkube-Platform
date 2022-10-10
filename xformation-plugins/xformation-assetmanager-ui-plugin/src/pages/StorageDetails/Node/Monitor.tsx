@@ -99,6 +99,8 @@ export class Monitor extends React.Component<any, any>{
         }
     }
     onSubmit = async () => {
+        const { serviceData } = this.props;
+        const serviceId = serviceData.id;
         if (this.state.isLoading) {
             this.setState({
                 isAlertOpen: true,
@@ -164,7 +166,8 @@ export class Monitor extends React.Component<any, any>{
                                 dashboardCatalogueId: dashboard.dashboardCatalogueId,
                                 cloudElement: dashboard.elementType,
                                 accountId: accountId,
-                                cloudElementId: dashboard.cloudElementId
+                                cloudElementId: dashboard.cloudElementId,
+                                serviceId: serviceId
                             });
                             if (responseArray.length === dashbaordJSONArray.length) {
                                 this.sendViewJSON(responseArray);
