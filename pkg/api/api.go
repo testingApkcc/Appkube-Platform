@@ -318,7 +318,6 @@ func (hs *HTTPServer) registerRoutes() {
 			pluginRoute.Post("/:pluginId/settings", routing.Wrap(hs.UpdatePluginSetting))
 			pluginRoute.Get("/:pluginId/metrics", routing.Wrap(hs.CollectPluginMetrics))
 		}, reqOrgAdmin)
-
 		apiRoute.Get("/frontend/settings/", hs.GetFrontendSettings)
 		apiRoute.Any("/datasources/proxy/:id/*", authorize(reqSignedIn, ac.EvalPermission(ActionDatasourcesQuery)), hs.ProxyDataSourceRequest)
 		apiRoute.Any("/datasources/proxy/:id", authorize(reqSignedIn, ac.EvalPermission(ActionDatasourcesQuery)), hs.ProxyDataSourceRequest)
@@ -435,6 +434,10 @@ func (hs *HTTPServer) registerRoutes() {
 			alertNotifications.Get("/uid/:uid", routing.Wrap(hs.GetAlertNotificationByUID))
 			alertNotifications.Put("/uid/:uid", routing.Wrap(hs.UpdateAlertNotificationByUID))
 			alertNotifications.Delete("/uid/:uid", routing.Wrap(hs.DeleteAlertNotificationByUID))
+			// ------Manoj.  custom changes for appcube plateform ------
+			// alertNotifications.Get("/name/:name", routing.Wrap(GetAlertNotificationByName))
+			alertNotifications.Post("/sendAlertActivity", routing.Wrap(SendAlertActivityNotification))
+			// ------Manoj.  custom changes for appcube plateform ------
 		}, reqEditorRole)
 
 		// alert notifications without requirement of user to be org editor

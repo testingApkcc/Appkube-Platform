@@ -1,9 +1,9 @@
 //const ALERT_URL = "alert.service.com";
 //const SEARCH_URL = "search.service.com";
 
-const searchSrvUrl = `http://100.64.108.25:8092`;
-const alertSrvUrl = `http://100.64.108.25:5055`;
-const ticketSrvUrl = `http://100.64.108.25:7100/api`;
+const searchSrvUrl = `http://34.199.12.114:8092`;
+const alertSrvUrl = `http://34.199.12.114:5055`;
+const ticketSrvUrl = `http://34.199.12.114:7100/api`;
 // const searchSrvUrl = `http://localhost:8092`;
 // const alertSrvUrl = `http://localhost:5055`;
 // const ticketSrvUrl = `http://localhost:7100/api`;
