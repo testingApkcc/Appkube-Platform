@@ -393,10 +393,11 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				Object.keys(tableData[key]).map((service, i) => {
 					if (service == environmentType) {
 						Object.keys(tableData[key][service]).map((serviceName, j) => {
-							let serviceByType: any = {};
 							servicesJSX = [];
 							Object.keys(tableData[key][service][serviceName]).map((servicetype) => {
 								let servicearry = tableData[key][service][serviceName][servicetype]['services'];
+								let serviceByType: any = {};
+								let totalCost = 0;
 								if (
 									tableData[key][service][serviceName][servicetype]['services'] &&
 									tableData[key][service][serviceName][servicetype]['services'].length > 0
@@ -408,15 +409,16 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 									serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
 									for (let i = 0; i < servicearry.length; i++) {
 										serviceByType['performance'] =
-											serviceByType['performance'] + servicearry[i].performance ? servicearry[i].performance['score'] : 0;
+											serviceByType['performance'] + (servicearry[i].performance ? servicearry[i].performance['score'] : 0);
 										serviceByType['availability'] =
-											serviceByType['availability'] + servicearry[i].availability ? servicearry[i].availability['score'] : 0;
+											serviceByType['availability'] + (servicearry[i].availability ? servicearry[i].availability['score'] : 0);
 										serviceByType['security'] =
-											serviceByType['security'] + servicearry[i].security ? servicearry[i].security['score'] : 0;
+											serviceByType['security'] + (servicearry[i].security ? servicearry[i].security['score'] : 0);
 										serviceByType['Data Protection'] =
-											serviceByType['Data Protection'] + servicearry[i].dataProtection ? servicearry[i].dataProtection['score'] : 0;
+											serviceByType['Data Protection'] + (servicearry[i].dataProtection ? servicearry[i].dataProtection['score'] : 0);
 										serviceByType['User Exp'] =
-											serviceByType['User Exp'] + servicearry[i].userExperiance ? servicearry[i].userExperiance['score'] : 0;
+											serviceByType['User Exp'] + (servicearry[i].userExperiance ? servicearry[i].userExperiance['score'] : 0);
+										totalCost = totalCost + parseInt(servicearry[i].stats.totalCostSoFar);
 									}
 								}
 								servicesJSX.push(
@@ -425,11 +427,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 										<div className="contents">
 											<div className="total-cost-text">
 												Total Cost : $
-												{serviceByType['performance'] +
-													serviceByType['availability'] +
-													serviceByType['security'] +
-													serviceByType['Data Protection'] +
-													serviceByType['User Exp']}
+												{totalCost}
 											</div>
 											<div className="quality-score-text">
 												Quality Score :
@@ -445,7 +443,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 													<label>Performance:</label>
 													<span>
 														{Math.round(serviceByType['performance'] / servicearry.length)}%{' '}
-														<span style={{ backgroundColor: '#5AB66F' }} />
+														<span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['performance'] / servicearry.length) }} />
 													</span>
 												</li>
 												<li>
@@ -453,29 +451,29 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 													<span>
 														{Math.round(
 															serviceByType['availability'] / servicearry.length
-														)}% <span style={{ backgroundColor: '#E08600' }} />
+														)}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['availability'] / servicearry.length) }} />
 													</span>
 												</li>
 												<li>
-													<label>Reliability:</label>
+													<label>Data Protection:</label>
 													<span>
 														{Math.round(
 															serviceByType['Data Protection'] / servicearry.length
-														)}% <span style={{ backgroundColor: '#DC3F1F' }} />
+														)}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['Data Protection'] / servicearry.length) }} />
 													</span>
 												</li>
 												<li>
 													<label>Security:</label>
 													<span>
 														{Math.round(serviceByType['security'] / servicearry.length)}%{' '}
-														<span style={{ backgroundColor: '#5AB66F' }} />
+														<span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['security'] / servicearry.length) }} />
 													</span>
 												</li>
 												<li>
 													<label>User Exp:</label>
 													<span>
 														{Math.round(serviceByType['User Exp'] / servicearry.length)}%{' '}
-														<span style={{ backgroundColor: '#E08600' }} />
+														<span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['User Exp'] / servicearry.length) }} />
 													</span>
 												</li>
 											</ul>
