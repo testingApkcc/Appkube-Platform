@@ -4965,20 +4965,17 @@ a:hover {
 .services-sla-container .services-tabs .services-contents {
   display: none;
   width: 100%;
-  padding: 10px 5px;
+  padding: 0;
   padding-top: 0px;
   margin-top: -2px;
   background: #ffffff;
-  box-shadow: 3px 3px 6px rgba(190, 190, 190, 0.1);
-  border: 0.5px solid rgba(112, 112, 112, 0.1);
-  border-radius: 5px 5px 0px 0px;
 }
 .services-sla-container .services-tabs .services-contents.active {
   display: block;
 }
 .services-sla-container .services-tabs .services-contents .environment-services {
   display: block;
-  padding-top: 30px;
+  padding-top: 0px;
   padding-bottom: 0px;
 }
 .services-sla-container .services-tabs .services-contents .environment-services .heading {
@@ -7448,6 +7445,637 @@ a:hover {
   .add-data-source-container .add-data-source-page-container .data-source-section .source-content .heading {
     padding: 15px 0 15px 0;
   }
+}
+
+.topology-view-container {
+  background-color: #ffffff;
+}
+.topology-view-container .topology-view-contains {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+.topology-view-container .topology-view-contains .topology-left-nav {
+  display: inline-flex;
+  width: 90px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #377aa0;
+  box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.25);
+  min-height: 986px;
+}
+.topology-view-container .topology-view-contains .topology-left-nav ul {
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  list-style: none;
+}
+.topology-view-container .topology-view-contains .topology-left-nav ul li {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.topology-view-container .topology-view-contains .topology-left-nav ul li:last-child {
+  margin-bottom: 0;
+}
+.topology-view-container .topology-view-contains .topology-left-nav ul li a {
+  display: flex;
+  width: 100%;
+  height: 74px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.topology-view-container .topology-view-contains .topology-left-nav ul li a i {
+  display: block;
+  text-align: center;
+}
+.topology-view-container .topology-view-contains .topology-left-nav ul li a span {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 14px;
+  color: #000000;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+  width: 100%;
+}
+.topology-view-container .topology-view-contains .topology-buttons {
+  display: inline-flex;
+  width: 110px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 986px;
+}
+.topology-view-container .topology-view-contains .topology-buttons ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  min-height: 926px;
+}
+.topology-view-container .topology-view-contains .topology-buttons ul li {
+  display: inline-flex;
+  margin-right: 10px;
+  width: 40px;
+  min-height: 910px;
+  background-color: #377aa0;
+  position: relative;
+}
+.topology-view-container .topology-view-contains .topology-buttons ul li:last-child {
+  margin-right: 0;
+}
+.topology-view-container .topology-view-contains .topology-buttons ul li.waf span {
+  top: 450px;
+  left: 4px;
+}
+.topology-view-container .topology-view-contains .topology-buttons ul li.api-gateway span {
+  top: 455px;
+  left: -27px;
+}
+.topology-view-container .topology-view-contains .topology-buttons ul li span {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  position: absolute;
+  transform: rotate(-90deg);
+  text-align: center;
+  white-space: nowrap;
+}
+.topology-view-container .topology-view-contains .app-services {
+  background-color: #377aa0;
+  padding: 30px 15px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 360px);
+}
+.topology-view-container .topology-view-contains .app-services .heading {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container .services-nav {
+  display: flex;
+  background: #ffffff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  overflow: hidden;
+  min-height: 894px;
+  width: 48px;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container .services-nav ul {
+  display: flex;
+  height: 894px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container .services-nav ul li {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #000000;
+  position: relative;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container .services-nav ul li span {
+  transform: rotate(-90deg);
+  position: absolute;
+  white-space: nowrap;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-nav
+  ul
+  li.orchestration {
+  height: 191px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-nav
+  ul
+  li.orchestration
+  span {
+  left: -26px;
+  top: 90px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-nav
+  ul
+  li.business-service {
+  height: 385px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-nav
+  ul
+  li.business-service
+  span {
+  left: -40px;
+  top: 185px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-nav
+  ul
+  li.common-service {
+  height: 318px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-nav
+  ul
+  li.common-service
+  span {
+  left: -40px;
+  top: 150px;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container .services-contains {
+  display: flex;
+  width: calc(100% - 48px);
+  padding-left: 10px;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container .services-contains .contains {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(33.33333333333333% - 10px);
+  margin-right: 10px;
+  background: #ffffff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains:last-child {
+  margin-right: 0;
+  width: calc(33.33333333333333% - 0px);
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains
+  .sub-heading {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #000000;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 52px;
+  border: 0.5px solid #cccccc;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 10px 0px 0px;
+}
+.topology-view-container .topology-view-contains .app-services .app-services-container .services-contains .contains ul {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  background: #ffffff;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  list-style: none;
+  padding: 15px 10px 10px;
+  margin: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains
+  ul
+  li {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains
+  ul
+  li
+  a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 0.5px solid #2680eb;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+  width: 100%;
+  padding: 10px 20px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains
+  ul
+  li
+  a:hover {
+  color: #2680eb;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains
+  .orchestration-buttons {
+  height: 137px;
+  margin-bottom: 15px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains
+  .business-service-buttons {
+  height: 370px;
+  margin-bottom: 15px;
+}
+.topology-view-container
+  .topology-view-contains
+  .app-services
+  .app-services-container
+  .services-contains
+  .contains
+  .common-service-buttons {
+  height: 303px;
+}
+.topology-view-container .topology-view-contains .data-services-right {
+  float: right;
+  width: 150px;
+  padding: 15px;
+  background-color: #377aa0;
+  min-height: 986px;
+  margin-left: 10px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-heading {
+  display: block;
+  width: 100%;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons {
+  display: block;
+  width: 100%;
+  height: 444px;
+  background: #ffffff;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons:last-child {
+  margin-bottom: 0px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons .sub-heading {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 10px 0px 0px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 52px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons ul li {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons ul li:last-child {
+  margin-bottom: 0px;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons ul li i {
+  display: flex;
+  justify-content: center;
+}
+.topology-view-container .topology-view-contains .data-services-right .data-services-buttons ul li span {
+  display: flex;
+  width: 100%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.modal-topology-view .modal-content {
+  padding: 20px 30px;
+}
+.modal-topology-view .modal-content .modal-header {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+.modal-topology-view .modal-content .modal-header h5 {
+  margin-bottom: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #202020;
+}
+.modal-topology-view .modal-content .modal-header .close {
+  width: 24px;
+  line-height: 21px;
+  height: 24px;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 50%;
+  background: #7f64be;
+  opacity: 1;
+  font-weight: 400;
+}
+.modal-topology-view .modal-content .modal-body {
+  padding-right: 0;
+  padding-top: 20px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score {
+  background: #ffffff;
+  border: 0.5px solid #cbc8c8;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.161);
+  border-radius: 10px;
+  padding: 20px 20px 10px;
+  margin: 0 5px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .header {
+  border-bottom: 1px solid #cecece;
+  padding-bottom: 20px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .header .total-cost-text {
+  display: inline-block;
+  vertical-align: top;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #202020;
+  padding-right: 25px;
+  padding-left: 10px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body {
+  padding-top: 20px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content {
+  display: block;
+  margin-bottom: 10px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content label {
+  display: inline-block;
+  vertical-align: top;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #202020;
+  min-width: 150px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content p {
+  display: inline-block;
+  vertical-align: top;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #202020;
+  margin-bottom: 0;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content p span {
+  display: inline-block;
+  vertical-align: top;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  margin-left: 5px;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content p span.green {
+  background: #5ab66f;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content p span.red {
+  background: #dc3f1f;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content p span.orange {
+  background: #ff9429;
+}
+.modal-topology-view .modal-content .modal-body .cost-score .body .content p span.yellow {
+  background: #fff700;
+}
+.modal-topology-view .modal-content .modal-body .table {
+  display: block;
+  width: 100%;
+  margin: 10px 5px 0;
+}
+.modal-topology-view .modal-content .modal-body .table .thead {
+  display: block;
+  width: 100%;
+  background-color: #e1e9f5;
+  border-radius: 10px 10px 0px 0px;
+}
+.modal-topology-view .modal-content .modal-body .table .thead span {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.modal-topology-view .modal-content .modal-body .table .thead span.first {
+  text-align: center;
+}
+.modal-topology-view .modal-content .modal-body .table .tbody {
+  display: block;
+  width: 100%;
+  flex-wrap: wrap;
+  background: #ffffff;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.161);
+  border-radius: 0px 0px 10px 10px;
+  margin-bottom: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+.modal-topology-view .modal-content .modal-body .table .tbody .row {
+  justify-content: flex-start;
+  align-items: center;
+}
+.modal-topology-view .modal-content .modal-body .table .tbody .row .row:nth-child(odd) {
+  background-color: #f8f9fb;
+}
+.modal-topology-view .modal-content .modal-body .table .tbody .row span {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.modal-topology-view .modal-content .modal-body .table .tbody .row strong {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #2662f0;
+  text-align: center;
+}
+
+.topology-heading {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.search-box {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #c5c4c4;
+  border-radius: 5px;
+  position: relative;
+}
+.search-box .input-group-text {
+  background-color: #ffffff;
+  border: none;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 15px;
+  text-align: left;
+}
+.search-box .input-group-text:focus {
+  outline: none;
+}
+.search-box i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
 }
 
 /*************************** Wizard ********************/

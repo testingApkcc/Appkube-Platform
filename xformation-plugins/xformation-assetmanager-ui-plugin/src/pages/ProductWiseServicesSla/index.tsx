@@ -3,9 +3,13 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { Bar } from 'react-chartjs-2';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
-
+import { TopologyView } from './TopologyView';
+import { images } from '../../img';
 const GLOBAL_SERVICE = 'Cloud Managed';
-
+const enumServiceNature = {
+	common: "Common",
+	business: "Business"
+};
 export class ProductWiseServicesSla extends React.Component<any, any> {
 	breadCrumbs: any;
 	config: any;
@@ -27,7 +31,10 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			accountId: '',
 			tableData: [],
 			environmentType: '',
-			productName: ''
+			productName: '',
+			topologyMainData: null,
+			isTopologyDataLoaded: false,
+			isTopologyActive: false
 		};
 		this.breadCrumbs = [
 			{
@@ -59,14 +66,15 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	manipulateServiceData = (services: any) => {
 		const treeData: any = [];
 		const { filterData } = this.state;
+		const topologyMainData: any = {};
 		let firstProd = "";
 		let firstEnv = "";
 		services.forEach((service: any) => {
-			const { serviceNature, associatedProduct, associatedEnv, serviceType } = service.metadata_json;
-			if(!firstProd){
+			const { serviceNature, associatedProduct, associatedEnv, serviceType, serviceHostingType, associatedCommonService, associatedBusinessService } = service.metadata_json;
+			if (!firstProd) {
 				firstProd = associatedProduct;
 			}
-			if(!firstEnv){
+			if (!firstEnv) {
 				firstEnv = associatedEnv;
 			}
 			const node = treeData[associatedProduct] || {};
@@ -80,17 +88,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 					...service.metadata_json
 				});
 			}
-			
+
 			environmentData[serviceType] = assiciatedServiceData;
 			clusterData[serviceNature] = environmentData;
 			node[associatedEnv] = clusterData;
 			treeData[associatedProduct] = node;
+
+			//manipulation for topology view
+			const envTopData = topologyMainData[associatedEnv] || {};
+			const serviceHostingData = envTopData[serviceHostingType] || {};
+			const serviceNatureData = serviceHostingData[serviceNature] || {};
+			let associatedService = associatedBusinessService;
+			if (serviceNature === enumServiceNature.common) {
+				associatedService = associatedCommonService;
+			}
+			serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
+			serviceNatureData[associatedService].push(service);
+			serviceHostingData[serviceNature] = serviceNatureData;
+			envTopData[serviceHostingType] = serviceHostingData;
+			topologyMainData[associatedEnv] = envTopData;
 		});
 		this.setState({
 			tableData: treeData,
 			filterData,
 			environmentType: firstEnv,
-			productName: firstProd
+			productName: firstProd,
+			topologyMainData,
+			isTopologyDataLoaded: true
 		});
 	};
 
@@ -184,49 +208,49 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				let serviceByType: any = {};
 				environments.map((environment, i) => {
 					envCount = envCount + 1;
-						const servicesType = tableData[product][environment];
-						Object.keys(servicesType).map((serviceName, j) => {
-							Object.keys(servicesType[serviceName]).map((servicetype) => {
-								if (servicetype === 'Data') {
-									datacount =
-										datacount + servicesType[serviceName][servicetype].services.length;
-								} else if (servicetype === 'App') {
-									appcount =
-										appcount + servicesType[serviceName][servicetype].services.length;
-								}
-								if (
-									servicesType[serviceName][servicetype]['services'] &&
-									servicesType[serviceName][servicetype]['services'].length > 0
-								) {
-									let servicearry = servicesType[serviceName][servicetype]['services'];
-									serviceByType['performance'] = serviceByType['performance'] || 0;
-									serviceByType['availability'] = serviceByType['availability'] || 0;
-									serviceByType['security'] = serviceByType['security'] || 0;
-									serviceByType['Reliabillity'] = serviceByType['Reliabillity'] || 0;
-									serviceByType['End Usage'] = serviceByType['End Usage'] || 0;
-									for (let i = 0; i < servicearry.length; i++) {
-										serviceByType['performance'] =
-											serviceByType['performance'] + servicearry[i].performance ? servicearry[i].performance['score'] : 0;
-										serviceByType['availability'] =
-											serviceByType['availability'] + servicearry[i].availability ? servicearry[i].availability['score'] : 0;
-										serviceByType['security'] =
-											serviceByType['security'] + servicearry[i].security ? servicearry[i].security['score'] : 0;
-										serviceByType['Reliabillity'] =
-											serviceByType['Reliabillity'] + servicearry[i].dataProtection ? servicearry[i].dataProtection['score'] : 0;
-										serviceByType['End Usage'] =
-											serviceByType['End Usage'] + servicearry[i].userExperiance ? servicearry[i].userExperiance['score'] : 0;
+					const servicesType = tableData[product][environment];
+					Object.keys(servicesType).map((serviceName, j) => {
+						Object.keys(servicesType[serviceName]).map((servicetype) => {
+							if (servicetype === 'Data') {
+								datacount =
+									datacount + servicesType[serviceName][servicetype].services.length;
+							} else if (servicetype === 'App') {
+								appcount =
+									appcount + servicesType[serviceName][servicetype].services.length;
+							}
+							if (
+								servicesType[serviceName][servicetype]['services'] &&
+								servicesType[serviceName][servicetype]['services'].length > 0
+							) {
+								let servicearry = servicesType[serviceName][servicetype]['services'];
+								serviceByType['performance'] = serviceByType['performance'] || 0;
+								serviceByType['availability'] = serviceByType['availability'] || 0;
+								serviceByType['security'] = serviceByType['security'] || 0;
+								serviceByType['Reliabillity'] = serviceByType['Reliabillity'] || 0;
+								serviceByType['End Usage'] = serviceByType['End Usage'] || 0;
+								for (let i = 0; i < servicearry.length; i++) {
+									serviceByType['performance'] =
+										serviceByType['performance'] + servicearry[i].performance ? servicearry[i].performance['score'] : 0;
+									serviceByType['availability'] =
+										serviceByType['availability'] + servicearry[i].availability ? servicearry[i].availability['score'] : 0;
+									serviceByType['security'] =
+										serviceByType['security'] + servicearry[i].security ? servicearry[i].security['score'] : 0;
+									serviceByType['Reliabillity'] =
+										serviceByType['Reliabillity'] + servicearry[i].dataProtection ? servicearry[i].dataProtection['score'] : 0;
+									serviceByType['End Usage'] =
+										serviceByType['End Usage'] + servicearry[i].userExperiance ? servicearry[i].userExperiance['score'] : 0;
 
-										// totalCount = totalCount + parseInt(servicearry[i].stats.totalCostSoFar);
-									}
+									// totalCount = totalCount + parseInt(servicearry[i].stats.totalCostSoFar);
 								}
-							});
+							}
 						});
+					});
 				});
-				serviceByType['performance'] = serviceByType['performance'] / (appcount+datacount);
-				serviceByType['availability'] = serviceByType['availability'] / (appcount+datacount);
-				serviceByType['security'] = serviceByType['security'] / (appcount+datacount);
-				serviceByType['Reliabillity'] = serviceByType['Reliabillity'] / (appcount+datacount); 
-				serviceByType['End Usage'] = serviceByType['End Usage'] / (appcount+datacount);
+				serviceByType['performance'] = serviceByType['performance'] / (appcount + datacount);
+				serviceByType['availability'] = serviceByType['availability'] / (appcount + datacount);
+				serviceByType['security'] = serviceByType['security'] / (appcount + datacount);
+				serviceByType['Reliabillity'] = serviceByType['Reliabillity'] / (appcount + datacount);
+				serviceByType['End Usage'] = serviceByType['End Usage'] / (appcount + datacount);
 				for (var val in serviceByType) {
 					data[val] = serviceByType[val] || 0;
 					// data[val] = data[val] + serviceByType[val];
@@ -397,12 +421,12 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											</div>
 											<div className="quality-score-text">
 												Quality Score :
-												{((serviceByType['performance']/servicearry.length +
-													serviceByType['availability']/servicearry.length +
-													serviceByType['security']/servicearry.length +
-													serviceByType['Reliabillity']/servicearry.length +
-													serviceByType['End Usage']/servicearry.length) /5).toFixed(2)
-													}%
+												{((serviceByType['performance'] / servicearry.length +
+													serviceByType['availability'] / servicearry.length +
+													serviceByType['security'] / servicearry.length +
+													serviceByType['Reliabillity'] / servicearry.length +
+													serviceByType['End Usage'] / servicearry.length) / 5).toFixed(2)
+												}%
 											</div>
 											<ul>
 												<li>
@@ -482,9 +506,14 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		return retServiceData;
 	};
 
+	toggleView = () => {
+		this.setState({
+			isTopologyActive: !this.state.isTopologyActive,
+		});
+	};
+
 	render() {
-		const { productName, tableData } = this.state;
-		console.log(tableData);
+		const { productName, tableData, topologyMainData, environmentType, isTopologyDataLoaded, isTopologyActive } = this.state;
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -510,9 +539,36 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 							Object.keys(tableData).length > 0 && (
 								<div className="services-tabs">
 									<ul className="tabs">{this.displayEnvServices()}</ul>
-									<div className="services-contents active">
-										<div className="environment-services">
-											<div className="services-boxes">{this.displayServiceData()}</div>
+									<div className="common-container bottom-border-none">
+										<div className="row">
+											<div className="col-lg-9 col-md-9 col-sm-12">
+												<div className="topology-heading" onClick={this.toggleView}>
+													{isTopologyActive ? 'Topology view' : 'Service wise view'}
+													<div style={{ marginLeft: "10px" }} className="asset-white-button min-width-inherit">
+														<img src={images.Jobs} alt="" style={{ maxWidth: '15px' }} />
+													</div>
+												</div>
+											</div>
+											{
+												isTopologyActive ?
+													<div className="col-lg-3 col-md-3 col-sm-12">
+														<div className="search-box">
+															<i className="fa fa-search" aria-hidden="true"></i>
+															<input type="text" className="input-group-text" placeholder={'Search'} />
+														</div>
+													</div> : <></>
+											}
+										</div>
+										<div className="services-contents active">
+											<div className="environment-services">
+												{
+													isTopologyActive ?
+														<TopologyView data={topologyMainData[environmentType]} isDataLoaded={isTopologyDataLoaded} /> :
+
+														<div className="services-boxes">{this.displayServiceData()}</div>
+
+												}
+											</div>
 										</div>
 									</div>
 								</div>

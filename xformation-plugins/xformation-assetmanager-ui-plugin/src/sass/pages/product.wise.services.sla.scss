@@ -192,13 +192,13 @@
         .services-contents {
             display: none;
             width: 100%;
-            padding: 10px 5px;
+            padding: 0;
             padding-top: 0px;
             margin-top: -2px;
             background: #FFFFFF;
-            box-shadow: 3px 3px 6px rgba(190, 190, 190, 0.1);
-            border: 0.5px solid rgba(112, 112, 112, 0.1);
-            border-radius: 5px 5px 0px 0px;
+            // box-shadow: 3px 3px 6px rgba(190, 190, 190, 0.1);
+            // border: 0.5px solid rgba(112, 112, 112, 0.1);
+            // border-radius: 5px 5px 0px 0px;
 
             &.active {
                 display: block;
@@ -206,7 +206,7 @@
 
             .environment-services {
                 display: block;
-                padding-top: 30px;
+                padding-top: 0px;
                 padding-bottom: 0px;
 
                 .heading {
