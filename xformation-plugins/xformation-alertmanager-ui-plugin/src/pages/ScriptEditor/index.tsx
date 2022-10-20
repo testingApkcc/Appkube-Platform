@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { Controlled as CodeMirror } from 'react-codemirror2';
-import 'codemirror/lib/codemirror.css';
+// import { Controlled as CodeMirror } from 'react-codemirror2';
+// import 'codemirror/lib/codemirror.css';
 
-require('codemirror/mode/javascript/javascript');
-require('codemirror/theme/material.css');
+// require('codemirror/mode/javascript/javascript');
+// require('codemirror/theme/material.css');
 import { PLUGIN_BASE_URL } from '../../constants';
 
 export class ScriptEditor extends React.Component<any, any> {
@@ -67,7 +67,7 @@ export class ScriptEditor extends React.Component<any, any> {
             </div>
           </div>
           <div className="common-container border-bottom-0 p-t-20 script-editor">
-            <CodeMirror
+            {/* <CodeMirror
               value={this.state.codeEditorValue}
               options={{
                 mode: 'javascript',
@@ -77,7 +77,7 @@ export class ScriptEditor extends React.Component<any, any> {
               onBeforeChange={(editor: any, data: any, value: any) => {
                 this.setState({ codeEditorValue: value });
               }}
-            />
+            /> */}
             <div className="validate-bottom-text"> &gt; You have unsaved changes, save to validate TICKscript</div>
           </div>
         </div>
