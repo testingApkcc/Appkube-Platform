@@ -241,7 +241,7 @@ export class TopologyView extends React.Component<any, any> {
                         <a style={{color: '#5ca0f0', fontWeight: 'bold'}}>Load Balancer</a>
                       </li>
                       <li>
-                        <a style={{color: '#5ca0f0', fontWeight: 'bold'}}>Service Mesh</a>
+                        <a href='http://kiali.synectiks.net/' target="_blank" style={{color: '#5ca0f0', fontWeight: 'bold'}}>Service Mesh</a>
                       </li>
                     </ul>
                     <ul className="business-service-buttons">
