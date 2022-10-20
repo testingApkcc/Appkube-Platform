@@ -169,3 +169,44 @@ type GetOrCreateNotificationStateQuery struct {
 
 	Result *AlertNotificationState
 }
+
+type GetAlertNotificationsWithNameQuery struct {
+	Name   string
+	OrgId  int64
+	Result *AlertNotification
+}
+
+type CreateXformationAlertNotificationCommand struct {
+	Uid                   string            `json:"uid"`
+	Name                  string            `json:"name"`
+	Type                  string            `json:"type"`
+	SendReminder          bool              `json:"sendReminder"`
+	DisableResolveMessage bool              `json:"disableResolveMessage"`
+	Frequency             string            `json:"frequency"`
+	IsDefault             bool              `json:"isDefault"`
+	Settings              *simplejson.Json  `json:"settings"`
+	SecureSettings        map[string]string `json:"secureSettings"`
+
+	AlertState        string `json:"alert_state"`
+	Description       string `json:"description"`
+	Client            string `json:"client"`
+	Details           string `json:"details"`
+	IncidentKey       string `json:"incident_key"`
+	Guid              string `json:"guid"`
+	ClientUrl         string `json:"client_url"`
+	CreatedOn         int64  `json:"created_on"`
+	UpdatedOn         int64  `json:"updated_on"`
+	FiredTime         string `json:"fired_time"`
+	Action            string `json:"action"`
+	ActionDescription string `json:"action_description"`
+	TicketId          int64  `json:"ticket_id"`
+	TicketName        string `json:"ticket_name"`
+	TicketUrl         string `json:"ticket_url"`
+	TicketDescription string `json:"ticket_description"`
+	UserName          string `json:"user_name"`
+	EventType         string `json:"event_type"`
+	ChangeLog         string `json:"change_log"`
+
+	OrgId  int64 `json:"-"`
+	Result *AlertNotification
+}
