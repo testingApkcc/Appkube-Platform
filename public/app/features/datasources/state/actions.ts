@@ -227,7 +227,13 @@ export function addDataSource(plugin: any): ThunkResult<void> {
 export function loadDataSourcePlugins(url: string): ThunkResult<void> {
   return async (dispatch) => {
     dispatch(dataSourcePluginsLoad());
-    // const plugins = await getBackendSrv().get('/api/plugins', { enabled: 1, type: 'datasource' });
+    //Remove after alert is done
+    const newPlugins = await getBackendSrv().get('/api/plugins', { enabled: 1, type: 'datasource' });
+    let testDataPlugin: any = {};
+    if (newPlugins) {
+      testDataPlugin = newPlugins.filter((plugin: any) => plugin.id === 'testdata');
+    }
+    // till here
     const dummyData = await getBackendSrv().get(url);
     const plugins: any = [];
     if (dummyData && dummyData.length > 0) {
@@ -239,6 +245,13 @@ export function loadDataSourcePlugins(url: string): ThunkResult<void> {
         });
       }
     }
+    // Remove after alert is done
+    if (testDataPlugin && testDataPlugin.length > 0) {
+      plugins.push({
+        ...testDataPlugin[0],
+      });
+    }
+    // till here
     const categories = buildCategories(plugins);
     dispatch(dataSourcePluginsLoaded({ plugins, categories }));
   };
