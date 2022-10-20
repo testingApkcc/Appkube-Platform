@@ -199,7 +199,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				let datacount = 0;
 				let data: any = {};
 				let chartticksdata: any = [];
-				let totalCount = 0;
+				let totalCost = 0;
 				let envCount = 0;
 				const environments = Object.keys(tableData[product]);
 				let serviceByType: any = {};
@@ -237,7 +237,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 									serviceByType['User Exp'] =
 										serviceByType['User Exp'] + (servicearry[k].userExperiance ? servicearry[k].userExperiance['score'] : 0);
 
-									// totalCount = totalCount + parseInt(servicearry[i].stats.totalCostSoFar);
+									totalCost = totalCost + parseInt(servicearry[i].stats.totalCostSoFar);
 								}
 							}
 						});
@@ -300,7 +300,6 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 									data={chart[product]}
 									height={200}
 									width={350}
-									ref={React.createRef()}
 									options={{
 										responsive: false,
 										plugins: {
@@ -310,7 +309,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											},
 											title: {
 												display: true,
-												text: `Total Cost : $${totalCount}`,
+												text: `Total Cost : $${totalCost}`,
 												color: '#202020',
 												font: {
 													size: 18
