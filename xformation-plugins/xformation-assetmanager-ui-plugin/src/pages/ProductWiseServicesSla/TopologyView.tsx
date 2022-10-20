@@ -238,10 +238,10 @@ export class TopologyView extends React.Component<any, any> {
                     <div className="sub-heading">Cluster</div>
                     <ul className="orchestration-buttons">
                       <li>
-                        <a>Load Balancer</a>
+                        <a style={{color: '#5ca0f0', fontWeight: 'bold'}}>Load Balancer</a>
                       </li>
                       <li>
-                        <a>Service Mesh</a>
+                        <a style={{color: '#5ca0f0', fontWeight: 'bold'}}>Service Mesh</a>
                       </li>
                     </ul>
                     <ul className="business-service-buttons">
