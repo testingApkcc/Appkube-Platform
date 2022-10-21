@@ -13,8 +13,8 @@ define([
   __WEBPACK_EXTERNAL_MODULE__6__,
   __WEBPACK_EXTERNAL_MODULE__15__,
   __WEBPACK_EXTERNAL_MODULE__48__,
-  __WEBPACK_EXTERNAL_MODULE__57__,
-  __WEBPACK_EXTERNAL_MODULE__58__,
+  __WEBPACK_EXTERNAL_MODULE__59__,
+  __WEBPACK_EXTERNAL_MODULE__60__,
   __WEBPACK_EXTERNAL_MODULE__145__
 ) => {
   return /******/ (() => {
@@ -1491,7 +1491,7 @@ PERFORMANCE OF THIS SOFTWARE.
         var singletonCounter = 0;
         var stylesInsertedAtTop = [];
 
-        var fixUrls = __webpack_require__(/*! ./urls */ 56);
+        var fixUrls = __webpack_require__(/*! ./urls */ 58);
 
         module.exports = function (list, options) {
           if (typeof DEBUG !== 'undefined' && DEBUG) {
@@ -1855,7 +1855,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 22));
 
-        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 63);
+        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 64);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -2600,7 +2600,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 70
+          /*! ./chunks/helpers.segment.js */ 71
         );
         /*!
          * Chart.js v3.7.1
@@ -15188,7 +15188,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /*! ./iterableToArray.js */ 127
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./unsupportedIterableToArray.js */ 53
+          /*! ./unsupportedIterableToArray.js */ 55
         );
         /* harmony import */ var _nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ./nonIterableSpread.js */ 128
@@ -15214,7 +15214,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 62);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 63);
         }
 
         /***/
@@ -17678,446 +17678,316 @@ object-assign
         /***/
       },
       /* 50 */
-      /*!***********************************************************************************!*\
-  !*** ../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
-  \***********************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        var reactIs = __webpack_require__(/*! react-is */ 64);
-
-        /**
-         * Copyright 2015, Yahoo! Inc.
-         * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-         */
-        var REACT_STATICS = {
-          childContextTypes: true,
-          contextType: true,
-          contextTypes: true,
-          defaultProps: true,
-          displayName: true,
-          getDefaultProps: true,
-          getDerivedStateFromError: true,
-          getDerivedStateFromProps: true,
-          mixins: true,
-          propTypes: true,
-          type: true,
-        };
-        var KNOWN_STATICS = {
-          name: true,
-          length: true,
-          prototype: true,
-          caller: true,
-          callee: true,
-          arguments: true,
-          arity: true,
-        };
-        var FORWARD_REF_STATICS = {
-          $$typeof: true,
-          render: true,
-          defaultProps: true,
-          displayName: true,
-          propTypes: true,
-        };
-        var MEMO_STATICS = {
-          $$typeof: true,
-          compare: true,
-          defaultProps: true,
-          displayName: true,
-          propTypes: true,
-          type: true,
-        };
-        var TYPE_STATICS = {};
-        TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
-        TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
-
-        function getStatics(component) {
-          // React v16.11 and below
-          if (reactIs.isMemo(component)) {
-            return MEMO_STATICS;
-          } // React v16.12 and above
-
-          return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
-        }
-
-        var defineProperty = Object.defineProperty;
-        var getOwnPropertyNames = Object.getOwnPropertyNames;
-        var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-        var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-        var getPrototypeOf = Object.getPrototypeOf;
-        var objectPrototype = Object.prototype;
-        function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-          if (typeof sourceComponent !== 'string') {
-            // don't hoist over string (html) components
-            if (objectPrototype) {
-              var inheritedComponent = getPrototypeOf(sourceComponent);
-
-              if (inheritedComponent && inheritedComponent !== objectPrototype) {
-                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-              }
-            }
-
-            var keys = getOwnPropertyNames(sourceComponent);
-
-            if (getOwnPropertySymbols) {
-              keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-            }
-
-            var targetStatics = getStatics(targetComponent);
-            var sourceStatics = getStatics(sourceComponent);
-
-            for (var i = 0; i < keys.length; ++i) {
-              var key = keys[i];
-
-              if (
-                !KNOWN_STATICS[key] &&
-                !(blacklist && blacklist[key]) &&
-                !(sourceStatics && sourceStatics[key]) &&
-                !(targetStatics && targetStatics[key])
-              ) {
-                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-
-                try {
-                  // Avoid failures from read-only properties
-                  defineProperty(targetComponent, key, descriptor);
-                } catch (e) {}
-              }
-            }
-          }
-
-          return targetComponent;
-        }
-
-        module.exports = hoistNonReactStatics;
-
-        /***/
-      },
-      /* 51 */
-      /*!****************************************************!*\
-  !*** ../node_modules/is-in-browser/dist/module.js ***!
-  \****************************************************/
+      /*!***********************************************************************!*\
+  !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyAndSave.tsx ***!
+  \***********************************************************************/
       /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
         'use strict';
         __webpack_require__.r(__webpack_exports__);
         /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ isBrowser: () => /* binding */ isBrowser,
-          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
+          /* harmony export */ VerifyAndSave: () => /* binding */ VerifyAndSave,
           /* harmony export */
         });
-        var _typeof =
-          typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol'
-            ? function (obj) {
-                return typeof obj;
-              }
-            : function (obj) {
-                return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype
-                  ? 'symbol'
-                  : typeof obj;
-              };
-
-        var isBrowser =
-          (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object' &&
-          (typeof document === 'undefined' ? 'undefined' : _typeof(document)) === 'object' &&
-          document.nodeType === 9;
-
-        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = isBrowser;
-
-        /***/
-      },
-      /* 52 */
-      /*!**********************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js ***!
-  \**********************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _arrayLikeToArray,
-          /* harmony export */
-        });
-        function _arrayLikeToArray(arr, len) {
-          if (len == null || len > arr.length) len = arr.length;
-
-          for (var i = 0, arr2 = new Array(len); i < len; i++) {
-            arr2[i] = arr[i];
-          }
-
-          return arr2;
-        }
-
-        /***/
-      },
-      /* 53 */
-      /*!********************************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js ***!
-  \********************************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _unsupportedIterableToArray,
-          /* harmony export */
-        });
-        /* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayLikeToArray.js */ 52
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 2);
+        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+          react__WEBPACK_IMPORTED_MODULE_0__
+        );
+        /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+          /*! ../../../_service/RestService */ 4
+        );
+        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+          /*! ../../../../config */ 3
+        );
+        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! uuid */ 153);
+        /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+          /*! ../../../_common/common */ 10
         );
 
-        function _unsupportedIterableToArray(o, minLen) {
-          if (!o) return;
-          if (typeof o === 'string')
-            return (0, _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__['default'])(o, minLen);
-          var n = Object.prototype.toString.call(o).slice(8, -1);
-          if (n === 'Object' && o.constructor) n = o.constructor.name;
-          if (n === 'Map' || n === 'Set') return Array.from(o);
-          if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-            return (0, _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__['default'])(o, minLen);
-        }
+        var VerifyAndSave =
+          /** @class */
+          (function (_super) {
+            (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__extends)(VerifyAndSave, _super);
 
-        /***/
-      },
-      /* 54 */
-      /*!*******************************************************************!*\
-  !*** ../node_modules/@babel/runtime/helpers/esm/slicedToArray.js ***!
-  \*******************************************************************/
-      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ default: () => /* binding */ _slicedToArray,
-          /* harmony export */
-        });
-        /* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithHoles.js */ 129
-        );
-        /* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArrayLimit.js */ 130
-        );
-        /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./unsupportedIterableToArray.js */ 53
-        );
-        /* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableRest.js */ 131
-        );
+            function VerifyAndSave(props) {
+              var _this = _super.call(this, props) || this;
 
-        function _slicedToArray(arr, i) {
-          return (
-            (0, _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__['default'])(arr) ||
-            (0, _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__['default'])(arr, i) ||
-            (0, _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__['default'])(arr, i) ||
-            (0, _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__['default'])()
-          );
-        }
+              _this.setDashboardData = function (data) {
+                var selectedDashboards = _this.manipulateDashboardData(data);
 
-        /***/
-      },
-      /* 55 */
-      /*!******************************************************************!*\
-  !*** ../node_modules/react-circular-progressbar/dist/styles.css ***!
-  \******************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        var content = __webpack_require__(
-          /*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./styles.css */ 30
-        );
-
-        if (typeof content === 'string') content = [[module.id, content, '']];
-
-        var transform;
-        var insertInto;
-
-        var options = { hmr: true };
-
-        options.transform = transform;
-        options.insertInto = undefined;
-
-        var update = __webpack_require__(/*! !../../style-loader/lib/addStyles.js */ 21)(content, options);
-
-        if (content.locals) module.exports = content.locals;
-
-        if (false) {
-        }
-
-        /***/
-      },
-      /* 56 */
-      /*!************************************************!*\
-  !*** ../node_modules/style-loader/lib/urls.js ***!
-  \************************************************/
-      /***/ (module) => {
-        /**
-         * When source maps are enabled, `style-loader` uses a link element with a data-uri to
-         * embed the css on the page. This breaks all relative urls because now they are relative to a
-         * bundle instead of the current page.
-         *
-         * One solution is to only use full urls, but that may be impossible.
-         *
-         * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
-         *
-         * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
-         *
-         */
-
-        module.exports = function (css) {
-          // get current location
-          var location = typeof window !== 'undefined' && window.location;
-
-          if (!location) {
-            throw new Error('fixUrls requires window.location');
-          }
-
-          // blank or null?
-          if (!css || typeof css !== 'string') {
-            return css;
-          }
-
-          var baseUrl = location.protocol + '//' + location.host;
-          var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, '/');
-
-          // convert each url(...)
-          /*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-          var fixedCss = css.replace(
-            /url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,
-            function (fullMatch, origUrl) {
-              // strip quotes (if they exist)
-              var unquotedOrigUrl = origUrl
-                .trim()
-                .replace(/^"(.*)"$/, function (o, $1) {
-                  return $1;
-                })
-                .replace(/^'(.*)'$/, function (o, $1) {
-                  return $1;
+                _this.setState({
+                  dashboardData: data,
+                  selectedDashboards: selectedDashboards,
                 });
 
-              // already a full url? no change
-              if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
-                return fullMatch;
-              }
+                _this.retriveDashboardJSONData(selectedDashboards);
+              };
 
-              // convert the url to a full url
-              var newUrl;
+              _this.manipulateDashboardData = function (data) {
+                var dashboards = [];
+                data.forEach(function (dataSource) {
+                  if (dataSource.isChecked) {
+                    dataSource.dashboards.forEach(function (dashboard) {
+                      if (dashboard.isChecked) {
+                        dashboard.datasourceName = dataSource.name;
+                        dashboards.push(dashboard);
+                      }
+                    });
+                  }
+                });
+                return dashboards;
+              };
 
-              if (unquotedOrigUrl.indexOf('//') === 0) {
-                //TODO: should we add protocol?
-                newUrl = unquotedOrigUrl;
-              } else if (unquotedOrigUrl.indexOf('/') === 0) {
-                // path should be relative to the base url
-                newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-              } else {
-                // path should be relative to current directory
-                newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ''); // Strip leading './'
-              }
+              _this.displayTable = function () {
+                var retData = [];
+                var dashboardData = _this.state.dashboardData;
+                dashboardData.forEach(function (dataSource, dataSourceIndex) {
+                  if (dataSource.isChecked) {
+                    var dashboards = dataSource.dashboards;
+                    var dashboardJSX_1 = [];
+                    dashboards.forEach(function (dashboard, dashboardIndex) {
+                      if (dashboard.isChecked) {
+                        dashboardJSX_1.push(
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'tbody',
+                            {
+                              key: (0, uuid__WEBPACK_IMPORTED_MODULE_5__['default'])(),
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'tr',
+                              null,
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+                                  type: 'checkbox',
+                                  checked: dashboard.isChecked,
+                                })
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name)
+                            )
+                          )
+                        );
+                      }
+                    });
+                    retData.push(
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'table',
+                        {
+                          key: (0, uuid__WEBPACK_IMPORTED_MODULE_5__['default'])(),
+                          className: 'table-tbody first-table',
+                          width: '100%',
+                        },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'tr',
+                          null,
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'td',
+                            {
+                              style: {
+                                paddingLeft: '0',
+                                paddingRight: '0',
+                              },
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'table',
+                              {
+                                width: '100%',
+                              },
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'tr',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'td',
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'td',
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.type)
+                                ),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'td',
+                                  null,
+                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                    'table',
+                                    {
+                                      className: 'table-inner',
+                                      width: '100%',
+                                    },
+                                    dashboardJSX_1
+                                  )
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    );
+                  }
+                });
+                return retData;
+              };
 
-              // send back the fixed url(...)
-              return 'url(' + JSON.stringify(newUrl) + ')';
+              _this.retriveDashboardJSONData = function (dashboards) {
+                var _a = _this.props,
+                  disableSubmitButton = _a.disableSubmitButton,
+                  serviceData = _a.serviceData;
+                var accountId = _common_common__WEBPACK_IMPORTED_MODULE_3__.CommonService.getParameterByName(
+                  'accountId',
+                  window.location.href
+                );
+                var dashboardJSON = [];
+
+                if (dashboards.length > 0) {
+                  _this.setState({
+                    isLoading: true,
+                  });
+
+                  disableSubmitButton(true);
+                }
+
+                var _loop_1 = function (i) {
+                  var associatedCloudElementId = serviceData.associatedCloudElementId;
+                  var _b = dashboards[i],
+                    jsonLocation = _b.jsonLocation,
+                    associatedCloudElementType = _b.associatedCloudElementType,
+                    associatedSLAType = _b.associatedSLAType,
+                    associatedCloud = _b.associatedCloud,
+                    id = _b.id,
+                    datasourceName = _b.datasourceName;
+
+                  if (
+                    datasourceName &&
+                    jsonLocation &&
+                    associatedCloudElementType &&
+                    associatedSLAType &&
+                    associatedCloud &&
+                    associatedCloudElementId
+                  ) {
+                    var url = ''
+                      .concat(_this.config.PREVIEW_DASHBOARDS_URL, '?dataSourceName=')
+                      .concat(datasourceName, '&associatedCloudElementType=')
+                      .concat(associatedCloudElementType, '&associatedSLAType=')
+                      .concat(associatedSLAType, '&jsonLocation=')
+                      .concat(jsonLocation, '&associatedCloud=')
+                      .concat(associatedCloud, '&accountId=')
+                      .concat(accountId, '&associatedCloudElementId=')
+                      .concat(associatedCloudElementId);
+
+                    try {
+                      _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(url, null, null).then(
+                        function (res) {
+                          disableSubmitButton(false);
+                          dashboardJSON.push(
+                            (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)(
+                              {
+                                dashboardCatalogueId: id,
+                              },
+                              res
+                            )
+                          );
+
+                          _this.checkIfAllDashboardLoaded(dashboardJSON);
+                        },
+                        function (err) {
+                          disableSubmitButton(false);
+                          dashboardJSON.push(null);
+
+                          _this.checkIfAllDashboardLoaded(dashboardJSON);
+                        }
+                      );
+                    } catch (err) {
+                      disableSubmitButton(false);
+                      console.log('Loading aws regions failed. Error: ', err);
+                      dashboardJSON.push(null);
+
+                      _this.checkIfAllDashboardLoaded(dashboardJSON);
+                    }
+                  }
+                };
+
+                for (var i = 0; i < dashboards.length; i++) {
+                  _loop_1(i);
+                }
+              };
+
+              _this.checkIfAllDashboardLoaded = function (dashboardJSON) {
+                var selectedDashboards = _this.state.selectedDashboards;
+
+                if (selectedDashboards.length === dashboardJSON.length) {
+                  _this.setState({
+                    isLoading: false,
+                    dashboardJSON: dashboardJSON,
+                  });
+                }
+              };
+
+              _this.getDashboardJSONData = function () {
+                if (_this.state.isLoading) {
+                  return false;
+                }
+
+                return _this.state.dashboardJSON;
+              };
+
+              _this.state = {
+                dashboardData: [],
+                selectedDashboards: [],
+                dashboardJSON: [],
+                isLoading: false,
+              };
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(
+                props.meta.jsonData.apiUrl,
+                props.meta.jsonData.mainProductUrl
+              );
+              return _this;
             }
-          );
 
-          // send back the fixed css
-          return fixedCss;
-        };
+            VerifyAndSave.prototype.render = function () {
+              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                'div',
+                {
+                  className: 'verify-inputs-section',
+                },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                  'div',
+                  {
+                    className: 'configure-inputs-table verify-and-save-table',
+                  },
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'div',
+                    {
+                      className: 'following-node',
+                    },
+                    "Following Dashboard's will be enabled for Performance Monitoring of the node"
+                  ),
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'table',
+                    {
+                      className: 'table-thead',
+                      width: '100%',
+                    },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'tr',
+                      null,
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input'),
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input Type'),
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Dashboards')
+                    )
+                  ),
+                  this.displayTable()
+                )
+              );
+            };
 
-        /***/
-      },
-      /* 57 */
-      /*!***********************************!*\
-  !*** external "@grafana/runtime" ***!
-  \***********************************/
-      /***/ (module) => {
-        'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__57__;
-
-        /***/
-      },
-      /* 58 */
-      /*!******************************!*\
-  !*** external "@grafana/ui" ***!
-  \******************************/
-      /***/ (module) => {
-        'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__58__;
-
-        /***/
-      },
-      /* 59 */
-      /*!************************************!*\
-  !*** ./css/assetmanager.light.css ***!
-  \************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        var content = __webpack_require__(
-          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.light.css */ 31
-        );
-
-        if (typeof content === 'string') content = [[module.id, content, '']];
-
-        var transform;
-        var insertInto;
-
-        var options = { hmr: true };
-
-        options.transform = transform;
-        options.insertInto = undefined;
-
-        var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 21)(content, options);
-
-        if (content.locals) module.exports = content.locals;
-
-        if (false) {
-        }
+            return VerifyAndSave;
+          })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
         /***/
       },
-      /* 60 */
-      /*!***********************************!*\
-  !*** ./css/assetmanager.dark.css ***!
-  \***********************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        var content = __webpack_require__(
-          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.dark.css */ 32
-        );
-
-        if (typeof content === 'string') content = [[module.id, content, '']];
-
-        var transform;
-        var insertInto;
-
-        var options = { hmr: true };
-
-        options.transform = transform;
-        options.insertInto = undefined;
-
-        var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 21)(content, options);
-
-        if (content.locals) module.exports = content.locals;
-
-        if (false) {
-        }
-
-        /***/
-      },
-      /* 61 */
+      /* 51 */
       /*!**********************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyInputs.tsx ***!
   \**********************************************************************/
@@ -18455,7 +18325,447 @@ object-assign
 
         /***/
       },
+      /* 52 */
+      /*!***********************************************************************************!*\
+  !*** ../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
+  \***********************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        var reactIs = __webpack_require__(/*! react-is */ 65);
+
+        /**
+         * Copyright 2015, Yahoo! Inc.
+         * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+         */
+        var REACT_STATICS = {
+          childContextTypes: true,
+          contextType: true,
+          contextTypes: true,
+          defaultProps: true,
+          displayName: true,
+          getDefaultProps: true,
+          getDerivedStateFromError: true,
+          getDerivedStateFromProps: true,
+          mixins: true,
+          propTypes: true,
+          type: true,
+        };
+        var KNOWN_STATICS = {
+          name: true,
+          length: true,
+          prototype: true,
+          caller: true,
+          callee: true,
+          arguments: true,
+          arity: true,
+        };
+        var FORWARD_REF_STATICS = {
+          $$typeof: true,
+          render: true,
+          defaultProps: true,
+          displayName: true,
+          propTypes: true,
+        };
+        var MEMO_STATICS = {
+          $$typeof: true,
+          compare: true,
+          defaultProps: true,
+          displayName: true,
+          propTypes: true,
+          type: true,
+        };
+        var TYPE_STATICS = {};
+        TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+        TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+
+        function getStatics(component) {
+          // React v16.11 and below
+          if (reactIs.isMemo(component)) {
+            return MEMO_STATICS;
+          } // React v16.12 and above
+
+          return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+        }
+
+        var defineProperty = Object.defineProperty;
+        var getOwnPropertyNames = Object.getOwnPropertyNames;
+        var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+        var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+        var getPrototypeOf = Object.getPrototypeOf;
+        var objectPrototype = Object.prototype;
+        function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+          if (typeof sourceComponent !== 'string') {
+            // don't hoist over string (html) components
+            if (objectPrototype) {
+              var inheritedComponent = getPrototypeOf(sourceComponent);
+
+              if (inheritedComponent && inheritedComponent !== objectPrototype) {
+                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+              }
+            }
+
+            var keys = getOwnPropertyNames(sourceComponent);
+
+            if (getOwnPropertySymbols) {
+              keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+            }
+
+            var targetStatics = getStatics(targetComponent);
+            var sourceStatics = getStatics(sourceComponent);
+
+            for (var i = 0; i < keys.length; ++i) {
+              var key = keys[i];
+
+              if (
+                !KNOWN_STATICS[key] &&
+                !(blacklist && blacklist[key]) &&
+                !(sourceStatics && sourceStatics[key]) &&
+                !(targetStatics && targetStatics[key])
+              ) {
+                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+
+                try {
+                  // Avoid failures from read-only properties
+                  defineProperty(targetComponent, key, descriptor);
+                } catch (e) {}
+              }
+            }
+          }
+
+          return targetComponent;
+        }
+
+        module.exports = hoistNonReactStatics;
+
+        /***/
+      },
+      /* 53 */
+      /*!****************************************************!*\
+  !*** ../node_modules/is-in-browser/dist/module.js ***!
+  \****************************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ isBrowser: () => /* binding */ isBrowser,
+          /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
+          /* harmony export */
+        });
+        var _typeof =
+          typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol'
+            ? function (obj) {
+                return typeof obj;
+              }
+            : function (obj) {
+                return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype
+                  ? 'symbol'
+                  : typeof obj;
+              };
+
+        var isBrowser =
+          (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object' &&
+          (typeof document === 'undefined' ? 'undefined' : _typeof(document)) === 'object' &&
+          document.nodeType === 9;
+
+        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = isBrowser;
+
+        /***/
+      },
+      /* 54 */
+      /*!**********************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js ***!
+  \**********************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _arrayLikeToArray,
+          /* harmony export */
+        });
+        function _arrayLikeToArray(arr, len) {
+          if (len == null || len > arr.length) len = arr.length;
+
+          for (var i = 0, arr2 = new Array(len); i < len; i++) {
+            arr2[i] = arr[i];
+          }
+
+          return arr2;
+        }
+
+        /***/
+      },
+      /* 55 */
+      /*!********************************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js ***!
+  \********************************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _unsupportedIterableToArray,
+          /* harmony export */
+        });
+        /* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./arrayLikeToArray.js */ 54
+        );
+
+        function _unsupportedIterableToArray(o, minLen) {
+          if (!o) return;
+          if (typeof o === 'string')
+            return (0, _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__['default'])(o, minLen);
+          var n = Object.prototype.toString.call(o).slice(8, -1);
+          if (n === 'Object' && o.constructor) n = o.constructor.name;
+          if (n === 'Map' || n === 'Set') return Array.from(o);
+          if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+            return (0, _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__['default'])(o, minLen);
+        }
+
+        /***/
+      },
+      /* 56 */
+      /*!*******************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/slicedToArray.js ***!
+  \*******************************************************************/
+      /***/ (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ default: () => /* binding */ _slicedToArray,
+          /* harmony export */
+        });
+        /* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./arrayWithHoles.js */ 129
+        );
+        /* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+          /*! ./iterableToArrayLimit.js */ 130
+        );
+        /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+          /*! ./unsupportedIterableToArray.js */ 55
+        );
+        /* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+          /*! ./nonIterableRest.js */ 131
+        );
+
+        function _slicedToArray(arr, i) {
+          return (
+            (0, _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__['default'])(arr) ||
+            (0, _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__['default'])(arr, i) ||
+            (0, _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__['default'])(arr, i) ||
+            (0, _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__['default'])()
+          );
+        }
+
+        /***/
+      },
+      /* 57 */
+      /*!******************************************************************!*\
+  !*** ../node_modules/react-circular-progressbar/dist/styles.css ***!
+  \******************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        var content = __webpack_require__(
+          /*! !!../../css-loader/index.js??ruleSet[1].rules[4].use[1]!./styles.css */ 30
+        );
+
+        if (typeof content === 'string') content = [[module.id, content, '']];
+
+        var transform;
+        var insertInto;
+
+        var options = { hmr: true };
+
+        options.transform = transform;
+        options.insertInto = undefined;
+
+        var update = __webpack_require__(/*! !../../style-loader/lib/addStyles.js */ 21)(content, options);
+
+        if (content.locals) module.exports = content.locals;
+
+        if (false) {
+        }
+
+        /***/
+      },
+      /* 58 */
+      /*!************************************************!*\
+  !*** ../node_modules/style-loader/lib/urls.js ***!
+  \************************************************/
+      /***/ (module) => {
+        /**
+         * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+         * embed the css on the page. This breaks all relative urls because now they are relative to a
+         * bundle instead of the current page.
+         *
+         * One solution is to only use full urls, but that may be impossible.
+         *
+         * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+         *
+         * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+         *
+         */
+
+        module.exports = function (css) {
+          // get current location
+          var location = typeof window !== 'undefined' && window.location;
+
+          if (!location) {
+            throw new Error('fixUrls requires window.location');
+          }
+
+          // blank or null?
+          if (!css || typeof css !== 'string') {
+            return css;
+          }
+
+          var baseUrl = location.protocol + '//' + location.host;
+          var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, '/');
+
+          // convert each url(...)
+          /*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+          var fixedCss = css.replace(
+            /url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,
+            function (fullMatch, origUrl) {
+              // strip quotes (if they exist)
+              var unquotedOrigUrl = origUrl
+                .trim()
+                .replace(/^"(.*)"$/, function (o, $1) {
+                  return $1;
+                })
+                .replace(/^'(.*)'$/, function (o, $1) {
+                  return $1;
+                });
+
+              // already a full url? no change
+              if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+                return fullMatch;
+              }
+
+              // convert the url to a full url
+              var newUrl;
+
+              if (unquotedOrigUrl.indexOf('//') === 0) {
+                //TODO: should we add protocol?
+                newUrl = unquotedOrigUrl;
+              } else if (unquotedOrigUrl.indexOf('/') === 0) {
+                // path should be relative to the base url
+                newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+              } else {
+                // path should be relative to current directory
+                newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ''); // Strip leading './'
+              }
+
+              // send back the fixed url(...)
+              return 'url(' + JSON.stringify(newUrl) + ')';
+            }
+          );
+
+          // send back the fixed css
+          return fixedCss;
+        };
+
+        /***/
+      },
+      /* 59 */
+      /*!***********************************!*\
+  !*** external "@grafana/runtime" ***!
+  \***********************************/
+      /***/ (module) => {
+        'use strict';
+        module.exports = __WEBPACK_EXTERNAL_MODULE__59__;
+
+        /***/
+      },
+      /* 60 */
+      /*!******************************!*\
+  !*** external "@grafana/ui" ***!
+  \******************************/
+      /***/ (module) => {
+        'use strict';
+        module.exports = __WEBPACK_EXTERNAL_MODULE__60__;
+
+        /***/
+      },
+      /* 61 */
+      /*!************************************!*\
+  !*** ./css/assetmanager.light.css ***!
+  \************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        var content = __webpack_require__(
+          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.light.css */ 31
+        );
+
+        if (typeof content === 'string') content = [[module.id, content, '']];
+
+        var transform;
+        var insertInto;
+
+        var options = { hmr: true };
+
+        options.transform = transform;
+        options.insertInto = undefined;
+
+        var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 21)(content, options);
+
+        if (content.locals) module.exports = content.locals;
+
+        if (false) {
+        }
+
+        /***/
+      },
       /* 62 */
+      /*!***********************************!*\
+  !*** ./css/assetmanager.dark.css ***!
+  \***********************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        var content = __webpack_require__(
+          /*! !!../../node_modules/css-loader/index.js??ruleSet[1].rules[4].use[1]!./assetmanager.dark.css */ 32
+        );
+
+        if (typeof content === 'string') content = [[module.id, content, '']];
+
+        var transform;
+        var insertInto;
+
+        var options = { hmr: true };
+
+        options.transform = transform;
+        options.insertInto = undefined;
+
+        var update = __webpack_require__(/*! !../../node_modules/style-loader/lib/addStyles.js */ 21)(content, options);
+
+        if (content.locals) module.exports = content.locals;
+
+        if (false) {
+        }
+
+        /***/
+      },
+      /* 63 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -18663,7 +18973,7 @@ object-assign
 
         /***/
       },
-      /* 63 */
+      /* 64 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/ChildMapping.js ***!
   \********************************************************************************************/
@@ -18819,7 +19129,7 @@ object-assign
 
         /***/
       },
-      /* 64 */
+      /* 65 */
       /*!******************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
   \******************************************************************************/
@@ -18833,7 +19143,7 @@ object-assign
 
         /***/
       },
-      /* 65 */
+      /* 66 */
       /*!*****************************************!*\
   !*** ../node_modules/react-is/index.js ***!
   \*****************************************/
@@ -18842,12 +19152,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 66);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 67);
         }
 
         /***/
       },
-      /* 66 */
+      /* 67 */
       /*!************************************************************!*\
   !*** ../node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************/
@@ -19100,7 +19410,7 @@ object-assign
 
         /***/
       },
-      /* 67 */
+      /* 68 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -19132,7 +19442,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 69 */
       /*!****************************************************!*\
   !*** ../node_modules/uuid/dist/esm-browser/rng.js ***!
   \****************************************************/
@@ -19171,7 +19481,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 70 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -19188,7 +19498,7 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 71 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -21838,7 +22148,7 @@ object-assign
 
         /***/
       },
-      /* 71 */
+      /* 72 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -21883,7 +22193,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 73 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -22161,7 +22471,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 74 */
       /*!*************************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/EnableDashboard.tsx ***!
   \*************************************************************************/
@@ -22350,7 +22660,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 75 */
       /*!*****************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/Preview.tsx ***!
   \*****************************************************************/
@@ -22554,316 +22864,6 @@ object-assign
 
         /***/
       },
-      /* 75 */
-      /*!***********************************************************************!*\
-  !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyAndSave.tsx ***!
-  \***********************************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ VerifyAndSave: () => /* binding */ VerifyAndSave,
-          /* harmony export */
-        });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 2);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-          react__WEBPACK_IMPORTED_MODULE_0__
-        );
-        /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ../../../_service/RestService */ 4
-        );
-        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../../../config */ 3
-        );
-        /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! uuid */ 153);
-        /* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../../../_common/common */ 10
-        );
-
-        var VerifyAndSave =
-          /** @class */
-          (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__extends)(VerifyAndSave, _super);
-
-            function VerifyAndSave(props) {
-              var _this = _super.call(this, props) || this;
-
-              _this.setDashboardData = function (data) {
-                var selectedDashboards = _this.manipulateDashboardData(data);
-
-                _this.setState({
-                  dashboardData: data,
-                  selectedDashboards: selectedDashboards,
-                });
-
-                _this.retriveDashboardJSONData(selectedDashboards);
-              };
-
-              _this.manipulateDashboardData = function (data) {
-                var dashboards = [];
-                data.forEach(function (dataSource) {
-                  if (dataSource.isChecked) {
-                    dataSource.dashboards.forEach(function (dashboard) {
-                      if (dashboard.isChecked) {
-                        dashboard.datasourceName = dataSource.name;
-                        dashboards.push(dashboard);
-                      }
-                    });
-                  }
-                });
-                return dashboards;
-              };
-
-              _this.displayTable = function () {
-                var retData = [];
-                var dashboardData = _this.state.dashboardData;
-                dashboardData.forEach(function (dataSource, dataSourceIndex) {
-                  if (dataSource.isChecked) {
-                    var dashboards = dataSource.dashboards;
-                    var dashboardJSX_1 = [];
-                    dashboards.forEach(function (dashboard, dashboardIndex) {
-                      if (dashboard.isChecked) {
-                        dashboardJSX_1.push(
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'tbody',
-                            {
-                              key: (0, uuid__WEBPACK_IMPORTED_MODULE_5__['default'])(),
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'tr',
-                              null,
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'td',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                                  type: 'checkbox',
-                                  checked: dashboard.isChecked,
-                                })
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name)
-                            )
-                          )
-                        );
-                      }
-                    });
-                    retData.push(
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'table',
-                        {
-                          key: (0, uuid__WEBPACK_IMPORTED_MODULE_5__['default'])(),
-                          className: 'table-tbody first-table',
-                          width: '100%',
-                        },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'tr',
-                          null,
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'td',
-                            {
-                              style: {
-                                paddingLeft: '0',
-                                paddingRight: '0',
-                              },
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'table',
-                              {
-                                width: '100%',
-                              },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'tr',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
-                                ),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.type)
-                                ),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'td',
-                                  null,
-                                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                    'table',
-                                    {
-                                      className: 'table-inner',
-                                      width: '100%',
-                                    },
-                                    dashboardJSX_1
-                                  )
-                                )
-                              )
-                            )
-                          )
-                        )
-                      )
-                    );
-                  }
-                });
-                return retData;
-              };
-
-              _this.retriveDashboardJSONData = function (dashboards) {
-                var _a = _this.props,
-                  disableSubmitButton = _a.disableSubmitButton,
-                  serviceData = _a.serviceData;
-                var accountId = _common_common__WEBPACK_IMPORTED_MODULE_3__.CommonService.getParameterByName(
-                  'accountId',
-                  window.location.href
-                );
-                var dashboardJSON = [];
-
-                if (dashboards.length > 0) {
-                  _this.setState({
-                    isLoading: true,
-                  });
-
-                  disableSubmitButton(true);
-                }
-
-                var _loop_1 = function (i) {
-                  var associatedCloudElementId = serviceData.associatedCloudElementId;
-                  var _b = dashboards[i],
-                    jsonLocation = _b.jsonLocation,
-                    associatedCloudElementType = _b.associatedCloudElementType,
-                    associatedSLAType = _b.associatedSLAType,
-                    associatedCloud = _b.associatedCloud,
-                    id = _b.id,
-                    datasourceName = _b.datasourceName;
-
-                  if (
-                    datasourceName &&
-                    jsonLocation &&
-                    associatedCloudElementType &&
-                    associatedSLAType &&
-                    associatedCloud &&
-                    associatedCloudElementId
-                  ) {
-                    var url = ''
-                      .concat(_this.config.PREVIEW_DASHBOARDS_URL, '?dataSourceName=')
-                      .concat(datasourceName, '&associatedCloudElementType=')
-                      .concat(associatedCloudElementType, '&associatedSLAType=')
-                      .concat(associatedSLAType, '&jsonLocation=')
-                      .concat(jsonLocation, '&associatedCloud=')
-                      .concat(associatedCloud, '&accountId=')
-                      .concat(accountId, '&associatedCloudElementId=')
-                      .concat(associatedCloudElementId);
-
-                    try {
-                      _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(url, null, null).then(
-                        function (res) {
-                          disableSubmitButton(false);
-                          dashboardJSON.push(
-                            (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)(
-                              {
-                                dashboardCatalogueId: id,
-                              },
-                              res
-                            )
-                          );
-
-                          _this.checkIfAllDashboardLoaded(dashboardJSON);
-                        },
-                        function (err) {
-                          disableSubmitButton(false);
-                          dashboardJSON.push(null);
-
-                          _this.checkIfAllDashboardLoaded(dashboardJSON);
-                        }
-                      );
-                    } catch (err) {
-                      disableSubmitButton(false);
-                      console.log('Loading aws regions failed. Error: ', err);
-                      dashboardJSON.push(null);
-
-                      _this.checkIfAllDashboardLoaded(dashboardJSON);
-                    }
-                  }
-                };
-
-                for (var i = 0; i < dashboards.length; i++) {
-                  _loop_1(i);
-                }
-              };
-
-              _this.checkIfAllDashboardLoaded = function (dashboardJSON) {
-                var selectedDashboards = _this.state.selectedDashboards;
-
-                if (selectedDashboards.length === dashboardJSON.length) {
-                  _this.setState({
-                    isLoading: false,
-                    dashboardJSON: dashboardJSON,
-                  });
-                }
-              };
-
-              _this.getDashboardJSONData = function () {
-                if (_this.state.isLoading) {
-                  return false;
-                }
-
-                return _this.state.dashboardJSON;
-              };
-
-              _this.state = {
-                dashboardData: [],
-                selectedDashboards: [],
-                dashboardJSON: [],
-                isLoading: false,
-              };
-              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(
-                props.meta.jsonData.apiUrl,
-                props.meta.jsonData.mainProductUrl
-              );
-              return _this;
-            }
-
-            VerifyAndSave.prototype.render = function () {
-              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                'div',
-                {
-                  className: 'verify-inputs-section',
-                },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                  'div',
-                  {
-                    className: 'configure-inputs-table verify-and-save-table',
-                  },
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'div',
-                    {
-                      className: 'following-node',
-                    },
-                    "Following Dashboard's will be enabled for Performance Monitoring of the node"
-                  ),
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'table',
-                    {
-                      className: 'table-thead',
-                      width: '100%',
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'tr',
-                      null,
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input'),
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input Type'),
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Dashboards')
-                    )
-                  ),
-                  this.displayTable()
-                )
-              );
-            };
-
-            return VerifyAndSave;
-          })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-        /***/
-      },
       /* 76 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
@@ -22881,12 +22881,12 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 58);
+        /* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 60);
         /* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(
           _grafana_ui__WEBPACK_IMPORTED_MODULE_1__
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! @grafana/runtime */ 57
+          /*! @grafana/runtime */ 59
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_2___default =
           /*#__PURE__*/ __webpack_require__.n(_grafana_runtime__WEBPACK_IMPORTED_MODULE_2__);
@@ -23262,7 +23262,7 @@ object-assign
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        /* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 58);
+        /* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @grafana/ui */ 60);
         /* harmony import */ var _grafana_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(
           _grafana_ui__WEBPACK_IMPORTED_MODULE_1__
         );
@@ -23329,7 +23329,7 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 71);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 72);
 
         /***/
       },
@@ -23344,7 +23344,7 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 72);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 73);
 
         /***/
       },
@@ -32901,14 +32901,14 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _EnableDashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./EnableDashboard */ 73
+          /*! ./EnableDashboard */ 74
         );
-        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 74);
+        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 75);
         /* harmony import */ var _VerifyAndSave__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./VerifyAndSave */ 75
+          /*! ./VerifyAndSave */ 50
         );
         /* harmony import */ var _VerifyInputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./VerifyInputs */ 61
+          /*! ./VerifyInputs */ 51
         );
 
         /***/
@@ -33136,7 +33136,7 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var is_in_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! is-in-browser */ 51
+          /*! is-in-browser */ 53
         );
         /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ 38);
@@ -33734,7 +33734,7 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayLikeToArray.js */ 52
+          /*! ./arrayLikeToArray.js */ 54
         );
 
         function _arrayWithoutHoles(arr) {
@@ -33898,7 +33898,7 @@ object-assign
           /*! react-circular-progressbar */ 133
         );
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__ =
-          __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 55);
+          __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ 57);
         /* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9___default =
           /*#__PURE__*/ __webpack_require__.n(react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_9__);
         /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
@@ -35966,47 +35966,50 @@ and limitations under the License.
                     associatedEnv = _a.associatedEnv,
                     serviceHostingType = _a.serviceHostingType,
                     associatedCommonService = _a.associatedCommonService,
-                    associatedBusinessService = _a.associatedBusinessService;
+                    associatedBusinessService = _a.associatedBusinessService,
+                    associatedLandingZone = _a.associatedLandingZone;
 
-                  if (!firstProd) {
-                    firstProd = associatedProduct;
+                  if (associatedLandingZone === '897373451') {
+                    if (!firstProd) {
+                      firstProd = associatedProduct;
+                    }
+
+                    if (!firstEnv) {
+                      firstEnv = associatedEnv;
+                    }
+
+                    var node = treeData[associatedProduct] || {};
+                    var envServicesData = node[associatedEnv] || {};
+                    var serviceNatureData = envServicesData[serviceNature] || {};
+                    var associatedService = associatedBusinessService;
+
+                    if (serviceNature === enumServiceNature.common) {
+                      associatedService = associatedCommonService;
+                    }
+
+                    serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
+                    serviceNatureData[associatedService].push(service);
+                    envServicesData[serviceNature] = serviceNatureData;
+                    node[associatedEnv] = envServicesData;
+                    treeData[associatedProduct] = node; //manipulation for topology view
+
+                    var topNode = topologyMainData[associatedProduct] || {};
+                    var envTopData = topNode[associatedEnv] || {};
+                    var serviceHostingData = envTopData[serviceHostingType] || {};
+                    var serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
+                    var associatedServiceTop = associatedBusinessService;
+
+                    if (serviceNature === enumServiceNature.common) {
+                      associatedServiceTop = associatedCommonService;
+                    }
+
+                    serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
+                    serviceNatureDataForTop[associatedServiceTop].push(service);
+                    serviceHostingData[serviceNature] = serviceNatureDataForTop;
+                    envTopData[serviceHostingType] = serviceHostingData;
+                    topNode[associatedEnv] = envTopData;
+                    topologyMainData[associatedProduct] = topNode;
                   }
-
-                  if (!firstEnv) {
-                    firstEnv = associatedEnv;
-                  }
-
-                  var node = treeData[associatedProduct] || {};
-                  var envServicesData = node[associatedEnv] || {};
-                  var serviceNatureData = envServicesData[serviceNature] || {};
-                  var associatedService = associatedBusinessService;
-
-                  if (serviceNature === enumServiceNature.common) {
-                    associatedService = associatedCommonService;
-                  }
-
-                  serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
-                  serviceNatureData[associatedService].push(service);
-                  envServicesData[serviceNature] = serviceNatureData;
-                  node[associatedEnv] = envServicesData;
-                  treeData[associatedProduct] = node; //manipulation for topology view
-
-                  var topNode = topologyMainData[associatedProduct] || {};
-                  var envTopData = topNode[associatedEnv] || {};
-                  var serviceHostingData = envTopData[serviceHostingType] || {};
-                  var serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
-                  var associatedServiceTop = associatedBusinessService;
-
-                  if (serviceNature === enumServiceNature.common) {
-                    associatedServiceTop = associatedCommonService;
-                  }
-
-                  serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
-                  serviceNatureDataForTop[associatedServiceTop].push(service);
-                  serviceHostingData[serviceNature] = serviceNatureDataForTop;
-                  envTopData[serviceHostingType] = serviceHostingData;
-                  topNode[associatedEnv] = envTopData;
-                  topologyMainData[associatedProduct] = topNode;
                 });
 
                 _this.setState({
@@ -37036,14 +37039,7 @@ and limitations under the License.
                           {
                             className: 'col-md-4',
                           },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'span',
-                            null,
-                            service.name,
-                            ' (',
-                            service.account,
-                            ')'
-                          )
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, service.name)
                         ),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
@@ -38761,7 +38757,7 @@ and limitations under the License.
           /*! ../Components/AlertMessage */ 49
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-          /*! @grafana/runtime */ 57
+          /*! @grafana/runtime */ 59
         );
         /* harmony import */ var _grafana_runtime__WEBPACK_IMPORTED_MODULE_8___default =
           /*#__PURE__*/ __webpack_require__.n(_grafana_runtime__WEBPACK_IMPORTED_MODULE_8__);
@@ -43310,7 +43306,7 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rng.js */ 68);
+        /* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rng.js */ 69);
         /* harmony import */ var _stringify_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! ./stringify.js */ 154
         );
@@ -44942,7 +44938,7 @@ and limitations under the License.
           prop_types__WEBPACK_IMPORTED_MODULE_8__
         );
         /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! hoist-non-react-statics */ 50
+          /*! hoist-non-react-statics */ 52
         );
         /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3___default =
           /*#__PURE__*/ __webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_3__);
@@ -45136,7 +45132,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 19
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 65);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 66);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -45243,7 +45239,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 173
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 69
+          /*! ../getStylesCreator/noopTheme */ 70
         );
 
         function getClasses(_ref, classes, Component) {
@@ -45708,13 +45704,13 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var is_in_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! is-in-browser */ 51
+          /*! is-in-browser */ 53
         );
         /* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
           /*! tiny-warning */ 172
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 67);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 68);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 16);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -48109,7 +48105,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 174
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 69);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 70);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -50816,7 +50812,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ 54);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ 56);
         /* harmony import */ var _responsivePropType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ./responsivePropType */ 211
         );
@@ -54942,7 +54938,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ 54);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ 56);
         /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ 5);
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ 0);
@@ -56787,9 +56783,9 @@ and limitations under the License.
         var w = window;
 
         if (w.grafanaBootData.user.lightTheme) {
-          __webpack_require__(/*! ./css/assetmanager.light.css */ 59);
+          __webpack_require__(/*! ./css/assetmanager.light.css */ 61);
         } else {
-          __webpack_require__(/*! ./css/assetmanager.dark.css */ 60);
+          __webpack_require__(/*! ./css/assetmanager.dark.css */ 62);
         }
       }
       loadPluginCss();
