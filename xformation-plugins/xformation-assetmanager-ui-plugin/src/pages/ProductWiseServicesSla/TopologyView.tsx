@@ -57,7 +57,7 @@ export class TopologyView extends React.Component<any, any> {
       let avgUserExp = 0;
       let avgDataProtection = 0;
       services.map((service: any) => {
-        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats } = service.metadata_json;
+        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats, associatedLandingZone } = service.metadata_json;
         avgPerformance += performance.score;
         avgAvailability += availability.score;
         avgUserExp += userExperiance.score;
@@ -67,13 +67,15 @@ export class TopologyView extends React.Component<any, any> {
           modalData.dataServices.push({
             name,
             serviceNature,
-            location: associatedManagedCloudServiceLocation
+            location: associatedManagedCloudServiceLocation,
+            account: associatedLandingZone
           });
         } else {
           modalData.appServices.push({
             name,
             serviceNature,
-            location: associatedManagedCloudServiceLocation
+            location: associatedManagedCloudServiceLocation,
+            account: associatedLandingZone
           });
         }
         modalData.cost += stats.totalCostSoFar ? parseInt(stats.totalCostSoFar) : 0;
@@ -122,7 +124,7 @@ export class TopologyView extends React.Component<any, any> {
         retData.push(
           <div className="row">
             <div className="col-md-4">
-              <span>{service.name}</span>
+              <span>{service.name} ({service.account})</span>
             </div>
             <div className="col-md-4">
               <span>{service.serviceNature}</span>

@@ -91,7 +91,8 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			treeData[associatedProduct] = node;
 
 			//manipulation for topology view
-			const envTopData = topologyMainData[associatedEnv] || {};
+			const topNode = topologyMainData[associatedProduct] || {};
+			const envTopData = topNode[associatedEnv] || {};
 			const serviceHostingData = envTopData[serviceHostingType] || {};
 			const serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
 			let associatedServiceTop = associatedBusinessService;
@@ -102,7 +103,8 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			serviceNatureDataForTop[associatedServiceTop].push(service);
 			serviceHostingData[serviceNature] = serviceNatureDataForTop;
 			envTopData[serviceHostingType] = serviceHostingData;
-			topologyMainData[associatedEnv] = envTopData;
+			topNode[associatedEnv] = envTopData;
+			topologyMainData[associatedProduct] = topNode;
 		});
 		this.setState({
 			tableData: treeData,
@@ -569,7 +571,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											<div className="environment-services">
 												{
 													isTopologyActive ?
-														<TopologyView data={topologyMainData[environmentType]} isDataLoaded={isTopologyDataLoaded} /> :
+														<TopologyView data={topologyMainData[productName][environmentType]} isDataLoaded={isTopologyDataLoaded} /> :
 
 														<div className="services-boxes">{this.displayServiceData()}</div>
 
