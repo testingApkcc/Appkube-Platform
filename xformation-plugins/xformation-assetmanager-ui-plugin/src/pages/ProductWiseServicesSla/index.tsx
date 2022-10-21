@@ -551,7 +551,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 									<ul className="tabs">{this.displayEnvServices()}</ul>
 									<div className="common-container bottom-border-none">
 										<div className="row">
-											<div className="col-lg-9 col-md-9 col-sm-12">
+											<div className="col-lg-9 col-md-9 col-sm-12" style={{ marginBottom: '10px' }}>
 												<div className="topology-heading" onClick={this.toggleView}>
 													{isTopologyActive ? 'Topology view' : 'Service wise view'}
 													<div style={{ marginLeft: "10px" }} className="asset-white-button min-width-inherit">
