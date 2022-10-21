@@ -35925,7 +35925,6 @@ and limitations under the License.
                     serviceNature = _a.serviceNature,
                     associatedProduct = _a.associatedProduct,
                     associatedEnv = _a.associatedEnv,
-                    serviceType = _a.serviceType,
                     serviceHostingType = _a.serviceHostingType,
                     associatedCommonService = _a.associatedCommonService,
                     associatedBusinessService = _a.associatedBusinessService;
@@ -35939,26 +35938,8 @@ and limitations under the License.
                   }
 
                   var node = treeData[associatedProduct] || {};
-                  var clusterData = node[associatedEnv] || {};
-                  var environmentData = clusterData[serviceNature] || {};
-                  var assiciatedServiceData = environmentData[serviceType] || {
-                    services: [],
-                  };
-
-                  if (assiciatedServiceData && assiciatedServiceData.services) {
-                    assiciatedServiceData.services.push(
-                      (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, service.metadata_json)
-                    );
-                  }
-
-                  environmentData[serviceType] = assiciatedServiceData;
-                  clusterData[serviceNature] = environmentData;
-                  node[associatedEnv] = clusterData;
-                  treeData[associatedProduct] = node; //manipulation for topology view
-
-                  var envTopData = topologyMainData[associatedEnv] || {};
-                  var serviceHostingData = envTopData[serviceHostingType] || {};
-                  var serviceNatureData = serviceHostingData[serviceNature] || {};
+                  var envServicesData = node[associatedEnv] || {};
+                  var serviceNatureData = envServicesData[serviceNature] || {};
                   var associatedService = associatedBusinessService;
 
                   if (serviceNature === enumServiceNature.common) {
@@ -35967,7 +35948,22 @@ and limitations under the License.
 
                   serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
                   serviceNatureData[associatedService].push(service);
-                  serviceHostingData[serviceNature] = serviceNatureData;
+                  envServicesData[serviceNature] = serviceNatureData;
+                  node[associatedEnv] = envServicesData;
+                  treeData[associatedProduct] = node; //manipulation for topology view
+
+                  var envTopData = topologyMainData[associatedEnv] || {};
+                  var serviceHostingData = envTopData[serviceHostingType] || {};
+                  var serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
+                  var associatedServiceTop = associatedBusinessService;
+
+                  if (serviceNature === enumServiceNature.common) {
+                    associatedServiceTop = associatedCommonService;
+                  }
+
+                  serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
+                  serviceNatureDataForTop[associatedServiceTop].push(service);
+                  serviceHostingData[serviceNature] = serviceNatureDataForTop;
                   envTopData[serviceHostingType] = serviceHostingData;
                   topologyMainData[associatedEnv] = envTopData;
                 });
@@ -36076,43 +36072,43 @@ and limitations under the License.
                     var serviceByType = {};
                     environments.map(function (environment, i) {
                       envCount = envCount + 1;
-                      var servicesType = tableData[product][environment];
-                      Object.keys(servicesType).map(function (serviceName, j) {
-                        Object.keys(servicesType[serviceName]).map(function (servicetype) {
-                          if (servicetype === 'Data') {
-                            datacount = datacount + servicesType[serviceName][servicetype].services.length;
-                          } else if (servicetype === 'App') {
-                            appcount = appcount + servicesType[serviceName][servicetype].services.length;
-                          }
+                      var serviceNatureData = tableData[product][environment];
+                      Object.keys(serviceNatureData).map(function (serviceNature, j) {
+                        var associatedServicesData = serviceNatureData[serviceNature];
+                        Object.keys(associatedServicesData).map(function (associatedService) {
+                          var servicesArray = associatedServicesData[associatedService];
 
-                          if (
-                            servicesType[serviceName][servicetype]['services'] &&
-                            servicesType[serviceName][servicetype]['services'].length > 0
-                          ) {
-                            var servicearry = servicesType[serviceName][servicetype]['services'];
+                          if (servicesArray && servicesArray.length > 0) {
                             serviceByType['performance'] = serviceByType['performance'] || 0;
                             serviceByType['availability'] = serviceByType['availability'] || 0;
                             serviceByType['security'] = serviceByType['security'] || 0;
                             serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
                             serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
 
-                            for (var k = 0; k < servicearry.length; k++) {
+                            for (var k = 0; k < servicesArray.length; k++) {
+                              var metadata_json = servicesArray[k].metadata_json;
                               serviceByType['performance'] =
                                 serviceByType['performance'] +
-                                (servicearry[k].performance ? servicearry[k].performance['score'] : 0);
+                                (metadata_json.performance ? metadata_json.performance['score'] : 0);
                               serviceByType['availability'] =
                                 serviceByType['availability'] +
-                                (servicearry[k].availability ? servicearry[k].availability['score'] : 0);
+                                (metadata_json.availability ? metadata_json.availability['score'] : 0);
                               serviceByType['security'] =
                                 serviceByType['security'] +
-                                (servicearry[k].security ? servicearry[k].security['score'] : 0);
+                                (metadata_json.security ? metadata_json.security['score'] : 0);
                               serviceByType['Data Protection'] =
                                 serviceByType['Data Protection'] +
-                                (servicearry[k].dataProtection ? servicearry[k].dataProtection['score'] : 0);
+                                (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
                               serviceByType['User Exp'] =
                                 serviceByType['User Exp'] +
-                                (servicearry[k].userExperiance ? servicearry[k].userExperiance['score'] : 0);
-                              totalCost = totalCost + parseInt(servicearry[i].stats.totalCostSoFar);
+                                (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
+                              totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
+
+                              if (metadata_json.serviceType === 'Data') {
+                                datacount += 1;
+                              } else if (metadata_json.serviceType === 'App') {
+                                appcount += 1;
+                              }
                             }
                           }
                         });
@@ -36125,7 +36121,7 @@ and limitations under the License.
                     serviceByType['User Exp'] = serviceByType['User Exp'] / (appcount + datacount);
 
                     for (var val in serviceByType) {
-                      data[val] = serviceByType[val] || 0; // data[val] = data[val] + serviceByType[val];
+                      data[val] = serviceByType[val] || 0;
 
                       if (labels && labels.length > 0) {
                         for (var j = 0; j < labels.length; j++) {
@@ -36321,43 +36317,43 @@ and limitations under the License.
                 var servicesJSX = [];
                 Object.keys(tableData).map(function (key, index) {
                   if (key === productName) {
-                    Object.keys(tableData[key]).map(function (service, i) {
-                      if (service == environmentType) {
-                        Object.keys(tableData[key][service]).map(function (serviceName, j) {
+                    var envData_1 = tableData[key];
+                    Object.keys(envData_1).map(function (env, i) {
+                      if (env == environmentType) {
+                        var serviceNatureData_1 = envData_1[env];
+                        Object.keys(serviceNatureData_1).map(function (serviceNature, j) {
                           servicesJSX = [];
-                          Object.keys(tableData[key][service][serviceName]).map(function (servicetype) {
-                            var servicearry = tableData[key][service][serviceName][servicetype]['services'];
+                          var associatedServices = serviceNatureData_1[serviceNature];
+                          Object.keys(associatedServices).map(function (associatedService) {
                             var serviceByType = {};
+                            serviceByType['performance'] = serviceByType['performance'] || 0;
+                            serviceByType['availability'] = serviceByType['availability'] || 0;
+                            serviceByType['security'] = serviceByType['security'] || 0;
+                            serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
+                            serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
+                            var servicearry = associatedServices[associatedService];
                             var totalCost = 0;
 
-                            if (
-                              tableData[key][service][serviceName][servicetype]['services'] &&
-                              tableData[key][service][serviceName][servicetype]['services'].length > 0
-                            ) {
-                              serviceByType['performance'] = serviceByType['performance'] || 0;
-                              serviceByType['availability'] = serviceByType['availability'] || 0;
-                              serviceByType['security'] = serviceByType['security'] || 0;
-                              serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
-                              serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
-
-                              for (var i_1 = 0; i_1 < servicearry.length; i_1++) {
+                            if (servicearry && servicearry.length > 0) {
+                              servicearry.map(function (service) {
+                                var metadata_json = service.metadata_json;
                                 serviceByType['performance'] =
                                   serviceByType['performance'] +
-                                  (servicearry[i_1].performance ? servicearry[i_1].performance['score'] : 0);
+                                  (metadata_json.performance ? metadata_json.performance['score'] : 0);
                                 serviceByType['availability'] =
                                   serviceByType['availability'] +
-                                  (servicearry[i_1].availability ? servicearry[i_1].availability['score'] : 0);
+                                  (metadata_json.availability ? metadata_json.availability['score'] : 0);
                                 serviceByType['security'] =
                                   serviceByType['security'] +
-                                  (servicearry[i_1].security ? servicearry[i_1].security['score'] : 0);
+                                  (metadata_json.security ? metadata_json.security['score'] : 0);
                                 serviceByType['Data Protection'] =
                                   serviceByType['Data Protection'] +
-                                  (servicearry[i_1].dataProtection ? servicearry[i_1].dataProtection['score'] : 0);
+                                  (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
                                 serviceByType['User Exp'] =
                                   serviceByType['User Exp'] +
-                                  (servicearry[i_1].userExperiance ? servicearry[i_1].userExperiance['score'] : 0);
-                                totalCost = totalCost + parseInt(servicearry[i_1].stats.totalCostSoFar);
-                              }
+                                  (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
+                                totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
+                              });
                             }
 
                             servicesJSX.push(
@@ -36371,7 +36367,7 @@ and limitations under the License.
                                   {
                                     className: 'heading',
                                   },
-                                  servicetype
+                                  associatedService
                                 ),
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                   'div',
@@ -36526,7 +36522,7 @@ and limitations under the License.
                                     {
                                       className: 'col-md-7',
                                     },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, serviceName)
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, serviceNature)
                                   ),
                                   react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                     'div',
