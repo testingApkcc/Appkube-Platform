@@ -70,7 +70,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		let firstProd = "";
 		let firstEnv = "";
 		services.forEach((service: any) => {
-			const { serviceNature, associatedProduct, associatedEnv, serviceType, serviceHostingType, associatedCommonService, associatedBusinessService } = service.metadata_json;
+			const { serviceNature, associatedProduct, associatedEnv, serviceHostingType, associatedCommonService, associatedBusinessService } = service.metadata_json;
 			if (!firstProd) {
 				firstProd = associatedProduct;
 			}
@@ -78,33 +78,29 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				firstEnv = associatedEnv;
 			}
 			const node = treeData[associatedProduct] || {};
-			const clusterData = node[associatedEnv] || {};
-			const environmentData = clusterData[serviceNature] || {};
-			const assiciatedServiceData = environmentData[serviceType] || {
-				services: []
-			};
-			if (assiciatedServiceData && assiciatedServiceData.services) {
-				assiciatedServiceData.services.push({
-					...service.metadata_json
-				});
-			}
-
-			environmentData[serviceType] = assiciatedServiceData;
-			clusterData[serviceNature] = environmentData;
-			node[associatedEnv] = clusterData;
-			treeData[associatedProduct] = node;
-
-			//manipulation for topology view
-			const envTopData = topologyMainData[associatedEnv] || {};
-			const serviceHostingData = envTopData[serviceHostingType] || {};
-			const serviceNatureData = serviceHostingData[serviceNature] || {};
+			const envServicesData = node[associatedEnv] || {};
+			const serviceNatureData = envServicesData[serviceNature] || {};
 			let associatedService = associatedBusinessService;
 			if (serviceNature === enumServiceNature.common) {
 				associatedService = associatedCommonService;
 			}
 			serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
 			serviceNatureData[associatedService].push(service);
-			serviceHostingData[serviceNature] = serviceNatureData;
+			envServicesData[serviceNature] = serviceNatureData;
+			node[associatedEnv] = envServicesData;
+			treeData[associatedProduct] = node;
+
+			//manipulation for topology view
+			const envTopData = topologyMainData[associatedEnv] || {};
+			const serviceHostingData = envTopData[serviceHostingType] || {};
+			const serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
+			let associatedServiceTop = associatedBusinessService;
+			if (serviceNature === enumServiceNature.common) {
+				associatedServiceTop = associatedCommonService;
+			}
+			serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
+			serviceNatureDataForTop[associatedServiceTop].push(service);
+			serviceHostingData[serviceNature] = serviceNatureDataForTop;
 			envTopData[serviceHostingType] = serviceHostingData;
 			topologyMainData[associatedEnv] = envTopData;
 		});
@@ -205,39 +201,39 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				let serviceByType: any = {};
 				environments.map((environment, i) => {
 					envCount = envCount + 1;
-					const servicesType = tableData[product][environment];
-					Object.keys(servicesType).map((serviceName, j) => {
-						Object.keys(servicesType[serviceName]).map((servicetype) => {
-							if (servicetype === 'Data') {
-								datacount =
-									datacount + servicesType[serviceName][servicetype].services.length;
-							} else if (servicetype === 'App') {
-								appcount =
-									appcount + servicesType[serviceName][servicetype].services.length;
-							}
+					const serviceNatureData = tableData[product][environment];
+					Object.keys(serviceNatureData).map((serviceNature, j) => {
+						const associatedServicesData = serviceNatureData[serviceNature];
+						Object.keys(associatedServicesData).map((associatedService) => {
+							const servicesArray = associatedServicesData[associatedService];
 							if (
-								servicesType[serviceName][servicetype]['services'] &&
-								servicesType[serviceName][servicetype]['services'].length > 0
+								servicesArray &&
+								servicesArray.length > 0
 							) {
-								let servicearry = servicesType[serviceName][servicetype]['services'];
 								serviceByType['performance'] = serviceByType['performance'] || 0;
 								serviceByType['availability'] = serviceByType['availability'] || 0;
 								serviceByType['security'] = serviceByType['security'] || 0;
 								serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
 								serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
-								for (let k = 0; k < servicearry.length; k++) {
+								for (let k = 0; k < servicesArray.length; k++) {
+									const { metadata_json } = servicesArray[k];
 									serviceByType['performance'] =
-										serviceByType['performance'] + (servicearry[k].performance ? servicearry[k].performance['score'] : 0);
+										serviceByType['performance'] + (metadata_json.performance ? metadata_json.performance['score'] : 0);
 									serviceByType['availability'] =
-										serviceByType['availability'] + (servicearry[k].availability ? servicearry[k].availability['score'] : 0);
+										serviceByType['availability'] + (metadata_json.availability ? metadata_json.availability['score'] : 0);
 									serviceByType['security'] =
-										serviceByType['security'] + (servicearry[k].security ? servicearry[k].security['score'] : 0);
+										serviceByType['security'] + (metadata_json.security ? metadata_json.security['score'] : 0);
 									serviceByType['Data Protection'] =
-										serviceByType['Data Protection'] + (servicearry[k].dataProtection ? servicearry[k].dataProtection['score'] : 0);
+										serviceByType['Data Protection'] + (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
 									serviceByType['User Exp'] =
-										serviceByType['User Exp'] + (servicearry[k].userExperiance ? servicearry[k].userExperiance['score'] : 0);
+										serviceByType['User Exp'] + (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
 
-									totalCost = totalCost + parseInt(servicearry[i].stats.totalCostSoFar);
+									totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
+									if (metadata_json.serviceType === 'Data') {
+										datacount += 1;
+									} else if (metadata_json.serviceType === 'App') {
+										appcount += 1;
+									}
 								}
 							}
 						});
@@ -250,7 +246,6 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				serviceByType['User Exp'] = serviceByType['User Exp'] / (appcount + datacount);
 				for (var val in serviceByType) {
 					data[val] = serviceByType[val] || 0;
-					// data[val] = data[val] + serviceByType[val];
 					if (labels && labels.length > 0) {
 						for (let j = 0; j < labels.length; j++) {
 							if (labels.indexOf(val) === -1) {
@@ -390,40 +385,41 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		let servicesJSX: any = [];
 		Object.keys(tableData).map((key, index) => {
 			if (key === productName) {
-				Object.keys(tableData[key]).map((service, i) => {
-					if (service == environmentType) {
-						Object.keys(tableData[key][service]).map((serviceName, j) => {
+				const envData = tableData[key];
+				Object.keys(envData).map((env, i) => {
+					if (env == environmentType) {
+						const serviceNatureData = envData[env];
+						Object.keys(serviceNatureData).map((serviceNature, j) => {
 							servicesJSX = [];
-							Object.keys(tableData[key][service][serviceName]).map((servicetype) => {
-								let servicearry = tableData[key][service][serviceName][servicetype]['services'];
+							let associatedServices = serviceNatureData[serviceNature];
+							Object.keys(associatedServices).map((associatedService) => {
 								let serviceByType: any = {};
+								serviceByType['performance'] = serviceByType['performance'] || 0;
+								serviceByType['availability'] = serviceByType['availability'] || 0;
+								serviceByType['security'] = serviceByType['security'] || 0;
+								serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
+								serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
+								let servicearry = associatedServices[associatedService];
 								let totalCost = 0;
-								if (
-									tableData[key][service][serviceName][servicetype]['services'] &&
-									tableData[key][service][serviceName][servicetype]['services'].length > 0
-								) {
-									serviceByType['performance'] = serviceByType['performance'] || 0;
-									serviceByType['availability'] = serviceByType['availability'] || 0;
-									serviceByType['security'] = serviceByType['security'] || 0;
-									serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
-									serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
-									for (let i = 0; i < servicearry.length; i++) {
+								if (servicearry && servicearry.length > 0) {
+									servicearry.map((service: any) => {
+										const { metadata_json } = service;
 										serviceByType['performance'] =
-											serviceByType['performance'] + (servicearry[i].performance ? servicearry[i].performance['score'] : 0);
+											serviceByType['performance'] + (metadata_json.performance ? metadata_json.performance['score'] : 0);
 										serviceByType['availability'] =
-											serviceByType['availability'] + (servicearry[i].availability ? servicearry[i].availability['score'] : 0);
+											serviceByType['availability'] + (metadata_json.availability ? metadata_json.availability['score'] : 0);
 										serviceByType['security'] =
-											serviceByType['security'] + (servicearry[i].security ? servicearry[i].security['score'] : 0);
+											serviceByType['security'] + (metadata_json.security ? metadata_json.security['score'] : 0);
 										serviceByType['Data Protection'] =
-											serviceByType['Data Protection'] + (servicearry[i].dataProtection ? servicearry[i].dataProtection['score'] : 0);
+											serviceByType['Data Protection'] + (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
 										serviceByType['User Exp'] =
-											serviceByType['User Exp'] + (servicearry[i].userExperiance ? servicearry[i].userExperiance['score'] : 0);
-										totalCost = totalCost + parseInt(servicearry[i].stats.totalCostSoFar);
-									}
+											serviceByType['User Exp'] + (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
+										totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
+									});
 								}
 								servicesJSX.push(
 									<div className="service-box">
-										<div className="heading">{servicetype}</div>
+										<div className="heading">{associatedService}</div>
 										<div className="contents">
 											<div className="total-cost-text">
 												Total Cost : $
@@ -486,7 +482,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 									<div className="heading">
 										<div className="row">
 											<div className="col-md-7">
-												<h3>{serviceName}</h3>
+												<h3>{serviceNature}</h3>
 											</div>
 											<div className="col-md-5">
 												{/* <div className="show-more">
