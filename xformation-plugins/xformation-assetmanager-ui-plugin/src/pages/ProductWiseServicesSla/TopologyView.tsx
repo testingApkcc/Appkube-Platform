@@ -124,7 +124,7 @@ export class TopologyView extends React.Component<any, any> {
         retData.push(
           <div className="row">
             <div className="col-md-4">
-              <span>{service.name} ({service.account})</span>
+              <span>{service.name}</span>
             </div>
             <div className="col-md-4">
               <span>{service.serviceNature}</span>

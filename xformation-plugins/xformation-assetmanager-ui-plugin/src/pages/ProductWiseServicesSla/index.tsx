@@ -70,41 +70,43 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		let firstProd = "";
 		let firstEnv = "";
 		services.forEach((service: any) => {
-			const { serviceNature, associatedProduct, associatedEnv, serviceHostingType, associatedCommonService, associatedBusinessService } = service.metadata_json;
-			if (!firstProd) {
-				firstProd = associatedProduct;
-			}
-			if (!firstEnv) {
-				firstEnv = associatedEnv;
-			}
-			const node = treeData[associatedProduct] || {};
-			const envServicesData = node[associatedEnv] || {};
-			const serviceNatureData = envServicesData[serviceNature] || {};
-			let associatedService = associatedBusinessService;
-			if (serviceNature === enumServiceNature.common) {
-				associatedService = associatedCommonService;
-			}
-			serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
-			serviceNatureData[associatedService].push(service);
-			envServicesData[serviceNature] = serviceNatureData;
-			node[associatedEnv] = envServicesData;
-			treeData[associatedProduct] = node;
+			const { serviceNature, associatedProduct, associatedEnv, serviceHostingType, associatedCommonService, associatedBusinessService, associatedLandingZone } = service.metadata_json;
+			if (associatedLandingZone === "897373451") {
+				if (!firstProd) {
+					firstProd = associatedProduct;
+				}
+				if (!firstEnv) {
+					firstEnv = associatedEnv;
+				}
+				const node = treeData[associatedProduct] || {};
+				const envServicesData = node[associatedEnv] || {};
+				const serviceNatureData = envServicesData[serviceNature] || {};
+				let associatedService = associatedBusinessService;
+				if (serviceNature === enumServiceNature.common) {
+					associatedService = associatedCommonService;
+				}
+				serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
+				serviceNatureData[associatedService].push(service);
+				envServicesData[serviceNature] = serviceNatureData;
+				node[associatedEnv] = envServicesData;
+				treeData[associatedProduct] = node;
 
-			//manipulation for topology view
-			const topNode = topologyMainData[associatedProduct] || {};
-			const envTopData = topNode[associatedEnv] || {};
-			const serviceHostingData = envTopData[serviceHostingType] || {};
-			const serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
-			let associatedServiceTop = associatedBusinessService;
-			if (serviceNature === enumServiceNature.common) {
-				associatedServiceTop = associatedCommonService;
+				//manipulation for topology view
+				const topNode = topologyMainData[associatedProduct] || {};
+				const envTopData = topNode[associatedEnv] || {};
+				const serviceHostingData = envTopData[serviceHostingType] || {};
+				const serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
+				let associatedServiceTop = associatedBusinessService;
+				if (serviceNature === enumServiceNature.common) {
+					associatedServiceTop = associatedCommonService;
+				}
+				serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
+				serviceNatureDataForTop[associatedServiceTop].push(service);
+				serviceHostingData[serviceNature] = serviceNatureDataForTop;
+				envTopData[serviceHostingType] = serviceHostingData;
+				topNode[associatedEnv] = envTopData;
+				topologyMainData[associatedProduct] = topNode;
 			}
-			serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
-			serviceNatureDataForTop[associatedServiceTop].push(service);
-			serviceHostingData[serviceNature] = serviceNatureDataForTop;
-			envTopData[serviceHostingType] = serviceHostingData;
-			topNode[associatedEnv] = envTopData;
-			topologyMainData[associatedProduct] = topNode;
 		});
 		this.setState({
 			tableData: treeData,
