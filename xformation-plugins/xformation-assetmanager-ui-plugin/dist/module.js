@@ -1855,7 +1855,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         var _TransitionGroupContext = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroupContext */ 22));
 
-        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 62);
+        var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ 63);
 
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
@@ -2600,7 +2600,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 69
+          /*! ./chunks/helpers.segment.js */ 70
         );
         /*!
          * Chart.js v3.7.1
@@ -15214,7 +15214,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 61);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 62);
         }
 
         /***/
@@ -17684,7 +17684,7 @@ object-assign
       /***/ (module, __unused_webpack_exports, __webpack_require__) => {
         'use strict';
 
-        var reactIs = __webpack_require__(/*! react-is */ 63);
+        var reactIs = __webpack_require__(/*! react-is */ 64);
 
         /**
          * Copyright 2015, Yahoo! Inc.
@@ -18118,6 +18118,344 @@ object-assign
         /***/
       },
       /* 61 */
+      /*!**********************************************************************!*\
+  !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyInputs.tsx ***!
+  \**********************************************************************/
+      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        'use strict';
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */ VerifyInputs: () => /* binding */ VerifyInputs,
+          /* harmony export */
+        });
+        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 2);
+        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
+        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+          react__WEBPACK_IMPORTED_MODULE_0__
+        );
+        /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+          /*! ../../../_service/RestService */ 4
+        );
+        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+          /*! ../../../../config */ 3
+        );
+
+        var VerifyInputs =
+          /** @class */
+          (function (_super) {
+            (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(VerifyInputs, _super);
+
+            function VerifyInputs(props) {
+              var _this = _super.call(this, props) || this;
+
+              _this.getDataSourceInstances = function (accountId) {
+                try {
+                  _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(
+                    ''.concat(_this.config.GRAFANA_DATASOURCE_API, '/accountid/').concat(accountId),
+                    null,
+                    null
+                  ).then(function (response) {
+                    // this.setState({
+                    //     inputList: [{ "id": 37, "uid": "q0bJZTnnz", "orgId": 1, "name": "www", "type": "cloudwatch", "typeName": "CloudWatch", "typeLogoUrl": "public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png", "access": "proxy", "url": "", "password": "", "user": "", "database": "", "basicAuth": false, "isDefault": false, "jsonData": { "authType": "keys", "defaultRegion": "us-gov-east-1" }, "readOnly": false, "accountID": "9876", "tenantID": "78", "cloudType": "" }]
+                    // });
+                    var dataSourceTypes = response.map(function (res) {
+                      return res.cloudType;
+                    });
+
+                    _this.setState({
+                      dataSourceTypes: dataSourceTypes,
+                    });
+                  });
+                } catch (err) {
+                  console.log('Loading Asstes failed. Error: ', err);
+                }
+              };
+
+              _this.configureInputs = function () {
+                return (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+                  return (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+                    this.setState({
+                      configureInputs: !this.state.configureInputs,
+                    });
+                    return [
+                      2,
+                      /*return*/
+                    ];
+                  });
+                });
+              };
+
+              _this.setDashboardData = function (data) {
+                _this.setState({
+                  dashboardData: data,
+                });
+              };
+
+              _this.getSelectedDashboards = function () {
+                var _a = _this.checkIfDashboardSelected(),
+                  isSelected = _a.isSelected,
+                  dashboardData = _a.dashboardData;
+
+                if (isSelected) {
+                  return dashboardData;
+                }
+
+                return false;
+              };
+
+              _this.checkIfDashboardSelected = function () {
+                var dashboardData = _this.state.dashboardData;
+                var isSelected = false;
+
+                for (var i = 0; i < dashboardData.length; i++) {
+                  var dashboards = dashboardData[i].dashboards;
+                  dashboardData[i].isChecked = false;
+
+                  if (dashboards) {
+                    for (var j = 0; j < dashboards.length; j++) {
+                      if (dashboards[j].isChecked) {
+                        isSelected = true;
+                        dashboardData[i].isChecked = true;
+                        break;
+                      }
+                    }
+                  }
+                }
+
+                return {
+                  isSelected: isSelected,
+                  dashboardData: dashboardData,
+                };
+              };
+
+              _this.displayTable = function () {
+                var retData = [];
+                var _a = _this.state,
+                  dashboardData = _a.dashboardData,
+                  cloudName = _a.cloudName;
+                var _b = _this.props,
+                  apiKey = _b.apiKey,
+                  serviceData = _b.serviceData;
+                dashboardData.forEach(function (dataSource, dataSourceIndex) {
+                  var dashboards = dataSource.dashboards;
+                  var dashboardJSX = [];
+
+                  if (dashboards) {
+                    var associatedCloudElementType_1 = serviceData.associatedCloudElementType
+                      ? serviceData.associatedCloudElementType.toLowerCase()
+                      : '';
+                    dashboards.forEach(function (dashboard, dashboardIndex) {
+                      if (
+                        dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() &&
+                        associatedCloudElementType_1 === dashboard.associatedCloudElementType.toLowerCase() &&
+                        cloudName === dashboard.associatedCloud.toLowerCase()
+                      ) {
+                        dashboardJSX.push(
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'tbody',
+                            {
+                              key: ''.concat(dataSourceIndex, '-').concat(dashboardIndex, '-datasource'),
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'tr',
+                              null,
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+                                  type: 'checkbox',
+                                  checked: dashboard.isChecked,
+                                  onChange: function (e) {
+                                    return _this.handleChange(e, dataSourceIndex, dashboardIndex);
+                                  },
+                                })
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name)
+                            )
+                          )
+                        );
+                      }
+                    });
+                  }
+
+                  retData.push(
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'table',
+                      {
+                        key: ''.concat(dataSourceIndex, '-datasource'),
+                        className: 'table-tbody first-table',
+                        width: '100%',
+                      },
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'tr',
+                        null,
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                          'td',
+                          {
+                            style: {
+                              paddingLeft: '0',
+                              paddingRight: '0',
+                            },
+                          },
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'table',
+                            {
+                              width: '100%',
+                            },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                              'tr',
+                              null,
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.inputType)
+                              ),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                'td',
+                                null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                                  'table',
+                                  {
+                                    className: 'table-inner',
+                                    width: '100%',
+                                  },
+                                  dashboardJSX
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  );
+                });
+
+                if (retData.length === 0) {
+                  retData = react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'table',
+                    {
+                      className: 'table-tbody first-table',
+                      width: '100%',
+                    },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'tr',
+                      null,
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'td',
+                        {
+                          style: {
+                            paddingLeft: '0',
+                            paddingRight: '0',
+                            textAlign: 'center',
+                          },
+                        },
+                        'There is no dashboard available.'
+                      )
+                    )
+                  );
+                }
+
+                return retData;
+              };
+
+              _this.state = {
+                inputName: _this.props.inputName,
+                configureInputs: false,
+                dashboardData: [],
+                dataSourceTypes: [],
+                accountId: '',
+                cloudName: '',
+              };
+              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(
+                props.meta.jsonData.apiUrl,
+                props.meta.jsonData.mainProductUrl
+              );
+              return _this;
+            }
+
+            VerifyInputs.prototype.componentDidMount = function () {
+              var queryPrm = new URLSearchParams(this.props.location.search);
+              var accountId = queryPrm.get('accountId');
+              var cloudName = queryPrm.get('cloudName'); // this.getDataSourceInstances(accountId);
+
+              this.setState({
+                accountId: accountId,
+                cloudName: cloudName ? cloudName.toLowerCase() : '',
+              });
+            };
+
+            VerifyInputs.prototype.handleChange = function (e, dataSourceIndex, dashboardIndex) {
+              var checked = e.target.checked;
+              var dashboardData = this.state.dashboardData;
+              dashboardData[dataSourceIndex].dashboards[dashboardIndex].isChecked = checked;
+              this.setState({
+                dashboardData: dashboardData,
+              });
+            };
+
+            VerifyInputs.prototype.render = function () {
+              var configureInputs = this.state.configureInputs;
+              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                'div',
+                {
+                  className: 'verify-inputs-section',
+                },
+                !configureInputs &&
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'div',
+                    {
+                      className: 'configure-inputs-section',
+                    },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'p',
+                      null,
+                      'Please click below to configure inputs for Performance Monitoring'
+                    ),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'button',
+                      {
+                        className: 'asset-blue-button',
+                        onClick: this.configureInputs,
+                      },
+                      'Configure inputs'
+                    )
+                  ),
+                configureInputs &&
+                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'div',
+                    {
+                      className: 'configure-inputs-table',
+                    },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                      'table',
+                      {
+                        className: 'table-thead',
+                        width: '100%',
+                      },
+                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                        'tr',
+                        null,
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input'),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input Type'),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Available Dashboards')
+                      )
+                    ),
+                    this.displayTable()
+                  )
+              );
+            };
+
+            return VerifyInputs;
+          })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+        /***/
+      },
+      /* 62 */
       /*!************************************************************************************!*\
   !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************************************/
@@ -18325,7 +18663,7 @@ object-assign
 
         /***/
       },
-      /* 62 */
+      /* 63 */
       /*!********************************************************************************************!*\
   !*** ../node_modules/reactstrap/node_modules/react-transition-group/utils/ChildMapping.js ***!
   \********************************************************************************************/
@@ -18481,7 +18819,7 @@ object-assign
 
         /***/
       },
-      /* 63 */
+      /* 64 */
       /*!******************************************************************************!*\
   !*** ../node_modules/hoist-non-react-statics/node_modules/react-is/index.js ***!
   \******************************************************************************/
@@ -18495,7 +18833,7 @@ object-assign
 
         /***/
       },
-      /* 64 */
+      /* 65 */
       /*!*****************************************!*\
   !*** ../node_modules/react-is/index.js ***!
   \*****************************************/
@@ -18504,12 +18842,12 @@ object-assign
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 65);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 66);
         }
 
         /***/
       },
-      /* 65 */
+      /* 66 */
       /*!************************************************************!*\
   !*** ../node_modules/react-is/cjs/react-is.development.js ***!
   \************************************************************/
@@ -18762,7 +19100,7 @@ object-assign
 
         /***/
       },
-      /* 66 */
+      /* 67 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -18794,7 +19132,7 @@ object-assign
 
         /***/
       },
-      /* 67 */
+      /* 68 */
       /*!****************************************************!*\
   !*** ../node_modules/uuid/dist/esm-browser/rng.js ***!
   \****************************************************/
@@ -18833,7 +19171,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 69 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -18850,7 +19188,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 70 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -21500,7 +21838,7 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 71 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -21545,7 +21883,7 @@ object-assign
 
         /***/
       },
-      /* 71 */
+      /* 72 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -21823,7 +22161,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 73 */
       /*!*************************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/EnableDashboard.tsx ***!
   \*************************************************************************/
@@ -22012,7 +22350,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 74 */
       /*!*****************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/Preview.tsx ***!
   \*****************************************************************/
@@ -22216,7 +22554,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 75 */
       /*!***********************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyAndSave.tsx ***!
   \***********************************************************************/
@@ -22522,344 +22860,6 @@ object-assign
             };
 
             return VerifyAndSave;
-          })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-        /***/
-      },
-      /* 75 */
-      /*!**********************************************************************!*\
-  !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyInputs.tsx ***!
-  \**********************************************************************/
-      /***/ (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-          /* harmony export */ VerifyInputs: () => /* binding */ VerifyInputs,
-          /* harmony export */
-        });
-        /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 2);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 0);
-        /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-          react__WEBPACK_IMPORTED_MODULE_0__
-        );
-        /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ../../../_service/RestService */ 4
-        );
-        /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../../../config */ 3
-        );
-
-        var VerifyInputs =
-          /** @class */
-          (function (_super) {
-            (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(VerifyInputs, _super);
-
-            function VerifyInputs(props) {
-              var _this = _super.call(this, props) || this;
-
-              _this.getDataSourceInstances = function (accountId) {
-                try {
-                  _service_RestService__WEBPACK_IMPORTED_MODULE_1__.RestService.getData(
-                    ''.concat(_this.config.GRAFANA_DATASOURCE_API, '/accountid/').concat(accountId),
-                    null,
-                    null
-                  ).then(function (response) {
-                    // this.setState({
-                    //     inputList: [{ "id": 37, "uid": "q0bJZTnnz", "orgId": 1, "name": "www", "type": "cloudwatch", "typeName": "CloudWatch", "typeLogoUrl": "public/app/plugins/datasource/cloudwatch/img/amazon-web-services.png", "access": "proxy", "url": "", "password": "", "user": "", "database": "", "basicAuth": false, "isDefault": false, "jsonData": { "authType": "keys", "defaultRegion": "us-gov-east-1" }, "readOnly": false, "accountID": "9876", "tenantID": "78", "cloudType": "" }]
-                    // });
-                    var dataSourceTypes = response.map(function (res) {
-                      return res.cloudType;
-                    });
-
-                    _this.setState({
-                      dataSourceTypes: dataSourceTypes,
-                    });
-                  });
-                } catch (err) {
-                  console.log('Loading Asstes failed. Error: ', err);
-                }
-              };
-
-              _this.configureInputs = function () {
-                return (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
-                    this.setState({
-                      configureInputs: !this.state.configureInputs,
-                    });
-                    return [
-                      2,
-                      /*return*/
-                    ];
-                  });
-                });
-              };
-
-              _this.setDashboardData = function (data) {
-                _this.setState({
-                  dashboardData: data,
-                });
-              };
-
-              _this.getSelectedDashboards = function () {
-                var _a = _this.checkIfDashboardSelected(),
-                  isSelected = _a.isSelected,
-                  dashboardData = _a.dashboardData;
-
-                if (isSelected) {
-                  return dashboardData;
-                }
-
-                return false;
-              };
-
-              _this.checkIfDashboardSelected = function () {
-                var dashboardData = _this.state.dashboardData;
-                var isSelected = false;
-
-                for (var i = 0; i < dashboardData.length; i++) {
-                  var dashboards = dashboardData[i].dashboards;
-                  dashboardData[i].isChecked = false;
-
-                  if (dashboards) {
-                    for (var j = 0; j < dashboards.length; j++) {
-                      if (dashboards[j].isChecked) {
-                        isSelected = true;
-                        dashboardData[i].isChecked = true;
-                        break;
-                      }
-                    }
-                  }
-                }
-
-                return {
-                  isSelected: isSelected,
-                  dashboardData: dashboardData,
-                };
-              };
-
-              _this.displayTable = function () {
-                var retData = [];
-                var _a = _this.state,
-                  dashboardData = _a.dashboardData,
-                  cloudName = _a.cloudName;
-                var _b = _this.props,
-                  apiKey = _b.apiKey,
-                  serviceData = _b.serviceData;
-                dashboardData.forEach(function (dataSource, dataSourceIndex) {
-                  var dashboards = dataSource.dashboards;
-                  var dashboardJSX = [];
-
-                  if (dashboards) {
-                    var associatedCloudElementType_1 = serviceData.associatedCloudElementType
-                      ? serviceData.associatedCloudElementType.toLowerCase()
-                      : '';
-                    dashboards.forEach(function (dashboard, dashboardIndex) {
-                      if (
-                        dashboard.associatedSLAType.toLowerCase() === apiKey.toLowerCase() &&
-                        associatedCloudElementType_1 === dashboard.associatedCloudElementType.toLowerCase() &&
-                        cloudName === dashboard.associatedCloud.toLowerCase()
-                      ) {
-                        dashboardJSX.push(
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'tbody',
-                            {
-                              key: ''.concat(dataSourceIndex, '-').concat(dashboardIndex, '-datasource'),
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'tr',
-                              null,
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'td',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-                                  type: 'checkbox',
-                                  checked: dashboard.isChecked,
-                                  onChange: function (e) {
-                                    return _this.handleChange(e, dataSourceIndex, dashboardIndex);
-                                  },
-                                })
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('td', null, dashboard.name)
-                            )
-                          )
-                        );
-                      }
-                    });
-                  }
-
-                  retData.push(
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'table',
-                      {
-                        key: ''.concat(dataSourceIndex, '-datasource'),
-                        className: 'table-tbody first-table',
-                        width: '100%',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'tr',
-                        null,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                          'td',
-                          {
-                            style: {
-                              paddingLeft: '0',
-                              paddingRight: '0',
-                            },
-                          },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                            'table',
-                            {
-                              width: '100%',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                              'tr',
-                              null,
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'td',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.name)
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'td',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('a', null, dataSource.inputType)
-                              ),
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                'td',
-                                null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                                  'table',
-                                  {
-                                    className: 'table-inner',
-                                    width: '100%',
-                                  },
-                                  dashboardJSX
-                                )
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  );
-                });
-
-                if (retData.length === 0) {
-                  retData = react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'table',
-                    {
-                      className: 'table-tbody first-table',
-                      width: '100%',
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'tr',
-                      null,
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'td',
-                        {
-                          style: {
-                            paddingLeft: '0',
-                            paddingRight: '0',
-                            textAlign: 'center',
-                          },
-                        },
-                        'There is no dashboard available.'
-                      )
-                    )
-                  );
-                }
-
-                return retData;
-              };
-
-              _this.state = {
-                inputName: _this.props.inputName,
-                configureInputs: false,
-                dashboardData: [],
-                dataSourceTypes: [],
-                accountId: '',
-                cloudName: '',
-              };
-              _this.config = (0, _config__WEBPACK_IMPORTED_MODULE_2__.configFun)(
-                props.meta.jsonData.apiUrl,
-                props.meta.jsonData.mainProductUrl
-              );
-              return _this;
-            }
-
-            VerifyInputs.prototype.componentDidMount = function () {
-              var queryPrm = new URLSearchParams(this.props.location.search);
-              var accountId = queryPrm.get('accountId');
-              var cloudName = queryPrm.get('cloudName'); // this.getDataSourceInstances(accountId);
-
-              this.setState({
-                accountId: accountId,
-                cloudName: cloudName ? cloudName.toLowerCase() : '',
-              });
-            };
-
-            VerifyInputs.prototype.handleChange = function (e, dataSourceIndex, dashboardIndex) {
-              var checked = e.target.checked;
-              var dashboardData = this.state.dashboardData;
-              dashboardData[dataSourceIndex].dashboards[dashboardIndex].isChecked = checked;
-              this.setState({
-                dashboardData: dashboardData,
-              });
-            };
-
-            VerifyInputs.prototype.render = function () {
-              var configureInputs = this.state.configureInputs;
-              return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                'div',
-                {
-                  className: 'verify-inputs-section',
-                },
-                !configureInputs &&
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'div',
-                    {
-                      className: 'configure-inputs-section',
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'p',
-                      null,
-                      'Please click below to configure inputs for Performance Monitoring'
-                    ),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'button',
-                      {
-                        className: 'asset-blue-button',
-                        onClick: this.configureInputs,
-                      },
-                      'Configure inputs'
-                    )
-                  ),
-                configureInputs &&
-                  react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                    'div',
-                    {
-                      className: 'configure-inputs-table',
-                    },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                      'table',
-                      {
-                        className: 'table-thead',
-                        width: '100%',
-                      },
-                      react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-                        'tr',
-                        null,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input'),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Input Type'),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement('th', null, 'Available Dashboards')
-                      )
-                    ),
-                    this.displayTable()
-                  )
-              );
-            };
-
-            return VerifyInputs;
           })(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
         /***/
@@ -23329,7 +23329,7 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 70);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 71);
 
         /***/
       },
@@ -23344,7 +23344,7 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 71);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 72);
 
         /***/
       },
@@ -32901,14 +32901,14 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _EnableDashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./EnableDashboard */ 72
+          /*! ./EnableDashboard */ 73
         );
-        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 73);
+        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 74);
         /* harmony import */ var _VerifyAndSave__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./VerifyAndSave */ 74
+          /*! ./VerifyAndSave */ 75
         );
         /* harmony import */ var _VerifyInputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./VerifyInputs */ 75
+          /*! ./VerifyInputs */ 61
         );
 
         /***/
@@ -35991,7 +35991,8 @@ and limitations under the License.
                   node[associatedEnv] = envServicesData;
                   treeData[associatedProduct] = node; //manipulation for topology view
 
-                  var envTopData = topologyMainData[associatedEnv] || {};
+                  var topNode = topologyMainData[associatedProduct] || {};
+                  var envTopData = topNode[associatedEnv] || {};
                   var serviceHostingData = envTopData[serviceHostingType] || {};
                   var serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
                   var associatedServiceTop = associatedBusinessService;
@@ -36004,7 +36005,8 @@ and limitations under the License.
                   serviceNatureDataForTop[associatedServiceTop].push(service);
                   serviceHostingData[serviceNature] = serviceNatureDataForTop;
                   envTopData[serviceHostingType] = serviceHostingData;
-                  topologyMainData[associatedEnv] = envTopData;
+                  topNode[associatedEnv] = envTopData;
+                  topologyMainData[associatedProduct] = topNode;
                 });
 
                 _this.setState({
@@ -36837,7 +36839,7 @@ and limitations under the License.
                                 ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                     _TopologyView__WEBPACK_IMPORTED_MODULE_4__.TopologyView,
                                     {
-                                      data: topologyMainData[environmentType],
+                                      data: topologyMainData[productName][environmentType],
                                       isDataLoaded: isTopologyDataLoaded,
                                     }
                                   )
@@ -36935,7 +36937,8 @@ and limitations under the License.
                       availability = _a.availability,
                       userExperiance = _a.userExperiance,
                       dataProtection = _a.dataProtection,
-                      stats = _a.stats;
+                      stats = _a.stats,
+                      associatedLandingZone = _a.associatedLandingZone;
                     avgPerformance_1 += performance.score;
                     avgAvailability_1 += availability.score;
                     avgUserExp_1 += userExperiance.score;
@@ -36947,12 +36950,14 @@ and limitations under the License.
                         name: name,
                         serviceNature: serviceNature,
                         location: associatedManagedCloudServiceLocation,
+                        account: associatedLandingZone,
                       });
                     } else {
                       modalData_1.appServices.push({
                         name: name,
                         serviceNature: serviceNature,
                         location: associatedManagedCloudServiceLocation,
+                        account: associatedLandingZone,
                       });
                     }
 
@@ -37031,7 +37036,14 @@ and limitations under the License.
                           {
                             className: 'col-md-4',
                           },
-                          react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, service.name)
+                          react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                            'span',
+                            null,
+                            service.name,
+                            ' (',
+                            service.account,
+                            ')'
+                          )
                         ),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                           'div',
@@ -43298,7 +43310,7 @@ and limitations under the License.
           /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
           /* harmony export */
         });
-        /* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rng.js */ 67);
+        /* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rng.js */ 68);
         /* harmony import */ var _stringify_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! ./stringify.js */ 154
         );
@@ -45124,7 +45136,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 19
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 64);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 65);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -45231,7 +45243,7 @@ and limitations under the License.
           /*! ../getStylesCreator */ 173
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 68
+          /*! ../getStylesCreator/noopTheme */ 69
         );
 
         function getClasses(_ref, classes, Component) {
@@ -45702,7 +45714,7 @@ and limitations under the License.
           /*! tiny-warning */ 172
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 66);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 67);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 16);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -48097,7 +48109,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 174
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 68);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 69);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
