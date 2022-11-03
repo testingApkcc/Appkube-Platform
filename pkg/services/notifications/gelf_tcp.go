@@ -25,6 +25,6 @@ func (ns *NotificationService) sendGelfTcpRequestSync(ctx context.Context, gelft
 		return err
 	}
 	log.SetOutput(io.MultiWriter(os.Stderr, gelfWriter))
-	log.Printf(string(gelftcp.GelfMessage))
+	//log.Printf(string(gelftcp.GelfMessage))
 	return nil
 }
