@@ -48,8 +48,11 @@ type ValidateResetPasswordCodeQuery struct {
 	Result *User
 }
 
+// ------Manoj.  custom changes for appcube plateform ------
 type SendGelfTcpSync struct {
 	GelfServer  string
 	GelfTcpPort string
 	GelfMessage string
 }
+
+// ------Manoj.  custom changes for appcube plateform ------

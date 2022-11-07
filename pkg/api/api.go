@@ -435,8 +435,8 @@ func (hs *HTTPServer) registerRoutes() {
 			alertNotifications.Put("/uid/:uid", routing.Wrap(hs.UpdateAlertNotificationByUID))
 			alertNotifications.Delete("/uid/:uid", routing.Wrap(hs.DeleteAlertNotificationByUID))
 			// ------Manoj.  custom changes for appcube plateform ------
-			// alertNotifications.Get("/name/:name", routing.Wrap(GetAlertNotificationByName))
-			alertNotifications.Post("/sendAlertActivity", routing.Wrap(SendAlertActivityNotification))
+			// not used any more: alertNotifications.Get("/name/:name", routing.Wrap(GetAlertNotificationByName))
+			// commented to figure out null pointer error: alertNotifications.Post("/sendAlertActivity", routing.Wrap(SendAlertActivityNotification))
 			// ------Manoj.  custom changes for appcube plateform ------
 		}, reqEditorRole)
 
