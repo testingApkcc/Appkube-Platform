@@ -144,11 +144,12 @@ func (ns *NotificationService) SendWebhookSync(ctx context.Context, cmd *models.
 
 // ------Manoj.  custom changes for appcube plateform ------
 func (ns *NotificationService) SendGelfTcpSync(ctx context.Context, cmd *models.SendGelfTcpSync) error {
-	return ns.sendGelfTcpRequestSync(ctx, &GelfTcp{
-		GelfServer:  cmd.GelfServer,
-		GelfTcpPort: cmd.GelfTcpPort,
-		GelfMessage: cmd.GelfMessage,
-	})
+	// gelfTcp := &GelfTcp{
+	// 	GelfServer:  cmd.GelfServer,
+	// 	GelfTcpPort: cmd.GelfTcpPort,
+	// 	GelfMessage: cmd.GelfMessage,
+	// }
+	return ns.sendGelfTcpRequestSync(ctx, cmd)
 }
 
 // ------Manoj.  custom changes for appcube plateform ------
