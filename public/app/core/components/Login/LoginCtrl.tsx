@@ -176,10 +176,10 @@ export class LoginCtrl extends PureComponent<Props, State> {
       });
       const data = new FormData();
       data.append('userName', email);
-      this.setState({
-        currentLoginStep: LoginSteps.PASSWORD,
-      });
-      return;
+      // this.setState({
+      //   currentLoginStep: LoginSteps.PASSWORD,
+      // });
+      // return;
       fetch(urls.AUTHENTICATE_USER, {
         method: 'POST',
         body: data,

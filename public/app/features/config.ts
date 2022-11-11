@@ -1,6 +1,6 @@
-const securitySrvUrl = `http://100.64.107.25:8094/`;
-const alertSrvUrl = `http://100.64.107.25:5055`;
-const catalogSrvUrl = `http://100.64.107.25:5050/api/`;
+const securitySrvUrl = `http://34.199.12.114:8094/`;
+const alertSrvUrl = `http://34.199.12.114:5055`;
+const catalogSrvUrl = `http://34.199.12.114:5050/api/`;
 const previewUrl = 'http://34.199.12.114:5057/api';
 const dataSourceURL = '/';
 
