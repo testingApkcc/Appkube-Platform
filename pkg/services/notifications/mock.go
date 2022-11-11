@@ -7,16 +7,20 @@ import (
 )
 
 type NotificationServiceMock struct {
-	Webhook     models.SendWebhookSync
-	EmailSync   models.SendEmailCommandSync
-	Email       models.SendEmailCommand
-	GelfTcp     models.SendGelfTcpSync
+	Webhook   models.SendWebhookSync
+	EmailSync models.SendEmailCommandSync
+	Email     models.SendEmailCommand
+	// ------Manoj.  custom changes for appcube plateform ------
+	GelfTcp models.SendGelfTcpSync
+	// ------Manoj.  custom changes for appcube plateform ------
 	ShouldError error
 
 	WebhookHandler   func(context.Context, *models.SendWebhookSync) error
 	EmailHandlerSync func(context.Context, *models.SendEmailCommandSync) error
 	EmailHandler     func(context.Context, *models.SendEmailCommand) error
-	GelfTcpHandler   func(context.Context, *models.SendGelfTcpSync) error
+	// ------Manoj.  custom changes for appcube plateform ------
+	GelfTcpHandler func(context.Context, *models.SendGelfTcpSync) error
+	// ------Manoj.  custom changes for appcube plateform ------
 }
 
 func (ns *NotificationServiceMock) SendWebhookSync(ctx context.Context, cmd *models.SendWebhookSync) error {
@@ -27,6 +31,7 @@ func (ns *NotificationServiceMock) SendWebhookSync(ctx context.Context, cmd *mod
 	return ns.ShouldError
 }
 
+// ------Manoj.  custom changes for appcube plateform ------
 func (ns *NotificationServiceMock) SendGelfTcpSync(ctx context.Context, cmd *models.SendGelfTcpSync) error {
 	ns.GelfTcp = *cmd
 	if ns.GelfTcpHandler != nil {
@@ -35,6 +40,7 @@ func (ns *NotificationServiceMock) SendGelfTcpSync(ctx context.Context, cmd *mod
 	return ns.ShouldError
 }
 
+// ------Manoj.  custom changes for appcube plateform ------
 func (ns *NotificationServiceMock) SendEmailCommandHandlerSync(ctx context.Context, cmd *models.SendEmailCommandSync) error {
 	ns.EmailSync = *cmd
 	if ns.EmailHandlerSync != nil {

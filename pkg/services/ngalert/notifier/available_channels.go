@@ -859,7 +859,7 @@ func GetAvailableNotifiers() []*alerting.NotifierPlugin {
 				},
 			},
 		},
-
+		// ------Manoj.  custom changes for appcube plateform ------
 		{
 			Type:        "gelf",
 			Name:        "GELF",
@@ -884,5 +884,6 @@ func GetAvailableNotifiers() []*alerting.NotifierPlugin {
 				},
 			},
 		},
+		// ------Manoj.  custom changes for appcube plateform ------
 	}
 }

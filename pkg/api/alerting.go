@@ -4,17 +4,12 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"io"
-	"log"
 	"net/http"
-	"os"
 	"strconv"
-	"time"
 
 	"github.com/grafana/grafana/pkg/api/dtos"
 	"github.com/grafana/grafana/pkg/api/response"
 	"github.com/grafana/grafana/pkg/bus"
-	"github.com/grafana/grafana/pkg/components/simplejson"
 	"github.com/grafana/grafana/pkg/models"
 	"github.com/grafana/grafana/pkg/services/alerting"
 	"github.com/grafana/grafana/pkg/services/guardian"
@@ -23,7 +18,6 @@ import (
 	"github.com/grafana/grafana/pkg/setting"
 	"github.com/grafana/grafana/pkg/util"
 	"github.com/grafana/grafana/pkg/web"
-	"gopkg.in/Graylog2/go-gelf.v2/gelf"
 )
 
 func (hs *HTTPServer) ValidateOrgAlert(c *models.ReqContext) {
@@ -623,42 +617,45 @@ func (hs *HTTPServer) PauseAllAlerts(c *models.ReqContext) response.Response {
 // 	return response.JSON(200, dtos.NewAlertNotification(query.Result))
 // }
 
-func SendAlertActivityNotification(c *models.ReqContext) response.Response {
-	cmd := models.CreateXformationAlertNotificationCommand{}
-	if err := web.Bind(c.Req, &cmd); err != nil {
-		return response.Error(http.StatusBadRequest, "bad request data for xformation alert notification", err)
-	}
-	gelfTcpURL := "127.0.0.1" + ":" + "12202"
-	gelfWriter, err := gelf.NewTCPWriter(gelfTcpURL)
-	recordJSON := simplejson.New()
-	records := make([]interface{}, 1)
-	timeNow := time.Now()
-	cmd.FiredTime = fmt.Sprint(timeNow.Format("2006-01-02 15:04:05"))
-	cmd.UpdatedOn = unixTmMilli(timeNow)
-	cmd.TicketId = 0
-	cmd.TicketName = ""
-	cmd.TicketUrl = ""
-	cmd.TicketDescription = ""
-	cmd.UserName = "Automated"
-	cmd.EventType = "Update"
-	cmd.ChangeLog = ""
-	cmd.Action = "Alert Updated"
-	cmd.ActionDescription = "Alert Updated"
+// ------Manoj.  custom changes for appcube plateform ------
+// --- below two functions commented to figure out the null pointer exception
+// func SendAlertActivityNotification(c *models.ReqContext) response.Response {
+// 	cmd := models.CreateXformationAlertNotificationCommand{}
+// 	if err := web.Bind(c.Req, &cmd); err != nil {
+// 		return response.Error(http.StatusBadRequest, "bad request data for xformation alert notification", err)
+// 	}
+// 	gelfTcpURL := "127.0.0.1" + ":" + "12202"
+// 	gelfWriter, err := gelf.NewTCPWriter(gelfTcpURL)
+// 	recordJSON := simplejson.New()
+// 	records := make([]interface{}, 1)
+// 	timeNow := time.Now()
+// 	cmd.FiredTime = fmt.Sprint(timeNow.Format("2006-01-02 15:04:05"))
+// 	cmd.UpdatedOn = unixTmMilli(timeNow)
+// 	cmd.TicketId = 0
+// 	cmd.TicketName = ""
+// 	cmd.TicketUrl = ""
+// 	cmd.TicketDescription = ""
+// 	cmd.UserName = "Automated"
+// 	cmd.EventType = "Update"
+// 	cmd.ChangeLog = ""
+// 	cmd.Action = "Alert Updated"
+// 	cmd.ActionDescription = "Alert Updated"
 
-	valueJSON := simplejson.New()
-	valueJSON.Set("value", cmd)
-	records[0] = valueJSON
-	recordJSON.Set("records", records)
-	body, _ := recordJSON.MarshalJSON()
+// 	valueJSON := simplejson.New()
+// 	valueJSON.Set("value", cmd)
+// 	records[0] = valueJSON
+// 	recordJSON.Set("records", records)
+// 	body, _ := recordJSON.MarshalJSON()
 
-	if err != nil {
-		return response.Error(500, "Cannot connect to GELF TCP Alert activity server", nil)
-	}
-	log.SetOutput(io.MultiWriter(os.Stderr, gelfWriter))
-	log.Printf(string(body))
-	return response.JSON(200, cmd)
-}
+// 	if err != nil {
+// 		return response.Error(500, "Cannot connect to GELF TCP Alert activity server", nil)
+// 	}
+// 	log.SetOutput(io.MultiWriter(os.Stderr, gelfWriter))
+// 	log.Printf(string(body))
+// 	return response.JSON(200, cmd)
+// }
 
-func unixTmMilli(t time.Time) int64 {
-	return t.Round(time.Millisecond).UnixNano() / (int64(time.Millisecond) / int64(time.Nanosecond))
-}
+// func unixTmMilli(t time.Time) int64 {
+// 	return t.Round(time.Millisecond).UnixNano() / (int64(time.Millisecond) / int64(time.Nanosecond))
+// }
+// ------Manoj.  custom changes for appcube plateform ------
