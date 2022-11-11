@@ -260,47 +260,49 @@ export class LoginCtrl extends PureComponent<Props, State> {
         .then((res: any) => {
           isExSec = res;
           localStorage.setItem(`external_security_enable`, isExSec === true ? `true` : `false`);
-        });
-      if (isExSec) {
-        this.setState({
-          isExternalSecurityEnable: true,
-        });
-        notifyApp(createErrorNotification('External security enabled'));
-      }
-      let data = {};
-      if (isExSec) {
-        data = {
-          user: this.state.user.username,
-          password: password,
-        };
-      } else {
-        data = {
-          user: userName,
-          password: password,
-        };
-      }
-      getBackendSrv()
-        .post('/login', data)
-        .then((result: any) => {
-          this.result = result;
-          if (isExSec === true) {
-            localStorage.setItem(`userInfo`, JSON.stringify(result.userInfo));
-          } else {
-            localStorage.setItem(`userInfo`, '');
+          if (isExSec) {
+            this.setState({
+              isExternalSecurityEnable: true,
+            });
+            notifyApp(createErrorNotification('External security enabled'));
           }
-
-          if (password !== 'admin' || config.ldapEnabled || config.authProxyEnabled) {
-            this.toGrafana();
-            return;
+          let data = {};
+          if (isExSec) {
+            data = {
+              user: this.state.user.username,
+              password: password,
+            };
           } else {
-            this.changeView();
+            data = {
+              user: userName,
+              password: password,
+            };
           }
-        })
-        .catch(() => {
-          notifyApp(createErrorNotification('There is some error. Please try again'));
-          this.setState({
-            isLoggingIn: false,
-          });
+          getBackendSrv()
+            .post('/login', data)
+            .then((result: any) => {
+              this.result = result;
+              // if (isExSec === true) {
+              //   localStorage.setItem(`userInfo`, JSON.stringify(result.userInfo));
+              // } else {
+              //   localStorage.setItem(`userInfo`, '');
+              // }
+              if (result.userInfo) {
+                localStorage.setItem(`userInfo`, JSON.stringify(result.userInfo));
+              }
+              if (password !== 'admin' || config.ldapEnabled || config.authProxyEnabled) {
+                this.toGrafana();
+                return;
+              } else {
+                this.changeView();
+              }
+            })
+            .catch(() => {
+              notifyApp(createErrorNotification('There is some error. Please try again'));
+              this.setState({
+                isLoggingIn: false,
+              });
+            });
         });
     }
   };
