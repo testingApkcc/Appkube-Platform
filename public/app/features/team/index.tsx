@@ -68,11 +68,7 @@ class Team extends React.Component<any, any> {
             label: 'Role',
             key: 'roles',
             renderCallback: (value: any) => {
-              return (
-                <td>
-                  <a href="#">{value}</a>
-                </td>
-              );
+              return <td>{value}</td>;
             },
           },
           {
