@@ -443,6 +443,7 @@ export class CustomSideMenu extends PureComponent<any, any> {
           text: 'Team',
           cssClass: 'metrics',
           childName: 'team',
+          isImplemented: true,
         },
       ],
     },
