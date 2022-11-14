@@ -28,136 +28,83 @@ class Team extends React.Component<any, any> {
       isCurrentPage: true,
     },
   ];
-  // tableValue: any;
   perPageLimit: any;
   checkboxValue: any;
   openImageRef: any;
   inviteUsersModalRef: any;
+  columns: any;
   constructor(props: Props) {
     super(props);
     this.state = {
       pendingList: [],
       usersList: [],
       activeList: 0,
-      // data: [],
-      // };
-      tableValue: {
-        columns: [
-          {
-            label: 'User Name',
-            key: 'username',
-            renderCallback: (value: any) => {
-              return (
-                <td>
-                  <a href="#">{value}</a>
-                </td>
-              );
-            },
-          },
-          {
-            label: 'Email',
-            key: 'email',
-            renderCallback: (value: any) => {
-              return (
-                <td>
-                  <a href="#">{value}</a>
-                </td>
-              );
-            },
-          },
-          {
-            label: 'Role',
-            key: 'roles',
-            renderCallback: (value: any) => {
-              return <td>{value}</td>;
-            },
-          },
-          {
-            label: 'Invite Status',
-            key: 'inviteStatus',
-            renderCallback: (value: any) => {
-              return (
-                <td>
-                  <a href="#">{value}</a>
-                </td>
-              );
-            },
-          },
-          {
-            label: 'MFA Status',
-            key: 'isMfaEnable',
-            renderCallback: (value: any) => {
-              return (
-                <td>
-                  <a href="#">{value}</a>
-                </td>
-              );
-            },
-          },
-          {
-            label: 'MFA Key',
-            key: 'googleMfaKey',
-            renderCallback: (value: any) => {
-              return (
-                <td>
-                  <a href="#">{value}</a>
-                </td>
-              );
-            },
-          },
-          {
-            label: 'MFA QR Code',
-            key: 'mfaQrCode',
-            renderCallback: (value: any) => {
-              return (
-                <td>
-                  <div className="d-block">
-                    {/* <span className="d-inline-block">{value}</span> */}
-                    <button className="btn btn-link float-left" onClick={() => this.onClickOpenImage(value)}>
-                      <i className="fa fa-eye"></i>
-                    </button>
-                  </div>
-                </td>
-              );
-            },
-          },
-          {
-            label: 'Enable/Disable MFA',
-            key: 'changeMfaStatus',
-            renderCallback: (value: any) => {
-              return (
-                <td>
-                  <a href="#">{value}</a>
-                </td>
-              );
-            },
-          },
-          {
-            label: 'Update Roles',
-            key: 'updateRoles',
-            renderCallback: (value: any, roles: any) => {
-              return (
-                <td>
-                  <div className="d-block">
-                    <button
-                      className="team-blue-button float-left"
-                      onClick={() => this.onClickUpdateRoles(value, roles)}
-                    >
-                      Update Roles
-                    </button>
-                  </div>
-                </td>
-              );
-            },
-          },
-        ],
-        data: [],
-      },
+      tableData: [],
     };
     this.perPageLimit = 4;
     this.checkboxValue = false;
     this.inviteUsersModalRef = React.createRef();
     this.openImageRef = React.createRef();
+    this.columns = [
+      {
+        label: 'User Name',
+        key: 'username',
+      },
+      {
+        label: 'Email',
+        key: 'email',
+      },
+      {
+        label: 'Role',
+        key: 'roles',
+      },
+      {
+        label: 'Invite Status',
+        key: 'inviteStatus',
+      },
+      {
+        label: 'MFA Status',
+        key: 'isMfaEnable',
+      },
+      {
+        label: 'MFA Key',
+        key: 'googleMfaKey',
+      },
+      {
+        label: 'MFA QR Code',
+        key: 'mfaQrCode',
+        renderCallback: (value: any) => {
+          return (
+            <td>
+              <div className="d-block">
+                <button className="btn btn-link float-left" onClick={() => this.onClickOpenImage(value)}>
+                  <i className="fa fa-eye"></i>
+                </button>
+              </div>
+            </td>
+          );
+        },
+      },
+      {
+        label: 'Enable/Disable MFA',
+        key: 'changeMfaStatus',
+      },
+      {
+        label: 'Update Roles',
+        key: 'updateRoles',
+        renderCallback: (value: any, roles: any) => {
+          return (
+            <td>
+              <div className="d-block">
+                <button className="team-blue-button float-left" onClick={() => this.onClickUpdateRoles(value, roles)}>
+                  Update Roles
+                </button>
+              </div>
+            </td>
+          );
+        },
+      },
+    ];
   }
 
   async componentDidMount() {
@@ -188,15 +135,11 @@ class Team extends React.Component<any, any> {
       .then((response) => response.json())
       .then((result: any) => {
         if (result.code !== 417) {
-          const { tableValue } = this.state;
           console.log('Team list : ', result);
           this.setState({
             pendingList: result.object.pendingInviteList,
             usersList: result.object.teamList,
-            tableValue: {
-              columns: tableValue.columns,
-              data: result.object.teamList,
-            },
+            tableData: result.object.teamList,
           });
         }
       })
@@ -249,20 +192,16 @@ class Team extends React.Component<any, any> {
   };
 
   onClickItems = (list: any, activeList: any) => {
-    const { tableValue } = this.state;
     this.setState({
-      tableValue: {
-        columns: tableValue.columns,
-        data: list,
-      },
       activeList,
+      tableData: list,
     });
   };
 
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'PERFORMANCE MANAGEMENT';
-    const { pendingList, usersList, activeList } = this.state;
+    const { pendingList, usersList, activeList, tableData } = this.state;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -349,7 +288,7 @@ class Team extends React.Component<any, any> {
                 </div>
               </div>
               <Table
-                valueFromData={this.state.tableValue}
+                valueFromData={{ data: tableData, columns: this.columns }}
                 perPageLimit={this.perPageLimit}
                 visiblecheckboxStatus={this.checkboxValue}
                 tableClasses={{
