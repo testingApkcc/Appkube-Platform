@@ -38,6 +38,7 @@ class Team extends React.Component<any, any> {
     this.state = {
       pendingList: [],
       usersList: [],
+      activeList: 0,
       // data: [],
       // };
       tableValue: {
@@ -187,10 +188,15 @@ class Team extends React.Component<any, any> {
       .then((response) => response.json())
       .then((result: any) => {
         if (result.code !== 417) {
+          const { tableValue } = this.state;
           console.log('Team list : ', result);
           this.setState({
             pendingList: result.object.pendingInviteList,
             usersList: result.object.teamList,
+            tableValue: {
+              columns: tableValue.columns,
+              data: result.object.teamList,
+            },
           });
         }
       })
@@ -242,20 +248,21 @@ class Team extends React.Component<any, any> {
       });
   };
 
-  onClickItems = (list: any) => {
+  onClickItems = (list: any, activeList: any) => {
     const { tableValue } = this.state;
     this.setState({
       tableValue: {
         columns: tableValue.columns,
         data: list,
       },
+      activeList,
     });
   };
 
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'PERFORMANCE MANAGEMENT';
-    const { pendingList, usersList } = this.state;
+    const { pendingList, usersList, activeList } = this.state;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -305,8 +312,8 @@ class Team extends React.Component<any, any> {
                   <a>
                     <div
                       className="team-dashboard-box"
-                      style={{ borderColor: '#00861b' }}
-                      onClick={(e) => this.onClickItems(usersList)}
+                      style={{ borderColor: '#00861b', background: activeList === 0 ? '#e4e3e3' : 'transparent' }}
+                      onClick={(e) => this.onClickItems(usersList, 0)}
                     >
                       <span>All users</span>
                       <strong>{usersList && usersList.length}</strong>
@@ -317,8 +324,8 @@ class Team extends React.Component<any, any> {
                   <a>
                     <div
                       className="team-dashboard-box"
-                      style={{ borderColor: '#ffa000' }}
-                      onClick={(e) => this.onClickItems(pendingList)}
+                      style={{ borderColor: '#ffa000', background: activeList === 1 ? '#e4e3e3' : 'transparent' }}
+                      onClick={(e) => this.onClickItems(pendingList, 1)}
                     >
                       <span>Invite sent</span>
                       <strong>{pendingList && pendingList.length}</strong>
