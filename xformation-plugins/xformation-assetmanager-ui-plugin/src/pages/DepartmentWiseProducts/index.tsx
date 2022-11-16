@@ -597,19 +597,19 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 								</li>
 								<li>
 									<label>No. of App Services</label>
-									<span>{serviceByType.APP || 0}</span>
+									<span>{serviceByType['App'] || 0}</span>
 								</li>
 								<li>
 									<label>No. of Data Services</label>
-									<span>{serviceByType.DATA || 0}</span>
+									<span>{serviceByType['Data'] || 0}</span>
 								</li>
 								<li>
 									<label>No. of Network Services</label>
-									<span>{serviceByType.NETWORK || 0}</span>
+									<span>{serviceByType['Network'] || 0}</span>
 								</li>
 								<li>
 									<label>No. of Other Services</label>
-									<span>{serviceByType.OTHER || 0}</span>
+									<span>{serviceByType['Other'] || 0}</span>
 								</li>
 							</ul>
 							<div className="production-heading">
