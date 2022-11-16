@@ -70,7 +70,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		let firstProd = "";
 		let firstEnv = "";
 		services.forEach((service: any) => {
-			const { serviceNature, associatedProduct, associatedEnv, serviceHostingType, associatedCommonService, associatedBusinessService, associatedLandingZone } = service.metadata_json;
+			const { serviceNature, associatedProduct, associatedEnv, serviceHostingType, associatedCommonService, associatedBusinessService, associatedLandingZone, serviceType } = service.metadata_json;
 			if (associatedLandingZone === "897373451") {
 				if (!firstProd) {
 					firstProd = associatedProduct;
@@ -94,7 +94,8 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				//manipulation for topology view
 				const topNode = topologyMainData[associatedProduct] || {};
 				const envTopData = topNode[associatedEnv] || {};
-				const serviceHostingData = envTopData[serviceHostingType] || {};
+				const serviceTypeTopDat = envTopData[serviceType] || {};
+				const serviceHostingData = serviceTypeTopDat[serviceHostingType] || {};
 				const serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
 				let associatedServiceTop = associatedBusinessService;
 				if (serviceNature === enumServiceNature.common) {
@@ -103,7 +104,8 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
 				serviceNatureDataForTop[associatedServiceTop].push(service);
 				serviceHostingData[serviceNature] = serviceNatureDataForTop;
-				envTopData[serviceHostingType] = serviceHostingData;
+				serviceTypeTopDat[serviceHostingType] = serviceHostingData;
+				envTopData[serviceType] = serviceTypeTopDat;
 				topNode[associatedEnv] = envTopData;
 				topologyMainData[associatedProduct] = topNode;
 			}

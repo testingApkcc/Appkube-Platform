@@ -35,10 +35,10 @@ export class TopologyView extends React.Component<any, any> {
     }
   }
 
-  createModalData = (hostingType: any, serviceNature: any, serviceName: any) => {
+  createModalData = (serviceType: any, hostingType: any, serviceNature: any, serviceName: any) => {
     const { data } = this.state;
-    if (data && data[hostingType] && data[hostingType][serviceNature] && data[hostingType][serviceNature][serviceName]) {
-      const services = data[hostingType][serviceNature][serviceName];
+    if (data && data[serviceType] && data[serviceType][hostingType] && data[serviceType][hostingType][serviceNature] && data[serviceType][hostingType][serviceNature][serviceName]) {
+      const services = data[serviceType][hostingType][serviceNature][serviceName];
       const modalData: any = {
         cost: 0,
         performance: 0,
@@ -57,7 +57,7 @@ export class TopologyView extends React.Component<any, any> {
       let avgUserExp = 0;
       let avgDataProtection = 0;
       services.map((service: any) => {
-        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats, associatedLandingZone } = service.metadata_json;
+        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats, associatedLandingZone, dbType } = service.metadata_json;
         avgPerformance += performance.score;
         avgAvailability += availability.score;
         avgUserExp += userExperiance.score;
@@ -68,7 +68,8 @@ export class TopologyView extends React.Component<any, any> {
             name,
             serviceNature,
             location: associatedManagedCloudServiceLocation,
-            account: associatedLandingZone
+            account: associatedLandingZone,
+            dbType: dbType
           });
         } else {
           modalData.appServices.push({
@@ -93,21 +94,21 @@ export class TopologyView extends React.Component<any, any> {
     }
   };
 
-  onClickService = (hostingType: any, serviceNature: any, serviceName: any) => {
-    this.createModalData(hostingType, serviceNature, serviceName);
+  onClickService = (serviceType: any, hostingType: any, serviceNature: any, serviceName: any) => {
+    this.createModalData(serviceType, hostingType, serviceNature, serviceName);
     this.toggle();
   };
 
-  renderServices = (hostingType: any, serviceNature: any) => {
+  renderServices = (serviceType: any, hostingType: any, serviceNature: any) => {
     const { data } = this.state;
     const retData: any = [];
-    if (data && data[hostingType] && data[hostingType][serviceNature]) {
-      const associatedServices = data[hostingType][serviceNature];
+    if (data && data[serviceType] && data[serviceType][hostingType] && data[serviceType][hostingType][serviceNature]) {
+      const associatedServices = data[serviceType][hostingType][serviceNature];
       const serviceNames = Object.keys(associatedServices);
       serviceNames.map((serviceName: any) => {
         retData.push(
           <li>
-            <a onClick={() => this.onClickService(hostingType, serviceNature, serviceName)}>{serviceName}</a>
+            <a onClick={() => this.onClickService(serviceType, hostingType, serviceNature, serviceName)}>{serviceName}</a>
           </li>
         );
       });
@@ -115,7 +116,7 @@ export class TopologyView extends React.Component<any, any> {
     return retData;
   };
 
-  renderModalData = (serviceType: any) => {
+  renderModalData = (serviceType: any, isDataService: any) => {
     const { modalData } = this.state;
     const services = modalData[serviceType];
     const retData: any = [];
@@ -123,15 +124,21 @@ export class TopologyView extends React.Component<any, any> {
       services.map((service: any) => {
         retData.push(
           <div className="row">
-            <div className="col-md-4">
+            <div className={`${isDataService ? 'col-md-3' : 'col-md-4'}`}>
               <span>{service.name}</span>
             </div>
-            <div className="col-md-4">
+            <div className={`${isDataService ? 'col-md-2' : 'col-md-4'}`}>
               <span>{service.serviceNature}</span>
             </div>
-            <div className="col-md-4">
+            <div className={`${isDataService ? 'col-md-2' : 'col-md-4'}`}>
               <span>{service.location}</span>
             </div>
+            {
+              isDataService ?
+                <div className={`${isDataService ? 'col-md-2' : 'col-md-4'}`}>
+                  <span>{service.dbType}</span>
+                </div> : <></>
+            }
           </div>
         );
       });
@@ -153,6 +160,7 @@ export class TopologyView extends React.Component<any, any> {
 
   render() {
     const { modal, modalData } = this.state;
+    const isDataModal = modalData && modalData['dataServices'] && modalData['dataServices'].length > 0 ? true : false;
     return (
       <>
         <div className="topology-view-container">
@@ -240,17 +248,17 @@ export class TopologyView extends React.Component<any, any> {
                     <div className="sub-heading">Cluster</div>
                     <ul className="orchestration-buttons">
                       <li>
-                        <a style={{color: '#5ca0f0', fontWeight: 'bold'}}>Load Balancer</a>
+                        <a style={{ color: '#5ca0f0', fontWeight: 'bold' }}>Load Balancer</a>
                       </li>
                       <li>
-                        <a href='http://mesh.synectiks.net/' target="_blank" style={{color: '#5ca0f0', fontWeight: 'bold'}}>Service Mesh</a>
+                        <a href='http://mesh.synectiks.net/' target="_blank" style={{ color: '#5ca0f0', fontWeight: 'bold' }}>Service Mesh</a>
                       </li>
                     </ul>
                     <ul className="business-service-buttons">
-                      {this.renderServices("Cluster", "Business")}
+                      {this.renderServices("App", "Cluster", "Business")}
                     </ul>
                     <ul className="common-service-buttons">
-                      {this.renderServices("Cluster", "Common")}
+                      {this.renderServices("App", "Cluster", "Common")}
                     </ul>
                   </div>
                   <div className="contains">
@@ -258,10 +266,10 @@ export class TopologyView extends React.Component<any, any> {
                     <ul className="orchestration-buttons">
                     </ul>
                     <ul className="business-service-buttons">
-                      {this.renderServices("ServerLess", "Business")}
+                      {this.renderServices("App", "ServerLess", "Business")}
                     </ul>
                     <ul className="common-service-buttons">
-                      {this.renderServices("ServerLess", "Common")}
+                      {this.renderServices("App", "ServerLess", "Common")}
                     </ul>
                   </div>
                   <div className="contains">
@@ -269,10 +277,10 @@ export class TopologyView extends React.Component<any, any> {
                     <ul className="orchestration-buttons">
                     </ul>
                     <ul className="business-service-buttons">
-                      {this.renderServices("CloudManaged", "Business")}
+                      {this.renderServices("App", "CloudManaged", "Business")}
                     </ul>
                     <ul className="common-service-buttons">
-                      {this.renderServices("CloudManaged", "Common")}
+                      {this.renderServices("App", "CloudManaged", "Common")}
                     </ul>
                   </div>
                 </div>
@@ -284,44 +292,16 @@ export class TopologyView extends React.Component<any, any> {
               </div>
               <div className="data-services-buttons">
                 <div className="sub-heading">Clustered</div>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <i>
-                        <img src={images.DataServicesIcon} alt="" style={{ maxWidth: '56px' }} />
-                      </i>
-                      <span>SQL DB</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i>
-                        <img src={images.DataServicesIcon} alt="" style={{ maxWidth: '56px' }} />
-                      </i>
-                      <span>Mongo DB</span>
-                    </a>
-                  </li>
+                <ul className="common-service-buttons">
+                  {this.renderServices("Data", "Cluster", "Business")}
+                  {this.renderServices("Data", "Cluster", "Common")}
                 </ul>
               </div>
               <div className="data-services-buttons">
-                <div className="sub-heading">Clustered</div>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <i>
-                        <img src={images.DataServicesIcon} alt="" style={{ maxWidth: '56px' }} />
-                      </i>
-                      <span>SQL DB</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i>
-                        <img src={images.DataServicesIcon} alt="" style={{ maxWidth: '56px' }} />
-                      </i>
-                      <span>Mongo DB</span>
-                    </a>
-                  </li>
+                <div className="sub-heading">Cloud Managed</div>
+                <ul className="common-service-buttons">
+                  {this.renderServices("Data", "CloudManaged", "Business")}
+                  {this.renderServices("Data", "CloudManaged", "Common")}
                 </ul>
               </div>
             </div>
@@ -391,34 +371,46 @@ export class TopologyView extends React.Component<any, any> {
                   <div className="col-md-3">
                     <span>Services</span>
                   </div>
-                  <div className="col-md-3">
+                  <div className={`${isDataModal ? 'col-md-2' : 'col-md-3'}`}>
                     <span>Service Nature</span>
                   </div>
-                  <div className="col-md-3">
+                  <div className={`${isDataModal ? 'col-md-2' : 'col-md-3'}`}>
                     <span>Location</span>
                   </div>
+                  {
+                    isDataModal ?
+                      <div className="col-md-2">
+                        <span>DB Type</span>
+                      </div> : <></>
+                  }
                 </div>
               </div>
-              <div className="tbody">
-                <div className="row">
-                  <div className="col-md-3">
-                    <strong>App Services</strong>
-                  </div>
-                  <div className="col-md-9">
-                    {this.renderModalData("appServices")}
-                  </div>
-                </div>
-              </div>
-              <div className="tbody">
-                <div className="row">
-                  <div className="col-md-3">
-                    <strong>Data Services</strong>
-                  </div>
-                  <div className="col-md-9">
-                    {this.renderModalData("dataServices")}
-                  </div>
-                </div>
-              </div>
+              {
+                modalData['appServices'] && modalData['appServices'].length > 0 ?
+                  <div className="tbody">
+                    <div className="row">
+                      <div className="col-md-3">
+                        <strong>App Services</strong>
+                      </div>
+                      <div className="col-md-9">
+                        {this.renderModalData("appServices", false)}
+                      </div>
+                    </div>
+                  </div> : <></>
+              }
+              {
+                modalData['dataServices'] && modalData['dataServices'].length > 0 ?
+                  <div className="tbody">
+                    <div className="row">
+                      <div className="col-md-3">
+                        <strong>Data Services</strong>
+                      </div>
+                      <div className="col-md-9">
+                        {this.renderModalData("dataServices", true)}
+                      </div>
+                    </div>
+                  </div> : <></>
+              }
             </div>
           </ModalBody>
         </Modal>
