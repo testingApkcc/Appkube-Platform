@@ -586,7 +586,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 				}
 				return (
 					<div className="department-box" key={index}>
-						<Link to={`${PLUGIN_BASE_URL}/department-wise-charts`} className="heading">
+						<Link to={`${PLUGIN_BASE_URL}/department-wise-charts?department=${department.name}`} className="heading">
 							{department.name}
 						</Link>
 						<div className="contents">
@@ -717,11 +717,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 												</div>
 											)}
 										</div>
-										<div className="view-details-link">
+										{/* <div className="view-details-link">
 											<Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>
 												View details <i className="fa fa-chevron-down" />
 											</Link>
-										</div>
+										</div> */}
 									</div>
 								</div>
 								<div className="col-lg-4 col-md-12 col-sm-12">

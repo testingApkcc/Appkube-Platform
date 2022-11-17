@@ -4,6 +4,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { PLUGIN_BASE_URL } from '../../constants';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
+import { CommonService } from '../_common/common';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
@@ -23,14 +24,8 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                 datasets: [
                     {
                         data: [],
-
                         lineTension: 0.2,
-                        backgroundColor: [
-                            'rgba(82, 177, 65, 1)',
-                            'rgba(255, 153, 0, 1)',
-                            'rgba(0, 137, 214, 1)',
-                            'rgba(216, 69, 57, 1)',
-                        ],
+                        backgroundColor: [],
                     },
                 ],
             },
@@ -123,16 +118,17 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
 
 
     handleGraphValue = (departmentWiseData: any) => {
+        const departmentName = CommonService.getParameterByName("department", window.location.href);
         let { humanResources } = this.state;
         let data = [];
         let labels: any = [];
         // let totalCount = 0;
         if (departmentWiseData && departmentWiseData.length > 0) {
             for (let i = 0; i < departmentWiseData.length; i++) {
-                let count = 0;
                 let department = departmentWiseData[i];
-                if (department.productList) {
+                if (department.productList && (!departmentName || departmentName === department.name)) {
                     for (let j = 0; j < department.productList.length; j++) {
+                        let count = 0;
                         let product = department.productList[j];
                         if (labels.indexOf(product.name) === -1) {
                             labels.push(product.name);
@@ -143,9 +139,8 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                                 count += service.productBilling.amount;
                             }
                         }
+                        data.push(count);
                     }
-                    // totalCount += count;
-                    data.push(count);
                 }
             }
         }
@@ -171,6 +166,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
 
     render() {
         const { barOptions, humanResources } = this.state
+        const departmentName = CommonService.getParameterByName("department", window.location.href);
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -193,7 +189,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                         <div className='row'>
                             <div className="col-lg-12 col-md-12 col-sm-12">
                                 {humanResources && <div className="cost-analysis-chart">
-                                    <div className="heading">Human Resources</div>
+                                    <div className="heading">{departmentName}</div>
                                     {humanResources.total && <div className="total-cost-text cost"><strong>${humanResources.total}</strong> - 40% off the total cost</div>}
                                     <div className="chart">
                                         {humanResources.datasets &&
