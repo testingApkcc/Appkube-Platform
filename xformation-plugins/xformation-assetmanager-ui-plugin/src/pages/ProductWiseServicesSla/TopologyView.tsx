@@ -127,15 +127,15 @@ export class TopologyView extends React.Component<any, any> {
             <div className={`${isDataService ? 'col-md-3' : 'col-md-4'}`}>
               <span>{service.name}</span>
             </div>
-            <div className={`${isDataService ? 'col-md-2' : 'col-md-4'}`}>
+            <div className={`${isDataService ? 'col-md-3' : 'col-md-4'}`}>
               <span>{service.serviceNature}</span>
             </div>
-            <div className={`${isDataService ? 'col-md-2' : 'col-md-4'}`}>
+            <div className={`${isDataService ? 'col-md-3' : 'col-md-4'}`}>
               <span>{service.location}</span>
             </div>
             {
               isDataService ?
-                <div className={`${isDataService ? 'col-md-2' : 'col-md-4'}`}>
+                <div className="col-md-3">
                   <span>{service.dbType}</span>
                 </div> : <></>
             }
@@ -288,7 +288,7 @@ export class TopologyView extends React.Component<any, any> {
             </div>
             <div className="data-services-right">
               <div className="data-heading">
-                Data <br /> Services
+                Data Services
               </div>
               <div className="data-services-buttons">
                 <div className="sub-heading">Clustered</div>
@@ -368,21 +368,25 @@ export class TopologyView extends React.Component<any, any> {
                   <div className="col-md-3">
                     <span className="first">Service Type</span>
                   </div>
-                  <div className="col-md-3">
-                    <span>Services</span>
+                  <div className='col-md-9'>
+                    <div className="row">
+                      <div className={`${isDataModal ? 'col-md-3' : 'col-md-4'}`}>
+                        <span>Services</span>
+                      </div>
+                      <div className={`${isDataModal ? 'col-md-3' : 'col-md-4'}`}>
+                        <span>Service Nature</span>
+                      </div>
+                      <div className={`${isDataModal ? 'col-md-3' : 'col-md-4'}`}>
+                        <span>Location</span>
+                      </div>
+                      {
+                        isDataModal ?
+                          <div className="col-md-3">
+                            <span>DB Type</span>
+                          </div> : <></>
+                      }
+                    </div>
                   </div>
-                  <div className={`${isDataModal ? 'col-md-2' : 'col-md-3'}`}>
-                    <span>Service Nature</span>
-                  </div>
-                  <div className={`${isDataModal ? 'col-md-2' : 'col-md-3'}`}>
-                    <span>Location</span>
-                  </div>
-                  {
-                    isDataModal ?
-                      <div className="col-md-2">
-                        <span>DB Type</span>
-                      </div> : <></>
-                  }
                 </div>
               </div>
               {
