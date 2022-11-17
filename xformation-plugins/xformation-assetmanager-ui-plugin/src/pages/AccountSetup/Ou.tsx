@@ -26,7 +26,7 @@ export class Ou extends React.Component<any, any> {
 
 	selectUnit = (id: any, unitId: any) => {
 		this.setState({
-			selectedData: [ id, unitId ]
+			selectedData: [id, unitId]
 		});
 	};
 
@@ -78,7 +78,7 @@ export class Ou extends React.Component<any, any> {
 	};
 
 	render() {
-		const { organizationList } = this.props;
+		const { organizationList, meta } = this.props;
 		return (
 			<div className="d-inline-block width-100 account-setup-tab-contents">
 				<div className="contents">
@@ -95,7 +95,7 @@ export class Ou extends React.Component<any, any> {
 						<ul>{organizationList !== null && this.renderOrganizations(organizationList)}</ul>
 					</div>
 				</div>
-				<CreateNewOU ref={this.createNewOURef} organizationList={organizationList} refresh={this.refresh} />
+				<CreateNewOU ref={this.createNewOURef} organizationList={organizationList} refresh={this.refresh} meta={meta} />
 			</div>
 		);
 	}

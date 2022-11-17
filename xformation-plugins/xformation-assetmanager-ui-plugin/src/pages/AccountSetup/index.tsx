@@ -22,7 +22,7 @@ export class AccountSetup extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            organizationList: null ,
+            organizationList: null,
             selection: [],
             name: "",
             accessKey: "",
@@ -47,11 +47,11 @@ export class AccountSetup extends React.Component<any, any> {
             },
             {
                 name: "OU",
-                component: () => <Ou ref={this.ouRef} onChangeSelection={this.onChangeSelection} organizationList={this.state.organizationList} getOrganizationList={this.getOrganizationList} />
+                component: () => <Ou ref={this.ouRef} onChangeSelection={this.onChangeSelection} organizationList={this.state.organizationList} getOrganizationList={this.getOrganizationList} meta={props.meta} />
             },
             {
                 name: "Review",
-                component: () => <Review ref={this.reviewRef} selectedOrg={this.ouRef.current !== null ? this.ouRef.current.getSelection() : null} selectedData={this.roleRef.current !== null ? this.roleRef.current.getRoleData() : null}/>
+                component: () => <Review ref={this.reviewRef} selectedOrg={this.ouRef.current !== null ? this.ouRef.current.getSelection() : null} selectedData={this.roleRef.current !== null ? this.roleRef.current.getRoleData() : null} />
             }
         ];
         this.breadCrumbs = [
@@ -79,7 +79,7 @@ export class AccountSetup extends React.Component<any, any> {
         });
     };
 
-    getSelectedData = () =>{
+    getSelectedData = () => {
         return {
             name: this.state.name,
             accessKey: this.state.accessKey,
@@ -111,32 +111,32 @@ export class AccountSetup extends React.Component<any, any> {
     }
     async componentDidMount() {
         try {
-            var usr = localStorage.getItem(`userInfo`); 
-            if(usr !== null){
+            var usr = localStorage.getItem(`userInfo`);
+            if (usr !== null) {
                 const user = JSON.parse(usr);
-                await RestService.getData(this.config.GET_USER_ORGANIZATION+'/'+user.info.credentials.name, null, null).then(
-                (response: any) => {
-                    this.setState({
-                        organizationList: response,
+                await RestService.getData(this.config.GET_USER_ORGANIZATION + '/' + user.info.credentials.name, null, null).then(
+                    (response: any) => {
+                        this.setState({
+                            organizationList: response,
+                        });
                     });
-                });    
             }
-            
+
         } catch (err) {
             console.log("Error: ", err);
         }
     }
     getOrganizationList = () => {
-        var usr = localStorage.getItem(`userInfo`); 
-        
-        if(usr !== null){
+        var usr = localStorage.getItem(`userInfo`);
+
+        if (usr !== null) {
             const user = JSON.parse(usr);
-            RestService.getData(this.config.GET_USER_ORGANIZATION+'/'+user.info.credentials.name, null, null).then(
-            (response: any) => {
-                this.setState({
-                    organizationList: response,
+            RestService.getData(this.config.GET_USER_ORGANIZATION + '/' + user.info.credentials.name, null, null).then(
+                (response: any) => {
+                    this.setState({
+                        organizationList: response,
+                    });
                 });
-            });    
         }
     }
     render() {
