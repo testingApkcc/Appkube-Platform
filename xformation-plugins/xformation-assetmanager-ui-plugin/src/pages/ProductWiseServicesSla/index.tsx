@@ -554,9 +554,9 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 									<div className="common-container bottom-border-none">
 										<div className="row">
 											<div className="col-lg-9 col-md-9 col-sm-12" style={{ marginBottom: '10px' }}>
-												<div className="topology-heading" onClick={this.toggleView}>
+												<div className="topology-heading">
 													{isTopologyActive ? 'Topology view' : 'Service wise view'}
-													<div style={{ marginLeft: "10px" }} className="asset-white-button min-width-inherit">
+													<div style={{ marginLeft: "10px", cursor: "pointer" }} className="asset-white-button min-width-inherit" onClick={this.toggleView}>
 														<img src={images.Jobs} alt="" style={{ maxWidth: '15px' }} />
 													</div>
 												</div>
