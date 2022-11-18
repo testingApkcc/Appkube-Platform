@@ -1,7 +1,7 @@
 const securitySrvUrl = `http://34.199.12.114:8094/`;
 const alertSrvUrl = `http://34.199.12.114:5055`;
 const catalogSrvUrl = `http://34.199.12.114:5050/api/`;
-const previewUrl = 'http://34.199.12.114:5057/api';
+const awsAPIUrl = 'http://34.199.12.114:5057/api';
 const dataSourceURL = '/';
 
 export const config = {
@@ -22,10 +22,12 @@ export const config = {
   ADD_ANALYTICS_VIEW: catalogSrvUrl + 'addView',
   PARENT_NAME: '',
   basePath: '',
-  PREVIEW_DASHBOARDS_URL: `${previewUrl}/dashboard/preview`,
-  DELETE_DASHBOARD: `${previewUrl}/dashboard/view-json`,
+  PREVIEW_DASHBOARDS_URL: `${awsAPIUrl}/dashboard/preview`,
+  DELETE_DASHBOARD: `${awsAPIUrl}/dashboard/view-json`,
   GET_DATASOURCE_LIST: `${dataSourceURL}api/plugins/filter-datasource`,
   GET_MASTER_DATASOURCE_LIST: `/api/datasources/master-datasources`,
+  CLOUD_WISE_SPEND: `${awsAPIUrl}/anlytics/cloud-wise-spend`,
+  SLA_CENTRAL_DATA: `${awsAPIUrl}/anlytics/sla-central`,
 };
 
 export const appconfig = {

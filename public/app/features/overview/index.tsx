@@ -13,7 +13,23 @@ import {
   PointElement,
   LineElement,
 } from 'chart.js';
+import { backendSrv } from 'app/core/services/backend_srv';
+import { config } from '../config';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
+
+const images: any = {
+  aws: '/public/img/overview/aws.svg',
+  azure: '/public/img/overview/azure.svg',
+  gcp: '/public/img/overview/gcp.svg',
+  other: '/public/img/overview/cloud.svg',
+};
+
+const colors: any = {
+  aws: 'orange',
+  azure: 'blue',
+  gcp: 'red',
+  other: 'orange',
+};
 
 class Overview extends React.Component<any, any> {
   breadCrumbs: any = [
@@ -182,25 +198,102 @@ class Overview extends React.Component<any, any> {
           },
         },
       },
+      cloutWiseSpend: {},
+      slaCentralData: {},
     };
+  }
+
+  componentDidMount() {
+    backendSrv.get(config.CLOUD_WISE_SPEND).then(
+      (res: any) => {
+        this.setState({
+          cloutWiseSpend: res,
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+    backendSrv.get(config.SLA_CENTRAL_DATA).then(
+      (res: any) => {
+        this.setState({
+          slaCentralData: res,
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   handletableColor = (val: any) => {
     let color = '';
-    if (val * 1 > 90) {
+    if (val * 1 > 98) {
       color = 'green';
     } else if (val * 1 <= 75) {
       color = 'red';
-    } else if (val * 1 <= 90 || val * 1 > 74) {
+    } else if (val * 1 <= 98 || val * 1 > 75) {
       color = 'orange';
     }
     return color;
   };
 
+  renderCloudWiseSpend = (data: any) => {
+    const retData: any = [];
+    if (data) {
+      const clouds = Object.keys(data);
+      clouds.forEach((cloud: any, index: any) => {
+        const cloudData = data[cloud];
+        retData.push(
+          <div className="content" key={index}>
+            <div className="icon">
+              <img alt={cloud} src={images[cloud.toLowerCase()]} />
+            </div>
+            <div className="progress-content">
+              <div className="text">
+                <span className="name">{cloud}</span>
+                <span className="value">{cloudData.currentTotal}</span>
+                <span className={cloudData.variance > 0 ? 'diff up' : 'diff down'}>
+                  <i className={cloudData.variance > 0 ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i>
+                  {cloudData.variance}%
+                </span>
+              </div>
+              <div className="progress">
+                <span className={colors[cloud.toLowerCase()]} style={{ width: `${cloudData.variance}%` }}></span>
+              </div>
+            </div>
+          </div>
+        );
+      });
+    }
+    return retData;
+  };
+
+  renderSLACentral = (data: any) => {
+    const retData: any = [];
+    if (data) {
+      const products = Object.keys(data);
+      products.forEach((product: any, index: any) => {
+        const productData: any = data[product];
+        retData.push(
+          <tr key={`${index}-sla-central`}>
+            <td className="products"> {product} </td>
+            <td className={this.handletableColor(productData.Performance)}> {productData.Performance}% </td>
+            <td className={this.handletableColor(productData.Availibility)}> {productData.Availibility}% </td>
+            <td className={this.handletableColor(productData.Reliability)}> {productData.Reliability}% </td>
+            <td className={this.handletableColor(productData.Security)}> {productData.Security}% </td>
+            <td className={this.handletableColor(productData['End Usage'])}> {productData['End Usage']}% </td>
+          </tr>
+        );
+      });
+    }
+    return retData;
+  };
+
   render() {
     const breadCrumbs = this.breadCrumbs;
     const pageTitle = 'MONITOR | OVERVIEW';
-    const { dashboardData } = this.state;
+    const { dashboardData, cloutWiseSpend, slaCentralData } = this.state;
     return (
       <React.Fragment>
         <div className="breadcrumbs-container">
@@ -371,35 +464,7 @@ class Overview extends React.Component<any, any> {
                           <label>Cloud wise spend</label>
                           <i className="fa fa-ellipsis-v"></i>
                         </div>
-                        <div className="contents">
-                          {dashboardData.cloudWiseProduct &&
-                            dashboardData.cloudWiseProduct.length > 0 &&
-                            dashboardData.cloudWiseProduct.map((val: any, index: any) => {
-                              return (
-                                <div className="content" key={index}>
-                                  <div className="icon">
-                                    <img alt={val.name} src={val.icon} />
-                                  </div>
-                                  <div className="progress-content">
-                                    <div className="text">
-                                      <span className="name">{val.name}</span>
-                                      <span className="value">{val.value}</span>
-                                      <span className={val.status === 'up' ? 'diff up' : 'diff down'}>
-                                        <i className={val.status === 'up' ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i>
-                                        {val.diff}
-                                      </span>
-                                    </div>
-                                    <div className="progress">
-                                      <span
-                                        className={val.percentageColor}
-                                        style={{ width: `${val.percentage}` }}
-                                      ></span>
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                        </div>
+                        <div className="contents">{this.renderCloudWiseSpend(cloutWiseSpend)}</div>
                       </div>
                     </div>
                   </div>
@@ -428,27 +493,15 @@ class Overview extends React.Component<any, any> {
                           <th> End Usage </th>
                         </tr>
                       </thead>
-                      <tbody>
-                        {dashboardData.productList &&
-                          dashboardData.productList.length > 0 &&
-                          dashboardData.productList.map((val: any, index: any) => {
-                            return (
-                              <tr key={index}>
-                                <td className="products"> {val.name} </td>
-                                <td className={this.handletableColor(val.performance)}> {val.performance}% </td>
-                                <td className={this.handletableColor(val.availabilty)}> {val.availabilty}% </td>
-                                <td className={this.handletableColor(val.reliability)}> {val.reliability}% </td>
-                                <td className={this.handletableColor(val.security)}> {val.security}% </td>
-                                <td className={this.handletableColor(val.endUsage)}> {val.endUsage}% </td>
-                              </tr>
-                            );
-                          })}
-                      </tbody>
+                      <tbody>{this.renderSLACentral(slaCentralData)}</tbody>
                     </table>
                   </div>
                   <div className="metrics-performance">
                     <div className="performance-box green">
                       <span>&#10095;</span>98%
+                    </div>
+                    <div className="performance-box" style={{ marginRight: '2px', paddingLeft: '0px' }}>
+                      75%<span>&#10095;</span>
                     </div>
                     <div className="performance-box orange">
                       <span>&#10095;</span>90%
