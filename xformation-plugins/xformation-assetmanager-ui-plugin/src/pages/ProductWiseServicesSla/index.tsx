@@ -34,7 +34,10 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			productName: '',
 			topologyMainData: null,
 			isTopologyDataLoaded: false,
-			isTopologyActive: false
+			isTopologyActive: false,
+			accountList: [],
+			treeDataWithAccount: {},
+			topologyDataWithAccount: {},
 		};
 		this.breadCrumbs = [
 			{
@@ -64,59 +67,77 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	};
 
 	manipulateServiceData = (services: any) => {
-		const treeData: any = [];
+		const treeDataWithAccount: any = {};
+		const topologyDataWithAccount: any = {};
 		const { filterData } = this.state;
-		const topologyMainData: any = {};
-		let firstProd = "";
-		let firstEnv = "";
 		services.forEach((service: any) => {
 			const { serviceNature, associatedProduct, associatedEnv, serviceHostingType, associatedCommonService, associatedBusinessService, associatedLandingZone, serviceType } = service.metadata_json;
-			if (associatedLandingZone === "897373451") {
-				if (!firstProd) {
-					firstProd = associatedProduct;
-				}
-				if (!firstEnv) {
-					firstEnv = associatedEnv;
-				}
-				const node = treeData[associatedProduct] || {};
-				const envServicesData = node[associatedEnv] || {};
-				const serviceNatureData = envServicesData[serviceNature] || {};
-				let associatedService = associatedBusinessService;
-				if (serviceNature === enumServiceNature.common) {
-					associatedService = associatedCommonService;
-				}
-				serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
-				serviceNatureData[associatedService].push(service);
-				envServicesData[serviceNature] = serviceNatureData;
-				node[associatedEnv] = envServicesData;
-				treeData[associatedProduct] = node;
-
-				//manipulation for topology view
-				const topNode = topologyMainData[associatedProduct] || {};
-				const envTopData = topNode[associatedEnv] || {};
-				const serviceTypeTopDat = envTopData[serviceType] || {};
-				const serviceHostingData = serviceTypeTopDat[serviceHostingType] || {};
-				const serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
-				let associatedServiceTop = associatedBusinessService;
-				if (serviceNature === enumServiceNature.common) {
-					associatedServiceTop = associatedCommonService;
-				}
-				serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
-				serviceNatureDataForTop[associatedServiceTop].push(service);
-				serviceHostingData[serviceNature] = serviceNatureDataForTop;
-				serviceTypeTopDat[serviceHostingType] = serviceHostingData;
-				envTopData[serviceType] = serviceTypeTopDat;
-				topNode[associatedEnv] = envTopData;
-				topologyMainData[associatedProduct] = topNode;
+			const treeData = treeDataWithAccount[associatedLandingZone] || {};
+			const node = treeData[associatedProduct] || {};
+			const envServicesData = node[associatedEnv] || {};
+			const serviceNatureData = envServicesData[serviceNature] || {};
+			let associatedService = associatedBusinessService;
+			if (serviceNature === enumServiceNature.common) {
+				associatedService = associatedCommonService;
 			}
+			serviceNatureData[associatedService] = serviceNatureData[associatedService] || [];
+			serviceNatureData[associatedService].push(service);
+			envServicesData[serviceNature] = serviceNatureData;
+			node[associatedEnv] = envServicesData;
+			treeData[associatedProduct] = node;
+			treeDataWithAccount[associatedLandingZone] = treeData;
+
+			//manipulation for topology view
+			const topologyMainData = topologyDataWithAccount[associatedLandingZone] || {};
+			const topNode = topologyMainData[associatedProduct] || {};
+			const envTopData = topNode[associatedEnv] || {};
+			const serviceTypeTopDat = envTopData[serviceType] || {};
+			const serviceHostingData = serviceTypeTopDat[serviceHostingType] || {};
+			const serviceNatureDataForTop = serviceHostingData[serviceNature] || {};
+			let associatedServiceTop = associatedBusinessService;
+			if (serviceNature === enumServiceNature.common) {
+				associatedServiceTop = associatedCommonService;
+			}
+			serviceNatureDataForTop[associatedServiceTop] = serviceNatureDataForTop[associatedServiceTop] || [];
+			serviceNatureDataForTop[associatedServiceTop].push(service);
+			serviceHostingData[serviceNature] = serviceNatureDataForTop;
+			serviceTypeTopDat[serviceHostingType] = serviceHostingData;
+			envTopData[serviceType] = serviceTypeTopDat;
+			topNode[associatedEnv] = envTopData;
+			topologyMainData[associatedProduct] = topNode;
+			topologyDataWithAccount[associatedLandingZone] = topologyMainData;
 		});
+		let tableData: any = {};
+		let topologyMainData: any = {};
+		const accountList = Object.keys(treeDataWithAccount);
+		accountList.forEach((account: any) => {
+			tableData = {
+				...tableData,
+				...treeDataWithAccount[account]
+			};
+			topologyMainData = {
+				...topologyMainData,
+				...topologyDataWithAccount[account]
+			};
+		});
+		const products = Object.keys(tableData);
+		let firstProd = "";
+		let firstEnv = "";
+		if (products.length > 0) {
+			firstProd = products[0];
+			const envs = Object.keys(tableData[firstProd]);
+			firstEnv = envs[0];
+		}
 		this.setState({
-			tableData: treeData,
+			treeDataWithAccount,
+			topologyDataWithAccount,
+			tableData,
 			filterData,
 			environmentType: firstEnv,
 			productName: firstProd,
 			topologyMainData,
-			isTopologyDataLoaded: true
+			isTopologyDataLoaded: true,
+			accountList,
 		});
 	};
 
@@ -524,14 +545,69 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		});
 	};
 
+	renderAccountOptions = () => {
+		const { accountList } = this.state;
+		return accountList.map((account: any) => {
+			return <option value={account}>{account}</option>
+		});
+	};
+
+	onChangeAccount = (e: any) => {
+		const { value } = e.target;
+		const { treeDataWithAccount, accountList, topologyDataWithAccount } = this.state;
+		let newTableData: any = {};
+		if (value) {
+			newTableData = treeDataWithAccount[value];
+		} else {
+			accountList.forEach((account: any) => {
+				newTableData = {
+					...newTableData,
+					...treeDataWithAccount[account]
+				};
+			});
+		}
+		const products = Object.keys(newTableData);
+		let firstProd = "";
+		let firstEnv = "";
+		if (products.length > 0) {
+			firstProd = products[0];
+			const envs = Object.keys(newTableData[firstProd]);
+			firstEnv = envs[0];
+		}
+		let newTopologyData: any = {};
+		if (value) {
+			newTopologyData = topologyDataWithAccount[value];
+		} else {
+			accountList.forEach((account: any) => {
+				newTopologyData = {
+					...newTopologyData,
+					...topologyDataWithAccount[account]
+				};
+			});
+		}
+		this.setState({
+			accountId: value,
+			tableData: newTableData,
+			environmentType: firstEnv,
+			productName: firstProd,
+			topologyMainData: newTopologyData,
+		});
+	}
+
 	render() {
-		const { productName, tableData, topologyMainData, environmentType, isTopologyDataLoaded, isTopologyActive } = this.state;
+		const { productName, tableData, topologyMainData, environmentType, isTopologyDataLoaded, isTopologyActive, accountId } = this.state;
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="services-sla-container">
 					<div className="common-container border-bottom-0">
-						<div className="services-heading">Product Wise Services SLA</div>
+						<div className="services-heading">
+							Product Wise Services SLA
+							<select value={accountId} onChange={this.onChangeAccount}>
+								<option value=''>All</option>
+								{this.renderAccountOptions()}
+							</select>
+						</div>
 						{!tableData ||
 							(tableData &&
 								Object.keys(tableData).length === 0 && <div className="services-sla-boxs">Loading...</div>)}
