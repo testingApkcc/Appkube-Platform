@@ -10,7 +10,8 @@ import { PLUGIN_BASE_URL } from '../../constants';
 const LOGOS: any = {
 	aws: images.awsLogo,
 	azure: images.microsoftAzureLogo,
-	gcp: images.gcpLogo
+	gcp: images.gcpLogo,
+	kubernetes: images.KubernetesLogo
 };
 
 export class Environments extends React.Component<any, any> {
