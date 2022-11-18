@@ -205,7 +205,7 @@ class Overview extends React.Component<any, any> {
           <tr key={`${index}-sla-central`}>
             <td className="products"> {product} </td>
             <td className={this.handletableColor(productData.Performance)}> {productData.Performance}% </td>
-            <td className={this.handletableColor(productData.Availibility)}> {productData.Availibility}% </td>
+            <td className={this.handletableColor(productData.Availability)}> {productData.Availability}% </td>
             <td className={this.handletableColor(productData.Reliability)}> {productData.Reliability}% </td>
             <td className={this.handletableColor(productData.Security)}> {productData.Security}% </td>
             <td className={this.handletableColor(productData['End Usage'])}> {productData['End Usage']}% </td>
@@ -413,7 +413,7 @@ class Overview extends React.Component<any, any> {
                         <tr>
                           <th className="products"> Products </th>
                           <th> Performance </th>
-                          <th> Availibility </th>
+                          <th> Availability </th>
                           <th> Reliability </th>
                           <th> Security </th>
                           <th> End Usage </th>
