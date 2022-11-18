@@ -26,8 +26,8 @@ export const config = {
   DELETE_DASHBOARD: `${awsAPIUrl}/dashboard/view-json`,
   GET_DATASOURCE_LIST: `${dataSourceURL}api/plugins/filter-datasource`,
   GET_MASTER_DATASOURCE_LIST: `/api/datasources/master-datasources`,
-  CLOUD_WISE_SPEND: `${awsAPIUrl}/anlytics/cloud-wise-spend`,
-  SLA_CENTRAL_DATA: `${awsAPIUrl}/anlytics/sla-central`,
+  CLOUD_WISE_SPEND: `${awsAPIUrl}/analytics/cloud-wise-spend`,
+  SLA_CENTRAL_DATA: `${awsAPIUrl}/analytics/sla-central`,
 };
 
 export const appconfig = {
