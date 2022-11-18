@@ -136,7 +136,8 @@ export class TopologyView extends React.Component<any, any> {
             {
               isDataService ?
                 <div className="col-md-3">
-                  <span>{service.dbType}</span>
+
+                  <span><img src={images[service.dbType]} alt="" style={{ maxWidth: '20px', marginRight: '5px' }} /> {service.dbType}</span>
                 </div> : <></>
             }
           </div>

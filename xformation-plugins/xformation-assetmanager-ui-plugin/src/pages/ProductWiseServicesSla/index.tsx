@@ -601,7 +601,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="services-sla-container">
 					<div className="common-container border-bottom-0">
-						<div className="services-heading">
+						<div className="services-heading" style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
 							Product Wise Services SLA
 							<select value={accountId} onChange={this.onChangeAccount}>
 								<option value=''>All</option>

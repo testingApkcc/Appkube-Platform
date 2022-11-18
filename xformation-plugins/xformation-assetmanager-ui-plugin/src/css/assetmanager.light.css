@@ -3332,9 +3332,9 @@ a:hover {
 }
 .department-wise-container .department-wise-boxs .department-box {
   display: flex;
-  flex: 0 0 300px;
+  flex: 0 0 219px;
   flex-wrap: wrap;
-  width: 300px;
+  width: 219px;
   min-height: 150px;
   margin-right: 20px;
   background: #ffffff;
@@ -3347,12 +3347,12 @@ a:hover {
   width: 100%;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 16px;
   font-weight: 600;
   color: #000000;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border-bottom: 0.5px solid #3b7cff;
   box-shadow: 0px 1px 6px #3b7cff29;
 }
@@ -3371,9 +3371,9 @@ a:hover {
 .department-wise-container .department-wise-boxs .department-box .contents ul li {
   display: block;
   width: 100%;
-  padding-bottom: 10px;
-  font-size: 13px;
-  line-height: 18px;
+  padding-bottom: 5px;
+  font-size: 12px;
+  line-height: 15px;
   color: #000;
   font-weight: 500;
 }
@@ -3392,11 +3392,11 @@ a:hover {
   padding-left: 15px;
   padding-right: 15px;
   text-align: left;
-  font-size: 17px;
+  font-size: 13px;
   margin-top: 10px;
 }
 .department-wise-container .department-wise-boxs .department-box .contents .production-heading label {
-  line-height: 17px;
+  line-height: 14px;
   color: #202020;
   font-weight: 600;
 }
@@ -3417,17 +3417,17 @@ a:hover {
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 5px;
+  padding-bottom: 3px;
 }
 .department-wise-container .department-wise-boxs .department-box .contents .production-billing-text label {
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 16px;
   color: #202020;
   font-weight: 400;
 }
 .department-wise-container .department-wise-boxs .department-box .contents .production-billing-text span {
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 16px;
   color: #202020;
   font-weight: 400;
   float: right;
