@@ -463,27 +463,27 @@ export class DiscoveredAssets extends React.Component<any, any>{
           <div className="tbody">
             <div className="service-name" style={{ paddingLeft: '75px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`}>{service.name} {service.associatedGlobalServiceLocation ? `(${service.associatedGlobalServiceLocation})` : ''}</Link></div>
             <div className="performance">
-              <div className={`status ${this.getPerformanceClass(service.performance.score)}`}>
+              <div title={service.performance.score} className={`status ${this.getPerformanceClass(service.performance.score)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="availability">
-              <div className={`status ${this.getPerformanceClass(service.availability.score)}`}>
+              <div title={service.availability.score} className={`status ${this.getPerformanceClass(service.availability.score)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="security">
-              <div className={`status ${this.getPerformanceClass(service.security.score)}`}>
+              <div title={service.security.score} className={`status ${this.getPerformanceClass(service.security.score)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="data-protection">
-              <div className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
+              <div title={service.dataProtection.score} className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="user-exp">
-              <div className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
+              <div title={service.userExperiance.score} className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
