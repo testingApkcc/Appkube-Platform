@@ -5,6 +5,7 @@ import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
 import { TopologyView } from './TopologyView';
 import { images } from '../../img';
+import { ServiceView } from './ServiceView';
 const GLOBAL_SERVICE = 'Cloud Managed';
 const enumServiceNature = {
 	common: "Common",
@@ -33,7 +34,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			environmentType: '',
 			productName: '',
 			topologyMainData: null,
-			isTopologyDataLoaded: false,
+			isDataLoaded: false,
 			isTopologyActive: false,
 			accountList: [],
 			treeDataWithAccount: {},
@@ -136,7 +137,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			environmentType: firstEnv,
 			productName: firstProd,
 			topologyMainData,
-			isTopologyDataLoaded: true,
+			isDataLoaded: true,
 			accountList,
 		});
 	};
@@ -406,139 +407,6 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		return retData;
 	};
 
-	displayServiceData = () => {
-		const { tableData, environmentType, productName } = this.state;
-		let retServiceData: any = [];
-		let servicesJSX: any = [];
-		Object.keys(tableData).map((key, index) => {
-			if (key === productName) {
-				const envData = tableData[key];
-				Object.keys(envData).map((env, i) => {
-					if (env == environmentType) {
-						const serviceNatureData = envData[env];
-						Object.keys(serviceNatureData).map((serviceNature, j) => {
-							servicesJSX = [];
-							let associatedServices = serviceNatureData[serviceNature];
-							Object.keys(associatedServices).map((associatedService) => {
-								let serviceByType: any = {};
-								serviceByType['performance'] = serviceByType['performance'] || 0;
-								serviceByType['availability'] = serviceByType['availability'] || 0;
-								serviceByType['security'] = serviceByType['security'] || 0;
-								serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
-								serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
-								let servicearry = associatedServices[associatedService];
-								let totalCost = 0;
-								if (servicearry && servicearry.length > 0) {
-									servicearry.map((service: any) => {
-										const { metadata_json } = service;
-										serviceByType['performance'] =
-											serviceByType['performance'] + (metadata_json.performance ? metadata_json.performance['score'] : 0);
-										serviceByType['availability'] =
-											serviceByType['availability'] + (metadata_json.availability ? metadata_json.availability['score'] : 0);
-										serviceByType['security'] =
-											serviceByType['security'] + (metadata_json.security ? metadata_json.security['score'] : 0);
-										serviceByType['Data Protection'] =
-											serviceByType['Data Protection'] + (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
-										serviceByType['User Exp'] =
-											serviceByType['User Exp'] + (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
-										totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
-									});
-								}
-								servicesJSX.push(
-									<div className="service-box">
-										<div className="heading">{associatedService}</div>
-										<div className="contents">
-											<div className="total-cost-text">
-												Total Cost : $
-												{totalCost}
-											</div>
-											<div className="quality-score-text">
-												Quality Score :
-												{((serviceByType['performance'] / servicearry.length +
-													serviceByType['availability'] / servicearry.length +
-													serviceByType['security'] / servicearry.length +
-													serviceByType['Data Protection'] / servicearry.length +
-													serviceByType['User Exp'] / servicearry.length) / 5).toFixed(2)
-												}%
-											</div>
-											<ul>
-												<li>
-													<label>Performance:</label>
-													<span>
-														{Math.round(serviceByType['performance'] / servicearry.length)}%{' '}
-														<span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['performance'] / servicearry.length) }} />
-													</span>
-												</li>
-												<li>
-													<label>Availability:</label>
-													<span>
-														{Math.round(
-															serviceByType['availability'] / servicearry.length
-														)}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['availability'] / servicearry.length) }} />
-													</span>
-												</li>
-												<li>
-													<label>Data Protection:</label>
-													<span>
-														{Math.round(
-															serviceByType['Data Protection'] / servicearry.length
-														)}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['Data Protection'] / servicearry.length) }} />
-													</span>
-												</li>
-												<li>
-													<label>Security:</label>
-													<span>
-														{Math.round(serviceByType['security'] / servicearry.length)}%{' '}
-														<span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['security'] / servicearry.length) }} />
-													</span>
-												</li>
-												<li>
-													<label>User Exp:</label>
-													<span>
-														{Math.round(serviceByType['User Exp'] / servicearry.length)}%{' '}
-														<span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['User Exp'] / servicearry.length) }} />
-													</span>
-												</li>
-											</ul>
-										</div>
-									</div>
-								);
-							});
-							retServiceData.push(
-								<React.Fragment>
-									<div className="heading">
-										<div className="row">
-											<div className="col-md-7">
-												<h3>{serviceNature}</h3>
-											</div>
-											<div className="col-md-5">
-												{/* <div className="show-more">
-													Show More <i className="fa fa-chevron-down" />
-												</div> */}
-												<div className="form-group search-control m-b-0">
-													<button className="btn btn-search">
-														<i className="fa fa-search" />
-													</button>
-													<input
-														type="text"
-														className="input-group-text"
-														placeholder="Search"
-													/>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="services-boxes">{servicesJSX}</div>
-								</React.Fragment>
-							);
-						});
-					}
-				});
-			}
-		});
-		return retServiceData;
-	};
-
 	toggleView = () => {
 		this.setState({
 			isTopologyActive: !this.state.isTopologyActive,
@@ -595,36 +463,33 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	}
 
 	render() {
-		const { productName, tableData, topologyMainData, environmentType, isTopologyDataLoaded, isTopologyActive, accountId } = this.state;
+		const { productName, tableData, topologyMainData, environmentType, isDataLoaded, isTopologyActive, accountId } = this.state;
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="services-sla-container">
 					<div className="common-container border-bottom-0">
-						<div className="services-heading" style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+						<div className="services-heading" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 							Product Wise Services SLA
 							<select value={accountId} onChange={this.onChangeAccount}>
 								<option value=''>All</option>
 								{this.renderAccountOptions()}
 							</select>
 						</div>
-						{!tableData ||
-							(tableData &&
-								Object.keys(tableData).length === 0 && <div className="services-sla-boxs">Loading...</div>)}
-						{tableData &&
-							Object.keys(tableData).length > 0 && (
+						{
+							!isDataLoaded ?
+								<div className="services-sla-boxs">Loading...</div> :
 								<div className="services-sla-boxs">
 									<div className="services-sla-inner">{this.displayServiceSLA()}</div>
 								</div>
-							)}
+						}
+
 					</div>
 					<div className="common-container border-bottom-0">
 						<div className="services-heading">{productName}</div>
-						{!tableData ||
-							(tableData &&
-								Object.keys(tableData).length === 0 && <div className="services-tabs">Loading...</div>)}
-						{tableData &&
-							Object.keys(tableData).length > 0 && (
+						{
+							!isDataLoaded ?
+								<div className="services-tabs">Loading...</div> :
 								<div className="services-tabs">
 									<ul className="tabs">{this.displayEnvServices()}</ul>
 									<div className="common-container bottom-border-none">
@@ -651,16 +516,14 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											<div className="environment-services">
 												{
 													isTopologyActive ?
-														<TopologyView data={topologyMainData[productName][environmentType]} isDataLoaded={isTopologyDataLoaded} /> :
-
-														<div className="services-boxes">{this.displayServiceData()}</div>
-
+														<TopologyView data={topologyMainData[productName][environmentType]} isDataLoaded={isDataLoaded} /> :
+														<ServiceView data={tableData[productName][environmentType]} isDataLoaded={isDataLoaded} />
 												}
 											</div>
 										</div>
 									</div>
 								</div>
-							)}
+						}
 					</div>
 				</div>
 			</div>

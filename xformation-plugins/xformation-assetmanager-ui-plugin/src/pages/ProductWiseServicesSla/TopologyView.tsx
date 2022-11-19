@@ -322,7 +322,7 @@ export class TopologyView extends React.Component<any, any> {
                     <div className="content">
                       <label>Performance:</label>
                       <p>
-                        {modalData.performance ? modalData.avg.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.performance ? modalData.avg.toFixed(2) : 0)}></span>
+                        {modalData.performance ? modalData.performance.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.performance ? modalData.performance.toFixed(2) : 0)}></span>
                       </p>
                     </div>
                   </div>
