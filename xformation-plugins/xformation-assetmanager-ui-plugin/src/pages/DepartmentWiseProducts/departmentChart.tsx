@@ -118,7 +118,8 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
 
 
     handleGraphValue = (departmentWiseData: any) => {
-        const departmentName = CommonService.getParameterByName("department", window.location.href);
+        let departmentName: any = CommonService.getParameterByName("department", window.location.href);
+        departmentName = departmentName.replace(';amp;', '&');
         let { humanResources } = this.state;
         let data = [];
         let labels: any = [];
@@ -166,7 +167,8 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
 
     render() {
         const { barOptions, humanResources } = this.state
-        const departmentName = CommonService.getParameterByName("department", window.location.href);
+        let departmentName: any = CommonService.getParameterByName("department", window.location.href);
+        departmentName = departmentName.replace(';amp;', '&');
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />

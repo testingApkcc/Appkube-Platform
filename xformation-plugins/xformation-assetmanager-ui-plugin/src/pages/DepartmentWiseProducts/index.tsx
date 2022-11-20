@@ -584,9 +584,10 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 				} else {
 					color = this.colorMapping[25];
 				}
+				const endcodedDName = department.name.replace('&',';amp;');
 				return (
 					<div className="department-box" key={index}>
-						<Link to={`${PLUGIN_BASE_URL}/department-wise-charts?department=${department.name}`} className="heading">
+						<Link to={`${PLUGIN_BASE_URL}/department-wise-charts?department=${endcodedDName}`} className="heading">
 							{department.name}
 						</Link>
 						<div className="contents">
