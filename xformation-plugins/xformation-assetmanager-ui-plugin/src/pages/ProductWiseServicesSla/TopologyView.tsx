@@ -57,7 +57,7 @@ export class TopologyView extends React.Component<any, any> {
       let avgUserExp = 0;
       let avgDataProtection = 0;
       services.map((service: any) => {
-        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats, associatedLandingZone, dbType } = service.metadata_json;
+        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats, associatedLandingZone, dbType, appType } = service.metadata_json;
         avgPerformance += performance.score;
         avgAvailability += availability.score;
         avgUserExp += userExperiance.score;
@@ -69,14 +69,15 @@ export class TopologyView extends React.Component<any, any> {
             serviceNature,
             location: associatedManagedCloudServiceLocation,
             account: associatedLandingZone,
-            dbType: dbType
+            dbType: dbType,
           });
         } else {
           modalData.appServices.push({
             name,
             serviceNature,
             location: associatedManagedCloudServiceLocation,
-            account: associatedLandingZone
+            account: associatedLandingZone,
+            appType
           });
         }
         modalData.cost += stats.totalCostSoFar ? parseInt(stats.totalCostSoFar) : 0;
@@ -124,22 +125,24 @@ export class TopologyView extends React.Component<any, any> {
       services.map((service: any) => {
         retData.push(
           <div className="row">
-            <div className={`${isDataService ? 'col-md-3' : 'col-md-4'}`}>
+            <div className='col-md-3'>
               <span>{service.name}</span>
             </div>
-            <div className={`${isDataService ? 'col-md-3' : 'col-md-4'}`}>
+            <div className='col-md-3'>
               <span>{service.serviceNature}</span>
             </div>
-            <div className={`${isDataService ? 'col-md-3' : 'col-md-4'}`}>
+            <div className='col-md-3'>
               <span>{service.location}</span>
             </div>
-            {
-              isDataService ?
-                <div className="col-md-3">
-
-                  <span><img src={images[service.dbType]} alt="" style={{ maxWidth: '20px', marginRight: '5px' }} /> {service.dbType}</span>
-                </div> : <></>
-            }
+            <div className="col-md-3">
+              {
+                isDataService ?
+                  <span>
+                    <img src={images[service.dbType]} alt="" style={{ maxWidth: '20px', marginRight: '5px' }} /> {service.dbType}
+                  </span> : 
+                  <span>{service.appType}</span>
+              }
+            </div>
           </div>
         );
       });
@@ -371,21 +374,18 @@ export class TopologyView extends React.Component<any, any> {
                   </div>
                   <div className='col-md-9'>
                     <div className="row">
-                      <div className={`${isDataModal ? 'col-md-3' : 'col-md-4'}`}>
+                      <div className='col-md-3'>
                         <span>Services</span>
                       </div>
-                      <div className={`${isDataModal ? 'col-md-3' : 'col-md-4'}`}>
+                      <div className='col-md-3'>
                         <span>Service Nature</span>
                       </div>
-                      <div className={`${isDataModal ? 'col-md-3' : 'col-md-4'}`}>
+                      <div className='col-md-3'>
                         <span>Location</span>
                       </div>
-                      {
-                        isDataModal ?
-                          <div className="col-md-3">
-                            <span>DB Type</span>
-                          </div> : <></>
-                      }
+                      <div className="col-md-3">
+                        <span>{isDataModal ? 'DB Type' : 'App Type'}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
