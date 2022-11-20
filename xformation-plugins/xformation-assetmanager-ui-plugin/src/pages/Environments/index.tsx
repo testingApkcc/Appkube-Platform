@@ -27,7 +27,8 @@ export class Environments extends React.Component<any, any> {
 			selectedTeg: [],
 			showRecentFilter: false,
 			showAddNewFilter: false,
-			filterJsonData: []
+			filterJsonData: [],
+			commonData: {}
 		};
 		this.breadCrumbs = [
 			{
@@ -51,13 +52,14 @@ export class Environments extends React.Component<any, any> {
 	};
 
 	renderEnvironmentBoxes = () => {
-		const { accountList } = this.state;
+		const { accountList, commonData } = this.state;
 		const keys = Object.keys(accountList);
 		const retData: any = [];
 		keys.forEach((env: any) => {
 			const accounts = accountList[env];
 			if (accounts.length > 0) {
 				const account = accounts[0];
+				const data = commonData[account.cloud.name];
 				retData.push(
 					<div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
 						<div className="services-box">
@@ -84,7 +86,7 @@ export class Environments extends React.Component<any, any> {
 										</tr>
 										<tr>
 											<td>Total Billing</td>
-											<td>0</td>
+											<td>{data.totalBill}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -97,7 +99,6 @@ export class Environments extends React.Component<any, any> {
 		return retData;
 	};
 
-
 	componentDidMount() {
 		this.getAccountList();
 	}
@@ -105,13 +106,19 @@ export class Environments extends React.Component<any, any> {
 	getAccountList = async () => {
 		try {
 			await RestService.getData(this.config.GET_ALL_ACCOUNT, null, null).then((response: any) => {
+				const commonData: any = {};
 				const accounts: any = {};
 				response.forEach((account: any) => {
 					accounts[account.cloud.name] = accounts[account.cloud.name] || [];
 					accounts[account.cloud.name].push(account);
+					commonData[account.cloud.name] = commonData[account.cloud.name] ? commonData[account.cloud.name] : {
+						totalBill: 0
+					};
+					commonData[account.cloud.name].totalBill += account.totalBilling;
 				});
 				this.setState({
 					accountList: accounts,
+					commonData
 				});
 			});
 		} catch (err) {
