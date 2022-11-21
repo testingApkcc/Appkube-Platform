@@ -29,14 +29,14 @@ export class StorageDetails extends React.Component<any, any> {
 				}
 			} else {
 				serviceData = [];
-				props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+				props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}&cloudName=${cloudName}`);
 			}
 		} else {
 			if (serviceData) {
 				serviceData = JSON.parse(serviceData);
 			} else {
 				serviceData = [];
-				props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+				props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}&cloudName=${cloudName}`);
 			}
 		}
 		super(props);
@@ -90,6 +90,7 @@ export class StorageDetails extends React.Component<any, any> {
 	};
 
 	removeTab = (index: any, e: any) => {
+		const cloudName = CommonService.getParameterByName('cloudName', window.location.href);
 		e.stopPropagation();
 		const { serviceDetails, activeTab, activeViewIndex, accountId } = this.state;
 		if (serviceDetails.length > 1) {
@@ -119,7 +120,7 @@ export class StorageDetails extends React.Component<any, any> {
 					localStorage.setItem('viewData', JSON.stringify(serviceData));
 				}
 			}
-			this.props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}`);
+			this.props.history.push(`${PLUGIN_BASE_URL}/amazon-services?accountId=${accountId}&cloudName=${cloudName}`);
 		}
 	};
 
