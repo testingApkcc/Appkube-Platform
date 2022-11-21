@@ -461,7 +461,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       retData = appDataServices.map((service: any) => {
         return (
           <div className="tbody">
-            <div className="service-name" style={{ paddingLeft: '75px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`}>{service.name} {service.associatedGlobalServiceLocation ? `(${service.associatedGlobalServiceLocation})` : ''}</Link></div>
+            <div className="service-name" style={{ paddingLeft: '75px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`}>{service.name} {service.serviceType === "Data" ? `(${service.dbType})` : `(${service.appType})`}</Link></div>
             <div className="performance">
               <div title={service.performance.score} className={`status ${this.getPerformanceClass(service.performance.score)}`}>
                 <i className="fa fa-check"></i>
