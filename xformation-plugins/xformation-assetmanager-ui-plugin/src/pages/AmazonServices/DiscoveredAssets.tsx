@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 const LOGOS: any = {
-	aws: images.awsLogo,
-	azure: images.microsoftAzureLogo,
-	gcp: images.gcpLogo,
-	kubernetes: images.KubernetesLogo
+  aws: images.awsLogo,
+  azure: images.microsoftAzureLogo,
+  gcp: images.gcpLogo,
+  kubernetes: images.KubernetesLogo
 };
 
 export class DiscoveredAssets extends React.Component<any, any>{
@@ -109,14 +109,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
           label: cluster.name,
           value: cluster.name,
         };
-        totalData[vpcIndex]['products'] = totalData[vpcIndex]['products'] || 0;
-        totalData[vpcIndex]['products'] += cluster.products.length;
+        totalData[vpcIndex]['products'] = totalData[vpcIndex]['products'] ? totalData[vpcIndex]['products'] : [];
         products.forEach((product: any) => {
           const { environments, name } = product;
           filterProducts[name] = {
             label: name,
             value: name,
           };
+          if (totalData[vpcIndex]['products'].indexOf(name) === -1) {
+            totalData[vpcIndex]['products'].push(name);
+          }
           environments.forEach((env: any) => {
             const { services } = env;
             filterEnvs[env.name] = {
@@ -129,6 +131,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
                 totalData[vpcIndex]['app'] += appData.app.length;
               }
               if (appData.data) {
+                totalData[vpcIndex]['data'] = totalData[vpcIndex]['data'] || 0;
+                totalData[vpcIndex]['data'] += appData.data.length;
+              }
+            });
+            services.business.forEach((appData: any) => {
+              if (appData.app && appData.app.length > 0) {
+                totalData[vpcIndex]['app'] = totalData[vpcIndex]['app'] || 0;
+                totalData[vpcIndex]['app'] += appData.app.length;
+              }
+              if (appData.data && appData.data.length > 0) {
                 totalData[vpcIndex]['data'] = totalData[vpcIndex]['data'] || 0;
                 totalData[vpcIndex]['data'] += appData.data.length;
               }
@@ -222,7 +234,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
                   <div className={node.isOpened ? "caret-down" : "caret-right"}></div>
                   {node.name}
                 </div>
-                <div className="tbody-td">{totalData[i] ? (totalData[i]['products'] || 0) : 0}</div>
+                <div className="tbody-td">{totalData[i] ? totalData[i]['products'].length : 0}</div>
                 <div className="tbody-td">{totalData[i] ? (totalData[i]['app'] || 0) : 0}</div>
                 <div className="tbody-td">{totalData[i] ? (totalData[i]['data'] || 0) : 0}</div>
                 <div className="tbody-td">
