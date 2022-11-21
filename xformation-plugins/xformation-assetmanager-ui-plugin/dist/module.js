@@ -27319,6 +27319,13 @@ object-assign
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_6__);
         /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! uuid */ 172);
 
+        var LOGOS = {
+          aws: _img__WEBPACK_IMPORTED_MODULE_1__.images.awsLogo,
+          azure: _img__WEBPACK_IMPORTED_MODULE_1__.images.microsoftAzureLogo,
+          gcp: _img__WEBPACK_IMPORTED_MODULE_1__.images.gcpLogo,
+          kubernetes: _img__WEBPACK_IMPORTED_MODULE_1__.images.KubernetesLogo,
+        };
+
         var DiscoveredAssets =
           /** @class */
           (function (_super) {
@@ -28358,7 +28365,8 @@ object-assign
                 labelText = _a.labelText,
                 treeData = _a.treeData,
                 servicesData = _a.servicesData,
-                filterData = _a.filterData;
+                filterData = _a.filterData,
+                cloudName = _a.cloudName;
               return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                 'div',
                 {
@@ -28418,11 +28426,12 @@ object-assign
                                 'span',
                                 null,
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement('img', {
-                                  src: _img__WEBPACK_IMPORTED_MODULE_1__.images.awsLogo,
+                                  src: LOGOS[cloudName.toLowerCase()],
                                   alt: '',
                                 })
                               ),
-                              ' AWS'
+                              ' ',
+                              cloudName
                             ),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                               'div',
