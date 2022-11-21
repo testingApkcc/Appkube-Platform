@@ -8,6 +8,13 @@ import { SelectCloudFilter } from '../../components/SelectCloudFilter';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
+const LOGOS: any = {
+	aws: images.awsLogo,
+	azure: images.microsoftAzureLogo,
+	gcp: images.gcpLogo,
+	kubernetes: images.KubernetesLogo
+};
+
 export class DiscoveredAssets extends React.Component<any, any>{
   CreateNewOURef: any;
   config: any;
@@ -547,7 +554,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   render() {
-    const { labelText, treeData, servicesData, filterData } = this.state;
+    const { labelText, treeData, servicesData, filterData, cloudName } = this.state;
     return (
       <div className='department-wise-container'>
         <div className='common-container'>
@@ -559,7 +566,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
               <div className="organisational-data-table">
                 <div className={servicesData ? "organisational-data-table-left" : ""}>
                   <div className="thead">
-                    <div className="thead-th organisational-heading"><span><img src={images.awsLogo} alt="" /></span> AWS</div>
+                    <div className="thead-th organisational-heading"><span><img src={LOGOS[cloudName.toLowerCase()]} alt="" /></span> {cloudName}</div>
                     <div className="thead-th">Products</div>
                     <div className="thead-th">App Services</div>
                     <div className="thead-th">Data Services</div>
