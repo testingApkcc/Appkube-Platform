@@ -22,6 +22,7 @@ const images: any = {
   azure: '/public/img/overview/azure.svg',
   gcp: '/public/img/overview/gcp.svg',
   other: '/public/img/overview/cloud.svg',
+  kubernetes: '/public/img/overview/kubernetes.png',
 };
 
 const colors: any = {
@@ -29,6 +30,7 @@ const colors: any = {
   azure: 'blue',
   gcp: 'red',
   other: 'orange',
+  kubernetes: 'blue',
 };
 
 class Overview extends React.Component<any, any> {
