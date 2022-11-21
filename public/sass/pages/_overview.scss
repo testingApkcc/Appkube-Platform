@@ -961,16 +961,24 @@ body,
                 display: inline-block;
                 border-radius: 3px;
 
-                &.orange {
+                &.aws {
                   background-color: #ff9900;
                 }
 
-                &.blue {
-                  background-color: #0089d6;
+                &.gcp {
+                  background-color: #d84539;
                 }
 
-                &.red {
-                  background-color: #d84539;
+                &.other {
+                  background-color: #5798f5;
+                }
+
+                &.azure {
+                  background-color: #0072c6;
+                }
+
+                &.kubernetes {
+                  background-color: #326de6;
                 }
               }
             }

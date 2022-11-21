@@ -26,11 +26,11 @@ const images: any = {
 };
 
 const colors: any = {
-  aws: 'orange',
-  azure: 'blue',
-  gcp: 'red',
-  other: 'orange',
-  kubernetes: 'blue',
+  aws: 'aws',
+  azure: 'azure',
+  gcp: 'gcp',
+  other: 'other',
+  kubernetes: 'kubernetes',
 };
 
 class Overview extends React.Component<any, any> {
