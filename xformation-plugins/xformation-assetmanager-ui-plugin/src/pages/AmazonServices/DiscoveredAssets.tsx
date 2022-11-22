@@ -369,10 +369,10 @@ export class DiscoveredAssets extends React.Component<any, any>{
           Security
         </div>
         <div className="data-protection">
-          Data Protection
+          Compliance
         </div>
         <div className="user-exp">
-          User exp
+          End Usage
         </div>
       </div>;
       let environmentJSX: any = [];
@@ -382,7 +382,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
             <>
               <div className="tbody" onClick={() => this.toggleEnvironment(envIndex)}>
                 <div className="name" style={{ paddingLeft: '15px' }}>
-                  {environment.name} <span><i className="fa fa-angle-down"></i></span>
+                  {environment.name} <span><i className={`fa ${environment.isOpened ? 'fa-angle-down' : 'fa-angle-right'}`}></i></span>
                 </div>
               </div>
               {
@@ -410,7 +410,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         <div className="data-table">
           <div className="tbody" onClick={() => this.toggleServices(envIndex, key)}>
             <div className="name" style={{ paddingLeft: '30px' }}>
-              {key} <span><i className="fa fa-angle-down"></i></span>
+              {key} <span><i className={`fa ${service.isOpened ? 'fa-angle-down' : 'fa-angle-right'}`}></i></span>
             </div>
           </div>
           {
@@ -430,7 +430,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
         <div className="data-table">
           <div className="tbody" onClick={() => this.toggleAssociatedServices(envIndex, serviceKey, index)}>
             <div className="name" style={{ paddingLeft: '45px' }}>
-              {service.name} <span><i className="fa fa-angle-down"></i></span>
+              {service.name} <span><i className={`fa ${service.isOpened ? 'fa-angle-down' : 'fa-angle-right'}`}></i></span>
             </div>
           </div>
           {
@@ -448,7 +448,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       <div className="data-table">
         <div className="tbody" onClick={() => this.toggleAppDataService(envIndex, serviceKey, serviceIndex, 'app')}>
           <div className="name" style={{ paddingLeft: '60px' }}>
-            App <span><i className="fa fa-angle-down"></i></span>
+            App <span><i className={`fa ${(service.app && service.app.isOpened) ? 'fa-angle-down' : 'fa-angle-right'}`}></i></span>
           </div>
         </div>
         {
@@ -461,7 +461,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
       <div className="data-table">
         <div className="tbody" onClick={() => this.toggleAppDataService(envIndex, serviceKey, serviceIndex, 'data')}>
           <div className="name" style={{ paddingLeft: '60px' }}>
-            Data <span><i className="fa fa-angle-down"></i></span>
+            Data <span><i className={`fa ${(service.data && service.data.isOpened) ? 'fa-angle-down' : 'fa-angle-right'}`}></i></span>
           </div>
         </div>
         {
@@ -478,31 +478,32 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { accountId, cloudName } = this.state;
     if (appDataServices) {
       retData = appDataServices.map((service: any) => {
+        const { availability, compliance, endusage, performance, security } = service.slaJson;
         return (
           <div className="tbody">
             <div className="service-name" style={{ paddingLeft: '75px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`}>{service.name} {service.serviceType === "Data" ? `(${service.dbType})` : `(${service.appType})`}</Link></div>
             <div className="performance">
-              <div title={service.performance.score} className={`status ${this.getPerformanceClass(service.performance.score)}`}>
+              <div title={performance.sla} className={`status ${this.getPerformanceClass(performance.sla)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="availability">
-              <div title={service.availability.score} className={`status ${this.getPerformanceClass(service.availability.score)}`}>
+              <div title={availability.sla} className={`status ${this.getPerformanceClass(availability.sla)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="security">
-              <div title={service.security.score} className={`status ${this.getPerformanceClass(service.security.score)}`}>
+              <div title={security.sla} className={`status ${this.getPerformanceClass(security.sla)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="data-protection">
-              <div title={service.dataProtection.score} className={`status ${this.getPerformanceClass(service.dataProtection.score)}`}>
+              <div title={compliance.sla} className={`status ${this.getPerformanceClass(compliance.sla)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
             <div className="user-exp">
-              <div title={service.userExperiance.score} className={`status ${this.getPerformanceClass(service.userExperiance.score)}`}>
+              <div title={endusage.sla} className={`status ${this.getPerformanceClass(endusage.sla)}`}>
                 <i className="fa fa-check"></i>
               </div>
             </div>
