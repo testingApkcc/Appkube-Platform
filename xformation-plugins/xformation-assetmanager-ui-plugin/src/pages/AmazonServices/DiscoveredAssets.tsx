@@ -444,7 +444,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
   };
 
   renderAppDataServices = (envIndex: any, serviceKey: any, serviceIndex: any, service: any) => {
-    const appJSX = [
+    const appJSX = (service.app && service.app.length > 0) ? [
       <div className="data-table">
         <div className="tbody" onClick={() => this.toggleAppDataService(envIndex, serviceKey, serviceIndex, 'app')}>
           <div className="name" style={{ paddingLeft: '60px' }}>
@@ -456,8 +456,8 @@ export class DiscoveredAssets extends React.Component<any, any>{
             this.renderDirectServices(envIndex, serviceKey, serviceIndex, 'app', service.app) : <></>
         }
       </div>
-    ];
-    const dataJSX = [
+    ] : [];
+    const dataJSX = (service.data && service.data.length > 0) ? [
       <div className="data-table">
         <div className="tbody" onClick={() => this.toggleAppDataService(envIndex, serviceKey, serviceIndex, 'data')}>
           <div className="name" style={{ paddingLeft: '60px' }}>
@@ -469,7 +469,7 @@ export class DiscoveredAssets extends React.Component<any, any>{
             this.renderDirectServices(envIndex, serviceKey, serviceIndex, 'data', service.data) : <></>
         }
       </div>
-    ];
+    ] : [];
     return <>{appJSX}{dataJSX}</>;
   };
 
