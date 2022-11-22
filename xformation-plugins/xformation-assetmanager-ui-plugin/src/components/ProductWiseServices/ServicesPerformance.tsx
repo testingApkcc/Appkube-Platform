@@ -176,8 +176,8 @@ export class ServicesPerformance extends React.Component<any, any> {
                       <div className='th'>Performance</div>
                       <div className='th'>Availability</div>
                       <div className='th'>Security</div>
-                      <div className='th'>Data Protection</div>
-                      <div className='th'>User exp</div>
+                      <div className='th'>Compliance</div>
+                      <div className='th'>End Usage</div>
                     </div>
                     <div style={{ maxHeight: '400px', overflowX: 'hidden', overflowY: 'auto' }}>
                       {this.renderServiceName(category.serviceNameList, [environmentIndex, categoryIndex])}
@@ -365,7 +365,8 @@ export class ServicesPerformance extends React.Component<any, any> {
             <div className='tbody'>
               <div className='td'><span>{this.tagNameServiceMapping[tag.tagName]}</span></div>
               {tag.serviceList && tag.serviceList.map((service: any, i: any) => {
-                console.log(service.hostingType);
+                const { slaJson } = service;
+                const { availability, compliance, endusage, performance, security } = slaJson;
                 if (service.hostingType === this.props.hostingType || viewMapping === 'ViewAll') {
                   return (
                     <div className='tbody'>
@@ -373,27 +374,27 @@ export class ServicesPerformance extends React.Component<any, any> {
                         <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link>
                       </span></div>
                       <div className='td'>
-                        <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
+                        <div title={performance.sla} className={`progress-circle ${this.getPerformanceClass(performance.sla)}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
+                        <div title={availability.sla} className={`progress-circle ${this.getPerformanceClass(availability.sla)}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
+                        <div title={security.sla} className={`progress-circle ${this.getPerformanceClass(security.sla)}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
+                        <div title={compliance.sla} className={`progress-circle ${this.getPerformanceClass(compliance.sla)}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
+                        <div title={endusage.sla} className={`progress-circle ${this.getPerformanceClass(endusage.sla)}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
@@ -416,32 +417,34 @@ export class ServicesPerformance extends React.Component<any, any> {
     tagList.forEach((tag: any, i: any) => {
       const servicesJSX: any = [];
       tag.serviceList && tag.serviceList.forEach((service: any, i: any) => {
+        const { slaJson } = service;
+        const { availability, compliance, endusage, performance, security } = slaJson;
         if (service.hostingType === this.props.hostingType) {
           servicesJSX.push(
             <div className='tbody'>
               <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}><Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link></span></div>
               <div className='td'>
-                <div className={`progress-circle ${this.getPerformanceClass(service.performance.score)}`} >
+                <div title={performance.sla} className={`progress-circle ${this.getPerformanceClass(performance.sla)}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div className={`progress-circle ${this.getPerformanceClass(service.availability.score)}`} >
+                <div title={availability.sla} className={`progress-circle ${this.getPerformanceClass(availability.sla)}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div className={`progress-circle ${this.getPerformanceClass(service.security.score)}`} >
+                <div title={security.sla} className={`progress-circle ${this.getPerformanceClass(security.sla)}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div className={`progress-circle ${this.getPerformanceClass(service.dataProtection.score)}`} >
+                <div title={compliance.sla} className={`progress-circle ${this.getPerformanceClass(compliance.sla)}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div className={`progress-circle ${this.getPerformanceClass(service.userExperiance.score)}`} >
+                <div title={endusage.sla} className={`progress-circle ${this.getPerformanceClass(endusage.sla)}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
