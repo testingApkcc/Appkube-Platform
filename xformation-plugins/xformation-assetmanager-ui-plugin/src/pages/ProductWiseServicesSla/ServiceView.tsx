@@ -8,7 +8,8 @@ export class ServiceView extends React.Component<any, any> {
         this.state = {
             modal: false,
             data: null,
-            modalData: []
+            modalData: [],
+            searchKeyword: {}
         };
     }
 
@@ -114,101 +115,113 @@ export class ServiceView extends React.Component<any, any> {
         }
     };
 
+    onChangeSearch = (serviceNature: any, e: any) => {
+        const { searchKeyword } = this.state;
+        const { value } = e.target;
+        searchKeyword[serviceNature] = value;
+        this.setState({
+            searchKeyword
+        });
+    };
+
     displayServiceData = () => {
-        const { data } = this.state;
+        const { data, searchKeyword } = this.state;
         let retServiceData: any = [];
         let servicesJSX: any = [];
         if (data) {
             Object.keys(data).map((serviceNature, j) => {
                 servicesJSX = [];
                 let associatedServices = data[serviceNature];
-                Object.keys(associatedServices).map((associatedService) => {
-                    let serviceByType: any = {};
-                    serviceByType['performance'] = serviceByType['performance'] || 0;
-                    serviceByType['availability'] = serviceByType['availability'] || 0;
-                    serviceByType['security'] = serviceByType['security'] || 0;
-                    serviceByType['compliance'] = serviceByType['compliance'] || 0;
-                    serviceByType['endusage'] = serviceByType['endusage'] || 0;
-                    let servicearry = associatedServices[associatedService];
-                    let totalCost = 0;
-                    if (servicearry && servicearry.length > 0) {
-                        servicearry.map((service: any) => {
-                            const { metadata_json, sla_json } = service;
-                            if (sla_json) {
-                                const { availability, performance, security, compliance, endusage } = sla_json;
-                                serviceByType['performance'] =
-                                    serviceByType['performance'] + (performance ? performance['sla'] : 0);
-                                serviceByType['availability'] =
-                                    serviceByType['availability'] + (availability ? availability['sla'] : 0);
-                                serviceByType['security'] =
-                                    serviceByType['security'] + (security ? security['sla'] : 0);
-                                serviceByType['compliance'] =
-                                    serviceByType['compliance'] + (compliance ? compliance['sla'] : 0);
-                                serviceByType['endusage'] =
-                                    serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
-                            }
-                            totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
-                        });
-                    }
-                    servicesJSX.push(
-                        <div className="service-box">
-                            <div className="heading" style={{ cursor: "pointer" }} onClick={() => this.onClickService(serviceNature, associatedService)} >{associatedService}</div>
-                            <div className="contents">
-                                <div className="total-cost-text">
-                                    Total Cost : $
-                                    {totalCost}
+                const searchedValue = searchKeyword[serviceNature] ? searchKeyword[serviceNature] : "";
+                Object.keys(associatedServices).map((associatedService: any) => {
+                    if (searchKeyword === "" || associatedService.toLowerCase().indexOf(searchedValue.toLowerCase()) !== -1) {
+                        let serviceByType: any = {};
+                        serviceByType['performance'] = serviceByType['performance'] || 0;
+                        serviceByType['availability'] = serviceByType['availability'] || 0;
+                        serviceByType['security'] = serviceByType['security'] || 0;
+                        serviceByType['compliance'] = serviceByType['compliance'] || 0;
+                        serviceByType['endusage'] = serviceByType['endusage'] || 0;
+                        let servicearry = associatedServices[associatedService];
+                        let totalCost = 0;
+                        if (servicearry && servicearry.length > 0) {
+                            servicearry.map((service: any) => {
+                                const { metadata_json, sla_json } = service;
+                                if (sla_json) {
+                                    const { availability, performance, security, compliance, endusage } = sla_json;
+                                    serviceByType['performance'] =
+                                        serviceByType['performance'] + (performance ? performance['sla'] : 0);
+                                    serviceByType['availability'] =
+                                        serviceByType['availability'] + (availability ? availability['sla'] : 0);
+                                    serviceByType['security'] =
+                                        serviceByType['security'] + (security ? security['sla'] : 0);
+                                    serviceByType['compliance'] =
+                                        serviceByType['compliance'] + (compliance ? compliance['sla'] : 0);
+                                    serviceByType['endusage'] =
+                                        serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
+                                }
+                                totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
+                            });
+                        }
+                        servicesJSX.push(
+                            <div className="service-box">
+                                <div className="heading" style={{ cursor: "pointer" }} onClick={() => this.onClickService(serviceNature, associatedService)} >{associatedService}</div>
+                                <div className="contents">
+                                    <div className="total-cost-text">
+                                        Total Cost : $
+                                        {totalCost}
+                                    </div>
+                                    <div className="quality-score-text">
+                                        Quality Score :
+                                        {((serviceByType['performance'] / servicearry.length +
+                                            serviceByType['availability'] / servicearry.length +
+                                            serviceByType['security'] / servicearry.length +
+                                            serviceByType['compliance'] / servicearry.length +
+                                            serviceByType['endusage'] / servicearry.length) / 5).toFixed(2)
+                                        }%
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <label>Performance:</label>
+                                            <span>
+                                                {Math.round(serviceByType['performance'] / servicearry.length)}%{' '}
+                                                <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['performance'] / servicearry.length) }} />
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <label>Availability:</label>
+                                            <span>
+                                                {Math.round(
+                                                    serviceByType['availability'] / servicearry.length
+                                                )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['availability'] / servicearry.length) }} />
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <label>Compliance:</label>
+                                            <span>
+                                                {Math.round(
+                                                    serviceByType['compliance'] / servicearry.length
+                                                )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['compliance'] / servicearry.length) }} />
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <label>Security:</label>
+                                            <span>
+                                                {Math.round(serviceByType['security'] / servicearry.length)}%{' '}
+                                                <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['security'] / servicearry.length) }} />
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <label>End Usage:</label>
+                                            <span>
+                                                {Math.round(serviceByType['endusage'] / servicearry.length)}%{' '}
+                                                <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['endusage'] / servicearry.length) }} />
+                                            </span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div className="quality-score-text">
-                                    Quality Score :
-                                    {((serviceByType['performance'] / servicearry.length +
-                                        serviceByType['availability'] / servicearry.length +
-                                        serviceByType['security'] / servicearry.length +
-                                        serviceByType['compliance'] / servicearry.length +
-                                        serviceByType['endusage'] / servicearry.length) / 5).toFixed(2)
-                                    }%
-                                </div>
-                                <ul>
-                                    <li>
-                                        <label>Performance:</label>
-                                        <span>
-                                            {Math.round(serviceByType['performance'] / servicearry.length)}%{' '}
-                                            <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['performance'] / servicearry.length) }} />
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <label>Availability:</label>
-                                        <span>
-                                            {Math.round(
-                                                serviceByType['availability'] / servicearry.length
-                                            )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['availability'] / servicearry.length) }} />
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <label>Compliance:</label>
-                                        <span>
-                                            {Math.round(
-                                                serviceByType['compliance'] / servicearry.length
-                                            )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['compliance'] / servicearry.length) }} />
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <label>Security:</label>
-                                        <span>
-                                            {Math.round(serviceByType['security'] / servicearry.length)}%{' '}
-                                            <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['security'] / servicearry.length) }} />
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <label>End Usage:</label>
-                                        <span>
-                                            {Math.round(serviceByType['endusage'] / servicearry.length)}%{' '}
-                                            <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['endusage'] / servicearry.length) }} />
-                                        </span>
-                                    </li>
-                                </ul>
                             </div>
-                        </div>
-                    );
+                        );
+                    }
                 });
                 retServiceData.push(
                     <React.Fragment>
@@ -229,12 +242,16 @@ export class ServiceView extends React.Component<any, any> {
                                             type="text"
                                             className="input-group-text"
                                             placeholder="Search"
+                                            value={searchKeyword[serviceNature] || ""}
+                                            onChange={(e: any) => this.onChangeSearch(serviceNature, e)}
                                         />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="services-boxes">{servicesJSX}</div>
+                        <div className="services-boxes">
+                            {servicesJSX.length > 0 ? servicesJSX : <div style={{ marginBottom: '25px' }}>There is no service available.</div>}
+                        </div>
                     </React.Fragment>
                 );
             });
