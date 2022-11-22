@@ -43,9 +43,9 @@ export class TopologyView extends React.Component<any, any> {
         cost: 0,
         performance: 0,
         availability: 0,
-        userExperiance: 0,
+        endusage: 0,
         security: 0,
-        dataProtection: 0,
+        compliance: 0,
         appServices: [],
         dataServices: [],
         avg: 0,
@@ -54,15 +54,18 @@ export class TopologyView extends React.Component<any, any> {
       let avgPerformance = 0;
       let avgSecurity = 0;
       let avgAvailability = 0;
-      let avgUserExp = 0;
-      let avgDataProtection = 0;
+      let avgEndUsage = 0;
+      let avgCompliance = 0;
       services.map((service: any) => {
-        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats, associatedLandingZone, dbType, appType } = service.metadata_json;
-        avgPerformance += performance.score;
-        avgAvailability += availability.score;
-        avgUserExp += userExperiance.score;
-        avgSecurity += security.score;
-        avgDataProtection += dataProtection.score;
+        const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, stats, associatedLandingZone, dbType, appType } = service.metadata_json;
+        if (service.sla_json) {
+          const { availability, performance, security, compliance, endusage } = service.sla_json;
+          avgPerformance += performance.sla;
+          avgAvailability += availability.sla;
+          avgEndUsage += endusage.sla;
+          avgSecurity += security.sla;
+          avgCompliance += compliance.sla;
+        }
         if (serviceType === "Data") {
           modalData.dataServices.push({
             name,
@@ -85,9 +88,9 @@ export class TopologyView extends React.Component<any, any> {
       modalData.performance = avgPerformance / services.length;
       modalData.security = avgSecurity / services.length;
       modalData.availability = avgAvailability / services.length;
-      modalData.userExperiance = avgUserExp / services.length;
-      modalData.dataProtection = avgDataProtection / services.length;
-      modalData.avg = (modalData.performance + modalData.security + modalData.availability + modalData.userExperiance + modalData.dataProtection) / 5;
+      modalData.endusage = avgEndUsage / services.length;
+      modalData.compliance = avgCompliance / services.length;
+      modalData.avg = (modalData.performance + modalData.security + modalData.availability + modalData.endusage + modalData.compliance) / 5;
       console.log(modalData);
       this.setState({
         modalData
@@ -139,7 +142,7 @@ export class TopologyView extends React.Component<any, any> {
                 isDataService ?
                   <span>
                     <img src={images[service.dbType]} alt="" style={{ maxWidth: '20px', marginRight: '5px' }} /> {service.dbType}
-                  </span> : 
+                  </span> :
                   <span>{service.appType}</span>
               }
             </div>
@@ -349,17 +352,17 @@ export class TopologyView extends React.Component<any, any> {
                 <div className="row">
                   <div className="col-md-4">
                     <div className="content">
-                      <label>User Experience:</label>
+                      <label>End Usage:</label>
                       <p>
-                        {modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0)}></span>
+                        {modalData.endusage ? modalData.endusage.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.endusage ? modalData.endusage.toFixed(2) : 0)}></span>
                       </p>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="content">
-                      <label>Data Protection:</label>
+                      <label>Compliance:</label>
                       <p>
-                        {modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0)}></span>
+                        {modalData.compliance ? modalData.compliance.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.compliance ? modalData.compliance.toFixed(2) : 0)}></span>
                       </p>
                     </div>
                   </div>

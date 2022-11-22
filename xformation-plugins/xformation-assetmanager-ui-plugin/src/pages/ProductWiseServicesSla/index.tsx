@@ -241,21 +241,23 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 								serviceByType['performance'] = serviceByType['performance'] || 0;
 								serviceByType['availability'] = serviceByType['availability'] || 0;
 								serviceByType['security'] = serviceByType['security'] || 0;
-								serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
-								serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
+								serviceByType['compliance'] = serviceByType['compliance'] || 0;
+								serviceByType['endusage'] = serviceByType['endusage'] || 0;
 								for (let k = 0; k < servicesArray.length; k++) {
-									const { metadata_json } = servicesArray[k];
-									serviceByType['performance'] =
-										serviceByType['performance'] + (metadata_json.performance ? metadata_json.performance['score'] : 0);
-									serviceByType['availability'] =
-										serviceByType['availability'] + (metadata_json.availability ? metadata_json.availability['score'] : 0);
-									serviceByType['security'] =
-										serviceByType['security'] + (metadata_json.security ? metadata_json.security['score'] : 0);
-									serviceByType['Data Protection'] =
-										serviceByType['Data Protection'] + (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
-									serviceByType['User Exp'] =
-										serviceByType['User Exp'] + (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
-
+									const { metadata_json, sla_json } = servicesArray[k];
+									if (sla_json) {
+										const { availability, performance, security, compliance, endusage } = sla_json;
+										serviceByType['performance'] =
+											serviceByType['performance'] + (performance ? performance['sla'] : 0);
+										serviceByType['availability'] =
+											serviceByType['availability'] + (availability ? availability['sla'] : 0);
+										serviceByType['security'] =
+											serviceByType['security'] + (security ? security['sla'] : 0);
+										serviceByType['compliance'] =
+											serviceByType['compliance'] + (compliance ? compliance['sla'] : 0);
+										serviceByType['endusage'] =
+											serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
+									}
 									totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
 									if (metadata_json.serviceType === 'Data') {
 										datacount += 1;
@@ -270,8 +272,8 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				serviceByType['performance'] = (serviceByType['performance'] / (appcount + datacount));
 				serviceByType['availability'] = serviceByType['availability'] / (appcount + datacount);
 				serviceByType['security'] = serviceByType['security'] / (appcount + datacount);
-				serviceByType['Data Protection'] = serviceByType['Data Protection'] / (appcount + datacount);
-				serviceByType['User Exp'] = serviceByType['User Exp'] / (appcount + datacount);
+				serviceByType['compliance'] = serviceByType['compliance'] / (appcount + datacount);
+				serviceByType['endusage'] = serviceByType['endusage'] / (appcount + datacount);
 				for (var val in serviceByType) {
 					data[val] = serviceByType[val] || 0;
 					if (labels && labels.length > 0) {
@@ -291,7 +293,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				chart[product] = JSON.parse(JSON.stringify(auctionchartData));
 				chart[product].labels = labels;
 				chart[product].datasets[0].data = chartticksdata;
-				chart[product].datasets[0].backgroundColor = [this.getColorBasedOnScore(serviceByType['performance']), this.getColorBasedOnScore(serviceByType['availability']), this.getColorBasedOnScore(serviceByType['security']), this.getColorBasedOnScore(serviceByType['Data Protection']), this.getColorBasedOnScore(serviceByType['User Exp'])];
+				chart[product].datasets[0].backgroundColor = [this.getColorBasedOnScore(serviceByType['performance']), this.getColorBasedOnScore(serviceByType['availability']), this.getColorBasedOnScore(serviceByType['security']), this.getColorBasedOnScore(serviceByType['compliance']), this.getColorBasedOnScore(serviceByType['endusage'])];
 				console.log(chart[product]);
 				chartticksdata = [];
 				retData.push(

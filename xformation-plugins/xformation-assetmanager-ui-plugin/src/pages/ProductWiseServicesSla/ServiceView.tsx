@@ -60,9 +60,9 @@ export class ServiceView extends React.Component<any, any> {
                 cost: 0,
                 performance: 0,
                 availability: 0,
-                userExperiance: 0,
+                endusage: 0,
                 security: 0,
-                dataProtection: 0,
+                compliance: 0,
                 appServices: [],
                 dataServices: [],
                 avg: 0,
@@ -71,15 +71,18 @@ export class ServiceView extends React.Component<any, any> {
             let avgPerformance = 0;
             let avgSecurity = 0;
             let avgAvailability = 0;
-            let avgUserExp = 0;
-            let avgDataProtection = 0;
+            let avgEndUsage = 0;
+            let avgCompliance = 0;
             services.map((service: any) => {
-                const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, performance, security, availability, userExperiance, dataProtection, stats, associatedLandingZone, dbType, appType } = service.metadata_json;
-                avgPerformance += performance.score;
-                avgAvailability += availability.score;
-                avgUserExp += userExperiance.score;
-                avgSecurity += security.score;
-                avgDataProtection += dataProtection.score;
+                const { serviceType, name, serviceNature, associatedManagedCloudServiceLocation, stats, associatedLandingZone, dbType, appType } = service.metadata_json;
+                if (service.sla_json) {
+                    const { availability, performance, security, compliance, endusage } = service.sla_json;
+                    avgPerformance += performance.sla;
+                    avgAvailability += availability.sla;
+                    avgEndUsage += endusage.sla;
+                    avgSecurity += security.sla;
+                    avgCompliance += compliance.sla;
+                }
                 if (serviceType === "Data") {
                     modalData.dataServices.push({
                         name,
@@ -102,9 +105,9 @@ export class ServiceView extends React.Component<any, any> {
             modalData.performance = avgPerformance / services.length;
             modalData.security = avgSecurity / services.length;
             modalData.availability = avgAvailability / services.length;
-            modalData.userExperiance = avgUserExp / services.length;
-            modalData.dataProtection = avgDataProtection / services.length;
-            modalData.avg = (modalData.performance + modalData.security + modalData.availability + modalData.userExperiance + modalData.dataProtection) / 5;
+            modalData.endusage = avgEndUsage / services.length;
+            modalData.compliance = avgCompliance / services.length;
+            modalData.avg = (modalData.performance + modalData.security + modalData.availability + modalData.endusage + modalData.compliance) / 5;
             this.setState({
                 modalData
             });
@@ -124,23 +127,26 @@ export class ServiceView extends React.Component<any, any> {
                     serviceByType['performance'] = serviceByType['performance'] || 0;
                     serviceByType['availability'] = serviceByType['availability'] || 0;
                     serviceByType['security'] = serviceByType['security'] || 0;
-                    serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
-                    serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
+                    serviceByType['compliance'] = serviceByType['compliance'] || 0;
+                    serviceByType['endusage'] = serviceByType['endusage'] || 0;
                     let servicearry = associatedServices[associatedService];
                     let totalCost = 0;
                     if (servicearry && servicearry.length > 0) {
                         servicearry.map((service: any) => {
-                            const { metadata_json } = service;
-                            serviceByType['performance'] =
-                                serviceByType['performance'] + (metadata_json.performance ? metadata_json.performance['score'] : 0);
-                            serviceByType['availability'] =
-                                serviceByType['availability'] + (metadata_json.availability ? metadata_json.availability['score'] : 0);
-                            serviceByType['security'] =
-                                serviceByType['security'] + (metadata_json.security ? metadata_json.security['score'] : 0);
-                            serviceByType['Data Protection'] =
-                                serviceByType['Data Protection'] + (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
-                            serviceByType['User Exp'] =
-                                serviceByType['User Exp'] + (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
+                            const { metadata_json, sla_json } = service;
+                            if (sla_json) {
+                                const { availability, performance, security, compliance, endusage } = sla_json;
+                                serviceByType['performance'] =
+                                    serviceByType['performance'] + (performance ? performance['sla'] : 0);
+                                serviceByType['availability'] =
+                                    serviceByType['availability'] + (availability ? availability['sla'] : 0);
+                                serviceByType['security'] =
+                                    serviceByType['security'] + (security ? security['sla'] : 0);
+                                serviceByType['compliance'] =
+                                    serviceByType['compliance'] + (compliance ? compliance['sla'] : 0);
+                                serviceByType['endusage'] =
+                                    serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
+                            }
                             totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
                         });
                     }
@@ -157,8 +163,8 @@ export class ServiceView extends React.Component<any, any> {
                                     {((serviceByType['performance'] / servicearry.length +
                                         serviceByType['availability'] / servicearry.length +
                                         serviceByType['security'] / servicearry.length +
-                                        serviceByType['Data Protection'] / servicearry.length +
-                                        serviceByType['User Exp'] / servicearry.length) / 5).toFixed(2)
+                                        serviceByType['compliance'] / servicearry.length +
+                                        serviceByType['endusage'] / servicearry.length) / 5).toFixed(2)
                                     }%
                                 </div>
                                 <ul>
@@ -178,11 +184,11 @@ export class ServiceView extends React.Component<any, any> {
                                         </span>
                                     </li>
                                     <li>
-                                        <label>Data Protection:</label>
+                                        <label>Compliance:</label>
                                         <span>
                                             {Math.round(
-                                                serviceByType['Data Protection'] / servicearry.length
-                                            )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['Data Protection'] / servicearry.length) }} />
+                                                serviceByType['compliance'] / servicearry.length
+                                            )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['compliance'] / servicearry.length) }} />
                                         </span>
                                     </li>
                                     <li>
@@ -193,10 +199,10 @@ export class ServiceView extends React.Component<any, any> {
                                         </span>
                                     </li>
                                     <li>
-                                        <label>User Exp:</label>
+                                        <label>End Usage:</label>
                                         <span>
-                                            {Math.round(serviceByType['User Exp'] / servicearry.length)}%{' '}
-                                            <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['User Exp'] / servicearry.length) }} />
+                                            {Math.round(serviceByType['endusage'] / servicearry.length)}%{' '}
+                                            <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['endusage'] / servicearry.length) }} />
                                         </span>
                                     </li>
                                 </ul>
@@ -324,17 +330,17 @@ export class ServiceView extends React.Component<any, any> {
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="content">
-                                            <label>User Experience:</label>
+                                            <label>End Usage:</label>
                                             <p>
-                                                {modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0)}></span>
+                                                {modalData.endusage ? modalData.endusage.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.endusage ? modalData.endusage.toFixed(2) : 0)}></span>
                                             </p>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
                                         <div className="content">
-                                            <label>Data Protection:</label>
+                                            <label>Compliance:</label>
                                             <p>
-                                                {modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0)}></span>
+                                                {modalData.compliance ? modalData.compliance.toFixed(2) : 0}% <span className={this.getClassBasedOnScore(modalData.compliance ? modalData.compliance.toFixed(2) : 0)}></span>
                                             </p>
                                         </div>
                                     </div>
