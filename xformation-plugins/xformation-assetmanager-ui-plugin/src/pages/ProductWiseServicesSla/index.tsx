@@ -39,6 +39,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			accountList: [],
 			treeDataWithAccount: {},
 			topologyDataWithAccount: {},
+			topologySearchKeyword: ""
 		};
 		this.breadCrumbs = [
 			{
@@ -412,6 +413,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 	toggleView = () => {
 		this.setState({
 			isTopologyActive: !this.state.isTopologyActive,
+			topologySearchKeyword: "",
 		});
 	};
 
@@ -464,8 +466,15 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		});
 	}
 
+	onChangeSearchKeyword = (e: any) => {
+		const { value } = e.target;
+		this.setState({
+			topologySearchKeyword: value,
+		});
+	};
+
 	render() {
-		const { productName, tableData, topologyMainData, environmentType, isDataLoaded, isTopologyActive, accountId } = this.state;
+		const { productName, tableData, topologyMainData, environmentType, isDataLoaded, isTopologyActive, accountId, topologySearchKeyword } = this.state;
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
@@ -509,7 +518,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 													<div className="col-lg-3 col-md-3 col-sm-12">
 														<div className="search-box">
 															<i className="fa fa-search" aria-hidden="true"></i>
-															<input type="text" className="input-group-text" placeholder={'Search'} />
+															<input type="text" className="input-group-text" placeholder={'Search'} value={topologySearchKeyword} onChange={this.onChangeSearchKeyword} />
 														</div>
 													</div> : <></>
 											}
@@ -518,7 +527,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											<div className="environment-services">
 												{
 													isTopologyActive ?
-														<TopologyView data={topologyMainData[productName][environmentType]} isDataLoaded={isDataLoaded} /> :
+														<TopologyView data={topologyMainData[productName][environmentType]} isDataLoaded={isDataLoaded} searchedService={topologySearchKeyword} /> :
 														<ServiceView data={tableData[productName][environmentType]} isDataLoaded={isDataLoaded} />
 												}
 											</div>

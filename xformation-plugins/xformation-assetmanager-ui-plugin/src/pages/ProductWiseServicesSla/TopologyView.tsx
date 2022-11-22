@@ -8,7 +8,8 @@ export class TopologyView extends React.Component<any, any> {
     this.state = {
       modal: false,
       data: null,
-      modalData: []
+      modalData: [],
+      searchedService: "",
     };
   }
 
@@ -19,10 +20,11 @@ export class TopologyView extends React.Component<any, any> {
   };
 
   componentDidMount() {
-    const { data, isDataLoaded } = this.props;
+    const { data, isDataLoaded, searchedService } = this.props;
     if (isDataLoaded) {
       this.setState({
-        data: data
+        data: data,
+        searchedService: searchedService ? searchedService : "",
       });
     }
   }
@@ -30,7 +32,13 @@ export class TopologyView extends React.Component<any, any> {
   componentDidUpdate(prevProps: any, prevState: any) {
     if (this.props.isDataLoaded && JSON.stringify(this.props.data) !== JSON.stringify(prevProps.data)) {
       this.setState({
-        data: this.props.data
+        data: this.props.data,
+        searchedService: this.props.searchedService ? this.props.searchedService : "",
+      });
+    }
+    if (this.props.searchedService !== prevProps.searchedService) {
+      this.setState({
+        searchedService: this.props.searchedService ? this.props.searchedService : "",
       });
     }
   }
@@ -104,17 +112,19 @@ export class TopologyView extends React.Component<any, any> {
   };
 
   renderServices = (serviceType: any, hostingType: any, serviceNature: any) => {
-    const { data } = this.state;
+    const { data, searchedService } = this.state;
     const retData: any = [];
     if (data && data[serviceType] && data[serviceType][hostingType] && data[serviceType][hostingType][serviceNature]) {
       const associatedServices = data[serviceType][hostingType][serviceNature];
       const serviceNames = Object.keys(associatedServices);
       serviceNames.map((serviceName: any) => {
-        retData.push(
-          <li>
-            <a onClick={() => this.onClickService(serviceType, hostingType, serviceNature, serviceName)}>{serviceName}</a>
-          </li>
-        );
+        if (searchedService === "" || serviceName.toLowerCase().indexOf(searchedService.toLowerCase()) !== -1) {
+          retData.push(
+            <li>
+              <a onClick={() => this.onClickService(serviceType, hostingType, serviceNature, serviceName)}>{serviceName}</a>
+            </li>
+          );
+        }
       });
     }
     return retData;
