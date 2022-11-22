@@ -406,19 +406,21 @@ export class DiscoveredAssets extends React.Component<any, any>{
     let retData: any = [];
     keys.forEach((key: any) => {
       const service = services[key];
-      retData.push(
-        <div className="data-table">
-          <div className="tbody" onClick={() => this.toggleServices(envIndex, key)}>
-            <div className="name" style={{ paddingLeft: '30px' }}>
-              {key} <span><i className={`fa ${service.isOpened ? 'fa-angle-down' : 'fa-angle-right'}`}></i></span>
+      if (service && service.length > 0) {
+        retData.push(
+          <div className="data-table">
+            <div className="tbody" onClick={() => this.toggleServices(envIndex, key)}>
+              <div className="name" style={{ paddingLeft: '30px' }}>
+                {key} <span><i className={`fa ${service.isOpened ? 'fa-angle-down' : 'fa-angle-right'}`}></i></span>
+              </div>
             </div>
+            {
+              service.isOpened ?
+                this.renderAssociatedServices(envIndex, key, service) : <></>
+            }
           </div>
-          {
-            service.isOpened ?
-              this.renderAssociatedServices(envIndex, key, service) : <></>
-          }
-        </div>
-      );
+        );
+      }
     });
     return retData;
   };
