@@ -8,7 +8,7 @@ define([
   '@grafana/ui',
   '@emotion/css',
 ], (
-  __WEBPACK_EXTERNAL_MODULE__83__,
+  __WEBPACK_EXTERNAL_MODULE__81__,
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__6__,
   __WEBPACK_EXTERNAL_MODULE__15__,
@@ -1310,7 +1310,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./setPrototypeOf.js */ 93
+          /*! ./setPrototypeOf.js */ 91
         );
 
         function _inheritsLoose(subClass, superClass) {
@@ -2659,7 +2659,7 @@ PERFORMANCE OF THIS SOFTWARE.
           /* harmony export */
         });
         /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./chunks/helpers.segment.js */ 73
+          /*! ./chunks/helpers.segment.js */ 71
         );
         /*!
          * Chart.js v3.7.1
@@ -15273,7 +15273,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
         if (false) {
         } else {
-          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 61);
+          module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ 92);
         }
 
         /***/
@@ -17946,16 +17946,16 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./arrayWithHoles.js */ 65
+          /*! ./arrayWithHoles.js */ 63
         );
         /* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./iterableToArrayLimit.js */ 66
+          /*! ./iterableToArrayLimit.js */ 64
         );
         /* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./unsupportedIterableToArray.js */ 53
         );
         /* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./nonIterableRest.js */ 67
+          /*! ./nonIterableRest.js */ 65
         );
 
         function _slicedToArray(arr, i) {
@@ -18177,242 +18177,6 @@ object-assign
         /***/
       },
       /* 61 */
-      /*!************************************************************************************!*\
-  !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
-  \************************************************************************************/
-      /***/ (__unused_webpack_module, exports) => {
-        'use strict';
-        /** @license React v16.13.1
-         * react-is.development.js
-         *
-         * Copyright (c) Facebook, Inc. and its affiliates.
-         *
-         * This source code is licensed under the MIT license found in the
-         * LICENSE file in the root directory of this source tree.
-         */
-
-        if (true) {
-          (function () {
-            'use strict';
-
-            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-            // nor polyfill, then a plain number is used for performance.
-            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-            // (unstable) APIs that have been removed. Can we remove the symbols?
-
-            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-            function isValidElementType(type) {
-              return (
-                typeof type === 'string' ||
-                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-                type === REACT_FRAGMENT_TYPE ||
-                type === REACT_CONCURRENT_MODE_TYPE ||
-                type === REACT_PROFILER_TYPE ||
-                type === REACT_STRICT_MODE_TYPE ||
-                type === REACT_SUSPENSE_TYPE ||
-                type === REACT_SUSPENSE_LIST_TYPE ||
-                (typeof type === 'object' &&
-                  type !== null &&
-                  (type.$$typeof === REACT_LAZY_TYPE ||
-                    type.$$typeof === REACT_MEMO_TYPE ||
-                    type.$$typeof === REACT_PROVIDER_TYPE ||
-                    type.$$typeof === REACT_CONTEXT_TYPE ||
-                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
-                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
-                    type.$$typeof === REACT_RESPONDER_TYPE ||
-                    type.$$typeof === REACT_SCOPE_TYPE ||
-                    type.$$typeof === REACT_BLOCK_TYPE))
-              );
-            }
-
-            function typeOf(object) {
-              if (typeof object === 'object' && object !== null) {
-                var $$typeof = object.$$typeof;
-
-                switch ($$typeof) {
-                  case REACT_ELEMENT_TYPE:
-                    var type = object.type;
-
-                    switch (type) {
-                      case REACT_ASYNC_MODE_TYPE:
-                      case REACT_CONCURRENT_MODE_TYPE:
-                      case REACT_FRAGMENT_TYPE:
-                      case REACT_PROFILER_TYPE:
-                      case REACT_STRICT_MODE_TYPE:
-                      case REACT_SUSPENSE_TYPE:
-                        return type;
-
-                      default:
-                        var $$typeofType = type && type.$$typeof;
-
-                        switch ($$typeofType) {
-                          case REACT_CONTEXT_TYPE:
-                          case REACT_FORWARD_REF_TYPE:
-                          case REACT_LAZY_TYPE:
-                          case REACT_MEMO_TYPE:
-                          case REACT_PROVIDER_TYPE:
-                            return $$typeofType;
-
-                          default:
-                            return $$typeof;
-                        }
-                    }
-
-                  case REACT_PORTAL_TYPE:
-                    return $$typeof;
-                }
-              }
-
-              return undefined;
-            } // AsyncMode is deprecated along with isAsyncMode
-
-            var AsyncMode = REACT_ASYNC_MODE_TYPE;
-            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-            var ContextConsumer = REACT_CONTEXT_TYPE;
-            var ContextProvider = REACT_PROVIDER_TYPE;
-            var Element = REACT_ELEMENT_TYPE;
-            var ForwardRef = REACT_FORWARD_REF_TYPE;
-            var Fragment = REACT_FRAGMENT_TYPE;
-            var Lazy = REACT_LAZY_TYPE;
-            var Memo = REACT_MEMO_TYPE;
-            var Portal = REACT_PORTAL_TYPE;
-            var Profiler = REACT_PROFILER_TYPE;
-            var StrictMode = REACT_STRICT_MODE_TYPE;
-            var Suspense = REACT_SUSPENSE_TYPE;
-            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-            function isAsyncMode(object) {
-              {
-                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-                  console['warn'](
-                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
-                      'and will be removed in React 17+. Update your code to use ' +
-                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
-                  );
-                }
-              }
-
-              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-            }
-            function isConcurrentMode(object) {
-              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-            }
-            function isContextConsumer(object) {
-              return typeOf(object) === REACT_CONTEXT_TYPE;
-            }
-            function isContextProvider(object) {
-              return typeOf(object) === REACT_PROVIDER_TYPE;
-            }
-            function isElement(object) {
-              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-            }
-            function isForwardRef(object) {
-              return typeOf(object) === REACT_FORWARD_REF_TYPE;
-            }
-            function isFragment(object) {
-              return typeOf(object) === REACT_FRAGMENT_TYPE;
-            }
-            function isLazy(object) {
-              return typeOf(object) === REACT_LAZY_TYPE;
-            }
-            function isMemo(object) {
-              return typeOf(object) === REACT_MEMO_TYPE;
-            }
-            function isPortal(object) {
-              return typeOf(object) === REACT_PORTAL_TYPE;
-            }
-            function isProfiler(object) {
-              return typeOf(object) === REACT_PROFILER_TYPE;
-            }
-            function isStrictMode(object) {
-              return typeOf(object) === REACT_STRICT_MODE_TYPE;
-            }
-            function isSuspense(object) {
-              return typeOf(object) === REACT_SUSPENSE_TYPE;
-            }
-
-            exports.AsyncMode = AsyncMode;
-            exports.ConcurrentMode = ConcurrentMode;
-            exports.ContextConsumer = ContextConsumer;
-            exports.ContextProvider = ContextProvider;
-            exports.Element = Element;
-            exports.ForwardRef = ForwardRef;
-            exports.Fragment = Fragment;
-            exports.Lazy = Lazy;
-            exports.Memo = Memo;
-            exports.Portal = Portal;
-            exports.Profiler = Profiler;
-            exports.StrictMode = StrictMode;
-            exports.Suspense = Suspense;
-            exports.isAsyncMode = isAsyncMode;
-            exports.isConcurrentMode = isConcurrentMode;
-            exports.isContextConsumer = isContextConsumer;
-            exports.isContextProvider = isContextProvider;
-            exports.isElement = isElement;
-            exports.isForwardRef = isForwardRef;
-            exports.isFragment = isFragment;
-            exports.isLazy = isLazy;
-            exports.isMemo = isMemo;
-            exports.isPortal = isPortal;
-            exports.isProfiler = isProfiler;
-            exports.isStrictMode = isStrictMode;
-            exports.isSuspense = isSuspense;
-            exports.isValidElementType = isValidElementType;
-            exports.typeOf = typeOf;
-          })();
-        }
-
-        /***/
-      },
-      /* 62 */
-      /*!*******************************************************************************!*\
-  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
-  \*******************************************************************************/
-      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-        'use strict';
-
-        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 33));
-
-        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 37));
-
-        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 23));
-
-        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 44));
-
-        function _interopRequireDefault(obj) {
-          return obj && obj.__esModule ? obj : { default: obj };
-        }
-
-        module.exports = {
-          Transition: _Transition.default,
-          TransitionGroup: _TransitionGroup.default,
-          ReplaceTransition: _ReplaceTransition.default,
-          CSSTransition: _CSSTransition.default,
-        };
-
-        /***/
-      },
-      /* 63 */
       /*!*****************************************!*\
   !*** ../node_modules/react-is/index.js ***!
   \*****************************************/
@@ -18426,7 +18190,7 @@ object-assign
 
         /***/
       },
-      /* 64 */
+      /* 62 */
       /*!*****************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \*****************************************************************/
@@ -18458,7 +18222,7 @@ object-assign
 
         /***/
       },
-      /* 65 */
+      /* 63 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
   \********************************************************************/
@@ -18475,7 +18239,7 @@ object-assign
 
         /***/
       },
-      /* 66 */
+      /* 64 */
       /*!**************************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
   \**************************************************************************/
@@ -18518,7 +18282,7 @@ object-assign
 
         /***/
       },
-      /* 67 */
+      /* 65 */
       /*!*********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
   \*********************************************************************/
@@ -18537,7 +18301,7 @@ object-assign
 
         /***/
       },
-      /* 68 */
+      /* 66 */
       /*!****************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js ***!
   \****************************************************************/
@@ -18789,7 +18553,7 @@ object-assign
 
         /***/
       },
-      /* 69 */
+      /* 67 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/withStyles/withStyles.js ***!
   \************************************************************************/
@@ -18825,7 +18589,7 @@ object-assign
           /*! @material-ui/utils */ 183
         );
         /* harmony import */ var _makeStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ../makeStyles */ 70
+          /*! ../makeStyles */ 68
         );
         /* harmony import */ var _getThemeProps__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
           /*! ../getThemeProps */ 209
@@ -18993,7 +18757,7 @@ object-assign
 
         /***/
       },
-      /* 70 */
+      /* 68 */
       /*!************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js ***!
   \************************************************************************/
@@ -19015,7 +18779,7 @@ object-assign
         );
         /* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jss */ 187);
         /* harmony import */ var _mergeClasses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ../mergeClasses */ 71
+          /*! ../mergeClasses */ 69
         );
         /* harmony import */ var _multiKeyStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
           /*! ./multiKeyStore */ 186
@@ -19031,7 +18795,7 @@ object-assign
           /*! ../getStylesCreator */ 189
         );
         /* harmony import */ var _getStylesCreator_noopTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ../getStylesCreator/noopTheme */ 72
+          /*! ../getStylesCreator/noopTheme */ 70
         );
 
         function getClasses(_ref, classes, Component) {
@@ -19348,7 +19112,7 @@ object-assign
 
         /***/
       },
-      /* 71 */
+      /* 69 */
       /*!****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/mergeClasses/mergeClasses.js ***!
   \****************************************************************************/
@@ -19435,7 +19199,7 @@ object-assign
 
         /***/
       },
-      /* 72 */
+      /* 70 */
       /*!*****************************************************************************!*\
   !*** ../node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js ***!
   \*****************************************************************************/
@@ -19452,7 +19216,7 @@ object-assign
 
         /***/
       },
-      /* 73 */
+      /* 71 */
       /*!***************************************************************!*\
   !*** ../node_modules/chart.js/dist/chunks/helpers.segment.js ***!
   \***************************************************************/
@@ -22102,7 +21866,7 @@ object-assign
 
         /***/
       },
-      /* 74 */
+      /* 72 */
       /*!********************************!*\
   !*** ./components/App/App.tsx ***!
   \********************************/
@@ -22121,7 +21885,7 @@ object-assign
         /* harmony import */ var utils_utils_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! utils/utils.plugin */ 24
         );
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 85);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Routes */ 83);
 
         var App =
           /** @class */
@@ -22147,7 +21911,7 @@ object-assign
 
         /***/
       },
-      /* 75 */
+      /* 73 */
       /*!**************************************!*\
   !*** ./components/Routes/Routes.tsx ***!
   \**************************************/
@@ -22169,7 +21933,7 @@ object-assign
         /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default =
           /*#__PURE__*/ __webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
         /* harmony import */ var _pages_AccountSetup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ../../pages/AccountSetup */ 86
+          /*! ../../pages/AccountSetup */ 84
         );
         /* harmony import */ var _pages_AmazonServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ../../pages/AmazonServices */ 97
@@ -22425,7 +22189,7 @@ object-assign
 
         /***/
       },
-      /* 76 */
+      /* 74 */
       /*!*************************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/EnableDashboard.tsx ***!
   \*************************************************************************/
@@ -22614,7 +22378,7 @@ object-assign
 
         /***/
       },
-      /* 77 */
+      /* 75 */
       /*!*****************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/Preview.tsx ***!
   \*****************************************************************/
@@ -22818,7 +22582,7 @@ object-assign
 
         /***/
       },
-      /* 78 */
+      /* 76 */
       /*!***********************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyAndSave.tsx ***!
   \***********************************************************************/
@@ -23128,7 +22892,7 @@ object-assign
 
         /***/
       },
-      /* 79 */
+      /* 77 */
       /*!**********************************************************************!*\
   !*** ./pages/StorageDetails/Node/MonitorComponents/VerifyInputs.tsx ***!
   \**********************************************************************/
@@ -23466,7 +23230,7 @@ object-assign
 
         /***/
       },
-      /* 80 */
+      /* 78 */
       /*!********************************************!*\
   !*** ./components/AppConfig/AppConfig.tsx ***!
   \********************************************/
@@ -23848,7 +23612,7 @@ object-assign
 
         /***/
       },
-      /* 81 */
+      /* 79 */
       /*!************************************************!*\
   !*** ./components/SecretInput/SecretInput.tsx ***!
   \************************************************/
@@ -23910,17 +23674,17 @@ object-assign
         /***/
       },
       ,
-      /* 82 */ /* 83 */
+      /* 80 */ /* 81 */
       /*!********************************!*\
   !*** external "@grafana/data" ***!
   \********************************/
       /***/ (module) => {
         'use strict';
-        module.exports = __WEBPACK_EXTERNAL_MODULE__83__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__81__;
 
         /***/
       },
-      /* 84 */
+      /* 82 */
       /*!**********************************!*\
   !*** ./components/App/index.tsx ***!
   \**********************************/
@@ -23931,11 +23695,11 @@ object-assign
           /* harmony export */ App: () => /* reexport safe */ _App__WEBPACK_IMPORTED_MODULE_0__.App,
           /* harmony export */
         });
-        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 74);
+        /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ 72);
 
         /***/
       },
-      /* 85 */
+      /* 83 */
       /*!*************************************!*\
   !*** ./components/Routes/index.tsx ***!
   \*************************************/
@@ -23946,11 +23710,11 @@ object-assign
           /* harmony export */ Routes: () => /* reexport safe */ _Routes__WEBPACK_IMPORTED_MODULE_0__.Routes,
           /* harmony export */
         });
-        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 75);
+        /* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes */ 73);
 
         /***/
       },
-      /* 86 */
+      /* 84 */
       /*!**************************************!*\
   !*** ./pages/AccountSetup/index.tsx ***!
   \**************************************/
@@ -23975,15 +23739,15 @@ object-assign
           /*! ../Breadcrumbs */ 9
         );
         /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ 3);
-        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 87);
+        /* harmony import */ var _Wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Wizard */ 85);
         /* harmony import */ var _OperationMode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! ./OperationMode */ 88
+          /*! ./OperationMode */ 86
         );
         /* harmony import */ var _PreparePolicy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          /*! ./PreparePolicy */ 89
+          /*! ./PreparePolicy */ 87
         );
-        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 90);
-        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 91);
+        /* harmony import */ var _CreateRole__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CreateRole */ 88);
+        /* harmony import */ var _Ou__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Ou */ 89);
         /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Review */ 95);
         /* harmony import */ var _service_RestService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
           /*! ../_service/RestService */ 4
@@ -24298,7 +24062,7 @@ object-assign
 
         /***/
       },
-      /* 87 */
+      /* 85 */
       /*!***************************************!*\
   !*** ./pages/AccountSetup/Wizard.tsx ***!
   \***************************************/
@@ -24482,7 +24246,7 @@ object-assign
 
         /***/
       },
-      /* 88 */
+      /* 86 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/OperationMode.tsx ***!
   \**********************************************/
@@ -24619,7 +24383,7 @@ object-assign
 
         /***/
       },
-      /* 89 */
+      /* 87 */
       /*!**********************************************!*\
   !*** ./pages/AccountSetup/PreparePolicy.tsx ***!
   \**********************************************/
@@ -24711,7 +24475,7 @@ object-assign
 
         /***/
       },
-      /* 90 */
+      /* 88 */
       /*!*******************************************!*\
   !*** ./pages/AccountSetup/CreateRole.tsx ***!
   \*******************************************/
@@ -25030,7 +24794,7 @@ object-assign
 
         /***/
       },
-      /* 91 */
+      /* 89 */
       /*!***********************************!*\
   !*** ./pages/AccountSetup/Ou.tsx ***!
   \***********************************/
@@ -25047,7 +24811,7 @@ object-assign
           react__WEBPACK_IMPORTED_MODULE_0__
         );
         /* harmony import */ var _CreateNewOU__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./CreateNewOU */ 92
+          /*! ./CreateNewOU */ 90
         );
 
         var Ou =
@@ -25235,7 +24999,7 @@ object-assign
 
         /***/
       },
-      /* 92 */
+      /* 90 */
       /*!********************************************!*\
   !*** ./pages/AccountSetup/CreateNewOU.tsx ***!
   \********************************************/
@@ -25577,7 +25341,7 @@ object-assign
 
         /***/
       },
-      /* 93 */
+      /* 91 */
       /*!********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \********************************************************************/
@@ -25598,6 +25362,242 @@ object-assign
 
           return _setPrototypeOf(o, p);
         }
+
+        /***/
+      },
+      /* 92 */
+      /*!************************************************************************************!*\
+  !*** ../node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
+  \************************************************************************************/
+      /***/ (__unused_webpack_module, exports) => {
+        'use strict';
+        /** @license React v16.13.1
+         * react-is.development.js
+         *
+         * Copyright (c) Facebook, Inc. and its affiliates.
+         *
+         * This source code is licensed under the MIT license found in the
+         * LICENSE file in the root directory of this source tree.
+         */
+
+        if (true) {
+          (function () {
+            'use strict';
+
+            // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+            // nor polyfill, then a plain number is used for performance.
+            var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+            var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+            var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+            var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+            var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+            var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+            var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+            var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+            // (unstable) APIs that have been removed. Can we remove the symbols?
+
+            var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+            var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+            var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+            var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+            var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+            var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+            var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+            var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+            var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+            var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+            var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+            function isValidElementType(type) {
+              return (
+                typeof type === 'string' ||
+                typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+                type === REACT_FRAGMENT_TYPE ||
+                type === REACT_CONCURRENT_MODE_TYPE ||
+                type === REACT_PROFILER_TYPE ||
+                type === REACT_STRICT_MODE_TYPE ||
+                type === REACT_SUSPENSE_TYPE ||
+                type === REACT_SUSPENSE_LIST_TYPE ||
+                (typeof type === 'object' &&
+                  type !== null &&
+                  (type.$$typeof === REACT_LAZY_TYPE ||
+                    type.$$typeof === REACT_MEMO_TYPE ||
+                    type.$$typeof === REACT_PROVIDER_TYPE ||
+                    type.$$typeof === REACT_CONTEXT_TYPE ||
+                    type.$$typeof === REACT_FORWARD_REF_TYPE ||
+                    type.$$typeof === REACT_FUNDAMENTAL_TYPE ||
+                    type.$$typeof === REACT_RESPONDER_TYPE ||
+                    type.$$typeof === REACT_SCOPE_TYPE ||
+                    type.$$typeof === REACT_BLOCK_TYPE))
+              );
+            }
+
+            function typeOf(object) {
+              if (typeof object === 'object' && object !== null) {
+                var $$typeof = object.$$typeof;
+
+                switch ($$typeof) {
+                  case REACT_ELEMENT_TYPE:
+                    var type = object.type;
+
+                    switch (type) {
+                      case REACT_ASYNC_MODE_TYPE:
+                      case REACT_CONCURRENT_MODE_TYPE:
+                      case REACT_FRAGMENT_TYPE:
+                      case REACT_PROFILER_TYPE:
+                      case REACT_STRICT_MODE_TYPE:
+                      case REACT_SUSPENSE_TYPE:
+                        return type;
+
+                      default:
+                        var $$typeofType = type && type.$$typeof;
+
+                        switch ($$typeofType) {
+                          case REACT_CONTEXT_TYPE:
+                          case REACT_FORWARD_REF_TYPE:
+                          case REACT_LAZY_TYPE:
+                          case REACT_MEMO_TYPE:
+                          case REACT_PROVIDER_TYPE:
+                            return $$typeofType;
+
+                          default:
+                            return $$typeof;
+                        }
+                    }
+
+                  case REACT_PORTAL_TYPE:
+                    return $$typeof;
+                }
+              }
+
+              return undefined;
+            } // AsyncMode is deprecated along with isAsyncMode
+
+            var AsyncMode = REACT_ASYNC_MODE_TYPE;
+            var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+            var ContextConsumer = REACT_CONTEXT_TYPE;
+            var ContextProvider = REACT_PROVIDER_TYPE;
+            var Element = REACT_ELEMENT_TYPE;
+            var ForwardRef = REACT_FORWARD_REF_TYPE;
+            var Fragment = REACT_FRAGMENT_TYPE;
+            var Lazy = REACT_LAZY_TYPE;
+            var Memo = REACT_MEMO_TYPE;
+            var Portal = REACT_PORTAL_TYPE;
+            var Profiler = REACT_PROFILER_TYPE;
+            var StrictMode = REACT_STRICT_MODE_TYPE;
+            var Suspense = REACT_SUSPENSE_TYPE;
+            var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+            function isAsyncMode(object) {
+              {
+                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+                  hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+                  console['warn'](
+                    'The ReactIs.isAsyncMode() alias has been deprecated, ' +
+                      'and will be removed in React 17+. Update your code to use ' +
+                      'ReactIs.isConcurrentMode() instead. It has the exact same API.'
+                  );
+                }
+              }
+
+              return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+            }
+            function isConcurrentMode(object) {
+              return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+            }
+            function isContextConsumer(object) {
+              return typeOf(object) === REACT_CONTEXT_TYPE;
+            }
+            function isContextProvider(object) {
+              return typeOf(object) === REACT_PROVIDER_TYPE;
+            }
+            function isElement(object) {
+              return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+            }
+            function isForwardRef(object) {
+              return typeOf(object) === REACT_FORWARD_REF_TYPE;
+            }
+            function isFragment(object) {
+              return typeOf(object) === REACT_FRAGMENT_TYPE;
+            }
+            function isLazy(object) {
+              return typeOf(object) === REACT_LAZY_TYPE;
+            }
+            function isMemo(object) {
+              return typeOf(object) === REACT_MEMO_TYPE;
+            }
+            function isPortal(object) {
+              return typeOf(object) === REACT_PORTAL_TYPE;
+            }
+            function isProfiler(object) {
+              return typeOf(object) === REACT_PROFILER_TYPE;
+            }
+            function isStrictMode(object) {
+              return typeOf(object) === REACT_STRICT_MODE_TYPE;
+            }
+            function isSuspense(object) {
+              return typeOf(object) === REACT_SUSPENSE_TYPE;
+            }
+
+            exports.AsyncMode = AsyncMode;
+            exports.ConcurrentMode = ConcurrentMode;
+            exports.ContextConsumer = ContextConsumer;
+            exports.ContextProvider = ContextProvider;
+            exports.Element = Element;
+            exports.ForwardRef = ForwardRef;
+            exports.Fragment = Fragment;
+            exports.Lazy = Lazy;
+            exports.Memo = Memo;
+            exports.Portal = Portal;
+            exports.Profiler = Profiler;
+            exports.StrictMode = StrictMode;
+            exports.Suspense = Suspense;
+            exports.isAsyncMode = isAsyncMode;
+            exports.isConcurrentMode = isConcurrentMode;
+            exports.isContextConsumer = isContextConsumer;
+            exports.isContextProvider = isContextProvider;
+            exports.isElement = isElement;
+            exports.isForwardRef = isForwardRef;
+            exports.isFragment = isFragment;
+            exports.isLazy = isLazy;
+            exports.isMemo = isMemo;
+            exports.isPortal = isPortal;
+            exports.isProfiler = isProfiler;
+            exports.isStrictMode = isStrictMode;
+            exports.isSuspense = isSuspense;
+            exports.isValidElementType = isValidElementType;
+            exports.typeOf = typeOf;
+          })();
+        }
+
+        /***/
+      },
+      /* 93 */
+      /*!*******************************************************************************!*\
+  !*** ../node_modules/reactstrap/node_modules/react-transition-group/index.js ***!
+  \*******************************************************************************/
+      /***/ (module, __unused_webpack_exports, __webpack_require__) => {
+        'use strict';
+
+        var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ 33));
+
+        var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ 37));
+
+        var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ 23));
+
+        var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ 44));
+
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+
+        module.exports = {
+          Transition: _Transition.default,
+          TransitionGroup: _TransitionGroup.default,
+          ReplaceTransition: _ReplaceTransition.default,
+          CSSTransition: _CSSTransition.default,
+        };
 
         /***/
       },
@@ -33926,14 +33926,14 @@ object-assign
           /* harmony export */
         });
         /* harmony import */ var _EnableDashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./EnableDashboard */ 76
+          /*! ./EnableDashboard */ 74
         );
-        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 77);
+        /* harmony import */ var _Preview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Preview */ 75);
         /* harmony import */ var _VerifyAndSave__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./VerifyAndSave */ 78
+          /*! ./VerifyAndSave */ 76
         );
         /* harmony import */ var _VerifyInputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          /*! ./VerifyInputs */ 79
+          /*! ./VerifyInputs */ 77
         );
 
         /***/
@@ -37357,26 +37357,32 @@ and limitations under the License.
                             serviceByType['performance'] = serviceByType['performance'] || 0;
                             serviceByType['availability'] = serviceByType['availability'] || 0;
                             serviceByType['security'] = serviceByType['security'] || 0;
-                            serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
-                            serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
+                            serviceByType['compliance'] = serviceByType['compliance'] || 0;
+                            serviceByType['endusage'] = serviceByType['endusage'] || 0;
 
                             for (var k = 0; k < servicesArray.length; k++) {
-                              var metadata_json = servicesArray[k].metadata_json;
-                              serviceByType['performance'] =
-                                serviceByType['performance'] +
-                                (metadata_json.performance ? metadata_json.performance['score'] : 0);
-                              serviceByType['availability'] =
-                                serviceByType['availability'] +
-                                (metadata_json.availability ? metadata_json.availability['score'] : 0);
-                              serviceByType['security'] =
-                                serviceByType['security'] +
-                                (metadata_json.security ? metadata_json.security['score'] : 0);
-                              serviceByType['Data Protection'] =
-                                serviceByType['Data Protection'] +
-                                (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
-                              serviceByType['User Exp'] =
-                                serviceByType['User Exp'] +
-                                (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
+                              var _a = servicesArray[k],
+                                metadata_json = _a.metadata_json,
+                                sla_json = _a.sla_json;
+
+                              if (sla_json) {
+                                var availability = sla_json.availability,
+                                  performance = sla_json.performance,
+                                  security = sla_json.security,
+                                  compliance = sla_json.compliance,
+                                  endusage = sla_json.endusage;
+                                serviceByType['performance'] =
+                                  serviceByType['performance'] + (performance ? performance['sla'] : 0);
+                                serviceByType['availability'] =
+                                  serviceByType['availability'] + (availability ? availability['sla'] : 0);
+                                serviceByType['security'] =
+                                  serviceByType['security'] + (security ? security['sla'] : 0);
+                                serviceByType['compliance'] =
+                                  serviceByType['compliance'] + (compliance ? compliance['sla'] : 0);
+                                serviceByType['endusage'] =
+                                  serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
+                              }
+
                               totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
 
                               if (metadata_json.serviceType === 'Data') {
@@ -37392,8 +37398,8 @@ and limitations under the License.
                     serviceByType['performance'] = serviceByType['performance'] / (appcount + datacount);
                     serviceByType['availability'] = serviceByType['availability'] / (appcount + datacount);
                     serviceByType['security'] = serviceByType['security'] / (appcount + datacount);
-                    serviceByType['Data Protection'] = serviceByType['Data Protection'] / (appcount + datacount);
-                    serviceByType['User Exp'] = serviceByType['User Exp'] / (appcount + datacount);
+                    serviceByType['compliance'] = serviceByType['compliance'] / (appcount + datacount);
+                    serviceByType['endusage'] = serviceByType['endusage'] / (appcount + datacount);
 
                     for (var val in serviceByType) {
                       data[val] = serviceByType[val] || 0;
@@ -37420,8 +37426,8 @@ and limitations under the License.
                       _this.getColorBasedOnScore(serviceByType['performance']),
                       _this.getColorBasedOnScore(serviceByType['availability']),
                       _this.getColorBasedOnScore(serviceByType['security']),
-                      _this.getColorBasedOnScore(serviceByType['Data Protection']),
-                      _this.getColorBasedOnScore(serviceByType['User Exp']),
+                      _this.getColorBasedOnScore(serviceByType['compliance']),
+                      _this.getColorBasedOnScore(serviceByType['endusage']),
                     ];
                     console.log(chart[product]);
                     chartticksdata = [];
@@ -37968,9 +37974,9 @@ and limitations under the License.
                     cost: 0,
                     performance: 0,
                     availability: 0,
-                    userExperiance: 0,
+                    endusage: 0,
                     security: 0,
-                    dataProtection: 0,
+                    compliance: 0,
                     appServices: [],
                     dataServices: [],
                     avg: 0,
@@ -37979,28 +37985,32 @@ and limitations under the License.
                   var avgPerformance_1 = 0;
                   var avgSecurity_1 = 0;
                   var avgAvailability_1 = 0;
-                  var avgUserExp_1 = 0;
-                  var avgDataProtection_1 = 0;
+                  var avgEndUsage_1 = 0;
+                  var avgCompliance_1 = 0;
                   services.map(function (service) {
                     var _a = service.metadata_json,
                       serviceType = _a.serviceType,
                       name = _a.name,
                       serviceNature = _a.serviceNature,
                       associatedManagedCloudServiceLocation = _a.associatedManagedCloudServiceLocation,
-                      performance = _a.performance,
-                      security = _a.security,
-                      availability = _a.availability,
-                      userExperiance = _a.userExperiance,
-                      dataProtection = _a.dataProtection,
                       stats = _a.stats,
                       associatedLandingZone = _a.associatedLandingZone,
                       dbType = _a.dbType,
                       appType = _a.appType;
-                    avgPerformance_1 += performance.score;
-                    avgAvailability_1 += availability.score;
-                    avgUserExp_1 += userExperiance.score;
-                    avgSecurity_1 += security.score;
-                    avgDataProtection_1 += dataProtection.score;
+
+                    if (service.sla_json) {
+                      var _b = service.sla_json,
+                        availability = _b.availability,
+                        performance = _b.performance,
+                        security = _b.security,
+                        compliance = _b.compliance,
+                        endusage = _b.endusage;
+                      avgPerformance_1 += performance.sla;
+                      avgAvailability_1 += availability.sla;
+                      avgEndUsage_1 += endusage.sla;
+                      avgSecurity_1 += security.sla;
+                      avgCompliance_1 += compliance.sla;
+                    }
 
                     if (serviceType === 'Data') {
                       modalData_1.dataServices.push({
@@ -38025,14 +38035,14 @@ and limitations under the License.
                   modalData_1.performance = avgPerformance_1 / services.length;
                   modalData_1.security = avgSecurity_1 / services.length;
                   modalData_1.availability = avgAvailability_1 / services.length;
-                  modalData_1.userExperiance = avgUserExp_1 / services.length;
-                  modalData_1.dataProtection = avgDataProtection_1 / services.length;
+                  modalData_1.endusage = avgEndUsage_1 / services.length;
+                  modalData_1.compliance = avgCompliance_1 / services.length;
                   modalData_1.avg =
                     (modalData_1.performance +
                       modalData_1.security +
                       modalData_1.availability +
-                      modalData_1.userExperiance +
-                      modalData_1.dataProtection) /
+                      modalData_1.endusage +
+                      modalData_1.compliance) /
                     5;
                   console.log(modalData_1);
 
@@ -38777,15 +38787,15 @@ and limitations under the License.
                               {
                                 className: 'content',
                               },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'User Experience:'),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'End Usage:'),
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'p',
                                 null,
-                                modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0,
+                                modalData.endusage ? modalData.endusage.toFixed(2) : 0,
                                 '% ',
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
                                   className: this.getClassBasedOnScore(
-                                    modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0
+                                    modalData.endusage ? modalData.endusage.toFixed(2) : 0
                                   ),
                                 })
                               )
@@ -38801,15 +38811,15 @@ and limitations under the License.
                               {
                                 className: 'content',
                               },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Data Protection:'),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Compliance:'),
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'p',
                                 null,
-                                modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0,
+                                modalData.compliance ? modalData.compliance.toFixed(2) : 0,
                                 '% ',
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
                                   className: this.getClassBasedOnScore(
-                                    modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0
+                                    modalData.compliance ? modalData.compliance.toFixed(2) : 0
                                   ),
                                 })
                               )
@@ -39027,9 +39037,9 @@ and limitations under the License.
                     cost: 0,
                     performance: 0,
                     availability: 0,
-                    userExperiance: 0,
+                    endusage: 0,
                     security: 0,
-                    dataProtection: 0,
+                    compliance: 0,
                     appServices: [],
                     dataServices: [],
                     avg: 0,
@@ -39038,28 +39048,32 @@ and limitations under the License.
                   var avgPerformance_1 = 0;
                   var avgSecurity_1 = 0;
                   var avgAvailability_1 = 0;
-                  var avgUserExp_1 = 0;
-                  var avgDataProtection_1 = 0;
+                  var avgEndUsage_1 = 0;
+                  var avgCompliance_1 = 0;
                   services.map(function (service) {
                     var _a = service.metadata_json,
                       serviceType = _a.serviceType,
                       name = _a.name,
                       serviceNature = _a.serviceNature,
                       associatedManagedCloudServiceLocation = _a.associatedManagedCloudServiceLocation,
-                      performance = _a.performance,
-                      security = _a.security,
-                      availability = _a.availability,
-                      userExperiance = _a.userExperiance,
-                      dataProtection = _a.dataProtection,
                       stats = _a.stats,
                       associatedLandingZone = _a.associatedLandingZone,
                       dbType = _a.dbType,
                       appType = _a.appType;
-                    avgPerformance_1 += performance.score;
-                    avgAvailability_1 += availability.score;
-                    avgUserExp_1 += userExperiance.score;
-                    avgSecurity_1 += security.score;
-                    avgDataProtection_1 += dataProtection.score;
+
+                    if (service.sla_json) {
+                      var _b = service.sla_json,
+                        availability = _b.availability,
+                        performance = _b.performance,
+                        security = _b.security,
+                        compliance = _b.compliance,
+                        endusage = _b.endusage;
+                      avgPerformance_1 += performance.sla;
+                      avgAvailability_1 += availability.sla;
+                      avgEndUsage_1 += endusage.sla;
+                      avgSecurity_1 += security.sla;
+                      avgCompliance_1 += compliance.sla;
+                    }
 
                     if (serviceType === 'Data') {
                       modalData_1.dataServices.push({
@@ -39084,14 +39098,14 @@ and limitations under the License.
                   modalData_1.performance = avgPerformance_1 / services.length;
                   modalData_1.security = avgSecurity_1 / services.length;
                   modalData_1.availability = avgAvailability_1 / services.length;
-                  modalData_1.userExperiance = avgUserExp_1 / services.length;
-                  modalData_1.dataProtection = avgDataProtection_1 / services.length;
+                  modalData_1.endusage = avgEndUsage_1 / services.length;
+                  modalData_1.compliance = avgCompliance_1 / services.length;
                   modalData_1.avg =
                     (modalData_1.performance +
                       modalData_1.security +
                       modalData_1.availability +
-                      modalData_1.userExperiance +
-                      modalData_1.dataProtection) /
+                      modalData_1.endusage +
+                      modalData_1.compliance) /
                     5;
 
                   _this.setState({
@@ -39114,28 +39128,32 @@ and limitations under the License.
                       serviceByType['performance'] = serviceByType['performance'] || 0;
                       serviceByType['availability'] = serviceByType['availability'] || 0;
                       serviceByType['security'] = serviceByType['security'] || 0;
-                      serviceByType['Data Protection'] = serviceByType['Data Protection'] || 0;
-                      serviceByType['User Exp'] = serviceByType['User Exp'] || 0;
+                      serviceByType['compliance'] = serviceByType['compliance'] || 0;
+                      serviceByType['endusage'] = serviceByType['endusage'] || 0;
                       var servicearry = associatedServices[associatedService];
                       var totalCost = 0;
 
                       if (servicearry && servicearry.length > 0) {
                         servicearry.map(function (service) {
-                          var metadata_json = service.metadata_json;
-                          serviceByType['performance'] =
-                            serviceByType['performance'] +
-                            (metadata_json.performance ? metadata_json.performance['score'] : 0);
-                          serviceByType['availability'] =
-                            serviceByType['availability'] +
-                            (metadata_json.availability ? metadata_json.availability['score'] : 0);
-                          serviceByType['security'] =
-                            serviceByType['security'] + (metadata_json.security ? metadata_json.security['score'] : 0);
-                          serviceByType['Data Protection'] =
-                            serviceByType['Data Protection'] +
-                            (metadata_json.dataProtection ? metadata_json.dataProtection['score'] : 0);
-                          serviceByType['User Exp'] =
-                            serviceByType['User Exp'] +
-                            (metadata_json.userExperiance ? metadata_json.userExperiance['score'] : 0);
+                          var metadata_json = service.metadata_json,
+                            sla_json = service.sla_json;
+
+                          if (sla_json) {
+                            var availability = sla_json.availability,
+                              performance = sla_json.performance,
+                              security = sla_json.security,
+                              compliance = sla_json.compliance,
+                              endusage = sla_json.endusage;
+                            serviceByType['performance'] =
+                              serviceByType['performance'] + (performance ? performance['sla'] : 0);
+                            serviceByType['availability'] =
+                              serviceByType['availability'] + (availability ? availability['sla'] : 0);
+                            serviceByType['security'] = serviceByType['security'] + (security ? security['sla'] : 0);
+                            serviceByType['compliance'] =
+                              serviceByType['compliance'] + (compliance ? compliance['sla'] : 0);
+                            serviceByType['endusage'] = serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
+                          }
+
                           totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
                         });
                       }
@@ -39182,8 +39200,8 @@ and limitations under the License.
                                 (serviceByType['performance'] / servicearry.length +
                                   serviceByType['availability'] / servicearry.length +
                                   serviceByType['security'] / servicearry.length +
-                                  serviceByType['Data Protection'] / servicearry.length +
-                                  serviceByType['User Exp'] / servicearry.length) /
+                                  serviceByType['compliance'] / servicearry.length +
+                                  serviceByType['endusage'] / servicearry.length) /
                                 5
                               ).toFixed(2),
                               '%'
@@ -39231,16 +39249,16 @@ and limitations under the License.
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'li',
                                 null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Data Protection:'),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Compliance:'),
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                   'span',
                                   null,
-                                  Math.round(serviceByType['Data Protection'] / servicearry.length),
+                                  Math.round(serviceByType['compliance'] / servicearry.length),
                                   '% ',
                                   react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
                                     style: {
                                       backgroundColor: _this.getColorBasedOnScore(
-                                        serviceByType['Data Protection'] / servicearry.length
+                                        serviceByType['compliance'] / servicearry.length
                                       ),
                                     },
                                   })
@@ -39268,17 +39286,17 @@ and limitations under the License.
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'li',
                                 null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'User Exp:'),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'End Usage:'),
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                   'span',
                                   null,
-                                  Math.round(serviceByType['User Exp'] / servicearry.length),
+                                  Math.round(serviceByType['endusage'] / servicearry.length),
                                   '%',
                                   ' ',
                                   react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
                                     style: {
                                       backgroundColor: _this.getColorBasedOnScore(
-                                        serviceByType['User Exp'] / servicearry.length
+                                        serviceByType['endusage'] / servicearry.length
                                       ),
                                     },
                                   })
@@ -39620,15 +39638,15 @@ and limitations under the License.
                               {
                                 className: 'content',
                               },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'User Experience:'),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'End Usage:'),
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'p',
                                 null,
-                                modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0,
+                                modalData.endusage ? modalData.endusage.toFixed(2) : 0,
                                 '% ',
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
                                   className: this.getClassBasedOnScore(
-                                    modalData.userExperiance ? modalData.userExperiance.toFixed(2) : 0
+                                    modalData.endusage ? modalData.endusage.toFixed(2) : 0
                                   ),
                                 })
                               )
@@ -39644,15 +39662,15 @@ and limitations under the License.
                               {
                                 className: 'content',
                               },
-                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Data Protection:'),
+                              react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Compliance:'),
                               react__WEBPACK_IMPORTED_MODULE_0__.createElement(
                                 'p',
                                 null,
-                                modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0,
+                                modalData.compliance ? modalData.compliance.toFixed(2) : 0,
                                 '% ',
                                 react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
                                   className: this.getClassBasedOnScore(
-                                    modalData.dataProtection ? modalData.dataProtection.toFixed(2) : 0
+                                    modalData.compliance ? modalData.compliance.toFixed(2) : 0
                                   ),
                                 })
                               )
@@ -43606,7 +43624,7 @@ and limitations under the License.
             /* reexport safe */ _AppConfig__WEBPACK_IMPORTED_MODULE_0__.updatePlugin,
           /* harmony export */
         });
-        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 80);
+        /* harmony import */ var _AppConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppConfig */ 78);
 
         /***/
       },
@@ -43633,7 +43651,7 @@ and limitations under the License.
           /* harmony export */
         });
         /* harmony import */ var _SecretInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./SecretInput */ 81
+          /*! ./SecretInput */ 79
         );
 
         /***/
@@ -44331,7 +44349,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_4__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          /*! react-transition-group */ 62
+          /*! react-transition-group */ 93
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_5__);
@@ -45389,7 +45407,7 @@ and limitations under the License.
           classnames__WEBPACK_IMPORTED_MODULE_6__
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-          /*! react-transition-group */ 62
+          /*! react-transition-group */ 93
         );
         /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_7___default =
           /*#__PURE__*/ __webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_7__);
@@ -46456,7 +46474,7 @@ and limitations under the License.
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_1__
         );
-        /* harmony import */ var _SvgIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SvgIcon */ 68);
+        /* harmony import */ var _SvgIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SvgIcon */ 66);
 
         /**
          * Private module reserved for @material-ui/x packages.
@@ -46553,7 +46571,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/styles */ 69
+          /*! @material-ui/styles */ 67
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./defaultTheme */ 210
@@ -46590,7 +46608,7 @@ and limitations under the License.
         /* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           /*! @babel/runtime/helpers/esm/typeof */ 19
         );
-        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 63);
+        /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-is */ 61);
 
         // Simplified polyfill for IE 11 support
         // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
@@ -46726,7 +46744,7 @@ and limitations under the License.
           /*! tiny-warning */ 188
         );
         /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ =
-          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 64);
+          __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ 62);
         /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ 16);
         /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ =
@@ -49121,7 +49139,7 @@ and limitations under the License.
         /* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! @material-ui/utils */ 190
         );
-        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 72);
+        /* harmony import */ var _noopTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noopTheme */ 70);
 
         function getStylesCreator(stylesOrCreator) {
           var themingEnabled = typeof stylesOrCreator === 'function';
@@ -55288,7 +55306,7 @@ and limitations under the License.
           /*! @babel/runtime/helpers/esm/extends */ 1
         );
         /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! @material-ui/styles */ 70
+          /*! @material-ui/styles */ 68
         );
         /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! ./defaultTheme */ 210
@@ -57783,13 +57801,13 @@ and limitations under the License.
         /* harmony export */
       });
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        /*! @grafana/data */ 83
+        /*! @grafana/data */ 81
       );
       /* harmony import */ var _grafana_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
         _grafana_data__WEBPACK_IMPORTED_MODULE_0__
       );
       /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        /*! ./components/App */ 84
+        /*! ./components/App */ 82
       );
       /* harmony import */ var _components_AppConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
         /*! ./components/AppConfig */ 163
