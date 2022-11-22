@@ -59,13 +59,13 @@ export class ProductWiseServices extends React.Component<any, any> {
     const productFilter = filters['Products'];
     if (product && product.length > 0) {
       for (let i = 0; i < product.length; i++) {
-        let serviceByType: any = {};
         let row = product[i];
         retData.push(
           <div key={v4()} className="inner-table">
             <div className="thead">{row.name}</div>
             {row.productList && row.productList.map((viewData: any, index: any) => {
               const val = viewData;
+              let serviceByType: any = {};
               if (!productFilter || (productFilter && productFilter.indexOf(viewData.name) !== -1)) {
                 let productServiceList = [];
                 if (val && val.deploymentEnvironmentList) {
