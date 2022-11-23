@@ -180,10 +180,10 @@ class Overview extends React.Component<any, any> {
             <div className="progress-content">
               <div className="text">
                 <span className="name">{cloud}</span>
-                <span className="value">{cloudData.currentTotal}</span>
+                <span className="value">{cloudData.currentTotal.toFixed(2)}</span>
                 <span className={cloudData.variance > 0 ? 'diff up' : 'diff down'}>
                   <i className={cloudData.variance > 0 ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i>
-                  {cloudData.variance}%
+                  {cloudData.variance.toFixed(2)}%
                 </span>
               </div>
               <div className="progress">
