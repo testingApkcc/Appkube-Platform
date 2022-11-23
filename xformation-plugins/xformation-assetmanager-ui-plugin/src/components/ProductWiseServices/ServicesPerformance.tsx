@@ -378,27 +378,27 @@ export class ServicesPerformance extends React.Component<any, any> {
                         {service.name}
                       </span></div>
                       <div className='td'>
-                        <div title={performance.sla} className={`progress-circle ${this.getPerformanceClass(performance.sla)}`} >
+                        <div title={performance.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(performance.sla.toFixed(2))}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div title={availability.sla} className={`progress-circle ${this.getPerformanceClass(availability.sla)}`} >
+                        <div title={availability.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(availability.sla.toFixed(2))}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div title={security.sla} className={`progress-circle ${this.getPerformanceClass(security.sla)}`} >
+                        <div title={security.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(security.sla.toFixed(2))}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div title={compliance.sla} className={`progress-circle ${this.getPerformanceClass(compliance.sla)}`} >
+                        <div title={compliance.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(compliance.sla.toFixed(2))}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
                       <div className='td'>
-                        <div title={endusage.sla} className={`progress-circle ${this.getPerformanceClass(endusage.sla)}`} >
+                        <div title={endusage.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(endusage.sla.toFixed(2))}`} >
                           <i className='fa fa-check-circle'></i>
                         </div>
                       </div>
@@ -434,27 +434,27 @@ export class ServicesPerformance extends React.Component<any, any> {
                 {service.name}
               </span></div>
               <div className='td'>
-                <div title={performance.sla} className={`progress-circle ${this.getPerformanceClass(performance.sla)}`} >
+                <div title={performance.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(performance.sla.toFixed(2))}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div title={availability.sla} className={`progress-circle ${this.getPerformanceClass(availability.sla)}`} >
+                <div title={availability.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(availability.sla.toFixed(2))}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div title={security.sla} className={`progress-circle ${this.getPerformanceClass(security.sla)}`} >
+                <div title={security.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(security.sla.toFixed(2))}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div title={compliance.sla} className={`progress-circle ${this.getPerformanceClass(compliance.sla)}`} >
+                <div title={compliance.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(compliance.sla.toFixed(2))}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>
               <div className='td'>
-                <div title={endusage.sla} className={`progress-circle ${this.getPerformanceClass(endusage.sla)}`} >
+                <div title={endusage.sla.toFixed(2)} className={`progress-circle ${this.getPerformanceClass(endusage.sla.toFixed(2))}`} >
                   <i className='fa fa-check-circle'></i>
                 </div>
               </div>

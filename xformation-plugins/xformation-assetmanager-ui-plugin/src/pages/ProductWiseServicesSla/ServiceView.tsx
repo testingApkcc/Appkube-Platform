@@ -159,7 +159,7 @@ export class ServiceView extends React.Component<any, any> {
                                     serviceByType['endusage'] =
                                         serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
                                 }
-                                totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
+                                totalCost = totalCost + parseFloat(metadata_json.stats.totalCostSoFar);
                             });
                         }
                         servicesJSX.push(
@@ -168,7 +168,7 @@ export class ServiceView extends React.Component<any, any> {
                                 <div className="contents">
                                     <div className="total-cost-text">
                                         Total Cost : $
-                                        {totalCost}
+                                        {totalCost.toFixed(2)}
                                     </div>
                                     <div className="quality-score-text">
                                         Quality Score :
@@ -183,37 +183,37 @@ export class ServiceView extends React.Component<any, any> {
                                         <li>
                                             <label>Performance:</label>
                                             <span>
-                                                {Math.round(serviceByType['performance'] / servicearry.length)}%{' '}
+                                                {(serviceByType['performance'] / servicearry.length).toFixed(2)}%{' '}
                                                 <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['performance'] / servicearry.length) }} />
                                             </span>
                                         </li>
                                         <li>
                                             <label>Availability:</label>
                                             <span>
-                                                {Math.round(
+                                                {(
                                                     serviceByType['availability'] / servicearry.length
-                                                )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['availability'] / servicearry.length) }} />
+                                                ).toFixed(2)}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['availability'] / servicearry.length) }} />
                                             </span>
                                         </li>
                                         <li>
                                             <label>Compliance:</label>
                                             <span>
-                                                {Math.round(
+                                                {(
                                                     serviceByType['compliance'] / servicearry.length
-                                                )}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['compliance'] / servicearry.length) }} />
+                                                ).toFixed(2)}% <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['compliance'] / servicearry.length) }} />
                                             </span>
                                         </li>
                                         <li>
                                             <label>Security:</label>
                                             <span>
-                                                {Math.round(serviceByType['security'] / servicearry.length)}%{' '}
+                                                {(serviceByType['security'] / servicearry.length).toFixed(2)}%{' '}
                                                 <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['security'] / servicearry.length) }} />
                                             </span>
                                         </li>
                                         <li>
                                             <label>End Usage:</label>
                                             <span>
-                                                {Math.round(serviceByType['endusage'] / servicearry.length)}%{' '}
+                                                {(serviceByType['endusage'] / servicearry.length).toFixed(2)}%{' '}
                                                 <span style={{ backgroundColor: this.getColorBasedOnScore(serviceByType['endusage'] / servicearry.length) }} />
                                             </span>
                                         </li>

@@ -259,7 +259,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 										serviceByType['endusage'] =
 											serviceByType['endusage'] + (endusage ? endusage['sla'] : 0);
 									}
-									totalCost = totalCost + parseInt(metadata_json.stats.totalCostSoFar);
+									totalCost = totalCost + parseFloat(metadata_json.stats.totalCostSoFar);
 									if (metadata_json.serviceType === 'Data') {
 										datacount += 1;
 									} else if (metadata_json.serviceType === 'App') {
@@ -270,11 +270,11 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 						});
 					});
 				});
-				serviceByType['performance'] = (serviceByType['performance'] / (appcount + datacount));
-				serviceByType['availability'] = serviceByType['availability'] / (appcount + datacount);
-				serviceByType['security'] = serviceByType['security'] / (appcount + datacount);
-				serviceByType['compliance'] = serviceByType['compliance'] / (appcount + datacount);
-				serviceByType['endusage'] = serviceByType['endusage'] / (appcount + datacount);
+				serviceByType['performance'] = (serviceByType['performance'] / (appcount + datacount)).toFixed(2);
+				serviceByType['availability'] = (serviceByType['availability'] / (appcount + datacount)).toFixed(2);
+				serviceByType['security'] = (serviceByType['security'] / (appcount + datacount)).toFixed(2);
+				serviceByType['compliance'] = (serviceByType['compliance'] / (appcount + datacount)).toFixed(2);
+				serviceByType['endusage'] = (serviceByType['endusage'] / (appcount + datacount)).toFixed(2);
 				for (var val in serviceByType) {
 					data[val] = serviceByType[val] || 0;
 					if (labels && labels.length > 0) {
@@ -335,7 +335,7 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 											},
 											title: {
 												display: true,
-												text: `Total Cost : $${totalCost}`,
+												text: `Total Cost : $${totalCost.toFixed(2)}`,
 												color: '#202020',
 												font: {
 													size: 18

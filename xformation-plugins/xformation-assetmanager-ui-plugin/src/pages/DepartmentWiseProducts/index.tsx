@@ -410,7 +410,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 		for (let i = 0; i < totalCostList.length; i++) {
 			graphData.productWiseCostData.datasets[0].backgroundColor.push(this.getRandomColor());
 		}
-		productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCost}`;
+		productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCost.toFixed(2)}`;
 		this.setState({
 			productWiseCostOptions
 		});
@@ -463,7 +463,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 			for (let i = 0; i < data.length; i++) {
 				graphData.productionvsOthersData.datasets[0].backgroundColor.push(this.getRandomColor());
 			}
-			productionvsOthersOptions.plugins.title.text = `Total Cost: $${totalProductionCost + totalOtherCost}`;
+			productionvsOthersOptions.plugins.title.text = `Total Cost: $${(totalProductionCost + totalOtherCost).toFixed(2)}`;
 			this.setState({
 				productionvsOthersOptions
 			});
@@ -471,7 +471,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 		return graphData;
 	};
 
-	setServiceCostData = (departmentWiseData: any, graphData: any) => {
+setServiceCostData = (departmentWiseData: any, graphData: any) => {
 		let { serviceWiseCoastOptions } = this.state;
 		let data = [];
 		let totalCount = 0;
@@ -532,7 +532,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 		for (let i = 0; i < data.length; i++) {
 			graphData.serviceWiseCoastData.datasets[0].backgroundColor.push(this.getRandomColor());
 		}
-		serviceWiseCoastOptions.plugins.title.text = `Total Cost: $${totalCount}`;
+		serviceWiseCoastOptions.plugins.title.text = `Total Cost: $${totalCount.toFixed(2)}`;
 		this.setState({
 			serviceWiseCoastOptions
 		});
@@ -626,7 +626,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 							<div className="production-chart">
 								<CircularProgressbar
 									value={percentage}
-									text={`$${productionTotal + othersTotal}`}
+									text={`$${(productionTotal + othersTotal).toFixed(2)}`}
 									strokeWidth={20}
 									styles={{
 										trail: {
@@ -646,11 +646,11 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 							</div>
 							<div className="production-billing-text">
 								<label style={{ color }}>Production Billing:</label>
-								<span style={{ color }}>${productionTotal}</span>
+								<span style={{ color }}>${productionTotal.toFixed(2)}</span>
 							</div>
 							<div className="production-billing-text">
 								<label>Other Billing:</label>
-								<span>${othersTotal}</span>
+								<span>${othersTotal.toFixed(2)}</span>
 							</div>
 						</div>
 					</div >
