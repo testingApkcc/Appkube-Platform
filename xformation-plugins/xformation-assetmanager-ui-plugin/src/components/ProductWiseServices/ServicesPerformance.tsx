@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { images } from '../../img';
-import { Link } from 'react-router-dom';
-import { PLUGIN_BASE_URL } from '../../constants';
+// import { Link } from 'react-router-dom';
+// import { PLUGIN_BASE_URL } from '../../constants';
 
 export class ServicesPerformance extends React.Component<any, any> {
   tagNameServiceMapping: any = {
@@ -354,7 +354,7 @@ export class ServicesPerformance extends React.Component<any, any> {
   };
 
   renderTags = (tagList: any) => {
-    const { accountId, cloudName } = this.props;
+    // const { accountId, cloudName } = this.props;
     const { viewMapping } = this.state;
     const retData: any = [];
     const renderIndex = ['App', 'Data', 'Network', 'Other'];
@@ -375,7 +375,7 @@ export class ServicesPerformance extends React.Component<any, any> {
                   return (
                     <div className='tbody'>
                       <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '45px' }}>
-                        <Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link>
+                        {service.name}
                       </span></div>
                       <div className='td'>
                         <div title={performance.sla} className={`progress-circle ${this.getPerformanceClass(performance.sla)}`} >
@@ -430,7 +430,9 @@ export class ServicesPerformance extends React.Component<any, any> {
         if (service.hostingType === this.props.hostingType) {
           servicesJSX.push(
             <div className='tbody'>
-              <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}><Link to={`${PLUGIN_BASE_URL}/storage-details?accountId=${567373484}`} onClick={(e: any) => this.onClickDirectService(e, service)}>{service.name}</Link></span></div>
+              <div className='td' style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}><span style={{ paddingLeft: '0px' }}>
+                {service.name}
+              </span></div>
               <div className='td'>
                 <div title={performance.sla} className={`progress-circle ${this.getPerformanceClass(performance.sla)}`} >
                   <i className='fa fa-check-circle'></i>
