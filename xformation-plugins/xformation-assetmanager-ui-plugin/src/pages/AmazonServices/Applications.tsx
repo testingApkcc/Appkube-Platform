@@ -106,8 +106,17 @@ export class Applications extends React.Component<any, any> {
                                                 if (serviceList) {
                                                     let overAllTagScore = 0;
                                                     serviceList.forEach((service: any) => {
-                                                        const { availability, dataProtection, performance, security, userExperiance } = service;
-                                                        const avg = (availability.score + dataProtection.score + performance.score + security.score + userExperiance.score) / 5;
+                                                        let avg = 0;
+                                                        if(service.slaJson){
+															const {availability, compliance, endusage, performance,security} = service.slaJson;
+															avg =
+															(availability.sla +
+																compliance.sla +
+																performance.sla +
+																security.sla +
+																endusage.sla) /
+															5;
+														}
                                                         overAllTagScore += avg;
                                                     });
                                                     overAllTagScore = overAllTagScore / serviceList.length;
