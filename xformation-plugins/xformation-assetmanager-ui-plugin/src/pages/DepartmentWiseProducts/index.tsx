@@ -168,23 +168,6 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 	}
 
 	componentDidMount() {
-		// let departmentList = localStorage.getItem('departmentData');
-		// let department: any;
-		// if (departmentList) {
-		// 	department = JSON.parse(departmentList);
-		// 	this.manipulateDepartmentWiseProductData(_.cloneDeep(department.organization.departmentList));
-		// 	this.setState({
-		// 		departmentWiseData: department.organization.departmentList
-		// 	});
-		// 	let { graphData } = this.state;
-		// 	graphData = this.setProductGraphData(department.organization.departmentList, graphData);
-		// 	graphData = this.setProductionOthers(department.organization.departmentList, graphData);
-		// 	graphData = this.setServiceCostData(department.organization.departmentList, graphData);
-		// 	this.getFilterData(_.cloneDeep(department.organization.departmentList));
-		// 	this.setState({
-		// 		graphData
-		// 	});
-		// }
 		this.getDepartmentData();
 		this.getRandomColor();
 	}
@@ -386,37 +369,51 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 
 	setProductGraphData = (departmentWiseData: any, graphData: any) => {
 		let { productWiseCostOptions } = this.state;
-		let data = [];
+		let totalCostList: any = [];
 		let labels: any = [];
-		let totalCount = 0;
+		let totalCost = 0;
 		if (departmentWiseData && departmentWiseData.length > 0) {
 			for (let i = 0; i < departmentWiseData.length; i++) {
-				let count = 0;
 				let department = departmentWiseData[i];
 				if (department.productList) {
-					for (let j = 0; j < department.productList.length; j++) {
-						let product = department.productList[j];
+					department.productList.map((product: any, index: any) => {
+						let totalProductCost = 0;
 						if (labels.indexOf(product.name) === -1) {
 							labels.push(product.name);
 						}
 						if (product.deploymentEnvironmentList) {
-							for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
-								let service = product.deploymentEnvironmentList[k];
-								count += service.productBilling.amount;
-							}
+							product.deploymentEnvironmentList.map((environment: any, envIndex: any) => {
+								if (environment.serviceCategoryList) {
+									environment.serviceCategoryList.map((category: any, catIndex: any) => {
+										if (category.serviceNameList) {
+											category.serviceNameList.map((serviceName: any) => {
+												if (serviceName.tagList) {
+													serviceName.tagList.map((tag: any) => {
+														if (tag.serviceList) {
+															tag.serviceList.map((service: any) => {
+																totalProductCost += service.serviceBilling.amount;
+															});
+														}
+													});
+												}
+											});
+										}
+									});
+								}
+							});
 						}
-					}
-					totalCount += count;
-					data.push(count);
+						totalCost += totalProductCost;
+						totalCostList.push(totalProductCost);
+					});
 				}
 			}
 		}
 		graphData.productWiseCostData.labels = labels;
-		graphData.productWiseCostData.datasets[0].data = data;
-		for (let i = 0; i < data.length; i++) {
+		graphData.productWiseCostData.datasets[0].data = totalCostList;
+		for (let i = 0; i < totalCostList.length; i++) {
 			graphData.productWiseCostData.datasets[0].backgroundColor.push(this.getRandomColor());
 		}
-		productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCount}`;
+		productWiseCostOptions.plugins.title.text = `Total Cost: $${totalCost}`;
 		this.setState({
 			productWiseCostOptions
 		});
@@ -424,38 +421,52 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 	};
 
 	setProductionOthers = (departmentWiseData: any, graphData: any) => {
-		const { productionvsOthersOptions } = this.state;
-		let data: any = [];
-		let productioncount = 0;
-		let otherCount = 0;
-		let labels: any = ['Production', 'Others'];
+		let { productionvsOthersOptions } = this.state;
+		let totalProductionCost = 0;
+		const labels: any = ['Production', 'Others'];
+		let totalOtherCost = 0;
 		if (departmentWiseData && departmentWiseData.length > 0) {
 			for (let i = 0; i < departmentWiseData.length; i++) {
 				let department = departmentWiseData[i];
 				if (department.productList) {
-					for (let j = 0; j < department.productList.length; j++) {
-						let product = department.productList[j];
+					department.productList.map((product: any, index: any) => {
 						if (product.deploymentEnvironmentList) {
-							for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
-								let service = product.deploymentEnvironmentList[k];
-								if (service.name === 'Production') {
-									productioncount += service.productBilling.amount;
-								} else {
-									otherCount += service.productBilling.amount;
+							product.deploymentEnvironmentList.map((environment: any, envIndex: any) => {
+								if (environment.serviceCategoryList) {
+									environment.serviceCategoryList.map((category: any, catIndex: any) => {
+										if (category.serviceNameList) {
+											category.serviceNameList.map((serviceName: any) => {
+												if (serviceName.tagList) {
+													serviceName.tagList.map((tag: any) => {
+														if (tag.serviceList) {
+															tag.serviceList.map((service: any) => {
+																if (environment.name === "PROD") {
+																	totalProductionCost += service.serviceBilling.amount;
+																} else {
+																	totalOtherCost += service.serviceBilling.amount;
+																}
+															});
+														}
+													});
+												}
+											});
+										}
+									});
 								}
-							}
+							});
 						}
-					}
+					});
 				}
 			}
-			data.push(productioncount);
-			data.push(otherCount);
+			const data: any = [];
+			data.push(totalProductionCost);
+			data.push(totalOtherCost);
 			graphData.productionvsOthersData.labels = labels;
 			graphData.productionvsOthersData.datasets[0].data = data;
 			for (let i = 0; i < data.length; i++) {
 				graphData.productionvsOthersData.datasets[0].backgroundColor.push(this.getRandomColor());
 			}
-			productionvsOthersOptions.plugins.title.text = `Total Cost: $${productioncount + otherCount}`;
+			productionvsOthersOptions.plugins.title.text = `Total Cost: $${totalProductionCost + totalOtherCost}`;
 			this.setState({
 				productionvsOthersOptions
 			});
@@ -549,27 +560,25 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 										for (let n = 0; n < serviceCategory.serviceNameList.length; n++) {
 											let serviceName = serviceCategory.serviceNameList[n];
 											if (serviceName.tagList) {
-												serviceName.tagList.map((subServices: any) => {
-													serviceByType[subServices.tagName] =
-														serviceByType[subServices.tagName] || 0;
-													serviceByType[subServices.tagName] += subServices.serviceList
-														? subServices.serviceList.length
+												serviceName.tagList.map((tag: any) => {
+													serviceByType[tag.tagName] =
+														serviceByType[tag.tagName] || 0;
+													serviceByType[tag.tagName] += tag.serviceList
+														? tag.serviceList.length
 														: 0;
-												}, 0);
+													if (tag && tag.serviceList) {
+														tag.serviceList.map((service: any) => {
+															if (environment.name === "PROD") {
+																productionTotal += service.serviceBilling.amount;
+															} else {
+																othersTotal += service.serviceBilling.amount;
+															}
+														});
+													}
+												});
 											}
 										}
 									}
-								}
-							}
-						}
-
-						if (product.deploymentEnvironmentList) {
-							for (let j = 0; j < product.deploymentEnvironmentList.length; j++) {
-								let row = product.deploymentEnvironmentList[j];
-								if (row.name == 'Production') {
-									productionTotal += row.productBilling.amount;
-								} else {
-									othersTotal += row.productBilling.amount;
 								}
 							}
 						}
@@ -584,7 +593,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 				} else {
 					color = this.colorMapping[25];
 				}
-				const endcodedDName = department.name.replace('&',';amp;');
+				const endcodedDName = department.name.replace('&', ';amp;');
 				return (
 					<div className="department-box" key={index}>
 						<Link to={`${PLUGIN_BASE_URL}/department-wise-charts?department=${endcodedDName}`} className="heading">

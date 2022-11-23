@@ -119,7 +119,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
 
     handleGraphValue = (departmentWiseData: any) => {
         let departmentName: any = CommonService.getParameterByName("department", window.location.href);
-        departmentName = departmentName.replace(';amp;', '&');
+        departmentName = departmentName ? departmentName.replace(';amp;', '&') : "";
         let { humanResources } = this.state;
         let data = [];
         let labels: any = [];
@@ -134,12 +134,25 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
                         if (labels.indexOf(product.name) === -1) {
                             labels.push(product.name);
                         }
-                        if (product.deploymentEnvironmentList) {
-                            for (let k = 0; k < product.deploymentEnvironmentList.length; k++) {
-                                let service = product.deploymentEnvironmentList[k];
-                                count += service.productBilling.amount;
+                        product.deploymentEnvironmentList.map((environment: any, envIndex: any) => {
+                            if (environment.serviceCategoryList) {
+                                environment.serviceCategoryList.map((category: any, catIndex: any) => {
+                                    if (category.serviceNameList) {
+                                        category.serviceNameList.map((serviceName: any) => {
+                                            if (serviceName.tagList) {
+                                                serviceName.tagList.map((tag: any) => {
+                                                    if (tag.serviceList) {
+                                                        tag.serviceList.map((service: any) => {
+                                                            count += service.serviceBilling.amount;
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
                             }
-                        }
+                        });
                         data.push(count);
                     }
                 }
@@ -150,7 +163,6 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
         for (let i = 0; i < data.length; i++) {
             humanResources.datasets[0].backgroundColor.push(this.getRandomColor());
         }
-        // barOptions.plugins.title.text = `Total Cost: $${totalCount}`
         this.setState({
             humanResources
         });
@@ -168,7 +180,7 @@ export class DepartmentWiseCharts extends React.Component<any, any> {
     render() {
         const { barOptions, humanResources } = this.state
         let departmentName: any = CommonService.getParameterByName("department", window.location.href);
-        departmentName = departmentName.replace(';amp;', '&');
+        departmentName = departmentName ? departmentName.replace(';amp;', '&') : "All Departments";
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
