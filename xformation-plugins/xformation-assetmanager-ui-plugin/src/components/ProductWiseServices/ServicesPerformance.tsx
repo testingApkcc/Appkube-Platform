@@ -422,7 +422,11 @@ export class ServicesPerformance extends React.Component<any, any> {
       const servicesJSX: any = [];
       tag.serviceList && tag.serviceList.forEach((service: any, i: any) => {
         const { slaJson } = service;
-        const { availability, compliance, endusage, performance, security } = slaJson;
+        const availability = slaJson ? slaJson.availability : { sla: 0 };
+        const compliance = slaJson ? slaJson.compliance : { sla: 0 };
+        const endusage = slaJson ? slaJson.endusage : { sla: 0 };
+        const performance = slaJson ? slaJson.performance : { sla: 0 };
+        const security = slaJson ? slaJson.security : { sla: 0 };
         if (service.hostingType === this.props.hostingType) {
           servicesJSX.push(
             <div className='tbody'>

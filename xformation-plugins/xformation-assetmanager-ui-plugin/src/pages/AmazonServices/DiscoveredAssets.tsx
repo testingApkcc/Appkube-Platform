@@ -480,7 +480,12 @@ export class DiscoveredAssets extends React.Component<any, any>{
     const { accountId, cloudName } = this.state;
     if (appDataServices) {
       retData = appDataServices.map((service: any) => {
-        const { availability, compliance, endusage, performance, security } = service.slaJson;
+        const { slaJson } = service;
+        const availability = slaJson ? slaJson.availability : { sla: 0 };
+        const compliance = slaJson ? slaJson.compliance : { sla: 0 };
+        const endusage = slaJson ? slaJson.endusage : { sla: 0 };
+        const performance = slaJson ? slaJson.performance : { sla: 0 };
+        const security = slaJson ? slaJson.security : { sla: 0 };
         return (
           <div className="tbody">
             <div className="service-name" style={{ paddingLeft: '75px' }} title={service.description}> <Link onClick={(e: any) => this.onClickDirectService(e, service)} to={`${PLUGIN_BASE_URL}/storage-details?accountId=${accountId}&cloudName=${cloudName}`}>{service.name} {service.serviceType === "Data" ? `(${service.dbType})` : `(${service.appType})`}</Link></div>
