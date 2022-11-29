@@ -75,6 +75,14 @@
     },
     {
       "type": "page",
+      "name": "ProductWiseCost",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=product-wise-cost"
+    },
+    {
+      "type": "page",
       "name": "StorageViewDetails",
       "addToNav": false,
       "defaultNav": false,

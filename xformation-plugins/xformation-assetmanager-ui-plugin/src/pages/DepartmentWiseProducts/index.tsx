@@ -229,15 +229,15 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 													let overAllTagScore = 0;
 													serviceList.forEach((service: any) => {
 														let avg = 0;
-														if(service.slaJson){
-															const {availability, compliance, endusage, performance,security} = service.slaJson;
+														if (service.slaJson) {
+															const { availability, compliance, endusage, performance, security } = service.slaJson;
 															avg =
-															(availability.sla +
-																compliance.sla +
-																performance.sla +
-																security.sla +
-																endusage.sla) /
-															5;
+																(availability.sla +
+																	compliance.sla +
+																	performance.sla +
+																	security.sla +
+																	endusage.sla) /
+																5;
 														}
 														overAllTagScore += avg;
 													});
@@ -471,7 +471,7 @@ export class DepartmentWiseProducts extends React.Component<any, any> {
 		return graphData;
 	};
 
-setServiceCostData = (departmentWiseData: any, graphData: any) => {
+	setServiceCostData = (departmentWiseData: any, graphData: any) => {
 		let { serviceWiseCoastOptions } = this.state;
 		let data = [];
 		let totalCount = 0;
@@ -724,11 +724,11 @@ setServiceCostData = (departmentWiseData: any, graphData: any) => {
 												</div>
 											)}
 										</div>
-										{/* <div className="view-details-link">
-											<Link to={`${PLUGIN_BASE_URL}/department-wise-charts`}>
+										<div className="view-details-link">
+											<Link to={`${PLUGIN_BASE_URL}/product-wise-cost`}>
 												View details <i className="fa fa-chevron-down" />
 											</Link>
-										</div> */}
+										</div>
 									</div>
 								</div>
 								<div className="col-lg-4 col-md-12 col-sm-12">

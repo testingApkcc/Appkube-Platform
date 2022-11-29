@@ -11,6 +11,7 @@ export enum ROUTES {
   AccountSetup = 'account-setup',
   DepartmentWiseProducts = 'department-wise-products',
   DepartmentWiseCharts = 'department-wise-charts',
+  ProductWiseCost = 'product-wise-cost',
   StorageViewDetails = 'view-storage-details',
   ProductWiseServicesSla = 'product-wise-services-sla',
   AddDatasource = 'add-data-source',

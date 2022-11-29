@@ -7,6 +7,7 @@ import { Kubernetes } from '../../pages/Kubernetes';
 import { StorageDetails } from '../../pages/StorageDetails';
 import { DepartmentWiseProducts } from '../../pages/DepartmentWiseProducts';
 import { DepartmentWiseCharts } from 'pages/DepartmentWiseProducts/departmentChart';
+import { ProductWiseCost } from 'pages/DepartmentWiseProducts/ProductWiseCost';
 import { ProductWiseServicesSla } from '../../pages/ProductWiseServicesSla';
 import { AddDatasource } from '../../pages/AddDatasource';
 import { AddDatasourceCredential } from '../../pages/AddDatasource/AddDatasouceCredential';
@@ -55,6 +56,11 @@ export const Routes = () => {
 				exact
 				path={prefixRoute(ROUTES.DepartmentWiseProducts)}
 				component={(props: any) => <DepartmentWiseProducts {...props} meta={meta} />}
+			/>
+			<Route
+				exact
+				path={prefixRoute(ROUTES.ProductWiseCost)}
+				component={(props: any) => <ProductWiseCost {...props} meta={meta} />}
 			/>
 			<Route
 				exact
