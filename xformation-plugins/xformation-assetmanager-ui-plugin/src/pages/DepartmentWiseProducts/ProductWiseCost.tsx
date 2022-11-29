@@ -104,7 +104,7 @@ export class ProductWiseCost extends React.Component<any, any> {
         return (
             <div className="asset-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
-                <div className="department-wise-container">
+                <div className="product-wise-cost-container">
                     <div className="common-container border-bottom-0">
                         <div className="services-heading" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                             Product Wise Cost

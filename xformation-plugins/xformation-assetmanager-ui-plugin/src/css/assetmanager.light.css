@@ -5271,6 +5271,119 @@ a:hover {
   margin-top: 15px;
 }
 
+.product-wise-cost-container {
+  background-color: #eff2f7;
+  padding: 15px;
+}
+.product-wise-cost-container .common-container {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px #f5f6f5;
+  border-radius: 10px;
+  padding: 20px;
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+.product-wise-cost-container .services-heading {
+  border-bottom: 1px solid #f5f6f5;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  line-height: 24px;
+  color: #3b4859;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.product-wise-cost-container .pie-chart-container {
+  display: block;
+  width: 100%;
+}
+.product-wise-cost-container .pie-chart-container .chart-box {
+  display: block;
+  padding: 20px 20px 10px 20px;
+  margin-bottom: 30px;
+  border: 1px solid #f9f9f9;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
+}
+.product-wise-cost-container .pie-chart-container .chart-box.mb-0 {
+  margin-bottom: 0;
+}
+.product-wise-cost-container .pie-chart-container .chart-box h3 {
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif !important;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .total-cost-text {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif !important;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .total-cost-text strong {
+  font-weight: 600;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .chart-bar {
+  display: block;
+  width: 100%;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .chart-data {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .chart-data-text {
+  display: block;
+  list-style: none;
+  width: 100%;
+  margin-top: 0;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .chart-data-text li {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .chart-data-text li span {
+  display: inline-block;
+  vertical-align: top;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .chart-data-text li p {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 15px);
+  font-size: 14px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .chart-data-text li p strong {
+  float: right;
+}
+.product-wise-cost-container .pie-chart-container .chart-box .last-updated-text {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  color: #8f8f8f;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
 .add-data-source-container {
   display: block;
   width: 100%;
