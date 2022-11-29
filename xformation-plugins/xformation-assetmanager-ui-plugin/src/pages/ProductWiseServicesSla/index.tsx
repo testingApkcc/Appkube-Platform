@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
 import { RestService } from '../_service/RestService';
 import { configFun } from '../../config';
 import { TopologyView } from './TopologyView';
@@ -11,6 +11,11 @@ const enumServiceNature = {
 	common: "Common",
 	business: "Business"
 };
+
+const labels =  ['80%', '16%', '4%', '10%'];
+const data = [80, 16, 4, 10];
+const colors = ['#52b121', '#ff9900','#d84539', '#0089d6' ];
+
 export class ProductWiseServicesSla extends React.Component<any, any> {
 	breadCrumbs: any;
 	config: any;
@@ -39,7 +44,67 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 			accountList: [],
 			treeDataWithAccount: {},
 			topologyDataWithAccount: {},
-			topologySearchKeyword: ""
+			topologySearchKeyword: "",
+			pieChartData: {
+				labels: labels,
+				datasets: [
+					{
+					  data: labels.map((item, index) => { return data[index]}),
+					  backgroundColor: colors.map((item) => {return item}),
+					},
+				],
+			},
+			chartsData: [
+				{
+					title: "Human Resource",
+					totalCost: 73837,
+					costPercentage: "40%",
+					labels: ['80%', '16%', '4%', '10%'],
+					data: [80, 16, 4, 10],
+					colors: ['#52b121', '#ff9900','#d84539', '#0089d6' ],
+					productionCost: 59068.6,
+					developmentCost: 7383.7,
+					stageCost: 4430.22,
+					testCost: 2953.48
+				},
+				{
+					title: "Procurement",
+					totalCost: 73837,
+					costPercentage: "40%",
+					labels: ['80%', '16%', '4%', '10%'],
+					data: [80, 16, 4, 10],
+					colors: ['#52b121', '#ff9900','#d84539', '#0089d6' ],
+					productionCost: 59068.6,
+					developmentCost: 7383.7,
+					stageCost: 4430.22,
+					testCost: 2953.48
+				},
+				{
+					title: "Supply Chain Management",
+					totalCost: 73837,
+					costPercentage: "40%",
+					labels: ['80%', '16%', '4%', '10%'],
+					data: [80, 16, 4, 10],
+					colors: ['#52b121', '#ff9900','#d84539', '#0089d6' ],
+					productionCost: 59068.6,
+					developmentCost: 7383.7,
+					stageCost: 4430.22,
+					testCost: 2953.48
+				},
+				{
+					title: "EMS",
+					totalCost: 73837,
+					costPercentage: "40%",
+					labels: ['80%', '16%', '4%', '10%'],
+					data: [80, 16, 4, 10],
+					colors: ['#52b121', '#ff9900','#d84539', '#0089d6' ],
+					productionCost: 59068.6,
+					developmentCost: 7383.7,
+					stageCost: 4430.22,
+					testCost: 2953.48
+				}
+			],
+			pieView: true,
 		};
 		this.breadCrumbs = [
 			{
@@ -295,7 +360,6 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 				chart[product].labels = labels;
 				chart[product].datasets[0].data = chartticksdata;
 				chart[product].datasets[0].backgroundColor = [this.getColorBasedOnScore(serviceByType['performance']), this.getColorBasedOnScore(serviceByType['availability']), this.getColorBasedOnScore(serviceByType['security']), this.getColorBasedOnScore(serviceByType['compliance']), this.getColorBasedOnScore(serviceByType['endusage'])];
-				console.log(chart[product]);
 				chartticksdata = [];
 				retData.push(
 					<div
@@ -473,12 +537,110 @@ export class ProductWiseServicesSla extends React.Component<any, any> {
 		});
 	};
 
+	handleChartViewToggle = () => {
+		this.setState({pieView: !this.state.pieView})
+	}
+
 	render() {
-		const { productName, tableData, topologyMainData, environmentType, isDataLoaded, isTopologyActive, accountId, topologySearchKeyword } = this.state;
+		const { productName, tableData, topologyMainData, environmentType, isDataLoaded, isTopologyActive, accountId, topologySearchKeyword, pieChartData, pieView, chartsData } = this.state;
 		return (
 			<div className="asset-container">
 				<Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="ASSET MANAGEMENT" />
 				<div className="services-sla-container">
+					<div className="common-container border-bottom-0">
+						<div className="services-heading" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+							Product Wise Cost
+							<div className="float-right">
+								<input type="checkbox" onChange={this.handleChartViewToggle} style={{ cursor: 'pointer'}}/> 
+								<span style={{ fontSize: '12px', fontWeight: '500', verticalAlign: 'middle', display: 'inline-block', paddingLeft: '5px' }}>
+								{pieView ? 'Pie Chart' : 'Bar Graph'}
+								</span>
+							</div>
+						</div>
+						<div className="pie-chart-container">
+							<div className="row">
+								{chartsData.map((item: any) => {
+									return (
+										<div className="col-lg-6 col-md-12 col-sm-12">
+											<div className="chart-box">
+												<h3>{item.title}</h3>
+												<div className="total-cost-text text-center">
+													<strong>Total Cost : ${item.totalCost}</strong> - {item.costPercentage} of the total cost
+												</div>
+												<div className="chart-bar">
+													<div className="row">
+														<div className="col-lg-6 col-md-12 col-sm-12">
+															{pieView ? <Bar
+																data={pieChartData}
+																height={200}
+																width={200}
+																options={{
+																	responsive: true,
+																	plugins: {
+																		legend: {
+																			position: 'top',
+																			display: false
+																		},
+																	},
+																	scales: {
+																		x: {
+																			ticks: {
+																				maxTicksLimit: 5
+																			}
+																		}
+																	}
+																}}
+															/> : <Pie
+															data={pieChartData}
+															height={160}
+															width={200}
+															options={{
+																responsive: true,
+																plugins: {
+																	legend: {
+																		position: 'top',
+																		display: false
+																	},
+																},
+																
+															}}
+														/>}
+															
+														</div>
+														<div className="col-lg-6 col-md-12 col-sm-12">
+															<div className='chart-data'>
+																<ul className="chart-data-text">
+																	<li>
+																		<span style={{ backgroundColor: '#52b141'}}></span>
+																		<p>Production <strong>${item.productionCost}</strong></p>
+																	</li>
+																	<li>
+																		<span style={{ backgroundColor: '#ff9900'}}></span>
+																		<p>Development <strong>${item.developmentCost}</strong></p>
+																	</li>
+																	<li>
+																		<span style={{ backgroundColor: '#d84539'}}></span>
+																		<p>Stage <strong>${item.stageCost}</strong></p>
+																	</li>
+																	<li>
+																		<span style={{ backgroundColor: '#0089d6'}}></span>
+																		<p>Test <strong>${item.testCost}</strong></p>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div className="last-updated-text">
+													Last Updated: 03/28/2022 17:25
+												</div>
+											</div>
+										</div>
+									)
+								})}
+							</div>
+						</div>
+					</div>
 					<div className="common-container border-bottom-0">
 						<div className="services-heading" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 							Product Wise Services SLA

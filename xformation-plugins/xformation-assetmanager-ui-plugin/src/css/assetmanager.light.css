@@ -5183,6 +5183,93 @@ a:hover {
   margin-top: -3px;
   margin-left: 5px;
 }
+.services-sla-container .pie-chart-container {
+  display: block;
+  width: 100%;
+}
+.services-sla-container .pie-chart-container .chart-box {
+  display: block;
+  padding: 20px 20px 10px 20px;
+  margin-bottom: 30px;
+  border: 1px solid #f9f9f9;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
+}
+.services-sla-container .pie-chart-container .chart-box.mb-0 {
+  margin-bottom: 0;
+}
+.services-sla-container .pie-chart-container .chart-box h3 {
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif !important;
+}
+.services-sla-container .pie-chart-container .chart-box .total-cost-text {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif !important;
+}
+.services-sla-container .pie-chart-container .chart-box .total-cost-text strong {
+  font-weight: 600;
+}
+.services-sla-container .pie-chart-container .chart-box .chart-bar {
+  display: block;
+  width: 100%;
+}
+.services-sla-container .pie-chart-container .chart-box .chart-data {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+.services-sla-container .pie-chart-container .chart-box .chart-data-text {
+  display: block;
+  list-style: none;
+  width: 100%;
+  margin-top: 0;
+}
+.services-sla-container .pie-chart-container .chart-box .chart-data-text li {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.services-sla-container .pie-chart-container .chart-box .chart-data-text li span {
+  display: inline-block;
+  vertical-align: top;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.services-sla-container .pie-chart-container .chart-box .chart-data-text li p {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 15px);
+  font-size: 14px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.services-sla-container .pie-chart-container .chart-box .chart-data-text li p strong {
+  float: right;
+}
+.services-sla-container .pie-chart-container .chart-box .last-updated-text {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  color: #8f8f8f;
+  font-weight: 600;
+  margin-top: 15px;
+}
 
 .add-data-source-container {
   display: block;
