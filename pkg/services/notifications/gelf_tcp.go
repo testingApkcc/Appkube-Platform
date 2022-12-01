@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strings"
 
@@ -26,12 +27,12 @@ func (ns *NotificationService) sendGelfTcpRequestSync(ctx context.Context, gelft
 	// 	return err
 	// }
 	// log.SetOutput(io.MultiWriter(os.Stderr, gelfWriter))
-	// log.Printf(string(gelftcp.GelfMessage))
+	log.Printf("ALERT :::: " + string(gelftcp.GelfMessage))
 
 	httpUrl := "http://" + gelftcp.GelfServer + ":" + gelftcp.GelfTcpPort + "/gelf"
 	method := "POST"
 
-	payload := strings.NewReader(`{` + "" + `    "version": "1.1",` + "" + `    "host": "182.69.97.205",` + "" + `    "short_message": "{'HI':'I am Grafanal........'}",` + "" + `    "level": 5,` + "" + `    "_some_info": "Fist gelf http message"` + "" + `}`)
+	payload := strings.NewReader(`{` + "" + `    "version": "1.1",` + "" + `    "host": "182.69.97.205",` + "" + `    "short_message": " ` + gelftcp.GelfMessage + ` ",` + "" + `    "level": 5,` + "" + `    "_some_info": "Fist gelf http message"` + "" + `}`)
 
 	client := &http.Client{}
 	req, err := http.NewRequest(method, httpUrl, payload)
