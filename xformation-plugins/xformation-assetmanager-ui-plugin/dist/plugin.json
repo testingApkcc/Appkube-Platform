@@ -14,7 +14,7 @@
     },
     "screenshots": [],
     "version": "1.0.0",
-    "updated": "2022-11-23"
+    "updated": "2022-12-01"
   },
   "includes": [
     {
@@ -72,6 +72,14 @@
       "defaultNav": false,
       "role": "Admin",
       "path": "/a/xformation-assetmanager-ui-plugin?path=department-wise-charts"
+    },
+    {
+      "type": "page",
+      "name": "ProductWiseCost",
+      "addToNav": false,
+      "defaultNav": false,
+      "role": "Admin",
+      "path": "/a/xformation-assetmanager-ui-plugin?path=product-wise-cost"
     },
     {
       "type": "page",
