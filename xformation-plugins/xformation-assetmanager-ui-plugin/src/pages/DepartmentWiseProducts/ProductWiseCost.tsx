@@ -3,12 +3,17 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { configFun } from '../../config';
 import { CommonService } from '../_common/common';
 import { Bar, Pie } from 'react-chartjs-2';
+import { RestService } from '../_service/RestService';
+import _ from 'lodash';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement);
 
-const labels = ['80%', '16%', '4%', '10%'];
-const data = [80, 16, 4, 10];
-const colors = ['#52b121', '#ff9900', '#d84539', '#0089d6'];
+const stageColors = {
+    "PROD": "#52b121",
+    "DEV": "#ff9900",
+    "TEST": "#d84539",
+    "STAGE": "#0089d6",
+};
 
 export class ProductWiseCost extends React.Component<any, any> {
     breadCrumbs: any;
@@ -16,66 +21,9 @@ export class ProductWiseCost extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            pieChartData: {
-                labels: labels,
-                datasets: [
-                    {
-                        data: labels.map((item, index) => { return data[index] }),
-                        backgroundColor: colors.map((item) => { return item }),
-                    },
-                ],
-            },
-            chartsData: [
-                {
-                    title: "Human Resource",
-                    totalCost: 73837,
-                    costPercentage: "40%",
-                    labels: ['80%', '16%', '4%', '10%'],
-                    data: [80, 16, 4, 10],
-                    colors: ['#52b121', '#ff9900', '#d84539', '#0089d6'],
-                    productionCost: 59068.6,
-                    developmentCost: 7383.7,
-                    stageCost: 4430.22,
-                    testCost: 2953.48
-                },
-                {
-                    title: "Procurement",
-                    totalCost: 73837,
-                    costPercentage: "40%",
-                    labels: ['80%', '16%', '4%', '10%'],
-                    data: [80, 16, 4, 10],
-                    colors: ['#52b121', '#ff9900', '#d84539', '#0089d6'],
-                    productionCost: 59068.6,
-                    developmentCost: 7383.7,
-                    stageCost: 4430.22,
-                    testCost: 2953.48
-                },
-                {
-                    title: "Supply Chain Management",
-                    totalCost: 73837,
-                    costPercentage: "40%",
-                    labels: ['80%', '16%', '4%', '10%'],
-                    data: [80, 16, 4, 10],
-                    colors: ['#52b121', '#ff9900', '#d84539', '#0089d6'],
-                    productionCost: 59068.6,
-                    developmentCost: 7383.7,
-                    stageCost: 4430.22,
-                    testCost: 2953.48
-                },
-                {
-                    title: "EMS",
-                    totalCost: 73837,
-                    costPercentage: "40%",
-                    labels: ['80%', '16%', '4%', '10%'],
-                    data: [80, 16, 4, 10],
-                    colors: ['#52b121', '#ff9900', '#d84539', '#0089d6'],
-                    productionCost: 59068.6,
-                    developmentCost: 7383.7,
-                    stageCost: 4430.22,
-                    testCost: 2953.48
-                }
-            ],
-            pieView: true,
+            pieView: false,
+            chartData: {},
+            totalCost: 0,
         };
         this.breadCrumbs = [
             {
@@ -91,14 +39,199 @@ export class ProductWiseCost extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        this.getDepartmentData();
     }
+
+    getDepartmentData = async () => {
+        try {
+            await RestService.getData(`${this.config.GET_PRODUCT_DATA}`, null, null).then((response: any) => {
+                this.manipulateDepartmentWiseProductData(_.cloneDeep(response.organization.departmentList));
+            });
+        } catch (err) {
+            console.log('Loading accounts failed. Error: ', err);
+        }
+    };
+
+    manipulateDepartmentWiseProductData = (departmentList: any) => {
+        let data: any = {};
+        let totalCost = 0;
+        for (let i = 0; i < departmentList.length; i++) {
+            const department = departmentList[i];
+            const productList = department.productList;
+            productList.forEach((product: any) => {
+                let productCost = 0;
+                let stageWiseCost: any = {};
+                data[product.name] = data[product.name] || {};
+                const environments = product.deploymentEnvironmentList;
+                if (environments) {
+                    environments.forEach((environent: any) => {
+                        stageWiseCost[environent.name] = stageWiseCost[environent.name] || 0;
+                        const serviceCategoryList = environent.serviceCategoryList;
+                        if (serviceCategoryList) {
+                            serviceCategoryList.forEach((category: any) => {
+                                const serviceNameList = category.serviceNameList;
+                                if (serviceNameList) {
+                                    serviceNameList.forEach((serviceName: any) => {
+                                        const tagList = serviceName.tagList;
+                                        if (tagList) {
+                                            tagList.forEach((tag: any) => {
+                                                const serviceList = tag.serviceList;
+                                                if (serviceList) {
+                                                    serviceList.forEach((service: any) => {
+                                                        productCost += service.serviceBilling.amount;
+                                                        stageWiseCost[environent.name] += service.serviceBilling.amount;
+                                                        totalCost += service.serviceBilling.amount;
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                        stageWiseCost[environent.name] = stageWiseCost[environent.name].toFixed(2);
+                    });
+                }
+                data[product.name] = {
+                    stageWiseCost,
+                    productCost: productCost.toFixed(2)
+                };
+            });
+            // department.productList = newProductList;
+        }
+        this.setState({
+            chartData: data,
+            totalCost: totalCost.toFixed(2),
+        });
+    };
 
     handleChartViewToggle = () => {
         this.setState({ pieView: !this.state.pieView })
     }
 
+    calculatePerc = (total: any, quo: any) => {
+        return (quo / total * 100).toFixed(2);
+    };
+
+    createChart = () => {
+        const { totalCost, chartData, pieView } = this.state;
+        const keys = Object.keys(chartData);
+        const dataJSX = keys.map((productName: any) => {
+            const product = chartData[productName];
+            const { productCost, stageWiseCost } = product;
+            const costPerc = this.calculatePerc(totalCost, productCost);
+            const prodPerc = this.calculatePerc(productCost, stageWiseCost.PROD);
+            const devPerc = this.calculatePerc(productCost, stageWiseCost.DEV);
+            const testPerc = this.calculatePerc(productCost, stageWiseCost.TEST);
+            const stagePerc = this.calculatePerc(productCost, stageWiseCost.STAGE);
+            const tempData = {
+                title: "Human Resource",
+                totalCost: productCost,
+                costPercentage: `${costPerc}%`,
+                labels: [`PROD`, `DEV`, `STAGE`, `TEST`],
+                data: [prodPerc, devPerc, stagePerc, testPerc],
+                backgroundColor: [stageColors.PROD, stageColors.DEV, stageColors.STAGE, stageColors.TEST],
+                productionCost: stageWiseCost.PROD,
+                developmentCost: stageWiseCost.DEV,
+                stageCost: stageWiseCost.STAGE,
+                testCost: stageWiseCost.TEST
+            }
+
+            const chartTempData: any = {
+                labels: tempData.labels,
+                datasets: [
+                    {
+                        data: tempData.data,
+                        backgroundColor: tempData.backgroundColor,
+                    },
+                ],
+            }
+
+            return <div className="col-lg-6 col-md-12 col-sm-12">
+                <div className="chart-box">
+                    <h3>{productName}</h3>
+                    <div className="total-cost-text text-center">
+                        <strong>Total Cost : ${productCost}</strong> - {tempData.costPercentage} of the total cost
+                    </div>
+                    <div className="chart-bar">
+                        <div className="row">
+                            <div className="col-lg-6 col-md-12 col-sm-12">
+                                {
+                                    pieView ?
+                                        <Pie
+                                            data={chartTempData}
+                                            height={160}
+                                            width={200}
+                                            options={{
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'top',
+                                                        display: false
+                                                    },
+                                                },
+
+                                            }}
+                                        />
+                                        :
+                                        <Bar
+                                            data={chartTempData}
+                                            height={200}
+                                            width={200}
+                                            options={{
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'top',
+                                                        display: false
+                                                    },
+                                                },
+                                                scales: {
+                                                    x: {
+                                                        ticks: {
+                                                            maxTicksLimit: 5
+                                                        }
+                                                    }
+                                                }
+                                            }}
+                                        />
+                                }
+                            </div>
+                            <div className="col-lg-6 col-md-12 col-sm-12">
+                                <div className='chart-data'>
+                                    <ul className="chart-data-text">
+                                        <li>
+                                            <span style={{ backgroundColor: stageColors.PROD }}></span>
+                                            <p>Production <strong>${tempData.productionCost}</strong></p>
+                                        </li>
+                                        <li>
+                                            <span style={{ backgroundColor: stageColors.DEV }}></span>
+                                            <p>Development <strong>${tempData.developmentCost}</strong></p>
+                                        </li>
+                                        <li>
+                                            <span style={{ backgroundColor: stageColors.STAGE }}></span>
+                                            <p>Stage <strong>${tempData.stageCost}</strong></p>
+                                        </li>
+                                        <li>
+                                            <span style={{ backgroundColor: stageColors.TEST }}></span>
+                                            <p>Test <strong>${tempData.testCost}</strong></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="last-updated-text">
+                        Last Updated: 03/28/2022 17:25
+                    </div>
+                </div>
+            </div>;
+        });
+        return dataJSX;
+    };
+
     render() {
-        const { pieChartData, pieView, chartsData } = this.state
+        const { pieView } = this.state
         let departmentName: any = CommonService.getParameterByName("department", window.location.href);
         departmentName = departmentName ? departmentName.replace(';amp;', '&') : "All Departments";
         return (
@@ -117,85 +250,7 @@ export class ProductWiseCost extends React.Component<any, any> {
                         </div>
                         <div className="pie-chart-container">
                             <div className="row">
-                                {chartsData.map((item: any) => {
-                                    return (
-                                        <div className="col-lg-6 col-md-12 col-sm-12">
-                                            <div className="chart-box">
-                                                <h3>{item.title}</h3>
-                                                <div className="total-cost-text text-center">
-                                                    <strong>Total Cost : ${item.totalCost}</strong> - {item.costPercentage} of the total cost
-                                                </div>
-                                                <div className="chart-bar">
-                                                    <div className="row">
-                                                        <div className="col-lg-6 col-md-12 col-sm-12">
-                                                            {pieView ? <Bar
-                                                                data={pieChartData}
-                                                                height={200}
-                                                                width={200}
-                                                                options={{
-                                                                    responsive: true,
-                                                                    plugins: {
-                                                                        legend: {
-                                                                            position: 'top',
-                                                                            display: false
-                                                                        },
-                                                                    },
-                                                                    scales: {
-                                                                        x: {
-                                                                            ticks: {
-                                                                                maxTicksLimit: 5
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }}
-                                                            /> : <Pie
-                                                                data={pieChartData}
-                                                                height={160}
-                                                                width={200}
-                                                                options={{
-                                                                    responsive: true,
-                                                                    plugins: {
-                                                                        legend: {
-                                                                            position: 'top',
-                                                                            display: false
-                                                                        },
-                                                                    },
-
-                                                                }}
-                                                            />}
-
-                                                        </div>
-                                                        <div className="col-lg-6 col-md-12 col-sm-12">
-                                                            <div className='chart-data'>
-                                                                <ul className="chart-data-text">
-                                                                    <li>
-                                                                        <span style={{ backgroundColor: '#52b141' }}></span>
-                                                                        <p>Production <strong>${item.productionCost}</strong></p>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span style={{ backgroundColor: '#ff9900' }}></span>
-                                                                        <p>Development <strong>${item.developmentCost}</strong></p>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span style={{ backgroundColor: '#d84539' }}></span>
-                                                                        <p>Stage <strong>${item.stageCost}</strong></p>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span style={{ backgroundColor: '#0089d6' }}></span>
-                                                                        <p>Test <strong>${item.testCost}</strong></p>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="last-updated-text">
-                                                    Last Updated: 03/28/2022 17:25
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
+                                {this.createChart()}
                             </div>
                         </div>
                     </div>
