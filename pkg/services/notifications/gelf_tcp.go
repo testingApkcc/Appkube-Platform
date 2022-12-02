@@ -1,13 +1,11 @@
 package notifications
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
+	"strings"
 
 	"github.com/grafana/grafana/pkg/models"
 )
@@ -36,25 +34,32 @@ func (ns *NotificationService) sendGelfTcpRequestSync(ctx context.Context, gelft
 	// 	return err
 	// }
 	// log.SetOutput(io.MultiWriter(os.Stderr, gelfWriter))
-	log.Printf("ALERT :::: " + string(gelftcp.GelfMessage))
+	// log.Printf("ALERT :::: " + string(gelftcp.GelfMessage))
 
 	httpUrl := "http://" + gelftcp.GelfServer + ":" + gelftcp.GelfTcpPort + "/gelf"
 	method := "POST"
 
-	m := Msg{
-		version:       "1.1",
-		host:          "3.211.7.242",
-		short_message: gelftcp.GelfMessage,
-		level:         5,
-		_some_info:    "Gelf Alert",
-	}
+	// m := Msg{
+	// 	version:       "1.1",
+	// 	host:          "3.211.7.242",
+	// 	short_message: "{'big':'one'}",
+	// 	level:         5,
+	// 	_some_info:    "Gelf Alert",
+	// }
 
-	// payload := strings.NewReader(`{` + "" + `    "version": "1.1",` + "" + `    "host": "182.69.97.205",` + "" + `    "short_message": " ` + gelftcp.GelfMessage + ` ",` + "" + `    "level": 5,` + "" + `    "_some_info": "Fist gelf http message"` + "" + `}`)
-	var buf bytes.Buffer
-	err := json.NewEncoder(&buf).Encode(m)
+	payload := strings.NewReader(`{` + "" + `    "version": "1.1",` + "" + `    "host": "182.69.97.205",` + "" + `    "short_message": " helo ",` + "" + `    "level": 5,` + "" + `    "_some_info": "Fist gelf http message"` + "" + `}`)
+
+	// requestByte, err := json.Marshal(m)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// 	return err
+	// }
+
+	// log.Printf("MSG::::: ", payload)
+	// reader := bytes.NewReader(payload)
 
 	client := &http.Client{}
-	req, err := http.NewRequest(method, httpUrl, &buf)
+	req, err := http.NewRequest(method, httpUrl, payload)
 
 	if err != nil {
 		fmt.Println(err)
