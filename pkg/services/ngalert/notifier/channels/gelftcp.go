@@ -78,7 +78,7 @@ func (gtn *GelfTcpNotifier) Notify(ctx context.Context, as ...*types.Alert) (boo
 		GelfMessage: string(alertBody),
 	}
 
-	if err := gtn.ns.SendGelfTcpSync(ctx, cmd); err != nil {
+	if err := gtn.ns.SendGelfTcpCommand(ctx, cmd); err != nil {
 		gtn.log.Error("Failed to send gelf notification", "error", err, "body", string(alertBody))
 		return false, err
 	}
