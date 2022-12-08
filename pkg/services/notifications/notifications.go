@@ -99,6 +99,7 @@ type NotificationService struct {
 
 	mailQueue    chan *Message
 	webhookQueue chan *Webhook
+	gelfTcpQueue chan *GelfTcp
 	mailer       Mailer
 	log          log.Logger
 }
@@ -111,6 +112,12 @@ func (ns *NotificationService) Run(ctx context.Context) error {
 
 			if err != nil {
 				ns.log.Error("Failed to send webrequest ", "error", err)
+			}
+		case gelfTcp := <-ns.gelfTcpQueue:
+			err := ns.sendGelfTcpRequestSync(context.Background(), gelfTcp)
+
+			if err != nil {
+				ns.log.Error("Failed to send gelf tcp message ", "error", err)
 			}
 		case msg := <-ns.mailQueue:
 			num, err := ns.Send(msg)
