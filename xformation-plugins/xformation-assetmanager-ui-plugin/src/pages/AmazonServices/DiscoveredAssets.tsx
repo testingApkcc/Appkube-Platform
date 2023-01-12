@@ -72,10 +72,16 @@ export class DiscoveredAssets extends React.Component<any, any>{
         null,
         null
       ).then((response: any) => {
-        this.setState({
-          treeData: response[0].account_services_json.vpcs
-        });
-        this.getAppDataServices(response[0].account_services_json.vpcs);
+        if(response[0] && response[0].account_services_json){
+          this.setState({
+            treeData: response[0].account_services_json.vpcs
+          });
+          this.getAppDataServices(response[0].account_services_json.vpcs);
+        } else {
+          this.setState({
+            treeData: [],
+          });
+        }
       });
     } catch (err) {
       console.log("Loading accounts failed. Error: ", err);
