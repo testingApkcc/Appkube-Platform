@@ -26350,11 +26350,17 @@ object-assign
                             null,
                             null
                           ).then(function (response) {
-                            _this.setState({
-                              treeData: response[0].account_services_json.vpcs,
-                            });
+                            if (response[0] && response[0].account_services_json) {
+                              _this.setState({
+                                treeData: response[0].account_services_json.vpcs,
+                              });
 
-                            _this.getAppDataServices(response[0].account_services_json.vpcs);
+                              _this.getAppDataServices(response[0].account_services_json.vpcs);
+                            } else {
+                              _this.setState({
+                                treeData: [],
+                              });
+                            }
                           }),
                         ];
 
