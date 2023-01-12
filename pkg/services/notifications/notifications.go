@@ -23,7 +23,7 @@ type WebhookSender interface {
 
 // ------Manoj.  custom changes for appcube plateform ------
 type GelfTcpSender interface {
-	SendGelfTcpSync(ctx context.Context, cmd *models.SendGelfTcpSync) error
+	SendGelfTcpCommand(ctx context.Context, cmd *models.SendGelfTcpSync) error
 }
 
 // ------Manoj.  custom changes for appcube plateform ------
@@ -65,7 +65,7 @@ func ProvideService(bus bus.Bus, cfg *setting.Cfg, mailer Mailer) (*Notification
 	ns.Bus.AddHandler(ns.SendEmailCommandHandlerSync)
 	ns.Bus.AddHandler(ns.SendWebhookSync)
 	// ------Manoj.  custom changes for appcube plateform ------
-	ns.Bus.AddHandler(ns.SendGelfTcpSync)
+	ns.Bus.AddHandler(ns.SendGelfTcpCommand)
 	// ------Manoj.  custom changes for appcube plateform ------
 	ns.Bus.AddEventListener(ns.signUpStartedHandler)
 	ns.Bus.AddEventListener(ns.signUpCompletedHandler)
@@ -99,6 +99,7 @@ type NotificationService struct {
 
 	mailQueue    chan *Message
 	webhookQueue chan *Webhook
+	gelfTcpQueue chan *GelfTcp
 	mailer       Mailer
 	log          log.Logger
 }
@@ -111,6 +112,12 @@ func (ns *NotificationService) Run(ctx context.Context) error {
 
 			if err != nil {
 				ns.log.Error("Failed to send webrequest ", "error", err)
+			}
+		case gelfTcp := <-ns.gelfTcpQueue:
+			err := ns.sendGelfTcpRequestSync(context.Background(), gelfTcp)
+
+			if err != nil {
+				ns.log.Error("Failed to send gelf tcp message ", "error", err)
 			}
 		case msg := <-ns.mailQueue:
 			num, err := ns.Send(msg)
@@ -143,13 +150,12 @@ func (ns *NotificationService) SendWebhookSync(ctx context.Context, cmd *models.
 }
 
 // ------Manoj.  custom changes for appcube plateform ------
-func (ns *NotificationService) SendGelfTcpSync(ctx context.Context, cmd *models.SendGelfTcpSync) error {
-	// gelfTcp := &GelfTcp{
-	// 	GelfServer:  cmd.GelfServer,
-	// 	GelfTcpPort: cmd.GelfTcpPort,
-	// 	GelfMessage: cmd.GelfMessage,
-	// }
-	return ns.sendGelfTcpRequestSync(ctx, cmd)
+func (ns *NotificationService) SendGelfTcpCommand(ctx context.Context, cmd *models.SendGelfTcpSync) error {
+	return ns.sendGelfTcpRequestSync(ctx, &GelfTcp{
+		GelfServer:  cmd.GelfServer,
+		GelfTcpPort: cmd.GelfTcpPort,
+		GelfMessage: cmd.GelfMessage,
+	})
 }
 
 // ------Manoj.  custom changes for appcube plateform ------

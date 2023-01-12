@@ -32,7 +32,7 @@ func (ns *NotificationServiceMock) SendWebhookSync(ctx context.Context, cmd *mod
 }
 
 // ------Manoj.  custom changes for appcube plateform ------
-func (ns *NotificationServiceMock) SendGelfTcpSync(ctx context.Context, cmd *models.SendGelfTcpSync) error {
+func (ns *NotificationServiceMock) SendGelfTcpCommand(ctx context.Context, cmd *models.SendGelfTcpSync) error {
 	ns.GelfTcp = *cmd
 	if ns.GelfTcpHandler != nil {
 		return ns.GelfTcpHandler(ctx, cmd)
