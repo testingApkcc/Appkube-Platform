@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Static Badge",
+  "id": "staticBadge",
+
+  "info": {
+    "description": "Standard static badge visualization",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/static_badge_icon.png",
+      "large": "img/static_badge_icon.png"
+    }
+  }
+}
