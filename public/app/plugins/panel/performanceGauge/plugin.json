@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Performance Gauge",
+  "id": "performancegauge",
+
+  "info": {
+    "description": "Standard Performance Gauge visualization",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/icon_performance.png",
+      "large": "img/icon_performance.png"
+    }
+  }
+}
