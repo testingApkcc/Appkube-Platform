@@ -1,0 +1,66 @@
+.contribution-panel-main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.contribution-panel {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: block;
+    text-align: left;
+}
+
+.contribution-panel .heading {
+    display: block;
+    font-size: 24px;
+    line-height: 26px;
+    color: rgb(75 75 130);
+    font-weight: 600;
+}
+
+.contribution-panel .chart-panel {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.contribution-panel .chart-panel .panel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contribution-panel .chart-panel .panel .left-text {
+    display: inline-flex;
+    width: 50px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 500;
+    color: rgb(30, 30, 30);
+}
+
+.contribution-panel .chart-panel .panel .right-boxs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: calc(100% - 50px);
+}
+.contribution-panel .chart-panel .panel .right-boxs ul { 
+    display: block;
+    width: 100%;
+}
+.contribution-panel .chart-panel .panel .right-boxs ul li { 
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    margin-bottom: 0px;
+    margin-right: 4px;
+    background-color: #dee1f2;
+}
