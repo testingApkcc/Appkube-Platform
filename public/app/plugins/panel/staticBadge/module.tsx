@@ -1,7 +1,7 @@
 import { PanelPlugin } from '@grafana/data';
 import StaticBadgePanel from './StaticBadgePanel';
 
-export const plugin = new PanelPlugin(StaticBadgePanel).useFieldConfig().setPanelOptions((builder) => {
+export const plugin = new PanelPlugin(StaticBadgePanel).setPanelOptions((builder) => {
   builder.addTextInput({
     path: 'gaugeTitle',
     name: 'Gauge Title',

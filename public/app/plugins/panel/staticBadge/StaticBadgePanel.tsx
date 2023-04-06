@@ -7,6 +7,10 @@ type MyState = {
   data: {
     cost: string;
   };
+  queryParams: {
+    from: string;
+    to: string;
+  };
 };
 
 class StaticBadgePanel extends PureComponent<PanelProps<StaticBadgeOptions>> {
@@ -14,11 +18,19 @@ class StaticBadgePanel extends PureComponent<PanelProps<StaticBadgeOptions>> {
     data: {
       cost: '',
     },
+    queryParams: {
+      from: 'now-6h',
+      to: 'now',
+    },
   };
 
   componentDidMount = () => {
+    window.addEventListener('locationchange', function () {
+      console.log('Event added');
+    });
+
     if (this.props.options.gaugeURL) {
-      fetch(this.props.options.gaugeURL)
+      fetch(`${this.props.options.gaugeURL}?from=${this.state.queryParams.from}&to=${this.state.queryParams.to}`)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -34,9 +46,23 @@ class StaticBadgePanel extends PureComponent<PanelProps<StaticBadgeOptions>> {
     }
   };
 
+  componentWillUnmount = () => {
+    window.removeEventListener('locationchange', function () {
+      console.log('Removed Event Listener');
+    });
+  };
+
   async componentDidUpdate(prevProps: any, prevState: any) {
-    if (prevProps.options.gaugeURL !== this.props.options.gaugeURL) {
-      await fetch(this.props.options.gaugeURL)
+    let from: any;
+    let to: any;
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    from = urlParams.get('from');
+    to = urlParams.get('to');
+
+    if (prevProps.options.gaugeURL !== this.props.options.gaugeURL || prevState.queryParams.from !== from) {
+      await fetch(`${this.props.options.gaugeURL}?from=${this.state.queryParams.from}&to=${this.state.queryParams.to}`)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -49,6 +75,11 @@ class StaticBadgePanel extends PureComponent<PanelProps<StaticBadgeOptions>> {
         .catch((error) => {
           console.log(error);
         });
+
+      let queryParams = { ...this.state.queryParams };
+      queryParams.from = from;
+      queryParams.to = to;
+      this.setState({ queryParams });
     }
   }
 
