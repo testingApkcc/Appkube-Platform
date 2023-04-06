@@ -1,7 +1,7 @@
 import { PanelPlugin } from '@grafana/data';
 import PerformanceGaugePanel from './PerformanceGaugePanel';
 
-export const plugin = new PanelPlugin(PerformanceGaugePanel).useFieldConfig().setPanelOptions((builder) => {
+export const plugin = new PanelPlugin(PerformanceGaugePanel).setPanelOptions((builder) => {
   builder.addTextInput({
     path: 'gaugeTitle',
     name: 'Gauge Title',
