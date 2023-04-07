@@ -1,7 +1,7 @@
 import { PanelPlugin } from '@grafana/data';
-import MultipleBadgePanels from './multipleBadgePanels';
+import MultipleBadgePanels from './MultipleBadgePanels';
 
-export const plugin = new PanelPlugin(MultipleBadgePanels).useFieldConfig().setPanelOptions((builder) => {
+export const plugin = new PanelPlugin(MultipleBadgePanels).setPanelOptions((builder) => {
   builder.addTextInput({
     path: 'gaugeTitle',
     name: 'Gauge Title',

@@ -1,7 +1,7 @@
 import { PanelPlugin } from '@grafana/data';
 import CreateHorizontalGraphPanel from './CreateHorizontalGraphPanel';
 
-export const plugin = new PanelPlugin(CreateHorizontalGraphPanel).useFieldConfig().setPanelOptions((builder) => {
+export const plugin = new PanelPlugin(CreateHorizontalGraphPanel).setPanelOptions((builder) => {
   builder.addTextInput({
     path: 'gaugeTitle',
     name: 'Gauge Title',
@@ -20,8 +20,8 @@ export const plugin = new PanelPlugin(CreateHorizontalGraphPanel).useFieldConfig
   });
   builder.addTextInput({
     path: 'gaugeURL',
-    name: 'Total Environment',
-    defaultValue: '',
+    name: 'Total Environments Title',
+    defaultValue: 'No of Environments',
     settings: {
       placeholder: 'Environment',
     },
