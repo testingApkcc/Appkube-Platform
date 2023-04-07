@@ -1,6 +1,6 @@
 export interface HorizontalOptions {
-  title: string;
-  gaugeIMG: string;
+  graphTitle: string;
+  environmentTitle: string;
   gaugeTitle: string;
   gaugeURL: string;
 }

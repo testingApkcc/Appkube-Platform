@@ -133,30 +133,30 @@ class CreateHorizontalGraphPanel extends PureComponent<PanelProps<HorizontalOpti
     return (
       <div className="horizontal-graph-panel-main">
         <div className="horizontal-graph-panel">
-          {this.props.options.gaugeURL && this.state.data.cost ? (
+          {/* {this.props.options.gaugeURL && this.state.data.cost ? ( */}
             <>
               <div className="heading">
                 <div className="heading-left">
-                  <span className="heading">Overall Products</span>
-                  <span className="text">{this.props.options.gaugeTitle}</span>
+                  <span className="heading">{this.props.options.gaugeTitle}</span>
+                  <span className="text">{this.props.options.graphTitle}</span>
                   <p className="price">
-                    {data.cost}{' '}
+                    {data.cost}
                     <span>
                       <i className="fa fa-caret-up"></i> 10%
                     </span>
                   </p>
                 </div>
                 <div className="heading-right">
-                  <span>No of Environments:</span> <span>5</span>
+                  <span>{this.props.options.environmentTitle}</span> <span>5</span>
                 </div>
               </div>
               <div className="horizontal-graph">
                 <Bar options={options} data={barData} height={70} />
               </div>
             </>
-          ) : (
+          {/* ) : (
             <p style={{ textAlign: 'center' }}>Please enter API endpoint to fetch data</p>
-          )}
+          )} */}
         </div>
       </div>
     );

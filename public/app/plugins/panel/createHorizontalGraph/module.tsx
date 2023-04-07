@@ -5,7 +5,15 @@ export const plugin = new PanelPlugin(CreateHorizontalGraphPanel).setPanelOption
   builder.addTextInput({
     path: 'gaugeTitle',
     name: 'Gauge Title',
-    defaultValue: 'Horizontal Graph',
+    defaultValue: 'Overall Products',
+    settings: {
+      placeholder: 'Title',
+    },
+  });
+  builder.addTextInput({
+    path: 'graphTitle',
+    name: 'Graph Title',
+    defaultValue: 'Total Functions Cost',
     settings: {
       placeholder: 'Title',
     },
@@ -19,9 +27,9 @@ export const plugin = new PanelPlugin(CreateHorizontalGraphPanel).setPanelOption
     },
   });
   builder.addTextInput({
-    path: 'gaugeURL',
+    path: 'environmentTitle',
     name: 'Total Environments Title',
-    defaultValue: 'No of Environments',
+    defaultValue: 'No of Environments:',
     settings: {
       placeholder: 'Environment',
     },
