@@ -71,6 +71,9 @@ import * as staticBadgePanel from 'app/plugins/panel/staticBadge/module';
 import * as contributionPanel from 'app/plugins/panel/contribution/module';
 import * as createHorizontalGraph from 'app/plugins/panel/createHorizontalGraph/module';
 import * as multipleBadgePanels from 'app/plugins/panel/multipleBadgePanels/module';
+import * as lambdaSummaryPanel from 'app/plugins/panel/lambdaSummary/module';
+import * as topFailurePanel from 'app/plugins/panel/topFailurePanel/module';
+import * as topUsePanel from 'app/plugins/panel/topUsePanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -131,6 +134,9 @@ const builtInPlugins: any = {
   'app/plugins/panel/contribution/module': contributionPanel,
   'app/plugins/panel/createHorizontalGraph/module': createHorizontalGraph,
   'app/plugins/panel/multipleBadgePanels/module': multipleBadgePanels,
+  'app/plugins/panel/lambdaSummary/module': lambdaSummaryPanel,
+  'app/plugins/panel/topFailurePanel/module': topFailurePanel,
+  'app/plugins/panel/topUsePanel/module': topUsePanel,
   'app/plugins/panel/gettingstarted/module': gettingStartedPanel,
   'app/plugins/panel/gauge/module': gaugePanel,
   'app/plugins/panel/piechart/module': pieChartPanel,
