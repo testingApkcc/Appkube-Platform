@@ -114,7 +114,7 @@ class TopUsePanel extends PureComponent<PanelProps<TopUseOptions>> {
                 <span className="percantage-part">{data.percentageChange}%</span>
               </div>
               <p className="last-year-total">Compared to ${data.lastYearCost} last year</p>
-              {data.items.map((item: any) => {
+              {data.items.map((item: any, index) => {
                 return (
                   <div className="topuse-info" key={index}>
                     <span className="topuse-name">{item.title}</span>
