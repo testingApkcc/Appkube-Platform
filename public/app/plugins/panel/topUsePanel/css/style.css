@@ -1,0 +1,109 @@
+.topuse-main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    flex-wrap: wrap;
+}
+
+.topuse-part {
+    width: 350px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 16px 21px 22px #fdfcfe;
+    margin: auto;
+}
+
+.topuse-part .title-part {
+    width: 100%;
+    font-size: 19px;
+    font-weight: 500;
+    color: #393975;
+    text-align: center;
+}
+
+.topuse-part .numberic-part {
+    display: flex;
+    width: 100%;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.topuse-part .numberic-part .numberic-total {
+    margin: 0;
+    padding-right: 5px;
+    color: #5d5d8e;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.topuse-part .numberic-part .up-arrow {
+    color: #00b929;
+    display: inline-flex;
+    align-items: end;
+    font-size: 15px;
+}
+
+.topuse-part .numberic-part .percantage-part {
+    display: inline-flex;
+    font-size: 10px;
+    margin-top: 5px;
+    color: #00b929;
+    align-items: end;
+    margin-left: 4px;
+}
+
+.topuse-part .last-year-total {
+    color: #adadc6;
+    font-size: 12px;
+    margin: 0px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.topuse-part .topuse-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.topuse-part .topuse-info .topuse-name {
+    width: 35%;
+    font-size: 14px;
+    color: #393975;
+}
+
+.topuse-part .topuse-info .time-details {
+    width: 25%;
+    font-size: 14px;
+    display: flex;
+    justify-content: end;
+    color: #b4b4cb;
+}
+
+.topuse-part .topuse-info .amount-number {
+    width: 20%;
+    display: flex;
+    justify-content: end;
+    font-size: 14px;
+    color: #393975;
+
+}
+
+.topuse-part .topuse-info .up-arrow {
+    width: 10%;
+    color: #00b929;
+
+}
+.topuse-part .topuse-info .down-arrow {
+    width: 10%;
+    color: #ff2d2e;
+}

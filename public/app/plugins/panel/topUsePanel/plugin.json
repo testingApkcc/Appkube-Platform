@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Top Use Badge",
+  "id": "topUsePanel",
+
+  "info": {
+    "description": "Top use data visualization panel",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/multiplebadgepanels_icon.png",
+      "large": "img/multiplebadgepanels_icon.png"
+    }
+  }
+}
