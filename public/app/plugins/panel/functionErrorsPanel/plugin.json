@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Function Errors",
+  "id": "functionErrorsPanel",
+
+  "info": {
+    "description": "Function errors visualization",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/lambda_summary_icon.png",
+      "large": "img/lambda_summary_icon.png"
+    }
+  }
+}
