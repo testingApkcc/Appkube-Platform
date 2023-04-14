@@ -1,0 +1,100 @@
+.function-panel-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.function-panel-container .function-panel-inner {
+    width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 16px 21px 22px #fdfcfe;
+}
+
+.function-panel-container .heading {
+    display: block;
+    font-size: 13px;
+    color: #7676a0;
+    padding-bottom: 20px;
+}
+
+.function-panel-container .table {
+    display: block;
+    width: 100%;
+}
+
+.function-panel-container .table .table-head {
+    display: flex;
+    width: 100%;
+}
+
+.function-panel-container .table .table-head span {
+    display: inline-flex;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #adadc6;
+}
+
+.function-panel-container .table .table-head span:nth-child(1) {
+    width: 40%;
+}
+
+.function-panel-container .table .table-head span:nth-child(2) {
+    width: 20%;
+}
+
+.function-panel-container .table .table-head span:nth-child(3) {
+    width: 20%;
+}
+
+.function-panel-container .table .table-head span:nth-child(4) {
+    width: 20%;
+}
+
+.function-panel-container .table .table-body {
+    display: block;
+    width: 100%;
+}
+
+.function-panel-container .table .table-body .colum {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #edeff8;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.function-panel-container .table .table-body .colum:last-child {
+    border-bottom: none;
+}
+
+.function-panel-container .table .table-body .colum span {
+    display: inline-flex;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #6a6a97;
+}
+
+.function-panel-container .table .table-body .colum span:nth-child(1) {
+    width: 40%;
+}
+
+.function-panel-container .table .table-body .colum span:nth-child(2) {
+    width: 20%;
+}
+
+.function-panel-container .table .table-body .colum span:nth-child(3) {
+    width: 20%;
+}
+
+.function-panel-container .table .table-body .colum span:nth-child(4) {
+    width: 20%;
+}

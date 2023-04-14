@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Top Function By Duration",
+  "id": "topFunctionByDuration",
+
+  "info": {
+    "description": "Top Function By Duration visualization",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/lambda_summary_icon.png",
+      "large": "img/lambda_summary_icon.png"
+    }
+  }
+}

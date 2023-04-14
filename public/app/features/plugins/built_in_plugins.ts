@@ -76,6 +76,7 @@ import * as topFailurePanel from 'app/plugins/panel/topFailurePanel/module';
 import * as topUsePanel from 'app/plugins/panel/topUsePanel/module';
 import * as requestGraphPanel from 'app/plugins/panel/requestGraphPanel/module';
 import * as functionErrorsPanel from 'app/plugins/panel/functionErrorsPanel/module';
+import * as topFunctionByDurationPanel from 'app/plugins/panel/topFunctionByDurationPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -141,6 +142,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/topUsePanel/module': topUsePanel,
   'app/plugins/panel/requestGraphPanel/module': requestGraphPanel,
   'app/plugins/panel/functionErrorsPanel/module': functionErrorsPanel,
+  'app/plugins/panel/topFunctionByDurationPanel/module': topFunctionByDurationPanel,
   'app/plugins/panel/gettingstarted/module': gettingStartedPanel,
   'app/plugins/panel/gauge/module': gaugePanel,
   'app/plugins/panel/piechart/module': pieChartPanel,
