@@ -69,7 +69,7 @@
     padding-right: 5px;
     color: #5d5d8e;
     font-size: 25px;
-
+    line-height: 28px;
 }
 
 .resources-panel .resources-info .resources-row .resources-column .numberic-part .up-arrow {
@@ -77,12 +77,15 @@
     display: inline-flex;
     align-items: end;
     font-size: 15px;
+    line-height: 18px;
+    margin-right: 2px;
 
 }
 .resources-panel .resources-info .resources-row .resources-column .numberic-part .percantage-part {
     display: inline-flex;
     font-size: 10px;
-    margin-top: 5px;
+    margin-top: 0px;
+    line-height: 14px;
     color: #00b929;
     align-items: end;
 }
