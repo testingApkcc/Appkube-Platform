@@ -99,7 +99,7 @@ class StaticBadgePanel extends PureComponent<PanelProps<StaticBadgeOptions>> {
               </div>
             </>
           ) : (
-            <p style={{ textAlign: 'center' }}>Please enter API endpoint to fetch data</p>
+            <p className="fetch-data-text">Please enter API endpoint to fetch data</p>
           )}
         </div>
       </div>

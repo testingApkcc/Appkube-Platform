@@ -133,7 +133,7 @@ class CreateHorizontalGraphPanel extends PureComponent<PanelProps<HorizontalOpti
     return (
       <div className="horizontal-graph-panel-main">
         <div className="horizontal-graph-panel">
-          {/* {this.props.options.gaugeURL && this.state.data.cost ? ( */}
+          {this.props.options.gaugeURL && this.state.data.cost ? (
             <>
               <div className="heading">
                 <div className="heading-left">
@@ -154,9 +154,9 @@ class CreateHorizontalGraphPanel extends PureComponent<PanelProps<HorizontalOpti
                 <Bar options={options} data={barData} height={70} />
               </div>
             </>
-          {/* ) : (
-            <p style={{ textAlign: 'center' }}>Please enter API endpoint to fetch data</p>
-          )} */}
+          ) : (
+            <p className="fetch-data-text">Please enter API endpoint to fetch data</p>
+          )}
         </div>
       </div>
     );

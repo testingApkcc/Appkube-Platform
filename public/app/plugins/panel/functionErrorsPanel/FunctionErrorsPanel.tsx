@@ -151,7 +151,7 @@ class FunctionErrorsPanel extends PureComponent<PanelProps<FunctionErrorsOptions
               </div>
             </div>
           ) : (
-            <p style={{ textAlign: 'center' }}>Please enter API endpoint to fetch data</p>
+            <p className="fetch-data-text">Please enter API endpoint to fetch data</p>
           )}
         </div>
       </>
