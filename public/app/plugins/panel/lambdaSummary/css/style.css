@@ -16,6 +16,7 @@
     display: block;
     width: 100%;
     box-shadow: 0px 23px 34px  #fdfcfe;
+    padding: 15px;
     margin-bottom: 30px;
 }
 
@@ -47,39 +48,38 @@
 .lambda-summary-panel .summary-info .summary-table .table-head {
     display: flex;
     width: 100%;
-    font-size: 11px;
-    color: #dddddd;
     margin-bottom: 5px;
 }
-
-.lambda-summary-panel .summary-info .summary-table .table-head .caller {
-    width: 30%;
+.lambda-summary-panel .summary-info .summary-table .table-head span {
+    font-size: 11px;
+    line-height: 14px;
+    color: #dddddd;
     display: inline-flex;
+    text-transform: uppercase;
 }
 
-.lambda-summary-panel .summary-info .summary-table .table-head .invokes {
-    width: 25%;
-    display: inline-flex;
-}
-
-.lambda-summary-panel .summary-info .summary-table .table-head .today {
-    width: 25%;
-    display: inline-flex;
-}
-
-.lambda-summary-panel .summary-info .summary-table .table-head .status {
-    width: 40%;
-    display: inline-flex;
-}
-
-.lambda-summary-panel .summary-info .summary-table .table-head .per-minutes {
-    width: 25%;
-    display: inline-flex;
-}
-
-.lambda-summary-panel .summary-info .summary-table .table-head .percent {
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(1) {
     width: 20%;
-    display: inline-flex;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(2) {
+    width: 15%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(3) {
+    width: 15%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(4) {
+    width: 20%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(5) {
+    width: 15%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(6) {
+    width: 15%;
 }
 
 .lambda-summary-panel .summary-info .summary-table .table-body {
@@ -91,11 +91,11 @@
 .lambda-summary-panel .summary-info .summary-table .table-body .summary-list {
     display: flex;
     width: 100%;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .lambda-summary-panel .summary-info .summary-table .table-body .caller-details {
-    width: 30%;
+    width: 20%;
     display: flex;
     font-size: 10px;
 }
@@ -113,19 +113,19 @@
 }
 
 .lambda-summary-panel .summary-info .summary-table .table-body .invokes-number {
-    width: 25%;
+    width: 15%;
     display: inline-flex;
     font-size: 13px;
 }
 
 .lambda-summary-panel .summary-info .summary-table .table-body .today-number {
-    width: 25%;
+    width: 15%;
     display: inline-flex;
     font-size: 13px;
 }
 
 .lambda-summary-panel .summary-info .summary-table .table-body .status-details {
-    width: 40%;
+    width: 20%;
     display: inline-flex;
 }
 
@@ -162,14 +162,14 @@
 }
 
 .lambda-summary-panel .summary-info .summary-table .table-body .per-minutes-details {
-    width: 25%;
+    width: 15%;
     display: inline-flex;
     font-size: 13px;
 }
 
 .lambda-summary-panel .summary-info .summary-table .table-body .percent-details {
     display: inline-flex;
-    width: 20%;
+    width: 15%;
     color: #00b929;
     font-size: 13px;
 }

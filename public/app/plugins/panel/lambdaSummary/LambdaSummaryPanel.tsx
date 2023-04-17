@@ -100,11 +100,7 @@ class LambdaSummaryPanel extends PureComponent<PanelProps<LambdaSummaryOptions>>
                   <div className="table-head">
                     {data.tableData.length &&
                       Object.keys(data.tableData[0]).map((item: any, index: number) => {
-                        return (
-                          <span key={index} className={`${item.toLowerCase()}`}>
-                            {item.toUpperCase()}
-                          </span>
-                        );
+                        return <span key={index}>{item.toUpperCase()}</span>;
                       })}
                   </div>
                   <div className="table-body">
@@ -115,17 +111,17 @@ class LambdaSummaryPanel extends PureComponent<PanelProps<LambdaSummaryOptions>>
                             <i className="fa fa-circle cricle-icon"></i>
                             <span className="caller-name">{item.caller}</span>
                           </div>
-                          <span className="invokes-number">{item.invoked}</span>
-                          <span className="today-number">{item.today}</span>
+                          <div className="invokes-number">{item.invoked}</div>
+                          <div className="today-number">{item.today}</div>
                           <div className="status-details">
                             <ul>
                               {item.status.map((status: any) => {
-                                status ? <li className={`${status}-status`}></li> : <li></li>;
+                                return status ? <li className={`${status}-status`}></li> : <li></li>;
                               })}
                             </ul>
                           </div>
-                          <span className="per-minutes-details">{item.perMinutes}</span>
-                          <span className="percent-details">+{item.percent}%</span>
+                          <div className="per-minutes-details">{item.perMinutes}</div>
+                          <div className="percent-details">+{item.percent}%</div>
                         </div>
                       );
                     })}
