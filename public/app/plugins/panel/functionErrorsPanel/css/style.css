@@ -4,56 +4,76 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow: hidden;
     overflow-y: scroll;
 }
 
-.funcation-error-part {
+.funcation-error-inner {
     width: 450px;
+    margin: 0 auto;
     padding: 15px;
-    margin: auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 16px 21px 22px #fdfcfe;
 }
 
-.head-data-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
+.function-panel-container .progress-container {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.progress-container {
-    height: 50px;
+.function-panel-container .progress-container .circular-progressbar {
     width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
 }
 
-.funcation-error-tital {
+.function-panel-container .progress-container .CircularProgressbar-path {
+    stroke: #ff708b;
+}
+
+.function-panel-container .progress-container .CircularProgressbar-trail {
+    stroke: #ff708b;
+}
+
+.function-panel-container .progress-container .progress-data {
+    display: inline-block;
+    padding-left: 15px;
+    width: calc(100% - 50px);
+}
+
+.function-panel-container .progress-container .progress-data .heading {
     display: block;
     font-size: 15px;
     color: #7676a0;
+    padding: 0;
 }
 
-.numberic-part {
+.function-panel-container .progress-container .progress-data .progress-data-cost {
     display: flex;
     width: 100%;
-    margin-top: 5px;
 }
 
-.numberic-total {
+.function-panel-container .progress-container .progress-data .progress-data-cost .cost {
     margin: 0;
     padding-right: 5px;
     color: #5d5d8e;
     font-size: 20px;
     font-weight: 600;
+    line-height: 24px;
+    display: inline-flex;
 }
 
-.up-arrow {
+.function-panel-container .progress-container .progress-data .progress-data-cost .up-arrow {
     color: #00b929;
     display: inline-flex;
     align-items: end;
     font-size: 15px;
-
 }
 
-.percantage-part {
+.function-panel-container .progress-container .progress-data .progress-data-cost .percantage {
     display: inline-flex;
     font-size: 10px;
     margin-top: 5px;
@@ -61,66 +81,73 @@
     align-items: end;
 }
 
-.error-header-part {
+.function-panel-container .funcation-error-table {
+    display: block;
+    width: 100%;
+}
+
+.function-panel-container .funcation-error-table .table-head {
+    width: 100%;
     display: flex;
+}
+
+.function-panel-container .funcation-error-table .table-head span {
+    display: inline-flex;
     font-size: 10px;
+    line-height: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
     color: #adadc6;
-    margin-top: 15px;
 }
 
-.errormessage {
+.function-panel-container .funcation-error-table .table-head span:nth-child(1) {
     width: 50%;
-    display: block;
 }
 
-.functionname {
-    width: 40%;
-    display: block;
+.function-panel-container .funcation-error-table .table-head span:nth-child(2) {
+    width: 25%;
 }
 
-.errorcode {
-    width: 30%;
-    display: block;
+.function-panel-container .funcation-error-table .table-head span:nth-child(3) {
+    width: 25%;
 }
 
-.error-colum-part {
+.function-panel-container .funcation-error-table .table-body {
+    display: block;
+    width: 100%;
+}
+
+.function-panel-container .funcation-error-table .table-body .colum {
     display: flex;
+    width: 100%;
     border-bottom: 1px solid #edeff8;
+    padding-top: 10px;
     padding-bottom: 10px;
-    margin-top: 10px;
 }
 
-.error-name {
+.function-panel-container .funcation-error-table .table-body .colum:last-child {
+    border-bottom: none;
+}
+
+.function-panel-container .funcation-error-table .table-body .colum span {
+    display: inline-flex;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #6a6a97;
+}
+
+.function-panel-container .funcation-error-table .table-body .colum span:nth-child(1) {
     width: 50%;
-    display: block;
-    color: #a7a7c2;
-    font-size: 11px;
 }
 
-.error-funcation-name {
-    width: 40%;
-    display: block;
-    color: #6a6a97;
-    font-size: 14px;
-    text-align: center;
+.function-panel-container .funcation-error-table .table-body .colum span:nth-child(2) {
+    width: 25%;
 }
 
-.code-number {
-    width: 30%;
-    display: block;
-    color: #6a6a97;
-    text-align: center;
-    font-size: 13px;
+.function-panel-container .funcation-error-table .table-body .colum span:nth-child(3) {
+    width: 25%;
 }
 
-.error-colum-part :last-child {
-    border-bottom: 0;
-}
 
-.CircularProgressbar-path {
-    stroke: #ff708b;
-}
 
-.CircularProgressbar-trail {
-    stroke: #ff708b;
-}

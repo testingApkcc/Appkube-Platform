@@ -10,8 +10,8 @@
       "url": "https://grafana.com"
     },
     "logos": {
-      "small": "img/lambda_summary_icon.png",
-      "large": "img/lambda_summary_icon.png"
+      "small": "img/function_errors_icon.png",
+      "large": "img/function_errors_icon.png"
     }
   }
 }

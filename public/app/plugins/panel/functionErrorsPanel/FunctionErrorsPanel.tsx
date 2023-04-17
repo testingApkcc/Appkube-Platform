@@ -102,9 +102,9 @@ class FunctionErrorsPanel extends PureComponent<PanelProps<FunctionErrorsOptions
       <>
         <div className="function-panel-container">
           {data.tableData.length ? (
-            <div className="funcation-error-part">
-              <div className="head-data-container">
-                <div className="progress-container">
+            <div className="funcation-error-inner">
+              <div className="progress-container">
+                <div className="circular-progressbar">
                   <CircularProgressbarWithChildren
                     value={percentage}
                     styles={buildStyles({
@@ -116,38 +116,38 @@ class FunctionErrorsPanel extends PureComponent<PanelProps<FunctionErrorsOptions
                     <div style={{ fontSize: 15, marginTop: -15, color: '#000', fontWeight: 'bold' }}>{percentage}%</div>
                   </CircularProgressbarWithChildren>
                 </div>
-                <div className="progress-data-container">
-                  <span className="funcation-error-tital">{this.props.options.gaugeTitle}</span>
-                  <div className="numberic-part">
-                    <span className="numberic-total">{data.cost}</span>
-                    {data.changeDirection === 'up' ? (
-                      <i className="fa fa-caret-up up-arrow"></i>
-                    ) : (
-                      <i className="fa fa-caret-down down-arrow"></i>
-                    )}
-                    <span className="percantage-part">{data.percentageChange}%</span>
+                <div className="progress-data">
+                  <span className="heading">{this.props.options.gaugeTitle}</span>
+                  <div className="progress-data-cost">
+                    <span className="cost">{data.cost}</span>
+                    <span className="percantage">
+                      {data.changeDirection === 'up' ? (
+                        <i className="fa fa-caret-up up-arrow"></i>
+                      ) : (
+                        <i className="fa fa-caret-down down-arrow"></i>
+                      )}
+                      {data.percentageChange}%
+                    </span>
                   </div>
                 </div>
               </div>
-              <div className="error-message-table">
-                <div className="error-header-part">
+              <div className="funcation-error-table">
+                <div className="table-head">
                   {Object.keys(data.tableData[0]).map((item: any, index: number) => {
+                    return <span key={index}>{item.split(/(?=[A-Z])/).join(' ')}</span>;
+                  })}
+                </div>
+                <div className="table-body">
+                  {data.tableData.map((item: any, index: number) => {
                     return (
-                      <span key={index} className={`${item.toLowerCase()}`}>
-                        {item.toUpperCase()}
-                      </span>
+                      <div className="colum" key={index}>
+                        <span>{item.errorMessage}</span>
+                        <span>{item.functionName}</span>
+                        <span>{item.errorCode}</span>
+                      </div>
                     );
                   })}
                 </div>
-                {data.tableData.map((item: any, index: number) => {
-                  return (
-                    <div className="error-colum-part" key={index}>
-                      <span className="error-name">{item.errorMessage}</span>
-                      <span className="error-funcation-name">{item.functionName}</span>
-                      <span className="code-number">{item.errorCode}</span>
-                    </div>
-                  );
-                })}
               </div>
             </div>
           ) : (
