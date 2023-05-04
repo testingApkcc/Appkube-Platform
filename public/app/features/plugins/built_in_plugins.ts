@@ -66,17 +66,6 @@ import * as welcomeBanner from 'app/plugins/panel/welcome/module';
 import * as nodeGraph from 'app/plugins/panel/nodeGraph/module';
 import * as histogramPanel from 'app/plugins/panel/histogram/module';
 import * as alertGroupsPanel from 'app/plugins/panel/alertGroups/module';
-import * as performanceGaugePanel from 'app/plugins/panel/performanceGauge/module';
-import * as staticBadgePanel from 'app/plugins/panel/staticBadge/module';
-import * as contributionPanel from 'app/plugins/panel/contribution/module';
-import * as createHorizontalGraph from 'app/plugins/panel/createHorizontalGraph/module';
-import * as multipleBadgePanels from 'app/plugins/panel/multipleBadgePanels/module';
-import * as lambdaSummaryPanel from 'app/plugins/panel/lambdaSummary/module';
-import * as topFailurePanel from 'app/plugins/panel/topFailurePanel/module';
-import * as topUsePanel from 'app/plugins/panel/topUsePanel/module';
-import * as requestGraphPanel from 'app/plugins/panel/requestGraphPanel/module';
-import * as functionErrorsPanel from 'app/plugins/panel/functionErrorsPanel/module';
-import * as topFunctionByDurationPanel from 'app/plugins/panel/topFunctionByDurationPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -132,17 +121,6 @@ const builtInPlugins: any = {
   'app/plugins/panel/live/module': livePanel,
   'app/plugins/panel/stat/module': statPanel,
   'app/plugins/panel/debug/module': debugPanel,
-  'app/plugins/panel/performanceGauge/module': performanceGaugePanel,
-  'app/plugins/panel/staticBadge/module': staticBadgePanel,
-  'app/plugins/panel/contribution/module': contributionPanel,
-  'app/plugins/panel/createHorizontalGraph/module': createHorizontalGraph,
-  'app/plugins/panel/multipleBadgePanels/module': multipleBadgePanels,
-  'app/plugins/panel/lambdaSummary/module': lambdaSummaryPanel,
-  'app/plugins/panel/topFailurePanel/module': topFailurePanel,
-  'app/plugins/panel/topUsePanel/module': topUsePanel,
-  'app/plugins/panel/requestGraphPanel/module': requestGraphPanel,
-  'app/plugins/panel/functionErrorsPanel/module': functionErrorsPanel,
-  'app/plugins/panel/topFunctionByDurationPanel/module': topFunctionByDurationPanel,
   'app/plugins/panel/gettingstarted/module': gettingStartedPanel,
   'app/plugins/panel/gauge/module': gaugePanel,
   'app/plugins/panel/piechart/module': pieChartPanel,
