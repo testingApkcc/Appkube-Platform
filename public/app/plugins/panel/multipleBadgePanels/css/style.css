@@ -1,0 +1,114 @@
+.resources-main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.resources-panel {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: block;
+    text-align: left;
+}
+
+.resources-panel p { 
+    margin-bottom: 0;
+}
+
+.resources-panel .heading {
+    display: block;
+    font-size: 24px;
+    line-height: 26px;
+    color: rgb(75 75 130);
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.resources-panel .resources-info {
+    width: 100%;
+    float: left;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.resources-panel .resources-info .resources-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.resources-panel .resources-info .resources-row .resources-column {
+    display: block;
+    background-color: #ffffff;
+    padding: 13px;
+    border-radius: 10px;
+    margin-right: 10px;
+    box-shadow: 16px 21px 22px #fdfcfe
+
+}
+
+.resources-panel .resources-info .resources-row .resources-column .resources-tital {
+    display: block;
+    font-size: 16px;
+    color: #7676a0;
+}
+
+.resources-panel .resources-info .resources-row .resources-column .numberic-part {
+    display: flex;
+    width: 100%;
+    margin-top: 5px;
+
+}
+
+.resources-panel .resources-info .resources-row .resources-column .numberic-part .numberic-total {
+    margin: 0;
+    padding-right: 5px;
+    color: #5d5d8e;
+    font-size: 25px;
+    line-height: 28px;
+}
+
+.resources-panel .resources-info .resources-row .resources-column .numberic-part .up-arrow {
+    color: #00b929;
+    display: inline-flex;
+    align-items: end;
+    font-size: 15px;
+    line-height: 18px;
+    margin-right: 2px;
+
+}
+.resources-panel .resources-info .resources-row .resources-column .numberic-part .percantage-part {
+    display: inline-flex;
+    font-size: 10px;
+    margin-top: 0px;
+    line-height: 14px;
+    color: #00b929;
+    align-items: end;
+}
+
+.resources-panel .resources-info .resources-row .resources-column .last-year-total {
+    color: #adadc6;
+    font-size: 10px;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.fetch-data-text {
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

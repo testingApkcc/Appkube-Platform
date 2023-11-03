@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Top Failure Badge",
+  "id": "topFailurePanel",
+
+  "info": {
+    "description": "Top failure data visualization panel",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/top_function_icon.png",
+      "large": "img/top_function_icon.png"
+    }
+  }
+}

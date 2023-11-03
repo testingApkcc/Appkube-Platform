@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Contribution",
+  "id": "contribution",
+
+  "info": {
+    "description": "Standard contribution visualization",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/contribution_icon.png",
+      "large": "img/contribution_icon.png"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Create Horizontal Graph",
+  "id": "CreateHorizontalGraph",
+
+  "info": {
+    "description": "Standard create horizontal graph visualization",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/createhorizontalgraph_icon.png",
+      "large": "img/createhorizontalgraph_icon.png"
+    }
+  }
+}

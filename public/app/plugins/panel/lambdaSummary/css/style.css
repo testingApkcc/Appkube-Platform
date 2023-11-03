@@ -1,0 +1,191 @@
+.lambda-summary-panel-main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.lambda-summary-panel {
+    height: auto;
+    display: block;
+    width: 100%;
+    box-shadow: 0px 23px 34px  #fdfcfe;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.lambda-summary-panel .heading {
+    width: 100%;
+    font-size: 19px;
+    font-weight: 600;
+    color: #393975;
+    margin-bottom: 20px;
+}
+
+.lambda-summary-panel .summary-info {
+    display: block;
+    width: 100%;
+}
+
+.lambda-summary-panel .summary-info .title {
+    font-weight: 500;
+    color: #393975;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.lambda-summary-panel .summary-info .summary-table {
+    display: block;
+    width: 100%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.lambda-summary-panel .summary-info .summary-table .table-head span {
+    font-size: 11px;
+    line-height: 14px;
+    color: #dddddd;
+    display: inline-flex;
+    text-transform: uppercase;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(1) {
+    width: 20%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(2) {
+    width: 15%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(3) {
+    width: 15%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(4) {
+    width: 20%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(5) {
+    width: 15%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-head span:nth-child(6) {
+    width: 15%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .summary-list {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .caller-details {
+    width: 20%;
+    display: flex;
+    font-size: 10px;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .caller-details .caller-name {
+    font-size: 13px;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .caller-details .cricle-icon {
+    font-size: 8px;
+    color: #fe3f40;
+    padding-right: 10px;
+    align-items: center;
+    display: flex;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .invokes-number {
+    width: 15%;
+    display: inline-flex;
+    font-size: 13px;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .today-number {
+    width: 15%;
+    display: inline-flex;
+    font-size: 13px;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .status-details {
+    width: 20%;
+    display: inline-flex;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .status-details ul {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .status-details ul li {
+    display: inline-flex;
+    width: 20px;
+    height: 7px;
+    margin-right: 3px;
+    background-color: #dee1f2;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .status-details ul li:last-child {
+    margin-right: 0;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .status-details ul li.red-status {
+    background-color: #fe3f40
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .status-details ul li.orange-status {
+    background-color: #fec078;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .status-details ul li.blue-status {
+    background-color: #9183ff;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .per-minutes-details {
+    width: 15%;
+    display: inline-flex;
+    font-size: 13px;
+}
+
+.lambda-summary-panel .summary-info .summary-table .table-body .percent-details {
+    display: inline-flex;
+    width: 15%;
+    color: #00b929;
+    font-size: 13px;
+}
+
+.fetch-data-text {
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

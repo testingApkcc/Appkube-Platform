@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Lambda Summary",
+  "id": "lambdaSummary",
+
+  "info": {
+    "description": "Standard Lambda Summary visualization",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/lambda_summary_icon.png",
+      "large": "img/lambda_summary_icon.png"
+    }
+  }
+}
