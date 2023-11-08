@@ -1,10 +1,18 @@
 package api
 
 import (
+	"bytes"
 	"context"
+	"crypto/aes"
+	"crypto/cipher"
+	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/cloudwatch"
 	"io/ioutil"
 	"net/http"
 	"sort"
@@ -644,7 +652,8 @@ func (hs *HTTPServer) GetMasterDataSourcePlugins(c *models.ReqContext) response.
 	return response.JSON(200, dsInfo["items"])
 }
 
-//  ------Manoj.  custom changes for appcube plateform ------
+//	------Manoj.  custom changes for appcube plateform ------
+//
 // GET /api/datasources/accountid/:accountID
 func (hs *HTTPServer) GetDataSourceByAccountId(c *models.ReqContext) response.Response {
 	query := models.GetDataSourceQueryByAccountIdOrCloudType{
@@ -862,6 +871,131 @@ func convertModelToDtosMaster(ds *models.DataSourceMaster) dtos.DataSource {
 	}
 
 	return dto
+}
+
+// GET /api/datasources/aws-namespace/:nameSpace
+func (hs *HTTPServer) GetAwsMetricList(c *models.ReqContext) response.Response {
+	type AWS_METRIC struct {
+		Text  string `json:"text,omitempty"`
+		Value string `json:"value,omitempty"`
+		Label string `json:"label,omitempty"`
+	}
+	nameSpace := "AWS/" + web.Params(c.Req)[":nameSpace"]
+	awsRegion := "us-east-1" // Change to your desired region.
+
+	asKy, err := decrypt("Pzd3VtaO5IwXqmSrg2iwWRQ6Go2Jor19RXEuLNFGCGQ=")
+	scKy, err := decrypt("rfkHthBqcYLPUEuCrC7JpomWUhnBfUiFzCoNn/QdmlVpDUp6Woxq9Dmn9yRLUgXx")
+
+	// Initialize an AWS session using your AWS credentials.
+	sess, err := session.NewSession(&aws.Config{
+		Region:      aws.String(awsRegion),
+		Credentials: credentials.NewStaticCredentials(string(asKy), string(scKy), ""),
+	})
+	if err != nil {
+		hs.log.Error("Failed to create AWS session", "error", err)
+		return response.Error(http.StatusInternalServerError, "Failed to create AWS session", err)
+	}
+
+	// Create a CloudWatch client.
+	svc := cloudwatch.New(sess)
+
+	// Define the input parameters for the ListMetrics operation.
+	input := &cloudwatch.ListMetricsInput{
+		Namespace: aws.String(nameSpace),
+	}
+
+	isMetricFound := map[string]bool{}
+	type metricAry []AWS_METRIC
+	result := make(metricAry, 0)
+
+	// Retrieve and list available metrics for the namespace.
+	err = svc.ListMetricsPages(input, func(page *cloudwatch.ListMetricsOutput, lastPage bool) bool {
+		for _, metric := range page.Metrics {
+			if isMetricFound[*metric.MetricName] != true {
+				isMetricFound[*metric.MetricName] = true
+				am := AWS_METRIC{
+					Text:  *metric.MetricName,
+					Value: *metric.MetricName,
+					Label: *metric.MetricName,
+				}
+				result = append(result, am)
+				hs.log.Info("Metric :::: " + *metric.MetricName)
+			}
+		}
+		return !lastPage
+	})
+	if err != nil {
+		hs.log.Error("Failed to list available metrics", "error", err)
+		return response.Error(http.StatusInternalServerError, "Failed to list available metrics", err)
+	}
+	return response.JSON(200, &result)
+}
+
+func decrypt(encrypted string) ([]byte, error) {
+	key := "my32digitkey12345678901234567890"
+	iv := "my16digitIvKey12"
+
+	ciphertext, err := base64.StdEncoding.DecodeString(encrypted)
+
+	if err != nil {
+		return nil, err
+	}
+
+	block, err := aes.NewCipher([]byte(key))
+
+	if err != nil {
+		return nil, err
+	}
+
+	if len(ciphertext)%aes.BlockSize != 0 {
+		return nil, fmt.Errorf("block size cant be zero")
+	}
+
+	mode := cipher.NewCBCDecrypter(block, []byte(iv))
+	mode.CryptBlocks(ciphertext, ciphertext)
+	ciphertext = PKCS5UnPadding(ciphertext)
+
+	return ciphertext, nil
+}
+
+// PKCS5UnPadding  pads a certain blob of data with necessary data to be used in AES block cipher
+func PKCS5UnPadding(src []byte) []byte {
+	length := len(src)
+	unpadding := int(src[length-1])
+
+	return src[:(length - unpadding)]
+}
+
+// GetAESEncrypted encrypts given text in AES 256 CBC
+func encrypt(plaintext string) (string, error) {
+	key := "my32digitkey12345678901234567890"
+	iv := "my16digitIvKey12"
+
+	var plainTextBlock []byte
+	length := len(plaintext)
+
+	if length%16 != 0 {
+		extendBlock := 16 - (length % 16)
+		plainTextBlock = make([]byte, length+extendBlock)
+		copy(plainTextBlock[length:], bytes.Repeat([]byte{uint8(extendBlock)}, extendBlock))
+	} else {
+		plainTextBlock = make([]byte, length)
+	}
+
+	copy(plainTextBlock, plaintext)
+	block, err := aes.NewCipher([]byte(key))
+
+	if err != nil {
+		return "", err
+	}
+
+	ciphertext := make([]byte, len(plainTextBlock))
+	mode := cipher.NewCBCEncrypter(block, []byte(iv))
+	mode.CryptBlocks(ciphertext, plainTextBlock)
+
+	str := base64.StdEncoding.EncodeToString(ciphertext)
+
+	return str, nil
 }
 
 //  ------Manoj.  custom changes for appcube plateform ------
