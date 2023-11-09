@@ -293,6 +293,7 @@ func (hs *HTTPServer) registerRoutes() {
 			datasourceRoute.Get("/accountid/:accountID/cloudType/:cloud", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceByAccountIdAndCloudType))
 			datasourceRoute.Get("/master-datasources", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetDataSourceMaster))
 			datasourceRoute.Post("/add-master-datasources", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.AddDataSourceMaster))
+			datasourceRoute.Get("/aws-namespace/:nameSpace", authorize(reqOrgAdmin, ac.EvalPermission(ActionDatasourcesRead)), routing.Wrap(hs.GetAwsMetricList))
 			//  ------Manoj.  custom changes for appcube plateform ------
 		})
 
