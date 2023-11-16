@@ -13,11 +13,16 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudwatch"
+	"github.com/aws/aws-sdk-go/service/sts"
+	"github.com/grafana/grafana/pkg/setting"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	"github.com/grafana/grafana/pkg/api/datasource"
@@ -873,7 +878,27 @@ func convertModelToDtosMaster(ds *models.DataSourceMaster) dtos.DataSource {
 	return dto
 }
 
-// GET /api/datasources/aws-namespace/:nameSpace
+func GetSessionByCreds(region string, accessKey string, secretKey string, token string) (*session.Session, error) {
+	sess, err := session.NewSession(&aws.Config{
+		Credentials: credentials.NewStaticCredentials(accessKey, secretKey, token),
+		Region:      aws.String(region),
+	})
+	return sess, err
+}
+
+const CHARSET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+func RandomString(length int) string {
+	b := make([]byte, length)
+	for i := range b {
+		b[i] = CHARSET[seededRand.Intn(len(CHARSET))]
+	}
+	return string(b)
+}
+
+var seededRand *rand.Rand = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+// GET /api/datasources/aws-namespace/:nameSpace?landingZoneId=1
 func (hs *HTTPServer) GetAwsMetricList(c *models.ReqContext) response.Response {
 	type AWS_METRIC struct {
 		Text  string `json:"text,omitempty"`
@@ -881,23 +906,57 @@ func (hs *HTTPServer) GetAwsMetricList(c *models.ReqContext) response.Response {
 		Label string `json:"label,omitempty"`
 	}
 	nameSpace := "AWS/" + web.Params(c.Req)[":nameSpace"]
-	awsRegion := "us-east-1" // Change to your desired region.
+	hs.log.Info("Request to get list of AWS metrics for namespace: " + nameSpace)
 
-	asKy, err := decrypt("Pzd3VtaO5IwXqmSrg2iwWRQ6Go2Jor19RXEuLNFGCGQ=")
-	scKy, err := decrypt("rfkHthBqcYLPUEuCrC7JpomWUhnBfUiFzCoNn/QdmlVpDUp6Woxq9Dmn9yRLUgXx")
+	queryParameters, err := url.ParseQuery(c.Req.URL.RawQuery)
+	if !queryParameters.Has("landingZoneId") {
+		return response.Error(http.StatusBadRequest, "Invalid url. Parameter landingZoneId not provided", err)
+	}
+	// call CMDB /landingzone/cloud-creds?landingZoneId=landingZoneId API
+	cmdbResp, err := externalServiceClient.Get(setting.CmdbLandingzoneCredsUrl + "?landingZoneId=" + queryParameters.Get("landingZoneId"))
+	if cmdbResp.StatusCode != 200 {
+		return response.Error(http.StatusInternalServerError, "CMDB API call failed", err)
+	}
+	defer cmdbResp.Body.Close()
+	bodyBytes, err := ioutil.ReadAll(cmdbResp.Body)
+	if err != nil {
+		return response.Error(http.StatusInternalServerError, "Invalid cmdb api response", err)
+	}
+	var accountInfo = make(map[string]interface{})
+	bodyString := string(bodyBytes)
+	err = json.Unmarshal([]byte(bodyString), &accountInfo)
+	if err != nil {
+		return response.Error(http.StatusInternalServerError, "CMDB response parsing failed", err)
+	}
 
-	// Initialize an AWS session using your AWS credentials.
-	sess, err := session.NewSession(&aws.Config{
-		Region:      aws.String(awsRegion),
-		Credentials: credentials.NewStaticCredentials(string(asKy), string(scKy), ""),
-	})
+	awsRegion := accountInfo["region"].(string)
+
+	sess, err := GetSessionByCreds(awsRegion, accountInfo["accessKey"].(string), accountInfo["secretKey"].(string), "")
 	if err != nil {
 		hs.log.Error("Failed to create AWS session", "error", err)
 		return response.Error(http.StatusInternalServerError, "Failed to create AWS session", err)
 	}
 
+	stsClient := sts.New(sess)
+	assumeRoleInput := sts.AssumeRoleInput{
+		RoleArn:         aws.String(accountInfo["crossAccountRoleArn"].(string)),
+		RoleSessionName: aws.String(RandomString(10)),
+		DurationSeconds: aws.Int64(60 * 60 * 1),
+		ExternalId:      aws.String(accountInfo["externalId"].(string)),
+	}
+	assumeRoleResult, err := stsClient.AssumeRole(&assumeRoleInput)
+	if err != nil {
+		hs.log.Error("failed to assume role", "error", err)
+		return response.Error(http.StatusInternalServerError, "failed to assume role", err)
+	}
+
+	assumeRoleSession, err := GetSessionByCreds(awsRegion, *assumeRoleResult.Credentials.AccessKeyId, *assumeRoleResult.Credentials.SecretAccessKey, *assumeRoleResult.Credentials.SessionToken)
+	if err != nil {
+		hs.log.Error("failed to create session for given assume role", "error", err)
+		return response.Error(http.StatusInternalServerError, "failed to create session for given assume role", err)
+	}
 	// Create a CloudWatch client.
-	svc := cloudwatch.New(sess)
+	svc := cloudwatch.New(assumeRoleSession)
 
 	// Define the input parameters for the ListMetrics operation.
 	input := &cloudwatch.ListMetricsInput{
@@ -919,14 +978,14 @@ func (hs *HTTPServer) GetAwsMetricList(c *models.ReqContext) response.Response {
 					Label: *metric.MetricName,
 				}
 				result = append(result, am)
-				hs.log.Info("Metric :::: " + *metric.MetricName)
+				hs.log.Info("AWS Metric :::: " + *metric.MetricName)
 			}
 		}
 		return !lastPage
 	})
 	if err != nil {
 		hs.log.Error("Failed to list available metrics", "error", err)
-		return response.Error(http.StatusInternalServerError, "Failed to list available metrics", err)
+		return response.Error(http.StatusInternalServerError, "Failed to list available aws metrics", err)
 	}
 	return response.JSON(200, &result)
 }
