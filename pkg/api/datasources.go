@@ -13,12 +13,11 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudwatch"
-	"github.com/aws/aws-sdk-go/service/sts"
 	"github.com/grafana/grafana/pkg/setting"
+	"io"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
-	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -908,55 +907,18 @@ func (hs *HTTPServer) GetAwsMetricList(c *models.ReqContext) response.Response {
 	nameSpace := "AWS/" + web.Params(c.Req)[":nameSpace"]
 	hs.log.Info("Request to get list of AWS metrics for namespace: " + nameSpace)
 
-	queryParameters, err := url.ParseQuery(c.Req.URL.RawQuery)
-	if !queryParameters.Has("landingZoneId") {
-		return response.Error(http.StatusBadRequest, "Invalid url. Parameter landingZoneId not provided", err)
-	}
-	// call CMDB /landingzone/cloud-creds?landingZoneId=landingZoneId API
-	cmdbResp, err := externalServiceClient.Get(setting.CmdbLandingzoneCredsUrl + "?landingZoneId=" + queryParameters.Get("landingZoneId"))
-	if cmdbResp.StatusCode != 200 {
-		return response.Error(http.StatusInternalServerError, "CMDB API call failed", err)
-	}
-	defer cmdbResp.Body.Close()
-	bodyBytes, err := ioutil.ReadAll(cmdbResp.Body)
+	resp, err := getGlobalAwsSecretsFromCmdb()
 	if err != nil {
-		return response.Error(http.StatusInternalServerError, "Invalid cmdb api response", err)
+		hs.log.Error("Failed to get global aws secrets from cmdb", "error", err)
+		return response.Error(http.StatusInternalServerError, "Failed to get global aws secrets from cmdb", err)
 	}
-	var accountInfo = make(map[string]interface{})
-	bodyString := string(bodyBytes)
-	err = json.Unmarshal([]byte(bodyString), &accountInfo)
-	if err != nil {
-		return response.Error(http.StatusInternalServerError, "CMDB response parsing failed", err)
-	}
-
-	awsRegion := accountInfo["region"].(string)
-
-	sess, err := GetSessionByCreds(awsRegion, accountInfo["accessKey"].(string), accountInfo["secretKey"].(string), "")
+	sess, err := GetSessionByCreds(resp.Region, resp.AccessKey, resp.SecretKey, "")
 	if err != nil {
 		hs.log.Error("Failed to create AWS session", "error", err)
 		return response.Error(http.StatusInternalServerError, "Failed to create AWS session", err)
 	}
 
-	stsClient := sts.New(sess)
-	assumeRoleInput := sts.AssumeRoleInput{
-		RoleArn:         aws.String(accountInfo["crossAccountRoleArn"].(string)),
-		RoleSessionName: aws.String(RandomString(10)),
-		DurationSeconds: aws.Int64(60 * 60 * 1),
-		ExternalId:      aws.String(accountInfo["externalId"].(string)),
-	}
-	assumeRoleResult, err := stsClient.AssumeRole(&assumeRoleInput)
-	if err != nil {
-		hs.log.Error("failed to assume role", "error", err)
-		return response.Error(http.StatusInternalServerError, "failed to assume role", err)
-	}
-
-	assumeRoleSession, err := GetSessionByCreds(awsRegion, *assumeRoleResult.Credentials.AccessKeyId, *assumeRoleResult.Credentials.SecretAccessKey, *assumeRoleResult.Credentials.SessionToken)
-	if err != nil {
-		hs.log.Error("failed to create session for given assume role", "error", err)
-		return response.Error(http.StatusInternalServerError, "failed to create session for given assume role", err)
-	}
-	// Create a CloudWatch client.
-	svc := cloudwatch.New(assumeRoleSession)
+	svc := cloudwatch.New(sess)
 
 	// Define the input parameters for the ListMetrics operation.
 	input := &cloudwatch.ListMetricsInput{
@@ -1055,6 +1017,74 @@ func encrypt(plaintext string) (string, error) {
 	str := base64.StdEncoding.EncodeToString(ciphertext)
 
 	return str, nil
+}
+
+type GlobalAwsSecret struct {
+	AccessKey string `json:"accessKey,omitempty"`
+	SecretKey string `json:"secretKey,omitempty"`
+	Region    string `json:"region,omitempty"`
+}
+
+func getGlobalAwsSecretsFromCmdb() (*GlobalAwsSecret, error) {
+	type cmdbResp struct {
+		Key   string `json:"key,omitempty"`
+		Value string `json:"value,omitempty"`
+	}
+	acKeyResp, err := externalServiceClient.Get(setting.CmdbLandingzoneCredsUrl + "/decrypt/get-by-key/GLOBAL_AWS_ACCESS_KEY")
+	if err != nil || acKeyResp.StatusCode >= 400 {
+		return nil, fmt.Errorf("cmdb api failed to get global aws access key", err)
+	}
+	secKeyResp, err := externalServiceClient.Get(setting.CmdbLandingzoneCredsUrl + "/decrypt/get-by-key/GLOBAL_AWS_SECRET_KEY")
+	if err != nil || secKeyResp.StatusCode >= 400 {
+		return nil, fmt.Errorf("cmdb api failed to get global aws secret key", err)
+	}
+	regionResp, err := externalServiceClient.Get(setting.CmdbLandingzoneCredsUrl + "/get-by-key/GLOBAL_AWS_REGION")
+	if err != nil || regionResp.StatusCode >= 400 {
+		return nil, fmt.Errorf("cmdb api failed to get global aws region", err)
+	}
+
+	defer acKeyResp.Body.Close()
+	defer secKeyResp.Body.Close()
+	defer regionResp.Body.Close()
+	acKeyRespBodyBytes, err := io.ReadAll(acKeyResp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("invalid cmdb api response to get global aws access key", err)
+	}
+	secKeyRespBodyBytes, err := io.ReadAll(secKeyResp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("invalid cmdb api response to get global aws secret key", err)
+	}
+	regionRespBodyBytes, err := io.ReadAll(regionResp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("invalid cmdb api response to get global aws region", err)
+	}
+
+	acKeyRespString := string(acKeyRespBodyBytes)
+	secKeyRespString := string(secKeyRespBodyBytes)
+	regionRespString := string(regionRespBodyBytes)
+
+	acKey := cmdbResp{}
+	secKey := cmdbResp{}
+	regionKey := cmdbResp{}
+
+	err = json.Unmarshal([]byte(acKeyRespString), &acKey)
+	if err != nil {
+		return nil, fmt.Errorf("json unmarshal error to unmarshal global aws access key", err)
+	}
+	err = json.Unmarshal([]byte(secKeyRespString), &secKey)
+	if err != nil {
+		return nil, fmt.Errorf("json unmarshal error to unmarshal global aws secret key", err)
+	}
+	err = json.Unmarshal([]byte(regionRespString), &regionKey)
+	if err != nil {
+		return nil, fmt.Errorf("json unmarshal error to unmarshal global aws region", err)
+	}
+	globalAwsSecret := GlobalAwsSecret{
+		AccessKey: acKey.Value,
+		SecretKey: secKey.Value,
+		Region:    regionKey.Value,
+	}
+	return &globalAwsSecret, nil
 }
 
 //  ------Manoj.  custom changes for appcube plateform ------
