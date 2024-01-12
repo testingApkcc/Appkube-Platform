@@ -5,17 +5,17 @@ export const plugin = new PanelPlugin(AppkubeUtilizationPanel).setPanelOptions((
   builder.addTextInput({
     path: 'gaugeTitle',
     name: 'Gauge Title',
-    defaultValue: 'Top Failure Panel',
+    defaultValue: 'Appkube Utilization Panel',
     settings: {
       placeholder: 'Title',
     },
   });
-  builder.addTextInput({
-    path: 'gaugeURL',
-    name: 'Gauge API URL',
-    defaultValue: 'http://localhost:3002/failureFunctions',
-    settings: {
-      placeholder: 'URL for API',
-    },
-  });
+  // builder.addTextInput({
+  //   path: 'gaugeURL',
+  //   name: 'Gauge API URL',
+  //   defaultValue: 'http://localhost:3002/failureFunctions',
+  //   settings: {
+  //     placeholder: 'URL for API',
+  //   },
+  // });
 });
