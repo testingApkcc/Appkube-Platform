@@ -8319,6 +8319,17 @@ class DocumentsApi {
     return await this.apiClient.fetchAndRespond(url, options);
   }
 
+  async getDocumentContent(documentId) {
+    if (!documentId) {
+      return JSON.stringify({
+        message: 'No document ID specified',
+      });
+    }
+    const url = `https://${this.apiClient.host}/documents/${documentId}/content`;
+    const options = this.apiClient.buildOptions('GET');
+    return await this.apiClient.fetchAndRespond(url, options);
+  }
+
   async convertDocumentToFormat(documentId, mime, versionId) {
     if (!documentId) {
       return JSON.stringify({

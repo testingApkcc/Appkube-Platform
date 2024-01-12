@@ -15,9 +15,9 @@ import { ProjectOverView } from '../../pages/ProjectOverView';
 export const Routes = () => {
 	useNavigation();
 	const meta = usePluginMeta();
-	if (!(meta && meta.jsonData && meta.jsonData.accessKey && meta.jsonData.secretKey && meta.jsonData.region)) {
-		alert('Please set access key, region, and secret key');
-		return <div>Please set access key, region, and secret key</div>;
+	if (!(meta && meta.jsonData && meta.jsonData.accessKey && meta.jsonData.secretKey && meta.jsonData.region && meta.jsonData.formkiqClientUrl && meta.jsonData.formkiqUserName && meta.jsonData.formkiqPassword)) {
+		alert('Please set access key, region, secret key, Formkiq Client URL, Formkiq User Name, and Formkiq Password');
+		return <div>Please set access key, region, secret key, Formkiq Client URL, Formkiq User Name, and Formkiq Password</div>;
 	}
 	return (
 		<Switch>

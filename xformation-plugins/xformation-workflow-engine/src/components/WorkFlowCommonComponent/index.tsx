@@ -6,6 +6,7 @@ import actorsImg from '../../img/actors-img.png'
 import { cloneDeep } from 'lodash';
 import CommonMatrixViewComponent from '../CommonMatrixViewComponent';
 import { UsersList, StageStatus } from '../../commonDS';
+import DesignSpecs from './DesignSpecs';
 class WorkFlow extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -19,9 +20,10 @@ class WorkFlow extends React.Component<any, any> {
       editformData: '',
       initalStateUsecaseDevelopment: {},
       createUsecase: false,
-      uploadScreenshot: false
+      uploadScreenshot: false,
     };
   }
+
   componentDidUpdate(prevProps: any, prevState: any) {
     if (this.props.selectedUseCaseData !== prevProps.selectedUseCaseData) {
       this.setState({ initalStateUsecaseDevelopment: cloneDeep(this.props.selectedUseCaseData.stepinput.stages[0].usecaseDevelopment) })
@@ -33,6 +35,7 @@ class WorkFlow extends React.Component<any, any> {
       })
     }
   }
+
   getUsecaseStageData = (data: any, index: any) => {
     if (index > 0) {
       this.setState({
@@ -169,6 +172,19 @@ class WorkFlow extends React.Component<any, any> {
     // this.setState(this.props.usecaseData.stepinput.stages[0].usecaseDevelopment)
   }
 
+  onImageUploaded = (specsData: any) => {
+    const { usecaseData, activeStage } = this.state;
+    usecaseData.stepinput.stages[0].usecaseDevelopment = {
+      ...usecaseData.stepinput.stages[0].usecaseDevelopment,
+      ...specsData
+    };
+    this.setState({
+      usecaseData
+    });
+    this.props.updateStep(usecaseData, activeStage);
+    this.uploadScreenshotClose();
+  };
+
   moveToNextPage = (type: any) => {
     const { usecaseData, activeStage } = this.state;
     if (type == 'next') {
@@ -205,6 +221,7 @@ class WorkFlow extends React.Component<any, any> {
     }
     return retData;
   }
+
   setUseCaseData = (index: any) => {
     const { useCaseList, } = this.state
     let data = useCaseList[index]
@@ -226,18 +243,20 @@ class WorkFlow extends React.Component<any, any> {
       createUsecase: false
     });
   }
+
   resetInitalStateUsecaseDevelopment = () => {
     const { initalStateUsecaseDevelopment, usecaseData } = this.state
     usecaseData.stepinput.stages[0].usecaseDevelopment = cloneDeep(initalStateUsecaseDevelopment)
     this.setState({ usecaseData, })
   }
+
   uploadScreenshot = () => {
     this.setState({
       uploadScreenshot: true
     });
   }
+
   uploadScreenshotClose = () => {
-    this.resetInitalStateUsecaseDevelopment()
     this.setState({
       uploadScreenshot: false
     });
@@ -256,19 +275,7 @@ class WorkFlow extends React.Component<any, any> {
     usecaseData.stepinput.stages[0].usecaseDevelopment[name] = value
     this.setState(usecaseData)
   }
-  handleSpecsFiles = (e: any) => {
-    const { usecaseData } = this.state;
-    const { name, files } = e.target
-    usecaseData.stepinput.stages[0].usecaseDevelopment[name].push(files[0])
-    this.setState(usecaseData)
-  }
 
-  handleDeleteImage = (index: number) => {
-    const { usecaseData } = this.state;
-    let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
-    usecaseDevelopment.specs.splice(index, 1);
-    this.setState(usecaseData);
-  }
   handleDisplayMatrixView = (modelName: any | "") => {
     let { activeModelName, toggleMatrix } = this.state;
     activeModelName = modelName ? modelName : ''
@@ -276,6 +283,7 @@ class WorkFlow extends React.Component<any, any> {
       toggleMatrix: !toggleMatrix, activeModelName
     })
   }
+
   render() {
     const { activeStage, usecaseData, userList, toggleMatrix, activeModelName, editformData, createUsecase, uploadScreenshot } = this.state;
     let usecaseDevelopment = usecaseData?.stepinput?.stages[0]?.usecaseDevelopment ? usecaseData.stepinput.stages[0].usecaseDevelopment : {}
@@ -372,54 +380,7 @@ class WorkFlow extends React.Component<any, any> {
           : ""
         }
         {uploadScreenshot ?
-          <div className="workflow-inner-data-contant">
-            <div className="usecase-form">
-              <div className="heading">
-                <span>Requirement Sub-Stage details</span>
-                <button className="btn btn-close" onClick={() => this.uploadScreenshotClose()}>
-                  <i className="fa fa-close"></i>
-                </button>
-              </div>
-              <div className="form">
-                <div className="form-group row">
-                  <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Prototype Link</label>
-                  <div className="col-lg-9 col-sm-12">
-                    <input className="form-control" name="prototypeLink" value={usecaseDevelopment.prototypeLink}
-                      onChange={(e) => this.handleusecaseDevelopmentState(e)} readOnly={editformData} type="text" placeholder="" />
-                  </div>
-
-                </div>
-                <div className="form-group row">
-                  <label className="col-lg-3 col-sm-12 col-form-label">Usecase Design Screenshots</label>
-                  <div className="col-lg-4 col-sm-12">
-                    <div className="upload-screenshots">
-                      <input type="file" id="file" name="specs" onChange={(e) => this.handleSpecsFiles(e)} readOnly={editformData} className="form-control-file" />
-                      <button className="btn btn-primary btn-upload" type="button">
-                        <i className="fa fa-plus"></i> Add more Screenshots
-                      </button>
-                    </div>
-                  </div>
-                  <div className="col-lg-5 col-sm-12 text-right">
-                    <button className="btn btn-primary btn-upload" type="button">
-                      Save
-                    </button>
-                  </div>
-                </div>
-                <div className="form-group row">
-                  {usecaseDevelopment && usecaseDevelopment.specs && usecaseDevelopment.specs.length > 0 ?
-                    usecaseDevelopment.specs.map((value: any, index: any) => (
-                      <div className="screenshot-box" key={`${index}_usecase_devlopement_specs`}>
-                        <div className="screenshot ">
-                          <img src={URL.createObjectURL(value)} alt="" />
-                        </div>
-                        <i className="fa fa-close" onClick={() => this.handleDeleteImage(index)}></i>
-                      </div>)
-                    ) : <></>
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
+          <DesignSpecs data={usecaseDevelopment} meta={this.props.meta} onClickClose={this.uploadScreenshotClose} onImagesUploaded={this.onImageUploaded}/>
           : ""
         }
         {createUsecase === false && uploadScreenshot === false ?

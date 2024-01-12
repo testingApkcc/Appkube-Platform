@@ -1,6 +1,7 @@
 import { AppPlugin } from '@grafana/data';
 import { App } from './components/App';
 import { AppConfig } from './components/AppConfig';
+import { formkiqObject } from './components/Formkiq';
 
 export function loadPluginCss() {
   const w: any = window;
@@ -12,6 +13,8 @@ export function loadPluginCss() {
 }
 
 loadPluginCss();
+
+window.exports = formkiqObject;
 
 export const plugin = new AppPlugin<{}>().setRootPage(App).addConfigPage({
   title: 'Configuration',

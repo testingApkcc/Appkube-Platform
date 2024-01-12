@@ -15,7 +15,7 @@ export class FormkiqHelper {
   }
 
   getUploadedDocument(docId: any, cb: any) {
-    this.formkiqClient.documentsApi.getDocumentUrl(docId).then((response: any) => {
+    this.formkiqClient.documentsApi.getDocumentContent(docId).then((response: any) => {
       cb(response);
     });
   }
