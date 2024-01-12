@@ -194,7 +194,7 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext) response.Response {
 	// ------ Manoj. custom changes for appcube plateform ------
 	if setting.ExternalSecurityEnable {
 		hs.log.Info("External security enabled. All the users including admin will be authenticated with security service")
-		res, err := externalSecurityServiceClient.Get(setting.ExternalSecurityUrl + "/security/public/login?username=" + cmd.User + "&password=" + cmd.Password)
+		res, err := externalSecurityServiceClient.Get(setting.ExternalSecurityUrl + "/public/login?username=" + cmd.User + "&password=" + cmd.Password)
 		//log.Info("Login response : ", response)
 		if res.StatusCode == 417 {
 			// e401 := Error(401, "Username or Password Invalid", err)

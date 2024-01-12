@@ -1,21 +1,21 @@
-const securitySrvUrl = `http://34.199.12.114:8094/`;
+const securitySrvUrl = `https://api.synectiks.net/security`;
 const alertSrvUrl = `http://34.199.12.114:5055`;
 const catalogSrvUrl = `http://34.199.12.114:5050/api/`;
 const awsAPIUrl = 'http://34.199.12.114:5057/api';
 const dataSourceURL = '/';
 
 export const config = {
-  UPDATE_ORGANIZATION: securitySrvUrl + `security/users/updateOrganization`,
+  UPDATE_ORGANIZATION: securitySrvUrl + `/users/updateOrganization`,
   GET_ALERT_VOLUME_BY_STATUS: `${alertSrvUrl}/api/getAlertVolumeByStatus`,
   GET_ALERT_VOLUME_DATA: `${alertSrvUrl}/api/getAlertVolumeData`,
   GET_AVG_WAIT_TIME_DATA: `${alertSrvUrl}/api/getWaitTimeGraphDataFromDb`,
-  AUTHENTICATE_GOOGLE_MFA: securitySrvUrl + `security/public/authenticateGoogleMfa`,
-  AUTHENTICATE_USER: securitySrvUrl + `security/public/authenticateUser`,
-  ENABLE_GOOGLE_MFA: securitySrvUrl + `security/users/enableGoogleMfa`,
-  DISABLE_GOOGLE_MFA: securitySrvUrl + `security/users/disableGoogleMfa`,
-  INVITE_USER: securitySrvUrl + `security/users/inviteUser`,
-  UPDATE_USER_ROLE: securitySrvUrl + `security/users/updateUserRoles`,
-  GET_TEAM: securitySrvUrl + `security/users/getTeam`,
+  AUTHENTICATE_GOOGLE_MFA: securitySrvUrl + `/public/authenticateGoogleMfa`,
+  AUTHENTICATE_USER: securitySrvUrl + `/public/authenticateUser`,
+  ENABLE_GOOGLE_MFA: securitySrvUrl + `/users/enableGoogleMfa`,
+  DISABLE_GOOGLE_MFA: securitySrvUrl + `/users/disableGoogleMfa`,
+  INVITE_USER: securitySrvUrl + `/users/inviteUser`,
+  UPDATE_USER_ROLE: securitySrvUrl + `/users/updateUserRoles`,
+  GET_TEAM: securitySrvUrl + `/users/getTeam`,
   ANALYTICS_LIST_VIEW: catalogSrvUrl + 'listView',
   DELETE_ANALYTICS_VIEW: catalogSrvUrl + 'deleteView',
   GET_ANALYTICS_VIEW: catalogSrvUrl + 'getView',

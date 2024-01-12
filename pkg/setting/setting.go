@@ -84,9 +84,9 @@ var (
 
 	//  ------Manoj.  custom changes for appcube plateform ------
 	//externalsecurity
-	ExternalSecurityUrl    string
-	ExternalSecurityEnable bool
-
+	ExternalSecurityUrl     string
+	ExternalSecurityEnable  bool
+	CmdbLandingzoneCredsUrl string
 	// ------Manoj.  custom changes for appcube plateform ------
 
 	// Security settings.
@@ -904,6 +904,9 @@ func (cfg *Cfg) Load(args CommandLineArgs) error {
 		return err
 	}
 
+	if err := readCmdbSettings(iniFile, cfg); err != nil {
+		return err
+	}
 	// ------ Manoj. custom changes for appcube plateform ------
 
 	if err := readSnapshotsSettings(cfg, iniFile); err != nil {
@@ -1230,6 +1233,12 @@ func readExternalSecuritySettings(iniFile *ini.File, cfg *Cfg) error {
 	externalsecurity := iniFile.Section("externalsecurity")
 	ExternalSecurityUrl = externalsecurity.Key("external_security_url").String()
 	ExternalSecurityEnable = externalsecurity.Key("external_security_enable").MustBool(false)
+	return nil
+}
+
+func readCmdbSettings(iniFile *ini.File, cfg *Cfg) error {
+	cmdb := iniFile.Section("cmdb")
+	CmdbLandingzoneCredsUrl = cmdb.Key("cmdb_landingzone_creds_url").String()
 	return nil
 }
 
