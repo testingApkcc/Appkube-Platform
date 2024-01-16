@@ -1,14 +1,11 @@
 import React, { PureComponent } from 'react';
 import { PanelProps } from '@grafana/data';
 import './css/style.css';
-import { AppkubeUtilizationPanelOptions } from './types';
+import data from './response.json'
 
 type MyState = {
   data: {
-    cost: string;
-    percentageChange: string;
-    changeDirection: string;
-    items: Array<{ title: string; time: string; cost: string; changeDirection: string }>;
+    tableData: any[];
   };
   queryParams: {
     from: string;
@@ -16,20 +13,30 @@ type MyState = {
   };
 };
 
-class AppkubeUtilizationPanel extends PureComponent<PanelProps<AppkubeUtilizationPanelOptions>> {
+class AppkubeUtlizationPanel extends PureComponent<PanelProps> {
   state: MyState = {
     data: {
-      cost: '',
-      percentageChange: '',
-      changeDirection: '',
-      items: [],
+      tableData: [],
     },
     queryParams: {
       from: 'now-6h',
       to: 'now',
     },
   };
-  
+
+  renderData = () => {
+    console.log(data);
+    const JSX: any[] = [];
+    Object.entries(data).map((value) => {
+      JSX.push( 
+      <div className="info">
+      <span className="name">{value[0].split(/(?=[A-Z])/).join(" ")}</span>
+      <span className="percantage">{value[1].MetricDataResults[0].Values[0]}%</span>
+    </div>)
+   });
+   return JSX;
+  }
+
   render() {
     return (
       <div className="appkube-utilization-panel">
@@ -41,22 +48,12 @@ class AppkubeUtilizationPanel extends PureComponent<PanelProps<AppkubeUtilizatio
           <span className="name">CPU Utilization</span>
         </div>
         <div className="utilization-details">
-          <div className="info">
-            <span className="name">Current Usage</span>
-            <span className="percantage">25%</span>
-          </div>
-          <div className="info">
-            <span className="name">Average Usage</span>
-            <span className="percantage">30%</span>
-          </div>
-          <div className="info">
-            <span className="name">Max Usage (24hrs)</span>
-            <span className="percantage">40%</span>
-          </div>
+          {this.renderData()}
         </div>
       </div>
     </div>
     );
-  }};
+  }
+}
 
-export default AppkubeUtilizationPanel;
+export default AppkubeUtlizationPanel;
