@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { PanelProps } from '@grafana/data';
 import './css/style.css';
+import { imageJSON } from './ds';
 
 class AppkubeUtlizationPanel extends PureComponent<PanelProps> {
   renderCPUUtilizationData = (data: any) => {
@@ -8,7 +9,7 @@ class AppkubeUtlizationPanel extends PureComponent<PanelProps> {
       <div className="utilization-card">
         <div className="card-title">
           <div className="icon">
-            <img src="" alt="" />
+            <img src={imageJSON.cpu_utilization} alt="" />
           </div>
           <span className="name">CPU Utilization</span>
         </div>
@@ -42,35 +43,37 @@ class AppkubeUtlizationPanel extends PureComponent<PanelProps> {
       const iSer = series[i];
       let cardJSX: any = [];
       if (iSer && iSer.meta && iSer.meta.custom && iSer.meta.custom) {
-        const { query, data } = iSer.meta.custom;
+        const { query, data, error } = iSer.meta.custom;
         if (query.queryString === 'cpu_utilization_panel') {
-          if (data) {
-            cardJSX = this.renderCPUUtilizationData(JSON.parse(data));
+          if (error) {
+            cardJSX = this.renderError('CPU Utilization', error);
           } else {
-            cardJSX = this.renderError('CPU Utilization');
+            if (data) {
+              cardJSX = this.renderCPUUtilizationData(JSON.parse(data));
+            } else {
+              cardJSX = this.renderError('CPU Utilization', '');
+            }
           }
         }
       } else {
-        cardJSX = this.renderError('');
+        cardJSX = this.renderError('', '');
       }
       retData.push(cardJSX);
     }
     return retData;
   };
 
-  renderError = (cardTitle: any) => {
+  renderError = (cardTitle: any, error: string) => {
     return (
       <div className="utilization-card">
         <div className="card-title">
           <div className="icon">
-            <img src="" alt="" />
+            <img src={imageJSON.error} alt="" />
           </div>
-          <span className="name">{cardTitle}</span>
+          <span className="name">{cardTitle || 'Error'}</span>
         </div>
-        <div className="utilization-details">
-          <div className="info">
-            <span className="name">There is some error.</span>
-          </div>
+        <div className="error-message">
+          <span>{error ? error : 'There is some error'}</span>
         </div>
       </div>
     );
