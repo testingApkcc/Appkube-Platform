@@ -15,15 +15,21 @@ class AppkubeUtlizationPanel extends PureComponent<PanelProps> {
         <div className="utilization-details">
           <div className="info">
             <span className="name">Current Usage</span>
-            <span className="percantage">{data.CurrentUsage}%</span>
+            <span className="percantage" title={data.CurrentUsage}>
+              {Math.round(data.CurrentUsage)}%
+            </span>
           </div>
           <div className="info">
             <span className="name">Average Usage</span>
-            <span className="percantage">{data.AverageUsage}%</span>
+            <span className="percantage" title={data.AverageUsage}>
+              {Math.round(data.AverageUsage)}%
+            </span>
           </div>
           <div className="info">
             <span className="name">Max Usage</span>
-            <span className="percantage">{data.MaxUsage}%</span>
+            <span className="percantage" title={data.MaxUsage}>
+              {Math.round(data.MaxUsage)}%
+            </span>
           </div>
         </div>
       </div>
