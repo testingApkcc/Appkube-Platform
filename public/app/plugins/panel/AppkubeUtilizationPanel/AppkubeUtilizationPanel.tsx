@@ -25,7 +25,6 @@ class AppkubeUtlizationPanel extends PureComponent<PanelProps> {
   };
 
   renderData = () => {
-    console.log(data);
     const JSX: any[] = [];
     Object.entries(data).map((value) => {
       JSX.push( 

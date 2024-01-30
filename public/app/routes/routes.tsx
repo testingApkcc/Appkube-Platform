@@ -124,6 +124,14 @@ export function getAppRoutes(): RouteDescriptor[] {
       ),
     },
     {
+      path: '/ec2-explorer',
+      pageClass: 'page-ec2-explorer',
+      routeName: DashboardRoutes.Normal,
+      component: SafeDynamicImport(
+        () => import(/* webpackChunkName: "DashboardPage" */ '../features/ec2-explorer')
+      ),
+    },
+    {
       path: '/justdashboard',
       pageClass: 'page-overview',
       routeName: DashboardRouteInfo.Normal,
