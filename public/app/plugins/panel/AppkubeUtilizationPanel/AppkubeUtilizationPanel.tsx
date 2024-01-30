@@ -4,33 +4,7 @@ import './css/style.css';
 import { imageJSON } from './ds';
 
 class AppkubeUtlizationPanel extends PureComponent<PanelProps> {
-<<<<<<< HEAD
-  state: MyState = {
-    data: {
-      tableData: [],
-    },
-    queryParams: {
-      from: 'now-6h',
-      to: 'now',
-    },
-  };
-
-  renderData = () => {
-    const JSX: any[] = [];
-    Object.entries(data).map((value) => {
-      JSX.push( 
-      <div className="info">
-      <span className="name">{value[0].split(/(?=[A-Z])/).join(" ")}</span>
-      <span className="percantage">{value[1].MetricDataResults[0].Values[0]}%</span>
-    </div>)
-   });
-   return JSX;
-  }
-
-  render() {
-=======
   renderCPUUtilizationData = (data: any) => {
->>>>>>> 6740a4ca80eb378c6387d2cd29a5a41b7534ab0e
     return (
       <div className="utilization-card">
         <div className="card-title">
