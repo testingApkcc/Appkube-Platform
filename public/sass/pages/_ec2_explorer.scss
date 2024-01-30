@@ -134,7 +134,6 @@
 
     .aws-serivce-info {
         margin-top: 11px;
-        padding-bottom: 5px;
         overflow-y: auto;
 
         .aws-boxs {
@@ -222,43 +221,40 @@
 
     .aws-panel-tabs {
         display: block;
-        width: 100%;
-        margin-top: 25px;
 
-        .tabs-head {
-            display: block;
-            width: 100%;
-            text-align: center;
+        .manage-dashboard-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 14px 0px;
 
-            .css-1ujnqem-MuiTabs-root {
-                display: block;
+            ul {
+                display: inline-flex;
+                justify-content: center;
+                background-color: #DBDFF1;
+                height: 28px;
+                border-radius: 40px;
+                padding: 0px 35px;
 
-                .css-jpln7h-MuiTabs-scroller {
-                    width: auto;
-                    padding: 0px 25px;
-                    border-radius: 30px;
-                    background-color: #DBDFF1;
-
-                    .css-1aquho2-MuiTabs-indicator {
-                        display: none;
-                    }
-                }
-
-                .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-                    min-height: auto;
-                    text-transform: capitalize;
+                li {
+                    list-style: none;
                     padding: 7px 35px;
-                    color: #05050F;
                     font-size: 11px;
                     line-height: 14px;
+                    cursor: pointer;
 
-                    &.Mui-selected {
-                        color: #ffffff;
+                    &.active-tab {
                         background-color: #3247e5;
                         border-radius: 40px;
+
+                        a {
+
+                            color: #FFFFFF !important;
+                        }
                     }
 
-
+                    a {
+                        color: #05050F;
+                    }
                 }
             }
 
