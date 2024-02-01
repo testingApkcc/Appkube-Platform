@@ -1,13 +1,15 @@
-import React, { Component } from "react";
-import { Modal } from '../../../../packages/grafana-ui/src/components/Modal/Modal';
-import { Link } from "react-router-dom";
-import Performance from "./Components/Performance";
-import Availability from "./Components/Availability";
-import Reliability from "./Components/Reliability";
-import EndUsage from "./Components/EndUsage";
-import Security from "./Components/Security";
-import Compliance from "./Components/Compliance";
-import DataProtection from "./Components/DataProtection";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Performance from './Components/Performance';
+import Availability from './Components/Availability';
+import Reliability from './Components/Reliability';
+import EndUsage from './Components/EndUsage';
+import Security from './Components/Security';
+import Compliance from './Components/Compliance';
+import DataProtection from './Components/DataProtection';
+import ConfigurationModal from './Components/ConfigurationModal';
+import HostedServiceModal from './Components/HostedServiceModal';
+import SlaModal from './Components/SlaModal';
 
 const images: any = {
   awsIcon: '/public/img/ec2-explorer/aws.png',
@@ -27,17 +29,13 @@ const images: any = {
 };
 
 class EC2Explorer extends Component<any, any> {
-  createData(name: any, enviroment: any, module: any, services: any) {
-    return { name, enviroment, module, services };
-  }
-
   constructor(props: any) {
     super(props);
     this.state = {
       value: 0,
-      configurationModalOpen: false,
-      hostedServiceModalOpen: false,
-      SlaModalOpen: false,
+      showConfigurationModal: false,
+      showHostedServiceModal: false,
+      showSlaModal: false,
       activeTab: 0,
     };
   }
@@ -52,98 +50,26 @@ class EC2Explorer extends Component<any, any> {
     });
   };
 
-  handleConfigurationModalOpen = () => {
-    this.setState({ configurationModalOpen: true });
+  toggleConfigurationModal = () => {
+    this.setState({
+      showConfigurationModal: !this.state.showConfigurationModal,
+    });
   };
 
-  handleConfigurationModalClose = () => {
-    this.setState({ configurationModalOpen: false });
+  toggleHostedServiceModal = () => {
+    this.setState({
+      showHostedServiceModal: !this.state.showHostedServiceModal,
+    });
   };
 
-  handleHostedServiceModalOpen = () => {
-    this.setState({ hostedServiceModalOpen: true });
-  };
-
-  handleHostedServiceModalClose = () => {
-    this.setState({ hostedServiceModalOpen: false });
-  };
-
-  handleSlaModalOpen = () => {
-    this.setState({ SlaModalOpen: true });
-  };
-
-  handleSlaModalClose = () => {
-    this.setState({ SlaModalOpen: false });
+  toggleSlaModal = () => {
+    this.setState({
+      showSlaModal: !this.state.showSlaModal,
+    });
   };
 
   render() {
-    const { value } = this.state;
-    const rows = [
-      this.createData(
-        <div className="product-name">
-          <div className="d-flex align-items-center">
-            <div className="icon hrms">
-              <img src={images.hrmsIcon} alt="" />
-            </div>
-            <span className="name">HRMS</span>
-            <div className="tag">
-              <span className="d-block">3 TIER</span>
-            </div>
-          </div>
-        </div>,
-        "Production",
-        "Web Tire",
-        "-"
-      ),
-      this.createData(
-        <div className="product-name">
-          <div className="d-flex align-items-center">
-            <div className="icon da">
-              <img src={images.storageIcon} alt="" />
-            </div>
-            <span className="name">DA</span>
-            <div className="tag da">
-              <span className="d-block">SOA</span>
-            </div>
-          </div>
-        </div>,
-        "Stage",
-        "Admissions",
-        "JAVA"
-      ),
-      this.createData(
-        <div className="product-name">
-          <div className="d-flex align-items-center">
-            <div className="icon procurement">
-              <img src={images.procurementIcon} alt="" />
-            </div>
-            <span className="name">Procurement</span>
-            <div className="tag">
-              <span className="d-block">3 TIER</span>
-            </div>
-          </div>
-        </div>,
-        "Test",
-        "Auxiliary Layer",
-        "-"
-      ),
-      this.createData(
-        <div className="product-name">
-          <div className="d-flex align-items-center">
-            <div className="icon service-desk">
-              <img src={images.serviceDeskIcon} alt="" />
-            </div>
-            <span className="name">Service Desk</span>
-            <div className="tag">
-              <span className="d-block">3 TIER</span>
-            </div>
-          </div>
-        </div>,
-        "Development",
-        "App Tire",
-        "-"
-      ),
-    ];
+    const { value, showConfigurationModal, showHostedServiceModal, showSlaModal } = this.state;
     return (
       <>
         <div className="aws-topology-container">
@@ -195,7 +121,7 @@ class EC2Explorer extends Component<any, any> {
                 <i className="fa-solid fa-chevron-right"></i>
               </li>
               <li className="active">
-                <Link  to="/">Ec2</Link>
+                <Link to="/">Ec2</Link>
               </li>
             </ul>
             <div className="alerts d-flex align-items-center">
@@ -213,10 +139,7 @@ class EC2Explorer extends Component<any, any> {
                 <span className="d-block service-number">Synectiks</span>
               </div>
             </div>
-            <div
-              className="aws-boxs d-flex align-items-center"
-              onClick={this.handleHostedServiceModalOpen}
-            >
+            <div className="aws-boxs d-flex align-items-center" onClick={this.toggleHostedServiceModal}>
               <div className="icon hosted-services">
                 <img src={images.hostedIcon} alt="" />
               </div>
@@ -225,32 +148,22 @@ class EC2Explorer extends Component<any, any> {
                 <span className="d-block service-number">002</span>
               </div>
             </div>
-            <div
-              className="aws-boxs d-flex align-items-center"
-              onClick={this.handleConfigurationModalOpen}
-            >
+            <div className="aws-boxs d-flex align-items-center" onClick={this.toggleConfigurationModal}>
               <div className="icon configuration">
                 <img src={images.configurationIcon} alt="" />
               </div>
               <div className="d-block">
                 <span className="d-block service-name">Configuration</span>
-                <span className="d-block service-number id">
-                  ID : i-01234567
-                </span>
+                <span className="d-block service-number id">ID : i-01234567</span>
               </div>
             </div>
-            <div
-              className="aws-boxs d-flex align-items-center"
-              onClick={this.handleSlaModalOpen}
-            >
+            <div className="aws-boxs d-flex align-items-center" onClick={this.toggleSlaModal}>
               <div className="icon">
-                <img src="" alt="" />
+                <img src={images.organizationIcon} alt="" />
               </div>
               <div className="d-block">
                 <span className="d-block service-name">SLA</span>
-                <span className="d-block service-number percantage">
-                  83.66%
-                </span>
+                <span className="d-block service-number percantage">83.66%</span>
               </div>
             </div>
             <div className="aws-boxs d-flex align-items-center">
@@ -270,13 +183,6 @@ class EC2Explorer extends Component<any, any> {
             </div>
           </div>
           <div className="aws-panel-tabs">
-
-
-
-          
-
-
-
             <div className="manage-dashboard-tabs">
               <ul>
                 <li className={value === 0 ? 'active-tab' : ''} onClick={(e) => this.setActiveTab(0)}>
@@ -302,10 +208,6 @@ class EC2Explorer extends Component<any, any> {
                 </li>
               </ul>
             </div>
-
-
-
-            
             <div className="tabs-content">
               {value === 0 ? (
                 <Performance />
@@ -327,255 +229,9 @@ class EC2Explorer extends Component<any, any> {
             </div>
           </div>
         </div>
-        <Modal
-          isOpen={this.state.configurationModalOpen}
-          onDismiss={this.handleConfigurationModalClose}
-          title=""
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          className="common-modal"
-        >
-          <div className="configuration-modal-container">
-            <div className="d-flex align-items-center configuration-container">
-              <div className="width-50">
-                <div className=" d-flex align-items-center">
-                  <div className="icon instance">
-                    <img src={images.intanceIcon} alt="" />
-                  </div>
-                  <span className="d-block configuration-name">
-                    Instance ID
-                  </span>
-                </div>
-              </div>
-              <div className="width-50">
-                <span className="d-block configuration-info">i-01234567</span>
-              </div>
-            </div>
-            <div className="d-flex align-items-center configuration-container">
-              <div className="width-50">
-                <div className=" d-flex align-items-center">
-                  <div className="icon cpu">
-                   <img src={images.cpuIcon} alt="" />
-                  </div>
-                  <span className="d-block configuration-name">CPU</span>
-                </div>
-              </div>
-              <div className="width-50">
-                <span className="d-block configuration-info">15GB</span>
-              </div>
-            </div>
-            <div className="d-flex align-items-center configuration-container">
-              <div className="width-50">
-                <div className=" d-flex align-items-center">
-                  <div className="icon memory">
-                    <img src={images.memoryIcon} alt="" />
-                  </div>
-                  <span className="d-block configuration-name">Memory</span>
-                </div>
-              </div>
-              <div className="width-50">
-                <span className="d-block configuration-info">25GB</span>
-              </div>
-            </div>
-            <div className="d-flex align-items-center configuration-container">
-              <div className="width-50">
-                <div className=" d-flex align-items-center">
-                  <div className="icon network">
-                    <img src={images.networkIcon} alt="" />
-                  </div>
-                  <span className="d-block configuration-name">Network</span>
-                </div>
-              </div>
-              <div className="width-50">
-                <span className="d-block configuration-info">2NIC Card</span>
-              </div>
-            </div>
-            <div className="d-flex align-items-center configuration-container">
-              <div className="width-50">
-                <div className=" d-flex align-items-center">
-                  <div className="icon storage">
-                    <img src={images.storageIcon} alt="" />
-                  </div>
-                  <span className="d-block configuration-name">Storage</span>
-                </div>
-              </div>
-              <div className="width-50">
-                <span className="d-block configuration-info">64GB</span>
-              </div>
-            </div>
-            <div className="d-flex align-items-center configuration-container">
-              <div className="width-50">
-                <div className=" d-flex align-items-center">
-                  <div className="icon storage">
-                    <img src={images.storageIcon} alt="" />
-                  </div>
-                  <span className="d-block configuration-name">VPC ID</span>
-                </div>
-              </div>
-              <div className="width-50">
-                <span className="d-block configuration-info">Default</span>
-              </div>
-            </div>
-            <div className="d-flex align-items-center configuration-container">
-              <div className="width-50">
-                <div className=" d-flex align-items-center">
-                  <div className="icon network">
-                    <img src={images.networkIcon} alt="" />
-                  </div>
-                  <span className="d-block configuration-name">
-                    Hostname Type
-                  </span>
-                </div>
-              </div>
-              <div className="width-50">
-                <span className="d-block configuration-info">
-                  ip-172-32-32-222
-                </span>
-              </div>
-            </div>
-          </div>
-        </Modal>
-        <Modal
-          isOpen={this.state.hostedServiceModalOpen}
-          onDismiss={this.handleHostedServiceModalClose}
-          title=""
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          className="common-modal"
-        >
-          <div className="hostedService-modal-container">
-            <table className="hostedService-table">
-              <thead>
-                <tr>
-                  <th>
-                    <div className="service-header">
-                      <span>Product</span>
-                    </div>
-                  </th>
-                  <th>
-                    <div className="service-header">Environment</div>
-                  </th>
-                  <th>
-                    <div className="service-header">Module</div>
-                  </th>
-                  <th>
-                    <div className="service-header">Services</div>
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {rows.map((row: any) => (
-                  <tr>
-                    <td scope="row">
-                      {row.name}
-                    </td>
-                    <td align="center">
-                      <div className="info">{row.enviroment}</div>
-                    </td>
-                    <td align="center">
-                      <div className="info">{row.module}</div>
-                    </td>
-                    <td align="center">
-                      <div className="info">{row.services}</div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Modal>
-        <Modal
-          isOpen={this.state.SlaModalOpen}
-          onDismiss={this.handleSlaModalClose}
-          title=""
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          className="common-modal"
-        >
-          <div className="sla-modal-container">
-            <div className="sla-container">
-              <table className="sla-table w-100">
-                <thead>
-                  <tr>
-                    <th>
-                      <div className="sla-header d-flex align-items-center">
-                        <div className="icon sla">
-                          <img src="" alt="" />
-                        </div>
-                        <span className="header-title">SLA</span>
-                      </div>
-                    </th>
-                    <th>
-                      <div className="sla-header d-flex align-items-center">
-                        <div className="icon status">
-                          <img src={images.statusIcon} alt="" />
-                        </div>
-                        <span className="header-title">Status</span>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <span className="d-block sla-name">Peformance</span>
-                    </td>
-                    <td className="status-info peformance">
-                      <span className="d-block percantage">89%</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="d-block sla-name">Reliabilitiy</span>
-                    </td>
-                    <td className="status-info reliabilitiy">
-                      <span className="d-block percantage">99%</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="d-block sla-name">Availability</span>
-                    </td>
-                    <td className="status-info availability">
-                      <span className="d-block percantage">67%</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="d-block sla-name">Security</span>
-                    </td>
-                    <td className="status-info reliabilitiy">
-                      <span className="d-block percantage">99%</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="d-block sla-name">End Usage</span>
-                    </td>
-                    <td className="status-info reliabilitiy">
-                      <span className="d-block percantage">99%</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="data-status-info d-flex align-items-center justify-content-center">
-                <div className="d-flex align-items-center">
-                  <div className="icon green"></div>
-                  <span className="percantage">{">98%"}</span>
-                </div>
-                <div className="d-flex align-items-center">
-                  <div className="icon orange"></div>
-                  <span className="percantage">{">90%"}</span>
-                </div>
-                <div className="d-flex align-items-center">
-                  <div className="icon red"></div>
-                  <span className="percantage">{"<90%"}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Modal>
+        <ConfigurationModal isOpen={showConfigurationModal} toggleConfigurationModal={this.toggleConfigurationModal} />
+        <HostedServiceModal isOpen={showHostedServiceModal} toggleHostedServiceModal={this.toggleHostedServiceModal} />
+        <SlaModal isOpen={showSlaModal} toggleSlaModal={this.toggleSlaModal} />
       </>
     );
   }
