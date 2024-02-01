@@ -67,6 +67,9 @@ import * as nodeGraph from 'app/plugins/panel/nodeGraph/module';
 import * as histogramPanel from 'app/plugins/panel/histogram/module';
 import * as alertGroupsPanel from 'app/plugins/panel/alertGroups/module';
 import * as AppkubeUtilizationPanel from 'app/plugins/panel/AppkubeUtilizationPanel/module';
+import * as AppkubeInstanceStatusPanel from 'app/plugins/panel/AppkubeInstanceStatusPanel/module';
+import * as AppkubeTablePanel from 'app/plugins/panel/AppkubeTablePanel/module';
+import * as AppkubeCompliancePanel from 'app/plugins/panel/AppkubeCompliancePanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -133,6 +136,9 @@ const builtInPlugins: any = {
   'app/plugins/panel/histogram/module': histogramPanel,
   'app/plugins/panel/alertGroups/module': alertGroupsPanel,
   'app/plugins/panel/AppkubeUtilizationPanel/module': AppkubeUtilizationPanel,
+  'app/plugins/panel/AppkubeInstanceStatusPanel/module': AppkubeInstanceStatusPanel,
+  'app/plugins/panel/AppkubeTablePanel/module': AppkubeTablePanel,
+  'app/plugins/panel/AppkubeCompliancePanel/module': AppkubeCompliancePanel,
 };
 
 export default builtInPlugins;
