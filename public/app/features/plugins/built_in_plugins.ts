@@ -70,6 +70,7 @@ import * as AppkubeUtilizationPanel from 'app/plugins/panel/AppkubeUtilizationPa
 import * as AppkubeInstanceStatusPanel from 'app/plugins/panel/AppkubeInstanceStatusPanel/module';
 import * as AppkubeTablePanel from 'app/plugins/panel/AppkubeTablePanel/module';
 import * as AppkubeCompliancePanel from 'app/plugins/panel/AppkubeCompliancePanel/module';
+import * as AppkubeTotalCostPanel from 'app/plugins/panel/AppkubeTotalCostPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -139,6 +140,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeInstanceStatusPanel/module': AppkubeInstanceStatusPanel,
   'app/plugins/panel/AppkubeTablePanel/module': AppkubeTablePanel,
   'app/plugins/panel/AppkubeCompliancePanel/module': AppkubeCompliancePanel,
+  'app/plugins/panel/AppkubeTotalCostPanel/module': AppkubeTotalCostPanel,
 };
 
 export default builtInPlugins;
