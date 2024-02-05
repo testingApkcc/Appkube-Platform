@@ -71,6 +71,10 @@ import * as AppkubeInstanceStatusPanel from 'app/plugins/panel/AppkubeInstanceSt
 import * as AppkubeTablePanel from 'app/plugins/panel/AppkubeTablePanel/module';
 import * as AppkubeCompliancePanel from 'app/plugins/panel/AppkubeCompliancePanel/module';
 import * as AppkubeTotalCostPanel from 'app/plugins/panel/AppkubeTotalCostPanel/module';
+import * as AppkubeTotalFunctionsPanel from 'app/plugins/panel/AppkubeTotalFunctionsPanel/module';
+import * as AppkubeTopUsedFunctionPanel from 'app/plugins/panel/AppkubeTopUsedFunctionPanel/module';
+import * as AppkubeResoursesPanel from 'app/plugins/panel/AppkubeResoursesPanel/module';
+import * as AppkubeTopFailureFunctionsPanel from 'app/plugins/panel/AppkubeTopFailureFunctionsPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -141,6 +145,10 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeTablePanel/module': AppkubeTablePanel,
   'app/plugins/panel/AppkubeCompliancePanel/module': AppkubeCompliancePanel,
   'app/plugins/panel/AppkubeTotalCostPanel/module': AppkubeTotalCostPanel,
+  'app/plugins/panel/AppkubeTotalFunctionsPanel/module': AppkubeTotalFunctionsPanel,
+  'app/plugins/panel/AppkubeTopUsedFunctionPanel/module': AppkubeTopUsedFunctionPanel,
+  'app/plugins/panel/AppkubeResoursesPanel/module': AppkubeResoursesPanel,
+  'app/plugins/panel/AppkubeTopFailureFunctionsPanel/module': AppkubeTopFailureFunctionsPanel,
 };
 
 export default builtInPlugins;
