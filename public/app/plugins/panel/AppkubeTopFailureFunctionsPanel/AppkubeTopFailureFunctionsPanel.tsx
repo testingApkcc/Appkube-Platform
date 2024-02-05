@@ -5,68 +5,68 @@ import './css/style.css';
 class AppkubeTopFailureFunctionsPanel extends PureComponent<PanelProps> {
   render() {
     return (
-      <div className="top-used-function-panel">
-        <div className="top-used-function-inner">
-          <div className="top-used-function-heading">Top Failure Functions</div>
-          <div className="top-used-function-price">
+      <div className="top-failure-function-panel">
+        <div className="top-failure-function-inner">
+          <div className="top-failure-function-heading">Top Failure Functions</div>
+          <div className="top-failure-function-price">
             {`43,833`}
             <p>10%</p>
           </div>
-          <div className="top-used-function-contents">
+          <div className="top-failure-function-contents">
             <div className="content">
-              <span>Finance</span>
+              <span className="malachite">Finance</span>
               <p>3:24</p>
               <strong>154</strong>
             </div>
             <div className="content">
-              <span>Travel</span>
+              <span className="orange">Travel</span>
               <p>3:11</p>
               <strong>132</strong>
             </div>
             <div className="content">
-              <span>Invoice</span>
-              <p>6:12</p>
-              <strong>2,140</strong>
+              <span className="purple">Presentation</span>
+              <p>3:00</p>
+              <strong>126</strong>
             </div>
             <div className="content">
-              <span>Po</span>
-              <p>13:52</p>
-              <strong>1,976</strong>
+              <span className="caribbean-green">Startup</span>
+              <p>23:08</p>
+              <strong>989</strong>
             </div>
             <div className="content">
-              <span>Ticket</span>
-              <p>5:13</p>
-              <strong>1,903</strong>
+              <span className="shocking-pink">Development</span>
+              <p>21:06</p>
+              <strong>944</strong>
             </div>
             <div className="content">
-              <span>Solved Ticket</span>
-              <p>18:36</p>
-              <strong>1,320</strong>
+              <span className="fluorescent-orange">Design</span>
+              <p>20:3</p>
+              <strong>944</strong>
             </div>
             <div className="content">
-              <span>Pending Ticket</span>
-              <p>4:59</p>
-              <strong>1,103</strong>
+              <span className="tropical-indigo">Product</span>
+              <p>20:03</p>
+              <strong>897</strong>
             </div>
             <div className="content">
-              <span>Mail</span>
-              <p>22:59</p>
-              <strong>1,043</strong>
+              <span className="cerulean-blue">Research</span>
+              <p>18:44</p>
+              <strong>765</strong>
             </div>
             <div className="content">
-              <span>Budget</span>
-              <p>23:42</p>
-              <strong>1,001</strong>
+              <span className="cerulean-blue">Other</span>
+              <p>14:53</p>
+              <strong>565</strong>
             </div>
             <div className="content">
-              <span>Requester</span>
-              <p>3:50</p>
-              <strong>870</strong>
+              <span className="tropical-indigo">Product</span>
+              <p>23:03</p>
+              <strong>843</strong>
             </div>
             <div className="content">
-              <span>Approver</span>
-              <p>3:21</p>
-              <strong>820</strong>
+              <span className="cerulean-blue">Research</span>
+              <p>18:44</p>
+              <strong>765</strong>
             </div>
           </div>
         </div>
