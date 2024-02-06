@@ -21,7 +21,6 @@
 	line-height: 20px;
 	color: #000000;
 	font-weight: 400;
-	justify-content: center;
 	padding-bottom: 5px;
 }
 .top-failure-function-panel .top-failure-function-price {
@@ -32,7 +31,6 @@
 	color: #383874;
 	font-weight: 600;
 	align-items: center;
-	justify-content: center;
 }
 .top-failure-function-panel .top-failure-function-price p {
 	margin: 0 0 0 10px;

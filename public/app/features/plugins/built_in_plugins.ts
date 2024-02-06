@@ -75,6 +75,7 @@ import * as AppkubeTotalFunctionsPanel from 'app/plugins/panel/AppkubeTotalFunct
 import * as AppkubeTopUsedFunctionPanel from 'app/plugins/panel/AppkubeTopUsedFunctionPanel/module';
 import * as AppkubeResoursesPanel from 'app/plugins/panel/AppkubeResoursesPanel/module';
 import * as AppkubeTopFailureFunctionsPanel from 'app/plugins/panel/AppkubeTopFailureFunctionsPanel/module';
+import * as AppkubeTopProductsWithMaxErrorsPanel from 'app/plugins/panel/AppkubeTopProductsWithMaxErrorsPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -149,6 +150,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeTopUsedFunctionPanel/module': AppkubeTopUsedFunctionPanel,
   'app/plugins/panel/AppkubeResoursesPanel/module': AppkubeResoursesPanel,
   'app/plugins/panel/AppkubeTopFailureFunctionsPanel/module': AppkubeTopFailureFunctionsPanel,
+  'app/plugins/panel/AppkubeTopProductsWithMaxErrorsPanel/module': AppkubeTopProductsWithMaxErrorsPanel,
 };
 
 export default builtInPlugins;
