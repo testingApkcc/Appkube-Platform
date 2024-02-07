@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "Appkube Resourses Panel",
-  "id": "AppkubeResoursesPanel",
+  "id": "appkubeResoursesPanel",
 
   "skipDataQuery": true,
 

@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "Appkube Total Functions Panel",
-  "id": "AppkubeTotalFunctionsPanel",
+  "id": "appkubeTotalFunctionsPanel",
 
   "skipDataQuery": true,
 

@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "Appkube Top Used Function Panel",
-  "id": "AppkubeTopUsedFunctionPanel",
+  "id": "appkubeTopUsedFunctionPanel",
 
   "skipDataQuery": true,
 

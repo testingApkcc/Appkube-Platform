@@ -80,6 +80,7 @@ import * as AppkubeBreakdownPanel from 'app/plugins/panel/AppkubeBreakdownPanel/
 import * as AppkubeMessagesTablePanel from 'app/plugins/panel/AppkubeMessagesTablePanel/module';
 import * as AppkubeUsedFunctionTablePanel from 'app/plugins/panel/AppkubeUsedFunctionTablePanel/module';
 import * as AppkubeExecutionTimePanel from 'app/plugins/panel/AppkubeExecutionTimePanel/module';
+import * as AppkubeThreatCallsPanel from 'app/plugins/panel/AppkubeThreatCallsPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -159,6 +160,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeMessagesTablePanel/module': AppkubeMessagesTablePanel,
   'app/plugins/panel/AppkubeUsedFunctionTablePanel/module': AppkubeUsedFunctionTablePanel,
   'app/plugins/panel/AppkubeExecutionTimePanel/module': AppkubeExecutionTimePanel,
+  'app/plugins/panel/AppkubeThreatCallsPanel/module': AppkubeThreatCallsPanel,
 };
 
 export default builtInPlugins;

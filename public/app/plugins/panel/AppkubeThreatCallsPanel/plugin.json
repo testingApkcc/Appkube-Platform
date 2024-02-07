@@ -1,12 +1,12 @@
 {
   "type": "panel",
-  "name": "Appkube Total Cost Panel",
-  "id": "appkubeTotalCostPanel",
+  "name": "Appkube Threat Calls Panel",
+  "id": "appkubeThreatCallsPanel",
 
   "skipDataQuery": true,
 
   "info": {
-    "description": "Appkube Total Cost Panel",
+    "description": "Appkube Threat Calls Panel",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"

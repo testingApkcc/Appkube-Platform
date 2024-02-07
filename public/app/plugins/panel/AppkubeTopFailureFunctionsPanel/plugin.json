@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "Appkube Top Failure Function Panel",
-  "id": "AppkubeTopFailureFunctionsPanel",
+  "id": "appkubeTopFailureFunctionsPanel",
 
   "skipDataQuery": true,
 
