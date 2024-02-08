@@ -56,7 +56,6 @@ export function getAppRoutes(): RouteDescriptor[] {
       routeName: 'ops-central',
       component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/Ops/opsCenteral')),
     },
-
     {
       path: '/analytics',
       pageClass: 'page-overview',
@@ -124,12 +123,16 @@ export function getAppRoutes(): RouteDescriptor[] {
       ),
     },
     {
+      path: '/lambda-explorer',
+      pageClass: 'page-lambda-explorer',
+      routeName: DashboardRoutes.Normal,
+      component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/lambda-explorer')),
+    },
+    {
       path: '/ec2-explorer',
       pageClass: 'page-ec2-explorer',
       routeName: DashboardRoutes.Normal,
-      component: SafeDynamicImport(
-        () => import(/* webpackChunkName: "DashboardPage" */ '../features/ec2-explorer')
-      ),
+      component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/ec2-explorer')),
     },
     {
       path: '/justdashboard',
