@@ -8,6 +8,12 @@ class AppkubeBreakdownPanel extends PureComponent<PanelProps> {
       <div className="breakdown-panel">
         <div className="breakdown-inner-panel">
           <div className="breakdown-circle">
+            <div className="percent">
+              <svg>
+                <circle cx="80" cy="80" r="78"></circle>
+                <circle cx="80" cy="80" r="78" style={{ '--percent': '45' } as React.CSSProperties}></circle>
+              </svg>
+            </div>
             <div className="breakdown-inner">
               <div className="icon">
                 <img
@@ -15,7 +21,7 @@ class AppkubeBreakdownPanel extends PureComponent<PanelProps> {
                   alt=""
                 />
               </div>
-              <div className="percent">
+              <div className="percent-text">
                 89 <sub>%</sub>
               </div>
             </div>
