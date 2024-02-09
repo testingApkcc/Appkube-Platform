@@ -123,6 +123,12 @@ export function getAppRoutes(): RouteDescriptor[] {
       ),
     },
     {
+      path: '/eks-explorer',
+      pageClass: 'page-eks-explorer',
+      routeName: DashboardRoutes.Normal,
+      component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/eks-explorer')),
+    },
+    {
       path: '/lambda-explorer',
       pageClass: 'page-lambda-explorer',
       routeName: DashboardRoutes.Normal,
