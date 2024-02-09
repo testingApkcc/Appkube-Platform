@@ -84,6 +84,9 @@ import * as AppkubeThreatCallsPanel from 'app/plugins/panel/AppkubeThreatCallsPa
 import * as AppkubeClusterEventsTabelPanel from 'app/plugins/panel/AppkubeClusterEventsTabelPanel/module';
 import * as AppkubeTopSecurityRulesTriggredPanel from 'app/plugins/panel/AppkubeTopSecurityRulesTriggredPanel/module';
 import * as AppkubeTopResourcesRequestCountPanel from 'app/plugins/panel/AppkubeTopResourcesRequestCountPanel/module';
+import * as AppkubeEksResourcesPanel from 'app/plugins/panel/AppkubeEksResourcesPanel/module';
+import * as AppkubeApiServersTablePanel from 'app/plugins/panel/AppkubeApiServersTablePanel/module';
+import * as AppkubeNodesPerformanceTablePanel from 'app/plugins/panel/AppkubeNodesPerformanceTablePanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -167,6 +170,9 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeClusterEventsTabelPanel/module': AppkubeClusterEventsTabelPanel,
   'app/plugins/panel/AppkubeTopSecurityRulesTriggredPanel/module': AppkubeTopSecurityRulesTriggredPanel,
   'app/plugins/panel/AppkubeTopResourcesRequestCountPanel/module': AppkubeTopResourcesRequestCountPanel,
+  'app/plugins/panel/AppkubeEksResourcesPanel/module': AppkubeEksResourcesPanel,
+  'app/plugins/panel/AppkubeApiServersTablePanel/module': AppkubeApiServersTablePanel,
+  'app/plugins/panel/AppkubeNodesPerformanceTablePanel/module': AppkubeNodesPerformanceTablePanel,
 };
 
 export default builtInPlugins;
