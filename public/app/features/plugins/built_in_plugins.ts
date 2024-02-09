@@ -89,6 +89,7 @@ import * as AppkubeApiServersTablePanel from 'app/plugins/panel/AppkubeApiServer
 import * as AppkubeNodesPerformanceTablePanel from 'app/plugins/panel/AppkubeNodesPerformanceTablePanel/module';
 import * as AppkubeResponseTimePanel from 'app/plugins/panel/AppkubeResponseTimePanel/module';
 import * as AppkubeKubernetesCostPanel from 'app/plugins/panel/AppkubeKubernetesCostPanel/module';
+import * as AppkubeClusterHealthPanel from 'app/plugins/panel/AppkubeClusterHealthPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -177,6 +178,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeNodesPerformanceTablePanel/module': AppkubeNodesPerformanceTablePanel,
   'app/plugins/panel/AppkubeResponseTimePanel/module': AppkubeResponseTimePanel,
   'app/plugins/panel/AppkubeKubernetesCostPanel/module': AppkubeKubernetesCostPanel,
+  'app/plugins/panel/AppkubeClusterHealthPanel/module': AppkubeClusterHealthPanel,
 };
 
 export default builtInPlugins;
