@@ -93,7 +93,7 @@ import * as AppkubeClusterHealthPanel from 'app/plugins/panel/AppkubeClusterHeal
 import * as AppkubePerfomancePanel from 'app/plugins/panel/AppkubePerfomancePanel/module';
 import * as AppkubeCostOfAllProductsPanel from 'app/plugins/panel/AppkubeCostOfAllProductsPanel/module';
 import * as AppkubeCostHighestSpendProductsPanel from 'app/plugins/panel/AppkubeCostHighestSpendProductsPanel/module';
-
+import * as AppkubeSecurityPanel from 'app/plugins/panel/AppkubeSecurityPanel/module';
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
 const canvasPanel = async () => await import(/* webpackChunkName: "canvasPanel" */ 'app/plugins/panel/canvas/module');
@@ -183,6 +183,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeKubernetesCostPanel/module': AppkubeKubernetesCostPanel,
   'app/plugins/panel/AppkubeClusterHealthPanel/module': AppkubeClusterHealthPanel,
   'app/plugins/panel/AppkubePerfomancePanel/module': AppkubePerfomancePanel,
+  'app/plugins/panel/AppkubeSecurityPanel/module': AppkubeSecurityPanel,
   'app/plugins/panel/AppkubeCostOfAllProductsPanel/module': AppkubeCostOfAllProductsPanel,
   'app/plugins/panel/AppkubeCostHighestSpendProductsPanel/module': AppkubeCostHighestSpendProductsPanel,
 };
