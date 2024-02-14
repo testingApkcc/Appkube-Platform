@@ -3,6 +3,7 @@ import FiltersModal from './Components/FiltersModal';
 
 const images: any = {
   slaIcon: '/public/img/lambda/sla.png',
+  pageTitleIcon: '/public/img/eks-explorer/page-title-icon.png',
 };
 
 class EksExplorer extends Component<any, any> {
@@ -52,13 +53,45 @@ class EksExplorer extends Component<any, any> {
   render() {
     const { showFiltersModal, value } = this.state;
     return (
-      <div className="lambda-explorer-container">
+      <div className="eks-explorer-container">
         <div className="header">
-          <span className="title">EKS (Elastic Kubernetes Service)</span>
+          <span className="title">
+            <img src={images.pageTitleIcon} alt="" />
+            {'EKS (Elastic Kubernetes Service)'}
+          </span>
           <div className="header-btns">
             <button className="filter-btn" onClick={this.toggleFiltersModal}>
               <i className="fa-solid fa-sliders"></i> Filters
             </button>
+          </div>
+        </div>
+        <div className="tabs-container">
+          <div className="tabs">
+            <ul>
+              <li className={value === 0 ? 'active' : ''} onClick={(e) => this.setActiveTab(0)}>
+                All Product
+              </li>
+              <li className={value === 1 ? 'active' : ''} onClick={(e) => this.setActiveTab(1)}>
+                Product 1
+              </li>
+              <li className={value === 2 ? 'active' : ''} onClick={(e) => this.setActiveTab(2)}>
+                Product 2
+              </li>
+              <li className={value === 3 ? 'active' : ''} onClick={(e) => this.setActiveTab(3)}>
+                Product 3
+              </li>
+            </ul>
+          </div>
+          <div className="right-part">
+            <div className="time-duration-conatiner">
+              <ul>
+                <li>Today</li>
+                <li>1W</li>
+                <li className="active">1M</li>
+                <li>3M</li>
+                <li>Custom</li>
+              </ul>
+            </div>
             <button className="sla-btn" onClick={this.toggleSla}>
               <i className="fa-solid fa-gear"></i>SLA
               <i className="fa-solid fa-caret-down"></i>
@@ -108,36 +141,6 @@ class EksExplorer extends Component<any, any> {
                 <div className="sla-shadow"></div>
               </>
             )}
-          </div>
-        </div>
-        <div className="tabs-container">
-          <div className="tabs">
-            <ul>
-              <li className={value === 0 ? 'active' : ''} onClick={(e) => this.setActiveTab(0)}>
-                All Product
-              </li>
-              <li className={value === 1 ? 'active' : ''} onClick={(e) => this.setActiveTab(1)}>
-                Product 1
-              </li>
-              <li className={value === 2 ? 'active' : ''} onClick={(e) => this.setActiveTab(2)}>
-                Product 2
-              </li>
-              <li className={value === 3 ? 'active' : ''} onClick={(e) => this.setActiveTab(3)}>
-                Product 3
-              </li>
-            </ul>
-          </div>
-          <div className="right-part">
-            <div className="time-duration-conatiner">
-              <ul>
-                <li>Today</li>
-                <li>1W</li>
-                <li className="active">1M</li>
-                <li>3M</li>
-                <li>Custom</li>
-              </ul>
-            </div>
-            <button className="go-event-btn">Go To Events</button>
           </div>
         </div>
         <div className="tabs-content-container">
