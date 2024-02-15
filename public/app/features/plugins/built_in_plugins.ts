@@ -98,6 +98,7 @@ import * as AppkubeEndUsagePanel from 'app/plugins/panel/AppkubeEndUsagePanel/mo
 import * as AppkubeS3TotalCostPanel from 'app/plugins/panel/AppkubeS3TotalCostPanel/module';
 import * as AppkubeCostByHighestSpendTargetGroupsPanel from 'app/plugins/panel/AppkubeCostByHighestSpendTargetGroupsPanel/module';
 import * as AppkubeTopBackendErrorsPanel from 'app/plugins/panel/AppkubeTopBackendErrorsPanel/module';
+import * as AppkubeErrorOnRequestPanel from 'app/plugins/panel/AppkubeErrorOnRequestPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -195,6 +196,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeCostHighestSpendProductsPanel/module': AppkubeCostHighestSpendProductsPanel,
   'app/plugins/panel/AppkubeCostByHighestSpendTargetGroupsPanel/module': AppkubeCostByHighestSpendTargetGroupsPanel,
   'app/plugins/panel/AppkubeTopBackendErrorsPanel/module': AppkubeTopBackendErrorsPanel,
+  'app/plugins/panel/AppkubeErrorOnRequestPanel/module': AppkubeErrorOnRequestPanel,
 };
 
 export default builtInPlugins;
