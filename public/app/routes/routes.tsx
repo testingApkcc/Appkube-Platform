@@ -550,6 +550,12 @@ export function getAppRoutes(): RouteDescriptor[] {
       component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/s3-explorer')),
     },
     {
+      path: '/nlb-explorer',
+      pageClass: 'page-nlb-explorer',
+      routeName: DashboardRoutes.Normal,
+      component: SafeDynamicImport(() => import(/* webpackChunkName: "DashboardPage" */ '../features/nlb-explorer')),
+    },
+    {
       path: '/dashboards/f/:uid/:slug/library-panels',
       component: SafeDynamicImport(
         () => import(/* webpackChunkName: "FolderLibraryPanelsPage"*/ 'app/features/folders/FolderLibraryPanelsPage')
