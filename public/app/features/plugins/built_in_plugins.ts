@@ -95,6 +95,8 @@ import * as AppkubeCostOfAllProductsPanel from 'app/plugins/panel/AppkubeCostOfA
 import * as AppkubeCostHighestSpendProductsPanel from 'app/plugins/panel/AppkubeCostHighestSpendProductsPanel/module';
 import * as AppkubeSecurityPanel from 'app/plugins/panel/AppkubeSecurityPanel/module';
 import * as AppkubeEndUsagePanel from 'app/plugins/panel/AppkubeEndUsagePanel/module';
+import * as AppkubeS3TotalCostPanel from 'app/plugins/panel/AppkubeS3TotalCostPanel/module';
+import * as AppkubeCostByHighestSpendTargetGroupsPanel from 'app/plugins/panel/AppkubeCostByHighestSpendTargetGroupsPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -187,8 +189,10 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubePerfomancePanel/module': AppkubePerfomancePanel,
   'app/plugins/panel/AppkubeSecurityPanel/module': AppkubeSecurityPanel,
   'app/plugins/panel/AppkubeEndUsagePanel/module': AppkubeEndUsagePanel,
+  'app/plugins/panel/AppkubeS3TotalCostPanel/module': AppkubeS3TotalCostPanel,
   'app/plugins/panel/AppkubeCostOfAllProductsPanel/module': AppkubeCostOfAllProductsPanel,
   'app/plugins/panel/AppkubeCostHighestSpendProductsPanel/module': AppkubeCostHighestSpendProductsPanel,
+  'app/plugins/panel/AppkubeCostByHighestSpendTargetGroupsPanel/module': AppkubeCostByHighestSpendTargetGroupsPanel,
 };
 
 export default builtInPlugins;
