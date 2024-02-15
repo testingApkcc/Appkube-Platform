@@ -1,49 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import FiltersModal from './Components/FiltersModal';
 const images: any = {
-    slaIcon: '/public/img/lambda/sla.png',
-    pageTitleIcon: '/public/img/s3-explorer/page-title-icon.png',
-  }
-  
+  slaIcon: '/public/img/lambda/sla.png',
+  pageTitleIcon: '/public/img/s3-explorer/page-title-icon.png',
+};
+
 class S3Explorer extends Component<any, any> {
-    popupRef: any;
-    constructor(props: any) {
-      super(props);
-      this.state = {
-        slaPopUpOpen: false,
-        showFiltersModal: false,
-        value: 0,
-      };
-      this.popupRef = React.createRef();
-    }
-    setActiveTab = (value: any) => {
-        this.setState({
-          value,
-        });
-      };
+  popupRef: any;
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      slaPopUpOpen: false,
+      showFiltersModal: false,
+      value: 0,
+    };
+    this.popupRef = React.createRef();
+  }
+  setActiveTab = (value: any) => {
+    this.setState({
+      value,
+    });
+  };
 
+  toggleFiltersModal = () => {
+    this.setState({
+      showFiltersModal: !this.state.showFiltersModal,
+    });
+  };
 
-      toggleFiltersModal = () => {
-        this.setState({
-          showFiltersModal: !this.state.showFiltersModal,
-        });
-      };
-    
-      toggleSla = () => {
-        this.setState((prevState: { slaPopUpOpen: any }) => ({
-          slaPopUpOpen: !prevState.slaPopUpOpen,
-        }));
-      };
-
+  toggleSla = () => {
+    this.setState((prevState: { slaPopUpOpen: any }) => ({
+      slaPopUpOpen: !prevState.slaPopUpOpen,
+    }));
+  };
 
   render() {
-    const {value,showFiltersModal}=this.state;
+    const { value, showFiltersModal } = this.state;
     return (
-        <div className="eks-explorer-container">
+      <div className="eks-explorer-container">
         <div className="header">
-          <span className="title" style={{display:"flex"}} >
-            <div style={{background:"green" ,width:"27px", }} >
-            <img src={images.pageTitleIcon} alt=""  />
+          <span className="title">
+            <div className="icon">
+              <img src={images.pageTitleIcon} alt="" />
             </div>
             {'S3 (Simple Storage Service)'}
           </span>
@@ -57,16 +55,16 @@ class S3Explorer extends Component<any, any> {
           <div className="tabs">
             <ul>
               <li className={value === 0 ? 'active' : ''} onClick={(e) => this.setActiveTab(0)}>
-              Development
+                Development
               </li>
               <li className={value === 1 ? 'active' : ''} onClick={(e) => this.setActiveTab(1)}>
-              Test
+                Test
               </li>
               <li className={value === 2 ? 'active' : ''} onClick={(e) => this.setActiveTab(2)}>
-              Stage
+                Stage
               </li>
               <li className={value === 3 ? 'active' : ''} onClick={(e) => this.setActiveTab(3)}>
-              Production
+                Production
               </li>
             </ul>
           </div>
@@ -80,15 +78,13 @@ class S3Explorer extends Component<any, any> {
                 <li>Custom</li>
               </ul>
             </div>
-            <button className="sla-btn" 
-            onClick={this.toggleSla}
-            >
+            <button className="sla-btn" onClick={this.toggleSla}>
               <i className="fa-solid fa-gear"></i>SLA
               <i className="fa-solid fa-caret-down"></i>
             </button>
             {this.state.slaPopUpOpen && (
               <>
-                <div  className="sla-popup">
+                <div className="sla-popup">
                   <ul>
                     <li className="sla-name active">
                       <a href="#">
@@ -148,7 +144,7 @@ class S3Explorer extends Component<any, any> {
         </div>
         <FiltersModal isOpen={showFiltersModal} toggleFiltersModal={this.toggleFiltersModal} />
       </div>
-    )
+    );
   }
 }
 export default S3Explorer;

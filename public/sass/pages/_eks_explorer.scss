@@ -17,9 +17,15 @@
             color: #383874;
             display: inline-block;
             font-weight: 500;
-            img {
-                margin-right: 10px;
+            display: flex;
+            .icon{
+                background-color: green;
+                width: 27px;
+                img {
+                    margin-right: 10px;
+                }
             }
+         
         }
 
         .header-btns {
