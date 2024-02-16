@@ -101,6 +101,7 @@ import * as AppkubeTopBackendErrorsPanel from 'app/plugins/panel/AppkubeTopBacke
 import * as AppkubeErrorOnRequestPanel from 'app/plugins/panel/AppkubeErrorOnRequestPanel/module';
 import * as AppkubeTopBucketCompliancePanel from 'app/plugins/panel/AppkubeTopBucketCompliancePanel/module';
 import * as AppkubeRegionWiseStoragePanel from 'app/plugins/panel/AppkubeRegionWiseStoragePanel/module';
+import * as AppkubeTopProductsPanel from 'app/plugins/panel/AppkubeTopProductsPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -201,6 +202,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeErrorOnRequestPanel/module': AppkubeErrorOnRequestPanel,
   'app/plugins/panel/AppkubeTopBucketCompliancePanel/module': AppkubeTopBucketCompliancePanel,
   'app/plugins/panel/AppkubeRegionWiseStoragePanel/module': AppkubeRegionWiseStoragePanel,
+  'app/plugins/panel/AppkubeTopProductsPanel/module': AppkubeTopProductsPanel,
 };
 
 export default builtInPlugins;
