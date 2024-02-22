@@ -25,13 +25,13 @@ class AppkubeBreakdownPanel extends PureComponent<PanelProps> {
                 89 <sub>%</sub>
               </div>
             </div>
+            <div className="name">Warning breakdown</div>
+            <div className="price">
+              {`78956`}
+              <p>10%</p>
+            </div>
+            <div className="detail">Last Updated 21 Hours Ago</div>
           </div>
-          <div className="name">Warning breakdown</div>
-          <div className="price">
-            {`78956`}
-            <p>10%</p>
-          </div>
-          <div className="detail">Last Updated 21 Hours Ago</div>
         </div>
       </div>
     );

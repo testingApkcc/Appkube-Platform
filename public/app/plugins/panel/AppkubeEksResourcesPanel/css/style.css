@@ -1,18 +1,14 @@
 .eks-resourses-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: 840px;
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 .eks-resourses-panel .resourses-inner {
-	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
-	padding: 0px 15px;
-	max-height: 250px;
+	padding: 0px 12px;
+	height: 100%;
 	overflow: hidden;
 	overflow-y: auto;
-	border-radius: 7px;
-	background-color: #fff;
 }
 .eks-resourses-panel .resourses-heading {
 	display: flex;
@@ -39,9 +35,7 @@
 	margin-bottom: 20px;
 	box-shadow: 0px 41.777610778808594px 33.422088623046875px 0px #6C49AC0D;
 }
-.eks-resourses-panel .resourses-boxes .resourses-box:nth-child(4n+0) {
-	margin-right: 0;
-}
+
 .eks-resourses-panel .resourses-boxes .resourses-box .heading {
 	display: flex;
 	width: 100%;

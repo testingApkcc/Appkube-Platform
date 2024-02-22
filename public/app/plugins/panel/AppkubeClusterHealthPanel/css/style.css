@@ -1,24 +1,22 @@
 .cluster-health-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: 540px;
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 .cluster-health-panel .cluster-health-inner-panel {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	padding: 20px;
+	padding: 12px;
 	overflow: hidden;
 	overflow-y: auto;
-	max-height: 200px;
-	border-radius: 7px;
-	background-color: #ffffff;
-	box-shadow: 0px 41.777610778808594px 33.422088623046875px 0px #6C49AC0D;
+  height: 100%;
 }
 .cluster-health-panel .heading {
 	width: 100%;
 	display: flex;
 	margin-bottom: 30px;
+	align-items: center;
 }
 .cluster-health-panel .heading span {
 	display: inline-flex;
@@ -88,10 +86,10 @@
 }
 .cluster-health-panel .line-container .line span {
 	display: flex;
-	height: 14px;
+	height: 18px;
 	border-radius: 4px;
 	font-size: 11px;
-	line-height: 14px;
+	line-height: 18px;
 	font-weight: 300;
 	color: #ffffff;
 	padding: 0 15px;

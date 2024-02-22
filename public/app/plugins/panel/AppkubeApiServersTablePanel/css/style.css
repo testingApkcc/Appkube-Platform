@@ -1,3 +1,6 @@
+.api-servers-table-panel {
+	height: 100%;
+}
 .api-servers-table-panel .api-servers-panel-heading {
 	display: flex;
 	justify-content: space-between;
@@ -14,9 +17,8 @@
 .api-servers-table-panel .common-table {
 	width: 100%;
 	display: block;
-	overflow: hidden;
 	overflow-y: auto;
-	max-height: 180px;
+  height: calc(100% - 33px);
 }
 .api-servers-table-panel .common-table table {
 	overflow: auto;

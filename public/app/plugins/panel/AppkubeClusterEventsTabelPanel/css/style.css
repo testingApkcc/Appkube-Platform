@@ -1,12 +1,15 @@
 .cluster-events-table-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: 400px;
+	width: 100%;
+	height: 100%;
+	padding: 8px;
+	overflow: auto;
+	display: block;
 }
 .cluster-events-table-inner-panel {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
+	height: 100%;
 }
 .cluster-events-table-panel .heading {
 	display: block;
@@ -21,7 +24,7 @@
 	display: block;
 	overflow: hidden;
 	overflow-y: auto;
-	max-height: 180px;
+	height: calc(100% - 33px);
 }
 .cluster-events-table-panel .common-table table {
 	overflow: auto;
