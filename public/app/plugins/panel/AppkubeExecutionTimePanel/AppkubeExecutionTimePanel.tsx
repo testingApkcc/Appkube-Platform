@@ -20,7 +20,7 @@ class AppkubeExecutionTimePanel extends PureComponent<PanelProps> {
                 <th>
                   <div className="table-header">Duration</div>
                 </th>
-                <th>
+                <th style={{ minWidth: '530px', overflow: 'auto' }}>
                   <div className="table-header ms-text">0.0ms</div>
                   <div className="table-header ms-text">25ms</div>
                   <div className="table-header ms-text">50ms</div>
