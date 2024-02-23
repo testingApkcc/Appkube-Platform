@@ -4,8 +4,6 @@
 	display: block;
 }
 .cluster-health-panel .cluster-health-inner-panel {
-	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
 	padding: 12px;
 	overflow: hidden;

@@ -1,3 +1,8 @@
+.instance-panel{
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
 .instance-panel .instance-panel-heading {
 	display: flex;
 	justify-content: space-between;
@@ -24,6 +29,7 @@
 	line-height: 16px;
 }
 .instance-panel .subtitle {
+  margin-top: 5px;
 	font-size: 9px;
 	line-height: 14px;
 	color: #383874;

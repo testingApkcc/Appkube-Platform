@@ -1,18 +1,16 @@
 .performance-panel{
-	margin-left: auto;
-	margin-right: auto;
-	width: 230px;
+	width: 100%;
+	height: 100%;
+	display: block;
+	overflow: auto;
 }
 
 .performance-panel .performance-container{
 	display: flex;
 	width: 100%;
-	height: 68px;
-	padding: 0px 11px;
-	border-radius: 7px;
-	background-color: #ffffff;
-	box-shadow: 0px 41.777610778808594px 33.422088623046875px 0px #6C49AC0D;
-	align-items: center;
+	height: 100%;
+	padding: 0px 8px;
+	justify-content: center;
 }
 
 .performance-panel .performance-container .icon{
@@ -29,7 +27,6 @@
 
 .performance-panel .performance-container .panel-details{
 	display: block;
-	overflow: hidden;
 }
 .performance-panel .performance-container .panel-details .title{
 	font-size: 13px;

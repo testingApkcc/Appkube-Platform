@@ -1,23 +1,20 @@
 .resources-request-count-panel {
-	margin-left: auto;
-	margin-right: auto;
 	width: 100%;
 	height: 100%;
-	overflow: auto;
+	display: block;
 }
 .resources-request-count-panel .resources-request-count-inner-panel {
-	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
-	padding: 16px;
-	overflow: hidden;
-	overflow-y: auto;
+	padding: 12px;
+	overflow: auto;
 	height: 100%;
 }
 .resources-request-count-panel .heading {
 	width: 100%;
-	display: block;
-	margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	margin-bottom: 12px;
 }
 .resources-request-count-panel .heading span {
 	display: inline-block;

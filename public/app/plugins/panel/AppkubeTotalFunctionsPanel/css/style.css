@@ -1,15 +1,14 @@
 .total-functions-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: 250px;
-	
+	width: 100%;
+	height: 100%;
+	display: flex;
+	overflow: auto;
 }
 .total-functions-panel .total-functions-inner {
 	display: flex;
-	width: 100%;
-	padding: 15px;
-	border-radius: 7px;
-	background-color: #fff;
+	padding: 8px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .total-functions-panel .total-functions-inner .functions-circle {
 	display: inline-flex;
@@ -23,8 +22,6 @@
 }
 
 .total-functions-panel .total-functions-inner .functions-contents {
-	display: inline-flex;
-	flex-wrap: wrap;
 	width: calc(100% - 76px);
 }
 .total-functions-panel .total-functions-inner .functions-contents span {

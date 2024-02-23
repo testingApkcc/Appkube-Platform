@@ -1,18 +1,13 @@
 .resourses-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: 840px;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 .resourses-panel .resourses-inner {
-	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
 	padding: 0px 15px;
-	max-height: 250px;
-	overflow: hidden;
-	overflow-y: auto;
-	border-radius: 7px;
-	background-color: #fff;
+  height: 100%;
+	overflow: auto;
 }
 .resourses-panel .resourses-heading {
 	display: flex;

@@ -22,8 +22,7 @@
 .cluster-events-table-panel .common-table {
 	width: 100%;
 	display: block;
-	overflow: hidden;
-	overflow-y: auto;
+	overflow: auto;
 	height: calc(100% - 33px);
 }
 .cluster-events-table-panel .common-table table {

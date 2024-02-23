@@ -1,18 +1,13 @@
 .top-used-function-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: 250px;
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 .top-used-function-panel .top-used-function-inner {
-	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
-	padding: 0px 15px;
-	max-height: 250px;
-	overflow: hidden;
-	overflow-y: auto;
-	border-radius: 7px;
-	background-color: #fff;
+	padding: 0px 12px;
+	height: 100%;
+	overflow: auto;
 }
 .top-used-function-panel .top-used-function-heading {
 	display: flex;
@@ -105,8 +100,8 @@
 	color: #383874;
 }
 .top-used-function-panel .top-used-function-contents .content strong.up::after { 
-	margin-left: auto;
-	margin-top: 4px;
+	margin-left: 6px;
+	margin-top: 6px;
 	content: "";
 	width: 0;
   height: 0;
@@ -117,7 +112,7 @@
   border-top: 0;
 }
 .top-used-function-panel .top-used-function-contents .content strong.down::after { 
-	margin-left: auto;
+	margin-left: 6px;
 	margin-top: 6px;
 	content: "";
 	width: 0;

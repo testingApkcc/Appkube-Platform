@@ -1,11 +1,10 @@
 .used-function-table-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: 300px;
+	width: 100%;
+	height: 100%;
+	display: block;
+	overflow: auto;
 }
 .used-function-table-inner-panel {
-	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
 }
 .used-function-table-panel .heading {
@@ -19,12 +18,10 @@
 .used-function-table-panel .common-table {
 	width: 100%;
 	display: block;
-	overflow: hidden;
-	overflow-y: auto;
-	max-height: 180px;
+	overflow: auto;
+	height: 100%;
 }
 .used-function-table-panel .common-table table {
-	overflow: auto;
 	width: 100%;
 }
 .used-function-table-panel .common-table table thead tr th {
