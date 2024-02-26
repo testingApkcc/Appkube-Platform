@@ -1,0 +1,19 @@
+{
+  "type": "panel",
+  "name": "Appkube All Products Panel",
+  "id": "appkubeAllProductsPanel",
+
+  "skipDataQuery": true,
+
+  "info": {
+    "description": "Appkube All Products Panel",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/icon.png",
+      "large": "img/icon.png"
+    }
+  }
+}

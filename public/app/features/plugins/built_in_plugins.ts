@@ -103,6 +103,8 @@ import * as AppkubeTopBucketCompliancePanel from 'app/plugins/panel/AppkubeTopBu
 import * as AppkubeRegionWiseStoragePanel from 'app/plugins/panel/AppkubeRegionWiseStoragePanel/module';
 import * as AppkubeTopProductsPanel from 'app/plugins/panel/AppkubeTopProductsPanel/module';
 import * as AppkubeSuccessAndFailedRequestPanel from 'app/plugins/panel/AppkubeSuccessAndFailedRequestPanel/module';
+import * as AppkubeClusterCapacityPanel from 'app/plugins/panel/AppkubeClusterCapacityPanel/module';
+import * as AppkubeAllProductsPanel from 'app/plugins/panel/AppkubeAllProductsPanel/module';
 
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -205,6 +207,8 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeRegionWiseStoragePanel/module': AppkubeRegionWiseStoragePanel,
   'app/plugins/panel/AppkubeTopProductsPanel/module': AppkubeTopProductsPanel,
   'app/plugins/panel/AppkubeSuccessAndFailedRequestPanel/module': AppkubeSuccessAndFailedRequestPanel,
+  'app/plugins/panel/AppkubeClusterCapacityPanel/module': AppkubeClusterCapacityPanel,
+  'app/plugins/panel/AppkubeAllProductsPanel/module': AppkubeAllProductsPanel,
 };
 
 export default builtInPlugins;

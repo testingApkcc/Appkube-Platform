@@ -1,0 +1,44 @@
+.all-products-panel {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.all-products-inner {
+	width: 100%;
+	padding:12px;
+	height: 100%;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.all-products-panel .header {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 30px;
+}
+
+.all-products-panel .header .heading {
+	display: inline-flex;
+	width: auto;
+	font-size: 20px;
+	line-height: 24px;
+	color: #383874;
+	font-weight: 600;
+}
+
+.all-products-panel .header .buttons {
+	display: inline-flex;
+	width: auto;
+	margin-left: auto;
+}
+
+.all-products-panel .header .buttons .icon {
+	display: inline-flex;
+	width: auto;
+	border: none;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: transparent;
+}
