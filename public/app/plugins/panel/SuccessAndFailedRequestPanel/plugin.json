@@ -1,0 +1,20 @@
+{
+    "type": "panel",
+    "name": "Success and Failed Request",
+    "id": "successAndFailedRequestPanel",
+  
+    "skipDataQuery": true,
+  
+    "info": {
+      "description": "Success and Failed Request",
+      "author": {
+        "name": "Grafana Labs",
+        "url": "https://grafana.com"
+      },
+      "logos": {
+        "small": "img/icon.png",
+        "large": "img/icon.png"
+      }
+    }
+  }
+  
