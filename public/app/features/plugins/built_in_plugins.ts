@@ -106,6 +106,7 @@ import * as AppkubeSuccessAndFailedRequestPanel from 'app/plugins/panel/AppkubeS
 import * as AppkubeClusterCapacityPanel from 'app/plugins/panel/AppkubeClusterCapacityPanel/module';
 import * as AppkubeAllProductsPanel from 'app/plugins/panel/AppkubeAllProductsPanel/module';
 import * as SuccessAndFailedRequestPanel from 'app/plugins/panel/SuccessAndFailedRequestPanel/module';
+import * as AppkubePodsOverviewPanel from 'app/plugins/panel/AppkubePodsOverviewPanel/module';
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
 const canvasPanel = async () => await import(/* webpackChunkName: "canvasPanel" */ 'app/plugins/panel/canvas/module');
@@ -210,6 +211,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeClusterCapacityPanel/module': AppkubeClusterCapacityPanel,
   'app/plugins/panel/AppkubeAllProductsPanel/module': AppkubeAllProductsPanel,
   'app/plugins/panel/SuccessAndFailedRequestPanel/module': SuccessAndFailedRequestPanel,
+  'app/plugins/panel/AppkubePodsOverviewPanel/module': AppkubePodsOverviewPanel,
 };
 
 export default builtInPlugins;
