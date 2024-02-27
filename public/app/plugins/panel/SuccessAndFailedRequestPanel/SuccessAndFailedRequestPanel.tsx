@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { PanelProps } from '@grafana/data';
 import './css/style.css';
+import StackBarChart from './Components/StackBarChart';
 
 class SuccessAndFailedRequestPanel extends PureComponent<PanelProps> {
   render() {
@@ -24,6 +25,7 @@ class SuccessAndFailedRequestPanel extends PureComponent<PanelProps> {
               </button>
             </div>
           </div>
+          <StackBarChart />
         </div>
       </div>
     );

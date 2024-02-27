@@ -6,7 +6,7 @@ interface DataPoint {
   'Low-carbon-sources': number;
   'Fossil-fuels-sources': number;
 }
-let data :DataPoint[]= [
+let data: DataPoint[] = [
   {
     timing: '09.00',
     total: 43418.460846,
@@ -87,8 +87,8 @@ let data :DataPoint[]= [
   },
 ];
 const categories: string[] = ['Low-carbon-sources', 'Fossil-fuels-sources'];
-const width: number = 900;
-const height: number = 450;
+const width = 900;
+const height = 450;
 let margin = {
   top: 10,
   bottom: 0,
@@ -98,10 +98,7 @@ let margin = {
 const StackBarChart: React.FC = () => {
   const ref = React.useRef<SVGSVGElement | null>(null);
   useEffect(() => {
-    const colors = d3
-      .scaleOrdinal<string>()
-      .domain(categories)
-      .range(['#8676FF', '#FAA24B']);
+    const colors = d3.scaleOrdinal<string>().domain(categories).range(['#8676FF', '#FAA24B']);
     const xScale = d3
       .scaleBand<string>()
       .domain(data.map((d) => d.timing))
@@ -133,12 +130,7 @@ const StackBarChart: React.FC = () => {
       .append('g')
       .attr('transform', `translate(0,${height - margin.bottom})`)
       .call(xAxis);
-    svg
-      .append('g')
-      .attr('transform', `translate(${margin.left},0)`)
-      .call(yAxis)
-      .select('.domain')
-      .remove();
+    svg.append('g').attr('transform', `translate(${margin.left},0)`).call(yAxis).select('.domain').remove();
   }, []);
   return <svg ref={ref} width={width} height={height}></svg>;
 };
