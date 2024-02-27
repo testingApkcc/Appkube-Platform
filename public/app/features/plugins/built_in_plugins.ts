@@ -105,7 +105,7 @@ import * as AppkubeTopProductsPanel from 'app/plugins/panel/AppkubeTopProductsPa
 import * as AppkubeSuccessAndFailedRequestPanel from 'app/plugins/panel/AppkubeSuccessAndFailedRequestPanel/module';
 import * as AppkubeClusterCapacityPanel from 'app/plugins/panel/AppkubeClusterCapacityPanel/module';
 import * as AppkubeAllProductsPanel from 'app/plugins/panel/AppkubeAllProductsPanel/module';
-import * as SuccessAndFailedRequestPanel from 'app/plugins/panel/SuccessAndFailedRequestPanel/module';
+import * as AppkubeSuccessFailedChartPanel from 'app/plugins/panel/AppkubeSuccessFailedChartPanel/module';
 import * as AppkubePodsOverviewPanel from 'app/plugins/panel/AppkubePodsOverviewPanel/module';
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
@@ -210,7 +210,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeSuccessAndFailedRequestPanel/module': AppkubeSuccessAndFailedRequestPanel,
   'app/plugins/panel/AppkubeClusterCapacityPanel/module': AppkubeClusterCapacityPanel,
   'app/plugins/panel/AppkubeAllProductsPanel/module': AppkubeAllProductsPanel,
-  'app/plugins/panel/SuccessAndFailedRequestPanel/module': SuccessAndFailedRequestPanel,
+  'app/plugins/panel/AppkubeSuccessFailedChartPanel/module': AppkubeSuccessFailedChartPanel,
   'app/plugins/panel/AppkubePodsOverviewPanel/module': AppkubePodsOverviewPanel,
 };
 

@@ -3,13 +3,17 @@ import { PanelProps } from '@grafana/data';
 import './css/style.css';
 import StackBarChart from './Components/StackBarChart';
 
-class SuccessAndFailedRequestPanel extends PureComponent<PanelProps> {
+class AppkubeSuccessFailedChartPanel extends PureComponent<PanelProps> {
   render() {
     return (
       <div className="success-and-failed-request-panel">
         <div className="success-and-failed-request-panel-inner">
           <div className="header">
             <div className="heading">Success and Failed Request</div>
+            <div className="contents">
+              <span className="failire">Failire</span>
+              <span className="success">Success</span>
+            </div>
             <div className="buttons">
               <button className="icon">
                 <img
@@ -32,4 +36,4 @@ class SuccessAndFailedRequestPanel extends PureComponent<PanelProps> {
   }
 }
 
-export default SuccessAndFailedRequestPanel;
+export default AppkubeSuccessFailedChartPanel;

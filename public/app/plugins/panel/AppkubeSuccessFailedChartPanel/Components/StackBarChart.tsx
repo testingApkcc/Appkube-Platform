@@ -90,10 +90,10 @@ const categories: string[] = ['Low-carbon-sources', 'Fossil-fuels-sources'];
 const width = 900;
 const height = 450;
 let margin = {
-  top: 10,
-  bottom: 0,
-  right: 30,
-  left: 40,
+  top: 20,
+  bottom: 30,
+  right: 20,
+  left: 60,
 };
 const StackBarChart: React.FC = () => {
   const ref = React.useRef<SVGSVGElement | null>(null);
@@ -117,7 +117,7 @@ const StackBarChart: React.FC = () => {
       .selectAll<SVGGElement, unknown>('g')
       .data(chartData)
       .join('g')
-      .style('fill', (d, i) => colors(d.key as string));
+      .style('fill', (d) => colors(d.key as string));
     groups
       .selectAll<SVGRectElement, d3.SeriesPoint<DataPoint>>('rect')
       .data((d) => d)
@@ -125,7 +125,7 @@ const StackBarChart: React.FC = () => {
       .attr('x', (d) => xScale(d.data.timing)!)
       .attr('y', (d) => yScale(d[1])!)
       .attr('height', (d) => yScale(d[0]) - yScale(d[1]))
-      .attr('width', xScale.bandwidth());
+      .attr('width', 5);
     svg
       .append('g')
       .attr('transform', `translate(0,${height - margin.bottom})`)
