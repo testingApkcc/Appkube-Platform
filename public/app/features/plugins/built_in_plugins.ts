@@ -103,11 +103,11 @@ import * as AppkubeTopBucketCompliancePanel from 'app/plugins/panel/AppkubeTopBu
 import * as AppkubeRegionWiseStoragePanel from 'app/plugins/panel/AppkubeRegionWiseStoragePanel/module';
 import * as AppkubeTopProductsPanel from 'app/plugins/panel/AppkubeTopProductsPanel/module';
 import * as AppkubeSuccessAndFailedRequestPanel from 'app/plugins/panel/AppkubeSuccessAndFailedRequestPanel/module';
-import * as AppkubeClusterCapacityPanel from 'app/plugins/panel/AppkubeClusterCapacityPanel/module';
 import * as AppkubeAllProductsPanel from 'app/plugins/panel/AppkubeAllProductsPanel/module';
 import * as AppkubeSuccessFailedChartPanel from 'app/plugins/panel/AppkubeSuccessFailedChartPanel/module';
 import * as AppkubePodsOverviewPanel from 'app/plugins/panel/AppkubePodsOverviewPanel/module';
 import * as AppkubeLCUPanel from 'app/plugins/panel/AppkubeLCUPanel/module';
+import * as AppkubeClusterOverviewPanel from 'app/plugins/panel/AppkubeClusterOverviewPanel/module';
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
 const canvasPanel = async () => await import(/* webpackChunkName: "canvasPanel" */ 'app/plugins/panel/canvas/module');
@@ -209,11 +209,11 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeRegionWiseStoragePanel/module': AppkubeRegionWiseStoragePanel,
   'app/plugins/panel/AppkubeTopProductsPanel/module': AppkubeTopProductsPanel,
   'app/plugins/panel/AppkubeSuccessAndFailedRequestPanel/module': AppkubeSuccessAndFailedRequestPanel,
-  'app/plugins/panel/AppkubeClusterCapacityPanel/module': AppkubeClusterCapacityPanel,
   'app/plugins/panel/AppkubeAllProductsPanel/module': AppkubeAllProductsPanel,
   'app/plugins/panel/AppkubeSuccessFailedChartPanel/module': AppkubeSuccessFailedChartPanel,
   'app/plugins/panel/AppkubePodsOverviewPanel/module': AppkubePodsOverviewPanel,
   'app/plugins/panel/AppkubeLCUPanel/module': AppkubeLCUPanel,
+  'app/plugins/panel/AppkubeClusterOverviewPanel/module': AppkubeClusterOverviewPanel,
 };
 
 export default builtInPlugins;
