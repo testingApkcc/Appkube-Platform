@@ -111,6 +111,7 @@ import * as AppkubeClusterOverviewPanel from 'app/plugins/panel/AppkubeClusterOv
 import * as AppkubeFlowCountPanel from 'app/plugins/panel/AppkubeFlowCountPanel/module';
 import * as AppkubeDataLifecycleManagementPanel from 'app/plugins/panel/AppkubeDataLifecycleManagementPanel/module';
 import * as AppkubeOverallBucketCompliancePanel from 'app/plugins/panel/AppkubeOverallBucketCompliancePanel/module';
+import * as AppkubeCpuUtilizationPanel from 'app/plugins/panel/AppkubeCpuUtilizationPanel/module';
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
 const canvasPanel = async () => await import(/* webpackChunkName: "canvasPanel" */ 'app/plugins/panel/canvas/module');
@@ -220,6 +221,7 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeFlowCountPanel/module': AppkubeFlowCountPanel,
   'app/plugins/panel/AppkubeDataLifecycleManagementPanel/module': AppkubeDataLifecycleManagementPanel,
   'app/plugins/panel/AppkubeOverallBucketCompliancePanel/module': AppkubeOverallBucketCompliancePanel,
+  'app/plugins/panel/AppkubeCpuUtilizationPanel/module': AppkubeCpuUtilizationPanel,
 };
 
 export default builtInPlugins;
