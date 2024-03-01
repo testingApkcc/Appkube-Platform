@@ -56,7 +56,6 @@ const SingleLineChartWithCurve: React.FC = () => {
       .x((d) => x(d.date) || 0)
       .y((d) => y(d.value) || 0)
       .curve(d3.curveCardinal);
-
     const svg = d3.select(ref.current).attr('viewBox', [0, 0, width, height]);
     svg.append('g').call(xAxis);
     svg.append('g').call(yAxis);
@@ -64,14 +63,37 @@ const SingleLineChartWithCurve: React.FC = () => {
       .append('path')
       .datum(data)
       .attr('fill', 'none')
-      .attr('stroke', '#53ca43')
+      .attr('stroke', '#00b929')
       .attr('stroke-width', 6)
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round')
       .attr('d', line);
+    const tooltip = d3.select(ref.current).append('g').attr('class', 'tooltip').style('display', 'none');
+    tooltip.append('rect').attr('width', 100).attr('height', 50).attr('fill', 'white').style('opacity', 0.8);
+    tooltip.append('text').attr('x', 10).attr('y', 20).style('font-size', '12px').text('Tooltip Text');
+    svg
+      .append('rect')
+      .attr('class', 'overlay')
+      .attr('width', width)
+      .attr('height', height)
+      .style('fill', 'none')
+      .style('pointer-events', 'all')
+      .on('mouseover', () => tooltip.style('display', null))
+      .on('mouseout', () => tooltip.style('display', 'none'))
+      .on('mousemove', mousemove);
+    function mousemove(event: any) {
+      const x0 = x.invert(d3.pointer(event)[0]);
+      const bisectDate = d3.bisector((d: DataItem) => d.date).left;
+      const i = bisectDate(data, x0, 1);
+      const d0 = data[i - 1];
+      const d1 = data[i];
+      const d = x0.valueOf() - d0.date.valueOf() > d1.date.valueOf() - x0.valueOf() ? d1 : d0;
+      tooltip.attr('transform', `translate(${x(d.date)}, ${y(d.value)})`);
+      tooltip.select('text').text(`Value: ${d.value}`);
+    }
   }, []);
   return (
-    <div>
+    <div className="chart-curve">
       <svg ref={ref} width={width} height={height}></svg>
     </div>
   );

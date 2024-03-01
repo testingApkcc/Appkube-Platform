@@ -37,3 +37,8 @@
 	margin-right: 5px;
 	background-color: transparent;
 }
+.number-zone-chart-panel .chart-curve svg .tooltip {
+	position: inherit;
+	visibility: visible;
+	opacity: 1;
+}
