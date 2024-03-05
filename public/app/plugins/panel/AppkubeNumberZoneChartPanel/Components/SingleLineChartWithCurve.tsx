@@ -68,7 +68,7 @@ const SingleLineChartWithCurve: React.FC = () => {
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round')
       .attr('d', line);
-    const tooltip = d3.select(ref.current).append('g').attr('class', 'tooltip').style('display', 'none');
+    const tooltip = d3.select(ref.current).append('g').attr('class', 'chart-tooltip').style('display', 'none');
     tooltip.append('rect').attr('width', 100).attr('height', 50).attr('fill', 'white').style('opacity', 0.8);
     tooltip.append('text').attr('x', 10).attr('y', 20).style('font-size', '12px').text('Tooltip Text');
     svg

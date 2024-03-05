@@ -113,6 +113,11 @@ import * as AppkubeDataLifecycleManagementPanel from 'app/plugins/panel/AppkubeD
 import * as AppkubeOverallBucketCompliancePanel from 'app/plugins/panel/AppkubeOverallBucketCompliancePanel/module';
 import * as AppkubeCpuUtilizationPanel from 'app/plugins/panel/AppkubeCpuUtilizationPanel/module';
 import * as AppkubeNumberZoneChartPanel from 'app/plugins/panel/AppkubeNumberZoneChartPanel/module';
+import * as AppkubeMultilineChartPanel from 'app/plugins/panel/AppkubeMultilineChartPanel/module';
+import * as AppkubeDonutChartPanel from 'app/plugins/panel/AppkubeDonutChartPanel/module';
+import * as AppkubeAuthenticationChartPanel from 'app/plugins/panel/AppkubeAuthenticationChartPanel/module';
+import * as AppkubeWiseCostPanel from 'app/plugins/panel/AppkubeWiseCostPanel/module';
+import * as AppkubeClusterCapacityPanel from 'app/plugins/panel/AppkubeClusterCapacityPanel/module';
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
 const canvasPanel = async () => await import(/* webpackChunkName: "canvasPanel" */ 'app/plugins/panel/canvas/module');
@@ -224,6 +229,11 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeOverallBucketCompliancePanel/module': AppkubeOverallBucketCompliancePanel,
   'app/plugins/panel/AppkubeCpuUtilizationPanel/module': AppkubeCpuUtilizationPanel,
   'app/plugins/panel/AppkubeNumberZoneChartPanel/module': AppkubeNumberZoneChartPanel,
+  'app/plugins/panel/AppkubeMultilineChartPanel/module': AppkubeMultilineChartPanel,
+  'app/plugins/panel/AppkubeDonutChartPanel/module': AppkubeDonutChartPanel,
+  'app/plugins/panel/AppkubeAuthenticationChartPanel/module': AppkubeAuthenticationChartPanel,
+  'app/plugins/panel/AppkubeWiseCostPanel/module': AppkubeWiseCostPanel,
+  'app/plugins/panel/AppkubeClusterCapacityPanel/module': AppkubeClusterCapacityPanel,
 };
 
 export default builtInPlugins;

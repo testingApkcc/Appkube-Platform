@@ -1,20 +1,10 @@
 import React, { PureComponent, createRef } from 'react';
-import * as d3 from 'd3';
 import { PanelProps } from '@grafana/data';
-import './css/style.css';
+import * as d3 from 'd3';
 
 interface DataItem {
   age_group: string;
   population: number;
-}
-
-interface DonutChartProps {
-  data: DataItem[];
-  width: number;
-  height: number;
-}
-interface State {
-  data: DataItem[];
 }
 
 interface DataPoint {
@@ -35,9 +25,11 @@ let data: DataPoint[] = [
     population: 10,
   },
 ];
+let width = 900;
+let height = 300;
 
-class AppkubePodsOverviewPanel extends PureComponent<PanelProps, DonutChartProps, State> {
-  constructor(props: PanelProps) {
+class AppkubePodsOverviewPanel extends PureComponent<PanelProps> {
+  constructor(props: any) {
     super(props);
   }
 
@@ -54,7 +46,7 @@ class AppkubePodsOverviewPanel extends PureComponent<PanelProps, DonutChartProps
   }
 
   drawChart() {
-    const { width, height } = this.props;
+    // const { width, height } = this.props;
 
     const svg = d3.select(this.svgRef.current).attr('width', 300).attr('height', 300);
 
@@ -91,7 +83,7 @@ class AppkubePodsOverviewPanel extends PureComponent<PanelProps, DonutChartProps
     const legend = svg
       .append('g')
       .attr('class', 'legend')
-      .attr('transform', `translate(${width / 2.6 - 300},${height / -1.8 + 300})`);
+      .attr('transform', `translate(${width / 2 - 300},${height / -4 + 300})`);
 
     const lg = legend
       .selectAll<SVGGElement, d3.PieArcDatum<DataItem>>('g')
@@ -100,36 +92,39 @@ class AppkubePodsOverviewPanel extends PureComponent<PanelProps, DonutChartProps
       .append('g')
       .attr('class', 'legendGroup')
       .attr('transform', (d: any, i: number) => {
-        const xOff = (i % 1) * 300;
+        const xOff = (i % 1) * 200;
         const yOff = Math.floor(i / 1) * 20;
         return `translate(${xOff},${yOff})`;
       });
 
     lg.append('rect')
       .attr('fill', (d: { data: { age_group: any } }) => color(d.data.age_group))
-      .attr('x', 30 - 15)
+      .attr('x', -80)
       .attr('y', 30 - 7)
       .attr('width', 15)
       .attr('height', 5)
-      // .attr('rx', 3)
       .append('title')
       .html((d: { data: { age_group: any } }) => d.data.age_group);
 
     lg.append('text')
       .style('font-family', '"Montserrat", sans-serif')
       .style('font-size', '12px')
-      .attr('x', 20 + 15)
+      .attr('x', -55)
       .attr('y', 30)
       .text((d: { data: { age_group: any } }) => d.data.age_group)
       .append('title');
   }
   render() {
-    const { width, height } = this.props;
     return (
       <div className="pods-overview-panel">
         <div className="pods-overview-inner-panel">
           <div className="heading">Pods Overview</div>
-          <svg ref={this.svgRef} width={width} height={height}></svg>
+          <svg
+            ref={this.svgRef}
+            viewBox={`0 0 ${width} ${height}`}
+            preserveAspectRatio="xMidYMid meet"
+            style={{ width: '100%', height: '100%', maxWidth: '100%', maxHeight: '300' }}
+          ></svg>
         </div>
       </div>
     );
