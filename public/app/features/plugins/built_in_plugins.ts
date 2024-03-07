@@ -118,6 +118,8 @@ import * as AppkubeDonutChartPanel from 'app/plugins/panel/AppkubeDonutChartPane
 import * as AppkubeAuthenticationChartPanel from 'app/plugins/panel/AppkubeAuthenticationChartPanel/module';
 import * as AppkubeWiseCostPanel from 'app/plugins/panel/AppkubeWiseCostPanel/module';
 import * as AppkubeClusterCapacityPanel from 'app/plugins/panel/AppkubeClusterCapacityPanel/module';
+import * as AppkubeFunctionByProductsPanel from 'app/plugins/panel/AppkubeFunctionByProductsPanel/module';
+import * as AppkubeErrorAndWarningPanel from 'app/plugins/panel/AppkubeErrorAndWarningPanel/module';
 // Async loaded panels
 const geomapPanel = async () => await import(/* webpackChunkName: "geomapPanel" */ 'app/plugins/panel/geomap/module');
 const canvasPanel = async () => await import(/* webpackChunkName: "canvasPanel" */ 'app/plugins/panel/canvas/module');
@@ -234,6 +236,8 @@ const builtInPlugins: any = {
   'app/plugins/panel/AppkubeAuthenticationChartPanel/module': AppkubeAuthenticationChartPanel,
   'app/plugins/panel/AppkubeWiseCostPanel/module': AppkubeWiseCostPanel,
   'app/plugins/panel/AppkubeClusterCapacityPanel/module': AppkubeClusterCapacityPanel,
+  'app/plugins/panel/AppkubeFunctionByProductsPanel/module': AppkubeFunctionByProductsPanel,
+  'app/plugins/panel/AppkubeErrorAndWarningPanel/module': AppkubeErrorAndWarningPanel,
 };
 
 export default builtInPlugins;
